@@ -47,7 +47,7 @@ function time_for_kids_menu_default_menu_links() {
     'menu_name' => 'main-menu',
     'link_path' => 'destinations',
     'router_path' => 'destinations',
-    'link_title' => 'Destinatinos',
+    'link_title' => 'Destinations',
     'options' => array(
       'attributes' => array(
         'title' => '',
@@ -133,7 +133,6 @@ function time_for_kids_menu_default_menu_links() {
   // Included for use with string extractors like potx.
   t('Articles');
   t('China');
-  t('Destinatinos');
   t('Destinations');
   t('Home');
   t('Homework');
