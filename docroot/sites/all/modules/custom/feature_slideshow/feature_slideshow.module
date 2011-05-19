@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the TFK Slideshow feature.
+ */
+
+include_once('tfk_slideshow.features.inc');

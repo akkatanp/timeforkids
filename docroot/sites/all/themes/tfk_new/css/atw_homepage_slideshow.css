@@ -1,0 +1,97 @@
+#page-title, h2.block-title { 
+	display: none;
+}
+
+#atw-container {
+	border: solid 1px #cecece;
+	padding: 10px 9px;
+}
+
+#atw-container #slideshow {
+	position: relative;
+	width: 490px;
+	height: 370px;
+}
+
+#slideshow .header {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 490px;
+	height: 100px;
+	background: url(../images/atw-head.png) no-repeat;
+	z-index: 2;
+}
+
+#slideshow .footer {
+	position: absolute;
+	top: 338px;
+	left: 0px;
+	width: 478px;
+	height: 20px;
+	padding: 6px;
+	background: black;
+	opacity: 0.75;
+	z-index: 2;
+	color: white;
+}
+
+#slideshow .footer ul#clicks {
+	margin: 0;
+	list-style-type: none;
+	float: right;
+	opacity: 1;
+}
+
+#slideshow .footer ul#clicks li {
+	float: left;
+	cursor: pointer;
+	height: 7px;
+	width: 7px;
+	margin: 6px 8px 7px 8px;
+	background: url(../images/slideshow-white-dot.png) no-repeat;
+	z-index: 2;
+	
+}
+
+#slideshow .footer ul#clicks li.active {
+	background: url(../images/slideshow-red-dot.png) no-repeat;
+}
+
+#slideshow .footer .title-container {
+	position: relative;
+	float: left;
+	height: 20px;
+	padding: 0 6px;
+	color: white;
+	font: bold 12px arial;
+	line-height: 20px;
+}
+
+#slideshow .footer .title-container .title {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+
+#slideshow .outer {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 490px;
+	height: 370px;
+	overflow: hidden;
+}
+
+#slideshow .inner {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	height: 370px;
+}
+
+#slideshow .inner img {
+	float: left;
+	width: 490px;
+	height: 370px;
+}
