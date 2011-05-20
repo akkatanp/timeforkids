@@ -94,33 +94,39 @@ function features_misc_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
+        'tfk_current_issue-current-issue-page' => array(
+          'module' => 'tfk_current_issue',
+          'delta' => 'current-issue-page',
+          'region' => 'sidebar_second',
+          'weight' => '-10',
+        ),
         'views-3913f89243cb6afc50cd09ca76035ca1' => array(
           'module' => 'views',
           'delta' => '3913f89243cb6afc50cd09ca76035ca1',
           'region' => 'sidebar_second',
-          'weight' => '-10',
+          'weight' => '-9',
         ),
         'views-055e2fdcba0fe53e098723f8d12ef765' => array(
           'module' => 'views',
           'delta' => '055e2fdcba0fe53e098723f8d12ef765',
           'region' => 'sidebar_second',
-          'weight' => '-9',
+          'weight' => '-8',
         ),
         'block-6' => array(
           'module' => 'block',
           'delta' => 6,
           'region' => 'sidebar_second',
-          'weight' => '-8',
-        ),
-        'user-login' => array(
-          'module' => 'user',
-          'delta' => 'login',
-          'region' => 'header',
-          'weight' => '-10',
+          'weight' => '-7',
         ),
         'menu-menu-tfk-global-navigation' => array(
           'module' => 'menu',
           'delta' => 'menu-tfk-global-navigation',
+          'region' => 'header',
+          'weight' => '-10',
+        ),
+        'user-login' => array(
+          'module' => 'user',
+          'delta' => 'login',
           'region' => 'header',
           'weight' => '-10',
         ),
