@@ -111,7 +111,7 @@ body {
 .with-navigation #content,
 .with-navigation .region-sidebar-first,
 .with-navigation .region-sidebar-second {
-  margin-top: 3em; /* Set this to the same value as the navigation height above. */
+  margin-top: 0; /* Set this to the same value as the navigation height above. */
 }
 
 #navigation .section {

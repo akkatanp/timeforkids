@@ -71,12 +71,17 @@
 
 <div id="page-wrapper"><div id="page">
 
-  <div id="header"><div class="section clearfix">
-
-    <?php if ($logo): ?>
-      <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo"><img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" /></a>
-    <?php endif; ?>
-
+	<div id="header">
+		<div class="section clearfix">
+		<?php if ($logo): ?>
+			<a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo"><img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" /></a>
+		<?php endif; ?>
+		</div>
+	</div>
+	
+	<div id="navigation">
+	
+<div class="section clearfix">
     <?php if ($site_name || $site_slogan): ?>
       <div id="name-and-slogan">
         <?php if ($site_name): ?>
@@ -142,34 +147,14 @@
       <?php print $feed_icons; ?>
     </div></div><!-- /.section, /#content -->
 
-    <?php if ($page['navigation'] || $main_menu): ?>
-      <div id="navigation"><div class="section clearfix">
-
-        <?php print theme('links__system_main_menu', array(
-          'links' => $main_menu,
-          'attributes' => array(
-            'id' => 'main-menu',
-            'class' => array('links', 'inline', 'clearfix'),
-          ),
-          'heading' => array(
-            'text' => t('Main menu'),
-            'level' => 'h2',
-            'class' => array('element-invisible'),
-          ),
-        )); ?>
-
-        <?php print render($page['navigation']); ?>
-
-      </div></div><!-- /.section, /#navigation -->
-    <?php endif; ?>
-
     <?php print render($page['sidebar_first']); ?>
 
     <?php print render($page['sidebar_second']); ?>
 
-  </div></div><!-- /#main, /#main-wrapper -->
+  </div>
 
   <?php print render($page['footer']); ?>
+  </div><!-- /#main, /#main-wrapper -->
 
 </div></div><!-- /#page, /#page-wrapper -->
 
