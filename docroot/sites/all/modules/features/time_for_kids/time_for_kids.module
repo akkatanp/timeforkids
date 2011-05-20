@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the Time for Kids feature.
- */
-
-include_once('time_for_kids.features.inc');
