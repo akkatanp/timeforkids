@@ -1,7 +1,7 @@
 <?php
 
 function tfk_atw_init(){
-  if(arg(0) == 'around_the_world'){
+  if(arg(0) == 'around-the-world'){
     $js_path = drupal_get_path('theme', 'tfk') .'/js/atw_homepage_slideshow.js';
     $css_path = drupal_get_path('theme', 'tfk') .'/css/atw_homepage_slideshow.css';
     drupal_add_js($js_path,'file');
@@ -11,14 +11,14 @@ function tfk_atw_init(){
 
 
 function tfk_atw_menu(){
-  $items['around_the_world'] = array(
+  $items['around-the-world'] = array(
 		'title' => 'Around The World Page',
 		'page callback' => 'atw_page_callback',
 		'access callback' => 'user_access',
 		'access arguments' => array('access content')
 	);
 
-  $items['around_the_world/map'] = array(
+  $items['around-the-world/map'] = array(
 		'title' => 'Around The World Page with Map',
 		'page callback' => 'atw_page_map_callback',
 		'access callback' => 'user_access',
