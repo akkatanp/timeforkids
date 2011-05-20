@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * tfk_slideshow.features.inc
+ * feature_slideshow.features.inc
  */
 
 /**
