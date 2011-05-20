@@ -7,7 +7,7 @@
 /**
  * Implementation of hook_views_default_views().
  */
-function tfk_slideshow_views_default_views() {
+function feature_slideshow_views_default_views() {
   $export = array();
 
   $view = new view;
