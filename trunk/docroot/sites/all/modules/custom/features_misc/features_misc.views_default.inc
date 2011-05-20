@@ -304,5 +304,80 @@ function features_misc_views_default_views() {
   );
   $export['gobal_right_sidebar_teacher'] = $view;
 
+  $view = new view;
+  $view->name = 'homepage_username';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'users';
+  $view->human_name = 'Homepage Username';
+  $view->core = 7;
+  $view->api_version = '3.0-alpha1';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['access']['type'] = 'role';
+  $handler->display->display_options['access']['role'] = array(
+    2 => '2',
+  );
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['row_options']['hide_empty'] = 0;
+  /* Field: User: Nickname */
+  $handler->display->display_options['fields']['field_nickname']['id'] = 'field_nickname';
+  $handler->display->display_options['fields']['field_nickname']['table'] = 'field_data_field_nickname';
+  $handler->display->display_options['fields']['field_nickname']['field'] = 'field_nickname';
+  $handler->display->display_options['fields']['field_nickname']['label'] = '';
+  $handler->display->display_options['fields']['field_nickname']['alter']['alter_text'] = 1;
+  $handler->display->display_options['fields']['field_nickname']['alter']['text'] = 'Welcome [field_nickname]!';
+  $handler->display->display_options['fields']['field_nickname']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_nickname']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_nickname']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_nickname']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_nickname']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_nickname']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_nickname']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_nickname']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_nickname']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_nickname']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_nickname']['element_label_colon'] = 0;
+  $handler->display->display_options['fields']['field_nickname']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_nickname']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_nickname']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_nickname']['field_api_classes'] = 0;
+  /* Filter criterion: User: Active */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'users';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = '1';
+  $handler->display->display_options['filters']['status']['group'] = 0;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: User: Current */
+  $handler->display->display_options['filters']['uid_current']['id'] = 'uid_current';
+  $handler->display->display_options['filters']['uid_current']['table'] = 'users';
+  $handler->display->display_options['filters']['uid_current']['field'] = 'uid_current';
+  $handler->display->display_options['filters']['uid_current']['value'] = '1';
+
+  /* Display: Block */
+  $handler = $view->new_display('block', 'Block', 'block');
+  $translatables['homepage_username'] = array(
+    t('Master'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Welcome [field_nickname]!'),
+    t('Block'),
+  );
+  $export['homepage_username'] = $view;
+
   return $export;
 }
