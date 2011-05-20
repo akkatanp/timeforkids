@@ -101,13 +101,15 @@
     </div>
   <?php endif; ?>
 
-  <div class="content"<?php print $content_attributes; ?>>
+  <div class="content"<?php print $content_attributes; ?>>2864357
     <?php
       // We hide the comments and links now so that we can render them later.
       hide($content['comments']);
       hide($content['links']);
       /* SHow the view that pulls the image for the slideshow */
       print views_embed_view('view_slideshow_image', 'block_ss_image', $node->nid);
+      /* Show the View for More Photos & Videos */ 
+      print views_embed_view('more_photos_videos', 'block_mpv', $node->nid);
     ?>
   </div>
 

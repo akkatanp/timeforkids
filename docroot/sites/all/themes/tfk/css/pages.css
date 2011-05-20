@@ -47,9 +47,11 @@ body {
 }
 
 #header .section {
+	position: relative;
 	margin: 0 auto;
 	width: 950px;
-	height: 110px;
+	height: 174px;
+	clear: both;
 }
 
 #header .section #logo {
@@ -137,7 +139,7 @@ div#site-name /* The name of the website */ {
  */
 #main-wrapper {
 	width: 950px;
-	margin: 0 auto;
+	margin: 64px auto 0 auto;
 }
 
 #main {
@@ -148,6 +150,14 @@ div#site-name /* The name of the website */ {
  */
 #content {
 
+}
+
+#main-wrapper #main #content {
+	margin-top: 0px;
+}
+
+#main-wrapper #main #navigation {
+	display: none;
 }
 
 #content .section {
@@ -262,6 +272,7 @@ ul.links li {
  * (see the layout.css file.)
  */
 .region-sidebar-second {
+	margin-top: 0px;
 }
 
 .region-sidebar-second .section {
@@ -271,6 +282,13 @@ ul.links li {
  * Footer
  */
 .region-footer {
+	width: 760px;
+	background: #d71700;
+	color: white;
+}
+
+.region-footer .block-title {
+	display: none;
 }
 
 /*
