@@ -4,4 +4,4 @@
  * Code for the TFK Slideshow feature.
  */
 
-include_once('feature_slideshow.features.inc');
+include_once('tfk_slideshow.features.inc');
