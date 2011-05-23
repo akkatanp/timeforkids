@@ -30,13 +30,13 @@ function features_misc_context_default_contexts() {
           'module' => 'views',
           'delta' => '6b3cdbf51f6a41d742e65dbcf2d85234',
           'region' => 'sidebar_second',
-          'weight' => '-10',
+          'weight' => '-30',
         ),
         'block-1' => array(
           'module' => 'block',
           'delta' => 1,
           'region' => 'sidebar_second',
-          'weight' => '-10',
+          'weight' => '-29',
         ),
         'menu-menu-tfk-global-navigation' => array(
           'module' => 'menu',
