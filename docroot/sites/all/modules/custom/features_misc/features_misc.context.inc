@@ -32,9 +32,9 @@ function features_misc_context_default_contexts() {
           'region' => 'sidebar_second',
           'weight' => '-10',
         ),
-        'block-6' => array(
+        'block-3' => array(
           'module' => 'block',
-          'delta' => 6,
+          'delta' => 3,
           'region' => 'sidebar_second',
           'weight' => '-10',
         ),
@@ -62,9 +62,9 @@ function features_misc_context_default_contexts() {
           'region' => 'footer',
           'weight' => '-9',
         ),
-        'block-3' => array(
+        'block-4' => array(
           'module' => 'block',
-          'delta' => 3,
+          'delta' => 4,
           'region' => 'bottom',
           'weight' => '-10',
         ),
@@ -98,23 +98,23 @@ function features_misc_context_default_contexts() {
           'module' => 'tfk_current_issue',
           'delta' => 'current-issue-page',
           'region' => 'sidebar_second',
-          'weight' => '-10',
+          'weight' => '-26',
         ),
         'views-3913f89243cb6afc50cd09ca76035ca1' => array(
           'module' => 'views',
           'delta' => '3913f89243cb6afc50cd09ca76035ca1',
           'region' => 'sidebar_second',
-          'weight' => '-9',
+          'weight' => '-25',
         ),
         'views-055e2fdcba0fe53e098723f8d12ef765' => array(
           'module' => 'views',
           'delta' => '055e2fdcba0fe53e098723f8d12ef765',
           'region' => 'sidebar_second',
-          'weight' => '-8',
+          'weight' => '-24',
         ),
-        'block-6' => array(
+        'block-3' => array(
           'module' => 'block',
-          'delta' => 6,
+          'delta' => 3,
           'region' => 'sidebar_second',
           'weight' => '-7',
         ),
@@ -124,21 +124,15 @@ function features_misc_context_default_contexts() {
           'region' => 'header',
           'weight' => '-10',
         ),
-        'user-login' => array(
-          'module' => 'user',
-          'delta' => 'login',
-          'region' => 'header',
-          'weight' => '-10',
-        ),
         'views-homepage_username-block' => array(
           'module' => 'views',
           'delta' => 'homepage_username-block',
           'region' => 'header',
           'weight' => '-9',
         ),
-        'block-4' => array(
+        'block-1' => array(
           'module' => 'block',
-          'delta' => 4,
+          'delta' => 1,
           'region' => 'header',
           'weight' => '-8',
         ),
@@ -160,9 +154,9 @@ function features_misc_context_default_contexts() {
           'region' => 'footer',
           'weight' => '-15',
         ),
-        'block-3' => array(
+        'block-4' => array(
           'module' => 'block',
-          'delta' => 3,
+          'delta' => 4,
           'region' => 'bottom',
           'weight' => '-10',
         ),
