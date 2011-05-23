@@ -12,9 +12,9 @@ function features_misc_default_fe_block_boxes() {
 
   $fe_block_boxes = new stdClass;
   $fe_block_boxes->info = 'Global Right Sidebar Ad';
-  $fe_block_boxes->format = 'filtered_html';
+  $fe_block_boxes->format = 'full_html';
   $fe_block_boxes->machine_name = 'global_right_sidebar_ad';
-  $fe_block_boxes->body = 'TFK AD BLOCK';
+  $fe_block_boxes->body = '<img src="http://s0.2mdn.net/viewad/1447902/CM_TK_160x600greenstatic.jpg">';
 
   $export['global_right_sidebar_ad'] = $fe_block_boxes;
 

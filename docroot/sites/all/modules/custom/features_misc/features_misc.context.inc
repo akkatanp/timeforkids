@@ -32,9 +32,9 @@ function features_misc_context_default_contexts() {
           'region' => 'sidebar_second',
           'weight' => '-10',
         ),
-        'block-3' => array(
+        'block-1' => array(
           'module' => 'block',
-          'delta' => 3,
+          'delta' => 1,
           'region' => 'sidebar_second',
           'weight' => '-10',
         ),
@@ -44,11 +44,11 @@ function features_misc_context_default_contexts() {
           'region' => 'header',
           'weight' => '-16',
         ),
-        'block-2' => array(
+        'block-16' => array(
           'module' => 'block',
-          'delta' => 2,
+          'delta' => 16,
           'region' => 'header',
-          'weight' => '-15',
+          'weight' => '-10',
         ),
         'menu-menu-tfk-footer-primary' => array(
           'module' => 'menu',
@@ -62,9 +62,9 @@ function features_misc_context_default_contexts() {
           'region' => 'footer',
           'weight' => '-9',
         ),
-        'block-4' => array(
+        'block-6' => array(
           'module' => 'block',
-          'delta' => 4,
+          'delta' => 6,
           'region' => 'bottom',
           'weight' => '-10',
         ),
@@ -112,11 +112,11 @@ function features_misc_context_default_contexts() {
           'region' => 'sidebar_second',
           'weight' => '-24',
         ),
-        'block-3' => array(
+        'block-1' => array(
           'module' => 'block',
-          'delta' => 3,
+          'delta' => 1,
           'region' => 'sidebar_second',
-          'weight' => '-7',
+          'weight' => '-10',
         ),
         'menu-menu-tfk-global-navigation' => array(
           'module' => 'menu',
@@ -130,9 +130,9 @@ function features_misc_context_default_contexts() {
           'region' => 'header',
           'weight' => '-9',
         ),
-        'block-1' => array(
+        'block-11' => array(
           'module' => 'block',
-          'delta' => 1,
+          'delta' => 11,
           'region' => 'header',
           'weight' => '-8',
         ),
@@ -140,7 +140,7 @@ function features_misc_context_default_contexts() {
           'module' => 'menu',
           'delta' => 'menu-tfk-teachers-menu',
           'region' => 'header',
-          'weight' => '-7',
+          'weight' => '-6',
         ),
         'menu-menu-tfk-footer-primary' => array(
           'module' => 'menu',
@@ -154,9 +154,9 @@ function features_misc_context_default_contexts() {
           'region' => 'footer',
           'weight' => '-15',
         ),
-        'block-4' => array(
+        'block-6' => array(
           'module' => 'block',
-          'delta' => 4,
+          'delta' => 6,
           'region' => 'bottom',
           'weight' => '-10',
         ),
