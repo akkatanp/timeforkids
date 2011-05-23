@@ -77,9 +77,7 @@ function features_misc_menu_default_menu_links() {
     'router_path' => '',
     'link_title' => 'News',
     'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
+      'attributes' => array(),
     ),
     'module' => 'menu',
     'hidden' => '0',
@@ -115,9 +113,7 @@ function features_misc_menu_default_menu_links() {
     'router_path' => '',
     'link_title' => 'Store',
     'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
+      'attributes' => array(),
     ),
     'module' => 'menu',
     'hidden' => '0',
@@ -373,9 +369,7 @@ function features_misc_menu_default_menu_links() {
     'router_path' => '',
     'link_title' => 'Store',
     'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
+      'attributes' => array(),
     ),
     'module' => 'menu',
     'hidden' => '0',
