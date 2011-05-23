@@ -12,7 +12,7 @@ function tfk_current_issue_block_view($delta='') {
   $block = array();
   switch ($delta) {
     case 'current-issue-page':
-      $block['subject'] = t('Global right sidebar for current magazine issue.');
+      //$block['subject'] = t('Global right sidebar for current magazine issue.');
       $block['content'] = _tfk_current_issue_block_content();
       break;
   }
