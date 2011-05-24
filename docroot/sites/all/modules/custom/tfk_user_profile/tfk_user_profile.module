@@ -1,34 +1,114 @@
 <?php
-
+/**
+ * Implementation of form_alter().
+ */
 function tfk_user_profile_form_user_login_alter( &$form, $form_state ){
     $form['#validate'] = array(  'user_login_name_validate','user_login_authenticate_validate', 'tfk_user_profile_login_validate', 'user_login_final_validate' );
 }
-
-
+/**
+ * Check to see if this user has a record in the users_lucie_account table.
+ */
+function tfk_check_lucie_user($lucieData){
+	$result = db_query("SELECT aiid, lid, uid, username FROM {users_lucie_account} WHERE lid = :lid", array(':lid' => $lucieData['uidpk']));   	   
+	while ($obj = $result->fetchObject()) {
+		 return $obj;
+	}
+	return false;
+}
+/**
+ * Insert a new row into the users_lucie_account table.
+ * This is done for each new user that logs in through the lucie system.
+ */
+function tfk_insert_lucie_user($lucieData, $uid, $username){
+	// insert a row into the lucie table
+	$fields = array('lid' => $lucieData['uidpk'], 'uid' => $uid, 'username' => strtolower($lucieData['userId']));
+	db_insert('users_lucie_account')->fields($fields)->execute();
+	
+	//update the users table to have the correct name and email
+	$fields = array('mail' => strtolower($lucieData['userId']), 'name' => substr($lucieData['firstName'], 0, 1).$lucieData['lastName'].$uid);
+	db_update('users')->condition('uid', $uid)->fields($fields)->execute();
+}
+/**
+ * This function will be called if a user's lucie account is updated.
+ * This will keep all the email addresses, which are used for login, in sync.
+ */
+function tfk_update_lucie_login($lucieData, $existingUser) {
+	//if the data is not the same update the appropriate tables
+	if ($existingUser->username != strtolower($lucieData['userId'])) {
+		//update the users_lucie_account table
+		$fields = array('username' =>  strtolower($lucieData['userId']));
+		db_update('users_lucie_account')->condition('aiid', $existingUser->aiid)->fields($fields)->execute();
+		//update the autmap table
+		$fields = array('authname' =>  strtolower($lucieData['userId']));
+		db_update('authmap')->condition('authname', $existingUser->username)->fields($fields)->execute();
+		//update the users table
+		$fields = array('mail' => strtolower($lucieData['userId']));
+		db_update('users')->condition('uid', $existingUser->uid)->fields($fields)->execute();
+	}
+}
+/**
+ * This function will allow users to login using the LUCIE system.
+ * If this is the first time a user visits the site, an account will be created for them using
+ * the information returned from the LUCIE system.
+ * If this is an update, the email address for the account will be sync across the necessary tables.
+ */
 function tfk_user_profile_login_validate( $form, &$form_state ){
     $username = $form_state['values']['name'];
-    $response = lucie_check_user($username, $form_state['values']['pass'] );
-    if ($response != false)
+    $response = tfk_lucie_check_user($username, $form_state['values']['pass'] );
+    if (!empty($response))
     {
-        user_external_login_register( $username, 'project_authentication' );
-        $account = user_external_load($username);
-        $form_state['uid'] = $account->uid;
+    	// check to see if a record exists in the lucie mapping table
+ 		$existingUser = tfk_check_lucie_user($response);
+ 		
+ 		if (empty($existingUser)) { 			
+        	user_external_login_register( $username, 'project_authentication' );
+        	$account = user_external_load($username);
+        	// insert a record into the mapping table
+        	tfk_insert_lucie_user($response, $account->uid, $username);
+        	$form_state['uid'] = $account->uid;
+		} else {
+			tfk_update_lucie_login($response, $existingUser);
+		 	user_external_login_register( $response['userId'], 'project_authentication' );
+        	$account = user_external_load($response['userId']);
+			$form_state['uid'] = $account->uid;
+		}
     }
 }
-
-
-function lucie_check_user($email,$password){
-  $url = 'http://cgi.timeinc.com/webservices/customers/'.check_plain($email).'/SI/auth_token';
+/**
+ * This function will return the information for a user that has an account in the LUCIE system.
+ * Information returned inclues, first & last name, account id, and email address.
+ */
+function tfk_lucie_get_user_info($email, $token){
+ //$url = 'http://cgi.timeinc.com/webservices/customers/'.check_plain($email).'/TK';
+  $url = 'http://qa-subscription.timeinc.com:80/webservices/customers/'.check_plain($email).'/TK';
+  $response = drupal_http_request($url, array('headers' => array('Content-Type'=>'application/json', 'CGI-token' => $token),
+	'method'=> 'GET'
+   ));
+   if($response->code == 200){
+   		$dataUser = drupal_json_decode($response->data);
+   		return $dataUser;
+   }
+}
+/**
+ * This function will authenticate a user in the LUCIE system.
+ * A token is returned which must be used in any additional calls to LUCIE.
+ */
+function tfk_lucie_check_user($email,$password){
+  //$url = 'http://cgi.timeinc.com/webservices/customers/'.check_plain($email).'/TK/auth_token';
+  $url = 'http://qa-subscription.timeinc.com:80/webservices/customers/'.check_plain($email).'/TK/auth_token';
   $pass_arr = array('password'=>$password);
   $pass = drupal_json_encode($pass_arr);
 
   $response = drupal_http_request($url,
           array('headers' => array('Content-Type'=>'application/json'),
               'method'=> 'POST',
-              'data' => $pass
+              'data' => $pass,
+              'CGI-App-Id' => 'com.timeinc.tk.web'
               ));
   if($response->code == 201){
-    return true;
+	// Decode the JSON data and pass to the call to get the user information
+	$dataResponse = drupal_json_decode($response->data);
+	return tfk_lucie_get_user_info($email, $dataResponse['token']);
   }else{
     return false;
   }
