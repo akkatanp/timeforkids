@@ -72,118 +72,164 @@ li a.active {
 	display: none;
 }
 
-#block-menu-menu-tfk-teachers-menu,
-#block-menu-menu-tfk-global-navigation {
+#global-nav-container,
+#teacher-nav-container {
 	height: 32px;
 	margin: 0;
 }
 
-#block-menu-menu-tfk-teachers-menu .block-title,
-#block-menu-menu-tfk-global-navigation .block-title {
+#global-nav-container {
+	width: 950px;
+	margin: 0 auto;
+}
+
+#global-nav-container .block-title,
+#teacher-nav-container .block-title {
 	display: none;
 }
 
-#block-menu-menu-tfk-global-navigation .content,
-#block-menu-menu-tfk-teachers-menu .content {
-	width: 950px;
-	margin: 0 auto;
-}
-
-#block-menu-menu-tfk-teachers-menu ul.menu, 
-#block-menu-menu-tfk-global-navigation ul.menu {
-	list-style-type: none;
-	width: 950px;
-	height: 32px;
-	margin: 0 auto;
-}
-
-#block-menu-menu-tfk-teachers-menu ul.menu li.leaf, 
-#block-menu-menu-tfk-global-navigation ul.menu li.leaf {
-	float: left;
-	padding: 0;
-}
-
-#block-menu-menu-tfk-teachers-menu ul.menu li.leaf a, 
-#block-menu-menu-tfk-global-navigation ul.menu li.leaf a {
-	display: block;
-	float: left;
-	height: 32px;
-	font-size: 0px;
-}
-
-#block-menu-menu-tfk-global-navigation ul.menu a.news {
-	width: 50px;
-	background: url(../images/main-nav-sprite.png) no-repeat 0px 0px;
-}
-
-#block-menu-menu-tfk-global-navigation ul.menu a.news:hover {
-	background: url(../images/main-nav-sprite.png) no-repeat 0px -32px;
-}
-
-#block-menu-menu-tfk-global-navigation ul.menu a.kid-reporter {
-	width: 114px;
-	background: url(../images/main-nav-sprite.png) no-repeat -50px 0px;
-}
-
-#block-menu-menu-tfk-global-navigation ul.menu a.kid-reporter:hover {
-	background: url(../images/main-nav-sprite.png) no-repeat -50px -32px;
-}
-
-#block-menu-menu-tfk-global-navigation ul.menu a.atw {
-	width: 158px;
-	background: url(../images/main-nav-sprite.png) no-repeat -164px 0px;
-}
-
-#block-menu-menu-tfk-global-navigation ul.menu a.atw:hover {
-	background: url(../images/main-nav-sprite.png) no-repeat -164px -32px;
-}
-
-#block-menu-menu-tfk-global-navigation ul.menu a.homework-helper {
-	width: 152px;
-	background: url(../images/main-nav-sprite.png) no-repeat -322px 0px;
-}
-
-#block-menu-menu-tfk-global-navigation ul.menu a.homework-helper:hover {
-	background: url(../images/main-nav-sprite.png) no-repeat -322px -32px;
-}
-
-#block-menu-menu-tfk-global-navigation ul.menu a.photos-video {
-	width: 132px;
-	background: url(../images/main-nav-sprite.png) no-repeat -474px 0px;
-}
-
-#block-menu-menu-tfk-global-navigation ul.menu a.photos-video:hover {
-	background: url(../images/main-nav-sprite.png) no-repeat -474px -32px;
-}
-
-#block-menu-menu-tfk-global-navigation ul.menu a.tfk-extras {
-	width: 94px;
-	background: url(../images/main-nav-sprite.png) no-repeat -606px 0px;
-}
-
-#block-menu-menu-tfk-global-navigation ul.menu a.tfk-extras:hover {
-	background: url(../images/main-nav-sprite.png) no-repeat -606px -32px;
-}
-
-#block-menu-menu-tfk-global-navigation ul.menu a.store {
-	width: 60px;
-	background: url(../images/main-nav-sprite.png) no-repeat -700px 0px;
-}
-
-#block-menu-menu-tfk-global-navigation ul.menu a.store:hover {
-	background: url(../images/main-nav-sprite.png) no-repeat -700px -32px;
-}
-
-#block-menu-menu-tfk-teachers-menu {
+#teacher-nav-container {
 	width: 100%;
-	height: 32px;
 	background: -moz-linear-gradient(100% 100% 90deg,  #94bcd8, #acdbfc);
 	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#acdbfc), to(#94bcd8));
 	background: -webkit-linear-gradient(#acdbfc, #94bcd8);
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#acdbfc, endColorstr=#94bcd8);
 }
 
-#block-menu-menu-tfk-teachers-menu ul.menu {
+#teacher-nav-container .inner {
+	width: 950px;
+	margin: 0 auto;
+	height: 32px;
+}
+
+#block-menu-menu-tfk-global-navigation,
+#block-menu-menu-tfk-teachers-menu {
+	margin: 0;
+}
+
+#global-nav-container ul.menu,
+#teacher-nav-container ul.menu {
+	list-style-type: none;
+	height: 32px;
+}
+
+#global-nav-container ul.menu {
+	width: 950px;
+}
+
+#teacher-nav-container .inner #block-views-homepage-username-block,
+#teacher-nav-container .inner #block-block-3 {
+	height: 32px;
+	float: left;
+	width: 150px;
+	margin: 0;
+}
+
+#teacher-nav-container .inner .content .field-content {
+	height: 20px;
+	padding: 6px 0;
+	font: bold 14px "Times New Roman";
+	font-style: italic;
+	color: #555;
+}
+
+#teacher-nav-container .inner .content p {
+	margin: 0;
+	height: 16px;
+	padding: 8px 0;
+	font: normal 12px arial;
+	color: #555;
+}
+
+#teacher-nav-container .inner .content p a {
+	color: #d71700;
+	text-decoration: none;
+}
+
+#teacher-nav-container ul.menu {
+	width: 650px;
+	float: left;
+	height: 32px;
+}
+
+#teacher-nav-container ul.menu li.leaf, 
+#global-nav-container ul.menu li.leaf {
+	float: left;
+	padding: 0;
+}
+
+#teacher-nav-container ul.menu li.leaf a, 
+#global-nav-container ul.menu li.leaf a {
+	display: block;
+	float: left;
+	height: 32px;
+	font-size: 0px;
+}
+
+#global-nav-container ul.menu a.news {
+	width: 50px;
+	background: url(../images/main-nav-sprite.png) no-repeat 0px 0px;
+}
+
+#global-nav-container ul.menu a.news:hover {
+	background: url(../images/main-nav-sprite.png) no-repeat 0px -32px;
+}
+
+#global-nav-container ul.menu a.kid-reporter {
+	width: 114px;
+	background: url(../images/main-nav-sprite.png) no-repeat -50px 0px;
+}
+
+#global-nav-container ul.menu a.kid-reporter:hover {
+	background: url(../images/main-nav-sprite.png) no-repeat -50px -32px;
+}
+
+#global-nav-container ul.menu a.atw {
+	width: 158px;
+	background: url(../images/main-nav-sprite.png) no-repeat -164px 0px;
+}
+
+#global-nav-container ul.menu a.atw:hover {
+	background: url(../images/main-nav-sprite.png) no-repeat -164px -32px;
+}
+
+#global-nav-container ul.menu a.homework-helper {
+	width: 152px;
+	background: url(../images/main-nav-sprite.png) no-repeat -322px 0px;
+}
+
+#global-nav-container ul.menu a.homework-helper:hover {
+	background: url(../images/main-nav-sprite.png) no-repeat -322px -32px;
+}
+
+#global-nav-container ul.menu a.photos-video {
+	width: 132px;
+	background: url(../images/main-nav-sprite.png) no-repeat -474px 0px;
+}
+
+#global-nav-container ul.menu a.photos-video:hover {
+	background: url(../images/main-nav-sprite.png) no-repeat -474px -32px;
+}
+
+#global-nav-container ul.menu a.tfk-extras {
+	width: 94px;
+	background: url(../images/main-nav-sprite.png) no-repeat -606px 0px;
+}
+
+#global-nav-container ul.menu a.tfk-extras:hover {
+	background: url(../images/main-nav-sprite.png) no-repeat -606px -32px;
+}
+
+#global-nav-container ul.menu a.store {
+	width: 60px;
+	background: url(../images/main-nav-sprite.png) no-repeat -700px 0px;
+}
+
+#global-nav-container ul.menu a.store:hover {
+	background: url(../images/main-nav-sprite.png) no-repeat -700px -32px;
+}
+
+#teacher-nav-container ul.menu {
 	float: right;
 	width: 622px;
 	height: 32px;
@@ -193,7 +239,7 @@ li a.active {
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#7bc3f5, endColorstr=#5ea1d3);
 }
 
-#block-menu-menu-tfk-teachers-menu ul.menu li a {
+#teacher-nav-container ul.menu li a {
 	display: block;
 	float: left;
 	height: 32px;
@@ -202,48 +248,48 @@ li a.active {
 	cursor: pointer;
 }
 
-#block-menu-menu-tfk-teachers-menu ul.menu a.tfk-magazine {
+#teacher-nav-container ul.menu a.tfk-magazine {
 	width: 110px;
 	background: url(../images/sub-nav-sprite.png) no-repeat 0px 0px;
 }
 
-#block-menu-menu-tfk-teachers-menu ul.menu a.tfk-magazine:hover {
+#teacher-nav-container ul.menu a.tfk-magazine:hover {
 		background: url(../images/sub-nav-sprite.png) no-repeat 0px -32px
 }
 
-#block-menu-menu-tfk-teachers-menu ul.menu a.worksheets {
+#teacher-nav-container ul.menu a.worksheets {
 	width: 100px;
 	background: url(../images/sub-nav-sprite.png) no-repeat -114px 0px;
 }
 
-#block-menu-menu-tfk-teachers-menu ul.menu a.worksheets:hover {
+#teacher-nav-container ul.menu a.worksheets:hover {
 	background: url(../images/sub-nav-sprite.png) no-repeat -114px -32px;
 }
 
-#block-menu-menu-tfk-teachers-menu ul.menu a.teacher-community {
+#teacher-nav-container ul.menu a.teacher-community {
 	width: 148px;
 	background: url(../images/sub-nav-sprite.png) no-repeat -214px 0px;
 }
 
-#block-menu-menu-tfk-teachers-menu ul.menu a.teacher-community:hover {
+#teacher-nav-container ul.menu a.teacher-community:hover {
 	background: url(../images/sub-nav-sprite.png) no-repeat -214px -32px;
 }
 
-#block-menu-menu-tfk-teachers-menu ul.menu a.digital_edition {
+#teacher-nav-container ul.menu a.digital_edition {
 	width: 116px;
 	background: url(../images/sub-nav-sprite.png) no-repeat -368px 0px;
 }
 
-#block-menu-menu-tfk-teachers-menu ul.menu a.digital_edition:hover {
+#teacher-nav-container ul.menu a.digital_edition:hover {
 	background: url(../images/sub-nav-sprite.png) no-repeat -368px -32px;
 }
 
-#block-menu-menu-tfk-teachers-menu ul.menu a.subscribe-renew {
+#teacher-nav-container ul.menu a.subscribe-renew {
 	width: 136px;
 	background: url(../images/sub-nav-sprite.png) no-repeat -488px 0px;
 }
 
-#block-menu-menu-tfk-teachers-menu ul.menu a.subscribe-renew:hover {
+#teacher-nav-container ul.menu a.subscribe-renew:hover {
 	background: url(../images/sub-nav-sprite.png) no-repeat -488px -32px;
 }
 
