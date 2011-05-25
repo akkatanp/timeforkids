@@ -2,7 +2,7 @@
 
 function tfk_kid_reporters_menu(){
   $items = array();
-  $items['kid-reporters'] = array(
+  $items['kid-reporter'] = array(
 		'title' => 'Kid Reporters',
 		'page callback' => '_kid_reporters_callback',
 		'access callback' => 'user_access',
