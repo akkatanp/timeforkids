@@ -120,7 +120,8 @@
     ***/
     ?>
     
-   <?php print render($page['header']); ?>
+   <?php // print render($page['header']); ?>
+   <?php  print_r($page['header']); ?>
 
   </div></div><!-- /.section, /#header -->
 
