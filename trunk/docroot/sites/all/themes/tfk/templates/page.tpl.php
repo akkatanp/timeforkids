@@ -119,9 +119,9 @@
     )); 
     ***/
     ?>
+
+    <?php print render($page['header']); echo '.';  ?>
     
-   <?php print render($page['header']); echo '.';  ?>
-   
   </div></div><!-- /.section, /#header -->
 
   <div id="main-wrapper"><div id="main" class="clearfix<?php if ($main_menu || $page['navigation']) { print ' with-navigation'; } ?>">
