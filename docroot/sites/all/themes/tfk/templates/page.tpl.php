@@ -119,7 +119,6 @@
     )); 
     ***/
     ?>
-<<<<<<< .mine
 	
     <div id="global-nav-container">
 		<?php print render($page['header']['menu_menu-tfk-global-navigation']); ?>
@@ -136,11 +135,6 @@
 	
 	</div></div><!-- /.section, /#header -->
 
-=======
-
-    <?php print render($page['header']); echo '.';  ?>
-    
->>>>>>> .r77
   <div id="main-wrapper"><div id="main" class="clearfix<?php if ($main_menu || $page['navigation']) { print ' with-navigation'; } ?>">
 
     <div id="content" class="column"><div class="section">
