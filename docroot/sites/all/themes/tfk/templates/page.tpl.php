@@ -120,7 +120,7 @@
     ***/
     ?>
     
-   <?php echo 'asdasd'; //print render($page['header']);echo '!!!'; ?>
+   <?php print render($page['header']); ?>
    
   </div></div><!-- /.section, /#header -->
 
