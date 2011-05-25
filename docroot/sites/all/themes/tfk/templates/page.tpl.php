@@ -121,7 +121,7 @@
     ?>
     
    <?php // print render($page['header']); ?>
-   <?php  print_r($page['header']); ?>
+   <?php  print render($page['header']['menu_menu-tfk-global-navigation']); ?>
 
   </div></div><!-- /.section, /#header -->
 
