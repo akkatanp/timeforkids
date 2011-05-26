@@ -28,17 +28,17 @@ function features_misc_default_fe_block_boxes() {
 
   $fe_block_boxes = new stdClass;
   $fe_block_boxes->info = 'TFK Login Message - Logged In';
-  $fe_block_boxes->format = 'filtered_html';
+  $fe_block_boxes->format = 'full_html';
   $fe_block_boxes->machine_name = 'tfk_login_message_logged_in';
-  $fe_block_boxes->body = '<a href="/user/logout">Log Out</a> | <a href="">My Account</a>';
+  $fe_block_boxes->body = '<p><a href="/user/logout">Log Out</a> | <a href="/user">My Account</a></p>';
 
   $export['tfk_login_message_logged_in'] = $fe_block_boxes;
 
   $fe_block_boxes = new stdClass;
   $fe_block_boxes->info = 'TFK Login Message - Not Logged In';
-  $fe_block_boxes->format = 'filtered_html';
+  $fe_block_boxes->format = 'full_html';
   $fe_block_boxes->machine_name = 'tfk_login_message_not_logged_in';
-  $fe_block_boxes->body = 'Teacher and Parents! <a href="/user">Log In</a> or <a href="">Subscribe</a>';
+  $fe_block_boxes->body = '<p>Teacher and Parents! <a href="/user">Log In</a> or <a href="">Subscribe</a></p>';
 
   $export['tfk_login_message_not_logged_in'] = $fe_block_boxes;
 

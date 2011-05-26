@@ -262,26 +262,6 @@ function features_misc_menu_default_menu_links() {
     'expanded' => '0',
     'weight' => '10',
   );
-  // Exported menu link: menu-tfk-global-navigation:http://localhost:8082/atw
-  $menu_links['menu-tfk-global-navigation:http://localhost:8082/atw'] = array(
-    'menu_name' => 'menu-tfk-global-navigation',
-    'link_path' => 'http://localhost:8082/atw',
-    'router_path' => '',
-    'link_title' => 'Around the World',
-    'options' => array(
-      'attributes' => array(
-        'class' => array(
-          0 => 'atw',
-        ),
-      ),
-    ),
-    'module' => 'menu',
-    'hidden' => '0',
-    'external' => '1',
-    'has_children' => '0',
-    'expanded' => '0',
-    'weight' => '10',
-  );
   // Exported menu link: menu-tfk-global-navigation:http://localhost:8082/hh
   $menu_links['menu-tfk-global-navigation:http://localhost:8082/hh'] = array(
     'menu_name' => 'menu-tfk-global-navigation',
@@ -300,27 +280,7 @@ function features_misc_menu_default_menu_links() {
     'external' => '1',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '15',
-  );
-  // Exported menu link: menu-tfk-global-navigation:http://localhost:8082/kid_reporter
-  $menu_links['menu-tfk-global-navigation:http://localhost:8082/kid_reporter'] = array(
-    'menu_name' => 'menu-tfk-global-navigation',
-    'link_path' => 'http://localhost:8082/kid_reporter',
-    'router_path' => '',
-    'link_title' => 'Kid Reporter',
-    'options' => array(
-      'attributes' => array(
-        'class' => array(
-          0 => 'kid-reporter',
-        ),
-      ),
-    ),
-    'module' => 'menu',
-    'hidden' => '0',
-    'external' => '1',
-    'has_children' => '0',
-    'expanded' => '0',
-    'weight' => '5',
+    'weight' => '-47',
   );
   // Exported menu link: menu-tfk-global-navigation:http://localhost:8082/news
   $menu_links['menu-tfk-global-navigation:http://localhost:8082/news'] = array(
@@ -340,7 +300,7 @@ function features_misc_menu_default_menu_links() {
     'external' => '1',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '0',
+    'weight' => '-50',
   );
   // Exported menu link: menu-tfk-global-navigation:http://localhost:8082/photos-videos
   $menu_links['menu-tfk-global-navigation:http://localhost:8082/photos-videos'] = array(
@@ -360,7 +320,7 @@ function features_misc_menu_default_menu_links() {
     'external' => '1',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '20',
+    'weight' => '-46',
   );
   // Exported menu link: menu-tfk-global-navigation:http://localhost:8082/store
   $menu_links['menu-tfk-global-navigation:http://localhost:8082/store'] = array(
@@ -376,7 +336,7 @@ function features_misc_menu_default_menu_links() {
     'external' => '1',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '30',
+    'weight' => '-44',
   );
   // Exported menu link: menu-tfk-global-navigation:http://localhost:8082/tfk-extras
   $menu_links['menu-tfk-global-navigation:http://localhost:8082/tfk-extras'] = array(
@@ -396,7 +356,7 @@ function features_misc_menu_default_menu_links() {
     'external' => '1',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '25',
+    'weight' => '-45',
   );
   // Exported menu link: menu-tfk-teachers-menu:http://localhost:8082/digital_edition
   $menu_links['menu-tfk-teachers-menu:http://localhost:8082/digital_edition'] = array(
