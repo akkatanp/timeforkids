@@ -123,6 +123,7 @@
     <div id="global-nav-container">
 		<?php print render($page['header']['menu_menu-tfk-global-navigation']); ?>
 	</div>
+	
 	<?php if($page['header']['menu_menu-tfk-teachers-menu']): ?>
 	<div id="teacher-nav-container">
 		<div class="inner">
@@ -170,3 +171,7 @@
 </div></div><!-- /#page, /#page-wrapper -->
 
 <?php print render($page['bottom']); ?>
+
+<code>
+<?php print print_r($page['header']); ?>
+</code>
