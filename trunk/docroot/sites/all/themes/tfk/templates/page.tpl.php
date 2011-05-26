@@ -172,6 +172,6 @@
 
 <?php print render($page['bottom']); ?>
 
-<code>
+<pre>
 <?php print print_r($page['header']); ?>
-</code>
+</pre>
