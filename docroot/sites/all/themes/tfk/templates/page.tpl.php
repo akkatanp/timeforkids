@@ -119,19 +119,20 @@
     )); 
     ***/
     ?>
-	<?php print render($page['header']); ?>
-    <!--div id="global-nav-container">
+	<?php //print render($page['header']); ?>
+    <div id="global-nav-container">
 		<?php print render($page['header']['menu_menu-tfk-global-navigation']); ?>
-	</div-->
+	</div>
 	
 	<?php if($page['header']['menu_menu-tfk-teachers-menu']): ?>
-	<!--div id="teacher-nav-container">
+	<div id="teacher-nav-container">
 		<div class="inner">
 			<?php print render($page['header']['views_homepage_username-block']); ?>
 			<?php print render($page['header']['block_3']); ?>
+			<?php print render($page['header']['block_11']); ?>
 			<?php print render($page['header']['menu_menu-tfk-teachers-menu']); ?>
 		</div>
-	</div-->
+	</div>
 	<?php endif; ?>
 	
 	</div></div><!-- /.section, /#header -->
@@ -171,7 +172,3 @@
 </div></div><!-- /#page, /#page-wrapper -->
 
 <?php print render($page['bottom']); ?>
-
-<!--pre>
-<?php print print_r($page['header']); ?>
-</pre-->
