@@ -118,7 +118,8 @@ li a.active {
 }
 
 #teacher-nav-container .inner #block-views-homepage-username-block,
-#teacher-nav-container .inner #block-block-3 {
+#teacher-nav-container .inner #block-block-3 ,
+#teacher-nav-container .inner #block-block-11 {
 	height: 32px;
 	float: left;
 	width: 150px;
