@@ -119,7 +119,7 @@
     )); 
     ***/
     ?>
-	<?php //print render($page['header']); ?>
+	
     <div id="global-nav-container">
 		<?php print render($page['header']['menu_menu-tfk-global-navigation']); ?>
 	</div>
