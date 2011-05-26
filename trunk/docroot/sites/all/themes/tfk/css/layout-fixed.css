@@ -121,10 +121,6 @@ body {
  * First sidebar
  */
 .region-sidebar-first {
-	position: relative;
-	float:left;
-	width: 252px;
-	margin-right: 6px;
 /*  float: left; /* LTR 
   width: 200px;
   margin-left: 0; /* LTR 
@@ -134,9 +130,6 @@ body {
 }
 
 .region-sidebar-first .section {
-	background: #e6e6e6;
-	border: solid 1px #cecece;
-	padding: 10px;
 }
 
 /*

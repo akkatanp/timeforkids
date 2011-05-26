@@ -20,13 +20,3 @@
 		</div>
 	</div>
 </div>
-
-
-This is some static stuff
-
-<?php print_r($destinations_data);?>
-
-
-This is how you do a link vs. regular a href:
-
-<?php echo l('I am the anchor',$destinations_data[22]['destination_path']);?>

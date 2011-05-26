@@ -139,7 +139,7 @@ div#site-name /* The name of the website */ {
  */
 #main-wrapper {
 	width: 950px;
-	margin: 64px auto 0 auto;
+	margin: 76px auto 0 auto;
 }
 
 #main {
@@ -150,6 +150,11 @@ div#site-name /* The name of the website */ {
  */
 #content {
 
+}
+
+#content.column {
+	width: 510px;
+	margin-left: 252px;
 }
 
 #main-wrapper #main #content {
@@ -260,10 +265,33 @@ ul.links li {
  * (see the layout.css file.)
  */
 .region-sidebar-first {
+	position: relative;
+	float:left;
+	width: 252px;
+	margin-right: 6px;
 }
 
 .region-sidebar-first .section {
+	background: #e6e6e6;
+	border: solid 1px #cecece;
+	padding: 10px;
 }
+
+/*ATW sidebar */
+.region-sidebar-first .section .view-atw-page-featured-destination {
+	background: url(../images/atw-sidebar-head.png) no-repeat top left;
+	padding-top: 20px;
+}
+
+ .view-atw-page-featured-destination .views-field-title a {
+	color: #d71700;
+	font-size: 20px;
+	text-decoration: none;
+}
+
+ .view-atw-page-featured-destination .field-content img {
+	width: 230px;
+ }
 
 /*
  * Second sidebar (on right in LTR languages, on left in RTL)
