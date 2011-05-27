@@ -1,5 +1,16 @@
 <?php
 
 function tfk_page_paths_menu(){
-  $items = array();
+	$items = array();
+	$items['photos-video'] = array(
+		'title' => 'Photos & Video',
+		'page callback' => 'tfk_pv_page_callback',
+		'access callback' => 'user_access',
+		'access arguments' => array('access content')
+	);
+	return $items;
+}
+
+function tfk_pv_page_callback() {
+	return '';
 }
