@@ -50,7 +50,7 @@ body {
 	position: relative;
 	margin: 0 auto;
 	width: 950px;
-	height: 174px;
+	height: 110px;
 	clear: both;
 }
 
@@ -154,7 +154,6 @@ div#site-name /* The name of the website */ {
 
 #content.column {
 	width: 510px;
-	margin-left: 252px;
 }
 
 #main-wrapper #main #content {
