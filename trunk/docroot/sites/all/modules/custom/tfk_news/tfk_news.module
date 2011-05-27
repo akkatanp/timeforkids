@@ -186,11 +186,12 @@ function tfk_news_node_view($node, $view_mode, $langcode) {
 
     $thumb_path = file_create_url(file_build_uri(basename($record->filename)));
     $reporter_alias = drupal_lookup_path('alias','node/'.$reporter['und'][0]['nid']);
-    $reporter_name = $node->title;
+    $reporter_name = $node->field_kid_reporter['und'][0]['node']->title;
 
+    
     $badge = '<div class="reporter-badge">
-      <img class="reporter-badge-photo" src="'.$thumb_path.'"/>
-        <a class="reporter-link" href="'.$reporter_alias.'">'.$reporter_name.'</a></div>';
+      <img class="reporter-badge-photo" src="'.$thumb_path.'"/>'.l($reporter_name,$reporter_alias,array('attributes' => array('class' => array('reporter-link-a')))).'
+        </div>';
 
     $body = preg_replace('/[\r\n]+/', '', $body);
     $reg = preg_match_all('/<p>(.*?)<\/p>/i',$body,$matches);
