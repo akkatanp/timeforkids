@@ -138,8 +138,10 @@
 	</div></div><!-- /.section, /#header -->
 
   <div id="main-wrapper"><div id="main" class="clearfix<?php if ($main_menu || $page['navigation']) { print ' with-navigation'; } ?>">
-
-    <div id="content" class="column"><div class="section">
+    <?php print render($page['sidebar_first']); ?>
+    
+	
+	<div id="content" class="column"><div class="section">
       <?php print render($page['highlighted']); ?>
       <?php print $breadcrumb; ?>
       <a id="main-content"></a>
@@ -159,8 +161,6 @@
       <?php print render($page['content']); ?>
       <?php print $feed_icons; ?>
     </div></div><!-- /.section, /#content -->
-
-    <?php print render($page['sidebar_first']); ?>
 
     <?php print render($page['sidebar_second']); ?>
 
