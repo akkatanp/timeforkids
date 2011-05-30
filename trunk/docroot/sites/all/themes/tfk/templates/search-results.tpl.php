@@ -1,4 +1,4 @@
-22<?php
+<?php
 // $Id: search-results.tpl.php,v 1.7 2010/08/18 18:40:50 dries Exp $
 
 /**
