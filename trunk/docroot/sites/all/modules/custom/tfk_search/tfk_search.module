@@ -1,5 +1,6 @@
 <?php
-
 function tfk_search_init(){
     print_R(apachesolr_get_enabled_facets());
 }
+
+?>
