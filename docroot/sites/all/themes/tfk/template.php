@@ -144,5 +144,5 @@ function STARTERKIT_preprocess_block(&$variables, $hook) {
 
 function tfk_preprocess_search_result (&$vars) {
   $vars['mums_recipe'] = t('Mums recipe for home-made pies is the best!');
-  print_r($vars);
+ // print_r($vars);
 }
