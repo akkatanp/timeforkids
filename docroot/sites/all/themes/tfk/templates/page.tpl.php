@@ -119,7 +119,7 @@
     )); 
     ***/
     ?>
-	
+	<?php print render($page['header']); ?>
     <div id="global-nav-container">
 		<?php print render($page['header']['menu_menu-tfk-global-navigation']); ?>
 	</div>
@@ -131,6 +131,7 @@
 			<?php print render($page['header']['block_3']); ?>
 			<?php print render($page['header']['block_11']); ?>
 			<?php print render($page['header']['menu_menu-tfk-teachers-menu']); ?>
+			
 		</div>
 	</div>
 	<?php endif; ?>
