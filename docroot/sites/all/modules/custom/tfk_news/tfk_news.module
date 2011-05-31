@@ -176,7 +176,10 @@ function tfk_news_views_query_alter(&$view, &$query) {
 function tfk_news_node_view($node, $view_mode, $langcode) {
 
   if($node->type == 'article' && isset($node->field_kid_reporter['und'][0]) && $view_mode == 'full'){
-    $body = $node->field_body['und'][0]['value'];
+
+    $tmp_body =  field_get_items('node', $node, 'field_body');
+    $body = $tmp_body[0]['value'];
+
     $reporter = $node->field_kid_reporter;
     //lets get thumb_image for the reporter
     $result = db_query('select fm.filename,f.field_thumbnail_image_fid as thumb_fid from {field_data_field_thumbnail_image} f
@@ -185,8 +188,11 @@ function tfk_news_node_view($node, $view_mode, $langcode) {
     $record = $result->fetch();
 
     $thumb_path = file_create_url(file_build_uri(basename($record->filename)));
-    $reporter_alias = drupal_lookup_path('alias','node/'.$reporter['und'][0]['nid']);
-    $reporter_name = $node->field_kid_reporter['und'][0]['node']->title;
+
+    $tmp_title =  field_get_items('node', $node,'field_kid_reporter');
+    $reporter_name = $tmp_title[0]['node']->title;
+
+    $reporter_alias = drupal_lookup_path('alias','node/'.$tmp_title[0]['nid']);
 
     
     $badge = '<div class="reporter-badge">
