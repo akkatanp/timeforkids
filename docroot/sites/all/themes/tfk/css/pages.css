@@ -139,7 +139,16 @@ div#site-name /* The name of the website */ {
  */
 #main-wrapper {
 	width: 950px;
-	margin: 76px auto 0 auto;
+	margin: 0 auto 0 auto;
+}
+
+#main-wrapper h1#page-title {
+	float: left;
+	width: 768px;
+	font: normal 18px "arial black";
+	margin-bottom: 10px;
+	border-bottom: solid 6px #d71700;
+	text-transform: uppercase;
 }
 
 #main {

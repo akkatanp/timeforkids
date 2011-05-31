@@ -15,7 +15,7 @@ li a.active {
  * Navigation bar
  */
 #navigation {
-  /* overflow: hidden; /* Sometimes you want to prevent overlapping with main div. */
+  margin-bottom: 10px;
 }
 
 #navigation ul.links, /* Main menu and secondary menu links */

@@ -79,7 +79,7 @@
 		</div>
 	</div>
 	
-	<div id="navigation">
+	<div id="navigation" class="clearfix">
 	
 <div class="section clearfix">
     <?php if ($site_name || $site_slogan): ?>
@@ -140,8 +140,9 @@
 	</div></div><!-- /.section, /#header -->
 
   <div id="main-wrapper"><div id="main" class="clearfix<?php if ($main_menu || $page['navigation']) { print ' with-navigation'; } ?>">
-    <?php print render($page['sidebar_first']); ?>
-    
+	<h1 class="title" id="page-title"><?php print $title; ?></h1>
+	
+	<?php print render($page['sidebar_first']); ?>
 	
 	<div id="content" class="column"><div class="section">
       <?php print render($page['highlighted']); ?>
@@ -149,7 +150,7 @@
       <a id="main-content"></a>
       <?php print render($title_prefix); ?>
       <?php if ($title): ?>
-        <h1 class="title" id="page-title"><?php print $title; ?></h1>
+        
       <?php endif; ?>
       <?php print render($title_suffix); ?>
       <?php print $messages; ?>
