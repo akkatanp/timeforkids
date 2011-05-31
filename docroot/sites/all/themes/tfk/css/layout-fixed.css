@@ -108,7 +108,7 @@ body {
  * Second sidebar
  */
 .region-sidebar-second {
-  float: left; /* LTR */
+  float: right; /* LTR */
   width: 162px;
   /*margin-left: 760px;  LTR */ /* Width of content + sidebar-first. */
    /*margin-right: -960px; LTR */ /* Negative value of .region-sidebar-second's width + left margin. */

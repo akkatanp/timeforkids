@@ -140,7 +140,7 @@
 	</div></div><!-- /.section, /#header -->
 
   <div id="main-wrapper"><div id="main" class="clearfix<?php if ($main_menu || $page['navigation']) { print ' with-navigation'; } ?>">
-	<h1 class="title" id="page-title"><?php print $title; ?></h1>
+<?php print render($page['sidebar_second']); ?>	<h1 class="title" id="page-title"><?php print $title; ?></h1>
 	
 	<?php print render($page['sidebar_first']); ?>
 	
@@ -165,7 +165,7 @@
       <?php print $feed_icons; ?>
     </div></div><!-- /.section, /#content -->
 
-    <?php print render($page['sidebar_second']); ?>
+    
 
   </div>
 
