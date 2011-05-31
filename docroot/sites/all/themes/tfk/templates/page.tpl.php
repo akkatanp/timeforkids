@@ -119,9 +119,10 @@
     )); 
     ***/
     ?>
-	<?php print render($page['header']); ?>
+	
     <div id="global-nav-container">
 		<?php print render($page['header']['menu_menu-tfk-global-navigation']); ?>
+		<?php print render($page['header']['block_16']); ?>
 	</div>
 	
 	<?php if($page['header']['menu_menu-tfk-teachers-menu']): ?>
