@@ -286,10 +286,15 @@ ul.links li {
 }
 
 /* kid reporter sidebar */
+.node-type-kid-reporter .region-sidebar-first .section,
+.section-tfk-kid-reporters .region-sidebar-first .section,
 .section-kid-reporter .region-sidebar-first .section {
+	font: normal 12px arial;
 	background: #fff;
 }
 
+.node-type-kid-reporter .region-sidebar-first h2.block-title,
+.section-tfk-kid-reporters .region-sidebar-first h2.block-title,
 .section-kid-reporter .region-sidebar-first h2.block-title {
 	font: normal 14px "arial black";
 	text-transform: uppercase;
@@ -298,30 +303,40 @@ ul.links li {
 	border-bottom: solid 1px #cecece;
 }
 
+.node-type-kid-reporter .region-sidebar-first .views-row,
 .section-kid-reporter .region-sidebar-first .views-row {
-	font: normal 12px arial;
 	padding-bottom: 6px;
 	margin-bottom: 10px;
 	border-bottom: solid 1px #cecece;	
 }
-
-.section-kid-reporter .region-sidebar-first .views-row a {
+.node-type-kid-reporter .region-sidebar-first a,
+.section-tfk-kid-reporters .region-sidebar-first a,
+.section-kid-reporter .region-sidebar-first a {
 	font-weight: bold;
 	color: #d71700;
 	font-weight: bold;
 	text-decoration: none;
 }
 
+.node-type-kid-reporter .region-sidebar-first .view-footer,
+.section-kid-reporter .region-sidebar-first .view-footer {
+	height: 20px;
+}
+
+.node-type-kid-reporter .region-sidebar-first .view-footer a,
 .section-kid-reporter .region-sidebar-first .view-footer a {
-	font: normal 12px arial;
+	font: normal 11px arial;
 	float: right;
 	font-weight: bold;
 	background: #d71700;
 	color: white;
 	font-weight: bold;
 	text-decoration: none;
-	padding: 4px;
-	border-radius: 6px;
+	padding: 6px 8px;
+	border-radius: 12px;
+	-moz-box-shadow: 2px 2px 2px #999;
+	-webkit-box-shadow: 2px 2px 2px #999;
+	box-shadow: 2px 2px 2px #999;
 }
 
 /*ATW sidebar */
