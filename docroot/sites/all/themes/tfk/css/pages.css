@@ -285,6 +285,45 @@ ul.links li {
 	padding: 10px;
 }
 
+/* kid reporter sidebar */
+.section-kid-reporter .region-sidebar-first .section {
+	background: #fff;
+}
+
+.section-kid-reporter .region-sidebar-first h2.block-title {
+	font: normal 14px "arial black";
+	text-transform: uppercase;
+	padding-bottom: 6px;
+	margin-bottom: 10px;
+	border-bottom: solid 1px #cecece;
+}
+
+.section-kid-reporter .region-sidebar-first .views-row {
+	font: normal 12px arial;
+	padding-bottom: 6px;
+	margin-bottom: 10px;
+	border-bottom: solid 1px #cecece;	
+}
+
+.section-kid-reporter .region-sidebar-first .views-row a {
+	font-weight: bold;
+	color: #d71700;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.section-kid-reporter .region-sidebar-first .view-footer a {
+	font: normal 12px arial;
+	float: right;
+	font-weight: bold;
+	background: #d71700;
+	color: white;
+	font-weight: bold;
+	text-decoration: none;
+	padding: 4px;
+	border-radius: 6px;
+}
+
 /*ATW sidebar */
 .region-sidebar-first .section .view-atw-page-featured-destination {
 	background: url(../images/atw-sidebar-head.png) no-repeat top left;
