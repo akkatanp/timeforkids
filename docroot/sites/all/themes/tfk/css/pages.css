@@ -333,12 +333,10 @@ ul.links li {
 .node-type-kid-reporter .region-sidebar-first .view-footer a,
 .section-tfk-kid-reporters  .region-sidebar-first .view-footer a,
 .section-kid-reporter .region-sidebar-first .view-footer a {
-	font: normal 11px arial;
+	font: bold 11px arial;
 	float: right;
-	font-weight: bold;
 	background: #d71700;
 	color: white;
-	font-weight: bold;
 	text-decoration: none;
 	padding: 6px 8px;
 	-moz-border-radius: 12px;
@@ -350,15 +348,14 @@ ul.links li {
 }
 
 /* ATW sidebar */
-.node-type-atw-destination .region-sidebar-first .section,
+.section-destination .region-sidebar-first .section,
 .page-around-the-world .region-sidebar-first .section {
 	font: normal 12px arial;
 	background: #fff;
 }
 
-.node-type-atw-destination .region-sidebar-first a,
+.section-destination .region-sidebar-first a,
 .page-around-the-world .region-sidebar-first a {
-	font-weight: bold;
 	color: #d71700;
 	font-weight: bold;
 	text-decoration: none;
