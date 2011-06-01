@@ -398,14 +398,14 @@ ul.links li {
 .page-tfk-kid-reporters .view-content table{
 	margin: 0;
 	border-collapse: collapse;
+	border-spacing: 4px;
 }
 
 .page-tfk-kid-reporters .view-content table td {
 	font: normal 12px arial;
-	width: 245px;
+	width: 246px;
 	border: solid 1px #555;
 	padding: 4px;
-	margin: 5px;
 	vertical-align: top;
 }
 
