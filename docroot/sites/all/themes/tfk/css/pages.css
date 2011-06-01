@@ -401,6 +401,12 @@ ul.links li {
 	vertical-align: top;
 }
 
+.page-tfk-kid-reporters .view-content table td a {
+	font-weight: bold;
+	color: #d71700;
+	text-decoration: none;
+}
+
 .page-tfk-kid-reporters .view-content table td .views-field-field-thumbnail-image{
 	float: left;
 	margin-right: 8px;
