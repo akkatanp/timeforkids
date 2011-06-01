@@ -337,7 +337,7 @@ ul.links li {
 	background: #d71700;
 	color: white;
 	text-decoration: none;
-	padding: 6px 8px
+	padding: 6px 8px;
 	-moz-border-radius: 12px;
 	-webkit-border-radius: 12px;
 	border-radius: 12px;
@@ -375,6 +375,7 @@ ul.links li {
 
 #block-tfk-atw-atw-destination-navigation ul.menu {
 	padding-left: 10px;
+	margin: 0;
 }
 
 #block-tfk-atw-atw-destination-navigation ul.menu li {
