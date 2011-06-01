@@ -276,6 +276,9 @@ ul.links li {
 	text-decoration: none;
 }
 
+/* Teacher news sidebar */
+
+
 /* kid reporter sidebar */
 .node-type-kid-reporter .region-sidebar-first .section,
 .section-tfk-kid-reporters .region-sidebar-first .section,
@@ -343,7 +346,7 @@ ul.links li {
 
 #block-tfk-atw-atw-destination-navigation h3 a {
 	display: block;
-	font: normal 18px "arial black";
+	font: normal 14px "arial black";
 	color: #fff;
 	background: #d71700;
 	margin: 0;
@@ -353,7 +356,7 @@ ul.links li {
 
 #block-tfk-atw-atw-destination-navigation ul.menu {
 	padding-left: 10px;
-	margin: 0;
+	margin: 4px 0;
 }
 
 #block-tfk-atw-atw-destination-navigation ul.menu li {
