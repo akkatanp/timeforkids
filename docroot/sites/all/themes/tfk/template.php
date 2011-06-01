@@ -85,10 +85,22 @@ function STARTERKIT_preprocess_html(&$variables, $hook) {
  * @param $hook
  *   The name of the template being rendered ("page" in this case.)
  */
+function tfk_preprocess_node(&$variables, $hook) {
+  // Override node variables here.
+}
 
+/**
+ * Override or insert variables into the page templates.
+ *
+ * @param $variables
+ *   An array of variables to pass to the theme template.
+ * @param $hook
+ *   The name of the template being rendered ("page" in this case.)
+ */
 function tfk_preprocess_page(&$variables, $hook) {
   $variables['theme_hook_suggestions'][] = 'page__'. $variables['node']->type;
 }
+
 // */
 
 /**
