@@ -265,7 +265,42 @@ ul.links li {
 
 .more-link /* Aggregator, blog, and forum more link */ {
 }
-
+/* user profile */
+.tfk-user-profile-divider {
+    height:5px;
+    background:#D71700;
+    border:none;
+}
+.tfk-user-profile-title {
+    color:#373737;
+}
+#tfk-user-profile-form {
+    border:1px solid #CECECE;
+    padding:10px;
+}
+#tfk-user-profile-form .form-submit {
+    background:#D71700;
+    color:#FFFFFF;
+    border-radius: 20px;
+    padding:5px;
+}
+#user-title {
+    text-transform: uppercase;
+    color:#373737;
+}
+.user-picture {
+    float:left;
+    padding-right:10px;
+    padding-bottom:10px;
+}
+.tfk-user-profile-board-member-name {
+    font-size:2.0em;
+    color:#373737;
+}
+#tfk-user-profile-board-member-wrapper {
+    border:1px solid #CECECE;
+    padding:10px;
+}
 /*
  * First sidebar (on left in LTR languages, on right in RTL)
  *
