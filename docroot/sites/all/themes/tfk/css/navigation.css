@@ -294,15 +294,18 @@ li a.active {
 /* Footer Nav */
 .region-footer ul.menu {
 	list-style-type: none;
-	padding: 0;
-	margin: 10px auto;
+	padding: 10px 0;
+	margin: 0 auto;
 	height: 24px;
-	border-bottom: solid 1px #fff;
+}
+
+.last .region-footer ul.menu {
+	border-top: solid 1px #fff;
 }
 
 .region-footer ul.menu li {
 	float: left;
-	padding: 4px 8px;
+	padding: 6px 8px;
 	border-right: solid 1px #fff;
 }
 
