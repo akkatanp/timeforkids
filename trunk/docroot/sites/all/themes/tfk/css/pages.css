@@ -357,15 +357,16 @@ ul.links li {
 .section-destination .region-sidebar-first .section {
 	padding: 0;
 	background: none;
+	border: none;
 }
 
-.block-tfk-atw-atw-destination-navigation {
+#block-tfk-atw-atw-destination-navigation {
 	background: #e6e6e6;
 	border: solid 1px #cecece;
 	padding: 10px;
 }
 
-.block-tfk-atw-atw-destination-navigation h3 {
+#block-tfk-atw-atw-destination-navigation h3 {
 	font: normal 18px "arial black";
 	color: #fff;
 	background: #d71700;
@@ -374,7 +375,7 @@ ul.links li {
 	text-transform: uppercase;
 }
 
-.block-tfk-atw-atw-destination-navigation a {
+#block-tfk-atw-atw-destination-navigation a {
 	font-weight: bold;
 	color: #d71700;
 	text-decoration: none;
