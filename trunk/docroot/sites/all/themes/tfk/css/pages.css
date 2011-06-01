@@ -398,6 +398,7 @@ ul.links li {
 .page-tfk-kid-reporters .view-content table{
 	margin: 0;
 	border-spacing: 4px;
+	border-collapse: separate;
 }
 
 .page-tfk-kid-reporters .view-content table td {
