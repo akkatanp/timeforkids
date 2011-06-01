@@ -329,6 +329,12 @@ ul.links li {
 	display: none;
 }
 
+.node-type-kid-reporter .region-sidebar-first .section .block-menu ul,
+.section-tfk-kid-reporters .region-sidebar-first .section .block-menu ul,
+.section-kid-reporter .region-sidebar-first .section .block-menu ul {
+	margin: 0;
+}
+
 .node-type-kid-reporter .region-sidebar-first .section .block-menu a,
 .section-tfk-kid-reporters .region-sidebar-first .section .block-menu a,
 .section-kid-reporter .region-sidebar-first .section .block-menu a {
@@ -395,9 +401,10 @@ ul.links li {
 
 .page-tfk-kid-reporters .view-content table td {
 	font: normal 12px arial;
-	width: 250px;
+	width: 245px;
 	border: solid 1px #555;
 	padding: 4px;
+	margin: 5px;
 	vertical-align: top;
 }
 
