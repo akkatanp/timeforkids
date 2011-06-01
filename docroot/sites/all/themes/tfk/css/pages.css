@@ -287,7 +287,7 @@ ul.links li {
 
 .region-sidebar-first .section ul.menu {
 	list-style-type: none;
-	padding-left: 10px;
+	padding-left: 0;
 }
 
 /* kid reporter sidebar */
@@ -349,7 +349,7 @@ ul.links li {
 	box-shadow: 2px 2px 2px #999;
 }
 
-/*ATW sidebar */
+/* ATW sidebar */
 .region-sidebar-first .section .view-atw-page-featured-destination {
 	background: url(../images/atw-sidebar-head.png) no-repeat top left;
 	padding-top: 20px;
