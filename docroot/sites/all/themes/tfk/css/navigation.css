@@ -126,7 +126,9 @@ li a.active {
 	margin: 0;
 }
 
-#teacher-nav-container .inner .content .field-content {
+#teacher-nav-container .inner .content .field-content,
+#teacher-nav-container .inner .content p {
+	margin: 0;
 	height: 20px;
 	padding: 6px 0;
 	font: bold 14px "Times New Roman";
@@ -134,15 +136,10 @@ li a.active {
 	color: #555;
 }
 
-#teacher-nav-container .inner .content p {
-	margin: 0;
-	height: 16px;
-	padding: 8px 0;
-	font: normal 12px arial;
-	color: #555;
-}
-
 #teacher-nav-container .inner .content p a {
+	font: normal 12px arial;
+	height: 16px;
+	padding: 2px 0;
 	color: #d71700;
 	text-decoration: none;
 }
