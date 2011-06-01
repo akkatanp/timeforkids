@@ -416,7 +416,8 @@ ul.links li {
 .region-footer {
 	width: 760px;
 	background: #d71700;
-	color: white;
+	color: #fff;
+	font: normal 10px arial;
 }
 
 .region-footer .block-title {

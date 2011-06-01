@@ -292,23 +292,25 @@ li a.active {
 }
 
 /* Footer Nav */
-#main-wrapper .region-footer {
-	height: 48px;
-	text-align: center;
-}
-
 .region-footer ul.menu {
 	list-style-type: none;
+	padding: 0;
 	margin: 10px auto;
+	height: 24px;
+	border-bottom: solid 1px #fff;
 }
 
 .region-footer ul.menu li {
 	float: left;
+	padding: 4px 8px;
+	border-right: solid 1px #fff;
+}
+
+.region-footer ul.menu li.last {
+	border-right: none;
 }
 
 .region-footer ul.menu li a {
-	color: white;
-	font-size: 10px;
+	color: #fff;
 	text-decoration: none;
 }
-
