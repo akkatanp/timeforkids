@@ -285,6 +285,11 @@ ul.links li {
 	padding: 10px;
 }
 
+.region-sidebar-first .section ul {
+	list-style-type: none;
+	padding-left: 10px;
+}
+
 /* kid reporter sidebar */
 .node-type-kid-reporter .region-sidebar-first .section,
 .section-tfk-kid-reporters .region-sidebar-first .section,
