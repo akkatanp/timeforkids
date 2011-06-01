@@ -346,10 +346,9 @@ ul.links li {
 	padding: 10px;
 }
 
-
-.node-type-kid-reporter .region-sidebar-first h2.block-title,
-.section-tfk-kid-reporters .region-sidebar-first h2.block-title,
-.section-kid-reporter .region-sidebar-first h2.block-title {
+.node-type-kid-reporter .region-sidebar-first .block-views h2.block-title,
+.section-tfk-kid-reporters .region-sidebar-first .block-views h2.block-title,
+.section-kid-reporter .region-sidebar-first .block-views h2.block-title {
 	font: normal 14px "arial black";
 	text-transform: uppercase;
 	padding-bottom: 6px;
