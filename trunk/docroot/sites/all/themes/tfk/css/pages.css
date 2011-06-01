@@ -387,6 +387,25 @@ ul.links li {
 	box-shadow: 2px 2px 2px #999;
 }
 
+/* kid reporter listings */
+.page-tfk-kid-reporters .view-content table{
+	margin: 0;
+	border-collapse: collapse;
+}
+
+.page-tfk-kid-reporters .view-content table td {
+	font: normal 12px arial;
+	width: 250px;
+	border: solid 1px #555;
+	padding: 4px;
+	vertical-align: top;
+}
+
+.page-tfk-kid-reporters .view-content table td .views-field-field-thumbnail-image{
+	float: left;
+	margin-right: 8px;
+}
+
 /* ATW sidebar */
 .section-destination .region-sidebar-first .section {
 	padding: 0;
