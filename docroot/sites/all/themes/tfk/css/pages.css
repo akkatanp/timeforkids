@@ -354,6 +354,33 @@ ul.links li {
 	font: normal 12px arial;
 }
 
+.section-destination .region-sidebar-first .section {
+	padding: 0;
+	background: none;
+}
+
+.block-tfk-atw-atw-destination-navigation {
+	background: #e6e6e6;
+	border: solid 1px #cecece;
+	padding: 10px;
+}
+
+.block-tfk-atw-atw-destination-navigation h3 {
+	font: normal 18px "arial black";
+	color: #fff;
+	background: #d71700;
+	margin: 0;
+	padding: 10px;
+	text-transform: uppercase;
+}
+
+.block-tfk-atw-atw-destination-navigation a {
+	font-weight: bold;
+	color: #d71700;
+	text-decoration: none;
+	margin: 4px 0;
+}
+
 .section-destination .region-sidebar-first a,
 .page-around-the-world .region-sidebar-first a {
 	color: #d71700;
