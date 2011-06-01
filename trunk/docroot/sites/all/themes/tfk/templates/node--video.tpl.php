@@ -109,7 +109,7 @@
 
       print render($content);
       /* Show the View for More Photos & Videos */
-      print views_embed_view('more_photos_videos', 'block_mpv', $node->nid);
+      print views_embed_view('photos_videos_more', 'block_mpv', $node->nid);
    ?>
   </div>
 

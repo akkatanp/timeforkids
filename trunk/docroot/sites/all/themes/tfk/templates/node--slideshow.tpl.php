@@ -86,8 +86,8 @@
   <?php print $user_picture; ?>
 
   <?php print render($title_prefix); ?>
-  <?php if (!$page && $title): ?>
-    <h2<?php print $title_attributes; ?>><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h2>
+  <?php if (  $title): ?>
+    <h2><?php print $title; ?></h2>
   <?php endif; ?>
   <?php print render($title_suffix); ?>
 
@@ -107,9 +107,9 @@
       hide($content['comments']);
       hide($content['links']);
       /* SHow the view that pulls the image for the slideshow */
-      print views_embed_view('view_slideshow_image', 'block_ss_image', $node->nid);
+      print views_embed_view('photos_video_slideshow_image', 'block_ss_image', $node->nid);
       /* Show the View for More Photos & Videos */ 
-      print views_embed_view('more_photos_videos', 'block_mpv', $node->nid);
+      print views_embed_view('photos_videos_more', 'block_mpv', $node->nid);
     ?>
   </div>
 
