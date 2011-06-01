@@ -297,10 +297,11 @@ li a.active {
 
 /* Footer Nav */
 .region-footer ul.menu {
+	display: inline-block;
 	list-style-type: none;
-	padding: 10px 0;
+	padding: 4px 0;
 	margin: 0 auto;
-	height: 24px;
+	height: 18px;
 }
 
 .last .region-footer ul.menu {
@@ -309,7 +310,7 @@ li a.active {
 
 .region-footer ul.menu li {
 	float: left;
-	padding: 6px 8px;
+	padding: 2px 8px;
 	border-right: solid 1px #fff;
 }
 
