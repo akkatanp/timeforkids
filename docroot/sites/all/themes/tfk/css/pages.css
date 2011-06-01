@@ -359,6 +359,10 @@ ul.links li {
 	padding: 10px;
 }
 
+#block-tfk-atw-atw-destination-navigation h3 {
+	margin: 0;
+}
+
 #block-tfk-atw-atw-destination-navigation h3 a {
 	display: block;
 	font: normal 18px "arial black";
