@@ -319,7 +319,29 @@ ul.links li {
 .section-tfk-kid-reporters .region-sidebar-first .section,
 .section-kid-reporter .region-sidebar-first .section {
 	background: none;
+	padding: 0;
+	border: none;
 }
+
+#block-menu-menu-kid-reporter-listings-link h2 {
+	display: none;
+}
+
+#block-menu-menu-kid-reporter-listings-link a {
+	display: block;
+	font: normal 14px "arial black";
+	color: #fff;
+	background: #d71700;
+	padding: 10px;
+}
+
+.node-type-kid-reporter .region-sidebar-first .section .block-views,
+.section-tfk-kid-reporters .region-sidebar-first .section .block-views,
+.section-kid-reporter .region-sidebar-first .section .block-views {
+	border: solid 1px #cecece;
+	padding: 10px;
+}
+
 
 .node-type-kid-reporter .region-sidebar-first h2.block-title,
 .section-tfk-kid-reporters .region-sidebar-first h2.block-title,
@@ -342,7 +364,7 @@ ul.links li {
 .node-type-kid-reporter .region-sidebar-first .view-footer,
 .section-tfk-kid-reporters .region-sidebar-first .view-footer,
 .section-kid-reporter .region-sidebar-first .view-footer {
-	height: 20px;
+	height: 30px;
 }
 
 .node-type-kid-reporter .region-sidebar-first .view-footer a,
