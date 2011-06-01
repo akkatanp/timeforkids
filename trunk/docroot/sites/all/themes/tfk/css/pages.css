@@ -275,8 +275,8 @@ ul.links li {
 .region-sidebar-first {
 	position: relative;
 	float:left;
-	width: 252px;
-	margin-right: 6px;
+	width: 250px;
+	margin-right: 8px;
 }
 
 .region-sidebar-first .section {
@@ -373,7 +373,11 @@ ul.links li {
 	text-transform: uppercase;
 }
 
-#block-tfk-atw-atw-destination-navigation .content a {
+#block-tfk-atw-atw-destination-navigation ul.menu {
+	padding-left: 10px;
+}
+
+#block-tfk-atw-atw-destination-navigation ul.menu li {
 	margin: 4px 0;
 }
 
