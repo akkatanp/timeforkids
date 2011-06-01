@@ -323,11 +323,15 @@ ul.links li {
 	border: none;
 }
 
-#block-menu-menu-kid-reporter-listings-link h2 {
+.node-type-kid-reporter .region-sidebar-first .section .block-menu h2,
+.section-tfk-kid-reporters .region-sidebar-first .section .block-menu h2,
+.section-kid-reporter .region-sidebar-first .section .block-menu h2 {
 	display: none;
 }
 
-#block-menu-menu-kid-reporter-listings-link a {
+.node-type-kid-reporter .region-sidebar-first .section .block-menu a,
+.section-tfk-kid-reporters .region-sidebar-first .section .block-menu a,
+.section-kid-reporter .region-sidebar-first .section .block-menu a {
 	display: block;
 	font: normal 14px "arial black";
 	color: #fff;
