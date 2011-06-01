@@ -304,6 +304,7 @@ ul.links li {
 }
 
 .node-type-kid-reporter .region-sidebar-first .views-row,
+.section-tfk-kid-reporters .region-sidebar-first .views-row,
 .section-kid-reporter .region-sidebar-first .views-row {
 	padding-bottom: 6px;
 	margin-bottom: 10px;
@@ -319,11 +320,13 @@ ul.links li {
 }
 
 .node-type-kid-reporter .region-sidebar-first .view-footer,
+.section-tfk-kid-reporters .region-sidebar-first .view-footer,
 .section-kid-reporter .region-sidebar-first .view-footer {
 	height: 20px;
 }
 
 .node-type-kid-reporter .region-sidebar-first .view-footer a,
+.section-tfk-kid-reporters  .region-sidebar-first .view-footer a,
 .section-kid-reporter .region-sidebar-first .view-footer a {
 	font: normal 11px arial;
 	float: right;
@@ -333,6 +336,8 @@ ul.links li {
 	font-weight: bold;
 	text-decoration: none;
 	padding: 6px 8px;
+	-moz-border-radius: 12px;
+	-webkit-border-radius: 12px;
 	border-radius: 12px;
 	-moz-box-shadow: 2px 2px 2px #999;
 	-webkit-box-shadow: 2px 2px 2px #999;
