@@ -350,6 +350,18 @@ ul.links li {
 }
 
 /* ATW sidebar */
+.page-around-the-world .region-sidebar-first .section {
+	font: normal 12px arial;
+	background: #fff;
+}
+
+.page-around-the-world .region-sidebar-first a {
+	font-weight: bold;
+	color: #d71700;
+	font-weight: bold;
+	text-decoration: none;
+}
+
 .region-sidebar-first .section .view-atw-page-featured-destination {
 	background: url(../images/atw-sidebar-head.png) no-repeat top left;
 	padding-top: 20px;
