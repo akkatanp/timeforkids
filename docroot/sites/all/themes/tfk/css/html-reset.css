@@ -192,16 +192,16 @@ address {
  * Lists
  *
  * We need to standardize the list item indentation.
- */
+
 ul,
 ol {
-  margin-left: 0; /* LTR */
-  padding-left: 2em; /* LTR */
+  margin-left: 0; /* LTR 
+  padding-left: 2em; /* LTR 
 }
 
-.item-list ul /* Drupal overrides */ {
+.item-list ul /* Drupal overrides {
   margin: 1.5em 0;
-  padding: 0 0 0 2em; /* LTR */
+  padding: 0 0 0 2em; /* LTR 
 }
 
 ul ul, ul ol,
@@ -220,7 +220,7 @@ li {
 ul.menu li,
 li.expanded,
 li.collapsed,
-li.leaf /* Drupal override */ {
+li.leaf /* Drupal override  {
   margin: 0;
   padding: 0;
 }
@@ -232,7 +232,7 @@ ul ul ul ul { list-style-type: circle; }
 ol          { list-style-type: decimal; }
 ol ol       { list-style-type: lower-alpha; }
 ol ol ol    { list-style-type: decimal; }
-*/
+
 dl {
 }
 
@@ -242,10 +242,10 @@ dt {
 }
 
 dd {
-  margin: 0 0 0 2em; /* LTR */
+  margin: 0 0 0 2em; /* LTR 
   padding: 0;
 }
-
+ */
 /*
  * Tables
  *
