@@ -1,4 +1,4 @@
-<div style="border:1px solid red;">
+<div>
     <h3><?php echo l($navigation_data['navigation_block_title'],$navigation_data['alias'],array('attributes' => array('class'=>array('cssclasshere'))));?></h3>
     <br/>
     <?php echo l('Sightseeing Guide',$navigation_data['alias'].'/sightseeing');?>
