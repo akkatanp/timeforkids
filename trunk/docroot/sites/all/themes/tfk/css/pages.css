@@ -343,6 +343,7 @@ ul.links li {
 	color: #fff;
 	background: #d71700;
 	padding: 10px;
+	text-transform: uppercase;
 }
 
 .node-type-kid-reporter .region-sidebar-first .section .block-views,
