@@ -113,3 +113,85 @@ function tfk_lucie_check_user($email,$password){
     return false;
   }
 }
+//Removes the tabbed menu for teachers and board members
+function tfk_user_profile_menu_alter(&$items) {
+    $items['user/%user/view']['type'] = MENU_CALLBACK;
+    $items['user/%user/bookmarks']['type'] = MENU_CALLBACK;
+    $items['user/%user/edit']['type'] = MENU_CALLBACK;
+}
+//User update form for teacher profiles
+function tfk_user_profile_form($form, &$form_state, $user_profile) {
+        $vid = 6; //vocabulary id for grade level
+        $result = db_query('SELECT DISTINCT ti.tid,td.name from taxonomy_index ti left join taxonomy_term_data td on ti.tid = td.tid WHERE td.vid = :vid',array('vid'=>$vid));
+        $grade_levels = array();
+        foreach ($result as $record) {
+            $grade_levels[$record->tid] = $record->name;
+        }
+        if(isset($user_profile)) {
+            $form['uid'] = array(
+                '#type' => 'value',
+                '#value' => $user_profile['elements']['#account']->uid
+             );
+            $current_grade_level = $user_profile['elements']['#account']->field_grade_level['und']['0']['tid'];
+        }
+	$form['nickname'] = array(
+		'#type' => 'textfield',
+		'#title' => t('Nickname'),
+		'#required' => TRUE,
+                '#description' => '(Nickname can be 6-8 characters long)',
+                '#default_value' => isset($user_profile) ? $user_profile['elements']['#account']->field_nickname['und']['0']['value'] : ''
+	);
+	
+	$form['grade_level'] = array(
+		'#type' => 'select',
+		'#title' => t('Choose your Grade Level'),
+		'#options' => $grade_levels,
+                '#default_value' => isset($user_profile) ? $current_grade_level : ''
+	);
+	
+	$form['save'] = array(
+		'#type' => 'submit',
+		'#value' => t('Save Your Settings'),
+	);
+	
+	return $form;
+}
+//form submission for teacher profile updates
+function tfk_user_profile_form_submit($form, &$form_state) {
+	if($form_state['values']['op'] == t('Save Your Settings')) {
+		$updated_user_profile = new stdClass();
+		$updated_user_profile->nickname = $form_state['values']['nickname'];
+		$updated_user_profile->grade_level = $form_state['values']['grade_level'];
+                if(isset($form_state['values']['uid'])) {
+                    $updated_user_profile->uid = $form_state['values']['uid'];
+                    db_update('field_data_field_nickname')->condition('entity_id', $updated_user_profile->uid)->fields(array('field_nickname_value'=>$updated_user_profile->nickname))->execute();
+                    db_update('field_data_field_grade_level')->condition('entity_id', $updated_user_profile->uid)->fields(array('field_grade_level_tid'=>$updated_user_profile->grade_level))->execute();
+                    drupal_set_message(t('Account settings updated.'));
+                    cache_clear_all($cid = 'field:user:'.$updated_user_profile->uid, $table = 'cache_field', $wildcard = FALSE);
+                }
+	}
+}
+//Outputs either board member or teacher settings page
+function tfk_user_profile (&$user_profile) {
+    global $user;
+    if (isset($user_profile['elements']['#account']->field_is_board_member)) {
+        if ($user_profile['elements']['#account']->field_is_board_member['und']['0']['value'] == "yes") {
+            //Show board member page. 
+           drupal_set_title('Teacher Community');
+           $output = t("<h2 class=\"tfk-user-profile-title\">Teacher Board Member &#8212; ".$user_profile['elements']['#account']->name."</h2><div id=\"tfk-user-profile-board-member-wrapper\">");
+           $output .= $user_profile['elements']['user_picture']['#markup'];
+           $output .= "<span class=\"tfk-user-profile-board-member-name\">".$user_profile['elements']['#account']->name."</span>";
+           $output .= t("<p class=\"tfk-user-profile-board-member-taught\">".$user_profile['elements']['#account']->field_teacher_grade_taught['und']['0']['value']."</p>");
+           $output .= t("<p class=\"tfk-user-profile-board-member-location\">".$user_profile['elements']['#account']->field_teacher_location['und']['0']['value']."</p>");
+           $output .= t("<p class=\"tfk-user-profile-board-member-copy\">".$user_profile['elements']['#account']->field_profile_copy['und']['0']['value']."</p></div>");
+        } elseif ($user->uid == $user_profile['elements']['#account']->uid) {
+            //Only the user can edit it's his data.
+            //Show user settings page
+            drupal_set_title('My Account');
+            $output = t("<h2 class=\"tfk-user-user-profile-title\">Account Settings</h2>".drupal_render(drupal_get_form('tfk_user_profile_form', $user_profile)));
+        } else {
+            //Default behavior
+        }
+    }
+    return $output;
+}
