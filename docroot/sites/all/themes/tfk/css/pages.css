@@ -285,7 +285,7 @@ ul.links li {
 	padding: 10px;
 }
 
-.region-sidebar-first .section ul .menu{
+.region-sidebar-first .section ul.menu {
 	list-style-type: none;
 	padding-left: 10px;
 }
