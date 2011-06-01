@@ -53,7 +53,9 @@ body {
  * Main (container for everything else)
  */
 #main-wrapper {
-  position: relative;
+	position: relative;
+	width: 950px;
+	margin: 0 auto;
 }
 
 #main {
@@ -63,27 +65,28 @@ body {
  * Content
  */
 #content,
+#content.column,
 .sidebar-first #content, 
 .sidebar-second #content, 
 .two-sidebars #content {
 	float: left;
 	width: 510px;
 	margin-right: 20px;
+	margin-top: 0;
 }
 
 #content .section {
-  margin: 0;
-  padding: 0;
+	margin: 0;
+	padding: 0;
 }
 
 /*
  * Navigation
  */
-
 .with-navigation #content,
 .with-navigation .region-sidebar-first,
 .with-navigation .region-sidebar-second {
-  margin-top: 0; /* Set this to the same value as the navigation height above. */
+	margin-top: 0; /* Set this to the same value as the navigation height above. */
 }
 
 #navigation .section {
@@ -93,32 +96,26 @@ body {
  * First sidebar
  */
 .region-sidebar-first {
-/*  float: left; /* LTR 
-  width: 200px;
-  margin-left: 0; /* LTR 
-  margin-right: -200px; /* LTR */ /* Negative value of .region-sidebar-first's width + left margin.
-  padding: 0; /* DO NOT CHANGE. Add padding or margin to .region-sidebar-first .section.
-*/
-}
-
-.region-sidebar-first .section {
+	position: relative;
+	float:left;
+	width: 250px;
+	margin-right: 8px;
 }
 
 /*
  * Second sidebar
  */
 .region-sidebar-second {
-  float: right; /* LTR */
-  width: 162px;
-  /*margin-left: 760px;  LTR */ /* Width of content + sidebar-first. */
-   /*margin-right: -960px; LTR */ /* Negative value of .region-sidebar-second's width + left margin. */
-  padding: 0; /* DO NOT CHANGE. Add padding or margin to .region-sidebar-second .section. */
+	float: right;
+	padding: 0;
+	margin-top: 0px;
 }
 
 /*
  * Footer
  */
 .region-footer {
+	width: 768px;
 }
 
 /*

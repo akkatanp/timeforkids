@@ -14,6 +14,10 @@ li a.active {
 /*
  * Navigation bar
  */
+#main-wrapper #main #navigation {
+	display: none;
+}
+
 #navigation {
   margin-bottom: 10px;
 }
