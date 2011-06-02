@@ -286,6 +286,7 @@ ul.links li {
     border:1px solid #CECECE;
     padding:10px;
 }
+
 /*
  * First sidebar (on left in LTR languages, on right in RTL)
  *
@@ -394,32 +395,6 @@ ul.links li {
 	box-shadow: 2px 2px 2px #999;
 }
 
-/* kid reporter listings */
-.page-tfk-kid-reporters .view-content table{
-	margin: 0;
-	border-spacing: 4px;
-	border-collapse: separate;
-}
-
-.page-tfk-kid-reporters .view-content table td {
-	font: normal 12px arial;
-	width: 246px;
-	border: solid 1px #cecece;
-	padding: 4px;
-	vertical-align: top;
-}
-
-.page-tfk-kid-reporters .view-content table td a {
-	font-weight: bold;
-	color: #d71700;
-	text-decoration: none;
-}
-
-.page-tfk-kid-reporters .view-content table td .views-field-field-thumbnail-image{
-	float: left;
-	margin-right: 8px;
-}
-
 /* ATW sidebar */
 .section-destination .region-sidebar-first .section {
 	padding: 0;
@@ -500,4 +475,72 @@ ul.links li {
  * Page bottom
  */
 .region-bottom /* Wrapper for any blocks placed in the page bottom region */ {
+}
+
+/* kid reporter listings */
+.page-tfk-kid-reporters .view-content table{
+	margin: 0;
+	border-spacing: 4px;
+	border-collapse: separate;
+}
+
+.page-tfk-kid-reporters .view-content table td {
+	font: normal 12px arial;
+	width: 246px;
+	border: solid 1px #cecece;
+	padding: 4px;
+	vertical-align: top;
+}
+
+.page-tfk-kid-reporters .view-content table td a {
+	font-weight: bold;
+	color: #d71700;
+	text-decoration: none;
+}
+
+.page-tfk-kid-reporters .view-content table td .views-field-field-thumbnail-image {
+	float: left;
+	margin-right: 8px;
+}
+
+/* ATW destination listing */
+.page-around-the-world .view-content h3 {
+	font: bold 20px arial;
+	float: left;
+	width: 248px;
+	padding: 6px;
+	margin: 10px 0 0 0;
+	border-bottom: dotted 1px #555;
+	border-top: solid 1px #555;
+	border-left: solid 1px #555;
+	border-right: solid 1px #555;
+}
+
+.page-around-the-world .view-content table {
+	float: left;
+	width: 262px;
+	margin: 0 0 10px 0;
+	border-collapse: collapse;
+	border-top: none;
+	border-bottom: solid 1px #555;
+	border-left: solid 1px #555;
+	border-right: solid 1px #555;
+}
+
+.page-around-the-world .view-content table tr.row-first {
+	background: #fff;
+}
+
+.page-around-the-world .view-content table tr.row-last {
+	background: #ddd;
+}
+
+.page-around-the-world .view-content table td {
+	padding: 6px;
+}
+
+.page-around-the-world .view-content table td a {
+	font: bold 12px arial;
+	color: #d71700;
+	
 }
