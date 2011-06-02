@@ -367,7 +367,13 @@ ul.links li {
 .section-kid-reporter .region-sidebar-first .views-row {
 	padding-bottom: 6px;
 	margin-bottom: 10px;
-	border-bottom: solid 1px #cecece;	
+	border-bottom: solid 1px #cecece;
+}
+
+.node-type-kid-reporter .region-sidebar-first .views-row .views-field-field-thumbnail-image,
+.section-tfk-kid-reporters .region-sidebar-first .views-row.views-field-field-thumbnail-image,
+.section-kid-reporter .region-sidebar-first .views-row .views-field-field-thumbnail-image {
+	float: left;
 }
 
 .node-type-kid-reporter .region-sidebar-first .view-footer,
@@ -492,13 +498,13 @@ ul.links li {
 	margin-bottom: 10px;
 }
 
-.page-tfk-kid-reporters .view-content table {
+.view-all-kid-reporters .view-content table {
 	margin: 0;
 	border-spacing: 4px;
 	border-collapse: separate;
 }
 
-.page-tfk-kid-reporters .view-content table td {
+.view-all-kid-reporters .view-content table td {
 	font: normal 12px arial;
 	width: 246px;
 	border: solid 1px #cecece;
@@ -506,13 +512,13 @@ ul.links li {
 	vertical-align: top;
 }
 
-.page-tfk-kid-reporters .view-content table td a {
+.view-all-kid-reporters .view-content table td a {
 	font-weight: bold;
 	color: #d71700;
 	text-decoration: none;
 }
 
-.page-tfk-kid-reporters .view-content table td .views-field-field-thumbnail-image {
+.view-all-kid-reporters .view-content table td .views-field-field-thumbnail-image {
 	float: left;
 	margin-right: 8px;
 }
