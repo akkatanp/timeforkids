@@ -483,6 +483,16 @@ ul.links li {
 }
 
 /* kid reporter news */
+.page-kid-reporter #content h2.block-title {
+	border: solid 1px #cecece;
+	background: url(../images/tfk-kid-reporter-head.png) no-repeat 10px 10px;
+	width: 488px;
+	height: 101px;
+	padding: 10px;
+	font-size: 0px;
+	margin-bottom: 10px;
+}
+
 .view-kid-reporters-channel-top-story {
 	position: relative;
 	border: solid 6px #d71700;
@@ -523,11 +533,7 @@ ul.links li {
 	margin-top: 20px;
 }
 
-.view-kid-reporters-channel-top-story .views-field-field-mini-lessons {
-	clear: both;
-	font-weight: bold;
-}
-
+.view-kid-reporters-channel-top-story .views-field-field-mini-lessons,
 .view-kid-reporters-channel-top-story .views-field-field-related-articles {
 	clear: both;
 	background: #d9effe;
