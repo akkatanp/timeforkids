@@ -482,7 +482,7 @@ ul.links li {
 .region-bottom /* Wrapper for any blocks placed in the page bottom region */ {
 }
 
-/* kid reporter news */
+/* kid reporter header */
 .page-kid-reporter #content h2.block-title {
 	border: solid 1px #cecece;
 	background: url(../images/tfk-kid-reporter-head.png) no-repeat 10px 10px;
@@ -493,12 +493,15 @@ ul.links li {
 	margin-bottom: 10px;
 }
 
+/* teacher and kid reporter news top story*/
+.view-teacher-news-top-story,
 .view-kid-reporters-channel-top-story {
 	position: relative;
 	border: solid 6px #d71700;
 	padding: 20px 10px 10px 10px;
 }
 
+.view-teacher-news-top-story .views-field-field-image,
 .view-kid-reporters-channel-top-story .views-field-field-image {
 	position: relative;
 	top:-20px;
@@ -510,6 +513,7 @@ ul.links li {
 	margin-bottom: 10px;
 }
 
+.view-teacher-news-top-story .views-field-name,
 .view-kid-reporters-channel-top-story .views-field-name {
 	background: #d71700;
 	color: white;
@@ -518,21 +522,26 @@ ul.links li {
 	display: inline-block;
 }
 
+.view-teacher-news-top-story .views-field-title a,
 .view-kid-reporters-channel-top-story .views-field-title a {
 	font: bold 30px arial;
 	color: #d71700;
 	text-decoration: none;
 }
 
+.view-teacher-news-top-story .views-field-field-date,
 .view-kid-reporters-channel-top-story .views-field-field-date {
 	font: normal 9px arial;
 	text-transform: uppercase;
 }
 
+.view-teacher-news-top-story .views-field-field-deck,
 .view-kid-reporters-channel-top-story .views-field-field-deck {
 	margin-top: 20px;
 }
 
+.view-teacher-news-top-story .views-field-field-mini-lessons,
+.view-teacher-news-top-story .views-field-field-related-articles,
 .view-kid-reporters-channel-top-story .views-field-field-mini-lessons,
 .view-kid-reporters-channel-top-story .views-field-field-related-articles {
 	clear: both;
