@@ -146,9 +146,3 @@ function STARTERKIT_preprocess_block(&$variables, $hook) {
   $variables['classes_array'][] = 'count-' . $variables['block_id'];
 }
 // */
-
-
-function tfk_preprocess_search_result (&$vars) {
-  $vars['mums_recipe'] = t('Mums recipe for home-made pies is the best!');
- // print_r($vars);
-}
