@@ -553,6 +553,28 @@ ul.links li {
 	box-shadow: 2px 2px 4px #666;
 }
 
+/* teacher and kid reporter news block */
+.view-teacher-news-news-block table,
+.view-kid-reporters-channel-news-block table {
+	margin: 0;
+	border-collapse: collapse;
+	border: 0;
+}
+
+.view-teacher-news-news-block table td,
+.view-kid-reporters-channel-news-block table td {
+	display: block;
+	float: left;
+	border: solid 1px #cecece;
+	width: 246px;
+	height: 350px;
+}
+
+.view-teacher-news-news-block table td.col-1,
+.view-kid-reporters-channel-news-block table td.col-1{
+	margin-right: 8px;
+}
+
 /* kid reporter listings */
 .view-all-kid-reporters .view-header {
 	border: solid 1px #cecece;
