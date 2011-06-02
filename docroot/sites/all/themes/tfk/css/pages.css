@@ -490,9 +490,9 @@ ul.links li {
 }
 
 .view-kid-reporters-channel-top-story .views-field-field-image {
-	position: absolute;
-	top: 0px;
-	left: 0px;
+	position: relative;
+	top:-20px;
+	left: -10px;
 	width: 270px;
 	min-height: 270px;
 	float: left;
