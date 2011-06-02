@@ -23,7 +23,7 @@
  * @ingroup views_templates
  */
 ?>
-<div class="image">
+<div class="image <?php print $row->node_type;?>">
 <?php print (isset($fields['field_video_thumbnail']) ? $fields['field_video_thumbnail']->content : $fields['field_image']->content);?>
 </div>
 <div class="content">
