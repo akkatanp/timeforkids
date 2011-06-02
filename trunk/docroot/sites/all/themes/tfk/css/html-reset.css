@@ -324,9 +324,14 @@ button {
  * http://meyerweb.com/eric/thoughts/2007/06/11/who-ordered-the-link-states
  */
 a:link {
+	font-weight: bold;
+	font-size: 11px;
+	color: #d71700;
+	text-decoration: none;
 }
 
 a:visited {
+	color: #d71700;
 }
 
 a:hover,
