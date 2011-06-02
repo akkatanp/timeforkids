@@ -12,8 +12,6 @@
  * Body
  */
 body {
-  margin: 0;
-  padding: 0;
 }
 
 #page-wrapper {
@@ -478,7 +476,23 @@ ul.links li {
 }
 
 /* kid reporter listings */
-.page-tfk-kid-reporters .view-content table{
+.view-all-kid-reporters .view-header {
+	border: solid 1px #cecece;
+	padding: 130px 10px 10px 10px;
+	background: url(../images/tfk-kid-reporter-head.png) no-repeat 10px 10px;
+}
+
+.view-all-kid-reporters .view-header p {
+	margin: 0;
+}
+
+.view-all-kid-reporters .view-header p strong {
+	display: block;
+	font-size: 30px;
+	margin-bottom: 10px;
+}
+
+.page-tfk-kid-reporters .view-content table {
 	margin: 0;
 	border-spacing: 4px;
 	border-collapse: separate;
@@ -542,5 +556,5 @@ ul.links li {
 .page-around-the-world .view-content table td a {
 	font: bold 12px arial;
 	color: #d71700;
-	
+	text-decoration: none;
 }
