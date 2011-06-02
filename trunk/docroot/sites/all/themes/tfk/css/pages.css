@@ -621,3 +621,48 @@ ul.links li {
 	color: #d71700;
 	text-decoration: none;
 }
+
+/*
+ * Photos and Video Section.
+ */
+div#block-views-tfk-section-photos-video-block div.views-field-type {
+  color: white;
+  background-color: #D71700;
+  padding: 0px 5px 2px;
+}
+
+div#block-views-tfk-section-photos-video-block div.views-field-title a {
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.22em;
+}
+
+div#block-views-tfk-section-photos-video-block  a.tfk_sections_photos_video_view_full_article {
+  text-decoration: none;
+  color: #D71700;
+  font-weight: bold;
+  font-size: .90em;
+}
+
+div#block-views-tfk-section-photos-video-block div.view-id-tfk_section_photos_video div.views-row {
+  border-top: 2px solid #ccc;
+  border-right: 2px solid #ccc;
+  border-left: 2px solid #ccc;
+  padding: 6px;
+}
+
+div#block-views-tfk-section-photos-video-block div.view-id-tfk_section_photos_video div.views-row-last {
+  border-bottom: 2px solid #ccc;
+}
+
+div#block-views-tfk-section-photos-video-block div.views-field-field-image img {
+  float:left;
+  padding-top: 7px;
+  margin-right: 7px;
+}
+
+div#block-views-tfk-section-photos-video-block div.views-field-body p {
+  margin: 0px; padding: 0px;
+  font-size: 12px;
+}
