@@ -619,13 +619,9 @@ ul.links li {
 	text-decoration: none;
 }
 
-.view-atw-page-featured-destination .field-content {
-	width: 222px;
-	border: solid 4px; #fff;
-}
-
 .view-atw-page-featured-destination .field-content img {
 	width: 222px;
+	border: solid 4px #fff;
 }
 
 /* ATW destination listing */
