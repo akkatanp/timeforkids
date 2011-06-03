@@ -295,6 +295,30 @@ li a.active {
 	background: url(../images/sub-nav-sprite.png) no-repeat -488px -32px;
 }
 
+/*
+ * First sidebar
+ */
+.region-sidebar-first .section {
+	font: normal 12px arial;
+	background: #e6e6e6;
+	border: solid 1px #cecece;
+	padding: 10px;
+}
+
+.region-sidebar-first .section ul.menu {
+	list-style-type: none;
+	padding-left: 10px;
+	margin: 8px 0;
+}
+
+.region-sidebar-first .section ul.menu li {
+	margin: 4px 0;
+}
+
+.region-sidebar-first .section a {
+	text-decoration: none;
+}
+
 /* Footer Nav */
 .region-footer ul.menu {
 	display: inline-block;
