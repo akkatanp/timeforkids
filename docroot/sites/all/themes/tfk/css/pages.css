@@ -369,15 +369,19 @@ ul.links li {
 	display: none;
 }
 
-.node-type-kid-reporter .region-sidebar-first .section .block-menu ul,
-.section-tfk-kid-reporters .region-sidebar-first .section .block-menu ul,
-.section-kid-reporter .region-sidebar-first .section .block-menu ul {
+.block-menu-menu-kid-reporter-articles-link ul.menu,
+.block-menu-menu-kid-reporter-listings-link ul.menu {
+	padding: 0;
 	margin: 0;
 }
 
-.node-type-kid-reporter .region-sidebar-first .section .block-menu a,
-.section-tfk-kid-reporters .region-sidebar-first .section .block-menu a,
-.section-kid-reporter .region-sidebar-first .section .block-menu a {
+.block-menu-menu-kid-reporter-articles-link ul.menu li,
+.block-menu-menu-kid-reporter-listings-link ul.menu li {
+	margin: 0;
+}
+
+.block-menu-menu-kid-reporter-articles-link ul.menu li a,
+.block-menu-menu-kid-reporter-listings-link ul.menu li a {
 	display: block;
 	font: normal 14px "arial black";
 	color: #fff;
@@ -669,16 +673,20 @@ ul.links li {
 
 .view-all-kid-reporters .view-content table {
 	margin: 0;
-	border-spacing: 4px;
-	border-collapse: separate;
+	border-collapse: collapse;
 }
 
 .view-all-kid-reporters .view-content table td {
-	font: normal 12px arial;
-	width: 246px;
+	display: block;
+	width: 240px;
 	border: solid 1px #cecece;
 	padding: 4px;
 	vertical-align: top;
+}
+
+.view-all-kid-reporters .view-content table td.col-1 {
+	margin-right: 8px;
+	margin-bottom: 8px;
 }
 
 .view-all-kid-reporters .view-content table td a {
