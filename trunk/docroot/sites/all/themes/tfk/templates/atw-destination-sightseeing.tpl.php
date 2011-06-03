@@ -4,7 +4,7 @@
 	<div class="sightseeing-body">
 		<h1><?php echo $sightseeing_data['destination_title'];?>: Sight Seeiong Guide</h1>
 		<p><?php echo $sightseeing_data['sightseeing_body'];?></p>
-		<div id="map-container"><?php echo file_create_url(file_build_uri(basename($sightseeing_data['sightseeing_map'])));?></div>
+		<div id="map-container"><img src="<?php echo file_create_url(file_build_uri(basename($sightseeing_data['sightseeing_map'])));?>" /></div>
 	</div>
 
 <?php foreach($sightseeing_data['sightseeing_items'] as $item):?>

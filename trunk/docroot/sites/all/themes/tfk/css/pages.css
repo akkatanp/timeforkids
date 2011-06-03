@@ -690,7 +690,7 @@ ul.links li {
 	padding: 10px 9px;
 	width: 490px;
 	height: 100px;
-	background: url(../images/atw-head.png) no-repeat;
+	background: url(../images/atw-head.png) no-repeat 10px 10px;
 	margin-bottom: 10px;
 }
 
