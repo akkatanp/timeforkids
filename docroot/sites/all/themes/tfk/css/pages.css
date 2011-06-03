@@ -300,14 +300,12 @@ ul.links li {
 
 .region-sidebar-first .section ul.menu {
 	list-style-type: none;
-	padding-left: 0;
+	padding-left: 10px;
+	margin: 8px 0;
 }
 
-.region-sidebar-first .section a {
-	font-weight: bold;
-	color: #d71700;
-	font-weight: bold;
-	text-decoration: none;
+.region-sidebar-first .section ul.menu li {
+	margin: 4px 0;
 }
 
 /* Teacher news sidebar */
@@ -333,17 +331,6 @@ ul.links li {
 
 #block-tfk-news-tfk-news-taxonomy-links a.active {
 	background: #d71700;
-}
-
-#block-tfk-news-tfk-news-taxonomy-links ul {
-	list-style-type: none;
-	margin: 8px 0;
-	padding: 0 10px;
-	padding: 0;
-}
-
-#block-tfk-news-tfk-news-taxonomy-links ul li {
-	margin: 4px 0;
 }
 
 #block-tfk-news-tfk-news-taxonomy-links ul li a {
@@ -497,15 +484,6 @@ ul.links li {
 	margin: 0;
 	padding: 10px;
 	text-transform: uppercase;
-}
-
-#block-tfk-atw-atw-destination-navigation ul.menu {
-	padding-left: 10px;
-	margin: 4px 0;
-}
-
-#block-tfk-atw-atw-destination-navigation ul.menu li {
-	margin: 4px 0;
 }
 
 .region-sidebar-first .section .view-atw-page-featured-destination {
