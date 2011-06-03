@@ -667,8 +667,8 @@ ul.links li {
 	border: solid 1px #cecece;
 }
 
-.node-type-atw-destination .group-destination-images .field-label-above {
-	font: nornal 12px "arial black";
+.node-type-atw-destination .group-destination-images .field-label-above .field-label {
+	font: normal 12px "arial black";
 	text-transform: uppercase;
 	margin-bottom: 10px;
 }
