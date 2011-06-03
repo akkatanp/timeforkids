@@ -375,13 +375,13 @@ ul.links li {
 	margin: 0;
 }
 
-.block-menu-menu-kid-reporter-articles-link ul.menu li,
-.block-menu-menu-kid-reporter-listings-link ul.menu li {
+#block-menu-menu-kid-reporter-articles-link ul.menu li,
+#block-menu-menu-kid-reporter-listings-link ul.menu li {
 	margin: 0;
 }
 
-.block-menu-menu-kid-reporter-articles-link ul.menu li a,
-.block-menu-menu-kid-reporter-listings-link ul.menu li a {
+#block-menu-menu-kid-reporter-articles-link ul.menu li a,
+#block-menu-menu-kid-reporter-listings-link ul.menu li a {
 	display: block;
 	font: normal 14px "arial black";
 	color: #fff;
@@ -681,12 +681,10 @@ ul.links li {
 	width: 240px;
 	border: solid 1px #cecece;
 	padding: 4px;
-	vertical-align: top;
 }
 
 .view-all-kid-reporters .view-content table td.col-1 {
-	margin-right: 8px;
-	margin-bottom: 8px;
+	margin: 4px 4px 4px 0;
 }
 
 .view-all-kid-reporters .view-content table td a {
