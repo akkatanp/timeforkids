@@ -2,9 +2,9 @@
 	<div class="sightseeing-graphic-header"></div>
 	
 	<div class="sightseeing-body">
-		<h1><?php echo $sightseeing_data['destination_title'];?>: Sight Seeiong Guide</h1>
+		<h1><?php echo $sightseeing_data['destination_title'];?>: Sight Seeing Guide</h1>
 		<p><?php echo $sightseeing_data['sightseeing_body'];?></p>
-		<div id="map-container"><img src="<?php echo file_create_url(file_build_uri(basename($sightseeing_data['sightseeing_map'])));?>" /></div>
+		<img src="<?php echo file_create_url(file_build_uri(basename($sightseeing_data['sightseeing_map']))); ?>" width="490" height="490" />
 	</div>
 
 <?php foreach($sightseeing_data['sightseeing_items'] as $item):?>
