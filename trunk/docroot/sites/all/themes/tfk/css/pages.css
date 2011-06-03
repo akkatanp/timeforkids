@@ -285,29 +285,6 @@ ul.links li {
     padding:10px;
 }
 
-/*
- * First sidebar (on left in LTR languages, on right in RTL)
- *
- * Remember to NOT add padding or margin to your .region-sidebar-first
- * (see the layout.css file.)
- */
-.region-sidebar-first .section {
-	font: normal 12px arial;
-	background: #e6e6e6;
-	border: solid 1px #cecece;
-	padding: 10px;
-}
-
-.region-sidebar-first .section ul.menu {
-	list-style-type: none;
-	padding-left: 10px;
-	margin: 8px 0;
-}
-
-.region-sidebar-first .section ul.menu li {
-	margin: 4px 0;
-}
-
 /* Teacher news sidebar */
 #block-tfk-news-tfk-news-latest-news-link {
 	font: normal 14px "arial black";
