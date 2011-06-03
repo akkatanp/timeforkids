@@ -43,7 +43,13 @@ function tfk_page_paths_menu(){
 		'page callback' => 'tfk_pv_page_callback',
 		'access callback' => 'user_access',
 		'access arguments' => array('access content')
-	);           
+	);
+        $items['info'] = array(
+		'title' => 'Info',
+		'page callback' => 'tfk_pv_page_callback',
+		'access callback' => 'user_access',
+		'access arguments' => array('access content')
+	);          
 	return $items;
 }
 
