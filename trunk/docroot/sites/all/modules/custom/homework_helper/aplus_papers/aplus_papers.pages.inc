@@ -52,7 +52,7 @@ function aplus_papers_prepare_step($node) {
     $form['textarea'] = array(
       '#type' => 'textarea',
       '#required' => TRUE,
-      '#title' => check_plain($node->title),
+      '#title' => isset($node->field_step_text_label[$node->language][0]['value']) ? $node->field_step_text_label[$node->language][0]['value'] : check_plain($node->title),
     );
   }
   $form['#checklist'] = $node->title;
