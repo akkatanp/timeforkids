@@ -1,7 +1,7 @@
 <?php echo l('ALL NEWS','news-archive');?>
-<br/>
-______________________
-<br/>
+
+<ul>
 <?php foreach($terms_with_articles as $term): ?>
-  <?php echo l($term['term_name'],'news-archive/'.strtolower($term['term_name']),array('attributes' => array('class'=>array($term['class']))));?><br/>
+  <li><?php echo l($term['term_name'],'news-archive/'.strtolower($term['term_name']),array('attributes' => array('class'=>array($term['class']))));?></li>
 <?php endforeach; ?>
+</ul>
