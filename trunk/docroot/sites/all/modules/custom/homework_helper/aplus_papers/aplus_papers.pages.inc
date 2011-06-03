@@ -1,0 +1,90 @@
+<?php
+
+/**
+ * Prepare the steps of the form from a structure of nodes.
+ */
+function aplus_papers_prepare_steps($node) {
+  $steps = array();
+  $result = db_query("
+    SELECT f.entity_id from field_data_field_step_parent f
+    INNER JOIN {node} n ON n.vid = f.revision_id
+    WHERE f.field_step_parent_nid = :nid
+    AND f.entity_type = 'node'
+    AND f.bundle = 'paper_step'
+  ", array(':nid' => $node->nid));
+  foreach ($result as $record) {
+    $nids[] = $record->entity_id;
+  }
+  if ($nids) {
+    $nodes = node_load_multiple($nids);
+    usort($nodes, 'aplus_papers_sort_steps');
+    foreach ($nodes as $index => $node) {
+      $steps[] = aplus_papers_prepare_step($node);
+    }
+  }
+  $steps[] = aplus_paper_review_step($steps);
+  $steps[] = aplus_paper_final_step();
+  return $steps;
+}
+
+function aplus_papers_prepare_step($node) {
+  $form['description'] = node_view($node, 'full');
+  if ($node->field_step_title && $node->field_step_title[$node->language][0]['value']) {
+    $form['title'] = array(
+      '#type' => 'textfield',
+      '#required' => TRUE,
+      '#title' => 'Title:',
+    );
+  }
+  if ($node->field_step_name_date && $node->field_step_name_date[$node->language][0]['value']) {
+    $form['name'] = array(
+      '#type' => 'textfield',
+      '#required' => TRUE,
+      '#title' => 'Name:',
+    );
+    $form['date'] = array(
+      '#type' => 'textfield',
+      '#required' => TRUE,
+      '#title' => 'Date',
+    );
+  }
+  if ($node->field_step_text_area[$node->language][0]['value']) {
+    $form['textarea'] = array(
+      '#type' => 'textarea',
+      '#required' => TRUE,
+      '#title' => check_plain($node->title),
+    );
+  }
+  $form['#checklist'] = $node->title;
+  
+  return $form;
+}
+
+function aplus_papers_sort_steps($a, $b) {
+  return ($a->field_step_weight[$a->language][0]['value'] > $b->field_step_weight[$a->language][0]['value']);
+}
+
+/**
+ * Prepare review form step.
+ */
+function aplus_paper_review_step($steps) {
+  $form['description'] = array(
+    '#markup' => t('Please review your work and make any changes.'),
+  );
+  $form['#checklist'] = t('Review your work');
+  
+  foreach ($steps as $step) {
+    unset($step['description']);
+    $form[] = $step;
+  }
+  return $form;
+}
+
+/**
+ * Prepare final step.
+ */
+function aplus_paper_final_step() {
+  $form['#checklist'] = t('Print and save your paper.');
+  return $form;
+} 
+
