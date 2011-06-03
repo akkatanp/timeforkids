@@ -674,6 +674,7 @@ ul.links li {
 }
 
 .node-type-atw-destination .group-destination-images .field-name-field-country-code {
+	margin-top: 10px;
 	padding-top: 10px;
 	border-top: dotted 1px #cecece;
 }
@@ -681,6 +682,32 @@ ul.links li {
 .node-type-atw-destination .group-destination-facts legend ,
 .node-type-atw-destination .group-destination-images legend {
 	display: none;
+}
+
+/* ATW Sightseeing */
+#sightseeing-container .sightseeing-graphic-header {
+	border: solid 1px #cecece;
+	padding: 10px 9px;
+	width: 490px;
+	height: 100px;
+	background: url(../images/atw-head.png) no-repeat;
+	margin-bottom: 10px;
+}
+
+#sightseeing-container .sightseeing-body {
+	border: solid 1px #cecece;
+	padding: 10px;
+}
+
+#sightseeing-container .sightseeing-body h1 {
+	font-size: 30px;
+	margin: 4px 0;
+}
+
+#sightseeing-container .sightseeing-body p {
+	padding-bottom: 10px;
+	border-bottom: dotted 1px #cecece;
+	margin: 4px 0 10px 0;
 }
 
 /*
