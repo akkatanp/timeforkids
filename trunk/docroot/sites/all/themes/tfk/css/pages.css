@@ -331,19 +331,53 @@ ul.links li {
 	padding: 10px;
 }
 
+#block-tfk-news-tfk-news-taxonomy-links a.active {
+	background: #d71700;
+}
+
 #block-tfk-news-tfk-news-taxonomy-links ul {
 	list-style-type: none;
 	margin: 8px 0;
+	padding: 0 10px;
 	padding: 0;
+}
+
+#block-tfk-news-tfk-news-taxonomy-links ul li {
+	margin: 4px 0;
 }
 
 #block-tfk-news-tfk-news-taxonomy-links ul li a {
 	display: inline;
-	padding: 0 10px;
-	margin: 4px 0;
 	background: none;
 	font: bold 12px arial;
 	color: #d71700;
+}
+
+#news-sidebar-year-filter {
+	border-top: dotted 1px #555;
+	padding-top: 10px;
+}
+
+#news-sidebar-year-filter p {
+	margin: 0 0 10px 0;
+	font: bold 12px "times new roman";
+	font-style: italic;
+	color: #555;
+}
+
+#news-sidebar-year-filter #yearsubmit {
+	font: bold 11px arial;
+	float: right;
+	background: #d71700;
+	color: white;
+	text-decoration: none;
+	padding: 6px 8px;
+	-moz-border-radius: 12px;
+	-webkit-border-radius: 12px;
+	border-radius: 12px;
+	-moz-box-shadow: 2px 2px 2px #999;
+	-webkit-box-shadow: 2px 2px 2px #999;
+	box-shadow: 2px 2px 2px #999;
 }
 
 /* kid reporter sidebar */
