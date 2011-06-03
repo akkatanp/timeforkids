@@ -65,4 +65,141 @@ function tfk_search_block_save($delta = '', $edit = array()){
   return;
 }
 
-?>
+function tfk_search_preprocess_search_result (&$vars) {
+    $vars['tfk_search_cont_type'] = $vars['result']['fields']['bundle_name'];
+
+    if($vars['result']['fields']['bundle'] == 'minisite'){
+      $nid = $vars['result']['fields']['entity_id'];
+      $node = node_load($nid);
+
+      if(isset($node->field_minisite_tout_image)){
+        $tmp_img_nid =  field_get_items('node', $node, 'field_minisite_tout_image');
+        $uri = $tmp_img_nid[0]['uri'];
+        $newpath = image_style_path('square_thumbnail',$uri);
+        $abspath = file_create_url($newpath);
+        $vars['tfk_search_res_image'] = $abspath;
+      }
+      
+    }
+
+
+    if($vars['result']['fields']['bundle'] == 'atw_destination'){
+      $nid = $vars['result']['fields']['entity_id'];
+      $node = node_load($nid);
+
+      if(isset($node->field_tout_image)){
+        $tmp_img_nid =  field_get_items('node', $node, 'field_tout_image');
+        $img_nid = $tmp_img_nid[0]['nid'];
+
+        $result = db_query('select fi.field_image_fid,fm.filename from {field_data_field_image} fi
+          left join {file_managed} fm on fi.field_image_fid = fm.fid
+          where fi.entity_type = :bundle_type and fi.entity_id = :img_nid',array('bundle_type'=>'node','img_nid'=>$img_nid));
+        $record = $result->fetch();
+        $img_filename = file_build_uri(basename($record->filename));
+
+        $newpath = image_style_path('square_thumbnail',$img_filename);
+        $abspath = file_create_url($newpath);
+        $vars['tfk_search_res_image'] = $abspath;
+      }
+
+
+    }
+
+    if($vars['result']['fields']['bundle'] == 'video'){
+      $nid = $vars['result']['fields']['entity_id'];
+      $node = node_load($nid);
+      if(isset($node->field_video_thumbnail)){
+        $tmp_img_nid =  field_get_items('node', $node, 'field_video_thumbnail');
+        $uri = $tmp_img_nid[0]['uri'];
+        $newpath = image_style_path('square_thumbnail',$uri);
+        $abspath = file_create_url($newpath);
+        $vars['tfk_search_res_image'] = $abspath;
+      }
+    }
+
+
+    if($vars['result']['fields']['bundle'] == 'worksheet'){
+      $nid = $vars['result']['fields']['entity_id'];
+      $node = node_load($nid);
+      if(isset($node->field_worksheet_thumbnail_image)){
+        $tmp_img_nid =  field_get_items('node', $node, 'field_worksheet_thumbnail_image');
+        $uri = $tmp_img_nid[0]['uri'];
+        $newpath = image_style_path('square_thumbnail',$uri);
+        $abspath = file_create_url($newpath);
+        $vars['tfk_search_res_image'] = $abspath;
+      }
+      if(isset($node->field_grade_level)){
+        $tmp_tid = field_get_items('node', $node, 'field_grade_level');
+        $tid = $tmp_tid[0]['tid'];
+        $name_res =  db_query('select name from taxonomy_term_data where tid = :tid',array('tid' => $tid ));
+        $name = $name_res->fetch();
+        $name = $name->name;
+        $vars['tfk_search_res_grade_level'] = $name;
+      }
+    }
+
+
+    if($vars['result']['fields']['bundle'] == 'slideshow'){
+      $nid = $vars['result']['fields']['entity_id'];
+      $node = node_load($nid);
+      if(isset($node->field_slideshow_images)){
+        $tmp_img_nid =  field_get_items('node', $node, 'field_slideshow_images');
+        $img_nid = $tmp_img_nid[0]['nid'];
+        $result = db_query('select fi.field_image_fid,fm.filename from {field_data_field_image} fi
+          left join {file_managed} fm on fi.field_image_fid = fm.fid
+          where fi.entity_type = :bundle_type and fi.entity_id = :img_nid',array('bundle_type'=>'node','img_nid'=>$img_nid));
+        $record = $result->fetch();
+        $img_filename = file_build_uri(basename($record->filename));
+        $newpath = image_style_path('square_thumbnail',$img_filename);
+        $abspath = file_create_url($newpath);
+        $vars['tfk_search_res_image'] = $abspath;
+      }
+    }
+
+    if($vars['result']['fields']['bundle'] == 'article'){
+      $nid = $vars['result']['fields']['entity_id'];
+      $node = node_load($nid);
+      if(isset($node->field_tout_image)){
+        $tmp_img_nid =  field_get_items('node', $node, 'field_tout_image');
+        $img_nid = $tmp_img_nid[0]['nid'];
+
+        $result = db_query('select fi.field_image_fid,fm.filename from {field_data_field_image} fi
+          left join {file_managed} fm on fi.field_image_fid = fm.fid
+          where fi.entity_type = :bundle_type and fi.entity_id = :img_nid',array('bundle_type'=>'node','img_nid'=>$img_nid));
+        $record = $result->fetch();
+        $img_filename = file_build_uri(basename($record->filename));
+
+        $newpath = image_style_path('square_thumbnail',$img_filename);
+        $abspath = file_create_url($newpath);
+        $vars['tfk_search_res_image'] = $abspath;
+      }
+      if(isset($node->field_article_category)){
+        $tmp_tid = field_get_items('node', $node, 'field_article_category');
+        $tid = $tmp_tid[0]['tid'];
+        $name_res =  db_query('select name from taxonomy_term_data where tid = :tid',array('tid' => $tid ));
+        $name = $name_res->fetch();
+        $name = $name->name;
+        $vars['tfk_search_res_category'] = $name;
+      }
+    }
+}
+
+
+function tfk_search_apachesolr_modify_query($query, $caller) {
+  if($caller == 'apachesolr_search'){
+    global $user;
+    if(count($user->roles) == 1 && $user->roles[1] == 'anonymous user'){
+     $query->add_filter("bundle", 'worksheet',TRUE);
+     $query->add_filter("bundle", 'mini_lesson',TRUE);
+    }
+
+  }
+}
+
+function tfk_search_form_alter(&$form, &$form_state, $form_id) {
+  if($form_id == 'search_form'){
+    $form['basic']['keys']['#title'] = '';
+  }
+}
+//search-form
+
