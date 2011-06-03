@@ -60,9 +60,6 @@ div#site-name /* The name of the website */ {
 /*
  * Main (container for everything else)
  */
-#main-wrapper {
-}
-
 #main-wrapper h1#page-title {
 	float: left;
 	width: 768px;
@@ -72,9 +69,6 @@ div#site-name /* The name of the website */ {
 	text-transform: uppercase;
 }
 
-#main {
-}
-
 /*
  * Content
  */
@@ -82,9 +76,6 @@ div#site-name /* The name of the website */ {
 }
 
 #content .section {
-}
-
-.region-highlighted {
 }
 
 /*
