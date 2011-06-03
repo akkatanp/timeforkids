@@ -68,6 +68,12 @@
  * @see template_process()
  */
 ?>
+<?php
+if(drupal_is_front_page()) {
+    unset($page['content']['system_main']['default_message']);
+    }
+?>
+
 
 <div id="page-wrapper"><div id="page">
 
@@ -122,6 +128,9 @@
 	
     <div id="global-nav-container">
 		<?php print render($page['header']['menu_menu-tfk-global-navigation']); ?>
+                <?php
+                  print render(drupal_get_form('search_form'));
+                ?>
 	</div>
 	
 	<div id="teacher-nav-container">
@@ -131,6 +140,7 @@
 			<?php print render($page['header']['block_11']); ?>
 			<?php print render($page['header']['menu_menu-tfk-teachers-menu']); ?>
 			<?php print render($page['header']['block_16']); ?>
+                  
 		</div>
 	</div>
 
@@ -159,7 +169,9 @@
       <?php if ($action_links): ?>
         <ul class="action-links"><?php print render($action_links); ?></ul>
       <?php endif; ?>
+      
       <?php print render($page['content']); ?>
+
       <?php print $feed_icons; ?>
     </div></div><!-- /.section, /#content -->
 
