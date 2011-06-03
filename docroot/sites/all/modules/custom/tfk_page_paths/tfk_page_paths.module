@@ -8,6 +8,12 @@ function tfk_page_paths_menu(){
 		'access callback' => 'user_access',
 		'access arguments' => array('access content')
 	);
+        $items['store'] = array(
+		'title' => 'Store',
+		'page callback' => 'tfk_pv_page_callback',
+		'access callback' => 'user_access',
+		'access arguments' => array('access content')
+	);        
         $items['magazine'] = array(
 		'title' => 'TFK Magazine',
 		'page callback' => 'tfk_pv_page_callback',
