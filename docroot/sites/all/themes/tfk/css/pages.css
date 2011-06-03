@@ -360,9 +360,12 @@ ul.links li {
 
 #news-sidebar-year-filter p {
 	margin: 0 0 10px 0;
-	font: bold 12px "times new roman";
+	font: bold 14px "times new roman";
 	font-style: italic;
 	color: #555;
+}
+#news-sidebar-year-filter label {
+	display: inline;
 }
 
 #news-sidebar-year-filter #yearsubmit {
@@ -372,12 +375,14 @@ ul.links li {
 	color: white;
 	text-decoration: none;
 	padding: 6px 8px;
+	border: none;
 	-moz-border-radius: 12px;
 	-webkit-border-radius: 12px;
 	border-radius: 12px;
 	-moz-box-shadow: 2px 2px 2px #999;
 	-webkit-box-shadow: 2px 2px 2px #999;
 	box-shadow: 2px 2px 2px #999;
+	cursor: pointer;
 }
 
 /* kid reporter sidebar */
