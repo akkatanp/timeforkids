@@ -3,14 +3,6 @@
  * Navigation Styling
  */
 
-
-/*
- * The active item in a Drupal menu
- */
-li a.active {
-  color: #000;
-}
-
 /*
  * Navigation bar
  */
@@ -299,7 +291,6 @@ li a.active {
  * First sidebar
  */
 .region-sidebar-first .section {
-	font: normal 12px arial;
 	background: #e6e6e6;
 	border: solid 1px #cecece;
 	padding: 10px;
