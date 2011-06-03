@@ -605,6 +605,19 @@ ul.links li {
 	margin-bottom: 10px;
 }
 
+/* kid reporter */
+.node-kid-reporter {
+	border: solid 1px #cecece;
+	padding: 10px;
+}
+
+.node-kid-reporter .field-type-image {
+	float: left;
+	height: 270px;
+	width: 270px;
+	margin-right: 10px;
+}
+
 
 /* kid reporter listings */
 .view-all-kid-reporters .view-header {
