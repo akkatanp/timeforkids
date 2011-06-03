@@ -312,7 +312,7 @@ ul.links li {
 
 /* Teacher news sidebar */
 #block-tfk-news-tfk-news-latest-news-link {
-	font: nornmal 14px "arial black";
+	font: normal 14px "arial black";
 	color: #fff;
 	background: #d71700;
 	padding: 10px;
@@ -325,7 +325,7 @@ ul.links li {
 
 #block-tfk-news-tfk-news-taxonomy-links a {
 	display: block;
-	font: normal 14px "ariual black";
+	font: normal 14px "arial black";
 	color: #fff;
 	background: #999;
 	padding: 10px;
@@ -338,11 +338,11 @@ ul.links li {
 }
 
 #block-tfk-news-tfk-news-taxonomy-links ul li a {
-	padding: 0;
-	margin: 4px 0;
 	display: inline;
+	padding: 0 10px;
+	margin: 4px 0;
 	background: none;
-	font: normal 11px arial;
+	font: bold 12px arial;
 	color: #d71700;
 }
 
