@@ -660,17 +660,25 @@ ul.links li {
 	border: solid 1px #cecece;
 }
 
-.node-type-atw-destination .group-destination-facts legend {
-	display: none;
-}
-
 .node-type-atw-destination .group-destination-images {
 	float: left;
-	width: 140px;
+	width: 148px;
 	padding: 10px;
 	border: solid 1px #cecece;
 }
 
+.node-type-atw-destination .group-destination-images .field-label-above {
+	font: nornal 12px "arial black";
+	text-transform: uppercase;
+	margin-bottom: 10px;
+}
+
+.node-type-atw-destination .group-destination-images .field-name-field-country-code {
+	padding-top: 10px;
+	border-top: dotted 1px #cecece;
+}
+
+.node-type-atw-destination .group-destination-facts legend ,
 .node-type-atw-destination .group-destination-images legend {
 	display: none;
 }
