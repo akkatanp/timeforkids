@@ -41,20 +41,22 @@ function features_misc_flag_default_flags() {
     'types' => array(
       0 => 'worksheet',
     ),
-    'flag_short' => 'Teacher Resources',
+    'flag_short' => 'Global Sidebar Teacher Resources',
     'flag_long' => '',
     'flag_message' => '',
-    'unflag_short' => 'Remove Teacher Resources',
+    'unflag_short' => 'Remove Global Sidebar Teacher Resources',
     'unflag_long' => '',
     'unflag_message' => '',
     'unflag_denied_text' => '',
     'link_type' => 'toggle',
     'roles' => array(
       'flag' => array(
-        0 => '2',
+        0 => '3',
+        1 => '4',
       ),
       'unflag' => array(
-        0 => '2',
+        0 => '3',
+        1 => '4',
       ),
     ),
     'show_on_page' => 0,
