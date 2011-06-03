@@ -651,12 +651,20 @@ ul.links li {
 	padding: 6px;
 }
 
-.page-around-the-world .view-content table td a {
-	font: bold 12px arial;
-	color: #d71700;
-	text-decoration: none;
+/* ATW Destination */
+.node-type-atw-destination .field-name-field-description {
+	float: left;
+	width: 310px;
+	padding: 10px;
+	margin-right: 8px;
+	border: solid 1px #cecece;
 }
 
+.node-type-atw-destination .field-name-field-country-map {
+	float: left;
+	padding: 10px;
+	border: solid 1px #cecece;
+}
 
 /*
  * Photos and Video Section.
