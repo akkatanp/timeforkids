@@ -34,7 +34,7 @@ body {
 #page {
   /* Use a 12px base font size with a 18px line height */
   /*font-size: 0.75em;  16px x .75 = 12px */
-  line-height: 1.5em; /* 12px x 1.5 = 18px */
+  line-height: 18px; /* 12px x 1.5 = 18px */
 }
 
 /*
@@ -97,13 +97,11 @@ fieldset {
   font-family: Verdana, Tahoma, "DejaVu Sans", sans-serif;
   font-family: Tahoma, Verdana, "DejaVu Sans", sans-serif;
   font-family: Helvetica, Arial, "Nimbus Sans L", sans-serif;
-  font-family: Arial, Helvetica, "Nimbus Sans L", sans-serif;
-
+  font-family: Verdana, Tahoma, "DejaVu Sans", sans-serif;
   font-family: "Courier New", "DejaVu Sans Mono", monospace;
 
    */
-
-  font-family: Verdana, Tahoma, "DejaVu Sans", sans-serif;
+   font-family: Arial, Helvetica, "Nimbus Sans L", sans-serif;
 }
 
 pre,
@@ -161,6 +159,7 @@ h6 {
 
 /* Other block-level elements */
 p {
+	margin: 0;
 }
 
 blockquote {
@@ -185,13 +184,16 @@ address {
  * Lists
  *
  * We need to standardize the list item indentation.
+*/
 
 ul,
 ol {
-  margin-left: 0; /* LTR 
-  padding-left: 2em; /* LTR 
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
 }
 
+/*
 .item-list ul /* Drupal overrides {
   margin: 1.5em 0;
   padding: 0 0 0 2em; /* LTR 

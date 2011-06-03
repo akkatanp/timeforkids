@@ -7,20 +7,6 @@
  * ul.links, .pager, .more-link, etc.
  */
 
-
-/*
- * Body
- */
-body {
-}
-
-#page-wrapper {
-	width: 100%;
-}
-
-#page {
-}
-
 /*
  * The skip-link link will be completely hidden until a user tabs to the link.
  * See the element-focusable rule in system.base.css.
@@ -35,67 +21,13 @@ body {
   color: #fff;
 }
 
-/*
- * Header
- */
-#header {
-	width: 100%;
-	height: 110px;
-	background: #d71700;
-}
-
-#header .section {
-	position: relative;
-	margin: 0 auto;
-	width: 950px;
-	height: 110px;
-	clear: both;
-}
-
+/* Header */
 #header .section #logo {
 	float: left;
 	width: 206px;
 	height: 90px;
 	margin: 7px 0 13px 0;
 	background: url(../images/tfk-head-logo.png) no-repeat;
-}
-
-#header #header-inner .ad-block {
-	position: relative;
-	float: left;
-	width: 744px;
-	height: 92px;
-	margin: 6px 0 12px 0;
-}
-
-#header #header-inner .ad-block .ad-flag {
-	position: absolute;
-	top: 39px;
-	left: -39px;
-	height: 14px;
-	width: 92px;
-	background: #790001;
-	color: white;
-	text-transform: capitalize;
-	text-align: center;
-	line-height: 14px;
-	border-top-left-radius: 4px;
-	border-top-right-radius: 4px;
-	-webkit-transform: rotate(-90deg); 
-	-moz-transform: rotate(-90deg);
-	filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
-	font: normal 10px arial;
-}
-
-#header #header-inner .ad-block .ad {
-	float: right;
-	width: 728px;
-	height: 70px;
-	text-align: center;
-	padding: 10px 0;
-	background: white;
-	border: solid 1px #790001;
-	font: bold 30px Arial;
 }
 
 #logo img {
@@ -123,13 +55,6 @@ div#site-name /* The name of the website */ {
 #site-name a:hover,
 #site-name a:focus {
   text-decoration: underline;
-}
-
-#site-slogan /* The slogan (or tagline) of a website */ {
-}
-
-.region-header /* Wrapper for any blocks placed in the header region */ {
-  clear: both; /* Clear the logo */
 }
 
 /*
@@ -160,6 +85,31 @@ div#site-name /* The name of the website */ {
 }
 
 .region-highlighted {
+}
+
+/*
+ * Second sidebar (on right in LTR languages, on left in RTL)
+ *
+ * Remember to NOT add padding or margin to your .region-sidebar-second
+ * (see the layout.css file.)
+ */
+.region-sidebar-second {
+}
+
+.region-sidebar-second .section {
+}
+
+/*
+ * Footer
+ */
+.region-footer {
+	background: #d71700;
+	color: #fff;
+	font: normal 10px arial;
+}
+
+.region-footer .block-title {
+	display: none;
 }
 
 .breadcrumb /* The path to the current page in the form of a list of links */ {
@@ -248,6 +198,7 @@ ul.links li {
 
 .more-link /* Aggregator, blog, and forum more link */ {
 }
+
 /* user profile */
 .tfk-user-profile-divider {
     height:5px;
@@ -445,79 +396,6 @@ ul.links li {
 	box-shadow: 2px 2px 2px #999;
 }
 
-/* ATW sidebar */
-.section-destination .region-sidebar-first .section {
-	padding: 0;
-	background: none;
-	border: none;
-}
-
-#block-tfk-atw-atw-destination-navigation {
-	background: #e6e6e6;
-	border: solid 1px #cecece;
-	padding: 10px;
-}
-
-#block-tfk-atw-atw-destination-navigation h3 {
-	margin: 0;
-}
-
-#block-tfk-atw-atw-destination-navigation h3 a {
-	display: block;
-	font: normal 14px "arial black";
-	color: #fff;
-	background: #d71700;
-	margin: 0;
-	padding: 10px;
-	text-transform: uppercase;
-}
-
-.region-sidebar-first .section .view-atw-page-featured-destination {
-	background: url(../images/atw-sidebar-head.png) no-repeat top left;
-	padding-top: 20px;
-}
-
-.view-atw-page-featured-destination .views-field-title a {
-	color: #d71700;
-	font-size: 20px;
-	text-decoration: none;
-}
-
-.view-atw-page-featured-destination .field-content img {
-	width: 230px;
-}
-
-/*
- * Second sidebar (on right in LTR languages, on left in RTL)
- *
- * Remember to NOT add padding or margin to your .region-sidebar-second
- * (see the layout.css file.)
- */
-.region-sidebar-second {
-}
-
-.region-sidebar-second .section {
-}
-
-/*
- * Footer
- */
-.region-footer {
-	background: #d71700;
-	color: #fff;
-	font: normal 10px arial;
-}
-
-.region-footer .block-title {
-	display: none;
-}
-
-/*
- * Page bottom
- */
-.region-bottom /* Wrapper for any blocks placed in the page bottom region */ {
-}
-
 /* kid reporter header */
 .page-kid-reporter #content h2.block-title {
 	border: solid 1px #cecece;
@@ -699,6 +577,57 @@ ul.links li {
 	margin-right: 8px;
 }
 
+/*
+ * Around The World
+ */
+ 
+ /* ATW sidebar */
+.section-destination .region-sidebar-first .section {
+	padding: 0;
+	background: none;
+	border: none;
+}
+
+#block-tfk-atw-atw-destination-navigation {
+	background: #e6e6e6;
+	border: solid 1px #cecece;
+	padding: 10px;
+}
+
+#block-tfk-atw-atw-destination-navigation h3 {
+	margin: 0;
+}
+
+#block-tfk-atw-atw-destination-navigation h3 a {
+	display: block;
+	font: normal 14px "arial black";
+	color: #fff;
+	background: #d71700;
+	margin: 0;
+	padding: 10px;
+	text-transform: uppercase;
+}
+
+.region-sidebar-first .section .view-atw-page-featured-destination {
+	background: url(../images/atw-sidebar-head.png) no-repeat top left;
+	padding-top: 20px;
+}
+
+.view-atw-page-featured-destination .views-field-title a {
+	color: #d71700;
+	font-size: 20px;
+	text-decoration: none;
+}
+
+.view-atw-page-featured-destination .field-content {
+	width: 222px;
+	border: solid 4px; #fff;
+}
+
+.view-atw-page-featured-destination .field-content img {
+	width: 222px;
+}
+
 /* ATW destination listing */
 .page-around-the-world .view-content h3 {
 	font: bold 20px arial;
@@ -740,6 +669,7 @@ ul.links li {
 	color: #d71700;
 	text-decoration: none;
 }
+
 
 /*
  * Photos and Video Section.
