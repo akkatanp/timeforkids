@@ -311,7 +311,40 @@ ul.links li {
 }
 
 /* Teacher news sidebar */
+#block-tfk-news-tfk-news-latest-news-link {
+	font: nornmal 14px "arial black";
+	color: #fff;
+	background: #d71700;
+	padding: 10px;
+	margin-bottom: 10px;
+}
 
+#block-tfk-news-tfk-news-taxonomy-links {
+	margin-bottom: 10px;
+}
+
+#block-tfk-news-tfk-news-taxonomy-links a {
+	display: block;
+	font: normal 14px "ariual black";
+	color: #fff;
+	background: #999;
+	padding: 10px;
+}
+
+#block-tfk-news-tfk-news-taxonomy-links ul {
+	list-style-type: none;
+	margin: 8px 0;
+	padding: 0;
+}
+
+#block-tfk-news-tfk-news-taxonomy-links ul li a {
+	padding: 0;
+	margin: 4px 0;
+	display: inline;
+	background: none;
+	font: normal 11px arial;
+	color: #d71700;
+}
 
 /* kid reporter sidebar */
 .node-type-kid-reporter .region-sidebar-first .section,
@@ -617,7 +650,6 @@ ul.links li {
 	width: 270px;
 	margin-right: 10px;
 }
-
 
 /* kid reporter listings */
 .view-all-kid-reporters .view-header {
