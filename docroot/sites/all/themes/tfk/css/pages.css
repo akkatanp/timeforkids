@@ -666,10 +666,11 @@ ul.links li {
 
 .node-type-atw-destination .group-destination-images {
 	float: left;
-	width: 148px;
+	width: 140px;
 	padding: 10px;
+	border: solid 1px #cecece;
 }
-	
+
 .node-type-atw-destination .group-destination-images legend {
 	display: none;
 }
