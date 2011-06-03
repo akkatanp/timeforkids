@@ -34,7 +34,7 @@ body {
 #page {
   /* Use a 12px base font size with a 18px line height */
   /*font-size: 0.75em;  16px x .75 = 12px */
-  line-height: 18px; /* 12px x 1.5 = 18px */
+  line-height: 1.5emp; /* 12px x 1.5 = 18px */
 }
 
 /*
@@ -159,7 +159,6 @@ h6 {
 
 /* Other block-level elements */
 p {
-	margin: 0;
 }
 
 blockquote {
@@ -325,15 +324,12 @@ button {
  * The order of link states are based on Eric Meyer's article:
  * http://meyerweb.com/eric/thoughts/2007/06/11/who-ordered-the-link-states
  */
-a:link {
+a:link,
+a:visited  {
 	font-weight: bold;
 	font-size: 12px;
 	color: #d71700;
 	text-decoration: none;
-}
-
-a:visited {
-	color: #d71700;
 }
 
 a:hover,
