@@ -652,7 +652,7 @@ ul.links li {
 }
 
 /* ATW Destination */
-.node-type-atw-destination .field-name-field-description {
+.node-type-atw-destination .group-destination-facts {
 	float: left;
 	width: 310px;
 	padding: 10px;
@@ -660,10 +660,18 @@ ul.links li {
 	border: solid 1px #cecece;
 }
 
-.node-type-atw-destination .field-name-field-country-map {
+.node-type-atw-destination .group-destination-facts legend {
+	display: none;
+}
+
+.node-type-atw-destination .group-destination-images {
 	float: left;
+	width: 148px;
 	padding: 10px;
-	border: solid 1px #cecece;
+}
+	
+.node-type-atw-destination .group-destination-images legend {
+	display: none;
 }
 
 /*
