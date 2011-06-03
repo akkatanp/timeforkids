@@ -1,0 +1,15 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the Flashcard Cycle module.
+ */
+
+/**
+ * Implements hook_uninstall().
+ */
+function flashcard_uninstall() {
+  variable_del('flashcard_cycle_speed_setting');
+  variable_del('flashcard_cycle_custom_speed');
+  variable_del('flashcard_cycle_flip');
+}
