@@ -310,11 +310,16 @@ ul.links li {
 	background: #d71700;
 }
 
-#block-tfk-news-tfk-news-taxonomy-links ul li a {
+#block-tfk-news-tfk-news-taxonomy-links ul.menu li a {
 	display: inline;
 	background: none;
 	font: bold 12px arial;
 	color: #d71700;
+	padding: 0px;
+}
+
+#block-tfk-news-tfk-news-taxonomy-links ul.menu li a.active {
+	background: none;
 }
 
 #news-sidebar-year-filter {
