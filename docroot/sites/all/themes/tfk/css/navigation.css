@@ -315,6 +315,10 @@ li a.active {
 	margin: 4px 0;
 }
 
+.region-sidebar-first .section ul.menu li a{
+	padding: 0;
+}
+
 .region-sidebar-first .section a {
 	text-decoration: none;
 }
