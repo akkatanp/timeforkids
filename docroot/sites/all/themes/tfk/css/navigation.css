@@ -103,14 +103,16 @@
 	margin: 0;
 }
 
+#global-nav-container #block-menu-menu-tfk-global-navigation {
+	float: left;
+	width: 760px;
+	height: 32px;
+}
+
 #global-nav-container ul.menu,
 #teacher-nav-container ul.menu {
 	list-style-type: none;
 	height: 32px;
-}
-
-#global-nav-container ul.menu {
-	width: 950px;
 }
 
 #teacher-nav-container .inner #block-views-homepage-username-block,
@@ -285,6 +287,32 @@
 
 #teacher-nav-container ul.menu a.subscribe-renew:hover {
 	background: url(../images/sub-nav-sprite.png) no-repeat -488px -32px;
+}
+
+/* search box */
+#global-nav-container form {
+	display: block;
+	float: left;
+	width: 190px;
+	height: 32px;
+	margin: 0;
+}
+
+#global-nav-container form .form-item {
+	margin: 0;
+}
+
+#global-nav-container form .form-text {
+	width: 120px;
+	height: 12px;
+	font: normal 11px arial;
+	font-style: italic;
+	color: #555;
+	padding: 6px;
+	margin: 6px;
+	border-radius: 6px;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
 }
 
 /*
