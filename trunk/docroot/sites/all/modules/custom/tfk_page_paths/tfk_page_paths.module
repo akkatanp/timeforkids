@@ -1,19 +1,17 @@
 <?php
 
+/**
+ * Implementation of menu_hook.
+ */
 function tfk_page_paths_menu(){
 	$items = array();
-	$items['photos-video'] = array(
-		'title' => 'Photos & Video',
-		'page callback' => 'tfk_pv_page_callback',
-		'access callback' => 'user_access',
-		'access arguments' => array('access content')
-	);
+
         $items['store'] = array(
 		'title' => 'Store',
 		'page callback' => 'tfk_pv_page_callback',
 		'access callback' => 'user_access',
 		'access arguments' => array('access content')
-	);        
+	);
         $items['magazine'] = array(
 		'title' => 'TFK Magazine',
 		'page callback' => 'tfk_pv_page_callback',
@@ -31,13 +29,13 @@ function tfk_page_paths_menu(){
 		'page callback' => 'tfk_pv_page_callback',
 		'access callback' => 'user_access',
 		'access arguments' => array('access content')
-	);          
+	);
         $items['extras'] = array(
 		'title' => 'TFK Extras',
 		'page callback' => 'tfk_pv_page_callback',
 		'access callback' => 'user_access',
 		'access arguments' => array('access content')
-	); 
+	);
         $items['subscribe-renew'] = array(
 		'title' => 'Subscribe & Renew',
 		'page callback' => 'tfk_pv_page_callback',
@@ -49,10 +47,6 @@ function tfk_page_paths_menu(){
 		'page callback' => 'tfk_pv_page_callback',
 		'access callback' => 'user_access',
 		'access arguments' => array('access content')
-	);          
+	);
 	return $items;
-}
-
-function tfk_pv_page_callback() {
-	return '';
 }
