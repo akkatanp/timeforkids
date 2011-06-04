@@ -120,6 +120,9 @@ function tfk_atw_block_info() {
   $blocks['atw-destination-slideshow'] = array(
     'info' => t('Slideshow that appears on a destination page')
   );
+  $blocks['atw-timeline-slideshow'] = array(
+    'info' => t('Slideshow that appears on a ATW Timeline page')
+  );
   return $blocks;
 }
 
@@ -146,10 +149,18 @@ function tfk_atw_block_view($delta='') {
     $block['subject'] = t('');
     $block['content'] = _tfk_atw_destination_slideshow();
     break;
+  case 'atw-timeline-slideshow':
+    $block['subject'] = t('');
+    $block['content'] = _tfk_atw_timeline_slideshow();
+    break;
   }
   return $block;
 }
 
+
+function _tfk_atw_timeline_slideshow(){
+    return theme('atw_timeline_node_slideshow',_get_atw_timeline_slideshow_images());
+}
 
 function _tfk_atw_destination_slideshow(){
   return theme('atw_destination_node_slideshow',_get_atw_destination_slideshow_images());
@@ -197,8 +208,56 @@ function tfk_atw_theme() {
       'atw_destination_node_slideshow' => array(
       'template' => 'atw-destination-node-slideshow',
       'variables' => array('list' => NULL),
+    ),
+      'atw_timeline_node_slideshow' => array(
+      'template' => 'atw-timeline-node-slideshow',
+      'variables' => array('list' => NULL),
     )
+      
   );
+}
+
+
+function _get_atw_timeline_slideshow_images(){
+
+    $timelines_data = array();
+    $nid = arg(1);
+    $node = node_load($nid);
+
+    $tmp_time_nid =  field_get_items('node', $node, 'field_timeline_event');
+    foreach($tmp_time_nid as $k => $tmp_event_nid){
+        $event_nid = $tmp_event_nid['value'];
+        $timelines_data[$k]['event_nid'] = $event_nid;
+
+        $result = db_query('select ec.field_timeline_event_copy_value as event_copy ,ep.field_timeline_event_photo_fid,fm.uri as file_uri,et.field_timeline_event_text_value as timeline_title
+            from {field_data_field_timeline_event_copy} ec left join {field_data_field_timeline_event_photo} ep on ec.entity_id = ep.entity_id
+            left join {file_managed} fm on ep.field_timeline_event_photo_fid = fm.fid
+            left join {field_data_field_timeline_event_text} et on ec.entity_id = et.entity_id
+            where ec.entity_id = :event_nid',array('event_nid' => $event_nid));
+        $record = $result->fetch();
+        $timelines_data[$k]['event_copy'] = $record->event_copy;
+        $timelines_data[$k]['event_title'] = $record->timeline_title;
+        $timelines_data[$k]['image_path'] = image_style_path('tfk_rect_large',$record->file_uri);
+        $timelines_data[$k]['image_path'] = file_create_url($timelines_data[$k]['image_path']);
+    }
+
+    $is_admin_editor = 0;
+    global $user;
+    $user_roles = $user->roles;
+    if(in_array('administrator',$user_roles) || in_array('editor',$user_roles)){
+         $is_admin_editor = 1;
+    }
+
+    $additional_content = array();
+    $addit_content = field_get_items('node', $node, 'field_additional_content');
+    foreach($addit_content as $i => $add_cont){
+        $additional_content[$i]['nid'] = $add_cont['nid'];
+        $additional_content[$i]['title'] = $add_cont['node']->title;
+    }
+
+
+    $list = array('images_data' => $timelines_data,'is_admin_editor' => $is_admin_editor,'timeline_nid' => $nid,'related_content' => $additional_content);
+    return $list;
 }
 
 function _get_atw_destination_slideshow_images(){
