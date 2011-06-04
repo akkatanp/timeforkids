@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="/sites/all/themes/tfk/css/atw_homepage_slideshow.css" />
 <div id="atw-container">
 	<div id="slideshow">
 		<div class="header"></div>
