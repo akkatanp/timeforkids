@@ -654,6 +654,7 @@ function tfk_atw_preprocess_node(&$vars, $hook) {
              $phrase['phrase_translation'] = $record->phrase_translation;
              $phrase['url_to_audio'] = file_create_url($record->audio_uri);
              $phrase['phrase_filemime'] = $record->filemime;
+
              if($record->next_level == 'yes'){
                 $vars['lingo_phrases']['next_level'][] = $phrase;
              }else{
@@ -663,7 +664,7 @@ function tfk_atw_preprocess_node(&$vars, $hook) {
         }
 
 
-        $vars['is_admin_editor']  = 0;
+        $vars['is_admin_editor'] = 0;
         global $user;
         $user_roles = $user->roles;
         if(in_array('administrator',$user_roles) || in_array('editor',$user_roles)){
