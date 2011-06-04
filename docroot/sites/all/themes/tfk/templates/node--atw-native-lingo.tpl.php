@@ -114,33 +114,39 @@ $speaker_photo = file_create_url(image_style_path('tfk_rect_large',$speaker_phot
       <br />
         <img src="<?php echo $speaker_photo; ?>"/>
       <br />
-      BASIC PHRASES:<br/>
-      <?php foreach($lingo_phrases['basic'] as $phrase):?>
-        Phrase Text:<?php print $phrase['phrase_text'];?><br/>
-        Phrase Translation:<?php print $phrase['phrase_translation'];?><br/>
-        Phrase Audio Url:<?php print $phrase['url_to_audio'];?><br/>
-        Phrase Filemime:<?php print $phrase['phrase_filemime'];?><br/>
-        <?php if($is_admin_editor):?>
-            LINKS : <?php print l('edit','field-collection/field-native-lingo-phrase/'.$phrase['phrase_nid'].'/edit',array('attributes'=>array('class' => 'anyclassyouwant')));?> --
-            <?php print l('delete','field-collection/field-native-lingo-phrase/'.$phrase['phrase_nid'].'/delete',array('attributes'=>array('class' => 'anyclassyouwant')));?><br/>
-        <?php endif; ?>
-            ____________________________________________________
-        <br/>
-      <?php endforeach;?><br/>
 
-      NEXT LEVEL PHRASES:<br/>
-      <?php foreach($lingo_phrases['next_level'] as $phrase):?>
-        Phrase Text:<?php print $phrase['phrase_text'];?><br/>
-        Phrase Translation:<?php print $phrase['phrase_translation'];?><br/>
-        Phrase Audio Url:<?php print $phrase['url_to_audio'];?><br/>
-        Phrase Filemime:<?php print $phrase['phrase_filemime'];?><br/>
-        <?php if($is_admin_editor):?>
-        LINKS : <?php print l('edit','field-collection/field-native-lingo-phrase/'.$phrase['phrase_nid'].'/edit',array('attributes'=>array('class' => 'anyclassyouwant')));?> --
-        <?php print l('delete','field-collection/field-native-lingo-phrase/'.$phrase['phrase_nid'].'/delete',array('attributes'=>array('class' => 'anyclassyouwant')));?><br/>
-        <?php endif; ?>
-        ____________________________________________________
-        <br/>
-      <?php endforeach;?>
+      <?php if(count($lingo_phrases['basic']) > 0):?>
+          BASIC PHRASES:<br/>
+          <?php foreach($lingo_phrases['basic'] as $phrase):?>
+            Phrase Text:<?php print $phrase['phrase_text'];?><br/>
+            Phrase Translation:<?php print $phrase['phrase_translation'];?><br/>
+            Phrase Audio Url:<?php print $phrase['url_to_audio'];?><br/>
+            Phrase Filemime:<?php print $phrase['phrase_filemime'];?><br/>
+            <?php if($is_admin_editor):?>
+                LINKS : <?php print l('edit','field-collection/field-native-lingo-phrase/'.$phrase['phrase_nid'].'/edit',array('attributes'=>array('class' => 'anyclassyouwant')));?> --
+                <?php print l('delete','field-collection/field-native-lingo-phrase/'.$phrase['phrase_nid'].'/delete',array('attributes'=>array('class' => 'anyclassyouwant')));?><br/>
+            <?php endif; ?>
+                ____________________________________________________
+            <br/>
+          <?php endforeach;?><br/>
+      <?php endif;?>
+
+
+      <?php if(count($lingo_phrases['next_level']) > 0):?>
+          NEXT LEVEL PHRASES:<br/>
+              <?php foreach($lingo_phrases['next_level'] as $phrase):?>
+                Phrase Text:<?php print $phrase['phrase_text'];?><br/>
+                Phrase Translation:<?php print $phrase['phrase_translation'];?><br/>
+                Phrase Audio Url:<?php print $phrase['url_to_audio'];?><br/>
+                Phrase Filemime:<?php print $phrase['phrase_filemime'];?><br/>
+                <?php if($is_admin_editor):?>
+                LINKS : <?php print l('edit','field-collection/field-native-lingo-phrase/'.$phrase['phrase_nid'].'/edit',array('attributes'=>array('class' => 'anyclassyouwant')));?> --
+                <?php print l('delete','field-collection/field-native-lingo-phrase/'.$phrase['phrase_nid'].'/delete',array('attributes'=>array('class' => 'anyclassyouwant')));?><br/>
+                <?php endif; ?>
+                ____________________________________________________
+                <br/>
+          <?php endforeach;?>
+        <?php endif;?>
       <?php print l('ADD NEW','field-collection/field-native-lingo-phrase/add/node/'.$node->nid, array('attributes'=>array('class' => 'anyclassyouwant')));?>
       
   </div>
