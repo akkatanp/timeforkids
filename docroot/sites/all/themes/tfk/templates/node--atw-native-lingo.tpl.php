@@ -109,7 +109,6 @@ $speaker_photo = file_create_url(image_style_path('tfk_rect_large',$speaker_phot
       hide($content['comments']);
       hide($content['links']);
         ?>
-      <?php print_r($lingo_phrases['basic']);?>
       <?php print render($content['body']); ?>
       <br />
         <img src="<?php echo $speaker_photo; ?>"/>
@@ -117,7 +116,6 @@ $speaker_photo = file_create_url(image_style_path('tfk_rect_large',$speaker_phot
 
       <?php if(count($lingo_phrases['basic']) > 0):?>
           BASIC PHRASES:<br/>
-
 
           <?php foreach($lingo_phrases['basic'] as $phrase):?>
 
