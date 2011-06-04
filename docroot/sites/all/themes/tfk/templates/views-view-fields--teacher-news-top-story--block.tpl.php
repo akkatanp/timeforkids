@@ -24,12 +24,28 @@
  */
 ?>
 <?php foreach ($fields as $id => $field): ?>
-  <?php if (!empty($field->separator)): ?>
-    <?php print $field->separator; ?>
-  <?php endif; ?>
 
-  <?php print $field->wrapper_prefix; ?>
-    <?php print $field->label_html; ?>
-    <?php print $field->content; ?>
-  <?php print $field->wrapper_suffix; ?>
+    <?php if($id != 'field_mini_lessons' && $id != 'field_related_articles'):?>
+      <?php if (!empty($field->separator)): ?>
+        <?php print $field->separator; ?>
+      <?php endif; ?>
+
+      <?php print $field->wrapper_prefix; ?>
+        <?php print $field->label_html; ?>
+        <?php print $field->content; ?>
+      <?php print $field->wrapper_suffix; ?>
+    <?php endif; ?>
 <?php endforeach; ?>
+
+<?php if($fields['field_mini_lessons'] || $fields['field_mini_lessons']):?>
+    <div class="related-content-wrap">
+        <div class="addit-content">Additional Content</div>
+        <?php if($fields['field_mini_lessons']): ?>
+           <div class="addit-mini-lessons"><?php print $fields['field_mini_lessons']->label;?> : <?php print $fields['field_mini_lessons']->content;?></div>
+        <?php endif; ?>
+
+        <?php if($fields['field_related_articles']): ?>
+           <div class="addit-related-articles"><?php print $fields['field_related_articles']->label;?> : <?php print $fields['field_related_articles']->content;?></div>
+        <?php endif; ?>
+    </div>
+<?php endif;?>
