@@ -117,9 +117,13 @@ $speaker_photo = file_create_url(image_style_path('tfk_rect_large',$speaker_phot
 
       <?php if(count($lingo_phrases['basic']) > 0):?>
           BASIC PHRASES:<br/>
+
+
+          <?php print_r($lingo_phrases['basic']);?>
+
           <?php foreach($lingo_phrases['basic'] as $phrase):?>
 
-            <?php print_r($phrase);?>
+            
 
 
             Phrase Text:<?php print $phrase['phrase_text'];?><br/>
