@@ -329,12 +329,16 @@
 	height: 23px;
 	font: bold 11px arial;
 	color: #fff;
+	margin: 5px 0;
 	padding: 5px 6px;
 	background: #d71700;
 	border: 0;
 	border-radius: 12px;
 	-moz-border-radius: 12px;
 	-webkit-border-radius: 12px;
+	box-shadow: 2px 2px 2px #999999;
+	-moz-box-shadow: 2px 2px 2px #999999;
+	-webkit-box-shadow: 2px 2px 2px #999999;
 }
 
 /*
