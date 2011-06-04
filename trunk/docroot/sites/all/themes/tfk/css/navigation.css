@@ -303,6 +303,7 @@
 }
 
 #global-nav-container form .form-text {
+	display: block;
 	float: left;
 	width: 110px;
 	height: 11px;
@@ -322,13 +323,14 @@
 }
 
 #global-nav-container form .form-submit {
+	display: block;
 	float: left;
 	width: 40px;
-	height: 24px;
+	height: 13px;
 	font: bold 11px arial;
 	color: #fff;
 	padding: 5px 6px;
-	margin: 5p 0;
+	margin: 5px 0;
 	background: #d71700;
 	border-radius: 12px;
 	-moz-border-radius: 12px;
