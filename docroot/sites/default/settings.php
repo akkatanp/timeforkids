@@ -1,5 +1,6 @@
 <?php
 // $Id: default.settings.php,v 1.51 2010/10/11 23:49:48 dries Exp $
+require('/var/www/site-php/time/time-settings.inc');
 /**
  * @file
  * Drupal site-specific configuration file.
