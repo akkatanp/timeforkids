@@ -1,10 +1,11 @@
-#page-title, h2.block-title { 
+/*#page-title, h2.block-title { 
 	display: none;
-}
+}*/
 
 #atw-container {
 	border: solid 1px #cecece;
 	padding: 10px 9px;
+	margin-bottom: 10px;
 }
 
 #atw-container #slideshow {
