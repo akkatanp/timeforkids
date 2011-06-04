@@ -18,7 +18,7 @@ Images with data ( SEE TEMPLATE atw-timeline-node-slideshow.tpl.php):<br>
 
 <?php if($is_admin_editor == 1):?>
 And these are links for editing/deleting/adding timelines, they become visible only if admin or editor look at the page. This is the only way for them to edit individual timelines
-because of nature of how they work =(. So we gotta create links for them.<br>
+because of nature of how they work =(. So we gotta create links for them. We have to render them in a nice table or smth<br>
 
     <?php foreach($images_data as $image):?>
          Event Title: <?php print $image['event_title'] ?> -- <?php print l('edit','field-collection/field-timeline-event/'.$image['event_nid'].'/edit');?>
