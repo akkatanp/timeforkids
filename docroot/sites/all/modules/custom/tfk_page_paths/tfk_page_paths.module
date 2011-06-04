@@ -50,3 +50,8 @@ function tfk_page_paths_menu(){
 	);
 	return $items;
 }
+
+function tfk_pv_page_callback() {
+	return '';
+}
+
