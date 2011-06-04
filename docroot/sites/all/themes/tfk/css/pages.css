@@ -413,8 +413,9 @@ ul.links li {
 	width: 38px;
 	height: 38px;
 	z-index: 2;
-	background: url(../images/top-sory-corner.png) no-repeat;
+	background: url(../images/top-story-corner.png) no-repeat;
 }
+
 .view-teacher-news-top-story .view-content .views-field-field-image,
 .view-kid-reporters-channel-top-story .views-field-field-image {
 	position: relative;
@@ -434,6 +435,7 @@ ul.links li {
 	font: bold 14px Arial;
 	padding: 2px 6px;
 	display: inline-block;
+	text-transform: uppercase;
 }
 
 .view-teacher-news-top-story .view-content .views-field-title a,
@@ -558,23 +560,23 @@ ul.links li {
 	display: block;
 	float: left;
 	width: 240px;
+	height: 90px;
 	border: solid 1px #cecece;
 	padding: 4px;
+	margin: 4px 0;
 }
 
 .view-all-kid-reporters .view-content table td.col-1 {
-	margin: 4px 4px 4px 0;
-}
-
-.view-all-kid-reporters .view-content table td a {
-	font-weight: bold;
-	color: #d71700;
-	text-decoration: none;
+	margin-right: 8px;
 }
 
 .view-all-kid-reporters .view-content table td .views-field-field-thumbnail-image {
 	float: left;
 	margin-right: 8px;
+}
+
+.view-all-kid-reporters .view-content table td .views-field-tiotle-1 {
+	margin-top: 10px;
 }
 
 /*
