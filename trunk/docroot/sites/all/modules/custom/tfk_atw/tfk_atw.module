@@ -621,4 +621,55 @@ function tfk_atw_form_alter(&$form,&$form_state,$form_id) {
 		}
 	}
 }
-/* QUIZZ FUNCTIONALITY BEGIN*/
+/* QUIZZ FUNCTIONALITY END*/
+
+
+//PREPROCESSORS
+
+function tfk_atw_preprocess_node(&$vars, $hook) {
+    
+    if($vars['type'] == 'atw_native_lingo'){
+
+
+        $vars['lingo_phrases']['basic'] = array();
+        $vars['lingo_phrases']['next_level'] = array();
+
+        foreach( $vars['field_native_lingo_phrase'] as $k => $lingo_phrase ){
+            $phrase_nid = $lingo_phrase['value'];
+            $result = db_query('select pt.field_lingo_phrase_text_value as phrase_text,
+                ptr.field_lingo_phrase_translation_value as phrase_translation,
+                nl.field_lingo_phrase_next_level_value as next_level,
+                fm.uri as audio_uri, fm.filemime
+                from field_data_field_lingo_phrase_text pt 
+                left join field_data_field_lingo_phrase_translation ptr on pt.entity_id = ptr.entity_id
+                left join field_data_field_lingo_phrase_next_level nl on pt.entity_id = nl.entity_id
+                left join field_data_field_lingo_phrase_audio pa on pt.entity_id = pa.entity_id
+                left join file_managed fm on pa.field_lingo_phrase_audio_fid = fm.fid
+                where pt.entity_id = :entity_id',array('entity_id' => $phrase_nid));
+             $record = $result->fetch();
+
+             $phrase = array();
+             $phrase['phrase_nid'] = $phrase_nid;
+             $phrase['phrase_text'] = $record->phrase_text;
+             $phrase['phrase_translation'] = $record->phrase_translation;
+             $phrase['url_to_audio'] = file_create_url($record->audio_uri);
+             $phrase['phrase_filemime'] = $record->filemime;
+             if($record->next_level == 'yes'){
+                $vars['lingo_phrases']['next_level'][] = $phrase;
+             }else{
+                $vars['lingo_phrases']['basic'][] = $phrase;
+             }
+
+        }
+
+
+        $vars['is_admin_editor']  = 0;
+        global $user;
+        $user_roles = $user->roles;
+        if(in_array('administrator',$user_roles) || in_array('editor',$user_roles)){
+            $vars['is_admin_editor'] = 1;
+        }
+
+
+    }
+}
