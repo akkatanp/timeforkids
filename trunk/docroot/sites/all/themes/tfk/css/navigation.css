@@ -326,7 +326,7 @@
 	display: block;
 	float: left;
 	width: 52px;
-	height: 22px;
+	height: 32px;
 	font: bold 11px arial;
 	color: #fff;
 	padding: 5px 6px;
@@ -387,6 +387,7 @@
 }
 
 .region-footer ul.menu li a {
+`	font-size: 10px;
 	color: #fff;
 	text-decoration: none;
 	font-weight: normal;
