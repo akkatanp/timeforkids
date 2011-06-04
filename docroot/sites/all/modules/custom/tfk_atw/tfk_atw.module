@@ -238,7 +238,7 @@ function _get_atw_daylife_slideshow_images(){
     $node = node_load($nid);
     $node_data['daylife_nid'] = $node->nid;
     $img_tmp = field_get_items('node', $node, 'field_person_photo');
-    $node_data['daylife_speaker_photo'] = file_create_url(image_style_path('tfk_square_medium',$img_tmp[0]['uri']));
+    $node_data['daylife_speaker_photo'] = file_create_url(image_style_path('tfk_square_large',$img_tmp[0]['uri']));
     $intr_tmp = field_get_items('node', $node, 'field_person_intro');
     $node_data['daylife_speaker_intro'] = $intr_tmp[0]['value'];
 
