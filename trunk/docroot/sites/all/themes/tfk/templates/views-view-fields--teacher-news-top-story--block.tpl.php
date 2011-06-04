@@ -25,7 +25,7 @@
 ?>
 
 <?php foreach ($fields as $id => $field): ?>
-    <?php if($id != 'field_mini_lessons' || $id != 'field_related_articles'):?>
+    <!--<?php if($id != 'field_mini_lessons' || $id != 'field_related_articles'):?> -->
       <?php if (!empty($field->separator)): ?>
         <?php print $field->separator; ?>
       <?php endif; ?>
@@ -34,7 +34,7 @@
         <?php print $field->label_html; ?>
         <?php print $field->content; ?>
       <?php print $field->wrapper_suffix; ?>
-    <?php endif; ?>
+    <!--<?php endif; ?> -->
 <?php endforeach; ?>
 
 <!--
