@@ -22,7 +22,7 @@
  *
  * @ingroup views_templates
  */
-print_r($fields);exit;
+//print_r($fields);exit;
 ?>
 
 
