@@ -303,7 +303,8 @@
 }
 
 #global-nav-container form .form-text {
-	width: 120px;
+	float: left;
+	width: 110px;
 	height: 11px;
 	font: normal 11px arial;
 	font-style: italic;
@@ -315,9 +316,23 @@
 	border-right: solid 1px #cecece;
 	border-bottom: solid 1px #cecece;
 	background: #dedede;
-	border-radius: 10px;
-	-moz-border-radius: 10px;
-	-webkit-border-radius: 10px;
+	border-radius: 12px;
+	-moz-border-radius: 12px;
+	-webkit-border-radius: 12px;
+}
+
+#global-nav-container form .form-submit {
+	float: left;
+	width: 40px;
+	height: 11px;
+	font: bold 11px arial;
+	color: #fff;
+	padding: 5px 6px;
+	margin: 5p 0;
+	background: #d71700;
+	border-radius: 12px;
+	-moz-border-radius: 12px;
+	-webkit-border-radius: 12px;
 }
 
 /*
