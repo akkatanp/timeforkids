@@ -1,3 +1,11 @@
+<link rel="stylesheet" href="/sites/all/themes/tfk/css/atw-timeline.css" />
+<script src="/sites/all/themes/tfk/js/atw-timeline.js"></script>
+
+<div class="atw-graphic-header"></div>
+
+<div id="timeline-container">
+
+
 Images with data ( SEE TEMPLATE atw-timeline-node-slideshow.tpl.php):<br>
 
 <?php foreach($images_data as $image):?>
@@ -28,5 +36,6 @@ because of nature of how they work =(. So we gotta create links for them. We hav
     <?php print l('ADD NEW TIMELINE EVENT','field-collection/field-timeline-event/add/node/'.$timeline_nid);?>
 <?php endif;?>
 
+</div>
 
     
