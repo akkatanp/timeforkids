@@ -57,7 +57,7 @@ function homework_helper_views_default_views() {
   $handler->display->display_options['fields']['title']['hide_empty'] = 0;
   $handler->display->display_options['fields']['title']['empty_zero'] = 0;
   $handler->display->display_options['fields']['title']['link_to_node'] = 1;
-  /* Field: Content: Body */
+  /* Field: Content: Description */
   $handler->display->display_options['fields']['body']['id'] = 'body';
   $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
   $handler->display->display_options['fields']['body']['field'] = 'body';
@@ -126,7 +126,7 @@ function homework_helper_views_default_views() {
   $view->description = '';
   $view->tag = 'default';
   $view->base_table = 'node';
-  $view->human_name = 'Admin Section';
+  $view->human_name = 'Homework Helper Admin';
   $view->core = 7;
   $view->api_version = '3.0-alpha1';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
@@ -151,9 +151,8 @@ function homework_helper_views_default_views() {
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
   $handler->display->display_options['header']['area']['empty'] = FALSE;
-  $handler->display->display_options['header']['area']['content'] = '<a href="/node/add/a-paper">+ Add new A+ paper</a> | <a href="/node/add/paper-step">+ Add new A+ paper step</a>
-';
-  $handler->display->display_options['header']['area']['format'] = 'filtered_html';
+  $handler->display->display_options['header']['area']['content'] = '<p><a href="/node/add/a-paper">+ Add new A+ paper</a> | <a href="/node/add/paper-step">+ Add new A+ paper step</a></p>';
+  $handler->display->display_options['header']['area']['format'] = 'full_html';
   $handler->display->display_options['header']['area']['tokenize'] = 0;
   /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
@@ -482,10 +481,9 @@ function homework_helper_views_default_views() {
   $handler->display->display_options['header']['area']['id'] = 'area';
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
-  $handler->display->display_options['header']['area']['empty'] = FALSE;
-  $handler->display->display_options['header']['area']['content'] = '<a href="/node/add/flashcard">+ Add new Flashcard Desk</a>
-';
-  $handler->display->display_options['header']['area']['format'] = 'filtered_html';
+  $handler->display->display_options['header']['area']['empty'] = TRUE;
+  $handler->display->display_options['header']['area']['content'] = '<p><a href="/node/add/flashcard">+ Add new Flashcard Deck</a></p>';
+  $handler->display->display_options['header']['area']['format'] = 'full_html';
   $handler->display->display_options['header']['area']['tokenize'] = 0;
   $handler->display->display_options['defaults']['empty'] = FALSE;
   /* No results behavior: Global: Text area */
@@ -614,8 +612,7 @@ function homework_helper_views_default_views() {
     t('Items per page'),
     t('- All -'),
     t('Offset'),
-    t('<a href="/node/add/a-paper">+ Add new A+ paper</a> | <a href="/node/add/paper-step">+ Add new A+ paper step</a>
-'),
+    t('<p><a href="/node/add/a-paper">+ Add new A+ paper</a> | <a href="/node/add/paper-step">+ Add new A+ paper step</a></p>'),
     t('No Study Helpers have been created.'),
     t('Update'),
     t('Title'),
@@ -631,8 +628,7 @@ function homework_helper_views_default_views() {
     t('All'),
     t('%1 steps'),
     t('Study Helpers'),
-    t('<a href="/node/add/flashcard">+ Add new Flashcard Desk</a>
-'),
+    t('<p><a href="/node/add/flashcard">+ Add new Flashcard Deck</a></p>'),
   );
   $export['admin_section'] = $view;
 

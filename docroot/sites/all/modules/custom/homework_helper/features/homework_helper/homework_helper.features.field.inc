@@ -456,6 +456,59 @@ function homework_helper_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-flashcard-field_flashcard'
+  $fields['node-flashcard-field_flashcard'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '-1',
+      'deleted' => '0',
+      'entity_types' => array(
+        0 => 'node',
+      ),
+      'field_name' => 'field_flashcard',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'module' => 'flashcard',
+      'settings' => array(),
+      'translatable' => '1',
+      'type' => 'flashcard',
+    ),
+    'field_instance' => array(
+      'bundle' => 'flashcard',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'hidden',
+          'module' => 'flashcard_cycle',
+          'settings' => array(),
+          'type' => 'flashcard_cycle',
+          'weight' => '0',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_flashcard',
+      'label' => 'Flashcard',
+      'required' => FALSE,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'module' => 'flashcard',
+        'settings' => array(),
+        'type' => 'flashcard_default',
+        'weight' => 0,
+      ),
+    ),
+  );
+
   // Exported field: 'node-paper_step-body'
   $fields['node-paper_step-body'] = array(
     'field_config' => array(
@@ -524,7 +577,7 @@ function homework_helper_field_default_fields() {
           'summary_rows' => 5,
         ),
         'type' => 'text_textarea_with_summary',
-        'weight' => '6',
+        'weight' => '7',
       ),
       'widget_type' => 'text_textarea_with_summary',
     ),
@@ -591,7 +644,7 @@ function homework_helper_field_default_fields() {
           'rows' => '5',
         ),
         'type' => 'text_textarea',
-        'weight' => '7',
+        'weight' => '8',
       ),
     ),
   );
@@ -635,7 +688,7 @@ function homework_helper_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '6',
+          'weight' => '7',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -658,7 +711,7 @@ function homework_helper_field_default_fields() {
           'display_label' => 0,
         ),
         'type' => 'options_onoff',
-        'weight' => '4',
+        'weight' => '5',
       ),
     ),
   );
@@ -711,7 +764,7 @@ function homework_helper_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '2',
+          'weight' => '3',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -780,7 +833,7 @@ function homework_helper_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '4',
+          'weight' => '5',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -804,6 +857,73 @@ function homework_helper_field_default_fields() {
         ),
         'type' => 'options_onoff',
         'weight' => '2',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-paper_step-field_step_text_label'
+  $fields['node-paper_step-field_step_text_label'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_step_text_label',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '255',
+      ),
+      'translatable' => '1',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'paper_step',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '2',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_step_text_label',
+      'label' => 'Textarea Label',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '60',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '3',
       ),
     ),
   );
@@ -847,7 +967,7 @@ function homework_helper_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '5',
+          'weight' => '6',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -870,7 +990,7 @@ function homework_helper_field_default_fields() {
           'display_label' => 0,
         ),
         'type' => 'options_onoff',
-        'weight' => '3',
+        'weight' => '4',
       ),
     ),
   );
@@ -900,7 +1020,7 @@ function homework_helper_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '3',
+          'weight' => '4',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -924,7 +1044,7 @@ function homework_helper_field_default_fields() {
         'module' => 'number',
         'settings' => array(),
         'type' => 'number',
-        'weight' => '5',
+        'weight' => '6',
       ),
     ),
   );
@@ -934,6 +1054,7 @@ function homework_helper_field_default_fields() {
   t('Body');
   t('Description');
   t('Example');
+  t('Flashcard');
   t('Graphical Organizer Image');
   t('Graphical Organizer Instructions');
   t('Image');
@@ -943,6 +1064,7 @@ function homework_helper_field_default_fields() {
   t('Parent paper');
   t('Sample Paper Image');
   t('Sample Paper Instructions');
+  t('Textarea Label');
   t('Weight');
 
   return $fields;
