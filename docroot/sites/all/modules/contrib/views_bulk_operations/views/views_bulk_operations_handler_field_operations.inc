@@ -8,6 +8,7 @@
 
 class views_bulk_operations_handler_field_operations extends views_handler_field {
   var $all_operations = array();
+  var $revision = FALSE;
 
   function option_definition() {
     $options = parent::option_definition();
@@ -162,7 +163,6 @@ class views_bulk_operations_handler_field_operations extends views_handler_field
 
   /**
    * Returns the form which replaces the placeholder from render().
-   * This is done during post-processing by the views_form module.
    */
   function views_form(&$form, &$form_state) {
     // The view is empty, abort.
@@ -302,7 +302,7 @@ class views_bulk_operations_handler_field_operations extends views_handler_field
         'source' => 'action',
         'type' => $operation['type'],
         'aggregate' => isset($operation['aggregate']) ? (int)$operation['aggregate'] : VBO_AGGREGATE_FORBIDDEN,
-        'access operation' => isset($operation['access operation']) ? $operation['access operation'] : 0,
+        'access operation' => isset($operation['access operation']) ? $operation['access operation'] : VBO_ACCESS_OP_UPDATE,
         'permissions' => isset($operation['permissions']) ? $operation['permissions'] : NULL,
       );
     }
@@ -385,6 +385,10 @@ class views_bulk_operations_handler_field_operations extends views_handler_field
     // The base table is now known, use it to determine the entity type.
     foreach (entity_get_info() as $entity_type => $info) {
       if ($info['base table'] == $base_table) {
+        return $entity_type;
+      }
+      elseif (isset($info['revision table']) && $info['revision table'] == $base_table) {
+        $this->revision = TRUE;
         return $entity_type;
       }
     }
