@@ -123,6 +123,9 @@ function tfk_atw_block_info() {
   $blocks['atw-timeline-slideshow'] = array(
     'info' => t('Slideshow that appears on a ATW Timeline page')
   );
+  $blocks['atw-daylife-slideshow'] = array(
+    'info' => t('Slideshow that appears on a ATW Day in Life')
+  );
   return $blocks;
 }
 
@@ -153,10 +156,17 @@ function tfk_atw_block_view($delta='') {
     $block['subject'] = t('');
     $block['content'] = _tfk_atw_timeline_slideshow();
     break;
+  case 'atw-daylife-slideshow':
+    $block['subject'] = t('');
+    $block['content'] = _tfk_atw_daylife_slideshow();
+    break;
   }
   return $block;
 }
 
+function _tfk_atw_daylife_slideshow(){
+    return theme('atw_daylife_node_slideshow',_get_atw_daylife_slideshow_images());
+}
 
 function _tfk_atw_timeline_slideshow(){
     return theme('atw_timeline_node_slideshow',_get_atw_timeline_slideshow_images());
@@ -212,11 +222,52 @@ function tfk_atw_theme() {
       'atw_timeline_node_slideshow' => array(
       'template' => 'atw-timeline-node-slideshow',
       'variables' => array('list' => NULL),
+    ),
+      'atw_daylife_node_slideshow' => array(
+      'template' => 'atw-daylife-node-slideshow',
+      'variables' => array('list' => NULL),
     )
-      
   );
 }
 
+function _get_atw_daylife_slideshow_images(){
+    $daylife_data = array();
+    $node_data = array();
+    
+    $nid = arg(1);
+    $node = node_load($nid);
+    $node_data['daylife_nid'] = $node->nid;
+    $img_tmp = field_get_items('node', $node, 'field_person_photo');
+    $node_data['daylife_speaker_photo'] = file_create_url(image_style_path('tfk_square_medium',$img_tmp[0]['uri']));
+    $intr_tmp = field_get_items('node', $node, 'field_person_intro');
+    $node_data['daylife_speaker_intro'] = $intr_tmp[0]['value'];
+
+    $tmp_day_nid =  field_get_items('node', $node, 'field_day_in_life_time');
+
+    $result = db_query('select ti.field_day_in_life_time_item_value,ti.entity_id,
+            ta.field_day_in_life_time_activity_value
+            from {field_data_field_day_in_life_time_item} ti
+            left join {field_data_field_day_in_life_time_activity} ta on ti.entity_id = ta.entity_id
+            left join {field_data_field_day_in_life_time} lt on ti.entity_id = lt.field_day_in_life_time_value
+            where lt.entity_id = :entity_id',array('entity_id' => $node->nid));
+
+    foreach ($result as $k => $record) {
+
+        $daylife_data[$k]['time'] = $record->field_day_in_life_time_item_value;
+        $daylife_data[$k]['activity'] = $record->field_day_in_life_time_activity_value;
+        $daylife_data[$k]['time_id'] = $record->entity_id;
+    }
+
+    $is_admin_editor = 0;
+    global $user;
+    $user_roles = $user->roles;
+    if(in_array('administrator',$user_roles) || in_array('editor',$user_roles)){
+         $is_admin_editor = 1;
+    }
+
+    $list = array('daylife_data' => $daylife_data,'node_data' => $node_data,'is_admin_editor' => $is_admin_editor);
+    return $list;
+}
 
 function _get_atw_timeline_slideshow_images(){
 
@@ -629,7 +680,6 @@ function tfk_atw_form_alter(&$form,&$form_state,$form_id) {
 function tfk_atw_preprocess_node(&$vars, $hook) {
     
     if($vars['type'] == 'atw_native_lingo'){
-
 
         $vars['lingo_phrases']['basic'] = array();
         $vars['lingo_phrases']['next_level'] = array();
