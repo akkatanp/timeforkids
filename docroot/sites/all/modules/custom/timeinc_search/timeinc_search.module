@@ -1,0 +1,69 @@
+<?php
+
+/**
+ * Implementation of hook_menu.
+ */
+function timeinc_search_menu(){
+  $items = array();
+  
+  $items['photos-video'] = array(
+  	'title' => 'Photos & Video',
+  	'page callback' => 'timeinc_search_photos_and_video',
+  	'access callback' => 'user_access',
+  	'access arguments' => array('access content'),
+    'type' => MENU_NORMAL_ITEM,
+  );
+  return $items;
+}
+
+function timeinc_search_init() {
+  module_load_include('inc', 'timeinc_search', 'TimeIncSolrBaseQuery');
+}
+
+function timeinc_search_photos_and_video() {
+
+    module_load_include('module', 'search');   
+  
+    $filterstring = isset($_GET['filters']) ? $_GET['filters'] : '';
+    $solrsort = isset($_GET['solrsort']) ? $_GET['solrsort'] : '';
+    $page = isset($_GET['page']) ? $_GET['page'] : 0;
+    $base_path = 'photos-video';
+    
+    $response = apachesolr_search_run(search_get_keys(), $filterstring, $solrsort, $base_path, $page, 'apachesolr_search');
+
+    return theme('search_results', array('results' => $response));
+    
+	return '';
+}
+
+/**
+ * Implementation of hook_apachesolr_modify_query().
+ * 
+ * Limit the search results to image and video content type.
+ */
+function timeinc_search_apachesolr_modify_query(&$query, $caller) {
+  
+  // Only apply these filters when we are in the photos and video page.
+  if($query->get_base_path() === 'photos-video') {
+    $subquery = apachesolr_drupal_query();
+    $subquery->add_filter('bundle', 'image');
+    $subquery->add_filter('bundle', 'slideshow');
+    $query->add_subquery($subquery, 'OR');
+  } 
+   
+}
+
+/**
+ * Helper function for grabbing search keys.
+ */
+function search_get_keys() {
+  static $return;
+  if (!isset($return)) {
+    // Extract keys as remainder of path
+    // Note: support old GET format of searches for existing links.
+    $path = explode('/', $_GET['q'], 2);
+    $keys = empty($_REQUEST['keys']) ? '' : $_REQUEST['keys'];
+    $return = count($path) == 2 ? $path[1] : $keys;
+  }
+  return $return;
+}
