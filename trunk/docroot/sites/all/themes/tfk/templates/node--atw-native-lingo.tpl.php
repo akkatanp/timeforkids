@@ -119,7 +119,7 @@ $speaker_photo = file_create_url(image_style_path('tfk_rect_large',$speaker_phot
           BASIC PHRASES:<br/>
           <?php foreach($lingo_phrases['basic'] as $phrase):?>
 
-            <?php print_r($phrase);>
+            <?php print_r($phrase);?>
 
 
             Phrase Text:<?php print $phrase['phrase_text'];?><br/>
