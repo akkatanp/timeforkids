@@ -51,8 +51,9 @@
 	border: solid 1px #cecece;
 	width: 38px;
 	height: 38px;
-	background: #000;
+	background: #fff;
 	margin-right: 8px;
+	cursor: pointer;
 }
 
 #daylife-container .clock.active {
@@ -74,7 +75,7 @@
 	border-top: dotted 1px #cecece;
 	margin-top: 10px;
 	padding-top: 10px;
-	height: 20px;
+	height: 40px;
 }
 
 #daylife-container #line-below {

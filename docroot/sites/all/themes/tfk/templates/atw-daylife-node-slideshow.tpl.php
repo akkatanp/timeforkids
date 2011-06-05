@@ -4,7 +4,7 @@
 <div class="atw-graphic-header"></div>
 
 <div id="daylife-container">
-	<h1>Country: History Timeline</h1>
+	<h1>Country: Day In The Life</h1>
 	<?php print render($content['body']); ?>
 	
 	<div id="image-container"><img src="<?php print $node_data['daylife_speaker_photo'];?>" /></div>
