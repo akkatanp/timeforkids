@@ -33,6 +33,7 @@ $(document).ready(function() {
 				var node = $('<div></div>').attr('id', 'event-node-' + i).addClass('event-node').appendTo(timebar);
 				if (i == 0) {
 					node.addClass('active');
+					$('#event-year').text($('#event-0').find('.event-text h3').text());
 				}
 			}
 			

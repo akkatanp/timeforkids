@@ -17,17 +17,17 @@
 
 #timeline-container #event-year {
 	display: inline-block;
+	font: normal 14px "arial black";
 	border: solid 1px #cecece;
 	margin: 10px;
 	padding: 6px;
-	font-weight: bold;
 }
 
 #timeline-container #event-timeline-bar {
 	height: 7px;
 	background: #d71700;
 	padding: 6px;
-	margin: 0 0 10px 0;
+	margin: 10px 0;
 }
 
 #timeline-container #event-timeline-bar .event-node {
