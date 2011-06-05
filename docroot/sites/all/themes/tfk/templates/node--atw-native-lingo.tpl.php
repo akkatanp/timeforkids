@@ -121,6 +121,13 @@ $speaker_photo = file_create_url(image_style_path('tfk_rect_large',$speaker_phot
 		
 		<div id="image-container">
 			<img src="<?php echo $speaker_photo; ?>" />
+			
+			<div id="audio-box">
+				<h2>I'm Speaking Language!</h2>
+				<div id="phrae-text"></div>
+				<div id="phrase-translation"></div>
+				<div id="audio-player-box"></div>
+			</div>
 		</div>
 		
 		<h1>How Do I Say?</h1>
