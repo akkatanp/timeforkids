@@ -6,7 +6,8 @@ $(document).ready(function() {
 
 (function($) {
 	$.fn.timeline = function() {
-		var events = this.children();
+		var events;
+		events = events.add(this.children()).not('clearfix');
 		var numEvents = events.length;
 		var eventContainer = $('#event-container');
 		var timebar = $('#event-timeline-bar');

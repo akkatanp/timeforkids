@@ -34,9 +34,13 @@
 	float: left;
 	height: 7px;
 	width: 7px;
-	margin: 0 3px;
+	margin: 0 8px;
 	background: url("../images/slideshow-white-dot.png") no-repeat;
 	cursor: pointer;
+}
+
+#timeline-container #event-timeline-bar .event-node.active {
+	background: url("../images/slideshow-red-dot.png") no-repeat;
 }
 
 #timeline-container #event-container {
