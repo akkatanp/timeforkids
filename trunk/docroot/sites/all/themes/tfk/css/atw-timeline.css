@@ -7,3 +7,66 @@
 	font-size: 30px;
 	margin: 4px 0;
 }
+
+#timeline-container h2 {
+	font: normal 12px arial;
+	padding-bottom: 10px;
+	border-bottom: dotted 1px #cecece;
+	margin: 4px 0 10px 0;
+}
+
+#timeline-container #event-year {
+	border: solid 1px #cecece;
+	margin: 10px;
+	padding: 6px;
+	font-weight: bold;
+}
+
+#timeline-container #event-timeline {
+	height: 10px;
+	background: #d71700;
+	padding: 6px;
+}
+
+#timeline-container #event-container {
+	position: relative;
+	border: solid 1px #cecece;
+	-moz-box-shadow: 2px 2px 2px #999;
+	-webkit-box-shadow: 2px 2px 2px #999;
+	box-shadow: 2px 2px 2px #999;
+}
+
+#timeline-container #event-container .event {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	background: white;
+	min-height: 250px;
+}
+
+#timeline-container #event-container .event .event-image {
+	float: left;
+	width: 300px;
+	height: 200px;
+	margin-right: 10px;
+}
+
+#timeline-container #event-container .event .event-image  img {
+	width: 300px;
+	height: 200px;
+}
+
+#timeline-container #event-container .event .event-text {
+	float: left;
+	width: 150px;
+}
+
+#timeline-container #event-container .event .event-text h3 {
+	font: normal 12px "arial black";
+	padding-bottom: 6px;
+	border-bottom: dotted 1px #555;
+	margin: 0 0 6px 0;
+}
+
+
+
