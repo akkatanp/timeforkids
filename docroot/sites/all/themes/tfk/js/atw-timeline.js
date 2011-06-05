@@ -30,11 +30,11 @@ $(document).ready(function() {
 			year.text(thisEvent.find('.event-text h3').text());
 			$(this).addClass('active');
 			
-			linePos = $(this).position().left + 3.5;
+			linePos = $(this).position().left + ($(this).width() / 2) + 6;
 			topline.css('left', linePos + 'px');
 			bottomline.css('left', linePos + 'px');
 			
-			yearPos = linePos - ($(this).width() / 2);
+			yearPos = linePos - (year.width() / 2);
 			if (yearPos < 0) yearPos = 0;
 			year.css('left', yearPos + 'px');
 		}
@@ -45,7 +45,7 @@ $(document).ready(function() {
 				if (i == 0) {
 					node.addClass('active');
 					year.text($('#event-0').find('.event-text h3').text());
-					linePos = node.position().left + 3.5;
+					linePos = node.position().left + (node.width() / 2) + 6;
 					topline.css('left', linePos + 'px');
 					bottomline.css('left', linePos + 'px');
 				}
