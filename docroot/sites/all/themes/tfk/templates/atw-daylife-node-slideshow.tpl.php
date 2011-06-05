@@ -13,8 +13,9 @@
 		<?php print $node_data['daylife_speaker_intro'];?>
 	</div>
 	
+	<div class="clock"></div>
+	
 	<div id="activities">
-		<div class="clock"></div>
 		<div id="activity-time"></div>
 		<div id="activity-text"></div>
 	</div>

@@ -47,6 +47,7 @@
 }
 
 #daylife-container .clock {
+	position: relative;
 	float: left;
 	border: solid 1px #cecece;
 	width: 38px;
@@ -60,15 +61,13 @@
 	background: #dedede;
 }
 
-#daylife-container #activities  #activity-time {
+#daylife-container #activities  {
 	float: left;
-	font: bold 18px arial;
 	width: 160px;
 }
 
-#daylife-container #activities  #activity-text {
-	float: left;
-	width: 180px;
+#daylife-container #activities  #activity-time {
+	font: bold 18px arial;
 }
 
 #daylife-container #daylife-bar {
@@ -76,6 +75,7 @@
 	margin-top: 10px;
 	padding-top: 10px;
 	height: 40px;
+	position: relative;
 }
 
 #daylife-container #line-below {
