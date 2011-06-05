@@ -1,0 +1,103 @@
+#daylife-container {
+	border: solid 1px #cecece;
+	padding: 10px;
+	position: relative;
+}
+
+#daylife-container h1 {
+	font-size: 30px;
+	margin: 4px 0;
+}
+
+#daylife-container .field-name-body p {
+	font: normal 12px arial;
+	padding-bottom: 10px;
+	border-bottom: dotted 1px #cecece;
+	margin: 4px 0 10px 0;
+}
+
+#daylife-container #image-container {
+	float: left;
+	width: 270px;
+	height: 270px;
+	margin-right: 10px;
+}
+
+#daylife-container #image-container img {
+	width: 270px;
+	height: 270px;
+}
+
+#daylife-container #speaker-intro {
+	float: left;
+	width: 208px;
+	padding-bottom: 6px;
+	margin-bottom: 6px;
+	border-bottom: dotted 1px #cecece;
+}
+
+#daylife-container #speaker-intro h2 {
+	font: bold 18px arial;
+	padding-bottom: 6px;
+}
+
+#daylife-container #activities {
+	float: left;
+	width: 208px;
+}
+
+#daylife-container .clock {
+	float: left;
+	border: solid 1px #cecece;
+	width: 18px;
+	height: 18px;
+	background: #000;
+	margin-right: 8px;
+}
+
+#daylife-container .clock.active {
+	background: #dedede;
+}
+
+#daylife-container #activities  #activity-time {
+	float: left;
+	font: bold 18px arial;
+	width: 180px;
+}
+
+#daylife-container #activities  #activity-text {
+	float: left;
+	width: 180px;
+}
+
+#daylife-container #daylife-bar {
+	border-top: dotted 1px #cecece;
+	margin-top: 10px;
+	padding-top: 10px;
+	height: 20px;
+}
+
+#daylife-container #line-below {
+	position: relative;
+	width: 1px;
+	background: #cecece;
+}
+
+#daylife-container #current-time {
+	font: normal 14px "arial black";
+	padding: 6px;
+	border: solid 1px #cecece;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
