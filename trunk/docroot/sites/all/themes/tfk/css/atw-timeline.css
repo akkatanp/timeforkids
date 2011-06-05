@@ -16,6 +16,7 @@
 }
 
 #timeline-container #event-year {
+	display: inline-block;
 	border: solid 1px #cecece;
 	margin: 10px;
 	padding: 6px;
@@ -26,6 +27,7 @@
 	height: 10px;
 	background: #d71700;
 	padding: 6px;
+	margin: 10px 0;
 }
 
 #timeline-container #event-container {
@@ -34,6 +36,7 @@
 	-moz-box-shadow: 2px 2px 2px #999;
 	-webkit-box-shadow: 2px 2px 2px #999;
 	box-shadow: 2px 2px 2px #999;
+	min-height: 300px;
 }
 
 #timeline-container #event-container .event {
@@ -46,13 +49,13 @@
 
 #timeline-container #event-container .event .event-image {
 	float: left;
-	width: 300px;
+	width: 280px;
 	height: 200px;
 	margin-right: 10px;
 }
 
 #timeline-container #event-container .event .event-image  img {
-	width: 300px;
+	width: 280px;
 	height: 200px;
 }
 
@@ -67,6 +70,4 @@
 	border-bottom: dotted 1px #555;
 	margin: 0 0 6px 0;
 }
-
-
 
