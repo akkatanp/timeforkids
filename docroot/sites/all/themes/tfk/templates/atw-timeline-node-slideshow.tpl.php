@@ -14,9 +14,8 @@
 	<div id="event-container" class="clearfix">
 		<?php $i = 0; ?>
 		<?php foreach($images_data as $image):?>
-		<?php $i++; ?>
 		
-		<div class="event" id="event-<?php print $i ?>"<?php if ($i == 1) echo ' style="display: none;"'; ?>>
+		<div class="event clearfix" id="event-<?php print $i ?>"<?php if ($i != 0) echo ' style="display: none;"'; ?>>
 		
 			<div class="event-image"><img src="<?php print $image['image_path'] ?>" /></div>
 			
@@ -27,7 +26,8 @@
 			</div>
 		
 		</div>
-		
+		<div class="clearfix"></div>
+		<?php $i++; ?>
 		<?php endforeach; ?>
 	</div>
 </div>
