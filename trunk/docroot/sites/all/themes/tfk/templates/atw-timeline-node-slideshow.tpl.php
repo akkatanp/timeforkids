@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="/sites/all/themes/tfk/css/atw-timeline.css" />
-<script src="/sites/all/themes/tfk/js/atw-timeline.js"></script>
+<script type="text/javascript" src="/sites/all/themes/tfk/js/atw-timeline.js"></script>
 
 <div class="atw-graphic-header"></div>
 
