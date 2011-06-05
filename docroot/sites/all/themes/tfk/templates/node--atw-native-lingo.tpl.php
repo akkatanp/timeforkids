@@ -89,7 +89,7 @@ $speaker_photo = file_create_url(image_style_path('tfk_rect_large',$speaker_phot
 
   <?php print render($title_prefix); ?>
   <?php if (!$page && $title): ?>
-    <h2<?php print $title_attributes; ?>><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h2>
+    <h2><?php print $title_attributes; ?>><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h2>
   <?php endif; ?>
   <?php print render($title_suffix); ?>
 
@@ -103,7 +103,7 @@ $speaker_photo = file_create_url(image_style_path('tfk_rect_large',$speaker_phot
     </div>
   <?php endif; ?>
 
-  <div class="content"<?php print $content_attributes; ?>>
+  <div class="content" <?php print $content_attributes; ?>>
     <?php
       // We hide the comments and links now so that we can render them later.
       hide($content['comments']);
@@ -172,4 +172,4 @@ $speaker_photo = file_create_url(image_style_path('tfk_rect_large',$speaker_phot
 
   <?php print render($content['comments']); ?>
 
-</div><!-- /.node -->
+</div></div><!-- /.node -->
