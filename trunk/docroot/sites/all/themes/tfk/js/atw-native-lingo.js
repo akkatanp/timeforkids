@@ -18,20 +18,20 @@ $(document).ready(function() {
 		if (basics.length) {
 			basics.each(function(i, clip) {
 				if (i == 0) {
-					$('#phrase-text').text(clip.text());
-					$('#phrase-translation').text(clip.attr('rel'));
+					$('#phrase-text').text($(clip).text());
+					$('#phrase-translation').text($(clip).attr('rel'));
 				}
-				clip.click(activateClip);
+				$(clip).click(activateClip);
 			});
 		}
 		
 		if (nextLevel.length) {
 			nextLevel.each(function(i, clip) {
 				if (i == 0 && !basics.length) {
-					$('#phrase-text').text(clip.text());
-					$('#phrase-translation').text(clip.attr('rel'));
+					$('#phrase-text').text($(clip).text());
+					$('#phrase-translation').text($(clip).attr('rel'));
 				}
-				clip.click(activateClip);
+				$(clip).click(activateClip);
 			});
 		}
 	};
