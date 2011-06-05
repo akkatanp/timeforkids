@@ -37,6 +37,10 @@
     <?php endif; ?>
 <?php endforeach; ?>
 
+
+
+<?php print_r($fields['field_mini_lessons']);?>
+
 <?php if($fields['field_mini_lessons']->content != '' || $fields['field_mini_lessons']->content != ''):?>
     <div class="related-content-wrap">
         <div class="addit-content">Additional Content</div>
