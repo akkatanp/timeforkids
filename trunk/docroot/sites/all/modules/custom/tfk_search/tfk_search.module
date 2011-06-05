@@ -123,6 +123,22 @@ function tfk_search_block_save($delta = '', $edit = array()){
 }
 
 /**
+ * Preprocess the result set.
+ *
+ * @param array $vars
+ */
+function tfk_search_preprocess_search_results(&$vars) {
+ 
+  // Specific template suggestions for all the results on photos and video.
+  if(arg(0) == 'photos-video') {
+    $vars['theme_hook_suggestions'] = array_merge(
+      array('search_results__tfk_search__photos_video', 'search_results__tfk_search'),
+      $vars['theme_hook_suggestions']
+    );
+  }
+}
+
+/**
  * Preprocess individual search results.
  *
  * @param array $vars
