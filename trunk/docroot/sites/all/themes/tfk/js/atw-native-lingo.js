@@ -32,7 +32,7 @@ $(document).ready(function() {
 					$('#phrase-translation').text(clip.attr('rel'));
 				}
 				clip.click(activateClip);
-			}):
+			});
 		}
 	};
 })($);
