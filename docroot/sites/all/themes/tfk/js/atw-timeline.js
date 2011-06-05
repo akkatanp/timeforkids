@@ -7,7 +7,7 @@ $(document).ready(function() {
 (function($) {
 	$.fn.timeline = function() {
 		var events = this.children();
-		events.find('.clearfix').remove();
+		events = events.not('.clearfix');
 		var numEvents = events.length;
 		var eventContainer = $('#event-container');
 		var timebar = $('#event-timeline-bar');
@@ -22,7 +22,10 @@ $(document).ready(function() {
 			});
 			
 			var nodeNum = parseInt(this.id.split('-')[2]);
-			events.eq(nodeNum).show();
+			var thisEvent = events.eq(nodeNum)
+			thisEvent.show();
+			$('#event-year').text(thisEvent.find('.event-text h3').text());
+			jQuery(this).addClass('active');
 		}
 		
 		if (numEvents) {
