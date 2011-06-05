@@ -18,6 +18,7 @@
 		<div id="activity-time"></div>
 		<div id="activity-text"></div>
 	</div>
+	<br clear="all" />
 	
 	<div id="daylife-bar" class="clearfix">
 		<?php foreach($daylife_data as $data):?>
