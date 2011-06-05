@@ -12,10 +12,10 @@
 	<div id="timeline"></div>
 	
 	<div id="event-container">
-		<?php var $i = 0; ?>
+
 		<?php foreach($images_data as $image):?>
-		<?php $i++; ?>
-		<div class="event" id="event-<?php print $i ?>">
+
+		<div class="event" id="event-">
 		
 			<div class="event-image"><img src="<?php print $image['image_path'] ?>"/></div>
 			
@@ -26,7 +26,7 @@
 		
 		</div>
 		
-		<?php endforeach;?>
+		<?php endforeach; ?>
 	</div>
 </div>
 
