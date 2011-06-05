@@ -123,6 +123,30 @@ function tfk_search_block_save($delta = '', $edit = array()){
 }
 
 /**
+ * Block preprocessor.
+ *
+ * @param array $vars
+ */
+function tfk_search_preprocess_block(&$vars) {
+  // Specific template suggestion for current search block photos-video.
+  if(arg(0) == 'photos-video') {
+    $vars['theme_hook_suggestions'] = array_merge(
+      array('block__apachesolr_search__currentsearch__photos_video'),
+      $vars['theme_hook_suggestions']
+    );
+  }
+}
+
+/**
+ * Preprocess current search text.
+ *
+ * @param array $vars
+ */
+function tfk_search_preprocess_apachesolr_currentsearch(&$vars) {
+  //@todo Change default text.
+}
+
+/**
  * Preprocess the result set.
  *
  * @param array $vars
