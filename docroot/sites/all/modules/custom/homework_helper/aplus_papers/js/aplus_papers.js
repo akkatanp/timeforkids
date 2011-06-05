@@ -7,17 +7,16 @@
   Drupal.behaviors.aplusWarning = {
     attach: function(context, settings) {
       var step = true;
-      
+
       $('#edit-submit').click(function() {
         step = false;
       });  
 
       window.onbeforeunload = function() {
         if (step == true) {
-          return 'You have not completed your paper. Are you sure you want to leave the page and lose your data?';
+          return 'If you leave the page you will lose everything you have written and worked on so far. Are you sure you want to leave?';
         }
       }
-
     } 
   }
 }(jQuery));
