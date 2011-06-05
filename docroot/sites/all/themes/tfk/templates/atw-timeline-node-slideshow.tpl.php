@@ -9,7 +9,7 @@
 	
 	<div id="event-year"><?php print $image['event_title'] ?></div>
 	
-	<div id="event-timeline" class="clearfix"></div>
+	<div id="event-timeline-bar" class="clearfix"></div>
 	
 	<div id="event-container" class="clearfix">
 		<?php $i = 0; ?>
@@ -21,14 +21,14 @@
 			
 			<div class="event-text">
 				<h3><?php print $image['event_title'] ?></h3>
-				<?php print $image['image_path'] ?><br />
 				<?php print $image['event_copy'] ?>
 			</div>
 		
 		</div>
-		<div class="clearfix"></div>
+		
 		<?php $i++; ?>
 		<?php endforeach; ?>
+		<div class="clearfix"></div>
 	</div>
 </div>
 

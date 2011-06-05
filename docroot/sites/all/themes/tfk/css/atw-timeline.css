@@ -23,11 +23,19 @@
 	font-weight: bold;
 }
 
-#timeline-container #event-timeline {
-	height: 10px;
+#timeline-container #event-timeline-bar {
+	height: 7px;
 	background: #d71700;
-	padding: 6px;
-	margin: 10px 0;
+	padding: 4px;
+	margin: 0 0 10px 0;
+}
+
+#timeline-container #event-timeline-bar .event-node {
+	float: left;
+	height: 7px;
+	width: 7px;
+	margin: 0 3px;
+	background: url("../images/slideshow-red-dot.png") no-repeat;
 }
 
 #timeline-container #event-container {
@@ -61,7 +69,7 @@
 
 #timeline-container #event-container .event .event-text {
 	float: left;
-	width: 150px;
+	width: 166px;
 }
 
 #timeline-container #event-container .event .event-text h3 {
