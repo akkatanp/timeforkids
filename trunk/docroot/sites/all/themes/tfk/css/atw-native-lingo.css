@@ -35,7 +35,6 @@
 	top: 20px;
 	right: 10px;
 	width: 230px;
-	height: 130px;
 	border: solid 1px #cecece;
 	background: #fff;
 	padding: 6px;
@@ -76,8 +75,8 @@
 
 #native-lingo-container .phrase-list h2 {
 	font: bold 18px arial;
-	padding: 6px;
-	margin: 0 0 6px 0;
+	margin: 6px;
+	padding: 0 0 6px 0;
 	border-bottom: dotted 1px #cecece;
 }
 
