@@ -7,7 +7,7 @@ $(document).ready(function() {
 (function($) {
 	$.fn.timeline = function() {
 		var events = this.children();
-		events.find('.clearfix')remove();
+		events.find('.clearfix').remove();
 		var numEvents = events.length;
 		var eventContainer = $('#event-container');
 		var timebar = $('#event-timeline-bar');
