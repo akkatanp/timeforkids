@@ -31,7 +31,7 @@
 }
 
 #native-lingo-container .phrase-list {
-	float: left;
+	display: inline-block;
 	width: 238px;
 	border: solid 1px #cecece;
 }

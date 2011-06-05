@@ -163,13 +163,12 @@ $speaker_photo = file_create_url(image_style_path('tfk_rect_large',$speaker_phot
 			
 		</div>
 		<?php endif;?>
+	</div>
+	
+	<?php print l('ADD NEW','field-collection/field-native-lingo-phrase/add/node/'.$node->nid, array('attributes'=>array('class' => 'anyclassyouwant')));?>
+ 
+	<?php print render($content['links']); ?>
 
-		<?php print l('ADD NEW','field-collection/field-native-lingo-phrase/add/node/'.$node->nid, array('attributes'=>array('class' => 'anyclassyouwant')));?>
-      
-  </div>
-
-  <?php print render($content['links']); ?>
-
-  <?php print render($content['comments']); ?>
+	<?php print render($content['comments']); ?>
 
 </div></div><!-- /.node -->
