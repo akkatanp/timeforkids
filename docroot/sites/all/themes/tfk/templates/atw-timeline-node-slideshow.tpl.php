@@ -17,10 +17,11 @@
 
 		<div class="event" id="event-">
 		
-			<div class="event-image"><img src="<?php print $image['image_path'] ?>"/></div>
+			<div class="event-image"><img src="<?php print $image['image_path'] ?>" /></div>
 			
 			<div class="event-text">
 				<h3><?php print $image['event_title'] ?></h3>
+				<?php print $image['image_path'] ?><br />
 				<?php print $image['event_copy'] ?>
 			</div>
 		
