@@ -1,28 +1,12 @@
 <?php
 
+
 /**
- * Implementation of hook_menu.
+ * Photos and Video menu callback.
  */
-function timeinc_search_menu(){
-  $items = array();
-  
-  $items['photos-video'] = array(
-  	'title' => 'Photos & Video',
-  	'page callback' => 'timeinc_search_photos_and_video',
-  	'access callback' => 'user_access',
-  	'access arguments' => array('access content'),
-    'type' => MENU_NORMAL_ITEM,
-  );
-  return $items;
-}
-
-function timeinc_search_init() {
-  module_load_include('inc', 'timeinc_search', 'TimeIncSolrBaseQuery');
-}
-
 function timeinc_search_photos_and_video() {
 
-    module_load_include('module', 'search');   
+    module_load_include('module', 'search');
   
     $filterstring = isset($_GET['filters']) ? $_GET['filters'] : '';
     $solrsort = isset($_GET['solrsort']) ? $_GET['solrsort'] : '';
@@ -37,8 +21,33 @@ function timeinc_search_photos_and_video() {
 }
 
 /**
+ *
+ * Enter description here ...
+ * @param unknown_type $variables
+ */
+function timeinc_search_preprocess_search_results(&$variables) {
+  // If this is a solr search, expose more data to themes to play with.
+  if ($variables['module'] == 'apachesolr_search') {
+    $variables['response'] = apachesolr_static_response_cache();
+    if (empty($variables['response'])) {
+      $variables['description'] = '';
+      return;
+    }
+    $variables['query'] = apachesolr_current_query();
+    $total = $variables['response']->response->numFound;
+    $params = $variables['query']->params;
+
+    $variables['description'] = t('Showing items @start through @end of @total.', array(
+      '@start' => $params['start'] + 1,
+      '@end' => $params['start'] + $params['rows'] - 1,
+      '@total' => $total,
+    ));
+  }
+}
+
+/**
  * Implementation of hook_apachesolr_modify_query().
- * 
+ *
  * Limit the search results to image and video content type.
  */
 function timeinc_search_apachesolr_modify_query(&$query, $caller) {
@@ -49,21 +58,8 @@ function timeinc_search_apachesolr_modify_query(&$query, $caller) {
     $subquery->add_filter('bundle', 'image');
     $subquery->add_filter('bundle', 'slideshow');
     $query->add_subquery($subquery, 'OR');
-  } 
+  }
    
 }
 
-/**
- * Helper function for grabbing search keys.
- */
-function search_get_keys() {
-  static $return;
-  if (!isset($return)) {
-    // Extract keys as remainder of path
-    // Note: support old GET format of searches for existing links.
-    $path = explode('/', $_GET['q'], 2);
-    $keys = empty($_REQUEST['keys']) ? '' : $_REQUEST['keys'];
-    $return = count($path) == 2 ? $path[1] : $keys;
-  }
-  return $return;
-}
+
