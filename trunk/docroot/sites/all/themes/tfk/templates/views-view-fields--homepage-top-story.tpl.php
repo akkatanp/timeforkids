@@ -38,7 +38,7 @@
 <?php endforeach; ?>
 
 
-<?php if($fields['field_mini_lessons'] || $fields['field_mini_lessons']):?>
+<?php if(strlen($fields['field_mini_lessons']->content) != 0 || strlen($fields['field_related_articles']->content) != 0):?>
     <div class="related-content-wrap">
         <div class="addit-content">Additional Content</div>
         <?php if($fields['field_mini_lessons']): ?>
