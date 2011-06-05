@@ -18,7 +18,7 @@ $(document).ready(function() {
 			e.preventDefault();
 			$('#phrase-text').text($(this).text());
 			$('#phrase-translation').text($(this).attr('rel'));
-			$("#audio-player").jPlayer('setFile', $(this).attr('href'));
+			$("#audio-player").jPlayer('setFile', $(this).attr('href')).jPlayer('play');
 		};
 		
 		if (basics.length) {
