@@ -60,7 +60,7 @@ function flashcard_anonymous_permission() {
  * Disallow direct access to flashcards.
  */
 function flashcard_anonymous_access($op, $node) {
-  return ($node->type == 'flashcard') ? user_access('view anonymous flashcards') : node_access($op, $node);
+  return ($node->type == 'flashcard' && !$node->uid) ? user_access('view anonymous flashcards') : node_access($op, $node);
 }
 
 /**
