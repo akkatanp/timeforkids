@@ -35,7 +35,7 @@
 #timeline-container #event-timeline-bar {
 	position: relative;
 	height: 7px;
-	background: #d71700;
+	background: #000;
 	padding: 6px;
 	margin: 0;
 }
