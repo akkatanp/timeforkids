@@ -333,6 +333,7 @@
 	padding: 5px 6px;
 	background: #d71700;
 	border: 0;
+	cursor: pointer;
 	border-radius: 12px;
 	-moz-border-radius: 12px;
 	-webkit-border-radius: 12px;
