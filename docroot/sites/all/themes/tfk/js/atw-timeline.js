@@ -12,7 +12,7 @@ $(document).ready(function() {
 		var eventContainer = $('#event-container');
 		var year = $('#event-year');
 		var timebar = $('#event-timeline-bar');
-		var topline = $('#line-ablove');
+		var topline = $('#line-above');
 		var bottomline = $('#line-below');
 		
 		var showHideEvent = function() {
@@ -44,7 +44,7 @@ $(document).ready(function() {
 				var node = $('<div></div>').attr('id', 'event-node-' + i).addClass('event-node').appendTo(timebar);
 				if (i == 0) {
 					node.addClass('active');
-					$('#event-year').text($('#event-0').find('.event-text h3').text());
+					year.text($('#event-0').find('.event-text h3').text());
 					linePos = node.position().left + 3.5;
 					topline.css('left', linePos + 'px');
 					bottomline.css('left', linePos + 'px');

@@ -25,7 +25,7 @@
 }
 
 #timeline-container #line-above,
-#timeline-container #line-above {
+#timeline-container #line-below {
 	position: relative;
 	width: 1px;
 	background: #555;
