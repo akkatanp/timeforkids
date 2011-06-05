@@ -38,7 +38,7 @@
 
 #daylife-container #speaker-intro h2 {
 	font: bold 18px arial;
-	padding-bottom: 6px;
+	margin: 0 0 6px 0;
 }
 
 #daylife-container #activities {
@@ -49,8 +49,8 @@
 #daylife-container .clock {
 	float: left;
 	border: solid 1px #cecece;
-	width: 18px;
-	height: 18px;
+	width: 38px;
+	height: 38px;
 	background: #000;
 	margin-right: 8px;
 }
@@ -62,7 +62,7 @@
 #daylife-container #activities  #activity-time {
 	float: left;
 	font: bold 18px arial;
-	width: 180px;
+	width: 160px;
 }
 
 #daylife-container #activities  #activity-text {
@@ -81,12 +81,15 @@
 	position: relative;
 	width: 1px;
 	background: #cecece;
+	height: 20px;
 }
 
 #daylife-container #current-time {
+	display: inline-block;
+	position: relative;
 	font: normal 14px "arial black";
-	padding: 6px;
 	border: solid 1px #cecece;
+	padding: 6px;
 }
 
 
