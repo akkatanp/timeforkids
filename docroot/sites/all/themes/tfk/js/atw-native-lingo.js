@@ -1,7 +1,12 @@
 var $ = jQuery;
 
 $(document).ready(function() {
-	$('#native-lingo-container').nativeLingo();
+	$("#audio-player").jPlayer({
+		swfPath: '/sites/all/themes/tfk/js/jplayer',
+		ready: function() {
+			$('#native-lingo-container').nativeLingo();
+		}
+	});
 });
 
 (function($) {
@@ -13,6 +18,7 @@ $(document).ready(function() {
 			e.preventDefault();
 			$('#phrase-text').text($(this).text());
 			$('#phrase-translation').text($(this).attr('rel'));
+			$("#audio-player").jPlayer('setFile', $(this).attr('href'));
 		};
 		
 		if (basics.length) {
@@ -20,6 +26,7 @@ $(document).ready(function() {
 				if (i == 0) {
 					$('#phrase-text').text($(clip).text());
 					$('#phrase-translation').text($(clip).attr('rel'));
+					$("#audio-player").jPlayer('setFile', $(clip).attr('href'));
 				}
 				$(clip).click(activateClip);
 			});
@@ -30,6 +37,7 @@ $(document).ready(function() {
 				if (i == 0 && !basics.length) {
 					$('#phrase-text').text($(clip).text());
 					$('#phrase-translation').text($(clip).attr('rel'));
+					$("#audio-player").jPlayer('setFile', $(clip).attr('href'));
 				}
 				$(clip).click(activateClip);
 			});

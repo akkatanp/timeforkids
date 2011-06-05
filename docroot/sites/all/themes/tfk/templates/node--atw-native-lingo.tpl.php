@@ -109,10 +109,11 @@ $speaker_photo = file_create_url(image_style_path('tfk_rect_large',$speaker_phot
       hide($content['comments']);
       hide($content['links']);
         ?>
-			
+	
 	<link rel="stylesheet" href="/sites/all/themes/tfk/css/atw-native-lingo.css" />
+	<script src="/sites/all/themes/tfk/js/jplayer/jquery.jplayer.min.js"></script>
 	<script src="/sites/all/themes/tfk/js/atw-native-lingo.js"></script>
-
+	
 	<div class="atw-graphic-header"></div>
 	
 	<div id="native-lingo-container">
@@ -126,7 +127,9 @@ $speaker_photo = file_create_url(image_style_path('tfk_rect_large',$speaker_phot
 				<h2>I'm Speaking Language!</h2>
 				<div id="phrase-text"></div>
 				<div id="phrase-translation"></div>
-				<div id="audio-player-box"></div>
+				<div id="audio-player-box">
+					<div id="audio-player"></div>
+				</div>
 			</div>
 		</div>
 		
