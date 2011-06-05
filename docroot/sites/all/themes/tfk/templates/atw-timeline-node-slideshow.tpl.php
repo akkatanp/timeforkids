@@ -7,10 +7,10 @@
 	<h1>Country: History Timeline</h1>
 	<h2>Take a trip through Country's history by clicking below</h2>
 	
-	<div id="event-year"><?php print $image['event_title'] ?></div>
-	
-	<div id="event-timeline-bar" class="clearfix"></div>
-	
+	<div id="event-year"></div>
+	<div id="line-above"></div>
+	<div id="event-timeline-bar"></div>
+	<div id="line-below"></div>
 	<div id="event-container" class="clearfix">
 		<?php $i = 0; ?>
 		<?php foreach($images_data as $image):?>
