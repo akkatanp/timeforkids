@@ -11,14 +11,14 @@ $(document).ready(function() {
 		
 		var activateClip = function(e) {
 			e.preventDefault();
-			$('#phrase-text').text($(this).html());
+			$('#phrase-text').text($(this).text());
 			$('#phrase-translation').text($(this).attr('rel'));
 		};
 		
 		if (basics.length) {
 			basics.each(function(i, clip) {
 				if (i == 0) {
-					$('#phrase-text').text($(clip).html());
+					$('#phrase-text').text($(clip).text());
 					$('#phrase-translation').text($(clip).attr('rel'));
 				}
 				$(clip).click(activateClip);
@@ -28,7 +28,7 @@ $(document).ready(function() {
 		if (nextLevel.length) {
 			nextLevel.each(function(i, clip) {
 				if (i == 0 && !basics.length) {
-					$('#phrase-text').text($(clip).html());
+					$('#phrase-text').text($(clip).text());
 					$('#phrase-translation').text($(clip).attr('rel'));
 				}
 				$(clip).click(activateClip);
