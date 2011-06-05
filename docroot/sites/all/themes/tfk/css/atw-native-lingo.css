@@ -35,10 +35,11 @@
 	top: 20px;
 	right: 10px;
 	width: 230px;
-	height: 180px;
+	height: 130px;
 	border: solid 1px #cecece;
 	background: #fff;
 	padding: 6px;
+	z-index: 2;
 }
 
 #native-lingo-container #image-container #audio-box h2 {
