@@ -18,7 +18,7 @@
 
 #timeline-container #event-year {
 	display: inline-block;
-	position: relatuve;
+	position: relative;
 	font: normal 14px "arial black";
 	border: solid 1px #cecece;
 	padding: 6px;
@@ -28,15 +28,16 @@
 #timeline-container #line-below {
 	position: relative;
 	width: 1px;
-	background: #555;
+	background: #cecece;
 	height: 20px;
 }
 
 #timeline-container #event-timeline-bar {
+	position: relative;
 	height: 7px;
 	background: #d71700;
 	padding: 6px;
-	margin: 0 0 10px 0;
+	margin: 0;
 }
 
 #timeline-container #event-timeline-bar .event-node {
