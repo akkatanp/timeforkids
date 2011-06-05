@@ -38,8 +38,7 @@
 <?php endforeach; ?>
 
 
-
-<?php if($fields['field_mini_lessons']->content != '' || $fields['field_mini_lessons']->content != ''):?>
+<?php if(count($fields['field_mini_lessons']->items) != 0 || count($fields['field_related_articles']->items) != 0):?>
     <div class="related-content-wrap">
         <div class="addit-content">Additional Content</div>
         <?php if($fields['field_mini_lessons']): ?>
