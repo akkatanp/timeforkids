@@ -35,7 +35,8 @@
 	height: 7px;
 	width: 7px;
 	margin: 0 3px;
-	background: url("../images/slideshow-red-dot.png") no-repeat;
+	background: url("../images/slideshow-white-dot.png") no-repeat;
+	cursor: pointer;
 }
 
 #timeline-container #event-container {
