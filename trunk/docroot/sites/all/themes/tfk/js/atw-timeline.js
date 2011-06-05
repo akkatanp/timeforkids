@@ -34,7 +34,7 @@ $(document).ready(function() {
 			topline.css('left', linePos + 'px');
 			bottomline.css('left', linePos + 'px');
 			
-			yearPos = linePos - (year.width() / 2);
+			yearPos = linePos - (year.width() / 2) - 7;
 			if (yearPos < 0) yearPos = 0;
 			year.css('left', yearPos + 'px');
 		}
