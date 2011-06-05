@@ -21,7 +21,14 @@ function tfk_search_menu(){
  */
 function tfk_search_init(){
   //print_R(apachesolr_get_enabled_facets('CGKX-19447'));
+  
+  // Include our custom SolrBaseQuery class.
   module_load_include('inc', 'tfk_search', 'TimeIncSolrBaseQuery');
+  
+  // Provide default styling for Photos & Video section.
+  if(arg(0) == 'photos-video') {
+    drupal_add_css(drupal_get_path('module', 'tfk_search'). '/css/tfk_search.css', 'file');
+  }
 }
 
 
@@ -43,32 +50,61 @@ function tfk_search_apachesolr_facets() {
   return $facets;
 }
 
+/**
+ * Implementation of hook_block_info.
+ */
 function tfk_search_block_info() {
   $blocks = array();
+  
+  // Photos and Video title block.
+  $blocks['tfk_search_photos_video_title'] = array(
+    'info' => t('TFK Search Photos and Video title'),
+    'visibility' => BLOCK_VISIBILITY_LISTED,
+    'pages' => 'photos-video',
+    'region' => 'sidebar_first',
+    'cache' => DRUPAL_CACHE_GLOBAL,
+  );
+  
+  // Custom facet blocks.
   $facets = tfk_search_apachesolr_facets();
   foreach ($facets as $delta => $facet){
-    $blocks[$delta] = $facets[$delta] + array('cache' => BLOCK_CACHE_PER_PAGE,);
+    $blocks[$delta] = array_merge($facets[$delta], array('cache' => DRUPAL_CACHE_PER_PAGE));
   }
   return $blocks;
 }
 
+/**
+ * Implementation of hook_block_view.
+ */
 function tfk_search_block_view($delta='') {
   $block = array();
-  if($delta == 'sm_editorial_date_tfk'){
-    $block['subject'] = t('Custom ApacheSolrFilter');
+  
+  switch ($delta) {
+    
+    case 'sm_editorial_date_tfk':
+      $block['subject'] = t('Custom ApacheSolrFilter');
 
-    if (apachesolr_has_searched()) {
-      $response = apachesolr_static_response_cache();
-
-      if (empty($response)) {
-        return;
+      if (apachesolr_has_searched()) {
+        $response = apachesolr_static_response_cache();
+  
+        if (empty($response)) {
+          return;
+        }
+        $query = apachesolr_current_query();
+        $block['content'] = apachesolr_facet_block($response, $query, 'tfk_search', $delta, $delta, t($facet['info']));
+      }else{
+        $block['content'] = '';
       }
-      $query = apachesolr_current_query();
-      $block['content'] = apachesolr_facet_block($response, $query, 'tfk_search', $delta, $delta, t($facet['info']));
-    }else{
-      $block['content'] = '';
-    }
+    break;
+    
+    // Photos and Video title block.
+    case 'tfk_search_photos_video_title':
+      $block['subject'] = t('SEARCH PHOTOS & VIDEO');
+      $block['content'] = '&nbsp;';
+    break;
+    
   }
+  
   return $block;
 }
 
@@ -86,124 +122,153 @@ function tfk_search_block_save($delta = '', $edit = array()){
   return;
 }
 
-function tfk_search_preprocess_search_result (&$vars) {
+/**
+ * Preprocess individual search results.
+ *
+ * @param array $vars
+ */
+function tfk_search_preprocess_search_result(&$vars) {
     $vars['tfk_search_cont_type'] = $vars['result']['fields']['bundle_name'];
-
-    if($vars['result']['fields']['bundle'] == 'minisite'){
-      $nid = $vars['result']['fields']['entity_id'];
-      $node = node_load($nid);
-
-      if(isset($node->field_minisite_tout_image)){
-        $tmp_img_nid =  field_get_items('node', $node, 'field_minisite_tout_image');
-        $uri = $tmp_img_nid[0]['uri'];
-        $newpath = image_style_path('square_thumbnail',$uri);
-        $abspath = file_create_url($newpath);
-        $vars['tfk_search_res_image'] = $abspath;
-      }
+   
+    // Add specific template suggestions for invividual results on photos and video.
+    // Shuffle the order of the suggestions to prioritize the use of our template on top of the default.
+    // The first template to be found is implemented.
+    // @link http://api.drupal.org/api/drupal/includes--theme.inc/function/theme.
+    if(arg(0) == 'photos-video') {
+      $vars['theme_hook_suggestions'] = array_merge(
+        array('search_result__tfk_search__photos_video', 'search_result__tfk_search'),
+        $vars['theme_hook_suggestions']
+      );
+    }
+    
+    switch ($vars['result']['fields']['bundle']) {
       
+      case 'minisite':
+        $nid = $vars['result']['fields']['entity_id'];
+        $node = node_load($nid);
+
+        if(isset($node->field_minisite_tout_image)){
+          $tmp_img_nid =  field_get_items('node', $node, 'field_minisite_tout_image');
+          $uri = $tmp_img_nid[0]['uri'];
+          $newpath = image_style_path('square_thumbnail',$uri);
+          $abspath = file_create_url($newpath);
+          $vars['tfk_search_res_image'] = $abspath;
+        }
+      break;
+      
+      case 'atw_destination':
+        $nid = $vars['result']['fields']['entity_id'];
+        $node = node_load($nid);
+  
+        if(isset($node->field_tout_image)){
+          $tmp_img_nid =  field_get_items('node', $node, 'field_tout_image');
+          $img_nid = $tmp_img_nid[0]['nid'];
+  
+          $result = db_query('select fi.field_image_fid,fm.filename from {field_data_field_image} fi
+            left join {file_managed} fm on fi.field_image_fid = fm.fid
+            where fi.entity_type = :bundle_type and fi.entity_id = :img_nid',array('bundle_type'=>'node','img_nid'=>$img_nid));
+          $record = $result->fetch();
+          $img_filename = file_build_uri(basename($record->filename));
+  
+          $newpath = image_style_path('square_thumbnail',$img_filename);
+          $abspath = file_create_url($newpath);
+          $vars['tfk_search_res_image'] = $abspath;
+        }
+      break;
+      
+      case 'video':
+        $nid = $vars['result']['fields']['entity_id'];
+        $node = node_load($nid);
+        if(isset($node->field_video_thumbnail)){
+          $tmp_img_nid =  field_get_items('node', $node, 'field_video_thumbnail');
+          $uri = $tmp_img_nid[0]['uri'];
+          $newpath = image_style_path('square_thumbnail',$uri);
+          $abspath = file_create_url($newpath);
+          $vars['tfk_search_res_image'] = $abspath;
+        }
+      break;
+      
+      case 'worksheet':
+        $nid = $vars['result']['fields']['entity_id'];
+        $node = node_load($nid);
+        if(isset($node->field_worksheet_thumbnail_image)){
+          $tmp_img_nid =  field_get_items('node', $node, 'field_worksheet_thumbnail_image');
+          $uri = $tmp_img_nid[0]['uri'];
+          $newpath = image_style_path('square_thumbnail',$uri);
+          $abspath = file_create_url($newpath);
+          $vars['tfk_search_res_image'] = $abspath;
+        }
+        if(isset($node->field_grade_level)){
+          $tmp_tid = field_get_items('node', $node, 'field_grade_level');
+          $tid = $tmp_tid[0]['tid'];
+          $name_res =  db_query('select name from taxonomy_term_data where tid = :tid',array('tid' => $tid ));
+          $name = $name_res->fetch();
+          $name = $name->name;
+          $vars['tfk_search_res_grade_level'] = $name;
+        }
+      break;
+
+      case 'slideshow':
+        $nid = $vars['result']['fields']['entity_id'];
+        $node = node_load($nid);
+        if(isset($node->field_slideshow_images)) {
+          $tmp_img_nid =  field_get_items('node', $node, 'field_slideshow_images');
+          $img_nid = $tmp_img_nid[0]['nid'];
+          $result = db_query('select fi.field_image_fid,fm.filename from {field_data_field_image} fi
+            left join {file_managed} fm on fi.field_image_fid = fm.fid
+            where fi.entity_type = :bundle_type and fi.entity_id = :img_nid',array('bundle_type'=>'node','img_nid'=>$img_nid));
+          $record = $result->fetch();
+          $img_filename = file_build_uri(basename($record->filename));
+          $newpath = image_style_path('square_thumbnail',$img_filename);
+          $abspath = file_create_url($newpath);
+          $vars['tfk_search_res_image'] = $abspath;
+        }
+      break;
+      
+      case 'article':
+        $nid = $vars['result']['fields']['entity_id'];
+        $node = node_load($nid);
+        if(isset($node->field_tout_image)){
+          $tmp_img_nid =  field_get_items('node', $node, 'field_tout_image');
+          $img_nid = $tmp_img_nid[0]['nid'];
+  
+          $result = db_query('select fi.field_image_fid,fm.filename from {field_data_field_image} fi
+            left join {file_managed} fm on fi.field_image_fid = fm.fid
+            where fi.entity_type = :bundle_type and fi.entity_id = :img_nid',array('bundle_type'=>'node','img_nid'=>$img_nid));
+          $record = $result->fetch();
+          $img_filename = file_build_uri(basename($record->filename));
+  
+          $newpath = image_style_path('square_thumbnail',$img_filename);
+          $abspath = file_create_url($newpath);
+          $vars['tfk_search_res_image'] = $abspath;
+        }
+        if(isset($node->field_article_category)){
+          $tmp_tid = field_get_items('node', $node, 'field_article_category');
+          $tid = $tmp_tid[0]['tid'];
+          $name_res =  db_query('select name from taxonomy_term_data where tid = :tid',array('tid' => $tid ));
+          $name = $name_res->fetch();
+          $name = $name->name;
+          $vars['tfk_search_res_category'] = $name;
+        }
+      break;
+      
+      //default:
+      //  ;
+      //break;
     }
 
-
-    if($vars['result']['fields']['bundle'] == 'atw_destination'){
-      $nid = $vars['result']['fields']['entity_id'];
-      $node = node_load($nid);
-
-      if(isset($node->field_tout_image)){
-        $tmp_img_nid =  field_get_items('node', $node, 'field_tout_image');
-        $img_nid = $tmp_img_nid[0]['nid'];
-
-        $result = db_query('select fi.field_image_fid,fm.filename from {field_data_field_image} fi
-          left join {file_managed} fm on fi.field_image_fid = fm.fid
-          where fi.entity_type = :bundle_type and fi.entity_id = :img_nid',array('bundle_type'=>'node','img_nid'=>$img_nid));
-        $record = $result->fetch();
-        $img_filename = file_build_uri(basename($record->filename));
-
-        $newpath = image_style_path('square_thumbnail',$img_filename);
-        $abspath = file_create_url($newpath);
-        $vars['tfk_search_res_image'] = $abspath;
-      }
-
-
-    }
-
-    if($vars['result']['fields']['bundle'] == 'video'){
-      $nid = $vars['result']['fields']['entity_id'];
-      $node = node_load($nid);
-      if(isset($node->field_video_thumbnail)){
-        $tmp_img_nid =  field_get_items('node', $node, 'field_video_thumbnail');
-        $uri = $tmp_img_nid[0]['uri'];
-        $newpath = image_style_path('square_thumbnail',$uri);
-        $abspath = file_create_url($newpath);
-        $vars['tfk_search_res_image'] = $abspath;
-      }
-    }
-
-
-    if($vars['result']['fields']['bundle'] == 'worksheet'){
-      $nid = $vars['result']['fields']['entity_id'];
-      $node = node_load($nid);
-      if(isset($node->field_worksheet_thumbnail_image)){
-        $tmp_img_nid =  field_get_items('node', $node, 'field_worksheet_thumbnail_image');
-        $uri = $tmp_img_nid[0]['uri'];
-        $newpath = image_style_path('square_thumbnail',$uri);
-        $abspath = file_create_url($newpath);
-        $vars['tfk_search_res_image'] = $abspath;
-      }
-      if(isset($node->field_grade_level)){
-        $tmp_tid = field_get_items('node', $node, 'field_grade_level');
-        $tid = $tmp_tid[0]['tid'];
-        $name_res =  db_query('select name from taxonomy_term_data where tid = :tid',array('tid' => $tid ));
-        $name = $name_res->fetch();
-        $name = $name->name;
-        $vars['tfk_search_res_grade_level'] = $name;
-      }
-    }
-
-
-    if($vars['result']['fields']['bundle'] == 'slideshow'){
-      $nid = $vars['result']['fields']['entity_id'];
-      $node = node_load($nid);
-      if(isset($node->field_slideshow_images)){
-        $tmp_img_nid =  field_get_items('node', $node, 'field_slideshow_images');
-        $img_nid = $tmp_img_nid[0]['nid'];
-        $result = db_query('select fi.field_image_fid,fm.filename from {field_data_field_image} fi
-          left join {file_managed} fm on fi.field_image_fid = fm.fid
-          where fi.entity_type = :bundle_type and fi.entity_id = :img_nid',array('bundle_type'=>'node','img_nid'=>$img_nid));
-        $record = $result->fetch();
-        $img_filename = file_build_uri(basename($record->filename));
-        $newpath = image_style_path('square_thumbnail',$img_filename);
-        $abspath = file_create_url($newpath);
-        $vars['tfk_search_res_image'] = $abspath;
-      }
-    }
-
-    if($vars['result']['fields']['bundle'] == 'article'){
-      $nid = $vars['result']['fields']['entity_id'];
-      $node = node_load($nid);
-      if(isset($node->field_tout_image)){
-        $tmp_img_nid =  field_get_items('node', $node, 'field_tout_image');
-        $img_nid = $tmp_img_nid[0]['nid'];
-
-        $result = db_query('select fi.field_image_fid,fm.filename from {field_data_field_image} fi
-          left join {file_managed} fm on fi.field_image_fid = fm.fid
-          where fi.entity_type = :bundle_type and fi.entity_id = :img_nid',array('bundle_type'=>'node','img_nid'=>$img_nid));
-        $record = $result->fetch();
-        $img_filename = file_build_uri(basename($record->filename));
-
-        $newpath = image_style_path('square_thumbnail',$img_filename);
-        $abspath = file_create_url($newpath);
-        $vars['tfk_search_res_image'] = $abspath;
-      }
-      if(isset($node->field_article_category)){
-        $tmp_tid = field_get_items('node', $node, 'field_article_category');
-        $tid = $tmp_tid[0]['tid'];
-        $name_res =  db_query('select name from taxonomy_term_data where tid = :tid',array('tid' => $tid ));
-        $name = $name_res->fetch();
-        $name = $name->name;
-        $vars['tfk_search_res_category'] = $name;
-      }
-    }
 }
+
+/**
+ * Implementation of hook_theme_registry_alter
+ *
+ * Tell Drupal to look into our module for templates as well.
+ */
+/*function tfk_search_theme_registry_alter(&$theme_registry) {
+  //$theme_registry['search_result']['theme paths'][] = drupal_get_path('module', 'tfk_search'). '/templates';
+  //$theme_registry['search_result']['theme paths'][] = $theme_registry['search_result']['theme path'];
+  //unset($theme_registry['search_result']['theme path']);
+}*/
 
 
 /**
