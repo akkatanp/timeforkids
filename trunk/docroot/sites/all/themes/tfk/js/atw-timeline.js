@@ -10,7 +10,10 @@ $(document).ready(function() {
 		events = events.not('.clearfix');
 		var numEvents = events.length;
 		var eventContainer = $('#event-container');
+		var year = $('#event-year');
 		var timebar = $('#event-timeline-bar');
+		var topline = $('#line-ablove');
+		var bottomline = $('#line-below');
 		
 		var showHideEvent = function() {
 			nodes.each(function(i, node) {
@@ -24,8 +27,16 @@ $(document).ready(function() {
 			var nodeNum = parseInt(this.id.split('-')[2]);
 			var thisEvent = events.eq(nodeNum)
 			thisEvent.show();
-			$('#event-year').text(thisEvent.find('.event-text h3').text());
-			jQuery(this).addClass('active');
+			year.text(thisEvent.find('.event-text h3').text());
+			$(this).addClass('active');
+			
+			var linePos = $(this).position().left + 3.5;
+			topline.css('left': linePos + 'px');
+			bottomline.css('left': linePos + 'px');
+			
+			var yearPos = linePos - ($(this).width/2);
+			if (yearPos < 0) yearPos = 0;
+			year.css('left', yearPos + 'px');
 		}
 		
 		if (numEvents) {
@@ -34,6 +45,9 @@ $(document).ready(function() {
 				if (i == 0) {
 					node.addClass('active');
 					$('#event-year').text($('#event-0').find('.event-text h3').text());
+					nodPos = node.position().left;
+					topline.css('left': (nodePos + 3.5) + 'px');
+					bottomline.css('left': (nodePos + 3.5) + 'px');
 				}
 			}
 			
