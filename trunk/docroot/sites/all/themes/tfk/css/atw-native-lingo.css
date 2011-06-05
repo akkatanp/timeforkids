@@ -30,6 +30,39 @@
 	z-index: 1;
 }
 
+#native-lingo-container #image-container #audio-box {
+	position: absolute;
+	top: 20px;
+	right: 10px;
+	width: 230px;
+	height: 180px;
+	border: solid 1px #cecece;
+	background: #fff;
+	padding: 6px;
+}
+
+#native-lingo-container #image-container #audio-box h2 {
+	font: bold 18px arial;
+	padding-bottom: 6px;
+	margin: 0 0 6px 0;
+	border-bottom: dotted 1px #cecece;
+}
+
+#native-lingo-container #image-container #audio-box  #phrase-text {
+	font-weight: bold;
+}
+
+#native-lingo-container #image-container #audio-box  #phrae-translation {
+	font-style: italic;
+}
+
+#native-lingo-container #image-container #audio-box  #audio-player-box {
+	font-weight: bold;
+	border: dotted 1px #cecece;
+	background: #dedede;
+	height: 24px;
+}
+
 #native-lingo-container .phrase-list {
 	display: inline-block;
 	width: 238px;
@@ -50,7 +83,6 @@
 #native-lingo-container .phrase-list .phrase {
 	padding: 6px;
 }
-
 
 
 
