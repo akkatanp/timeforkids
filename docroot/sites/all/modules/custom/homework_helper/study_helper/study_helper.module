@@ -171,6 +171,8 @@ function study_helper_node_view($node) {
         '#markup' => '<div id="study-helper-copy">' . t('Copy') . '</div>',
       )
     );
+  }
+  if ($node->type == 'flashcard') {
     $node->content['study_helper_help'] = array(
       '#prefix' => '<div class="study-helper-help">',
       '#suffix' => '</div>',
