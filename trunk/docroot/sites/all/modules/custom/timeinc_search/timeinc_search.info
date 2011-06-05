@@ -1,4 +1,0 @@
-name = Time Inc Search
-description = Provides custom search functionality.
-core = 7.x
-package = Time Inc
