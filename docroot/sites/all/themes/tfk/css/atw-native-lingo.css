@@ -1,0 +1,66 @@
+#native-lingo-container {
+	border: solid 1px #cecece;
+	padding: 10px;
+	position: relative;
+}
+
+#native-lingo-container h1 {
+	font-size: 30px;
+	margin: 4px 0;
+}
+
+#native-lingo-container .field-name-body p {
+	font: normal 12px arial;
+	padding-bottom: 10px;
+	border-bottom: dotted 1px #cecece;
+	margin: 4px 0 10px 0;
+}
+
+#native-lingo-container #image-container {
+	position: relative;
+	width: 488px;
+	height: 260px;
+	border: solid 1px #cecece;
+}
+
+#native-lingo-container #image-container img {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	z-index: 1;
+}
+
+#native-lingo-container .phrase-list {
+	float: left;
+	width: 238px;
+	border: solid 1px #cecece;
+}
+
+#native-lingo-container #basics {
+	margin-right: 8px;
+}
+
+#native-lingo-container .phrase-list h2 {
+	font: bold 18px arial;
+	padding: 6px;
+	margin: 0 0 6px 0;
+	border-bottom: dotted 1px #cecece;
+}
+
+#native-lingo-container .phrase-list .phrase {
+	padding: 6px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
