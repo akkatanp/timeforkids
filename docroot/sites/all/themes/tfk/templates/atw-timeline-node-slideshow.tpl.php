@@ -9,9 +9,9 @@
 	
 	<div id="event-year"><?php print $image['event_title'] ?></div>
 	
-	<div id="timeline"></div>
+	<div id="event-timeline" class="clearfix"></div>
 	
-	<div id="event-container">
+	<div id="event-container" class="clearfix">
 
 		<?php foreach($images_data as $image):?>
 
