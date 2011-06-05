@@ -22,7 +22,9 @@
  *
  * @ingroup views_templates
  */
+
 ?>
+
 <?php foreach ($fields as $id => $field): ?>
 
     <?php if($id != 'field_mini_lessons' && $id != 'field_related_articles'):?>
@@ -38,7 +40,8 @@
 <?php endforeach; ?>
 
 
-<?php if(count($fields['field_mini_lessons']->items) != 0 || count($fields['field_related_articles']->items) != 0):?>
+
+<?php if(count(strlen['field_mini_lessons']->content) != 0 || strlen($fields['field_related_articles']->content) != 0):?>
     <div class="related-content-wrap">
         <div class="addit-content">Additional Content</div>
         <?php if($fields['field_mini_lessons']): ?>
