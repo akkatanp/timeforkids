@@ -21,22 +21,22 @@ $(document).ready(function() {
 			});
 			
 			events.each(function(i, event) {
-				$(event).hide();
+				$(event).fadeOut(500);
 			});
 			
 			var nodeNum = parseInt(this.id.split('-')[2]);
 			var thisEvent = events.eq(nodeNum)
-			thisEvent.show();
+			thisEvent.fadeIn(500);
 			year.text(thisEvent.find('.event-text h3').text());
 			$(this).addClass('active');
 			
 			linePos = $(this).position().left + ($(this).width() / 2) + 6;
-			topline.css('left', linePos + 'px');
-			bottomline.css('left', linePos + 'px');
+			topline.animate({'left': linePos + 'px'}, 500);
+			bottomline.animate({'left': linePos + 'px'}, 500);
 			
 			yearPos = linePos - (year.width() / 2) - 7;
 			if (yearPos < 0) yearPos = 0;
-			year.css('left', yearPos + 'px');
+			year.animate({'left': yearPos + 'px'}, 500);
 		}
 		
 		if (numEvents) {
