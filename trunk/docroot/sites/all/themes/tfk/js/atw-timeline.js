@@ -26,9 +26,9 @@ $(document).ready(function() {
 		
 		if (numEvents) {
 			for (i=0;i<numEvents;i++) {
-				var dot = $('<div></div>').attr('id': 'event-node-' + i).addClass('event-node').appendTo(timebar);
+				var node = $('<div></div>').attr('id', 'event-node-' + i).addClass('event-node').appendTo(timebar);
 				if (i == 0) {
-					dot.addClass('active');
+					node.addClass('active');
 				}
 			}
 			
