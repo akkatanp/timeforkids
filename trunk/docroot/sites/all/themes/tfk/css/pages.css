@@ -244,6 +244,7 @@ ul.links li {
     padding: 4px;
     width: 230px;
     padding: 10px 10px 10px 10px;
+    height:100px;
 }
 .view-board-members .view-content table {
     border-collapse: collapse;
