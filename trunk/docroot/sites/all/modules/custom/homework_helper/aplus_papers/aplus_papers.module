@@ -35,14 +35,19 @@ function theme_aplus_papers_checklist($variables) {
   $current = $variables['current'];
   $items = array();
   foreach ($steps as $step => $data) {
-    $classes = array();
-    if ($current > $step) {
-      $classes[] = 'checked';
+    if (isset($data['name']) || isset($data['title'])) {
+      unset($step);
+    }  
+    if ($step) { 
+      $classes = array();
+      if ($current > $step) {
+        $classes[] = 'checked';
+      }
+      if ($current == $step) {
+        $classes[] = 'current';
+      }
+      $items[] = array('data' => $data['#checklist'], 'class' => $classes);
     }
-    if ($current == $step) {
-      $classes[] = 'current';
-    }
-    $items[] = array('data' => $data['#checklist'], 'class' => $classes);
   }
   return theme('item_list', array('items' => $items, 'attributes' => array('id' => array('aplus-papers-checklist'))));
 }
