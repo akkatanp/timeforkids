@@ -605,6 +605,31 @@ ul.links li {
 	margin-bottom: 10px;
 }
 
+#block-views-atw-homepage-nodeblock-block-1,
+#block-tfk-atw-atw-page-list-map-switch {
+	margin: 0;
+	padding: 10px;
+	background: #dedede;
+	height: 18px;
+}
+
+#block-tfk-atw-atw-page-list-map-switch a:first-child {
+	float: right;
+	font-size: 0px;
+	height: 18px;
+	width: 18px;
+	background: url(../images/atw-list-icon.png) no-repeat;
+}
+
+#block-tfk-atw-atw-page-list-map-switch a:last-child {
+	float: right;
+	font-size: 0px;
+	height: 18px;
+	width: 18px;
+	background: url(../images/atw-globe-icon.png) no-repeat;
+}
+
+
  /* ATW sidebar */
 .section-destination .region-sidebar-first .section {
 	padding: 0;
@@ -682,6 +707,13 @@ ul.links li {
 
 .page-around-the-world .view-content table td {
 	padding: 6px;
+}
+
+.page-around-the-world .view-content table td a {
+	height: 13px;
+	line-height: 13px;
+	padding-left: 20px;
+	background: url(../images/atw-green-icon.png) no-repeat;
 }
 
 /* ATW Destination */
