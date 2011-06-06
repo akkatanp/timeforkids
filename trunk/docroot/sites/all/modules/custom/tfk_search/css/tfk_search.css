@@ -52,6 +52,38 @@ div#block-views-tfk-section-photos-video-block div.views-field-body p {
   font-size: 12px;
 }
 
+/* Search results */
+
+ol#tfk-search-results-photos-video {
+  border: 1px solid #CECECE;
+  padding: 6.7px;
+}
+
+ol#tfk-search-results-photos-video li div.content-type {
+  background-color: #D71700;
+  color: white;
+  font-weight: bold;
+  font-size: 1.0em;
+  padding: 3.35px 0 2.76px 11px;
+  margin-bottom: 7px;
+}
+
+ol#tfk-search-results-photos-video li h3.title a:link,
+ol#tfk-search-results-photos-video li h3.title a:visited {
+  color: black;
+  font-size: 1.08em;
+}
+
+
+ol#tfk-search-results-photos-video li.with-image {
+  min-height: 215px;
+}
+
+ol#tfk-search-results-photos-video li.with-image img.thumbnail {
+  float: left;
+	margin-right: 7px;
+}
+
 /* Top pager */
 
 div#tfk-search-pager-top {

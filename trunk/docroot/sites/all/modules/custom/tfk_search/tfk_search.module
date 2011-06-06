@@ -229,7 +229,7 @@ function tfk_search_preprocess_pager_top(&$vars) {
         $vars['pager_active_filter'] .= implode($pager_active_filters['subjects'], ', ');
       }
       if(empty($pager_active_filters['themes'])) {
-        $vars['pager_active_filter'] .= 'All Themes';
+        $vars['pager_active_filter'] .= ', All Themes';
       } else {
         $vars['pager_active_filter'] .= implode($pager_active_filters['subjects'], ', ');
       }
@@ -373,6 +373,32 @@ function tfk_search_preprocess_search_result(&$vars) {
       //  ;
       //break;
     }
+    
+    // Photos & Video -specific- preprocessing.
+    if(arg(0) == 'photos-video') {
+      $vars['classes_array'][] = 'tfk-search-result';
+      
+      // Theming for results with thumbnails.
+      if(array_key_exists('tfk_search_res_image', $vars)) {
+        $vars['classes_array'][] = 'with-image';
+      }
+      
+      $vars['node_link'] = ($node->type != 'slideshow') ?
+        l('View Full Article', 'node/'. $node->nid, array(
+          'attributes' => array('title' => $node->title),
+        )): '';
+        
+      // Minor stuff.
+      strtoupper($vars['tfk_search_cont_type']);
+      
+      // @todo Add a dek field to the slideshow, or trim snippet.
+      
+      // @todo Load additional content / related article.
+
+      // Unset stuff that we are not going to use.
+      unset($vars['info']);
+    }
+    
 
 }
 

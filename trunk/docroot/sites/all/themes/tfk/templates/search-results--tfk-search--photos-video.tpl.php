@@ -24,7 +24,7 @@
 ?>
 <?php if ($search_results) : ?>
   <?php print $pager_top; ?>
-  <ol class="search-results <?php print $module; ?>-results">
+  <ol id="tfk-search-results-photos-video">
     <?php print $search_results; ?>
   </ol>
   <?php print $pager; ?>
