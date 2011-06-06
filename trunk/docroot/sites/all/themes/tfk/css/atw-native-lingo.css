@@ -58,9 +58,31 @@
 
 #native-lingo-container #image-container #audio-box  #audio-player-box {
 	font-weight: bold;
-	border: dotted 1px #cecece;
+	border: solid 1px #cecece;
 	background: #dedede;
-	height: 24px;
+	height: 25px;
+	padding: 2px;
+}
+
+#jplayer_play,
+#jplayer_pause,
+#jplayer_stop {
+	width: 35px;
+	height: 25px;
+	font-size: 0px;
+	cursor: pointer;
+}
+
+#jplayer_play {
+	background: url("../images/native-lingo-play.png") no-repeat;
+}
+
+#jplayer_stop {
+	background: url("../images/native-lingo-stop.png") no-repeat;
+}
+
+#jplayer_pause {
+	background: url("../images/native-lingo-pause.png") no-repeat;
 }
 
 #native-lingo-container .phrase-list {
@@ -87,7 +109,6 @@
 #native-lingo-container .phrase-list .phrase.odd {
 	background: #dedede;
 }
-
 
 
 
