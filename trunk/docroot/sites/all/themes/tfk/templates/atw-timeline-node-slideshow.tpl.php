@@ -1,3 +1,5 @@
+<?php //echo $cust_node_title;?>
+
 <link rel="stylesheet" href="/sites/all/themes/tfk/css/atw-timeline.css" />
 <script type="text/javascript" src="/sites/all/themes/tfk/js/atw-timeline.js"></script>
 

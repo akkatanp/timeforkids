@@ -1,3 +1,4 @@
+<?php //echo $cust_node_title;?>
 <link rel="stylesheet" href="/sites/all/themes/tfk/css/atw-daylife.css" />
 <script type="text/javascript" src="/sites/all/themes/tfk/js/atw-daylife.js"></script>
 
