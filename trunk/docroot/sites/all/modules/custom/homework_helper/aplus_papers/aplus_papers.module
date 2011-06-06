@@ -37,7 +37,7 @@ function theme_aplus_papers_checklist($variables) {
   foreach ($steps as $step => $data) {
     if (isset($data['name']) || isset($data['title'])) {
       unset($step);
-    }  
+    } 
     if ($step) { 
       $classes = array();
       if ($current > $step) {
@@ -49,7 +49,9 @@ function theme_aplus_papers_checklist($variables) {
       $items[] = array('data' => $data['#checklist'], 'class' => $classes);
     }
   }
-  return theme('item_list', array('items' => $items, 'attributes' => array('id' => array('aplus-papers-checklist'))));
+  $title = db_query("SELECT field_paper_check_title_value FROM {field_revision_field_paper_check_title} WHERE entity_id = :nid", array(':nid' => $variables['steps'][0]['#parent_nid']))->fetchField();
+  
+  return '<div id="aplus-papers-checklist-block"><div class="aplus-papers-checklist-title">' . $title . '</div>' . theme('item_list', array('items' => $items, 'attributes' => array('id' => array('aplus-papers-checklist')))) . '</div>';
 }
 
 /**
