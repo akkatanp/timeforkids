@@ -31,6 +31,19 @@ function tfk_search_init(){
   }
 }
 
+/**
+ * Implementation of hook_theme.
+ */
+function tfk_search_theme($existing, $type, $theme, $path) {
+  return array(
+    // Custom "top pager" for photos-video section. From common.inc.
+    'pager_top' => array(
+      'variables' => array('tags' => array(), 'element' => 0, 'parameters' => array(), 'quantity' => 9),
+      'file' => 'tfk_search_pager.inc',
+    )
+  );
+}
+
 
 function tfk_search_apachesolr_update_index(&$document, $node) {
   if (isset($node->field_date)){
@@ -122,6 +135,13 @@ function tfk_search_block_save($delta = '', $edit = array()){
   return;
 }
 
+function tfk_search_preprocess_region(&$vars) {
+  // @todo Make sure the primary navigation is not there.
+  if(arg(0) == 'photos-video') {
+    
+  }
+}
+
 /**
  * Block preprocessor.
  *
@@ -159,7 +179,64 @@ function tfk_search_preprocess_search_results(&$vars) {
       array('search_results__tfk_search__photos_video', 'search_results__tfk_search'),
       $vars['theme_hook_suggestions']
     );
+    
+    // Custom top pager.
+    $vars['pager_top'] = theme('pager_top', array('tags' => NULL));
   }
+  
+}
+
+/**
+ * Preprocess custom top pager.
+ *
+ * The top pager is themed differently, and displays 'extra' information.
+ *
+ * @param array $vars
+ *
+ * @see theme_pager_top
+ */
+function tfk_search_preprocess_pager_top(&$vars) {
+  
+  // Page title.
+  $vars['pager_title'] = 'Photos & Videos Archive';
+  
+  // If there are no active filters.
+  if(!array_key_exists('filters', $_GET)) {
+    $vars['pager_active_filter'] = 'Viewing: All Subjects, All Themes';
+  
+  // Else get active filters.
+  } else if(array_key_exists('filters', $_GET) && !empty($_GET['filters'])) {
+    $query = apachesolr_current_query();
+    $active_filters = $query->get_filters();
+    
+    if(!empty($active_filters)) {
+      $vars['pager_active_filter'] = 'Viewing: ';
+      $pager_active_filters = array();
+      
+      // Get term names and group them.
+      foreach($active_filters as $filter) {
+        if($filter['#name'] == 'im_10_field_article_category') {
+          $pager_active_filters['subjects'][] = taxonomy_term_title(taxonomy_term_load($filter['#value']));
+        } else {
+          $pager_active_filters['themes'][] = taxonomy_term_title(taxonomy_term_load($filter['#value']));
+        }
+      }
+      
+      // Create active filter string.
+      if(empty($pager_active_filters['subjects'])) {
+        $vars['pager_active_filter'] .= 'All Subjects, ';
+      } else {
+        $vars['pager_active_filter'] .= implode($pager_active_filters['subjects'], ', ');
+      }
+      if(empty($pager_active_filters['themes'])) {
+        $vars['pager_active_filter'] .= 'All Themes';
+      } else {
+        $vars['pager_active_filter'] .= implode($pager_active_filters['subjects'], ', ');
+      }
+    }
+    
+  }
+  
 }
 
 /**
@@ -298,18 +375,6 @@ function tfk_search_preprocess_search_result(&$vars) {
     }
 
 }
-
-/**
- * Implementation of hook_theme_registry_alter
- *
- * Tell Drupal to look into our module for templates as well.
- */
-/*function tfk_search_theme_registry_alter(&$theme_registry) {
-  //$theme_registry['search_result']['theme paths'][] = drupal_get_path('module', 'tfk_search'). '/templates';
-  //$theme_registry['search_result']['theme paths'][] = $theme_registry['search_result']['theme path'];
-  //unset($theme_registry['search_result']['theme path']);
-}*/
-
 
 /**
  * Implementation of hook_apachesolr_modify_query().
