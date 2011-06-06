@@ -50,17 +50,17 @@
 #timeline-container #event-timeline-bar-container #prev, 
 #timeline-container #event-timeline-bar-container #next {
 	width: 10px;
-	height: 13px;
+	height: 19px;
 	float: left;
 	cursor: pointer;
 }
 
 #timeline-container #event-timeline-bar-container #prev {
-	background: url("../images/timeline-left-arrow.png") no-repeat;
+	background: url("../images/timeline-left-arrow.png") no-repeat top 6px;
 }
 
 #timeline-container #event-timeline-bar-container #next {
-	background: url("../images/timeline-right-arrow.png") no-repeat;
+	background: url("../images/timeline-right-arrow.png") no-repeat top 6px;
 }
 
 #timeline-container #event-timeline-bar .event-node {
@@ -78,10 +78,11 @@
 
 #timeline-container #event-container {
 	position: relative;
+	min-height: 500px;
 }
 
 #timeline-container #event-container .event {
-	position: relative;
+	position: absolute;
 	top: 0px;
 	left: 0px;
 	padding: 10px;
