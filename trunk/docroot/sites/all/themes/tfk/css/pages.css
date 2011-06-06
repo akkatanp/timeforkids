@@ -610,10 +610,13 @@ ul.links li {
 	margin: 0;
 	padding: 10px;
 	background: #dedede;
+}
+
+#block-tfk-atw-atw-page-list-map-switch {
 	height: 18px;
 }
 
-#block-tfk-atw-atw-page-list-map-switch a#list-view {
+#block-tfk-atw-atw-page-list-map-switch a.list-view {
 	float: right;
 	margin-right: 6px;
 	font-size: 0px;
@@ -622,7 +625,7 @@ ul.links li {
 	background: url(../images/atw-list-icon.png) no-repeat;
 }
 
-#block-tfk-atw-atw-page-list-map-switch a#map-view {
+#block-tfk-atw-atw-page-list-map-switch a.map-view {
 	float: right;
 	margin-right: 6px;
 	font-size: 0px;
