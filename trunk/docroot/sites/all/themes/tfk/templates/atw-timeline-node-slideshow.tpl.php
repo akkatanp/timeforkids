@@ -1,13 +1,13 @@
 <?php //echo $cust_node_title;?>
 
-<link rel="stylesheet" href="/sites/all/themes/tfk/css/atw-timeline.css" />
+<!--link rel="stylesheet" href="/sites/all/themes/tfk/css/atw-timeline.css" />
 <script type="text/javascript" src="/sites/all/themes/tfk/js/atw-timeline.js"></script>
 
 <div class="atw-graphic-header"></div>
 
 <div id="timeline-container">
 	<h1><?php print $title ?></h1>
-	<h2>Take a trip through Country's history by clicking below</h2>
+	<h2>Take a trip through Country's history by clicking below</h2-->
 	
 	<div id="event-year"></div>
 	<div id="line-above"></div>
@@ -40,7 +40,7 @@
 		<?php endforeach; ?>
 		<div class="clearfix"></div>
 	</div>
-</div>
+<!--/div-->
 
 <!--
 THIS IS RELATED ARTICLES LIST:
