@@ -124,6 +124,11 @@ function feature_mini_sites_field_default_fields() {
           'video' => 0,
           'worksheet' => 0,
         ),
+        'view' => array(
+          'args' => array(),
+          'display_name' => '',
+          'view_name' => '',
+        ),
       ),
       'translatable' => '1',
       'type' => 'node_reference',
@@ -282,6 +287,11 @@ function feature_mini_sites_field_default_fields() {
           'tfk_extra' => 0,
           'video' => 0,
           'worksheet' => 'worksheet',
+        ),
+        'view' => array(
+          'args' => array(),
+          'display_name' => '',
+          'view_name' => '',
         ),
       ),
       'translatable' => '1',
