@@ -227,19 +227,29 @@ ul.links li {
     padding:10px;
 }
 /* Teacher Community Pages */
+.view-board-members .view-header {
+    border: 1px solid #CECECE;
+    padding: 10px 10px 10px 10px;
+}
+.view-board-members .view-header p strong {
+    display: block;
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
 .view-board-members .view-content table td {
     border: 1px solid #CECECE;
     display: block;
     float: left;
     margin: 4px 0;
     padding: 4px;
-    width: 240px;
+    width: 230px;
+    padding: 10px 10px 10px 10px;
 }
 .view-board-members .view-content table {
-  border-collapse: collapse;
+    border-collapse: collapse;
 }
 .view-board-members .view-content table td.col-1 {
-    margin-right: 8px;
+    margin-right: 5px;
 }
 .view-board-members .view-content .views-field-field-member-photo {
     float: left;
