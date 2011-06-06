@@ -109,12 +109,20 @@
       hide($content['comments']);
       hide($content['links']);
 
-     // print_r($node);exit;
+
+      //INSERT WRAPPER DIV HERE FOR THE SLIDESHOW AND DESCRIPTPION WHICH YOU CAN SHOW LIKE THIAS : print render($content['field_description']);
+
+
 
       //logic that shows the destination slideshow
       $slide_block = module_invoke('tfk_atw', 'block_view','atw-destination-slideshow');
       print render($slide_block['content']);
-      print render($content['field_description']);
+      //print render($content['field_description']);
+
+
+      //INSERT WRAPPER DIV CLOSURE
+
+
       print render($content);
     ?>
   </div>
