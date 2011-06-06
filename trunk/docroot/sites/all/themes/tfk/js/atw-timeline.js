@@ -48,6 +48,8 @@ $(document).ready(function() {
 					linePos = node.position().left + (node.width() / 2) + 6;
 					topline.css('left', linePos + 'px');
 					bottomline.css('left', linePos + 'px');
+				} else {
+					$('#event-' + i).hide();
 				}
 			}
 			
