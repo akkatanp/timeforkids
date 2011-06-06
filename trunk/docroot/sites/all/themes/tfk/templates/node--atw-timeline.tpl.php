@@ -106,8 +106,9 @@
       // We hide the comments and links now so that we can render them later.
       hide($content['comments']);
       hide($content['links']);
-      print render($content['body']);
+      
       $slide_block = module_invoke('tfk_atw', 'block_view','atw-timeline-slideshow');
+      print render($content['body']);
       print render($slide_block['content']);
       
       print render($content);
