@@ -67,8 +67,13 @@
 ?>
 <li class="<?php print $classes; ?>"<?php print $attributes; ?>>
   <?php if($tfk_search_cont_type):?>
-    Content type:<?php print $tfk_search_cont_type;?>
+    <div class="content-type"><?php print $tfk_search_cont_type;?></div>
   <?php endif;?>
+
+  <?php if($tfk_search_res_image):?>
+    <img class="thumbnail" src="<?php print $tfk_search_res_image;?>">
+  <?php endif;?>
+
 
   <?php if($tfk_search_res_grade_level):?>
     Grade Level:<?php print $tfk_search_res_grade_level;?>
@@ -78,16 +83,15 @@
   <h3 class="title"<?php print $title_attributes; ?>>
     <a href="<?php print $url; ?>"><?php print $title; ?></a>
   </h3>
-  <?php print render($title_suffix); ?>
-  <?php if($tfk_search_res_image):?>
-    <img src="<?php print $tfk_search_res_image;?>">
+  
+  <?php if(!empty($node_link)):?>
+    <div class="view-full-article"><?php print $node_link; ?></div>
   <?php endif;?>
+  
+  <?php print render($title_suffix); ?>
   <div class="search-snippet-info">
     <?php if ($snippet) : ?>
       <p class="search-snippet"<?php print $content_attributes; ?>><?php print $snippet; ?></p>
-    <?php endif; ?>
-    <?php if ($info) : ?>
-      <p class="search-info"><?php print $info; ?></p>
     <?php endif; ?>
   </div>
 </li>
