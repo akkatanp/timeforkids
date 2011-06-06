@@ -67,6 +67,7 @@
 #jplayer_play,
 #jplayer_pause,
 #jplayer_stop {
+	display: inline-block;
 	width: 35px;
 	height: 25px;
 	font-size: 0px;

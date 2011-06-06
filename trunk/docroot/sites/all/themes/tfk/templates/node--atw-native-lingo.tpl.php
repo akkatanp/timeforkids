@@ -129,9 +129,9 @@ $speaker_photo = file_create_url(image_style_path('tfk_rect_large',$speaker_phot
 				<div id="phrase-translation"></div>
 				<div id="audio-player-box">
 					<div id="audio-player"></div>
-					<a id="jplayer_play" class="jp-play">play</a>
-					<a id="jplayer_pause" class="jp-pause">pause</a>
-					<a id="jplayer_stop" class="jp-stop">stop</a>
+					<a href="#" id="jplayer_play" class="jp-play"></a>
+					<a href="#" id="jplayer_pause" class="jp-pause"></a>
+					<a href="#" id="jplayer_stop" class="jp-stop"></a>
 				</div>
 			</div>
 		</div>
