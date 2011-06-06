@@ -68,6 +68,12 @@
  * @see template_process()
  */
 ?>
+<?php
+if(drupal_is_front_page()) {
+    unset($page['content']['system_main']['default_message']);
+    }
+?>
+
 
 <div id="page-wrapper"><div id="page">
 
@@ -79,7 +85,7 @@
 		</div>
 	</div>
 	
-	<div id="navigation">
+	<div id="navigation" class="clearfix">
 	
 <div class="section clearfix">
     <?php if ($site_name || $site_slogan): ?>
@@ -103,8 +109,8 @@
     <?php endif; ?>
 
     
-    <?php 
-    /*** 
+    <?php
+    /***
     print theme('links__system_secondary_menu', array(
       'links' => $secondary_menu,
       'attributes' => array(
@@ -116,36 +122,46 @@
         'level' => 'h2',
         'class' => array('element-invisible'),
       ),
-    )); 
+    ));
     ***/
     ?>
 	
     <div id="global-nav-container">
 		<?php print render($page['header']['menu_menu-tfk-global-navigation']); ?>
+                <?php
+                //$form = drupal_get_form('search_form');
+                //$form['basic']['keys']['#title'] = 'lolopk';
+                //print_r($form);
+                  print render(drupal_get_form('search_form'));
+                ?>
 	</div>
 	
-	<?php if($page['header']['menu_menu-tfk-teachers-menu']): ?>
 	<div id="teacher-nav-container">
 		<div class="inner">
 			<?php print render($page['header']['views_homepage_username-block']); ?>
 			<?php print render($page['header']['block_3']); ?>
 			<?php print render($page['header']['block_11']); ?>
 			<?php print render($page['header']['menu_menu-tfk-teachers-menu']); ?>
+			<?php print render($page['header']['block_16']); ?>
+                  
 		</div>
 	</div>
-	<?php endif; ?>
-	
+
 	</div></div><!-- /.section, /#header -->
 
   <div id="main-wrapper"><div id="main" class="clearfix<?php if ($main_menu || $page['navigation']) { print ' with-navigation'; } ?>">
-
-    <div id="content" class="column"><div class="section">
+	<?php print render($page['sidebar_second']); ?>
+	<h1 class="title" id="page-title"><?php print $title; ?></h1>
+	
+	<?php print render($page['sidebar_first']); ?>
+	
+	<div id="content" class="column"><div class="section">
       <?php print render($page['highlighted']); ?>
       <?php print $breadcrumb; ?>
       <a id="main-content"></a>
       <?php print render($title_prefix); ?>
       <?php if ($title): ?>
-        <h1 class="title" id="page-title"><?php print $title; ?></h1>
+        
       <?php endif; ?>
       <?php print render($title_suffix); ?>
       <?php print $messages; ?>
@@ -156,16 +172,11 @@
       <?php if ($action_links): ?>
         <ul class="action-links"><?php print render($action_links); ?></ul>
       <?php endif; ?>
+      
+      <?php print render($page['content']); ?>
 
-      <?php print views_embed_view('photos_video_feature', 'pv_feature'); ?> 
-      <?php print views_embed_view('photos_videos_archive', 'block_photo_video_list'); ?>
-      <?php //print render($page['content']); ?>
       <?php print $feed_icons; ?>
     </div></div><!-- /.section, /#content -->
-
-    <?php print render($page['sidebar_first']); ?>
-
-    <?php print render($page['sidebar_second']); ?>
 
   </div>
 
