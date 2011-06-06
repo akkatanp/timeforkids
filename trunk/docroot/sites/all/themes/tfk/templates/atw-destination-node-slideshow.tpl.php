@@ -1,5 +1,3 @@
-<link rel="stylesheet" href="/sites/all/themes/tfk/css/atw_homepage_slideshow.css" />
-<script type="text/javascript" src="/sites/all/themes/tfk/js/atw_homepage_slideshow.js"></script>
 <div id="atw-container">
 	<div id="slideshow">
 		<div class="header"></div>

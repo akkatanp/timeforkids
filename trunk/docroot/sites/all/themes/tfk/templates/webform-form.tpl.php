@@ -17,7 +17,6 @@
  * - $form['details']: Internal information stored by Webform.
  */
 ?>
-HERE
 <?php
   // If editing or viewing submissions, display the navigation at the top.
   if (isset($form['submission_info']) || isset($form['navigation'])) {
