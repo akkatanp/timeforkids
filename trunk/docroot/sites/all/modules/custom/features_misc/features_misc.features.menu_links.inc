@@ -222,11 +222,19 @@ function features_misc_menu_default_menu_links() {
     'expanded' => '0',
     'weight' => '5',
   );
+<<<<<<< .mine
+  // Exported menu link: menu-tfk-global-navigation:http://localhost/homework-helper
+  $menu_links['menu-tfk-global-navigation:homework-helper'] = array(
+    'menu_name' => 'menu-tfk-global-navigation',
+    'link_path' => 'homework-helper',
+    'router_path' => 'homework-helper',
+=======
   // Exported menu link: menu-tfk-footer-secondary:http://localhost:8082/privacy-policy
   $menu_links['menu-tfk-footer-secondary:http://localhost:8082/privacy-policy'] = array(
     'menu_name' => 'menu-tfk-footer-secondary',
     'link_path' => 'http://localhost:8082/privacy-policy',
     'router_path' => '',
+>>>>>>> .r353
     'link_title' => 'Privacy Policy',
     'options' => array(
       'attributes' => array(
