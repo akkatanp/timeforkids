@@ -94,6 +94,7 @@ function tfk_preprocess_page(&$variables, $hook) {
           $variables['title'] = "My Account";
       }
   }
+  $variables['content_type_title'] = tfk_content_type_title($variables['node']->type);
 }
 // */
 
@@ -106,15 +107,7 @@ function tfk_preprocess_page(&$variables, $hook) {
  *   The name of the template being rendered ("node" in this case.)
  */
 /* -- Delete this line if you want to use this function
-function STARTERKIT_preprocess_node(&$variables, $hook) {
-  $variables['sample_variable'] = t('Lorem ipsum.');
-
-  // Optionally, run node-type-specific preprocess functions, like
-  // STARTERKIT_preprocess_node_page() or STARTERKIT_preprocess_node_story().
-  $function = __FUNCTION__ . '_' . $variables['node']->type;
-  if (function_exists($function)) {
-    $function($variables, $hook);
-  }
+function tfk_preprocess_node(&$variables, $hook) {
 }
 // */
 
@@ -146,3 +139,12 @@ function STARTERKIT_preprocess_block(&$variables, $hook) {
   $variables['classes_array'][] = 'count-' . $variables['block_id'];
 }
 // */
+
+function tfk_content_type_title($type) {
+  switch ($type) {
+    case 'a_paper':
+      $output = '<div class="aplus-paper-type-title">A+ Papers</div>';      
+      break;
+  }
+  return $output;
+}  

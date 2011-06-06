@@ -151,7 +151,9 @@ if(drupal_is_front_page()) {
 
   <div id="main-wrapper"><div id="main" class="clearfix<?php if ($main_menu || $page['navigation']) { print ' with-navigation'; } ?>">
 	<?php print render($page['sidebar_second']); ?>
-	<h1 class="title" id="page-title"><?php print $title; ?></h1>
+	<?php if ($content_type_title): ?> <?php print $content_type_title; ?> <?php endif; ?>
+  
+  <h1 class="title" id="page-title"><?php print $title; ?></h1>
 	
 	<?php print render($page['sidebar_first']); ?>
 	
