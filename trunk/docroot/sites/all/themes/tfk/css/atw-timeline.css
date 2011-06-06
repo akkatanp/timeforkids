@@ -33,7 +33,7 @@
 }
 
 #timeline-container #event-timeline-bar-container {
-	height: 13px;
+	height: 19px;
 	width: 488px;
 }
 
@@ -56,11 +56,11 @@
 }
 
 #timeline-container #event-timeline-bar-container #prev {
-	background: url("../images/timeline-left-arrow.png") no-repeat top 6px;
+	background: url("../images/timeline-left-arrow.png") no-repeat 0px 6px;
 }
 
 #timeline-container #event-timeline-bar-container #next {
-	background: url("../images/timeline-right-arrow.png") no-repeat top 6px;
+	background: url("../images/timeline-right-arrow.png") no-repeat 0px 6px;
 }
 
 #timeline-container #event-timeline-bar .event-node {
@@ -108,7 +108,7 @@
 
 #timeline-container #event-container .event .event-text {
 	float: left;
-	width: 166px;
+	width: 176px;
 }
 
 #timeline-container #event-container .event .event-text h3 {
