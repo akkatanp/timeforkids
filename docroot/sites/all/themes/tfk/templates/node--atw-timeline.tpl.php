@@ -105,8 +105,16 @@
     <?php
       // We hide the comments and links now so that we can render them later.
       hide($content['comments']);
-      hide($content['links']);
-      
+      hide($content['links']);?>
+      <link rel="stylesheet" href="/sites/all/themes/tfk/css/atw-timeline.css" />
+	  <script type="text/javascript" src="/sites/all/themes/tfk/js/atw-timeline.js"></script>
+
+		<div class="atw-graphic-header"></div>
+
+<div id="timeline-container">
+	<h1><?php print $title ?></h1>
+	<h2><?php print render($content['field_description']); ?></h2>
+<?php
       $slide_block = module_invoke('tfk_atw', 'block_view','atw-timeline-slideshow');
       print render($content['body']);
       print render($slide_block['content']);
@@ -115,7 +123,7 @@
 
     ?>
   </div>
-
+</div>
   <?php print render($content['links']); ?>
 
   <?php print render($content['comments']); ?>
