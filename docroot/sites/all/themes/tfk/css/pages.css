@@ -459,13 +459,15 @@ ul.links li {
 .related-content-wrap {
 	background: #d9effe;
 	border: solid 3px #acdbfc;
+	margin-top: 10px;
 	padding: 2px 4px;
 	-moz-box-shadow: 2px 2px 4px #666;
 	-webkit-box-shadow: 2px 2px 4px 666;
 	box-shadow: 2px 2px 4px #666;
 }
 
-.related-content-wrap .addit-mini-lessons .field-content {
+.related-content-wrap .addit-mini-lessons .field-content,
+.related-content-wrap .addit-related-articles .field-content {
 	display: inline-block;
 }
 
@@ -473,8 +475,6 @@ ul.links li {
 .view-kid-reporters-channel-top-story .related-content-wrap  {
 	clear: both;
 }
-
-
 
 /* teacher and kid reporter news block */
 .view-teacher-news-news-block table,
