@@ -19,4 +19,7 @@
 			</div>
 		</div>
 	</div>
+  <?php print views_embed_view('atw_homepage_nodeblock');?>
 </div>
+
+
