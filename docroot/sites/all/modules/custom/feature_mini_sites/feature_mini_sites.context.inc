@@ -153,9 +153,9 @@ function feature_mini_sites_context_default_contexts() {
           'region' => 'content',
           'weight' => '-10',
         ),
-        'views-minisite_articles-block' => array(
+        'views-minisite_articles-block_7' => array(
           'module' => 'views',
-          'delta' => 'minisite_articles-block',
+          'delta' => 'minisite_articles-block_7',
           'region' => 'content',
           'weight' => '-9',
         ),
