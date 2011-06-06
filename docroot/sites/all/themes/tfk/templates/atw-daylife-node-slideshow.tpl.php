@@ -13,7 +13,7 @@
 		<?php print $node_data['daylife_speaker_intro'];?>
 	</div>
 	
-	<div class="clock"></div>
+	<div class="clock active"></div>
 	
 	<div id="activities">
 		<div id="activity-time"></div>

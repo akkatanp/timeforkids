@@ -141,9 +141,9 @@ $speaker_photo = file_create_url(image_style_path('tfk_rect_large',$speaker_phot
 		<?php if(count($lingo_phrases['basic']) > 0):?>
 		<div id="basics" class="phrase-list">
 			<h2>The Basics</h2>
-			
+			<?php $i = 1; ?>
 			<?php foreach($lingo_phrases['basic'] as $phrase):?>
-			<div class="phrase">
+			<div class="phrase<?php if($i & 1) echo ' odd'; ?>">
 				<a href="<?php print $phrase['url_to_audio'];?>" rel="<?php print $phrase['phrase_translation'];?>"><?php print $phrase['phrase_text'];?></a>
 				<!-- <?php print $phrase['phrase_filemime'];?> -->
 				<?php if($is_admin_editor):?>
@@ -152,6 +152,7 @@ $speaker_photo = file_create_url(image_style_path('tfk_rect_large',$speaker_phot
 					<?php print l('delete','field-collection/field-native-lingo-phrase/'.$phrase['phrase_nid'].'/delete',array('attributes'=>array('class' => 'anyclassyouwant')));?>
 				<?php endif; ?>				
 			</div>
+			<?php i++; ?>
 			<?php endforeach;?>
 			
 		</div>
@@ -160,9 +161,9 @@ $speaker_photo = file_create_url(image_style_path('tfk_rect_large',$speaker_phot
 		<?php if(count($lingo_phrases['next_level']) > 0):?>
 		<div id="next-level" class="phrase-list">
 			<h2>The Next Level</h2>
-			
+			<?php $i = 1; ?>
 			<?php foreach($lingo_phrases['next_level'] as $phrase):?>
-			<div class="phrase">
+			<div class="phrase<?php if($i & 1) echo ' odd'; ?>">
 				<a href="<?php print $phrase['url_to_audio'];?>" rel="<?php print $phrase['phrase_translation'];?>"><?php print $phrase['phrase_text'];?></a>
 				<!-- <?php print $phrase['phrase_filemime'];?> -->
 				<?php if($is_admin_editor):?>
@@ -170,12 +171,14 @@ $speaker_photo = file_create_url(image_style_path('tfk_rect_large',$speaker_phot
 					<?php print l('edit','field-collection/field-native-lingo-phrase/'.$phrase['phrase_nid'].'/edit',array('attributes'=>array('class' => 'anyclassyouwant')));?> --
 					<?php print l('delete','field-collection/field-native-lingo-phrase/'.$phrase['phrase_nid'].'/delete',array('attributes'=>array('class' => 'anyclassyouwant')));?>
 				<?php endif; ?>				
-
 			</div>
+			<?php i++; ?>
 			<?php endforeach;?>
 			
 		</div>
 		<?php endif;?>
+		
+		<div class="clearfix"></div>
 	</div>
 	
 	<?php print l('ADD NEW','field-collection/field-native-lingo-phrase/add/node/'.$node->nid, array('attributes'=>array('class' => 'anyclassyouwant')));?>
