@@ -20,23 +20,30 @@ function feature_slideshow_context_default_contexts() {
     'path' => array(
       'values' => array(
         'photos-video' => 'photos-video',
+        'photos-video/*' => 'photos-video/*',
       ),
     ),
   );
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'apachesolr_search-bundle' => array(
-          'module' => 'apachesolr_search',
-          'delta' => 'bundle',
+        'tfk_search-tfk_search_photos_video_title' => array(
+          'module' => 'tfk_search',
+          'delta' => 'tfk_search_photos_video_title',
           'region' => 'sidebar_first',
-          'weight' => '-10',
+          'weight' => '-44',
         ),
         'apachesolr_search-im_10_field_article_category' => array(
           'module' => 'apachesolr_search',
           'delta' => 'im_10_field_article_category',
           'region' => 'sidebar_first',
-          'weight' => '-10',
+          'weight' => '-43',
+        ),
+        'apachesolr_search-im_36_field_themes' => array(
+          'module' => 'apachesolr_search',
+          'delta' => 'im_36_field_themes',
+          'region' => 'sidebar_first',
+          'weight' => '-42',
         ),
         'apachesolr_search-currentsearch' => array(
           'module' => 'apachesolr_search',
