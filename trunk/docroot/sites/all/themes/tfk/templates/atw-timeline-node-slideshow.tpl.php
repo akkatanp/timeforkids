@@ -4,7 +4,7 @@
 <div class="atw-graphic-header"></div>
 
 <div id="timeline-container">
-	<h1>Country: History Timeline</h1>
+	<h1><?php print $title ?></h1>
 	<h2>Take a trip through Country's history by clicking below</h2>
 	
 	<div id="event-year"></div>
