@@ -251,11 +251,15 @@ function tfk_search_preprocess_search_result(&$vars) {
     // Shuffle the order of the suggestions to prioritize the use of our template on top of the default.
     // The first template to be found is implemented.
     // @link http://api.drupal.org/api/drupal/includes--theme.inc/function/theme.
-    if(arg(0) == 'photos-video') {
+    $base_path = arg(0);
+    if($base_path == 'photos-video') {
       $vars['theme_hook_suggestions'] = array_merge(
         array('search_result__tfk_search__photos_video', 'search_result__tfk_search'),
         $vars['theme_hook_suggestions']
       );
+      $style = '115x115';
+    } else {
+      $style = 'square_thumbnail';
     }
     
     switch ($vars['result']['fields']['bundle']) {
@@ -299,7 +303,7 @@ function tfk_search_preprocess_search_result(&$vars) {
         if(isset($node->field_video_thumbnail)){
           $tmp_img_nid =  field_get_items('node', $node, 'field_video_thumbnail');
           $uri = $tmp_img_nid[0]['uri'];
-          $newpath = image_style_path('square_thumbnail',$uri);
+          $newpath = image_style_path($style, $uri);
           $abspath = file_create_url($newpath);
           $vars['tfk_search_res_image'] = $abspath;
         }
@@ -335,10 +339,15 @@ function tfk_search_preprocess_search_result(&$vars) {
             left join {file_managed} fm on fi.field_image_fid = fm.fid
             where fi.entity_type = :bundle_type and fi.entity_id = :img_nid',array('bundle_type'=>'node','img_nid'=>$img_nid));
           $record = $result->fetch();
-          $img_filename = file_build_uri(basename($record->filename));
-          $newpath = image_style_path('square_thumbnail',$img_filename);
-          $abspath = file_create_url($newpath);
-          $vars['tfk_search_res_image'] = $abspath;
+          $file = file_load($record->field_image_fid);
+          $file->newpath = image_style_path($style, $file->uri);
+          
+          // Generate the image style derivative if it doesn't exist.
+          if(!file_exists($file->newpath)) {
+            image_style_create_derivative(image_style_load($style), $file->uri, $file->newpath);
+          }
+          
+          $vars['tfk_search_res_image'] = image_style_url($style, $file->uri);
         }
       break;
       
