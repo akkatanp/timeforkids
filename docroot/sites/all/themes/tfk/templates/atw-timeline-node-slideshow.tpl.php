@@ -15,7 +15,7 @@
 		<div id="next"></div>
 	</div>
 	<div id="line-below"></div>
-	<div id="event-container" class="clearfix">
+	<div id="event-container">
 		<?php $i = 0; ?>
 		<?php foreach($images_data as $image):?>
 		
