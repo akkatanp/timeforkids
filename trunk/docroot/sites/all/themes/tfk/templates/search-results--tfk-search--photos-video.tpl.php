@@ -23,7 +23,7 @@
  */
 ?>
 <?php if ($search_results) : ?>
-  <h2><?php print t('Search results');?></h2>
+  <?php print $pager_top; ?>
   <ol class="search-results <?php print $module; ?>-results">
     <?php print $search_results; ?>
   </ol>
