@@ -226,6 +226,31 @@ ul.links li {
     border:1px solid #CECECE;
     padding:10px;
 }
+/* Teacher Community Pages */
+.view-board-members .view-content table td {
+    border: 1px solid #CECECE;
+    display: block;
+    float: left;
+    margin: 4px 0;
+    padding: 4px;
+    width: 240px;
+}
+.view-board-members .view-content table {
+  border-collapse: collapse;
+}
+.view-board-members .view-content table td.col-1 {
+    margin-right: 8px;
+}
+.view-board-members .view-content .views-field-field-member-photo {
+    float: left;
+    margin-right:8px;
+    min-height:90px;
+    height:auto !important;
+    height:90px;
+}
+.view-board-members .view-content table td .views-field-title-1 {
+    margin-top: 10px;
+}
 
 /* Teacher news sidebar */
 #block-tfk-news-tfk-news-latest-news-link {
