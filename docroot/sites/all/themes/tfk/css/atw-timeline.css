@@ -32,12 +32,35 @@
 	height: 20px;
 }
 
+#timeline-container #event-timeline-bar-container {
+	height: 13px;
+	width: 488px;
+}
+
 #timeline-container #event-timeline-bar {
+	float: left;
 	position: relative;
 	height: 7px;
+	width: 456px;
 	background: #d71700;
 	padding: 6px;
 	margin: 0;
+}
+
+#timeline-container #event-timeline-bar-container #prev, 
+#timeline-container #event-timeline-bar-container #next {
+	width: 10px;
+	height: 13px;
+	float: left;
+	cursor: pointer;
+}
+
+#timeline-container #event-timeline-bar-container #prev {
+	background: url("../images/timeline-left-arrow.png") no-repeat;
+}
+
+#timeline-container #event-timeline-bar-container #next {
+	background: url("../images/timeline-right-arrow.png") no-repeat;
 }
 
 #timeline-container #event-timeline-bar .event-node {
