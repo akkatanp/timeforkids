@@ -64,7 +64,7 @@
 }
 
 #native-lingo-container .phrase-list {
-	display: inline-block;
+	float: left;
 	width: 238px;
 	border: solid 1px #cecece;
 }
@@ -83,6 +83,11 @@
 #native-lingo-container .phrase-list .phrase {
 	padding: 6px;
 }
+
+#native-lingo-container .phrase-list .phrase.odd {
+	background: #dedede;
+}
+
 
 
 
