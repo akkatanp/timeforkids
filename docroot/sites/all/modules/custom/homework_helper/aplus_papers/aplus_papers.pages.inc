@@ -56,7 +56,8 @@ function aplus_papers_prepare_step($node) {
     );
   }
   $form['#checklist'] = $node->title;
-  
+  $form['#parent_nid'] = arg(1); 
+
   return $form;
 }
 
