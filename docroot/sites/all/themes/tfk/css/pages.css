@@ -613,22 +613,23 @@ ul.links li {
 	height: 18px;
 }
 
-#block-tfk-atw-atw-page-list-map-switch a:first-child {
+#block-tfk-atw-atw-page-list-map-switch a#list-view {
 	float: right;
+	margin-right: 6px;
 	font-size: 0px;
 	height: 18px;
 	width: 18px;
 	background: url(../images/atw-list-icon.png) no-repeat;
 }
 
-#block-tfk-atw-atw-page-list-map-switch a:last-child {
+#block-tfk-atw-atw-page-list-map-switch a#map-view {
 	float: right;
+	margin-right: 6px;
 	font-size: 0px;
 	height: 18px;
 	width: 18px;
 	background: url(../images/atw-globe-icon.png) no-repeat;
 }
-
 
  /* ATW sidebar */
 .section-destination .region-sidebar-first .section {
