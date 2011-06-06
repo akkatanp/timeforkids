@@ -210,6 +210,21 @@
             .hide(cycleSpeed)
           .end();
       }
+
+      $('body').keydown(
+        function(e) {
+          if (e.which == 32) {
+            $('.flip').click();
+            return false;
+          }
+          if (e.which == 37) {
+            $('.prev').click();
+          }
+          if (e.which == 39) {
+            $('.next').click();
+          }
+        }
+      );
     }
   }
 }(jQuery));
