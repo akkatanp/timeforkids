@@ -13,7 +13,10 @@ function template_preprocess_flashcard_cycle(&$variables) {
   $node = $element['#object'];
 
   $flip = (isset($_GET['flip']));
-  $card = (isset($_GET['card'])) ? $_GET['card'] : NULL;
+  if (!isset($_GET['card'])) {
+    $_GET['card'] = 1;
+  }
+  $card = $_GET['card'];
 
   $variables['items'] = array();
   foreach ($element['#items'] as $delta => $item) {
