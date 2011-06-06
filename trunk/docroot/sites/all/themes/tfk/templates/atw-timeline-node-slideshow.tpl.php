@@ -31,7 +31,7 @@
 				<?php print l('edit','field-collection/field-timeline-event/'.$image['event_nid'].'/edit');?> -- <?php print l('delete','field-collection/field-timeline-event/'.$image['event_nid'].'/delete');?>
 				<?php endif;?>
 			</div>
-		
+			<div class="clearfix"></div>
 		</div>
 		
 		<?php $i++; ?>
