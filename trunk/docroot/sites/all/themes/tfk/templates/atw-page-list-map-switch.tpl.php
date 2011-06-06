@@ -1,2 +1,2 @@
-<?php echo l('List View','around-the-world');?><br/>
-<?php echo l('Map View','around-the-world/map');?><br/>
+<?php echo l('List View','around-the-world',array('attributes' => array('class' => array('list-view'))));?><br/>
+<?php echo l('Map View','around-the-world/map',array('attributes' => array('class' => array('map-view'))));?><br/>
