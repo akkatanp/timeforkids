@@ -10,11 +10,11 @@
 function features_misc_menu_default_menu_links() {
   $menu_links = array();
 
-  // Exported menu link: menu-tfk-footer-primary:http://localhost:8082/atw
-  $menu_links['menu-tfk-footer-primary:http://localhost:8082/atw'] = array(
+  // Exported menu link: menu-tfk-footer-primary:around-the-world
+  $menu_links['menu-tfk-footer-primary:around-the-world'] = array(
     'menu_name' => 'menu-tfk-footer-primary',
-    'link_path' => 'http://localhost:8082/atw',
-    'router_path' => '',
+    'link_path' => 'around-the-world',
+    'router_path' => 'around-the-world',
     'link_title' => 'Around the World',
     'options' => array(
       'attributes' => array(
@@ -25,15 +25,35 @@ function features_misc_menu_default_menu_links() {
     ),
     'module' => 'menu',
     'hidden' => '0',
-    'external' => '1',
+    'external' => '0',
     'has_children' => '0',
     'expanded' => '0',
     'weight' => '10',
   );
-  // Exported menu link: menu-tfk-footer-primary:http://localhost:8082/hh
-  $menu_links['menu-tfk-footer-primary:http://localhost:8082/hh'] = array(
+  // Exported menu link: menu-tfk-footer-primary:extras
+  $menu_links['menu-tfk-footer-primary:extras'] = array(
     'menu_name' => 'menu-tfk-footer-primary',
-    'link_path' => 'http://localhost:8082/hh',
+    'link_path' => 'extras',
+    'router_path' => 'extras',
+    'link_title' => 'TFK Extras',
+    'options' => array(
+      'attributes' => array(
+        'class' => array(
+          0 => 'tfk-extras',
+        ),
+      ),
+    ),
+    'module' => 'menu',
+    'hidden' => '0',
+    'external' => '0',
+    'has_children' => '0',
+    'expanded' => '0',
+    'weight' => '25',
+  );
+  // Exported menu link: menu-tfk-footer-primary:http://localhost/homework-helper
+  $menu_links['menu-tfk-footer-primary:http://localhost/homework-helper'] = array(
+    'menu_name' => 'menu-tfk-footer-primary',
+    'link_path' => 'http://localhost/homework-helper',
     'router_path' => '',
     'link_title' => 'Homework Helper',
     'options' => array(
@@ -50,11 +70,11 @@ function features_misc_menu_default_menu_links() {
     'expanded' => '0',
     'weight' => '15',
   );
-  // Exported menu link: menu-tfk-footer-primary:http://localhost:8082/kid_reporter
-  $menu_links['menu-tfk-footer-primary:http://localhost:8082/kid_reporter'] = array(
+  // Exported menu link: menu-tfk-footer-primary:kid-reporter
+  $menu_links['menu-tfk-footer-primary:kid-reporter'] = array(
     'menu_name' => 'menu-tfk-footer-primary',
-    'link_path' => 'http://localhost:8082/kid_reporter',
-    'router_path' => '',
+    'link_path' => 'kid-reporter',
+    'router_path' => 'kid-reporter',
     'link_title' => 'Kid Reporter',
     'options' => array(
       'attributes' => array(
@@ -65,32 +85,32 @@ function features_misc_menu_default_menu_links() {
     ),
     'module' => 'menu',
     'hidden' => '0',
-    'external' => '1',
+    'external' => '0',
     'has_children' => '0',
     'expanded' => '0',
     'weight' => '5',
   );
-  // Exported menu link: menu-tfk-footer-primary:http://localhost:8082/news
-  $menu_links['menu-tfk-footer-primary:http://localhost:8082/news'] = array(
+  // Exported menu link: menu-tfk-footer-primary:news
+  $menu_links['menu-tfk-footer-primary:news'] = array(
     'menu_name' => 'menu-tfk-footer-primary',
-    'link_path' => 'http://localhost:8082/news',
-    'router_path' => '',
+    'link_path' => 'news',
+    'router_path' => 'news',
     'link_title' => 'News',
     'options' => array(
       'attributes' => array(),
     ),
     'module' => 'menu',
     'hidden' => '0',
-    'external' => '1',
+    'external' => '0',
     'has_children' => '0',
     'expanded' => '0',
     'weight' => '0',
   );
-  // Exported menu link: menu-tfk-footer-primary:http://localhost:8082/photos-videos
-  $menu_links['menu-tfk-footer-primary:http://localhost:8082/photos-videos'] = array(
+  // Exported menu link: menu-tfk-footer-primary:photos-video
+  $menu_links['menu-tfk-footer-primary:photos-video'] = array(
     'menu_name' => 'menu-tfk-footer-primary',
-    'link_path' => 'http://localhost:8082/photos-videos',
-    'router_path' => '',
+    'link_path' => 'photos-video',
+    'router_path' => 'photos-video',
     'link_title' => 'Photos & Video',
     'options' => array(
       'attributes' => array(
@@ -101,52 +121,32 @@ function features_misc_menu_default_menu_links() {
     ),
     'module' => 'menu',
     'hidden' => '0',
-    'external' => '1',
+    'external' => '0',
     'has_children' => '0',
     'expanded' => '0',
     'weight' => '20',
   );
-  // Exported menu link: menu-tfk-footer-primary:http://localhost:8082/store
-  $menu_links['menu-tfk-footer-primary:http://localhost:8082/store'] = array(
+  // Exported menu link: menu-tfk-footer-primary:store
+  $menu_links['menu-tfk-footer-primary:store'] = array(
     'menu_name' => 'menu-tfk-footer-primary',
-    'link_path' => 'http://localhost:8082/store',
-    'router_path' => '',
+    'link_path' => 'store',
+    'router_path' => 'store',
     'link_title' => 'Store',
     'options' => array(
       'attributes' => array(),
     ),
     'module' => 'menu',
     'hidden' => '0',
-    'external' => '1',
+    'external' => '0',
     'has_children' => '0',
     'expanded' => '0',
     'weight' => '30',
   );
-  // Exported menu link: menu-tfk-footer-primary:http://localhost:8082/tfk-extras
-  $menu_links['menu-tfk-footer-primary:http://localhost:8082/tfk-extras'] = array(
-    'menu_name' => 'menu-tfk-footer-primary',
-    'link_path' => 'http://localhost:8082/tfk-extras',
-    'router_path' => '',
-    'link_title' => 'TFK Extras',
-    'options' => array(
-      'attributes' => array(
-        'class' => array(
-          0 => 'tfk-extras',
-        ),
-      ),
-    ),
-    'module' => 'menu',
-    'hidden' => '0',
-    'external' => '1',
-    'has_children' => '0',
-    'expanded' => '0',
-    'weight' => '25',
-  );
-  // Exported menu link: menu-tfk-footer-secondary:http://localhost:8082/about-us
-  $menu_links['menu-tfk-footer-secondary:http://localhost:8082/about-us'] = array(
+  // Exported menu link: menu-tfk-footer-secondary:info
+  $menu_links['menu-tfk-footer-secondary:info'] = array(
     'menu_name' => 'menu-tfk-footer-secondary',
-    'link_path' => 'http://localhost:8082/about-us',
-    'router_path' => '',
+    'link_path' => 'info',
+    'router_path' => 'info',
     'link_title' => 'About Us',
     'options' => array(
       'attributes' => array(
@@ -157,104 +157,16 @@ function features_misc_menu_default_menu_links() {
     ),
     'module' => 'menu',
     'hidden' => '0',
-    'external' => '1',
+    'external' => '0',
     'has_children' => '0',
     'expanded' => '0',
     'weight' => '0',
   );
-  // Exported menu link: menu-tfk-footer-secondary:http://localhost:8082/ad-sponspor
-  $menu_links['menu-tfk-footer-secondary:http://localhost:8082/ad-sponspor'] = array(
+  // Exported menu link: menu-tfk-footer-secondary:subscribe-renew
+  $menu_links['menu-tfk-footer-secondary:subscribe-renew'] = array(
     'menu_name' => 'menu-tfk-footer-secondary',
-    'link_path' => 'http://localhost:8082/ad-sponspor',
-    'router_path' => '',
-    'link_title' => 'Advertisement & Sponsorship',
-    'options' => array(
-      'attributes' => array(
-        'class' => array(
-          0 => 'ad-sponspor',
-        ),
-      ),
-    ),
-    'module' => 'menu',
-    'hidden' => '0',
-    'external' => '1',
-    'has_children' => '0',
-    'expanded' => '0',
-    'weight' => '20',
-  );
-  // Exported menu link: menu-tfk-footer-secondary:http://localhost:8082/contact
-  $menu_links['menu-tfk-footer-secondary:http://localhost:8082/contact'] = array(
-    'menu_name' => 'menu-tfk-footer-secondary',
-    'link_path' => 'http://localhost:8082/contact',
-    'router_path' => '',
-    'link_title' => 'Contact Us',
-    'options' => array(
-      'attributes' => array(
-        'class' => array(
-          0 => 'contact-us',
-        ),
-      ),
-    ),
-    'module' => 'menu',
-    'hidden' => '0',
-    'external' => '1',
-    'has_children' => '0',
-    'expanded' => '0',
-    'weight' => '15',
-  );
-  // Exported menu link: menu-tfk-footer-secondary:http://localhost:8082/customer-service
-  $menu_links['menu-tfk-footer-secondary:http://localhost:8082/customer-service'] = array(
-    'menu_name' => 'menu-tfk-footer-secondary',
-    'link_path' => 'http://localhost:8082/customer-service',
-    'router_path' => '',
-    'link_title' => 'Customer Service',
-    'options' => array(
-      'attributes' => array(
-        'class' => array(
-          0 => 'customer-service',
-        ),
-      ),
-    ),
-    'module' => 'menu',
-    'hidden' => '0',
-    'external' => '1',
-    'has_children' => '0',
-    'expanded' => '0',
-    'weight' => '5',
-  );
-<<<<<<< .mine
-  // Exported menu link: menu-tfk-global-navigation:http://localhost/homework-helper
-  $menu_links['menu-tfk-global-navigation:homework-helper'] = array(
-    'menu_name' => 'menu-tfk-global-navigation',
-    'link_path' => 'homework-helper',
-    'router_path' => 'homework-helper',
-=======
-  // Exported menu link: menu-tfk-footer-secondary:http://localhost:8082/privacy-policy
-  $menu_links['menu-tfk-footer-secondary:http://localhost:8082/privacy-policy'] = array(
-    'menu_name' => 'menu-tfk-footer-secondary',
-    'link_path' => 'http://localhost:8082/privacy-policy',
-    'router_path' => '',
->>>>>>> .r353
-    'link_title' => 'Privacy Policy',
-    'options' => array(
-      'attributes' => array(
-        'class' => array(
-          0 => 'privacy-policy',
-        ),
-      ),
-    ),
-    'module' => 'menu',
-    'hidden' => '0',
-    'external' => '1',
-    'has_children' => '0',
-    'expanded' => '0',
-    'weight' => '25',
-  );
-  // Exported menu link: menu-tfk-footer-secondary:http://localhost:8082/subscribe-renew
-  $menu_links['menu-tfk-footer-secondary:http://localhost:8082/subscribe-renew'] = array(
-    'menu_name' => 'menu-tfk-footer-secondary',
-    'link_path' => 'http://localhost:8082/subscribe-renew',
-    'router_path' => '',
+    'link_path' => 'subscribe-renew',
+    'router_path' => 'subscribe-renew',
     'link_title' => 'Subscribe & Renew',
     'options' => array(
       'attributes' => array(
@@ -265,15 +177,55 @@ function features_misc_menu_default_menu_links() {
     ),
     'module' => 'menu',
     'hidden' => '0',
-    'external' => '1',
+    'external' => '0',
     'has_children' => '0',
     'expanded' => '0',
     'weight' => '10',
   );
-  // Exported menu link: menu-tfk-global-navigation:http://localhost:8082/hh
-  $menu_links['menu-tfk-global-navigation:http://localhost:8082/hh'] = array(
+  // Exported menu link: menu-tfk-global-navigation:around-the-world
+  $menu_links['menu-tfk-global-navigation:around-the-world'] = array(
     'menu_name' => 'menu-tfk-global-navigation',
-    'link_path' => 'http://localhost:8082/hh',
+    'link_path' => 'around-the-world',
+    'router_path' => 'around-the-world',
+    'link_title' => 'Around the World',
+    'options' => array(
+      'attributes' => array(
+        'class' => array(
+          0 => 'atw',
+        ),
+      ),
+    ),
+    'module' => 'menu',
+    'hidden' => '0',
+    'external' => '0',
+    'has_children' => '0',
+    'expanded' => '0',
+    'weight' => '-48',
+  );
+  // Exported menu link: menu-tfk-global-navigation:extras
+  $menu_links['menu-tfk-global-navigation:extras'] = array(
+    'menu_name' => 'menu-tfk-global-navigation',
+    'link_path' => 'extras',
+    'router_path' => 'extras',
+    'link_title' => 'TFK Extras',
+    'options' => array(
+      'attributes' => array(
+        'class' => array(
+          0 => 'tfk-extras',
+        ),
+      ),
+    ),
+    'module' => 'menu',
+    'hidden' => '0',
+    'external' => '0',
+    'has_children' => '0',
+    'expanded' => '0',
+    'weight' => '-45',
+  );
+  // Exported menu link: menu-tfk-global-navigation:http://localhost/homework-helper
+  $menu_links['menu-tfk-global-navigation:http://localhost/homework-helper'] = array(
+    'menu_name' => 'menu-tfk-global-navigation',
+    'link_path' => 'http://localhost/homework-helper',
     'router_path' => '',
     'link_title' => 'Homework Helper',
     'options' => array(
@@ -290,11 +242,31 @@ function features_misc_menu_default_menu_links() {
     'expanded' => '0',
     'weight' => '-47',
   );
-  // Exported menu link: menu-tfk-global-navigation:http://localhost:8082/news
-  $menu_links['menu-tfk-global-navigation:http://localhost:8082/news'] = array(
+  // Exported menu link: menu-tfk-global-navigation:kid-reporter
+  $menu_links['menu-tfk-global-navigation:kid-reporter'] = array(
     'menu_name' => 'menu-tfk-global-navigation',
-    'link_path' => 'http://localhost:8082/news',
-    'router_path' => '',
+    'link_path' => 'kid-reporter',
+    'router_path' => 'kid-reporter',
+    'link_title' => 'Kid Reporter',
+    'options' => array(
+      'attributes' => array(
+        'class' => array(
+          0 => 'kid-reporter',
+        ),
+      ),
+    ),
+    'module' => 'menu',
+    'hidden' => '0',
+    'external' => '0',
+    'has_children' => '0',
+    'expanded' => '0',
+    'weight' => '-49',
+  );
+  // Exported menu link: menu-tfk-global-navigation:news
+  $menu_links['menu-tfk-global-navigation:news'] = array(
+    'menu_name' => 'menu-tfk-global-navigation',
+    'link_path' => 'news',
+    'router_path' => 'news',
     'link_title' => 'News',
     'options' => array(
       'attributes' => array(
@@ -305,16 +277,16 @@ function features_misc_menu_default_menu_links() {
     ),
     'module' => 'menu',
     'hidden' => '0',
-    'external' => '1',
+    'external' => '0',
     'has_children' => '0',
     'expanded' => '0',
     'weight' => '-50',
   );
-  // Exported menu link: menu-tfk-global-navigation:http://localhost:8082/photos-videos
-  $menu_links['menu-tfk-global-navigation:http://localhost:8082/photos-videos'] = array(
+  // Exported menu link: menu-tfk-global-navigation:photos-video
+  $menu_links['menu-tfk-global-navigation:photos-video'] = array(
     'menu_name' => 'menu-tfk-global-navigation',
-    'link_path' => 'http://localhost:8082/photos-videos',
-    'router_path' => '',
+    'link_path' => 'photos-video',
+    'router_path' => 'photos-video',
     'link_title' => 'Photos & Video',
     'options' => array(
       'attributes' => array(
@@ -325,52 +297,36 @@ function features_misc_menu_default_menu_links() {
     ),
     'module' => 'menu',
     'hidden' => '0',
-    'external' => '1',
+    'external' => '0',
     'has_children' => '0',
     'expanded' => '0',
     'weight' => '-46',
   );
-  // Exported menu link: menu-tfk-global-navigation:http://localhost:8082/store
-  $menu_links['menu-tfk-global-navigation:http://localhost:8082/store'] = array(
+  // Exported menu link: menu-tfk-global-navigation:store
+  $menu_links['menu-tfk-global-navigation:store'] = array(
     'menu_name' => 'menu-tfk-global-navigation',
-    'link_path' => 'http://localhost:8082/store',
-    'router_path' => '',
+    'link_path' => 'store',
+    'router_path' => 'store',
     'link_title' => 'Store',
-    'options' => array(
-      'attributes' => array(),
-    ),
-    'module' => 'menu',
-    'hidden' => '0',
-    'external' => '1',
-    'has_children' => '0',
-    'expanded' => '0',
-    'weight' => '-44',
-  );
-  // Exported menu link: menu-tfk-global-navigation:http://localhost:8082/tfk-extras
-  $menu_links['menu-tfk-global-navigation:http://localhost:8082/tfk-extras'] = array(
-    'menu_name' => 'menu-tfk-global-navigation',
-    'link_path' => 'http://localhost:8082/tfk-extras',
-    'router_path' => '',
-    'link_title' => 'TFK Extras',
     'options' => array(
       'attributes' => array(
         'class' => array(
-          0 => 'tfk-extras',
+          0 => 'store',
         ),
       ),
     ),
     'module' => 'menu',
     'hidden' => '0',
-    'external' => '1',
+    'external' => '0',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '-45',
+    'weight' => '-44',
   );
-  // Exported menu link: menu-tfk-teachers-menu:http://localhost:8082/digital_edition
-  $menu_links['menu-tfk-teachers-menu:http://localhost:8082/digital_edition'] = array(
+  // Exported menu link: menu-tfk-teachers-menu:digital-edition
+  $menu_links['menu-tfk-teachers-menu:digital-edition'] = array(
     'menu_name' => 'menu-tfk-teachers-menu',
-    'link_path' => 'http://localhost:8082/digital_edition',
-    'router_path' => '',
+    'link_path' => 'digital-edition',
+    'router_path' => 'digital-edition',
     'link_title' => 'Digital Edition',
     'options' => array(
       'attributes' => array(
@@ -381,56 +337,16 @@ function features_misc_menu_default_menu_links() {
     ),
     'module' => 'menu',
     'hidden' => '0',
-    'external' => '1',
+    'external' => '0',
     'has_children' => '0',
     'expanded' => '0',
     'weight' => '15',
   );
-  // Exported menu link: menu-tfk-teachers-menu:http://localhost:8082/subscribe-renew
-  $menu_links['menu-tfk-teachers-menu:http://localhost:8082/subscribe-renew'] = array(
+  // Exported menu link: menu-tfk-teachers-menu:magazine
+  $menu_links['menu-tfk-teachers-menu:magazine'] = array(
     'menu_name' => 'menu-tfk-teachers-menu',
-    'link_path' => 'http://localhost:8082/subscribe-renew',
-    'router_path' => '',
-    'link_title' => 'Subscribe & Renew',
-    'options' => array(
-      'attributes' => array(
-        'class' => array(
-          0 => 'subscribe-renew',
-        ),
-      ),
-    ),
-    'module' => 'menu',
-    'hidden' => '0',
-    'external' => '1',
-    'has_children' => '0',
-    'expanded' => '0',
-    'weight' => '20',
-  );
-  // Exported menu link: menu-tfk-teachers-menu:http://localhost:8082/teacher-community
-  $menu_links['menu-tfk-teachers-menu:http://localhost:8082/teacher-community'] = array(
-    'menu_name' => 'menu-tfk-teachers-menu',
-    'link_path' => 'http://localhost:8082/teacher-community',
-    'router_path' => '',
-    'link_title' => 'Teacher Community',
-    'options' => array(
-      'attributes' => array(
-        'class' => array(
-          0 => 'teacher-community',
-        ),
-      ),
-    ),
-    'module' => 'menu',
-    'hidden' => '0',
-    'external' => '1',
-    'has_children' => '0',
-    'expanded' => '0',
-    'weight' => '10',
-  );
-  // Exported menu link: menu-tfk-teachers-menu:http://localhost:8082/tfk-magazine
-  $menu_links['menu-tfk-teachers-menu:http://localhost:8082/tfk-magazine'] = array(
-    'menu_name' => 'menu-tfk-teachers-menu',
-    'link_path' => 'http://localhost:8082/tfk-magazine',
-    'router_path' => '',
+    'link_path' => 'magazine',
+    'router_path' => 'magazine',
     'link_title' => 'TFK Magazine',
     'options' => array(
       'attributes' => array(
@@ -441,16 +357,56 @@ function features_misc_menu_default_menu_links() {
     ),
     'module' => 'menu',
     'hidden' => '0',
-    'external' => '1',
+    'external' => '0',
     'has_children' => '0',
     'expanded' => '0',
     'weight' => '0',
   );
-  // Exported menu link: menu-tfk-teachers-menu:http://localhost:8082/worksheets
-  $menu_links['menu-tfk-teachers-menu:http://localhost:8082/worksheets'] = array(
+  // Exported menu link: menu-tfk-teachers-menu:subscribe-renew
+  $menu_links['menu-tfk-teachers-menu:subscribe-renew'] = array(
     'menu_name' => 'menu-tfk-teachers-menu',
-    'link_path' => 'http://localhost:8082/worksheets',
-    'router_path' => '',
+    'link_path' => 'subscribe-renew',
+    'router_path' => 'subscribe-renew',
+    'link_title' => 'Subscribe & Renew',
+    'options' => array(
+      'attributes' => array(
+        'class' => array(
+          0 => 'subscribe-renew',
+        ),
+      ),
+    ),
+    'module' => 'menu',
+    'hidden' => '0',
+    'external' => '0',
+    'has_children' => '0',
+    'expanded' => '0',
+    'weight' => '20',
+  );
+  // Exported menu link: menu-tfk-teachers-menu:teacher-board-members
+  $menu_links['menu-tfk-teachers-menu:teacher-board-members'] = array(
+    'menu_name' => 'menu-tfk-teachers-menu',
+    'link_path' => 'teacher-board-members',
+    'router_path' => 'teacher-board-members',
+    'link_title' => 'Teacher Community',
+    'options' => array(
+      'attributes' => array(
+        'class' => array(
+          0 => 'teacher-community',
+        ),
+      ),
+    ),
+    'module' => 'menu',
+    'hidden' => '0',
+    'external' => '0',
+    'has_children' => '0',
+    'expanded' => '0',
+    'weight' => '10',
+  );
+  // Exported menu link: menu-tfk-teachers-menu:worksheets
+  $menu_links['menu-tfk-teachers-menu:worksheets'] = array(
+    'menu_name' => 'menu-tfk-teachers-menu',
+    'link_path' => 'worksheets',
+    'router_path' => 'worksheets',
     'link_title' => 'Worksheets',
     'options' => array(
       'attributes' => array(
@@ -461,7 +417,7 @@ function features_misc_menu_default_menu_links() {
     ),
     'module' => 'menu',
     'hidden' => '0',
-    'external' => '1',
+    'external' => '0',
     'has_children' => '0',
     'expanded' => '0',
     'weight' => '5',
@@ -469,16 +425,12 @@ function features_misc_menu_default_menu_links() {
   // Translatables
   // Included for use with string extractors like potx.
   t('About Us');
-  t('Advertisement & Sponsorship');
   t('Around the World');
-  t('Contact Us');
-  t('Customer Service');
   t('Digital Edition');
   t('Homework Helper');
   t('Kid Reporter');
   t('News');
   t('Photos & Video');
-  t('Privacy Policy');
   t('Store');
   t('Subscribe & Renew');
   t('TFK Extras');
