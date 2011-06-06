@@ -61,7 +61,8 @@
 	border: solid 1px #cecece;
 	background: #dedede;
 	height: 25px;
-	padding: 2px;
+	line-height: 25px;
+	padding: 4px 2px 2px 2px;
 }
 
 #jplayer_play,
@@ -72,6 +73,7 @@
 	height: 25px;
 	font-size: 0px;
 	cursor: pointer;
+	margin-right: 4px;
 }
 
 #jplayer_play {
