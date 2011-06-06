@@ -35,7 +35,7 @@
 #timeline-container #event-timeline-bar {
 	position: relative;
 	height: 7px;
-	background: #000;
+	background: #d71700;
 	padding: 6px;
 	margin: 0;
 }
@@ -50,7 +50,7 @@
 }
 
 #timeline-container #event-timeline-bar .event-node.active {
-	background: url("../images/slideshow-red-dot.png") no-repeat;
+	background: url("../images/slideshow-black-dot.png") no-repeat;
 }
 
 #timeline-container #event-container {
