@@ -129,9 +129,9 @@ $speaker_photo = file_create_url(image_style_path('tfk_rect_large',$speaker_phot
 				<div id="phrase-translation"></div>
 				<div id="audio-player-box">
 					<div id="audio-player"></div>
-					<a href="#" id="jplayer_play" class="jp-play" tabindex="1">play</a>
-					<a href="#" id="jplayer_pause" class="jp-pause" tabindex="1">pause</a>
-					<a href="#" id="jplayer_stop" class="jp-stop" tabindex="1">stop</a>
+					<a id="jplayer_play" class="jp-play">play</a>
+					<a id="jplayer_pause" class="jp-pause">pause</a>
+					<a id="jplayer_stop" class="jp-stop">stop</a>
 				</div>
 			</div>
 		</div>
@@ -178,9 +178,9 @@ $speaker_photo = file_create_url(image_style_path('tfk_rect_large',$speaker_phot
 		
 		<div class="clearfix"></div>
 	</div>
-	
+	<?php if($is_admin_editor):?>
 	<?php print l('ADD NEW','field-collection/field-native-lingo-phrase/add/node/'.$node->nid, array('attributes'=>array('class' => 'anyclassyouwant')));?>
- 
+	<?php endif; ?>
 	<?php print render($content['links']); ?>
 
 	<?php print render($content['comments']); ?>
