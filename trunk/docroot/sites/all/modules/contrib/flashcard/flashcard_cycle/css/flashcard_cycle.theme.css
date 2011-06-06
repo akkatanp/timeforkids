@@ -31,6 +31,12 @@
 .flashcard-cycle ul {
   margin-bottom: 0;
 }
+.flashcard-cycle ul.hidden {
+  display: none;
+}
+.js .flashcard-cycle ul.hidden {
+  display: block;
+}
 
 .flashcard-cycle-pager {
   margin-top: 1em;

@@ -25,7 +25,7 @@ function template_preprocess_flashcard_cycle(&$variables) {
         $element[$delta]['#attributes']['class'] = array('flipped', 'flashcard-' . $delta+1);
       }
       if (isset($card) && $card != $delta+1) {
-        continue;
+        $element[$delta]['#attributes']['class'][] = 'hidden';
       }
       $variables['items'][$delta] = $element[$delta];
     }
