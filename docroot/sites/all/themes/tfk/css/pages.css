@@ -226,7 +226,7 @@ ul.links li {
     border:1px solid #CECECE;
     padding:10px;
 }
-/* Teacher Community Pages */
+/* Teacher Community Pages aka Board Members */
 .view-board-members .view-header {
     border: 1px solid #CECECE;
     padding: 10px 10px 10px 10px;
@@ -261,7 +261,38 @@ ul.links li {
 .view-board-members .view-content table td .views-field-title-1 {
     margin-top: 10px;
 }
-
+#block-views-board-members-block-1 {
+    border: 1px solid #CECECE;
+    background:#daf0fe;
+    height:200px;
+    padding: 10px 10px 10px 10px;
+}
+#block-views-board-members-block-1 h2 {
+    font-size:1.0em;
+    font-family: "arial black", arial, sans-serif;
+    margin-bottom: 10px;
+    padding-bottom: 6px;
+    text-transform: uppercase;
+}
+#block-views-board-members-block-1 .views-field-title a {
+    font-size:1.2em;
+}
+#block-views-board-members-block-1 .views-field-field-grade-level {
+    font-weight:bold;
+}
+#block-views-board-members-block-1 .views-field-field-location {
+    font-weight:bold;
+}
+.linktoboard a {
+    background: none repeat scroll 0 0 #D71700;
+    border-radius: 12px 12px 12px 12px;
+    box-shadow: 2px 2px 2px #999999;
+    color: white;
+    float: right;
+    font: bold 11px arial;
+    padding: 6px 8px;
+    text-decoration: none;
+}
 /* Teacher news sidebar */
 #block-tfk-news-tfk-news-latest-news-link {
 	font: normal 14px "arial black";
