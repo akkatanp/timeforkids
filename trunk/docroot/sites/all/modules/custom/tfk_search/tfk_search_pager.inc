@@ -1,5 +1,9 @@
 <?php
 /**
+ * $Id$
+ *
+ * $Copyright$
+ *
  * @file
  * Holds theming function for the top pager found on the photos-video section.
  * We put this function here to avoid bloating tfk_search.module.
