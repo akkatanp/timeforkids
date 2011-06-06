@@ -49,8 +49,13 @@ function theme_aplus_papers_checklist($variables) {
       $items[] = array('data' => $data['#checklist'], 'class' => $classes);
     }
   }
-  $title = db_query("SELECT field_paper_check_title_value FROM {field_revision_field_paper_check_title} WHERE entity_id = :nid", array(':nid' => $variables['steps'][0]['#parent_nid']))->fetchField();
   
+  $title = '';
+  $checklist_title = db_query("SELECT field_paper_check_title_value FROM {field_revision_field_paper_check_title} WHERE entity_id = :nid", array(':nid' => $variables['steps'][0]['#parent_nid']))->fetchField();
+  if ($checklist_title) {
+    $title = $checklist_title;
+  }  
+
   return '<div id="aplus-papers-checklist-block"><div class="aplus-papers-checklist-title">' . $title . '</div>' . theme('item_list', array('items' => $items, 'attributes' => array('id' => array('aplus-papers-checklist')))) . '</div>';
 }
 
