@@ -4,6 +4,22 @@ $(document).ready(function() {
 	$('#atw-container #slideshow').slideshow();
 });
 
+var nextSlideImg = function() {
+	var curImg = $('#atw-container #slideshow').find('.footer').find('#clicks').children().find('.active');
+	var nextImgNum = parseInt(curImg.id.split('-')[1]) + 1;
+	var nextImg = $('#img-' + nextImgNum) ? $('#img-' + nextImgNum) : $('#img-0');
+	nextImgNum = parseInt(nextImg.id.split('-')[1]);
+	
+	imgs.each(function(i, img) {
+		$(img).removeClass('active');
+		$('.title-container').children().eq(i).hide();
+	});
+	
+	inner.animate({'left': (-1 * (nextImgNum * imgWidth)) + 'px'}, 500);
+	nextImg.addClass('active');
+	$('.title-container').children().eq(nextImgNum).show();
+};
+
 (function($) {
 	$.fn.slideshow = function() {
 		var inner = this.find('.inner');
@@ -20,22 +36,6 @@ $(document).ready(function() {
 			inner.animate({'left': (-1 * (imgNum * imgWidth)) + 'px'}, 500);
 			$(this).addClass('active');
 			$('.title-container').children().eq(imgNum).show();
-		};
-		
-		var nextSlideImg = function() {
-			var curImg = imgs.find('.active');
-			var nextImgNum = parseInt(curImg.id.split('-')[1]) + 1;
-			var nextImg = $('#img-' + nextImgNum) ? $('#img-' + nextImgNum) : $('#img-0');
-			nextImgNum = parseInt(nextImg.id.split('-')[1]);
-			
-			imgs.each(function(i, img) {
-				$(img).removeClass('active');
-				$('.title-container').children().eq(i).hide();
-			});
-			
-			inner.animate({'left': (-1 * (nextImgNum * imgWidth)) + 'px'}, 500);
-			nextImg.addClass('active');
-			$('.title-container').children().eq(nextImgNum).show();
 		};
 		
 		if (numImgs) {
