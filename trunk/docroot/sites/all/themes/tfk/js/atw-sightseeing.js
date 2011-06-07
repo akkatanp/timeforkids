@@ -17,7 +17,10 @@ $(document).ready(function() {
 		}).appendTo(document.body).load(function() {
 			var locationBody = $(this).contents().find('body');
 			var locationTable = $(locationBody).find('table');
-			alert(locationTable);
+			var locationImg = locationTable.find('img');
+			
+			var locationDiv = $('<div></div>').attr('id', 'location-container').append(locationImg).appendTo($('#map-container'));
+			
 		});
 	}
 	
