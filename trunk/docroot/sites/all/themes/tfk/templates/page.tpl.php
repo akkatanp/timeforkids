@@ -93,11 +93,11 @@ if(drupal_is_front_page()) {
         <?php if ($site_name): ?>
           <?php if ($title): ?>
             <div id="site-name"><strong>
-              .<a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home"><span><?php print $site_name; ?></span></a>
+              <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home"><span><?php print $site_name; ?></span></a>
             </strong></div>
           <?php else: /* Use h1 when the content title is empty */ ?>
             <h1 id="site-name">
-              ,<a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home"><span><?php print $site_name; ?></span></a>
+              <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home"><span><?php print $site_name; ?></span></a>
             </h1>
           <?php endif; ?>
         <?php endif; ?>
@@ -153,7 +153,7 @@ if(drupal_is_front_page()) {
 	<?php print render($page['sidebar_second']); ?>
 	<?php if ($content_type_title): ?> <?php print $content_type_title; ?> <?php endif; ?>
   
-  <h1 class="title" id="page-title"><?php print $title; ?></h1>
+  <?php if(!$front):?><h1 class="title" id="page-title"><?php print $title; ?></h1><?php endif;?>
 	
 	<?php print render($page['sidebar_first']); ?>
 	
