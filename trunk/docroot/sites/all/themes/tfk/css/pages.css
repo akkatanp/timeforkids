@@ -833,7 +833,7 @@ ul.links li {
 	display: none;
 }
 
-/* ATW CXhallenge */
+/* ATW Challenge */
 .page-destination-united-states-america-challenge a#main-content {
 	display: block;
 	border: solid 1px #cecece;
@@ -842,6 +842,31 @@ ul.links li {
 	height: 100px;
 	background: url(../images/atw-head.png) no-repeat 10px 10px;
 	margin-bottom: 10px;
+}
+
+.page-destination-united-states-america-challenge .field-name-body {
+	padding-bottom: 10px;
+	border-bottom: dotted 1px #cecece;
+	margin-bottom: 10px;
+}
+
+.page-destination-united-states-america-challenge .form-item {
+	margin: 10px 0 4px 0;
+}
+
+.page-destination-united-states-america-challenge  .form-submit {
+	font: bold 11px arial;
+	background: #d71700;
+	color: #fff;
+	padding: 6px 8px;
+	border: none;
+	cursor: pointer;
+	border-radius: 12px;
+	-moz-border-radius: 12px;
+	-webkit-border-radius: 12px;
+	box-shadow: 2px 2px 2px #999;
+	-moz-box-shadow: 2px 2px 2px #999;
+	-webkit-box-shadow: 2px 2px 2px #999;
 }
 
 /*
