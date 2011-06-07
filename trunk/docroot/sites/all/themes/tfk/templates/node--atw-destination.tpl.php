@@ -118,7 +118,7 @@
       $slide_block = module_invoke('tfk_atw', 'block_view','atw-destination-slideshow');
 	  print render($slide_block['content']);
 	?>
-	<?php print $title; ?>
+	<h1><?php print $title; ?></h1>
 	<?php print render($content['field_description']);?>
 	</div>
 
