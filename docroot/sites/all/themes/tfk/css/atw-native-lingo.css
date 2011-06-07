@@ -22,6 +22,7 @@
 	width: 488px;
 	height: 260px;
 	border: solid 1px #cecece;
+	margin-bottom: 10px;
 }
 
 #native-lingo-container #image-container img {
