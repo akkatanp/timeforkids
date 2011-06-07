@@ -176,7 +176,7 @@ function theme_tfk_featured_block(&$variables) {
   
   $output .= '<div class="g2">';
   $output .= '<div class="featured-label">FEATURED</div>';
-  $output .= "<h2 class='featured-title'>{$tfkSearchFeaturedItem->title}</h2>";
+  $output .= "<h2 class='featured-title'>". l($tfkSearchFeaturedItem->title, $url). "</h2>";
   $output .= "<div class='featured-date'>". date('F j, Y', $tfkSearchFeaturedItem->created). "</div>";
   $output .= "<div class='featured-dek'>{$tfkSearchFeaturedItem->body}</div>";
   $output .= '<div class="featured-link">'. l('View '. ($tfkSearchFeaturedItem->type == 'slideshow'? 'Photo Slide-Show': 'Video'), $url). '</div>';
