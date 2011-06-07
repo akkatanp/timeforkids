@@ -375,6 +375,10 @@ ul.links li {
 	display: inline;
 }
 
+#news-sidebar-year-filter .button-holder {
+	height: 42px;
+}
+
 #news-sidebar-year-filter #yearsubmit {
 	font: bold 11px arial;
 	float: right;

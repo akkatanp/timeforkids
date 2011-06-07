@@ -8,8 +8,9 @@
 		<option id="<?php echo $year;?>"><?php echo $year;?></option>
     <?php endforeach; ?>
 	</select>
-	<br />
-	<input type="button" id="yearsubmit" onClick="location.href='<?php echo url('news-archive')?>/'+ document.getElementById('yeardropdown').value;" value="Submit Date Range">
-	<br clear="all" />
+	<div class="button-holder">
+		<input type="button" id="yearsubmit" onClick="location.href='<?php echo url('news-archive')?>/'+ document.getElementById('yeardropdown').value;" value="Submit Date Range">	
+	</div>
+	<div class="clearfix"></div>
 </form>
 </div>
