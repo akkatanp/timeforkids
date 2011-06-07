@@ -23,6 +23,7 @@
 
 <?php if($is_admin_editor == 1):?>
 <br />
+<br />
 LINKS FOR EDITORS:
 <br />
     <?php foreach($daylife_data as $data):?>
