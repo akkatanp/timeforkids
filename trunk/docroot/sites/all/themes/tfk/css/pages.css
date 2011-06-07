@@ -713,11 +713,28 @@ ul.links li {
 .node-type-article .group_additional_content {
 	background: #d9effe;
 	border: solid 3px #acdbfc;
-	margin-top: 10px;
+	margin: 10px 0;
 	padding: 2px 4px;
 	-moz-box-shadow: 2px 2px 4px #666;
 	-webkit-box-shadow: 2px 2px 4px 666;
 	box-shadow: 2px 2px 4px #666;
+}
+
+.node-type-article .group_additional_content .field-label,
+.node-type-article .group_additional_content .field-items {
+	display: inline;
+}
+
+.node-type-article .field-name-field-tout-image .node-title,
+.node-type-article .field-name-field-tout-image .field-name-body,
+.node-type-article .field-name-field-tout-image .field-name-field-date,
+.node-type-article .field-name-field-tout-image .field-name-field-article-category,
+.node-type-article .field-name-field-tout-image .field-name-field-image .field-label {
+	display: none;
+}
+
+.node-type-article .field-name-field-tout-image .field-name-field-image .field-item {
+	border: solid 1px #cecece;
 }
 
 /*
