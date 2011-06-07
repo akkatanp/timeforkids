@@ -40,7 +40,11 @@ function tfk_search_theme($existing, $type, $theme, $path) {
     'pager_top' => array(
       'variables' => array('tags' => array(), 'element' => 0, 'parameters' => array(), 'quantity' => 9),
       'file' => 'tfk_search_pager.inc',
-    )
+    ),
+    // Featured block for photos-video section.
+    'tfk_featured_block' => array(
+      'variables' => array('tfkSearchFeaturedItem' => NULL),
+    ),
   );
 }
 
@@ -75,6 +79,15 @@ function tfk_search_block_info() {
     'visibility' => BLOCK_VISIBILITY_LISTED,
     'pages' => 'photos-video',
     'region' => 'sidebar_first',
+    'cache' => DRUPAL_CACHE_GLOBAL,
+  );
+  
+  // Photos and Video Featured block.
+  $blocks['tfk_search_photos_video_featured'] = array(
+    'info' => t('TFK Search Photos and Video Featured'),
+    'visibility' => BLOCK_VISIBILITY_LISTED,
+    'pages' => 'photos-video',
+    'region' => 'highlighted',
     'cache' => DRUPAL_CACHE_GLOBAL,
   );
   
@@ -116,18 +129,28 @@ function tfk_search_block_view($delta='') {
       $block['content'] = '&nbsp;';
     break;
     
+    // Photos and Video Featured block.
+    case 'tfk_search_photos_video_featured':
+      $block['subject'] = t('FEATURED');
+      $block['content'] = theme('tfk_featured_block', tfk_search_get_featured_block());
+    break;
   }
   
   return $block;
 }
 
+/**
+ * Implementation of hook_block_configure.
+ */
 function tfk_search_block_configure($delta='') {
   if($delta == 'sm_editorial_date_tfk'){
       return apachesolr_facetcount_form('sm_editorial_date_tfk', $delta);
   }
 }
 
-
+/**
+ * Implementation of hook_block_save.
+ */
 function tfk_search_block_save($delta = '', $edit = array()){
   if($delta == 'solr_filter_year'){
      apachesolr_facetcount_save($edit);
@@ -135,25 +158,152 @@ function tfk_search_block_save($delta = '', $edit = array()){
   return;
 }
 
-function tfk_search_preprocess_region(&$vars) {
-  // @todo Make sure the primary navigation is not there.
-  if(arg(0) == 'photos-video') {
+/**
+ * Default theming function for Featured block.
+ *
+ * @param array $variables
+ *
+ * @see tfk_search_theme()
+ */
+function theme_tfk_featured_block(&$variables) {
+  $output = 'foo bar';
+  $tfkSearchFeaturedItem = $variables['tfkSearchFeaturedItem'];
+  $output = '<div id="tfk-search-photos-video-featured">';
+  $output .= "<img class='featured-item' src='{$tfkSearchFeaturedItem->featured_item->abspath}' />";
+  $output .= '<div class="featured-label">FEATURED</div>';
+  $output .= "<h2 class='featured-title'>{$tfkSearchFeaturedItem->title}</h2>";
+  $output .= "<div class='featured-date'>". date('F j, Y', $tfkSearchFeaturedItem->created). "</div>";
+  $output .= "<p class='featured-dek'>{$tfkSearchFeaturedItem->body['und'][0]['safe_value']}</p>";
+  $output .= '<div class="featured-link">'. l('View '. ($tfkSearchFeaturedItem->type == 'slideshow'? 'Photo Slide-Show': 'Video'), 'node/'. $tfkSearchFeaturedItem->nid). '</div>';
+  
+  // Thumbnails. Only for slideshows.
+  if($tfkSearchFeaturedItem->type == 'slideshow') {
+    $output .= '<div class="featured-thumbnails">';
     
+    //@todo Business: what to do when there are less than three?
+    foreach($tfkSearchFeaturedItem->slideshow_images as $image) {
+
+      $thumb_alt = (!empty($image->meta_description['und'][0]['metatags_quick'])) ? $image->meta_description['und'][0]['metatags_quick'] : $tfkSearchFeaturedItem->title. '-'. $image->title;
+      $output .= '<span class="featured-thumbnail">';
+      #$output .= theme('image', array('path' => $image->abspath, 'alt' => $thumb_alt));
+      $output .= "<img class='featured-item' src='{$image->abspath}' />";
+      $output .= '</span>';
+    }
+    
+    $output .= '</div>';
   }
+  
+  $output .= '</div>';
+  return $output;
+}
+
+/**
+ * db_query() callback for loading additional Featured item data.
+ *
+ * @author rallen8440
+ */
+class tfkSearchFeaturedItem {
+  function __construct() {
+    foreach(get_object_vars(node_load($this->nid)) as $prop => $value) {
+      $this->$prop = $value;
+    }
+    if($this->type == 'slideshow') {
+      $this->slideshow_images = array();
+      $this->featured_item = node_load(array_shift(array_shift($this->field_slideshow_images['und'])));
+      $this->featured_item->abspath = tfk_search_get_thumbnail($this->featured_item->field_image['und'][0]['fid'], 'tfk_270x270');
+      foreach($this->field_slideshow_images['und'] as $image) {
+        $_image = node_load($image['nid']);
+        $_image->abspath = tfk_search_get_thumbnail($_image->field_image['und'][0]['fid'], 'tfk_60x60');
+        $this->slideshow_images[] = $_image;
+      }
+    }
+    if($this->type == 'video') {
+      $test = null; //@todo Load the video.
+    }
+  }
+}
+
+/**
+ * Loads data for the Photos and Video featured item.
+ *
+ * @see tfk_search_block_view()
+ */
+function tfk_search_get_featured_block() {
+  // Get the featured node.
+  $fn_query = "
+    SELECT
+  		fn.nid AS nid
+  	FROM
+  	  node fn # featured_node
+  	  INNER JOIN flag_content f ON fn.nid = f.content_id
+  	  WHERE fn.type IN ('slideshow', 'video')
+  	  #WHERE fn.type IN ('video')
+  	ORDER BY fn.created DESC
+  	LIMIT 1";
+	return array('tfkSearchFeaturedItem' => array_shift(db_query($fn_query, array(), array('fetch' => 'tfkSearchFeaturedItem',))->fetchAll()));
+}
+
+/**
+ * Return the URL for an image derivative given a style and image path.
+ *
+ * Generates the image derivative if it has not been previously built.
+ *
+ * @param int $fid
+ *   File id.
+ *
+ * @return
+ *   The absolute URL where a style image can be downloaded, suitable for use in an tag.
+ */
+function tfk_search_get_thumbnail($fid, $style) {
+  $file = file_load($fid);
+  $file->newpath = image_style_path($style, $file->uri);
+  
+  // Generate the image style derivative if it doesn't exist.
+  if(!file_exists($file->newpath)) {
+    image_style_create_derivative(image_style_load($style), $file->uri, $file->newpath);
+  }
+  
+  return image_style_url($style, $file->uri);
+}
+
+function tfk_search_preprocess_region(&$vars) {
+  //if(arg(0) == 'photos-video') {
+    //$test = null;
+  //}
 }
 
 /**
  * Block preprocessor.
  *
  * @param array $vars
+ *
+ * @see tfkSearchFeaturedItem
  */
 function tfk_search_preprocess_block(&$vars) {
-  // Specific template suggestion for current search block photos-video.
+
+  // Specific template suggestions for photos-video blocks.
   if(arg(0) == 'photos-video') {
     $vars['theme_hook_suggestions'] = array_merge(
-      array('block__apachesolr_search__currentsearch__tfk_search__photos_video', 'block__apachesolr_search__currentsearch__tfk_search'),
+      array(
+      "block__apachesolr_search__tfk_search__{$vars['block']->module}__{$vars['block']->delta}",
+      'block__apachesolr_search__tfk_search__photos_video',
+      'block__apachesolr_search__tfk_search',
+      ),
       $vars['theme_hook_suggestions']
     );
+
+    switch ($vars['block']->delta) {
+      case 'im_10_field_article_category':
+        $vars['block']->subject = 'All Subjects';
+      break;
+      case 'tfk_search_photos_video_title':
+        // #unset($vars['block']->content);
+      break;
+      
+      default:
+        ;
+      break;
+    }
   }
 }
 
