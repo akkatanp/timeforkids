@@ -370,7 +370,7 @@
 }
 
 /* left sidebar teacher nav */
-.node-type-atw-destination  .region-sidebar-first .content h3 {
+.node-type-atw-destination  .region-sidebar-first .content h3.related {
 	height: 20px;
 	font: normal 14px "arial black";
 	color: #000;
@@ -383,7 +383,7 @@
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#7bc3f5, endColorstr=#5ea1d3);
 }
 
-.node-type-atw-destination  .region-sidebar-first .content ul.related{
+.node-type-atw-destination  .region-sidebar-first .content ul.related {
 	background: #d9effe;
 	border: solid 2px #acdbfc;
 	border-top: solid 1px black;
