@@ -376,7 +376,8 @@ ul.links li {
 }
 
 #news-sidebar-year-filter .button-holder {
-	height: 42px;
+	height: 32px;
+	padding-top: 10px;
 }
 
 #news-sidebar-year-filter #yearsubmit {
@@ -386,7 +387,7 @@ ul.links li {
 	color: white;
 	text-decoration: none;
 	padding: 6px 8px;
-	margin: 10px 0;
+	margin: 0;
 	border: none;
 	cursor: pointer;
 	-moz-border-radius: 12px;
