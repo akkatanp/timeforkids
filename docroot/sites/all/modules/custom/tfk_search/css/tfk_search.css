@@ -154,10 +154,9 @@ div#tfk-search-photos-video-featured .g2 {
 div#tfk-search-photos-video-featured div.featured-label {
 	font-size: 1em;
 	padding-top: 20px;
-	color: #d71700;
 }
 
-div#tfk-search-photos-video-featured img.featured-item {
+div#tfk-search-photos-video-featured .featured-item {
 	float: left;
 	margin-right: 15px;
 }
@@ -165,6 +164,7 @@ div#tfk-search-photos-video-featured img.featured-item {
 div#tfk-search-photos-video-featured h2.featured-title {
 	font-size: 1.875em;
 	margin: 3px 0px 1px;
+	color: #d71700;
 }
 
 div#tfk-search-photos-video-featured .featured-date {
