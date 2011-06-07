@@ -6,5 +6,7 @@ var popcustom =function(url) {
 
 $(document).ready(function() {
 	var map = $('map');
-	alert(map);
+	map.each(function(i, location) {
+		$(location).unbind('click');
+	}
 });
