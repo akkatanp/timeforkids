@@ -6,7 +6,7 @@
 
 <div id="tfk-current-issue">
 	<h3>TFK Current Issue</h3>
-	<div class="tfk-current-issue-body">
+	<div id="tfk-current-issue-body">
 		<img src="<?php print $magazine_data[0]['magazine_cover_image']; ?>" />
 		<strong>Grade Level <?php print $magazine_data[0]['magazine_grade_level']; ?></strong><br />
 		<?php print $magazine_data[0]['magazine_title']; ?><br />
