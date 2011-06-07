@@ -84,12 +84,6 @@ function feature_slideshow_context_default_contexts() {
           'region' => 'sidebar_first',
           'weight' => '-9',
         ),
-        'tfk_search-tfk_search_photos_video_featured' => array(
-          'module' => 'tfk_search',
-          'delta' => 'tfk_search_photos_video_featured',
-          'region' => 'highlighted',
-          'weight' => '-10',
-        ),
       ),
     ),
   );
