@@ -117,6 +117,7 @@
       //logic that shows the destination slideshow
       $slide_block = module_invoke('tfk_atw', 'block_view','atw-destination-slideshow');
 	  print render($slide_block['content']);
+          unset($content['field_country_slideshow']);
 	?>
 	<h1><?php print $title; ?></h1>
 	<?php print render($content['field_description']);?>
