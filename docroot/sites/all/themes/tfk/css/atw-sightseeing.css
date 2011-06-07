@@ -38,7 +38,8 @@
 
 #location-container img {
 	float: left;
-	margin-left: 10px;
+	margin-right: 10px;
+	margin-bottom: 10px;
 	opacity: 1;
 	filter: alpha(opacity=100);
 	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
@@ -62,5 +63,6 @@
 	width: 10px;
 	height: 10px;
 	border: solid 1px white;
+	cursor: pointer;
 }
 
