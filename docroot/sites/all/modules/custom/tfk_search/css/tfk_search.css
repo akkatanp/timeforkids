@@ -93,7 +93,7 @@ li.tfk-search-result {
 }
 
 .col1 {
-	display: inline-block;
+	float: left;
 	margin: 0px;
 }
 
@@ -103,9 +103,9 @@ li.tfk-search-result {
   max-width: 360px;
 }
 
-ol#tfk-search-results-photos-video li.tfk-search-result .col2 h3.title {
+ol#tfk-search-results-photos-video li.tfk-search-result .col2 h3.title a {
   color: #D71700;
-  font-size: 1.67em;
+  font-size: 1.5em;
   font-weight: bold;
 }
 
