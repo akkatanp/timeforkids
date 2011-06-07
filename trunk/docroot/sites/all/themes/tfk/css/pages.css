@@ -834,8 +834,8 @@ ul.links li {
 }
 
 /* ATW CXhallenge */
-/*.page-destination-united-states-america-challenge */
-.page-destination a#main-content {
+.page-destination-united-states-america-challenge a#main-content {
+	display: block;
 	border: solid 1px #cecece;
 	padding: 10px 9px;
 	width: 490px;
