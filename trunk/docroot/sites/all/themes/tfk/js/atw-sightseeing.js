@@ -18,8 +18,15 @@ $(document).ready(function() {
 			var locationBody = $(this).contents().find('body');
 			var locationTable = $(locationBody).find('table');
 			var locationImg = locationTable.find('img');
+			var locationName = $('<h1></h1>').text(locationTable.find('.boldBlack20 font').text());
 			
-			var locationDiv = $('<div></div>').attr('id', 'location-container').append(locationImg).appendTo($('#map-container'));
+			var locationDiv = $('<div></div>').attr('id', 'location-container').append(locationImg).append(locationName);
+			locationDiv.css({
+				'top': $('#map-container img').position().top + 'px',
+				'left': '10px'
+				'height': $('#map-container img').height() + 'px'
+			});
+			locationDiv.appendTo($('#map-container'));
 			
 		});
 	}
