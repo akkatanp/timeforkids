@@ -108,10 +108,9 @@
       hide($content['links']);
 
      // print_r($node);exit;
-		print render($content['field_article_category']);
-	  print $title;
-      print render($content);
-    ?>
+	print render($content['field_article_category']);?>
+	  <h1><?php print $title; ?></h1>
+      <?php print render($content);?>
   </div>
 
   <?php print render($content['links']); ?>

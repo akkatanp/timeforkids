@@ -671,6 +671,12 @@ ul.links li {
 	margin-bottom: 10px;
 }
 
+.node-type-article h1 {
+	color: #d71700;
+	font: bold arial 30px;
+	margin: 10px 0;
+}
+
 .node-type-article .field-name-field-article-category .field-items {
 	text-align: center;
 }
