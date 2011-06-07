@@ -9,7 +9,11 @@
 	line-height: 1;
 }
 
-#sightseeing-container #map-containerp :first-child {
+#sightseeing-container #map-container p {
+	margin: 0;
+}
+
+#sightseeing-container #map-container p:first-child {
 	padding-bottom: 10px;
 	border-bottom: dotted 1px #cecece;
 	margin: 4px 0 10px 0;
