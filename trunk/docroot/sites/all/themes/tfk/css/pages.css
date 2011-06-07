@@ -1029,6 +1029,7 @@ div#block-views-tfk-section-photos-video-block div.views-field-body p {
 	text-align: center;
 	color: #000;
 	padding: 6px 0;
+	margin: 0;
 	background: -moz-linear-gradient(100% 100% 90deg,  #5ea1d3, #7bc3f5);
 	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#7bc3f5), to(#5ea1d3));
 	background: -webkit-linear-gradient(#7bc3f5, #5ea1d3);
@@ -1036,15 +1037,16 @@ div#block-views-tfk-section-photos-video-block div.views-field-body p {
 }
 
 #tfk-current-issue-body {
-	width: 158px;
+	width: 150px;
 	background: #d9effe;
 	border: solid 2px #acdbfc;border-top: solid 1px black;
+	padding: 4px;
 	font-size: 11px;
 }
 
 #tfk-current-issue-body img {
 	width: 72px;
 	float: left;
-	margin-right: 2px;
+	margin-right: 4px;
 }
 
