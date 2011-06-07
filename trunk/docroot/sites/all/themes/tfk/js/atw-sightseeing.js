@@ -11,5 +11,5 @@ $(document).ready(function() {
 	map.each(function(i, location) {
 		$(location).removeAttr('onclick');
 		$(location).click(locationClick);
-	}
+	});
 });
