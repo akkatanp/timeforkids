@@ -57,7 +57,7 @@ var nextSlideImg = function() {
 			});
 			
 			if ($('#atw-container').hasClass('destination')) {
-				nextSlideImg()
+				setInterval('nextSlideImg()', 5000);
 			}
 		}
 	};
