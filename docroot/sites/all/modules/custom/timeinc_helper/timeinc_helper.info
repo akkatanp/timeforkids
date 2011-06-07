@@ -1,0 +1,4 @@
+name = Time Inc. Helper 
+description = Helper module for Time Inc. sites.
+core = 7.x
+package = Time Inc
