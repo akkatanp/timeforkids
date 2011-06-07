@@ -833,6 +833,17 @@ ul.links li {
 	display: none;
 }
 
+/* ATW CXhallenge */
+/*.page-destination-united-states-america-challenge */
+.page-destination a#main-content {
+	border: solid 1px #cecece;
+	padding: 10px 9px;
+	width: 490px;
+	height: 100px;
+	background: url(../images/atw-head.png) no-repeat 10px 10px;
+	margin-bottom: 10px;
+}
+
 /*
  * Photos and Video Section.
  */
