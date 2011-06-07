@@ -660,6 +660,27 @@ ul.links li {
 	margin-top: 10px;
 }
 
+/* news article */
+.node-type-article #content .region-content {
+	border: solid 1px #cecece;
+	padding: 10px;
+}
+
+.node-type-article .field-name-field-article-category {
+	background: #d71700;
+}
+
+.node-type-article .field-name-field-article-category .field-items {
+	text-align: center;
+}
+
+.node-type-article .field-name-field-article-category .field-item {
+	display: inline;
+	background: #fff;
+	text-transform: uppercase;
+	font: normal 18px "arial black":
+}
+
 /*
  * Around The World
  */
