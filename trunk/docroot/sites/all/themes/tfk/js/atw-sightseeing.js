@@ -35,6 +35,7 @@ $(document).ready(function() {
 			});
 			
 			var closeButton = $('<div></div>').attr('id','close').click(function() {
+				$('#location-mask').remove();
 				$('#location-container').remove();
 			}).appendTo(locationDiv);
 			locationMask.appendTo($('#map-container'));
