@@ -15,7 +15,7 @@ $(document).ready(function() {
 			'weight': '0',
 			'src': $(this).attr('href')
 		}).appendTo(document.body).load(function() {
-			alert('loaded');
+			alert(this);
 		});
 	}
 	
