@@ -504,9 +504,11 @@ ul.links li {
 	background: #d71700;
 	color: white;
 	font: bold 14px Arial;
+	height: 14px;
 	padding: 2px 6px;
-	display: inline-block;
+	display: inline;
 	text-transform: uppercase;
+	clear: right;
 }
 
 .view-homepage-top-story .view-content .views-field-title a,
