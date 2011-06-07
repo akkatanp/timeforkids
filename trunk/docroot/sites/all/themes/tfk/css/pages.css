@@ -377,20 +377,21 @@ ul.links li {
 
 #news-sidebar-year-filter #yearsubmit {
 	font: bold 11px arial;
+	height: 23px;
 	float: right;
 	background: #d71700;
 	color: white;
 	text-decoration: none;
 	padding: 6px 8px;
-	margin: 4px 0;
+	margin: 10px 0;
 	border: none;
+	cursor: pointer;
 	-moz-border-radius: 12px;
 	-webkit-border-radius: 12px;
 	border-radius: 12px;
 	-moz-box-shadow: 2px 2px 2px #999;
 	-webkit-box-shadow: 2px 2px 2px #999;
 	box-shadow: 2px 2px 2px #999;
-	cursor: pointer;
 }
 
 /* kid reporter sidebar */
