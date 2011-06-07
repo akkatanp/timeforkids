@@ -140,4 +140,43 @@ div#tfk-search-pager-top .item-list ul li {
 	margin: 0 0 0 .92em;
 }
 
+/* Featured item */
 
+div#tfk-search-photos-video-featured {
+  
+  margin-bottom: 15px;
+}
+
+div#tfk-search-photos-video-featured .g2 {
+	min-height: 267px;
+}
+
+div#tfk-search-photos-video-featured div.featured-label {
+	font-size: 1em;
+	padding-top: 20px;
+	color: #d71700;
+}
+
+div#tfk-search-photos-video-featured img.featured-item {
+	float: left;
+	margin-right: 15px;
+}
+
+div#tfk-search-photos-video-featured h2.featured-title {
+	font-size: 1.875em;
+	margin: 3px 0px 1px;
+}
+
+div#tfk-search-photos-video-featured .featured-date {
+	margin: 0px;
+	margin-bottom: 0px 0px -3px 0px;
+}
+
+div#tfk-search-photos-video-featured .featured-dek {
+	font-size: 1em;
+	margin: 0px 0px -3px 0px;
+}
+
+div#tfk-search-photos-video-featured .featured-link {
+	margin: 0px;
+}
