@@ -138,7 +138,8 @@ function tfk_search_block_view($delta='') {
     
     // Back to all Photos and Videos.
     case 'tfk_search_photos_video_back':
-      $block['content'] = l(t('BACK TO ALL PHOTOS AND VIDEOS'), 'photos-video');
+      $link_options = array('html' => TRUE, 'attributes' => array('id' => array('tfk-search-back-link')));
+      $block['content'] = l(t('BACK TO ALL<br /> PHOTOS AND VIDEOS'), 'photos-video', $link_options);
     break;
     
     // Photos and Video Featured block.
@@ -314,7 +315,12 @@ function tfk_search_get_thumbnail($fid, $style) {
  * @param array $vars
  */
 function tfk_search_preprocess_page(&$vars) {
-  if(arg(0) == 'photos-video') {
+  // Page template suggestion for video and slideshow nodes.
+  if(arg(0) == 'node' && $vars['node']->type == ('slideshow' || 'video')) {
+    $vars['theme_hook_suggestions'] = array_merge(
+      array('page__node__photos_video', ),
+      $vars['theme_hook_suggestions']
+    );
     drupal_set_title('Photos & Video');
     $vars->title == 'Photos & Video';
   }
