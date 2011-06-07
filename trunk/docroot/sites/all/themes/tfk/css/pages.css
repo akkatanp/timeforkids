@@ -745,6 +745,18 @@ ul.links li {
 	border: solid 1px #cecece;
 }
 
+.node-type-article .field-name-field-tout-image .field-name-field-credit{
+	float: right;
+	clear: right;
+	font-size: 10px;
+	color: #999;
+}
+
+.node-type-article .field-name-field-tout-image .field-name-field-caption {
+	font-size: 10px;
+	color: #999;
+}
+
 /*
  * Around The World
  */
