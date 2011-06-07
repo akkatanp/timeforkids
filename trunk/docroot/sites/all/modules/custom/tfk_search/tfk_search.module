@@ -131,7 +131,6 @@ function tfk_search_block_view($delta='') {
     
     // Photos and Video Featured block.
     case 'tfk_search_photos_video_featured':
-      $block['subject'] = t('FEATURED');
       $block['content'] = theme('tfk_featured_block', tfk_search_get_featured_block());
     break;
   }
@@ -166,35 +165,52 @@ function tfk_search_block_save($delta = '', $edit = array()){
  * @see tfk_search_theme()
  */
 function theme_tfk_featured_block(&$variables) {
-  $output = 'foo bar';
   $tfkSearchFeaturedItem = $variables['tfkSearchFeaturedItem'];
   $output = '<div id="tfk-search-photos-video-featured">';
-  $output .= "<img class='featured-item' src='{$tfkSearchFeaturedItem->featured_item->abspath}' />";
+  $url = 'node/'. $tfkSearchFeaturedItem->nid;
+  
+  $output .= '<div class="g1">';
+  $link_options = array('html' => TRUE, 'attributes' => array('class' => array('featured-item')));
+  $output .= l(theme('image', array('path' => $tfkSearchFeaturedItem->featured_item->abspath)), $url, $link_options); //@todo Meta (waiting for specs).
+  $output .= '</div>';
+  
+  $output .= '<div class="g2">';
   $output .= '<div class="featured-label">FEATURED</div>';
   $output .= "<h2 class='featured-title'>{$tfkSearchFeaturedItem->title}</h2>";
   $output .= "<div class='featured-date'>". date('F j, Y', $tfkSearchFeaturedItem->created). "</div>";
-  $output .= "<p class='featured-dek'>{$tfkSearchFeaturedItem->body['und'][0]['safe_value']}</p>";
-  $output .= '<div class="featured-link">'. l('View '. ($tfkSearchFeaturedItem->type == 'slideshow'? 'Photo Slide-Show': 'Video'), 'node/'. $tfkSearchFeaturedItem->nid). '</div>';
+  $output .= "<div class='featured-dek'>{$tfkSearchFeaturedItem->body}</div>";
+  $output .= '<div class="featured-link">'. l('View '. ($tfkSearchFeaturedItem->type == 'slideshow'? 'Photo Slide-Show': 'Video'), $url). '</div>';
   
   // Thumbnails. Only for slideshows.
   if($tfkSearchFeaturedItem->type == 'slideshow') {
     $output .= '<div class="featured-thumbnails">';
-    
+    $link_options['class'] = array('featured-thumbnail');
     //@todo Business: what to do when there are less than three?
     foreach($tfkSearchFeaturedItem->slideshow_images as $image) {
-
-      $thumb_alt = (!empty($image->meta_description['und'][0]['metatags_quick'])) ? $image->meta_description['und'][0]['metatags_quick'] : $tfkSearchFeaturedItem->title. '-'. $image->title;
-      $output .= '<span class="featured-thumbnail">';
-      #$output .= theme('image', array('path' => $image->abspath, 'alt' => $thumb_alt));
-      $output .= "<img class='featured-item' src='{$image->abspath}' />";
+      $link_options['title'] = (!empty($image->meta_description['und'][0]['metatags_quick'])) ? $image->meta_description['und'][0]['metatags_quick'] : $tfkSearchFeaturedItem->title. ' - '. $image->title;
+      $output .= '<span class="featured-thumbnails">';
+      $output .= l(theme('image', array('path' => $image->abspath, )), $url, $link_options); //@todo Meta (waiting for specs).
       $output .= '</span>';
     }
     
     $output .= '</div>';
   }
+  $output .= '</div><!--./g2-->';
   
   $output .= '</div>';
   return $output;
+}
+
+/**
+ * Preprocessor for theme_tfk_featured_block().
+ *
+ * @param array $variables
+ *
+ * @see theme_tfk_featured_block()
+ */
+function tfk_search_preprocess_tfk_featured_block(&$vars) {
+  // Truncate Featured item teaser on a word vocabulary.
+  $vars['tfkSearchFeaturedItem']->body = truncate_utf8($vars['tfkSearchFeaturedItem']->body['und'][0]['safe_value'], '160', TRUE, TRUE, 10);
 }
 
 /**
@@ -298,6 +314,9 @@ function tfk_search_preprocess_block(&$vars) {
       break;
       case 'tfk_search_photos_video_title':
         // #unset($vars['block']->content);
+      break;
+      case 'tfk_search_photos_video_featured':
+
       break;
       
       default:
