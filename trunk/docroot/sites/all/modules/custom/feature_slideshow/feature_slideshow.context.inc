@@ -15,12 +15,11 @@ function feature_slideshow_context_default_contexts() {
   $context->api_version = 3;
   $context->name = 'TFK Photos and Video';
   $context->description = 'Left-rail facet placement for PV section.';
-  $context->tag = 'TFK';
+  $context->tag = 'TFK Photos and Video';
   $context->conditions = array(
     'path' => array(
       'values' => array(
         'photos-video' => 'photos-video',
-        'photos-video/*' => 'photos-video/*',
       ),
     ),
   );
@@ -31,19 +30,19 @@ function feature_slideshow_context_default_contexts() {
           'module' => 'tfk_search',
           'delta' => 'tfk_search_photos_video_title',
           'region' => 'sidebar_first',
-          'weight' => '-44',
+          'weight' => '-10',
         ),
         'apachesolr_search-im_10_field_article_category' => array(
           'module' => 'apachesolr_search',
           'delta' => 'im_10_field_article_category',
           'region' => 'sidebar_first',
-          'weight' => '-43',
+          'weight' => '-8',
         ),
         'apachesolr_search-im_36_field_themes' => array(
           'module' => 'apachesolr_search',
           'delta' => 'im_36_field_themes',
           'region' => 'sidebar_first',
-          'weight' => '-42',
+          'weight' => '-7',
         ),
         'tfk_search-tfk_search_photos_video_featured' => array(
           'module' => 'tfk_search',
@@ -59,8 +58,80 @@ function feature_slideshow_context_default_contexts() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Left-rail facet placement for PV section.');
-  t('TFK');
+  t('TFK Photos and Video');
   $export['TFK Photos and Video'] = $context;
+
+  $context = new stdClass;
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'TFK Photos and Video - Slideshow';
+  $context->description = '';
+  $context->tag = 'TFK Photos and Video';
+  $context->conditions = array(
+    'path' => array(
+      'values' => array(
+        'photos-video/slideshow' => 'photos-video/slideshow',
+        'photos-video/slideshow/*' => 'photos-video/slideshow/*',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'tfk_search-tfk_search_photos_video_back' => array(
+          'module' => 'tfk_search',
+          'delta' => 'tfk_search_photos_video_back',
+          'region' => 'sidebar_first',
+          'weight' => '-9',
+        ),
+        'tfk_search-tfk_search_photos_video_featured' => array(
+          'module' => 'tfk_search',
+          'delta' => 'tfk_search_photos_video_featured',
+          'region' => 'highlighted',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('TFK Photos and Video');
+  $export['TFK Photos and Video - Slideshow'] = $context;
+
+  $context = new stdClass;
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'TFK Photos and Video - Video';
+  $context->description = '';
+  $context->tag = 'TFK Photos and Video';
+  $context->conditions = array(
+    'path' => array(
+      'values' => array(
+        'photos-video/video' => 'photos-video/video',
+        'photos-video/video/*' => 'photos-video/video/*',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'tfk_search-tfk_search_photos_video_back' => array(
+          'module' => 'tfk_search',
+          'delta' => 'tfk_search_photos_video_back',
+          'region' => 'sidebar_first',
+          'weight' => '-9',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('TFK Photos and Video');
+  $export['TFK Photos and Video - Video'] = $context;
 
   return $export;
 }
