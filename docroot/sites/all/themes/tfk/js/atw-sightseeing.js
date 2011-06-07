@@ -17,6 +17,7 @@ $(document).ready(function() {
 		}).appendTo(document.body).load(function() {
 			alert('loaded');
 		});
+	}
 	
 	locations.each(function(i, location) {
 		$(location).removeAttr('onclick');
