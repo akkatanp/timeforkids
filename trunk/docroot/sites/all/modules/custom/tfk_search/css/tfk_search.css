@@ -89,23 +89,24 @@ li.tfk-search-result {
 }
 
 .row2 {
-     margin: 0pt;
+	margin: 0pt;
 }
 
 .col1 {
-     display: inline-block;
-     margin: 0px;
+	display: inline-block;
+	margin: 0px;
 }
 
 .col2 {
-     display: inline-block;
-     margin: 0 0 0 10px;
+  display: inline-block;
+  margin: 0 0 0 10px;
+  max-width: 360px;
 }
 
 ol#tfk-search-results-photos-video li.tfk-search-result .col2 h3.title {
-     color: #D71700 !important;
-     font-size: 1.67em;
-     font-weight: bold;
+  color: #D71700;
+  font-size: 1.67em;
+  font-weight: bold;
 }
 
 
