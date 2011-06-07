@@ -56,7 +56,7 @@ $(document).ready(function() {
 				$(img).click(slideImg);
 			});
 			
-			if ($(this).hasClass('destination')) {
+			if ($('#atw-container').hasClass('destination')) {
 				setInterval('nextSlideImg()', 50000);
 			}
 		}
