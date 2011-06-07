@@ -15,7 +15,7 @@ var nextSlideImg = function() {
 		$('.title-container').children().eq(i).hide();
 	});
 	
-	inner.animate({'left': (-1 * (nextImgNum * 490)) + 'px'}, 500);
+	$('#atw-container #slideshow .inner').animate({'left': (-1 * (nextImgNum * 490)) + 'px'}, 500);
 	nextImg.addClass('active');
 	$('.title-container').children().eq(nextImgNum).show();
 };
