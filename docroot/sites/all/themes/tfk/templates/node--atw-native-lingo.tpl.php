@@ -145,12 +145,12 @@ $speaker_photo = file_create_url(image_style_path('tfk_rect_large',$speaker_phot
 			<?php $i = 0; ?>
 			<?php foreach($lingo_phrases['basic'] as $phrase):?>
 			<div class="phrase<?=($i++%2==1) ? ' odd' : ' even' ?>">
-				<a href="<?php print $phrase['url_to_audio'];?>" rel="<?php print $phrase['phrase_translation'];?>"><?php print $phrase['phrase_text'];?></a>
+				<a href="<?php print $phrase['url_to_audio'];?>" class="audio-link" rel="<?php print $phrase['phrase_translation'];?>"><?php print $phrase['phrase_text'];?></a>
 				<!-- <?php print $phrase['phrase_filemime'];?> -->
 				<?php if($is_admin_editor):?>
 				<br />
-					<?php print l('edit','field-collection/field-native-lingo-phrase/'.$phrase['phrase_nid'].'/edit',array('attributes'=>array('class' => 'anyclassyouwant')));?> --
-					<?php print l('delete','field-collection/field-native-lingo-phrase/'.$phrase['phrase_nid'].'/delete',array('attributes'=>array('class' => 'anyclassyouwant')));?>
+					<?php print l('edit','field-collection/field-native-lingo-phrase/'.$phrase['phrase_nid'].'/edit',array('attributes'=>array('class' => 'edit')));?> --
+					<?php print l('delete','field-collection/field-native-lingo-phrase/'.$phrase['phrase_nid'].'/delete',array('attributes'=>array('class' => 'delete')));?>
 				<?php endif; ?>				
 			</div>
 			<?php endforeach;?>
