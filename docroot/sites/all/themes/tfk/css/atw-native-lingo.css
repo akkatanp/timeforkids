@@ -5,7 +5,8 @@
 }
 
 #native-lingo-container h1 {
-	font-size: 30px;
+	font: normal 30px arial;
+	line-height: 1;
 	margin: 4px 0;
 }
 
