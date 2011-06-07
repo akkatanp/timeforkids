@@ -903,9 +903,6 @@ ul.links li {
 }
 
 /* ATW Destination */
-.node-type-atw-destination .field-name-field-country-slideshow {
-	display: none;
-}
 
 .node-type-atw-destination .group-destination-facts {
 	float: left;
