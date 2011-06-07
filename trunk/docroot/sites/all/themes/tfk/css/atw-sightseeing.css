@@ -1,12 +1,17 @@
 #sightseeing-container {
 	border: solid 1px #cecece;
 	padding: 10px;
+	position: relative;
 }
 
 #sightseeing-container h1 {
 	font: normal 30px arial;
 	margin: 4px 0;
 	line-height: 1;
+}
+
+#sightseeing-container #map-container {
+	position: relative;
 }
 
 #sightseeing-container #map-container p {
@@ -18,3 +23,41 @@
 	border-bottom: dotted 1px #cecece;
 	margin: 4px 0 10px 0;
 }
+
+#location-container {
+	position: absolute;
+	width: 468px;
+	background: #000;
+	padding: 10px;
+	opacity: .5;
+	filter: alpha(opacity=50);
+	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+	color: white;
+	z-index: 2;
+}
+
+#location-container img {
+	float: right;
+	margin-left: 10px;
+}
+
+#location-container h1 {
+	color: white;
+	font: bold 30xp arial;
+	margin-bottom: 10px;
+}
+
+#location-container p {
+	color: white;
+	margin: 0;
+}
+
+#location-container #close {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	width: 10px;
+	height: 10px;
+	border: solid 1px white;
+}
+
