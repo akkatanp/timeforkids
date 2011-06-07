@@ -188,9 +188,13 @@ div#tfk-search-photos-video-featured .featured-item {
 }
 
 div#tfk-search-photos-video-featured h2.featured-title {
-	font-size: 1.875em;
-	margin: 3px 0px 1px;
-	color: #d71700;
+  font-size: 1.25em;
+  margin: 3px 0px 1px;
+}
+
+div#tfk-search-photos-video-featured h2.featured-title a {
+  font-size: 1.875em;
+	color: #D71700;
 }
 
 div#tfk-search-photos-video-featured .featured-date {
