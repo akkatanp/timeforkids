@@ -373,10 +373,10 @@
 .node-type-atw-destination  .region-sidebar-first .content h3 {
 	height: 20px;
 	font: normal 14px "arial black";
-	text-align: center;
 	color: #000;
 	padding: 6px 0;
-	margin: 10px 0 0 0;
+	margin: 20px 0 0 0;
+	text-transform: uppercase;
 	background: -moz-linear-gradient(100% 100% 90deg,  #5ea1d3, #7bc3f5);
 	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#7bc3f5), to(#5ea1d3));
 	background: -webkit-linear-gradient(#7bc3f5, #5ea1d3);
@@ -388,6 +388,7 @@
 	border: solid 2px #acdbfc;
 	border-top: solid 1px black;
 	padding: 10px;
+	margin-top: 0;
 }
 
 /* Footer Nav */
