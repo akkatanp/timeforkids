@@ -7,7 +7,9 @@
 <div id="sightseeing-container">
 <?php foreach($sightseeing_data['sightseeing_items'] as $item): ?>
 	<h1><?php echo $item['place_name']; ?>: Sight Seeing Guide</h1>
-	<?php echo $item['place_description']; ?>
+	<div id="map-container">
+		<?php echo $item['place_description']; ?>
+	</div>
 <?php endforeach;?>
 
 </div>
