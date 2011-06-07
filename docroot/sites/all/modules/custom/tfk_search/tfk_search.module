@@ -82,6 +82,13 @@ function tfk_search_block_info() {
     'cache' => DRUPAL_CACHE_GLOBAL,
   );
   
+  // Photos and Video back to all block.
+  $blocks['tfk_search_photos_video_back'] = array(
+    'info' => t('TFK Search Photos and Video back to all'),
+    'visibility' => BLOCK_VISIBILITY_LISTED,
+    'cache' => DRUPAL_CACHE_GLOBAL,
+  );
+  
   // Photos and Video Featured block.
   $blocks['tfk_search_photos_video_featured'] = array(
     'info' => t('TFK Search Photos and Video Featured'),
@@ -104,6 +111,7 @@ function tfk_search_block_info() {
  */
 function tfk_search_block_view($delta='') {
   $block = array();
+  $settings = variable_get('tfk_search_settings', tfk_search_default_settings());
   
   switch ($delta) {
     
@@ -125,8 +133,12 @@ function tfk_search_block_view($delta='') {
     
     // Photos and Video title block.
     case 'tfk_search_photos_video_title':
-      $block['subject'] = t('SEARCH PHOTOS & VIDEO');
-      $block['content'] = '&nbsp;';
+      $block['content'] = $settings['tfk_search_photos_video_title']['title'];
+    break;
+    
+    // Back to all Photos and Videos.
+    case 'tfk_search_photos_video_back':
+      $block['content'] = l(t('BACK TO ALL PHOTOS AND VIDEOS'), 'photos-video');
     break;
     
     // Photos and Video Featured block.
@@ -136,6 +148,17 @@ function tfk_search_block_view($delta='') {
   }
   
   return $block;
+}
+
+function tfk_search_default_settings() {
+  return array(
+    'tfk_search_photos_video_title' => array(
+      'title' => t('SEARCH PHOTOS & VIDEOS'),
+    ),
+    'tfk_search_photos_video_back' => array(
+      'title' => t('BACK TO ALL PHOTOS AND VIDEOS'),
+    )
+  );
 }
 
 /**
