@@ -115,7 +115,7 @@
 	<div class="atw-graphic-header"></div>
 
 	<div id="daylife-container">
-	<h1><? print $title ?>: Day In The Life</h1>
+	<h1><? print $title ?></h1>
 		<?php print render($content['body']); ?>
 		<?php
 		  //logic that shows the destination slideshow
