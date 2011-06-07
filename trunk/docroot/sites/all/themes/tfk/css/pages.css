@@ -725,15 +725,22 @@ ul.links li {
 	display: inline;
 }
 
+.node-type-article .field-name-field-tout-image {
+	margin: bottom: 10px;
+}
+
 .node-type-article .field-name-field-tout-image .node-title,
 .node-type-article .field-name-field-tout-image .field-name-body,
 .node-type-article .field-name-field-tout-image .field-name-field-date,
+.node-type-article .field-name-field-tout-image .links,
+.node-type-article .field-name-field-tout-image .field-name-field-credit .field-label,
+.node-type-article .field-name-field-tout-image .field-name-field-caption .field-label,
 .node-type-article .field-name-field-tout-image .field-name-field-article-category,
 .node-type-article .field-name-field-tout-image .field-name-field-image .field-label {
 	display: none;
 }
 
-.node-type-article .field-name-field-tout-image .field-name-field-image .field-item {
+.node-type-article .field-name-field-tout-image .field-name-field-image .field-item img {
 	border: solid 1px #cecece;
 }
 
