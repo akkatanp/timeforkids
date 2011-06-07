@@ -374,7 +374,7 @@
 	height: 20px;
 	font: normal 14px "arial black";
 	color: #000;
-	padding: 6px 0;
+	padding: 6px 0 6px 6px;
 	margin: 20px 0 0 0;
 	text-transform: uppercase;
 	background: -moz-linear-gradient(100% 100% 90deg,  #5ea1d3, #7bc3f5);
