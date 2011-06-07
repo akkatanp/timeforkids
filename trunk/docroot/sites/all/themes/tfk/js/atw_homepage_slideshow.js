@@ -50,7 +50,7 @@ $(document).ready(function() {
 				}
 				
 			}
-
+			
 			var imgs = footer.find('#clicks').children();
 			imgs.each(function(i, img) {
 				$(img).click(slideImg);
