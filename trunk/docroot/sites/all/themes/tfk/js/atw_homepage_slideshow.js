@@ -6,6 +6,7 @@ $(document).ready(function() {
 
 var nextSlideImg = function() {
 	var curImg = $('#atw-container #slideshow').find('.footer').find('#clicks').children().find('.active');
+	alert(curImg);
 	var nextImgNum = parseInt(curImg.id.split('-')[1]) + 1;
 	var nextImg = $('#img-' + nextImgNum) ? $('#img-' + nextImgNum) : $('#img-0');
 	nextImgNum = parseInt(nextImg.id.split('-')[1]);
@@ -57,7 +58,8 @@ var nextSlideImg = function() {
 			});
 			
 			if ($('#atw-container').hasClass('destination')) {
-				setInterval('nextSlideImg()', 5000);
+				nextSlideImg();
+				//setInterval('nextSlideImg()', 5000);
 			}
 		}
 	};
