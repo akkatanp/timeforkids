@@ -80,6 +80,7 @@ stylesheets-conditional[lte IE 6][all][]  = css/ie6.css
 ; to your page.tpl.php template.
 
 regions[help]           = Help
+regions[sidebar_top]    = Sidebar top
 regions[sidebar_first]  = First sidebar
 regions[sidebar_second] = Second sidebar
 regions[navigation]     = Navigation bar
