@@ -108,14 +108,23 @@
       // We hide the comments and links now so that we can render them later.
       hide($content['comments']);
       hide($content['links']);
-      //print render($content['body']);
-      !!!!!!!!!!!!!
-      //logic that shows the destination slideshow
-      $slide_block = module_invoke('tfk_atw', 'block_view','atw-daylife-slideshow');
-      print render($slide_block['content']);
-      print render($content);
-    ?>
-  </div>
+	?>
+<link rel="stylesheet" href="/sites/all/themes/tfk/css/atw-daylife.css" />
+<script type="text/javascript" src="/sites/all/themes/tfk/js/atw-daylife.js"></script>
+
+	<div class="atw-graphic-header"></div>
+
+	<div id="daylife-container">
+	<h1><? print $title ?>: Day In The Life</h1>
+		<?php print render($content['body']); ?>
+		<?php
+		  //logic that shows the destination slideshow
+		  $slide_block = module_invoke('tfk_atw', 'block_view','atw-daylife-slideshow');
+		  print render($slide_block['content']);
+		  print render($content);
+		?>
+	</div>
+</div>
 
   <?php print render($content['links']); ?>
 

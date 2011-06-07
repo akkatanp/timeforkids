@@ -5,7 +5,8 @@
 }
 
 #daylife-container h1 {
-	font-size: 30px;
+	font: normal 30px arial;
+	line-height: 1;
 	margin: 4px 0;
 }
 
@@ -36,9 +37,13 @@
 	border-bottom: dotted 1px #cecece;
 }
 
-#daylife-container #speaker-intro h2 {
+#daylife-container #speaker-intro strong {
 	font: bold 18px arial;
 	margin: 0 0 6px 0;
+}
+
+#daylife-container #speaker-intro p {
+	margin: 0;
 }
 
 #daylife-container #activities {
