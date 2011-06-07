@@ -73,6 +73,7 @@ function aplus_paper_review_step($steps) {
     '#markup' => t('Please review your work and make any changes.'),
   );
   $form['#checklist'] = t('Review your work');
+  $form['#parent_nid'] = arg(1); 
   
   foreach ($steps as $step) {
     unset($step['description']);
@@ -86,6 +87,7 @@ function aplus_paper_review_step($steps) {
  */
 function aplus_paper_final_step() {
   $form['#checklist'] = t('Print and save your paper.');
+  $form['#parent_nid'] = arg(1); 
   return $form;
 } 
 

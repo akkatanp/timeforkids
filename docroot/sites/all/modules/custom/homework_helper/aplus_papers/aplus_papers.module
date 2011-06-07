@@ -23,7 +23,7 @@ function aplus_papers_theme() {
   return array(
     'aplus_papers_checklist' => array(
       'variables' => array('steps' => array(), 'current' => NULL),
-    )
+    ),
   );
 }
 
@@ -102,6 +102,11 @@ function aplus_papers_multistep_form($form, &$form_state, $steps) {
     $form["step_$step"]['date']['#default_value'] = empty($form_state['values']["step_$step"]['date']) ? '' : $form_state['values']["step_$step"]['date'];
   }
   
+  $form['start_over'] = array(
+    '#prefix' => '<div id="aplus-submit-buttons">',
+    '#markup' => l('Start Over', 'node/' . $form["step_$step"]['#parent_nid'], array('attributes' => array('class' => array('aplus-start-over')))),
+  );
+  
   if ($step > 0) {
    $form['prev'] = array(
       '#type' => 'submit',
@@ -121,6 +126,7 @@ function aplus_papers_multistep_form($form, &$form_state, $steps) {
     $form['next'] = array(
       '#type' => 'submit',
       '#value' => t('Next step'),
+      '#suffix' => '</div>', //#aplus-submit-buttons
       '#ajax' => array(
         'wrapper' => 'wizard-form-wrapper',
         'callback' => 'aplus_papers_multistep_form_callback',
@@ -144,14 +150,13 @@ function aplus_papers_multistep_form($form, &$form_state, $steps) {
     $form['submit'] = array(
       '#type' => 'submit',
       '#value' => t("Save"),
-      '#suffix' => '<a class ="button" href="#" onclick="window.print();return false;">Print</a>',
+      '#suffix' => '<a class="button" href="#" onclick="window.print();return false;">Print</a></div>', //#aplus-submit-buttons
     );
     $form['description'] = array(
       '#markup' => aplus_papers_final_step_content($form_state),
       '#weight' => 0,
     );
   }
-  
   return $form;
 }
 
@@ -244,4 +249,4 @@ function aplus_papers_save_content($form_state) {
     }
   }
   return $paper;
-}  
+}
