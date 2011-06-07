@@ -1,0 +1,11 @@
+
+/**
+ * Theming for photos-video node pages.
+ */
+
+div#page.page-node-photos-video #sidebar {
+    float: left;
+    margin-right: 8px;
+    position: relative;
+    width: 250px;
+}
