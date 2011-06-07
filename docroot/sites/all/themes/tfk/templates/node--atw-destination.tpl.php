@@ -116,19 +116,14 @@
 	<?php
       //logic that shows the destination slideshow
       $slide_block = module_invoke('tfk_atw', 'block_view','atw-destination-slideshow');
+	  print render($slide_block['content']);
 	?>
-	</div>
+	
 	<?php print render($content['field_description']);?>
-
-    <?php print render($slide_block['content']);
-      //
+	</div>
 
 
-      //INSERT WRAPPER DIV CLOSURE
-
-
-      print render($content);
-    ?>
+    <?php print render($content);?>
   </div>
 
   <?php print render($content['links']); ?>
