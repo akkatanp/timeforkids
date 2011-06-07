@@ -8,6 +8,12 @@ h2.block-title {
 	margin-bottom: 10px;
 }
 
+#atw-container h1 {
+	font: normal 30px arial;
+	line-height: 1;
+	margin: 4px 0;
+}
+
 #atw-container #slideshow {
 	position: relative;
 	width: 490px;
