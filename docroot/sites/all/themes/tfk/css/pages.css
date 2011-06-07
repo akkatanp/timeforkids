@@ -353,6 +353,7 @@ ul.links li {
 	color: white;
 	text-decoration: none;
 	padding: 6px 8px;
+	margin: 4px 0;
 	border: none;
 	-moz-border-radius: 12px;
 	-webkit-border-radius: 12px;
@@ -1039,7 +1040,8 @@ div#block-views-tfk-section-photos-video-block div.views-field-body p {
 #tfk-current-issue-body {
 	width: 150px;
 	background: #d9effe;
-	border: solid 2px #acdbfc;border-top: solid 1px black;
+	border: solid 2px #acdbfc;
+	border-top: solid 1px black;
 	padding: 4px;
 	font-size: 11px;
 }
