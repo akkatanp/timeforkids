@@ -25,13 +25,15 @@ $(document).ready(function() {
 			locationDiv.css({
 				'top': $('#map-container img').position().top + 'px',
 				'left': '0px',
-				'height': $('#map-container img').height() - 20 + 'px'
+				'height': $('#map-container img').height() - 20 + 'px',
+				'width': $('#map-container img').width() - 20 + 'px'
 			});
 			
 			var locationMask = $('<div></div>').attr('id', 'location-mask').css({
 				'top': $('#map-container img').position().top + 'px',
 				'left': '0px',
-				'height': $('#map-container img').height() + 'px'
+				'height': $('#map-container img').height() + 'px',
+				'width': $('#map-container img').width() + 'px'
 			});
 			
 			var closeButton = $('<div></div>').attr('id','close').click(function() {
