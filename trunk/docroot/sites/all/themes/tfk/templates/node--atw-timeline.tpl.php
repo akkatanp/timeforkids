@@ -113,7 +113,6 @@
 
 <div id="timeline-container">
 	<h1><?php print $title ?></h1>
-	<h2><?php print render($content['field_description']); ?></h2>
 <?php
       $slide_block = module_invoke('tfk_atw', 'block_view','atw-timeline-slideshow');
       print render($content['body']);

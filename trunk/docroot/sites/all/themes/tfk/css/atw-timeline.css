@@ -5,15 +5,19 @@
 }
 
 #timeline-container h1 {
-	font-size: 30px;
-	margin: 4px 0;
-}
-
-#timeline-container h2 {
-	font: normal 12px arial;
+	font: normal 30px arial;
+	line-height: 1;
 	padding-bottom: 10px;
 	border-bottom: dotted 1px #cecece;
 	margin: 4px 0 10px 0;
+}
+
+#timeline-container p {
+	margin: 0;
+}
+
+#timeline-container .field-name-body {
+	margin-bottom: 10px;
 }
 
 #timeline-container #event-year {
