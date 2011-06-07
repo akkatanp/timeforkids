@@ -12,7 +12,7 @@ $(document).ready(function() {
 (function($) {
 	$.fn.nativeLingo = function() {
 		var basics = $(this).find('#basics .phrase a');
-		var nextLevel = $(this).find('#next-level .phrase a');
+		var nextLevel = $(this).find('#next-level .phrase a.audio-link');
 		
 		var activateClip = function(e) {
 			e.preventDefault();
