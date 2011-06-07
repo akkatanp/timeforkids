@@ -671,7 +671,7 @@ ul.links li {
 	margin-bottom: 10px;
 }
 
-.node-type-article h1 {
+.node-type-article .content h1 {
 	color: #d71700;
 	font: bold 30px arial;
 	margin: 4px 0;
@@ -1017,3 +1017,32 @@ div#block-views-tfk-section-photos-video-block div.views-field-body p {
   margin: 0px; padding: 0px;
   font-size: 12px;
 }
+
+/* curretn issue */
+#tfk-current-issue {
+	width: 162px;
+}
+
+#tfk-current-issue h3 {
+	height: 32px;
+	font: normal 14px "arial black";
+	text-align: center;
+	color: #000;
+	background: -moz-linear-gradient(100% 100% 90deg,  #5ea1d3, #7bc3f5);
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#7bc3f5), to(#5ea1d3));
+	background: -webkit-linear-gradient(#7bc3f5, #5ea1d3);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#7bc3f5, endColorstr=#5ea1d3);
+}
+
+#tfk-current-issue-body {
+	width: 158px;
+	background: #d9effe;
+	border: solid 2px #acdbfc;
+	font-size: 11px;
+}
+
+#tfk-current-issue-body img {
+	float: left;
+	mergin-right: 2px;
+}
+
