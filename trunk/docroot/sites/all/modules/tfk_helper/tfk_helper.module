@@ -11,10 +11,10 @@ function tfk_helper_theme() {
       'variables' => array('args' => NULL),
       #'file' => 'tfk_search_pager.inc',
     ),
-    // Featured block for photos-video section.
-    #'tfk_featured_block' => array(
-    #  'variables' => array('tfkSearchFeaturedItem' => NULL),
-    #),
+    // Featured block that goes on the sidebar.
+    'featured_block_sidebar' => array(
+      'variables' => array('args' => NULL),
+    ),
   );
 }
 
@@ -41,3 +41,155 @@ function theme_related_content($args) {
   $output .= '</div>';
   return $output;
 }
+
+/**
+ * Theme sidebar Featured block.
+ *
+ * @param unknown_type $args
+ */
+function theme_featured_block_sidebar($args) {
+  list($type, $title, $body, $link, $image) = array_values($args);
+  
+  $output .= "<div class='featured-block-sidebar-label'>". strtoupper('Featured '. $type). "</div>";
+  $output .= "<div class='featured-block-sidebar-img'>$image</div>";
+  $output .= "<div class='featured-block-sidebar-title'>$title</div>";
+  $output .= "<div class='featured-block-sidebar-body'>$body</div>";
+  $output .= "<div class='featured-block-sidebar-body'>$link</div>";
+
+  return $output;
+}
+
+/**
+ * Implementation of hook_block_info.
+ *
+ * Here we expose blocks that are usable by other modules.
+ */
+function tfk_helper_block_info() {
+  $blocks = array();
+  
+  // TFK Photos and Video Node Featured Block (Sidebar).
+  $blocks['featured_block_sidebar'] = array(
+    'info' => t('TFK Helper Sidebar Featured Block'),
+    'visibility' => BLOCK_VISIBILITY_LISTED,
+    'cache' => DRUPAL_CACHE_GLOBAL,
+  );
+  
+  return $blocks;
+}
+
+/**
+ * Implementation of hook_block_view.
+ */
+function tfk_helper_block_view($delta='') {
+  $block = array();
+  
+  switch ($delta) {
+    
+    // TFK Photos and Video Node Featured Block (Sidebar).
+    case 'featured_block_sidebar':
+      $featured_item = tfk_helper_get_featured_block_sidebar();
+      if(!empty($featured_item)) {
+        $block['content'] = theme('featured_block_sidebar', $featured_item);
+      }
+    break;
+    
+  }
+  
+  return $block;
+}
+
+
+function tfk_helper_preprocess_node(&$vars) {
+  // Intercept the node type for the sidebar Featured block.
+  #if(arg(0) == 'node' && $vars['node']->type == ('slideshow' || 'video')) {
+  #  tfkHelperFeaturedItem::set_type($vars['node']->type);
+  #}
+}
+
+function tfk_helper_node_load($nodes, $types) {
+  // Intercept the node type for the sidebar Featured block.
+  // We piggyback on the nodes already being loaded for performance.
+  #if(is_null(tfkHelperFeaturedItem::$type)) {
+  #  $type = array_shift($nodes)->type;
+  #  if(arg(0) == 'node' && (array_search($type, array('slideshow', 'video')) !== FALSE)) {
+      //
+      #tfkHelperFeaturedItem::set_type($type);
+  #  } # arg(1)
+  #}
+
+}
+
+/**
+ * Callback for sidebar Featured block.
+ *
+ * @author rallen8440
+ */
+class tfkHelperFeaturedItem {
+  // We expose public static properties so developers can easily modify the
+  // style of the data loaded.
+  /**
+   * Content type of the node currently being viewed.
+   *
+   * @var string
+   */
+  static  $image_style = '115x115';
+  static $body_trim = '300';
+  static $snippet_format = NULL; //@todo Find how to get the input format ID.
+  static $thumbnail_class = 'featured-block-sidebar-img';
+  
+  function __construct() {
+    $featured_node = node_load($this->nid);
+    $this->type = $featured_node->type;
+    if($featured_node->type == 'slideshow') {
+      $this->title = $featured_node->title; // Alternatively load 'safe_summary'.
+      // Trim and filter the body to ensure valid and safe markup.
+      // Cache the filtered output in the {cache_filter} table.
+      // @todo Make the trim count a setting.
+      $this->body = check_markup(truncate_utf8($featured_node->body['und'][0]['safe_value'], self::$body_trim, TRUE, TRUE, 10), self::$snippet_format, '', TRUE);
+      $this->link = l('See '. ucfirst($featured_node->type), 'node/'. $featured_node->nid);
+      $image_node = node_load(array_shift(array_shift($featured_node->field_slideshow_images['und'])));
+      $image = tfk_search_get_thumbnail($image_node->field_image['und'][0]['fid'], self::$image_style);
+      $link_options = array('html' => TRUE, 'attributes' => array('class' => array(self::$thumbnail_class)));
+      $this->image = l(theme('image', array('path' => $image)), $url, $link_options);
+    }
+    if($this->type == 'video') {
+      $test = null; //@todo Load the video.
+    }
+    unset($this->nid);
+    $this->to_array = get_object_vars($this);
+  }
+}
+
+/**
+ * Loads data for sidebar Featured block.
+ *
+ * @see tfk_helper_block_view()
+ */
+function tfk_helper_get_featured_block_sidebar() {
+  
+  // The type of Featured item depends on the current node type.
+  if(arg(0) == 'node') {
+    $node = node_load(arg(1)); // @todo We can make the type blacklist below a block setting, along with a skip row setting.
+    if(array_search($node->type, array('slideshow', 'video')) !== FALSE) {
+
+      // We get a Featured node with the same content type as the currently loaded node.
+      $fn_query = "
+        SELECT
+      		fn.nid AS nid
+      	FROM
+      	  node fn
+      	  INNER JOIN flag_content f ON fn.nid = f.content_id
+      	  WHERE fn.type = :node_type
+      	ORDER BY fn.created DESC";
+    	// Try to load the first two featured items. If there are two use the second, else fall back to the first one.
+      $featured_nodes = db_query_range($fn_query, 0, 2, array(':node_type' => $node->type), array('fetch' => 'tfkHelperFeaturedItem',))->fetchAll();
+    	if(!empty($featured_nodes)) {
+    	  $featured_node = array_pop($featured_nodes);
+    	  return $featured_node->to_array;
+    	}
+    }
+  }
+	
+}
+
+
