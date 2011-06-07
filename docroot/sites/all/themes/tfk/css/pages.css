@@ -679,18 +679,17 @@ ul.links li {
 	background: #dedede;
 }
 
-#block-views-atw-homepage-nodeblock-block-1 p {
-	margin: 0;
-	font: bold 18px arial;
-}
-
 #block-tfk-atw-atw-page-list-map-switch {
-	height: 18px;
+	font: bold 18px arial;
 	margin-bottom: 10px;
 }
 
 #block-tfk-atw-atw-page-list-map-switch br {
 	display: none;
+}
+
+.atw-switcher-links {
+	height: 18px;
 }
 
 #block-tfk-atw-atw-page-list-map-switch a.list-view {
@@ -760,22 +759,22 @@ ul.links li {
 	float: left;
 	width: 248px;
 	padding: 6px;
-	margin: 10px 0 0 0;
-	border-bottom: dotted 1px #555;
-	border-top: solid 1px #555;
-	border-left: solid 1px #555;
-	border-right: solid 1px #555;
+	margin: 2px 0 0 0;
+	border-bottom: dotted 1px #cecece;
+	border-top: solid 1px #cecece;
+	border-left: solid 1px #cecece;
+	border-right: solid 1px #cecece;
 }
 
 .page-around-the-world .view-content table {
 	float: left;
 	width: 262px;
-	margin: 0 0 10px 0;
+	margin: 0 0 2px 0;
 	border-collapse: collapse;
 	border-top: none;
-	border-bottom: solid 1px #555;
-	border-left: solid 1px #555;
-	border-right: solid 1px #555;
+	border-bottom: solid 1px #cecece;
+	border-left: solid 1px #cecece;
+	border-right: solid 1px #cecece;
 }
 
 .page-around-the-world .view-content table tr.row-first {
