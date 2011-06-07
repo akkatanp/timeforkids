@@ -727,7 +727,7 @@ ul.links li {
 }
 
 .node-type-article .field-name-field-tout-image {
-	margin: bottom-10px;
+	margin-bottom: 10px;
 }
 
 .node-type-article .field-name-field-tout-image .node-title,
@@ -743,14 +743,16 @@ ul.links li {
 
 .node-type-article .field-name-field-tout-image .field-name-field-image .field-item img {
 	width: 486px;
+	height: 250px;
 	border: solid 1px #cecece;
 }
 
-.node-type-article .field-name-field-tout-image .field-name-field-credit{
+.node-type-article .field-name-field-tout-image .field-name-field-credit {
 	float: right;
 	clear: right;
 	font-size: 10px;
 	color: #999;
+	height: 12px;
 }
 
 .node-type-article .field-name-field-tout-image .field-name-field-caption {
