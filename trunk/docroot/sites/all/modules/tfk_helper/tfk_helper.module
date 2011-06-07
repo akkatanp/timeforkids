@@ -1,0 +1,43 @@
+<?php
+
+/**
+ * Implementation of hook_theme
+ */
+function tfk_helper_theme() {
+  return array(
+    // Custom "top pager" for photos-video section. From common.inc.
+    'related_content' => array(
+      #'variables' => array('tags' => array(), 'element' => 0, 'parameters' => array(), 'quantity' => 9),
+      'variables' => array('args' => NULL),
+      #'file' => 'tfk_search_pager.inc',
+    ),
+    // Featured block for photos-video section.
+    #'tfk_featured_block' => array(
+    #  'variables' => array('tfkSearchFeaturedItem' => NULL),
+    #),
+  );
+}
+
+/**
+ * Theme additional content block.
+ * - article
+ * - minilesson
+ * - worksheet
+ *
+ * @return
+ *   Returns HTML output for a related content block.
+ */
+function theme_related_content($args) {
+  // Related content.
+  $output .= '<div id="featured-related-content-title" class="addit-content">Additional Content</div>';
+  $output .= '<div id="featured-related-content" class="related-content-wrap">';
+  
+    $output .= '<div class="addit-related-articles">';
+      $output .= '<div class="addit-related-articles-label">WORKSHEETS:</div>';
+      $output .= '<div class="addit-related-articles-title">Related content title | </div>';
+      $output .= '<div class="addit-related-articles-download"> Download PDF</div>';
+ 		$output .= '</div>';
+  
+  $output .= '</div>';
+  return $output;
+}
