@@ -17,7 +17,7 @@ $(document).ready(function() {
 		}).appendTo(document.body).load(function() {
 			var locationBody = $(this).contents().find('body');
 			var locationTable = $(locationBody).find('table');
-			al;ert(locationTable);
+			alert(locationTable);
 		});
 	}
 	
