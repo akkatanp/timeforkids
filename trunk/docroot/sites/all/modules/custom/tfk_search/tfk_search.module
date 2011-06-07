@@ -315,12 +315,9 @@ function tfk_search_get_thumbnail($fid, $style) {
  * @param array $vars
  */
 function tfk_search_preprocess_page(&$vars) {
-  // Page template suggestion for video and slideshow nodes.
-  if(arg(0) == 'node' && $vars['node']->type == ('slideshow' || 'video')) {
-    $vars['theme_hook_suggestions'] = array_merge(
-      array('page__node__photos_video', ),
-      $vars['theme_hook_suggestions']
-    );
+  // Set title on Photos & Video search page.
+  if(arg(0) == 'photos-video') {
+  #if(arg(0) == 'node' && $vars['node']->type == ('slideshow' || 'video')) {
     drupal_set_title('Photos & Video');
     $vars->title == 'Photos & Video';
   }
