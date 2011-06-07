@@ -6,7 +6,7 @@ $(document).ready(function() {
 
 var nextSlideImg = function() {
 	var curImg = $('#clicks .active');
-	var nextImgNum = parseInt(curImg.id.split('-')[1]) + 1;
+	var nextImgNum = parseInt(curImg.attr('id').split('-')[1]) + 1;
 	var nextImg = $('#img-' + nextImgNum) ? $('#img-' + nextImgNum) : $('#img-0');
 	nextImgNum = parseInt(nextImg.id.split('-')[1]);
 	
