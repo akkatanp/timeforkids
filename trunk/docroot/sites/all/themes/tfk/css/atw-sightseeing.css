@@ -29,16 +29,19 @@
 	width: 468px;
 	background: #000;
 	padding: 10px;
-	opacity: .5;
-	filter: alpha(opacity=50);
-	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+	opacity: .75;
+	filter: alpha(opacity=75);
+	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=75)";
 	color: white;
 	z-index: 2;
 }
 
 #location-container img {
-	float: right;
+	float: left;
 	margin-left: 10px;
+	opacity: 1;
+	filter: alpha(opacity=100);
+	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
 }
 
 #location-container h1 {
