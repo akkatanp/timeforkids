@@ -10,7 +10,6 @@
 	
 	<div id="image-container"><img src="<?php print $node_data['daylife_speaker_photo'];?>" /></div>
 	<div id="speaker-intro">
-		<h2>Sierra</h2>
 		<?php print $node_data['daylife_speaker_intro'];?>
 	</div>
 	
