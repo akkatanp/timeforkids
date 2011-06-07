@@ -10,7 +10,6 @@ $(document).ready(function() {
 		var footer = this.find('.footer');
 		var numImgs = inner.children().length;
 		var imgWidth = 490;
-		var currentImg = 0;
 
 		var slideImg = function() {
 			imgs.each(function(i, img) {
@@ -19,10 +18,26 @@ $(document).ready(function() {
 			});
 			var imgNum = parseInt(this.id.split('-')[1]);
 			inner.animate({'left': (-1 * (imgNum * imgWidth)) + 'px'}, 500);
-			jQuery(this).addClass('active');
+			$(this).addClass('active');
 			$('.title-container').children().eq(imgNum).show();
 		};
-
+		
+		var nextSlideImg = function() {
+			var curImg = imgs.find('.active');
+			var nextImgNum = parseInt(curImg.id.split('-')[1]) + 1;
+			var nextImg = $('#img-' + nextImgNum) ? $('#img-' + nextImgNum) : $('#img-0');
+			nextImgNum = parseInt(nextImg.id.split('-')[1]);
+			
+			imgs.each(function(i, img) {
+				$(img).removeClass('active');
+				$('.title-container').children().eq(i).hide();
+			});
+			
+			inner.animate({'left': (-1 * (nextImgNum * imgWidth)) + 'px'}, 500);
+			nextImg.addClass('active');
+			$('.title-container').children().eq(nextImgNum).show();
+		};
+		
 		if (numImgs) {
 			inner.css('width', numImgs * imgWidth + 'px');
 			var clicks = $('<ul></ul>').attr('id','clicks').appendTo(footer);
@@ -40,6 +55,10 @@ $(document).ready(function() {
 			imgs.each(function(i, img) {
 				$(img).click(slideImg);
 			});
+			
+			if ($(this).hasClass('destination')) {
+				setInterval('nextSlideImg()', 50000);
+			}
 		}
 	};
 })($);
