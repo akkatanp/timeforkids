@@ -668,6 +668,7 @@ ul.links li {
 
 .node-type-article .field-name-field-article-category {
 	background: #d71700;
+	margin-bottom: 10px;
 }
 
 .node-type-article .field-name-field-article-category .field-items {
@@ -678,7 +679,45 @@ ul.links li {
 	display: inline;
 	background: #fff;
 	text-transform: uppercase;
-	font: normal 18px "arial black":
+	font: normal 18px "arial black";
+	padding: 2px;
+}
+
+.node-type-article .field-name-field-deck {
+	font-weight: bold;
+	margin-bottom: 6px;
+}
+
+.node-type-article .group_date_and_author {
+	height: 12px;
+	padding-bottom: 10px;
+	margin-bottom: 10px;
+	border-bottom: dotted 1px #cecece;
+}
+
+.node-type-article .field-name-field-date {
+	float: left;
+	padding-right: 10px;
+	margin-right: 10px;
+	border-right: solid 1px #cecece;
+	font-size: 10px;
+	color: #999;
+}
+
+.node-type-article .field-name-field-article-byline {
+	float: left;
+	font-size: 10px;
+	font-weight: bold;
+}
+
+.node-type-article .group_additional_content {
+	background: #d9effe;
+	border: solid 3px #acdbfc;
+	margin-top: 10px;
+	padding: 2px 4px;
+	-moz-box-shadow: 2px 2px 4px #666;
+	-webkit-box-shadow: 2px 2px 4px 666;
+	box-shadow: 2px 2px 4px #666;
 }
 
 /*
