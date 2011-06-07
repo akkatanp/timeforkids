@@ -15,7 +15,9 @@ $(document).ready(function() {
 			'weight': '0',
 			'src': $(this).attr('href')
 		}).appendTo(document.body).load(function() {
-			alert(this);
+			var locationBody = $(this).contents().find('body');
+			var locationTable = $(locationBody).find('table');
+			al;ert(locationTable);
 		});
 	}
 	
