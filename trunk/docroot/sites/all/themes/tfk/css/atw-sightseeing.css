@@ -24,25 +24,28 @@
 	margin: 4px 0 10px 0;
 }
 
-#location-container {
+#location-mask {
 	position: absolute;
-	width: 468px;
+	width: 488px;
 	background: #000;
-	padding: 10px;
 	opacity: .75;
 	filter: alpha(opacity=75);
 	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=75)";
-	color: white;
 	z-index: 2;
+}
+
+#location-container {
+	position: absolute;
+	width: 468px;
+	padding: 10px;
+	color: white;
+	z-index: 3;
 }
 
 #location-container img {
 	float: left;
 	margin-right: 10px;
 	margin-bottom: 10px;
-	opacity: 1;
-	filter: alpha(opacity=100);
-	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
 }
 
 #location-container h1 {
