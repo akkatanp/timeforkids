@@ -75,13 +75,13 @@ function feature_mini_sites_context_default_contexts() {
           'module' => 'views',
           'delta' => 'minisite_articles-block_4',
           'region' => 'sidebar_first',
-          'weight' => '-10',
+          'weight' => '-46',
         ),
         'views-minisite_articles-block_6' => array(
           'module' => 'views',
           'delta' => 'minisite_articles-block_6',
           'region' => 'sidebar_first',
-          'weight' => '-10',
+          'weight' => '-45',
         ),
         'views-minisite_articles-block_3' => array(
           'module' => 'views',
