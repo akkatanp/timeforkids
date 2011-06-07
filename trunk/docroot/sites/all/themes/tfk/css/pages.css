@@ -742,6 +742,7 @@ ul.links li {
 }
 
 .node-type-article .field-name-field-tout-image .field-name-field-image .field-item img {
+	width: 48px;
 	border: solid 1px #cecece;
 }
 
@@ -753,8 +754,8 @@ ul.links li {
 }
 
 .node-type-article .field-name-field-tout-image .field-name-field-caption {
-	font-size: 10px;
-	color: #999;
+	font-size: 11px;
+	color: #555;
 }
 
 /*
