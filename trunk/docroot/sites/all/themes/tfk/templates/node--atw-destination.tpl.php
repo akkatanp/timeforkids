@@ -81,6 +81,8 @@
  * @see template_process()
  */
 ?>
+<link rel="stylesheet" href="/sites/all/themes/tfk/css/atw_homepage_slideshow.css" />
+<script type="text/javascript" src="/sites/all/themes/tfk/js/atw_homepage_slideshow.js"></script>
 <div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
 
   <?php print $user_picture; ?>
@@ -108,16 +110,18 @@
       // We hide the comments and links now so that we can render them later.
       hide($content['comments']);
       hide($content['links']);
+	?>
+	<div id="atw-container">
 
-
-      //INSERT WRAPPER DIV HERE FOR THE SLIDESHOW AND DESCRIPTPION WHICH YOU CAN SHOW LIKE THIAS : print render($content['field_description']);
-
-
-
+	<?php
       //logic that shows the destination slideshow
       $slide_block = module_invoke('tfk_atw', 'block_view','atw-destination-slideshow');
-      print render($slide_block['content']);
-      //print render($content['field_description']);
+	?>
+
+	<?php print render($content['field_description']);?>
+</div>
+    <?php print render($slide_block['content']);
+      //
 
 
       //INSERT WRAPPER DIV CLOSURE
