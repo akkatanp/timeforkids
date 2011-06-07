@@ -23,7 +23,7 @@ $(document).ready(function() {
 			var locationDiv = $('<div></div>').attr('id', 'location-container').append(locationImg).append(locationName);
 			locationDiv.css({
 				'top': $('#map-container img').position().top + 'px',
-				'left': '10px'
+				'left': '10px',
 				'height': $('#map-container img').height() + 'px'
 			});
 			locationDiv.appendTo($('#map-container'));
