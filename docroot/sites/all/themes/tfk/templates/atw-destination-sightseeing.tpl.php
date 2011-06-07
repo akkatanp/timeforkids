@@ -6,11 +6,8 @@
 
 <div id="sightseeing-container">
 <?php foreach($sightseeing_data['sightseeing_items'] as $item): ?>
-	
 	<h1><?php echo $item['place_name']; ?>: Sight Seeing Guide</h1>
 	<?php echo $item['place_description']; ?>
-	
-	<div id="map-container"><img src="<?php echo file_create_url(file_build_uri(basename($item['place_photo'])));?>" /></div>
 <?php endforeach;?>
 
 </div>

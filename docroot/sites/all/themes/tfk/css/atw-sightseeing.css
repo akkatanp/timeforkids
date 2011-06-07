@@ -4,8 +4,9 @@
 }
 
 #sightseeing-container h1 {
-	font-size: 30px;
+	font: normal 30px arial;
 	margin: 4px 0;
+	line-height: 1;
 }
 
 #sightseeing-container p {
