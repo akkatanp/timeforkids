@@ -28,9 +28,16 @@ $(document).ready(function() {
 				'height': $('#map-container img').height() - 20 + 'px'
 			});
 			
+			var locationMask = $('<div></div>').attr('id', 'location-mask').css({
+				'top': $('#map-container img').position().top + 'px',
+				'left': '0px',
+				'height': $('#map-container img').height() + 'px'
+			});
+			
 			var closeButton = $('<div></div>').attr('id','close').click(function() {
 				$('#location-container').remove();
 			}).appendTo(locationDiv);
+			locationMask.appendTo($('#map-container'));
 			locationDiv.appendTo($('#map-container'));
 		});
 	}
