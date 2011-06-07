@@ -284,15 +284,44 @@ ul.links li {
 #block-views-board-members-block-1 .views-field-field-location {
     font-weight:bold;
 }
-.linktoboard a {
+
+#block-views-board-members-block-2  {
+    border: 1px solid #CECECE;
+     background:#ffffff;
+    padding:10px;
+
+}
+#block-views-board-members-block-2 h2 {
+    font-size:1.0em;
+    font-family: "arial black", arial, sans-serif;
+    margin-bottom: 10px;
+    padding-bottom: 6px;
+    text-transform: uppercase;
+    border-bottom: 1px dotted #CECECE;
+}
+#block-views-board-members-block-2 .views-row {
+    border-bottom: 1px dotted #CECECE;
+    min-height:90px;
+    height:auto !important;
+    height:90px;
+    margin-bottom: 10px;
+}
+#block-views-board-members-block-2 .views-row views-field-title-1 {
+    
+}
+#block-views-board-members-block-2 .views-row .views-field-field-member-photo {
+    padding:5px 5px 5px 0px;
+}
+#block-views-board-members-block-2 a.linktoboard {
     background: none repeat scroll 0 0 #D71700;
     border-radius: 12px 12px 12px 12px;
     box-shadow: 2px 2px 2px #999999;
     color: white;
-    float: right;
     font: bold 11px arial;
     padding: 6px 8px;
     text-decoration: none;
+    margin-left:50px;
+    display:block;
 }
 /* Teacher news sidebar */
 #block-tfk-news-tfk-news-latest-news-link {
