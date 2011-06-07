@@ -360,6 +360,10 @@ ul.links li {
 	background: none;
 }
 
+#block-tfk-news-tfk-news-year-filter {
+	margin-bottom: 0;
+}
+
 #news-sidebar-year-filter {
 	border-top: dotted 1px #555;
 	padding-top: 10px;
