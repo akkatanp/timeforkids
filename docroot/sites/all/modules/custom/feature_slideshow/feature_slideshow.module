@@ -5,3 +5,21 @@
  */
 
 include_once('feature_slideshow.features.inc');
+
+/**
+ * Preprocessor for page.
+ *
+ * @param array $vars
+ */
+function feature_slideshow_preprocess_page(&$vars) {
+  // Page template suggestion for video and slideshow nodes.
+  if(arg(0) == 'node' && $vars['node']->type == ('slideshow' || 'video')) {
+    $vars['theme_hook_suggestions'] = array_merge(
+      array('page__node__photos_video', ),
+      $vars['theme_hook_suggestions']
+    );
+    
+    // Add CSS for these pages.
+    drupal_add_css(drupal_get_path('module', 'feature_slideshow'). '/css/feature_slideshow.css', 'file');
+  }
+}
