@@ -197,7 +197,10 @@ function theme_tfk_featured_block(&$variables) {
   }
   $output .= '</div><!--./g2-->';
   
-  $output .= '</div>';
+  // Related content. @todo Pass some real data to it.
+  $output .= theme('related_content');
+  
+  $output .= '</div>';// ./tfk-search-photos-video-featured
   return $output;
 }
 
@@ -280,6 +283,18 @@ function tfk_search_get_thumbnail($fid, $style) {
   }
   
   return image_style_url($style, $file->uri);
+}
+
+/**
+ * Preprocessor for page.
+ *
+ * @param array $vars
+ */
+function tfk_search_preprocess_page(&$vars) {
+  if(arg(0) == 'photos-video') {
+    drupal_set_title('Photos & Video');
+    $vars->title == 'Photos & Video';
+  }
 }
 
 function tfk_search_preprocess_region(&$vars) {
@@ -565,6 +580,9 @@ function tfk_search_preprocess_search_result(&$vars) {
         l('View Full Article', 'node/'. $node->nid, array(
           'attributes' => array('title' => $node->title),
         )): '';
+        
+      // Related content.
+      $vars['related_content'] = theme('related_content');
         
       // Minor stuff.
       strtoupper($vars['tfk_search_cont_type']);

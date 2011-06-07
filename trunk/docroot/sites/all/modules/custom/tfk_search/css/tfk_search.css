@@ -76,7 +76,7 @@ ol#tfk-search-results-photos-video li h3.title a:visited {
 
 
 ol#tfk-search-results-photos-video li.with-image {
-  min-height: 215px;
+  /*min-height: 215px;*/
 }
 
 ol#tfk-search-results-photos-video li.with-image img.thumbnail {
