@@ -469,7 +469,7 @@ ul.links li {
 /* teacher and kid reporter news top story*/
 .view-homepage-top-story,
 .view-teacher-news-top-story,
-.view-kid-reporters-channel-top-story {
+.view-kid-reporters-channel-top-story .view-content {
 	position: relative;
 	border: solid 6px #d71700;
 	padding: 20px 10px 10px 10px;
