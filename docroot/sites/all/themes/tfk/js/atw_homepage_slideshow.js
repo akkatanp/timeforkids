@@ -1,7 +1,7 @@
 var $ = jQuery;
 
 $(document).ready(function() {
-	$('#atw-container #slideshow').slideshow();
+	$('#slideshow-container #slideshow').slideshow();
 });
 
 var nextSlideImg = function() {
@@ -15,7 +15,7 @@ var nextSlideImg = function() {
 		$('.title-container').children().eq(i).hide();
 	});
 	
-	$('#atw-container #slideshow .inner').animate({'left': (-1 * (nextImgNum * 490)) + 'px'}, 500);
+	$('#slideshow-container #slideshow .inner').animate({'left': (-1 * (nextImgNum * 490)) + 'px'}, 500);
 	nextImg.addClass('active');
 	$('.title-container').children().eq(nextImgNum).show();
 };
@@ -41,7 +41,7 @@ var nextSlideImg = function() {
 		if (numImgs) {
 			inner.css('width', numImgs * imgWidth + 'px');
 			var clicks = $('<ul></ul>').attr('id','clicks').appendTo(footer);
-
+			
 			for (i=0;i<numImgs;i++) {
 				var dot = $('<li></li>').attr('id', 'img-' + i).appendTo(clicks);
 				if (i == 0) {
@@ -56,7 +56,7 @@ var nextSlideImg = function() {
 				$(img).click(slideImg);
 			});
 			
-			if ($('#atw-container').hasClass('destination')) {
+			if ($('#slideshow-container').hasClass('destination')) {
 				setInterval('nextSlideImg()', 5000);
 			}
 		}

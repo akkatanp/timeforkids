@@ -111,7 +111,7 @@
       hide($content['comments']);
       hide($content['links']);
 	?>
-	<div id="atw-container" class="destination">
+	<div id="slideshow-container" class="destination">
 
 	<?php
       //logic that shows the destination slideshow

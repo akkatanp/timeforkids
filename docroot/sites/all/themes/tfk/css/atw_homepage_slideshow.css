@@ -2,23 +2,23 @@ h2.block-title {
 	display: none;
 }
 
-#atw-container {
+#slideshow-container {
 	border: solid 1px #cecece;
 	padding: 10px 9px;
 	margin-bottom: 10px;
 }
 
-#atw-container h1 {
+#slideshow-container h1 {
 	font: normal 30px arial;
 	line-height: 1;
 	margin: 10px 0 4px 0;
 }
 
-#atw-container p {
+#slideshow-container p {
 	margin: 0;
 }
 
-#atw-container #slideshow {
+#slideshow-container #slideshow {
 	position: relative;
 	width: 490px;
 	height: 370px;
@@ -78,11 +78,6 @@ h2.block-title {
 	line-height: 20px;
 }
 
-/*#slideshow .footer .title-container .title {
-	position: absolute;
-	top: 0px;
-	left: 0px;
-}*/
 
 #slideshow .outer {
 	position: absolute;
