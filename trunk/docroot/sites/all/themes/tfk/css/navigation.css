@@ -433,8 +433,13 @@
 	text-transform: uppercase;
 }
 
-#block-views-random-kid-reporters-block,
-#block-views-featured-kid-reporter-block {
+#block-views-random-kid-reporters-block ,
+#block-views-featured-kid-reporter-block  {
+
+}
+
+#block-views-random-kid-reporters-block .content,
+#block-views-featured-kid-reporter-block  .content {
 	padding: 10px;
 	border: solid 1px #cecece;
 	margin-bottom: 10px;
