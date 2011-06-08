@@ -998,3 +998,6 @@ div#block-views-tfk-section-photos-video-block div.views-field-body p {
 	margin-right: 4px;
 }
 
+div#page.page-node-photos-video div.region-content div#block-system-main {
+  margin-bottom: 10px;
+}
