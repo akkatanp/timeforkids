@@ -676,7 +676,7 @@ eacher news sidebar */
 	background: transparent url('../images/tfk-kid-reporter-head.png') no-repeat;
 }
 
-.node-type-article .is-kid-reporter-article .field-name-field-article-category .filed-items {
+.node-type-article .is-kid-reporter-article .field-name-field-article-category .field-items {
 	display: none;
 }
 
