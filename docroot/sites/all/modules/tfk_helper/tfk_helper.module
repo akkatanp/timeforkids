@@ -70,8 +70,15 @@ function tfk_helper_block_info() {
   $blocks = array();
   
   // TFK Photos and Video Node Featured Block (Sidebar).
-  $blocks['featured_block_sidebar'] = array(
+  $blocks['featured_block_sidebar_slideshow'] = array(
     'info' => t('TFK Helper Sidebar Featured Block'),
+    'visibility' => BLOCK_VISIBILITY_LISTED,
+    'cache' => DRUPAL_CACHE_GLOBAL,
+  );
+  
+  // TFK Photos and Video More Items Block.
+  $blocks['more_items_block'] = array(
+    'info' => t('TFK Helper More Items Block'),
     'visibility' => BLOCK_VISIBILITY_LISTED,
     'cache' => DRUPAL_CACHE_GLOBAL,
   );
@@ -96,9 +103,48 @@ function tfk_helper_block_view($delta='') {
       }
     break;
     
+    // TFK Photos and Video More Items Block. Used for More TFK Photos & Videos.
+    case 'more_items_block':
+      drupal_add_css(drupal_get_path('module', 'tfk_helper'). '/css/tfk_helper_more_items_block.css', 'file');
+      $more_items = tfk_helper_more_items_block(arg(1));
+      $block['content'] = theme_photos_video_more($more_items);
+    break;
+    
   }
   
   return $block;
+}
+
+
+function tfk_helper_more_items_block($nid) {
+  // @see Views API: http://groups.drupal.org/node/10129.
+  $items = array();
+  $view = views_get_view('photos_videos_more');
+  $view->execute_display('block_mpv', array($nid));
+  #$view->set_display('block_mpv');
+  #$view->set_arguments(array(arg(1)));
+  #$view->execute();
+  $view->render();
+  foreach ($view->result as $result) {
+    $items[] = array(
+      'title' => '',
+    	'image' => drupal_render($result->field_field_image[0]['rendered'])
+    );
+  }
+  return $items;
+}
+
+function theme_photos_video_more($items) {
+  $output = '<div id="more-items">';
+  $output .= '<h2 class="more-items-label">More TFK Photos & Videos</h2>';
+  foreach($items as $item) {
+    $output .= '<div class="more-items-col">';
+    $output .= $item['image'];
+    $output .= '<div class="more-items-item-title">'. $item['title']. '</div>';
+    $output .= '</div>';
+  }
+  $output .= '</div>';
+  return $output;
 }
 
 
