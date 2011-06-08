@@ -63,7 +63,7 @@ function tfk_search_apachesolr_facets() {
   $facets['sm_editorial_date_tfk'] = array(
     'info' => t('Year of the Node'),
     'facet_field' => 'sm_editorial_date_tfk',
-  );
+    );
   return $facets;
 }
 
@@ -540,6 +540,7 @@ function tfk_search_preprocess_search_result(&$vars) {
       break;
 
       case 'slideshow':
+        dpm($vars);
         $nid = $vars['result']['fields']['entity_id'];
         $node = node_load($nid);
         if(isset($node->field_slideshow_images)) {
