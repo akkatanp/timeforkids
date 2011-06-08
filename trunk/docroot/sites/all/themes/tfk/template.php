@@ -97,7 +97,9 @@ function tfk_preprocess_page(&$variables, $hook) {
           $variables['title'] = "My Account";
       }
   }
-  $variables['content_type_title'] = tfk_content_type_title($variables['node']->type);
+  if(isset($variables['node']->type)) {
+    $variables['content_type_title'] = tfk_content_type_title();
+  }
 }
 // */
 
@@ -146,8 +148,8 @@ function STARTERKIT_preprocess_block(&$variables, $hook) {
 function tfk_content_type_title($type) {
   switch ($type) {
     case 'a_paper':
-      $output = '<div class="aplus-paper-type-title">A+ Papers</div>';      
+      $output = '<div class="aplus-paper-type-title">A+ Papers</div>';
       break;
   }
   return $output;
-}  
+}
