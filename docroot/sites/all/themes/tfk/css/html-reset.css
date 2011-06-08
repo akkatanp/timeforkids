@@ -339,6 +339,11 @@ a:focus {
 }
 
 a:active {
+	color: #000;
+}
+
+a.active {
+	color: #000;
 }
 
 /*
