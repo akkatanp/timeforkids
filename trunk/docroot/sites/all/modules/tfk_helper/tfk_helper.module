@@ -88,9 +88,9 @@ function tfk_helper_block_view($delta='') {
   switch ($delta) {
     
     // TFK Photos and Video Node Featured Block (Sidebar).
-    case 'featured_block_sidebar':
+    case 'featured_block_sidebar_slideshow':
       drupal_add_css(drupal_get_path('module', 'tfk_helper'). '/css/tfk_helper_featured_block.css', 'file');
-      $featured_item = tfk_helper_get_featured_block_sidebar();
+      $featured_item = tfk_helper_get_featured_block_sidebar('slideshow');
       if(!empty($featured_item)) {
         $block['content'] = theme('featured_block_sidebar', $featured_item);
       }
@@ -167,32 +167,28 @@ class tfkHelperFeaturedItem {
 /**
  * Loads data for sidebar Featured block.
  *
+ * @param string $node_type
+ *   The content type of the node to load.
+ *
  * @see tfk_helper_block_view()
  */
-function tfk_helper_get_featured_block_sidebar() {
+function tfk_helper_get_featured_block_sidebar($node_type) {
   
-  // The type of Featured item depends on the current node type.
-  if(arg(0) == 'node') {
-    $node = node_load(arg(1)); // @todo We can make the type blacklist below a block setting, along with a skip row setting.
-    if(array_search($node->type, array('slideshow', 'video')) !== FALSE) {
-
-      // We get a Featured node with the same content type as the currently loaded node.
-      $fn_query = "
-        SELECT
-      		fn.nid AS nid
-      	FROM
-      	  node fn
-      	  INNER JOIN flag_content f ON fn.nid = f.content_id
-      	  WHERE fn.type = :node_type
-      	ORDER BY fn.created DESC";
-    	// Try to load the first two featured items. If there are two use the second, else fall back to the first one.
-      $featured_nodes = db_query_range($fn_query, 0, 2, array(':node_type' => $node->type), array('fetch' => 'tfkHelperFeaturedItem',))->fetchAll();
-    	if(!empty($featured_nodes)) {
-    	  $featured_node = array_pop($featured_nodes);
-    	  return $featured_node->to_array;
-    	}
-    }
-  }
+  // We get a Featured node with the same content type as the currently loaded node.
+  $fn_query = "
+    SELECT
+  		fn.nid AS nid
+  	FROM
+  	  node fn
+  	  INNER JOIN flag_content f ON fn.nid = f.content_id
+  	  WHERE fn.type = :node_type
+  	ORDER BY fn.created DESC";
+	// Try to load the first two featured items. If there are two use the second, else fall back to the first one.
+  $featured_nodes = db_query_range($fn_query, 0, 2, array(':node_type' => $node_type), array('fetch' => 'tfkHelperFeaturedItem',))->fetchAll();
+	if(!empty($featured_nodes)) {
+	  $featured_node = array_pop($featured_nodes);
+	  return $featured_node->to_array;
+	}
 	
 }
 
