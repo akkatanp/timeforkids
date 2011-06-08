@@ -81,8 +81,26 @@ function feature_slideshow_context_default_contexts() {
         'tfk_search-tfk_search_photos_video_back' => array(
           'module' => 'tfk_search',
           'delta' => 'tfk_search_photos_video_back',
+          'region' => 'sidebar_top',
+          'weight' => '-46',
+        ),
+        'tfk_helper-featured_block_sidebar_slideshow' => array(
+          'module' => 'tfk_helper',
+          'delta' => 'featured_block_sidebar_slideshow',
           'region' => 'sidebar_first',
-          'weight' => '-9',
+          'weight' => '-10',
+        ),
+        'tfk_atw-atw-page-slideshow' => array(
+          'module' => 'tfk_atw',
+          'delta' => 'atw-page-slideshow',
+          'region' => 'content',
+          'weight' => '-47',
+        ),
+        'tfk_helper-more_items_block' => array(
+          'module' => 'tfk_helper',
+          'delta' => 'more_items_block',
+          'region' => 'content',
+          'weight' => '-46',
         ),
       ),
     ),
