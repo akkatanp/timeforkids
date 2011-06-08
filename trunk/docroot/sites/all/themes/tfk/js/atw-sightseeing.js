@@ -5,8 +5,8 @@ $(document).ready(function() {
 	var locations = map.children();
 	
 	var locationClick = function(e) {
-		$('#location-iframe').remove();
 		e.preventDefault();
+		$('#location-iframe').remove();
 		var locationFrame = $('<iframe></iframe>').attr({
 			'id' : 'location-iframe',
 			'framborder': '0',
