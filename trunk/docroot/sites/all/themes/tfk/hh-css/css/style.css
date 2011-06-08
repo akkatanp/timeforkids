@@ -1,0 +1,453 @@
+/* Links -------------------------------------------------------------- */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/survival_kit\/_survival-kit\.sass}line{font-family:\000035}}
+body.markup-elements h1.section-title {
+  font-size: 2.286em;
+  line-height: 1.5em;
+  background-color: #d3d3d3;
+  text-transform: uppercase;
+  padding-left: 12px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/survival_kit\/_survival-kit\.sass}line{font-family:\0000310}}
+body.markup-elements h1.section-title a {
+  color: black;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Library\/Ruby\/Gems\/1\.8\/gems\/compass-0\.11\.1\/frameworks\/compass\/stylesheets\/compass\/typography\/links\/_link-colors\.scss}line{font-family:\0000318}}
+body.markup-elements h1.section-title a:visited {
+  color: black;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Library\/Ruby\/Gems\/1\.8\/gems\/compass-0\.11\.1\/frameworks\/compass\/stylesheets\/compass\/typography\/links\/_link-colors\.scss}line{font-family:\0000324}}
+body.markup-elements h1.section-title a:hover {
+  color: #d71700;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Library\/Ruby\/Gems\/1\.8\/gems\/compass-0\.11\.1\/frameworks\/compass\/stylesheets\/compass\/typography\/links\/_link-colors\.scss}line{font-family:\0000327}}
+body.markup-elements h1.section-title a:active {
+  color: #d71700;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/mixins\/_helpers\.sass}line{font-family:\000037}}
+body.markup-elements h1.section-title a {
+  text-decoration: none;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/mixins\/_helpers\.sass}line{font-family:\0000311}}
+body.markup-elements h1.section-title a:visited {
+  border-bottom-color: black;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/mixins\/_helpers\.sass}line{font-family:\0000317}}
+body.markup-elements h1.section-title a:hover {
+  border-bottom-color: #d71700;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/mixins\/_helpers\.sass}line{font-family:\0000320}}
+body.markup-elements h1.section-title a:active {
+  border-bottom-color: #d71700;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/survival_kit\/_survival-kit\.sass}line{font-family:\0000313}}
+body.markup-elements article.element {
+  *zoom: 1;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  margin-bottom: 24px;
+  padding-bottom: 23px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Library\/Ruby\/Gems\/1\.8\/gems\/compass-0\.11\.1\/frameworks\/compass\/stylesheets\/compass\/utilities\/general\/_clearfix\.scss}line{font-family:\0000322}}
+body.markup-elements article.element:after {
+  content: "\0020";
+  display: block;
+  height: 0;
+  clear: both;
+  overflow: hidden;
+  visibility: hidden;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/mixins\/_helpers\.sass}line{font-family:\0000355}}
+body.markup-elements article.element:last-child {
+  padding-bottom: 0;
+  border-bottom-width: 0;
+  margin-bottom: 0;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/survival_kit\/_survival-kit\.sass}line{font-family:\0000315}}
+body.markup-elements article.element h2.element-title {
+  font-size: 1em;
+  line-height: 1.714em;
+  background-color: gray;
+  color: white;
+  text-transform: uppercase;
+  padding-left: 12px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/survival_kit\/_survival-kit\.sass}line{font-family:\0000321}}
+body.markup-elements article.element h2.element-title a {
+  color: white;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Library\/Ruby\/Gems\/1\.8\/gems\/compass-0\.11\.1\/frameworks\/compass\/stylesheets\/compass\/typography\/links\/_link-colors\.scss}line{font-family:\0000318}}
+body.markup-elements article.element h2.element-title a:visited {
+  color: white;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Library\/Ruby\/Gems\/1\.8\/gems\/compass-0\.11\.1\/frameworks\/compass\/stylesheets\/compass\/typography\/links\/_link-colors\.scss}line{font-family:\0000324}}
+body.markup-elements article.element h2.element-title a:hover {
+  color: #d71700;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Library\/Ruby\/Gems\/1\.8\/gems\/compass-0\.11\.1\/frameworks\/compass\/stylesheets\/compass\/typography\/links\/_link-colors\.scss}line{font-family:\0000327}}
+body.markup-elements article.element h2.element-title a:active {
+  color: #d71700;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/mixins\/_helpers\.sass}line{font-family:\000037}}
+body.markup-elements article.element h2.element-title a {
+  text-decoration: none;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/mixins\/_helpers\.sass}line{font-family:\0000311}}
+body.markup-elements article.element h2.element-title a:visited {
+  border-bottom-color: white;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/mixins\/_helpers\.sass}line{font-family:\0000317}}
+body.markup-elements article.element h2.element-title a:hover {
+  border-bottom-color: #d71700;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/mixins\/_helpers\.sass}line{font-family:\0000320}}
+body.markup-elements article.element h2.element-title a:active {
+  border-bottom-color: #d71700;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/survival_kit\/_survival-kit\.sass}line{font-family:\0000324}}
+body.markup-elements article.element .example {
+  *zoom: 1;
+  border-bottom: 1px dashed rgba(0, 0, 0, 0.1);
+  margin-bottom: 12px;
+  padding-bottom: 11px;
+  *zoom: 1;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Library\/Ruby\/Gems\/1\.8\/gems\/compass-0\.11\.1\/frameworks\/compass\/stylesheets\/compass\/utilities\/general\/_clearfix\.scss}line{font-family:\0000322}}
+body.markup-elements article.element .example:after {
+  content: "\0020";
+  display: block;
+  height: 0;
+  clear: both;
+  overflow: hidden;
+  visibility: hidden;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/mixins\/_helpers\.sass}line{font-family:\0000355}}
+body.markup-elements article.element .example:last-child {
+  padding-bottom: 0;
+  border-bottom-width: 0;
+  margin-bottom: 0;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Library\/Ruby\/Gems\/1\.8\/gems\/compass-0\.11\.1\/frameworks\/compass\/stylesheets\/compass\/utilities\/general\/_clearfix\.scss}line{font-family:\0000322}}
+body.markup-elements article.element .example:after {
+  content: "\0020";
+  display: block;
+  height: 0;
+  clear: both;
+  overflow: hidden;
+  visibility: hidden;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/survival_kit\/_survival-kit\.sass}line{font-family:\0000327}}
+body.markup-elements article.element .example .markup {
+  display: inline;
+  float: left;
+  width: 64.228%;
+  margin-right: 2.439%;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/survival_kit\/_survival-kit\.sass}line{font-family:\0000329}}
+body.markup-elements article.element .example .markup + .show-source {
+  display: inline;
+  float: left;
+  width: 30.894%;
+  margin-right: 2.439%;
+  display: inline;
+  float: right;
+  margin-right: 0;
+  #margin-left: -24px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/survival_kit\/_survival-kit\.sass}line{font-family:\0000333}}
+body.markup-elements article.element .example .markup + .show-source .show-hide {
+  text-align: right;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/survival_kit\/_survival-kit\.sass}line{font-family:\0000335}}
+body.markup-elements article.element .example .markup + .show-source + p {
+  clear: both;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/grids\/_grids_susy\.sass}line{font-family:\000034}}
+.container, body #container {
+  *zoom: 1;
+  margin: auto;
+  width: 984px;
+  max-width: 100%;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Library\/Ruby\/Gems\/1\.8\/gems\/compass-0\.11\.1\/frameworks\/compass\/stylesheets\/compass\/utilities\/general\/_clearfix\.scss}line{font-family:\0000322}}
+.container:after, body #container:after {
+  content: "\0020";
+  display: block;
+  height: 0;
+  clear: both;
+  overflow: hidden;
+  visibility: hidden;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/grids\/_grids_susy\.sass}line{font-family:\000038}}
+.wireframe {
+  outline: 1px dashed red;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/grids\/_grids_susy\.sass}line{font-family:\0000319}}
+body #container > header, body #container > #main, body #container > footer {
+  clear: both;
+  margin-left: 1.22%;
+  margin-right: 1.22%;
+}
+
+/* Non-grid Layout and styling -------------------------------------------------------------- */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\000033}}
+body.node-type-a-paper #main-wrapper .aplus-paper-type-title, body.node-type-paper-step #main-wrapper .aplus-paper-type-title {
+  background-image: url(images/tfk-red-tag.png);
+  background-repeat: no-repeat;
+  padding: 13px;
+  height: 23px;
+  width: 158px;
+  color: white;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 20px;
+  margin-bottom: 0;
+  float: left;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000315}}
+body.node-type-a-paper #content, body.node-type-paper-step #content {
+  font-family: sans-serif;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 18px;
+  width: 768px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000321}}
+body.node-type-a-paper #content #block-menu-menu-homework-help, body.node-type-paper-step #content #block-menu-menu-homework-help {
+  border: 1px solid #cecece;
+  background: #dddddd;
+  margin-bottom: 10px;
+  height: 140px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000326}}
+body.node-type-a-paper #content #block-menu-menu-homework-help li.first, body.node-type-paper-step #content #block-menu-menu-homework-help li.first {
+  float: left;
+  padding: 10px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000329}}
+body.node-type-a-paper #content #block-menu-menu-homework-help li.first a#menu-writing-center, body.node-type-paper-step #content #block-menu-menu-homework-help li.first a#menu-writing-center {
+  color: white;
+  padding: 10px 254px 10px 10px;
+  background: #d71700;
+  text-transform: uppercase;
+  float: left;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000335}}
+body.node-type-a-paper #content #block-menu-menu-homework-help li.first ul.menu, body.node-type-paper-step #content #block-menu-menu-homework-help li.first ul.menu {
+  padding: 10px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000337}}
+body.node-type-a-paper #content #block-menu-menu-homework-help li.first ul.menu li.first, body.node-type-a-paper #content #block-menu-menu-homework-help li.first ul.menu li.last, body.node-type-paper-step #content #block-menu-menu-homework-help li.first ul.menu li.first, body.node-type-paper-step #content #block-menu-menu-homework-help li.first ul.menu li.last {
+  padding: 0;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000339}}
+body.node-type-a-paper #content #block-menu-menu-homework-help li.first ul.menu, body.node-type-paper-step #content #block-menu-menu-homework-help li.first ul.menu {
+  float: left;
+  clear: both;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000342}}
+body.node-type-a-paper #content #block-menu-menu-homework-help li.last, body.node-type-paper-step #content #block-menu-menu-homework-help li.last {
+  float: right;
+  padding: 10px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000345}}
+body.node-type-a-paper #content #block-menu-menu-homework-help li.last a#menu-study-helper, body.node-type-paper-step #content #block-menu-menu-homework-help li.last a#menu-study-helper {
+  color: white;
+  padding: 10px 254px 10px 10px;
+  background: #999999;
+  text-transform: uppercase;
+  float: left;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000351}}
+body.node-type-a-paper #content #block-menu-menu-homework-help li.last ul.menu, body.node-type-paper-step #content #block-menu-menu-homework-help li.last ul.menu {
+  padding: 10px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000353}}
+body.node-type-a-paper #content #block-menu-menu-homework-help li.last ul.menu li.first, body.node-type-a-paper #content #block-menu-menu-homework-help li.last ul.menu li.last, body.node-type-paper-step #content #block-menu-menu-homework-help li.last ul.menu li.first, body.node-type-paper-step #content #block-menu-menu-homework-help li.last ul.menu li.last {
+  padding: 0;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000355}}
+body.node-type-a-paper #content #block-menu-menu-homework-help li.last ul.menu, body.node-type-paper-step #content #block-menu-menu-homework-help li.last ul.menu {
+  float: left;
+  clear: both;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000358}}
+body.node-type-a-paper #content #homework-helper-title, body.node-type-paper-step #content #homework-helper-title {
+  font-size: 14px;
+  border-bottom: 0;
+  padding: 10px;
+  text-transform: uppercase;
+  float: left;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000364}}
+body.node-type-a-paper #content h2.node-title, body.node-type-paper-step #content h2.node-title {
+  margin-bottom: 10px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000368}}
+body.node-type-a-paper #content .block, body.node-type-paper-step #content .block {
+  margin: 0px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000370}}
+body.node-type-a-paper #content .node, body.node-type-paper-step #content .node {
+  margin: 0px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000374}}
+body.node-type-a-paper #content #aplus-papers-checklist-block, body.node-type-paper-step #content #aplus-papers-checklist-block {
+  border: 1px solid #cecece;
+  list-style: none;
+  width: 220px;
+  float: right;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000380}}
+body.node-type-a-paper #content #aplus-papers-checklist-block .aplus-papers-checklist-title, body.node-type-paper-step #content #aplus-papers-checklist-block .aplus-papers-checklist-title {
+  color: white;
+  background-color: #d71700;
+  padding: 2px;
+  font-weight: bold;
+  text-transform: uppercase;
+  border: 10px solid #dddddd;
+  text-align: center;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000388}}
+body.node-type-a-paper #content #aplus-papers-checklist-block ul#aplus-papers-checklist, body.node-type-paper-step #content #aplus-papers-checklist-block ul#aplus-papers-checklist {
+  margin-bottom: 0;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000390}}
+body.node-type-a-paper #content #aplus-papers-checklist-block li, body.node-type-paper-step #content #aplus-papers-checklist-block li {
+  border-bottom: 1px solid #cecece;
+  background: #dddddd url(images/checkbox-unchecked.gif);
+  background-repeat: no-repeat;
+  background-position: 0 0.5em;
+  margin: 0;
+  padding: 10px 35px;
+  color: #d71700;
+  font-weight: bold;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000399}}
+body.node-type-a-paper #content #aplus-papers-checklist-block li.current, body.node-type-paper-step #content #aplus-papers-checklist-block li.current {
+  border-bottom: 1px solid #cecece;
+  background: white url(images/checkbox-unchecked.gif);
+  background-repeat: no-repeat;
+  background-position: 0 0.7em;
+  margin: 0;
+  padding: 10px 35px;
+  color: black;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003107}}
+body.node-type-a-paper #content #aplus-papers-checklist-block li.checked, body.node-type-paper-step #content #aplus-papers-checklist-block li.checked {
+  border-bottom: 1px solid #cecece;
+  background: white url(images/checkbox-checked.gif);
+  background-repeat: no-repeat;
+  background-position: 0 0.7em;
+  margin: 0;
+  padding: 10px 35px;
+  color: black;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003115}}
+body.node-type-a-paper #content #aplus-papers-checklist-block li.last, body.node-type-paper-step #content #aplus-papers-checklist-block li.last {
+  border-bottom: 0;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003117}}
+body.node-type-a-paper #content h2.node-title a, body.node-type-paper-step #content h2.node-title a {
+  color: black;
+  font-size: 20px;
+  line-height: 18px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003123}}
+body.node-type-a-paper #content .field-name-field-step-example, body.node-type-paper-step #content .field-name-field-step-example {
+  background: #dddddd;
+  border: 1px solid #cecece;
+  margin-left: 2.439%;
+  padding: 2.439%;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003129}}
+body.node-type-a-paper #content .field-name-field-step-example p, body.node-type-paper-step #content .field-name-field-step-example p {
+  margin-bottom: 0;
+  font-style: italic;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003132}}
+body.node-type-a-paper #content .form-item-step-0-name, body.node-type-a-paper #content .form-item-step-0-date, body.node-type-a-paper #content .form-item-step-0-textarea, body.node-type-a-paper #content .form-item-step-1-title, body.node-type-a-paper #content .form-item-step-2-textarea, body.node-type-a-paper #content .form-item-step-3-textarea, body.node-type-a-paper #content .form-item-step-4-textarea, body.node-type-a-paper #content .form-item-step-5-textarea, body.node-type-a-paper #content .form-item-step-6-0-name, body.node-type-a-paper #content .form-item-step-6-0-date, body.node-type-a-paper #content .form-item-step-6-1-title, body.node-type-a-paper #content .form-item-step-6-2-textarea, body.node-type-a-paper #content .form-item-step-6-3-textarea, body.node-type-a-paper #content .form-item-step-6-4-textarea, body.node-type-a-paper #content .form-item-step-6-5-textarea, body.node-type-paper-step #content .form-item-step-0-name, body.node-type-paper-step #content .form-item-step-0-date, body.node-type-paper-step #content .form-item-step-0-textarea, body.node-type-paper-step #content .form-item-step-1-title, body.node-type-paper-step #content .form-item-step-2-textarea, body.node-type-paper-step #content .form-item-step-3-textarea, body.node-type-paper-step #content .form-item-step-4-textarea, body.node-type-paper-step #content .form-item-step-5-textarea, body.node-type-paper-step #content .form-item-step-6-0-name, body.node-type-paper-step #content .form-item-step-6-0-date, body.node-type-paper-step #content .form-item-step-6-1-title, body.node-type-paper-step #content .form-item-step-6-2-textarea, body.node-type-paper-step #content .form-item-step-6-3-textarea, body.node-type-paper-step #content .form-item-step-6-4-textarea, body.node-type-paper-step #content .form-item-step-6-5-textarea {
+  background: #dddddd;
+  padding: 10px;
+  width: 480px;
+  margin-top: 0;
+  clear: left;
+  border: 1px solid #cecece;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003139}}
+body.node-type-a-paper #content .form-item-step-0-name label, body.node-type-a-paper #content .form-item-step-0-date label, body.node-type-a-paper #content .form-item-step-0-textarea label, body.node-type-a-paper #content .form-item-step-1-title label, body.node-type-a-paper #content .form-item-step-2-textarea label, body.node-type-a-paper #content .form-item-step-3-textarea label, body.node-type-a-paper #content .form-item-step-4-textarea label, body.node-type-a-paper #content .form-item-step-5-textarea label, body.node-type-a-paper #content .form-item-step-6-0-name label, body.node-type-a-paper #content .form-item-step-6-0-date label, body.node-type-a-paper #content .form-item-step-6-1-title label, body.node-type-a-paper #content .form-item-step-6-2-textarea label, body.node-type-a-paper #content .form-item-step-6-3-textarea label, body.node-type-a-paper #content .form-item-step-6-4-textarea label, body.node-type-a-paper #content .form-item-step-6-5-textarea label, body.node-type-paper-step #content .form-item-step-0-name label, body.node-type-paper-step #content .form-item-step-0-date label, body.node-type-paper-step #content .form-item-step-0-textarea label, body.node-type-paper-step #content .form-item-step-1-title label, body.node-type-paper-step #content .form-item-step-2-textarea label, body.node-type-paper-step #content .form-item-step-3-textarea label, body.node-type-paper-step #content .form-item-step-4-textarea label, body.node-type-paper-step #content .form-item-step-5-textarea label, body.node-type-paper-step #content .form-item-step-6-0-name label, body.node-type-paper-step #content .form-item-step-6-0-date label, body.node-type-paper-step #content .form-item-step-6-1-title label, body.node-type-paper-step #content .form-item-step-6-2-textarea label, body.node-type-paper-step #content .form-item-step-6-3-textarea label, body.node-type-paper-step #content .form-item-step-6-4-textarea label, body.node-type-paper-step #content .form-item-step-6-5-textarea label {
+  font-size: 18px;
+  padding: 5px 0;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003142}}
+body.node-type-a-paper #content #aplus-submit-buttons, body.node-type-paper-step #content #aplus-submit-buttons {
+  background: #dddddd;
+  padding: 10px;
+  width: 480px;
+  border: 1px solid #cecece;
+  height: 25px;
+  margin-top: -20px;
+  text-align: right;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003152}}
+body.node-type-a-paper #content #aplus-submit-buttons .aplus-start-over, body.node-type-paper-step #content #aplus-submit-buttons .aplus-start-over {
+  background: url(images/tfk-red-arrow.png);
+  background-repeat: no-repeat;
+  float: left;
+  font-style: italic;
+  font-family: Georgia, serif;
+  color: #d71700;
+  padding: 3px 0 0 42px;
+  height: 35px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003161}}
+body.node-type-a-paper #content .node-paper-step, body.node-type-paper-step #content .node-paper-step {
+  background: white;
+  padding: 10px;
+  width: 480px;
+  float: left;
+  margin-bottom: 2.439%;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003168}}
+body.node-type-a-paper #content .node-paper-step label, body.node-type-paper-step #content .node-paper-step label {
+  font-size: 18px;
+  padding: 5px 0;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003171}}
+body.node-type-a-paper #content button,
+body.node-type-a-paper #content input[type="reset"],
+body.node-type-a-paper #content input[type="submit"],
+body.node-type-a-paper #content input[type="button"], body.node-type-paper-step #content button, body.node-type-paper-step #content input[type="reset"], body.node-type-paper-step #content input[type="submit"], body.node-type-paper-step #content input[type="button"] {
+  -webkit-appearance: none;
+  -moz-border-radius: 11px;
+  -webkit-border-radius: 11px;
+  -o-border-radius: 11px;
+  -ms-border-radius: 11px;
+  -khtml-border-radius: 11px;
+  border-radius: 11px;
+  background: #d71700 url(../images/button.png) repeat-x;
+  border: 1px solid;
+  border-color: #dddddd #bbbbbb #999999;
+  cursor: pointer;
+  color: white;
+  font: normal 12px/1.2 Arial, sans-serif;
+  outline: 0;
+  overflow: visible;
+  padding: 3px 10px 4px;
+  margin-right: 10px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003188}}
+body.node-type-a-paper #content .paper-title, body.node-type-paper-step #content .paper-title {
+  font-size: 20px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003190}}
+body.node-type-a-paper #content .paper-date, body.node-type-paper-step #content .paper-date {
+  float: right;
+  font-size: 14px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003193}}
+body.node-type-a-paper #content .student-name, body.node-type-paper-step #content .student-name {
+  float: left;
+  font-size: 14px;
+}
