@@ -81,7 +81,7 @@
  * @see template_process()
  */
 ?>
-<div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
+<div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?>  <?php if($is_kid_reporter_article == 1){echo 'is-kid-reporter-article';}?> clearfix"<?php print $attributes; ?>>
 
   <?php print $user_picture; ?>
 
