@@ -540,7 +540,7 @@ function tfk_search_preprocess_search_result(&$vars) {
       break;
 
       case 'slideshow':
-        dpm($vars);
+        #dpm($vars);
         $nid = $vars['result']['fields']['entity_id'];
         $node = node_load($nid);
         if(isset($node->field_slideshow_images)) {
