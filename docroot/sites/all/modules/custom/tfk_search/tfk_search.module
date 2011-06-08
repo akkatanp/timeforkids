@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Implementation of hook_menu.
  */
@@ -12,6 +11,20 @@ function tfk_search_menu(){
   	'access callback' => 'user_access',
   	'access arguments' => array('access content'),
     'type' => MENU_CALLBACK,
+  );
+  $items['worksheets'] = array(
+  	'title' => 'Worksheets',
+  	'page callback' => 'tfk_search_worksheets',
+  	'access callback' => 'user_access',
+  	'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+  $items['myfr/%ctools_js/saves/%filterstr'] = array(
+      'title' => 'Animal',
+      'page callback' => 'ctools_ajax_save_srch',
+      'page arguments' => array(1,2),
+      'access callback' => TRUE,
+      'type' => MENU_CALLBACK,
   );
   return $items;
 }
@@ -45,6 +58,10 @@ function tfk_search_theme($existing, $type, $theme, $path) {
     'tfk_featured_block' => array(
       'variables' => array('tfkSearchFeaturedItem' => NULL),
     ),
+    'tfk_search_worksheet_saved' => array(
+      'template' => 'tfk-search-worksheet-saved',
+      'variables' => array('list' => NULL)
+    )
   );
 }
 
@@ -96,6 +113,11 @@ function tfk_search_block_info() {
     'pages' => 'photos-video',
     'region' => 'highlighted',
     'cache' => DRUPAL_CACHE_GLOBAL,
+  );
+
+  // Worksheet saved searches block
+  $blocks['tfk_search_worksheet_saved'] = array(
+    'info' => t('Saved searches block for worksheets page')
   );
   
   // Custom facet blocks.
@@ -152,6 +174,10 @@ function tfk_search_block_view($delta='') {
         $block['content'] = '';
       }
     break;
+
+   case 'tfk_search_worksheet_saved':
+     $block['content'] = _tfk_search_get_saved_searches_block();
+     break;
   }
   
   return $block;
@@ -185,6 +211,32 @@ function tfk_search_block_save($delta = '', $edit = array()){
      apachesolr_facetcount_save($edit);
   }
   return;
+}
+
+//_tfk_search_get_saved_searches
+
+function _tfk_search_get_saved_searches_block(){
+  ctools_include('modal');
+  ctools_modal_add_js();
+
+
+  return theme('tfk_search_worksheet_saved',_tfk_get_saved_searches());
+}
+
+
+function _tfk_get_saved_searches(){
+  $saved_searches = array();
+  
+  $query = apachesolr_current_query();
+  $filters = $query->get_filters();
+
+  $str = '';
+  foreach($filters as $filter){
+    $str .= $filter['#query'] . ' ';
+  }
+
+  $list = array('saved_searches' => $saved_searches,'current_str' => $str);
+  return $list;
 }
 
 /**
@@ -337,6 +389,10 @@ function tfk_search_preprocess_page(&$vars) {
     drupal_set_title('Photos & Video');
     $vars->title == 'Photos & Video';
   }
+  if(arg(0) == 'worksheets') {
+    drupal_set_title('Worksheets');
+    $vars->title == 'Woksheets';
+  }
 }
 
 function tfk_search_preprocess_region(&$vars) {
@@ -487,6 +543,16 @@ function tfk_search_preprocess_search_result(&$vars) {
     } else {
       $style = 'square_thumbnail';
     }
+
+    if($base_path == 'worksheets') {
+      $vars['theme_hook_suggestions'] = array_merge(
+        array('search_result__tfk_search__worksheets', 'search_result__tfk_search'),
+        $vars['theme_hook_suggestions']
+      );
+      $style = '115x115';
+    } else {
+      $style = 'square_thumbnail';
+    }
     
     switch ($vars['result']['fields']['bundle']) {
       
@@ -537,7 +603,26 @@ function tfk_search_preprocess_search_result(&$vars) {
       
       case 'worksheet':
         $nid = $vars['result']['fields']['entity_id'];
+
+        //this is code that will get us a flag html with a working flag link to put in a template
+        $flag = flag_get_flag('favorites');
+        $flag_link = flag_create_link('favorites', $nid);
+        $vars['favorites_flag_link'] = $flag_link;
+        
+        
+
         $node = node_load($nid);
+
+        if(isset($node->field_worksheet_pdf)){
+          $vars['tfk_worksheet_pdf_url'] = '';
+          $tmp_pdf =  field_get_items('node', $node, 'field_worksheet_pdf');
+          $pdf_tmp_uri = $tmp_pdf[0]['uri'];
+          
+          if($pdf_path = file_create_url($pdf_tmp_uri)){
+            $vars['tfk_worksheet_pdf_url'] = $pdf_path;
+          }
+        }
+        
         if(isset($node->field_worksheet_thumbnail_image)){
           $tmp_img_nid =  field_get_items('node', $node, 'field_worksheet_thumbnail_image');
           $uri = $tmp_img_nid[0]['uri'];
@@ -654,8 +739,14 @@ function tfk_search_apachesolr_modify_query($query, $caller) {
     $subquery->add_filter('bundle', 'slideshow');
     $query->add_subquery($subquery, 'OR');
   }
+
+  if($query->get_base_path() === 'worksheets') {
+    $subquery = apachesolr_drupal_query();
+    $subquery->add_filter('bundle', 'worksheet');
+    $query->add_subquery($subquery, 'OR');
+  }
   
-  if($caller == 'apachesolr_search' && ($query->get_base_path() !== 'photos-video')) {
+  if($caller == 'apachesolr_search' && ($query->get_base_path() !== 'photos-video') && ($query->get_base_path() !== 'worksheets')) {
     global $user;
     if(count($user->roles) == 1 && $user->roles[1] == 'anonymous user'){
      $query->add_filter("bundle", 'worksheet',TRUE);
@@ -689,6 +780,108 @@ function tfk_search_photos_and_video() {
 }
 
 /**
+ * Worksheet menu callback.
+ */
+function tfk_search_worksheets() {
+  // Include the CTools tools that we need.
+  ctools_include('ajax');
+  ctools_include('modal');
+  // Add CTools' javascript to the page.
+  ctools_modal_add_js();
+  // Create our own javascript that will be used to theme a modal.
+  $sample_style = array(
+    'ctools-sample-style' => array(
+      'modalSize' => array(
+        'type' => 'fixed',
+        'width' => 500,
+        'height' => 300,
+        'addWidth' => 20,
+        'addHeight' => 15,
+      ),
+      'modalOptions' => array(
+        'opacity' => .5,
+        'background-color' => '#000',
+      ),
+      'animation' => 'fadeIn',
+      'modalTheme' => 'CToolsSampleModal',
+      'throbber' => theme('image', array('path' => ctools_image_path('ajax-loader.gif', 'ctools_ajax_sample'), 'alt' => t('Loading...'), 'title' => t('Loading'))),
+    ),
+  );
+
+  drupal_add_js($sample_style, 'setting');
+  // Since we have our js, css and images in well-known named directories,
+  // CTools makes it easy for us to just use them without worrying about
+  // using drupal_get_path() and all that ugliness.
+  ctools_add_js('ctools-ajax-sample', 'tfk_search');
+  ctools_add_css('ctools-ajax-sample', 'tfk_search');
+  
+
+  module_load_include('module', 'search');
+  $filterstring = isset($_GET['filters']) ? $_GET['filters'] : '';
+  $solrsort = isset($_GET['solrsort']) ? $_GET['solrsort'] : '';
+  $page = isset($_GET['page']) ? $_GET['page'] : 0;
+  $base_path = 'worksheets';
+  $response = apachesolr_search_run(search_get_keys(), $filterstring, $solrsort, $base_path, $page, 'apachesolr_search');
+  
+  return theme('search_results', array('results' => $response));
+}
+
+function ctools_ajax_save_srch($js = NULL,$curr_filters='') {
+
+  ctools_include('modal');
+  ctools_include('ajax');
+
+  $form_state = array(
+    'ajax' => TRUE,
+      'title' => t('ZZZZZ'),
+  );
+
+  $form_state['curr_filters'] = $curr_filters;
+  
+  $output = ctools_modal_form_wrapper('worksheets_save_srch', $form_state);
+
+  if (empty($output)) {
+      $output[] = ctools_modal_command_loading();
+  }
+    
+    print ajax_render($output);
+    exit;
+}
+
+function worksheets_save_srch($form, &$form_state) {
+  $form_state['title'] = t('Save your search');
+  
+  $form['savedname'] = array(
+    '#title' => t('Save your search'),
+    '#type' => 'textfield',
+    '#default_value' => '',
+    '#required' => TRUE,
+  );
+
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => 'Submit',
+  );
+
+    
+  return $form;
+}
+
+function worksheets_save_srch_submit(&$form, &$form_state) {
+  ctools_include('modal');
+  ctools_include('ajax');
+
+  $commands = array();
+      // Dismiss the modal.
+      $commands[] = ajax_command_html('#mymodaldiv', 'Your search has been saved');
+      $commands[] = ctools_modal_command_dismiss();
+      print ajax_render($commands);
+    exit;
+}
+
+
+
+/**
  * Helper function for grabbing search keys.
  */
 function search_get_keys() {
@@ -702,3 +895,6 @@ function search_get_keys() {
   }
   return $return;
 }
+
+
+
