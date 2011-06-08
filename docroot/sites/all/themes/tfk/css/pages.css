@@ -666,7 +666,8 @@ eacher news sidebar */
 	background: #fff;
 	text-transform: uppercase;
 	font: normal 18px "arial black";
-	padding: 0 2px;
+	height: 18px;
+	padding: 0 4px;
 }
 
 .node-type-article .is-kid-reporter-article .field-name-field-article-category {
