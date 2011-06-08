@@ -432,9 +432,9 @@
 	position: relative;
 	width: 250px;
 	left: -11px;
-	margin: 10px 0;
-	padding: 10px 0;
+	padding: 20px 0;
 	background: white;
+	border-top: solid 1px #cecece;
 }
 
 #block-views-random-kid-reporters-block .content,
