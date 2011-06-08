@@ -294,8 +294,7 @@ function tfk_search_get_featured_block() {
   	LIMIT 1";
 	
   $result = array('tfkSearchFeaturedItem' => array_shift(db_query($fn_query, array(), array('fetch' => 'tfkSearchFeaturedItem',))->fetchAll()));
-  dpm($result);
-  if(empty($result)) {
+  if(empty($result['tfkSearchFeaturedItem'])) {
     watchdog('TFK Search', 'Could not find data to populate the Featured item block.', array(), WATCHDOG_ERROR);
     return FALSE;
   } else {
