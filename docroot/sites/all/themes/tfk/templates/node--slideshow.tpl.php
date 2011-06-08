@@ -83,11 +83,9 @@
 ?>
 <div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
 
-  <?php print $user_picture; ?>
-
   <?php print render($title_prefix); ?>
   <?php if (  $title): ?>
-    <h2><?php print $title; ?></h2>
+    <h2 class="node-title"><?php print $title; ?></h2>
   <?php endif; ?>
   <?php print render($title_suffix); ?>
 
@@ -100,21 +98,5 @@
       <?php print $submitted; ?>
     </div>
   <?php endif; ?>
-
-  <div class="content"<?php print $content_attributes; ?>
-    <?php
-      // We hide the comments and links now so that we can render them later.
-      hide($content['comments']);
-      hide($content['links']);
-      /* SHow the view that pulls the image for the slideshow */
-      print views_embed_view('photos_video_slideshow_image', 'block_ss_image', $node->nid);
-      /* Show the View for More Photos & Videos */ 
-      print views_embed_view('photos_videos_more', 'block_mpv', $node->nid);
-    ?>
-  </div>
-
-  <?php print render($content['links']); ?>
-
-  <?php print render($content['comments']); ?>
 
 </div><!-- /.node -->
