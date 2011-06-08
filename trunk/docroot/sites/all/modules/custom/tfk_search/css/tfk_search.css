@@ -1,6 +1,20 @@
 /**
  * Default theming for TFK Search components.
  */
+
+/* Navigation blocks */
+div#block-tfk-search-tfk-search-photos-video-title {
+  margin: 0 0 15px 0px;
+}
+
+div#block-tfk-search-tfk-search-photos-video-back {
+  background-color: #D71700;
+  padding: 10px 0px 7px 11px;
+}
+div#block-tfk-search-tfk-search-photos-video-back a {
+  color: white;
+}
+
 div#block-tfk-search-tfk-search-photos-video-title h2 {
   color: white;
   background-color: #D71700;
@@ -107,6 +121,11 @@ ol#tfk-search-results-photos-video li.tfk-search-result .col2 h3.title a {
   color: #D71700;
   font-size: 1.5em;
   font-weight: bold;
+}
+
+/* Minimum row height */
+.tfk-search-result .row2 {
+  min-height: 115px;
 }
 
 
