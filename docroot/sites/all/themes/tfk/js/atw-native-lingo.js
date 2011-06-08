@@ -3,6 +3,17 @@ var $ = jQuery;
 $(document).ready(function() {
 	$("#audio-player").jPlayer({
 		swfPath: '/sites/all/themes/tfk/js/jplayer',
+		solution: 'html, flash',
+		supplied: 'mp3, mp4',
+		volume: 0.8,
+		muted: false,
+		backgroundColor: '#000000',
+		cssSelectorAncestor: '#jp_interface_1',
+		cssSelector: {
+			play: '.jp-play',
+			pause: '.jp-pause',
+			stop: '.jp-stop'
+		},
 		ready: function() {
 			$('#native-lingo-container').nativeLingo();
 		}
