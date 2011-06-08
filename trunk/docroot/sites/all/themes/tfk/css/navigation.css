@@ -409,6 +409,8 @@
 
 #block-menu-menu-kid-reporter-articles-link,
 #block-menu-menu-kid-reporter-listings-link {
+	padding: 10px;
+	border: solid 1px #cecece;
 	margin-bottom: 10px;
 }
 
