@@ -144,7 +144,13 @@ function tfk_search_block_view($delta='') {
     
     // Photos and Video Featured block.
     case 'tfk_search_photos_video_featured':
-      $block['content'] = theme('tfk_featured_block', tfk_search_get_featured_block());
+      $featured_item = tfk_search_get_featured_block();
+      if($featured_item != FALSE) {
+        $block['content'] = theme('tfk_featured_block', $featured_item);
+      } else {
+        // Suppress the block.
+        $block['content'] = '';
+      }
     break;
   }
   
@@ -269,6 +275,9 @@ class tfkSearchFeaturedItem {
 /**
  * Loads data for the Photos and Video featured item.
  *
+ * @return
+ *   Array with data for theme_tfk_featured_block() if successful. FALSE otherwise.
+ *
  * @see tfk_search_block_view()
  */
 function tfk_search_get_featured_block() {
@@ -287,7 +296,7 @@ function tfk_search_get_featured_block() {
   $result = array('tfkSearchFeaturedItem' => array_shift(db_query($fn_query, array(), array('fetch' => 'tfkSearchFeaturedItem',))->fetchAll()));
   if(empty($result)) {
     watchdog('TFK Search', 'Could not find data to populate the Featured item block.', array(), WATCHDOG_ERROR);
-    return '';
+    return FALSE;
   } else {
     return $result;
   }
