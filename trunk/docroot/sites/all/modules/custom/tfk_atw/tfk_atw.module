@@ -91,7 +91,7 @@ function atw_sightseeing_callback($destination_name){
   $tpl_vars['sightseeing_map'] = $node->field_sightseeing_map['und'][0]['filename'];
   $tpl_vars['sightseeing_body'] = $node->field_sightseeing_body['und'][0]['value'];
   $tpl_vars['sightseeing_items'] = array();
-
+  $tpl_vars['cust_node_title'] = $node->title;
   foreach($node->field_sightseeing['und'] as $k=> $item){
     $item_nid = node_load($item['nid']);
     $tpl_vars['sightseeing_items'][$k]['place_name'] = $item_nid->field_place_name['und'][0]['value'];
@@ -265,7 +265,7 @@ function _get_atw_daylife_slideshow_images(){
          $is_admin_editor = 1;
     }
 
-    $list = array('daylife_data' => $daylife_data,'node_data' => $node_data,'is_admin_editor' => $is_admin_editor);
+    $list = array('cust_node_title'=>$node->title,'daylife_data' => $daylife_data,'node_data' => $node_data,'is_admin_editor' => $is_admin_editor);
     return $list;
 }
 
@@ -307,7 +307,7 @@ function _get_atw_timeline_slideshow_images(){
     }
 
 
-    $list = array('images_data' => $timelines_data,'is_admin_editor' => $is_admin_editor,'timeline_nid' => $nid,'related_content' => $additional_content);
+    $list = array('cust_node_title'=>$node->title,'images_data' => $timelines_data,'is_admin_editor' => $is_admin_editor,'timeline_nid' => $nid,'related_content' => $additional_content);
     return $list;
 }
 
@@ -678,7 +678,7 @@ function tfk_atw_form_alter(&$form,&$form_state,$form_id) {
 //PREPROCESSORS
 
 function tfk_atw_preprocess_node(&$vars, $hook) {
-    
+
     if($vars['type'] == 'atw_native_lingo'){
 
         $vars['lingo_phrases']['basic'] = array();
