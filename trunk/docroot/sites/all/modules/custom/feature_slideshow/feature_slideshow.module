@@ -15,7 +15,6 @@ function feature_slideshow_preprocess_page(&$vars) {
   // Page template suggestion for video and slideshow nodes.
   // @todo Merge Photos & Video template with global page template.
   if(arg(0) == 'node' && array_key_exists('node', $vars) && (($vars['node']->type == 'slideshow') || ($vars['node']->type == 'video')) ) {
-    dpm('YES');
     $vars['theme_hook_suggestions'] = array_merge(
       array('page__node__photos_video', ),
       $vars['theme_hook_suggestions']
