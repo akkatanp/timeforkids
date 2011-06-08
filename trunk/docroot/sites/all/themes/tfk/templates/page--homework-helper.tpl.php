@@ -175,7 +175,7 @@ if(drupal_is_front_page()) {
       <?php endif; ?>
       
 	    <?php if ($content_type_title): ?> <?php print $content_type_title; ?> <?php endif; ?>
-      <div id="homework-helper-node"><?php print $title; ?></div>
+      <div id="homework-helper-title"><?php print $title; ?></div>
       <?php print render($page['content']); ?>
 
       <?php print $feed_icons; ?>
