@@ -97,9 +97,11 @@ function tfk_preprocess_page(&$variables, $hook) {
           $variables['title'] = "My Account";
       }
   }
-  if(isset($variables['node']->type)) {
+
+  if ($variables['section_title'] == 'Homework Helper') {
     $variables['content_type_title'] = tfk_content_type_title($variables['node']->type);
-  }
+    $variables['theme_hook_suggestions'][] = 'page__homework_helper';
+  }  
 }
 // */
 
