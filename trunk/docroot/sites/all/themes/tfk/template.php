@@ -98,7 +98,7 @@ function tfk_preprocess_page(&$variables, $hook) {
       }
   }
   if(isset($variables['node']->type)) {
-    $variables['content_type_title'] = tfk_content_type_title();
+    $variables['content_type_title'] = tfk_content_type_title($variables['node']->type);
   }
 }
 // */
