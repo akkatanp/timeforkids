@@ -22,10 +22,11 @@ function feature_board_members_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Board Members';
+  $handler->display->display_options['title'] = 'Teacher Community';
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['query']['options']['query_comment'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
@@ -38,22 +39,6 @@ function feature_board_members_views_default_views() {
   $handler->display->display_options['footer']['area']['table'] = 'views';
   $handler->display->display_options['footer']['area']['field'] = 'area';
   $handler->display->display_options['footer']['area']['empty'] = FALSE;
-  /* Field: Content: Title */
-  $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'node';
-  $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['label'] = '';
-  $handler->display->display_options['fields']['title']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['title']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['title']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['title']['link_to_node'] = 1;
   /* Field: Content: Board Member Photo */
   $handler->display->display_options['fields']['field_member_photo']['id'] = 'field_member_photo';
   $handler->display->display_options['fields']['field_member_photo']['table'] = 'field_data_field_member_photo';
@@ -64,11 +49,11 @@ function feature_board_members_views_default_views() {
   $handler->display->display_options['fields']['field_member_photo']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_member_photo']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_member_photo']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_member_photo']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_member_photo']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_member_photo']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_member_photo']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_member_photo']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_member_photo']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_member_photo']['alter']['html'] = 0;
   $handler->display->display_options['fields']['field_member_photo']['element_label_colon'] = 0;
   $handler->display->display_options['fields']['field_member_photo']['element_default_classes'] = 1;
@@ -76,10 +61,26 @@ function feature_board_members_views_default_views() {
   $handler->display->display_options['fields']['field_member_photo']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_member_photo']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_member_photo']['settings'] = array(
-    'image_style' => 'tfk_square_large',
+    'image_style' => 'tfk_square_small',
     'image_link' => '',
   );
   $handler->display->display_options['fields']['field_member_photo']['field_api_classes'] = 0;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['title']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['title']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['title']['link_to_node'] = 1;
   /* Field: Fields: Grade Level */
   $handler->display->display_options['fields']['field_grade_level']['id'] = 'field_grade_level';
   $handler->display->display_options['fields']['field_grade_level']['table'] = 'field_data_field_grade_level';
@@ -90,17 +91,16 @@ function feature_board_members_views_default_views() {
   $handler->display->display_options['fields']['field_grade_level']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_grade_level']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_grade_level']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_grade_level']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_grade_level']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_grade_level']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_grade_level']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_grade_level']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_grade_level']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_grade_level']['alter']['html'] = 0;
   $handler->display->display_options['fields']['field_grade_level']['element_label_colon'] = 0;
   $handler->display->display_options['fields']['field_grade_level']['element_default_classes'] = 1;
   $handler->display->display_options['fields']['field_grade_level']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_grade_level']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['field_grade_level']['click_sort_column'] = 'tid';
   $handler->display->display_options['fields']['field_grade_level']['type'] = 'taxonomy_term_reference_plain';
   $handler->display->display_options['fields']['field_grade_level']['field_api_classes'] = 0;
   /* Field: Content: Location */
@@ -113,11 +113,11 @@ function feature_board_members_views_default_views() {
   $handler->display->display_options['fields']['field_location']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_location']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_location']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_location']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_location']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_location']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_location']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_location']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_location']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_location']['alter']['html'] = 0;
   $handler->display->display_options['fields']['field_location']['element_label_colon'] = 0;
   $handler->display->display_options['fields']['field_location']['element_default_classes'] = 1;
@@ -135,11 +135,11 @@ function feature_board_members_views_default_views() {
   $handler->display->display_options['fields']['title_1']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['title_1']['alter']['external'] = 0;
   $handler->display->display_options['fields']['title_1']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['title_1']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['title_1']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['title_1']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['title_1']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['title_1']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['title_1']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['title_1']['alter']['html'] = 0;
   $handler->display->display_options['fields']['title_1']['element_label_colon'] = 0;
   $handler->display->display_options['fields']['title_1']['element_default_classes'] = 1;
@@ -178,6 +178,8 @@ function feature_board_members_views_default_views() {
 
   /* Display: Board Member Listing Page */
   $handler = $view->new_display('page', 'Board Member Listing Page', 'page');
+  $handler->display->display_options['defaults']['css_class'] = FALSE;
+  $handler->display->display_options['css_class'] = 'teacher-community';
   $handler->display->display_options['display_description'] = 'Board Member Listing Page';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'grid';
@@ -195,12 +197,14 @@ function feature_board_members_views_default_views() {
   $handler->display->display_options['header']['area']['label'] = 'TFK Board Members.';
   $handler->display->display_options['header']['area']['empty'] = FALSE;
   $handler->display->display_options['header']['area']['content'] = '<p><strong>TFK Board Members.</strong></p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque convallis rhoncus sapien, eget elementum nunc adipiscing quis. Donec non tellus enim. Maecenas pharetra lectus et eros placerat dictum. Cras nec imperdiet diam. Pellentesque nec libero a tellus rutrum aliquam sit amet eget nisl. Nunc nulla metus, ultricies non egestas id, ornare imperdiet sapien. Donec at malesuada nisi. Ut adipiscing tincidunt magna id aliquam.</p>';
+  $handler->display->display_options['header']['area']['format'] = 'full_html';
+  $handler->display->display_options['header']['area']['tokenize'] = 0;
   $handler->display->display_options['path'] = 'teacher-board-members';
 
   /* Display: Featured Board Member */
   $handler = $view->new_display('block', 'Featured Board Member', 'block_1');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'Featured Board Member';
+  $handler->display->display_options['title'] = 'TFK Featured Teacher';
   $handler->display->display_options['display_description'] = 'Featured Board Member';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'default';
@@ -215,6 +219,114 @@ function feature_board_members_views_default_views() {
   $handler->display->display_options['relationships']['flag_content_rel']['field'] = 'flag_content_rel';
   $handler->display->display_options['relationships']['flag_content_rel']['flag'] = 'featured_board_member';
   $handler->display->display_options['relationships']['flag_content_rel']['user_scope'] = 'any';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Board Member Photo */
+  $handler->display->display_options['fields']['field_member_photo']['id'] = 'field_member_photo';
+  $handler->display->display_options['fields']['field_member_photo']['table'] = 'field_data_field_member_photo';
+  $handler->display->display_options['fields']['field_member_photo']['field'] = 'field_member_photo';
+  $handler->display->display_options['fields']['field_member_photo']['label'] = '';
+  $handler->display->display_options['fields']['field_member_photo']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_member_photo']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_member_photo']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_member_photo']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_member_photo']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_member_photo']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_member_photo']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_member_photo']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_member_photo']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_member_photo']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_member_photo']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_member_photo']['element_label_colon'] = 0;
+  $handler->display->display_options['fields']['field_member_photo']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_member_photo']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_member_photo']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_member_photo']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_member_photo']['settings'] = array(
+    'image_style' => 'tfk_square_medium',
+    'image_link' => '',
+  );
+  $handler->display->display_options['fields']['field_member_photo']['field_api_classes'] = 0;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['title']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['title']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['title']['link_to_node'] = 1;
+  /* Field: Fields: Grade Level */
+  $handler->display->display_options['fields']['field_grade_level']['id'] = 'field_grade_level';
+  $handler->display->display_options['fields']['field_grade_level']['table'] = 'field_data_field_grade_level';
+  $handler->display->display_options['fields']['field_grade_level']['field'] = 'field_grade_level';
+  $handler->display->display_options['fields']['field_grade_level']['label'] = '';
+  $handler->display->display_options['fields']['field_grade_level']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_grade_level']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_grade_level']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_grade_level']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_grade_level']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_grade_level']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_grade_level']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_grade_level']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_grade_level']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_grade_level']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_grade_level']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_grade_level']['element_label_colon'] = 0;
+  $handler->display->display_options['fields']['field_grade_level']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_grade_level']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_grade_level']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_grade_level']['type'] = 'taxonomy_term_reference_plain';
+  $handler->display->display_options['fields']['field_grade_level']['field_api_classes'] = 0;
+  /* Field: Content: Location */
+  $handler->display->display_options['fields']['field_location']['id'] = 'field_location';
+  $handler->display->display_options['fields']['field_location']['table'] = 'field_data_field_location';
+  $handler->display->display_options['fields']['field_location']['field'] = 'field_location';
+  $handler->display->display_options['fields']['field_location']['label'] = '';
+  $handler->display->display_options['fields']['field_location']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_location']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_location']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_location']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_location']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_location']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_location']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_location']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_location']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_location']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_location']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_location']['element_label_colon'] = 0;
+  $handler->display->display_options['fields']['field_location']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_location']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_location']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_location']['field_api_classes'] = 0;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title_1']['id'] = 'title_1';
+  $handler->display->display_options['fields']['title_1']['table'] = 'node';
+  $handler->display->display_options['fields']['title_1']['field'] = 'title';
+  $handler->display->display_options['fields']['title_1']['label'] = '';
+  $handler->display->display_options['fields']['title_1']['alter']['alter_text'] = 1;
+  $handler->display->display_options['fields']['title_1']['alter']['text'] = 'Learn More about [title]';
+  $handler->display->display_options['fields']['title_1']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['title_1']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['title_1']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['title_1']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['title_1']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['title_1']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['title_1']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['title_1']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['title_1']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['title_1']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['title_1']['element_label_colon'] = 0;
+  $handler->display->display_options['fields']['title_1']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['title_1']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['title_1']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['title_1']['link_to_node'] = 1;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
@@ -238,6 +350,8 @@ function feature_board_members_views_default_views() {
 
   /* Display: More Board Members Block */
   $handler = $view->new_display('block', 'More Board Members Block', 'block_2');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'More Board Members';
   $handler->display->display_options['display_description'] = 'More Board Members Block';
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'some';
@@ -256,24 +370,10 @@ function feature_board_members_views_default_views() {
   $handler->display->display_options['footer']['area']['field'] = 'area';
   $handler->display->display_options['footer']['area']['label'] = 'View The Teacher\'s Board Link';
   $handler->display->display_options['footer']['area']['empty'] = FALSE;
-  $handler->display->display_options['footer']['area']['content'] = '<a href="/teacher-board-members" class="linktoboard">View The Teacher\'s Board</a>';
+  $handler->display->display_options['footer']['area']['content'] = '<p><a class="linktoboard" href="/teacher-board-members">View The Teacher&#39;s Board</a></p>';
+  $handler->display->display_options['footer']['area']['format'] = 'full_html';
+  $handler->display->display_options['footer']['area']['tokenize'] = 0;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Content: Title */
-  $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'node';
-  $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['label'] = '';
-  $handler->display->display_options['fields']['title']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['title']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['title']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['title']['link_to_node'] = 1;
   /* Field: Content: Board Member Photo */
   $handler->display->display_options['fields']['field_member_photo']['id'] = 'field_member_photo';
   $handler->display->display_options['fields']['field_member_photo']['table'] = 'field_data_field_member_photo';
@@ -284,11 +384,11 @@ function feature_board_members_views_default_views() {
   $handler->display->display_options['fields']['field_member_photo']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_member_photo']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_member_photo']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_member_photo']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_member_photo']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_member_photo']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_member_photo']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_member_photo']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_member_photo']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_member_photo']['alter']['html'] = 0;
   $handler->display->display_options['fields']['field_member_photo']['element_label_colon'] = 0;
   $handler->display->display_options['fields']['field_member_photo']['element_default_classes'] = 1;
@@ -296,10 +396,26 @@ function feature_board_members_views_default_views() {
   $handler->display->display_options['fields']['field_member_photo']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_member_photo']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_member_photo']['settings'] = array(
-    'image_style' => 'tfk_square_large',
+    'image_style' => 'tfk_square_small',
     'image_link' => '',
   );
   $handler->display->display_options['fields']['field_member_photo']['field_api_classes'] = 0;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['title']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['title']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['title']['link_to_node'] = 1;
   /* Field: Fields: Grade Level */
   $handler->display->display_options['fields']['field_grade_level']['id'] = 'field_grade_level';
   $handler->display->display_options['fields']['field_grade_level']['table'] = 'field_data_field_grade_level';
@@ -310,17 +426,16 @@ function feature_board_members_views_default_views() {
   $handler->display->display_options['fields']['field_grade_level']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_grade_level']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_grade_level']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_grade_level']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_grade_level']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_grade_level']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_grade_level']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_grade_level']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_grade_level']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_grade_level']['alter']['html'] = 0;
   $handler->display->display_options['fields']['field_grade_level']['element_label_colon'] = 0;
   $handler->display->display_options['fields']['field_grade_level']['element_default_classes'] = 1;
   $handler->display->display_options['fields']['field_grade_level']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_grade_level']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['field_grade_level']['click_sort_column'] = 'tid';
   $handler->display->display_options['fields']['field_grade_level']['type'] = 'taxonomy_term_reference_plain';
   $handler->display->display_options['fields']['field_grade_level']['field_api_classes'] = 0;
   /* Field: Content: Location */
@@ -333,11 +448,11 @@ function feature_board_members_views_default_views() {
   $handler->display->display_options['fields']['field_location']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_location']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_location']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_location']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_location']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_location']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_location']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_location']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_location']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_location']['alter']['html'] = 0;
   $handler->display->display_options['fields']['field_location']['element_label_colon'] = 0;
   $handler->display->display_options['fields']['field_location']['element_default_classes'] = 1;
@@ -355,11 +470,11 @@ function feature_board_members_views_default_views() {
   $handler->display->display_options['fields']['title_1']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['title_1']['alter']['external'] = 0;
   $handler->display->display_options['fields']['title_1']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['title_1']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['title_1']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['title_1']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['title_1']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['title_1']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['title_1']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['title_1']['alter']['html'] = 0;
   $handler->display->display_options['fields']['title_1']['element_label_colon'] = 0;
   $handler->display->display_options['fields']['title_1']['element_default_classes'] = 1;
@@ -392,7 +507,7 @@ function feature_board_members_views_default_views() {
   $handler->display->display_options['arguments']['nid']['not'] = 1;
   $translatables['board_members'] = array(
     t('Master'),
-    t('Board Members'),
+    t('Teacher Community'),
     t('more'),
     t('Apply'),
     t('Reset'),
@@ -408,10 +523,12 @@ function feature_board_members_views_default_views() {
     t('TFK Board Members.'),
     t('<p><strong>TFK Board Members.</strong></p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque convallis rhoncus sapien, eget elementum nunc adipiscing quis. Donec non tellus enim. Maecenas pharetra lectus et eros placerat dictum. Cras nec imperdiet diam. Pellentesque nec libero a tellus rutrum aliquam sit amet eget nisl. Nunc nulla metus, ultricies non egestas id, ornare imperdiet sapien. Donec at malesuada nisi. Ut adipiscing tincidunt magna id aliquam.</p>'),
     t('Featured Board Member'),
+    t('TFK Featured Teacher'),
     t('flag'),
     t('More Board Members Block'),
+    t('More Board Members'),
     t('View The Teacher\'s Board Link'),
-    t('<a href="/teacher-board-members" class="linktoboard">View The Teacher\'s Board</a>'),
+    t('<p><a class="linktoboard" href="/teacher-board-members">View The Teacher&#39;s Board</a></p>'),
     t('Learn More'),
   );
   $export['board_members'] = $view;

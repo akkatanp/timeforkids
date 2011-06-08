@@ -36,7 +36,41 @@ function feature_board_members_context_default_contexts() {
     ),
   );
   $context->condition_mode = 0;
+  
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('board member');
+  $export['All Board Members List'] = $context;
 
+  $context = new stdClass;
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'Board Member Content Type Display';
+  $context->description = '';
+  $context->tag = 'board member';
+  $context->conditions = array(
+    'node' => array(
+      'values' => array(
+        'board_member' => 'board_member',
+      ),
+      'options' => array(
+        'node_form' => '0',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'menu-link-to-board-members' => array(
+          'module' => 'menu',
+          'delta' => 'menu-link-to-board-members',
+          'region' => 'sidebar_first',
+          'weight' => '-22',
+        ),
+      ),
+    ),
+  );
+   $context->condition_mode = 0;
   // Translatables
   // Included for use with string extractors like potx.
   t('Tfk board members');
