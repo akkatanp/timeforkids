@@ -392,7 +392,7 @@
 	margin-top: 0;
 }
 
-/* kid reporter sidebar */
+/* kid reporter sidebar 
 .node-type-kid-reporter .region-sidebar-first .section,
 .section-tfk-kid-reporters .region-sidebar-first .section,
 .section-kid-reporter .region-sidebar-first .section {
@@ -400,11 +400,16 @@
 	padding: 0;
 	border: none;
 }
+*/
 
 .node-type-kid-reporter .region-sidebar-first .section .block-menu h2,
 .section-tfk-kid-reporters .region-sidebar-first .section .block-menu h2,
 .section-kid-reporter .region-sidebar-first .section .block-menu h2 {
 	display: none;
+}
+
+.page-kid-reporter #block-tfk-news-tfk-news-latest-news-link {
+
 }
 
 #block-menu-menu-kid-reporter-articles-link ul.menu,
