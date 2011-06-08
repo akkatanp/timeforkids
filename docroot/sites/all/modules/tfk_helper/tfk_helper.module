@@ -51,10 +51,12 @@ function theme_featured_block_sidebar($args) {
   list($type, $title, $body, $link, $image) = array_values($args);
   
   $output .= "<div class='featured-block-sidebar-label'>". strtoupper('Featured '. $type). "</div>";
+  $output .= "<div class='col1'>";
   $output .= "<div class='featured-block-sidebar-img'>$image</div>";
   $output .= "<div class='featured-block-sidebar-title'>$title</div>";
   $output .= "<div class='featured-block-sidebar-body'>$body</div>";
-  $output .= "<div class='featured-block-sidebar-body'>$link</div>";
+  $output .= "<div class='featured-block-sidebar-link'>$link</div>";
+  $output .= "</div>";
 
   return $output;
 }
@@ -87,6 +89,7 @@ function tfk_helper_block_view($delta='') {
     
     // TFK Photos and Video Node Featured Block (Sidebar).
     case 'featured_block_sidebar':
+      drupal_add_css(drupal_get_path('module', 'tfk_helper'). '/css/tfk_helper_featured_block.css', 'file');
       $featured_item = tfk_helper_get_featured_block_sidebar();
       if(!empty($featured_item)) {
         $block['content'] = theme('featured_block_sidebar', $featured_item);
@@ -132,7 +135,7 @@ class tfkHelperFeaturedItem {
    *
    * @var string
    */
-  static  $image_style = '115x115';
+  static $image_style = '115x115';
   static $body_trim = '300';
   static $snippet_format = NULL; //@todo Find how to get the input format ID.
   static $thumbnail_class = 'featured-block-sidebar-img';
@@ -141,12 +144,13 @@ class tfkHelperFeaturedItem {
     $featured_node = node_load($this->nid);
     $this->type = $featured_node->type;
     if($featured_node->type == 'slideshow') {
-      $this->title = $featured_node->title; // Alternatively load 'safe_summary'.
+      $url = 'node/'. $featured_node->nid;
+      $this->title = l($featured_node->title, $url); // Alternatively load 'safe_summary'.
       // Trim and filter the body to ensure valid and safe markup.
       // Cache the filtered output in the {cache_filter} table.
       // @todo Make the trim count a setting.
       $this->body = check_markup(truncate_utf8($featured_node->body['und'][0]['safe_value'], self::$body_trim, TRUE, TRUE, 10), self::$snippet_format, '', TRUE);
-      $this->link = l('See '. ucfirst($featured_node->type), 'node/'. $featured_node->nid);
+      $this->link = l('See '. ucfirst($featured_node->type), $url);
       $image_node = node_load(array_shift(array_shift($featured_node->field_slideshow_images['und'])));
       $image = tfk_search_get_thumbnail($image_node->field_image['und'][0]['fid'], self::$image_style);
       $link_options = array('html' => TRUE, 'attributes' => array('class' => array(self::$thumbnail_class)));
