@@ -283,7 +283,14 @@ function tfk_search_get_featured_block() {
   	  #WHERE fn.type IN ('video')
   	ORDER BY fn.created DESC
   	LIMIT 1";
-	return array('tfkSearchFeaturedItem' => array_shift(db_query($fn_query, array(), array('fetch' => 'tfkSearchFeaturedItem',))->fetchAll()));
+	
+  $result = array('tfkSearchFeaturedItem' => array_shift(db_query($fn_query, array(), array('fetch' => 'tfkSearchFeaturedItem',))->fetchAll()));
+  if(empty($result)) {
+    watchdog('TFK Search', 'Could not find data to populate the Featured item block.', array(), WATCHDOG_ERROR);
+    return '';
+  } else {
+    return $result;
+  }
 }
 
 /**
@@ -540,7 +547,6 @@ function tfk_search_preprocess_search_result(&$vars) {
       break;
 
       case 'slideshow':
-        #dpm($vars);
         $nid = $vars['result']['fields']['entity_id'];
         $node = node_load($nid);
         if(isset($node->field_slideshow_images)) {
