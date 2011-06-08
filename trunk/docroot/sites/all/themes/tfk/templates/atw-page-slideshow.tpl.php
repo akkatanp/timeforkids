@@ -1,5 +1,5 @@
 
-<div id="atw-container" class="atw-home">
+<div id="slideshow-container" class="atw-home">
 	<div id="slideshow">
 		<div class="header"></div>
 		
