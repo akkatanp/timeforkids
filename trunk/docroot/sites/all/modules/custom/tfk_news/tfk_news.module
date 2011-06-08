@@ -214,5 +214,14 @@ function tfk_news_node_view($node, $view_mode, $langcode) {
   }
 }
 
-
+function tfk_news_preprocess_block(&$variables){
+  if(is_numeric(arg(1))){
+    $node = node_load(arg(1));
+    if(!isset($node->field_kid_reporter['und'][0])){
+      if($variables['block']->delta == 'random_kid_reporters-block'){
+        $variables['content'] = '';
+      }
+    }
+  }
+}
 ?>
