@@ -278,16 +278,9 @@ ul.links li {
 #block-views-board-members-block-1 .views-field-title a {
     font-size:1.2em;
 }
-#block-views-board-members-block-1 .views-field-field-grade-level {
-    font-weight:bold;
-}
-#block-views-board-members-block-1 .views-field-field-location {
-    font-weight:bold;
-}
-
 #block-views-board-members-block-2  {
     border: 1px solid #CECECE;
-     background:#ffffff;
+    background:#ffffff;
     padding:10px;
 
 }
@@ -306,9 +299,6 @@ ul.links li {
     height:90px;
     margin-bottom: 10px;
 }
-#block-views-board-members-block-2 .views-row views-field-title-1 {
-    
-}
 #block-views-board-members-block-2 .views-row .views-field-field-member-photo {
     padding:5px 5px 5px 0px;
 }
@@ -323,7 +313,46 @@ ul.links li {
     margin-left:50px;
     display:block;
 }
-/* Teacher news sidebar */
+.node-board-member {
+    border:1px solid #CECECE;
+    padding:10px;
+}
+.node-board-member .field-name-field-member-photo {
+    float:left;
+    margin:0px 10px 10px 0px;
+}
+.node-board-member .field-name-field-member-photo img {
+    border:1px solid #CECECE;
+}
+.view-board-members .view-content .views-field-field-grade-level, .view-board-members .view-content .views-field-field-location, #block-views-board-members-block-1 .views-field-field-grade-level, #block-views-board-members-block-1 .views-field-field-location, #block-views-board-members-block-2 .views-row .views-field-field-grade-level,#block-views-board-members-block-2 .views-row .views-field-field-location, .node-board-member .field-name-field-location, .node-board-member .field-name-field-grade-level {
+    font-weight:bold;
+    color:#373737;
+}
+.teacher-community-profile-board-member-name {
+    font-size:2.0em;
+    color:#D71700;
+    font-weight:bold;
+}
+#block-menu-menu-link-to-board-members h2 {
+	display: none;
+}
+#block-menu-menu-link-to-board-members ul.menu,
+#block-menu-menu-link-to-board-members ul.menu li {
+	padding: 0;
+	margin: 0;
+}
+
+#block-menu-menu-link-to-board-members ul.menu li a {
+	display: block;
+	font: normal 14px "arial black";
+	color: #fff;
+	background: #d71700;
+	padding: 10px;
+	text-transform: uppercase;
+        margin:0;
+}
+/* T
+eacher news sidebar */
 #block-tfk-news-tfk-news-latest-news-link {
 	font: normal 14px "arial black";
 	color: #fff;

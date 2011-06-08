@@ -87,6 +87,9 @@ function STARTERKIT_preprocess_html(&$variables, $hook) {
  */
 function tfk_preprocess_page(&$variables, $hook) {
   $variables['theme_hook_suggestions'][] = 'page__'. $variables['node']->type;
+  if ($variables['node']->type == "board_member") {
+      $variables['title'] = "Teacher Community";
+  }
   if (isset($variables['page']['content']['system_main']['#theme']) && $variables['page']['content']['system_main']['#theme'] == "user_profile") {
       if ($variables['page']['content']['system_main']['field_is_board_member']['#items'][0]['value'] == "yes") {
           $variables['title'] = "Teacher Community";
