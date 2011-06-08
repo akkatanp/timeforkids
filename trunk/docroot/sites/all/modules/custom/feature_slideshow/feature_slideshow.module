@@ -13,7 +13,9 @@ include_once('feature_slideshow.features.inc');
  */
 function feature_slideshow_preprocess_page(&$vars) {
   // Page template suggestion for video and slideshow nodes.
-  if(arg(0) == 'node' && $vars['node']->type == ('slideshow' || 'video')) {
+  // @todo Merge Photos & Video template with global page template.
+  if(arg(0) == 'node' && array_key_exists('node', $vars) && (($vars['node']->type == 'slideshow') || ($vars['node']->type == 'video')) ) {
+    dpm('YES');
     $vars['theme_hook_suggestions'] = array_merge(
       array('page__node__photos_video', ),
       $vars['theme_hook_suggestions']
@@ -23,3 +25,4 @@ function feature_slideshow_preprocess_page(&$vars) {
     drupal_add_css(drupal_get_path('module', 'feature_slideshow'). '/css/feature_slideshow.css', 'file');
   }
 }
+
