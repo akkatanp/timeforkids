@@ -406,10 +406,6 @@
 	display: none;
 }
 
-.page-kid-reporter #block-tfk-news-tfk-news-latest-news-link {
-
-}
-
 #block-menu-menu-kid-reporter-articles-link ul.menu,
 #block-menu-menu-kid-reporter-listings-link ul.menu {
 	padding: 0;
@@ -431,12 +427,13 @@
 	text-transform: uppercase;
 }
 
-#block-views-random-kid-reporters-block ,
+#block-views-random-kid-reporters-block,
 #block-views-featured-kid-reporter-block  {
 	position: relative;
-	width: 248px;
-	left: -10px;
+	width: 250px;
+	left: -11px;
 	margin: 10px 0;
+	padding: 10px 0;
 	background: white;
 }
 
