@@ -621,12 +621,29 @@ eacher news sidebar */
 	padding: 10px;
 }
 
+.node-kid-reporter .content h1 {
+	color: #d71700;
+	line-height: 1;
+	display: inline;
+	margin: 0 0 10px 0;
+}
+
 .node-kid-reporter .field-type-image {
 	float: left;
 	height: 270px;
 	width: 270px;
 	margin-right: 10px;
 }
+
+.node-kid-reporter .field-type-image img {
+	width: 270px;
+	height: 270px;
+}
+
+.node-kid-reporter .field-name-field-location,
+.node-kid-reporter .field-name-field-grade-level{
+	font-weight: bold;
+ }
 
 /* kid reporter listings */
 .view-all-kid-reporters .view-header {
