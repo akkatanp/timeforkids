@@ -433,6 +433,7 @@
 	text-transform: uppercase;
 }
 
+#block-views-random-kid-reporters-block,
 .node-type-kid-reporter .region-sidebar-first .block-views,
 .section-tfk-kid-reporters .region-sidebar-first .block-views,
 .section-kid-reporter .region-sidebar-first .block-views {
@@ -440,6 +441,7 @@
 	border: solid 1px #cecece;
 }
 
+#block-views-random-kid-reporters-block  h2.block-title,
 .node-type-kid-reporter .region-sidebar-first .block-views h2.block-title,
 .section-tfk-kid-reporters .region-sidebar-first .block-views h2.block-title,
 .section-kid-reporter .region-sidebar-first .block-views h2.block-title {
@@ -450,6 +452,7 @@
 	border-bottom: dotted 1px #cecece;
 }
 
+#block-views-random-kid-reporters-block  .views-row,
 .node-type-kid-reporter .region-sidebar-first .views-row,
 .section-tfk-kid-reporters .region-sidebar-first .views-row,
 .section-kid-reporter .region-sidebar-first .views-row {
@@ -459,6 +462,7 @@
 	font-weight: bold;
 }
 
+#block-views-random-kid-reporters-block .views-field-field-thumbnail-image,
 .node-type-kid-reporter .region-sidebar-first .views-row .views-field-field-thumbnail-image,
 .section-tfk-kid-reporters .region-sidebar-first .views-row.views-field-field-thumbnail-image,
 .section-kid-reporter .region-sidebar-first .views-row .views-field-field-thumbnail-image {
@@ -468,24 +472,28 @@
 	min-height: 80px;
 }
 
+#block-views-random-kid-reporters-block .views-field-field-thumbnail-image img,
 .node-type-kid-reporter .region-sidebar-first .views-row .views-field-field-thumbnail-image img,
 .section-tfk-kid-reporters .region-sidebar-first .views-row.views-field-field-thumbnail-image img,
 .section-kid-reporter .region-sidebar-first .views-row .views-field-field-thumbnail-image img {
 	border: solid 1px #cecece;
 }
 
+#block-views-random-kid-reporters-block .view-footer,
 .node-type-kid-reporter .region-sidebar-first .view-footer,
 .section-tfk-kid-reporters .region-sidebar-first .view-footer,
 .section-kid-reporter .region-sidebar-first .view-footer {
 	height: 42px;
 }
 
+#block-views-random-kid-reporters-block .view-footer p,
 .node-type-kid-reporter .region-sidebar-first .view-footer p,
 .section-tfk-kid-reporters .region-sidebar-first .view-footer p,
 .section-kid-reporter .region-sidebar-first .view-footer p {
 	margin: 0;
 }
 
+#block-views-random-kid-reporters-block .view-footer a,
 .node-type-kid-reporter .region-sidebar-first .view-footer a,
 .section-tfk-kid-reporters  .region-sidebar-first .view-footer a,
 .section-kid-reporter .region-sidebar-first .view-footer a {
