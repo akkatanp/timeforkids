@@ -399,6 +399,12 @@
 	position: relative;
 }
 
+.node-type-kid-reporter .region-sidebar-first .section {
+	background: none;
+	margin: 0;
+	padding: 0;
+	border: none;
+}
 
 .node-type-kid-reporter .region-sidebar-first .section .block-menu h2,
 .section-tfk-kid-reporters .region-sidebar-first .section .block-menu h2,
