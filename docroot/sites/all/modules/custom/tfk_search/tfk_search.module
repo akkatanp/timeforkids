@@ -26,6 +26,13 @@ function tfk_search_menu(){
       'access callback' => TRUE,
       'type' => MENU_CALLBACK
   );
+  $items['worksheetz/%ctools_js/saves/%'] = array(
+  	'title' => 'Worksheets',
+  	'page callback' => 'tfk_search_worksheetz',
+        'page arguments' => array(1,3),
+  	'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+  );
   return $items;
 }
 
@@ -779,6 +786,16 @@ function tfk_search_photos_and_video() {
     
 }
 
+
+function tfk_search_worksheetz($js = NULL,$filterstr = NULL) {
+    echo '!'.print_r($js);
+    echo '<br>**';
+    print_r($filterstr);
+    echo '?';
+    return 'a';
+}
+
+
 /**
  * Worksheet menu callback.
  */
@@ -826,7 +843,7 @@ function tfk_search_worksheets() {
   return theme('search_results', array('results' => $response));
 }
 
-function ctools_ajax_save_srch($js = NULL,$filterstr='') {
+function ctools_ajax_save_srch($js = NULL,$filterstr = NULL) {
 
   ctools_include('modal');
   ctools_include('ajax');
