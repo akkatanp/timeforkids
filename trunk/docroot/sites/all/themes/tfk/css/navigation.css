@@ -396,19 +396,14 @@
 .node-type-kid-reporter .region-sidebar-first .section,
 .section-tfk-kid-reporters .region-sidebar-first .section,
 .section-kid-reporter .region-sidebar-first .section {
-	position: relative;
-}
-
-.node-type-kid-reporter .region-sidebar-first .section {
 	background: none;
 	margin: 0;
 	padding: 0;
 	border: none;
 }
 
-.node-type-kid-reporter .region-sidebar-first .section .block-menu h2,
-.section-tfk-kid-reporters .region-sidebar-first .section .block-menu h2,
-.section-kid-reporter .region-sidebar-first .section .block-menu h2 {
+#block-menu-menu-kid-reporter-articles-link h2,
+#block-menu-menu-kid-reporter-listings-link h2 {
 	display: none;
 }
 
@@ -435,16 +430,6 @@
 
 #block-views-random-kid-reporters-block,
 #block-views-featured-kid-reporter-block  {
-	position: relative;
-	width: 250px;
-	left: -11px;
-	padding: 20px 0;
-	background: white;
-	border-top: solid 1px #cecece;
-}
-
-#block-views-random-kid-reporters-block .content,
-#block-views-featured-kid-reporter-block  .content {
 	padding: 10px;
 	border: solid 1px #cecece;
 }
