@@ -402,6 +402,11 @@
 	border: none;
 }
 
+#block-menu-menu-kid-reporter-articles-link,
+#block-menu-menu-kid-reporter-listings-link {
+	margin-bottom: 10px;
+}
+
 #block-menu-menu-kid-reporter-articles-link h2,
 #block-menu-menu-kid-reporter-listings-link h2 {
 	display: none;
@@ -428,21 +433,31 @@
 	text-transform: uppercase;
 }
 
-#block-views-random-kid-reporters-block,
 #block-views-featured-kid-reporter-block  {
 	padding: 10px;
 	border: solid 1px #cecece;
+	background: #dedede;
+}
+
+#block-views-featured-kid-reporter-block .view-content {
+	min-height: 115px;
 }
 
 #block-views-featured-kid-reporter-block .views-field-field-thumbnail-image {
 	width: 115px;
 	height: 115px;
 	float: left;
+	margin-right: 10px;
 }
 
 #block-views-featured-kid-reporter-block .views-field-field-thumbnail-image img {
 	width: 115px;
 	height: 115px;
+}
+
+#block-views-random-kid-reporters-block {
+	padding: 10px;
+	border: solid 1px #cecece;
 }
 
 .node-type-kid-reporter .region-sidebar-first .block-views h2.block-title,
