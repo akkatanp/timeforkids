@@ -26,7 +26,7 @@ function tfk_search_menu(){
       'access callback' => TRUE,
       'type' => MENU_CALLBACK
   );
-  $items['worksheetz'] = array(
+  $items['worksheetz/%ctools_js'] = array(
   	'title' => 'Worksheets',
   	'page callback' => 'tfk_search_worksheetz',
         'page arguments' => array(),
