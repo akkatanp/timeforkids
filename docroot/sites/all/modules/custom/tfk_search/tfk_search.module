@@ -22,7 +22,7 @@ function tfk_search_menu(){
   $items['myfr/%ctools_js/saves/%'] = array(
       'title' => 'Worksheets',
       'page callback' => 'ctools_ajax_save_srch',
-      'page arguments' => array(1,3),
+      'page arguments' => array(1,2),
       'access callback' => TRUE,
       'type' => MENU_CALLBACK
   );
