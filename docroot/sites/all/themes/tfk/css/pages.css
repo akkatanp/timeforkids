@@ -1015,7 +1015,7 @@ eacher news sidebar */
 	float: left;
 	margin-right: 10px;
 	width: 117px;
-	min-height: 120px;
+	min-height: 80px;
 }
 
 .view-news-archive .views-field-field-image img {
