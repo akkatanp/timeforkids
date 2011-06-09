@@ -788,7 +788,7 @@ function tfk_search_photos_and_video() {
 }
 
 
-function tfk_search_worksheetz($vara = NULL,$varb = NULL) {
+function tfk_search_worksheetz($js = NULL,$filter = NULL) {
     echo $vara.'<br>'.$varb;
     return 'a';
 }
