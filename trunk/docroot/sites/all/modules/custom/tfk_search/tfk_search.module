@@ -837,7 +837,7 @@ function ctools_ajax_save_srch($js = NULL,$filterstr='') {
   );
 
   $form_state['curr_filters'] = $filterstr;
-  echo 'aaaa';exit;
+  
   $output = ctools_modal_form_wrapper('worksheets_save_srch', $form_state);
 
   if (empty($output)) {
