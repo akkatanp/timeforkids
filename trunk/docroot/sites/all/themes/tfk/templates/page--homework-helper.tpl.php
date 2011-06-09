@@ -174,9 +174,11 @@ if(drupal_is_front_page()) {
         <ul class="action-links"><?php print render($action_links); ?></ul>
       <?php endif; ?>
       
-	    <?php if ($content_type_title): ?> <?php print $content_type_title; ?> <?php endif; ?>
-      <div id="homework-helper-title"><?php print $title; ?></div>
-      <?php print render($page['content']); ?>
+	    <div id="homework-help-content">
+        <?php if ($content_type_title): ?> <?php print $content_type_title; ?> <?php endif; ?>
+        <div id="homework-helper-title"><?php print $title; ?></div>
+        <?php print render($page['content']); ?>
+      </div>
 
       <?php print $feed_icons; ?>
     </div></div><!-- /.section, /#content -->
