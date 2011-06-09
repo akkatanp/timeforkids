@@ -1,0 +1,10 @@
+<?php
+
+/**
+ * Try to see if this enables the video module on stage, since we are locked
+ * out of both SSH and the modules page.
+ *
+ */
+function feature_slideshow_update_7000() {
+  module_enable('video');
+}
