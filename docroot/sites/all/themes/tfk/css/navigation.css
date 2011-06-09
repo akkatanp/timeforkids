@@ -376,6 +376,10 @@
 }
 
 /* Teacher news sidebar */
+#block-tfk-news-tfk-news-latest-news-link {
+	margin-bottom: 10px;
+}
+
 #block-tfk-news-tfk-news-latest-news-link .content {
 	font: normal 14px "arial black";
 	color: #fff;
