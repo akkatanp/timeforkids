@@ -1031,9 +1031,9 @@ eacher news sidebar */
 	border: solid 3px #acdbfc;
 	border-bottom: 0;
 	padding: 2px 4px 0 4px;
-	-moz-box-shadow: 2px 0px 0px #666;
-	-webkit-box-shadow: 2px 0px 0px 666;
-	box-shadow: 2px 0px 0px #666;
+	-moz-box-shadow: 2px 0px 2px #666;
+	-webkit-box-shadow: 2px 0px 2px 666;
+	box-shadow: 2px 0px 2px #666;
 }
 
 .view-news-archive .views-field-field-mini-lessons {
