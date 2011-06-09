@@ -109,7 +109,7 @@
 
      // print_r($node);exit;
 
-
+		print $title;
       print render($content);
     ?>
   </div>
