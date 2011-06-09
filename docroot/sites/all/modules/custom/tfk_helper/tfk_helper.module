@@ -163,7 +163,6 @@ function tfk_helper_preprocess_node(&$vars) {
   #if(arg(0) == 'node' && $vars['node']->type == ('slideshow' || 'video')) {
   #  tfkHelperFeaturedItem::set_type($vars['node']->type);
   #}
-  dpm($vars);
 }
 
 function tfk_helper_node_load($nodes, $types) {
