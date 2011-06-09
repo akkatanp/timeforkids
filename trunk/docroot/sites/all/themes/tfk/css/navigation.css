@@ -490,10 +490,22 @@
 .section-tfk-kid-reporters .region-sidebar-first .section #block-tfk-news-tfk-news-latest-news-link,
 .section-kid-reporter .region-sidebar-first .section #block-tfk-news-tfk-news-latest-news-link {
 	border: solid 1px #cecece;
-	margin: 10px;
+	background: #dedede;
+	padding: 10px;
 	border-bottom: 0;
-	margin-bottom: 0;
+	padding-bottom: 0;
 }
+
+.node-type-kid-reporter .region-sidebar-first .section #block-tfk-news-tfk-news-taxonomy-links,
+.section-tfk-kid-reporters .region-sidebar-first .section #block-tfk-news-tfk-news-taxonomy-links,
+.section-kid-reporter .region-sidebar-first .section #block-tfk-news-tfk-news-taxonomy-links {
+	border-left: solid 1px #cecece;
+	border-right: solid 1px #cecece;
+	background: #dedede;
+	padding: 10px;
+}
+
+
 
 .node-type-kid-reporter .region-sidebar-first .section #block-views-random-kid-reporters-block,
 .section-tfk-kid-reporters .region-sidebar-first .section #block-views-random-kid-reporters-block,
