@@ -988,8 +988,26 @@ eacher news sidebar */
 	font: bold 20px arial;
 }
 
-.view-news-archive {
+.view-news-archive .views-row {
 	padding: 10px;
+	border: solid 1px #cecece;
+	border-top: none;
+}
+
+.view-news-archive .views-row-first {
+	border-top: solid 1px #cecece;
+}
+
+.view-news-archive .views-field-field-image {
+	float: left;
+	margin-right: 10px;
+	width: 117px;
+	min-height: 100px;
+}
+
+.view-news-archive .views-field-field-image img {
+	width: 115px;
+	height: 60px;
 	border: solid 1px #cecece;
 }
 
