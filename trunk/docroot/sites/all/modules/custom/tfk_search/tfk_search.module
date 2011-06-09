@@ -26,10 +26,10 @@ function tfk_search_menu(){
       'access callback' => TRUE,
       'type' => MENU_CALLBACK
   );
-  $items['worksheetz/%ctools_js'] = array(
+  $items['worksheetz/%ctools_js/saves/%filter'] = array(
   	'title' => 'Worksheets',
   	'page callback' => 'tfk_search_worksheetz',
-        'page arguments' => array(1),
+        'page arguments' => array(1,3),
   	'access callback' => 'user_access',
   	'access arguments' => array('access content'),
     'type' => MENU_CALLBACK,
@@ -788,8 +788,8 @@ function tfk_search_photos_and_video() {
 }
 
 
-function tfk_search_worksheetz($vara = NULL) {
-    echo $vara;
+function tfk_search_worksheetz($vara = NULL,$varb = NULL) {
+    echo $vara.'<br>'.$varb;
     return 'a';
 }
 
