@@ -1,0 +1,27 @@
+
+/**
+ * 
+ */
+
+.featured-block-sidebar-label {
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-size: 1.08em;
+}
+
+div.featured-block-sidebar-img {
+    float: left;
+    margin: 0 10px 0 0;
+}
+div.featured-block-sidebar-img img {
+    margin-top: 10px;
+}
+.featured-block-sidebar-title {
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+      color: #D71700;
+}
+.featured-block-sidebar-body p:first-child {
+    margin-top: 5px;
+}
