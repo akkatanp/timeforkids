@@ -992,6 +992,7 @@ eacher news sidebar */
 	padding: 10px;
 	border: solid 1px #cecece;
 	border-top: none;
+	position: relative;
 }
 
 .view-news-archive .views-row-first {
@@ -1037,6 +1038,8 @@ eacher news sidebar */
 }
 
 .view-news-archive .views-field-field-mini-lessons {
+	position: relative;
+	top: -1px;
 	background: #d9effe;
 	border: solid 3px #acdbfc;
 	border-top: none;
