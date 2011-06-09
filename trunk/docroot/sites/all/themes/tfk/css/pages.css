@@ -480,21 +480,20 @@ ul.links li {
 	font-weight: bold;
 }
 
-.related-content-wrap .addit-mini-lessons {
-	padding-left: 20px;
-	background: url("../images/related-article-icon.png") no-repeat;
+.related-content-wrap .addit-mini-lessons,
+.related-content-wrap .addit-related-articles {
+	padding: 2px 0 2px 20px;
 	height: 16px;
 	line-height: 16px;
+}
+
+.related-content-wrap .addit-mini-lessons {
+	background: url("../images/related-article-icon.png") no-repeat 0px 2px;
 }
 
 .related-content-wrap .addit-related-articles {
-	padding-left: 20px;
-	background: url("../images/mini-lessons-icon.png") no-repeat;
-	height: 16px;
-	line-height: 16px;
+	background: url("../images/mini-lessons-icon.png") no-repeat 0px 2px;
 }
-
-
 
 .related-content-wrap .addit-mini-lessons .field-content,
 .related-content-wrap .addit-related-articles .field-content {
