@@ -483,7 +483,6 @@ ul.links li {
 .related-content-wrap .addit-mini-lessons,
 .related-content-wrap .addit-related-articles {
 	padding: 2px 0 2px 20px;
-	height: 16px;
 	line-height: 16px;
 }
 
@@ -498,6 +497,11 @@ ul.links li {
 .related-content-wrap .addit-mini-lessons .field-content,
 .related-content-wrap .addit-related-articles .field-content {
 	display: inline;
+}
+
+.related-content-wrap .addit-mini-lessons .field-content a,
+.related-content-wrap .addit-related-articles .field-content a {
+	font-weight: normal;
 }
 
 .view-homepage-top-story  .related-content-wrap,
