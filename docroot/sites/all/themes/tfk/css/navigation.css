@@ -370,6 +370,10 @@
 	text-decoration: none;
 }
 
+.region-sidebar-first .section #block-views-random-kid-reporters-block {
+	display: none;
+}
+
 /* left sidebar teacher nav */
 .node-type-atw-destination  .region-sidebar-first .content h3.related {
 	height: 20px;
@@ -400,6 +404,12 @@
 	margin: 0;
 	padding: 0;
 	border: none;
+}
+
+.node-type-kid-reporter .region-sidebar-first .section #block-views-random-kid-reporters-block,
+.section-tfk-kid-reporters .region-sidebar-first .section #block-views-random-kid-reporters-block,
+.section-kid-reporter .region-sidebar-first .section #block-views-random-kid-reporters-block {
+	display: block;
 }
 
 #block-menu-menu-kid-reporter-articles-link,
