@@ -488,9 +488,9 @@ eacher news sidebar */
 	color: #999;
 }
 
-.view-homepage-top-story .view-content .views-field-field-credit,
-.view-teacher-news-top-story .view-content .views-field-field-credit,
-.view-kid-reporters-channel-top-story .views-field-field-credit {
+.view-homepage-top-story .view-content .views-field-field-caption,
+.view-teacher-news-top-story .view-content .views-field-field-caption,
+.view-kid-reporters-channel-top-story .views-field-field-caption {
 	position: absolute;
 	top: 284px;
 	left: 6px;
