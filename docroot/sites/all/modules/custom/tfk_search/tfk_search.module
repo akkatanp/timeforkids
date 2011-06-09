@@ -28,7 +28,7 @@ function tfk_search_menu(){
   );
   $items['worksheetz'] = array(
   	'title' => 'Worksheets',
-  	'page callback' => 'tfk_search_worksheets',
+  	'page callback' => 'tfk_search_worksheetz',
   	'access callback' => 'user_access',
   	'access arguments' => array('access content'),
     'type' => MENU_CALLBACK,
@@ -785,6 +785,12 @@ function tfk_search_photos_and_video() {
   return theme('search_results', array('results' => $response));
     
 }
+
+
+function tfk_search_worksheetz() {
+    return 'aaa';
+}
+
 
 /**
  * Worksheet menu callback.
