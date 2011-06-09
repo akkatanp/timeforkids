@@ -19,12 +19,19 @@ function tfk_search_menu(){
   	'access arguments' => array('access content'),
     'type' => MENU_CALLBACK,
   );
-  $items['/myfr/%ctools_js/saves/%filterstr'] = array(
+  $items['myfr/%ctools_js/saves/%filterstr'] = array(
       'title' => 'Worksheets',
       'page callback' => 'ctools_ajax_save_srch',
       'page arguments' => array(1,3),
       'access callback' => TRUE,
       'type' => MENU_CALLBACK
+  );
+  $items['worksheetz'] = array(
+  	'title' => 'Worksheets',
+  	'page callback' => 'tfk_search_worksheets',
+  	'access callback' => 'user_access',
+  	'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
   );
   return $items;
 }
