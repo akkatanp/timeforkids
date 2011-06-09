@@ -26,9 +26,10 @@ function tfk_search_menu(){
       'access callback' => TRUE,
       'type' => MENU_CALLBACK
   );
-  $items['worksheetz'] = array(
+  $items['worksheetz/%ctools_js'] = array(
   	'title' => 'Worksheets',
   	'page callback' => 'tfk_search_worksheetz',
+        'page arguments' => array(1),
   	'access callback' => 'user_access',
   	'access arguments' => array('access content'),
     'type' => MENU_CALLBACK,
@@ -787,8 +788,9 @@ function tfk_search_photos_and_video() {
 }
 
 
-function tfk_search_worksheetz() {
-    return 'aaa';
+function tfk_search_worksheetz($vara = '') {
+    echo $vara;
+    return '';
 }
 
 
