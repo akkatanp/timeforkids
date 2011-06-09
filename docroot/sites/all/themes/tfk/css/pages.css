@@ -626,6 +626,7 @@ eacher news sidebar */
 	line-height: 1;
 	display: inline;
 	margin: 0 0 10px 0;
+	width: 198px;
 }
 
 .node-kid-reporter .field-type-image {
@@ -641,7 +642,7 @@ eacher news sidebar */
 }
 
 .node-kid-reporter .field-name-field-location,
-.node-kid-reporter .field-name-field-grade-level{
+.node-kid-reporter .field-name-field-grade-level {
 	font-weight: bold;
  }
 
