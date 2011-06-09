@@ -541,14 +541,14 @@ function tfk_search_preprocess_search_result(&$vars) {
     // The first template to be found is implemented.
     // @link http://api.drupal.org/api/drupal/includes--theme.inc/function/theme.
     $base_path = arg(0);
+    $style = 'square_thumbnail';
+    
     if($base_path == 'photos-video') {
       $vars['theme_hook_suggestions'] = array_merge(
         array('search_result__tfk_search__photos_video', 'search_result__tfk_search'),
         $vars['theme_hook_suggestions']
       );
       $style = '115x115';
-    } else {
-      $style = 'square_thumbnail';
     }
 
     if($base_path == 'worksheets') {
@@ -557,8 +557,6 @@ function tfk_search_preprocess_search_result(&$vars) {
         $vars['theme_hook_suggestions']
       );
       $style = '115x115';
-    } else {
-      $style = 'square_thumbnail';
     }
     
     switch ($vars['result']['fields']['bundle']) {
@@ -743,7 +741,7 @@ function tfk_search_apachesolr_modify_query($query, $caller) {
   if($query->get_base_path() === 'photos-video') {
     $subquery = apachesolr_drupal_query();
     // @todo Show video nodes on the results page once we have a video player up and running.
-    #$subquery->add_filter('bundle', 'video');
+    $subquery->add_filter('bundle', 'video');
     $subquery->add_filter('bundle', 'slideshow');
     $query->add_subquery($subquery, 'OR');
   }
