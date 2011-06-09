@@ -845,6 +845,10 @@ function tfk_search_worksheets() {
 
 function ctools_ajax_save_srch($js = NULL,$filterstr = NULL) {
 
+  if(!$filterstr){
+      $filterstr = '';
+  }
+  echo '!'.$js.'!*'.$filterstr.'*';
   ctools_include('modal');
   ctools_include('ajax');
 
