@@ -474,6 +474,18 @@ eacher news sidebar */
 	margin-bottom: 10px;
 }
 
+.view-homepage-top-story .view-content .views-field-field-credit,
+.view-teacher-news-top-story .view-content .views-field-field-credit,
+.view-kid-reporters-channel-top-story .views-field-field-credit {
+	position: absolute;
+	top: 270px;
+	right: 218px;
+	height: 10px;
+	font: normal 9px arial;
+	text-transform: uppercase;
+	color: #999;
+}
+
 .view-homepage-top-story .view-content .views-field-nothing,
 .view-teacher-news-top-story .view-content .views-field-nothing,
 .view-kid-reporters-channel-top-story .views-field-name {
