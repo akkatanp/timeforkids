@@ -1011,6 +1011,20 @@ eacher news sidebar */
 	border: solid 1px #cecece;
 }
 
+.view-news-archive .views-field-field-title a {
+	font-size: 20px;
+}
+
+.view-news-archive .views-field-field-date {
+	font-size: 9px;
+	color: #555;
+}
+
+.view-news-archive .views-field-field-deck,
+.view-news-archive .views-field-field-title-1 {
+	display: inline;
+}
+
 /*
  * Photos and Video Section.
  */
