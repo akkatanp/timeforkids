@@ -1,6 +1,77 @@
 /**
  * Default theming for TFK Search components.
  */
+
+/* Featured item */
+
+div#block-tfk-search-tfk-search-photos-video-featured {
+  border: 6px solid #D71700;
+  padding: 20px 10px 10px;
+  position: relative;
+}
+
+.top-story-right-square {
+  background: url("sites/all/themes/tfk/images/top-story-corner.png") no-repeat scroll 0 0 white;
+  height: 38px;
+  position: absolute;
+  right: -6px;
+  top: -6px;
+  width: 38px;
+  z-index: 2;
+}
+
+div#tfk-search-photos-video-featured {
+  
+  margin-bottom: 15px;
+}
+
+div#tfk-search-photos-video-featured .g2 {
+  min-height: 267px;
+}
+
+div#tfk-search-photos-video-featured div.featured-label {
+  background-color: #D71700;
+  color: white;
+  display: inline;
+  font: bold 1.17em Arial;
+  height: 14px;
+  padding: 2px 6px;
+  text-transform: uppercase;
+}
+
+div#tfk-search-photos-video-featured .featured-item {
+  float: left;
+  margin-right: 15px;
+}
+
+div#tfk-search-photos-video-featured h2.featured-title {
+  font-size: 1.25em;
+  margin: 3px 0px 1px;
+}
+
+div#tfk-search-photos-video-featured h2.featured-title a {
+  font-size: 1.875em;
+  color: #D71700;
+}
+
+div#tfk-search-photos-video-featured .featured-date {
+  margin: 0px;
+  margin-bottom: 0px 0px -3px 0px;
+}
+
+div#tfk-search-photos-video-featured .featured-dek {
+  font-size: 1em;
+  margin: 0px 0px -3px 0px;
+}
+
+div#tfk-search-photos-video-featured .featured-link {
+  margin: 0px;
+}
+
+
+
+/* */
+
 div#block-tfk-search-tfk-search-photos-video-title h2 {
   color: white;
   background-color: #D71700;
@@ -164,51 +235,6 @@ div#tfk-search-pager-top a:visited {
 
 div#tfk-search-pager-top .item-list ul li {
 	margin: 0 0 0 1px;
-}
-
-/* Featured item */
-
-div#tfk-search-photos-video-featured {
-  
-  margin-bottom: 15px;
-}
-
-div#tfk-search-photos-video-featured .g2 {
-	min-height: 267px;
-}
-
-div#tfk-search-photos-video-featured div.featured-label {
-	font-size: 1em;
-	padding-top: 20px;
-}
-
-div#tfk-search-photos-video-featured .featured-item {
-	float: left;
-	margin-right: 15px;
-}
-
-div#tfk-search-photos-video-featured h2.featured-title {
-  font-size: 1.25em;
-  margin: 3px 0px 1px;
-}
-
-div#tfk-search-photos-video-featured h2.featured-title a {
-  font-size: 1.875em;
-	color: #D71700;
-}
-
-div#tfk-search-photos-video-featured .featured-date {
-	margin: 0px;
-	margin-bottom: 0px 0px -3px 0px;
-}
-
-div#tfk-search-photos-video-featured .featured-dek {
-	font-size: 1em;
-	margin: 0px 0px -3px 0px;
-}
-
-div#tfk-search-photos-video-featured .featured-link {
-	margin: 0px;
 }
 
 /* Related Content Featured item*/
