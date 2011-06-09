@@ -29,7 +29,7 @@
      // print_r($node);exit;
 
 
-      //print render($content);
+      print render($content);
     ?>
   </div>
 
