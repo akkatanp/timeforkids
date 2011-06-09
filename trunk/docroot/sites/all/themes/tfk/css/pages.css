@@ -474,6 +474,13 @@ eacher news sidebar */
 	margin-bottom: 30px;
 }
 
+.view-homepage-top-story .view-content .views-field-field-image img,
+.view-teacher-news-top-story .view-content .views-field-field-image img,
+.view-kid-reporters-channel-top-story .views-field-field-image img {
+	width: 270px;
+	height: 270px;
+}
+
 .view-homepage-top-story .view-content .views-field-field-credit,
 .view-teacher-news-top-story .view-content .views-field-field-credit,
 .view-kid-reporters-channel-top-story .views-field-field-credit {
