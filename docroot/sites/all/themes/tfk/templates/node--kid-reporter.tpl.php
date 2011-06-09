@@ -107,11 +107,10 @@
       hide($content['comments']);
       hide($content['links']);
 
-     // print_r($node);exit;
+     // print_r($node);exit;?>
 
-		print $title;
-      print render($content);
-    ?>
+	 <h1><?php	print $title; ?></h1>
+     <?php print render($content);?>
   </div>
 
   <?php print render($content['links']); ?>
