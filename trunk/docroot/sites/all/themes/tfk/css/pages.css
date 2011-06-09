@@ -480,6 +480,22 @@ ul.links li {
 	font-weight: bold;
 }
 
+.related-content-wrap .addit-mini-lessons {
+	padding-left: 20px;
+	background: url("../images/related-article-icon.png") no-repeat;
+	height: 16px;
+	line-height: 16px;
+}
+
+.related-content-wrap .addit-related-articles {
+	padding-left: 20px;
+	background: url("../images/mini-lessons-icon.png") no-repeat;
+	height: 16px;
+	line-height: 16px;
+}
+
+
+
 .related-content-wrap .addit-mini-lessons .field-content,
 .related-content-wrap .addit-related-articles .field-content {
 	display: inline;
@@ -744,6 +760,13 @@ ul.links li {
 .node-type-article .field-name-field-tout-image .field-name-field-caption {
 	font-size: 11px;
 	color: #555;
+}
+
+.node-type-article .is-kid-reporter-article .reporter-badge {
+	width: 120px;
+	height: 100px;
+	padding: 10px;
+	border: solid 1px #cecece;
 }
 
 /*
