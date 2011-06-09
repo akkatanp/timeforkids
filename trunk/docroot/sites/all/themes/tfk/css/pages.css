@@ -979,14 +979,19 @@ eacher news sidebar */
 /* news aarchive */
 .page-news-archive #block-tfk-news-tfk-news-current-filters {
 	border: solid 1px #cecece;
-	background: #dededel;
+	background: #dedede;
 	padding: 10px;
+	margin-bottom: 10px;
 }
 
 .page-news-archive #block-tfk-news-tfk-news-current-filters .content {
 	font: bold 20px arial;
 }
 
+.view-news-archive {
+	padding: 10px;
+	border: solid 1px #cecece;
+}
 
 /*
  * Photos and Video Section.
