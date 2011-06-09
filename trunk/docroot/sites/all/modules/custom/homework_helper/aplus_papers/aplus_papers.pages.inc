@@ -22,8 +22,8 @@ function aplus_papers_prepare_steps($node) {
       $steps[] = aplus_papers_prepare_step($node);
     }
   }
-  $steps[] = aplus_paper_review_step($steps);
-  $steps[] = aplus_paper_final_step();
+  $steps[] = aplus_papers_review_step($steps);
+  $steps[] = aplus_papers_final_step();
   return $steps;
 }
 
@@ -68,7 +68,7 @@ function aplus_papers_sort_steps($a, $b) {
 /**
  * Prepare review form step.
  */
-function aplus_paper_review_step($steps) {
+function aplus_papers_review_step($steps) {
   $form['#prefix'] = '<div id="aplus-review-step">';
   $form['#suffix'] = '</div>';
   $form['description'] = array(
@@ -87,7 +87,7 @@ function aplus_paper_review_step($steps) {
 /**
  * Prepare final step.
  */
-function aplus_paper_final_step() {
+function aplus_papers_final_step() {
   $form['#checklist'] = t('Print and save your paper.');
   $form['#parent_nid'] = arg(1); 
   $form['#prefix'] = '<div id="aplus-final-step">';
