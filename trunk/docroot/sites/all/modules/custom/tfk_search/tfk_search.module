@@ -789,8 +789,10 @@ function tfk_search_photos_and_video() {
 
 
 function tfk_search_worksheetz($js = NULL,$filterstr = NULL) {
-    print_r($js);
+    echo '!'.print_r($js);
+    echo '<br>**';
     print_r($filterstr);
+    echo '?';
     return 'a';
 }
 
