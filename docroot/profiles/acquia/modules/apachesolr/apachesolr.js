@@ -61,7 +61,7 @@ Drupal.apachesolr.makeCheckbox = function() {
   redirect = new Drupal.apachesolr.Redirect(href);
   checkbox.click($.proxy(redirect, 'gotoHref'));
   // Add the checkbox, hide the link.
-  $(this).before(checkbox).hide();
+  $(this).before(checkbox).remove();
 }
 
 })(jQuery);
