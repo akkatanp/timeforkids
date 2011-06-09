@@ -447,7 +447,7 @@
 	text-transform: uppercase;
 	padding-bottom: 6px;
 	margin-bottom: 10px;
-	border-bottom: solid 1px #cecece;
+	border-bottom: dotted 1px #cecece;
 }
 
 .node-type-kid-reporter .region-sidebar-first .views-row,
@@ -455,14 +455,17 @@
 .section-kid-reporter .region-sidebar-first .views-row {
 	padding-bottom: 6px;
 	margin-bottom: 10px;
-	border-bottom: solid 1px #cecece;
+	border-bottom: dotted 1px #cecece;
+	font-weight: bold;
 }
 
 .node-type-kid-reporter .region-sidebar-first .views-row .views-field-field-thumbnail-image,
 .section-tfk-kid-reporters .region-sidebar-first .views-row.views-field-field-thumbnail-image,
 .section-kid-reporter .region-sidebar-first .views-row .views-field-field-thumbnail-image {
 	float: left;
-	margin-right: 8px;
+	margin-right: 10px;
+	width: 62px;
+	min-height: 80px;
 }
 
 .node-type-kid-reporter .region-sidebar-first .view-footer,
