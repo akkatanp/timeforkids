@@ -671,7 +671,7 @@ eacher news sidebar */
 	display: block;
 	float: left;
 	width: 240px;
-	height: 90px;
+	height: 100px;
 	border: solid 1px #cecece;
 	padding: 4px;
 	margin: 4px 0;
@@ -683,7 +683,9 @@ eacher news sidebar */
 
 .view-all-kid-reporters .view-content table td .views-field-field-thumbnail-image {
 	float: left;
-	margin-right: 8px;
+	margin-right: 10px;
+	width: 60px;
+	min-height: 90px;
 }
 
 .view-all-kid-reporters .view-content table td .views-field-title-1 {
