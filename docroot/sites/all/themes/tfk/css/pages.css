@@ -976,6 +976,18 @@ eacher news sidebar */
 	-webkit-box-shadow: 2px 2px 2px #999;
 }
 
+/* news aarchive */
+.page-news-archive #block-tfk-news-tfk-news-current-filters {
+	border: solid 1px #cecece;
+	background: #dededel;
+	padding: 10px;
+}
+
+.page-news-archive #block-tfk-news-tfk-news-current-filters .content {
+	font: bold 20px arial;
+}
+
+
 /*
  * Photos and Video Section.
  */
@@ -1021,6 +1033,10 @@ div#block-views-tfk-section-photos-video-block div.views-field-body p {
   font-size: 12px;
 }
 
+div#page.page-node-photos-video div.region-content div#block-system-main {
+  margin-bottom: 10px;
+}
+
 /* current issue */
 #tfk-current-issue {
 	width: 162px;
@@ -1054,6 +1070,3 @@ div#block-views-tfk-section-photos-video-block div.views-field-body p {
 	margin-right: 4px;
 }
 
-div#page.page-node-photos-video div.region-content div#block-system-main {
-  margin-bottom: 10px;
-}
