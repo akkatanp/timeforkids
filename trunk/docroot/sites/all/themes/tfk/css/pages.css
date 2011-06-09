@@ -770,6 +770,13 @@ ul.links li {
 	height: 100px;
 	padding: 10px;
 	border: solid 1px #cecece;
+	background: #dedede;
+}
+
+.node-type-article .is-kid-reporter-article .reporter-badge img {
+	width: 60px;
+	height: 60px;
+	border: solid 1px #cecece;
 }
 
 /*
