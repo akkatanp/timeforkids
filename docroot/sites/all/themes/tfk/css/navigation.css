@@ -510,6 +510,7 @@
 	border-right: solid 1px #cecece;
 	background: #dedede;
 	padding: 10px;
+	margin-bottom: 0;
 }
 
 .node-type-kid-reporter .region-sidebar-first .section #block-tfk-news-tfk-news-year-filter,
