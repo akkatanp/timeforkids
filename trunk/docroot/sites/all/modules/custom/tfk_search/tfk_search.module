@@ -826,18 +826,18 @@ function tfk_search_worksheets() {
   return theme('search_results', array('results' => $response));
 }
 
-function ctools_ajax_save_srch($js = NULL,$curr_filters='') {
+function ctools_ajax_save_srch($js = NULL,$filterstr='') {
 
   ctools_include('modal');
   ctools_include('ajax');
 
   $form_state = array(
     'ajax' => TRUE,
-      'title' => t('ZZZZZ'),
+      'title' => t('Worksheets'),
   );
 
-  $form_state['curr_filters'] = $curr_filters;
-  
+  $form_state['curr_filters'] = $filterstr;
+  echo 'aaaa';exit;
   $output = ctools_modal_form_wrapper('worksheets_save_srch', $form_state);
 
   if (empty($output)) {
