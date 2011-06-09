@@ -471,7 +471,7 @@ eacher news sidebar */
 	min-height: 270px;
 	float: left;
 	margin-right: 10px;
-	margin-bottom: 10px;
+	margin-bottom: 30px;
 }
 
 .view-homepage-top-story .view-content .views-field-field-credit,
@@ -535,13 +535,20 @@ eacher news sidebar */
 }
 
 .related-content-wrap {
+	position: relative;
 	background: #d9effe;
 	border: solid 3px #acdbfc;
-	margin-top: 10px;
+	margin-top: 20px;
 	padding: 2px 4px;
 	-moz-box-shadow: 2px 2px 4px #666;
 	-webkit-box-shadow: 2px 2px 4px 666;
 	box-shadow: 2px 2px 4px #666;
+}
+
+.related-content-wrap .addit-content {
+	position: absolute;
+	top: -24px;
+	font-weight: bold;
 }
 
 .related-content-wrap .addit-mini-lessons .field-content,
