@@ -777,6 +777,11 @@ eacher news sidebar */
 .node-type-article .group_additional_content .field-items,
 .node-type-article .group_additional_content .field-item {
 	display: inline;
+	font-weight: normal;
+}
+
+.node-type-article .group_additional_content .field-item {
+	padding-right: 10px;
 }
 
 .node-type-article .field-name-field-tout-image {
