@@ -1002,7 +1002,7 @@ eacher news sidebar */
 	float: left;
 	margin-right: 10px;
 	width: 117px;
-	min-height: 100px;
+	min-height: 120px;
 }
 
 .view-news-archive .views-field-field-image img {
@@ -1025,8 +1025,7 @@ eacher news sidebar */
 	display: inline;
 }
 
-.view-news-archive .views-field-field-related-article {
-	clear: right;
+.view-news-archive .views-field-field-related-articles {
 	background: #d9effe;
 	border: solid 3px #acdbfc;
 	border-bottom: none;
@@ -1037,14 +1036,13 @@ eacher news sidebar */
 }
 
 .view-news-archive .views-field-field-mini-lessons {
-	clear: right;
 	background: #d9effe;
 	border: solid 3px #acdbfc;
 	border-top: none;
 	padding: 0 4px 2px 4px;
-	-moz-box-shadow: 0px 2px 4px #666;
-	-webkit-box-shadow: 0px 2px 4px 666;
-	box-shadow: 0px 2px 4px #666;
+	-moz-box-shadow: 2px 2px 4px #666;
+	-webkit-box-shadow: 2px 2px 4px 666;
+	box-shadow: 2px 2px 4px #666;
 }
 
 
