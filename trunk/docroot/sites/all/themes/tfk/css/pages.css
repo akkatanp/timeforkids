@@ -1031,12 +1031,15 @@ eacher news sidebar */
 	border: solid 3px #acdbfc;
 	border-bottom: 0;
 	padding: 2px 4px 0 4px;
+	-moz-box-shadow: 2px 2px 4px #666;
+	-webkit-box-shadow: 2px 2px 4px 666;
+	box-shadow: 2px 2px 4px #666;
 }
 
 .view-news-archive .views-field-field-mini-lessons {
 	background: #d9effe;
 	border: solid 3px #acdbfc;
-	border-top: 0;
+	border-top: none;
 	padding: 0 4px 2px 4px;
 	-moz-box-shadow: 2px 2px 4px #666;
 	-webkit-box-shadow: 2px 2px 4px 666;
