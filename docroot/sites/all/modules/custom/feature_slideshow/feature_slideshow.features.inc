@@ -141,20 +141,3 @@ function feature_slideshow_image_default_styles() {
 
   return $styles;
 }
-
-/**
- * Implementation of hook_node_info().
- */
-function feature_slideshow_node_info() {
-  $items = array(
-    'video' => array(
-      'name' => t('Video'),
-      'base' => 'node_content',
-      'description' => '',
-      'has_title' => '1',
-      'title_label' => t('Title'),
-      'help' => '',
-    ),
-  );
-  return $items;
-}
