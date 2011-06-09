@@ -148,9 +148,10 @@ function aplus_papers_multistep_form($form, &$form_state, $steps) {
   }  
   if ($step == $last_step) {
     $form['submit'] = array(
+      '#prefix' => '</div><div id="aplus-print-save-buttons">',
       '#type' => 'submit',
       '#value' => t("Save"),
-      '#suffix' => '<a class="button" href="#" onclick="window.print();return false;">Print</a></div>', //#aplus-submit-buttons
+      '#suffix' => '<a class="button" href="#" onclick="window.print();return false;">Print</a></div>', //#aplus-print-save-buttons
     );
     $form['description'] = array(
       '#markup' => aplus_papers_final_step_content($form_state),
