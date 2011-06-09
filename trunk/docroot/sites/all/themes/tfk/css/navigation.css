@@ -468,6 +468,12 @@
 	min-height: 80px;
 }
 
+.node-type-kid-reporter .region-sidebar-first .views-row .views-field-field-thumbnail-image img,
+.section-tfk-kid-reporters .region-sidebar-first .views-row.views-field-field-thumbnail-image img,
+.section-kid-reporter .region-sidebar-first .views-row .views-field-field-thumbnail-image img {
+	border: solid 1px #cecece;
+}
+
 .node-type-kid-reporter .region-sidebar-first .view-footer,
 .section-tfk-kid-reporters .region-sidebar-first .view-footer,
 .section-kid-reporter .region-sidebar-first .view-footer {
