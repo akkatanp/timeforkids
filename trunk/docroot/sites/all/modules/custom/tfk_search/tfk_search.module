@@ -19,8 +19,8 @@ function tfk_search_menu(){
   	'access arguments' => array('access content'),
     'type' => MENU_CALLBACK,
   );
-  $items['myfr/%ctools_js/saves/%filterstr'] = array(
-      'title' => 'Animal',
+  $items['myfr/ajax/saves/%filterstr'] = array(
+      'title' => 'Worksheets',
       'page callback' => 'ctools_ajax_save_srch',
       'page arguments' => array(1,2),
       'access callback' => TRUE,
