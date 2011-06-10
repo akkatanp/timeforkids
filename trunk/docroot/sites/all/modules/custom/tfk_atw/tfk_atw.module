@@ -565,6 +565,7 @@ function tfk_atw_tokens($type, $tokens, array $data = array(), array $options = 
 
     $replacements = array();
     if ($type == 'node' && !empty($data['node'])) {
+      print_r($data['node']);exit;
         if($data['node']->type == 'atw_timeline'){
           $nid =  $data['node']->nid;
           $result = db_query('select rt.entity_id,n.type from field_data_field_timeline rt left join node n on rt.entity_id = n.nid where rt.field_timeline_nid = :timeline_nid and n.type = :type',array(':type'=>'atw_destination',':timeline_nid'=>$nid));
