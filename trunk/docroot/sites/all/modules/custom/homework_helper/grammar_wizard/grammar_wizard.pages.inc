@@ -5,13 +5,15 @@
  */
 function grammar_wizard_prepare_questions($node) {
   $questions = array();
-  $result = db_query("
+  // Find 5 random questions from this quiz.
+  $result = db_query_range("
     SELECT f.entity_id from field_data_field_grammar_practice f
     INNER JOIN {node} n ON n.vid = f.revision_id
     WHERE f.field_grammar_practice_nid = :nid
     AND f.entity_type = 'node'
-    AND f.bundle = 'grammar_practice_question'
-  ", array(':nid' => $node->nid));
+    AND f.bundle = 'grammar_practice_question
+    ORDER BY RAND()'
+  ", 0, 5, array(':nid' => $node->nid));
   foreach ($result as $record) {
     $nids[] = $record->entity_id;
   }
