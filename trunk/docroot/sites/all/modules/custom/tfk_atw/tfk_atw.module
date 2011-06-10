@@ -101,18 +101,18 @@ function atw_sightseeing_callback($destination_name){
     $tpl_vars['sightseeing_items'][$k]['place_photo'] = $item_nid->field_place_photo['und'][0]['filename'];
   }
 
-  $is_admin_editor = 0;
-  global $user;
-  $user_roles = $user->roles;
-  if(in_array('administrator',$user_roles) || in_array('editor',$user_roles)){
-       $is_admin_editor = 1;
-  }
-
-  $tpl_vars['is_admin_editor'] = $is_admin_editor;
-  $tpl_vars['sightseeing_edit_link'] = 'node/'.$item_nid.'/edit';
-
-
-  $list = array('sightseeing_data' => $tpl_vars);
+//  $is_admin_editor = 0;
+//  global $user;
+//  $user_roles = $user->roles;
+//  if(in_array('administrator',$user_roles) || in_array('editor',$user_roles)){
+//       $is_admin_editor = 1;
+//  }
+//
+//  $tpl_vars['is_admin_editor'] = $is_admin_editor;
+//  $tpl_vars['sightseeing_edit_link'] = 'node/'.$item_nid.'/edit';
+//
+//
+//  $list = array('sightseeing_data' => $tpl_vars);
   return theme('atw_destination_sightseeing',$list);
 }
 
