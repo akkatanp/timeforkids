@@ -592,7 +592,7 @@ function tfk_atw_tokens($type, $tokens, array $data = array(), array $options = 
             
             $result = db_query('select nl.entity_id,n.type from field_data_field_sightseeing nl left join node n on nl.entity_id = n.nid where nl.field_sightseeing_nid = :sight_nid and n.type = :type',array(':type'=>'atw_sightseeing',':sight_nid'=>$nid));
             $record = $result->fetch();
-            print_R($record);exit;
+            echo $record->entity_id;exit;
             $alias = str_replace('destination/','',drupal_lookup_path('alias','node/'.$record->entity_id));
         }
 
@@ -601,7 +601,7 @@ function tfk_atw_tokens($type, $tokens, array $data = array(), array $options = 
               $replacements[$original] = $alias;
           }
        }
-
+       
     }
     return $replacements;
 }
