@@ -767,7 +767,7 @@ function tfk_atw_preprocess_node(&$vars, $hook) {
 
       $tpl_vars['destination_title'] = $node->title;
       //$tpl_vars['sightseeing_map'] = $node->field_sightseeing_map['und'][0]['filename'];
-      $tpl_vars['sightseeing_body'] = $node->field_place_description['und'][0]['value'];
+      $tpl_vars['sightseeing_body'] = $vars['node']->field_place_description['und'][0]['value'];
       $tpl_vars['sightseeing_items'] = array();
       $tpl_vars['cust_node_title'] = $node->title;
 
