@@ -766,20 +766,20 @@ function tfk_atw_preprocess_node(&$vars, $hook) {
       $tpl_vars = array();
 
       $tpl_vars['destination_title'] = $node->title;
-      $tpl_vars['sightseeing_map'] = $node->field_sightseeing_map['und'][0]['filename'];
-      $tpl_vars['sightseeing_body'] = $node->field_sightseeing_body['und'][0]['value'];
+      //$tpl_vars['sightseeing_map'] = $node->field_sightseeing_map['und'][0]['filename'];
+      $tpl_vars['sightseeing_body'] = $node->field_place_description['und'][0]['value'];
       $tpl_vars['sightseeing_items'] = array();
       $tpl_vars['cust_node_title'] = $node->title;
 
-      foreach($node->field_sightseeing['und'] as $k=> $item){
-        $item_nid = node_load($item['nid']);
-        $tpl_vars['sightseeing_items'][$k]['place_name'] = $item_nid->field_place_name['und'][0]['value'];
-        $tpl_vars['sightseeing_items'][$k]['place_description'] = $item_nid->field_place_description['und'][0]['value'];
-        $tpl_vars['sightseeing_items'][$k]['place_photo'] = $item_nid->field_place_photo['und'][0]['filename'];
-      }
+//      foreach($node->field_sightseeing['und'] as $k=> $item){
+//        $item_nid = node_load($item['nid']);
+//        $tpl_vars['sightseeing_items'][$k]['place_name'] = $item_nid->field_place_name['und'][0]['value'];
+//        $tpl_vars['sightseeing_items'][$k]['place_description'] = $item_nid->field_place_description['und'][0]['value'];
+//        $tpl_vars['sightseeing_items'][$k]['place_photo'] = $item_nid->field_place_photo['und'][0]['filename'];
+//      }
 
 
-      print_r($vars['node']);
+      print_r($tpl_vars);
 
 
     }
