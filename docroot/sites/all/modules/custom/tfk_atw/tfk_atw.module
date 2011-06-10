@@ -24,13 +24,13 @@ function tfk_atw_menu(){
 		'access callback' => 'user_access',
 		'access arguments' => array('access content')
 	);
-  $items['destination/%/sightseeing'] = array(
-		'title' => 'Sightseeing guide',
-		'page callback' => 'atw_sightseeing_callback',
-                'page arguments' => array(1),
-		'access callback' => 'user_access',
-		'access arguments' => array('access content')
-	);
+//  $items['destination/%/sightseeing'] = array(
+//		'title' => 'Sightseeing guide',
+//		'page callback' => 'atw_sightseeing_callback',
+//                'page arguments' => array(1),
+//		'access callback' => 'user_access',
+//		'access arguments' => array('access content')
+//	);
 
   $items['destination/%/challenge'] = array(
 		'title' => 'Challenge quiz',
@@ -562,7 +562,6 @@ function tfk_atw_token_info(){
 }
 
 function tfk_atw_tokens($type, $tokens, array $data = array(), array $options = array()){
-
     $replacements = array();
     if ($type == 'node' && !empty($data['node'])) {
         if($data['node']->type == 'atw_timeline'){
@@ -585,7 +584,6 @@ function tfk_atw_tokens($type, $tokens, array $data = array(), array $options = 
             $record = $result->fetch();
             $alias = str_replace('destination/','',drupal_lookup_path('alias','node/'.$record->entity_id));
         }
-
 
 
         if($data['node']->type == 'atw_sightseeing'){
@@ -751,4 +749,51 @@ function tfk_atw_preprocess_node(&$vars, $hook) {
 
 
     }
+
+    if($vars['type'] == 'atw_sightseeing'){
+
+
+      print_R($vars['node']);
+
+//      $alias = 'destination/'.$destination_name;
+//      $parent_path = drupal_lookup_path('source',$alias);
+//      $tmp_nid = explode('/',$parent_path);
+//      $parent_nid = $tmp_nid[1];
+//      $node = node_load($parent_nid);
+//
+//
+//      $tpl_vars = array();
+//
+//      $tpl_vars['destination_title'] = $node->title;
+//      $tpl_vars['sightseeing_map'] = $node->field_sightseeing_map['und'][0]['filename'];
+//      $tpl_vars['sightseeing_body'] = $node->field_sightseeing_body['und'][0]['value'];
+//      $tpl_vars['sightseeing_items'] = array();
+//      $tpl_vars['cust_node_title'] = $node->title;
+//
+//      foreach($node->field_sightseeing['und'] as $k=> $item){
+//        $item_nid = node_load($item['nid']);
+//        $tpl_vars['sightseeing_items'][$k]['place_name'] = $item_nid->field_place_name['und'][0]['value'];
+//        $tpl_vars['sightseeing_items'][$k]['place_description'] = $item_nid->field_place_description['und'][0]['value'];
+//        $tpl_vars['sightseeing_items'][$k]['place_photo'] = $item_nid->field_place_photo['und'][0]['filename'];
+//      }
+//
+//      $is_admin_editor = 0;
+//      global $user;
+//      $user_roles = $user->roles;
+//      if(in_array('administrator',$user_roles) || in_array('editor',$user_roles)){
+//           $is_admin_editor = 1;
+//      }
+//
+//    //
+//
+//      $tpl_vars['is_admin_editor'] = $is_admin_editor;
+//      $tpl_vars['sightseeing_edit_link'] = url('node/'.$item_nid->nid.'/edit',array('query' => array("destination" => $alias."/sightseeing")));
+//      $tpl_vars['sightseeing_view_link'] = url($alias."/sightseeing");
+//    //
+//    //
+//      $list = array('sightseeing_data' => $tpl_vars);
+    }
+
+
+
 }
