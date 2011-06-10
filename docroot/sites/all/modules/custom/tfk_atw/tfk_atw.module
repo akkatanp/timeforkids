@@ -755,7 +755,7 @@ function tfk_atw_preprocess_node(&$vars, $hook) {
       $node_str = 'node/'.$vars['node']->nid;
       $alias = url($node_str);
       $alias = str_replace('/sightseeing','',$alias);
-      $alias = substr( $alias, 1 )
+      $alias = substr( $alias, 1 );
 
       $parent_path = drupal_lookup_path('source',$alias);
       $tmp_nid = explode('/',$parent_path);
