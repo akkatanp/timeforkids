@@ -752,14 +752,15 @@ function tfk_atw_preprocess_node(&$vars, $hook) {
 
     if($vars['type'] == 'atw_sightseeing'){
 
+      $node_str = 'node/'.$vars['node']->nid;
+      $alias = url($node_str);
+      
 
-      $alias = drupal_get_path('alias','node/'.$vars['node']->nid);
-      echo 'node/'.$vars['node']->nid;
-      echo 'aa';
+      echo $alias;
+      echo '!';
       exit;
 
       //$alias = str_replace('/sightseeing','',$alias);
-      echo $alias;
 //      $parent_path = drupal_lookup_path('source',$alias);
 //      $tmp_nid = explode('/',$parent_path);
 //      $parent_nid = $tmp_nid[1];
