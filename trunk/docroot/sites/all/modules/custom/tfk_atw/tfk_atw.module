@@ -565,7 +565,6 @@ function tfk_atw_tokens($type, $tokens, array $data = array(), array $options = 
 
     $replacements = array();
     if ($type == 'node' && !empty($data['node'])) {
-      print_r($data['node']);exit;
         if($data['node']->type == 'atw_timeline'){
           $nid =  $data['node']->nid;
           $result = db_query('select rt.entity_id,n.type from field_data_field_timeline rt left join node n on rt.entity_id = n.nid where rt.field_timeline_nid = :timeline_nid and n.type = :type',array(':type'=>'atw_destination',':timeline_nid'=>$nid));
@@ -586,7 +585,7 @@ function tfk_atw_tokens($type, $tokens, array $data = array(), array $options = 
             $record = $result->fetch();
             $alias = str_replace('destination/','',drupal_lookup_path('alias','node/'.$record->entity_id));
         }
-
+        print_r($data['node']);
         if($data['node']->type == 'atw_sightseeing'){
             $nid =  $data['node']->nid;
             print_r($data['node']);
@@ -601,9 +600,10 @@ function tfk_atw_tokens($type, $tokens, array $data = array(), array $options = 
               $replacements[$original] = $alias;
           }
        }
+       
 
     }
-
+    exit;
     return $replacements;
 }
 
