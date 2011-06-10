@@ -399,7 +399,7 @@ function _tfk_atw_destination_related_data(){
             $record = $sql->fetch();
             $vars['resources_label'] = $record->resources_label;
         }
-
+        
         if($record->type == 'atw_sightseeing'){
            //getting the parent nid to populate navigaetion
             $nid = arg(1);
