@@ -119,11 +119,6 @@ function atw_sightseeing_callback($destination_name){
   return theme('atw_destination_sightseeing',$list);
 }
 
-function tfk_atw_menu_alter(&$items) {
-  print_r($items);exit;
-}
-
-
 function tfk_atw_block_info() {
   $blocks['atw-page-slideshow'] = array(
     'info' => t('Custom slideshow that appears on the ATW Page')
