@@ -119,6 +119,9 @@ function aplus_papers_multistep_form($form, &$form_state, $steps) {
       '#ajax' => array(
         'wrapper' => 'wizard-form-wrapper',
         'callback' => 'aplus_papers_multistep_form_callback',
+        'progress' => array(
+          'type' => 'none',
+        ),
       ),
     );
   }
@@ -130,6 +133,10 @@ function aplus_papers_multistep_form($form, &$form_state, $steps) {
       '#ajax' => array(
         'wrapper' => 'wizard-form-wrapper',
         'callback' => 'aplus_papers_multistep_form_callback',
+        'effect' => 'none',
+        'progress' => array(
+          'type' => 'none',
+        ),
       ),
     );
   }
