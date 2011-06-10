@@ -1,76 +1,30 @@
 body.node-type-a-paper, body.node-type-paper-step
   #main-wrapper
-    .aplus-paper-type-title
-      background-image: url(images/tfk-red-tag.png)
-      background-repeat: no-repeat
-      padding: 13px
-      height: 23px
-      width: 158px
-      color: $white
-      text-transform: uppercase
-      font-weight: bold
-      font-size: $ms2
-      margin-bottom: 0
-      float: left
   #content
     font-family: $font-sans
     font-weight: normal
     font-size: $ms-1
     line-height: $ms1
     width: 768px
-    #block-menu-menu-homework-help
-      border: 1px solid #cecece
-      background: #dddddd
-      margin-bottom: 10px
-      height: 140px
-      li.first
-        float: left
-        padding: 10px
-        a#menu-writing-center
-          color: $white
-          padding: 10px 254px 10px 10px
-          background: $tfk-red
-          text-transform: uppercase
-          float: left
-        ul.menu
-          padding: 10px
-          li.first, li.last
-            padding: 0
-        ul.menu
-          float: left
-          clear: both
-      li.last
-        float: right
-        padding: 10px
-        a#menu-study-helper
-          color: $white
-          padding: 10px 254px 10px 10px
-          background: #999999
-          text-transform: uppercase
-          float: left
-        ul.menu
-          padding: 10px
-          li.first, li.last
-            padding: 0
-        ul.menu
-          float: left
-          clear: both
-    #homework-helper-title
-      font-size: 14px
-      border-bottom: 0
-      padding: 10px
-      text-transform: uppercase
-      float: left
-    h2.node-title
-      margin-bottom: 10px
-    p
-      // margin: 0 0 $gutter 0
-    .block
-      margin: 0px
-    .node
-      margin: 0px
-      // width: 460px
-      // float: left
+    #homework-help-content
+      position: relative
+      #homework-helper-title
+        position: absolute
+        top: 50px
+      .aplus-paper-type-title
+        background-image: url(images/tfk-red-tag.png)
+        background-repeat: no-repeat
+        padding: 13px
+        height: 23px
+        width: 158px
+        color: $white
+        text-transform: uppercase
+        font-weight: bold
+        font-size: $ms2
+        margin-bottom: 0
+        position: absolute
+    .paper-textarea
+      width: 480px
     #aplus-papers-checklist-block
       border: 1px solid #cecece
       list-style: none
@@ -147,6 +101,8 @@ body.node-type-a-paper, body.node-type-paper-step
       height: 25px
       margin-top: -20px
       text-align: right
+      float: left
+      +trailer
       .form-submit
         // margin-left: 200px
       .aplus-start-over
@@ -159,12 +115,18 @@ body.node-type-a-paper, body.node-type-paper-step
         padding: 3px 0 0 42px
         height: 35px
     .node-paper-step
-      background: #fff
       padding: 10px
       width: 480px
-      // height: 50px
       float: left
-      margin-bottom: $gutter
+      margin: 80px $gutter 0 0
+      label
+        font-size: $ms1
+        padding: 5px 0
+    #aplus-review-step, #aplus-final-step
+      // padding: 10px
+      width: 480px
+      float: left
+      margin: 80px $gutter 0 0
       label
         font-size: $ms1
         padding: 5px 0
@@ -185,6 +147,23 @@ body.node-type-a-paper, body.node-type-paper-step
       padding: 3px 10px 4px
       margin-right: 10px
       // width: auto
+    a.button
+      -webkit-appearance: none
+      +border-radius(11px)
+      background: $tfk-red url(../images/button.png) repeat-x
+      border: 1px solid
+      border-color: #ddd #bbb #999
+      cursor: pointer
+      color: white
+      font: normal 12px/1.2 Arial, sans-serif
+      outline: 0
+      overflow: visible
+      padding: 4px 12px 4px
+      // width: auto
+    #aplus-print-save-buttons
+      text-align: right
+      clear: right
+      padding-top: 10px
     .paper-title
       font-size: $ms2
     .paper-date
