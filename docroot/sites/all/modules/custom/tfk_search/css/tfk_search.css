@@ -70,15 +70,25 @@ div#tfk-search-photos-video-featured .featured-link {
 
 
 
-/* */
+/* Left-rail facets */
 
-div#block-tfk-search-tfk-search-photos-video-title h2 {
-  color: white;
-  background-color: #D71700;
-  font-size: 14px;
-  text-align: center;
-  padding-top: 5px;
-  padding-bottom: 2px;
+div#block-tfk-search-tfk-search-photos-video-title {
+   background-color: #D71700;
+   color: white;
+   font-size: 14px;
+   padding-bottom: 4px;
+   padding-top: 6px;
+   text-align: center;
+   font-weight: bold;
+}
+
+body.section-photos-video div.region-sidebar-first h2.block-title {
+  font-size: 10pt;
+}
+
+body.section-photos-video div.region-sidebar-first a.apachesolr-facet:link, 
+body.section-photos-video div.region-sidebar-first a.apachesolr-facet:visited {
+  font-weight:normal
 }
 
 div#block-views-tfk-section-photos-video-block div.views-field-type {
