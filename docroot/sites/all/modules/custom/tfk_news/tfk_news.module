@@ -91,7 +91,7 @@ function _tfk_news_homepage_mini_lessons(){
       left join taxonomy_index ti on td.tid = ti.tid where td.vid = :vid and ti.nid = :nid',array('vid' => 6,'nid' => $lesson_nid));
     $res_record = $sql->fetch();
 
-    $lessons .= l('Grade : '.$res_record->name,'node/'.$lesson_nid);
+    $lessons .= l('Grade '.$res_record->name,'node/'.$lesson_nid);
     if($i != count($tmp_lessons)){
       $lessons .= ' | ';
     }
