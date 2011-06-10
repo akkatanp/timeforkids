@@ -108,7 +108,6 @@ function atw_sightseeing_callback($destination_name){
        $is_admin_editor = 1;
   }
 
-  print_r($item_nid);
 //
   $tpl_vars['is_admin_editor'] = $is_admin_editor;
   $tpl_vars['sightseeing_edit_link'] = 'node/'.$item_nid->nid.'/edit?destination='.$alias.'/sightseeing';
