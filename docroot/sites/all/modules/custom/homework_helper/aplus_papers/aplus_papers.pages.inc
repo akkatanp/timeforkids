@@ -45,7 +45,7 @@ function aplus_papers_prepare_step($node) {
     $form['date'] = array(
       '#type' => 'textfield',
       '#required' => TRUE,
-      '#title' => 'Date',
+      '#title' => 'Date:',
     );
   }
   if ($node->field_step_text_area[$node->language][0]['value']) {
