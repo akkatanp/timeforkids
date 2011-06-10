@@ -592,13 +592,8 @@ function tfk_atw_tokens($type, $tokens, array $data = array(), array $options = 
             
             $nid = $data['node']->nid;
 
-            $sql = 'select nl.entity_id,n.type from field_data_field_sightseeing nl left join node n on nl.entity_id = n.nid where nl.field_sightseeing_nid = 68 and n.type = "atw_destination"';
-
-            $result = db_query('select nl.entity_id,n.type from field_data_field_sightseeing nl left join node n on nl.entity_id = n.nid where nl.field_sightseeing_nid = :sight_nid ',array(':type'=>'atw_sightseeing',':sight_nid'=>$data['node']->nid));
+            $result = db_query('select nl.entity_id,n.type from field_data_field_sightseeing nl left join node n on nl.entity_id = n.nid where nl.field_sightseeing_nid = :sight_nid ',array(':type'=>'atw_destination',':sight_nid'=>$data['node']->nid));
             $record = $result->fetch();
-            if($data['node']->nid == 68){
-              print_r($record);echo '222';
-            }
             
             $alias = str_replace('destination/','',drupal_lookup_path('alias','node/'.$record->entity_id));
         }
