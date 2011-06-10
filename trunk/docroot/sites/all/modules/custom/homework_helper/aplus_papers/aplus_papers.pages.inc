@@ -90,8 +90,6 @@ function aplus_papers_review_step($steps) {
 function aplus_papers_final_step() {
   $form['#checklist'] = t('Print and save your paper.');
   $form['#parent_nid'] = arg(1); 
-  $form['#prefix'] = '<div id="aplus-final-step">';
-  $form['#suffix'] = '</div>';
   return $form;
 } 
 
