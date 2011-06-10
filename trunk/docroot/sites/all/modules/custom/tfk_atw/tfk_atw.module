@@ -588,9 +588,9 @@ function tfk_atw_tokens($type, $tokens, array $data = array(), array $options = 
         
         if($data['node']->type == 'atw_sightseeing'){
             
-            $nid =  $data['node']->nid;
+            $nid = $data['node']->nid;
 
-            if($nid == 68){
+            if($data['node']->nid == 68){
               print_r($data['node']);
             }
 
@@ -599,7 +599,7 @@ function tfk_atw_tokens($type, $tokens, array $data = array(), array $options = 
             if(isset($record->entity_id)){
               echo $record->entity_id;exit;
             }
-            exit;
+            
             $alias = str_replace('destination/','',drupal_lookup_path('alias','node/'.$record->entity_id));
         }
 
