@@ -85,7 +85,6 @@
 <script src="/sites/all/themes/tfk/js/atw-sightseeing.js"></script>
 <div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
   
-  <div class="atw-graphic-header"></div>
   
   <?php print $user_picture; ?>
 
@@ -110,12 +109,19 @@
       // We hide the comments and links now so that we can render them later.
       hide($content['comments']);
       hide($content['links']);
-
-     // print_r($node);exit;
-
-
-      print render($content);
+      //print render($content);
     ?>
+
+    <div class="atw-graphic-header"></div>
+    <div id="sightseeing-container">
+    <h1><?php echo $destination_title; ?>: Sight Seeing Guide</h1>
+    <div id="map-container">
+        <?php echo $sightseeing_body; ?>
+    </div>
+
+  </div>
+
+
   </div>
 
   <?php print render($content['links']); ?>
