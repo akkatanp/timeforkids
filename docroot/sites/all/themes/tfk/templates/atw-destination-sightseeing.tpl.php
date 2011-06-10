@@ -3,7 +3,7 @@
 <script src="/sites/all/themes/tfk/js/atw-sightseeing.js"></script>
 
 <?php if($sightseeing_data['is_admin_editor'] == 1):?>
-<div class="tabs"><h2 class="element-invisible">Primary tabs</h2><ul class="tabs primary clearfix">
+<div class="tabs"><h2 class="element-invisible">Primary tabs</h2><ul class="tabs primary clearfix"><li class="active"><a href="<?php echo $sightseeing_data['sightseeing_view_link'];?>" class="active"><span class="tab">View</span><span class="element-invisible">(active tab)</span></a></li>
 <li><a href="<?php echo $sightseeing_data['sightseeing_edit_link'];?>"><span class="tab">Edit</span></a></li>
 </ul></div>
 <?php endif; ?>
