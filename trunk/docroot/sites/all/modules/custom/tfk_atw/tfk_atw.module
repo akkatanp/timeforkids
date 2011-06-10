@@ -298,7 +298,11 @@ function _get_atw_destination_slideshow_images(){
 
 function _tfk_atw_destination_related_data(){
     $vars = array();
-    
+
+    $tmp_url = explode('/',request_uri());
+    $tmp_url = array_slice($tmp_url, -3, 3, true);
+    $tmp_url = array_merge(array(),$tmp_url);
+
     if(arg(0) == 'node' && is_numeric(arg(1))){ //DESTINATION
         $nid = arg(1);
         $sql = db_query('select type,title from node where nid = :nid',array(':nid' => $nid));
@@ -324,11 +328,25 @@ function _tfk_atw_destination_related_data(){
             $sql = db_query('select field_resources_label_value as resources_label from {field_data_field_resources_label} where entity_id = :nid',array(':nid' => $record->nid));
             $record = $sql->fetch();
             $vars['resources_label'] = $record->resources_label;
+
+
+
         }
 
         if($record->type == 'atw_native_lingo'){
            //getting the parent nid to populate navigaetion
-            $nid = arg(1);
+
+
+           $country_alias = $tmp_url[0].'/'.$tmp_url[1];
+           $vars['alias'] = $country_alias;
+           $sql = db_query('select source from url_alias where alias = :alias',array('alias'=>$country_alias));
+           $res = $sql->fetch();
+           $source_tmp = explode('/',$res->source);
+           $country_nid = $source_tmp[1];
+           $country = node_load($country_nid);
+
+           $nid = $country->nid;
+
             $result = db_query('select rt.entity_id,n.type,n.title,n.nid from field_data_field_native_lingo rt left join node n on rt.entity_id = n.nid where rt.field_native_lingo_nid = :lingo_nid and n.type = :type',array(':type'=>'atw_destination',':lingo_nid'=>$nid));
             $record = $result->fetch();
             $vars['worksheets'] = _get_worksheets_by_nid($record->nid);
