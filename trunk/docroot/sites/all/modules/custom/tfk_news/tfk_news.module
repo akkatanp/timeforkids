@@ -30,6 +30,9 @@ function tfk_news_block_info() {
   $blocks['tfk-news-latest-news-link'] = array(
     'info' => t('Block with text "Latest News".')
   );
+  $blocks['tfk-news-homepage-mini-lessons'] = array(
+    'info' => t('Block with proper mini lessons for homepage')
+  );
   return $blocks;
 }
 
@@ -52,9 +55,53 @@ function tfk_news_block_view($delta='') {
       $block['subject'] = t('Block with text "Latest News".');
       $block['content'] = '<div class="link-latest-news">LATEST NEWS</div>';
       break;
+    case 'tfk-news-homepage-mini-lessons':
+      $block['subject'] = t('Block with proper mini lessons for homepage');
+      $block['content'] = _tfk_news_homepage_mini_lessons();
+      break;
   }
+  
   return $block;
 }
+
+function _tfk_news_homepage_mini_lessons(){
+  $lessons = '';
+  if(count(arg()) == 1 && arg(0) == 'node'){
+    $flagid = 2;
+  }
+  if(count(arg()) == 1 && arg(0) == 'news'){
+    $flagid = 6;
+  }
+  if(count(arg()) == 1 && arg(0) == 'kid-reporter'){
+    $flagid = 8;
+  }
+
+
+  $result = db_query('SELECT DISTINCT node.title AS node_title, node.nid AS nid, flag_content_node.weight AS flag_content_node_weight FROM {node} node INNER JOIN {flag_content} flag_content_node ON node.nid = flag_content_node.content_id AND flag_content_node.fid = :flagid  WHERE (( (node.status = :nodestatus) AND (node.type IN (:nodetype)) AND (flag_content_node.uid IS NOT NULL ) )) ORDER BY flag_content_node_weight ASC LIMIT 1 OFFSET 0',array('flagid'=>$flagid,'nodestatus'=>1,'nodetype'=>'article'));
+  $record = $result->fetch();
+  $art_nid = $record->nid;
+  $node = node_load($art_nid);
+
+  $tmp_lessons =  field_get_items('node', $node,'field_mini_lessons');
+
+  $i = 1;
+  foreach($tmp_lessons as $ind => $lesson){
+    $lesson_nid = $lesson['nid'];
+    $sql = db_query('select td.name from taxonomy_term_data td
+      left join taxonomy_index ti on td.tid = ti.tid where td.vid = :vid and ti.nid = :nid',array('vid' => 6,'nid' => $lesson_nid));
+    $res_record = $sql->fetch();
+
+    $lessons .= l('Grade : '.$res_record->name,'node/'.$lesson_nid);
+    if($i != count($tmp_lessons)){
+      $lessons .= ' | ';
+    }
+    $i++;
+  }
+
+
+  return $lessons;
+}
+
 
 function _tfk_news_current_filters(){
   if(arg(0) == 'news-archive'){
@@ -233,4 +280,13 @@ function tfk_news_preprocess_node(&$variables){
     }
   }
 }
+
+function tfk_news_preprocess_views_view_fields(&$variables){
+  
+  if($variables['view']->name == 'homepage_top_story'){
+    //print_r($variables);exit;
+  }
+
+}
+
 ?>
