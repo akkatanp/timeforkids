@@ -11,8 +11,8 @@ function grammar_wizard_prepare_questions($node) {
     INNER JOIN {node} n ON n.vid = f.revision_id
     WHERE f.field_grammar_practice_nid = :nid
     AND f.entity_type = 'node'
-    AND f.bundle = 'grammar_practice_question
-    ORDER BY RAND()'
+    AND f.bundle = 'grammar_practice_question'
+    ORDER BY RAND()
   ", 0, 5, array(':nid' => $node->nid));
   foreach ($result as $record) {
     $nids[] = $record->entity_id;
