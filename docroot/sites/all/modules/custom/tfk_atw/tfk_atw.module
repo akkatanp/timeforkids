@@ -763,7 +763,6 @@ function tfk_atw_preprocess_node(&$vars, $hook) {
       $node = node_load($parent_nid);
 
 
-
       $tpl_vars = array();
 
       $tpl_vars['destination_title'] = $node->title;
@@ -780,7 +779,7 @@ function tfk_atw_preprocess_node(&$vars, $hook) {
       }
 
 
-      print_r($tpl_vars);
+      print_r($vars['node']);
 
 
     }
