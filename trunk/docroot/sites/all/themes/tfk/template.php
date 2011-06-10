@@ -155,3 +155,11 @@ function tfk_content_type_title($type) {
   }
   return $output;
 }
+
+
+function tfk_css_alter(&$css) {
+  //alter css to display as link tags
+  foreach ($css as $key => $value) {
+    $css[$key]['preprocess'] = FALSE;
+  }
+}
