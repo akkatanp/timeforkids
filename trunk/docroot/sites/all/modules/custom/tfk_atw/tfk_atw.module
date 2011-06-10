@@ -464,6 +464,14 @@ function _tfk_atw_destination_navigation_data(){
            $vars['alias'] = $tmp[0].'/'.$tmp[1];
            $vars['navigation_block_title'] = $record->title;
         }
+        if($record->type == 'atw_sightseeing'){
+           $nid = arg(1);
+           $result = db_query('select rt.entity_id,n.type,n.title from field_data_field_sightseeing rt left join node n on rt.entity_id = n.nid where rt.field_day_in_life_nid = :sightseeing_nid and n.type = :type',array(':type'=>'atw_destination',':sightseeing_nid'=>$nid));
+           $record = $result->fetch();
+           $tmp = explode('/',drupal_lookup_path('alias', arg(0).'/'.arg(1)));
+           $vars['alias'] = $tmp[0].'/'.$tmp[1];
+           $vars['navigation_block_title'] = $record->title;
+        }
         
     }
 
