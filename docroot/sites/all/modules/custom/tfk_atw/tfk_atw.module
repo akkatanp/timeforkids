@@ -111,7 +111,7 @@ function atw_sightseeing_callback($destination_name){
 
   $parent_path = drupal_lookup_path('source',$alias.'/sightseeing');
   $sight_nid = explode('/',$parent_path);
-
+  print_r($sight_nid);
 //
   $tpl_vars['is_admin_editor'] = $is_admin_editor;
   $tpl_vars['sightseeing_edit_link'] = 'node/'.$sight_nid[1].'/edit?destination='.$alias.'/sightseeing';
