@@ -81,9 +81,12 @@
  * @see template_process()
  */
 ?>
-!!!!!!
+<link rel="stylesheet" href="/sites/all/themes/tfk/css/atw-sightseeing.css" />
+<script src="/sites/all/themes/tfk/js/atw-sightseeing.js"></script>
 <div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
-
+  
+  <div class="atw-graphic-header"></div>
+  
   <?php print $user_picture; ?>
 
   <?php print render($title_prefix); ?>
