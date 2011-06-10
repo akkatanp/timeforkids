@@ -265,7 +265,7 @@ body.homework-helper #content #block-menu-menu-homework-help li.last ul.menu {
 body.homework-helper #content #homework-helper-title {
   font-size: 14px;
   border-bottom: 0;
-  padding: 10px;
+  padding: 20px;
   text-transform: uppercase;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_site-wide\.sass}line{font-family:\0000352}}
@@ -315,6 +315,10 @@ body.page-node-98 #content .row h2 {
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\000033}}
+body.node-type-a-paper #main-wrapper .region-sidebar-first .section, body.node-type-paper-step #main-wrapper .region-sidebar-first .section {
+  margin-bottom: 10px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\000035}}
 body.node-type-a-paper #content, body.node-type-paper-step #content {
   font-family: sans-serif;
   font-weight: normal;
@@ -322,16 +326,22 @@ body.node-type-a-paper #content, body.node-type-paper-step #content {
   line-height: 18px;
   width: 768px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\000039}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000311}}
 body.node-type-a-paper #content #homework-help-content, body.node-type-paper-step #content #homework-help-content {
   position: relative;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000311}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000313}}
+body.node-type-a-paper #content #homework-help-content #block-system-main, body.node-type-paper-step #content #homework-help-content #block-system-main {
+  border: 1px solid #cecece;
+  padding: 10px;
+  margin-bottom: 1.714em;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000317}}
 body.node-type-a-paper #content #homework-help-content #homework-helper-title, body.node-type-paper-step #content #homework-help-content #homework-helper-title {
   position: absolute;
   top: 50px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000314}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000320}}
 body.node-type-a-paper #content #homework-help-content .aplus-paper-type-title, body.node-type-paper-step #content #homework-help-content .aplus-paper-type-title {
   background-image: url(images/tfk-red-tag.png);
   background-repeat: no-repeat;
@@ -344,19 +354,21 @@ body.node-type-a-paper #content #homework-help-content .aplus-paper-type-title, 
   font-size: 20px;
   margin-bottom: 0;
   position: absolute;
+  margin-top: 10px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000326}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000333}}
 body.node-type-a-paper #content .paper-textarea, body.node-type-paper-step #content .paper-textarea {
   width: 480px;
+  padding: 12px 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000328}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000336}}
 body.node-type-a-paper #content #aplus-papers-checklist-block, body.node-type-paper-step #content #aplus-papers-checklist-block {
   border: 1px solid #cecece;
   list-style: none;
   width: 220px;
   float: right;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000334}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000342}}
 body.node-type-a-paper #content #aplus-papers-checklist-block .aplus-papers-checklist-title, body.node-type-paper-step #content #aplus-papers-checklist-block .aplus-papers-checklist-title {
   color: white;
   background-color: #d71700;
@@ -366,11 +378,11 @@ body.node-type-a-paper #content #aplus-papers-checklist-block .aplus-papers-chec
   border: 10px solid #dddddd;
   text-align: center;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000342}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000350}}
 body.node-type-a-paper #content #aplus-papers-checklist-block ul#aplus-papers-checklist, body.node-type-paper-step #content #aplus-papers-checklist-block ul#aplus-papers-checklist {
   margin-bottom: 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000344}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000352}}
 body.node-type-a-paper #content #aplus-papers-checklist-block li, body.node-type-paper-step #content #aplus-papers-checklist-block li {
   border-bottom: 1px solid #cecece;
   background: #dddddd url(images/checkbox-unchecked.gif);
@@ -381,7 +393,7 @@ body.node-type-a-paper #content #aplus-papers-checklist-block li, body.node-type
   color: #d71700;
   font-weight: bold;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000353}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000361}}
 body.node-type-a-paper #content #aplus-papers-checklist-block li.current, body.node-type-paper-step #content #aplus-papers-checklist-block li.current {
   border-bottom: 1px solid #cecece;
   background: white url(images/checkbox-unchecked.gif);
@@ -391,7 +403,7 @@ body.node-type-a-paper #content #aplus-papers-checklist-block li.current, body.n
   padding: 10px 35px;
   color: black;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000361}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000369}}
 body.node-type-a-paper #content #aplus-papers-checklist-block li.checked, body.node-type-paper-step #content #aplus-papers-checklist-block li.checked {
   border-bottom: 1px solid #cecece;
   background: white url(images/checkbox-checked.gif);
@@ -401,29 +413,29 @@ body.node-type-a-paper #content #aplus-papers-checklist-block li.checked, body.n
   padding: 10px 35px;
   color: black;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000369}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000377}}
 body.node-type-a-paper #content #aplus-papers-checklist-block li.last, body.node-type-paper-step #content #aplus-papers-checklist-block li.last {
   border-bottom: 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000371}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000379}}
 body.node-type-a-paper #content h2.node-title a, body.node-type-paper-step #content h2.node-title a {
   color: black;
   font-size: 20px;
   line-height: 18px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000377}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000385}}
 body.node-type-a-paper #content .field-name-field-step-example, body.node-type-paper-step #content .field-name-field-step-example {
   background: #dddddd;
   border: 1px solid #cecece;
   margin-left: 2.439%;
   padding: 2.439%;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000383}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000391}}
 body.node-type-a-paper #content .field-name-field-step-example p, body.node-type-paper-step #content .field-name-field-step-example p {
   margin-bottom: 0;
   font-style: italic;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000386}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000394}}
 body.node-type-a-paper #content .form-item-step-0-name, body.node-type-a-paper #content .form-item-step-0-date, body.node-type-a-paper #content .form-item-step-0-textarea, body.node-type-a-paper #content .form-item-step-1-title, body.node-type-a-paper #content .form-item-step-2-textarea, body.node-type-a-paper #content .form-item-step-3-textarea, body.node-type-a-paper #content .form-item-step-4-textarea, body.node-type-a-paper #content .form-item-step-5-textarea, body.node-type-a-paper #content .form-item-step-6-0-name, body.node-type-a-paper #content .form-item-step-6-0-date, body.node-type-a-paper #content .form-item-step-6-1-title, body.node-type-a-paper #content .form-item-step-6-2-textarea, body.node-type-a-paper #content .form-item-step-6-3-textarea, body.node-type-a-paper #content .form-item-step-6-4-textarea, body.node-type-a-paper #content .form-item-step-6-5-textarea, body.node-type-paper-step #content .form-item-step-0-name, body.node-type-paper-step #content .form-item-step-0-date, body.node-type-paper-step #content .form-item-step-0-textarea, body.node-type-paper-step #content .form-item-step-1-title, body.node-type-paper-step #content .form-item-step-2-textarea, body.node-type-paper-step #content .form-item-step-3-textarea, body.node-type-paper-step #content .form-item-step-4-textarea, body.node-type-paper-step #content .form-item-step-5-textarea, body.node-type-paper-step #content .form-item-step-6-0-name, body.node-type-paper-step #content .form-item-step-6-0-date, body.node-type-paper-step #content .form-item-step-6-1-title, body.node-type-paper-step #content .form-item-step-6-2-textarea, body.node-type-paper-step #content .form-item-step-6-3-textarea, body.node-type-paper-step #content .form-item-step-6-4-textarea, body.node-type-paper-step #content .form-item-step-6-5-textarea {
   background: #dddddd;
   padding: 10px;
@@ -432,12 +444,12 @@ body.node-type-a-paper #content .form-item-step-0-name, body.node-type-a-paper #
   clear: left;
   border: 1px solid #cecece;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000393}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003101}}
 body.node-type-a-paper #content .form-item-step-0-name label, body.node-type-a-paper #content .form-item-step-0-date label, body.node-type-a-paper #content .form-item-step-0-textarea label, body.node-type-a-paper #content .form-item-step-1-title label, body.node-type-a-paper #content .form-item-step-2-textarea label, body.node-type-a-paper #content .form-item-step-3-textarea label, body.node-type-a-paper #content .form-item-step-4-textarea label, body.node-type-a-paper #content .form-item-step-5-textarea label, body.node-type-a-paper #content .form-item-step-6-0-name label, body.node-type-a-paper #content .form-item-step-6-0-date label, body.node-type-a-paper #content .form-item-step-6-1-title label, body.node-type-a-paper #content .form-item-step-6-2-textarea label, body.node-type-a-paper #content .form-item-step-6-3-textarea label, body.node-type-a-paper #content .form-item-step-6-4-textarea label, body.node-type-a-paper #content .form-item-step-6-5-textarea label, body.node-type-paper-step #content .form-item-step-0-name label, body.node-type-paper-step #content .form-item-step-0-date label, body.node-type-paper-step #content .form-item-step-0-textarea label, body.node-type-paper-step #content .form-item-step-1-title label, body.node-type-paper-step #content .form-item-step-2-textarea label, body.node-type-paper-step #content .form-item-step-3-textarea label, body.node-type-paper-step #content .form-item-step-4-textarea label, body.node-type-paper-step #content .form-item-step-5-textarea label, body.node-type-paper-step #content .form-item-step-6-0-name label, body.node-type-paper-step #content .form-item-step-6-0-date label, body.node-type-paper-step #content .form-item-step-6-1-title label, body.node-type-paper-step #content .form-item-step-6-2-textarea label, body.node-type-paper-step #content .form-item-step-6-3-textarea label, body.node-type-paper-step #content .form-item-step-6-4-textarea label, body.node-type-paper-step #content .form-item-step-6-5-textarea label {
   font-size: 18px;
   padding: 5px 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000396}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003104}}
 body.node-type-a-paper #content #aplus-submit-buttons, body.node-type-paper-step #content #aplus-submit-buttons {
   background: #dddddd;
   padding: 10px;
@@ -447,9 +459,8 @@ body.node-type-a-paper #content #aplus-submit-buttons, body.node-type-paper-step
   margin-top: -20px;
   text-align: right;
   float: left;
-  margin-bottom: 1.714em;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003108}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003115}}
 body.node-type-a-paper #content #aplus-submit-buttons .aplus-start-over, body.node-type-paper-step #content #aplus-submit-buttons .aplus-start-over {
   background: url(images/tfk-red-arrow.png);
   background-repeat: no-repeat;
@@ -460,30 +471,30 @@ body.node-type-a-paper #content #aplus-submit-buttons .aplus-start-over, body.no
   padding: 3px 0 0 42px;
   height: 35px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003117}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003124}}
 body.node-type-a-paper #content .node-paper-step, body.node-type-paper-step #content .node-paper-step {
   padding: 10px;
   width: 480px;
   float: left;
-  margin: 80px 2.439% 0 0;
+  margin: 60px 2.439% 0 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003122}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003129}}
 body.node-type-a-paper #content .node-paper-step label, body.node-type-paper-step #content .node-paper-step label {
   font-size: 18px;
   padding: 5px 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003125}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003132}}
 body.node-type-a-paper #content #aplus-review-step, body.node-type-a-paper #content #aplus-final-step, body.node-type-paper-step #content #aplus-review-step, body.node-type-paper-step #content #aplus-final-step {
   width: 480px;
   float: left;
   margin: 80px 2.439% 0 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003130}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003137}}
 body.node-type-a-paper #content #aplus-review-step label, body.node-type-a-paper #content #aplus-final-step label, body.node-type-paper-step #content #aplus-review-step label, body.node-type-paper-step #content #aplus-final-step label {
   font-size: 18px;
   padding: 5px 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003133}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003140}}
 body.node-type-a-paper #content button,
 body.node-type-a-paper #content input[type="reset"],
 body.node-type-a-paper #content input[type="submit"],
@@ -506,15 +517,15 @@ body.node-type-a-paper #content input[type="button"], body.node-type-paper-step 
   padding: 3px 10px 4px;
   margin-right: 10px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003150}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003157}}
 body.node-type-a-paper #content a.button, body.node-type-paper-step #content a.button {
   -webkit-appearance: none;
-  -moz-border-radius: 11px;
-  -webkit-border-radius: 11px;
-  -o-border-radius: 11px;
-  -ms-border-radius: 11px;
-  -khtml-border-radius: 11px;
-  border-radius: 11px;
+  -moz-border-radius: 9px;
+  -webkit-border-radius: 9px;
+  -o-border-radius: 9px;
+  -ms-border-radius: 9px;
+  -khtml-border-radius: 9px;
+  border-radius: 9px;
   background: #d71700 url(../images/button.png) repeat-x;
   border: 1px solid;
   border-color: #dddddd #bbbbbb #999999;
@@ -525,22 +536,22 @@ body.node-type-a-paper #content a.button, body.node-type-paper-step #content a.b
   overflow: visible;
   padding: 4px 12px 4px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003163}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003170}}
 body.node-type-a-paper #content #aplus-print-save-buttons, body.node-type-paper-step #content #aplus-print-save-buttons {
   text-align: right;
   clear: right;
   padding-top: 10px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003167}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003174}}
 body.node-type-a-paper #content .paper-title, body.node-type-paper-step #content .paper-title {
   font-size: 20px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003169}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003176}}
 body.node-type-a-paper #content .paper-date, body.node-type-paper-step #content .paper-date {
   float: right;
   font-size: 14px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003172}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003179}}
 body.node-type-a-paper #content .student-name, body.node-type-paper-step #content .student-name {
   float: left;
   font-size: 14px;

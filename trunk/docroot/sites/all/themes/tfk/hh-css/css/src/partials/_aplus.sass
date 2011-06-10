@@ -1,5 +1,7 @@
 body.node-type-a-paper, body.node-type-paper-step
   #main-wrapper
+    .region-sidebar-first .section
+      margin-bottom: 10px
   #content
     font-family: $font-sans
     font-weight: normal
@@ -8,6 +10,10 @@ body.node-type-a-paper, body.node-type-paper-step
     width: 768px
     #homework-help-content
       position: relative
+      #block-system-main
+        border: 1px solid #cecece
+        padding: 10px
+        +trailer
       #homework-helper-title
         position: absolute
         top: 50px
@@ -23,8 +29,10 @@ body.node-type-a-paper, body.node-type-paper-step
         font-size: $ms2
         margin-bottom: 0
         position: absolute
+        margin-top: 10px
     .paper-textarea
       width: 480px
+      padding: 12px 0
     #aplus-papers-checklist-block
       border: 1px solid #cecece
       list-style: none
@@ -102,7 +110,6 @@ body.node-type-a-paper, body.node-type-paper-step
       margin-top: -20px
       text-align: right
       float: left
-      +trailer
       .form-submit
         // margin-left: 200px
       .aplus-start-over
@@ -118,7 +125,7 @@ body.node-type-a-paper, body.node-type-paper-step
       padding: 10px
       width: 480px
       float: left
-      margin: 80px $gutter 0 0
+      margin: 60px $gutter 0 0
       label
         font-size: $ms1
         padding: 5px 0
@@ -149,7 +156,7 @@ body.node-type-a-paper, body.node-type-paper-step
       // width: auto
     a.button
       -webkit-appearance: none
-      +border-radius(11px)
+      +border-radius(9px)
       background: $tfk-red url(../images/button.png) repeat-x
       border: 1px solid
       border-color: #ddd #bbb #999
