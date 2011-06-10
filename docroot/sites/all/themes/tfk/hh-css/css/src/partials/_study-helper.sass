@@ -6,9 +6,25 @@ body.node-type-flashcard
   .flashcard-cycle-cards
     background: lighten(yellow, 20.0)
     text-align: center
-    ul
-      li.answer .first
-        color: red
+    ul.question
+      li.answer
+        font-size: $ms2
+        padding-top: 70px
+        text-align: center
+        font-weight: bold
+        margin: 10px
+      .item-list
+        ul.answer
+          background: white
+          width: 325px
+          height: 50px
+          margin: 10px 0 0 75px
+          +border-radius(11px)
+          border: 4px solid lighten($black, 60.0)
+          li.first
+            font-size: $ms2
+            padding: 15px
+            color: $tfk-red
     .flashcard-cycle-card 
       width: 500px
       height: 250px
