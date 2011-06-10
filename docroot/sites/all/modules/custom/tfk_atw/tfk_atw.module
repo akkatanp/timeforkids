@@ -112,7 +112,7 @@ function atw_sightseeing_callback($destination_name){
 //  $tpl_vars['sightseeing_edit_link'] = 'node/'.$item_nid.'/edit';
 //
 //
-//  $list = array('sightseeing_data' => $tpl_vars);
+  $list = array('sightseeing_data' => $tpl_vars);
   return theme('atw_destination_sightseeing',$list);
 }
 
