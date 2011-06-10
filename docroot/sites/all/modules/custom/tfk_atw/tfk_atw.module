@@ -108,8 +108,8 @@ function atw_sightseeing_callback($destination_name){
        $is_admin_editor = 1;
   }
 
-  echo $alias;
   $parent_path = drupal_lookup_path('source',$alias.'/sightseeing');
+  echo $parent_path;
   $sight_nid = explode('/',$parent_path);
   print_r($sight_nid);
 //
