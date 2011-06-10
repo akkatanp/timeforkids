@@ -77,47 +77,47 @@ function atw_challenge_callback($destination_name){
 
 }
 
-function atw_sightseeing_callback($destination_name){
-
-  $alias = 'destination/'.$destination_name;
-  $parent_path = drupal_lookup_path('source',$alias);
-  $tmp_nid = explode('/',$parent_path);
-  $parent_nid = $tmp_nid[1];
-  $node = node_load($parent_nid);
-
-
-  $tpl_vars = array();
-
-  $tpl_vars['destination_title'] = $node->title;
-  $tpl_vars['sightseeing_map'] = $node->field_sightseeing_map['und'][0]['filename'];
-  $tpl_vars['sightseeing_body'] = $node->field_sightseeing_body['und'][0]['value'];
-  $tpl_vars['sightseeing_items'] = array();
-  $tpl_vars['cust_node_title'] = $node->title;
-  
-  foreach($node->field_sightseeing['und'] as $k=> $item){
-    $item_nid = node_load($item['nid']);
-    $tpl_vars['sightseeing_items'][$k]['place_name'] = $item_nid->field_place_name['und'][0]['value'];
-    $tpl_vars['sightseeing_items'][$k]['place_description'] = $item_nid->field_place_description['und'][0]['value'];
-    $tpl_vars['sightseeing_items'][$k]['place_photo'] = $item_nid->field_place_photo['und'][0]['filename'];
-  }
-
-  $is_admin_editor = 0;
-  global $user;
-  $user_roles = $user->roles;
-  if(in_array('administrator',$user_roles) || in_array('editor',$user_roles)){
-       $is_admin_editor = 1;
-  }
-
+//function atw_sightseeing_callback($destination_name){
 //
-  
-  $tpl_vars['is_admin_editor'] = $is_admin_editor;
-  $tpl_vars['sightseeing_edit_link'] = url('node/'.$item_nid->nid.'/edit',array('query' => array("destination" => $alias."/sightseeing")));
-  $tpl_vars['sightseeing_view_link'] = url($alias."/sightseeing");
+//  $alias = 'destination/'.$destination_name;
+//  $parent_path = drupal_lookup_path('source',$alias);
+//  $tmp_nid = explode('/',$parent_path);
+//  $parent_nid = $tmp_nid[1];
+//  $node = node_load($parent_nid);
 //
 //
-  $list = array('sightseeing_data' => $tpl_vars);
-  return theme('atw_destination_sightseeing',$list);
-}
+//  $tpl_vars = array();
+//
+//  $tpl_vars['destination_title'] = $node->title;
+//  $tpl_vars['sightseeing_map'] = $node->field_sightseeing_map['und'][0]['filename'];
+//  $tpl_vars['sightseeing_body'] = $node->field_sightseeing_body['und'][0]['value'];
+//  $tpl_vars['sightseeing_items'] = array();
+//  $tpl_vars['cust_node_title'] = $node->title;
+//
+//  foreach($node->field_sightseeing['und'] as $k=> $item){
+//    $item_nid = node_load($item['nid']);
+//    $tpl_vars['sightseeing_items'][$k]['place_name'] = $item_nid->field_place_name['und'][0]['value'];
+//    $tpl_vars['sightseeing_items'][$k]['place_description'] = $item_nid->field_place_description['und'][0]['value'];
+//    $tpl_vars['sightseeing_items'][$k]['place_photo'] = $item_nid->field_place_photo['und'][0]['filename'];
+//  }
+//
+//  $is_admin_editor = 0;
+//  global $user;
+//  $user_roles = $user->roles;
+//  if(in_array('administrator',$user_roles) || in_array('editor',$user_roles)){
+//       $is_admin_editor = 1;
+//  }
+//
+////
+//
+//  $tpl_vars['is_admin_editor'] = $is_admin_editor;
+//  $tpl_vars['sightseeing_edit_link'] = url('node/'.$item_nid->nid.'/edit',array('query' => array("destination" => $alias."/sightseeing")));
+//  $tpl_vars['sightseeing_view_link'] = url($alias."/sightseeing");
+////
+////
+//  $list = array('sightseeing_data' => $tpl_vars);
+//  return theme('atw_destination_sightseeing',$list);
+//}
 
 function tfk_atw_block_info() {
   $blocks['atw-page-slideshow'] = array(
@@ -400,6 +400,18 @@ function _tfk_atw_destination_related_data(){
             $vars['resources_label'] = $record->resources_label;
         }
 
+        if($record->type == 'atw_sightseeing'){
+           //getting the parent nid to populate navigaetion
+            $nid = arg(1);
+            $result = db_query('select rt.entity_id,n.type,n.title,n.nid from field_data_field_sightseeing rt left join node n on rt.entity_id = n.nid where rt.field_sightseeing_nid = :sightseeing_nid and n.type = :type',array(':type'=>'atw_destination',':sightseeing_nid'=>$nid));
+            $record = $result->fetch();
+            $vars['worksheets'] = _get_worksheets_by_nid($record->nid);
+            $vars['related_articles'] = _get_related_articles_by_nid($record->nid);
+            $sql = db_query('select field_resources_label_value as resources_label from {field_data_field_resources_label} where entity_id = :nid',array(':nid' => $record->nid));
+            $record = $sql->fetch();
+            $vars['resources_label'] = $record->resources_label;
+        }
+
         
     }
     
@@ -479,7 +491,7 @@ function _tfk_atw_destination_navigation_data(){
     }
 
 
-    if(arg(0) == 'destination' && (arg(2) == 'sightseeing' || arg(2) == 'challenge' )){
+    if(arg(0) == 'destination' &&  arg(2) == 'challenge'){
         //getting nid of the parente
         $parent_alias = 'destination/'.arg(1);
         $source_destination = drupal_lookup_path('source', $parent_alias);
