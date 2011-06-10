@@ -335,9 +335,10 @@ function _tfk_atw_destination_related_data(){
 
         if($record->type == 'atw_native_lingo'){
            //getting the parent nid to populate navigaetion
-
+           print_r($tmp_url);
 
            $country_alias = $tmp_url[0].'/'.$tmp_url[1];
+           echo $country_alias;
            $vars['alias'] = $country_alias;
            $sql = db_query('select source from url_alias where alias = :alias',array('alias'=>$country_alias));
            $res = $sql->fetch();
