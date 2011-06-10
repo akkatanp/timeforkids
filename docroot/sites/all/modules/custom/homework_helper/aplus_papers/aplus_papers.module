@@ -232,7 +232,7 @@ function aplus_papers_final_step_content($form_state) {
       $textarea .= isset($data['textarea']) ? '<p>' . check_markup($data['textarea']) . '</p>' : '';
     }
   } 
-  return $title . $date . $name . '<div class="paper-textarea">' . $textarea . '</div>';
+  return '<div id="aplus-final-step">' . $title . $date . $name . '<div class="paper-textarea">' . $textarea . '</div></div>';
 }  
 
 
