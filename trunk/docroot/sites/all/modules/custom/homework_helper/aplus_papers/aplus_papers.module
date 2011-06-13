@@ -24,7 +24,7 @@ function aplus_papers_theme() {
     'aplus_papers_checklist' => array(
       'variables' => array('steps' => array(), 'current' => NULL),
     ),
-  );
+  );  
 }
 
 /**
