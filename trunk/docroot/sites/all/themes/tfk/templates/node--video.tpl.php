@@ -1,3 +1,12 @@
+  <script type="text/javascript">
+	$ = jQuery;
+  </script>
+  <script type="text/javascript" src="http://github.com/malsup/media/raw/master/jquery.media.js?v0.92"></script>
+  <script type="text/javascript">
+	$(document).ready(function() {
+		$('a.media').media();
+	});
+  </script>
 <div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
 				
   <?php print $user_picture; ?>
@@ -19,16 +28,6 @@
   <?php endif; ?>
 
   <div class="content"<?php print $content_attributes; ?>>
-  <script type="text/javascript">
-	$ = jQuery;
-  </script>
-  <script type="text/javascript" src="http://github.com/malsup/media/raw/master/jquery.media.js?v0.92"></script>
-  <script type="text/javascript">
-  $.fn.media.mapFormat('mp4','flash');
-	$(document).ready(function() {
-		$('a.media').media();
-	});
-  </script>
   
   <a class="media {width:480, height:280}" href="http://timedev.prod.acquia-sites.com/files/videos/original/Lexus.mp4">MP4 File (video)</a> 
 
