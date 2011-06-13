@@ -461,6 +461,7 @@
 }
 
 /* left sidebar teacher nav */
+.views-field-field-minisite-resources-label
 .node-type-atw-destination  .region-sidebar-first .content h3.related,
 .page-destination .region-sidebar-first .content h3.related,
 .section-destination  .region-sidebar-first .content h3.related {
@@ -475,7 +476,7 @@
 	background: -webkit-linear-gradient(#7bc3f5, #5ea1d3);
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#7bc3f5, endColorstr=#5ea1d3);
 }
-
+.views-field-field-minisite-resources
 .node-type-atw-destination  .region-sidebar-first .content ul.related,
 .page-destination .region-sidebar-first .content ul.related,
 .section-destination  .region-sidebar-first .content ul.related {
@@ -719,6 +720,21 @@
 	width: 222px;
 	border: solid 4px #fff;
 }
+
+/* mini sites idebar */
+.node-type-minisite .region-sidebar-first {
+	background: none;
+	border: 0;
+	padding: 0;
+}
+
+#block-views-minisite-articles-block-4  {
+	border: solid 1px #cecece;
+	background: #dedede;
+	padding: 10px;
+}
+
+
 
 /* Footer Nav */
 .region-footer ul.menu {
