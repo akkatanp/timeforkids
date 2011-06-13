@@ -77,6 +77,12 @@ body {
 	margin-top: 0;
 }
 
+.front #content.column {
+	float: left;
+	width: 768px;
+	margin-right: 20px;
+}
+
 #content .section {
 	margin: 0;
 	padding: 0;
@@ -102,6 +108,10 @@ body {
 	float: left;
 	width: 250px;
 	margin-right: 8px;
+}
+
+.front .region-sidebar-first {
+	display: none;
 }
 
 /*
