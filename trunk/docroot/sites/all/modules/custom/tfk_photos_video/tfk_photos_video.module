@@ -1,0 +1,20 @@
+<?php
+/**
+ * @file
+ * Code for the TFK Slideshow feature.
+ */
+
+include_once('tfk_photos_video.features.inc');
+
+/**
+ * Preprocessor for page.
+ *
+ * @param array $vars
+ */
+function tfk_photos_video_preprocess_page(&$vars) {
+  // Add Slideshow page CSS.
+  if(arg(0) == 'node' && array_key_exists('node', $vars) && ($vars['node']->type == 'slideshow') ) {
+    drupal_add_css(drupal_get_path('module', 'tfk_photos_video'). '/css/tfk_photos_video.css', 'file');
+  }
+}
+
