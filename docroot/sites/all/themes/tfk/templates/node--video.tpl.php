@@ -39,7 +39,6 @@
 	$("#media").jlEmbed({
 		url: 'http://timedev.prod.acquia-sites.com/files/videos/original/Lexus_0.mp4',
 		plugin: 'quicktime',
-		format: 'embed',
 		loop: 'no',
 		autoplay: 'yes',
 		width: 488,
