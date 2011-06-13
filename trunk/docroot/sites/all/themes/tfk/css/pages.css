@@ -70,27 +70,6 @@ div#site-name /* The name of the website */ {
 }
 
 /*
- * Content
- */
-#content {
-}
-
-#content .section {
-}
-
-/*
- * Second sidebar (on right in LTR languages, on left in RTL)
- *
- * Remember to NOT add padding or margin to your .region-sidebar-second
- * (see the layout.css file.)
- */
-.region-sidebar-second {
-}
-
-.region-sidebar-second .section {
-}
-
-/*
  * Footer
  */
 .region-footer {
@@ -356,24 +335,24 @@ ul.links li {
 #block-views-homepage-top-story-block-1 {
 	float: left;
 	width: 510px;
-	margin-right: 8px;
 	height: 350px;
+	margin-right: 8px;
 }
 
 #block-views-homepage-minisite-block-1 {
 	float: left;
 	width: 250px;
 	height: 350px;
-	clear: right;
 }
 
 #block-views-homepage-minisite-block-1 .content {
 	background: #dedede;
 	border: solid 1px #cecece;
+	height: 348px;
 }
 
 #block-views-homepage-news-block-block-1,
-#block-views-homepage-destination-block-1{
+#block-views-homepage-destination-block-1 {
 	width: 768px;
 }
 
