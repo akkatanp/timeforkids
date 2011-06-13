@@ -549,7 +549,6 @@ function tfk_atw_webform_component_info() {
 }
 
 function tfk_atw_quiz_submit(&$form, &$form_state) {
-	//unset($form_state['redirect']);
 
         //$form_state['redirect'] = array('0' =>'destination/spain/challenge');
         //$form_state['redirect'] = 'destination/spain/challenge';
@@ -558,13 +557,20 @@ function tfk_atw_quiz_submit(&$form, &$form_state) {
 	$questions = $form['#node']->webform['components'];
 	$correct_answers = $total_answers = 0;
 
+
 	if(!empty($questions))
 	foreach($questions as $key => $question) {
 
-		$correct_value = $question['extra']['correct_answer'];
-		$user_value = $form_state['values']['submitted'][$key]['answer'];
 
-		if ($user_value == $correct_value) {
+		$correct_value = $question['extra']['correct_answer_new'];
+		$user_value = $form_state['values']['submitted'][$key]['answer'];
+                //
+                
+
+                $question_answers  = explode ("\n", $questions[$key]['extra']['answers']);
+                $user_answer = $question_answers[$user_value];
+
+		if (trim($user_answer) == trim($correct_value)) {
 			$form_state['storage']['user_answers'][$key] = TRUE;
 			$correct_answers++;
 		}

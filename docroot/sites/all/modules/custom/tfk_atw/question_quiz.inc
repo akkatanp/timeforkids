@@ -50,14 +50,21 @@ function _webform_edit_question_quiz($component) {
   );
   
   $options = explode ("\n", $component['extra']['answers']);
-  
-  $form['extra']['correct_answer'] = array(
-    '#type' => 'radios',
-    '#title' => t('Correct Answer'),
-    '#options' => $options,
-    '#default_value' => isset($component['extra']['correct_answer']) ? $component['extra']['correct_answer'] : '',
-    '#weight' => 2,
-  );
+
+
+  $form['extra']['correct_answer_new'] = array(
+    '#type' => 'textfield',
+    '#title' => t('The real Correct Answer'),
+      '#default_value' => isset($component['extra']['correct_answer_new']) ? $component['extra']['correct_answer_new'] : '',
+    '#weight' => 2,);
+
+//  $form['extra']['correct_answer'] = array(
+//    '#type' => 'radios',
+//    '#title' => t('Correct Answer'),
+//    '#options' => $options,
+//    '#default_value' => isset($component['extra']['correct_answer']) ? $component['extra']['correct_answer'] : '',
+//    '#weight' => 2,
+//  );
    
  $form['extra']['correct_text'] = array(
     '#type' => 'textarea',
