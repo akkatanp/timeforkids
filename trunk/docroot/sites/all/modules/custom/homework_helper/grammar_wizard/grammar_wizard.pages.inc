@@ -52,6 +52,14 @@ function grammar_wizard_prepare_question($node) {
   );
 
   $form['#parent_nid'] = arg(1); 
+  $form['#correct_answer'] = $node->field_grammar_practice_answer[$node->language][0]['value'];
+
+  $rule_node = node_load($node->field_grammar_practice_rule[$node->language][0]['nid']);
+  $form['#rule'] = $rule_node->body[$node->language][0]['safe_value'];
+  $form['#rule_title'] = $rule_node->title;
+  $form['#rule_example'] = $rule_node->field_grammar_example[$node->language][0]['safe_value'];
+
+  $form['#checked'] = NULL;
 
   return $form;
 }
