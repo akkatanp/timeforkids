@@ -1,0 +1,24 @@
+
+/**
+ * Theming for photos-video node pages.
+ */
+
+div#page.page-node-photos-video #sidebar {
+    float: left;
+    margin-right: 8px;
+    position: relative;
+    width: 250px;
+}
+
+div#block-tfk-search-tfk-search-photos-video-back {
+  background-color: #d71700;
+}
+
+div#block-tfk-search-tfk-search-photos-video-back a {
+  color: white;
+}
+
+/* Override header element and remove ATW background image */
+div#slideshow-container div#slideshow div.header {
+	background: none;
+}
