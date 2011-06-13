@@ -164,7 +164,7 @@ function theme_flashcard_cycle_pager($variables) {
   );
 
   $next = $defaults + array(
-    '#text' => t('Next ›'),
+    '#text' => t('Next'),
     '#options' => $options + array(
       'attributes' => array(
         'class' => array('next'),
@@ -197,7 +197,7 @@ function theme_flashcard_cycle_pager($variables) {
   );
 
   $prev = $defaults + array(
-    '#text' => t('‹ Previous'),
+    '#text' => t('Previous'),
     '#options' => $options + array(
       'attributes' => array(
         'class' => array('prev'),
