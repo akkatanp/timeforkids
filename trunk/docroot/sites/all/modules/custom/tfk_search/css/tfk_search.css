@@ -160,6 +160,10 @@ ol#tfk-search-results-photos-video li.with-image {
   /*min-height: 215px;*/
 }
 
+ol#tfk-search-results-photos-video li.search-result {
+  min-height: 150px;
+}
+
 ol#tfk-search-results-photos-video li.with-image img.thumbnail {
   /*float: left;
   margin-right: 7px;*/
