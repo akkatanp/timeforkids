@@ -328,7 +328,7 @@ ul.links li {
 	background: #d71700;
 	padding: 10px;
 	text-transform: uppercase;
-        margin:0;
+	margin: 0;
 }
 
 /* front page */
@@ -353,6 +353,7 @@ ul.links li {
 
 #block-views-homepage-news-block-block-1,
 #block-views-homepage-destination-block-1 {
+	float: left;
 	width: 768px;
 }
 
@@ -514,7 +515,8 @@ ul.links li {
 	clear: both;
 }
 
-/* teacher and kid reporter news block */
+/* news block */
+.view-homepage-news-block table,
 .view-teacher-news-news-block table,
 .view-kid-reporters-channel-news-block table {
 	margin: 0;
@@ -522,6 +524,7 @@ ul.links li {
 	border: 0;
 }
 
+.view-homepage-news-block table td,
 .view-teacher-news-news-block table td,
 .view-kid-reporters-channel-news-block table td {
 	display: block;
@@ -532,11 +535,13 @@ ul.links li {
 	border: solid 1px #cecece;
 }
 
+.view-homepage-news-block table td.col-1,
 .view-teacher-news-news-block table td.col-1,
 .view-kid-reporters-channel-news-block table td.col-1 {
 	margin-right: 8px;
 }
 
+.view-homepage-news-block table td .views-field-name,
 .view-teacher-news-news-block table td .views-field-name,
 .view-kid-reporters-channel-news-block table td .views-field-name {
 	background: #d71700;
@@ -547,6 +552,7 @@ ul.links li {
 	clear: right;
 }
 
+.view-homepage-news-block table td .views-field-field-image,
 .view-teacher-news-news-block table td .views-field-field-image,
 .view-kid-reporters-channel-news-block table td .views-field-field-image {
 	width: 228px;
@@ -555,12 +561,14 @@ ul.links li {
 	margin-bottom: 10px;
 }
 
+.view-homepage-news-block table td .views-field-field-image img,
 .view-teacher-news-news-block table td .views-field-field-image img,
 .view-kid-reporters-channel-news-block table td .views-field-field-image img {
 	width: 228px;
 	height: 118px;
 }
 
+.view-homepage-news-block table td .views-field-title a,
 .view-teacher-news-news-block table td .views-field-title a,
 .view-kid-reporters-channel-news-block table td .views-field-title a {
 	font: normal 20px arial;
