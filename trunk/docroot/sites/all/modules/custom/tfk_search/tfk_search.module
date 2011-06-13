@@ -68,12 +68,77 @@ function tfk_search_theme($existing, $type, $theme, $path) {
     'tfk_search_worksheet_saved' => array(
       'template' => 'tfk-search-worksheet-saved',
       'variables' => array('list' => NULL)
-    )
+    ),
+    // Related content.
+    'tfk_search_related_content' => array(
+      'variables' => array('related_content' => array(), 'quantity_articles' => 1),
+    ),
   );
 }
 
+/**
+ * Theme additional content block.
+ *
+ * @return
+ *   Returns HTML output for a related content block.
+ */
+function theme_tfk_search_related_content($variables) {
+  $related_content = $variables['related_content'];
+  
+  $output .= '<div id="featured-related-content-title" class="addit-content">'. t('Additional Content'). '</div>';
+  $output .= '<div id="featured-related-content" class="related-content-wrap">';
+  
+  // Related content.
+  for($key = 0; $key < $variables['quantity_articles']; $key++) {
+    $output .= '<div class="addit-related-articles">';
+      $link = l($related_content[$key]['title'], $related_content[$key]['path']);
+      $output .= '<div class="addit-related-articles-label">'. strtoupper(t('Related @type', array('@type' => $related_content[$key]['type']))). '</div>';
+      $output .= '<div class="addit-related-articles-title">'. $link. '</div>';
+      #$output .= '<div class="addit-related-articles-download"> Download PDF</div>';
+ 		$output .= '</div>';
+  }
 
-function tfk_search_apachesolr_update_index(&$document, $node) {
+  $output .= '</div>';
+  return $output;
+}
+
+/**
+ * Apache Solr search field, stores title of related content node.
+ *
+ * @var string
+ */
+define('TFK_SEARCH_RELATED_TITLE', 'sm_field_additional_content_titles');
+
+/**
+ * Apache Solr search field, stores URL path of related content node.
+ *
+ * @var string
+ */
+define('TFK_SEARCH_RELATED_PATH', 'sm_field_additional_content_paths');
+
+/**
+ * Apache Solr search field, stores content type of related content node.
+ *
+ * @var string
+ */
+define('TFK_SEARCH_RELATED_TYPE', 'sm_field_additional_content_types');
+
+/**
+ * Implementation of hook_apachesolr_update_index.
+ *
+ * Here we add additional fields to the ApacheSolrDocument. What we add here
+ * is then available on each search result.
+ *
+ * @param ApacheSolrDocument $document
+ *   Document object representing the node.
+ * @param stdClass $node
+ *   Node object.
+ * @param string $namespace
+ *   Search namespace.
+ *
+ * @see apachesolr_node_to_document
+ */
+function tfk_search_apachesolr_update_index(&$document, $node, $namespace) {
   if (isset($node->field_date)){
 
     $tmp_date =  field_get_items('node', $node, 'field_date');
@@ -81,6 +146,24 @@ function tfk_search_apachesolr_update_index(&$document, $node) {
     $date = date('Y', $date);
     $document->addField('sm_editorial_date_tfk', $date);
   }
+  
+  // Index related articles node reference field.
+  if(isset($node->field_additional_content) && !empty($node->field_additional_content)) {
+    
+    $anonymous_user = user_load(0);
+    $additional_content =  field_get_items('node', $node, 'field_additional_content');
+    
+    foreach($additional_content as $node) {
+      // We verify that the related content is publicly accessible.
+      if(node_access('view', node_load($node['nid']), $anonymous_user)) {
+        // We index the title and path to avoid doing a node_load() or l() on each search result.
+        $document->addField(TFK_SEARCH_RELATED_TITLE, $node['node']->title);
+        $document->addField(TFK_SEARCH_RELATED_PATH, $node['node']->uri['path']);
+        $document->addField(TFK_SEARCH_RELATED_TYPE, $node['node']->type);
+      }
+    }
+  }
+  
 }
 
 function tfk_search_apachesolr_facets() {
@@ -256,6 +339,7 @@ function _tfk_get_saved_searches(){
 function theme_tfk_featured_block(&$variables) {
   $tfkSearchFeaturedItem = $variables['tfkSearchFeaturedItem'];
   $output = '<div id="tfk-search-photos-video-featured">';
+  $output .= '<div class="top-story-right-square">&nbsp</div>';
   $url = 'node/'. $tfkSearchFeaturedItem->nid;
   
   $output .= '<div class="g1">';
@@ -716,8 +800,40 @@ function tfk_search_preprocess_search_result(&$vars) {
         )): '';
         
       // Related content.
-      $vars['related_content'] = theme('related_content');
+      $related_content = array();
+
+      if(array_key_exists(TFK_SEARCH_RELATED_TITLE, $vars['result']['fields'])
+        && array_key_exists(TFK_SEARCH_RELATED_PATH, $vars['result']['fields'])) {
         
+        foreach($vars['result']['fields'][TFK_SEARCH_RELATED_TITLE] as $key => $rc_title) {
+          
+          // Translate content type to a human readable form.
+          switch ($vars['result']['fields'][TFK_SEARCH_RELATED_TYPE][$key]) {
+            case 'atw_destination':
+              $content_type = 'destination';
+            break;
+            
+            default:
+              $content_type = $vars['result']['fields'][TFK_SEARCH_RELATED_TYPE][$key];
+            break;
+          }
+          
+          // Add related content item.
+          $related_content[] = array(
+          	'title' => $rc_title,
+            'path' => $vars['result']['fields'][TFK_SEARCH_RELATED_PATH][$key],
+            'type' => $content_type
+          );
+        }
+        
+      }
+      
+      // Theme related content.
+      if(!empty($related_content)) {
+        $vars['related_content'] = theme('tfk_search_related_content', array('related_content' => $related_content));
+      }
+
+      
       // Minor stuff.
       strtoupper($vars['tfk_search_cont_type']);
       
@@ -744,6 +860,12 @@ function tfk_search_apachesolr_modify_query($query, $caller) {
     //$subquery->add_filter('bundle', 'video');
     $subquery->add_filter('bundle', 'slideshow');
     $query->add_subquery($subquery, 'OR');
+    
+    // Retrieve related content fields.
+    $query->params['fl'] .= ','. implode(',', array(TFK_SEARCH_RELATED_TITLE, TFK_SEARCH_RELATED_PATH, TFK_SEARCH_RELATED_TYPE));
+
+    // Limit the number of rows per page to 4 per spec.
+    $query->params['rows'] = 4;
   }
 
   if($query->get_base_path() === 'worksheets') {
