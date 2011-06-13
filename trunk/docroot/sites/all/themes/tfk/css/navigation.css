@@ -744,9 +744,9 @@
 	text-align: center;
 	text-transform: uppercase;
 	color: white;
-	background: red;
+	background: #d71700;
 	margin: 0 0 10px 0;
-	font: normal 10px "arial black";
+	font: normal 14px "arial black";
 }
 
 #block-views-minisite-articles-block-6 .view-content .views-row {
