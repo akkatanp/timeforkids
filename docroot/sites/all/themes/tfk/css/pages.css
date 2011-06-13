@@ -355,7 +355,9 @@ ul.links li {
 }
 
 #block-views-homepage-news-block-block-1,
-#block-views-homepage-destination-block-1 {
+#block-views-homepage-destination-block-1,
+#block-views-c909bfc47773a85d7de307e584c9ea89 {
+	float: left;
 	width: 768px;
 	margin-bottom: 10px;
 }
