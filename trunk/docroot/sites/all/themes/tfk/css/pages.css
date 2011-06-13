@@ -397,8 +397,12 @@ ul.links li {
 	position: absolute;
 	bottom: 0px;
 	right: 0px;
-	color: white;
 	background: #999;
+	padding: 2px;
+}
+
+.view-homepage-minisite .views-field-nothing a {
+	color: white;
 }
 
 #block-views-homepage-news-block-block-1,
