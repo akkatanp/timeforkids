@@ -352,6 +352,25 @@ ul.links li {
         margin:0;
 }
 
+/* front page */
+#block-views-homepage-top-story-block-1 {
+	float: left;'
+	width: 510px;
+	margin-right: 8px;
+	height: 350px;
+}
+
+#block-views-homepage-minisite-block-1 {
+	float: left;
+	width: 250px;
+	height: 350px;
+}
+
+#block-views-homepage-minisite-block-1 .content {
+	background: #dedede;
+	border: solid 1px #cecece;
+}
+
 /* kid reporter header */
 .page-kid-reporter #content h2.block-title {
 	border: solid 1px #cecece;
