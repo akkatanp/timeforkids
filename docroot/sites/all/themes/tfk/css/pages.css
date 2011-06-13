@@ -356,8 +356,14 @@ ul.links li {
 
 #block-views-homepage-news-block-block-1,
 #block-views-homepage-destination-block-1 {
-	float: left;
 	width: 768px;
+	margin-bottom: 10px;
+}
+
+/* mini-site */
+.page-mini-sites .view-minisite-home .view-header {
+	border: solid 1px #cecece;
+	padding: 10px;
 }
 
 /* kid reporter header */
