@@ -51,5 +51,36 @@ function flashcard_cycle_admin_settings() {
       'next' => t('Show back of card, then go to next card.'),
     ),
   );
+
+  $form['keyboard'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Keyboard'),
+  );
+  $form['keyboard']['flashcard_cycle_keyboard'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Keyboard bindings'),
+    '#default_value' => variable_get('flashcard_cycle_keyboard', 1),
+    '#description' => t('Map spacebar to flip cards, left and right arrow to previous and next.'),
+  );
+
+  $form['visual'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Visual'),
+  );
+  $form['visual']['flashcard_cycle_jquery_ui_theme'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Use jQuery UI Theme'),
+    '#default_value' => variable_get('flashcard_cycle_jquery_ui_theme', 1),
+  );
+  $form['visual']['flashcard_cycle_effect'] = array(
+    '#type' => 'select',
+    '#title' => t('jQuery Cycle Effect'),
+    '#default_value' => variable_get('flashcard_cycle_effect', 'fade'),
+    '#options' => array(
+      'fade' => t('Fade'),
+      'none' => t('None'),
+    ),
+  );
+
   return system_settings_form($form);
 }

@@ -12,6 +12,9 @@ function flashcard_cycle_uninstall() {
   variable_del('flashcard_cycle_speed_setting');
   variable_del('flashcard_cycle_custom_speed');
   variable_del('flashcard_cycle_flip');
+  variable_del('flashcard_cycle_keyboard');
+  variable_del('flashcard_cycle_jquery_ui_theme');
+  variable_del('flashcard_cycle_effect');
 }
 
 

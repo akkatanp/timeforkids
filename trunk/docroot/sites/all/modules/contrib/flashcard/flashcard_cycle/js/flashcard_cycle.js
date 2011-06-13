@@ -11,6 +11,7 @@
       $.fn.cycle.defaults.before = clearMarked;
       $.fn.cycle.defaults.speed = cycleSpeed;
       $.fn.cycle.defaults.fit = true;
+      $.fn.cycle.defaults.fx = Drupal.settings.flashcardCycle.fx;
 
       $('.flashcard-cycle').each(
         function() {
@@ -61,7 +62,13 @@
                   }
                 )
               .end()
-              .buttonset()
+              .each(
+                function() {
+                  if (Drupal.settings.flashcardCycle.button) {
+                    $(this).buttonset();
+                  }
+                }
+              )
             .end()
 
             .find('.restart')
@@ -116,13 +123,15 @@
               )
               .each(
                 function() {
-                  $(this)
-                    .button({
-                      text: false,
-                      icons: {
-                        primary: 'ui-icon-circle-triangle-' + (($(this).attr('class').split(/\b/)[0] === 'prev') ? 'w' : 'e')
-                      }
-                    });
+                  if (Drupal.settings.flashcardCycle.button) {
+                    $(this)
+                      .button({
+                        text: false,
+                        icons: {
+                          primary: 'ui-icon-circle-triangle-' + (($(this).attr('class').split(/\b/)[0] === 'prev') ? 'w' : 'e')
+                        }
+                      });
+                  }
                 }
               )
             .end()
@@ -211,20 +220,22 @@
           .end();
       }
 
-      $('body').keydown(
-        function(e) {
-          if (e.which == 32) {
-            $('.flip').click();
-            return false;
+      if (Drupal.settings.flashcardCycle.keyboard) {
+        $('body').keydown(
+          function(e) {
+            if (e.which == 32) {
+              $('.flip').click();
+              return false;
+            }
+            if (e.which == 37) {
+              $('.prev').click();
+            }
+            if (e.which == 39) {
+              $('.next').click();
+            }
           }
-          if (e.which == 37) {
-            $('.prev').click();
-          }
-          if (e.which == 39) {
-            $('.next').click();
-          }
-        }
-      );
+        );
+      }
     }
   }
 }(jQuery));
