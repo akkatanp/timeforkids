@@ -354,6 +354,11 @@ ul.links li {
 	border: solid 1px #cecece;
 }
 
+.view-homepage-minisite {
+	background: url(../images/atw-sidebar-head.png) no-repeat top left;
+	padding-top: 20px;
+}
+
 #block-views-homepage-news-block-block-1,
 #block-views-homepage-destination-block-1,
 #block-views-c909bfc47773a85d7de307e584c9ea89 {
