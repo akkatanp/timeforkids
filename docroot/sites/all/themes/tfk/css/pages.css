@@ -368,6 +368,15 @@ ul.links li {
 	padding: 10px;
 }
 
+.page-mini-sites .view-minisite-home .view-header h2 {
+	font: bold 30px arial;
+	margin: 0 0 10px 0;
+}
+
+.page-mini-sites .view-minisite-home .view-header p {
+	margin: 0;
+}
+
 /* kid reporter header */
 .page-kid-reporter #content h2.block-title {
 	border: solid 1px #cecece;
