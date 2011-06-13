@@ -1,14 +1,18 @@
-  <script type="text/javascript">
+  <!--script type="text/javascript">
 	$ = jQuery;
   </script>
   <script type="text/javascript" src="/sites/all/themes/tfk/js/jEmbed/jquery.jlembed.js"></script>
   <script type="text/javascript">
   $(document).ready(function(){
 	$("#media").jlEmbed({
-		url: 'http://timedev.prod.acquia-sites.com/files/videos/original/Lexus_0.mp4'
+		url: 'http://timedev.prod.acquia-sites.com/files/videos/original/Lexus_0.mp4',
+		loop: 'no',
+		autoplay: 'no',
+		width: 488,
+		height: 250
 	});
 });
-</script>
+</script-->
 <div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
 				
   <?php print $user_picture; ?>
@@ -41,7 +45,7 @@
      // print_r($node);exit;
 
 
-     // print render($content);
+     print render($content);
     ?>
   </div>
 
