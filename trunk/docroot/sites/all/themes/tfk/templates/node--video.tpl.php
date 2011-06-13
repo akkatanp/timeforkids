@@ -50,7 +50,9 @@
 });
 </script>
 <div id="media"></div>
-<a href="#" onclick="document.Lexus.Stop();">stop</a>
+<a href="#" onclick="document.Lexus.Play();">play</a> | 
+<a href="#" onclick="document.Lexus.Stop();">pause</a> |
+<a href="#" onclick="document.Lexus.Rewind();">stop</a>
     <?php
       // We hide the comments and links now so that we can render them later.
       hide($content['comments']);
