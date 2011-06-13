@@ -448,7 +448,7 @@ ul.links li {
 	display: none;
 }
 
-/* mini-site */
+/* mini-sites */
 .page-mini-sites .view-minisite-home .view-header {
 	border: solid 1px #cecece;
 	padding: 10px;
@@ -460,6 +460,16 @@ ul.links li {
 }
 
 .page-mini-sites .view-minisite-home .view-header p {
+	margin: 0;
+}
+
+#block-views-minisite-articles-block-7 {
+	border: solid 1px #cecece;
+	padding: 10px;
+	margin-bottom: 10px;
+}
+
+#block-views-minisite-articles-block-7 table {
 	margin: 0;
 }
 
@@ -842,7 +852,53 @@ ul.links li {
 	font-size: 10px;
 	font-weight: bold;
 }
+.related-content-wrap {
+	position: relative;
+	background: #d9effe;
+	border: solid 3px #acdbfc;
+	margin-top: 20px;
+	padding: 2px 4px;
+	-moz-box-shadow: 2px 2px 4px #666;
+	-webkit-box-shadow: 2px 2px 4px 666;
+	box-shadow: 2px 2px 4px #666;
+}
 
+.related-content-wrap .addit-content {
+	position: absolute;
+	top: -20px;
+	left: -4px;
+	font-weight: bold;
+}
+
+.related-content-wrap .addit-mini-lessons,
+.related-content-wrap .addit-related-articles {
+	padding: 2px 0 2px 20px;
+	line-height: 16px;
+}
+
+.related-content-wrap .addit-mini-lessons {
+	background: url("../images/related-article-icon.png") no-repeat 0px 2px;
+}
+
+.related-content-wrap .addit-related-articles {
+	background: url("../images/mini-lessons-icon.png") no-repeat 0px 2px;
+}
+
+.related-content-wrap .addit-mini-lessons .field-content,
+.related-content-wrap .addit-related-articles .field-content {
+	display: inline;
+}
+
+.related-content-wrap .addit-mini-lessons .field-content a,
+.related-content-wrap .addit-related-articles .field-content a {
+	font-weight: normal;
+}
+
+.view-homepage-top-story  .related-content-wrap,
+.view-teacher-news-top-story .related-content-wrap ,
+.view-kid-reporters-channel-top-story .related-content-wrap  {
+	clear: both;
+}
 .node-type-article .group_additional_content {
 	background: #d9effe;
 	border: solid 3px #acdbfc;
@@ -899,6 +955,9 @@ ul.links li {
 }
 
 .node-type-article .is-kid-reporter-article .reporter-badge {
+	float: right;
+	margin-left: 10px;
+	margin-bottom: 10px;
 	width: 120px;
 	height: 100px;
 	padding: 10px;
