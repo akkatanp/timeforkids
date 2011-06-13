@@ -155,6 +155,9 @@ function flashcard_field_formatter_view($entity_type, $entity, $field, $instance
           'class' => array('answer'),
         ),
       ),
+      '#attributes' => array(
+        'class' => array('question'),
+      ),
     );
   }
   return $element;
