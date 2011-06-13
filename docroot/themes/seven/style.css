@@ -995,3 +995,20 @@ div.add-or-remove-shortcuts {
   -webkit-border-radius: 8px;
   border-radius: 8px;
 }
+
+/* Custom webform changes */
+#webform-component-edit-form .form-item-extra-description .description{
+  display:none;
+}
+
+#webform-component-edit-form .form-item-extra-correct-text .description{
+  display:none;
+}
+
+#webform-component-edit-form #edit-validation{
+  display:none;
+}
+
+#webform-component-edit-form #edit-display{
+  display:none;
+}

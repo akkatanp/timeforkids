@@ -14,7 +14,7 @@ function _webform_defaults_question_quiz() {
     'form_key' => NULL,
     'pid' => 0,
     'weight' => 0,
-    'mandatory' => 0,
+    'mandatory' => 1,
     'extra' => array(
       'question' => '',
       'answers' => '',
@@ -102,7 +102,7 @@ function _webform_render_question_quiz($component, $value = NULL, $filter = TRUE
  */
 function _webform_display_question_quiz($component, $value, $format = 'html') {
 
-	dsm('liber');
+	//dsm('liber');
   return array(
     '#title' => $component['name'],
     '#weight' => $component['weight'],

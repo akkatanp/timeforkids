@@ -582,9 +582,8 @@ function tfk_atw_quiz_submit(&$form, &$form_state) {
 
 function tfk_atw_form_alter(&$form,&$form_state,$form_id) {
 	if(substr($form_id,0, 19) == 'webform_client_form') {
-
             $dest_slug = arg(1);
-            $form['#action'] = url('destination/'.$dest_slug.'/challenge');
+            //$form['#action'] = url('destination/'.$dest_slug.'/challenge');
 
 		if (isset($form_state['storage'])) {
 
@@ -624,6 +623,12 @@ function tfk_atw_form_alter(&$form,&$form_state,$form_id) {
 			$form['#submit'][]='tfk_atw_quiz_submit';
 		}
 	}
+
+        if($form_id != 'atw_destination_node_form'){
+          //print_r($form);
+        }
+        
+
 }
 /* QUIZZ FUNCTIONALITY END*/
 
