@@ -68,6 +68,9 @@ function template_preprocess_flashcard_cycle(&$variables) {
   $settings = array(
     'speed' => $speed,
     'flip' => variable_get('flashcard_cycle_flip', 'flip'),
+    'keyboard' => variable_get('flashcard_cycle_keyboard', 1),
+    'button' => variable_get('flashcard_cycle_jquery_ui_theme', 1),
+    'fx' => variable_get('flashcard_cycle_effect', 'fade'),
   );
 
   drupal_add_library('system', 'ui.button');
