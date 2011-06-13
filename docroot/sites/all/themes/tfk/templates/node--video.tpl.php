@@ -4,7 +4,7 @@
   <script type="text/javascript" src="/sites/all/themes/tfk/js/jEmbed/jquery.jlembed.js"></script>
   <script type="text/javascript">
   $(document).ready(function(){
-	$("#example-div").jlEmbed({
+	$("#media").jlEmbed({
 		url: 'http://timedev.prod.acquia-sites.com/files/videos/original/Lexus.mp4'
 	});
 });
