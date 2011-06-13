@@ -10,6 +10,341 @@
 function feature_slideshow_field_default_fields() {
   $fields = array();
 
+  // Exported field: 'node-slideshow-body'
+  $fields['node-slideshow-body'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(
+        0 => 'node',
+      ),
+      'field_name' => 'body',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'module' => 'text',
+      'settings' => array(),
+      'translatable' => '1',
+      'type' => 'text_with_summary',
+    ),
+    'field_instance' => array(
+      'bundle' => 'slideshow',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'hidden',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => '0',
+        ),
+        'teaser' => array(
+          'label' => 'hidden',
+          'module' => 'text',
+          'settings' => array(
+            'trim_length' => 600,
+          ),
+          'type' => 'text_summary_or_trimmed',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'body',
+      'label' => 'Description',
+      'required' => 1,
+      'settings' => array(
+        'display_summary' => 0,
+        'text_processing' => '1',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'rows' => '5',
+          'summary_rows' => 5,
+        ),
+        'type' => 'text_textarea_with_summary',
+        'weight' => '1',
+      ),
+      'widget_type' => 'text_textarea_with_summary',
+    ),
+  );
+
+  // Exported field: 'node-slideshow-field_additional_content'
+  $fields['node-slideshow-field_additional_content'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '-1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_additional_content',
+      'foreign keys' => array(
+        'nid' => array(
+          'columns' => array(
+            'nid' => 'nid',
+          ),
+          'table' => 'node',
+        ),
+      ),
+      'indexes' => array(
+        'nid' => array(
+          0 => 'nid',
+        ),
+      ),
+      'module' => 'node_reference',
+      'settings' => array(
+        'referenceable_types' => array(
+          'a_paper' => 0,
+          'article' => 'article',
+          'atw_day_in_life' => 0,
+          'atw_destination' => 'atw_destination',
+          'atw_homepage_nodeblock' => 0,
+          'atw_native_lingo' => 0,
+          'atw_sightseeing' => 0,
+          'atw_timeline' => 0,
+          'board_member' => 0,
+          'book' => 0,
+          'global_right_sidebar_promo' => 0,
+          'image' => 0,
+          'kid_reporter' => 0,
+          'magazine_issue' => 0,
+          'mini_lesson' => 0,
+          'minisite' => 0,
+          'notification_homepage' => 0,
+          'page' => 0,
+          'paper_step' => 0,
+          'slideshow' => 'slideshow',
+          'tfk_extra' => 0,
+          'video' => 'video',
+          'webform' => 0,
+          'worksheet' => 'worksheet',
+        ),
+        'view' => array(
+          'args' => array(),
+          'display_name' => '',
+          'view_name' => '',
+        ),
+      ),
+      'translatable' => '1',
+      'type' => 'node_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'slideshow',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'node_reference',
+          'settings' => array(),
+          'type' => 'node_reference_default',
+          'weight' => 6,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_additional_content',
+      'label' => 'Additional content',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'node_reference',
+        'settings' => array(
+          'autocomplete_match' => 'contains',
+          'autocomplete_path' => 'node_reference/autocomplete',
+          'size' => '60',
+        ),
+        'type' => 'node_reference_autocomplete',
+        'weight' => '7',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-slideshow-field_slideshow_images'
+  $fields['node-slideshow-field_slideshow_images'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '-1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_slideshow_images',
+      'foreign keys' => array(
+        'nid' => array(
+          'columns' => array(
+            'nid' => 'nid',
+          ),
+          'table' => 'node',
+        ),
+      ),
+      'indexes' => array(
+        'nid' => array(
+          0 => 'nid',
+        ),
+      ),
+      'module' => 'node_reference',
+      'settings' => array(
+        'referenceable_types' => array(
+          'article' => 0,
+          'atw_day_in_life' => 0,
+          'atw_destination' => 0,
+          'atw_native_lingo' => 0,
+          'atw_sightseeing' => 0,
+          'atw_timeline' => 0,
+          'book' => 0,
+          'image' => 'image',
+          'kid_reporter' => 0,
+          'magazine_issue' => 0,
+          'page' => 0,
+          'slideshow' => 0,
+          'tfk_extra' => 0,
+          'video' => 0,
+          'worksheet' => 0,
+        ),
+        'view' => array(
+          'args' => array(),
+          'display_name' => '',
+          'view_name' => '',
+        ),
+      ),
+      'translatable' => '1',
+      'type' => 'node_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'slideshow',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'node_reference',
+          'settings' => array(
+            'node_reference_view_mode' => 'full',
+          ),
+          'type' => 'node_reference_node',
+          'weight' => '1',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_slideshow_images',
+      'label' => 'Images',
+      'required' => 1,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'node_reference',
+        'settings' => array(
+          'autocomplete_match' => 'contains',
+          'autocomplete_path' => 'node_reference/autocomplete',
+          'size' => '60',
+        ),
+        'type' => 'node_reference_autocomplete',
+        'weight' => '3',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-slideshow-field_themes'
+  $fields['node-slideshow-field_themes'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_themes',
+      'foreign keys' => array(
+        'tid' => array(
+          'columns' => array(
+            'tid' => 'tid',
+          ),
+          'table' => 'taxonomy_term_data',
+        ),
+      ),
+      'indexes' => array(
+        'tid' => array(
+          0 => 'tid',
+        ),
+      ),
+      'module' => 'taxonomy',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => array(
+            'parent' => '0',
+            'vocabulary' => 'themes',
+          ),
+        ),
+      ),
+      'translatable' => '1',
+      'type' => 'taxonomy_term_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'slideshow',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'taxonomy',
+          'settings' => array(),
+          'type' => 'taxonomy_term_reference_link',
+          'weight' => 2,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_themes',
+      'label' => 'Themes',
+      'required' => 1,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(),
+        'type' => 'options_select',
+        'weight' => '2',
+      ),
+    ),
+  );
+
   // Exported field: 'node-video-body'
   $fields['node-video-body'] = array(
     'field_config' => array(
@@ -700,8 +1035,8 @@ function feature_slideshow_field_default_fields() {
       'indexes' => array(),
       'module' => 'metatags_quick',
       'settings' => array(
-        0 => 'meta_name',
         'meta_name' => 'description',
+        0 => 'meta_name',
       ),
       'translatable' => '0',
       'type' => 'metatags_quick',
@@ -754,8 +1089,8 @@ function feature_slideshow_field_default_fields() {
       'indexes' => array(),
       'module' => 'metatags_quick',
       'settings' => array(
-        0 => 'meta_name',
         'meta_name' => 'keywords',
+        0 => 'meta_name',
       ),
       'translatable' => '0',
       'type' => 'metatags_quick',
@@ -798,12 +1133,14 @@ function feature_slideshow_field_default_fields() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Additional content');
   t('Caption');
   t('Category');
   t('Credit');
   t('Date');
   t('Description');
   t('Duration');
+  t('Images');
   t('Meta Description');
   t('Meta Keywords');
   t('Related Photos and Video');
