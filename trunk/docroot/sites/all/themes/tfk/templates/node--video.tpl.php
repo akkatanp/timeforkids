@@ -24,6 +24,7 @@
   </script>
   <script type="text/javascript" src="http://github.com/malsup/media/raw/master/jquery.media.js?v0.92"></script>
   <script type="text/javascript">
+  $.fn.media.mapFormat('mp4','flash');
 	$(document).ready(function() {
 		$('a.media').media();
 	});
