@@ -5,6 +5,6 @@
  * out of both SSH and the modules page.
  *
  */
-function feature_slideshow_update_7000() {
-  module_enable('video');
-}
+//function feature_slideshow_update_7000() {
+//  module_enable('video');
+//}
