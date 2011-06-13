@@ -335,20 +335,20 @@ ul.links li {
 #block-views-homepage-top-story-block-1 {
 	float: left;
 	width: 510px;
-	height: 350px;
+	height: 380px;
 	margin-right: 8px;
 }
 
 #block-views-homepage-minisite-block-1 {
 	float: left;
 	width: 250px;
-	height: 350px;
+	height: 380px;
 }
 
 #block-views-homepage-minisite-block-1 .content {
 	background: #dedede;
 	border: solid 1px #cecece;
-	height: 348px;
+	height: 378px;
 }
 
 #block-views-homepage-news-block-block-1,
