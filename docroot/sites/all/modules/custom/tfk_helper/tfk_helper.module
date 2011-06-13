@@ -13,41 +13,11 @@ function tfk_helper_node_view() {
  */
 function tfk_helper_theme() {
   return array(
-    // Custom "top pager" for photos-video section. From common.inc.
-    'related_content' => array(
-      #'variables' => array('tags' => array(), 'element' => 0, 'parameters' => array(), 'quantity' => 9),
-      'variables' => array('args' => NULL),
-      #'file' => 'tfk_search_pager.inc',
-    ),
     // Featured block that goes on the sidebar.
     'featured_block_sidebar' => array(
       'variables' => array('args' => NULL),
     ),
   );
-}
-
-/**
- * Theme additional content block.
- * - article
- * - minilesson
- * - worksheet
- *
- * @return
- *   Returns HTML output for a related content block.
- */
-function theme_related_content($args) {
-  // Related content.
-  $output .= '<div id="featured-related-content-title" class="addit-content">Additional Content</div>';
-  $output .= '<div id="featured-related-content" class="related-content-wrap">';
-  
-    $output .= '<div class="addit-related-articles">';
-      $output .= '<div class="addit-related-articles-label">WORKSHEETS:</div>';
-      $output .= '<div class="addit-related-articles-title">Related content title | </div>';
-      $output .= '<div class="addit-related-articles-download"> Download PDF</div>';
- 		$output .= '</div>';
-  
-  $output .= '</div>';
-  return $output;
 }
 
 /**
@@ -248,4 +218,21 @@ function tfk_helper_get_featured_block_sidebar($node_type) {
 	
 }
 
+function tfk_helper_get_related_content() {
+  // @see Views API: http://groups.drupal.org/node/10129.
+  $items = array();
+  $view = views_get_view('homepage_news_block');
+  $view->execute_display('Homepage News Block', array($nid));
+  #$view->set_display('block_mpv');
+  #$view->set_arguments(array(arg(1)));
+  #$view->execute();
+  $view->render();
+  foreach ($view->result as $result) {
+    $items[] = array(
+      'title' => '',
+    	'image' => drupal_render($result->field_field_image[0]['rendered'])
+    );
+  }
+  return $items;
+}
 
