@@ -41,7 +41,8 @@
 		loop: 'no',
 		autoplay: 'no',
 		width: 488,
-		height: 250
+		height: 250,
+		params: 'controller=true'
 	});
 });
 </script>
@@ -54,7 +55,7 @@
      // print_r($node);exit;
 
 
-     print render($content);
+//print render($content);
     ?>
   </div>
 
