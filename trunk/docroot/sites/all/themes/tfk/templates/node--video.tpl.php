@@ -5,7 +5,7 @@
   <script type="text/javascript">
   $(document).ready(function(){
 	$("#media").jlEmbed({
-		url: 'http://timedev.prod.acquia-sites.com/files/videos/original/Lexus.mp4'
+		url: 'http://timedev.prod.acquia-sites.com/files/videos/original/Lexus_0.mp4'
 	});
 });
 </script>
