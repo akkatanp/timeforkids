@@ -755,16 +755,20 @@
 	border-bottom: solid 1px #cecece;
 }
 
+#block-views-minisite-articles-block-6 .view-content .views-row {
+	min-height: 60px;
+}
+
 #block-views-minisite-articles-block-6 .view-content .views-row .field-content a {
 	font: bold 20px arial;
 }
 
-#block-views-minisite-articles-block-6 .view-content .views-row .views-field-field-tout-image {
+/*#block-views-minisite-articles-block-6 .view-content .views-row .views-field-field-tout-image {
 	float: left;
 	height: 60px;
 	width: 60px;
 	border: solid 1px #cecece;
-}
+}*/
 
 /* Footer Nav */
 .region-footer ul.menu {
