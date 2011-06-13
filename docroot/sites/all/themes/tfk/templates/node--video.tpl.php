@@ -1,12 +1,14 @@
   <script type="text/javascript">
 	$ = jQuery;
   </script>
-  <script type="text/javascript" src="http://github.com/malsup/media/raw/master/jquery.media.js?v0.92"></script>
+  <script type="text/javascript" src="/sites/all/themes/tfk/js/jEmbed/jquery.jlembed.js"></script>
   <script type="text/javascript">
-	$(document).ready(function() {
-		$('a.media').media();
+  $(document).ready(function(){
+	$("#example-div").jlEmbed({
+		url: 'http://timedev.prod.acquia-sites.com/files/videos/original/Lexus.mp4'
 	});
-  </script>
+});
+</script>
 <div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
 				
   <?php print $user_picture; ?>
@@ -29,7 +31,7 @@
 
   <div class="content"<?php print $content_attributes; ?>>
   
-  <a class="media {width:480, height:280}" href="http://timedev.prod.acquia-sites.com/files/videos/original/Lexus.mp4">MP4 File (video)</a> 
+  <div id="media">MP4 File (video)</div> 
 
     <?php
       // We hide the comments and links now so that we can render them later.
