@@ -38,7 +38,9 @@
   $(document).ready(function(){
 	$("#media").jlEmbed({
 		url: 'http://timedev.prod.acquia-sites.com/files/videos/original/Lexus_0.mp4',
+		id: 'Lexus',
 		plugin: 'quicktime',
+		codebase: 'http://www.apple.com/qtactivex/qtplugin.cab',
 		loop: 'no',
 		autoplay: 'yes',
 		width: 488,
@@ -48,6 +50,7 @@
 });
 </script>
 <div id="media"></div>
+<a href="#" onclick="document.Lexus.Stop();">stop</a>
     <?php
       // We hide the comments and links now so that we can render them later.
       hide($content['comments']);
