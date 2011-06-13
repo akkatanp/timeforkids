@@ -19,14 +19,14 @@
   <?php endif; ?>
 
   <div class="content"<?php print $content_attributes; ?>>
-  <!--script type="text/javascript" src="http://github.com/malsup/media/raw/master/jquery.media.js?v0.92"></script>
+  <script type="text/javascript" src="http://github.com/malsup/media/raw/master/jquery.media.js?v0.92"></script>
   <script type="text/javascript">
 	jQuery(document).ready(function() {
 		$('a.media').media();
 	});
-  </script-->
+  </script>
   
-  <a class="media {width:480, height:280}" href="<?php print $content[0]['field_video_upload']; ?>">MP4 File (video)</a> 
+  <a class="media {width:480, height:280}" href="http://timedev.prod.acquia-sites.com/files/videos/original/Lexus_0.mp4">MP4 File (video)</a> 
 
     <?php
       // We hide the comments and links now so that we can render them later.
