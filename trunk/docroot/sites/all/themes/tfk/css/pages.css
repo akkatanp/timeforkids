@@ -631,6 +631,7 @@ ul.links li {
 	background: url(../images/tfk-kid-reporter-head.png) no-repeat 10px 10px;
 }
 
+.view-minisite-home .view-content p,
 .view-all-kid-reporters .view-header p {
 	margin: 0;
 }
@@ -663,6 +664,11 @@ ul.links li {
 	margin-right: 8px;
 }
 
+.view-minisite-home .view-content table td .views-field-title a {
+	font: bold 20px arial;
+	color: #d71700;
+}
+
 .view-minisite-home .view-content table td .views-field-field-thumbnail-image,
 .view-all-kid-reporters .view-content table td .views-field-field-thumbnail-image {
 	float: left;
@@ -676,7 +682,10 @@ ul.links li {
 	border: solid 1px #cecece;
 }
 
-.view-minisite-home .view-content table td .views-field-title-1,
+.view-minisite-home .view-content table td .views-field-title-1 {
+
+}
+
 .view-all-kid-reporters .view-content table td .views-field-title-1 {
 	margin-top: 10px;
 }
