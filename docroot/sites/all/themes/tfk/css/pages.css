@@ -365,6 +365,8 @@ ul.links li {
 
 .view-homepage-minisite .views-field-title a {
 	font: bold 20px arial;
+}
+.view-homepage-minisite .views-field-title {
 	margin-bottom: 20px;
 }
 
@@ -408,8 +410,9 @@ ul.links li {
 
 #block-views-homepage-destination-block-1 .views-field-field-image {
 	float: left;
-	height: 62px;
+	height: 92px;
 	width: 62px;
+	margin: 0 10px 10px 0;
 }
 
 #block-views-homepage-destination-block-1 .views-field-field-image img {
@@ -420,6 +423,10 @@ ul.links li {
 
 #block-views-homepage-destination-block-1 .views-field-title a {
 	font: bold 20px arial;
+}
+
+#block-views-homepage-destination-block-1 .views-field-title-1 {
+	display: inline;
 }
 
 #block-views-homepage-destination-block-1 .views-field-field-resources-label,
