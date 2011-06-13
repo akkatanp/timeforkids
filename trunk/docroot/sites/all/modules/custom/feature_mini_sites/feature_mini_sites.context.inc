@@ -83,17 +83,23 @@ function feature_mini_sites_context_default_contexts() {
           'region' => 'sidebar_first',
           'weight' => '-45',
         ),
+        'views-minisite_articles-block_7' => array(
+          'module' => 'views',
+          'delta' => 'minisite_articles-block_7',
+          'region' => 'content',
+          'weight' => '-10',
+        ),
         'views-minisite_articles-block_3' => array(
           'module' => 'views',
           'delta' => 'minisite_articles-block_3',
           'region' => 'content',
-          'weight' => '-10',
+          'weight' => '-9',
         ),
         'views-minisite_articles-block_1' => array(
           'module' => 'views',
           'delta' => 'minisite_articles-block_1',
           'region' => 'content',
-          'weight' => '-9',
+          'weight' => '-8',
         ),
       ),
     ),
@@ -122,7 +128,9 @@ function feature_mini_sites_context_default_contexts() {
     ),
     'user' => array(
       'values' => array(
+        'administrator' => 'administrator',
         'authenticated user' => 'authenticated user',
+        'editor' => 'editor',
       ),
     ),
   );
@@ -147,17 +155,23 @@ function feature_mini_sites_context_default_contexts() {
           'region' => 'sidebar_first',
           'weight' => '-10',
         ),
-        'views-minisite_articles-block_2' => array(
-          'module' => 'views',
-          'delta' => 'minisite_articles-block_2',
-          'region' => 'content',
-          'weight' => '-10',
-        ),
         'views-minisite_articles-block_7' => array(
           'module' => 'views',
           'delta' => 'minisite_articles-block_7',
           'region' => 'content',
+          'weight' => '-10',
+        ),
+        'views-minisite_articles-block_2' => array(
+          'module' => 'views',
+          'delta' => 'minisite_articles-block_2',
+          'region' => 'content',
           'weight' => '-9',
+        ),
+        'views-minisite_articles-block' => array(
+          'module' => 'views',
+          'delta' => 'minisite_articles-block',
+          'region' => 'content',
+          'weight' => '-8',
         ),
       ),
     ),
