@@ -345,6 +345,7 @@ ul.links li {
 	width: 250px;
 	height: 400px;
 	margin-bottom: 10px;
+	position: relative;
 }
 
 #block-views-homepage-minisite-block-1 .content {
@@ -352,6 +353,7 @@ ul.links li {
 	padding: 10px;
 	background: #dedede;
 	border: solid 1px #cecece;
+	position: relative;
 }
 
 .view-homepage-minisite p {
@@ -389,6 +391,14 @@ ul.links li {
 	-moz-box-shadow: 2px 2px 4px #666;
 	-webkit-box-shadow: 2px 2px 4px 666;
 	box-shadow: 2px 2px 4px #666;
+}
+
+.view-homepage-minisite .views-field-nothing {
+	position: absolute;
+	bottom: 0px;
+	right: 0px;
+	color: white;
+	background: #999;
 }
 
 #block-views-homepage-news-block-block-1,
