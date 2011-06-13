@@ -147,6 +147,14 @@ function feature_slideshow_image_default_styles() {
  */
 function feature_slideshow_node_info() {
   $items = array(
+    'slideshow' => array(
+      'name' => t('Slideshow'),
+      'base' => 'node_content',
+      'description' => '',
+      'has_title' => '1',
+      'title_label' => t('Title'),
+      'help' => '',
+    ),
     'video' => array(
       'name' => t('Video'),
       'base' => 'node_content',
