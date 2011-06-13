@@ -354,9 +354,39 @@ ul.links li {
 	border: solid 1px #cecece;
 }
 
+.view-homepage-minisite p {
+	margin: 0;
+}
+
 .view-homepage-minisite {
 	background: url(../images/atw-sidebar-head.png) no-repeat top left;
 	padding-top: 20px;
+}
+
+.view-homepage-minisite .views-field-title a {
+	font: bold 20px arial;
+	margin-bottom: 20px;
+}
+
+.view-homepage-minisite .views-field-field-header-image img {
+	width: 222px;
+	border: solid 3px white;
+}
+
+.view-homepage-minisite .views-field-field-minisite-resources-label {
+	font-weight: bold;
+	margin-top: 10px;
+}
+
+.view-homepage-minisite .views-field-field-minisite-resources {
+	position: relative;
+	background: #d9effe;
+	border: solid 3px #acdbfc;
+	margin-top: 20px;
+	padding: 2px 4px;
+	-moz-box-shadow: 2px 2px 4px #666;
+	-webkit-box-shadow: 2px 2px 4px 666;
+	box-shadow: 2px 2px 4px #666;
 }
 
 #block-views-homepage-news-block-block-1,
