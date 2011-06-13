@@ -26,7 +26,7 @@
 	});
   </script>
   
-  <a class="media {width:480, height:280}" href="<?php print $content[0]['field_video_upload']); ?>">MP4 File (video)</a> 
+  <a class="media {width:480, height:280}" href="<?php print $content[0]['field_video_upload']; ?>">MP4 File (video)</a> 
 
     <?php
       // We hide the comments and links now so that we can render them later.
