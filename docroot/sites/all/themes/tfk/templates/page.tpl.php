@@ -178,8 +178,6 @@ if(drupal_is_front_page()) {
 
       <?php print $feed_icons; ?>
     </div></div><!-- /.section, /#content -->
-	
-	<?php print render($page['sidebar_second']); ?>
 
   </div>
 
