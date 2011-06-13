@@ -175,6 +175,7 @@ function theme_webform_components_form($variables) {
   $form['add']['cid']['#attributes']['class'] = array('webform-cid');
   $form['add']['pid']['#attributes']['class'] = array('webform-pid');
   $form['add']['weight']['#attributes']['class'] = array('webform-weight');
+  $form['add']['mandatory']['#attributes']['class'] = array('webform-mandatory-check');
   $row_data = array(
     drupal_render($form['add']['name']),
     drupal_render($form['add']['type']),
@@ -418,7 +419,7 @@ function webform_component_edit_form($form, $form_state, $node, $component, $clo
     $form['validation']['mandatory'] = array(
       '#type' => 'checkbox',
       '#title' => t('Mandatory'),
-      '#default_value' => ($component['mandatory'] == '1' ? TRUE : FALSE),
+      '#default_value' => TRUE,
       '#description' => t('Check this option if the user must enter a value.'),
       '#weight' => -1,
       '#parents' => array('mandatory'),
