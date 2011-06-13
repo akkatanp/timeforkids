@@ -45,26 +45,21 @@ function grammar_wizard_multistep_form($form, &$form_state, $questions) {
   if (isset($form["step_$step"]['question'])) {
     $form["step_$step"]['question']['#default_value'] = empty($form_state['values']["step_$step"]['question']) ? '' : $form_state['values']["step_$step"]['question'];
   }
+    
+  $form['check_answer'] = array(
+    '#type' => 'submit',
+    '#value' => t('Check Answer'),
+    '#submit' => array('grammar_wizard_check_answer'),
+    '#ajax' => array(
+      'wrapper' => 'wizard-form-wrapper',
+      'callback' => 'grammar_wizard_multistep_form_callback',
+    ),
+  );
   
-  if ($step > 0) {
-   $form['prev'] = array(
-      '#type' => 'submit',
-      '#value' => t("Previous step"),
-
-      // Since all info will be discarded, don't validate on 'prev'.
-      '#limit_validation_errors' => array(),
-      // #submit is required to use #limit_validation_errors
-      '#submit' => array('grammar_wizard_multistep_form_submit'),
-      '#ajax' => array(
-        'wrapper' => 'wizard-form-wrapper',
-        'callback' => 'grammar_wizard_multistep_form_callback',
-      ),
-    );
-  }
   if ($step < $last_step) {
     $form['next'] = array(
       '#type' => 'submit',
-      '#value' => t('Next step'),
+      '#value' => t('Next Question'),
       '#ajax' => array(
         'wrapper' => 'wizard-form-wrapper',
         'callback' => 'grammar_wizard_multistep_form_callback',
@@ -93,10 +88,22 @@ function grammar_wizard_multistep_form($form, &$form_state, $questions) {
       '#weight' => 0,
     );
   }
+  
   return $form;
 }
 
 function grammar_wizard_multistep_form_callback($form, $form_state) {
+  $current_step = 'step_' . $form_state['storage']['step'];
+  
+  if (isset($form_state['student_answers'][$current_step])) {
+    $form['question_result'] = array('#markup' => $form_state['question_result']);
+    $form['check_answer']['#value'] = 'Try Again';
+  }
+
+  if ($form_state['student_answers'][$current_step] == 1) {
+    $form['check_answer']['#access'] = FALSE; 
+  }  
+
   return $form;
 }
 
@@ -116,7 +123,7 @@ function grammar_wizard_multistep_form_submit($form, &$form_state) {
   }
 
   // Increment or decrement the step as needed. Recover values if they exist.
-  if ($form_state['triggering_element']['#value'] == t('Next step')) {
+  if ($form_state['triggering_element']['#value'] == t('Next Question')) {
     $form_state['storage']['step']++;
     // If values have already been entered for this step, recover them from
     // $form_state['storage'] to pre-populate them.
@@ -146,5 +153,23 @@ function grammar_wizard_final_question_content($form_state) {
   return '';
 }  
 
+
+function grammar_wizard_check_answer($form, &$form_state) {
+  $current_step = 'step_' . $form_state['storage']['step'];
+  $correct_answer = $form[$current_step]['#correct_answer'];
+  $selected_answer = $form_state['input'][$current_step]['question']; 
+  
+  if ($correct_answer == $selected_answer) {
+    $form_state['question_result'] = '<div id="grammar-wizard-result"><h2>You Got It!</h2><div id="grammar-wizard-rule"><h2>' . $form[$current_step]['#rule_title'] . '</h2>' . $form[$current_step]['#rule'] . '<h3>Example:</h3><div id="grammar-wizard-example">' . $form[$current_step]['#rule_example'] . '</div></div></div>';
+    $form_state['student_answers'][$current_step] = 1;
+  }  
+  elseif (!isset($selected_answer)) {
+    drupal_set_message('Please select an answer.', 'warning');
+  }
+  else {
+    $form_state['question_result'] = '<div id="grammar-wizard-result"><h2>Try Again!</h2><div id="grammar-wizard-rule"><h2>Remember:</h2>' . $form[$current_step]['#rule'] . '<h3>Example:</h3><div id="grammar-wizard-example">' . $form[$current_step]['#rule_example'] . '</div></div></div>';
+    $form_state['student_answers'][$current_step] = 0;
+  }  
+}  
 
 
