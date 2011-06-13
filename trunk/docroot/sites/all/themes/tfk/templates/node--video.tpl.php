@@ -29,7 +29,7 @@
 	});
   </script>
   
-  <a class="media {width:480, height:280}" href="http://timedev.prod.acquia-sites.com/files/videos/original/Lexus_0.mp4">MP4 File (video)</a> 
+  <a class="media {width:480, height:280}" href="http://timedev.prod.acquia-sites.com/files/videos/original/Lexus.mp4">MP4 File (video)</a> 
 
     <?php
       // We hide the comments and links now so that we can render them later.
@@ -39,7 +39,7 @@
      // print_r($node);exit;
 
 
-      print render($content);
+     // print render($content);
     ?>
   </div>
 
