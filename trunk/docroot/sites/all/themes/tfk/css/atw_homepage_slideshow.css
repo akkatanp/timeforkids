@@ -51,7 +51,7 @@ h2.block-title {
 
 #slideshow-container #slideshow {
 	position: relative;
-	width: 490px;
+	width: 488px;
 	height: 370px;
 }
 
@@ -59,7 +59,7 @@ h2.block-title {
 	position: absolute;
 	top: 0px;
 	left: 0px;
-	width: 490px;
+	width: 488px;
 	height: 100px;
 	background: url(../images/atw-head.png) no-repeat;
 	z-index: 2;
@@ -69,7 +69,7 @@ h2.block-title {
 	position: absolute;
 	top: 338px;
 	left: 0px;
-	width: 478px;
+	width: 476px;
 	height: 20px;
 	padding: 6px;
 	background: black;
@@ -114,7 +114,7 @@ h2.block-title {
 	position: absolute;
 	top: 0px;
 	left: 0px;
-	width: 490px;
+	width: 488px;
 	height: 370px;
 	overflow: hidden;
 }
@@ -128,7 +128,7 @@ h2.block-title {
 
 #slideshow .inner img {
 	float: left;
-	width: 490px;
+	width: 488px;
 	height: 370px;
 }
 
