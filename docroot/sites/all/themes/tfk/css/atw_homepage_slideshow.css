@@ -21,7 +21,7 @@ h2.block-title {
 #slideshow-container #slideshow-controls {
 	width: 488px;
 	height: 25px;
-	margin-bottom: 10px;
+	margin-bottom: 4px;
 }
 
 #slideshow-container #slideshow-controls #prev-slide {
@@ -136,6 +136,10 @@ h2.block-title {
 	text-align: right;
 	font: normal 9px arial;
 	color: #999;
+}
+
+#slideshow-info h1 {
+	margin: 4px 0;
 }
 
 .view-content h3 {
