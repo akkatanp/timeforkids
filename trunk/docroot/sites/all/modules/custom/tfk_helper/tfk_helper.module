@@ -108,7 +108,9 @@ function tfk_helper_block_view($delta='') {
       $slideshow_nid = arg(1);
       $images = tfk_helper_get_slideshow_images($slideshow_nid);
       if($images != FALSE) {
-        $block['content'] = tfk_helper_get_slideshow($images, array('related_nid' => $slideshow_nid));
+        // Disallow the additional content while we finish theming it.
+        //$block['content'] = tfk_helper_get_slideshow($images, array('related_nid' => $slideshow_nid));
+        $block['content'] = tfk_helper_get_slideshow($images);
       } else {
         $block['content'] = '<b>No valid images found</b>';
         drupal_set_message('The slideshow could not be rendered because there are no valid images associated to this node.');
