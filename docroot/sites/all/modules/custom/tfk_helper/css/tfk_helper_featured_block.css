@@ -4,8 +4,7 @@
  */
 
 div.featured-block-sidebar-label {
-  margin-bottom: 5px;
-  padding-top: 20px;  
+  margin-bottom: 10px;
 }
 
 div.featured-block-sidebar-label.featured-slideshow {
@@ -16,16 +15,22 @@ div.featured-block-sidebar-label.featured-slideshow {
 div.featured-block-sidebar-img {
   float: left;
   margin: 0 10px 0 0;
-  border: 3px solid white;
 }
 div.featured-block-sidebar-img img {
   margin-top: 10px;
+	border: 3px solid white;
 }
-.featured-block-sidebar-title {
+
+div.featured-block-sidebar-img a {
+  margin: 0px; padding: 0px;
+}
+
+div.featured-block-sidebar-title a {
   font-weight: bold;
   margin: 0;
   padding: 0;
   color: #D71700;
+	font-size: 12pt;
 }
 .featured-block-sidebar-body p:first-child {
   margin-top: 5px;
