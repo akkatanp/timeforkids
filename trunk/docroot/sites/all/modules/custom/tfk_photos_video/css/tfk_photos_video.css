@@ -3,15 +3,24 @@
  * Theming for photos-video node pages.
  */
 
-div#page.page-node-photos-video #sidebar {
-    float: left;
-    margin-right: 8px;
-    position: relative;
-    width: 250px;
+div.region-sidebar-top {
+  float: left;
+  margin-right: 8px;
+  position: relative;
+  width: 250px;  
 }
 
 div#block-tfk-search-tfk-search-photos-video-back {
-  background-color: #d71700;
+  background-color: #D71700;
+  padding: 10px 0pt 8px 8px;
+}
+
+#tfk-search-back-link div#back-btn-img {
+  background: url("../images/back-to-all-photos-and-video-button.png") no-repeat scroll 0px 8px transparent;
+  float: left;
+  margin-right: 5px;     
+  height: 30px;
+  width: 10px;
 }
 
 div#block-tfk-search-tfk-search-photos-video-back a {
