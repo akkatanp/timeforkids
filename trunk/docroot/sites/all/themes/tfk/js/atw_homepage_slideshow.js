@@ -87,7 +87,8 @@ var nextSlideImg = function() {
 				$('#slide-info-' + nextSlideNum).show();
 			});
 			
-			slideNum++;
+			slideNum = nextSlideNum;
+			$('#slide-num').text(slideNum);
 		}
 		
 		var prevSlide = function() {
@@ -103,7 +104,9 @@ var nextSlideImg = function() {
 				$('#slide-info-' + prevSlideNum).show();
 			});
 			
-			slideNum--;
+			slideNum = prevSlideNum;
+			$('#slide-num').text(slideNum);
+		}
 		}
 		
 		if (numSlides) {
