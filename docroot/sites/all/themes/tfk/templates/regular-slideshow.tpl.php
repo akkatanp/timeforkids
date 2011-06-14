@@ -11,14 +11,9 @@
 			</div>
 		</div>
 
-		<div class="footer">
-			<div class="title-container">
-			<?php foreach($images_data as $image_k => $image_obj): ?>
-				 <div class="title" style="display: none;"><?php echo $image_obj['image_title']; ?></div>
-			<?php endforeach;?>
-			</div>
-		</div>
 	</div>
+	
+	<?php print_r($image_obj); ?>
 	
 	<?php if(!empty($related_content)): ?>
 		<div id="slideshow-related-content"><?php print $related_content; ?></div>
