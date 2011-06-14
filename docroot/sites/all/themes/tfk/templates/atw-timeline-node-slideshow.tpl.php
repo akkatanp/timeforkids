@@ -30,7 +30,11 @@
 				<?php print $image['event_copy'] ?>
 				
 				<?php if($is_admin_editor == 1):?>
-				<?php print l('edit','field-collection/field-timeline-event/'.$image['event_nid'].'/edit');?> -- <?php print l('delete','field-collection/field-timeline-event/'.$image['event_nid'].'/delete');?>
+				<?php
+                                //echo $return_path;
+                                echo '<a href="'.url('field-collection/field-timeline-event/'.$image['event_nid'].'/edit',array('query'=>array('destination' => $return_path))).'">[edit]</a>';
+                                echo ' - <a href="'.url('field-collection/field-timeline-event/'.$image['event_nid'].'/delete',array('query'=>array('destination' => $return_path))).'">[delete]</a>';
+                                ?>
 				<?php endif;?>
 			</div>
 			<div class="clearfix"></div>

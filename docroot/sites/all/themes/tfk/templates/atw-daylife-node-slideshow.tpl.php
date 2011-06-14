@@ -27,8 +27,8 @@
 LINKS FOR EDITORS:
 <br />
     <?php foreach($daylife_data as $data):?>
-        <?php print $data['time'];?> -- <?php echo l('[edit]','field-collection/field-day-in-life-time/'.$data['time_id'].'/edit')?> --
-        <?php echo l('[delete]','field-collection/field-day-in-life-time/'.$data['time_id'].'/delete')?>
+        <?php print $data['time'];?> -- <?php echo '<a href="'.url('field-collection/field-day-in-life-time/'.$data['time_id'].'/edit',array('query'=>array('destination' => $return_path))).'" />[edit]</a>'; ?> --
+        <?php print $data['time'];?> -- <?php echo '<a href="'.url('field-collection/field-day-in-life-time/'.$data['time_id'].'/delete',array('query'=>array('destination' => $return_path))).'" />[delete]</a>'; ?>
         <br/>
     <?php endforeach;?>
 <?php echo l('ADD NEW TIME','field-collection/field-day-in-life-time/add/node/'.$node_data['daylife_nid'])?>

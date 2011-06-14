@@ -168,8 +168,8 @@ $speaker_photo = file_create_url(image_style_path('tfk_rect_large',$speaker_phot
 				<!-- <?php print $phrase['phrase_filemime'];?> -->
 				<?php if($is_admin_editor):?>
 				<br />
-					<?php print l('edit','field-collection/field-native-lingo-phrase/'.$phrase['phrase_nid'].'/edit',array('attributes'=>array('class' => 'edit')));?> --
-					<?php print l('delete','field-collection/field-native-lingo-phrase/'.$phrase['phrase_nid'].'/delete',array('attributes'=>array('class' => 'delete')));?>
+					<?php print '<a href="'.url('field-collection/field-native-lingo-phrase/'.$phrase['phrase_nid'].'/edit',array('query'=>array('destination' => $return_path))).'">[edit]</a>';?> --
+					<?php print '<a href="'.url('field-collection/field-native-lingo-phrase/'.$phrase['phrase_nid'].'/delete',array('query'=>array('destination' => $return_path))).'">[delete]</a>';?>
 				<?php endif; ?>				
 			</div>
 			<?php endforeach;?>
