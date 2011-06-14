@@ -1,27 +1,32 @@
 
 /**
- * 
+ * Featured block CSS.
  */
 
-.featured-block-sidebar-label {
+div.featured-block-sidebar-label {
   margin-bottom: 5px;
-  font-weight: bold;
-  font-size: 1.08em;
+  padding-top: 20px;  
+}
+
+div.featured-block-sidebar-label.featured-slideshow {
+  background: url("/sites/all/modules/custom/tfk_photos_video/images/featured-slideshow-label.png") no-repeat scroll left top transparent;
+  width: 228px;
 }
 
 div.featured-block-sidebar-img {
-    float: left;
-    margin: 0 10px 0 0;
+  float: left;
+  margin: 0 10px 0 0;
+  border: 3px solid white;
 }
 div.featured-block-sidebar-img img {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 .featured-block-sidebar-title {
-    font-weight: bold;
-    margin: 0;
-    padding: 0;
-      color: #D71700;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+  color: #D71700;
 }
 .featured-block-sidebar-body p:first-child {
-    margin-top: 5px;
+  margin-top: 5px;
 }
