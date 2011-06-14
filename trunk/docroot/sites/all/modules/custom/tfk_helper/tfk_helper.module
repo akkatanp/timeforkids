@@ -184,12 +184,14 @@ function theme_photos_video_more($variables) {
   $items = $variables['more_items'];
   $output = '<div id="more-items">';
   $output .= '<h2 class="more-items-label">More TFK Photos & Videos</h2>';
+  $output .= '<div class="more-items-content">';
   foreach($items as $item) {
     $output .= '<div class="more-items-col">';
     $output .= $item['image'];
     $output .= '<div class="more-items-item-title">'. $item['title']. '</div>';
     $output .= '</div>';
   }
+  $output .= '</div>'; // More items content.
   $output .= '</div>';
   return $output;
 }
