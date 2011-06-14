@@ -231,13 +231,13 @@ function tfk_helper_get_slideshow_data($nid) {
     $list = array('images_data' => array());
     foreach($images as $image){
       // Title.
-      #$title = $image['node']->title;
+      $title = $image['node']->title;
       
       // Caption.
-      #$caption = array_pop(array_shift(field_get_items('node', $image['node'], 'field_caption')));
+      $caption = array_pop(array_shift(field_get_items('node', $image['node'], 'field_caption')));
       
       // Credit.
-      #$credit = array_pop(array_shift(field_get_items('node', $image['node'], 'field_credit')));
+      $credit = array_pop(array_shift(field_get_items('node', $image['node'], 'field_credit')));
       
       // Images.
       $image_field = array_shift(field_get_items('node', $image['node'], 'field_image'));
@@ -248,9 +248,9 @@ function tfk_helper_get_slideshow_data($nid) {
         $list['images_data'][] = array(
           'image_path'  => $derivative_path,
           'image_title' => $image['node']->title,
-          #'title'       => $title,
-          #'caption'     => $caption,
-          #'credit'      => $credit
+          'title'       => $title,
+          'caption'     => $caption,
+          'credit'      => $credit
         );
       }
       
