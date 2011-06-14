@@ -79,7 +79,7 @@ var nextSlideImg = function() {
 			alert(slideNum);
 			var nextSlideNum = slideNum + 1;
 			
-			if (nextSlideNum >= numSlides) {
+			if (nextSlideNum == numSlides) {
 				prevSlide();
 			} else {
 				inner.animate({'left': (-1 * (nextSlideNum * imgWidth)) + 'px'}, 500, function() {
@@ -96,7 +96,7 @@ var nextSlideImg = function() {
 			alert(slideNum);
 			var prevSlideNum = slideNum - 1;
 			
-			if (prevSlideNum <= 0) {
+			if (prevSlideNum < 0) {
 				nextSlide();
 			} else {
 				inner.animate({'left': (-1 * (prevSlideNum * imgWidth)) + 'px'}, 500, function() {
