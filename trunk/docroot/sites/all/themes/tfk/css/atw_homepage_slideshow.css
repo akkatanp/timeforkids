@@ -18,9 +18,37 @@ h2.block-title {
 	margin: 0;
 }
 
+#slideshow-container #slideshow-controls {
+	width: 488px;
+	height: 25px;
+	margin-bottom: 10px;
+}
+
+#slideshow-container #slideshow-controls #prev-slide {
+	float: left;
+	width: 35px;
+	height: 25px;
+	background: url("../images/slideshow-left-arrow.png") no-repeat;
+}
+
+#slideshow-container #slideshow-controls #next-slide {
+	float: left;
+	width: 35px;
+	height: 25px;
+	background: url("../images/slideshow-right-arrow.png") no-repeat;
+}
+
+#slideshow-container #slideshow-controls #slide-count {
+	float: left;
+	width: 418px;
+	height: 12px;
+	padding: 7px 0 6px 0;
+	text-align: center;
+}
+
 #slideshow-container #slideshow {
 	position: relative;
-	width: 490px;
+	width: 488px;
 	height: 370px;
 }
 
