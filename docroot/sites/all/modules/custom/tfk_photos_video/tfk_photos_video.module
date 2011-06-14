@@ -7,14 +7,25 @@
 include_once('tfk_photos_video.features.inc');
 
 /**
- * Preprocessor for page.
+ * Override or insert variables into the page templates.
  *
- * @param array $vars
+ * @param $variables
+ *   An array of variables to pass to the theme template.
+ * @param $hook
+ *   The name of the template being rendered ("page" in this case.)
  */
-function tfk_photos_video_preprocess_page(&$vars) {
-  // Add Slideshow page CSS.
-  if(arg(0) == 'node' && array_key_exists('node', $vars) && ($vars['node']->type == 'slideshow') ) {
-    drupal_add_css(drupal_get_path('module', 'tfk_photos_video'). '/css/tfk_photos_video.css', 'file');
+function tfk_photos_video_preprocess_page(&$variables) {
+  if(arg(0) == 'node' && array_key_exists('node', $variables)) {
+    if($variables['node']->type == 'slideshow' || $variables['node']->type == 'video') {
+      // Add Slideshow page CSS.
+      drupal_add_css(drupal_get_path('module', 'tfk_photos_video'). '/css/tfk_photos_video.css', 'file');
+      
+      // Sidebar top. Make it appear only in Photos and Video.
+      $variables['rendered'] = array();
+      if(array_key_exists('sidebar_top', $variables['page']) && (!empty($variables['page']['sidebar_top']))) {
+        $variables['rendered']['sidebar_top'] = render($variables['page']['sidebar_top']);
+      }
+    }
   }
 }
 
