@@ -1,5 +1,5 @@
 
-<div id="slideshow-container">
+<div id="slideshow-container" class="regular">
 	
 	<div id="slideshow-controls">
 		<div id="prev-slide"></div>
