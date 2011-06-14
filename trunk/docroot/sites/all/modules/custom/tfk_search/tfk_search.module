@@ -250,8 +250,10 @@ function tfk_search_block_view($delta='') {
     
     // Back to all Photos and Videos.
     case 'tfk_search_photos_video_back':
+      $link_content = '<div id="back-btn-img"></div>';
+      $link_content .= 'BACK TO ALL<br /> PHOTOS AND VIDEOS';
       $link_options = array('html' => TRUE, 'attributes' => array('id' => array('tfk-search-back-link')));
-      $block['content'] = l(t('BACK TO ALL<br /> PHOTOS AND VIDEOS'), 'photos-video', $link_options);
+      $block['content'] = l(t($link_content), 'photos-video', $link_options);
     break;
     
     // Photos and Video Featured block.
