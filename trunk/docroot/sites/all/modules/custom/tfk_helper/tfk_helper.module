@@ -144,14 +144,15 @@ function tfk_helper_block_view($delta='') {
  */
 function tfk_helper_get_slideshow($images, $options) {
   
-  $output = '<div id="slideshow-container">';
-  $output .= theme('regular_slideshow', $images);
-
   if(array_key_exists('related_nid', $options) && !empty($options['related_nid'])) {
-    $output .= theme('tfk_search_related_content', tfk_helper_get_additional_content());
+    $related_content = theme('tfk_search_related_content', tfk_helper_get_additional_content());
   }
+  $variables = array(
+    'related_content' => $related_content,
+    'images_data' => $images['images_data'],
+  );
   
-  $output .= '</div>';
+  $output = theme('regular_slideshow', $variables);
   
   return $output;
 }
