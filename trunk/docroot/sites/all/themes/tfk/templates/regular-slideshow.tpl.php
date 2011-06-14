@@ -4,7 +4,7 @@
 	<div id="slideshow-controls">
 		<div id="prev-slide"></div>
 		<div id="slide-count">
-			<span id="slide-num"></span> of <span id="num-slides"><?php echo count($images_data); ?></span> photos
+			<span id="slide-num">1</span> of <span id="num-slides"><?php echo count($images_data); ?></span> photos
 		</div>
 		<div id="next-slide"></div>
 	</div>
@@ -23,7 +23,7 @@
 	
 	<div id="slideshow-info">
 		<?php foreach($images_data as $image_k => $image_obj): ?>
-		<div class="slide-info" id="slide-info-<?php echo $image_k ?>" style="display: none;">
+		<div class="slide-info" id="slide-info-<?php echo $image_k ?>"<?php if($image_k != 0) echo ' style="display: none;"'; ?>>
 			<div class="credit"><?php echo $image_obj['credit']; ?></div>
 			<h1 class="image-title"><?php echo $image_obj['image_title']; ?></h1>
 			<div class="caption"><?php echo $image_obj['caption']; ?></div>
