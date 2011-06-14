@@ -65,7 +65,7 @@ function tfk_photos_video_context_default_contexts() {
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'TFK Photos and Video - Slideshow';
-  $context->description = '';
+  $context->description = 'Slideshow block for regular slideshow pages, Featured sidebar and back to all link.';
   $context->tag = 'TFK Photos and Video';
   $context->conditions = array(
     'path' => array(
@@ -90,11 +90,11 @@ function tfk_photos_video_context_default_contexts() {
           'region' => 'sidebar_first',
           'weight' => '-10',
         ),
-        'tfk_atw-atw-page-slideshow' => array(
-          'module' => 'tfk_atw',
-          'delta' => 'atw-page-slideshow',
+        'tfk_helper-tfk_helper_slideshow' => array(
+          'module' => 'tfk_helper',
+          'delta' => 'tfk_helper_slideshow',
           'region' => 'content',
-          'weight' => '-47',
+          'weight' => '-48',
         ),
         'tfk_helper-more_items_block' => array(
           'module' => 'tfk_helper',
@@ -109,6 +109,7 @@ function tfk_photos_video_context_default_contexts() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Slideshow block for regular slideshow pages, Featured sidebar and back to all link.');
   t('TFK Photos and Video');
   $export['TFK Photos and Video - Slideshow'] = $context;
 
