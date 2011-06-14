@@ -592,6 +592,10 @@ function tfk_search_preprocess_pager_top(&$vars) {
       $vars['pager_active_filter'] = 'Viewing: ';
       $pager_active_filters = array();
       
+      // Note: to keep things simple, we are retrieving only the current filter,
+      // but if neccesary we could use the Taxonomy API to retrieve the next
+      // or all term parents.
+      
       // Get term names and group them.
       foreach($active_filters as $filter) {
         if($filter['#name'] == 'im_10_field_article_category') {
@@ -610,7 +614,7 @@ function tfk_search_preprocess_pager_top(&$vars) {
       if(empty($pager_active_filters['themes'])) {
         $vars['pager_active_filter'] .= ', All Themes';
       } else {
-        $vars['pager_active_filter'] .= implode($pager_active_filters['subjects'], ', ');
+        $vars['pager_active_filter'] .= implode($pager_active_filters['themes'], ', ');
       }
     }
     
