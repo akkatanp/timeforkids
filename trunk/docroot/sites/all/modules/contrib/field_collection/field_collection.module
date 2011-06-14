@@ -494,12 +494,16 @@ function field_collection_field_get_path($field) {
 function field_collection_field_presave($entity_type, $entity, $field, $instance, $langcode, &$items) {
   foreach ($items as &$item) {
     // In case the entity has been loaded / created, save it and set the id.
-    if (isset($item['entity']) && !empty($item['entity']->is_new)) {
+    if (isset($item['entity'])) {
       $item['entity']->setHostEntity($entity_type, $entity);
       // Pass FALSE, as we the host entity is already being saved.
-      $item['entity']->save(FALSE);
-      $item = array('value' => $item['entity']->item_id);
-    }
+//      $item['entity']->save(FALSE);
+//      $item = array('value' => $item['entity']->item_id);
+      if (entity_get_controller('field_collection_item')->save($item['entity'])) {
+        $item = array('value' => $item['entity']->item_id);
+      }
+     }
+    
   }
 }
 
@@ -528,7 +532,35 @@ function field_collection_field_item_to_ids($items) {
  * Implements hook_field_is_empty().
  */
 function field_collection_field_is_empty($item, $field) {
-  return empty($item['value']);
+  //return empty($item['value']);
+  if (!empty($item['value'])) {
+    return FALSE;
+  }
+  elseif (isset($item['entity'])) {
+    $field_collection_item = $item['entity'];
+    $field_collection_instances = field_info_instances('field_collection_item', $field['field_name']);
+
+    foreach ($field_collection_instances as $instance) {
+      $field_collection_field_name = $instance['field_name'];
+      $field_collection_field = field_info_field($field_collection_field_name);
+
+      // Determine the list of languages to iterate on.
+      $available_languages = field_available_languages('field_collection_item', $field_collection_field);
+      $languages = _field_language_suggestion($available_languages, NULL, $field_collection_field_name);
+
+      foreach ($languages as $langcode) {
+        $items = isset($field_collection_item->{$field_collection_field_name}[$langcode]) ? $field_collection_item->{$field_collection_field_name}[$langcode] : array();
+        $function = $field_collection_field['module'] . '_field_is_empty';
+        foreach ($items as $field_collection_field_item) {
+          if (!$function($field_collection_field_item, $field_collection_field)) {
+            // At least one (sub)field is not empty; the field-collection-item is not empty.
+            return FALSE;
+          }
+        }
+      }
+    }
+  }
+  return TRUE;
 }
 
 /**
@@ -709,9 +741,171 @@ function field_collection_field_widget_info() {
     'field_collection_hidden' => array(
       'label' => t('Hidden'),
       'field types' => array('field_collection'),
+        'behaviors' => array(
+        'multiple values' => FIELD_BEHAVIOR_CUSTOM,
+        'default value' => FIELD_BEHAVIOR_CUSTOM,
+      ),
+    ),
+    'field_collection_subform' => array(
+      'label' => t('Subform'),
+       'field types' => array('field_collection'),
+      'behaviors' => array(
+        'multiple values' => FIELD_BEHAVIOR_DEFAULT,
+        //'default value' => FIELD_BEHAVIOR_CUSTOM,
+      ),
     ),
   );
 }
+
+
+
+/**
+ * Implements hook_field_widget_form().
+ */
+function field_collection_field_widget_form(&$form, &$form_state, $field, $instance, $langcode, $items, $delta, $element) {
+  static $recursion = 0;
+
+  switch ($instance['widget']['type']) {
+    case 'field_collection_hidden':
+      return $element;
+
+    case 'field_collection_subform':
+      if ($recursion++ > 5) {
+        return $element;
+      }
+
+      if (isset($items[$delta]['entity'])) {
+        $field_collection_item = $items[$delta]['entity'];
+      }
+      elseif (isset($items[$delta]['value'])) {
+        $field_collection_item = field_collection_item_load($items[$delta]['value']);
+      }
+      if (empty($field_collection_item)) {
+        $field_collection_item = entity_create('field_collection_item', array('field_name' => $element['#field_name']));
+      }
+
+      // Nest the field-collection-item entity form in a dedicated parent space,
+      // by appending [field_name, langcode, delta] to the current parent space.
+      $parents = array_merge($element['#field_parents'], array($element['#field_name'], $element['#language'], $element['#delta']));
+
+      $element += array(
+        // @todo - properly declare element type in hook_element_info().
+        '#type' => 'field_collection_widget',
+        '#element_validate' => array('field_collection_field_widget_validate'),
+        '#parents' => $parents,
+      );
+
+      $element['entity'] = array(
+        '#type' => 'value',
+        '#value' => clone $field_collection_item,
+      );
+
+      field_attach_form('field_collection_item', $field_collection_item, $element, $form_state, $element['#language']);
+
+      if (empty($element['#required'])) {
+        $element['#after_build'][] = 'field_collection_field_widget_subform_delay_required_validation';
+      }
+
+      // @todo : not sure how 'required' should behave.
+
+
+      $recursion--;
+      return $element;
+  }
+}
+
+/**
+ * FAPI #after_build of an individual field-collection element.
+ */
+function field_collection_field_widget_subform_delay_required_validation(&$element, &$form_state) {
+  // If the process_input flag is set, the form and its input is going to be
+  // validated. Prevent #required (sub)fields from throwing errors while
+  // their non-#required field-collection item is empty.
+  if ($form_state['process_input']) {
+    _field_collection_collect_required_elements($element, $element['#field_collection_required_elements']);
+  }
+  return $element;
+}
+
+function _field_collection_collect_required_elements(&$element, &$required_elements) {
+  // Recurse through all children.
+  foreach (element_children($element) as $key) {
+    if (isset($element[$key]) && $element[$key]) {
+      _field_collection_collect_required_elements($element[$key], $required_elements);
+    }
+  }
+  if (!empty($element['#required'])) {
+    $element['#required'] = FALSE;
+    $required_elements[] = &$element;
+    if (isset($element['#element_validate'])) {
+      array_unshift($element['#element_validate'], 'field_collection_field_widget_subform_restore_required');
+    }
+    else {
+      $element['#element_validate'] = array('field_collection_field_widget_subform_restore_required');
+    }
+  }
+}
+
+
+/**
+ * FAPI validation of an individual field-collection element.
+ */
+function field_collection_field_widget_subform_restore_required(&$element) {
+  $element['#required'] = TRUE;
+}
+
+/**
+ * FAPI validation of an individual field-collection element.
+ */
+function field_collection_field_widget_validate($element, &$form_state, $complete_form) {
+  $instance = field_widget_instance($element, $form_state);
+  $field = field_widget_field($element, $form_state);
+
+  switch ($instance['widget']['type']) {
+    case 'field_collection_hidden':
+      return;
+
+    case 'field_collection_subform':
+      $field_collection_item = $element['entity']['#value'];
+
+      field_attach_form_validate('field_collection_item', $field_collection_item, $element, $form_state);
+
+      if ($form_state['submitted'] && !form_get_errors() && !$form_state['rebuild']) {
+        field_attach_submit('field_collection_item', $field_collection_item, $element, $form_state);
+
+        if (!empty($element['#field_collection_required_elements']) && !field_collection_field_is_empty(array('entity' => $field_collection_item), $field)) {
+          foreach ($element['#field_collection_required_elements'] as &$elements) {
+            // Copied from _form_validate().
+            if (isset($elements['#needs_validation']) && $elements['#required']) {
+              $is_empty_multiple = (!count($elements['#value']));
+              $is_empty_string = (is_string($elements['#value']) && drupal_strlen(trim($elements['#value'])) == 0);
+              $is_empty_value = ($elements['#value'] === 0);
+              if ($is_empty_multiple || $is_empty_string || $is_empty_value) {
+                if (isset($elements['#title'])) {
+                  form_error($elements, t('!name field is required.', array('!name' => $elements['#title'])));
+                }
+                else {
+                  form_error($elements);
+                }
+              }
+            }
+         }
+        }
+
+        form_set_value($element['entity'], $field_collection_item, $form_state);
+      }
+  }
+}
+
+/**
+ * Implements hook_field_widget_error().
+ */
+function field_collection_field_widget_error($element, $error, $form, &$form_state) {
+  // @todo - when hook_field_validate() raises an error (none for now),
+  // form_error($element, $error['message']);
+}
+
+
 
 /**
  * Implements hook_field_create_field().
