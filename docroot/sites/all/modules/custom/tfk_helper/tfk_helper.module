@@ -106,11 +106,9 @@ function tfk_helper_block_view($delta='') {
       drupal_add_js(drupal_get_path('theme', 'tfk'). '/js/atw_homepage_slideshow.js','file');
       drupal_add_css(drupal_get_path('theme', 'tfk'). '/css/atw_homepage_slideshow.css', 'file');
       $slideshow_nid = arg(1);
-      $images = tfk_helper_get_slideshow_images($slideshow_nid);
+      $images = tfk_helper_get_slideshow_data($slideshow_nid);
       if($images != FALSE) {
-        // Disallow the additional content while we finish theming it.
-        //$block['content'] = tfk_helper_get_slideshow($images, array('related_nid' => $slideshow_nid));
-        $block['content'] = tfk_helper_get_slideshow($images);
+        $block['content'] = tfk_helper_get_slideshow($images, array('related_nid' => $slideshow_nid));
       } else {
         $block['content'] = '<b>No valid images found</b>';
         drupal_set_message('The slideshow could not be rendered because there are no valid images associated to this node.');
@@ -205,20 +203,35 @@ function tfk_helper_translate_content_type($content_type) {
  * Get an array of images for the slideshow template.
  *
  * @param int $nid Slideshow nid.
+ *
+ * @see tfk_helper_block_view
  */
-function tfk_helper_get_slideshow_images($nid) {
+function tfk_helper_get_slideshow_data($nid) {
   $node = node_load($nid);
   $images =  field_get_items('node', $node, 'field_slideshow_images');
 
   if(!empty($images)) {
     $list = array('images_data' => array());
     foreach($images as $image){
+      // Title.
+      $title = $image['node']->title;
+      
+      // Caption.
+      $caption = array_pop(array_shift(field_get_items('node', $image['node'], 'field_caption')));
+      
+      // Credit.
+      $credit = array_pop(array_shift(field_get_items('node', $image['node'], 'field_credit')));
+      
+      // Images.
       $image_field = array_shift(field_get_items('node', $image['node'], 'field_image'));
       $derivative_path = tfk_search_get_thumbnail($image_field['fid'], 'tfk_square_large');
       if($derivative_path != FALSE) {
         $list['images_data'][] = array(
-          'image_path' => $derivative_path,
+          'image_path'  => $derivative_path,
           'image_title' => $image['node']->title,
+          'title'       => $title,
+          'caption'     => $caption,
+          'credit'      => $credit
         );
       }
     }
