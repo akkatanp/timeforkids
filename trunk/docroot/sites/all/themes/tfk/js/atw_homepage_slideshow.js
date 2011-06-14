@@ -85,7 +85,7 @@ var nextSlideImg = function() {
 				inner.animate({'left': (-1 * (nextSlideNum * imgWidth)) + 'px'}, 500);
 				slideInfo.each(function(i, slide) {
 					$(slide).hide();
-				}
+				});
 				slideInfo.eq(nextSlideNum).show();
 				
 				slideNum = nextSlideNum;
@@ -103,7 +103,7 @@ var nextSlideImg = function() {
 				inner.animate({'left': (-1 * (prevSlideNum * imgWidth)) + 'px'}, 500);
 				slideInfo.each(function(i, slide) {
 					$(slide).hide();
-				}
+				});
 				slideInfo.eq(prevSlideNum).show();
 				
 				slideNum = prevSlideNum;	
