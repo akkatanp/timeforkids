@@ -452,9 +452,12 @@ function tfk_search_get_featured_block() {
  *
  * @param int $fid
  *   File id.
+ * @param string $style
+ *   Style preset.
  *
  * @return
  *   The absolute URL where a style image can be downloaded, suitable for use in an tag.
+ *   FALSE if the derivative cannot be generated.
  */
 function tfk_search_get_thumbnail($fid, $style) {
   $file = file_load($fid);
@@ -462,7 +465,10 @@ function tfk_search_get_thumbnail($fid, $style) {
   
   // Generate the image style derivative if it doesn't exist.
   if(!file_exists($file->newpath)) {
-    image_style_create_derivative(image_style_load($style), $file->uri, $file->newpath);
+    if(!image_style_create_derivative(image_style_load($style), $file->uri, $file->newpath)) {
+      watchdog('tfk_search_get_thumbnail', 'Failed to create image derivative for fid: @fid', array('@fid' => $file->fid), WATCHDOG_WARNING);
+      return FALSE;
+    }
   }
   
   return image_style_url($style, $file->uri);
