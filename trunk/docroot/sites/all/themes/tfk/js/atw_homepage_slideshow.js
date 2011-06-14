@@ -106,7 +106,7 @@ var nextSlideImg = function() {
 			slideNum--;
 		}
 		
-		if (numImgs) {
+		if (numSlides) {
 			inner.css('width', numImgs * imgWidth + 'px');
 			prev.click(prevSlide);
 			next.click(nextSlide);
