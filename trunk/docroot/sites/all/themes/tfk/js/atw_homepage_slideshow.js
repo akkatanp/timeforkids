@@ -73,10 +73,8 @@ var nextSlideImg = function() {
 		var numSlides = inner.children().length;
 		var slideNum = 0;
 		var imgWidth = 488;
-		alert(numSlides);
 		
 		var nextSlide = function() {
-			alert(slideNum);
 			var nextSlideNum = slideNum + 1;
 			
 			if (nextSlideNum == numSlides) {
@@ -93,7 +91,6 @@ var nextSlideImg = function() {
 		};
 		
 		var prevSlide = function() {
-			alert(slideNum);
 			var prevSlideNum = slideNum - 1;
 			
 			if (prevSlideNum < 0) {
