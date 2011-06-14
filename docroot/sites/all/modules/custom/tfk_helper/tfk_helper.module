@@ -395,7 +395,7 @@ class tfkHelperFeaturedItem {
    */
   static $image_style = '115x115';
   static $body_trim = '300';
-  static $snippet_format = NULL; //@todo Find how to get the input format ID.
+  static $snippet_format = 'full_html';
   static $thumbnail_class = 'featured-block-sidebar-img';
   
   function __construct() {
