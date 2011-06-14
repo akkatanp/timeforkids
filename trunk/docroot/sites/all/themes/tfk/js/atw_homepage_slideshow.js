@@ -70,7 +70,8 @@ var nextSlideImg = function() {
 		var inner = $('#slideshow .inner');
 		var prev = $('#slideshow-controls #prev-slide');
 		var next = $('#slideshow-controls #next-slide');
-		var numSlides = inner.children().length;
+		var slideInfo = $('#slideshow-info').children();
+		var numSlides = inner.children().length; 
 		var slideNum = 0;
 		var imgWidth = 488;
 		
@@ -82,8 +83,8 @@ var nextSlideImg = function() {
 				prevSlide();
 			} else {
 				inner.animate({'left': (-1 * (nextSlideNum * imgWidth)) + 'px'}, 500, function() {
-					$('#slide-info-' + nextSlideNum - 1).hide();
-					$('#slide-info-' + nextSlideNum).show();
+					slideInfo.eq(slideNum).hide();
+					slideInfo.eq(nextSlideNum).show();
 				});
 				
 				slideNum = nextSlideNum;
@@ -99,8 +100,8 @@ var nextSlideImg = function() {
 				nextSlide();
 			} else {
 				inner.animate({'left': (-1 * (prevSlideNum * imgWidth)) + 'px'}, 500, function() {
-					$('#slide-info-' + prevSlideNum + 1).hide();
-					$('#slide-info-' + prevSlideNum).show();
+					slideInfo.eq(slideNum).hide();
+					slideInfo.eq(prevSlideNum).show();
 				});
 				
 				slideNum = prevSlideNum;
