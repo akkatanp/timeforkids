@@ -81,7 +81,7 @@
  * @see template_process()
  */
 
-
+print_r($content['field_country_code']);
 $link_to_img = url(drupal_get_path('theme', 'tfk').'/images/flags/flag_'.strtolower($content['field_country_code']['#items'][0]['value']).'.png');
 $content['field_country_code'][0]['#markup'] = '<img src="'.$link_to_img.'"/>';
 ?>
