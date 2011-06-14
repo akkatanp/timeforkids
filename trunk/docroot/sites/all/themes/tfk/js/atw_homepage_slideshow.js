@@ -107,7 +107,7 @@ var nextSlideImg = function() {
 		}
 		
 		if (numSlides) {
-			inner.css('width', numImgs * imgWidth + 'px');
+			inner.css('width', numSlides * imgWidth + 'px');
 			prev.click(prevSlide);
 			next.click(nextSlide);
 		}
