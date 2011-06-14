@@ -213,6 +213,8 @@ function tfk_helper_translate_content_type($content_type) {
  * @see tfk_helper_block_view
  */
 function tfk_helper_get_slideshow_data($nid) {
+  dpm('getting slideshow');
+  
   $node = node_load($nid);
   $images =  field_get_items('node', $node, 'field_slideshow_images');
 
