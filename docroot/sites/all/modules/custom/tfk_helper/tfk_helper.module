@@ -144,6 +144,8 @@ function tfk_helper_block_view($delta='') {
  */
 function tfk_helper_get_slideshow($images, $options) {
   
+  return 'bar';
+  
   if(array_key_exists('related_nid', $options) && !empty($options['related_nid'])) {
     $related_content = theme('tfk_search_related_content', tfk_helper_get_additional_content());
   }
