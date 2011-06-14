@@ -366,12 +366,14 @@ function _tfk_atw_destination_navigation_data(){
     $vars['lingo_exists'] = 0;
     $vars['daylife_exists'] = 0;
     $vars['challenge_exists'] = 0;
-    
+
+
     if(arg(0) == 'node' && is_numeric(arg(1))){
         $nid = arg(1);
         $sql = db_query('select type,title from node where nid = :nid and status = 1',array(':nid' => $nid));
         $record = $sql->fetch();
-        
+
+
         if($record->type == 'atw_destination'){
            $nid = arg(1);
            $node = node_load($nid);
@@ -381,6 +383,7 @@ function _tfk_atw_destination_navigation_data(){
            $vars['navigation_block_title'] = $record->title;
            $what_exists = get_destination_existing_references($node);
            $vars = array_merge($vars,$what_exists);
+           
         }
         
         if($record->type == 'atw_timeline' || $record->type == 'atw_native_lingo' || $record->type == 'atw_day_in_life' || $record->type == 'atw_sightseeing' || $record->type == 'webform'){
@@ -411,6 +414,29 @@ function _tfk_atw_destination_navigation_data(){
         $vars['navigation_block_title'] = $record->title;
     }
 
+
+
+    $vars['timeline_class'] = '';
+    $vars['lingo_class'] = '';
+    $vars['daylife_class'] = '';
+    $vars['sightseeing_class'] = '';
+    $vars['challenge_class'] = '';
+    
+    if($record->type == 'atw_timeline'){
+      $vars['timeline_class'] = 'active';
+    }
+    if($record->type == 'atw_native_lingo'){
+      $vars['lingo_class'] = 'active';
+    }
+    if($record->type == 'atw_day_in_life'){
+      $vars['daylife_class'] = 'active';
+    }
+    if($record->type == 'atw_sightseeing'){
+      $vars['sightseeing_class'] = 'active';
+    }
+    if($record->type == 'webform'){
+      $vars['challenge_class'] = 'active';
+    }
 
     $list = array('navigation_data' => $vars);
     return $list;
@@ -687,17 +713,24 @@ function tfk_atw_preprocess_node(&$vars, $hook) {
     }
 
     if($vars['type'] == 'atw_sightseeing'){
-      $node_str = 'node/'.$vars['node']->nid;
-      $alias = url($node_str);
-      $alias = str_replace('/sightseeing','',$alias);
-      $alias = substr( $alias, 1 );
 
-      $parent_path = drupal_lookup_path('source',$alias);
-      $tmp_nid = explode('/',$parent_path);
-      $parent_nid = $tmp_nid[1];
-      $node = node_load($parent_nid);
+      $tmp_url = explode('/',request_uri());
+        $tmp_url = array_slice($tmp_url, -3, 3, true);
+        $tmp_url = array_merge(array(),$tmp_url);
+        if($record->type == 'atw_destination'){
+          $country_alias = $tmp_url[1].'/'.$tmp_url[2];
+        }else{
+          $country_alias = $tmp_url[0].'/'.$tmp_url[1];
+        }
+        $sql = db_query('select source from url_alias where alias = :alias',array('alias'=>$country_alias));
+        $res = $sql->fetch();
+        $source_tmp = explode('/',$res->source);
+        $country_nid = $source_tmp[1];
+        $country = node_load($country_nid);
+        $nid = $country->nid;
 
-      $vars['destination_title'] = $node->title;
+
+      $vars['destination_title'] = $country->title;
       $vars['sightseeing_body'] = $vars['node']->field_place_description['und'][0]['value'];
 
     }
