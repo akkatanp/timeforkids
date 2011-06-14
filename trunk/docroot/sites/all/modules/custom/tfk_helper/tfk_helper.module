@@ -249,7 +249,6 @@ function tfk_helper_get_slideshow_data($nid) {
       
     }
   }
-  return FALSE;
   
   return (!empty($list['images_data'])) ? $list: FALSE;
 }
