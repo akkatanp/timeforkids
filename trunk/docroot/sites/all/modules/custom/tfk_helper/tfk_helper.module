@@ -105,9 +105,10 @@ function tfk_helper_block_view($delta='') {
     case 'tfk_helper_slideshow':
       drupal_add_js(drupal_get_path('theme', 'tfk'). '/js/atw_homepage_slideshow.js','file');
       drupal_add_css(drupal_get_path('theme', 'tfk'). '/css/atw_homepage_slideshow.css', 'file');
-      $images = tfk_helper_get_slideshow_images(arg(1));
+      $slideshow_nid = arg(1);
+      $images = tfk_helper_get_slideshow_images($slideshow_nid);
       if($images != FALSE) {
-        $block['content'] = '<div id="slideshow-container">'. theme('atw_destination_node_slideshow', $images) .'</div>';
+        $block['content'] = tfk_helper_get_slideshow($images, array('related_nid' => $slideshow_nid));
       } else {
         $block['content'] = '<b>No valid images found</b>';
         drupal_set_message('The slideshow could not be rendered because there are no valid images associated to this node.');
@@ -117,6 +118,85 @@ function tfk_helper_block_view($delta='') {
   }
   
   return $block;
+}
+
+/**
+ * Returns a fully-themed generic slideshow.
+ *
+ * @param array $images
+ *   Associative array of images with the following keys
+ *     - 'image_path': Publicly accessible URL for the image.
+ *     - 'image_title': Image title.
+ * @param array $options
+ *   Associative array of options:
+ *     - 'related_nid': If set, a themed box will be added to the
+ *     slideshow with links to related content.
+ *
+ * @see tfk_helper_block_view()
+ * @see tfk_helper_get_additional_content()
+ * @see theme_atw_destination_node_slideshow()
+ * @see theme_tfk_search_related_content()
+ */
+function tfk_helper_get_slideshow($images, $options) {
+  
+  $output = '<div id="slideshow-container">';
+  $output .= theme('atw_destination_node_slideshow', $images);
+
+  if(array_key_exists('related_nid', $options) && !empty($options['related_nid'])) {
+    $output .= theme('tfk_search_related_content', tfk_helper_get_additional_content());
+  }
+  
+  $output .= '</div>';
+  
+  return $output;
+}
+
+/**
+ * Helper function used for retrieving additional content.
+ */
+function tfk_helper_get_additional_content() {
+  // @see Views API: http://groups.drupal.org/node/10129.
+  $items = array();
+  
+  $view = views_get_view('tfk_helper_related_content');
+  if(is_null($view)) {
+    return FALSE;
+  } else {
+    $view->execute();
+  	if(!empty($view->result)) {
+  		$related_content = array('quantity_articles' => count($view->result), 'related_content');
+  	    foreach($view->result as $result) {
+  	      $test = null;
+  	      $related_content['related_content'][] = array(
+  	        'path'   => 'node/'. $result->node_field_data_field_additional_content_nid,
+  	        'title' => $result->node_field_data_field_additional_content_title,
+  	      	'type' => tfk_helper_translate_content_type($result->node_field_data_field_additional_content_type),
+  	      );
+  	    }
+  		return $related_content;
+  	} else {
+  	  return FALSE;
+  	}
+  }
+}
+
+/**
+ * Translate machine-readable content type names.
+ *
+ * @return string
+ *   Human-readable content type string.
+ */
+function tfk_helper_translate_content_type($content_type) {
+  switch ($content_type) {
+    case 'atw_destination':
+      $translation = 'destination';
+    break;
+    
+    default:
+      $translation = $content_type;
+    break;
+  }
+  return $translation;
 }
 
 /**
