@@ -1,7 +1,15 @@
 
 <div id="slideshow-container">
+	
+	<div id="slideshow-controls">
+		<div id="prev-slide"></div>
+		<div id="slide-count">
+			<span id="slide-num"></span> of <span id="num-slides"></span> photos
+		</div>
+		<div id="next-slide"></div>
+	</div>
+	
 	<div id="slideshow">
-		<div class="header"></div>
 
 		<div class="outer">
 			<div class="inner">
@@ -19,5 +27,3 @@
 		<div id="slideshow-related-content"><?php print $related_content; ?></div>
 	<?php endif; ?>
 </div>
-
-
