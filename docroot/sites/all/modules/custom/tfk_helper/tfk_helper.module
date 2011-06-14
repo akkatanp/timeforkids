@@ -153,7 +153,6 @@ function tfk_helper_get_slideshow($images, $options) {
   }
   
   $variables['images_data'] = $images['images_data'];
-  
   $output = theme('regular_slideshow', $variables);
   
   return $output;
@@ -161,6 +160,14 @@ function tfk_helper_get_slideshow($images, $options) {
 
 /**
  * Helper function used for retrieving additional content.
+ *
+ * Fetches related content for the current node using the
+ * tfk_helper_related_content View.
+ *
+ * @return
+ *   FALSE if no additional content is found. Otherwise an associative array
+ *   with the following keys: 'path': node url, 'title': node title, 'type':
+ *   content type.
  */
 function tfk_helper_get_additional_content() {
   // @see Views API: http://groups.drupal.org/node/10129.
@@ -251,7 +258,6 @@ function tfk_helper_get_slideshow_data($nid) {
   }
   
   if(!empty($list['images_data'])) {
-    dpm($list);
     return $list;
   } else {
     return FALSE;
