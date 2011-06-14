@@ -132,6 +132,12 @@ h2.block-title {
 	height: 370px;
 }
 
+#slideshow-info .credit {
+	text-align: right;
+	font: normal 9px arial;
+	color: #999;
+}
+
 .view-content h3 {
 	width: 250px;
 	float: left;
