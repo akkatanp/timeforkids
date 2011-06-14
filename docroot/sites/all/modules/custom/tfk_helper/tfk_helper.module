@@ -113,8 +113,7 @@ function tfk_helper_block_view($delta='') {
       $slideshow_nid = arg(1);
       $images = tfk_helper_get_slideshow_data($slideshow_nid);
       if($images != FALSE) {
-        $block['content'] = 'baz';
-        //$block['content'] = tfk_helper_get_slideshow($images, array('related_nid' => $slideshow_nid));
+        $block['content'] = tfk_helper_get_slideshow($images, array('related_nid' => $slideshow_nid));
       } else {
         $block['content'] = '<b>No valid images found</b>';
         drupal_set_message('The slideshow could not be rendered because there are no valid images associated to this node.');
@@ -145,10 +144,11 @@ function tfk_helper_block_view($delta='') {
  */
 function tfk_helper_get_slideshow($images, $options) {
   
-  return 'bar';
-  
   if(array_key_exists('related_nid', $options) && !empty($options['related_nid'])) {
-    $related_content = theme('tfk_search_related_content', tfk_helper_get_additional_content());
+    $additional_content = tfk_helper_get_additional_content();
+    if($additional_content !== FALSE) {
+      $related_content = theme('tfk_search_related_content', $additional_content);
+    }
   }
   
   return 'foo';
