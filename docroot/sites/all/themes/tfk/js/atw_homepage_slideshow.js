@@ -15,7 +15,7 @@ var nextSlideImg = function() {
 		$('.title-container').children().eq(i).hide();
 	});
 	
-	$('#slideshow-container #slideshow .inner').animate({'left': (-1 * (nextImgNum * 490)) + 'px'}, 500);
+	$('#slideshow-container #slideshow .inner').animate({'left': (-1 * (nextImgNum * 488)) + 'px'}, 500);
 	nextImg.addClass('active');
 	$('.title-container').children().eq(nextImgNum).show();
 };
@@ -25,7 +25,7 @@ var nextSlideImg = function() {
 		var inner = this.find('.inner');
 		var footer = this.find('.footer');
 		var numImgs = inner.children().length;
-		var imgWidth = 490;
+		var imgWidth = 488;
 
 		var slideImg = function() {
 			imgs.each(function(i, img) {
