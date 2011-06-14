@@ -89,7 +89,7 @@ var nextSlideImg = function() {
 			
 			slideNum = nextSlideNum;
 			$('#slide-num').text(slideNum);
-		}
+		};
 		
 		var prevSlide = function() {
 			var prevSlideNum = slideNum - 1;
@@ -106,13 +106,12 @@ var nextSlideImg = function() {
 			
 			slideNum = prevSlideNum;
 			$('#slide-num').text(slideNum);
-		}
-		}
+		};
 		
 		if (numSlides) {
 			inner.css('width', numSlides * imgWidth + 'px');
 			prev.click(prevSlide);
 			next.click(nextSlide);
 		}
-	}
+	};
 })($);
