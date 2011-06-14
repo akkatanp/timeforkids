@@ -21,6 +21,11 @@ function tfk_helper_theme() {
     'photos_video_more' => array(
       'variables' => array('more_items' => array()),
     ),
+    // Regular slideshow, Spec 7B.
+    'regular_slideshow' => array(
+    'template' => 'regular-slideshow',
+    'variables' => array('images_data' => array()),
+    ),
   );
 }
 
@@ -140,7 +145,7 @@ function tfk_helper_block_view($delta='') {
 function tfk_helper_get_slideshow($images, $options) {
   
   $output = '<div id="slideshow-container">';
-  $output .= theme('atw_destination_node_slideshow', $images);
+  $output .= theme('regular_slideshow', $images);
 
   if(array_key_exists('related_nid', $options) && !empty($options['related_nid'])) {
     $output .= theme('tfk_search_related_content', tfk_helper_get_additional_content());
