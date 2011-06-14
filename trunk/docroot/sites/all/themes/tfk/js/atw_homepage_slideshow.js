@@ -70,14 +70,14 @@ var nextSlideImg = function() {
 		var inner = $('#slideshow .inner');
 		var prev = $('#slideshow-controls #prev-slide');
 		var next = $('#slideshow-controls #next-slide');
-		var numSlides = inner.children().length;
+		var numSlides = parseInt($('#num-slides').text()) - 1;
 		var slideNum = 0;
 		var imgWidth = 488;
 		
 		var nextSlide = function() {
 			var nextSlideNum = slideNum + 1;
 			
-			if (nextSlideNum >= numSlides) {
+			if (nextSlideNum > numSlides) {
 				prevSlide();
 				return;
 			}
@@ -94,7 +94,7 @@ var nextSlideImg = function() {
 		var prevSlide = function() {
 			var prevSlideNum = slideNum - 1;
 			
-			if (prevSlideNum <= numSlides) {
+			if (prevSlideNum < numSlides) {
 				nextSlide();
 				return;
 			}
