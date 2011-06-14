@@ -153,7 +153,10 @@ if(drupal_is_front_page()) {
 	<?php print render($page['sidebar_second']); ?>
   
   <?php if(!$is_front):?><h1 class="title" id="page-title"><?php print $title; ?></h1><?php endif;?>
-	
+
+
+        <?php print render($page['editor_menu']); ?>
+
 	<?php print render($page['sidebar_first']); ?>
 	
 	<div id="content" class="column"><div class="section">
