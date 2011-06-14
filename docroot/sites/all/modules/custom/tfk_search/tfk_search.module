@@ -345,8 +345,8 @@ function theme_tfk_featured_block(&$variables) {
   $url = 'node/'. $tfkSearchFeaturedItem->nid;
   
   $output .= '<div class="g1">';
-  $link_options = array('html' => TRUE, 'attributes' => array('class' => array('featured-item')));
-  $output .= l(theme('image', array('path' => $tfkSearchFeaturedItem->featured_item->abspath)), $url, $link_options); //@todo Meta (waiting for specs).
+  $link_options = array('html' => TRUE, 'attributes' => array('class' => array('featured-item', 'content-type-'. $tfkSearchFeaturedItem->type), 'title' => $tfkSearchFeaturedItem->title));
+  $output .= l(theme('image', array('path' => $tfkSearchFeaturedItem->featured_item->abspath, 'title' => $tfkSearchFeaturedItem->title, 'alt' => $tfkSearchFeaturedItem->title)), $url, $link_options);
   $output .= '</div>';
   
   $output .= '<div class="g2">';
@@ -360,11 +360,9 @@ function theme_tfk_featured_block(&$variables) {
   if($tfkSearchFeaturedItem->type == 'slideshow') {
     $output .= '<div class="featured-thumbnails">';
     $link_options['class'] = array('featured-thumbnail');
-    //@todo Business: what to do when there are less than three?
     foreach($tfkSearchFeaturedItem->slideshow_images as $image) {
-      $link_options['title'] = (!empty($image->meta_description['und'][0]['metatags_quick'])) ? $image->meta_description['und'][0]['metatags_quick'] : $tfkSearchFeaturedItem->title. ' - '. $image->title;
       $output .= '<span class="featured-thumbnails">';
-      $output .= l(theme('image', array('path' => $image->abspath, )), $url, $link_options); //@todo Meta (waiting for specs).
+      $output .= l(theme('image', array('path' => $image->abspath, 'title' => $tfkSearchFeaturedItem->title, 'alt' => $tfkSearchFeaturedItem->title )), $url, $link_options);
       $output .= '</span>';
     }
     
