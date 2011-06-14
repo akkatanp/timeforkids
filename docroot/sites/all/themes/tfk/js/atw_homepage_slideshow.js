@@ -82,10 +82,9 @@ var nextSlideImg = function() {
 				slideNum = 1;
 				prevSlide();
 			} else {
-				inner.animate({'left': (-1 * (nextSlideNum * imgWidth)) + 'px'}, 500, function() {
-					slideInfo.eq(slideNum).hide();
-					slideInfo.eq(nextSlideNum).show();
-				});
+				inner.animate({'left': (-1 * (nextSlideNum * imgWidth)) + 'px'}, 500);
+				slideInfo.eq(slideNum).hide();
+				slideInfo.eq(nextSlideNum).show();
 				
 				slideNum = nextSlideNum;
 				$('#slide-num').text(slideNum + 1);
@@ -99,10 +98,9 @@ var nextSlideImg = function() {
 				slideNum = numSlides - 2;
 				nextSlide();
 			} else {
-				inner.animate({'left': (-1 * (prevSlideNum * imgWidth)) + 'px'}, 500, function() {
-					slideInfo.eq(slideNum).hide();
-					slideInfo.eq(prevSlideNum).show();
-				});
+				inner.animate({'left': (-1 * (prevSlideNum * imgWidth)) + 'px'}, 500);
+				slideInfo.eq(slideNum).hide();
+				slideInfo.eq(prevSlideNum).show();
 				
 				slideNum = prevSlideNum;
 				$('#slide-num').text(slideNum + 1);
