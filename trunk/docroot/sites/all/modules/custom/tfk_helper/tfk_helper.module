@@ -329,22 +329,3 @@ function tfk_helper_get_featured_block_sidebar($node_type) {
 	}
 	
 }
-
-function tfk_helper_get_related_content() {
-  // @see Views API: http://groups.drupal.org/node/10129.
-  $items = array();
-  $view = views_get_view('homepage_news_block');
-  $view->execute_display('Homepage News Block', array($nid));
-  #$view->set_display('block_mpv');
-  #$view->set_arguments(array(arg(1)));
-  #$view->execute();
-  $view->render();
-  foreach ($view->result as $result) {
-    $items[] = array(
-      'title' => '',
-    	'image' => drupal_render($result->field_field_image[0]['rendered'])
-    );
-  }
-  return $items;
-}
-
