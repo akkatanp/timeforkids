@@ -143,20 +143,16 @@ function tfk_helper_block_view($delta='') {
  * @see theme_tfk_search_related_content()
  */
 function tfk_helper_get_slideshow($images, $options) {
+  $variables = array();
   
   if(array_key_exists('related_nid', $options) && !empty($options['related_nid'])) {
     $additional_content = tfk_helper_get_additional_content();
     if($additional_content !== FALSE) {
-      $related_content = theme('tfk_search_related_content', $additional_content);
+      $variables['related_content'] = theme('tfk_search_related_content', $additional_content);
     }
   }
   
-  return 'foo';
-  
-  $variables = array(
-    'related_content' => $related_content,
-    'images_data' => $images['images_data'],
-  );
+  $variables['images_data'] = $images['images_data'];
   
   $output = theme('regular_slideshow', $variables);
   
