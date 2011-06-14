@@ -81,14 +81,14 @@ function tfk_photos_video_context_default_contexts() {
         'tfk_search-tfk_search_photos_video_back' => array(
           'module' => 'tfk_search',
           'delta' => 'tfk_search_photos_video_back',
-          'region' => 'sidebar_top',
-          'weight' => '-46',
+          'region' => 'sidebar_first',
+          'weight' => '-10',
         ),
         'tfk_helper-featured_block_sidebar_slideshow' => array(
           'module' => 'tfk_helper',
           'delta' => 'featured_block_sidebar_slideshow',
           'region' => 'sidebar_first',
-          'weight' => '-10',
+          'weight' => '-9',
         ),
         'tfk_helper-tfk_helper_slideshow' => array(
           'module' => 'tfk_helper',
