@@ -217,8 +217,6 @@ function tfk_helper_get_slideshow_data($nid) {
   
   $node = node_load($nid);
   $images =  field_get_items('node', $node, 'field_slideshow_images');
-
-  dpm($images);
   
   if(!empty($images)) {
     $list = array('images_data' => array());
@@ -236,6 +234,8 @@ function tfk_helper_get_slideshow_data($nid) {
       $image_field = array_shift(field_get_items('node', $image['node'], 'field_image'));
       
       $derivative_path = tfk_search_get_thumbnail($image_field['fid'], 'tfk_square_large');
+      
+      dpm($derivative_path);
       /*
       if($derivative_path != FALSE) {
         $list['images_data'][] = array(
