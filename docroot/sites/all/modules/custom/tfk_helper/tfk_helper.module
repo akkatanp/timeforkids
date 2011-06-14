@@ -396,12 +396,15 @@ class tfkHelperFeaturedItem {
   static $image_style = '115x115';
   static $body_trim = '300';
   static $snippet_format = 'full_html';
-  static $thumbnail_class = 'featured-block-sidebar-img';
+  static $thumbnail_class = array('featured-block-sidebar-img');
   
   function __construct() {
     $featured_node = node_load($this->nid);
     $this->type = $featured_node->type;
     if($featured_node->type == 'slideshow') {
+      // Add dynamic CSS class using content type.
+      self::$thumbnail_class[] = 'content-type-'. $this->type;
+      
       $url = 'node/'. $featured_node->nid;
       $this->title = l($featured_node->title, $url); // Alternatively load 'safe_summary'.
       // Trim and filter the body to ensure valid and safe markup.
@@ -411,7 +414,7 @@ class tfkHelperFeaturedItem {
       $this->link = l('See '. ucfirst($featured_node->type), $url);
       $image_node = node_load(array_shift(array_shift($featured_node->field_slideshow_images['und'])));
       $image = tfk_search_get_thumbnail($image_node->field_image['und'][0]['fid'], self::$image_style);
-      $link_options = array('html' => TRUE, 'attributes' => array('class' => array(self::$thumbnail_class)));
+      $link_options = array('html' => TRUE, 'attributes' => array('class' => self::$thumbnail_class));
       $this->image = l(theme('image', array('path' => $image)), $url, $link_options);
     }
     if($this->type == 'video') {
