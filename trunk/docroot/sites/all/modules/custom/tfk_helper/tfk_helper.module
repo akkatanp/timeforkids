@@ -24,7 +24,7 @@ function tfk_helper_theme() {
     // Regular slideshow, Spec 7B.
     'regular_slideshow' => array(
     'template' => 'regular-slideshow',
-    'variables' => array('images_data' => array()),
+    'variables' => array('images_data' => array(), 'related_content' => ''),
     ),
   );
 }
@@ -113,7 +113,6 @@ function tfk_helper_block_view($delta='') {
       $slideshow_nid = arg(1);
       $images = tfk_helper_get_slideshow_data($slideshow_nid);
       if($images != FALSE) {
-        dpm($images);
         #$block['content'] = tfk_helper_get_slideshow($images, array('related_nid' => $slideshow_nid));
       } else {
         $block['content'] = '<b>No valid images found</b>';
@@ -148,6 +147,9 @@ function tfk_helper_get_slideshow($images, $options) {
   if(array_key_exists('related_nid', $options) && !empty($options['related_nid'])) {
     $related_content = theme('tfk_search_related_content', tfk_helper_get_additional_content());
   }
+  
+  return 'foo';
+  
   $variables = array(
     'related_content' => $related_content,
     'images_data' => $images['images_data'],
@@ -252,6 +254,7 @@ function tfk_helper_get_slideshow_data($nid) {
   }
   
   if(!empty($list['images_data'])) {
+    dpm($list);
     return $list;
   } else {
     return FALSE;
