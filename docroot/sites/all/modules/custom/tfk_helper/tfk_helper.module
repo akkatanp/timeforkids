@@ -65,6 +65,13 @@ function tfk_helper_block_info() {
     'cache' => DRUPAL_CACHE_GLOBAL,
   );
   
+  // TFK Helper Slideshow.
+  $blocks['tfk_helper_slideshow'] = array(
+    'info' => t('TFK Helper Slideshow'),
+    'visibility' => BLOCK_VISIBILITY_LISTED,
+    'cache' => DRUPAL_CACHE_GLOBAL,
+  );
+  
   return $blocks;
 }
 
@@ -87,8 +94,6 @@ function tfk_helper_block_view($delta='') {
     
     // TFK Photos and Video More Items Block. Used for More TFK Photos & Videos.
     case 'more_items_block':
-      drupal_add_js(drupal_get_path('theme', 'tfk'). '/js/atw_homepage_slideshow.js','file');
-      drupal_add_css(drupal_get_path('theme', 'tfk'). '/css/atw_homepage_slideshow.css', 'file');
       drupal_add_css(drupal_get_path('module', 'tfk_helper'). '/css/tfk_helper_more_items_block.css', 'file');
       $more_items = tfk_helper_get_more_items();
       if($more_items != FALSE) {
@@ -96,9 +101,47 @@ function tfk_helper_block_view($delta='') {
       }
     break;
     
+    // TFK Helper Slideshow.
+    case 'tfk_helper_slideshow':
+      drupal_add_js(drupal_get_path('theme', 'tfk'). '/js/atw_homepage_slideshow.js','file');
+      drupal_add_css(drupal_get_path('theme', 'tfk'). '/css/atw_homepage_slideshow.css', 'file');
+      $images = tfk_helper_get_slideshow_images(arg(1));
+      if($images != FALSE) {
+        $block['content'] = '<div id="slideshow-container">'. theme('atw_destination_node_slideshow', $images) .'</div>';
+      } else {
+        $block['content'] = '<b>No valid images found</b>';
+        drupal_set_message('The slideshow could not be rendered because there are no valid images associated to this node.');
+      }
+    break;
+    
   }
   
   return $block;
+}
+
+/**
+ * Get an array of images for the slideshow template.
+ *
+ * @param int $nid Slideshow nid.
+ */
+function tfk_helper_get_slideshow_images($nid) {
+  $node = node_load($nid);
+  $images =  field_get_items('node', $node, 'field_slideshow_images');
+
+  if(!empty($images)) {
+    $list = array('images_data' => array());
+    foreach($images as $image){
+      $image_field = array_shift(field_get_items('node', $image['node'], 'field_image'));
+      $derivative_path = tfk_search_get_thumbnail($image_field['fid'], 'tfk_square_large');
+      if($derivative_path != FALSE) {
+        $list['images_data'][] = array(
+          'image_path' => $derivative_path,
+          'image_title' => $image['node']->title,
+        );
+      }
+    }
+  }
+  return (!empty($list['images_data'])) ? $list: FALSE;
 }
 
 /**
