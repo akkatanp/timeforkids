@@ -77,7 +77,7 @@ var nextSlideImg = function() {
 		var nextSlide = function() {
 			var nextSlideNum = slideNum + 1;
 			
-			if (nextSlideNum > numSlides) {
+			if (nextSlideNum >= numSlides) {
 				prevSlide();
 				return;
 			}
@@ -88,13 +88,13 @@ var nextSlideImg = function() {
 			});
 			
 			slideNum = nextSlideNum;
-			$('#slide-num').text(slideNum);
+			$('#slide-num').text(slideNum + 1);
 		};
 		
 		var prevSlide = function() {
 			var prevSlideNum = slideNum - 1;
 			
-			if (prevSlideNum < numSlides) {
+			if (prevSlideNum <= numSlides) {
 				nextSlide();
 				return;
 			}
@@ -105,7 +105,7 @@ var nextSlideImg = function() {
 			});
 			
 			slideNum = prevSlideNum;
-			$('#slide-num').text(slideNum);
+			$('#slide-num').text(slideNum + 1);
 		};
 		
 		if (numSlides) {
