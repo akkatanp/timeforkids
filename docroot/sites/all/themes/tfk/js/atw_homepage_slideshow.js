@@ -78,10 +78,11 @@ var nextSlideImg = function() {
 			var nextSlideNum = slideNum + 1;
 			
 			if (nextSlideNum == numSlides) {
+				slideNum = 1;
 				prevSlide();
 			} else {
 				inner.animate({'left': (-1 * (nextSlideNum * imgWidth)) + 'px'}, 500, function() {
-					$('#slide-info-' + slideNum).hide();
+					$('#slide-info-' + nextSlideNum - 1).hide();
 					$('#slide-info-' + nextSlideNum).show();
 				});
 				
@@ -94,10 +95,11 @@ var nextSlideImg = function() {
 			var prevSlideNum = slideNum - 1;
 			
 			if (prevSlideNum < 0) {
+				slideNum = numSlides - 2;
 				nextSlide();
 			} else {
 				inner.animate({'left': (-1 * (prevSlideNum * imgWidth)) + 'px'}, 500, function() {
-					$('#slide-info-' + slideNum).hide();
+					$('#slide-info-' + prevSlideNum + 1).hide();
 					$('#slide-info-' + prevSlideNum).show();
 				});
 				
