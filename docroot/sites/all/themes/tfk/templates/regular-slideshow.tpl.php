@@ -1,5 +1,5 @@
 
-
+<div id="slideshow-container">
 	<div id="slideshow">
 		<div class="header"></div>
 
@@ -19,5 +19,10 @@
 			</div>
 		</div>
 	</div>
+	
+	<?php if(!empty($related_content)): ?>
+		<div id="slideshow-related-content"><?php print $related_content; ?></div>
+	<?php endif; ?>
+</div>
 
 
