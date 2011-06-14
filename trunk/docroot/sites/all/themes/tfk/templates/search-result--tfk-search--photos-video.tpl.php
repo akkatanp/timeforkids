@@ -73,7 +73,13 @@
   <div class='row2'>
     <div class='col1'>
       <?php if($tfk_search_res_image):?>
-        <img class="thumbnail" src="<?php print $tfk_search_res_image;?>">
+        <?php if(array_key_exists('link', $result)): ?>
+          <a href="<?php print $result['link']; ?>">
+          	<img alt="<?php print $title; ?>" title="<?php print $title; ?>" class="thumbnail <?php if(array_key_exists('bundle', $result)) print 'content-type-'. $result[bundle]; ?>" src="<?php print $tfk_search_res_image;?>" />
+          </a>
+        <?php else: ?>
+        	<img alt="<?php print $title; ?>" title="<?php print $title; ?>" class="thumbnail <?php if(array_key_exists('bundle', $result)) print 'content-type-'. $result[bundle]; ?>" src="<?php print $tfk_search_res_image;?>" />
+        <?php endif;?>
       <?php endif;?>
     </div>
    
