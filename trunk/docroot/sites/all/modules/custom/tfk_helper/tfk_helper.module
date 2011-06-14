@@ -236,7 +236,7 @@ function tfk_helper_get_slideshow_data($nid) {
       $derivative_path = tfk_search_get_thumbnail($image_field['fid'], 'tfk_square_large');
       
       dpm($derivative_path);
-      /*
+      
       if($derivative_path != FALSE) {
         $list['images_data'][] = array(
           'image_path'  => $derivative_path,
@@ -245,7 +245,7 @@ function tfk_helper_get_slideshow_data($nid) {
           #'caption'     => $caption,
           #'credit'      => $credit
         );
-      }*/
+      }
       
     }
   }
