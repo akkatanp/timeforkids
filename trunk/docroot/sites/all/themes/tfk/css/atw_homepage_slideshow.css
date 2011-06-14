@@ -29,6 +29,7 @@ h2.block-title {
 	width: 35px;
 	height: 25px;
 	background: url("../images/slideshow-left-arrow.png") no-repeat;
+	cursor: pointer;
 }
 
 #slideshow-container #slideshow-controls #next-slide {
@@ -36,12 +37,14 @@ h2.block-title {
 	width: 35px;
 	height: 25px;
 	background: url("../images/slideshow-right-arrow.png") no-repeat;
+	cursor: pointer;
 }
 
 #slideshow-container #slideshow-controls #slide-count {
 	float: left;
 	width: 418px;
 	height: 12px;
+	line-height: 1;
 	padding: 7px 0 6px 0;
 	text-align: center;
 }
