@@ -235,7 +235,7 @@ function tfk_helper_get_slideshow_data($nid) {
       // Images.
       $image_field = array_shift(field_get_items('node', $image['node'], 'field_image'));
       
-      //$derivative_path = tfk_search_get_thumbnail($image_field['fid'], 'tfk_square_large');
+      $derivative_path = tfk_search_get_thumbnail($image_field['fid'], 'tfk_square_large');
       /*
       if($derivative_path != FALSE) {
         $list['images_data'][] = array(
