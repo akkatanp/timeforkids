@@ -22,6 +22,7 @@
   <param name="pluginurl" value="http://www.apple.com/quicktime/download/" />
   <embed src="<?php print $video->files->{$video->player}->url; ?>"
          type="video/quicktime"
+         scale="tofit"
          pluginspage="http://www.apple.com/quicktime/download/"
          width="<?php print $video->player_width; ?>"
          height="<?php print $video->player_height; ?>"
