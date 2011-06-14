@@ -37,7 +37,7 @@ function tfk_helper_theme() {
 function theme_featured_block_sidebar($args) {
   list($type, $title, $body, $link, $image) = array_values($args);
   
-  $output .= "<div class='featured-block-sidebar-label'>". strtoupper('Featured '. $type). "</div>";
+  $output .= "<div class='featured-block-sidebar-label featured-". $type. "'>&nbsp;</div>";
   $output .= "<div class='col1'>";
   $output .= "<div class='featured-block-sidebar-img'>$image</div>";
   $output .= "<div class='featured-block-sidebar-title'>$title</div>";
