@@ -109,8 +109,8 @@ if(drupal_is_front_page()) {
     <?php endif; ?>
 
     
-    <?php 
-    /*** 
+    <?php
+    /***
     print theme('links__system_secondary_menu', array(
       'links' => $secondary_menu,
       'attributes' => array(
@@ -122,7 +122,7 @@ if(drupal_is_front_page()) {
         'level' => 'h2',
         'class' => array('element-invisible'),
       ),
-    )); 
+    ));
     ***/
     ?>
 	
@@ -154,6 +154,10 @@ if(drupal_is_front_page()) {
   
   <?php if(!$is_front):?><h1 class="title" id="page-title"><?php print $title; ?></h1><?php endif;?>
 
+	<?php if(array_key_exists('sidebar_top', $rendered)): ?>
+		<?php print $rendered['sidebar_top']; ?>
+	<?php endif; ?>
+	
 	<?php print render($page['sidebar_first']); ?>
         <?php print render($page['editor_menu']); ?>
   
