@@ -38,6 +38,10 @@ div#block-tfk-search-tfk-search-photos-video-back {
   width: 10px;
 }
 
+div.featured-block-sidebar-link a {
+	color: #d71700;
+}
+
 div#block-tfk-search-tfk-search-photos-video-back a {
   color: white;
 }
