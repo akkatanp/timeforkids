@@ -1257,6 +1257,22 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
   margin-bottom: 10px;
 }
 
+.node-type-video .region-content .content{
+	border: solid 1px cecece;
+	padding: 10px;
+}
+
+.node-type-video .field-name-field-date {
+	text-align: right;
+	font: normal 9px arial;
+	color: #999;
+}
+
+.field-name-field-related-photos-video {
+	border: solid 1px cecece;
+	padding: 10px;
+}
+
 /* current issue */
 #tfk-current-issue {
 	width: 162px;
