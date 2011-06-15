@@ -1257,7 +1257,7 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
   margin-bottom: 10px;
 }
 
-.node-type-video .region-content .content{
+.node-type-video .region-content .node-video  .content{
 	border: solid 1px #cecece;
 	padding: 10px;
 }
@@ -1271,6 +1271,15 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 .field-name-field-related-photos-video {
 	border: solid 1px #cecece;
 	padding: 10px;
+}
+
+.node-type-video .field-name-body h1 {
+	font: normal 30px arial;
+	margin: 4px 0;
+}
+
+.node-type-video .field-name-body p {
+	margin: 0;
 }
 
 /* current issue */
