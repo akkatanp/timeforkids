@@ -1282,6 +1282,10 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 	margin: 0;
 }
 
+.field-name-field-related-photos-video .field-label {
+	font: bold 14px arial;
+}
+
 /* current issue */
 #tfk-current-issue {
 	width: 162px;
