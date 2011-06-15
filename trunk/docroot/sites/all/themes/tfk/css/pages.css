@@ -369,7 +369,7 @@ ul.links li {
 	font: bold 20px arial;
 }
 .view-homepage-minisite .views-field-title {
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 }
 
 .view-homepage-minisite .views-field-field-header-image img {
@@ -395,14 +395,21 @@ ul.links li {
 
 .view-homepage-minisite .views-field-nothing {
 	position: absolute;
+	height: 14px;
+	line-height: 10px;
 	bottom: 0px;
 	right: 0px;
-	background: #999;
-	padding: 2px;
+	padding-left: 14px;
+	background: url(../images/left-grey-corner.png) no-repeat;
+	overflow: hidden;
 }
 
 .view-homepage-minisite .views-field-nothing a {
+	font: normal 9px arial;
+	height: 10px;
+	padding: 2px;
 	color: white;
+	background: #999;
 }
 
 #block-views-homepage-news-block-block-1,
@@ -418,8 +425,11 @@ ul.links li {
 }
 
 #block-views-homepage-destination-block-1 .content {
-	padding: 10px;
 	border: solid 1px #cecece;
+	background: url(../images/homepage-destination-news.png) no-repeat;
+	padding: 10px 10px 10px 260px;
+	height: 66px;
+	overflow: hidden;
 }
 
 #block-views-homepage-destination-block-1 .views-field-field-image {
@@ -491,6 +501,10 @@ ul.links li {
 	position: relative;
 	border: solid 6px #d71700;
 	padding: 20px 10px 10px 10px;
+}
+
+.view-homepage-top-story {
+	height: 358px;
 }
 
 .top-story-right-square {
