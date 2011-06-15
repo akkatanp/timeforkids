@@ -1282,6 +1282,10 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 	margin: 0;
 }
 
+.field-name-field-related-photos-video {
+	margin-top: 10px;
+}
+
 .field-name-field-related-photos-video .field-label {
 	font: bold 20px arial;
 }
