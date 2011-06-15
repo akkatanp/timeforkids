@@ -12,6 +12,7 @@ function grammar_wizard_prepare_questions($node) {
     WHERE f.field_grammar_practice_nid = :nid
     AND f.entity_type = 'node'
     AND f.bundle = 'grammar_practice_question'
+    AND n.status = 1
     ORDER BY RAND()
   ", 0, 5, array(':nid' => $node->nid));
   foreach ($result as $record) {
