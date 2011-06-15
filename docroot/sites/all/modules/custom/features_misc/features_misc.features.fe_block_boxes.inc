@@ -14,13 +14,13 @@ function features_misc_default_fe_block_boxes() {
   $fe_block_boxes->info = 'Global Right Sidebar Ad';
   $fe_block_boxes->format = 'full_html';
   $fe_block_boxes->machine_name = 'global_right_sidebar_ad';
-  $fe_block_boxes->body = '<img src="http://s0.2mdn.net/viewad/1447902/CM_TK_160x600greenstatic.jpg">';
+  $fe_block_boxes->body = '<p><img src="http://s0.2mdn.net/viewad/1447902/CM_TK_160x600greenstatic.jpg" /></p>';
 
   $export['global_right_sidebar_ad'] = $fe_block_boxes;
 
   $fe_block_boxes = new stdClass;
   $fe_block_boxes->info = 'Global Sidebar All Teacher Resources Label';
-  $fe_block_boxes->format = 'filtered_html';
+  $fe_block_boxes->format = 'plain_text';
   $fe_block_boxes->machine_name = 'global_sidebar_all_resources';
   $fe_block_boxes->body = 'All Teacher Resources';
 
@@ -28,7 +28,7 @@ function features_misc_default_fe_block_boxes() {
 
   $fe_block_boxes = new stdClass;
   $fe_block_boxes->info = 'Global Sidebar Teacher Resources Label';
-  $fe_block_boxes->format = 'filtered_html';
+  $fe_block_boxes->format = 'plain_text';
   $fe_block_boxes->machine_name = 'global_sidebar_teacher_resources';
   $fe_block_boxes->body = 'Teacher Resources';
 
