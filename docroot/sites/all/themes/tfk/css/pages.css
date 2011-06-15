@@ -1268,11 +1268,6 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 	color: #999;
 }
 
-.field-name-field-related-photos-video {
-	border: solid 1px #cecece;
-	padding: 10px;
-}
-
 .node-type-video .field-name-body h1 {
 	font: normal 30px arial;
 	margin: 4px 0;
@@ -1283,6 +1278,8 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 }
 
 .field-name-field-related-photos-video {
+	border: solid 1px #cecece;
+	padding: 10px;
 	margin-top: 10px;
 }
 
