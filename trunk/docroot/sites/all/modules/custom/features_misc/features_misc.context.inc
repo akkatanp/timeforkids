@@ -20,36 +20,59 @@ function features_misc_context_default_contexts() {
     'user' => array(
       'values' => array(
         'administrator' => 'administrator',
-        'editor' => 'editor',
       ),
     ),
   );
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'tfk_current_issue-current-issue-page' => array(
-          'module' => 'tfk_current_issue',
-          'delta' => 'current-issue-page',
-          'region' => 'sidebar_second',
-          'weight' => '-26',
-        ),
-        'views-3913f89243cb6afc50cd09ca76035ca1' => array(
+        'views-global_right_sidebar-block' => array(
           'module' => 'views',
-          'delta' => '3913f89243cb6afc50cd09ca76035ca1',
+          'delta' => 'global_right_sidebar-block',
           'region' => 'sidebar_second',
-          'weight' => '-25',
+          'weight' => '-10',
         ),
-        'views-055e2fdcba0fe53e098723f8d12ef765' => array(
+        'views-6b3cdbf51f6a41d742e65dbcf2d85234' => array(
           'module' => 'views',
-          'delta' => '055e2fdcba0fe53e098723f8d12ef765',
+          'delta' => '6b3cdbf51f6a41d742e65dbcf2d85234',
           'region' => 'sidebar_second',
-          'weight' => '-24',
+          'weight' => '-9',
+        ),
+        'block-17' => array(
+          'module' => 'block',
+          'delta' => 17,
+          'region' => 'sidebar_second',
+          'weight' => '-8',
+        ),
+        'views-global_right_sidebar-block_1' => array(
+          'module' => 'views',
+          'delta' => 'global_right_sidebar-block_1',
+          'region' => 'sidebar_second',
+          'weight' => '-7',
+        ),
+        'views-global_right_sidebar-block_3' => array(
+          'module' => 'views',
+          'delta' => 'global_right_sidebar-block_3',
+          'region' => 'sidebar_second',
+          'weight' => '-6',
+        ),
+        'views-global_right_sidebar-block_2' => array(
+          'module' => 'views',
+          'delta' => 'global_right_sidebar-block_2',
+          'region' => 'sidebar_second',
+          'weight' => '-5',
+        ),
+        'block-18' => array(
+          'module' => 'block',
+          'delta' => 18,
+          'region' => 'sidebar_second',
+          'weight' => '-4',
         ),
         'block-1' => array(
           'module' => 'block',
           'delta' => 1,
           'region' => 'sidebar_second',
-          'weight' => '-10',
+          'weight' => '-3',
         ),
         'menu-menu-tfk-global-navigation' => array(
           'module' => 'menu',
@@ -119,17 +142,17 @@ function features_misc_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'views-6b3cdbf51f6a41d742e65dbcf2d85234' => array(
+        'views-1ea0d8b2d55a5c36ff9aeecb766072b0' => array(
           'module' => 'views',
-          'delta' => '6b3cdbf51f6a41d742e65dbcf2d85234',
+          'delta' => '1ea0d8b2d55a5c36ff9aeecb766072b0',
           'region' => 'sidebar_second',
-          'weight' => '-30',
+          'weight' => '-10',
         ),
         'block-1' => array(
           'module' => 'block',
           'delta' => 1,
           'region' => 'sidebar_second',
-          'weight' => '-29',
+          'weight' => '-9',
         ),
         'menu-menu-tfk-global-navigation' => array(
           'module' => 'menu',
@@ -187,29 +210,53 @@ function features_misc_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'tfk_current_issue-current-issue-page' => array(
-          'module' => 'tfk_current_issue',
-          'delta' => 'current-issue-page',
+        'views-global_right_sidebar-block' => array(
+          'module' => 'views',
+          'delta' => 'global_right_sidebar-block',
           'region' => 'sidebar_second',
           'weight' => '-10',
         ),
-        'views-6b3cdbf51f6a41d742e65dbcf2d85234' => array(
+        'views-3913f89243cb6afc50cd09ca76035ca1' => array(
           'module' => 'views',
-          'delta' => '6b3cdbf51f6a41d742e65dbcf2d85234',
+          'delta' => '3913f89243cb6afc50cd09ca76035ca1',
           'region' => 'sidebar_second',
           'weight' => '-9',
         ),
-        'views-055e2fdcba0fe53e098723f8d12ef765' => array(
-          'module' => 'views',
-          'delta' => '055e2fdcba0fe53e098723f8d12ef765',
+        'block-17' => array(
+          'module' => 'block',
+          'delta' => 17,
           'region' => 'sidebar_second',
           'weight' => '-8',
+        ),
+        'views-global_right_sidebar-block_1' => array(
+          'module' => 'views',
+          'delta' => 'global_right_sidebar-block_1',
+          'region' => 'sidebar_second',
+          'weight' => '-7',
+        ),
+        'views-global_right_sidebar-block_3' => array(
+          'module' => 'views',
+          'delta' => 'global_right_sidebar-block_3',
+          'region' => 'sidebar_second',
+          'weight' => '-6',
+        ),
+        'views-global_right_sidebar-block_2' => array(
+          'module' => 'views',
+          'delta' => 'global_right_sidebar-block_2',
+          'region' => 'sidebar_second',
+          'weight' => '-5',
+        ),
+        'block-18' => array(
+          'module' => 'block',
+          'delta' => 18,
+          'region' => 'sidebar_second',
+          'weight' => '-4',
         ),
         'block-1' => array(
           'module' => 'block',
           'delta' => 1,
           'region' => 'sidebar_second',
-          'weight' => '-7',
+          'weight' => '-3',
         ),
         'menu-menu-tfk-global-navigation' => array(
           'module' => 'menu',
