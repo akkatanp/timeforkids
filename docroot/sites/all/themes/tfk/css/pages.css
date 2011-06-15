@@ -356,10 +356,6 @@ ul.links li {
 	position: relative;
 }
 
-.view-homepage-minisite p {
-	margin: 0;
-}
-
 .view-homepage-minisite {
 	background: url(../images/atw-sidebar-head.png) no-repeat top left;
 	padding-top: 20px;
@@ -412,18 +408,41 @@ ul.links li {
 	background: #999;
 }
 
-#block-views-homepage-news-block-block-1,
-#block-views-homepage-destination-block-1,
-#block-views-c909bfc47773a85d7de307e584c9ea89 {
+#block-views-homepage-news-block-block-1 {
 	float: left;
-	width: 768px;
+	width: 510px;
+	margin: 0 8px 10px 0;
+}
+
+
+.view-homepage-news-block table td {
+	display: block;
+	float: left;
+	width: 230px;
+	height: 310px;
+	padding: 20px 9px;
+	border: solid 1px #cecece;
+}
+
+.view-homepage-news-block .col-1 {
+	margin-right: 10px;
+}
+
+#block-views-homepage-destination-block-1 {
+	float: left;
+	width: 250px;
 	margin-bottom: 10px;
+	position: relative;
 }
 
-#block-views-homepage-destination-block-1 p {
-	margin: 0;
+#block-views-homepage-destination-block-1 .content {
+	width: 230px;
+	height: 310px;
+	padding: 20px 9px;
+	border: solid 1px #cecece;
 }
 
+/*
 #block-views-homepage-destination-block-1 .content {
 	border: solid 1px #cecece;
 	background: url(../images/homepage-destination-news.png) no-repeat;
@@ -457,6 +476,7 @@ ul.links li {
 #block-views-homepage-destination-block-1 .views-field-field-resources-list {
 	display: none;
 }
+*/
 
 /* mini-sites */
 .page-mini-sites .view-minisite-home .view-header {
@@ -467,10 +487,6 @@ ul.links li {
 .page-mini-sites .view-minisite-home .view-header h2 {
 	font: bold 30px arial;
 	margin: 0 0 10px 0;
-}
-
-.page-mini-sites .view-minisite-home .view-header p {
-	margin: 0;
 }
 
 #block-views-minisite-articles-block-7 {
@@ -654,7 +670,6 @@ ul.links li {
 	border: 0;
 }
 
-.view-homepage-news-block table td,
 .view-teacher-news-news-block table td,
 .view-kid-reporters-channel-news-block table td {
 	display: block;
@@ -665,7 +680,6 @@ ul.links li {
 	border: solid 1px #cecece;
 }
 
-.view-homepage-news-block table td.col-1,
 .view-teacher-news-news-block table td.col-1,
 .view-kid-reporters-channel-news-block table td.col-1 {
 	margin-right: 8px;
@@ -739,11 +753,6 @@ ul.links li {
 	border: solid 1px #cecece;
 	padding: 130px 10px 10px 10px;
 	background: url(../images/tfk-kid-reporter-head.png) no-repeat 10px 10px;
-}
-
-.view-minisite-home .view-content p,
-.view-all-kid-reporters .view-header p {
-	margin: 0;
 }
 
 .view-all-kid-reporters .view-header p strong {
@@ -1263,7 +1272,7 @@ div#block-views-tfk-section-photos-video-block div.views-field-field-image img {
 }
 
 div#block-views-tfk-section-photos-video-block div.views-field-body p {
-  margin: 0px; padding: 0px;
+  padding: 0px;
   font-size: 12px;
 }
 
@@ -1285,10 +1294,6 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 .node-type-video .field-name-body h1 {
 	font: normal 30px arial;
 	margin: 4px 0;
-}
-
-.node-type-video .field-name-body p {
-	margin: 0;
 }
 
 .field-name-field-related-photos-video {
