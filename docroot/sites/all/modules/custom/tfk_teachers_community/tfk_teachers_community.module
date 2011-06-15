@@ -1,0 +1,70 @@
+<?php
+/**
+ * @file
+ * Code for the Teachers Community feature.
+ */
+
+include_once('tfk_teachers_community.features.inc');
+
+/**
+ * Override or insert variables into the page templates.
+ *
+ * @param $variables
+ *   An array of variables to pass to the theme template.
+ * @param $hook
+ *   The name of the template being rendered ("page" in this case.)
+ */
+function tfk_teachers_community_preprocess_page(&$variables, $hook) {
+  
+  if(arg(0) == 'node' && arg(1) == 'add' && arg(2) == 'teacher-community-question') {
+    
+    // Unset Editor's Menu.
+    $page = & $variables['page'];
+    unset($page['editor_menu']);
+    
+    // Set title to TEACHER COMMUNITY.
+    drupal_set_title('TEACHER COMMUNITY');
+    
+    $page['before_content'] = '<h2>Submit to the Teachers Community</h2>';
+
+    // Add CSS.
+    drupal_add_css(drupal_get_path('module', 'tfk_teachers_community'). '/css/tfk_teachers_community.css', 'file');
+  }
+  
+}
+
+/**
+ * Implementation of hook_form_FORM_ID_alter.
+ *
+ * @param array $form
+ *   Nested array of form elements that comprise the form.
+ * @param array $form_state
+ *   A keyed array containing the current state of the form.
+ * @param string $form_id
+ *   A keyed array containing the current state of the form.
+ */
+function tfk_teachers_community_form_teacher_community_question_node_form_alter(&$form, &$form_state, $form_id) {
+  
+  // Cleanup extraneous fields.
+  $form['menu']['#access'] = FALSE;
+  $form['locations']['#access'] = FALSE;
+  $form['revision_information']['#access'] = FALSE;
+  $form['path']['#access'] = FALSE;
+  $form['comment_settings']['#access'] = FALSE;
+  $form['author']['#access'] = FALSE;
+  $form['options']['#access'] = FALSE;
+  
+  $actions = & $form['actions'];
+  unset($actions['preview']);
+}
+
+/**
+ * Implementation of hook_custom_theme.
+ */
+function tfk_teachers_community_custom_theme() {
+  // Switch from the admin theme to tfk when adding a question.
+  if(arg(0) == 'node' && arg(1) == 'add' && arg(2) == 'teacher-community-question') {
+    return 'tfk';
+  }
+}
+
