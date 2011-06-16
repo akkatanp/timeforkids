@@ -11,7 +11,7 @@ include_once('tfk_teachers_community.features.inc');
  */
 function tfk_teachers_community_permission() {
   $perms = array(
-    'edit Teacher Community Question description' => array(
+    'edit question description' => array(
       'title' => t('Edit Teacher Community Question description'),
       'description' => t('Per Spec 17F.3 only the editorial team should add a description to the question.'),
       'restrict access' => TRUE,
@@ -156,7 +156,7 @@ function tfk_teachers_community_form_teacher_community_question_node_form_alter(
   $form['title']['#description'] = 'The maximum number of characters allowed is 500.';
   
   // Hide description (body) field if user does not have the permissions to edit it.
-  if(!user_access('edit Teacher Community Question description')) {
+  if(!user_access('edit question description')) {
     $form['body']['#access'] = FALSE;
   }
   
