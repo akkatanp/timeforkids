@@ -90,13 +90,30 @@ function tfk_lucie_get_user_info($email, $token){
    }
 }
 /**
+ * This function will get the entitlements context for a user in LUCIE.
+ * This will return whether or not a user is an active subscriber
+ * and should have access to the content/site.
+*/
+function tfk_lucie_user_entitlements($token){
+  //$url = 'http://cgi.timeinc.com/webservices/customers/'.check_plain($email).'/TK/auth_token';
+  $url = 'http://qa-subscription.timeinc.com:80/webservices/entitlements?CGI-App-Id=com.timeinc.tk.web';
+  $response = drupal_http_request($url, array('headers' => array('Content-Type'=>'application/json', 'CGI-token' => $token),
+	'method'=> 'GET'
+   ));
+  if($response->code == 200){
+	// Decode the JSON data and pass to the call to get the user information
+	$dataResponse = drupal_json_decode($response->data);
+	return $dataResponse['issues'][0]['activeSubscription'];
+  }
+} 
+/**
  * This function will authenticate a user in the LUCIE system.
  * A token is returned which must be used in any additional calls to LUCIE.
  */
 function tfk_lucie_check_user($email,$password){
   //$url = 'http://cgi.timeinc.com/webservices/customers/'.check_plain($email).'/TK/auth_token';
   $url = 'http://qa-subscription.timeinc.com:80/webservices/customers/'.check_plain($email).'/TK/auth_token';
-  $pass_arr = array('password'=>$password);
+  $pass_arr = array('password'=>$password, 'CGI-App-Id' => 'com.timeinc.tk.web');
   $pass = drupal_json_encode($pass_arr);
 
   $response = drupal_http_request($url,
@@ -106,12 +123,16 @@ function tfk_lucie_check_user($email,$password){
               'CGI-App-Id' => 'com.timeinc.tk.web'
               ));
   if($response->code == 201){
-	// Decode the JSON data and pass to the call to get the user information
+  	// Decode the JSON data and pass to the call to get the user information
 	$dataResponse = drupal_json_decode($response->data);
-	return tfk_lucie_get_user_info($email, $dataResponse['token']);
-  }else{
-    return false;
+	if (tfk_lucie_user_entitlements($dataResponse['token'])) {
+		return tfk_lucie_get_user_info($email, $dataResponse['token']);
+  	} else {
+  		// set message or redirect to page here
+  		drupal_set_message(t('Your Subscription To Time For Kids has Expired'), 'error');
+  	}
   }
+  return false;
 }
 //Removes the tabbed menu for teachers and board members
 function tfk_user_profile_menu_alter(&$items) {
