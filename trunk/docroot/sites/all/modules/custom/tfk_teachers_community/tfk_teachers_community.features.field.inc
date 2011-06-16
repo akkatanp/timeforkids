@@ -63,7 +63,7 @@ function tfk_teachers_community_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'body',
-      'label' => 'SUBMIT YOUR QUESTION TO THE TFK COMMUNITY',
+      'label' => 'Description',
       'required' => 0,
       'settings' => array(
         'display_summary' => 0,
@@ -74,7 +74,7 @@ function tfk_teachers_community_field_default_fields() {
         'active' => 1,
         'module' => 'text',
         'settings' => array(
-          'rows' => '20',
+          'rows' => '15',
           'summary_rows' => 5,
         ),
         'type' => 'text_textarea_with_summary',
@@ -86,7 +86,7 @@ function tfk_teachers_community_field_default_fields() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('SUBMIT YOUR QUESTION TO THE TFK COMMUNITY');
+  t('Description');
 
   return $fields;
 }
