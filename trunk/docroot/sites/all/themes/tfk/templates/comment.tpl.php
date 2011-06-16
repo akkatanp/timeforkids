@@ -62,42 +62,80 @@
  */
 ?>
 <div class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
-  <?php print $picture; ?>
 
-  <?php print render($title_prefix); ?>
-  <?php if ($title): ?>
-    <h3<?php print $title_attributes; ?>>
-      <?php print $title; ?>
-      <?php if ($new): ?>
-        <span class="new"><?php print $new; ?></span>
-      <?php endif; ?>
-    </h3>
-  <?php elseif ($new): ?>
-    <div class="new"><?php print $new; ?></div>
-  <?php endif; ?>
-  <?php print render($title_suffix); ?>
+  <?php if($node->type == 'teacher_community_question'): ?>
+  	<div class="col1-wrapper">
+    	<div class="col1">
+        
+        <?php if(isset($picture)): ?>
+          <?php print $picture; ?>
+        <?php endif; ?>
+        
+        <div class="author">
+          <?php print $author; ?>
+        </div>
+        
+        <div class="submitted">
+          <?php print $submitted; ?>
+        </div>
+        
+        <div class="author-profile-link">
+          <?php print $author_profile_link; ?>
+        </div>
+        
+    	</div>
+  	</div>
+  	<div class="col2-wrapper">
+    	<div class="col2">
+    	
+        <div class="content"<?php print $content_attributes; ?>>
+          <?php print render($content); ?>
+        </div>
+        
+    	</div>
+  	</div>
+    
+  <?php else:?>
+  
+    <?php print $picture; ?>
 
-  <?php if ($status == 'comment-unpublished'): ?>
-    <div class="unpublished"><?php print t('Unpublished'); ?></div>
-  <?php endif; ?>
-
-  <div class="submitted">
-    <?php print $permalink; ?>
-    <?php print $submitted; ?>
-  </div>
-
-  <div class="content"<?php print $content_attributes; ?>>
-    <?php
-      // We hide the comments and links now so that we can render them later.
-      hide($content['links']);
-      print render($content);
-    ?>
-    <?php if ($signature): ?>
-      <div class="user-signature clearfix">
-        <?php print $signature; ?>
-      </div>
+    <?php print render($title_prefix); ?>
+    <?php if ($title): ?>
+      <h3<?php print $title_attributes; ?>>
+        <?php print $title; ?>
+        <?php if ($new): ?>
+          <span class="new"><?php print $new; ?></span>
+        <?php endif; ?>
+      </h3>
+    <?php elseif ($new): ?>
+      <div class="new"><?php print $new; ?></div>
     <?php endif; ?>
-  </div>
+    <?php print render($title_suffix); ?>
+    
+    <?php if ($status == 'comment-unpublished'): ?>
+      <div class="unpublished"><?php print t('Unpublished'); ?></div>
+    <?php endif; ?>
+    
+    <div class="submitted">
+      <?php print $permalink; ?>
+      <?php print $submitted; ?>
+    </div>
+    
+    <div class="content"<?php print $content_attributes; ?>>
+      <?php
+        // We hide the comments and links now so that we can render them later.
+        hide($content['links']);
+        print render($content);
+      ?>
+      <?php if ($signature): ?>
+        <div class="user-signature clearfix">
+          <?php print $signature; ?>
+        </div>
+      <?php endif; ?>
+    </div>
+    
+    <?php print render($content['links']) ?>
+    
+  <?php endif;?>
 
-  <?php print render($content['links']) ?>
 </div><!-- /.comment -->
