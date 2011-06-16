@@ -442,6 +442,32 @@ ul.links li {
 	border: solid 1px #cecece;
 }
 
+#block-views-homepage-destination-block-1 .content .views-field-nothing {
+	background: #d71700;
+	color: white;
+	font: bold 14px Arial;
+	padding: 2px 6px;
+	display: inline;
+	clear: right;
+}
+
+#block-views-homepage-destination-block-1 .content .views-field-field-image {
+	width: 228px;
+	height: 118px;
+	border: solid 1px #cecece;
+	margin-bottom: 10px;
+}
+
+#block-views-homepage-destination-block-1 .content .views-field-field-image img {
+	width: 228px;
+	height: 118px;
+}
+
+#block-views-homepage-destination-block-1 .content .views-field-title a {
+	font: normal 20px arial;
+	margin-bottom: 10px;
+}
+
 /*
 #block-views-homepage-destination-block-1 .content {
 	border: solid 1px #cecece;
