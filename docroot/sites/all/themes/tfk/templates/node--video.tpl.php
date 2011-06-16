@@ -29,9 +29,9 @@
 
 		print render($content['field_video_upload']);
 		print render($content['field_credit']);
-		print render($title);
-		print render($content);
-    ?>
+	?>
+	<h1><?php print render($title); ?></h1>
+	<?php print render($content); ?>
   </div>
 
   <?php print render($content['links']); ?>
