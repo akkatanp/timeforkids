@@ -159,7 +159,12 @@ if(drupal_is_front_page()) {
 	<?php endif; ?>
 	
 	<?php print render($page['sidebar_first']); ?>
-        <?php print render($page['editor_menu']); ?>
+  <?php if(array_key_exists('editor_menu', $page)): ?>
+  	<?php print render($page['editor_menu']); ?>
+  <?php endif; ?>
+  <?php if(array_key_exists('before_content', $page)): ?>
+  	<?php print render($page['before_content']); ?>
+  <?php endif; ?>
   
 	<div id="content" class="column"><div class="section">
       <?php print render($page['highlighted']); ?>
