@@ -530,6 +530,8 @@ ul.links li {
 }
 
 #block-views-minisite-articles-block table td {
+	display: block;
+	float: left;
 	border: solid 1px #cecece;
 	width: 230px;
 	padding: 10px 9px;
@@ -537,6 +539,30 @@ ul.links li {
 
 #block-views-minisite-articles-block table td.col-1 {
 	margin-right: 8px;
+}
+
+#block-views-minisite-articles-block .views-field-field-image {
+	float: left;
+	width: 62px;
+	min-height: 90px;
+}
+
+#block-views-minisite-articles-block .views-field-field-image img {
+	width: 60px;
+	height: 60px;
+	border: solid 1px #cecece;
+}
+
+#block-views-minisite-articles-block  .views-field-title {
+	display: inline;
+}
+
+#block-views-minisite-articles-block .views-field-title a {
+	font: bold 20px arial;
+}
+
+#block-views-minisite-articles-block .views-field-field-deck {
+	display: inline;
 }
 
 /* kid reporter header */
