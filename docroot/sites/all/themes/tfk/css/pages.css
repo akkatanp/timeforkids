@@ -1329,9 +1329,10 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 
 .node-type-video  h2 {
 	font: bold 20px arial;
+	margin: 0 0 4px 0;
 }
 
-.node-type-video .region-content .node-video  .content{
+.node-type-video .region-content .node-video  .content {
 	border: solid 1px #cecece;
 	padding: 10px;
 }
@@ -1342,7 +1343,7 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 	color: #999;
 }
 
-.node-type-video .field-name-body h1 {
+.node-type-video .content h1 {
 	font: normal 30px arial;
 	margin: 4px 0;
 }
