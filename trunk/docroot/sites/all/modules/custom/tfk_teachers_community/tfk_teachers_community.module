@@ -137,7 +137,7 @@ function tfk_teachers_community_form_teacher_community_question_node_form_alter(
   $actions = & $form['actions'];
   unset($actions['preview']);
   
-  $form['actions']['submit']['#value'] = t('Submit Your Response');
+  $form['actions']['submit']['#value'] = t('Submit Your Question');
 }
 
 /**
