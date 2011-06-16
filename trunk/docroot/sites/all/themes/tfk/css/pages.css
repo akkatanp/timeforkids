@@ -530,7 +530,6 @@ ul.links li {
 }
 
 #block-views-minisite-articles-block table td {
-	display: block;
 	border: solid 1px #cecece;
 	width: 230px;
 	padding: 10px 9px;
@@ -838,10 +837,10 @@ ul.links li {
 .view-all-kid-reporters .view-content table td {
 	display: block;
 	float: left;
-	width: 228px;
+	width: 230px;
 	height: 100px;
 	border: solid 1px #cecece;
-	padding: 10px;
+	padding: 10px 9px;
 	margin: 4px 0;
 }
 
