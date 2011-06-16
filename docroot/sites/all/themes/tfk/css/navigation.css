@@ -738,6 +738,7 @@
 #block-views-minisite-articles-block-6 {
 	border: solid 1px #cecece;
 	padding: 10px;
+	position: relative;
 }
 
 #block-views-minisite-articles-block-6 .view-header p {
@@ -752,7 +753,7 @@
 #block-views-minisite-articles-block-6 .view-content .views-row {
 	padding: 0 0 10px 0;
 	margin: 0 0 10px 0;
-	border-bottom: solid 1px #cecece;
+	border-bottom: dotted 1px #cecece;
 }
 
 #block-views-minisite-articles-block-6 .view-content .views-row {
@@ -763,12 +764,33 @@
 	font: bold 20px arial;
 }
 
+#block-views-minisite-articles-block-6 .view-content .views-footer {
+	position: absolute;
+	height: 14px;
+	line-height: 10px;
+	bottom: 0px;
+	right: 0px;
+	padding-left: 14px;
+	background: url(../images/left-grey-corner.png) no-repeat;
+	overflow: hidden;
+}
+
+#block-views-minisite-articles-block-6 .view-content .views-footer a {
+	font: normal 9px arial;
+	height: 10px;
+	padding: 2px;
+	color: white;
+	background: #999;
+}
+
 /*#block-views-minisite-articles-block-6 .view-content .views-row .views-field-field-tout-image {
 	float: left;
 	height: 60px;
 	width: 60px;
 	border: solid 1px #cecece;
 }*/
+
+
 
 /* Footer Nav */
 .region-footer ul.menu {
