@@ -73,36 +73,38 @@ function tfk_teachers_community_preprocess_comment_wrapper(&$variables, $hook) {
  * Preprocess comment.
  */
 function tfk_teachers_community_preprocess_comment(&$variables, $hook) {
-  $_variables = & $variables;
-  
-  // Comments have no title in Spec 17B.
-  unset($_variables['title']);
-  
-  // Add CSS classes.
-  $variables['classes'][] = 'teacher_community_question';
-  
-  // Link to comment author's profile.
-  $variables['author_profile_link'] = l('See Bio', 'user/'. $variables['comment']->uid);
-  
-  // Change submitted date format.
-  $variables['submitted'] = date('n/j/Y', $variables['comment']->changed);
-  
-  // Supress links for non-editorial/admin users.
-  $auth_roles = array('administrator', 'editor');
-  $supress_links = TRUE;
-  foreach($auth_roles as $auth_role) {
-    // If current user is the auth list, show him the links.
-    if(array_search($auth_role, $variables['user']->roles) !== FALSE) {
-      $supress_links = FALSE;
+  if($variables['node']->type == 'teacher_community_question' && arg(0) == 'node') {
+    $_variables = & $variables;
+    
+    // Comments have no title in Spec 17B.
+    unset($_variables['title']);
+    
+    // Add CSS classes.
+    $variables['classes'][] = 'teacher_community_question';
+    
+    // Link to comment author's profile.
+    $variables['author_profile_link'] = l('See Bio', 'user/'. $variables['comment']->uid);
+    
+    // Change submitted date format.
+    $variables['submitted'] = date('n/j/Y', $variables['comment']->changed);
+    
+    // Supress links for non-editorial/admin users.
+    $auth_roles = array('administrator', 'editor');
+    $supress_links = TRUE;
+    foreach($auth_roles as $auth_role) {
+      // If current user is the auth list, show him the links.
+      if(array_search($auth_role, $variables['user']->roles) !== FALSE) {
+        $supress_links = FALSE;
+      }
     }
+    if($supress_links) {
+      unset($_variables['content']['links']);
+    }
+  
+    // Unset variables we are not going to use.
+    unset($_variables['permalink']);
+    unset($_variables['status']);
   }
-  if($supress_links) {
-    unset($_variables['content']['links']);
-  }
-
-  // Unset variables we are not going to use.
-  unset($_variables['permalink']);
-  unset($_variables['status']);
 }
 
 /**
