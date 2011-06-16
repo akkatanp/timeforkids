@@ -20,7 +20,7 @@ function tfk_teachers_community_preprocess_page(&$variables, $hook) {
   if(arg(0) == 'node' && arg(1) == 'add' && arg(2) == 'teacher-community-question') {
     $community_question = TRUE;
 
-    $page['before_content'] = '<h2>Submit to the Teachers Community</h2>';
+    $page['before_content'] = t('<h2>Submit to the Teachers Community</h2>');
   }
   
   // Node view page, Spec 17B.
@@ -31,7 +31,7 @@ function tfk_teachers_community_preprocess_page(&$variables, $hook) {
   // Common actions.
   if($community_question) {
     // Set title to TEACHER COMMUNITY.
-    drupal_set_title('TEACHER COMMUNITY');
+    drupal_set_title(t('TEACHER COMMUNITY'));
         
     // Add CSS.
     drupal_add_css(drupal_get_path('module', 'tfk_teachers_community'). '/css/tfk_teachers_community.css', 'file');
@@ -65,7 +65,8 @@ function tfk_teachers_community_preprocess_node(&$variables, $hook) {
  */
 function tfk_teachers_community_preprocess_comment_wrapper(&$variables, $hook) {
   if(arg(0) == 'node' && $variables['node']->type == 'teacher_community_question') {
-    $variables['comments_header_title'] = 'TEACHERS RESPONSES';
+    $variables['comments_header_title'] = t('TEACHERS RESPONSES');
+    $variables['new_comment_label'] = t('ADD YOUR RESPONSE TO THE DISCUSSION');
   }
 }
 
@@ -130,6 +131,31 @@ function tfk_teachers_community_form_teacher_community_question_node_form_alter(
   
   $actions = & $form['actions'];
   unset($actions['preview']);
+}
+
+/**
+ * Implementation of hook_form_FORM_ID_alter.
+ *
+ * @param array $form
+ * @param array $form_state
+ * @param string $form_id
+ */
+function tfk_teachers_community_form_comment_node_teacher_community_question_form_alter(&$form, &$form_state, $form_id) {
+
+  $_form = & $form;
+  
+  $form['actions']['submit']['#value'] = t('Submit Your Response');
+  
+  // We need the author for the admin interface, so we leave that in.
+  $form['author']['#access'] = FALSE;
+  
+  // But we don't need the subject, so we can get rid of it.
+  unset($_form['subject']);
+  
+  // Unset other stuff.
+  unset($_form['actions']['preview']);
+  unset($_form['comment_body']['und'][0]['#title']);
+  
 }
 
 /**
