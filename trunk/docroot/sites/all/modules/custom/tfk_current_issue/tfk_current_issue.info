@@ -1,4 +1,0 @@
-name = TFK Current Issue
-description = Functionality to support homepage right sidebar current issue
-core = 7.x
-package = "TFK"
