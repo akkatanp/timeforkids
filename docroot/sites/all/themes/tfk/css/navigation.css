@@ -764,7 +764,7 @@
 	font: bold 20px arial;
 }
 
-#block-views-minisite-articles-block-6 .view-content .view-footer {
+#block-views-minisite-articles-block-6 .view-footer {
 	position: absolute;
 	height: 14px;
 	line-height: 10px;
@@ -775,7 +775,7 @@
 	overflow: hidden;
 }
 
-#block-views-minisite-articles-block-6 .view-content .view-footer a {
+#block-views-minisite-articles-block-6 .view-footer a {
 	font: normal 9px arial;
 	height: 10px;
 	padding: 2px;
