@@ -529,8 +529,15 @@ ul.links li {
 	margin-bottom: 10px;
 }
 
-#block-views-minisite-articles-block-7 table {
-	margin: 0;
+#block-views-minisite-articles-block table td {
+	display: block;
+	border: solid 1px #cecece;
+	width: 230px;
+	padding: 10px 9px;
+}
+
+#block-views-minisite-articles-block table td.col-1 {
+	margin-right: 8px;
 }
 
 /* kid reporter header */
@@ -681,6 +688,11 @@ ul.links li {
 	top: -20px;
 	left: -4px;
 	font-weight: bold;
+}
+
+.views-field-field-related-articles .item-list ul,
+.views-field-field-related-articles .item-list ul li {
+	margin: 0;
 }
 
 .views-field-field-related-articles .item-list ul li,
