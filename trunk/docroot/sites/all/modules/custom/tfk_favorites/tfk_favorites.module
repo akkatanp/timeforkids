@@ -1,0 +1,73 @@
+<?php
+
+//function tfk_favorites_init(){
+//  if(arg(0) == 'worksheets' || arg(0) == 'photos-video'){
+//    $js_path = drupal_get_path('theme', 'tfk') .'/js/atw_favorites.js';
+//    drupal_add_js($js_path,'file');
+//  }
+//}
+
+
+
+function tfk_favorites_menu(){
+  $items['tfkfav/ajax/del'] = array(
+          'title' => 'Around The World Page',
+          'page callback' => '_tfk_fav_del',
+          'access callback' => 'user_access',
+          'access arguments' => array('access content')
+  );
+  return $items;
+}
+
+
+function tfk_favorites_block_info() {
+  $blocks['tfk-favorites-links'] = array(
+    'info' => t('Favorites Block')
+  );
+  return $blocks;
+}
+
+
+function tfk_favorites_block_view($delta='') {
+  $block = array();
+  switch ($delta) {
+    case 'tfk-favorites-links':
+      $block['subject'] = t('Favorites Block');
+      $block['content'] = _tfk_favorites_links_block_content();
+      break;
+  }
+
+  return $block;
+}
+
+function _tfk_favorites_links_block_content(){
+
+  $ref = arg(0);
+
+  return theme('tfk_favorites_links',array('ref'=>$ref));
+}
+
+function tfk_favorites_theme(){
+  return array(
+    'tfk_favorites_links' => array(
+      'template' => 'tfk-favorites-links',
+      'variables' => array('list' => NULL),
+    )
+  );
+}
+
+function _tfk_fav_del(){
+  global $user;
+  $flag = flag_get_flag('favorites');
+
+  $fid = $flag->fid;
+  $res = db_query('select content_id from flag_content where fid = :fid and uid = :uid',array('fid'=>$fid,'uid' => $user->uid));
+  foreach ($res as $k => $record) {
+    $nid = $record->content_id;
+    $flag->flag('unflag', $nid, $user);
+  }
+
+  echo 'success';
+  exit;
+  
+}

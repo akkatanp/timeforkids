@@ -67,11 +67,15 @@
 ?>CUSTOM SEARCH RES
 <li class="<?php print $classes; ?>"<?php print $attributes; ?>>
   <?php if($tfk_search_cont_type):?>
-    Content type:<?php print $tfk_search_cont_type;?>
+    Content type:<?php print $tfk_search_cont_type;?><br/>
+  <?php endif;?>
+  <?php if($tfk_search_res_skills):?>
+    SKills Vocab Term : <?php print $tfk_search_res_skills;?><br/>
   <?php endif;?>
 
+
   <?php if($tfk_search_res_grade_level):?>
-    Grade Level:<?php print $tfk_search_res_grade_level;?>
+    Grade Level:<?php print $tfk_search_res_grade_level;?><br/>
   <?php endif;?>
 
   <?php print render($title_prefix); ?>
@@ -92,8 +96,8 @@
   </div>
 
 
-    <?php print $favorites_flag_link;?><br/>
-    <?php print $tfk_worksheet_pdf_url;?>
+    MAKE FAVORITE : <?php print $favorites_flag_link;?><br/>
+    DOWNLOAD LINK : <a href="<?php print $tfk_worksheet_pdf_url;?>">download this <?php print $tfk_search_res_skills;?></a>
 
 
 </li>
