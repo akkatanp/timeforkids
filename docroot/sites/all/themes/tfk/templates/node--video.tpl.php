@@ -27,7 +27,7 @@
 
      // print_r($node);exit;
 
-		print render($field_video_upload);
+		print render($content['field_video_upload']);
 		print render($title);
 		print render($content);
     ?>
