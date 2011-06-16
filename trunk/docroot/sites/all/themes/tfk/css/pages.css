@@ -373,11 +373,13 @@ ul.links li {
 	border: solid 3px white;
 }
 
+#block-views-homepage-destination-block-1 .views-field-field-resources-label,
 .view-homepage-minisite .views-field-field-minisite-resources-label {
 	font-weight: bold;
 	margin-top: 10px;
 }
 
+#block-views-homepage-destination-block-1 .views-field-field-resources-list,
 .view-homepage-minisite .views-field-field-minisite-resources {
 	position: relative;
 	background: #d9effe;
@@ -466,6 +468,11 @@ ul.links li {
 #block-views-homepage-destination-block-1 .content .views-field-title a {
 	font: normal 20px arial;
 	margin-bottom: 10px;
+}
+
+
+#block-views-c909bfc47773a85d7de307e584c9ea89 {
+	float: left;
 }
 
 /*
