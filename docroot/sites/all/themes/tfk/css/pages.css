@@ -544,7 +544,8 @@ ul.links li {
 #block-views-minisite-articles-block .views-field-field-image {
 	float: left;
 	width: 62px;
-	min-height: 90px;
+	height: 62px;
+	margin: 0 4px 4px 0;
 }
 
 #block-views-minisite-articles-block .views-field-field-image img {
@@ -553,16 +554,13 @@ ul.links li {
 	border: solid 1px #cecece;
 }
 
-#block-views-minisite-articles-block  .views-field-title {
+#block-views-minisite-articles-block  .views-field-title,
+#block-views-minisite-articles-block .views-field-field-deck {
 	display: inline;
 }
 
 #block-views-minisite-articles-block .views-field-title a {
 	font: bold 20px arial;
-}
-
-#block-views-minisite-articles-block .views-field-field-deck {
-	display: inline;
 }
 
 /* kid reporter header */
