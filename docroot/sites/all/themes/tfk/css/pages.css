@@ -559,6 +559,10 @@ ul.links li {
 	display: inline;
 }
 
+#block-views-minisite-articles-block  .views-field-date {
+	display: none;
+}
+
 #block-views-minisite-articles-block .views-field-title a {
 	font: bold 20px arial;
 }
