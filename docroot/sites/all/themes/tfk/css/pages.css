@@ -364,6 +364,7 @@ ul.links li {
 .view-homepage-minisite .views-field-title a {
 	font: bold 20px arial;
 }
+
 .view-homepage-minisite .views-field-title {
 	margin-bottom: 10px;
 }
@@ -544,6 +545,7 @@ ul.links li {
 }
 
 /* teacher and kid reporter news top story*/
+#block-views-minisite-articles-block-3,
 .view-homepage-top-story,
 .view-teacher-news-top-story,
 .view-kid-reporters-channel-top-story {
@@ -566,6 +568,7 @@ ul.links li {
 	background: white url(../images/top-story-corner.png) no-repeat;
 }
 
+#block-views-minisite-articles-block-3 .views-field-field-top-story-image,
 .view-homepage-top-story .view-content .views-field-field-image,
 .view-teacher-news-top-story .view-content .views-field-field-image,
 .view-kid-reporters-channel-top-story .views-field-field-image {
@@ -579,6 +582,7 @@ ul.links li {
 	margin-bottom: 30px;
 }
 
+#block-views-minisite-articles-block-3 .views-field-field-top-story-image img,
 .view-homepage-top-story .view-content .views-field-field-image img,
 .view-teacher-news-top-story .view-content .views-field-field-image img,
 .view-kid-reporters-channel-top-story .views-field-field-image img {
@@ -612,6 +616,7 @@ ul.links li {
 	color: #555;
 }
 
+#block-views-minisite-articles-block-3 .views-field-title-2,
 .view-homepage-top-story .view-content .views-field-nothing,
 .view-teacher-news-top-story .view-content .views-field-nothing,
 .view-kid-reporters-channel-top-story .views-field-name {
@@ -625,6 +630,7 @@ ul.links li {
 	clear: right;
 }
 
+#block-views-minisite-articles-block-3 .views-field-title a,
 .view-homepage-top-story .view-content .views-field-title a,
 .view-teacher-news-top-story .view-content .views-field-title a,
 .view-kid-reporters-channel-top-story .views-field-title a {
@@ -633,6 +639,7 @@ ul.links li {
 	text-decoration: none;
 }
 
+#block-views-minisite-articles-block-3 .views-field-field-date,
 .view-homepage-top-story .view-content .views-field-field-date,
 .view-teacher-news-top-story .view-content .views-field-field-date,
 .view-kid-reporters-channel-top-story .views-field-field-date {
@@ -640,6 +647,7 @@ ul.links li {
 	text-transform: uppercase;
 }
 
+#block-views-minisite-articles-block-3 .views-field-field-deck,
 .view-homepage-top-story .view-content .views-field-field-deck,
 .view-teacher-news-top-story .view-content .views-field-field-deck,
 .view-kid-reporters-channel-top-story .views-field-field-deck {
