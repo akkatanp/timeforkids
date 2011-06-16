@@ -83,39 +83,68 @@
 ?>
 <div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
 
-  <?php print $user_picture; ?>
+  <?php if ($type == 'teacher_community_question'): ?>
 
-  <?php print render($title_prefix); ?>
-  <?php if (!$page && $title): ?>
-    <h2<?php print $title_attributes; ?>><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h2>
-  <?php endif; ?>
-  <?php print render($title_suffix); ?>
+    <?php print render($title_prefix); ?>
+    <?php if (!$page && $title): ?>
+      <h2<?php print $title_attributes; ?>><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h2>
+    <?php endif; ?>
+    
+    <?php if ($type == 'teacher_community_question'): ?>
+      <div class="question-date">
+        <?php print $question_date; ?>
+      </div>
+    <?php endif; ?>
+    
+    <?php if ($print_title && $title): ?>
+      <h2<?php print $title_attributes; ?>><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h2>
+    <?php endif; ?>
+    <?php print render($title_suffix); ?>
+  
+    <?php if ($unpublished): ?>
+      <div class="unpublished"><?php print t('Unpublished'); ?></div>
+    <?php endif; ?>
+  
+    <div class="content"<?php print $content_attributes; ?>>
+      <?php print render($content); ?>
+    </div>
 
-  <?php if ($unpublished): ?>
-    <div class="unpublished"><?php print t('Unpublished'); ?></div>
-  <?php endif; ?>
+  <?php else: ?>
 
-  <?php if ($display_submitted): ?>
+    <?php print $user_picture; ?>
+  
+    <?php print render($title_prefix); ?>
+    <?php if (!$page && $title): ?>
+      <h2<?php print $title_attributes; ?>><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h2>
+    <?php endif; ?>
+    
+    <?php if ($print_title && $title): ?>
+      <h2<?php print $title_attributes; ?>><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h2>
+    <?php endif; ?>
+    <?php print render($title_suffix); ?>
+  
+    <?php if ($unpublished): ?>
+      <div class="unpublished"><?php print t('Unpublished'); ?></div>
+    <?php endif; ?>
+  
     <div class="submitted">
       <?php print $submitted; ?>
     </div>
+  
+    <div class="content"<?php print $content_attributes; ?>>
+      <?php
+        // We hide the comments and links now so that we can render them later.
+        hide($content['comments']);
+        hide($content['links']);
+  
+        print render($content);
+      ?>
+    </div>
+  
+    <?php print render($content['links']); ?>
+  
+    <?php print render($content['comments']); ?>
+  
   <?php endif; ?>
-
-  <div class="content"<?php print $content_attributes; ?>>
-    <?php
-      // We hide the comments and links now so that we can render them later.
-      hide($content['comments']);
-      hide($content['links']);
-
-     // print_r($node);exit;
-
-
-      print render($content);
-    ?>
-  </div>
-
-  <?php print render($content['links']); ?>
-
-  <?php print render($content['comments']); ?>
 
 </div><!-- /.node -->
