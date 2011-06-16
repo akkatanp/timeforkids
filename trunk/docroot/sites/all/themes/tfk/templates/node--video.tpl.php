@@ -17,7 +17,7 @@
       <?php print $submitted; ?>
     </div>
   <?php endif; ?>
-
+  <h2> Video: <?php print render($title); ?></h2>
   <div class="content"<?php print $content_attributes; ?>>
 
     <?php

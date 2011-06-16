@@ -1327,12 +1327,16 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
   margin-bottom: 10px;
 }
 
+.node-type-video  h2 {
+	font: bold 20px arial;
+}
+
 .node-type-video .region-content .node-video  .content{
 	border: solid 1px #cecece;
 	padding: 10px;
 }
 
-.node-type-video .field-name-field-date {
+.node-type-video .field-name-field-credit {
 	text-align: right;
 	font: normal 9px arial;
 	color: #999;
@@ -1341,6 +1345,10 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 .node-type-video .field-name-body h1 {
 	font: normal 30px arial;
 	margin: 4px 0;
+}
+
+.node-type-video .field-name-field-date {
+	font: normal 9px arial;
 }
 
 .field-name-field-related-photos-video {
