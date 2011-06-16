@@ -654,6 +654,11 @@ ul.links li {
 	margin-top: 20px;
 }
 
+.views-field-field-related-articles-1 {
+	font-weight: bold;
+}
+
+.views-field-field-related-articles,
 .related-content-wrap {
 	position: relative;
 	background: #d9effe;
@@ -678,6 +683,7 @@ ul.links li {
 	line-height: 16px;
 }
 
+.views-field-field-related-articles .item-list ul li,
 .related-content-wrap .addit-mini-lessons {
 	background: url("../images/related-article-icon.png") no-repeat 0px 2px;
 }
