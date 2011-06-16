@@ -28,7 +28,7 @@
      // print_r($node);exit;
 
 		print render($content['field_video_upload']);
-		print render($content(['field_credit']);
+		print render($content['field_credit']);
 		print render($title);
 		print render($content);
     ?>
