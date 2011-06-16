@@ -15,22 +15,94 @@ include_once('tfk_teachers_community.features.inc');
  *   The name of the template being rendered ("page" in this case.)
  */
 function tfk_teachers_community_preprocess_page(&$variables, $hook) {
-  
+  $community_question = FALSE;
+  // Node add/edit page, Spec 17F.
   if(arg(0) == 'node' && arg(1) == 'add' && arg(2) == 'teacher-community-question') {
+    $community_question = TRUE;
+
+    $page['before_content'] = '<h2>Submit to the Teachers Community</h2>';
+  }
+  
+  // Node view page, Spec 17B.
+  if(array_key_exists('node', $variables) && $variables['node']->type == 'teacher_community_question') {
+    $community_question = TRUE;
+  }
+  
+  // Common actions.
+  if($community_question) {
+    // Set title to TEACHER COMMUNITY.
+    drupal_set_title('TEACHER COMMUNITY');
+        
+    // Add CSS.
+    drupal_add_css(drupal_get_path('module', 'tfk_teachers_community'). '/css/tfk_teachers_community.css', 'file');
     
     // Unset Editor's Menu.
     $page = & $variables['page'];
     unset($page['editor_menu']);
-    
-    // Set title to TEACHER COMMUNITY.
-    drupal_set_title('TEACHER COMMUNITY');
-    
-    $page['before_content'] = '<h2>Submit to the Teachers Community</h2>';
+  }
+}
 
-    // Add CSS.
-    drupal_add_css(drupal_get_path('module', 'tfk_teachers_community'). '/css/tfk_teachers_community.css', 'file');
+/**
+ * Preprocess node.
+ */
+function tfk_teachers_community_preprocess_node(&$variables, $hook) {
+
+  // Node view page, Spec 17B.
+  if(array_key_exists('node', $variables) && $variables['node']->type == 'teacher_community_question') {
+    $_variables = & $variables;
+    
+    $variables['print_title'] = TRUE;
+    
+    $variables['question_date'] = date('F j, Y');
+    
+    unset($_variables['content']['links']);
   }
   
+}
+
+/**
+ * Preprocess comment wrapper.
+ */
+function tfk_teachers_community_preprocess_comment_wrapper(&$variables, $hook) {
+  if(arg(0) == 'node' && $variables['node']->type == 'teacher_community_question') {
+    $variables['comments_header_title'] = 'TEACHERS RESPONSES';
+  }
+}
+
+/**
+ * Preprocess comment.
+ */
+function tfk_teachers_community_preprocess_comment(&$variables, $hook) {
+  $_variables = & $variables;
+  
+  // Comments have no title in Spec 17B.
+  unset($_variables['title']);
+  
+  // Add CSS classes.
+  $variables['classes'][] = 'teacher_community_question';
+  
+  // Link to comment author's profile.
+  $variables['author_profile_link'] = l('See Bio', 'user/'. $variables['comment']->uid);
+  
+  // Change submitted date format.
+  $variables['submitted'] = date('n/j/Y', $variables['comment']->changed);
+  
+  // Supress links for non-editorial/admin users.
+  $auth_roles = array('administrator', 'editor');
+  $supress_links = TRUE;
+  foreach($auth_roles as $auth_role) {
+    // If current user is the auth list, show him the links.
+    if(array_search($auth_role, $variables['user']->roles) !== FALSE) {
+      $supress_links = FALSE;
+    }
+  }
+  if($supress_links) {
+    unset($_variables['content']['links']);
+  }
+
+  // Unset variables we are not going to use.
+  unset($_variables['permalink']);
+  unset($_variables['status']);
 }
 
 /**
