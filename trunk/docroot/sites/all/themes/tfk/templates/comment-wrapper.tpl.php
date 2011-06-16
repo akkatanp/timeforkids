@@ -48,7 +48,14 @@ $comment_form = render($content['comment_form']);
   <?php print $comments; ?>
 
   <?php if ($comment_form): ?>
-    <h2 class="title comment-form"><?php print t('Add new comment'); ?></h2>
+    <h2 class="new-comment-label comment-form"><?php print (isset($new_comment_label))? $new_comment_label: t('Add new comment'); ?></h2>
     <?php print $comment_form; ?>
+  <?php endif; ?>
+  
+  <?php if(isset($bottom_suggestion_msg)): ?>
+  	<div id='bottom-suggestion-box'>
+  		<div class='msg'><?php print $bottom_suggestion_msg; ?></div>
+  		<div class='link'><?php print $bottom_suggestion_link; ?></div>
+  	</div>
   <?php endif; ?>
 </div>

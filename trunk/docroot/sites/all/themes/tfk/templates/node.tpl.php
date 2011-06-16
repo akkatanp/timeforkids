@@ -85,7 +85,13 @@
 
   <?php if ($type == 'teacher_community_question'): ?>
 
-    <?php print render($title_prefix); ?>
+    <?php if(isset($top_suggestion_msg)): ?>
+    	<div id='top-suggestion-box'>
+    		<div class='msg'><?php print $top_suggestion_msg; ?></div>
+    		<div class='link'><?php print $top_suggestion_link; ?></div>
+    	</div>
+    <?php endif; ?>
+    
     <?php if (!$page && $title): ?>
       <h2<?php print $title_attributes; ?>><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h2>
     <?php endif; ?>

@@ -56,6 +56,9 @@ function tfk_teachers_community_preprocess_node(&$variables, $hook) {
     $variables['question_date'] = date('F j, Y');
     
     unset($_variables['content']['links']);
+    
+    $variables['top_suggestion_msg'] = t('GOT A QUESTION? GOT A LESSON PLAN IDEA?');
+    $variables['top_suggestion_link'] = l(t('Submit to the TFK Teacher Community'), 'node/add/teacher-community-question');
   }
   
 }
@@ -67,6 +70,8 @@ function tfk_teachers_community_preprocess_comment_wrapper(&$variables, $hook) {
   if(arg(0) == 'node' && $variables['node']->type == 'teacher_community_question') {
     $variables['comments_header_title'] = t('TEACHERS RESPONSES');
     $variables['new_comment_label'] = t('ADD YOUR RESPONSE TO THE DISCUSSION');
+    $variables['bottom_suggestion_msg'] = t('GOT A QUESTION? NEED ADVICE ON LESSON PLANS? HAVE A GREAT IDEA FOR A WORKSHEET? SHARE IT WITH THE TFK TEACHER COMMUNITY!');
+    $variables['bottom_suggestion_link'] = l(t('Submit Your Thoughts to the TFK Community'), 'node/add/teacher-community-question');
   }
 }
 
