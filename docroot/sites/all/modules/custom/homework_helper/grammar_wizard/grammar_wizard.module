@@ -94,10 +94,11 @@ function grammar_wizard_multistep_form_callback($form, $form_state) {
   
   if ($form_state['student_answers'][$current_step] == 1) {
     $form['check_answer']['#access'] = FALSE; 
-    $form['question_result'] = array('#markup' => $form_state['question_result']);
+    $form['question_result'] = array('#markup' => $form_state['question_result'], '#weight' => 1,);
   }  
   elseif (isset($form_state['student_answers'][$current_step])) {
-    $form['question_result'] = array('#markup' => $form_state['question_result']);
+    $form['question_result'] = array('#markup' => $form_state['question_result'], '#weight' => 1,);
+  
   }
 
   return $form;
