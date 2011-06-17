@@ -37,6 +37,9 @@ body.homework-helper
       li.last
         float: left
         padding: 10px
+        ul.menu
+          li.first
+            float: none
         a#menu-study-helper
           color: $white
           padding: 10px 254px 10px 10px
@@ -67,11 +70,17 @@ body.homework-helper
 // WRITING CENTER LANDING PAGE
 body.page-node-98
   #content
+    #homework-help-content
+      border: 1px solid #cecece
+      +trailer
     #homework-helper-title
       text-transform: none
       font-size: $ms4
       font-weight: bold
       margin-bottom: 0
+    .field-item
+      p
+        padding: $gutter
     p
       margin-top: 0
     .row
@@ -79,11 +88,14 @@ body.page-node-98
       border-top: 1px solid #cecece
       p
         margin-top: 0
-      h2
+        padding: 0
+      h2 a
         color: $tfk-red
         font-size: $ms4
         line-height: 120%
         margin: 0
+        &:hover
+          color: lighten($tfk-red, 40.0)
 
 #homework-help-content .progress-disabled
   float: none
