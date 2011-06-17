@@ -74,7 +74,7 @@ function _tfk_fav_del(){
 
 
 function tfk_favorites_preprocess_node(&$variables){
-  if($variables['node']->type == 'store'){
+  if($variables['type'] == 'store'){
     print_r($node);exit;
   }
 }
