@@ -75,6 +75,6 @@ function _tfk_fav_del(){
 
 function tfk_favorites_preprocess_node(&$variables){
   if($variables['type'] == 'store'){
-    $variables['store_items']['und'][0] = 'asdasdasd';
+    $variables['field_store_items']['und'][0] = 'asdasdasd';
   }
 }
