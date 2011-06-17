@@ -616,7 +616,7 @@ body.page-homework-helper-writing-center-a-plus-papers #block-system-main {
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003202}}
 body.page-homework-helper-writing-center-a-plus-papers #block-system-main img {
   float: left;
-  margin: 10px;
+  margin-left: 10px;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003205}}
 body.page-homework-helper-writing-center-a-plus-papers #block-system-main .views-field-nothing {
@@ -634,6 +634,7 @@ body.page-homework-helper-writing-center-a-plus-papers #block-system-main .views
   -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
   -o-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  margin-top: 1.714em;
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\000034}}
