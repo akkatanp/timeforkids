@@ -30,25 +30,50 @@ function tfk_teachers_community_permission() {
  */
 function tfk_teachers_community_preprocess_page(&$variables, $hook) {
   $community_question = FALSE;
+  
   // Node add/edit page, Spec 17F.
   if(arg(0) == 'node' && arg(1) == 'add' && arg(2) == 'teacher-community-question') {
     $community_question = TRUE;
 
-    $page['before_content'] = t('<h2>Submit to the Teachers Community</h2>');
+    //$page['before_content'] = t('<h2>Submit to the Teachers Community</h2>');
+    drupal_set_title(t('Submit to the Teachers Community'));
+    
+    // Hardcode help message. The one coming from the Drupal interface contains bad markup (>.<)!
+    $variables['page']['help']['system_help']['#markup'] = t("
+			<h2>Got a Question? Need Advice on Lesson Plans?</h2>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    ");
+    
+    $btn_id = "form#teacher-community-question-node-form div#edit-actions input#edit-submit";
+    $btn_img = "/images/submit-your-question-active.png";
   }
   
   // Node view page, Spec 17B.
   if(array_key_exists('node', $variables) && $variables['node']->type == 'teacher_community_question') {
     $community_question = TRUE;
+    
+    $variables['top_suggestion_msg'] = t('GOT A QUESTION? GOT A LESSON PLAN IDEA?');
+    $variables['top_suggestion_link'] = l(t('Submit to the TFK Teacher Community'), 'node/add/teacher-community-question');
+    
+    $btn_id = "div.node-teacher-community-question.view-mode-full form#comment-form div#edit-actions input#edit-submit";
+    $btn_img = "/images/submit-your-response-active.png";
   }
   
   // Common actions.
   if($community_question) {
-    // Set title to TEACHER COMMUNITY.
-    drupal_set_title(t('TEACHER COMMUNITY'));
-        
+    // Section title.
+    $variables['section_title'] = t('TEACHER COMMUNITY');
+    
+    $module_path = drupal_get_path('module', 'tfk_teachers_community');
+    
     // Add CSS.
-    drupal_add_css(drupal_get_path('module', 'tfk_teachers_community'). '/css/tfk_teachers_community.css', 'file');
+    drupal_add_css($module_path. '/css/tfk_teachers_community.css', 'file');
+    
+    // Animate buttons with Safari support.
+    drupal_add_js($module_path. '/js/tfk_teachers_community.js', 'file');
+    
+    // We dynamically pass to the animation script the CSS selector.
+    drupal_add_js(array('tfk_teachers_community' => array('btn_id' => $btn_id, 'btn_img' => '/'. $module_path. $btn_img)), 'setting');
     
     // Unset Editor's Menu.
     $page = & $variables['page'];
@@ -70,9 +95,6 @@ function tfk_teachers_community_preprocess_node(&$variables, $hook) {
     $variables['question_date'] = date('F j, Y');
     
     unset($_variables['content']['links']);
-    
-    $variables['top_suggestion_msg'] = t('GOT A QUESTION? GOT A LESSON PLAN IDEA?');
-    $variables['top_suggestion_link'] = l(t('Submit to the TFK Teacher Community'), 'node/add/teacher-community-question');
   }
   
 }
@@ -84,7 +106,7 @@ function tfk_teachers_community_preprocess_comment_wrapper(&$variables, $hook) {
   if(arg(0) == 'node' && $variables['node']->type == 'teacher_community_question') {
     $variables['comments_header_title'] = t('TEACHERS RESPONSES');
     $variables['new_comment_label'] = t('ADD YOUR RESPONSE TO THE DISCUSSION');
-    $variables['bottom_suggestion_msg'] = t('GOT A QUESTION? NEED ADVICE ON LESSON PLANS? HAVE A GREAT IDEA FOR A WORKSHEET? SHARE IT WITH THE TFK TEACHER COMMUNITY!');
+    $variables['bottom_suggestion_msg'] = t('GOT A QUESTION? NEED ADVICE ON LESSON PLANS?<br /> HAVE A GREAT IDEA FOR A WORKSHEET?<br /> SHARE IT WITH THE TFK TEACHER COMMUNITY!');
     $variables['bottom_suggestion_link'] = l(t('Submit Your Thoughts to the TFK Community'), 'node/add/teacher-community-question');
   }
 }
@@ -130,6 +152,8 @@ function tfk_teachers_community_preprocess_comment(&$variables, $hook) {
 /**
  * Implementation of hook_form_FORM_ID_alter.
  *
+ * Core form for adding Teacher Community Question nodes.
+ *
  * @param array $form
  *   Nested array of form elements that comprise the form.
  * @param array $form_state
@@ -162,11 +186,21 @@ function tfk_teachers_community_form_teacher_community_question_node_form_alter(
   
   $actions = & $form['actions'];
   unset($actions['preview']);
-  $form['actions']['submit']['#value'] = t('Submit Your Question');
+  
+  // Using regular input element.
+  // $form['actions']['submit']['#value'] = '';
+  
+  // Using image input element for Safari support.
+  unset($actions['submit']['#value']);
+  $form['actions']['submit']['#type'] = 'image_button';
+  $path = drupal_get_path('module', 'tfk_teachers_community');
+  $form['actions']['submit']['#src'] = $path. '/images/submit-your-question.png';
 }
 
 /**
  * Implementation of hook_form_FORM_ID_alter.
+ *
+ * Core form for adding Teacher Community Question comments.
  *
  * @param array $form
  * @param array $form_state
@@ -175,8 +209,6 @@ function tfk_teachers_community_form_teacher_community_question_node_form_alter(
 function tfk_teachers_community_form_comment_node_teacher_community_question_form_alter(&$form, &$form_state, $form_id) {
 
   $_form = & $form;
-  
-  $form['actions']['submit']['#value'] = t('Submit Your Response');
   
   // We need the author for the admin interface, so we leave that in.
   $form['author']['#access'] = FALSE;
@@ -188,6 +220,14 @@ function tfk_teachers_community_form_comment_node_teacher_community_question_for
   unset($_form['actions']['preview']);
   unset($_form['comment_body']['und'][0]['#title']);
   
+  // Using regular input element.
+  // $form['actions']['submit']['#value'] = t('Submit Your Response');
+  
+  // Using image input element for Safari support.
+  unset($_form['actions']['submit']['#value']);
+  $form['actions']['submit']['#type'] = 'image_button';
+  $path = drupal_get_path('module', 'tfk_teachers_community');
+  $form['actions']['submit']['#src'] = $path. '/images/submit-your-response.png';
 }
 
 /**
