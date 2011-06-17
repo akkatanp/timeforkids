@@ -839,16 +839,16 @@
 }
 
 #block-views-global-right-sidebar-block-1 .content a {
+	height: 16px;
 	padding-left: 16px;
 	background: url("../images/mini-lessons-icon.png") no-repeat 0px 2px;
-	height: 16px;
 }
 
 #block-views-global-right-sidebar-block-2 .content a,
 #block-views-global-right-sidebar-block-3 .content a {
+	height: 16px;
 	padding-left: 16px;
 	background: url("../images/related-article-icon.png") no-repeat 0px 2px;
-	height: 16px;
 }
 
 #block-block-18  .content a {
