@@ -124,6 +124,13 @@
       <a href="<?php print $store_item['link_url'];?>"><img src="<?php print $store_item['image_url'];?>"/></a>
       <br/>
     <?php endforeach;?>
+    <br/>
+    
+    <h2>ITEMS THAT OCCUPY HALF ROW:</h2><br/>
+    <?php foreach($store_items_bottom as $store_item_bottom):?>
+      <a href="<?php print $store_item_bottom['link_url'];?>"><img src="<?php print $store_item_bottom['image_url'];?>"/></a>
+      <br/>
+    <?php endforeach;?>
 
 
   </div>

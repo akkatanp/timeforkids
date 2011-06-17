@@ -77,22 +77,28 @@ function tfk_favorites_preprocess_node(&$variables){
   
   if(array_key_exists('node', $variables) && $variables['node']->type == 'store') {
 
+     
+      //we dont want title to be displayeed
+      $variables['node']->title = '';
       $store_items = array();
+      $store_items_bottom = array();
       $store_books = array();
 
       $items_tmp = field_get_items('node', $variables['node'], 'field_store_items');
       foreach($items_tmp as $item){
         $item_tmp = entity_load('field_collection_item', array($item['value']));
         $link_url = $item_tmp[$item['value']]->field_store_item_link_url['und'][0]['safe_value'];
-        $image = $item_tmp[$item['value']]->field_store_item_image['und'][0]['uri'];
-        $image_url = file_create_url($image);
-        $store_items[$item['value']]['link_url'] = $link_url;
-        $store_items[$item['value']]['image_url'] = $image_url;
+        
+        if(strlen($link_url) > 0 && $link_url != 'http://'){
+          $image = $item_tmp[$item['value']]->field_store_item_image['und'][0]['uri'];
+          $image_url = file_create_url($image);
+          $store_items[$item['value']]['link_url'] = $link_url;
+          $store_items[$item['value']]['image_url'] = $image_url;
+        }
+
       }
 
       $books_tmp = field_get_items('node', $variables['node'], 'field_store_books');
-
-
       foreach($books_tmp as $book_id => $book){
         $book_cover_tmp = field_get_items('node',$book['node'],'field_book_image');
         $book_cover = file_create_url($book_cover_tmp[0]['uri']);
@@ -111,10 +117,28 @@ function tfk_favorites_preprocess_node(&$variables){
         $store_books[$book_id]['book_author'] = $book_author;
 
       }
-      
 
+
+      $items_tmp = field_get_items('node', $variables['node'], 'field_store_items_bottom');
+      foreach($items_tmp as $item){
+
+        $item_tmp = entity_load('field_collection_item', array($item['value']));
+        $link_url = $item_tmp[$item['value']]->field_item_url['und'][0]['safe_value'];
+        if(strlen($link_url) > 0 && $link_url != 'http://'){
+          $image = $item_tmp[$item['value']]->field_item_image['und'][0]['uri'];
+          $image_url = file_create_url($image);
+
+          $store_items_bottom[$item['value']]['link_url'] = $link_url;
+          $store_items_bottom[$item['value']]['image_url'] = $image_url;
+        }
+      }
+
+
+      
+//
       $variables['store_books'] = $store_books;
       $variables['store_items'] = $store_items;
+      $variables['store_items_bottom'] = $store_items_bottom;
 
   }
 
