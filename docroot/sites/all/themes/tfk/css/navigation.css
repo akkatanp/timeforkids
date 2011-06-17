@@ -841,12 +841,14 @@
 #block-views-global-right-sidebar-block-1 .content a {
 	padding-left: 16px;
 	background: url("../images/mini-lessons-icon.png") no-repeat 0px 2px;
+	height: 16px;
 }
 
 #block-views-global-right-sidebar-block-2 .content a,
 #block-views-global-right-sidebar-block-3 .content a {
 	padding-left: 16px;
 	background: url("../images/related-article-icon.png") no-repeat 0px 2px;
+	height: 16px;
 }
 
 #block-block-18  .content a {
@@ -855,6 +857,7 @@
 	color: white;
 	text-decoration: none;
 	padding: 6px 8px;
+	margin: 4px 0;
 	-moz-border-radius: 12px;
 	-webkit-border-radius: 12px;
 	border-radius: 12px;
