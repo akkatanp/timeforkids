@@ -791,6 +791,11 @@
 }*/
 
 /* right sidebar */
+#block-block-19 ,
+#block-views-global-right-sidebar-block-1 {
+	margin: 0;
+}
+
 #block-block-19 .content,
 #block-views-global-right-sidebar-block .view-header {
 	height: 20px;
@@ -815,11 +820,9 @@
 	font-size: 11px;
 }
 
-#block-views-global-right-sidebar-block-1 {
-	margin: 0;
-}
-
-#block-views-global-right-sidebar-block-1 .content {
+#block-views-global-right-sidebar-block-1 .content,
+#block-views-global-right-sidebar-block-2 .content,
+#block-views-global-right-sidebar-block-3 .content {
 	width: 150px;
 	background: #d9effe;
 	border-right: solid 2px #acdbfc;
@@ -830,6 +833,12 @@
 #block-views-global-right-sidebar-block-1 .content a {
 	padding-left: 16px;
 	background: url("../images/mini-lessons-icon.png") no-repeat 0px 2px;
+}
+
+#block-views-global-right-sidebar-block-2 .content a,
+#block-views-global-right-sidebar-block-3 .content a {
+	padding-left: 16px;
+	background: url("../images/related-article-icon.png") no-repeat 0px 2px;
 }
 
 /* Footer Nav */
