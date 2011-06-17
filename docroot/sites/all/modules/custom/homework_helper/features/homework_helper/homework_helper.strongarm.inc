@@ -62,6 +62,13 @@ function homework_helper_strongarm() {
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'comment_anonymous_writing_tips';
+  $strongarm->value = 0;
+  $export['comment_anonymous_writing_tips'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'comment_default_mode_a_paper';
   $strongarm->value = 1;
   $export['comment_default_mode_a_paper'] = $strongarm;
@@ -111,6 +118,13 @@ function homework_helper_strongarm() {
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'comment_default_mode_writing_tips';
+  $strongarm->value = 1;
+  $export['comment_default_mode_writing_tips'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'comment_default_per_page_a_paper';
   $strongarm->value = '50';
   $export['comment_default_per_page_a_paper'] = $strongarm;
@@ -149,6 +163,13 @@ function homework_helper_strongarm() {
   $strongarm->name = 'comment_default_per_page_paper_step';
   $strongarm->value = '50';
   $export['comment_default_per_page_paper_step'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'comment_default_per_page_writing_tips';
+  $strongarm->value = '50';
+  $export['comment_default_per_page_writing_tips'] = $strongarm;
 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -198,6 +219,13 @@ function homework_helper_strongarm() {
   $strongarm->name = 'comment_form_location_paper_step';
   $strongarm->value = 1;
   $export['comment_form_location_paper_step'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'comment_form_location_writing_tips';
+  $strongarm->value = 1;
+  $export['comment_form_location_writing_tips'] = $strongarm;
 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -279,6 +307,13 @@ function homework_helper_strongarm() {
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'comment_preview_writing_tips';
+  $strongarm->value = '1';
+  $export['comment_preview_writing_tips'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'comment_subject_field_a_paper';
   $strongarm->value = 1;
   $export['comment_subject_field_a_paper'] = $strongarm;
@@ -317,6 +352,20 @@ function homework_helper_strongarm() {
   $strongarm->name = 'comment_subject_field_paper_step';
   $strongarm->value = 1;
   $export['comment_subject_field_paper_step'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'comment_subject_field_writing_tips';
+  $strongarm->value = 1;
+  $export['comment_subject_field_writing_tips'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'comment_writing_tips';
+  $strongarm->value = '0';
+  $export['comment_writing_tips'] = $strongarm;
 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -385,6 +434,13 @@ function homework_helper_strongarm() {
   $strongarm->name = 'node_options_paper_step';
   $strongarm->value = array();
   $export['node_options_paper_step'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'node_options_writing_tips';
+  $strongarm->value = array();
+  $export['node_options_writing_tips'] = $strongarm;
 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
