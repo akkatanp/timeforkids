@@ -74,9 +74,7 @@ function _tfk_fav_del(){
 
 
 function tfk_favorites_preprocess_node(&$variables){
-  print_r($variables);
-
-//  if($variables['type'] == 'store'){
-//    print_r($variables);exit;
-//  }
+  if($variables['type'] == 'store'){
+    print_r($variables);exit;
+  }
 }
