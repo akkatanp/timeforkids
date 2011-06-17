@@ -76,8 +76,9 @@ function _tfk_fav_del(){
 function tfk_favorites_preprocess_node(&$variables){
   if($variables['type'] == 'store'){
     //unset($variables['field_store_items']);
-    //print_R($variables);exit;
-
+   // print_R($variables);exit;
+   $_variable = & $variables;
+   unset($_variable['field_store_items']);
 
   }
 }
