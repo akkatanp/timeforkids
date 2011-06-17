@@ -87,7 +87,7 @@
 
 #teacher-nav-container {
 	width: 100%;
-	background-image: url("../images/teacher-nav-bar-back.png") repeat-x;
+	background: url("../images/teacher-nav-bar-back.png") repeat-x;
 	background: -moz-linear-gradient(100% 100% 90deg,  #94bcd8, #acdbfc);
 	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#acdbfc), to(#94bcd8));
 	background: -webkit-linear-gradient(#acdbfc, #94bcd8);
@@ -231,7 +231,7 @@
 	float: right;
 	width: 622px;
 	height: 32px;
-	background-image: url("../images/teacher-nav-link-back.png") repeat-x;
+	background: url("../images/teacher-nav-link-back.png") repeat-x;
 	background: -moz-linear-gradient(100% 100% 90deg,  #5ea1d3, #7bc3f5);
 	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#7bc3f5), to(#5ea1d3));
 	background: -webkit-linear-gradient(#7bc3f5, #5ea1d3);
