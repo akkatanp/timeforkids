@@ -77,6 +77,14 @@ function homework_helper_node_info() {
       'title_label' => t('Title'),
       'help' => '',
     ),
+    'writing_tips' => array(
+      'name' => t('Writing Tips'),
+      'base' => 'node_content',
+      'description' => t('The writing tips questions and answers provided by staff or submitted questions.'),
+      'has_title' => '1',
+      'title_label' => t('Question'),
+      'help' => '',
+    ),
   );
   return $items;
 }
