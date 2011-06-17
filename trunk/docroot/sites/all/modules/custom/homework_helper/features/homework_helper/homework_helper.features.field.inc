@@ -76,20 +76,20 @@ function homework_helper_field_default_fields() {
           'summary_rows' => 5,
         ),
         'type' => 'text_textarea_with_summary',
-        'weight' => '-4',
+        'weight' => '1',
       ),
       'widget_type' => 'text_textarea_with_summary',
     ),
   );
 
-  // Exported field: 'node-a_paper-field_graphical_image'
-  $fields['node-a_paper-field_graphical_image'] = array(
+  // Exported field: 'node-a_paper-field_checklist_file'
+  $fields['node-a_paper-field_checklist_file'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_graphical_image',
+      'field_name' => 'field_checklist_file',
       'foreign keys' => array(
         'fid' => array(
           'columns' => array(
@@ -103,13 +103,14 @@ function homework_helper_field_default_fields() {
           0 => 'fid',
         ),
       ),
-      'module' => 'image',
+      'module' => 'file',
       'settings' => array(
-        'default_image' => 0,
+        'display_default' => 0,
+        'display_field' => 0,
         'uri_scheme' => 'public',
       ),
       'translatable' => '1',
-      'type' => 'image',
+      'type' => 'file',
     ),
     'field_instance' => array(
       'bundle' => 'a_paper',
@@ -117,10 +118,10 @@ function homework_helper_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'hidden',
+          'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '4',
+          'weight' => '6',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -130,47 +131,107 @@ function homework_helper_field_default_fields() {
         ),
       ),
       'entity_type' => 'node',
-      'field_name' => 'field_graphical_image',
-      'label' => 'Graphical Organizer Image',
+      'field_name' => 'field_checklist_file',
+      'label' => 'Checklist PDF',
       'required' => 0,
       'settings' => array(
-        'alt_field' => 0,
-        'file_directory' => '',
-        'file_extensions' => 'png gif jpg jpeg',
+        'description_field' => 0,
+        'file_directory' => 'homework_helper/aplus_papers',
+        'file_extensions' => 'pdf',
         'max_filesize' => '',
-        'max_resolution' => '',
-        'min_resolution' => '',
-        'title_field' => 0,
         'user_register_form' => FALSE,
       ),
       'widget' => array(
         'active' => 1,
-        'module' => 'image',
+        'module' => 'file',
         'settings' => array(
-          'insert' => 1,
-          'insert_class' => '',
-          'insert_default' => 'auto',
-          'insert_styles' => array(
-            '<all>' => '<all>',
-          ),
-          'insert_width' => '',
-          'preview_image_style' => 'thumbnail',
           'progress_indicator' => 'throbber',
         ),
-        'type' => 'image_image',
-        'weight' => '3',
+        'type' => 'file_generic',
+        'weight' => '4',
       ),
     ),
   );
 
-  // Exported field: 'node-a_paper-field_graphical_text'
-  $fields['node-a_paper-field_graphical_text'] = array(
+  // Exported field: 'node-a_paper-field_graphic_organizer'
+  $fields['node-a_paper-field_graphic_organizer'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_graphical_text',
+      'field_name' => 'field_graphic_organizer',
+      'foreign keys' => array(
+        'fid' => array(
+          'columns' => array(
+            'fid' => 'fid',
+          ),
+          'table' => 'file_managed',
+        ),
+      ),
+      'indexes' => array(
+        'fid' => array(
+          0 => 'fid',
+        ),
+      ),
+      'module' => 'file',
+      'settings' => array(
+        'display_default' => 0,
+        'display_field' => 0,
+        'uri_scheme' => 'public',
+      ),
+      'translatable' => '1',
+      'type' => 'file',
+    ),
+    'field_instance' => array(
+      'bundle' => 'a_paper',
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '3',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_graphic_organizer',
+      'label' => 'Graphic Organizer',
+      'required' => 0,
+      'settings' => array(
+        'description_field' => 0,
+        'file_directory' => 'homework_helper/aplus_papers',
+        'file_extensions' => 'pdf',
+        'max_filesize' => '',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'file',
+        'settings' => array(
+          'progress_indicator' => 'throbber',
+        ),
+        'type' => 'file_generic',
+        'weight' => '5',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-a_paper-field_paper_check_title'
+  $fields['node-a_paper-field_paper_check_title'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_paper_check_title',
       'foreign keys' => array(
         'format' => array(
           'columns' => array(
@@ -185,21 +246,23 @@ function homework_helper_field_default_fields() {
         ),
       ),
       'module' => 'text',
-      'settings' => array(),
+      'settings' => array(
+        'max_length' => '255',
+      ),
       'translatable' => '1',
-      'type' => 'text_long',
+      'type' => 'text',
     ),
     'field_instance' => array(
       'bundle' => 'a_paper',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Title of checklist which will appear on the web only. Example: 7 Step Persuasive Essay',
       'display' => array(
         'default' => array(
-          'label' => 'hidden',
+          'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '5',
+          'weight' => '2',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -209,21 +272,21 @@ function homework_helper_field_default_fields() {
         ),
       ),
       'entity_type' => 'node',
-      'field_name' => 'field_graphical_text',
-      'label' => 'Graphical Organizer Instructions',
-      'required' => 0,
+      'field_name' => 'field_paper_check_title',
+      'label' => 'Checklist Title',
+      'required' => 1,
       'settings' => array(
-        'text_processing' => '1',
+        'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
       'widget' => array(
         'active' => 1,
         'module' => 'text',
         'settings' => array(
-          'rows' => '5',
+          'size' => '60',
         ),
-        'type' => 'text_textarea',
-        'weight' => '2',
+        'type' => 'text_textfield',
+        'weight' => '3',
       ),
     ),
   );
@@ -305,19 +368,19 @@ function homework_helper_field_default_fields() {
           'progress_indicator' => 'throbber',
         ),
         'type' => 'image_image',
-        'weight' => '-3',
+        'weight' => '2',
       ),
     ),
   );
 
-  // Exported field: 'node-a_paper-field_sample_image'
-  $fields['node-a_paper-field_sample_image'] = array(
+  // Exported field: 'node-a_paper-field_sample_paper'
+  $fields['node-a_paper-field_sample_paper'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_sample_image',
+      'field_name' => 'field_sample_paper',
       'foreign keys' => array(
         'fid' => array(
           'columns' => array(
@@ -331,13 +394,14 @@ function homework_helper_field_default_fields() {
           0 => 'fid',
         ),
       ),
-      'module' => 'image',
+      'module' => 'file',
       'settings' => array(
-        'default_image' => 0,
+        'display_default' => 0,
+        'display_field' => 0,
         'uri_scheme' => 'public',
       ),
       'translatable' => '1',
-      'type' => 'image',
+      'type' => 'file',
     ),
     'field_instance' => array(
       'bundle' => 'a_paper',
@@ -345,10 +409,10 @@ function homework_helper_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'hidden',
+          'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '2',
+          'weight' => '4',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -358,76 +422,68 @@ function homework_helper_field_default_fields() {
         ),
       ),
       'entity_type' => 'node',
-      'field_name' => 'field_sample_image',
-      'label' => 'Sample Paper Image',
+      'field_name' => 'field_sample_paper',
+      'label' => 'Sample Paper',
       'required' => 0,
       'settings' => array(
-        'alt_field' => 0,
-        'file_directory' => '',
-        'file_extensions' => 'png gif jpg jpeg',
+        'description_field' => 0,
+        'file_directory' => 'homework_helper/aplus_papers',
+        'file_extensions' => 'pdf',
         'max_filesize' => '',
-        'max_resolution' => '',
-        'min_resolution' => '',
-        'title_field' => 0,
         'user_register_form' => FALSE,
       ),
       'widget' => array(
         'active' => 1,
-        'module' => 'image',
+        'module' => 'file',
         'settings' => array(
-          'insert' => 1,
-          'insert_class' => '',
-          'insert_default' => 'auto',
-          'insert_styles' => array(
-            '<all>' => '<all>',
-          ),
-          'insert_width' => '',
-          'preview_image_style' => 'thumbnail',
           'progress_indicator' => 'throbber',
         ),
-        'type' => 'image_image',
-        'weight' => 0,
+        'type' => 'file_generic',
+        'weight' => '6',
       ),
     ),
   );
 
-  // Exported field: 'node-a_paper-field_sample_text'
-  $fields['node-a_paper-field_sample_text'] = array(
+  // Exported field: 'node-a_paper-field_step_instructions'
+  $fields['node-a_paper-field_step_instructions'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_sample_text',
+      'field_name' => 'field_step_instructions',
       'foreign keys' => array(
-        'format' => array(
+        'fid' => array(
           'columns' => array(
-            'format' => 'format',
+            'fid' => 'fid',
           ),
-          'table' => 'filter_format',
+          'table' => 'file_managed',
         ),
       ),
       'indexes' => array(
-        'format' => array(
-          0 => 'format',
+        'fid' => array(
+          0 => 'fid',
         ),
       ),
-      'module' => 'text',
-      'settings' => array(),
+      'module' => 'file',
+      'settings' => array(
+        'display_default' => 0,
+        'display_field' => 0,
+        'uri_scheme' => 'public',
+      ),
       'translatable' => '1',
-      'type' => 'text_long',
+      'type' => 'file',
     ),
     'field_instance' => array(
       'bundle' => 'a_paper',
-      'default_value' => NULL,
       'deleted' => '0',
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'hidden',
+          'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '3',
+          'weight' => '5',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -437,21 +493,24 @@ function homework_helper_field_default_fields() {
         ),
       ),
       'entity_type' => 'node',
-      'field_name' => 'field_sample_text',
-      'label' => 'Sample Paper Instructions',
+      'field_name' => 'field_step_instructions',
+      'label' => 'Step-by-Step Instructions',
       'required' => 0,
       'settings' => array(
-        'text_processing' => '1',
+        'description_field' => 0,
+        'file_directory' => 'homework_helper/aplus_papers',
+        'file_extensions' => 'pdf',
+        'max_filesize' => '',
         'user_register_form' => FALSE,
       ),
       'widget' => array(
         'active' => 1,
-        'module' => 'text',
+        'module' => 'file',
         'settings' => array(
-          'rows' => '5',
+          'progress_indicator' => 'throbber',
         ),
-        'type' => 'text_textarea',
-        'weight' => '-1',
+        'type' => 'file_generic',
+        'weight' => '7',
       ),
     ),
   );
@@ -621,7 +680,7 @@ function homework_helper_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'teaser' => array(
           'label' => 'hidden',
@@ -726,10 +785,9 @@ function homework_helper_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'node_reference',
           'settings' => array(),
-          'type' => 'node_reference_default',
-          'weight' => 2,
+          'type' => 'hidden',
+          'weight' => '2',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -791,10 +849,9 @@ function homework_helper_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'text',
           'settings' => array(),
-          'type' => 'text_default',
-          'weight' => 4,
+          'type' => 'hidden',
+          'weight' => '4',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -859,10 +916,9 @@ function homework_helper_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'text',
           'settings' => array(),
-          'type' => 'text_default',
-          'weight' => 5,
+          'type' => 'hidden',
+          'weight' => '5',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -965,7 +1021,7 @@ function homework_helper_field_default_fields() {
           'module' => 'node_reference',
           'settings' => array(),
           'type' => 'node_reference_default',
-          'weight' => 3,
+          'weight' => '1',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1018,15 +1074,9 @@ function homework_helper_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'number',
-          'settings' => array(
-            'decimal_separator' => '.',
-            'prefix_suffix' => TRUE,
-            'scale' => 0,
-            'thousand_separator' => ' ',
-          ),
-          'type' => 'number_integer',
-          'weight' => 1,
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '3',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1202,9 +1252,75 @@ function homework_helper_field_default_fields() {
           'summary_rows' => 5,
         ),
         'type' => 'text_textarea_with_summary',
-        'weight' => '1',
+        'weight' => '2',
       ),
       'widget_type' => 'text_textarea_with_summary',
+    ),
+  );
+
+  // Exported field: 'node-grammar_practice_rule-field_grammar_example'
+  $fields['node-grammar_practice_rule-field_grammar_example'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_grammar_example',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'module' => 'text',
+      'settings' => array(),
+      'translatable' => '1',
+      'type' => 'text_long',
+    ),
+    'field_instance' => array(
+      'bundle' => 'grammar_practice_rule',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 3,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_grammar_example',
+      'label' => 'Example',
+      'required' => 1,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'rows' => '5',
+        ),
+        'type' => 'text_textarea',
+        'weight' => '3',
+      ),
     ),
   );
 
@@ -1303,7 +1419,7 @@ function homework_helper_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '2',
+        'weight' => '1',
       ),
     ),
   );
@@ -1364,7 +1480,7 @@ function homework_helper_field_default_fields() {
         'module' => 'number',
         'settings' => array(),
         'type' => 'number',
-        'weight' => '3',
+        'weight' => '4',
       ),
     ),
   );
@@ -1912,22 +2028,24 @@ function homework_helper_field_default_fields() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Body');
+  t('Checklist PDF');
+  t('Checklist Title');
   t('Correct Answer');
   t('Description');
   t('Example');
   t('Flashcard');
   t('Grammar Practice');
-  t('Graphical Organizer Image');
-  t('Graphical Organizer Instructions');
+  t('Graphic Organizer');
   t('Image');
   t('Include Name & Date fields');
   t('Include Textarea?');
   t('Include Title Field');
   t('Parent paper');
   t('Rule');
-  t('Sample Paper Image');
-  t('Sample Paper Instructions');
+  t('Sample Paper');
+  t('Step-by-Step Instructions');
   t('Textarea Label');
+  t('Title of checklist which will appear on the web only. Example: 7 Step Persuasive Essay');
   t('Weight');
   t('Wrong Answers');
 
