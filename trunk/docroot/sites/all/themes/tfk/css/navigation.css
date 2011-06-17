@@ -818,7 +818,7 @@
 	width: 150px;
 	background: #d9effe;
 	border: solid 2px #acdbfc;
-
+	border-top: none;
 	padding: 4px;
 	font-size: 11px;
 }
