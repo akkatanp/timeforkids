@@ -41,7 +41,7 @@ $comment_form = render($content['comment_form']);
 <div id="comments" class="<?php print $classes; ?>"<?php print $attributes; ?>>
   <?php if ($comments && $node->type != 'forum'): ?>
     <?php print render($title_prefix); ?>
-    <h2 class="title"><?php print (isset($comments_header_title))? $comments_header_title: t('Comments');  ?></h2>
+    <h2 class="title comments_header_title"><?php print (isset($comments_header_title))? $comments_header_title: t('Comments');  ?></h2>
     <?php print render($title_suffix); ?>
   <?php endif; ?>
 

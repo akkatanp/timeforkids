@@ -152,7 +152,13 @@ if(drupal_is_front_page()) {
   <div id="main-wrapper"><div id="main" class="clearfix<?php if ($main_menu || $page['navigation']) { print ' with-navigation'; } ?>">
 	<?php print render($page['sidebar_second']); ?>
   
-  <?php if(!$is_front):?><h1 class="title" id="page-title"><?php print $title; ?></h1><?php endif;?>
+  <?php if(!$is_front):?>
+    <h1 class="title" id="section-title">
+    	<?php if(isset($section_title)):?>
+    		<?php print $section_title; ?>
+    	<?php endif; ?>
+  	</h1>
+  <?php endif;?>
 
 	<?php if(array_key_exists('sidebar_top', $rendered)): ?>
 		<?php print $rendered['sidebar_top']; ?>
@@ -171,8 +177,8 @@ if(drupal_is_front_page()) {
       <?php print $breadcrumb; ?>
       <a id="main-content"></a>
       <?php print render($title_prefix); ?>
-      <?php if ($title): ?>
-        
+      <?php if ($title): // Not printing the title in page.tpl because it is getting printed @ node.tpl. ?>
+        <!-- <h1 class="title" id="page-title"><?php print $title; ?></h1>-->
       <?php endif; ?>
       <?php print render($title_suffix); ?>
       <?php print $messages; ?>
@@ -182,6 +188,13 @@ if(drupal_is_front_page()) {
       <?php print render($page['help']); ?>
       <?php if ($action_links): ?>
         <ul class="action-links"><?php print render($action_links); ?></ul>
+      <?php endif; ?>
+      
+      <?php if(isset($top_suggestion_msg)): ?>
+      	<div id='top-suggestion-box' class="suggestion-box">
+      		<div class='msg'><?php print $top_suggestion_msg; ?></div>
+      		<div class='link'><?php print $top_suggestion_link; ?></div>
+      	</div>
       <?php endif; ?>
       
       <?php print render($page['content']); ?>
