@@ -620,7 +620,7 @@ body.page-homework-helper-writing-center-a-plus-papers #block-system-main .views
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003205}}
 body.page-homework-helper-writing-center-a-plus-papers #block-system-main img {
   float: left;
-  margin-right: 10px;
+  margin: 0 20px 20px 0;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003208}}
 body.page-homework-helper-writing-center-a-plus-papers #block-system-main .views-field-nothing {
