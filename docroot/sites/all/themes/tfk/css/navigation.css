@@ -231,7 +231,7 @@
 	float: right;
 	width: 622px;
 	height: 32px;
-	background: url("../images/teacher-nav-link-back.png") repeat-x;
+	background: url("../images/teacher-nav-llink-back.png") repeat-x;
 	background: -moz-linear-gradient(100% 100% 90deg,  #5ea1d3, #7bc3f5);
 	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#7bc3f5), to(#5ea1d3));
 	background: -webkit-linear-gradient(#7bc3f5, #5ea1d3);
@@ -253,7 +253,7 @@
 }
 
 #teacher-nav-container ul.menu a.tfk-magazine:hover {
-		background: url(../images/sub-nav-sprite.png) no-repeat 0px -32px
+	background: url(../images/sub-nav-sprite.png) no-repeat 0px -32px
 }
 
 #teacher-nav-container ul.menu a.worksheets {
