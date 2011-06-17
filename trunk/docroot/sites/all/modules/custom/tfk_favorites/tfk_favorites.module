@@ -79,7 +79,7 @@ function tfk_favorites_preprocess_node(&$variables){
 
      
       //we dont want title to be displayeed
-      $variables['node']->title = '';
+      $variables['title'] = '';
       $store_items = array();
       $store_items_bottom = array();
       $store_books = array();
