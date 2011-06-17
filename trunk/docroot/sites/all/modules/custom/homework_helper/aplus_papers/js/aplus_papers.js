@@ -8,7 +8,7 @@
     attach: function(context, settings) {
       var step = true;
 
-      $('#edit-submit').click(function() {
+      $('#edit-submit, #edit-submit--2').click(function() {
         step = false;
       });  
 
