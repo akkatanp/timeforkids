@@ -1,6 +1,7 @@
 <div id="mymodaldiv">
   
 </div>
+<?php if (count($saved_searches) > 0 ):?>
 <form action="" method="post">
   <div id="savsearches">
    <?php foreach($saved_searches as $k=>$search):?>
@@ -12,9 +13,10 @@
 
   </div>
   <div class="submbtn">
-    <input type="submit" value="Submit" />
+    <input type="submit" value="Delete This Search" />
   </div>
 </form>
+<?php endif; ?>
 <br/>
 ______________________________
 <br/>
