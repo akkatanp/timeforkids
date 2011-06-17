@@ -790,7 +790,29 @@
 	border: solid 1px #cecece;
 }*/
 
+/* right sidebar */
+#block-views-global-right-sidebar-block .view-header {
+	height: 20px;
+	font: normal 14px "arial black";
+	text-align: center;
+	color: #000;
+	padding: 6px 0;
+	margin: 0;
+	background: url("../images/teacher-nav-llink-back.png") repeat-x;
+	background: -moz-linear-gradient(100% 100% 90deg,  #5ea1d3, #7bc3f5);
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#7bc3f5), to(#5ea1d3));
+	background: -webkit-linear-gradient(#7bc3f5, #5ea1d3);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#7bc3f5, endColorstr=#5ea1d3);
+}
 
+#block-views-global-right-sidebar-block .view-content {
+	width: 150px;
+	background: #d9effe;
+	border: solid 2px #acdbfc;
+	border-top: solid 1px black;
+	padding: 4px;
+	font-size: 11px;
+}
 
 /* Footer Nav */
 .region-footer ul.menu {
