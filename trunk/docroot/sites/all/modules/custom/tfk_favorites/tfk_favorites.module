@@ -71,3 +71,10 @@ function _tfk_fav_del(){
   exit;
   
 }
+
+
+function tfk_favorites_preprocess_node(&$variables){
+  if($variables['node']->type == 'store'){
+    print_r($node);exit;
+  }
+}
