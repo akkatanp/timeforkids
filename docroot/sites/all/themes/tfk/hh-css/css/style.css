@@ -577,14 +577,14 @@ body.node-type-a-paper #content .student-name, body.node-type-paper-step #conten
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003183}}
-body.page-homework-helper-writing-center-a-plus-papers .view-a-papers .view-header {
+body.page-homework-helper-a-plus-papers .view-a-papers .view-header {
   border-bottom: 1px solid #cecece;
   padding-bottom: 10px;
   padding-left: 15px;
   margin-bottom: 1.714em;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003188}}
-body.page-homework-helper-writing-center-a-plus-papers .view-a-papers .view-header .aplus-paper-type-title {
+body.page-homework-helper-a-plus-papers .view-a-papers .view-header .aplus-paper-type-title {
   background-image: url(images/tfk-red-tag.png);
   background-repeat: no-repeat;
   padding: 13px;
@@ -599,34 +599,34 @@ body.page-homework-helper-writing-center-a-plus-papers .view-a-papers .view-head
   margin-left: -17px;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003201}}
-body.page-homework-helper-writing-center-a-plus-papers .view-a-papers .views-row {
+body.page-homework-helper-a-plus-papers .view-a-papers .views-row {
   padding-left: 135px;
   padding-right: 10px;
   border-bottom: 1px solid #cecece;
   padding-bottom: 24px;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003206}}
-body.page-homework-helper-writing-center-a-plus-papers #block-system-main {
+body.page-homework-helper-a-plus-papers #block-system-main {
   border-top: 1px solid #cecece;
   border-right: 1px solid #cecece;
   border-left: 1px solid #cecece;
   margin-bottom: 1.714em;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003212}}
-body.page-homework-helper-writing-center-a-plus-papers #block-system-main .views-field-title a {
+body.page-homework-helper-a-plus-papers #block-system-main .views-field-title a {
   font-size: 20px;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003214}}
-body.page-homework-helper-writing-center-a-plus-papers #block-system-main .views-field-field-paper-image {
+body.page-homework-helper-a-plus-papers #block-system-main .views-field-field-paper-image {
   float: left;
-  margin: 0 20px 20px -125px;
+  margin: 0 0 0 -125px;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003217}}
-body.page-homework-helper-writing-center-a-plus-papers #block-system-main .views-field-nothing {
+body.page-homework-helper-a-plus-papers #block-system-main .views-field-nothing {
   margin-top: 1.714em;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003219}}
-body.page-homework-helper-writing-center-a-plus-papers #block-system-main .views-field-nothing .related-pdfs {
+body.page-homework-helper-a-plus-papers #block-system-main .views-field-nothing .related-pdfs {
   border: 4px solid #addcfa;
   background: #ddeeff url(images/pdf-image.png);
   background-repeat: no-repeat;
@@ -638,7 +638,7 @@ body.page-homework-helper-writing-center-a-plus-papers #block-system-main .views
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003226}}
-body.page-homework-helper-writing-center-a-plus-papers #block-system-main .views-field-nothing .related-pdfs a {
+body.page-homework-helper-a-plus-papers #block-system-main .views-field-nothing .related-pdfs a {
   margin-right: 10px;
 }
 
