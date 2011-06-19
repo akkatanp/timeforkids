@@ -356,11 +356,17 @@ body.node-type-a-paper #content #homework-help-content #block-system-main a, bod
   margin-right: 10px;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000315}}
+body.node-type-a-paper #content #homework-help-content #block-system-main .messages, body.node-type-paper-step #content #homework-help-content #block-system-main .messages {
+  width: 440px;
+  position: absolute;
+  margin: 0;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000319}}
 body.node-type-a-paper #content #homework-help-content #homework-helper-title, body.node-type-paper-step #content #homework-help-content #homework-helper-title {
   position: absolute;
   top: 40px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000318}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000322}}
 body.node-type-a-paper #content #homework-help-content .aplus-paper-type-title, body.node-type-paper-step #content #homework-help-content .aplus-paper-type-title {
   background-image: url(images/tfk-red-tag.png);
   background-repeat: no-repeat;
@@ -375,19 +381,19 @@ body.node-type-a-paper #content #homework-help-content .aplus-paper-type-title, 
   position: absolute;
   margin-top: 10px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000331}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000335}}
 body.node-type-a-paper #content .paper-textarea, body.node-type-paper-step #content .paper-textarea {
   width: 480px;
   padding: 12px 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000334}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000338}}
 body.node-type-a-paper #content #aplus-papers-checklist-block, body.node-type-paper-step #content #aplus-papers-checklist-block {
   border: 1px solid #cecece;
   list-style: none;
   width: 220px;
   float: right;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000340}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000344}}
 body.node-type-a-paper #content #aplus-papers-checklist-block .aplus-papers-checklist-title, body.node-type-paper-step #content #aplus-papers-checklist-block .aplus-papers-checklist-title {
   color: white;
   background-color: #d71700;
@@ -397,11 +403,11 @@ body.node-type-a-paper #content #aplus-papers-checklist-block .aplus-papers-chec
   border: 10px solid #dddddd;
   text-align: center;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000348}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000352}}
 body.node-type-a-paper #content #aplus-papers-checklist-block ul#aplus-papers-checklist, body.node-type-paper-step #content #aplus-papers-checklist-block ul#aplus-papers-checklist {
   margin-bottom: 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000350}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000354}}
 body.node-type-a-paper #content #aplus-papers-checklist-block li, body.node-type-paper-step #content #aplus-papers-checklist-block li {
   border-bottom: 1px solid #cecece;
   background: #dddddd url(images/checkbox-unchecked.gif);
@@ -412,7 +418,7 @@ body.node-type-a-paper #content #aplus-papers-checklist-block li, body.node-type
   color: #d71700;
   font-weight: bold;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000359}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000363}}
 body.node-type-a-paper #content #aplus-papers-checklist-block li.current, body.node-type-paper-step #content #aplus-papers-checklist-block li.current {
   border-bottom: 1px solid #cecece;
   background: white url(images/checkbox-unchecked.gif);
@@ -422,7 +428,7 @@ body.node-type-a-paper #content #aplus-papers-checklist-block li.current, body.n
   padding: 10px 35px;
   color: black;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000367}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000371}}
 body.node-type-a-paper #content #aplus-papers-checklist-block li.checked, body.node-type-paper-step #content #aplus-papers-checklist-block li.checked {
   border-bottom: 1px solid #cecece;
   background: white url(images/checkbox-checked.gif);
@@ -432,30 +438,30 @@ body.node-type-a-paper #content #aplus-papers-checklist-block li.checked, body.n
   padding: 10px 35px;
   color: black;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000375}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000379}}
 body.node-type-a-paper #content #aplus-papers-checklist-block li.last, body.node-type-paper-step #content #aplus-papers-checklist-block li.last {
   border-bottom: 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000377}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000381}}
 body.node-type-a-paper #content h2.node-title a, body.node-type-paper-step #content h2.node-title a {
   color: black;
   font-size: 20px;
   line-height: 18px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000383}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000387}}
 body.node-type-a-paper #content .field-name-field-step-example, body.node-type-paper-step #content .field-name-field-step-example {
   background: #dddddd;
   border: 1px solid #cecece;
   margin-left: 2.439%;
   padding: 2.439%;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000389}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000393}}
 body.node-type-a-paper #content .field-name-field-step-example p, body.node-type-paper-step #content .field-name-field-step-example p {
   margin-bottom: 0;
   font-style: italic;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000392}}
-body.node-type-a-paper #content .form-item-step-0-name, body.node-type-a-paper #content .form-item-step-0-date, body.node-type-a-paper #content .form-item-step-0-textarea, body.node-type-a-paper #content .form-item-step-1-title, body.node-type-a-paper #content .form-item-step-2-textarea, body.node-type-a-paper #content .form-item-step-3-textarea, body.node-type-a-paper #content .form-item-step-4-textarea, body.node-type-a-paper #content .form-item-step-5-textarea, body.node-type-a-paper #content .form-item-step-6-0-name, body.node-type-a-paper #content .form-item-step-6-0-date, body.node-type-a-paper #content .form-item-step-6-1-title, body.node-type-a-paper #content .form-item-step-6-2-textarea, body.node-type-a-paper #content .form-item-step-6-3-textarea, body.node-type-a-paper #content .form-item-step-6-4-textarea, body.node-type-a-paper #content .form-item-step-6-5-textarea, body.node-type-paper-step #content .form-item-step-0-name, body.node-type-paper-step #content .form-item-step-0-date, body.node-type-paper-step #content .form-item-step-0-textarea, body.node-type-paper-step #content .form-item-step-1-title, body.node-type-paper-step #content .form-item-step-2-textarea, body.node-type-paper-step #content .form-item-step-3-textarea, body.node-type-paper-step #content .form-item-step-4-textarea, body.node-type-paper-step #content .form-item-step-5-textarea, body.node-type-paper-step #content .form-item-step-6-0-name, body.node-type-paper-step #content .form-item-step-6-0-date, body.node-type-paper-step #content .form-item-step-6-1-title, body.node-type-paper-step #content .form-item-step-6-2-textarea, body.node-type-paper-step #content .form-item-step-6-3-textarea, body.node-type-paper-step #content .form-item-step-6-4-textarea, body.node-type-paper-step #content .form-item-step-6-5-textarea {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000396}}
+body.node-type-a-paper #content .form-type-textfield, body.node-type-a-paper #content .form-type-textarea, body.node-type-paper-step #content .form-type-textfield, body.node-type-paper-step #content .form-type-textarea {
   background: #dddddd;
   padding: 10px;
   width: 480px;
@@ -463,23 +469,23 @@ body.node-type-a-paper #content .form-item-step-0-name, body.node-type-a-paper #
   clear: left;
   border: 1px solid #cecece;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000399}}
-body.node-type-a-paper #content .form-item-step-0-name label, body.node-type-a-paper #content .form-item-step-0-date label, body.node-type-a-paper #content .form-item-step-0-textarea label, body.node-type-a-paper #content .form-item-step-1-title label, body.node-type-a-paper #content .form-item-step-2-textarea label, body.node-type-a-paper #content .form-item-step-3-textarea label, body.node-type-a-paper #content .form-item-step-4-textarea label, body.node-type-a-paper #content .form-item-step-5-textarea label, body.node-type-a-paper #content .form-item-step-6-0-name label, body.node-type-a-paper #content .form-item-step-6-0-date label, body.node-type-a-paper #content .form-item-step-6-1-title label, body.node-type-a-paper #content .form-item-step-6-2-textarea label, body.node-type-a-paper #content .form-item-step-6-3-textarea label, body.node-type-a-paper #content .form-item-step-6-4-textarea label, body.node-type-a-paper #content .form-item-step-6-5-textarea label, body.node-type-paper-step #content .form-item-step-0-name label, body.node-type-paper-step #content .form-item-step-0-date label, body.node-type-paper-step #content .form-item-step-0-textarea label, body.node-type-paper-step #content .form-item-step-1-title label, body.node-type-paper-step #content .form-item-step-2-textarea label, body.node-type-paper-step #content .form-item-step-3-textarea label, body.node-type-paper-step #content .form-item-step-4-textarea label, body.node-type-paper-step #content .form-item-step-5-textarea label, body.node-type-paper-step #content .form-item-step-6-0-name label, body.node-type-paper-step #content .form-item-step-6-0-date label, body.node-type-paper-step #content .form-item-step-6-1-title label, body.node-type-paper-step #content .form-item-step-6-2-textarea label, body.node-type-paper-step #content .form-item-step-6-3-textarea label, body.node-type-paper-step #content .form-item-step-6-4-textarea label, body.node-type-paper-step #content .form-item-step-6-5-textarea label {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003103}}
+body.node-type-a-paper #content .form-type-textfield label, body.node-type-a-paper #content .form-type-textarea label, body.node-type-paper-step #content .form-type-textfield label, body.node-type-paper-step #content .form-type-textarea label {
   font-size: 18px;
   padding: 5px 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003102}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003106}}
 body.node-type-a-paper #content .aplus-start-button, body.node-type-paper-step #content .aplus-start-button {
   margin-left: 213px;
   margin-top: 20px;
   margin-bottom: 40px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003106}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003110}}
 body.node-type-a-paper #content .aplus-overview, body.node-type-paper-step #content .aplus-overview {
   padding-left: 20px;
   width: 505px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003109}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003113}}
 body.node-type-a-paper #content #aplus-submit-buttons, body.node-type-paper-step #content #aplus-submit-buttons {
   background: #dddddd;
   padding: 10px;
@@ -490,7 +496,7 @@ body.node-type-a-paper #content #aplus-submit-buttons, body.node-type-paper-step
   text-align: right;
   float: left;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003120}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003124}}
 body.node-type-a-paper #content #aplus-submit-buttons .aplus-start-over, body.node-type-paper-step #content #aplus-submit-buttons .aplus-start-over {
   background: url(images/tfk-red-arrow.png);
   background-repeat: no-repeat;
@@ -501,30 +507,30 @@ body.node-type-a-paper #content #aplus-submit-buttons .aplus-start-over, body.no
   padding: 3px 0 0 42px;
   height: 35px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003129}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003133}}
 body.node-type-a-paper #content .node-paper-step, body.node-type-paper-step #content .node-paper-step {
   padding: 10px;
   width: 480px;
   float: left;
   margin: 75 px 2.439% 0 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003134}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003138}}
 body.node-type-a-paper #content .node-paper-step label, body.node-type-paper-step #content .node-paper-step label {
   font-size: 18px;
   padding: 5px 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003137}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003141}}
 body.node-type-a-paper #content #aplus-review-step, body.node-type-a-paper #content #aplus-final-step, body.node-type-paper-step #content #aplus-review-step, body.node-type-paper-step #content #aplus-final-step {
   width: 480px;
   float: left;
   margin: 80px 2.439% 0 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003142}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003146}}
 body.node-type-a-paper #content #aplus-review-step label, body.node-type-a-paper #content #aplus-final-step label, body.node-type-paper-step #content #aplus-review-step label, body.node-type-paper-step #content #aplus-final-step label {
   font-size: 18px;
   padding: 5px 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003145}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003149}}
 body.node-type-a-paper #content button,
 body.node-type-a-paper #content input[type="reset"],
 body.node-type-a-paper #content input[type="submit"],
@@ -547,7 +553,7 @@ body.node-type-a-paper #content input[type="button"], body.node-type-paper-step 
   padding: 3px 10px 4px;
   margin-right: 10px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003162}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003166}}
 body.node-type-a-paper #content a.button, body.node-type-paper-step #content a.button {
   -webkit-appearance: none;
   -moz-border-radius: 9px;
@@ -566,35 +572,35 @@ body.node-type-a-paper #content a.button, body.node-type-paper-step #content a.b
   overflow: visible;
   padding: 4px 12px 4px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003175}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003179}}
 body.node-type-a-paper #content #aplus-print-save-buttons, body.node-type-paper-step #content #aplus-print-save-buttons {
   text-align: right;
   clear: right;
   padding-top: 10px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003179}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003183}}
 body.node-type-a-paper #content .paper-title, body.node-type-paper-step #content .paper-title {
   font-size: 20px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003181}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003185}}
 body.node-type-a-paper #content .paper-date, body.node-type-paper-step #content .paper-date {
   float: right;
   font-size: 14px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003184}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003188}}
 body.node-type-a-paper #content .student-name, body.node-type-paper-step #content .student-name {
   float: left;
   font-size: 14px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003190}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003194}}
 body.page-homework-helper-a-plus-papers .view-a-papers .view-header {
   border-bottom: 1px solid #cecece;
   padding-bottom: 10px;
   padding-left: 15px;
   margin-bottom: 1.714em;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003195}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003199}}
 body.page-homework-helper-a-plus-papers .view-a-papers .view-header .aplus-paper-type-title {
   background-image: url(images/tfk-red-tag.png);
   background-repeat: no-repeat;
@@ -609,34 +615,34 @@ body.page-homework-helper-a-plus-papers .view-a-papers .view-header .aplus-paper
   margin-top: 10px;
   margin-left: -17px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003208}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003212}}
 body.page-homework-helper-a-plus-papers .view-a-papers .views-row {
   padding-left: 135px;
   padding-right: 10px;
   border-bottom: 1px solid #cecece;
   padding-bottom: 24px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003213}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003217}}
 body.page-homework-helper-a-plus-papers #block-system-main {
   border-top: 1px solid #cecece;
   border-right: 1px solid #cecece;
   border-left: 1px solid #cecece;
   margin-bottom: 1.714em;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003219}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003223}}
 body.page-homework-helper-a-plus-papers #block-system-main .views-field-title a {
   font-size: 20px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003221}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003225}}
 body.page-homework-helper-a-plus-papers #block-system-main .views-field-field-paper-image {
   float: left;
   margin: 0 0 0 -125px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003224}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003228}}
 body.page-homework-helper-a-plus-papers #block-system-main .views-field-nothing {
   margin-top: 1.714em;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003226}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003230}}
 body.page-homework-helper-a-plus-papers #block-system-main .views-field-nothing .related-pdfs {
   border: 4px solid #addcfa;
   background: #ddeeff url(images/pdf-image.png);
@@ -648,7 +654,7 @@ body.page-homework-helper-a-plus-papers #block-system-main .views-field-nothing 
   -o-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003233}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003237}}
 body.page-homework-helper-a-plus-papers #block-system-main .views-field-nothing .related-pdfs a {
   margin-right: 10px;
 }
