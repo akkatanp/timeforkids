@@ -5,6 +5,7 @@
  */
 function aplus_papers_prepare_steps($node) {
   $steps = array();
+  $steps[] = aplus_papers_first_step($node);
   $result = db_query("
     SELECT f.entity_id from field_data_field_step_parent f
     INNER JOIN {node} n ON n.vid = f.revision_id
@@ -25,6 +26,16 @@ function aplus_papers_prepare_steps($node) {
   $steps[] = aplus_papers_review_step($steps);
   $steps[] = aplus_papers_final_step();
   return $steps;
+}
+
+function aplus_papers_first_step($node) {
+  $description = field_get_items('node', $node, 'field_paper_description');
+  $description = $description[0]['safe_value'];
+  $form['overview'] = array(
+    '#markup' => '<div class="aplus-overview"><h2 class="node-title"></h2>' . $description . '</div>',
+  );
+  $form['#parent_nid'] = $node->nid;
+  return $form;
 }
 
 function aplus_papers_prepare_step($node) {

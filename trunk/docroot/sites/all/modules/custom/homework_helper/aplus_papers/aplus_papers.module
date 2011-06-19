@@ -101,13 +101,28 @@ function aplus_papers_multistep_form($form, &$form_state, $steps) {
   if (isset($form["step_$step"]['date'])) {
     $form["step_$step"]['date']['#default_value'] = empty($form_state['values']["step_$step"]['date']) ? '' : $form_state['values']["step_$step"]['date'];
   }
-  
-  $form['start_over'] = array(
-    '#prefix' => '<div id="aplus-submit-buttons">',
-    '#markup' => l('Start Over', 'node/' . $form["step_$step"]['#parent_nid'], array('attributes' => array('class' => array('aplus-start-over')))),
-  );
-  
-  if ($step > 0) {
+  if ($step == 0) {
+    $form['next'] = array(
+      '#type' => 'submit',
+      '#value' => t('Start Helper'),
+      '#prefix' => '<div class="aplus-start-button">',
+      '#suffix' => '</div>',
+      '#ajax' => array(
+        'wrapper' => 'wizard-form-wrapper',
+        'callback' => 'aplus_papers_multistep_form_callback',
+        'effect' => 'none',
+        'progress' => array(
+          'type' => 'none',
+        ),
+      ),
+    );
+  }
+  else {
+    $form['start_over'] = array(
+      '#prefix' => '<div id="aplus-submit-buttons">',
+      '#markup' => l('Start Over', 'node/' . $form["step_$step"]['#parent_nid'], array('attributes' => array('class' => array('aplus-start-over')))),
+    );
+
    $form['prev'] = array(
       '#type' => 'submit',
       '#value' => t("Previous step"),
@@ -124,47 +139,49 @@ function aplus_papers_multistep_form($form, &$form_state, $steps) {
         ),
       ),
     );
-  }
-  if ($step < $last_step) {
-    $form['next'] = array(
-      '#type' => 'submit',
-      '#value' => t('Next step'),
-      '#suffix' => '</div>', //#aplus-submit-buttons
-      '#ajax' => array(
-        'wrapper' => 'wizard-form-wrapper',
-        'callback' => 'aplus_papers_multistep_form_callback',
-        'effect' => 'none',
-        'progress' => array(
-          'type' => 'none',
+
+    if ($step < $last_step) {
+      $form['next'] = array(
+        '#type' => 'submit',
+        '#value' => t('Next step'),
+        '#suffix' => '</div>', //#aplus-submit-buttons
+        '#ajax' => array(
+          'wrapper' => 'wizard-form-wrapper',
+          'callback' => 'aplus_papers_multistep_form_callback',
+          'effect' => 'none',
+          'progress' => array(
+            'type' => 'none',
+          ),
         ),
-      ),
-    );
-  }
-  if ($step == $last_step - 1) {
-    // Get default values from previous form entries.
-    foreach ($form["step_$step"] as $key => $data) {
-      $form_state['#review_step'] = "step_$step";
-      if (is_numeric($key)) {
-        foreach ($data as $field => $field_data) {
-          if ($field == 'textarea' || $field == 'title' || $field == 'name' || $field == 'date') {
-          $form["step_$step"][$key][$field]['#default_value'] = $form_state['storage']['values']["step_$key"][$field];
+      );
+    }
+    if ($step == $last_step - 1) {
+      // Get default values from previous form entries.
+      foreach ($form["step_$step"] as $key => $data) {
+        $form_state['#review_step'] = "step_$step";
+        if (is_numeric($key)) {
+          foreach ($data as $field => $field_data) {
+            if ($field == 'textarea' || $field == 'title' || $field == 'name' || $field == 'date') {
+            $form["step_$step"][$key][$field]['#default_value'] = $form_state['storage']['values']["step_$key"][$field];
+            }  
           }  
         }  
       }  
     }  
-  }  
-  if ($step == $last_step) {
-    $form['submit'] = array(
-      '#prefix' => '</div><div id="aplus-print-save-buttons">',
-      '#type' => 'submit',
-      '#value' => t("Save"),
-      '#suffix' => '<a class="button" href="#" onclick="window.print();return false;">Print</a></div>', //#aplus-print-save-buttons
-    );
-    $form['description'] = array(
-      '#markup' => aplus_papers_final_step_content($form_state),
-      '#weight' => 0,
-    );
+    if ($step == $last_step) {
+      $form['submit'] = array(
+        '#prefix' => '</div><div id="aplus-print-save-buttons">',
+        '#type' => 'submit',
+        '#value' => t("Save"),
+        '#suffix' => '<a class="button" href="#" onclick="window.print();return false;">Print</a></div>', //#aplus-print-save-buttons
+      );
+      $form['description'] = array(
+        '#markup' => aplus_papers_final_step_content($form_state),
+        '#weight' => 0,
+      );
+    }
   }
+
   return $form;
 }
 
@@ -198,7 +215,7 @@ function aplus_papers_multistep_form_submit($form, &$form_state) {
   }
 
   // Increment or decrement the step as needed. Recover values if they exist.
-  if ($form_state['triggering_element']['#value'] == t('Next step')) {
+  if ($form_state['triggering_element']['#value'] == t('Next step') || $form_state['triggering_element']['#value'] == t('Start Helper')) {
     $form_state['storage']['step']++;
     // If values have already been entered for this step, recover them from
     // $form_state['storage'] to pre-populate them.
