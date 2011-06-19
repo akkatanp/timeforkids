@@ -98,7 +98,7 @@ function tfk_preprocess_page(&$variables, $hook) {
       }
   }
 
-  if ($variables['section_title'] == 'Homework Helper') {
+  if ($variables['section_title'] == t('Homework Helper')) {
     $variables['content_type_title'] = tfk_content_type_title($variables['node']->type);
     $variables['theme_hook_suggestions'][] = 'page__homework_helper';
   }  
@@ -147,11 +147,17 @@ function STARTERKIT_preprocess_block(&$variables, $hook) {
 }
 // */
 
+/**
+ * For homework helper pages, create a section title based on content type.
+ */
 function tfk_content_type_title($type) {
+  $output = '';
   switch ($type) {
     case 'a_paper':
-      $output = '<div class="aplus-paper-type-title">A+ Papers</div>';
+      $output = t('A+ Papers');
       break;
+    case 'flashcard':
+      $output = t('Study Helper');
   }
   return $output;
 }
