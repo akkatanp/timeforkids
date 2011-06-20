@@ -75,7 +75,15 @@ function tfk_extras_preprocess_node(&$variables){
     foreach($pdfs_tmp as $item){
         $item_tmp = entity_load('field_collection_item', array($item['value']));
 
-       // print_r($item_tmp);exit;
+          ///  $item_tmp[$item['value']]->field_tfk_extra_pdf_taxonomy['und'][0]['tid'];
+          /// $item_tmp[$item['value']]->field_tfk_extra_pdf_headline['und'][0]['safe_value'];
+            //$item_tmp[$item['value']]->field_tfk_extra_pdf_file['und'][0]['uri'], use file_create_url();
+
+
+//        $link_url = $item_tmp[$item['value']]->field_store_item_link_url['und'][0]['safe_value'];
+//
+//
+//        print_r($item_tmp);exit;
 
 
     }
