@@ -1,6 +1,9 @@
 body
   &.node-type-flashcard,
   &.page-flashcard
+    &.not-logged-in
+      div.tabs
+        display: none
     #content
       width: 768px
     .region-content
@@ -127,7 +130,7 @@ body
     float: right
     border: 1px solid #CFCFCF
     margin: 0 10px 15px 15px
-    p.creation-link
+    .creation-link
       text-align: center
       margin: 10px
       a
