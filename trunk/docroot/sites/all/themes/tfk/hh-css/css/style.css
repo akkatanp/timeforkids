@@ -910,3 +910,27 @@ body.node-type-flashcard .region-content, body.page-flashcard .region-content, b
   box-shadow: 2px 2px 2px 2px #999999;
   margin: 10px;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003145}}
+.view-flashcard-landing-page.view-id-flashcard_landing_page h3.views-accordion-flashcard_landing_page-page_1-header {
+  border: 0px;
+  background: #dddddd;
+  -moz-border-radius: 0px;
+  -webkit-border-radius: 0px;
+  -o-border-radius: 0px;
+  -ms-border-radius: 0px;
+  -khtml-border-radius: 0px;
+  border-radius: 0px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003149}}
+.view-flashcard-landing-page.view-id-flashcard_landing_page .ui-accordion-content {
+  border: 0px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003151}}
+.view-flashcard-landing-page.view-id-flashcard_landing_page .ui-accordion-content .field-content:before {
+  content: url("../../images/card_icon.png");
+  vertical-align: middle;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003155}}
+.view-flashcard-landing-page.view-id-flashcard_landing_page .ui-accordion-content .field-content:before a {
+  vertical-align: middle;
+}
