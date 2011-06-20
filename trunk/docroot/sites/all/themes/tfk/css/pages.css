@@ -1419,7 +1419,7 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 }
 
 .page-store #featured-books h2 {
-	margin: 0;
+	margin: 0 0 10px 0;
 	font: normal 14px "arial black";
 	color: white;
 	background: #d71700;
@@ -1427,7 +1427,8 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 }
 
 .page-store #featured-books .featured-book {
-	padding-bottom: 10px;
+	padding: 0 47px 10px 47px;
+	width: 134px;
 	border-bottom: dotted 1px #cecece;
 	margin-bottom: 10px;
 }
