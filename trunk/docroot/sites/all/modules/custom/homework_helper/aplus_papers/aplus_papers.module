@@ -32,6 +32,7 @@ function aplus_papers_theme() {
  */
 function theme_aplus_papers_checklist($variables) {
   $steps = $variables['steps'];
+  array_pop($steps);
   $current = $variables['current'];
   $items = array();
   foreach ($steps as $step => $data) {
