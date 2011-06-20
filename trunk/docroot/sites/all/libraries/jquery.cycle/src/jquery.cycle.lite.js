@@ -23,10 +23,6 @@ $.fn.cycle = function(options) {
         var $cont = $(this);
         var $slides = options.slideExpr ? $(options.slideExpr, this) : $cont.children();
         var els = $slides.get();
-        if (els.length < 2) {
-            window.console && console.log('terminating; too few slides: ' + els.length);
-            return; // don't bother
-        }
 
         // support metadata plugin (v1.0 and v2.0)
         var opts = $.extend({}, $.fn.cycle.defaults, options || {}, $.metadata ? $cont.metadata() : $.meta ? $cont.data() : {});
