@@ -1,6 +1,8 @@
 body
   &.node-type-flashcard,
   &.page-flashcard
+    #content
+      width: 768px
     .region-content
       border: 1px solid #cecece
     #homework-helper-title
@@ -115,3 +117,21 @@ body
     position: absolute
     top: 60px
     left: 150px
+.view-flashcard-landing-page.view-id-flashcard_landing_page 
+  .view-header
+    display: block
+    width: 250px
+    background: #E6E6E6
+    padding: 20px
+    float: right
+    border: 1px solid #CFCFCF
+    margin: 0 10px 15px 15px
+    a
+      color: white
+      background: #D71700
+      padding: 5px
+      +border-radius(20px)
+      -webkit-box-shadow: 2px 2px 2px 2px #999999
+      -moz-box-shadow: 2px 2px 2px 2px #999999
+      box-shadow: 2px 2px 2px 2px #999999
+      margin: 10px

@@ -11,15 +11,15 @@ body.markup-elements h1.section-title {
 body.markup-elements h1.section-title a {
   color: black;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/webadmin\/\.gem\/ruby\/1\.8\/gems\/compass-0\.11\.3\/frameworks\/compass\/stylesheets\/compass\/typography\/links\/_link-colors\.scss}line{font-family:\0000318}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/lib\/gems\/1\.8\/gems\/compass-0\.11\.3\/frameworks\/compass\/stylesheets\/compass\/typography\/links\/_link-colors\.scss}line{font-family:\0000318}}
 body.markup-elements h1.section-title a:visited {
   color: black;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/webadmin\/\.gem\/ruby\/1\.8\/gems\/compass-0\.11\.3\/frameworks\/compass\/stylesheets\/compass\/typography\/links\/_link-colors\.scss}line{font-family:\0000324}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/lib\/gems\/1\.8\/gems\/compass-0\.11\.3\/frameworks\/compass\/stylesheets\/compass\/typography\/links\/_link-colors\.scss}line{font-family:\0000324}}
 body.markup-elements h1.section-title a:hover {
   color: #d71700;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/webadmin\/\.gem\/ruby\/1\.8\/gems\/compass-0\.11\.3\/frameworks\/compass\/stylesheets\/compass\/typography\/links\/_link-colors\.scss}line{font-family:\0000327}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/lib\/gems\/1\.8\/gems\/compass-0\.11\.3\/frameworks\/compass\/stylesheets\/compass\/typography\/links\/_link-colors\.scss}line{font-family:\0000327}}
 body.markup-elements h1.section-title a:active {
   color: #d71700;
 }
@@ -46,7 +46,7 @@ body.markup-elements article.element {
   margin-bottom: 24px;
   padding-bottom: 23px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/webadmin\/\.gem\/ruby\/1\.8\/gems\/compass-0\.11\.3\/frameworks\/compass\/stylesheets\/compass\/utilities\/general\/_clearfix\.scss}line{font-family:\0000338}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/lib\/gems\/1\.8\/gems\/compass-0\.11\.3\/frameworks\/compass\/stylesheets\/compass\/utilities\/general\/_clearfix\.scss}line{font-family:\0000338}}
 body.markup-elements article.element:after {
   content: "";
   display: table;
@@ -71,15 +71,15 @@ body.markup-elements article.element h2.element-title {
 body.markup-elements article.element h2.element-title a {
   color: white;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/webadmin\/\.gem\/ruby\/1\.8\/gems\/compass-0\.11\.3\/frameworks\/compass\/stylesheets\/compass\/typography\/links\/_link-colors\.scss}line{font-family:\0000318}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/lib\/gems\/1\.8\/gems\/compass-0\.11\.3\/frameworks\/compass\/stylesheets\/compass\/typography\/links\/_link-colors\.scss}line{font-family:\0000318}}
 body.markup-elements article.element h2.element-title a:visited {
   color: white;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/webadmin\/\.gem\/ruby\/1\.8\/gems\/compass-0\.11\.3\/frameworks\/compass\/stylesheets\/compass\/typography\/links\/_link-colors\.scss}line{font-family:\0000324}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/lib\/gems\/1\.8\/gems\/compass-0\.11\.3\/frameworks\/compass\/stylesheets\/compass\/typography\/links\/_link-colors\.scss}line{font-family:\0000324}}
 body.markup-elements article.element h2.element-title a:hover {
   color: #d71700;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/webadmin\/\.gem\/ruby\/1\.8\/gems\/compass-0\.11\.3\/frameworks\/compass\/stylesheets\/compass\/typography\/links\/_link-colors\.scss}line{font-family:\0000327}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/lib\/gems\/1\.8\/gems\/compass-0\.11\.3\/frameworks\/compass\/stylesheets\/compass\/typography\/links\/_link-colors\.scss}line{font-family:\0000327}}
 body.markup-elements article.element h2.element-title a:active {
   color: #d71700;
 }
@@ -107,7 +107,7 @@ body.markup-elements article.element .example {
   padding-bottom: 11px;
   *zoom: 1;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/webadmin\/\.gem\/ruby\/1\.8\/gems\/compass-0\.11\.3\/frameworks\/compass\/stylesheets\/compass\/utilities\/general\/_clearfix\.scss}line{font-family:\0000338}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/lib\/gems\/1\.8\/gems\/compass-0\.11\.3\/frameworks\/compass\/stylesheets\/compass\/utilities\/general\/_clearfix\.scss}line{font-family:\0000338}}
 body.markup-elements article.element .example:after {
   content: "";
   display: table;
@@ -119,7 +119,7 @@ body.markup-elements article.element .example:last-child {
   border-bottom-width: 0;
   margin-bottom: 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/webadmin\/\.gem\/ruby\/1\.8\/gems\/compass-0\.11\.3\/frameworks\/compass\/stylesheets\/compass\/utilities\/general\/_clearfix\.scss}line{font-family:\0000338}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/lib\/gems\/1\.8\/gems\/compass-0\.11\.3\/frameworks\/compass\/stylesheets\/compass\/utilities\/general\/_clearfix\.scss}line{font-family:\0000338}}
 body.markup-elements article.element .example:after {
   content: "";
   display: table;
@@ -159,7 +159,7 @@ body.markup-elements article.element .example .markup + .show-source + p {
   width: 984px;
   max-width: 100%;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/webadmin\/\.gem\/ruby\/1\.8\/gems\/compass-0\.11\.3\/frameworks\/compass\/stylesheets\/compass\/utilities\/general\/_clearfix\.scss}line{font-family:\0000338}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/lib\/gems\/1\.8\/gems\/compass-0\.11\.3\/frameworks\/compass\/stylesheets\/compass\/utilities\/general\/_clearfix\.scss}line{font-family:\0000338}}
 .container:after, body #container:after {
   content: "";
   display: table;
@@ -686,10 +686,14 @@ body.page-homework-helper-a-plus-papers #block-system-main .views-field-nothing 
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\000034}}
+body.node-type-flashcard #content, body.page-flashcard #content {
+  width: 768px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\000036}}
 body.node-type-flashcard .region-content, body.page-flashcard .region-content {
   border: 1px solid #cecece;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\000036}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\000038}}
 body.node-type-flashcard #homework-helper-title, body.page-flashcard #homework-helper-title {
   background-image: url(images/tfk-red-tag.png);
   background-repeat: no-repeat;
@@ -705,11 +709,11 @@ body.node-type-flashcard #homework-helper-title, body.page-flashcard #homework-h
   margin-top: 10px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000320}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000322}}
 .flashcard-cycle {
   position: relative;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000323}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000325}}
 .flashcard-cycle .flashcard-cycle-mode .flashcard-cycle-wrapper {
   width: 650px;
   text-align: center;
@@ -732,11 +736,11 @@ body.node-type-flashcard #homework-helper-title, body.page-flashcard #homework-h
   -moz-box-shadow: -2px -2px 10px rgba(0, 0, 0, 0) inset, -3px 3px 4px #ffaea4 inset;
   margin-bottom: 1.714em;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000339}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000341}}
 .flashcard-cycle .flashcard-cycle-mode label.flashcard-cycle-mode {
   float: left;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000341}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000343}}
 .flashcard-cycle a.shuffle,
 .flashcard-cycle a.restart {
   -webkit-appearance: none;
@@ -757,7 +761,7 @@ body.node-type-flashcard #homework-helper-title, body.page-flashcard #homework-h
   border: none;
   -moz-box-shadow: -2px -2px 10px rgba(0, 0, 0, 0) inset, -3px 3px 4px #ffaea4 inset;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000356}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000358}}
 .flashcard-cycle .flashcard-cycle-pager .prev {
   background: url(images/tfk-red-arrow.png) no-repeat scroll 2px 0 transparent;
   float: left;
@@ -766,7 +770,7 @@ body.node-type-flashcard #homework-helper-title, body.page-flashcard #homework-h
   height: 35px;
   width: 51px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000363}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000365}}
 .flashcard-cycle .flashcard-cycle-pager .flip {
   -webkit-appearance: none;
   -moz-border-radius: 14px;
@@ -789,7 +793,7 @@ body.node-type-flashcard #homework-helper-title, body.page-flashcard #homework-h
   -o-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000377}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000379}}
 .flashcard-cycle .flashcard-cycle-pager .next {
   background: url(images/tfk-red-arrow-right.png) no-repeat scroll 36px 0 transparent;
   background-repeat: no-repeat;
@@ -799,7 +803,7 @@ body.node-type-flashcard #homework-helper-title, body.page-flashcard #homework-h
   height: 35px;
   width: 100px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000385}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000387}}
 .flashcard-cycle .flashcard-cycle-cards {
   background: #ffff66;
   text-align: center;
@@ -815,7 +819,7 @@ body.node-type-flashcard #homework-helper-title, body.page-flashcard #homework-h
   -o-box-shadow: -4px 4px 6px rgba(0, 0, 0, 0.25);
   box-shadow: -4px 4px 6px rgba(0, 0, 0, 0.25);
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000392}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000394}}
 .flashcard-cycle .flashcard-cycle-cards ul.question li.answer {
   font-size: 20px;
   padding-top: 70px;
@@ -823,7 +827,7 @@ body.node-type-flashcard #homework-helper-title, body.page-flashcard #homework-h
   font-weight: bold;
   margin: 10px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000399}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003101}}
 .flashcard-cycle .flashcard-cycle-cards ul.question .item-list ul.answer {
   background: white;
   width: 325px;
@@ -837,21 +841,48 @@ body.node-type-flashcard #homework-helper-title, body.page-flashcard #homework-h
   border-radius: 11px;
   border: 4px solid #999999;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003106}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003108}}
 .flashcard-cycle .flashcard-cycle-cards ul.question .item-list ul.answer li.first {
   font-size: 20px;
   padding: 15px;
   color: #d71700;
   margin: 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003111}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003113}}
 .flashcard-cycle .flashcard-cycle-card {
   width: 500px;
   height: 250px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003114}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003116}}
 .flashcard-cycle .flashcard-cycle-mark {
   position: absolute;
   top: 60px;
   left: 150px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003121}}
+.view-flashcard-landing-page.view-id-flashcard_landing_page .view-header {
+  display: block;
+  width: 250px;
+  background: #e6e6e6;
+  padding: 20px;
+  float: right;
+  border: 1px solid #cfcfcf;
+  margin: 0 10px 15px 15px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003129}}
+.view-flashcard-landing-page.view-id-flashcard_landing_page .view-header a {
+  color: white;
+  background: #d71700;
+  padding: 5px;
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -o-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -khtml-border-radius: 20px;
+  border-radius: 20px;
+  -webkit-box-shadow: 2px 2px 2px 2px #999999;
+  -moz-box-shadow: 2px 2px 2px 2px #999999;
+  box-shadow: 2px 2px 2px 2px #999999;
+  margin: 10px;
 }
