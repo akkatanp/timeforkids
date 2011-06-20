@@ -191,10 +191,13 @@ function tfk_teachers_community_form_teacher_community_question_node_form_alter(
   // $form['actions']['submit']['#value'] = '';
   
   // Using image input element for Safari support.
-  unset($actions['submit']['#value']);
-  $form['actions']['submit']['#type'] = 'image_button';
-  $path = drupal_get_path('module', 'tfk_teachers_community');
-  $form['actions']['submit']['#src'] = $path. '/images/submit-your-question.png';
+  // Only alter submit button when adding a new node.
+  if(arg(2) != 'edit') {
+    unset($actions['submit']['#value']);
+    $form['actions']['submit']['#type'] = 'image_button';
+    $path = drupal_get_path('module', 'tfk_teachers_community');
+    $form['actions']['submit']['#src'] = $path. '/images/submit-your-question.png';
+  }
 }
 
 /**
