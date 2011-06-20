@@ -139,6 +139,7 @@ function theme_flashcard_cycle_mode($variables) {
   $class = 'flashcard-cycle-mode';
 
   $output = '<label for="' . $class . '">' . $variables['title'] . ":</label>\n";
+  $output .= '<div class="' . $class . '-wrapper">';
   foreach ($variables['options'] as $key => $option) {
     $id = $class . '-' . $key;
     $output .= '<input type="radio" id="' . $id . '" name="' . $class . '" value="' . $key . '"';
@@ -148,6 +149,7 @@ function theme_flashcard_cycle_mode($variables) {
     $output .= ">\n";
     $output .= '<label class="option" for="' . $id . '">' . $option . "</label>\n";
   }
+  $output .= '</div>';
 
   return $output;
 }
