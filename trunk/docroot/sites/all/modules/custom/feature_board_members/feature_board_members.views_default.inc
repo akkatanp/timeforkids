@@ -178,8 +178,6 @@ function feature_board_members_views_default_views() {
 
   /* Display: Board Member Listing Page */
   $handler = $view->new_display('page', 'Board Member Listing Page', 'page');
-  $handler->display->display_options['defaults']['css_class'] = FALSE;
-  $handler->display->display_options['css_class'] = 'teacher-community';
   $handler->display->display_options['display_description'] = 'Board Member Listing Page';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'grid';
@@ -194,9 +192,9 @@ function feature_board_members_views_default_views() {
   $handler->display->display_options['header']['area']['id'] = 'area';
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
-  $handler->display->display_options['header']['area']['label'] = 'TFK Board Members.';
+  $handler->display->display_options['header']['area']['label'] = 'TFK Board Members';
   $handler->display->display_options['header']['area']['empty'] = FALSE;
-  $handler->display->display_options['header']['area']['content'] = '<p><strong>TFK Board Members.</strong></p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque convallis rhoncus sapien, eget elementum nunc adipiscing quis. Donec non tellus enim. Maecenas pharetra lectus et eros placerat dictum. Cras nec imperdiet diam. Pellentesque nec libero a tellus rutrum aliquam sit amet eget nisl. Nunc nulla metus, ultricies non egestas id, ornare imperdiet sapien. Donec at malesuada nisi. Ut adipiscing tincidunt magna id aliquam.</p>';
+  $handler->display->display_options['header']['area']['content'] = '<p><strong>The TFK Teacher Board</strong></p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque convallis rhoncus sapien, eget elementum nunc adipiscing quis. Donec non tellus enim. Maecenas pharetra lectus et eros placerat dictum. Cras nec imperdiet diam. Pellentesque nec libero a tellus rutrum aliquam sit amet eget nisl. Nunc nulla metus, ultricies non egestas id, ornare imperdiet sapien. Donec at malesuada nisi. Ut adipiscing tincidunt magna id aliquam.</p>';
   $handler->display->display_options['header']['area']['format'] = 'full_html';
   $handler->display->display_options['header']['area']['tokenize'] = 0;
   $handler->display->display_options['path'] = 'teacher-board-members';
@@ -351,7 +349,7 @@ function feature_board_members_views_default_views() {
   /* Display: More Board Members Block */
   $handler = $view->new_display('block', 'More Board Members Block', 'block_2');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'More Board Members';
+  $handler->display->display_options['title'] = 'More Teachers Board';
   $handler->display->display_options['display_description'] = 'More Board Members Block';
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'some';
@@ -505,32 +503,6 @@ function feature_board_members_views_default_views() {
   $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
   $handler->display->display_options['arguments']['nid']['break_phrase'] = 0;
   $handler->display->display_options['arguments']['nid']['not'] = 1;
-  $translatables['board_members'] = array(
-    t('Master'),
-    t('Teacher Community'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
-    t('Items per page'),
-    t('- All -'),
-    t('Offset'),
-    t('Learn More about [title]'),
-    t('All'),
-    t('Board Member Listing Page'),
-    t('TFK Board Members.'),
-    t('<p><strong>TFK Board Members.</strong></p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque convallis rhoncus sapien, eget elementum nunc adipiscing quis. Donec non tellus enim. Maecenas pharetra lectus et eros placerat dictum. Cras nec imperdiet diam. Pellentesque nec libero a tellus rutrum aliquam sit amet eget nisl. Nunc nulla metus, ultricies non egestas id, ornare imperdiet sapien. Donec at malesuada nisi. Ut adipiscing tincidunt magna id aliquam.</p>'),
-    t('Featured Board Member'),
-    t('TFK Featured Teacher'),
-    t('flag'),
-    t('More Board Members Block'),
-    t('More Board Members'),
-    t('View The Teacher\'s Board Link'),
-    t('<p><a class="linktoboard" href="/teacher-board-members">View The Teacher&#39;s Board</a></p>'),
-    t('Learn More'),
-  );
   $export['board_members'] = $view;
 
   return $export;
