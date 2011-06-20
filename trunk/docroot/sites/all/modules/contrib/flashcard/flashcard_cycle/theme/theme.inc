@@ -100,12 +100,19 @@ function theme_flashcard_cycle_restart($variables) {
 }
 
 /**
+ * Set default text for theme function.
+ */
+function flashcard_cycle_preprocess_flashcard_cycle_mark(&$variables) {
+  $variables['title'] = t('Mark');
+}
+
+/**
  * Returns a renderable array for a checkbox.
  */
 function theme_flashcard_cycle_mark($variables) {
   return array(
     '#type' => 'checkbox',
-    '#title' => t('Mark'),
+    '#title' => $variables['title'],
     '#id' => drupal_html_id('flashcard-cycle-mark'),
     '#attributes' => array(
       'class' => array('mark'),
@@ -114,19 +121,25 @@ function theme_flashcard_cycle_mark($variables) {
 }
 
 /**
- * Returns a renderable array for the deck mode.
+ * Set default text for theme function.
  */
-function theme_flashcard_cycle_mode($variables) {
-  $class = 'flashcard-cycle-mode';
-  $title = t('See') . ':';
-  $options = array(
+function flashcard_cycle_preprocess_flashcard_cycle_mode(&$variables) {
+  $variables['title'] = t('See');
+  $variables['options'] = array(
     'all' => t('All cards'),
     'unmarked' => t('Unmarked cards'),
     'marked' => t('Marked cards'),
   );
+}
 
-  $output = '<label for="' . $class . '">' . $title . "</label>\n";
-  foreach ($options as $key => $option) {
+/**
+ * Returns a renderable array for the deck mode.
+ */
+function theme_flashcard_cycle_mode($variables) {
+  $class = 'flashcard-cycle-mode';
+
+  $output = '<label for="' . $class . '">' . $variables['title'] . ":</label>\n";
+  foreach ($variables['options'] as $key => $option) {
     $id = $class . '-' . $key;
     $output .= '<input type="radio" id="' . $id . '" name="' . $class . '" value="' . $key . '"';
     if ($key == 'all') {
