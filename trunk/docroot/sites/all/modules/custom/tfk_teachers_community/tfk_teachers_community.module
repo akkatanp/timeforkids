@@ -61,8 +61,11 @@ function tfk_teachers_community_block_view($delta='') {
       $topics['type'] = 'ul';
       $topics['title'] = 'MORE TOPICS FROM TEACHERS';
       if($topics != FALSE) {
+        $title = t('View All the Topics from Teachers');
+        $link_options = array('html' => TRUE, 'attributes' => array('title' => $title));
+        $button = theme('image', array('path'=> drupal_get_path('module', 'tfk_teachers_community'). '/images/view-all-topics-from-teachers.png', 'title' => $title, 'alt' => $title));
         $block['content'] = theme('item_list', $topics);
-        $block['content'] .= l('View All the Topics from Teachers', 'node');
+        $block['content'] .= '<div class="btn_link">'. l($button, 'node', $link_options). '</div>';
       }
     break;
     
