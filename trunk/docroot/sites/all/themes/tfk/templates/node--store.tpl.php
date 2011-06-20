@@ -114,8 +114,8 @@
     <?php foreach($store_books as $store_book):?>
 	<div class="featured-book">
       <a href="<?php print $store_book['book_link'];?>"><img src="<?php print $store_book['book_cover'];?>"/></a><br/>
-      <?php print $store_book['book_title'];?><br/>
-      By: <?php print $store_book['book_author'];?>
+      <a href="<?php print $store_book['book_link'];?>"><?php print $store_book['book_title'];?></a><br/>
+      <?php print $store_book['book_author'];?>
 	</div>
     <?php endforeach;?>
 	</div>
