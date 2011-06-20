@@ -20,6 +20,57 @@ function tfk_teachers_community_permission() {
   return $perms;
 }
 
+
+/**
+ * Implementation of hook_custom_theme.
+ */
+function tfk_teachers_community_custom_theme() {
+  // Switch from the admin theme to tfk when adding a question.
+  if(arg(0) == 'node' && arg(1) == 'add' && arg(2) == 'teacher-community-question') {
+    return 'tfk';
+  }
+}
+
+/**
+ * Implementation of hook_block_info.
+ */
+function tfk_teachers_community_block_info() {
+  $blocks = array();
+  
+  // TFK Photos and Video Node Featured Block (Sidebar).
+  $blocks['tfk_teachers_comm_more_topics'] = array(
+    'info' => t('TFK Teachers Community More Topics Block'),
+    'visibility' => BLOCK_VISIBILITY_LISTED,
+    'cache' => DRUPAL_CACHE_GLOBAL,
+  );
+  
+  return $blocks;
+}
+
+/**
+ * Implementation of hook_block_view.
+ */
+function tfk_teachers_community_block_view($delta='') {
+  $block = array();
+  
+  switch ($delta) {
+    
+    // TFK Photos and Video Node Featured Block (Sidebar).
+    case 'tfk_teachers_comm_more_topics':
+      $topics = tfk_teachers_community_get_teacher_topics();
+      $topics['type'] = 'ul';
+      $topics['title'] = 'MORE TOPICS FROM TEACHERS';
+      if($topics != FALSE) {
+        $block['content'] = theme('item_list', $topics);
+        $block['content'] .= l('View All the Topics from Teachers', 'node');
+      }
+    break;
+    
+  }
+  
+  return $block;
+}
+
 /**
  * Override or insert variables into the page templates.
  *
@@ -255,12 +306,28 @@ function tfk_teachers_community_validate_comments(&$form, &$form_state) {
   }
 }
 
-/**
- * Implementation of hook_custom_theme.
- */
-function tfk_teachers_community_custom_theme() {
-  // Switch from the admin theme to tfk when adding a question.
-  if(arg(0) == 'node' && arg(1) == 'add' && arg(2) == 'teacher-community-question') {
-    return 'tfk';
+
+// *** CUSTOM CODE *** ///
+
+
+function tfk_teachers_community_get_teacher_topics() {
+  $items = array('items');
+  
+  $view = views_get_view('teacher_community_more_topics');
+  #$view->set_display('block');
+  if(is_null($view)) {
+    return FALSE;
+  } else {
+    $view->execute();
+  	if(!empty($view->result)) {
+	    foreach($view->result as $result) {
+	      $items['items'][] = array(
+	        l($result->node_title, 'node/'. $result->nid),
+	      );
+	    }
+  		return $items;
+  	} else {
+  	  return FALSE;
+  	}
   }
 }
