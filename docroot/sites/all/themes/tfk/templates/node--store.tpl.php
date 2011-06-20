@@ -108,16 +108,17 @@
       hide($content['links']);
       //print render($content);
     ?>
-
-    <h2>FEATURED BOOKS:</h2><br/>
+	
+	<div id="featured-books">
+    <h2>FEATURED BOOKS</h2>
     <?php foreach($store_books as $store_book):?>
+	<div class="featured-book">
       <a href="<?php print $store_book['book_link'];?>"><img src="<?php print $store_book['book_cover'];?>"/></a><br/>
       <?php print $store_book['book_title'];?><br/>
       By: <?php print $store_book['book_author'];?>
-    <br/>
+	</div>
     <?php endforeach;?>
-
-
+	</div>
 
     <h2>ITEMS THAT OCCUPY ALL ROW:</h2><br/>
     <?php foreach($store_items as $store_item):?>

@@ -73,6 +73,7 @@ body {
 	margin-top: 0;
 }
 
+.page-store #content.column,
 .front #content.column {
 	float: left;
 	width: 768px;
