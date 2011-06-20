@@ -132,6 +132,8 @@ body {
  * Page bottom
  */
 .region-bottom /* See also the #page-wrapper declaration above that this div shares. */ {
+	margin: 0 auto;
+	width: 950px;
 }
 
 /*
