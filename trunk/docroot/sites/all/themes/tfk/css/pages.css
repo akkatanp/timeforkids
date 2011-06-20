@@ -513,14 +513,17 @@ ul.links li {
 */
 
 /* mini-sites */
+.page-mini-sites #block-views-mini-site-home-block-3,
 .page-mini-sites .view-minisite-home .view-header {
 	border: solid 1px #cecece;
 	padding: 10px;
 }
 
+.page-mini-sites #block-views-mini-site-home-block-3 .views-field-title a,
 .page-mini-sites .view-minisite-home .view-header h2 {
 	font: bold 30px arial;
 	margin: 0 0 10px 0;
+	color: black;
 }
 
 #block-views-minisite-articles-block-7 {
@@ -842,7 +845,7 @@ ul.links li {
 	font-weight: bold;
  }
 
-/* kid reporter and mini-sitesl istings */
+/* kid reporter and mini-sites listings */
 .view-all-kid-reporters .view-header {
 	border: solid 1px #cecece;
 	padding: 130px 10px 10px 10px;
