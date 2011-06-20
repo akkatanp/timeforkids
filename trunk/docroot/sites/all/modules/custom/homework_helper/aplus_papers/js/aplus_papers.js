@@ -8,7 +8,7 @@
     attach: function(context, settings) {
       var step = true;
 
-      $('#edit-submit, #edit-submit--2').click(function() {
+      $('#aplus-print-save-buttons input, .a-plus-overview a').click(function() {
         step = false;
       });  
 

@@ -31,7 +31,7 @@ function aplus_papers_prepare_steps($node) {
 function aplus_papers_first_step($node) {
   $description = field_get_items('node', $node, 'field_paper_description');
   $description = $description[0]['safe_value'];
-  $form['overview'] = array(
+  $form['description'] = array(
     '#markup' => '<div class="aplus-overview"><h2 class="node-title"></h2>' . $description . '</div>',
   );
   $form['#parent_nid'] = $node->nid;
@@ -83,7 +83,7 @@ function aplus_papers_review_step($steps) {
   $form['#prefix'] = '<div id="aplus-review-step">';
   $form['#suffix'] = '</div>';
   $form['description'] = array(
-    '#markup' => t('Please review your work and make any changes.'),
+    '#markup' => '<h2 class="node-title">' . t('Review Your Paper') . '</h2><div class="a-plus-review-description">' . t('Read through and check each section for errors.') . '</div>',
   );
   $form['#checklist'] = t('Review your work');
   $form['#parent_nid'] = arg(1); 
@@ -99,7 +99,7 @@ function aplus_papers_review_step($steps) {
  * Prepare final step.
  */
 function aplus_papers_final_step() {
-  $form['#checklist'] = t('Print and save your paper.');
+  $form['#checklist'] = t('Print or save your paper');
   $form['#parent_nid'] = arg(1); 
   return $form;
 } 
