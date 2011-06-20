@@ -36,6 +36,12 @@ function tfk_page_paths_menu(){
 		'access callback' => 'user_access',
 		'access arguments' => array('access content')
 	);
+        $items['mini-sites'] = array(
+		'title' => 'Mini-Sites',
+		'page callback' => 'tfk_pv_page_callback',
+		'access callback' => 'user_access',
+		'access arguments' => array('access content')
+	);        
         $items['info'] = array(
 		'title' => 'Info',
 		'page callback' => 'tfk_pv_page_callback',
