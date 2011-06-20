@@ -52,35 +52,36 @@ body
     margin-right: 20px
     border: none
     -moz-box-shadow: -2px -2px 10px rgba(0,0,0,0) inset, -3px 3px 4px lighten($tfk-red, 40%) inset
-  .prev
-    background: url(images/tfk-red-arrow.png) no-repeat scroll 2px 0 transparent
-    float: left
-    color: $tfk-red
-    padding: 3px 0 0 42px
-    height: 35px
-    width: 51px
-  .flip
-    -webkit-appearance: none
-    +border-radius(14px)
-    background: #fff url(../images/button.png) repeat-x
-    border: 3px solid $tfk-red
-    cursor: pointer
-    color: $tfk-red
-    font: normal 12px/1.2 Arial, sans-serif
-    outline: 0
-    overflow: visible
-    padding: 4px 20px
-    // width: auto
-    margin: 0 25px
-    +box-shadow(transparentize($black, 0.5), 0 , 2px, 4px)
-  .next
-    background: url(images/tfk-red-arrow-right.png) no-repeat scroll 36px 0 transparent
-    background-repeat: no-repeat
-    float: left
-    color: $tfk-red
-    padding: 3px
-    height: 35px
-    width: 100px
+  .flashcard-cycle-pager
+    .prev
+      background: url(images/tfk-red-arrow.png) no-repeat scroll 2px 0 transparent
+      float: left
+      color: $tfk-red
+      padding: 3px 0 0 42px
+      height: 35px
+      width: 51px
+    .flip
+      -webkit-appearance: none
+      +border-radius(14px)
+      background: #fff url(../images/button.png) repeat-x
+      border: 3px solid $tfk-red
+      cursor: pointer
+      color: $tfk-red
+      font: normal 12px/1.2 Arial, sans-serif
+      outline: 0
+      overflow: visible
+      padding: 4px 20px
+      // width: auto
+      margin: 0 25px
+      +box-shadow(transparentize($black, 0.5), 0 , 2px, 4px)
+    .next
+      background: url(images/tfk-red-arrow-right.png) no-repeat scroll 36px 0 transparent
+      background-repeat: no-repeat
+      float: left
+      color: $tfk-red
+      padding: 3px
+      height: 35px
+      width: 100px
   .flashcard-cycle-cards
     background: lighten(yellow, 20.0)
     text-align: center
