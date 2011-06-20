@@ -117,6 +117,7 @@ body
     position: absolute
     top: 60px
     left: 150px
+    z-index: 1
 .view-flashcard-landing-page.view-id-flashcard_landing_page 
   .view-header
     display: block
@@ -126,12 +127,15 @@ body
     float: right
     border: 1px solid #CFCFCF
     margin: 0 10px 15px 15px
-    a
-      color: white
-      background: #D71700
-      padding: 5px
-      +border-radius(20px)
-      -webkit-box-shadow: 2px 2px 2px 2px #999999
-      -moz-box-shadow: 2px 2px 2px 2px #999999
-      box-shadow: 2px 2px 2px 2px #999999
+    p.creation-link
+      text-align: center
       margin: 10px
+      a
+        color: white
+        background: #D71700
+        padding: 5px
+        +border-radius(20px)
+        -webkit-box-shadow: 2px 2px 2px 2px #999999
+        -moz-box-shadow: 2px 2px 2px 2px #999999
+        box-shadow: 2px 2px 2px 2px #999999
+        margin: 10px
