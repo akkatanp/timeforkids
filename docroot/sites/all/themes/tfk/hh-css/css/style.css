@@ -940,7 +940,19 @@ body.node-type-flashcard .node-flashcard .study-helper-url #study-helper-copy, b
   z-index: 10;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_flashcard_page\.sass}line{font-family:\000032}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_flashcard_page\.sass}line{font-family:\000033}}
+body.page-homework-helper-flashcards #content #homework-helper-title {
+  background-image: url(images/tfk-red-tag.png);
+  background-repeat: no-repeat;
+  padding: 12px;
+  height: 23px;
+  width: 175px;
+  color: white;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_flashcard_page\.sass}line{font-family:\0000313}}
 .view-flashcard-landing-page.view-id-flashcard_landing_page .view-header {
   display: block;
   width: 250px;
@@ -950,12 +962,12 @@ body.node-type-flashcard .node-flashcard .study-helper-url #study-helper-copy, b
   border: 1px solid #cfcfcf;
   margin: 0 10px 15px 15px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_flashcard_page\.sass}line{font-family:\0000310}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_flashcard_page\.sass}line{font-family:\0000321}}
 .view-flashcard-landing-page.view-id-flashcard_landing_page .view-header .creation-link {
   text-align: center;
   margin: 10px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_flashcard_page\.sass}line{font-family:\0000313}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_flashcard_page\.sass}line{font-family:\0000324}}
 .view-flashcard-landing-page.view-id-flashcard_landing_page .view-header .creation-link a {
   color: white;
   background: #d71700;
@@ -971,7 +983,7 @@ body.node-type-flashcard .node-flashcard .study-helper-url #study-helper-copy, b
   box-shadow: 2px 2px 2px 2px #999999;
   margin: 10px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_flashcard_page\.sass}line{font-family:\0000322}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_flashcard_page\.sass}line{font-family:\0000333}}
 .view-flashcard-landing-page.view-id-flashcard_landing_page h3.views-accordion-flashcard_landing_page-page_1-header {
   width: 440px;
   border: 0px;
@@ -986,34 +998,36 @@ body.node-type-flashcard .node-flashcard .study-helper-url #study-helper-copy, b
   line-height: 0;
   padding: 0;
   margin-top: 20px;
+  margin-left: 10px;
   padding: 5px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_flashcard_page\.sass}line{font-family:\0000332}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_flashcard_page\.sass}line{font-family:\0000344}}
 .view-flashcard-landing-page.view-id-flashcard_landing_page h3.views-accordion-flashcard_landing_page-page_1-header span.ui-icon.ui-icon-triangle-1-e {
   background-image: url("../../images/arrow_right.png");
   background-position: 0 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_flashcard_page\.sass}line{font-family:\0000336}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_flashcard_page\.sass}line{font-family:\0000348}}
 .view-flashcard-landing-page.view-id-flashcard_landing_page h3.views-accordion-flashcard_landing_page-page_1-header span.ui-icon.ui-icon-triangle-1-s {
   background-image: url("../../images/arrow_down.png");
   background-position: 0 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_flashcard_page\.sass}line{font-family:\0000339}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_flashcard_page\.sass}line{font-family:\0000351}}
 .view-flashcard-landing-page.view-id-flashcard_landing_page h3.views-accordion-flashcard_landing_page-page_1-header a {
   margin-top: -10px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_flashcard_page\.sass}line{font-family:\0000341}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_flashcard_page\.sass}line{font-family:\0000353}}
 .view-flashcard-landing-page.view-id-flashcard_landing_page .ui-accordion-content {
   width: 340px;
   border: 0px;
+  margin-left: 10px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_flashcard_page\.sass}line{font-family:\0000344}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_flashcard_page\.sass}line{font-family:\0000357}}
 .view-flashcard-landing-page.view-id-flashcard_landing_page .ui-accordion-content .field-content:before {
   content: url("../../images/card_icon.png");
   margin: 10px;
   vertical-align: middle;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_flashcard_page\.sass}line{font-family:\0000349}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_flashcard_page\.sass}line{font-family:\0000362}}
 .view-flashcard-landing-page.view-id-flashcard_landing_page .ui-accordion-content .field-content a {
   margin: -20px 0 0 10px;
   vertical-align: middle;
