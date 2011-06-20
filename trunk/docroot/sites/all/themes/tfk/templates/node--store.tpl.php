@@ -127,12 +127,14 @@
 			<a href="<?php print $store_item['link_url'];?>"><img src="<?php print $store_item['image_url'];?>"/></a>
 		</div>
     <?php endforeach;?>
-    
+	
+		<div class="row-item">
     <?php foreach($store_items_bottom as $store_item_bottom):?>
-		<div class="half-row">
-			<a href="<?php print $store_item_bottom['link_url'];?>"><img src="<?php print $store_item_bottom['image_url'];?>"/></a>
-		</div>
+			<div class="half-row">
+				<a href="<?php print $store_item_bottom['link_url'];?>"><img src="<?php print $store_item_bottom['image_url'];?>"/></a>
+			</div>
     <?php endforeach;?>
+		</div>
 	
 	</div>
 	<div class="clearfix"></div>
