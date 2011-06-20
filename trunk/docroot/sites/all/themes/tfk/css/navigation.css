@@ -699,24 +699,24 @@
 	text-transform: uppercase;
 }
 
-#block-views-minisite-home-block-1 h2.block-title,
+#block-views-mini-site-home-block-1 h2.block-title,
 .region-sidebar-first .section .view-atw-page-featured-destination {
 	background: url(../images/atw-sidebar-head.png) no-repeat top left;
 	padding-top: 20px;
 }
 
-#block-views-minisite-home-block-1 h2.block-title {
+#block-views-mini-site-home-block-1 h2.block-title {
 	font-size: 0px;
 }
 
-#block-views-minisite-home-block-1 .views-field-title a,
+#block-views-mini-site-home-block-1.views-field-title a,
 .view-atw-page-featured-destination .views-field-title a {
 	color: #d71700;
 	font-size: 20px;
 	text-decoration: none;
 }
 
-#block-views-minisite-home-block-1 .field-content img,
+#block-views-mini-site-home-block-1 .field-content img,
 .view-atw-page-featured-destination .field-content img {
 	width: 222px;
 	border: solid 4px #fff;
