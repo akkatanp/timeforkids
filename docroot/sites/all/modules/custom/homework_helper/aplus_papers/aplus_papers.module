@@ -233,9 +233,9 @@ function aplus_papers_multistep_form_submit($form, &$form_state) {
   if ($form_state['triggering_element']['#value'] == t('Save')) {
     // Save the paper as a .txt file
     drupal_add_http_header('Content-Disposition', 'attachment; filename="a-plus-papers"');
-    drupal_add_http_header('Content-Type', 'text/plain');
+    drupal_add_http_header('Content-Type', 'text/plain;charset=utf-8');
     $paper = aplus_papers_save_content($form_state);
-    print strip_tags($paper);
+    print filter_xss($paper);
     exit;
   }
 
@@ -256,7 +256,7 @@ function aplus_papers_final_step_content($form_state) {
       $textarea .= isset($data['textarea']) ? '<p>' . check_markup($data['textarea']) . '</p>' : '';
     }
   } 
-  return '<div id="aplus-final-step">' . $title . $date . $name . '<div class="paper-textarea">' . $textarea . '</div></div>';
+  return '<div id="aplus-final-step"><h2 class="node-title">' . t('Completed Paper Preview') . '</h2>' . $title . $date . $name . '<div class="paper-textarea">' . $textarea . '</div></div>';
 }  
 
 
@@ -267,10 +267,10 @@ function aplus_papers_save_content($form_state) {
   $paper = '';
   foreach ($form_state['storage']['values'] as $step => $data) {
     if ($step != $form_state['#review_step']) {
-      $paper .= isset($data['title']) ? check_plain($data['title']) . "\n" : '';
-      $paper .= isset($data['date']) ? check_plain($data['date']) . "\n" : '';
-      $paper .= isset($data['name']) ? check_plain($data['name']) . "\n" : '';
-      $paper .= isset($data['textarea']) ? check_markup($data['textarea']) . "\n" : '';
+      $paper .= isset($data['title']) ? $data['title'] . "\n\n" : '';
+      $paper .= isset($data['name']) ? $data['name'] . "\n\n" : '';
+      $paper .= isset($data['date']) ? $data['date'] . "\n\n" : '';
+      $paper .= isset($data['textarea']) ? $data['textarea'] . "\n\n" : '';
     }
   }
   return $paper;
