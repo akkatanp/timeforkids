@@ -201,6 +201,7 @@ function tfk_teachers_community_form_teacher_community_question_node_form_alter(
  * Implementation of hook_form_FORM_ID_alter.
  *
  * Core form for adding Teacher Community Question comments.
+ * The form id is "comment_node_teacher_community_question_form".
  *
  * @param array $form
  * @param array $form_state
@@ -228,6 +229,27 @@ function tfk_teachers_community_form_comment_node_teacher_community_question_for
   $form['actions']['submit']['#type'] = 'image_button';
   $path = drupal_get_path('module', 'tfk_teachers_community');
   $form['actions']['submit']['#src'] = $path. '/images/submit-your-response.png';
+  
+  // Call our custom validation function after already existing ones.
+  $form['#validate'][] = 'tfk_teachers_community_validate_comments';
+}
+
+/**
+ * Custom validation function for comments.
+ *
+ * Avoids redirecting users to another page when a blank comment is submitted,
+ * which is Core's behavior. This is called after comment_form_validate().
+ *
+ * @see tfk_teachers_community_form_comment_node_teacher_community_question_form_alter()
+ */
+function tfk_teachers_community_validate_comments(&$form, &$form_state) {
+  $comment_copy = $form_state['values']['comment_body'];
+  $comment_body = array_shift(array_shift($comment_copy));
+  if(empty($comment_body['value'])) {
+    form_set_error('comment_body', 'The comment field cannot be empty.');
+    $form_state['redirect'] = 'node/'. $form_state['build_info']['args'][0]->nid;
+    drupal_redirect_form($form_state);
+  }
 }
 
 /**
@@ -239,4 +261,3 @@ function tfk_teachers_community_custom_theme() {
     return 'tfk';
   }
 }
-
