@@ -1,4 +1,5 @@
 =tfk-button
+  background: $tfk-red url(../images/button.png) repeat-x
   +box-shadow(black 2px 2px 10px, lighten($tfk-red, 20%) -3px 3px 5px inset)
   border: none
   outline: 0
@@ -31,10 +32,68 @@ body
         display: none
     .region-content
       border: 1px solid #cecece
+    .node-flashcard-form,
     .node-flashcard
       background: transparent url(images/flashcard-background.jpg) repeat
       margin: 60px 10px 10px
       padding: 20px
+    .node-flashcard-form
+      & > div
+        background-color: white
+        +border-radius(10px)
+        padding: 10px
+        +pie-clearfix
+        position: relative
+      .form-item-title
+        input
+          width: 80%
+      .field-type-flashcard
+        .form-item
+          margin-bottom: 0
+        .field-multiple-table
+          margin-bottom: 1em
+          width: 100%
+          tbody,
+          tr
+            border: none
+          td
+            padding: 1em
+            div:last-child
+              margin-left: 1em
+              padding-top: 1em
+            input
+              width: 80%
+        .field-add-more-submit
+          -webkit-appearance: none
+          +border-radius(14px)
+          background: #fff url(../images/button.png) repeat-x
+          border: 3px solid $tfk-red
+          color: $tfk-red
+          cursor: pointer
+          font: bold 12px/1.2 Arial, sans-serif
+          height: auto
+          padding: 4px 20px
+          margin: 0
+          width: auto
+          +box-shadow(transparentize($black, 0.5) 0 2px 4px)
+      .form-actions
+        position: absolute
+        bottom: 0.5em
+        right: 0
+        margin: 0
+        z-index: 10
+        input
+          background: url(images/tfk-red-arrow-right.png) no-repeat scroll 42px 3px transparent
+          border: none
+          color: $tfk-red
+          cursor: pointer
+          font: bold 12px/1.2 Arial, sans-serif
+          height: 30px
+          padding: 3px
+          text-align: left
+          width: 100px
+          -webkit-appearance: none
+    .node-flashcard
       .study-helper-help
         clear: both
         margin-top: 1em
@@ -50,34 +109,39 @@ body
         #study-helper-copy
           -webkit-appearance: none
           +border-radius(24px)
-          background: $tfk-red url(../images/button.png) repeat-x
           +tfk-button
           padding: 0.5em 1em
           margin-left: 1em
           margin-top: 1em
           float: left
+
 .flashcard-cycle
+  background-color: white
+  +border-radius(10px)
+  padding: 20px
   position: relative
   .flashcard-cycle-mode
+    float: none
+    position: static
     .flashcard-cycle-wrapper
-      width: 650px
       text-align: center
-      height: 45px
       -webkit-appearance: none
       +border-radius(10px)
-      background: $tfk-red url(../images/button.png) repeat-x
       font: normal 12px/1.2 Arial, sans-serif
+      float: none
+      position: static
       padding: 8px 24px
       +tfk-button
-      +trailer
-    label.flashcard-cycle-mode
-      float: left
+      & > *
+        +inline-block
+    label[for=flashcard-cycle-mode]
+      line-height: 1.5
+      margin-right: 1em
   a.shuffle,
   a.restart
     -webkit-appearance: none
     +border-radius(24px)
     +tfk-button
-    background: $tfk-red url(../images/button.png) repeat-x
     font: normal 12px/1.2 Arial, sans-serif
     padding: 8px 24px
     margin-right: 20px
@@ -96,7 +160,7 @@ body
         +border-radius(14px)
         background: #fff url(../images/button.png) repeat-x
         border: 3px solid $tfk-red
-        font: normal 12px/1.2 Arial, sans-serif
+        font: bold 12px/1.2 Arial, sans-serif
         padding: 4px 20px
         width: auto
         height: auto
@@ -137,6 +201,6 @@ body
     height: 250px
   .flashcard-cycle-mark
     position: absolute
-    top: 60px
+    top: 80px
     left: 120px
     z-index: 10
