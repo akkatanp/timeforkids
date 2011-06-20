@@ -1418,13 +1418,28 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 	width: 228px;
 }
 
+.page-store #featured-books h2 {
+	margin: 0;
+	font: normal 14px "arial black";
+	color: white;
+	background: #d71700;
+	text-align: center;
+}
 
+.page-store #featured-books .featured-book {
+	padding-bottom: 10px;
+	border-bottom: dotted 1px #cecece;
+	margin-bottom: 10px;
+}
 
+.page-store #featured-books .featured-book:last-child {
+	border-bottom: none;
+	margin-bottom: 0;
+}
 
-
-
-
-
+.page-store #featured-books .featured-book img {
+	margin-bottom: 4px;
+}
 
 
 
