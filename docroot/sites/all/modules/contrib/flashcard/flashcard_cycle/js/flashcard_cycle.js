@@ -150,18 +150,18 @@
 
                   marked = $('.flashcard-cycle-mode input[value="marked"]');
                   if (counts.marked > 0) {
-                    marked.button('enable');
+                    marked.attr('disabled', false);
                   }
                   else if (!marked.attr('disabled')){
-                    marked.button('disable');
+                    marked.attr('disabled', true);
                   }
 
                   unmarked = $('.flashcard-cycle-mode input[value="unmarked"]');
                   if (counts.unmarked == 0) {
-                    unmarked.button('disable');
+                    unmarked.attr('disabled', true);
                   }
                   else if (unmarked.attr('disabled')) {
-                    unmarked.button('enable');
+                    unmarked.attr('disabled', false);
                   }
 
                   card
@@ -175,7 +175,7 @@
               .each(
                 function() {
                   if ($(this).attr('value') == 'marked') {
-                    $(this).button('disable');
+                    $(this).attr('disabled', true);
                   }
                 }
               )
