@@ -1447,13 +1447,22 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 	width: 510px;
 }
 
-.page-store #store-items {
-	float: left;
-	width: 250px;
-	margin-right: 10px;
+.page-store #store-items #row-item {
+	width: 508px;
+	border: solid 1px #cecece;
+	margin-bottom: 10px;
 }
 
+.page-store #store-items #row-item img {
+	width: 508px;
+}
 
+.page-store #store-items #half-row {
+	float: left;
+	width: 248px;
+	border: solid 1px #cecece;
+}
 
-
-
+.page-store #store-items #half-row img {
+	width: 248px;
+}

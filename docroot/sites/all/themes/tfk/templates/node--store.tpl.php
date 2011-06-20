@@ -123,10 +123,10 @@
 	<div id="store-items">
     <!-- ITEMS THAT OCCUPY ALL ROW -->
     <?php foreach($store_items as $store_item):?>
-      <a href="<?php print $store_item['link_url'];?>"><img src="<?php print $store_item['image_url'];?>"/></a>
-      <br/>
+		<div class="row-item">
+			<a href="<?php print $store_item['link_url'];?>"><img src="<?php print $store_item['image_url'];?>"/></a>
+		</div>
     <?php endforeach;?>
-    <br/>
     
     <?php foreach($store_items_bottom as $store_item_bottom):?>
 		<div class="half-row">
