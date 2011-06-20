@@ -39,6 +39,7 @@ function study_helper_form_node_form_alter(&$form, &$form_state, $form_id) {
     $form['actions']['submit']['#value'] = t('Begin');
     $form['field_flashcard'][$form['field_flashcard']['#language']]['add_more']['#value'] = t('Add Card');
     $form['title']['#title'] = t('Set Title:');
+    $form['field_study_helper']['#access'] = FALSE;
   }
 }
 
