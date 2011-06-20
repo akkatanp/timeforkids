@@ -936,8 +936,8 @@ body.node-type-flashcard .node-flashcard .study-helper-url #study-helper-copy, b
 .flashcard-cycle .flashcard-cycle-mark {
   position: absolute;
   top: 60px;
-  left: 150px;
-  z-index: 1;
+  left: 120px;
+  z-index: 10;
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_flashcard_page\.sass}line{font-family:\000032}}
