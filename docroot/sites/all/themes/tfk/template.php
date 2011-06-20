@@ -169,3 +169,7 @@ function tfk_css_alter(&$css) {
     $css[$key]['preprocess'] = FALSE;
   }
 }
+
+function tfk_preprocess_flashcard_cycle_mark(&$variables) {
+  $variables['title'] = t('Mark this card for extra practice');
+}
