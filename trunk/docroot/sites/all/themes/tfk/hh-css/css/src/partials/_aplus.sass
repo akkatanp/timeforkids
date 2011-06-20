@@ -8,6 +8,7 @@ body.node-type-a-paper, body.node-type-paper-step
     #homework-help-content
       position: relative
       #block-system-main
+        padding: 10px 10px 10px 20px
         border: 1px solid #cecece
         +trailer
         a
@@ -22,7 +23,7 @@ body.node-type-a-paper, body.node-type-paper-step
       .aplus-paper-type-title
         background-image: url(images/tfk-red-tag.png)
         background-repeat: no-repeat
-        padding: 13px
+        padding: 13px 0 13px 23px
         height: 23px
         width: 158px
         color: $white
@@ -34,11 +35,13 @@ body.node-type-a-paper, body.node-type-paper-step
         margin-top: 10px
     .paper-textarea
       width: 480px
-      padding: 12px 0
+      padding: 36px 0 12px
+      p
+        text-indent: 40px
+        margin-bottom: 1em
     #aplus-papers-checklist-block
       border: 1px solid #cecece
       list-style: none
-      // margin-top: -18px
       width: 220px
       float: right
       .aplus-papers-checklist-title
@@ -82,14 +85,11 @@ body.node-type-a-paper, body.node-type-paper-step
       color: $black
       font-size: $ms2
       line-height: $ms1
-    .field-type-text-with-summary, .form-type-textarea
-      // width: 480px
     .field-name-field-step-example
       background: #dddddd
       border: 1px solid #cecece
-      margin-left: $gutter
+      margin: 10px
       padding: $gutter
-      // width: 430px
       p
         margin-bottom: 0
         font-style: italic
@@ -100,15 +100,15 @@ body.node-type-a-paper, body.node-type-paper-step
       margin-top: 0
       clear: left
       border: 1px solid #cecece
+      font-size: 14px
       label
         font-size: $ms1
-        padding: 5px 0
+        padding: 0 0 10px
     .aplus-start-button
       margin-left: 213px
       margin-top: 20px
       margin-bottom: 40px
     .aplus-overview
-      padding-left: 20px
       width: 505px
     #aplus-submit-buttons
       background: #dddddd
@@ -119,8 +119,6 @@ body.node-type-a-paper, body.node-type-paper-step
       margin-top: -20px
       text-align: right
       float: left
-      .form-submit
-        // margin-left: 200px
       .aplus-start-over
         background: url(images/tfk-red-arrow.png)
         background-repeat: no-repeat
@@ -131,21 +129,26 @@ body.node-type-a-paper, body.node-type-paper-step
         padding: 3px 0 0 42px
         height: 35px
     .node-paper-step
-      padding: 10px
-      width: 480px
+      padding: 10px 0
+      width: 500px
       float: left
-      margin: 75  px $gutter 0 0
       label
         font-size: $ms1
-        padding: 5px 0
+        padding: 0 0 10px 
+      h2.node-title
+        margin: 0 0 10px 0
     #aplus-review-step, #aplus-final-step
-      // padding: 10px
       width: 480px
       float: left
-      margin: 80px $gutter 0 0
+      margin-top: 10px
+      h2.node-title
+        margin: 0 0 10px 0
+      .a-plus-review-description
+        font-weight: bold
+        margin-bottom: 10px
       label
         font-size: $ms1
-        padding: 5px 0
+        padding: 0 0 10px
     button,
     input[type="reset"],
     input[type="submit"],
@@ -162,7 +165,6 @@ body.node-type-a-paper, body.node-type-paper-step
       overflow: visible
       padding: 3px 10px 4px
       margin-right: 10px
-      // width: auto
     a.button
       -webkit-appearance: none
       +border-radius(9px)
@@ -175,13 +177,13 @@ body.node-type-a-paper, body.node-type-paper-step
       outline: 0
       overflow: visible
       padding: 4px 12px 4px
-      // width: auto
     #aplus-print-save-buttons
       text-align: right
       clear: right
       padding-top: 10px
     .paper-title
       font-size: $ms2
+      text-align: center
     .paper-date
       float: right
       font-size: $ms0
@@ -199,7 +201,7 @@ body.page-homework-helper-a-plus-papers
       .aplus-paper-type-title
         background-image: url(images/tfk-red-tag.png)
         background-repeat: no-repeat
-        padding: 13px
+        padding: 13px 13px 0 23px
         height: 23px
         width: 158px
         color: $white
