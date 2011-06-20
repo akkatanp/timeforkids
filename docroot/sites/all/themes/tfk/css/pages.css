@@ -75,7 +75,7 @@ div#site-name /* The name of the website */ {
 .region-footer {
 	background: #d71700;
 	color: #fff;
-	font: normal 10px arial;
+	font-size: 10px;
 }
 
 .region-footer .block-title {
@@ -1464,7 +1464,7 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 }
 
 .page-store #store-items .row-item .half-row:first-child {
-	margin-right: 10px;
+	margin-right: 8px;
 }
 
 .page-store #store-items .half-row img {
