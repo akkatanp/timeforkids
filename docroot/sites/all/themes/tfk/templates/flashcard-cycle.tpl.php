@@ -5,7 +5,7 @@
  */
 ?>
 
-<div class="flashcard-cycle">
+<div class="flashcard-cycle clearfix">
   <div class="flashcard-cycle-buttons flashcard-cycle-toolbar clearfix">
     <?php if ($restart = render($restart)): ?>
       <?php print $restart; ?>
