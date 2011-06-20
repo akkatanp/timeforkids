@@ -176,7 +176,7 @@ function study_helper_node_view($node) {
     $node->content['study_helper_help'] = array(
       '#prefix' => '<div class="study-helper-help">',
       '#suffix' => '</div>',
-      // '#markup' => t('Help text needed here re keyboard controls etc.'),
+      '#markup' => t('Use spacebar to flip cards, and left and right arrow for previous and next.'),
     );
   }
 }
