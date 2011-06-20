@@ -1463,6 +1463,10 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 	border: solid 1px #cecece;
 }
 
+.page-store #store-items .half-row:first-child {
+	margin-right: 10px;
+}
+
 .page-store #store-items .half-row img {
 	width: 248px;
 }
