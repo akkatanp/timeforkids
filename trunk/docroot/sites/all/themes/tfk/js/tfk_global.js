@@ -27,7 +27,7 @@ $(document).ready(function() {
 			
 			var closeButton = $('<a></a>').addClass('close-button').appendTo(lightBox).click(closeLightBox);
 			
-			var loginForm = $('#login-container').clone().appendTo(lightBox);
+			var loginForm = $('#login-container').clone().show().appendTo(lightBox);
 		};
 		
 		var closeLightBox = function() {
