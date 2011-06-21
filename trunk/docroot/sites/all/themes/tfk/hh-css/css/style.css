@@ -1252,3 +1252,60 @@ body.page-homework-helper-writing-tips #content #homework-help-content .ui-accor
 body.page-homework-helper-writing-tips #content #homework-help-content .ui-accordion-content-active .views-field-body p {
   font-style: italic;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_writing-tip\.sass}line{font-family:\0000342}}
+body.page-homework-helper-writing-tips #content #webform-client-form-144 {
+  background: #dddddd;
+  padding: 10px;
+  width: 480px;
+  margin-top: 0;
+  clear: left;
+  border: 1px solid #cecece;
+  font-size: 14px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_writing-tip\.sass}line{font-family:\0000350}}
+body.page-homework-helper-writing-tips #content #webform-client-form-144 label {
+  font-size: 18px;
+  padding: 0 0 10px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_writing-tip\.sass}line{font-family:\0000353}}
+body.page-homework-helper-writing-tips #content button,
+body.page-homework-helper-writing-tips #content input[type="reset"],
+body.page-homework-helper-writing-tips #content input[type="submit"],
+body.page-homework-helper-writing-tips #content input[type="button"] {
+  -webkit-appearance: none;
+  -moz-border-radius: 11px;
+  -webkit-border-radius: 11px;
+  -o-border-radius: 11px;
+  -ms-border-radius: 11px;
+  -khtml-border-radius: 11px;
+  border-radius: 11px;
+  background: #d71700 url(../images/button.png) repeat-x;
+  border: 1px solid;
+  border-color: #dddddd #bbbbbb #999999;
+  cursor: pointer;
+  color: white;
+  font: normal 12px/1.2 Arial, sans-serif;
+  outline: 0;
+  overflow: visible;
+  padding: 3px 10px 4px;
+  margin-right: 10px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_writing-tip\.sass}line{font-family:\0000369}}
+body.page-homework-helper-writing-tips #content a.button {
+  -webkit-appearance: none;
+  -moz-border-radius: 9px;
+  -webkit-border-radius: 9px;
+  -o-border-radius: 9px;
+  -ms-border-radius: 9px;
+  -khtml-border-radius: 9px;
+  border-radius: 9px;
+  background: #d71700 url(../images/button.png) repeat-x;
+  border: 1px solid;
+  border-color: #dddddd #bbbbbb #999999;
+  cursor: pointer;
+  color: white;
+  font: normal 12px/1.2 Arial, sans-serif;
+  outline: 0;
+  overflow: visible;
+  padding: 4px 12px 4px;
+}
