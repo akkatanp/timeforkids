@@ -70,10 +70,10 @@
       
 	      <div id="homework-help-content">
           <?php if ($content_type_title): ?>
-            <div class="aplus-paper-type-title"><?php print $content_type_title; ?> </div>
+            <div class="content-type-title"><?php print $content_type_title; ?> </div>
           <?php endif; ?>
           <?php if ($title): ?>
-            <div id="homework-helper-title"><?php print $title; ?></div>
+            <div class="homework-helper-title"><?php print $title; ?></div>
           <?php endif; ?>
           <?php print render($page['content']); ?>
         </div>
