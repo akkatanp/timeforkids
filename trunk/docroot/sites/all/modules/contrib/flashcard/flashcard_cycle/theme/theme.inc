@@ -55,7 +55,9 @@ function template_preprocess_flashcard_cycle(&$variables) {
       '#options' => array(
         'html' => FALSE,
         'external' => FALSE,
-        'attributes' => array(),
+        'attributes' => array(
+          'class' => array('edit'),
+        ),
       ),
     );
   }
