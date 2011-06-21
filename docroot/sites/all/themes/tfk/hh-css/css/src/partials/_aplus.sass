@@ -7,9 +7,9 @@ body.node-type-a-paper, body.node-type-paper-step
     width: 768px
     #homework-help-content
       position: relative
+      padding: 10px 10px 10px 20px
+      border: 1px solid #cecece        
       #block-system-main
-        padding: 10px 10px 10px 20px
-        border: 1px solid #cecece
         +trailer
         a
           margin-right: 10px
@@ -18,12 +18,15 @@ body.node-type-a-paper, body.node-type-paper-step
           position: absolute
           left: 0
           margin: 0
+      
       .homework-helper-title
         position: absolute
-        top: 40px
+        top: 65px
       .content-type-title
         +homework-helper-title
         font-size: $ms1
+        +float-left
+        width: 200px
     .paper-textarea
       width: 480px
       padding: 36px 0 12px
