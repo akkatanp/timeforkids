@@ -116,7 +116,7 @@ function tfk_preprocess_page(&$variables, $hook) {
 function tfk_preprocess_node(&$variables, $hook) {
   if ($variables['type'] == 'flashcard') {
     foreach (element_children($variables['content']['field_flashcard']) as $delta) {
-      $flashcard = &$flashcards[$delta]['#items'][0];
+      $flashcard = &$variables['content']['field_flashcard'][$delta]['#items'][0];
       $flashcard['data'] = check_markup($flashcard['data'], 'bad_words');
       $flashcard['children'][0] = check_markup($flashcard['children'][0], 'bad_words');
     }
