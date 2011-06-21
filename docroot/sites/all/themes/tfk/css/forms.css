@@ -123,3 +123,24 @@ form tr.even {
 form table .item-list ul {
   margin: 0;
 }
+
+/* login form */
+#login-container #login-header {
+	font: normal 14px "arial black";
+	color: white;
+	background: #d71700;
+	padding: 10px;
+}
+
+#login-container h2 {
+	font: bold 20px arial;
+}
+
+#login-form-container {
+	padding-bottom: 10px;
+	border-bottom: dotted 1px #cecece;
+}
+
+#login-container .form-text {
+	border: solid 1px #999;
+}

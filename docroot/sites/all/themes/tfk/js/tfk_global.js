@@ -25,9 +25,9 @@ $(document).ready(function() {
 				'left': (($(window).width() / 2) - 350) + 'px'
 			}).appendTo($(document.body));
 			
-			var closeButton = $('<a></a>').addClass('close-button').appendTo(lightBox).click(closeLightBox);
-			
 			var loginForm = $('#login-container').clone().show().appendTo(lightBox);
+			var loginHeader = loginForm.find('#login-header');
+			var closeButton = $('<a></a>').addClass('close-button').appendTo(loginHeader).click(closeLightBox);
 		};
 		
 		var closeLightBox = function() {
