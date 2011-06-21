@@ -80,7 +80,7 @@
  * @see zen_preprocess_node()
  * @see template_process()
  */
-?>!?!?!!?!?!?!?!?!?!?!?!?!?!?
+?>
 <div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
 
   <?php print $user_picture; ?>
@@ -115,6 +115,12 @@
     <h2>DECK:</h2><?php print render($content['field_tfk_extra_deck']);?><br/>
     <h2>IMAGE:</h2><?php print render($content['field_tfk_extra_image']);?><br/>
 
+    <?php if(count($pdfs) > 0):?>
+    <h2>PDFS:</h2>
+      <?php foreach($pdfs as $pdf):?>
+        <a href="<?php print $pdf['pdf_url'];?>"><?php print $pdf['term_name']?></a> : <?php print $pdf['pdf_title'];?> <br/>
+      <?php endforeach;?>
+    <?php endif;?>
 
   </div>
 
