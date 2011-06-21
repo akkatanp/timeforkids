@@ -50,6 +50,7 @@ function study_helper_form_node_form_alter(&$form, &$form_state, $form_id) {
     drupal_set_title(t('Flashcard Maker'));
     $form['options']['status']['#default_value'] = 1;
     $form['actions']['submit']['#value'] = t('Begin');
+    $form['actions']['preview_changes']['#access'] = FALSE;
     $form['field_flashcard'][$form['field_flashcard']['#language']]['add_more']['#value'] = t('Add Card');
     $form['title']['#title'] = t('Title:');
     $form['title']['#description'] = t('What are your flashcards about?');  
