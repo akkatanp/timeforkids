@@ -22,7 +22,7 @@ $(document).ready(function() {
 			
 			var lightBox = $('<div></div>').attr('id', 'lightbox').css({
 				'top': (($(window).height() / 2) - 175) + $(window).scrollTop() + 'px',
-				'left': (($(window).width() / 2) - 350) + 'px')
+				'left': (($(window).width() / 2) - 350) + 'px'
 			}).appendTo($(document.body));
 			
 			var closeButton = $('<a></a>').addClass('close-button').appendTo(lightBox).click(closeLightBox);
