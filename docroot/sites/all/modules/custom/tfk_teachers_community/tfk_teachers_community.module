@@ -16,6 +16,11 @@ function tfk_teachers_community_permission() {
       'description' => t('Per Spec 17F.3 only the editorial team should add a description to the question.'),
       'restrict access' => TRUE,
     ),
+    // Custom permission for comment avatars.
+    'upload comment avatar' => array(
+      'title' => t('Upload comment avatar'),
+      'description' => t('This permission is given to users who can upload comment Avatars, e.g., Administrators, Editors.'),
+    ),
   );
   return $perms;
 }
@@ -165,6 +170,71 @@ function tfk_teachers_community_preprocess_comment_wrapper(&$variables, $hook) {
   }
 }
 
+
+/**
+ * Implementation of hook_entity_load.
+ *
+ * When loading comments from Board Members, load their profile image URL.
+ */
+function tfk_teachers_community_entity_load($entities, $type) {
+  if($type == 'comment') {
+    // Statically cache avatars to reduce database overhead.
+    static $avatars = array();
+    
+    foreach ($entities as $comment) {
+      
+      // For now limit this logic to teacher_community_question nodes.
+      if($comment->node_type == 'comment_node_teacher_community_question') {
+        
+        // Only go through this if there isn't an image already.
+        if(empty($comment->picture)) {
+          
+          // Check static cache. The user id serves as a good unique key.
+          if(array_key_exists($comment->uid, $avatars)) {
+            $comment->picture = $avatars[$comment->uid];
+          } else {
+            
+            // Custom comment avatar permission. @see tfk_teachers_community_permission().
+            $user = user_load($comment->uid);
+            if(user_access('upload comment avatar', $user)) {
+              
+              // For now we do this only for Board Members. Most likely other users upload their avatars directly to their profiles.
+              if(array_search('Board Member', $user->roles) !== FALSE) {
+                
+                // Load Board Member node.
+                $bm_query = "
+                  SELECT board_member.nid AS nid
+                  	FROM
+                  {node} board_member
+                  	LEFT JOIN {field_data_field_board_member_reference} bmr ON board_member.nid = bmr.entity_id
+                  WHERE bmr.field_board_member_reference_uid = :u_uid";
+                $bm_id = db_query($bm_query, array(':u_uid' => $comment->uid))->fetchField();
+                
+                // If there is an associated Board Member node.
+                if($bm_id) {
+                  $board_member = node_load($bm_id);
+                  $field_items = field_get_items('node', $board_member, 'field_member_photo');
+                  if(!empty($field_items)) {
+                    $photo =  array_shift($field_items);
+                    // Generate profile image derivative.
+                    if(!empty($photo)) {
+                      $derivative = tfk_search_get_thumbnail($photo['fid'], 'tfk_60x60');
+                      if($derivative != FALSE) {
+                        $comment->picture = tfk_search_get_thumbnail($photo['fid'], 'tfk_60x60');
+                        // @todo I'd be nice to save the derivative back to the comment to avoid additional queries.
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 /**
  * Preprocess comment.
  */
@@ -180,6 +250,16 @@ function tfk_teachers_community_preprocess_comment(&$variables, $hook) {
     
     // Link to comment author's profile.
     $variables['author_profile_link'] = l('See Bio', 'user/'. $variables['comment']->uid);
+    
+    // User profile pictures.
+    if(!empty($variables['comment']->picture)) {
+      $title = $variables['comment']->name;
+      $image = theme('image', array('path' => $variables['comment']->picture, 'title' => $title, 'alt' => $title));
+      $link_options = array('html' => TRUE, 'attributes' => array('title' => $title));
+      $linked_image = l($image, 'user/'. $variables['comment']->uid, $link_options);
+      $variables['picture'] = l($image, 'user/'. $variables['comment']->uid, $link_options);
+      // @todo Confirm: If it's a board member, link to his board profile, or to the regular user profile?
+    }
     
     // Change submitted date format.
     $variables['submitted'] = date('n/j/Y', $variables['comment']->changed);
@@ -312,21 +392,22 @@ function tfk_teachers_community_validate_comments(&$form, &$form_state) {
 
 // *** CUSTOM CODE *** ///
 
-
+/**
+ * Retrieves a list of more Teacher Community topics using Views.
+ *
+ * @see tfk_teachers_community_block_view()
+ */
 function tfk_teachers_community_get_teacher_topics() {
   $items = array('items');
   
   $view = views_get_view('teacher_community_more_topics');
-  #$view->set_display('block');
   if(is_null($view)) {
     return FALSE;
   } else {
     $view->execute();
   	if(!empty($view->result)) {
 	    foreach($view->result as $result) {
-	      $items['items'][] = array(
-	        l($result->node_title, 'node/'. $result->nid),
-	      );
+        $items['items'][] = l($result->node_title, 'node/'. $result->nid);
 	    }
   		return $items;
   	} else {
