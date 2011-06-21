@@ -2,8 +2,8 @@
 
 function tfk_extras_menu(){
   $items = array();
-  $items['extras'] = array(
-		'title' => 'Teacher News',
+  $items['extrasz'] = array(
+		'title' => 'TFK Extras',
 		'page callback' => '_extras_callback',
 		'access callback' => 'user_access',
 		'access arguments' => array('access content')
