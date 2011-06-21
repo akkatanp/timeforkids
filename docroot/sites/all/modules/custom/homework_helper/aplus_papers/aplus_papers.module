@@ -92,6 +92,7 @@ function aplus_papers_multistep_form($form, &$form_state, $steps) {
   $form["step_$step"] = $steps[$step];
   if (isset($form["step_$step"]['textarea'])) {
     $form["step_$step"]['textarea']['#default_value'] = empty($form_state['values']["step_$step"]['textarea']) ? '' : $form_state['values']["step_$step"]['textarea'];
+    $form["step_$step"]['textarea']['#rows'] = 6;
   }
   if (isset($form["step_$step"]['title'])) {
     $form["step_$step"]['title']['#default_value'] = empty($form_state['values']["step_$step"]['title']) ? '' : $form_state['values']["step_$step"]['title'];
@@ -162,8 +163,16 @@ function aplus_papers_multistep_form($form, &$form_state, $steps) {
         $form_state['#review_step'] = "step_$step";
         if (is_numeric($key)) {
           foreach ($data as $field => $field_data) {
-            if ($field == 'textarea' || $field == 'title' || $field == 'name' || $field == 'date') {
-            $form["step_$step"][$key][$field]['#default_value'] = $form_state['storage']['values']["step_$key"][$field];
+            if ($field == 'title' || $field == 'name' || $field == 'date') {
+              $form["step_$step"][$key][$field]['#default_value'] = $form_state['storage']['values']["step_$key"][$field];
+            }
+            if ($field == 'textarea') { 
+              $form["step_$step"][$key][$field]['#default_value'] = $form_state['storage']['values']["step_$key"][$field];
+              // Calculate approximate number of rows based on 85 characters per line, 
+              // plus the number of line breaks.
+              $lines = explode("\n", $form["step_$step"][$key][$field]['#default_value']);
+              $characters = strlen($form["step_$step"][$key][$field]['#default_value']);
+              $form["step_$step"][$key][$field]['#rows'] = ($characters / 85) + count($lines);
             }  
           }  
         }  
