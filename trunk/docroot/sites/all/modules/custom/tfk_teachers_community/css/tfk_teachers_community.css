@@ -1,6 +1,5 @@
 /* Suggestion Box */
-.suggestion-box,
-#bottom-suggestion-box {
+.suggestion-box {
   background: none repeat scroll 0 0 #D9EFFE;
   border: 3px solid #ACDBFC;
   box-shadow: 2px 2px 4px #666666;
@@ -20,8 +19,72 @@
   padding-left: 5px;
 }
 
-#bottom-suggestion-box .link {
+.suggestion-box.bottom .link {
+  font-size: 0.92em;	
+	margin-top: 5px;
+}
+
+.suggestion-box.bottom {
+  padding: 6px 6px 4px 6px;
+}
+
+.suggestion-box.bottom .link {
 	text-align: right;
+	display: block;
+	border: none;
+}
+
+/* 17C Suggestion Box pager */
+.view-id-teacher_community_topic_list .item-list ul li {
+  margin: 0 0 0 .50%;
+}
+
+.view-id-teacher_community_topic_list .item-list ul.pager {
+	text-align: right;
+	margin-top: 7px;
+}
+
+.suggestion-box-wrapper.bottom {
+	padding: 12px 3% 0 2.5%; 
+	border: 2px solid #CECECE;
+	border-top: none;
+}
+
+/* Topic List (17C) */
+
+div.view-id-teacher_community_topic_list .view-content {
+  border: 2px solid #CECECE;
+}
+
+div.view.view-id-teacher_community_topic_list .views-field-title {
+  font-size: 20px;
+  margin-bottom: 6px;
+}
+
+div.view.view-id-teacher_community_topic_list .views-field-view-node {
+  margin-top: 14px;
+}
+
+div.view.view-id-teacher_community_topic_list .views-row {
+  padding: 10px;
+}
+
+div.view.view-id-teacher_community_topic_list .views-row:not(.views-row-last) {
+  border-bottom: 2px solid #CECECE;
+}
+
+div.view.view-id-teacher_community_topic_list .views-field-name, 
+div.view.view-id-teacher_community_topic_list .views-field-created,
+div.view.view-id-teacher_community_topic_list .views-field-comment-count {
+	color: #333;
+	font-weight: bold;
+	font-size: 11px;
+}
+
+body.page-teacher-community-topic-list .region-sidebar-first .section {
+  background: none;
+  border: none;
+  padding: 0;
 }
 
 body.node-type-teacher-community-question div.region-sidebar-first div.section {

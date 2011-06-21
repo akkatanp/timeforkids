@@ -23,9 +23,20 @@ function tfk_helper_theme() {
     ),
     // Regular slideshow, Spec 7B.
     'regular_slideshow' => array(
-    'template' => 'regular-slideshow',
-    'variables' => array('images_data' => array(), 'related_content' => ''),
+    	'template' => 'regular-slideshow',
+    	'variables' => array('images_data' => array(), 'related_content' => ''),
     ),
+    // Suggestion Box.
+    'suggestion_box' => array(
+      'variables' => array(
+      	'id' => 'top',
+      	'message' => 'Example suggestion message',
+      	'link_title' => 'Example link text',
+      	'link_dest' => 'node',
+        'class' => array('suggestion-box'),
+      ),
+    ),
+    //
   );
 }
 
@@ -45,6 +56,25 @@ function theme_featured_block_sidebar($args) {
   $output .= "<div class='featured-block-sidebar-link'>$link</div>";
   $output .= "</div>";
 
+  return $output;
+}
+
+/**
+ * Returns a themed suggestion box.
+ */
+function theme_suggestion_box($options = array()) {
+  $output = "<div class='suggestion-box-wrapper ". implode(' ', $options['wrapper-class']). "'>";
+  
+  $output .= "<div id='{$options['id']}' class='". implode(' ', $options['class']). "'>";
+  
+  $message = t($options['message']);
+  $link = l(t($options['link_title']), $options['link_dest']);
+   
+  $output .= "<div class='msg'>$message</div>";
+  $output .= "<div class='link'>$link</div>";
+  $output .= '</div>';
+  
+  $output .= '</div>';
   return $output;
 }
 
@@ -181,7 +211,6 @@ function tfk_helper_get_additional_content() {
   	if(!empty($view->result)) {
   		$related_content = array('quantity_articles' => count($view->result), 'related_content');
   	    foreach($view->result as $result) {
-  	      $test = null;
   	      $related_content['related_content'][] = array(
   	        'path'   => 'node/'. $result->node_field_data_field_additional_content_nid,
   	        'title' => $result->node_field_data_field_additional_content_title,

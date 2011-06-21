@@ -25,6 +25,17 @@ function tfk_teachers_community_permission() {
   return $perms;
 }
 
+/**
+ * Implementation of hook_theme.
+ */
+function tfk_teachers_community_theme($existing, $type, $theme, $path) {
+  return array(
+    // Custom pager.
+    'item_list_custom' => array(
+      'variables' => array('variables' => array()),
+    ),
+  );
+}
 
 /**
  * Implementation of hook_custom_theme.
@@ -65,6 +76,7 @@ function tfk_teachers_community_block_view($delta='') {
       $topics = tfk_teachers_community_get_teacher_topics();
       $topics['type'] = 'ul';
       $topics['title'] = 'MORE TOPICS FROM TEACHERS';
+      $topics['caller'] = 'tfk_teachers_comm_more_topics';
       if($topics != FALSE) {
         $title = t('View All the Topics from Teachers');
         $link_options = array('html' => TRUE, 'attributes' => array('title' => $title));
@@ -118,6 +130,21 @@ function tfk_teachers_community_preprocess_page(&$variables, $hook) {
     $btn_img = "/images/submit-your-response-active.png";
   }
   
+  // Topic List page, Spec 17C.
+  if(arg(0) == 'teacher-community' && arg(1) == 'topic-list') {
+    $community_question = TRUE;
+    $suggestion =  array(
+    	'id' => 'top',
+      'message' => 'GOT A QUESTION? GOT A LESSON PLAN IDEA?',
+      'link_title' => 'Submit to the TFK Teacher Community',
+      'link_dest' => 'node/add/teacher-community-question'
+    );
+    $variables['page_suggestion_box'] = theme('suggestion_box', $suggestion);
+        
+    # drupal_add_html_head($data = NULL, $key = NULL)
+    # drupal_get_html_head();
+  }
+  
   // Common actions.
   if($community_question) {
     // Section title.
@@ -139,6 +166,37 @@ function tfk_teachers_community_preprocess_page(&$variables, $hook) {
     unset($page['editor_menu']);
   }
 }
+
+/**
+ * Intercept the Views pager and inject a suggestion box. Avoids having to create
+ * a separate page template. We also overrode the existing theming funciton
+ * with our own.
+ *
+ * @param array $variables
+ *
+ * @see theme_item_list_custom
+ */
+function tfk_teachers_community_preprocess_item_list(&$variables, $hook) {
+  if(arg(0) == 'teacher-community' && arg(1) == 'topic-list') {
+    if(!array_key_exists('caller', $variables)) {
+      
+      // Override default theme function with our own.
+      $variables['theme_hook_suggestions'] = array('item_list_custom');
+      
+      // Add suggestion box per Spec 17C.
+      $suggestion =  array(
+        'id' => 'teacher-community-topic-list',
+        'message' => 'GOT A QUESTION? NEED ADVICE ON LESSON PLANS?<br /> HAVE A GREAT IDEA FOR A WORKSHEET?<br /> SHARE IT WITH THE TFK TEACHER COMMUNITY!',
+        'link_title' => 'Submit Your Thoughts to the TFK Community',
+        'link_dest' => 'node/add/teacher-community-question',
+        'class' => array('suggestion-box', 'bottom'),
+        'wrapper-class' => array('bottom'),
+      );
+      $variables['header'] = theme('suggestion_box', $suggestion);
+    }
+  }
+}
+
 
 /**
  * Preprocess node.
@@ -414,4 +472,80 @@ function tfk_teachers_community_get_teacher_topics() {
   	  return FALSE;
   	}
   }
+}
+
+/**
+ * Returns HTML for a list or nested list of items.
+ *
+ * Clone of theme_item_list() used for overriding the default Views bottom pager.
+ * Here we can modify the HTML structure to our taste, e.g., adding things like
+ * a pager header or footer.
+ *
+ * @param $variables
+ *   An associative array containing:
+ *   - items: An array of items to be displayed in the list. If an item is a
+ *     string, then it is used as is. If an item is an array, then the "data"
+ *     element of the array is used as the contents of the list item. If an item
+ *     is an array with a "children" element, those children are displayed in a
+ *     nested list. All other elements are treated as attributes of the list
+ *     item element.
+ *   - title: The title of the list.
+ *   - type: The type of list to return (e.g. "ul", "ol").
+ *   - attributes: The attributes applied to the list element.
+ *
+ * @see theme_item_list
+ */
+function theme_item_list_custom($variables) {
+  $items = $variables['items'];
+  $type = $variables['type'];
+  $attributes = $variables['attributes'];
+
+  $output = '<div class="item-list">';
+  if (array_key_exists('header', $variables)) {
+    $output .= $variables['header'];
+  }
+
+  if (!empty($items)) {
+    $output .= "<$type" . drupal_attributes($attributes) . '>';
+    $num_items = count($items);
+    foreach ($items as $i => $item) {
+      $attributes = array();
+      $children = array();
+      if (is_array($item)) {
+        foreach ($item as $key => $value) {
+          if ($key == 'data') {
+            $data = $value;
+          }
+          elseif ($key == 'children') {
+            $children = $value;
+          }
+          else {
+            $attributes[$key] = $value;
+          }
+        }
+      }
+      else {
+        $data = $item;
+      }
+      if (count($children) > 0) {
+        // Render nested list.
+        $data .= theme_item_list(array('items' => $children, 'title' => NULL, 'type' => $type, 'attributes' => $attributes));
+      }
+      if ($i == 0) {
+        $attributes['class'][] = 'first';
+      }
+      if ($i == $num_items - 1) {
+        $attributes['class'][] = 'last';
+      }
+      $output .= '<li' . drupal_attributes($attributes) . '>' . $data . "</li>\n";
+    }
+    $output .= "</$type>";
+  }
+  
+  if(array_key_exists('footer', $variables)) {
+    $output .= $variables['footer'];
+  }
+  
+  $output .= '</div>';
+  return $output;
 }
