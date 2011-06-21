@@ -35,6 +35,16 @@ function study_helper_form_node_form_alter(&$form, &$form_state, $form_id) {
     if (!$user->uid) {
       $form['revision_information']['#access'] = FALSE;
       $form['field_study_helper']['#access'] = FALSE;
+      $form['help_text'] = array(
+        '#markup' => 'Create your own flashcards. When you\'re done you can copy the web address and use the flashcards again. Your flashcards will expire after two weeks. If you are a teacher with an account ' . l('log in', 'user') . ' first to create non-expiring flashcards.',
+        '#weight' => -6,
+      );  
+    }
+    else {
+      $form['help_text'] = array(
+        '#markup' => 'Create your own flashcards. When you\'re done you can copy and share the web address. Your flashcards will not expire.',
+        '#weight' => -6,
+      );      
     }
     drupal_add_css(drupal_get_path('module', 'study_helper') . '/study-helper.css');
     drupal_set_title(t('Flashcard Maker'));
