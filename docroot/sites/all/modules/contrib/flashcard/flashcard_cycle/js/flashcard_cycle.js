@@ -23,6 +23,7 @@
             marked : 0,
             unmarked : 0
           }
+          var current = 1;
 
           var card = $(this).find('.flashcard-cycle-cards')
             .cycle()
@@ -35,6 +36,7 @@
                   .end();
                 if ($(this).hasClass('showing')) {
                   $(this).cycle('next');
+                  current = cardNumber('next', current, counts[modeChecked]);
                 }
                 $(this).toggleClass('showing');
               }
@@ -49,6 +51,12 @@
 
             .find('.flashcard-cycle-toolbar')
               .prepend('<a class="shuffle">Shuffle</a>')
+              .prepend('<div id="flashcard-numbering"></div>')
+                .each(
+                  function() {
+                    cardNumber('restart', current, counts[modeChecked]);
+                  }
+                )
             .end()
 
             .find('.flashcard-cycle-buttons')
@@ -80,6 +88,7 @@
                       .hide(cycleSpeed)
                     .end()
                     .cycle(0);
+                    current = cardNumber('restart', current, counts[modeChecked]);
                 }
               )
             .end()
@@ -94,6 +103,7 @@
                     .end()
                     .cycle({random: true})
                     .cycle('pause');
+                    current = cardNumber('restart', current, counts[modeChecked]);
                 }
               )
             .end()
@@ -106,7 +116,8 @@
                       .toggle(cycleSpeed)
                     .end();
                   if (card.hasClass('showing') && Drupal.settings.flashcardCycle.flip == 'next') {
-                    card.cycle('next')
+                    current = cardNumber('next', current, counts[modeChecked]);
+                    card.cycle('next');
                   }
                   card.toggleClass('showing');
                 }
@@ -119,6 +130,7 @@
                   card
                     .cycle($(this).attr('class').split(/\b/)[0])
                     .removeClass('showing');
+                    current = cardNumber($(this).attr('class').split(/\b/)[0], current, counts[modeChecked]);
                 }
               )
               .each(
@@ -184,6 +196,7 @@
                   value = $(this).attr('value');
                   if (value != modeChecked) {
                     modeChecked = value;
+                    current = cardNumber('restart', current, counts[modeChecked]);
                     if (detached) {
                       detached.appendTo(card);
                       detached = null;
@@ -218,6 +231,27 @@
           .find('ul.answer')
             .hide(cycleSpeed)
           .end();
+      }
+      
+      function cardNumber(type, current, total) {
+        if (type == 'next') {
+          current++;
+          if (current > total) {
+            current = 1;
+          }
+        }
+        if (type == 'prev') {
+          current--;
+          if (current < 1) {
+            current = total;
+          }
+        }
+        if (type == 'restart') {
+          current = 1;
+        }
+        
+        $("#flashcard-numbering").html(Drupal.t('!current of !total', {'!current': '<span class="flashcard-numbering-current">' + current + '</span>', '!total': total}));
+        return current;
       }
 
       if (Drupal.settings.flashcardCycle.keyboard) {
