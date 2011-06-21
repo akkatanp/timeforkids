@@ -18,22 +18,12 @@ body.node-type-a-paper, body.node-type-paper-step
           position: absolute
           left: 0
           margin: 0
-      #homework-helper-title
+      .homework-helper-title
         position: absolute
         top: 40px
-      .aplus-paper-type-title
-        background-image: url(images/tfk-red-tag.png)
-        background-repeat: no-repeat
-        padding: 13px 0 13px 23px
-        height: 23px
-        width: 158px
-        color: $white
-        text-transform: uppercase
-        font-weight: bold
-        font-size: $ms2
-        margin-bottom: 0
-        position: absolute
-        margin-top: 10px
+      .content-type-title
+        +homework-helper-title
+        font-size: $ms1
     .paper-textarea
       width: 480px
       padding: 36px 0 12px
@@ -203,18 +193,9 @@ body.page-homework-helper-a-plus-papers
       padding-bottom: 10px
       padding-left: 15px
       +trailer
-      .aplus-paper-type-title
-        background-image: url(images/tfk-red-tag.png)
-        background-repeat: no-repeat
-        padding: 13px 13px 0 23px
-        height: 23px
-        width: 158px
-        color: $white
-        text-transform: uppercase
-        font-weight: bold
-        font-size: $ms2
-        margin-bottom: 0
-        margin-top: 10px
+      .content-type-title
+        +homework-helper-title
+        font-size: $ms1
         margin-left: -17px
     .views-row
       padding-left: 135px

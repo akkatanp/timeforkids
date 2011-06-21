@@ -9,33 +9,22 @@
 
 body
   &.node-type-flashcard,
-  &.page-flashcard,
+  &.page-homework-helper-flashcards,
   &.page-node-add-flashcard
     &.not-logged-in
       div.tabs
         display: none
     #content
       width: 768px
-      #homework-helper-title
-        background-image: url(images/tfk-red-tag.png)
-        background-repeat: no-repeat
-        padding: 13px 0 13px 23px
-        height: 23px
-        width: 175px
-        color: $white
-        text-transform: uppercase
-        font-weight: bold
-        margin-bottom: 0
-        position: absolute
-        margin-top: 10px
       h2.node-title
         display: none
-    .region-content
+    #homework-help-content
       border: 1px solid #cecece
+      overflow: hidden
     .node-flashcard-form,
     .node-flashcard
       background: transparent url(images/flashcard-background.jpg) repeat
-      margin: 60px 10px 10px
+      margin: 10px
       padding: 20px
     .node-flashcard-form
       & > div
@@ -114,6 +103,17 @@ body
           margin-left: 1em
           margin-top: 1em
           float: left
+  &.node-type-flashcard
+    .content-type-title
+      +homework-helper-title
+    .homework-helper-title
+      font-size: 16px
+      font-weight: bold
+      margin: 1em 0 0 1em
+  &.page-homework-helper-flashcards,
+  &.page-node-add-flashcard
+    .homework-helper-title
+      +homework-helper-title
 
 .flashcard-cycle
   background-color: white
