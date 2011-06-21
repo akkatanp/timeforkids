@@ -80,9 +80,10 @@ function tfk_extras_preprocess_node(&$variables){
         $pdfs[$z]['pdf_url'] =  file_create_url($item_tmp[$item['value']]->field_tfk_extra_pdf_file['und'][0]['uri']);
     }
 
+    $variables['pdfs'] = $pdfs;
+
+
+
   }
-
- // print_r($pdfs);
-
 
 }
