@@ -25,6 +25,11 @@ function tfk_teachers_community_context_default_contexts() {
         'node_form' => '0',
       ),
     ),
+    'views' => array(
+      'values' => array(
+        'teacher_community_topic_list' => 'teacher_community_topic_list',
+      ),
+    ),
   );
   $context->reactions = array(
     'block' => array(
