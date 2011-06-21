@@ -1,6 +1,8 @@
 <?php
 
 function tfk_atw_init(){
+  $js_path = drupal_get_path('theme', 'tfk') .'/js/tfk_global.js';
+  drupal_add_js($js_path,'file');
   if(arg(0) == 'around-the-world'){
     $js_path = drupal_get_path('theme', 'tfk') .'/js/atw_homepage_slideshow.js';
     $css_path = drupal_get_path('theme', 'tfk') .'/css/atw_homepage_slideshow.css';
