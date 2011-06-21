@@ -130,6 +130,8 @@ form table .item-list ul {
 	color: white;
 	background: #d71700;
 	padding: 10px;
+	text-transform: uppercase;
+	position: relative;
 }
 
 #login-container h2 {
@@ -143,4 +145,19 @@ form table .item-list ul {
 
 #login-container .form-text {
 	border: solid 1px #999;
+}
+
+#login-container .form-submit {
+	font: bold 11px arial;
+	background: #d71700;
+	color: #fff;
+	padding: 6px 8px;
+	border: none;
+	cursor: pointer;
+	border-radius: 12px;
+	-moz-border-radius: 12px;
+	-webkit-border-radius: 12px;
+	box-shadow: 2px 2px 2px #999;
+	-moz-box-shadow: 2px 2px 2px #999;
+	-webkit-box-shadow: 2px 2px 2px #999;
 }
