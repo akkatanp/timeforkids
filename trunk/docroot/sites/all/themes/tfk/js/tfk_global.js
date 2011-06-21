@@ -33,6 +33,7 @@ $(document).ready(function() {
 		var closeLightBox = function() {
 			$('#lightbox').remove();
 			$('#mask').remove();
+			$('body').css('overflow', 'auto');
 		}
 	}
 })($);
