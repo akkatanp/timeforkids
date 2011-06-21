@@ -1482,12 +1482,12 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 
 /* lightbox */
 #mask {
-	width: 100%;
-	background: #ddd;
-	z-index: 2;
 	position: absolute;
-	left: 0;
-	top: 0;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	background: #000;
+	z-index: 2;
 	-webkit-opacity: 0.5;
 	opacity: 0.5;
 }
