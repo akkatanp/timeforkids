@@ -2,8 +2,8 @@
 
 function tfk_extras_menu(){
   $items = array();
-  $items['extrasz'] = array(
-		'title' => 'TFK Extras',
+  $items['extras'] = array(
+		'title' => 'TFK Extras.',
 		'page callback' => '_extras_callback',
 		'access callback' => 'user_access',
 		'access arguments' => array('access content')
@@ -12,7 +12,7 @@ function tfk_extras_menu(){
 }
 
 function _extras_callback(){
-   drupal_set_title('');
+   drupal_set_title('TFK Extras.');
   return '';
 }
 
