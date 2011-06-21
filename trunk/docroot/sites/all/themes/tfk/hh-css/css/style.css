@@ -1082,7 +1082,7 @@ body.page-homework-helper-flashcards #content #homework-help-content {
   display: block;
   width: 250px;
   background: #e6e6e6;
-  padding: 20px;
+  padding: 5px 20px 10px;
   float: right;
   border: 1px solid #cfcfcf;
   margin: 0 10px 15px 15px;
@@ -1145,16 +1145,23 @@ body.page-homework-helper-flashcards #content #homework-help-content {
   width: 340px;
   border: 0px;
   margin-left: 10px;
+  overflow: visible;
+  margin-top: 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_flashcard_page\.sass}line{font-family:\0000360}}
-.view-flashcard-landing-page.view-id-flashcard_landing_page .ui-accordion-content .field-content:before {
-  content: url("../../images/card_icon.png");
-  margin: 10px;
-  vertical-align: middle;
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_flashcard_page\.sass}line{font-family:\0000362}}
+.view-flashcard-landing-page.view-id-flashcard_landing_page .ui-accordion-content .views-row {
+  overflow: hidden;
+  *zoom: 1;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_flashcard_page\.sass}line{font-family:\0000365}}
+.view-flashcard-landing-page.view-id-flashcard_landing_page .ui-accordion-content .field-content:before {
+  content: url("../../images/card_icon.png");
+  clear: both;
+  display: inline;
+  float: left;
+  margin-right: 10px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/tfk\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_flashcard_page\.sass}line{font-family:\0000370}}
 .view-flashcard-landing-page.view-id-flashcard_landing_page .ui-accordion-content .field-content a {
-  margin: -20px 0 0 10px;
-  vertical-align: middle;
   font-size: 120%;
 }

@@ -157,7 +157,7 @@ function tfk_content_type_title($type) {
       $output = t('A+ Papers');
       break;
     case 'flashcard':
-      $output = t('Study Helper');
+      $output = t('Flashcard Maker');
   }
   return $output;
 }
