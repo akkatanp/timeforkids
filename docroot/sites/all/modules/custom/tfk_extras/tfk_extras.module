@@ -70,29 +70,19 @@ function tfk_extras_theme() {
 function tfk_extras_preprocess_node(&$variables){
   if(array_key_exists('node', $variables) && $variables['node']->type == 'tfk_extra') {
 
-    //field_tfk_extra_pdf_collection
-
     $pdfs = array();
-
-
-
     $pdfs_tmp = field_get_items('node', $variables['node'], 'field_tfk_extra_pdf_collection');
-    foreach($pdfs_tmp as $item){
+    foreach($pdfs_tmp as $z => $item){
         $item_tmp = entity_load('field_collection_item', array($item['value']));
-             $term = taxonomy_term_load($item_tmp[$item['value']]->field_tfk_extra_pdf_taxonomy['und'][0]['tid']);
-             print_r($term);exit;
-          ///  $item_tmp[$item['value']]->field_tfk_extra_pdf_taxonomy['und'][0]['tid'];
-          /// $item_tmp[$item['value']]->field_tfk_extra_pdf_headline['und'][0]['safe_value'];
-            //$item_tmp[$item['value']]->field_tfk_extra_pdf_file['und'][0]['uri'], use file_create_url();
-
-
-//        $link_url = $item_tmp[$item['value']]->field_store_item_link_url['und'][0]['safe_value'];
-//
-//
-//        print_r($item_tmp);exit;
-
-
+        $term = taxonomy_term_load($item_tmp[$item['value']]->field_tfk_extra_pdf_taxonomy['und'][0]['tid']);
+        $pdfs[$z]['term_name'] = $term->name;
+        $pdfs[$z]['pdf_title'] = $item_tmp[$item['value']]->field_tfk_extra_pdf_headline['und'][0]['safe_value'];
+        $pdfs[$z]['pdf_url'] =  file_create_url($item_tmp[$item['value']]->field_tfk_extra_pdf_file['und'][0]['uri']);
     }
 
   }
+
+  print_r($pdfs);
+
+
 }
