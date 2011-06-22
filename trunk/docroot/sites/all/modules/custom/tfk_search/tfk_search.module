@@ -92,7 +92,8 @@ function theme_tfk_search_related_content($variables) {
   for($key = 0; $key < $variables['quantity_articles']; $key++) {
     $output .= '<div class="addit-related-articles">';
       $link = l($related_content[$key]['title'], $related_content[$key]['path']);
-      $output .= '<div class="addit-related-articles-label">'. strtoupper(t('Related @type', array('@type' => $related_content[$key]['type']))). '</div>';
+      $related = ($related_content[$key]['type'] == 'article') ? 'Related ': '';
+      $output .= '<div class="addit-related-articles-label">'. strtoupper(t($related. '@type:', array('@type' => $related_content[$key]['type']))). '</div>';
       $output .= '<div class="addit-related-articles-title">'. $link. '</div>';
       #$output .= '<div class="addit-related-articles-download"> Download PDF</div>';
  		$output .= '</div>';
