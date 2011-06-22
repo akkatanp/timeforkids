@@ -51,3 +51,28 @@ div#block-tfk-search-tfk-search-photos-video-back a {
 div#slideshow-container div#slideshow div.header {
 	background: none;
 }
+
+/* Photos and Video-specific Related Content styling */
+.node-type-video .addit-related-articles-title,
+.node-type-slideshow .addit-related-articles-title {
+  display: inline;
+}
+
+.node-type-video .addit-related-articles-label,
+.node-type-slideshow .addit-related-articles-label{
+  padding-right: 10px;
+  display: inline;
+}
+
+.node-type-video .related-content-wrap,
+.node-type-slideshow .related-content-wrap {
+	margin-top: 5px;
+}
+
+.node-type-video #featured-related-content-title,
+.node-type-slideshow #featured-related-content-title {
+	font-size: 1.08em;
+	font-weight: bold;
+	margin-top: 20px;
+}
+
