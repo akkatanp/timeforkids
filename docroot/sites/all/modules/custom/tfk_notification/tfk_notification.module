@@ -56,24 +56,28 @@ function _tfk_notification_message(){
   //check if there is at least one published
   if(is_numeric($record->lastid)){
     global $user;
-    //now we have to chek whether this user already saw this notification
-    $result = db_query('select count(*) as totalsaw from {tfk_notifications_table} where notification_id = :nid and user_id = :uid',array('nid' => $record->lastid,'uid' =>$user->uid));
-    $row = $result->fetch();
-    
-    //case where there is no row , means he did not close it yet
-    if(!is_numeric($row->totalsaw) || $row->totalsaw == 0 ){
-      $notification = node_load($record->lastid);
-      
-      $notification_data['notification_title'] = $notification->title;
 
-      $body_tmp = field_get_items('node', $notification, 'body');
-      $notification_data['notification_body'] = $body_tmp[0]['safe_value'];
+    if($user->uid != 0){
 
-      $link_tmp = field_get_items('node', $notification, 'field_external_url');
-      $notification_data['notification_link'] = $link_tmp[0]['safe_value'];
+      //now we have to chek whether this user already saw this notification
+      $result = db_query('select count(*) as totalsaw from {tfk_notifications_table} where notification_id = :nid and user_id = :uid',array('nid' => $record->lastid,'uid' =>$user->uid));
+      $row = $result->fetch();
 
-      $notification_data['notification_nid'] = $record->lastid;
+      //case where there is no row , means he did not close it yet
+      if(!is_numeric($row->totalsaw) || $row->totalsaw == 0 ){
+        $notification = node_load($record->lastid);
 
+        $notification_data['notification_title'] = $notification->title;
+
+        $body_tmp = field_get_items('node', $notification, 'body');
+        $notification_data['notification_body'] = $body_tmp[0]['safe_value'];
+
+        $link_tmp = field_get_items('node', $notification, 'field_external_url');
+        $notification_data['notification_link'] = $link_tmp[0]['safe_value'];
+
+        $notification_data['notification_nid'] = $record->lastid;
+
+      }
     }
   }
   
