@@ -824,6 +824,7 @@ ul.links li {
 .view-teacher-news-news-block table td .related-content-wrap {
 	position: absolute;
 	bottom: 10px;
+	width: 220px;
 }
 
 /* kid reporter */
