@@ -136,11 +136,16 @@ form table .item-list ul {
 
 #login-container h2 {
 	font: bold 20px arial;
+	margin: 4px 0;
 }
 
 #login-form-container {
 	padding-bottom: 10px;
 	border-bottom: dotted 1px #cecece;
+}
+
+#login-container .form-item {
+	margin: 4px 0;
 }
 
 #login-container .form-text {
