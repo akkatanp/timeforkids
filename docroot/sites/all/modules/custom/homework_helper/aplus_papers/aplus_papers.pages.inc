@@ -66,9 +66,11 @@ function aplus_papers_prepare_step($node) {
       '#title' => isset($node->field_step_text_label[$node->language][0]['value']) ? $node->field_step_text_label[$node->language][0]['value'] : check_plain($node->title),
     );
   }
-  $form['#checklist'] = $node->title;
+  if ($node->field_step_checkbox) {
+    $form['#checklist'] = $node->field_step_checkbox[$node->language][0]['value'];
+  }  
   $form['#parent_nid'] = arg(1); 
-
+  
   return $form;
 }
 
@@ -99,7 +101,6 @@ function aplus_papers_review_step($steps) {
  * Prepare final step.
  */
 function aplus_papers_final_step() {
-  $form['#checklist'] = t('Print or save your paper');
   $form['#parent_nid'] = arg(1); 
   return $form;
 } 

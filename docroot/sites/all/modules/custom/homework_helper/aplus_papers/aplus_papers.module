@@ -39,18 +39,20 @@ function theme_aplus_papers_checklist($variables) {
     if (isset($data['name']) || isset($data['title'])) {
       unset($step);
     } 
-    if ($step) { 
-      $classes = array();
-      if ($current > $step) {
-        $classes[] = 'checked';
+    if (isset($data['#checklist'])) {
+      if ($step) { 
+        $classes = array();
+        if ($current > $step) {
+          $classes[] = 'checked';
+        }
+        if ($current == $step) {
+          $classes[] = 'current';
+        }
+        $items[] = array('data' => $data['#checklist'], 'class' => $classes);
       }
-      if ($current == $step) {
-        $classes[] = 'current';
-      }
-      $items[] = array('data' => $data['#checklist'], 'class' => $classes);
     }
   }
-  
+
   $title = '';
   $checklist_title = db_query("SELECT field_paper_check_title_value FROM {field_revision_field_paper_check_title} WHERE entity_id = :nid", array(':nid' => $variables['steps'][0]['#parent_nid']))->fetchField();
   if ($checklist_title) {
