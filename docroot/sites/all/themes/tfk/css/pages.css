@@ -730,11 +730,11 @@ ul.links li {
 
 .views-field-field-related-articles .item-list ul li,
 .related-content-wrap .addit-mini-lessons {
-	background: url("../images/related-article-icon.png") no-repeat 0px 2px;
+	background: url("../images/mini-lessons-icon.png") no-repeat 0px 2px;
 }
 
 .related-content-wrap .addit-related-articles {
-	background: url("../images/mini-lessons-icon.png") no-repeat 0px 2px;
+	background: url("../images/related-article-icon.png") no-repeat 0px 2px;
 }
 
 .related-content-wrap .addit-mini-lessons .field-content,
