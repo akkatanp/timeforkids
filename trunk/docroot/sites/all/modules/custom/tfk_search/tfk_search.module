@@ -888,8 +888,7 @@ function tfk_search_apachesolr_modify_query($query, $caller) {
   // Only apply these filters when we are in the photos and video page.
   if($query->get_base_path() === 'photos-video') {
     $subquery = apachesolr_drupal_query();
-    // @todo Show video nodes on the results page once we have a video player up and running.
-    //$subquery->add_filter('bundle', 'video');
+    $subquery->add_filter('bundle', 'video');
     $subquery->add_filter('bundle', 'slideshow');
     $query->add_subquery($subquery, 'OR');
     
