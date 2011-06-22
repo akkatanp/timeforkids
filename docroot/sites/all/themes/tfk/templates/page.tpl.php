@@ -173,6 +173,11 @@ if(drupal_is_front_page()) {
   <?php endif; ?>
   
 	<div id="content" class="column"><div class="section">
+		
+      <?php if(isset($page_suggestion_box)): ?>
+      	<?php print $page_suggestion_box; ?>
+      <?php endif;?>
+    
       <?php print render($page['highlighted']); ?>
       <?php print $breadcrumb; ?>
       <a id="main-content"></a>
