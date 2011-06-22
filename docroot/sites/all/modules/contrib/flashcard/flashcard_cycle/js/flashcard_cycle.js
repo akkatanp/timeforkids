@@ -51,7 +51,7 @@
 
             .find('.flashcard-cycle-toolbar')
               .prepend('<a class="shuffle">Shuffle</a>')
-              .prepend('<div id="flashcard-numbering"></div>')
+              .prepend('<div class="flashcard-numbering"></div>')
                 .each(
                   function() {
                     cardNumber('restart', current, counts[modeChecked]);
@@ -250,7 +250,7 @@
           current = 1;
         }
         
-        $("#flashcard-numbering").html(Drupal.t('!current of !total', {'!current': '<span class="flashcard-numbering-current">' + current + '</span>', '!total': total}));
+        $(".flashcard-numbering").html(Drupal.t('!current of !total', {'!current': '<span class="flashcard-numbering-current">' + current + '</span>', '!total': total}));
         return current;
       }
 
