@@ -721,6 +721,8 @@ ul.links li {
 	margin: 0;
 }
 
+.field-name-field-mini-lessons .field-label,
+.field-name-field-related-articles .field-label,
 .views-field-field-related-articles .item-list ul li,
 .related-content-wrap .addit-mini-lessons,
 .related-content-wrap .addit-related-articles {
@@ -728,11 +730,14 @@ ul.links li {
 	line-height: 16px;
 }
 
+
 .views-field-field-related-articles .item-list ul li,
+.field-name-field-mini-lessons .field-label,
 .related-content-wrap .addit-mini-lessons {
 	background: url("../images/mini-lessons-icon.png") no-repeat 0px 2px;
 }
 
+.field-name-field-related-articles .field-label,
 .related-content-wrap .addit-related-articles {
 	background: url("../images/related-article-icon.png") no-repeat 0px 2px;
 }
