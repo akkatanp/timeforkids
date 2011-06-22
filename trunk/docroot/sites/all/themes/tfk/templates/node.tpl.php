@@ -105,6 +105,10 @@
     <?php endif; ?>
   
     <div class="content"<?php print $content_attributes; ?>>
+      <?php if($type == 'video'): ?>
+      	<?php print render($content['field_video_upload']); ?>
+      	<?php print render($content['field_credit']); ?>
+      <?php endif; ?>
       <?php print render($content); ?>
     </div>
 
