@@ -118,20 +118,30 @@ function tfk_photos_video_field_default_fields() {
           'atw_timeline' => 0,
           'board_member' => 0,
           'book' => 0,
+          'flashcard' => 0,
           'global_right_sidebar_promo' => 0,
+          'grammar_practice' => 0,
+          'grammar_practice_question' => 0,
+          'grammar_practice_reward_image' => 0,
+          'grammar_practice_rule' => 0,
           'image' => 0,
           'kid_reporter' => 0,
+          'kid_reporter_bottom_nodeblock' => 0,
           'magazine_issue' => 0,
           'mini_lesson' => 0,
           'minisite' => 0,
+          'news_channel_nodeblock' => 0,
           'notification_homepage' => 0,
           'page' => 0,
           'paper_step' => 0,
+          'pdf_quiz' => 0,
           'slideshow' => 'slideshow',
+          'teacher_community_question' => 0,
           'tfk_extra' => 0,
           'video' => 'video',
           'webform' => 0,
           'worksheet' => 'worksheet',
+          'writing_tips' => 0,
         ),
         'view' => array(
           'args' => array(),
@@ -419,6 +429,114 @@ function tfk_photos_video_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-video-field_additional_content'
+  $fields['node-video-field_additional_content'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '-1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_additional_content',
+      'foreign keys' => array(
+        'nid' => array(
+          'columns' => array(
+            'nid' => 'nid',
+          ),
+          'table' => 'node',
+        ),
+      ),
+      'indexes' => array(
+        'nid' => array(
+          0 => 'nid',
+        ),
+      ),
+      'module' => 'node_reference',
+      'settings' => array(
+        'referenceable_types' => array(
+          'a_paper' => 0,
+          'article' => 'article',
+          'atw_day_in_life' => 0,
+          'atw_destination' => 'atw_destination',
+          'atw_homepage_nodeblock' => 0,
+          'atw_native_lingo' => 0,
+          'atw_sightseeing' => 0,
+          'atw_timeline' => 0,
+          'board_member' => 0,
+          'book' => 0,
+          'flashcard' => 0,
+          'global_right_sidebar_promo' => 0,
+          'grammar_practice' => 0,
+          'grammar_practice_question' => 0,
+          'grammar_practice_reward_image' => 0,
+          'grammar_practice_rule' => 0,
+          'image' => 0,
+          'kid_reporter' => 0,
+          'kid_reporter_bottom_nodeblock' => 0,
+          'magazine_issue' => 0,
+          'mini_lesson' => 0,
+          'minisite' => 0,
+          'news_channel_nodeblock' => 0,
+          'notification_homepage' => 0,
+          'page' => 0,
+          'paper_step' => 0,
+          'pdf_quiz' => 0,
+          'slideshow' => 'slideshow',
+          'teacher_community_question' => 0,
+          'tfk_extra' => 0,
+          'video' => 'video',
+          'webform' => 0,
+          'worksheet' => 'worksheet',
+          'writing_tips' => 0,
+        ),
+        'view' => array(
+          'args' => array(),
+          'display_name' => '',
+          'view_name' => '',
+        ),
+      ),
+      'translatable' => '1',
+      'type' => 'node_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'video',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '14',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_additional_content',
+      'label' => 'Additional Content',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'node_reference',
+        'settings' => array(
+          'autocomplete_match' => 'contains',
+          'autocomplete_path' => 'node_reference/autocomplete',
+          'size' => '60',
+        ),
+        'type' => 'node_reference_autocomplete',
+        'weight' => '13',
+      ),
+    ),
+  );
+
   // Exported field: 'node-video-field_article_category'
   $fields['node-video-field_article_category'] = array(
     'field_config' => array(
@@ -701,104 +819,6 @@ function tfk_photos_video_field_default_fields() {
         ),
         'type' => 'date_popup',
         'weight' => '5',
-      ),
-    ),
-  );
-
-  // Exported field: 'node-video-field_related_photos_video'
-  $fields['node-video-field_related_photos_video'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '4',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_related_photos_video',
-      'foreign keys' => array(
-        'nid' => array(
-          'columns' => array(
-            'nid' => 'nid',
-          ),
-          'table' => 'node',
-        ),
-      ),
-      'indexes' => array(
-        'nid' => array(
-          0 => 'nid',
-        ),
-      ),
-      'module' => 'node_reference',
-      'settings' => array(
-        'referenceable_types' => array(
-          'a_paper' => 0,
-          'article' => 0,
-          'atw_day_in_life' => 0,
-          'atw_destination' => 0,
-          'atw_homepage_nodeblock' => 0,
-          'atw_native_lingo' => 0,
-          'atw_sightseeing' => 0,
-          'atw_timeline' => 0,
-          'board_member' => 0,
-          'book' => 0,
-          'global_right_sidebar_promo' => 0,
-          'image' => 0,
-          'kid_reporter' => 0,
-          'magazine_issue' => 0,
-          'mini_lesson' => 0,
-          'minisite' => 0,
-          'notification_homepage' => 0,
-          'page' => 0,
-          'paper_step' => 0,
-          'slideshow' => 'slideshow',
-          'tfk_extra' => 0,
-          'video' => 'video',
-          'webform' => 0,
-          'worksheet' => 0,
-        ),
-        'view' => array(
-          'args' => array(),
-          'display_name' => '',
-          'view_name' => '',
-        ),
-      ),
-      'translatable' => '1',
-      'type' => 'node_reference',
-    ),
-    'field_instance' => array(
-      'bundle' => 'video',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'hidden',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '3',
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_related_photos_video',
-      'label' => 'Related Photos and Video',
-      'required' => 0,
-      'settings' => array(
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'node_reference',
-        'settings' => array(
-          'autocomplete_match' => 'contains',
-          'autocomplete_path' => 'node_reference/autocomplete',
-          'size' => '60',
-        ),
-        'type' => 'node_reference_autocomplete',
-        'weight' => '12',
       ),
     ),
   );
@@ -1215,7 +1235,6 @@ function tfk_photos_video_field_default_fields() {
   t('Images');
   t('Meta Description');
   t('Meta Keywords');
-  t('Related Photos and Video');
   t('Themes');
   t('Thumbnail');
   t('Video Upload');
