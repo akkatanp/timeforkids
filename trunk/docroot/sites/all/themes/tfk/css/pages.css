@@ -1049,6 +1049,12 @@ ul.links li {
 	font-weight: normal;
 }
 
+.node-type-article .group_additional_content .field-label a,
+.node-type-article .group_additional_content .field-items a,
+.node-type-article .group_additional_content .field-item a {
+	font-weight: normal;
+}
+
 .node-type-article .group_additional_content .field-item {
 	padding: 0 4px;
 }
@@ -1068,6 +1074,7 @@ ul.links li {
 	font-size: 10px;
 	color: #555;
 	height: 12px;
+	margin-bottom: 10px;
 }
 
 .node-type-article .is-kid-reporter-article .reporter-badge {
