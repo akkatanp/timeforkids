@@ -444,6 +444,11 @@ ul.links li {
 	clear: right;
 }
 
+#block-views-homepage-destination-block-1 .content .views-field-nothing a {
+	color: white;
+	text-transform: uppercase;
+}
+
 #block-views-homepage-destination-block-1 .content .views-field-field-image {
 	width: 228px;
 	height: 118px;
@@ -800,6 +805,7 @@ ul.links li {
 .view-teacher-news-news-block table td .views-field-field-article-category a,
 .view-kid-reporters-channel-news-block table td .views-field-name a {
 	color: white;
+	text-transform: uppercase;
 }
 
 .view-homepage-news-block table td .views-field-field-image,
