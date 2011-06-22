@@ -871,6 +871,8 @@ function tfk_search_preprocess_search_result(&$vars) {
             'type' => $related_node->type,
           );
         }
+        
+        $vars['snippet'] = array_shift(array_shift(field_get_items('node', $node, 'body')));
       }
       
       // Theme related content.
