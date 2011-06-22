@@ -821,10 +821,11 @@ ul.links li {
 }
 
 .view-homepage-news-block table td .related-content-wrap,
-.view-teacher-news-news-block table td .related-content-wrap {
+.view-teacher-news-news-block table td .related-content-wrap,
+.view-kid-reporters-channel-news-block table td .related-content-wrap {
 	position: absolute;
 	bottom: 10px;
-	width: 212px;
+	width: 216px;
 }
 
 /* kid reporter */
