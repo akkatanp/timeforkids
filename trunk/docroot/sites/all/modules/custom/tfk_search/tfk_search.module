@@ -777,7 +777,7 @@ function tfk_search_preprocess_search_result(&$vars) {
             
             // Generate the image style derivative if it doesn't exist.
             if(!file_exists($file->newpath)) {
-              image_style_create_derivative(image_style_load($style), $file->uri, $file->newpath);
+              $success = image_style_create_derivative(image_style_load($style), $file->uri, $file->newpath);
             }
             
             $vars['tfk_search_res_image'] = image_style_url($style, $file->uri);
@@ -811,7 +811,7 @@ function tfk_search_preprocess_search_result(&$vars) {
           $vars['tfk_search_res_category'] = $name;
         }
       break;
-      
+          
       //default:
       //  ;
       //break;
@@ -857,7 +857,20 @@ function tfk_search_preprocess_search_result(&$vars) {
             'type' => $content_type
           );
         }
-        
+      // Videos.
+      } else {
+        $items = field_get_items('node', $node, 'field_related_photos_video');
+        if(!empty($items)) {
+          $related_nid = array_shift(array_shift($items));
+          $related_node = node_load($related_nid);
+          
+          // Add related content item.
+          $related_content[] = array(
+          	'title' => $related_node->title,
+            'path' => 'node/'. $related_nid,
+            'type' => $related_node->type,
+          );
+        }
       }
       
       // Theme related content.
