@@ -195,7 +195,7 @@ function tfk_helper_get_slideshow($images, $options) {
  * tfk_helper_related_content View.
  *
  * @return
- *   FALSE if no additional content is found. Otherwise an associative array
+ *   FALSE if no additional content is found. Otherwise an array of associative arrays
  *   with the following keys: 'path': node url, 'title': node title, 'type':
  *   content type.
  */
@@ -211,6 +211,9 @@ function tfk_helper_get_additional_content() {
   	if(!empty($view->result)) {
   		$related_content = array('quantity_articles' => count($view->result), 'related_content');
   	    foreach($view->result as $result) {
+  	      if(is_null($result->node_field_data_field_additional_content_nid)) {
+  	        return FALSE;
+  	      }
   	      $related_content['related_content'][] = array(
   	        'path'   => 'node/'. $result->node_field_data_field_additional_content_nid,
   	        'title' => $result->node_field_data_field_additional_content_title,
