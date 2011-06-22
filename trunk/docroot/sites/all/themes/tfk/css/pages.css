@@ -781,7 +781,7 @@ ul.links li {
 }
 
 .view-homepage-news-block table td .views-field-name,
-.view-teacher-news-news-block table td .views-field-field-article-category,
+.view-teacher-news-news-block table td .views-field-field-article-category .field-content,
 .view-kid-reporters-channel-news-block table td .views-field-name {
 	background: #d71700;
 	color: white;
