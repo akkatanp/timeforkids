@@ -922,6 +922,7 @@ ul.links li {
 .node-type-article #content .region-content {
 	border: solid 1px #cecece;
 	padding: 10px;
+	margin-bottom: 10px;
 }
 
 .node-type-article .content h1 {
@@ -1056,34 +1057,17 @@ ul.links li {
 	margin-bottom: 10px;
 }
 
-.node-type-article .field-name-field-tout-image .node-title,
-.node-type-article .field-name-field-tout-image .field-name-body,
-.node-type-article .field-name-field-tout-image .field-name-field-date,
-.node-type-article .field-name-field-tout-image .links,
-.node-type-article .field-name-field-tout-image .field-name-field-credit .field-label,
-.node-type-article .field-name-field-tout-image .field-name-field-caption .field-label,
-.node-type-article .field-name-field-tout-image .field-name-field-article-category,
-.node-type-article .field-name-field-tout-image .field-name-field-image .field-label {
-	display: none;
-}
-
-.node-type-article .field-name-field-tout-image .field-name-field-image .field-item img {
-	width: 486px;
-	height: 250px;
-	border: solid 1px #cecece;
-}
-
-.node-type-article .field-name-field-tout-image .field-name-field-credit {
-	float: right;
-	clear: right;
+.node-type-article .field-name-field-image-credit {
 	font-size: 10px;
 	color: #999;
 	height: 12px;
+	text-align: right;
 }
 
-.node-type-article .field-name-field-tout-image .field-name-field-caption {
-	font-size: 11px;
+.node-type-article .field-name-field-image-caption {
+	font-size: 10px;
 	color: #555;
+	height: 12px;
 }
 
 .node-type-article .is-kid-reporter-article .reporter-badge {
