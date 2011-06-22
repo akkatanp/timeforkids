@@ -29,6 +29,52 @@ function tfk_photos_video_views_api() {
 }
 
 /**
+ * Implementation of hook_flag_default_flags().
+ */
+function tfk_photos_video_flag_default_flags() {
+  $flags = array();
+  // Exported flag: "Photos and Videos Featured".
+  $flags['photos_videos_featured'] = array(
+    'content_type' => 'node',
+    'title' => 'Photos and Videos Featured',
+    'global' => '1',
+    'types' => array(
+      0 => 'slideshow',
+      1 => 'video',
+    ),
+    'flag_short' => 'Photos and Videos Featured ',
+    'flag_long' => '',
+    'flag_message' => '',
+    'unflag_short' => 'Remove Photos and Video Featured',
+    'unflag_long' => '',
+    'unflag_message' => '',
+    'unflag_denied_text' => '',
+    'link_type' => 'toggle',
+    'roles' => array(
+      'flag' => array(
+        0 => '3',
+        1 => '4',
+      ),
+      'unflag' => array(
+        0 => '3',
+        1 => '4',
+      ),
+    ),
+    'show_on_page' => 0,
+    'show_on_teaser' => 0,
+    'show_on_form' => 1,
+    'access_author' => '',
+    'i18n' => 0,
+    'api_version' => 2,
+    'module' => 'tfk_photos_video',
+    'locked' => array(
+      0 => 'name',
+    ),
+  );
+  return $flags;
+}
+
+/**
  * Implementation of hook_image_default_styles().
  */
 function tfk_photos_video_image_default_styles() {

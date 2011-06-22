@@ -202,7 +202,7 @@ function tfk_photos_video_views_default_views() {
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Relationship: Content: Additional content (field_additional_content) */
+  /* Relationship: Content: Additional Content (field_additional_content) */
   $handler->display->display_options['relationships']['field_additional_content_nid']['id'] = 'field_additional_content_nid';
   $handler->display->display_options['relationships']['field_additional_content_nid']['table'] = 'field_data_field_additional_content';
   $handler->display->display_options['relationships']['field_additional_content_nid']['field'] = 'field_additional_content_nid';
