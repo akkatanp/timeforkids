@@ -1,6 +1,6 @@
 =tfk-button
   background: $tfk-red url(../images/button.png) repeat-x
-  +box-shadow(black 2px 2px 10px, lighten($tfk-red, 20%) -3px 3px 5px inset)
+  +box-shadow(transparentize($black, 0.5) 0 2px 4px, lighten($tfk-red, 20%) -3px 3px 5px inset)
   border: none
   outline: 0
   color: white
@@ -85,7 +85,8 @@ body
     .node-flashcard
       .study-helper-help
         clear: both
-        margin-top: 1em
+        padding-left: 20px
+        +leader
       .study-helper-url
         +pie-clearfix
         clear: both
@@ -102,7 +103,7 @@ body
           padding: 0.5em 1em
           margin-left: 1em
           margin-top: 1em
-          float: left
+          +float-left
   &.node-type-flashcard
     .content-type-title
       +homework-helper-title
@@ -205,3 +206,9 @@ body
     top: 80px
     left: 120px
     z-index: 10
+
+.flashcard-numbering
+  +float-right
+  padding-top: 6px
+  span.flashcard-numbering-current
+    font-weight: bold

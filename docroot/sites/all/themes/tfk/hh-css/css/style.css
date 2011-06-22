@@ -228,6 +228,7 @@ body.homework-helper #content #block-menu-menu-homework-help li.first a#menu-wri
   padding: 10px 254px 10px 10px;
   background: #d71700;
   text-transform: uppercase;
+  display: inline;
   float: left;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_site-wide\.sass}line{font-family:\0000330}}
@@ -240,11 +241,13 @@ body.homework-helper #content #block-menu-menu-homework-help li.first ul.menu li
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_site-wide\.sass}line{font-family:\0000334}}
 body.homework-helper #content #block-menu-menu-homework-help li.first ul.menu {
+  display: inline;
   float: left;
   clear: both;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_site-wide\.sass}line{font-family:\0000337}}
 body.homework-helper #content #block-menu-menu-homework-help li.last {
+  display: inline;
   float: left;
   padding: 10px;
 }
@@ -258,6 +261,7 @@ body.homework-helper #content #block-menu-menu-homework-help li.last a#menu-stud
   padding: 10px 254px 10px 10px;
   background: #999999;
   text-transform: uppercase;
+  display: inline;
   float: left;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_site-wide\.sass}line{font-family:\0000349}}
@@ -270,6 +274,7 @@ body.homework-helper #content #block-menu-menu-homework-help li.last ul.menu li.
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_site-wide\.sass}line{font-family:\0000353}}
 body.homework-helper #content #block-menu-menu-homework-help li.last ul.menu {
+  display: inline;
   float: left;
   clear: both;
 }
@@ -303,6 +308,7 @@ body.page-node-99 #content #homework-help-content {
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_site-wide\.sass}line{font-family:\0000377}}
 body.page-node-98 #content #homework-help-content .img img,
 body.page-node-99 #content #homework-help-content .img img {
+  display: inline;
   float: left;
   margin: 10px;
 }
@@ -425,6 +431,7 @@ body.node-type-a-paper #content #aplus-papers-checklist-block, body.node-type-pa
   border: 1px solid #cecece;
   list-style: none;
   width: 220px;
+  display: inline;
   float: right;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000340}}
@@ -528,12 +535,14 @@ body.node-type-a-paper #content #aplus-submit-buttons, body.node-type-paper-step
   height: 25px;
   margin-top: -20px;
   text-align: right;
+  display: inline;
   float: left;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003115}}
 body.node-type-a-paper #content #aplus-submit-buttons .aplus-start-over, body.node-type-paper-step #content #aplus-submit-buttons .aplus-start-over {
   background: url(images/tfk-red-arrow.png);
   background-repeat: no-repeat;
+  display: inline;
   float: left;
   font-style: italic;
   font-family: Georgia, serif;
@@ -545,6 +554,7 @@ body.node-type-a-paper #content #aplus-submit-buttons .aplus-start-over, body.no
 body.node-type-a-paper #content .node-paper-step, body.node-type-paper-step #content .node-paper-step {
   padding: 10px 0;
   width: 500px;
+  display: inline;
   float: left;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003128}}
@@ -559,6 +569,7 @@ body.node-type-a-paper #content .node-paper-step h2.node-title, body.node-type-p
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003133}}
 body.node-type-a-paper #content #aplus-review-step, body.node-type-a-paper #content #aplus-final-step, body.node-type-paper-step #content #aplus-review-step, body.node-type-paper-step #content #aplus-final-step {
   width: 480px;
+  display: inline;
   float: left;
   margin-top: 10px;
 }
@@ -624,6 +635,7 @@ body.node-type-a-paper #content #aplus-print-save-buttons, body.node-type-paper-
   clear: right;
   padding-top: 10px;
   width: 230px;
+  display: inline;
   float: right;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003179}}
@@ -637,11 +649,13 @@ body.node-type-a-paper #content .paper-title, body.node-type-paper-step #content
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003184}}
 body.node-type-a-paper #content .paper-date, body.node-type-paper-step #content .paper-date {
+  display: inline;
   float: right;
   font-size: 14px;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003187}}
 body.node-type-a-paper #content .student-name, body.node-type-paper-step #content .student-name {
+  display: inline;
   float: left;
   font-size: 14px;
 }
@@ -689,6 +703,7 @@ body.page-homework-helper-a-plus-papers #block-system-main .views-field-title a 
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003215}}
 body.page-homework-helper-a-plus-papers #block-system-main .views-field-field-paper-image {
+  display: inline;
   float: left;
   margin: 0 0 0 -125px;
 }
@@ -837,9 +852,10 @@ body.node-type-flashcard .node-flashcard-form .form-actions input, body.page-hom
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000386}}
 body.node-type-flashcard .node-flashcard .study-helper-help, body.page-homework-helper-flashcards .node-flashcard .study-helper-help, body.page-node-add-flashcard .node-flashcard .study-helper-help {
   clear: both;
-  margin-top: 1em;
+  padding-left: 20px;
+  margin-top: 1.714em;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000389}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000390}}
 body.node-type-flashcard .node-flashcard .study-helper-url, body.page-homework-helper-flashcards .node-flashcard .study-helper-url, body.page-node-add-flashcard .node-flashcard .study-helper-url {
   *zoom: 1;
   clear: both;
@@ -853,18 +869,18 @@ body.node-type-flashcard .node-flashcard .study-helper-url:after, body.page-home
   overflow: hidden;
   visibility: hidden;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000392}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000393}}
 body.node-type-flashcard .node-flashcard .study-helper-url .form-item, body.page-homework-helper-flashcards .node-flashcard .study-helper-url .form-item, body.page-node-add-flashcard .node-flashcard .study-helper-url .form-item {
   display: inline;
   float: left;
   margin: 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000395}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000396}}
 body.node-type-flashcard .node-flashcard .study-helper-url .form-item input, body.page-homework-helper-flashcards .node-flashcard .study-helper-url .form-item input, body.page-node-add-flashcard .node-flashcard .study-helper-url .form-item input {
   background-color: #d71700;
   border-color: #d71700;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000398}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000399}}
 body.node-type-flashcard .node-flashcard .study-helper-url #study-helper-copy, body.page-homework-helper-flashcards .node-flashcard .study-helper-url #study-helper-copy, body.page-node-add-flashcard .node-flashcard .study-helper-url #study-helper-copy {
   -webkit-appearance: none;
   -moz-border-radius: 24px;
@@ -874,10 +890,10 @@ body.node-type-flashcard .node-flashcard .study-helper-url #study-helper-copy, b
   -khtml-border-radius: 24px;
   border-radius: 24px;
   background: #d71700 url(../images/button.png) repeat-x;
-  -moz-box-shadow: black 2px 2px 10px, #ff533e -3px 3px 5px inset;
-  -webkit-box-shadow: black 2px 2px 10px, #ff533e -3px 3px 5px inset;
-  -o-box-shadow: black 2px 2px 10px, #ff533e -3px 3px 5px inset;
-  box-shadow: black 2px 2px 10px, #ff533e -3px 3px 5px inset;
+  -moz-box-shadow: rgba(0, 0, 0, 0.5) 0 2px 4px, #ff533e -3px 3px 5px inset;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.5) 0 2px 4px, #ff533e -3px 3px 5px inset;
+  -o-box-shadow: rgba(0, 0, 0, 0.5) 0 2px 4px, #ff533e -3px 3px 5px inset;
+  box-shadow: rgba(0, 0, 0, 0.5) 0 2px 4px, #ff533e -3px 3px 5px inset;
   border: none;
   outline: 0;
   color: white;
@@ -886,9 +902,10 @@ body.node-type-flashcard .node-flashcard .study-helper-url #study-helper-copy, b
   padding: 0.5em 1em;
   margin-left: 1em;
   margin-top: 1em;
+  display: inline;
   float: left;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003107}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003108}}
 body.node-type-flashcard .content-type-title {
   background-image: url(images/tfk-red-tag.png);
   background-repeat: no-repeat;
@@ -902,13 +919,13 @@ body.node-type-flashcard .content-type-title {
   margin-top: 10px;
   margin-left: -22px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003109}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003110}}
 body.node-type-flashcard .homework-helper-title {
   font-size: 16px;
   font-weight: bold;
   margin: 1em 0 0 1em;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003115}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003116}}
 body.page-homework-helper-flashcards .homework-helper-title, body.page-node-add-flashcard .homework-helper-title {
   background-image: url(images/tfk-red-tag.png);
   background-repeat: no-repeat;
@@ -923,7 +940,7 @@ body.page-homework-helper-flashcards .homework-helper-title, body.page-node-add-
   margin-left: -22px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003118}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003119}}
 .flashcard-cycle {
   background-color: white;
   -moz-border-radius: 10px;
@@ -935,12 +952,12 @@ body.page-homework-helper-flashcards .homework-helper-title, body.page-node-add-
   padding: 20px;
   position: relative;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003123}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003124}}
 .flashcard-cycle .flashcard-cycle-mode {
   float: none;
   position: static;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003126}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003127}}
 .flashcard-cycle .flashcard-cycle-mode .flashcard-cycle-wrapper {
   text-align: center;
   -webkit-appearance: none;
@@ -955,17 +972,17 @@ body.page-homework-helper-flashcards .homework-helper-title, body.page-node-add-
   position: static;
   padding: 8px 24px;
   background: #d71700 url(../images/button.png) repeat-x;
-  -moz-box-shadow: black 2px 2px 10px, #ff533e -3px 3px 5px inset;
-  -webkit-box-shadow: black 2px 2px 10px, #ff533e -3px 3px 5px inset;
-  -o-box-shadow: black 2px 2px 10px, #ff533e -3px 3px 5px inset;
-  box-shadow: black 2px 2px 10px, #ff533e -3px 3px 5px inset;
+  -moz-box-shadow: rgba(0, 0, 0, 0.5) 0 2px 4px, #ff533e -3px 3px 5px inset;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.5) 0 2px 4px, #ff533e -3px 3px 5px inset;
+  -o-box-shadow: rgba(0, 0, 0, 0.5) 0 2px 4px, #ff533e -3px 3px 5px inset;
+  box-shadow: rgba(0, 0, 0, 0.5) 0 2px 4px, #ff533e -3px 3px 5px inset;
   border: none;
   outline: 0;
   color: white;
   cursor: pointer;
   overflow: visible;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003135}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003136}}
 .flashcard-cycle .flashcard-cycle-mode .flashcard-cycle-wrapper > * {
   display: -moz-inline-box;
   -moz-box-orient: vertical;
@@ -977,12 +994,12 @@ body.page-homework-helper-flashcards .homework-helper-title, body.page-node-add-
 .flashcard-cycle .flashcard-cycle-mode .flashcard-cycle-wrapper > * {
   *display: inline;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003137}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003138}}
 .flashcard-cycle .flashcard-cycle-mode label[for=flashcard-cycle-mode] {
   line-height: 1.5;
   margin-right: 1em;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003140}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003141}}
 .flashcard-cycle a.shuffle,
 .flashcard-cycle a.restart,
 .flashcard-cycle a.edit {
@@ -994,10 +1011,10 @@ body.page-homework-helper-flashcards .homework-helper-title, body.page-node-add-
   -khtml-border-radius: 24px;
   border-radius: 24px;
   background: #d71700 url(../images/button.png) repeat-x;
-  -moz-box-shadow: black 2px 2px 10px, #ff533e -3px 3px 5px inset;
-  -webkit-box-shadow: black 2px 2px 10px, #ff533e -3px 3px 5px inset;
-  -o-box-shadow: black 2px 2px 10px, #ff533e -3px 3px 5px inset;
-  box-shadow: black 2px 2px 10px, #ff533e -3px 3px 5px inset;
+  -moz-box-shadow: rgba(0, 0, 0, 0.5) 0 2px 4px, #ff533e -3px 3px 5px inset;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.5) 0 2px 4px, #ff533e -3px 3px 5px inset;
+  -o-box-shadow: rgba(0, 0, 0, 0.5) 0 2px 4px, #ff533e -3px 3px 5px inset;
+  box-shadow: rgba(0, 0, 0, 0.5) 0 2px 4px, #ff533e -3px 3px 5px inset;
   border: none;
   outline: 0;
   color: white;
@@ -1007,7 +1024,7 @@ body.page-homework-helper-flashcards .homework-helper-title, body.page-node-add-
   padding: 8px 24px;
   margin-right: 20px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003150}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003151}}
 .flashcard-cycle .flashcard-cycle-pager a {
   color: #d71700;
   display: inline;
@@ -1016,12 +1033,12 @@ body.page-homework-helper-flashcards .homework-helper-title, body.page-node-add-
   height: 35px;
   width: 51px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003156}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003157}}
 .flashcard-cycle .flashcard-cycle-pager a.prev {
   background: url(images/tfk-red-arrow.png) no-repeat scroll 2px 0 transparent;
   padding-left: 42px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003159}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003160}}
 .flashcard-cycle .flashcard-cycle-pager a.flip {
   -webkit-appearance: none;
   -moz-border-radius: 14px;
@@ -1042,12 +1059,12 @@ body.page-homework-helper-flashcards .homework-helper-title, body.page-node-add-
   -o-box-shadow: rgba(0, 0, 0, 0.5) 0 2px 4px;
   box-shadow: rgba(0, 0, 0, 0.5) 0 2px 4px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003170}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003171}}
 .flashcard-cycle .flashcard-cycle-pager a.next {
   background: url(images/tfk-red-arrow-right.png) no-repeat scroll 36px 0 transparent;
   padding-right: 42px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003173}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003174}}
 .flashcard-cycle .flashcard-cycle-cards {
   background: #f8e549;
   width: 500px;
@@ -1064,7 +1081,7 @@ body.page-homework-helper-flashcards .homework-helper-title, body.page-node-add-
   -o-box-shadow: rgba(0, 0, 0, 0.25) -4px 4px 6px;
   box-shadow: rgba(0, 0, 0, 0.25) -4px 4px 6px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003181}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003182}}
 .flashcard-cycle .flashcard-cycle-cards ul.question li.answer {
   font-size: 20px;
   padding-top: 70px;
@@ -1072,7 +1089,7 @@ body.page-homework-helper-flashcards .homework-helper-title, body.page-node-add-
   font-weight: bold;
   margin: 10px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003188}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003189}}
 .flashcard-cycle .flashcard-cycle-cards ul.question .item-list ul.answer {
   background: white;
   width: 325px;
@@ -1086,24 +1103,35 @@ body.page-homework-helper-flashcards .homework-helper-title, body.page-node-add-
   border-radius: 11px;
   border: 4px solid #999999;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003195}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003196}}
 .flashcard-cycle .flashcard-cycle-cards ul.question .item-list ul.answer li.first {
   font-size: 20px;
   padding: 15px;
   color: #d71700;
   margin: 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003200}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003201}}
 .flashcard-cycle .flashcard-cycle-card {
   width: 500px;
   height: 250px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003203}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003204}}
 .flashcard-cycle .flashcard-cycle-mark {
   position: absolute;
   top: 80px;
   left: 120px;
   z-index: 10;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003210}}
+.flashcard-numbering {
+  display: inline;
+  float: right;
+  padding-top: 6px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003213}}
+.flashcard-numbering span.flashcard-numbering-current {
+  font-weight: bold;
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_flashcard_page\.sass}line{font-family:\000032}}
