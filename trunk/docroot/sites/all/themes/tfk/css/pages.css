@@ -799,6 +799,12 @@ ul.links li {
 	clear: right;
 }
 
+.view-homepage-news-block table td .views-field-name a,
+.view-teacher-news-news-block table td .views-field-name a,
+.view-kid-reporters-channel-news-block table td .views-field-name a {
+	color: white;
+}
+
 .view-homepage-news-block table td .views-field-field-image,
 .view-teacher-news-news-block table td .views-field-field-image,
 .view-kid-reporters-channel-news-block table td .views-field-field-image {
