@@ -635,8 +635,8 @@ ul.links li {
 
 #block-views-minisite-articles-block-2  .views-field-field-credit,
 .view-homepage-top-story .views-field-field-image-credit,
-.view-teacher-news-top-story .view-content .views-field-field-credit,
-.view-kid-reporters-channel-top-story .views-field-field-credit {
+.view-teacher-news-top-story .views-field-field-image-credit,
+.view-kid-reporters-channel-top-story .views-field-field-image-credit {
 	position: absolute;
 	top: 272px;
 	left: 0px;
@@ -650,8 +650,8 @@ ul.links li {
 
 #block-views-minisite-articles-block-2  .views-field-field-caption,
 .view-homepage-top-story .views-field-field-image-caption,
-.view-teacher-news-top-story .view-content .views-field-field-caption,
-.view-kid-reporters-channel-top-story .views-field-field-caption {
+.view-teacher-news-top-story .views-field-field-image-caption,
+.view-kid-reporters-channel-top-story  .views-field-field-image-caption {
 	position: absolute;
 	top: 284px;
 	left: 6px;
@@ -775,6 +775,7 @@ ul.links li {
 
 .view-teacher-news-news-block table td,
 .view-kid-reporters-channel-news-block table td {
+	position: relative;
 	display: block;
 	float: left;
 	width: 230px;
@@ -826,6 +827,11 @@ ul.links li {
 .view-kid-reporters-channel-news-block table td .views-field-title a {
 	font: normal 20px arial;
 	margin-bottom: 10px;
+}
+
+.view-teacher-news-news-block table td .related-content-wrap {
+	position: absolute;
+	bottom: 10px;
 }
 
 /* kid reporter */
