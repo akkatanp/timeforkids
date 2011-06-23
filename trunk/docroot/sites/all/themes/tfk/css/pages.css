@@ -505,13 +505,6 @@ ul.links li {
 	margin-bottom: 10px;
 }
 
-.page-mini-sites #block-views-mini-site-home-block-3 .views-field-title a,
-.page-mini-sites .view-minisite-home .view-header h2 {
-	font: bold 30px arial;
-	margin: 0 0 10px 0;
-	color: black;
-}
-
 #block-views-mini-site-home-block .views-row,
 #block-views-minisite-articles-block table td {
 	display: block;
@@ -526,7 +519,7 @@ ul.links li {
 	margin-right: 8px;
 }
 
-#block-views-mini-site-home-block .views-field-field-minisite-tout-image,
+#block-views-mini-site-home-block .views-field-field-lrg-sq-image,
 #block-views-minisite-articles-block .views-field-field-image {
 	float: left;
 	width: 62px;
@@ -534,7 +527,7 @@ ul.links li {
 	margin: 0 4px 4px 0;
 }
 
-#block-views-mini-site-home-block .views-field-field-minisite-tout-image img,
+#block-views-mini-site-home-block .views-field-field-lrg-sq-image img,
 #block-views-minisite-articles-block .views-field-field-image img {
 	width: 60px;
 	height: 60px;
@@ -591,7 +584,7 @@ ul.links li {
 	background: white url(../images/top-story-corner.png) no-repeat;
 }
 
-#block-views-minisite-articles-block-2 .views-field-field-top-story-image,
+#block-views-minisite-articles-block-2 .views-field-field-lrg-sq-image,
 .view-homepage-top-story .views-field-field-lrg-sq-image,
 .view-teacher-news-top-story .views-field-field-lrg-sq-image,
 .view-kid-reporters-channel-top-story .views-field-field-lrg-sq-image {
@@ -605,7 +598,7 @@ ul.links li {
 	margin-bottom: 30px;
 }
 
-#block-views-minisite-articles-block-2 .views-field-field-top-story-image img,
+#block-views-minisite-articles-block-2 .views-field-field-lrg-sq-image img,
 .view-homepage-top-story .views-field-field-lrg-sq-image img,
 .view-teacher-news-top-story .views-field-field-lrg-sq-image img,
 .view-kid-reporters-channel-top-story .views-field-field-lrg-sq-image img {
