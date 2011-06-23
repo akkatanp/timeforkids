@@ -378,8 +378,7 @@ ul.links li {
 .view-homepage-minisite .views-field-field-minisite-related-content-1 {
 	position: absolute;
 	font-weight: bold;
-	margin-top: 10px;
-	bottom: 40px;
+	bottom: 50px;
 }
 
 #block-views-homepage-destination-block-1 .views-field-field-resources-list,
@@ -691,7 +690,7 @@ ul.links li {
 	font-weight: bold;
 	margin-top: 10px;
 	position: absolute;
-	bottom: 30px;
+	bottom: 40px;
 }
 
 .views-field-field-related-articles-1 {
