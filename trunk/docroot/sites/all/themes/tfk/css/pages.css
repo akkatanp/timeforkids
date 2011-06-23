@@ -376,7 +376,7 @@ ul.links li {
 
 #block-views-homepage-destination-block-1 .views-field-field-resources-label,
 .view-homepage-minisite .views-field-field-minisite-related-content-1 {
-	position: absoluite;
+	position: absolute;
 	font-weight: bold;
 	margin-top: 10px;
 	bottom: 40px;
@@ -392,6 +392,7 @@ ul.links li {
 	-webkit-box-shadow: 2px 2px 4px 666;
 	box-shadow: 2px 2px 4px #666;
 	bottom: 20px;
+	width: 216px;
 }
 
 .view-homepage-minisite .views-field-nothing {
@@ -686,14 +687,21 @@ ul.links li {
 	margin-top: 20px;
 }
 
-.views-field-field-related-articles-1 {
+.views-field-field-related-articles {
 	font-weight: bold;
 	margin-top: 10px;
+	position: absolute;
+	bottom: 30px;
 }
 
-.views-field-field-related-articles,
+.views-field-field-related-articles-1 {
+	position: absolute;
+	bottom: 10px;
+	width: 216px;
+}
+
+.views-field-field-related-articles-1,
 .related-content-wrap {
-	position: relative;
 	background: #d9effe;
 	border: solid 3px #acdbfc;
 	padding: 2px 4px;
