@@ -378,7 +378,7 @@ ul.links li {
 .view-homepage-minisite .views-field-field-minisite-related-content-1 {
 	position: absolute;
 	font-weight: bold;
-	bottom: 48px;
+	bottom: 47px;
 }
 
 #block-views-homepage-destination-block-1 .views-field-field-resources-list,
@@ -393,6 +393,12 @@ ul.links li {
 	bottom: 20px;
 	width: 216px;
 }
+
+#block-views-homepage-destination-block-1 .views-field-field-resources-list a,
+.view-homepage-minisite .views-field-field-minisite-related-content a {
+	font-weight: normal;
+}
+
 
 .view-homepage-minisite .views-field-nothing {
 	position: absolute;
@@ -697,6 +703,10 @@ ul.links li {
 	position: absolute;
 	bottom: 10px;
 	width: 216px;
+}
+
+.views-field-field-related-articles-1 a {
+	font-weight: normal;
 }
 
 .views-field-field-related-articles-1,
