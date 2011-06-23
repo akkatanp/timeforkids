@@ -1453,12 +1453,13 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 
 .page-extras .block-views .field-type-image {
 	float: left;
-	width: 140px;
+	width: 142px;
 	margin: 0 10px 10px 0;
 }
 
 .page-extras .block-views .field-type-image img {
 	width: 140px;
+	border: solid 1px #cecece;
 }
 
 .page-extras .block-views h3 {
@@ -1484,7 +1485,7 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 #block-views-tfk-extras-block-8  h2.block-title {
 	position: absolute;
 	top: -36px;
-	left: -11px;
+	left: -6px;
 	font: bold 20px arial;
 	margin: 4px 0;
 	color: black;
