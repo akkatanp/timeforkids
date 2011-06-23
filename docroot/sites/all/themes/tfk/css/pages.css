@@ -476,6 +476,7 @@ ul.links li {
 	border: solid 1px #cecece;
 	background: url(../images/homepage-destination-news.png) no-repeat;
 	padding: 10px 10px 10px 260px;
+	width: 498px;
 	height: 66px;
 	overflow: hidden;
 }
