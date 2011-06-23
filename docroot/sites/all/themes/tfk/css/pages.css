@@ -1435,6 +1435,35 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 	font: bold 20px arial;
 }
 
+/* TFK extras */
+#block-views-tfk-extras-block-8 .content,
+.view-tfk-extras-top-nodeblock,
+.page-extras .block-views {
+	border: solid 1px #cecece;
+	padding: 10px;
+}
+
+.page-extras .block-views h2 {
+	font: normal 14px "arial black";
+	color: white;
+	background: #d71700;
+}
+
+# #block-views-tfk-extras-block-8 {
+	boder: none;
+}
+
+#block-views-tfk-extras-block-8  h2.block-title {
+	font: bold 20px arial;
+	margin: 4px 0;
+	color: black;
+	background: none;
+}
+
+#block-views-tfk-extras-block-8 .content {
+	background: #dedede;
+}
+
 /* TFK Store */
 .page-store #featured-books {
 	float: left;
