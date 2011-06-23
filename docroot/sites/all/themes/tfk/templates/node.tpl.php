@@ -105,10 +105,6 @@
     <?php endif; ?>
   
     <div class="content"<?php print $content_attributes; ?>>
-      <?php if($type == 'video'): ?>
-      	<?php print render($content['field_video_upload']); ?>
-      	<?php print render($content['field_credit']); ?>
-      <?php endif; ?>
       <?php print render($content); ?>
     </div>
 
@@ -142,6 +138,13 @@
   
         print render($content);
       ?>
+      <?php if($type == 'video'): ?>
+      	
+      	<?php if($variables['related_content']): ?>
+      		<?php print $variables['related_content']; ?>
+      	<?php endif; ?>
+      	
+      <?php endif; ?>
     </div>
   
     <?php print render($content['links']); ?>
