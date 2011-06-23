@@ -1,0 +1,60 @@
+<?php
+/**
+ * @file
+ * Code for the TFK Slideshow feature.
+ */
+
+include_once('tfk_photos_video.features.inc');
+
+/**
+ * Override or insert variables into the page templates.
+ *
+ * @param $variables
+ *   An array of variables to pass to the theme template.
+ * @param $hook
+ *   The name of the template being rendered ("page" in this case.)
+ */
+function tfk_photos_video_preprocess_page(&$variables) {
+  if(arg(0) == 'node' && array_key_exists('node', $variables)) {
+    if($variables['node']->type == 'slideshow' || $variables['node']->type == 'video') {
+      // Add Slideshow page CSS.
+      drupal_add_css(drupal_get_path('module', 'tfk_photos_video'). '/css/tfk_photos_video.css', 'file');
+      
+      // Sidebar top. Make it appear only in Photos and Video.
+      $variables['rendered'] = array();
+      if(array_key_exists('sidebar_top', $variables['page']) && (!empty($variables['page']['sidebar_top']))) {
+        $variables['rendered']['sidebar_top'] = render($variables['page']['sidebar_top']);
+      }
+    }
+  }
+}
+
+/**
+ * Override or insert variables into the node templates.
+ */
+function tfk_photos_video_preprocess_node(&$variables) {
+  if($variables['type'] == 'video') {
+    // Add additional content variable to the node template.
+    $additional_content = tfk_helper_get_additional_content();
+    if($additional_content !== FALSE) {
+      $variables['related_content'] = theme('tfk_search_related_content', $additional_content);
+    } else {
+      $variables['related_content'] = 'no related content';
+    }
+    
+    // Title
+    $variables['print_title'] = TRUE;
+    $variables['title_prefix'] = 'Video: ';
+    
+    // Unset unused stuff.
+    $_variables = & $variables;
+    unset($_variables['submitted']);
+  }
+  if($variables['type'] == 'slideshow') {
+    // Title
+    $variables['print_title'] = TRUE;
+    $variables['title_prefix'] = 'Slideshow: ';
+    $_variables = & $variables;
+    unset($_variables['content']);
+  }
+}
