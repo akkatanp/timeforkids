@@ -25,12 +25,12 @@ function tfk_helper_drush_command() {
   );
   
   $items['tfk-set-file-paths'] = array(
-    'description' => 'Set public files path.',
+    'description' => 'Sets public and temporary file paths.',
     'callback' => 'tfk_helper_set_file_paths',
     'aliases' => array('sfp'),
     'arguments' => array(
-      'public file path' => dt('New public file path.'),
-      'temporary file path' => dt('New public file path.'),
+      'public file path' => dt('Public file path.'),
+      'temporary file path' => dt('Temporary file path.'),
     ),
   );
 
@@ -74,7 +74,7 @@ function tfk_helper_solr_dis() {
 }
 
 /**
- * Set public path.
+ * Set public and temporary file paths.
  */
 function tfk_helper_set_file_paths() {
  $args = func_get_args();
