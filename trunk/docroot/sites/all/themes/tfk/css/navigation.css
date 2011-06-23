@@ -701,7 +701,8 @@
 
 #block-views-mini-site-home-block-1 h2.block-title {
 	background: url(../images/kid-reporter-badge.png) no-repeat top left;
-	height: 20px;
+	padding-top: 20px;
+	height: 0px;
 	font-size: 0px;
 }
 
