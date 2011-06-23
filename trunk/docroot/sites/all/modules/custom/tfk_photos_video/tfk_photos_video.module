@@ -41,8 +41,20 @@ function tfk_photos_video_preprocess_node(&$variables) {
     } else {
       $variables['related_content'] = 'no related content';
     }
+    
+    // Title
+    $variables['print_title'] = TRUE;
+    $variables['title_prefix'] = 'Video: ';
+    
     // Unset unused stuff.
     $_variables = & $variables;
     unset($_variables['submitted']);
+  }
+  if($variables['type'] == 'slideshow') {
+    // Title
+    $variables['print_title'] = TRUE;
+    $variables['title_prefix'] = 'Slideshow: ';
+    $_variables = & $variables;
+    unset($_variables['content']);
   }
 }
