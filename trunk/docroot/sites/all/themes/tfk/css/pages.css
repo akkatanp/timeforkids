@@ -1463,11 +1463,11 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 #block-views-tfk-extras-block-8 {
 	position: relative;
 	background: #dedede;
-	margin-top: 20px;
+	margin-top: 30px;
 }
 
 #block-views-tfk-extras-block-8  h2.block-title {
-	position: abslute;
+	position: absolute;
 	top: -30px;
 	font: bold 20px arial;
 	margin: 4px 0;
