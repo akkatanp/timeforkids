@@ -1,0 +1,17 @@
+.more-items-col {
+  display: inline-block;
+  margin-right: 5px;
+}
+
+#more-items {
+  border: 1px solid #CECECE;
+  padding: 10px 9px;
+}
+
+#more-items h2 {
+  margin: 0 0 9px 0px;
+}
+
+#more-items div.more-items-content {
+  text-align: center;
+}
