@@ -375,21 +375,23 @@ ul.links li {
 }
 
 #block-views-homepage-destination-block-1 .views-field-field-resources-label,
-.view-homepage-minisite .views-field-field-minisite-resources-label {
+.view-homepage-minisite .views-field-field-minisite-related-content-1 {
+	position: absoluite;
 	font-weight: bold;
 	margin-top: 10px;
+	bottom: 40px;
 }
 
 #block-views-homepage-destination-block-1 .views-field-field-resources-list,
-.view-homepage-minisite .views-field-field-minisite-resources {
-	position: relative;
+.view-homepage-minisite .views-field-field-minisite-related-content {
+	position: absolute;
 	background: #d9effe;
 	border: solid 3px #acdbfc;
-	margin-bottom: 10px;
 	padding: 2px 4px;
 	-moz-box-shadow: 2px 2px 4px #666;
 	-webkit-box-shadow: 2px 2px 4px 666;
 	box-shadow: 2px 2px 4px #666;
+	bottom: 20px;
 }
 
 .view-homepage-minisite .views-field-nothing {
