@@ -1,4 +1,4 @@
-aa<?php
+<?php
 /**
  * @file
  * Zen theme's implementation to display a node.
