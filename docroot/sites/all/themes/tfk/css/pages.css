@@ -1170,7 +1170,7 @@ ul.links li {
 	float: left;
 	width: 496px;
 	padding: 6px;
-	margin-top: 4px;
+	margin: 4px 0 0 0;
 	border-bottom: dotted 1px #cecece;
 	border-top: solid 1px #cecece;
 	border-left: solid 1px #cecece;
@@ -1197,6 +1197,7 @@ ul.links li {
 }
 
 .page-around-the-world .view-content table td {
+	width: 242px;
 	padding: 6px;
 }
 
