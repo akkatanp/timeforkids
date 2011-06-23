@@ -279,7 +279,7 @@ function tfk_news_preprocess_node(&$variables){
     //print_R($variables);
 
 
-    if(isset($variables->field_kid_reporter['und'][0]['nid'])){
+    if(isset($variables['field_kid_reporter']['und'][0]['nid'])){
       $variables['is_kid_reporter_article'] = 1;
     }
   }
