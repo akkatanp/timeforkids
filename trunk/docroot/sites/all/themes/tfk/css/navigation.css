@@ -699,7 +699,12 @@
 	text-transform: uppercase;
 }
 
-#block-views-mini-site-home-block-1 h2.block-title,
+#block-views-mini-site-home-block-1 h2.block-title {
+	background: url(../images/kid-reporter-badge.png) no-repeat top left;
+	height: 20px;
+	font-size: 0px;
+}
+
 .region-sidebar-first .section .view-atw-page-featured-destination {
 	background: url(../images/atw-sidebar-head.png) no-repeat top left;
 	padding-top: 20px;
