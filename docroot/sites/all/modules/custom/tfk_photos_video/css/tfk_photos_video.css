@@ -22,7 +22,7 @@ body.node-type-video div.region-sidebar-first div.section {
 div#block-tfk-helper-featured-block-sidebar-slideshow {
   background: none repeat scroll 0 0 #E6E6E6;
   border: 1px solid #CECECE;
-  padding: 10px;  	
+  padding: 10px 0 10px 10px;
 }
 
 div#block-tfk-search-tfk-search-photos-video-back {
