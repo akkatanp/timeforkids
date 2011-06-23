@@ -1436,9 +1436,7 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 }
 
 /* TFK extras */
-#block-views-tfk-extras-block-8 .content,
-.view-tfk-extras-top-nodeblock,
-.page-extras .block-views {
+.page-extras #content .block-views {
 	border: solid 1px #cecece;
 	padding: 10px;
 }
@@ -1447,6 +1445,8 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 	font: normal 14px "arial black";
 	color: white;
 	background: #d71700;
+	text-transform: uppercase;
+	padding: 4px 0;
 }
 
 # #block-views-tfk-extras-block-8 {
