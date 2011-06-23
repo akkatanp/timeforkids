@@ -476,7 +476,7 @@ ul.links li {
 	border: solid 1px #cecece;
 	background: url(../images/homepage-destination-news.png) no-repeat;
 	padding: 10px 10px 10px 260px;
-	width: 498px;
+	width: 496px;
 	height: 66px;
 	overflow: hidden;
 }
@@ -499,12 +499,6 @@ ul.links li {
 }
 
 /* mini-sites */
-.page-mini-sites .view-minisite-home .view-header {
-	border: solid 1px #cecece;
-	padding: 10px;
-}
-
-#block-views-mini-site-home-block-3
 #block-views-minisite-articles-block-7 {
 	border: solid 1px #cecece;
 	padding: 10px;
