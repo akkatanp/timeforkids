@@ -117,7 +117,7 @@
 
     <?php if(count($pdfs) > 0):?>
       <?php foreach($pdfs as $pdf):?>
-        <a href="<?php print $pdf['pdf_url'];?>"><?php print $pdf['term_name']?></a> : <?php print $pdf['pdf_title'];?> <br/>
+        <div class="tfk-extra-pdf"><a href="<?php print $pdf['pdf_url'];?>"><?php print $pdf['term_name']?></a> : "<?php print $pdf['pdf_title'];?>"</div>
       <?php endforeach;?>
     <?php endif;?>
 

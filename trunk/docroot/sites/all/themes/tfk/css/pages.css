@@ -1453,22 +1453,32 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 
 .page-extras .block-views .field-type-image {
 	float: left;
-	margin-right: 10px;
+	width: 140px;
+	margin: 0 10px 10px 0;
 }
 
 .page-extras .block-views h3 {
 	margin: 0 0 10px 0;
 }
 
+.page-extras .block-views .tfk-extra-pdf {
+	font-weight: bold;
+	height: 16px;
+	line-height: 16px;
+	padding-left: 20px;
+	background: url(../images/pdf-icon.png) no-repeat;
+}
+
 #block-views-tfk-extras-block-8 {
 	position: relative;
 	background: #dedede;
-	margin-top: 30px;
+	margin-top: 40px;
 }
 
 #block-views-tfk-extras-block-8  h2.block-title {
 	position: absolute;
-	top: -30px;
+	top: -36px;
+	left: -11px;
 	font: bold 20px arial;
 	margin: 4px 0;
 	color: black;
