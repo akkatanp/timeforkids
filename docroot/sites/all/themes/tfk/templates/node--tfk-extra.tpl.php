@@ -112,7 +112,7 @@
 
 
     <?php print render($content['field_tfk_extra_image']);?>
-    <?php echo $title;?>
+	<h3><?php echo $title;?></h3>
     <?php print render($content['field_tfk_extra_deck']);?>
 
     <?php if(count($pdfs) > 0):?>
