@@ -714,7 +714,7 @@
 	display: none;
 }
 
-#block-views-mini-site-home-block-1.views-field-title a,
+#block-views-mini-site-home-block-1 .views-field-title a,
 .view-atw-page-featured-destination .views-field-title a {
 	color: #d71700;
 	font-size: 20px;
