@@ -1442,12 +1442,13 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 	padding: 10px;
 }
 
-.page-extras .block-views h2 {
+.page-extras .block-views h2.block-title {
 	font: normal 14px "arial black";
 	color: white;
 	background: #d71700;
 	text-transform: uppercase;
 	padding: 2px;
+	margin: 0 0 10px 0;
 }
 
 .page-extras .block-views .field-type-image {
@@ -1455,9 +1456,13 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 	margin-right: 10px;
 }
 
-# #block-views-tfk-extras-block-8 {
+.page-extras .block-views h3 {
+	margin: 0 0 10px 0;
+}
+
+#block-views-tfk-extras-block-8 {
 	border: none;
-	padding: 0;
+	padding: none;
 }
 
 #block-views-tfk-extras-block-8  h2.block-title {
@@ -1469,6 +1474,7 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 }
 
 #block-views-tfk-extras-block-8 .content {
+	border: solid 1px #cecece;
 	background: #dedede;
 	padding: 10px;
 }
