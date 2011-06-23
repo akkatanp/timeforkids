@@ -699,20 +699,19 @@
 	text-transform: uppercase;
 }
 
-#block-views-mini-site-home-block-1 h2.block-title {
-	background: url(../images/kid-reporter-badge.png) no-repeat top left;
-	padding-top: 20px;
-	height: 0px;
-	font-size: 0px;
-}
-
 .region-sidebar-first .section .view-atw-page-featured-destination {
 	background: url(../images/atw-sidebar-head.png) no-repeat top left;
 	padding-top: 20px;
 }
 
+/* mini sites sidebar */
+#block-views-mini-site-home-block-1 {
+	background: url(../images/kid-reporter-badge.png) no-repeat top left;
+	padding-top: 20px;
+}
+
 #block-views-mini-site-home-block-1 h2.block-title {
-	font-size: 0px;
+	display: none;
 }
 
 #block-views-mini-site-home-block-1.views-field-title a,
@@ -728,7 +727,6 @@
 	border: solid 4px #fff;
 }
 
-/* mini sites sidebar */
 .node-type-minisite .region-sidebar-first .section {
 	background: none;
 	border: 0;
