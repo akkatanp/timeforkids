@@ -121,7 +121,9 @@ function tfk_helper_block_view($delta='') {
     // TFK Photos and Video Node Featured Block (Sidebar).
     case 'featured_block_sidebar_slideshow':
       drupal_add_css(drupal_get_path('module', 'tfk_helper'). '/css/tfk_helper_featured_block.css', 'file');
-      $featured_item = tfk_helper_get_featured_block_sidebar('slideshow');
+      $node = menu_get_object('node', 1);
+      $image_field = ($node->type == 'video') ? 'field_video_thumbnail' : 'field_image';
+      $featured_item = tfk_helper_get_featured_block_sidebar('photos_videos_featured', $image_field);
       if(!empty($featured_item)) {
         $block['content'] = theme('featured_block_sidebar', $featured_item);
       }
@@ -391,27 +393,6 @@ function theme_photos_video_more($variables) {
   return $output;
 }
 
-
-function tfk_helper_preprocess_node(&$vars) {
-  // Intercept the node type for the sidebar Featured block.
-  #if(arg(0) == 'node' && $vars['node']->type == ('slideshow' || 'video')) {
-  #  tfkHelperFeaturedItem::set_type($vars['node']->type);
-  #}
-}
-
-function tfk_helper_node_load($nodes, $types) {
-  // Intercept the node type for the sidebar Featured block.
-  // We piggyback on the nodes already being loaded for performance.
-  #if(is_null(tfkHelperFeaturedItem::$type)) {
-  #  $type = array_shift($nodes)->type;
-  #  if(arg(0) == 'node' && (array_search($type, array('slideshow', 'video')) !== FALSE)) {
-      //
-      #tfkHelperFeaturedItem::set_type($type);
-  #  } # arg(1)
-  #}
-
-}
-
 /**
  * Callback for sidebar Featured block.
  *
@@ -429,55 +410,101 @@ class tfkHelperFeaturedItem {
   static $body_trim = '300';
   static $snippet_format = 'full_html';
   static $thumbnail_class = array('featured-block-sidebar-img');
+  /**
+   * Field to load the thumbnail image from.
+   * @var string
+   */
+  static $thumbnail_field;
   
   function __construct() {
     $featured_node = node_load($this->nid);
     $this->type = $featured_node->type;
-    if($featured_node->type == 'slideshow') {
-      // Add dynamic CSS class using content type.
-      self::$thumbnail_class[] = 'content-type-'. $this->type;
+    
+    // Add dynamic CSS class using content type.
+    self::$thumbnail_class[] = 'content-type-'. $this->type;
       
-      $url = 'node/'. $featured_node->nid;
-      $this->title = l($featured_node->title, $url); // Alternatively load 'safe_summary'.
-      // Trim and filter the body to ensure valid and safe markup.
-      // Cache the filtered output in the {cache_filter} table.
-      // @todo Make the trim count a setting.
-      $this->body = check_markup(truncate_utf8($featured_node->body['und'][0]['safe_value'], self::$body_trim, TRUE, TRUE, 10), self::$snippet_format, '', TRUE);
-      $this->link = l('See '. ucfirst($featured_node->type), $url);
-      $image_node = node_load(array_shift(array_shift($featured_node->field_slideshow_images['und'])));
-      $image = tfk_search_get_thumbnail($image_node->field_image['und'][0]['fid'], self::$image_style);
-      $link_options = array('html' => TRUE, 'attributes' => array('class' => self::$thumbnail_class));
-      $this->image = l(theme('image', array('path' => $image)), $url, $link_options);
-    }
-    if($this->type == 'video') {
-      $test = null; //@todo Load the video.
+    $url = 'node/'. $featured_node->nid;
+    $this->title = l($featured_node->title, $url); // Alternatively load 'safe_summary'.
+    // Trim and filter the body to ensure valid and safe markup.
+    // Cache the filtered output in the {cache_filter} table.
+    // @todo Make the trim count a setting.
+    $this->body = check_markup(truncate_utf8($featured_node->body['und'][0]['safe_value'], self::$body_trim, TRUE, TRUE, 10), self::$snippet_format, '', TRUE);
+    $this->link = l('See '. ucfirst($featured_node->type), $url);
+    
+    if($featured_node->type == 'slideshow') {
+      $image_node = node_load(array_shift(field_get_items('node', $featured_node, 'field_slideshow_images')));
+      $_thumbnail_field = field_get_items('node', $image_node, self::$thumbnail_field);
+      $this->get_thumbnail((object) $_thumbnail_field[0], $url);
+    } else {
+      $_thumbnail_field = field_get_items('node', $featured_node, self::$thumbnail_field);
+      if(!empty($_thumbnail_field)) {
+        $this->get_thumbnail((object) $_thumbnail_field[0], $url);
+      }
     }
     unset($this->nid);
     $this->to_array = get_object_vars($this);
+  }
+  
+  /**
+   * Creates a linked image derivative.
+   *
+   * Generates the image derivative if it has not been previously built.
+   */
+  function get_thumbnail($file, $url) {
+    $newpath = image_style_path(self::$image_style, $file->uri);
+    // Generate the image style derivative if it doesn't exist.
+    if(!file_exists($newpath)) {
+      if(!image_style_create_derivative(image_style_load(self::$image_style), $file->uri, $newpath)) {
+        watchdog('tfk_helper Featured Item', 'Failed to create image derivative for fid: @fid', array('@fid' => $file->fid), WATCHDOG_WARNING);
+        return FALSE;
+      }
+    }
+    $thumbnail_path = image_style_url(self::$image_style, $file->uri);
+    $link_options = array('html' => TRUE, 'attributes' => array('class' => self::$thumbnail_class));
+    $this->image = l(theme('image', array('path' => $thumbnail_path)), $url, $link_options);
   }
 }
 
 /**
  * Loads data for sidebar Featured block.
  *
+ * @param string $flag_name
+ *   Machine-readable name of the flag used to filter content by.
+ * @param string $thumbnail_field
+ *   Machine-readable name of the field holding the featured item image.
+ * @param boolean $dynamic
+ *   (Optional) Whether to let the function figure the content type by itself.
  * @param string $node_type
- *   The content type of the node to load.
+ *   (Optional) The content type of the node to load.
  *
  * @see tfk_helper_block_view()
  */
-function tfk_helper_get_featured_block_sidebar($node_type) {
+function tfk_helper_get_featured_block_sidebar($flag_name, $thumbnail_field, $dynamic = TRUE, $node_type = NULL) {
+  
+  if($dynamic) {
+    // Get the content type of the current node type.
+    $node = menu_get_object('node', 1);
+    $node_type = $node->type;
+  }
+  tfkHelperFeaturedItem::$thumbnail_field = $thumbnail_field;
   
   // We get a Featured node with the same content type as the currently loaded node.
   $fn_query = "
     SELECT
-  		fn.nid AS nid
+  	  fn.nid AS nid
   	FROM
   	  node fn
-  	  INNER JOIN flag_content f ON fn.nid = f.content_id
+  	  INNER JOIN flag_content fc ON fn.nid = fc.content_id
   	  WHERE fn.type = :node_type
+      AND fc.fid = (SELECT fid FROM flags f WHERE f.name = :flag_name)
   	ORDER BY fn.created DESC";
-	// Try to load the first two featured items. If there are two use the second, else fall back to the first one.
-  $featured_nodes = db_query_range($fn_query, 0, 2, array(':node_type' => $node_type), array('fetch' => 'tfkHelperFeaturedItem',))->fetchAll();
+	
+  // Try to load the first two featured items. If there are two use the second, else fall back to the first one.
+  $featured_nodes = db_query_range($fn_query, 0, 2,
+    array(':node_type' => $node_type, ':flag_name' => $flag_name),
+    array('fetch' => 'tfkHelperFeaturedItem',)
+  )->fetchAll();
+  
 	if(!empty($featured_nodes)) {
 	  $featured_node = array_pop($featured_nodes);
 	  return $featured_node->to_array;
