@@ -114,9 +114,10 @@ function aplus_papers_multistep_form($form, &$form_state, $steps) {
       '#ajax' => array(
         'wrapper' => 'wizard-form-wrapper',
         'callback' => 'aplus_papers_multistep_form_callback',
-        'effect' => 'none',
+        'effect' => 'fade',
         'progress' => array(
-          'type' => 'none',
+          'type' => 'throbber',
+          'message' => '<div class="hh-throbber-message">Please wait</div>',
         ),
       ),
     );
@@ -138,8 +139,10 @@ function aplus_papers_multistep_form($form, &$form_state, $steps) {
       '#ajax' => array(
         'wrapper' => 'wizard-form-wrapper',
         'callback' => 'aplus_papers_multistep_form_callback',
+        'effect' => 'fade',
         'progress' => array(
-          'type' => 'none',
+          'type' => 'throbber',
+          'message' => '<div class="hh-throbber-message">Please wait</div>',
         ),
       ),
     );
@@ -152,9 +155,10 @@ function aplus_papers_multistep_form($form, &$form_state, $steps) {
         '#ajax' => array(
           'wrapper' => 'wizard-form-wrapper',
           'callback' => 'aplus_papers_multistep_form_callback',
-          'effect' => 'none',
+          'effect' => 'fade',
           'progress' => array(
-            'type' => 'none',
+            'type' => 'throbber',
+            'message' => '<div class="hh-throbber-message">Please wait</div>',
           ),
         ),
       );
