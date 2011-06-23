@@ -1168,9 +1168,9 @@ ul.links li {
 .page-around-the-world .view-content h3 {
 	font: bold 20px arial;
 	float: left;
-	width: 248px;
+	width: 496px;
 	padding: 6px;
-	margin: 2px 0 0 0;
+	margin-top: 4px;
 	border-bottom: dotted 1px #cecece;
 	border-top: solid 1px #cecece;
 	border-left: solid 1px #cecece;
@@ -1179,7 +1179,7 @@ ul.links li {
 
 .page-around-the-world .view-content table {
 	float: left;
-	width: 262px;
+	width: 508px;
 	margin: 0 0 2px 0;
 	border-collapse: collapse;
 	border-top: none;
@@ -1446,11 +1446,17 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 	color: white;
 	background: #d71700;
 	text-transform: uppercase;
-	padding: 4px 0;
+	padding: 2px;
+}
+
+.page-extras .block-views .field-type-image {
+	float: left;
+	margin-right: 10px;
 }
 
 # #block-views-tfk-extras-block-8 {
-	boder: none;
+	border: none;
+	padding: 0;
 }
 
 #block-views-tfk-extras-block-8  h2.block-title {
@@ -1458,10 +1464,12 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 	margin: 4px 0;
 	color: black;
 	background: none;
+	text-transform: none;
 }
 
 #block-views-tfk-extras-block-8 .content {
 	background: #dedede;
+	padding: 10px;
 }
 
 /* TFK Store */
