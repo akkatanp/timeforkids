@@ -9,7 +9,7 @@
 function tfk_helper_drush_command() {
   $items = array();
 
-  $items['download-images'] = array(
+  $items['tfk-download-images'] = array(
     'description' => 'Downloads all images in local file table from remote server.',
     'callback' => 'tfk_helper_download_images',
     //'options' => array(
@@ -17,6 +17,21 @@ function tfk_helper_drush_command() {
     //  '--rpath' => 'Remote file system path. Should be an publicly accessible URL.',
     //),
     'aliases' => array('di'),
+  );
+  
+  $items['tfk-solr-dis'] = array(
+    'description' => 'Set Solr indexing to read-only.',
+    'callback' => 'tfk_helper_solr_dis',
+  );
+  
+  $items['tfk-set-file-paths'] = array(
+    'description' => 'Set public files path.',
+    'callback' => 'tfk_helper_set_file_paths',
+    'aliases' => array('sfp'),
+    'arguments' => array(
+      'public file path' => dt('New public file path.'),
+      'temporary file path' => dt('New public file path.'),
+    ),
   );
 
   return $items;
@@ -48,4 +63,23 @@ function tfk_helper_download_images() {
     }
   }
   
+}
+
+/**
+ * Set Solr indexing to read-only.
+ */
+function tfk_helper_solr_dis() {
+ variable_set('apachesolr_read_only', APACHESOLR_READ_ONLY);
+ drush_log("Set Solr indexing to read only.", 'success');
+}
+
+/**
+ * Set public path.
+ */
+function tfk_helper_set_file_paths() {
+ $args = func_get_args();
+ variable_set('file_public_path', $args[0]);
+ drush_log("file_public_path set to {$args[0]}", 'success');
+ variable_set('file_temporary_path', $args[1]);
+ drush_log("file_temporary_path set to {$args[1]}", 'success');
 }
