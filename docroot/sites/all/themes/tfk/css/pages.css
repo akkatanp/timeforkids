@@ -1457,12 +1457,18 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 	margin: 0 10px 10px 0;
 }
 
+.page-extras .block-views .field-type-image img {
+	width: 140px;
+}
+
 .page-extras .block-views h3 {
 	margin: 0 0 10px 0;
 }
 
 .page-extras .block-views .tfk-extra-pdf {
 	font-weight: bold;
+}
+.page-extras .block-views .tfk-extra-pdf a {
 	height: 16px;
 	line-height: 16px;
 	padding-left: 20px;
