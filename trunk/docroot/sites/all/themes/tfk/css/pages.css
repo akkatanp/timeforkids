@@ -1460,23 +1460,20 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 	margin: 0 0 10px 0;
 }
 
-#block-views-tfk-extras-block-8.block-views {
-	border: 0;
-	padding: 0;
+#block-views-tfk-extras-block-8 {
+	position: relative;
+	background: #dedede;
+	margin-top: 20px;
 }
 
 #block-views-tfk-extras-block-8  h2.block-title {
+	position: abslute;
+	top: -30px;
 	font: bold 20px arial;
 	margin: 4px 0;
 	color: black;
 	background: none;
 	text-transform: none;
-}
-
-#block-views-tfk-extras-block-8 .content {
-	border: solid 1px #cecece;
-	background: #dedede;
-	padding: 10px;
 }
 
 /* TFK Store */
