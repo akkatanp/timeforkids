@@ -3,6 +3,7 @@
 }
 
 .more-items-col {
+  vertical-align: top;
   display: inline-block;
   margin-right: 5px;
 }
