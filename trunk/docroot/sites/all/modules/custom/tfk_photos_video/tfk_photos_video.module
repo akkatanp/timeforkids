@@ -56,10 +56,24 @@ function tfk_photos_video_preprocess_node(&$variables) {
     );
     $variables['content']['node_title'] = $content_title;
     
+    
+    // Join caption and credit.
+    $cap_credit = '';
+    if(!empty($variables['field_caption'][0]['safe_value'])) {
+      $cap_credit .= '<span class="caption">'. $variables['field_caption'][0]['safe_value']. '</span>';
+    }
+    if(!empty($variables['field_credit'][0]['safe_value'])) {
+      $cap_credit .= ' / <span class="credit">'. $variables['field_credit'][0]['safe_value']. '</span>';
+    }
+    if(!empty($cap_credit)) {
+      $variables['content']['cap_credit'] = array(
+        '#markup' => '<div class="cap-credit">'. $cap_credit. '</div>',
+      	'#weight' => 11,
+      );
+    }
+    
     // Re-organize content render array.
     $variables['content']['field_video_upload']['#weight'] = 9;
-    $variables['content']['field_caption']['#weight'] = 10;
-    $variables['content']['field_credit']['#weight'] = 11;
     $variables['content']['node_title']['#weight'] = 12;
     $variables['content']['field_date']['#weight'] = 13;
     $variables['content']['body']['#weight'] = 14;
@@ -68,6 +82,8 @@ function tfk_photos_video_preprocess_node(&$variables) {
     
     // Unset unused stuff.
     unset($_variables['submitted']);
+    unset($_variables['content']['field_caption']);
+    unset($_variables['content']['field_credit']);
   }
   if($variables['type'] == 'slideshow') {
     $_variables = & $variables;

@@ -47,6 +47,21 @@ div#block-tfk-search-tfk-search-photos-video-back a {
   color: white;
 }
 
+/* Video */
+.node-video.view-mode-full .credit,
+.node-video.view-mode-full .caption {
+  text-align: right;
+  font: normal 9px arial;
+  color: #999;
+}
+
+.node-video.view-mode-full .cap-credit {
+  font: normal 11px arial;
+  color: #999;
+  text-align: right;
+  padding-right: 5px;
+}
+
 /* Override header element and remove ATW background image */
 div#slideshow-container div#slideshow div.header {
 	background: none;
