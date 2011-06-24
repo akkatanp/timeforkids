@@ -48,6 +48,7 @@ function tfk_helper_theme() {
 function theme_featured_block_sidebar($args) {
   list($type, $title, $body, $link, $image) = array_values($args);
   
+  $output = "";
   $output .= "<div class='featured-block-sidebar-label featured-". $type. "'>&nbsp;</div>";
   $output .= "<div class='col1'>";
   $output .= "<div class='featured-block-sidebar-img'>$image</div>";
@@ -441,7 +442,8 @@ class tfkHelperFeaturedItem {
     $this->link = l('See '. ucfirst($featured_node->type), $url);
     
     if($featured_node->type == 'slideshow') {
-      $image_node = node_load(array_shift(field_get_items('node', $featured_node, 'field_slideshow_images')));
+      $slideshow_images = field_get_items('node', $featured_node, 'field_slideshow_images');
+      $image_node = node_load($slideshow_images[0]);
       $_thumbnail_field = field_get_items('node', $image_node, self::$thumbnail_field);
       $this->get_thumbnail((object) $_thumbnail_field[0], $url);
     } else {
