@@ -34,6 +34,8 @@ function tfk_photos_video_preprocess_page(&$variables) {
  */
 function tfk_photos_video_preprocess_node(&$variables) {
   if($variables['type'] == 'video') {
+    $_variables = & $variables;
+    
     // Add additional content variable to the node template.
     $additional_content = tfk_helper_get_additional_content();
     if($additional_content !== FALSE) {
@@ -46,8 +48,25 @@ function tfk_photos_video_preprocess_node(&$variables) {
     $variables['print_title'] = TRUE;
     $variables['title_prefix'] = 'Video: ';
     
+    // Add second title.
+    $content_title = array(
+      '#type' => 'html_tag',
+      '#value' => $variables['title'],
+      '#tag' => 'div',
+    );
+    $variables['content']['node_title'] = $content_title;
+    
+    // Re-organize content render array.
+    $variables['content']['field_video_upload']['#weight'] = 9;
+    $variables['content']['field_caption']['#weight'] = 10;
+    $variables['content']['field_credit']['#weight'] = 11;
+    $variables['content']['node_title']['#weight'] = 12;
+    $variables['content']['field_date']['#weight'] = 13;
+    $variables['content']['body']['#weight'] = 14;
+    $variables['content']['links']['#weight'] = 15;
+    $variables['content']['comments']['#weight'] = 16;
+    
     // Unset unused stuff.
-    $_variables = & $variables;
     unset($_variables['submitted']);
   }
   if($variables['type'] == 'slideshow') {
