@@ -380,31 +380,15 @@ ul.links li {
 	width: 216px;
 }
 
-#block-views-homepage-destination-block-1 .views-field-field-resources-label,
-.view-homepage-minisite .views-field-field-minisite-related-content-1 {
-	position: absolute;
-	font-weight: bold;
-	bottom: 47px;
+#block-views-homepage-destination-block-1  {
+	position: relative;
 }
 
-#block-views-homepage-destination-block-1 .views-field-field-resources-list,
-.view-homepage-minisite .views-field-field-minisite-related-content {
+#block-views-homepage-destination-block-1  .related-content-wrap {
 	position: absolute;
-	background: #d9effe;
-	border: solid 3px #acdbfc;
-	padding: 2px 4px;
-	-moz-box-shadow: 2px 2px 4px #666;
-	-webkit-box-shadow: 2px 2px 4px 666;
-	box-shadow: 2px 2px 4px #666;
-	bottom: 20px;
+	bottom: 10px;
 	width: 216px;
 }
-
-#block-views-homepage-destination-block-1 .views-field-field-resources-list a,
-.view-homepage-minisite .views-field-field-minisite-related-content a {
-	font-weight: normal;
-}
-
 
 .view-homepage-minisite .views-field-nothing {
 	position: absolute;
