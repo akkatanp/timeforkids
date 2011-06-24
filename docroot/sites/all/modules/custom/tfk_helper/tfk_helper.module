@@ -442,10 +442,17 @@ class tfkHelperFeaturedItem {
     $this->link = l('See '. ucfirst($featured_node->type), $url);
     
     if($featured_node->type == 'slideshow') {
-      #$slideshow_images = field_get_items('node', $featured_node, 'field_slideshow_images');
-      #$image_node = node_load($slideshow_images[0]);
-      #$_thumbnail_field = field_get_items('node', $image_node, self::$thumbnail_field);
+      $slideshow_images = field_get_items('node', $featured_node, 'field_slideshow_images');
+      $image_node = node_load($slideshow_images[0]);
+      $_thumbnail_field = field_get_items('node', $image_node, self::$thumbnail_field);
       #$this->get_thumbnail((object) $_thumbnail_field[0], $url);
+      
+      $file = $_thumbnail_field[0];
+      $thumbnail_path = image_style_url(self::$image_style, $file['uri']);
+      $link_options = array('html' => TRUE, 'attributes' => array('class' => self::$thumbnail_class));
+      $this->image = l(theme('image', array('path' => $thumbnail_path)), $url, $link_options);
+      
+      
       $this->image = "Image placeholder";
     } else {
       $_thumbnail_field = field_get_items('node', $featured_node, self::$thumbnail_field);
