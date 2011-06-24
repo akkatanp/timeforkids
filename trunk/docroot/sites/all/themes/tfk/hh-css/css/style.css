@@ -734,32 +734,32 @@ body.page-homework-helper-a-plus-papers #block-system-main .views-field-nothing 
   margin-right: 10px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000315}}
-body.node-type-flashcard.not-logged-in div.tabs, body.page-homework-helper-flashcards.not-logged-in div.tabs, body.page-node-add-flashcard.not-logged-in div.tabs {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000316}}
+body.node-type-flashcard.not-logged-in div.tabs, body.page-homework-helper-flashcards.not-logged-in div.tabs, body.page-node-add-flashcard.not-logged-in div.tabs, body.page-homework-helper-my-flashcards.not-logged-in div.tabs {
   display: none;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000317}}
-body.node-type-flashcard #content, body.page-homework-helper-flashcards #content, body.page-node-add-flashcard #content {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000318}}
+body.node-type-flashcard #content, body.page-homework-helper-flashcards #content, body.page-node-add-flashcard #content, body.page-homework-helper-my-flashcards #content {
   width: 768px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000319}}
-body.node-type-flashcard #content h2.node-title, body.page-homework-helper-flashcards #content h2.node-title, body.page-node-add-flashcard #content h2.node-title {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000320}}
+body.node-type-flashcard #content h2.node-title, body.page-homework-helper-flashcards #content h2.node-title, body.page-node-add-flashcard #content h2.node-title, body.page-homework-helper-my-flashcards #content h2.node-title {
   display: none;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000321}}
-body.node-type-flashcard #homework-help-content, body.page-homework-helper-flashcards #homework-help-content, body.page-node-add-flashcard #homework-help-content {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000322}}
+body.node-type-flashcard #homework-help-content, body.page-homework-helper-flashcards #homework-help-content, body.page-node-add-flashcard #homework-help-content, body.page-homework-helper-my-flashcards #homework-help-content {
   border: 1px solid #cecece;
   overflow: hidden;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000324}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000325}}
 body.node-type-flashcard .node-flashcard-form,
-body.node-type-flashcard .node-flashcard, body.page-homework-helper-flashcards .node-flashcard-form, body.page-homework-helper-flashcards .node-flashcard, body.page-node-add-flashcard .node-flashcard-form, body.page-node-add-flashcard .node-flashcard {
+body.node-type-flashcard .node-flashcard, body.page-homework-helper-flashcards .node-flashcard-form, body.page-homework-helper-flashcards .node-flashcard, body.page-node-add-flashcard .node-flashcard-form, body.page-node-add-flashcard .node-flashcard, body.page-homework-helper-my-flashcards .node-flashcard-form, body.page-homework-helper-my-flashcards .node-flashcard {
   background: transparent url(images/flashcard-background.jpg) repeat;
   margin: 10px;
   padding: 20px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000330}}
-body.node-type-flashcard .node-flashcard-form > div, body.page-homework-helper-flashcards .node-flashcard-form > div, body.page-node-add-flashcard .node-flashcard-form > div {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000331}}
+body.node-type-flashcard .node-flashcard-form > div, body.page-homework-helper-flashcards .node-flashcard-form > div, body.page-node-add-flashcard .node-flashcard-form > div, body.page-homework-helper-my-flashcards .node-flashcard-form > div {
   background-color: white;
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
@@ -772,44 +772,44 @@ body.node-type-flashcard .node-flashcard-form > div, body.page-homework-helper-f
   position: relative;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/var\/lib\/gems\/1\.8\/gems\/compass-0\.11\.3\/frameworks\/compass\/stylesheets\/compass\/utilities\/general\/_clearfix\.scss}line{font-family:\0000338}}
-body.node-type-flashcard .node-flashcard-form > div:after, body.page-homework-helper-flashcards .node-flashcard-form > div:after, body.page-node-add-flashcard .node-flashcard-form > div:after {
+body.node-type-flashcard .node-flashcard-form > div:after, body.page-homework-helper-flashcards .node-flashcard-form > div:after, body.page-node-add-flashcard .node-flashcard-form > div:after, body.page-homework-helper-my-flashcards .node-flashcard-form > div:after {
   content: "";
   display: table;
   clear: both;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000337}}
-body.node-type-flashcard .node-flashcard-form .form-item-title input, body.page-homework-helper-flashcards .node-flashcard-form .form-item-title input, body.page-node-add-flashcard .node-flashcard-form .form-item-title input {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000338}}
+body.node-type-flashcard .node-flashcard-form .form-item-title input, body.page-homework-helper-flashcards .node-flashcard-form .form-item-title input, body.page-node-add-flashcard .node-flashcard-form .form-item-title input, body.page-homework-helper-my-flashcards .node-flashcard-form .form-item-title input {
   width: 80%;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000340}}
-body.node-type-flashcard .node-flashcard-form .field-type-flashcard .form-item, body.page-homework-helper-flashcards .node-flashcard-form .field-type-flashcard .form-item, body.page-node-add-flashcard .node-flashcard-form .field-type-flashcard .form-item {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000341}}
+body.node-type-flashcard .node-flashcard-form .field-type-flashcard .form-item, body.page-homework-helper-flashcards .node-flashcard-form .field-type-flashcard .form-item, body.page-node-add-flashcard .node-flashcard-form .field-type-flashcard .form-item, body.page-homework-helper-my-flashcards .node-flashcard-form .field-type-flashcard .form-item {
   margin-bottom: 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000342}}
-body.node-type-flashcard .node-flashcard-form .field-type-flashcard .field-multiple-table, body.page-homework-helper-flashcards .node-flashcard-form .field-type-flashcard .field-multiple-table, body.page-node-add-flashcard .node-flashcard-form .field-type-flashcard .field-multiple-table {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000343}}
+body.node-type-flashcard .node-flashcard-form .field-type-flashcard .field-multiple-table, body.page-homework-helper-flashcards .node-flashcard-form .field-type-flashcard .field-multiple-table, body.page-node-add-flashcard .node-flashcard-form .field-type-flashcard .field-multiple-table, body.page-homework-helper-my-flashcards .node-flashcard-form .field-type-flashcard .field-multiple-table {
   margin-bottom: 1em;
   width: 100%;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000345}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000346}}
 body.node-type-flashcard .node-flashcard-form .field-type-flashcard .field-multiple-table tbody,
-body.node-type-flashcard .node-flashcard-form .field-type-flashcard .field-multiple-table tr, body.page-homework-helper-flashcards .node-flashcard-form .field-type-flashcard .field-multiple-table tbody, body.page-homework-helper-flashcards .node-flashcard-form .field-type-flashcard .field-multiple-table tr, body.page-node-add-flashcard .node-flashcard-form .field-type-flashcard .field-multiple-table tbody, body.page-node-add-flashcard .node-flashcard-form .field-type-flashcard .field-multiple-table tr {
+body.node-type-flashcard .node-flashcard-form .field-type-flashcard .field-multiple-table tr, body.page-homework-helper-flashcards .node-flashcard-form .field-type-flashcard .field-multiple-table tbody, body.page-homework-helper-flashcards .node-flashcard-form .field-type-flashcard .field-multiple-table tr, body.page-node-add-flashcard .node-flashcard-form .field-type-flashcard .field-multiple-table tbody, body.page-node-add-flashcard .node-flashcard-form .field-type-flashcard .field-multiple-table tr, body.page-homework-helper-my-flashcards .node-flashcard-form .field-type-flashcard .field-multiple-table tbody, body.page-homework-helper-my-flashcards .node-flashcard-form .field-type-flashcard .field-multiple-table tr {
   border: none;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000348}}
-body.node-type-flashcard .node-flashcard-form .field-type-flashcard .field-multiple-table td, body.page-homework-helper-flashcards .node-flashcard-form .field-type-flashcard .field-multiple-table td, body.page-node-add-flashcard .node-flashcard-form .field-type-flashcard .field-multiple-table td {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000349}}
+body.node-type-flashcard .node-flashcard-form .field-type-flashcard .field-multiple-table td, body.page-homework-helper-flashcards .node-flashcard-form .field-type-flashcard .field-multiple-table td, body.page-node-add-flashcard .node-flashcard-form .field-type-flashcard .field-multiple-table td, body.page-homework-helper-my-flashcards .node-flashcard-form .field-type-flashcard .field-multiple-table td {
   padding: 1em;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000350}}
-body.node-type-flashcard .node-flashcard-form .field-type-flashcard .field-multiple-table td div:last-child, body.page-homework-helper-flashcards .node-flashcard-form .field-type-flashcard .field-multiple-table td div:last-child, body.page-node-add-flashcard .node-flashcard-form .field-type-flashcard .field-multiple-table td div:last-child {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000351}}
+body.node-type-flashcard .node-flashcard-form .field-type-flashcard .field-multiple-table td div:last-child, body.page-homework-helper-flashcards .node-flashcard-form .field-type-flashcard .field-multiple-table td div:last-child, body.page-node-add-flashcard .node-flashcard-form .field-type-flashcard .field-multiple-table td div:last-child, body.page-homework-helper-my-flashcards .node-flashcard-form .field-type-flashcard .field-multiple-table td div:last-child {
   margin-left: 1em;
   padding-top: 1em;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000353}}
-body.node-type-flashcard .node-flashcard-form .field-type-flashcard .field-multiple-table td input, body.page-homework-helper-flashcards .node-flashcard-form .field-type-flashcard .field-multiple-table td input, body.page-node-add-flashcard .node-flashcard-form .field-type-flashcard .field-multiple-table td input {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000354}}
+body.node-type-flashcard .node-flashcard-form .field-type-flashcard .field-multiple-table td input, body.page-homework-helper-flashcards .node-flashcard-form .field-type-flashcard .field-multiple-table td input, body.page-node-add-flashcard .node-flashcard-form .field-type-flashcard .field-multiple-table td input, body.page-homework-helper-my-flashcards .node-flashcard-form .field-type-flashcard .field-multiple-table td input {
   width: 80%;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000355}}
-body.node-type-flashcard .node-flashcard-form .field-type-flashcard .field-add-more-submit, body.page-homework-helper-flashcards .node-flashcard-form .field-type-flashcard .field-add-more-submit, body.page-node-add-flashcard .node-flashcard-form .field-type-flashcard .field-add-more-submit {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000356}}
+body.node-type-flashcard .node-flashcard-form .field-type-flashcard .field-add-more-submit, body.page-homework-helper-flashcards .node-flashcard-form .field-type-flashcard .field-add-more-submit, body.page-node-add-flashcard .node-flashcard-form .field-type-flashcard .field-add-more-submit, body.page-homework-helper-my-flashcards .node-flashcard-form .field-type-flashcard .field-add-more-submit {
   -webkit-appearance: none;
   -moz-border-radius: 14px;
   -webkit-border-radius: 14px;
@@ -831,16 +831,16 @@ body.node-type-flashcard .node-flashcard-form .field-type-flashcard .field-add-m
   -o-box-shadow: rgba(0, 0, 0, 0.5) 0 2px 4px;
   box-shadow: rgba(0, 0, 0, 0.5) 0 2px 4px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000368}}
-body.node-type-flashcard .node-flashcard-form .form-actions, body.page-homework-helper-flashcards .node-flashcard-form .form-actions, body.page-node-add-flashcard .node-flashcard-form .form-actions {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000369}}
+body.node-type-flashcard .node-flashcard-form .form-actions, body.page-homework-helper-flashcards .node-flashcard-form .form-actions, body.page-node-add-flashcard .node-flashcard-form .form-actions, body.page-homework-helper-my-flashcards .node-flashcard-form .form-actions {
   position: absolute;
   bottom: 0.5em;
   right: 0;
   margin: 0;
   z-index: 10;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000374}}
-body.node-type-flashcard .node-flashcard-form .form-actions input, body.page-homework-helper-flashcards .node-flashcard-form .form-actions input, body.page-node-add-flashcard .node-flashcard-form .form-actions input {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000375}}
+body.node-type-flashcard .node-flashcard-form .form-actions input, body.page-homework-helper-flashcards .node-flashcard-form .form-actions input, body.page-node-add-flashcard .node-flashcard-form .form-actions input, body.page-homework-helper-my-flashcards .node-flashcard-form .form-actions input {
   background: url(images/tfk-red-arrow-right.png) no-repeat scroll 42px 3px transparent;
   border: none;
   color: #d71700;
@@ -852,36 +852,36 @@ body.node-type-flashcard .node-flashcard-form .form-actions input, body.page-hom
   width: 100px;
   -webkit-appearance: none;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000386}}
-body.node-type-flashcard .node-flashcard .study-helper-help, body.page-homework-helper-flashcards .node-flashcard .study-helper-help, body.page-node-add-flashcard .node-flashcard .study-helper-help {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000387}}
+body.node-type-flashcard .node-flashcard .study-helper-help, body.page-homework-helper-flashcards .node-flashcard .study-helper-help, body.page-node-add-flashcard .node-flashcard .study-helper-help, body.page-homework-helper-my-flashcards .node-flashcard .study-helper-help {
   clear: both;
   padding-left: 20px;
   margin-top: 1.714em;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000390}}
-body.node-type-flashcard .node-flashcard .study-helper-url, body.page-homework-helper-flashcards .node-flashcard .study-helper-url, body.page-node-add-flashcard .node-flashcard .study-helper-url {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000391}}
+body.node-type-flashcard .node-flashcard .study-helper-url, body.page-homework-helper-flashcards .node-flashcard .study-helper-url, body.page-node-add-flashcard .node-flashcard .study-helper-url, body.page-homework-helper-my-flashcards .node-flashcard .study-helper-url {
   *zoom: 1;
   clear: both;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/var\/lib\/gems\/1\.8\/gems\/compass-0\.11\.3\/frameworks\/compass\/stylesheets\/compass\/utilities\/general\/_clearfix\.scss}line{font-family:\0000338}}
-body.node-type-flashcard .node-flashcard .study-helper-url:after, body.page-homework-helper-flashcards .node-flashcard .study-helper-url:after, body.page-node-add-flashcard .node-flashcard .study-helper-url:after {
+body.node-type-flashcard .node-flashcard .study-helper-url:after, body.page-homework-helper-flashcards .node-flashcard .study-helper-url:after, body.page-node-add-flashcard .node-flashcard .study-helper-url:after, body.page-homework-helper-my-flashcards .node-flashcard .study-helper-url:after {
   content: "";
   display: table;
   clear: both;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000393}}
-body.node-type-flashcard .node-flashcard .study-helper-url .form-item, body.page-homework-helper-flashcards .node-flashcard .study-helper-url .form-item, body.page-node-add-flashcard .node-flashcard .study-helper-url .form-item {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000394}}
+body.node-type-flashcard .node-flashcard .study-helper-url .form-item, body.page-homework-helper-flashcards .node-flashcard .study-helper-url .form-item, body.page-node-add-flashcard .node-flashcard .study-helper-url .form-item, body.page-homework-helper-my-flashcards .node-flashcard .study-helper-url .form-item {
   display: inline;
   float: left;
   margin: 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000396}}
-body.node-type-flashcard .node-flashcard .study-helper-url .form-item input, body.page-homework-helper-flashcards .node-flashcard .study-helper-url .form-item input, body.page-node-add-flashcard .node-flashcard .study-helper-url .form-item input {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000397}}
+body.node-type-flashcard .node-flashcard .study-helper-url .form-item input, body.page-homework-helper-flashcards .node-flashcard .study-helper-url .form-item input, body.page-node-add-flashcard .node-flashcard .study-helper-url .form-item input, body.page-homework-helper-my-flashcards .node-flashcard .study-helper-url .form-item input {
   background-color: #d71700;
   border-color: #d71700;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000399}}
-body.node-type-flashcard .node-flashcard .study-helper-url #study-helper-copy, body.page-homework-helper-flashcards .node-flashcard .study-helper-url #study-helper-copy, body.page-node-add-flashcard .node-flashcard .study-helper-url #study-helper-copy {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003100}}
+body.node-type-flashcard .node-flashcard .study-helper-url #study-helper-copy, body.page-homework-helper-flashcards .node-flashcard .study-helper-url #study-helper-copy, body.page-node-add-flashcard .node-flashcard .study-helper-url #study-helper-copy, body.page-homework-helper-my-flashcards .node-flashcard .study-helper-url #study-helper-copy {
   -webkit-appearance: none;
   -moz-border-radius: 24px;
   -webkit-border-radius: 24px;
@@ -905,7 +905,7 @@ body.node-type-flashcard .node-flashcard .study-helper-url #study-helper-copy, b
   display: inline;
   float: left;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003108}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003109}}
 body.node-type-flashcard .content-type-title {
   background-image: url(images/tfk-red-tag.png);
   background-repeat: no-repeat;
@@ -919,14 +919,14 @@ body.node-type-flashcard .content-type-title {
   margin-top: 10px;
   margin-left: -22px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003110}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003111}}
 body.node-type-flashcard .homework-helper-title {
   font-size: 16px;
   font-weight: bold;
   margin: 1em 0 0 1em;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003116}}
-body.page-homework-helper-flashcards .homework-helper-title, body.page-node-add-flashcard .homework-helper-title {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003118}}
+body.page-homework-helper-flashcards .homework-helper-title, body.page-node-add-flashcard .homework-helper-title, body.page-homework-helper-my-flashcards .homework-helper-title {
   background-image: url(images/tfk-red-tag.png);
   background-repeat: no-repeat;
   padding: 12px 12px 12px 24px;
@@ -940,7 +940,7 @@ body.page-homework-helper-flashcards .homework-helper-title, body.page-node-add-
   margin-left: -22px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003119}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003121}}
 .flashcard-cycle {
   background-color: white;
   -moz-border-radius: 10px;
@@ -952,12 +952,12 @@ body.page-homework-helper-flashcards .homework-helper-title, body.page-node-add-
   padding: 20px;
   position: relative;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003124}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003126}}
 .flashcard-cycle .flashcard-cycle-mode {
   float: none;
   position: static;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003127}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003129}}
 .flashcard-cycle .flashcard-cycle-mode .flashcard-cycle-wrapper {
   text-align: center;
   -webkit-appearance: none;
@@ -982,7 +982,7 @@ body.page-homework-helper-flashcards .homework-helper-title, body.page-node-add-
   cursor: pointer;
   overflow: visible;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003136}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003138}}
 .flashcard-cycle .flashcard-cycle-mode .flashcard-cycle-wrapper > * {
   display: -moz-inline-box;
   -moz-box-orient: vertical;
@@ -994,12 +994,12 @@ body.page-homework-helper-flashcards .homework-helper-title, body.page-node-add-
 .flashcard-cycle .flashcard-cycle-mode .flashcard-cycle-wrapper > * {
   *display: inline;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003138}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003140}}
 .flashcard-cycle .flashcard-cycle-mode label[for=flashcard-cycle-mode] {
   line-height: 1.5;
   margin-right: 1em;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003141}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003143}}
 .flashcard-cycle a.shuffle,
 .flashcard-cycle a.restart,
 .flashcard-cycle a.edit {
@@ -1024,7 +1024,7 @@ body.page-homework-helper-flashcards .homework-helper-title, body.page-node-add-
   padding: 8px 24px;
   margin-right: 20px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003151}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003153}}
 .flashcard-cycle .flashcard-cycle-pager a {
   color: #d71700;
   display: inline;
@@ -1033,12 +1033,12 @@ body.page-homework-helper-flashcards .homework-helper-title, body.page-node-add-
   height: 35px;
   width: 51px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003157}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003159}}
 .flashcard-cycle .flashcard-cycle-pager a.prev {
   background: url(images/tfk-red-arrow.png) no-repeat scroll 2px 0 transparent;
   padding-left: 42px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003160}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003162}}
 .flashcard-cycle .flashcard-cycle-pager a.flip {
   -webkit-appearance: none;
   -moz-border-radius: 14px;
@@ -1059,12 +1059,12 @@ body.page-homework-helper-flashcards .homework-helper-title, body.page-node-add-
   -o-box-shadow: rgba(0, 0, 0, 0.5) 0 2px 4px;
   box-shadow: rgba(0, 0, 0, 0.5) 0 2px 4px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003171}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003173}}
 .flashcard-cycle .flashcard-cycle-pager a.next {
   background: url(images/tfk-red-arrow-right.png) no-repeat scroll 36px 0 transparent;
   padding-right: 42px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003174}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003176}}
 .flashcard-cycle .flashcard-cycle-cards {
   background: #f8e549;
   width: 500px;
@@ -1081,7 +1081,7 @@ body.page-homework-helper-flashcards .homework-helper-title, body.page-node-add-
   -o-box-shadow: rgba(0, 0, 0, 0.25) -4px 4px 6px;
   box-shadow: rgba(0, 0, 0, 0.25) -4px 4px 6px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003182}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003184}}
 .flashcard-cycle .flashcard-cycle-cards ul.question li.answer {
   font-size: 20px;
   padding-top: 70px;
@@ -1089,7 +1089,7 @@ body.page-homework-helper-flashcards .homework-helper-title, body.page-node-add-
   font-weight: bold;
   margin: 10px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003189}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003191}}
 .flashcard-cycle .flashcard-cycle-cards ul.question .item-list ul.answer {
   background: white;
   width: 325px;
@@ -1103,19 +1103,19 @@ body.page-homework-helper-flashcards .homework-helper-title, body.page-node-add-
   border-radius: 11px;
   border: 4px solid #999999;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003196}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003198}}
 .flashcard-cycle .flashcard-cycle-cards ul.question .item-list ul.answer li.first {
   font-size: 20px;
   padding: 15px;
   color: #d71700;
   margin: 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003201}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003203}}
 .flashcard-cycle .flashcard-cycle-card {
   width: 500px;
   height: 250px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003204}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003206}}
 .flashcard-cycle .flashcard-cycle-mark {
   position: absolute;
   top: 80px;
@@ -1123,13 +1123,13 @@ body.page-homework-helper-flashcards .homework-helper-title, body.page-node-add-
   z-index: 10;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003210}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003212}}
 .flashcard-numbering {
   display: inline;
   float: right;
   padding-top: 6px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003213}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003215}}
 .flashcard-numbering span.flashcard-numbering-current {
   font-weight: bold;
 }
@@ -1199,7 +1199,7 @@ body.page-homework-helper-flashcards .homework-helper-title, body.page-node-add-
   margin-top: -10px;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_flashcard_page\.sass}line{font-family:\0000340}}
-.view-flashcard-landing-page.view-id-flashcard_landing_page .ui-accordion-content {
+.view-flashcard-landing-page.view-id-flashcard_landing_page .ui-accordion-content, .view-flashcard-landing-page.view-id-flashcard_landing_page.view-display-id-page_2 {
   width: 340px;
   border: 0px;
   margin-left: 10px;
@@ -1207,12 +1207,12 @@ body.page-homework-helper-flashcards .homework-helper-title, body.page-node-add-
   margin-top: 0;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_flashcard_page\.sass}line{font-family:\0000346}}
-.view-flashcard-landing-page.view-id-flashcard_landing_page .ui-accordion-content .views-row {
+.view-flashcard-landing-page.view-id-flashcard_landing_page .ui-accordion-content .views-row, .view-flashcard-landing-page.view-id-flashcard_landing_page.view-display-id-page_2 .views-row {
   overflow: hidden;
   *zoom: 1;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_flashcard_page\.sass}line{font-family:\0000349}}
-.view-flashcard-landing-page.view-id-flashcard_landing_page .ui-accordion-content .field-content:before {
+.view-flashcard-landing-page.view-id-flashcard_landing_page .ui-accordion-content .field-content:before, .view-flashcard-landing-page.view-id-flashcard_landing_page.view-display-id-page_2 .field-content:before {
   content: url("../../images/card_icon.png");
   clear: both;
   display: inline;
@@ -1220,7 +1220,7 @@ body.page-homework-helper-flashcards .homework-helper-title, body.page-node-add-
   margin-right: 10px;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_flashcard_page\.sass}line{font-family:\0000354}}
-.view-flashcard-landing-page.view-id-flashcard_landing_page .ui-accordion-content .field-content a {
+.view-flashcard-landing-page.view-id-flashcard_landing_page .ui-accordion-content .field-content a, .view-flashcard-landing-page.view-id-flashcard_landing_page.view-display-id-page_2 .field-content a {
   font-size: 120%;
 }
 
