@@ -452,8 +452,9 @@ class tfkHelperFeaturedItem {
           $file = $_thumbnail_field[0];
           dpm($file);
           $thumbnail_path = image_style_url('115x115', $file['uri']);
-          #$link_options = array('html' => TRUE, 'attributes' => array('class' => self::$thumbnail_class));
-          #$this->image = l(theme('image', array('path' => $thumbnail_path)), $url, $link_options);
+          dpm($thumbnail_path);
+          $link_options = array('html' => TRUE, 'attributes' => array('class' => self::$thumbnail_class));
+          $this->image = l(theme('image', array('path' => $thumbnail_path)), $url, $link_options);
         } else {
           $this->image = "Image placeholder";
         }
@@ -531,7 +532,7 @@ function tfk_helper_get_featured_block_sidebar($flag_name, $thumbnail_field, $dy
   	ORDER BY fn.created DESC";
 	
   // Try to load the first two featured items. If there are two use the second, else fall back to the first one.
-  $featured_nodes = db_query_range($fn_query, 0, 2,
+  $featured_nodes = db_query_range($fn_query, 0, 1,
     array(':node_type' => $node_type, ':flag_name' => $flag_name),
     array('fetch' => 'tfkHelperFeaturedItem',)
   )->fetchAll();
