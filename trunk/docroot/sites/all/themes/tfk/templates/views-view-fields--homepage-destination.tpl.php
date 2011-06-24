@@ -24,12 +24,27 @@
  */
 ?>
 <?php foreach ($fields as $id => $field): ?>
-  <?php if (!empty($field->separator)): ?>
-    <?php print $field->separator; ?>
-  <?php endif; ?>
 
-  <?php print $field->wrapper_prefix; ?>
-    <?php print $field->label_html; ?>
-    <?php print $field->content; ?>
-  <?php print $field->wrapper_suffix; ?>
+    <?php if($id != 'field_resources_list' && $id != 'field_resources_label'):?>
+      <?php if (!empty($field->separator)): ?>
+        <?php print $field->separator; ?>
+      <?php endif; ?>
+
+      <?php print $field->wrapper_prefix; ?>
+        <?php print $field->label_html; ?>
+        <?php print $field->content; ?>
+      <?php print $field->wrapper_suffix; ?>
+    <?php endif; ?>
 <?php endforeach; ?>
+
+
+
+<?php if(strlen($fields['field_resources_list']->content) != 0):?>
+    <div class="related-content-wrap">
+        <div class="addit-content"><?php print $fields['field_resources_label']->content;?></div>
+        <?php if($fields['field_resources_list']): ?>
+           <div class="addit-mini-lessons">WORKSHEETS : <?php print $fields['field_resources_list']->content;?></div>
+        <?php endif; ?>
+
+    </div>
+<?php endif;?>
