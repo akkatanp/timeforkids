@@ -3,6 +3,10 @@
   margin-right: 5px;
 }
 
+.more-items-col .more-items-title {
+	width: 115px;
+}
+
 #more-items {
   border: 1px solid #CECECE;
   padding: 10px 9px;
