@@ -132,10 +132,18 @@ h2.block-title {
 	height: 370px;
 }
 
-#slideshow-info .credit {
+#slideshow-info .credit,
+#slideshow-info .caption {
 	text-align: right;
 	font: normal 9px arial;
 	color: #999;
+}
+
+#slideshow-info .cap-credit {
+  font: normal 11px arial;
+  color: #999;
+  text-align: right;
+  padding-right: 5px;
 }
 
 #slideshow-info h1 {
