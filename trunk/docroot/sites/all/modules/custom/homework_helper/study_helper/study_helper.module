@@ -221,7 +221,24 @@ function study_helper_block_view($delta = '') {
   return $block;        
 }
 
+/**
+ * Content of My Flashcards block.
+ */
 function study_helper_my_flashcards() {
+  global $user;
+  $content = '<h2>' . t('Looking for your flashcards?') . '</h2>';
+  $content .= t('Click here to see them') . '<br />';
+  if ($user->uid) {
+    $content .= l('My Flashcards', 'homework-helper/my-flashcards', array('attributes' => array('class' => 'my-flashcards-link')));
+    return $content;
+  }
+  elseif (isset($_SESSION['flashcard_anonymous_nid'])) {
+    // Link to newest flashcard only for anonymous user.
+    $nid = max($_SESSION['flashcard_anonymous_nid']);
+    $obscured = db_query("SELECT uuid FROM {node} WHERE nid = :nid", array(':nid' => $nid))->fetchField();
+    $content .= l('My Flashcards', "flashcard/$obscured", array('attributes' => array('class' => 'my-flashcards-link')));
+    return $content;
+  }   
 }
 
 /**
