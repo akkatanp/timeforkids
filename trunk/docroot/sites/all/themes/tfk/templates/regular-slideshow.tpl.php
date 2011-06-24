@@ -24,9 +24,15 @@
 	<div id="slideshow-info">
 		<?php foreach($images_data as $image_k => $image_obj): ?>
 		<div class="slide-info" id="slide-info-<?php echo $image_k ?>"<?php if($image_k != 0) echo ' style="display: none;"'; ?>>
-			<div class="credit"><?php echo $image_obj['credit']; ?></div>
+			<div class="cap-credit">
+			  <?php if(!empty($image_obj['caption'])): ?>
+			  	<span class="caption"><?php echo $image_obj['caption']; ?></span> /
+			  <?php endif; ?>
+			  <?php if(!empty($image_obj['caption'])): ?>
+			  	<span class="credit"><?php echo $image_obj['credit']; ?></span>
+			  <?php endif; ?>
+			</div>
 			<h1 class="image-title"><?php echo $image_obj['image_title']; ?></h1>
-			<div class="caption"><?php echo $image_obj['caption']; ?></div>
 			<div class="description"><?php echo $image_obj['description']; ?></div>
 		</div>
 		<?php endforeach;?>
