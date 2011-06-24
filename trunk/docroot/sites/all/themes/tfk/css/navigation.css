@@ -748,7 +748,12 @@
 	color: white;
 	background: #d71700;
 	padding: 10px;
+	text-transform: uppercase;
 	margin-bottom: 10px;
+}
+
+#block-views-minisite-articles-block-4  .view-content .views-row {
+	margin-left: 10px;
 }
 
 #block-views-minisite-articles-block-6 {
