@@ -125,7 +125,7 @@ function tfk_helper_block_view($delta='') {
       $node = menu_get_object('node', 1);
       $image_field = ($node->type == 'video') ? 'field_video_thumbnail' : 'field_image';
       $featured_item = tfk_helper_get_featured_block_sidebar('photos_videos_featured', $image_field);
-      if(!empty($featured_item)) {
+      if($featured_item != FALSE) {
         $block['content'] = theme('featured_block_sidebar', $featured_item);
       }
     break;
@@ -503,11 +503,17 @@ function tfk_helper_get_featured_block_sidebar($flag_name, $thumbnail_field, $dy
   )->fetchAll();
   
   if(!empty($featured_nodes) && isset($featured_nodes[0]->nid)) {
-    $featured_node = new tfkHelperFeaturedItem(($featured_nodes[0]->nid));
+    // Supress the Featured block when the featured node is the same as the currently viewed one.
+    if($node->nid == $featured_nodes[0]->nid) {
+      return FALSE;
+    } else {
+      $featured_node = new tfkHelperFeaturedItem(($featured_nodes[0]->nid));
+    	if(!empty($featured_node->to_array)) {
+    	  return $featured_node->to_array;
+    	} else {
+    	  return FALSE;
+    	}
+    }
   }
-  
-	if(!empty($featured_node->to_array)) {
-	  return $featured_node->to_array;
-	}
-	
+  	
 }
