@@ -63,13 +63,9 @@ stylesheets[all][]        = hh-css/css/style.css
 stylesheets-conditional[lte IE 7][all][]  = css/ie7.css
 stylesheets-conditional[lte IE 6][all][]  = css/ie6.css
 
-
-
 ; Optionally add some JavaScripts to your theme.
 
-;scripts[] = js/script.js
-
-
+scripts[] = js/tfk_global.js
 
 ; The regions defined in Zen's default page.tpl.php file.  The name in
 ; brackets is the name of the region in the $page variable in the page.tpl.php
@@ -94,8 +90,6 @@ regions[footer]         = Footer
 regions[bottom]         = Page bottom
 regions[page_top]       = Page top
 regions[page_bottom]    = Page bottom
-
-
 
 ; Various page elements output by the theme can be toggled on and off. The
 ; "features" control which of these check boxes display on the
