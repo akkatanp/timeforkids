@@ -1307,14 +1307,14 @@ ul.links li {
 	border-top: solid 1px #cecece;
 }
 
-.view-news-archive .views-field-field-image {
+.view-news-archive .views-field-field-lrg-rect-image {
 	float: left;
 	margin-right: 10px;
 	width: 117px;
 	min-height: 80px;
 }
 
-.view-news-archive .views-field-field-image img {
+.view-news-archive .views-field-field-lrg-rect-image img {
 	width: 115px;
 	height: 60px;
 	border: solid 1px #cecece;
