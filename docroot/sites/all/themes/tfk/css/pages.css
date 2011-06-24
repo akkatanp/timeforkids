@@ -377,6 +377,7 @@ ul.links li {
 .view-homepage-minisite .related-content-wrap {
 	position: absolute;
 	bottom: 20px;
+	width: 216px;
 }
 
 #block-views-homepage-destination-block-1 .views-field-field-resources-label,
