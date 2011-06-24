@@ -374,6 +374,11 @@ ul.links li {
 	border: solid 3px white;
 }
 
+.view-homepage-minisite .related-content-wrap {
+	position: absolute;
+	bottom: 20px;
+}
+
 #block-views-homepage-destination-block-1 .views-field-field-resources-label,
 .view-homepage-minisite .views-field-field-minisite-related-content-1 {
 	position: absolute;
