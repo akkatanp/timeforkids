@@ -450,9 +450,9 @@ class tfkHelperFeaturedItem {
         
         if(!empty($_thumbnail_field[0])) {
           $file = $_thumbnail_field[0];
-          $thumbnail_path = image_style_url(self::$image_style, $file['uri']);
-          $link_options = array('html' => TRUE, 'attributes' => array('class' => self::$thumbnail_class));
-          $this->image = l(theme('image', array('path' => $thumbnail_path)), $url, $link_options);
+          #$thumbnail_path = image_style_url(self::$image_style, $file['uri']);
+          #$link_options = array('html' => TRUE, 'attributes' => array('class' => self::$thumbnail_class));
+          #$this->image = l(theme('image', array('path' => $thumbnail_path)), $url, $link_options);
         } else {
           $this->image = "Image placeholder";
         }
