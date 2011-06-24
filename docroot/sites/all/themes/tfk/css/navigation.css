@@ -855,6 +855,7 @@
 	border-top: none;
 	padding: 4px;
 	font-size: 11px;
+	min-height: 128px;
 }
 
 #block-views-global-right-sidebar-block .views-field-field-image {
