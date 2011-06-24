@@ -857,6 +857,13 @@
 	font-size: 11px;
 }
 
+#block-views-global-right-sidebar-block .views-field-field-image {
+	float: left;
+	margin-right: 4px;
+	width: 90px;
+	height: 120px;
+}
+
 #block-views-global-right-sidebar-block-1 .content,
 #block-views-global-right-sidebar-block-2 .content,
 #block-views-global-right-sidebar-block-3 .content,
