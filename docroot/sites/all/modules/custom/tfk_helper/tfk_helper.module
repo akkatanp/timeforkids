@@ -144,7 +144,8 @@ function tfk_helper_block_view($delta='') {
       drupal_add_js(drupal_get_path('theme', 'tfk'). '/js/atw_homepage_slideshow.js','file');
       drupal_add_css(drupal_get_path('theme', 'tfk'). '/css/atw_homepage_slideshow.css', 'file');
       $slideshow_nid = arg(1);
-      $images = tfk_helper_get_slideshow_data($slideshow_nid);
+      #$images = tfk_helper_get_slideshow_data($slideshow_nid);
+      $images = FALSE;
       if($images != FALSE) {
         $block['content'] = tfk_helper_get_slideshow($images, array('related_nid' => $slideshow_nid));
       } else {
@@ -442,31 +443,9 @@ class tfkHelperFeaturedItem {
     $this->link = l('See '. ucfirst($featured_node->type), $url);
     
     if($featured_node->type == 'slideshow') {
-      $slideshow_images = field_get_items('node', $featured_node, 'field_slideshow_images');
-      
-      if($slideshow_images[0]) {
-        $image_node = node_load($slideshow_images[0]);
-        $_thumbnail_field = field_get_items('node', $image_node, self::$thumbnail_field);
-        
-        if(!empty($_thumbnail_field[0])) {
-          $file = $_thumbnail_field[0];
-          dpm($file);
-          $thumbnail_path = image_style_url('115x115', $file['uri']);
-          dpm($thumbnail_path);
-          $link_options = array('html' => TRUE, 'attributes' => array('class' => self::$thumbnail_class));
-          $this->image = l(theme('image', array('path' => $thumbnail_path)), $url, $link_options);
-        } else {
-          $this->image = "Image placeholder";
-        }
-             
-      } else {
-        $this->image = "Image placeholder";
-      }
-
-      #$this->get_thumbnail((object) $_thumbnail_field[0], $url);
-      
-
-      
+      $image_node = node_load(array_shift(field_get_items('node', $featured_node, 'field_slideshow_images')));
+      $_thumbnail_field = field_get_items('node', $image_node, self::$thumbnail_field);
+      $this->get_thumbnail((object) $_thumbnail_field[0], $url);
     } else {
       $_thumbnail_field = field_get_items('node', $featured_node, self::$thumbnail_field);
       if(!empty($_thumbnail_field)) {
