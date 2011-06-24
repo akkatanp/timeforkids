@@ -27,6 +27,7 @@
 			<div class="credit"><?php echo $image_obj['credit']; ?></div>
 			<h1 class="image-title"><?php echo $image_obj['image_title']; ?></h1>
 			<div class="caption"><?php echo $image_obj['caption']; ?></div>
+			<div class="description"><?php echo $image_obj['description']; ?></div>
 		</div>
 		<?php endforeach;?>
 	</div>

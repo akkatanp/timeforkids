@@ -258,7 +258,7 @@ function tfk_helper_translate_content_type($content_type) {
 function tfk_helper_get_slideshow_data($nid) {
   
   
-  $node = node_load($nid);
+  $node = node_load($nid); //@todo menu get object.
   $images =  field_get_items('node', $node, 'field_slideshow_images');
   
   if(!empty($images)) {
@@ -276,6 +276,14 @@ function tfk_helper_get_slideshow_data($nid) {
       // Images.
       $image_field = array_shift(field_get_items('node', $image['node'], 'field_image'));
       
+      // Description.
+      $body = array_shift(field_get_items('node', $image['node'], 'body'));
+      if(!empty($body['safe_summary'])) {
+        $description = $body['safe_summary'];
+      } else {
+        $description = $body['safe_value'];
+      }
+      
       $derivative_path = tfk_search_get_thumbnail($image_field['fid'], 'tfk_square_large');
       
       if($derivative_path != FALSE) {
@@ -284,7 +292,8 @@ function tfk_helper_get_slideshow_data($nid) {
           'image_title' => $image['node']->title,
           'title'       => $title,
           'caption'     => $caption,
-          'credit'      => $credit
+          'credit'      => $credit,
+          'description' => $description,
         );
       }
       
