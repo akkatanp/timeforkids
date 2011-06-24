@@ -471,6 +471,7 @@
 	padding: 6px 0 6px 6px;
 	margin: 20px 0 0 0;
 	text-transform: uppercase;
+	background: url("../images/teacher-nav-llink-back.png") repeat-x;
 	background: -moz-linear-gradient(100% 100% 90deg,  #5ea1d3, #7bc3f5);
 	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#7bc3f5), to(#5ea1d3));
 	background: -webkit-linear-gradient(#7bc3f5, #5ea1d3);
