@@ -161,7 +161,8 @@
 	display: block;
 	float: left;
 	height: 32px;
-	font-size: 0px;
+	text-indent: 999px;
+	overflow: hidden;
 }
 
 #global-nav-container ul.menu a.news {
