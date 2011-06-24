@@ -23,7 +23,7 @@
  * @ingroup views_templates
  */
 ?>
-adad
+<?php if(strlen($fields['field_minisite_resources']->content) > 0 ):?>
 <?php foreach ($fields as $id => $field): ?>
   <?php if (!empty($field->separator)): ?>
     <?php print $field->separator; ?>
@@ -34,3 +34,4 @@ adad
     <?php print $field->content; ?>
   <?php print $field->wrapper_suffix; ?>
 <?php endforeach; ?>
+<?php endif; ?>
