@@ -362,7 +362,7 @@ function tfk_teachers_community_form_teacher_community_question_node_form_alter(
   $form['path']['#access'] = FALSE;
   $form['comment_settings']['#access'] = FALSE;
   $form['author']['#access'] = FALSE;
-  $form['options']['#access'] = FALSE;
+  $form['options']['#access'] = TRUE;
   
   // Change the default Core title textfield to a texarea.
   $form['title']['#type'] = 'textarea';
