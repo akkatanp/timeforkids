@@ -641,9 +641,10 @@ function tfk_photos_video_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
+          'module' => 'text',
           'settings' => array(),
-          'type' => 'hidden',
+          'type' => 'text_plain',
           'weight' => '4',
         ),
         'teaser' => array(
@@ -709,8 +710,9 @@ function tfk_photos_video_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'hidden',
+          'module' => 'text',
           'settings' => array(),
-          'type' => 'hidden',
+          'type' => 'text_plain',
           'weight' => '5',
         ),
         'teaser' => array(
@@ -1225,6 +1227,7 @@ function tfk_photos_video_field_default_fields() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Additional Content');
   t('Additional content');
   t('Caption');
   t('Category');
