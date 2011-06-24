@@ -156,12 +156,12 @@
 	padding: 0;
 }
 
-#teacher-nav-container ul.menu li.leaf a, 
+#teacher-nav-container ul.menu li.leaf a,
 #global-nav-container ul.menu li.leaf a {
 	display: block;
 	float: left;
 	height: 32px;
-	text-indent: 9999px;
+	text-indent: -9999px;
 	overflow: hidden;
 }
 
