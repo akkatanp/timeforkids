@@ -69,6 +69,15 @@ div#site-name /* The name of the website */ {
 	text-transform: uppercase;
 }
 
+#main-wrapper h1#section-title {
+  float: left;
+  width: 768px;
+  font: normal 18px "arial black";
+  margin: 0 0 10px 0;
+  border-bottom: solid 6px #d71700;
+  text-transform: uppercase;
+}
+
 /*
  * Footer
  */
