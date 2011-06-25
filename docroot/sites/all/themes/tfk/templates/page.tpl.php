@@ -108,24 +108,6 @@ if(drupal_is_front_page()) {
         <?php endif; ?>
       </div><!-- /#name-and-slogan -->
     <?php endif; ?>
-
-    
-    <?php
-    /***
-    print theme('links__system_secondary_menu', array(
-      'links' => $secondary_menu,
-      'attributes' => array(
-        'id' => 'secondary-menu',
-        'class' => array('links', 'inline', 'clearfix'),
-      ),
-      'heading' => array(
-        'text' => $secondary_menu_heading,
-        'level' => 'h2',
-        'class' => array('element-invisible'),
-      ),
-    ));
-    ***/
-    ?>
 	
     <div id="global-nav-container">
 		<?php print render($page['header']['menu_menu-tfk-global-navigation']); ?>
