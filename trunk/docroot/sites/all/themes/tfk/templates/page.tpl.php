@@ -80,9 +80,11 @@ if(drupal_is_front_page()) {
   <div id="header">
     <div class="section clearfix">
     <?php if ($logo): ?>
-    <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo"><img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" /></a>
+    	<a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo"><img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" /></a>
     <?php endif; ?>
-                <?php if (array_key_exists('banner_728x90', $ad)) {echo $ad['banner_728x90'];} ?>
+    <?php if(isset($ad) && array_key_exists('banner_728x90', $ad)): ?>
+    	<?php print $ad['banner_728x90']; ?>
+    <?php endif; ?>
     </div>
   </div>
 	
