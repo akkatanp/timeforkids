@@ -990,14 +990,16 @@ body.page-homework-helper-flashcards .homework-helper-title, body.page-node-add-
   top: 80px;
   left: 120px;
   z-index: 10;
+  display: inline;
+  float: left;
 }
 
 .flashcard-numbering {
   display: inline;
   float: right;
-  padding-top: 6px;
   position: absolute;
-  top: 54px;
+  top: 60px;
+  left: 300px;
   z-index: 10;
   width: 60px;
 }
