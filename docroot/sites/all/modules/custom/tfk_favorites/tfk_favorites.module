@@ -138,10 +138,13 @@ function tfk_favorites_preprocess_page(&$variables, $hook) {
   if(arg(0) == 'my-favorites') {
     $variables['section_title'] = 'MY FAVORITES';
 
-    // Since the My Favorites page uses so many styles that are already defined in Worksheets, we recyle tfk_search.css.
+    // Since the My Favorites page uses so many styles that are already defined in Photos and Videos, we recyle tfk_search.css.
     drupal_add_css(drupal_get_path('module', 'tfk_search'). '/css/tfk_search.css', 'file');
     
-    // Then we can inherit and override as needed.
+    // We also recycle some left column block and content styles from worksheets.
+    drupal_add_css(drupal_get_path('module', 'tfk_search'). '/css/tfk_worksheets.css', 'file');
+    
+    // Finally we inherit and override as needed from a dedicated favorites stylesheet.
     drupal_add_css(drupal_get_path('module', 'tfk_favorites'). '/css/tfk_favorites.css', 'file');
   }
 }
@@ -151,7 +154,6 @@ function tfk_favorites_preprocess_node(&$variables){
   
   if(array_key_exists('node', $variables) && $variables['node']->type == 'store') {
 
-     
       //we dont want title to be displayeed
       $variables['title'] = '';
       $store_items = array();
