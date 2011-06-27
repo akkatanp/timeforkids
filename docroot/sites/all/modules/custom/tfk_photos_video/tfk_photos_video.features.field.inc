@@ -825,6 +825,104 @@ function tfk_photos_video_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-video-field_related_photos_video'
+  $fields['node-video-field_related_photos_video'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '4',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_related_photos_video',
+      'foreign keys' => array(
+        'nid' => array(
+          'columns' => array(
+            'nid' => 'nid',
+          ),
+          'table' => 'node',
+        ),
+      ),
+      'indexes' => array(
+        'nid' => array(
+          0 => 'nid',
+        ),
+      ),
+      'module' => 'node_reference',
+      'settings' => array(
+        'referenceable_types' => array(
+          'a_paper' => 0,
+          'article' => 0,
+          'atw_day_in_life' => 0,
+          'atw_destination' => 0,
+          'atw_homepage_nodeblock' => 0,
+          'atw_native_lingo' => 0,
+          'atw_sightseeing' => 0,
+          'atw_timeline' => 0,
+          'board_member' => 0,
+          'book' => 0,
+          'global_right_sidebar_promo' => 0,
+          'image' => 0,
+          'kid_reporter' => 0,
+          'magazine_issue' => 0,
+          'mini_lesson' => 0,
+          'minisite' => 0,
+          'notification_homepage' => 0,
+          'page' => 0,
+          'paper_step' => 0,
+          'slideshow' => 'slideshow',
+          'tfk_extra' => 0,
+          'video' => 'video',
+          'webform' => 0,
+          'worksheet' => 0,
+        ),
+        'view' => array(
+          'args' => array(),
+          'display_name' => '',
+          'view_name' => '',
+        ),
+      ),
+      'translatable' => '1',
+      'type' => 'node_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'video',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '4',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_related_photos_video',
+      'label' => 'Related Photos and Video',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'node_reference',
+        'settings' => array(
+          'autocomplete_match' => 'contains',
+          'autocomplete_path' => 'node_reference/autocomplete',
+          'size' => '60',
+        ),
+        'type' => 'node_reference_autocomplete',
+        'weight' => '11',
+      ),
+    ),
+  );
+
   // Exported field: 'node-video-field_themes'
   $fields['node-video-field_themes'] = array(
     'field_config' => array(
@@ -1129,8 +1227,8 @@ function tfk_photos_video_field_default_fields() {
       'indexes' => array(),
       'module' => 'metatags_quick',
       'settings' => array(
-        'meta_name' => 'description',
         0 => 'meta_name',
+        'meta_name' => 'description',
       ),
       'translatable' => '0',
       'type' => 'metatags_quick',
@@ -1183,8 +1281,8 @@ function tfk_photos_video_field_default_fields() {
       'indexes' => array(),
       'module' => 'metatags_quick',
       'settings' => array(
-        'meta_name' => 'keywords',
         0 => 'meta_name',
+        'meta_name' => 'keywords',
       ),
       'translatable' => '0',
       'type' => 'metatags_quick',
@@ -1238,6 +1336,7 @@ function tfk_photos_video_field_default_fields() {
   t('Images');
   t('Meta Description');
   t('Meta Keywords');
+  t('Related Photos and Video');
   t('Themes');
   t('Thumbnail');
   t('Video Upload');
