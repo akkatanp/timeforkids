@@ -23,11 +23,29 @@
  */
 ?>
 <?php if ($search_results) : ?>
-  <h2><?php print t('Search results');?></h2>
-  <ol class="search-results <?php print $module; ?>-results">
-    <?php print $search_results; ?>
-  </ol>
-  <?php print $pager; ?>
+  
+  <?php if(isset($custom_search)): ?>
+    
+    <?php if(isset($pager_top)): ?>
+    	<?php print $pager_top; ?>
+    <?php endif; ?>
+    
+    <ol id="tfk-search-results-photos-video" class="search-results<?php if($module): ?><?php print $module; ?>-results<?php endif; ?>">
+      <?php print $search_results; ?>
+    </ol>
+    <?php print $pager; ?>
+    
+  <?php else: ?>
+    
+    <h2><?php print t('Search results');?></h2>
+    <ol id="<?php print ($ordered_list_id) ? $ordered_list_id: 'search-results'; ?>">
+      <?php print $search_results; ?>
+    </ol>
+    
+    <?php print $pager; ?>
+    
+  <?php endif; ?>
+  
 <?php else : ?>
   <h2><?php print t('Your search yielded no results');?></h2>
   <?php print search_help('search#noresults', drupal_help_arg()); ?>

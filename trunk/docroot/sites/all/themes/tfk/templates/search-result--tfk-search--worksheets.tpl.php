@@ -64,40 +64,82 @@
  * @see template_preprocess_search_result()
  * @see template_process()
  */
-?>CUSTOM SEARCH RES
+?>
 <li class="<?php print $classes; ?>"<?php print $attributes; ?>>
-  <?php if($tfk_search_cont_type):?>
-    Content type:<?php print $tfk_search_cont_type;?><br/>
-  <?php endif;?>
+
   <?php if($tfk_search_res_skills):?>
-    SKills Vocab Term : <?php print $tfk_search_res_skills;?><br/>
+    <!-- SKills Vocab Term : <?php print $tfk_search_res_skills;?> --><br/>
   <?php endif;?>
-
-
-  <?php if($tfk_search_res_grade_level):?>
-    Grade Level:<?php print $tfk_search_res_grade_level;?><br/>
+  
+  <?php if($tfk_search_cont_type):?>
+    <div class="content-type">
+    	<?php if($tfk_search_cont_type_suffix): ?>
+    		<span class="ctype"><?php print $tfk_search_cont_type; ?></span>
+    		<span class="ctype-suffix"><?php print $tfk_search_cont_type_suffix; ?></span>
+    	<?php else: ?>
+    		<?php print $tfk_search_cont_type; ?>
+    	<?php endif; ?>
+    </div>
   <?php endif;?>
-
-  <?php print render($title_prefix); ?>
-  <h3 class="title"<?php print $title_attributes; ?>>
-    <a href="<?php print $url; ?>"><?php print $title; ?></a>
-  </h3>
-  <?php print render($title_suffix); ?>
-  <?php if($tfk_search_res_image):?>
-    <img src="<?php print $tfk_search_res_image;?>">
-  <?php endif;?>
-  <div class="search-snippet-info">
-    <?php if ($snippet) : ?>
-      <p class="search-snippet"<?php print $content_attributes; ?>><?php print $snippet; ?></p>
-    <?php endif; ?>
-    <?php if ($info) : ?>
-      <p class="search-info"><?php print $info; ?></p>
-    <?php endif; ?>
+  
+  <div class='row2'>
+    <div class='col1'>
+      <?php if($tfk_search_res_image):?>
+        <?php if(array_key_exists('link', $result)): ?>
+          <a href="<?php print $result['link']; ?>">
+          	<img alt="<?php print $title; ?>" title="<?php print $title; ?>" class="thumbnail <?php if(array_key_exists('bundle', $result)) print 'content-type-'. $result[bundle]; ?>" src="<?php print $tfk_search_res_image;?>" />
+          </a>
+        <?php else: ?>
+        	<img alt="<?php print $title; ?>" title="<?php print $title; ?>" class="thumbnail <?php if(array_key_exists('bundle', $result)) print 'content-type-'. $result[bundle]; ?>" src="<?php print $tfk_search_res_image;?>" />
+        <?php endif;?>
+      <?php endif;?>
+    </div>
+   
+  	<div class='col2'>
+      <?php if($tfk_search_res_grade_level):?>
+        Grade Level:<?php print $tfk_search_res_grade_level;?>
+      <?php endif;?>
+    
+      <h3 class="title"<?php print $title_attributes; ?>>
+        <a href="<?php print $url; ?>">
+          <?php if(!empty($title_prefix)): ?>
+          	<?php print render($title_prefix); ?>
+          <?php endif; ?>
+          <?php print $title; ?>
+          <?php if(!empty($title_suffix)): ?>
+          	<?php print render($title_suffix); ?>
+          <?php endif; ?>
+        </a>
+      </h3>
+      
+      <?php if(!empty($node_link)):?>
+        <div class="view-full-article"><?php print $node_link; ?></div>
+      <?php endif;?>
+      
+      <?php print render($title_suffix); ?>
+      <div class="search-snippet-info">
+        <div class="search-snippet-body">
+          <?php if ($snippet) : ?>
+            <p class="search-snippet"<?php print $content_attributes; ?>><?php print $snippet; ?></p>
+          <?php endif; ?>
+        </div>
+        
+        <div class="search-result-links">
+          <?php if($tfk_worksheet_pdf_link): ?>
+          	<span class="search-result-download-link <?php print $cont_type_class; ?>"><?php print $tfk_worksheet_pdf_link; ?></span>
+          <?php endif; ?>
+          
+          <?php if($favorites_flag_link): ?>
+          	<?php print $favorites_flag_link; ?>
+          <?php endif; ?>
+        </div>
+          
+      </div>
+      
+      <?php if($related_content):?>
+        <?php print $related_content; ?>
+      <?php endif;?>
+    </div>
   </div>
-
-
-    MAKE FAVORITE : <?php print $favorites_flag_link;?><br/>
-    DOWNLOAD LINK : <a href="<?php print $tfk_worksheet_pdf_url;?>">download this <?php print $tfk_search_res_skills;?></a>
-
-
+  
 </li>
