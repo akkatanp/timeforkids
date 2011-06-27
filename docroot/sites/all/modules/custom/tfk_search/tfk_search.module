@@ -837,10 +837,7 @@ function tfk_search_preprocess_search_result(&$vars) {
         $worksheet_nid = $vars['result']['fields']['entity_id'];
 
         $node = node_load($worksheet_nid);
-        
-        // See Related Article link.
-        $vars['node_link'] = l('See Related Article', $node->nid);
-        
+ 
         if(isset($node->field_worksheet_thumbnail_image)){
           $tmp_img_nid =  field_get_items('node', $node, 'field_worksheet_thumbnail_image');
           $uri = $tmp_img_nid[0]['uri'];
@@ -873,6 +870,22 @@ function tfk_search_preprocess_search_result(&$vars) {
               $vars['snippet'] = truncate_utf8($body[0]['safe_value'], '200', TRUE, TRUE, 10);
             }
           }
+          
+          // See Related Article link.
+          $related_articles = field_get_items('node', $node, 'field_related_articles');
+          if($related_articles != FALSE) {
+            // @todo We should be indexing this data instead of node_loading it.
+            // Too much node loads may eliminate the speed advantage provided by Solr.
+            // Only doing this because we have a presentation today.
+            $article_nid = array_shift(array_shift($related_articles));
+            if($article_nid) {
+              $article_node = node_load($article_nid);
+              $vars['node_link'] = l('See Related Article', 'node/'. $article_node->nid,
+                array('attributes' => array('title' => $article_node->title, 'class' => array('worksheet-article-ref')))
+              );
+            }
+          }
+                  
         }
         
         // Download this [worksheet type] link.
