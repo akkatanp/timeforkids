@@ -92,14 +92,23 @@ function grammar_wizard_multistep_form($form, &$form_state, $questions) {
 function grammar_wizard_multistep_form_callback($form, $form_state) {
   $current_step = 'step_' . $form_state['storage']['step'];
   
-  if ($form_state['student_answers'][$current_step] == 1) {
-    $form['check_answer']['#access'] = FALSE; 
-    $form['question_result'] = array('#markup' => $form_state['question_result'], '#weight' => 1,);
-  }  
-  elseif (isset($form_state['student_answers'][$current_step])) {
-    $form['question_result'] = array('#markup' => $form_state['question_result'], '#weight' => 1,);
-  
+  if (isset($form_state['student_answers'][$current_step])) {
+    if ($form_state['student_answers'][$current_step] == 1) {
+      $form['check_answer']['#access'] = FALSE; 
+      $form['question_result'] = array('#markup' => $form_state['question_result'], '#weight' => 1,);
+    }  
+    else {
+      $form['question_result'] = array('#markup' => $form_state['question_result'], '#weight' => 1,);
+    }
+
+    if (isset($form_state['correct_answer']) && !$form_state['correct_answer']) {
+      $form['check_answer']['#value'] = t('Try Again');
+    }
+    else {
+      $form['check_answer']['#value'] = t('Check Answer');
+    }
   }
+  unset($form_state['correct_answer']);
 
   return $form;
 }
@@ -176,6 +185,7 @@ function grammar_wizard_check_answer($form, &$form_state) {
     drupal_set_message('Please select an answer.', 'warning');
   }
   else {
+    $form_state['correct_answer'] = FALSE;
     $form_state['question_result'] = '<div id="grammar-wizard-result"><h2>Try Again!</h2><div id="grammar-wizard-rule"><h2>Remember:</h2>' . $form[$current_step]['#rule'] . '<h3>Example:</h3><div id="grammar-wizard-example">' . $form[$current_step]['#rule_example'] . '</div></div></div>';
     $form_state['student_answers'][$current_step] = 0;
   }  
