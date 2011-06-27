@@ -28,6 +28,7 @@
  * @ingroup themeable
  *
  * @see tfk_search_theme()
+ * @see tfk_search_preprocess_pager_top()
  * @see theme_pager()
  * @see pager.inc
  */
