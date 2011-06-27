@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the tfk_favorites_feature feature.
+ */
+
+include_once('tfk_favorites_feature.features.inc');
