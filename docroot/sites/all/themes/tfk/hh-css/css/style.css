@@ -1199,3 +1199,20 @@ body.page-homework-helper-a-plus-papers #block-system-main .views-field-nothing 
 body.page-homework-helper-a-plus-papers #block-system-main .views-field-nothing .related-pdfs a {
   margin-right: 10px;
 }
+
+.writers-toolbox {
+  *zoom: 1;
+}
+.writers-toolbox:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.writers-toolbox .toolbox-links {
+  display: inline;
+  float: left;
+}
+.writers-toolbox .toolbox-pdfs {
+  display: inline;
+  float: right;
+}
