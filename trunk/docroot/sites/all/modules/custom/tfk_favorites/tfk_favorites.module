@@ -46,11 +46,16 @@ function tfk_favorites_block_view($delta='') {
 }
 
 /**
+ * Creates the "My Favorites" block.
+ *
  * Callback for tfk_favorites_block_view(), delta "tfk_favorites_links".
  *
  * @see tfk_favorites_block_view()
  */
 function _tfk_favorites_links_block_content() {
+  
+  // We add the CSS here so the block can be added to multiple pages with ease.
+  drupal_add_css(drupal_get_path('module', 'tfk_favorites'). '/css/tfk_my_favorites_block.css');
 
   $ref = arg(0);
   
