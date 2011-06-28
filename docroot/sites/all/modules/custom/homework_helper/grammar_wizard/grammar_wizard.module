@@ -103,10 +103,10 @@ function grammar_wizard_multistep_form_callback($form, $form_state) {
   if (isset($form_state['student_answers'][$current_step])) {
     if ($form_state['student_answers'][$current_step] == 1) {
       $form['check_answer']['#access'] = FALSE; 
-      $form['question_result'] = array('#markup' => $form_state['question_result'], '#weight' => .9,);
+      $form['question_result'] = array('#markup' => $form_state['question_result'], '#weight' => 1,);
     }  
     else {
-      $form['question_result'] = array('#markup' => $form_state['question_result'], '#weight' => .9,);
+      $form['question_result'] = array('#markup' => $form_state['question_result'], '#weight' => 1,);
     }
 
     if (isset($form_state['correct_answer']) && !$form_state['correct_answer']) {
@@ -176,7 +176,16 @@ function grammar_wizard_final_question_content($form_state) {
     }
   }  
 
-  return '<div id="grammar-wizard-results"><h1>Your Results:</h1><div>Correct: ' . $correct . '</div><div>Incorrect: ' . $incorrect . '</div></div>';
+  if ($incorrect == 0) {
+    $output = views_embed_view('grammar_practice_trophies');
+    $output .= '<div id="grammar-wizard-results"><h2>Your Results:</h2><div>Correct: ' . $correct . '</div><div>Incorrect: ' . $incorrect . '</div><h2>Congratulations!</h2></div>';
+  }  
+  else {
+    $output .= '<div id="grammar-wizard-results"><h2>Your Results:</h2><div>Correct: ' . $correct . '</div><div>Incorrect: ' . $incorrect . '</div></div>';
+  }  
+
+
+  return $output;
 }  
 
 
