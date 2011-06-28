@@ -52,7 +52,10 @@ function tfk_search_init(){
   
   // Provide styling for Photos & Video section.
   if(arg(0) == 'photos-video') {
+    // Styles for search results and first sidebar.
     drupal_add_css(drupal_get_path('module', 'tfk_search'). '/css/tfk_search.css', 'file');
+    // Styles for favorite links and blocks.
+    #drupal_add_css(drupal_get_path('module', 'tfk_favorites'). '/css/tfk_favorites.css', 'file');
   }
   
   // Worksheets inherit and override Photos & Video CSS.
@@ -831,6 +834,9 @@ function tfk_search_preprocess_search_result(&$vars) {
           $abspath = file_create_url($newpath);
           $vars['tfk_search_res_image'] = $abspath;
         }
+        
+        // Flag link.
+        tfk_search_get_flag_link($vars, $nid, 'favorites');
       break;
       
       case 'worksheet':
@@ -900,17 +906,11 @@ function tfk_search_preprocess_search_result(&$vars) {
         }
         
         // This is code that will get us a flag html with a working flag link to put in a template.
-        $flag = flag_get_flag('favorites');
-        if($flag != FALSE) {
-          $flag_link = flag_create_link('favorites', $worksheet_nid);
-          $vars['favorites_flag_link'] = $flag_link;
-        }
+        tfk_search_get_flag_link($vars, $worksheet_nid, 'favorites');
         
         // Content type CSS class.
         $vars['classes_array'][] = 'worksheet';
         $vars['classes_array'][] = (!empty($name)) ? strtolower(rtrim($name, 's')) : 'worksheet';
-
-
       break;
 
       case 'slideshow':
@@ -935,6 +935,9 @@ function tfk_search_preprocess_search_result(&$vars) {
             $vars['tfk_search_res_image'] = image_style_url($style, $file->uri);
           }
         }
+        
+        // Flag link.
+        tfk_search_get_flag_link($vars, $nid, 'favorites');
       break;
       
       case 'article':
@@ -1310,3 +1313,25 @@ function search_get_keys() {
   return $return;
 }
 
+/**
+ * Helper function for creating flag links.
+ *
+ * This is code that will get us a flag html with a working flag link to put in a template.
+ *
+ * @param array $vars
+ *   Search result variables.
+ * @param string $nid
+ *   Node nid.
+ * @param string $flag_name
+ *   Name of the flag.
+ */
+function tfk_search_get_flag_link(&$vars, $nid, $flag_name = 'favorites') {
+  // This is code that will get us a flag html with a working flag link to put in a template.
+  $flag = flag_get_flag($flag_name);
+  if($flag != FALSE) {
+    $flag_link = flag_create_link($flag_name, $nid);
+    $vars['favorites_flag_link'] = $flag_link;
+  } else {
+    return FALSE;
+  }
+}
