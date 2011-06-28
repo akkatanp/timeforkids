@@ -642,46 +642,50 @@ function tfk_atw_quiz_submit(&$form, &$form_state) {
 
 function tfk_atw_form_alter(&$form,&$form_state,$form_id) {
 	if(substr($form_id,0, 19) == 'webform_client_form') {
-            $dest_slug = arg(1);
-            //$form['#action'] = url('destination/'.$dest_slug.'/challenge');
+	  $node = menu_get_object();
+	  if ($node->type == 'webform') {
+	           $dest_slug = arg(1);
+              //$form['#action'] = url('destination/'.$dest_slug.'/challenge');
 
-		if (isset($form_state['storage'])) {
+  		if (isset($form_state['storage'])) {
 
-			$questions = $form['#node']->webform['components'];
+  			$questions = $form['#node']->webform['components'];
 
-			$old_form = $form;
-			$form = array();
-			$form['#build_id'] = $old_form ['#build_id'];
-			$form['#tree'] = $old_form ['#tree'];
-			$form['#parents'] = $old_form ['#parents'];
-			// $form['#array_parents'] = $old_form ['#array_parents'];
+  			$old_form = $form;
+  			$form = array();
+  			$form['#build_id'] = $old_form ['#build_id'];
+  			$form['#tree'] = $old_form ['#tree'];
+  			$form['#parents'] = $old_form ['#parents'];
+  			// $form['#array_parents'] = $old_form ['#array_parents'];
 
-			$form['message']= array(
-				'#markup' => t('You got %correct correct answers of %total',
-						array('%correct' => $form_state['storage']['correct_answers'],
-							  '%total' => $form_state['storage']['total_answers']
-			)));
+  			$form['message']= array(
+  				'#markup' => t('You got %correct correct answers of %total',
+  						array('%correct' => $form_state['storage']['correct_answers'],
+  							  '%total' => $form_state['storage']['total_answers']
+  			)));
 
-			if(!empty($questions))
-			foreach($questions as $key => $question) {
+  			if(!empty($questions))
+  			foreach($questions as $key => $question) {
 
-				if ($form_state['storage']['user_answers'][$key]) {
-					$value = t('Correct.') . ' ' . $question['extra']['correct_text'];
-				}
-				else {
-					$value = t('Oopps, you missed this one');
-				}
+  				if ($form_state['storage']['user_answers'][$key]) {
+  					$value = t('Correct.') . ' ' . $question['extra']['correct_text'];
+  				}
+  				else {
+  					$value = t('Oopps, you missed this one');
+  				}
 
-				$form[$question['form_key']] = array (
-					'#type' => 'item',
-					'#title' => $question['name'],
-					'#markup' => $value
-				);
-			}
-		}
-		else {
-			$form['#submit'][]='tfk_atw_quiz_submit';
-		}
+  				$form[$question['form_key']] = array (
+  					'#type' => 'item',
+  					'#title' => $question['name'],
+  					'#markup' => $value
+  				);
+  			}
+  		}
+  		else {
+  			$form['#submit'][]='tfk_atw_quiz_submit';
+  		}
+	  }
+     
 	}
 
         if($form_id != 'atw_destination_node_form'){

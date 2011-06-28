@@ -119,6 +119,7 @@ function tfk_preprocess_page(&$variables, $hook) {
  *   The name of the template being rendered ("node" in this case.)
  */
 function tfk_preprocess_node(&$variables, $hook) {
+  // Filter out profanity from flashcards.
   if ($variables['type'] == 'flashcard') {
     foreach (element_children($variables['content']['field_flashcard']) as $delta) {
       $flashcard = &$variables['content']['field_flashcard'][$delta]['#items'][0];
