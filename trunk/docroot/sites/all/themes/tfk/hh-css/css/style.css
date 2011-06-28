@@ -76,12 +76,9 @@ html > body {
   max-width: 100%;
 }
 .container:after, body #container:after {
-  content: "\0020";
-  display: block;
-  height: 0;
+  content: "";
+  display: table;
   clear: both;
-  overflow: hidden;
-  visibility: hidden;
 }
 
 .wireframe {
@@ -609,12 +606,9 @@ body.node-type-flashcard .node-flashcard-form > div, body.page-homework-helper-f
   position: relative;
 }
 body.node-type-flashcard .node-flashcard-form > div:after, body.page-homework-helper-flashcards .node-flashcard-form > div:after, body.page-node-add-flashcard .node-flashcard-form > div:after, body.page-homework-helper-my-flashcards .node-flashcard-form > div:after {
-  content: "\0020";
-  display: block;
-  height: 0;
+  content: "";
+  display: table;
   clear: both;
-  overflow: hidden;
-  visibility: hidden;
 }
 body.node-type-flashcard .node-flashcard-form .form-item-title input, body.page-homework-helper-flashcards .node-flashcard-form .form-item-title input, body.page-node-add-flashcard .node-flashcard-form .form-item-title input, body.page-homework-helper-my-flashcards .node-flashcard-form .form-item-title input {
   width: 80%;
@@ -691,12 +685,9 @@ body.node-type-flashcard .node-flashcard .study-helper-url, body.page-homework-h
   clear: both;
 }
 body.node-type-flashcard .node-flashcard .study-helper-url:after, body.page-homework-helper-flashcards .node-flashcard .study-helper-url:after, body.page-node-add-flashcard .node-flashcard .study-helper-url:after, body.page-homework-helper-my-flashcards .node-flashcard .study-helper-url:after {
-  content: "\0020";
-  display: block;
-  height: 0;
+  content: "";
+  display: table;
   clear: both;
-  overflow: hidden;
-  visibility: hidden;
 }
 body.node-type-flashcard .node-flashcard .study-helper-url .form-item, body.page-homework-helper-flashcards .node-flashcard .study-helper-url .form-item, body.page-node-add-flashcard .node-flashcard .study-helper-url .form-item, body.page-homework-helper-my-flashcards .node-flashcard .study-helper-url .form-item {
   display: inline;
