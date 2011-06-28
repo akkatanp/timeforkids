@@ -11,7 +11,7 @@ $(document).ready(function() {
 			url: '<?php echo url('notification/hide/'.$notification_data['notification_nid']);?>',
 			success: function(data) {
 				if (data == 'success') {
-					$('.notificationdiv').fadeOut('fast');
+					$('.notification').fadeOut('fast');
 				}
 			}
 		});
