@@ -51,7 +51,13 @@ function grammar_wizard_multistep_form($form, &$form_state, $questions) {
     '#weight' => -2, 
   );
 
-  if ($step < $last_step) {
+  if ($step == $last_step) {
+    $form['description'] = array(
+      '#markup' => grammar_wizard_final_question_content($form_state),
+      '#weight' => 0,
+    );
+  } 
+  else {
     $form['numbering'] = array(
       '#markup' => '<div id="grammar-wizard-numbering">' . ($step + 1) . ' of ' . (count($questions) - 1) . '</div>',  
       '#weight' => -1,
@@ -68,7 +74,9 @@ function grammar_wizard_multistep_form($form, &$form_state, $questions) {
     );
     $form['next'] = array(
       '#type' => 'submit',
-      '#value' => t('Next Question'),
+      '#value' => $step == $last_step - 1 ? t('See my Results') : t('Next Question'),
+      '#submit' => array('grammar_wizard_multistep_form_submit'),
+      '#access' => isset($form_state['correct_answer']) ? TRUE : FALSE,
       '#weight' => 11,
       '#ajax' => array(
         'wrapper' => 'wizard-form-wrapper',
@@ -76,30 +84,18 @@ function grammar_wizard_multistep_form($form, &$form_state, $questions) {
       ),
     );
   }
-  if ($step == $last_step - 1) {
-    $form['next'] = array(
-      '#type' => 'submit',
-      '#value' => t('See my Results'),
-      '#weight' => 12,
-      '#ajax' => array(
-        'wrapper' => 'wizard-form-wrapper',
-        'callback' => 'grammar_wizard_multistep_form_callback',
-      ),
-    );
-  }
-  if ($step == $last_step) {
-    $form['description'] = array(
-      '#markup' => grammar_wizard_final_question_content($form_state),
-      '#weight' => 0,
-    );
-  }
-  
+    
   return $form;
 }
 
-function grammar_wizard_multistep_form_callback($form, $form_state) {
+function grammar_wizard_multistep_form_callback($form, &$form_state) {
   $current_step = 'step_' . $form_state['storage']['step'];
-  
+  if (!isset($form_state['correct_answer'])) {
+    //$form_state['storage']['step']++;
+  }
+
+  // Form needs to be rebuilt because it will possibly have different content.
+  $form = drupal_rebuild_form('grammar_wizard_multistep_form', $form_state);
   if (isset($form_state['student_answers'][$current_step])) {
     if ($form_state['student_answers'][$current_step] == 1) {
       $form['check_answer']['#access'] = FALSE; 
@@ -116,6 +112,7 @@ function grammar_wizard_multistep_form_callback($form, $form_state) {
       $form['check_answer']['#value'] = t('Check Answer');
     }
   }
+  $form['next']['#access'] = isset($form_state['correct_answer']) ? TRUE : FALSE;
   unset($form_state['correct_answer']);
 
   return $form;
@@ -145,6 +142,7 @@ function grammar_wizard_multistep_form_submit($form, &$form_state) {
     if (!empty($form_state['storage']['values'][$step_name])) {
       $form_state['values'][$step_name] = $form_state['storage']['values'][$step_name];
     }
+    unset($form_state['correct_answer']);
   }
   if ($form_state['triggering_element']['#value'] == t('Previous step')) {
     $form_state['storage']['step']--;
@@ -195,6 +193,7 @@ function grammar_wizard_check_answer($form, &$form_state) {
   $selected_answer = $form_state['input'][$current_step]['question']; 
   
   if ($correct_answer == $selected_answer) {
+    $form_state['correct_answer'] = TRUE;
     $form_state['question_result'] = '<div id="grammar-wizard-result"><h2>You Got It!</h2><div id="grammar-wizard-rule"><h2>You Understand:</h2>' . $form[$current_step]['#rule'] . '<h3>Example:</h3><div id="grammar-wizard-example">' . $form[$current_step]['#rule_example'] . '</div></div></div>';
     $form_state['student_answers'][$current_step] = 1;
   }  
@@ -207,5 +206,4 @@ function grammar_wizard_check_answer($form, &$form_state) {
     $form_state['student_answers'][$current_step] = 0;
   }  
 }  
-
 
