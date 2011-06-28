@@ -1,0 +1,293 @@
+<?php
+
+/**
+ * @file
+ * A multistep form for interactive A+ papers.
+ */
+
+/**
+ * Implements hook_node_view().
+ */
+function aplus_papers_node_view($node, $view_mode) {
+  if ($node->type == 'a_paper' && $view_mode == 'full') {
+    module_load_include('inc', 'aplus_papers', 'aplus_papers.pages');
+    $steps = aplus_papers_prepare_steps($node);
+    $node->content['aplus_papers'] = drupal_get_form('aplus_papers_multistep_form', $steps);
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function aplus_papers_theme() {
+  return array(
+    'aplus_papers_checklist' => array(
+      'variables' => array('steps' => array(), 'current' => NULL),
+    ),
+  );  
+}
+
+/**
+ * Create a checklist of all steps.
+ */
+function theme_aplus_papers_checklist($variables) {
+  $steps = $variables['steps'];
+  array_pop($steps);
+  $current = $variables['current'];
+  $items = array();
+  foreach ($steps as $step => $data) {
+    if (isset($data['name']) || isset($data['title'])) {
+      unset($step);
+    } 
+    if (isset($data['#checklist'])) {
+      if ($step) { 
+        $classes = array();
+        if ($current > $step) {
+          $classes[] = 'checked';
+        }
+        if ($current == $step) {
+          $classes[] = 'current';
+        }
+        $items[] = array('data' => $data['#checklist'], 'class' => $classes);
+      }
+    }
+  }
+
+  $title = '';
+  $checklist_title = db_query("SELECT field_paper_check_title_value FROM {field_revision_field_paper_check_title} WHERE entity_id = :nid", array(':nid' => $variables['steps'][0]['#parent_nid']))->fetchField();
+  if ($checklist_title) {
+    $title = $checklist_title;
+  }  
+
+  return '<div id="aplus-papers-checklist-block"><div class="aplus-papers-checklist-title">' . $title . '</div>' . theme('item_list', array('items' => $items, 'attributes' => array('id' => array('aplus-papers-checklist')))) . '</div>';
+}
+
+/**
+ * A multistep form, where a different and sequential form
+ * is presented on each step of the form.
+ *
+ * In the AJAX version, the form is replaced for each wizard section. In the
+ * multistep version, it causes a new page load.
+ *
+ * @param $form
+ * @param $form_state
+ */
+function aplus_papers_multistep_form($form, &$form_state, $steps) {
+  drupal_add_js(drupal_get_path('module', 'aplus_papers') . '/js/aplus_papers.js', 'file');
+  drupal_add_css(drupal_get_path('module', 'aplus_papers') . '/aplus-papers-print.css', array('media' => 'print'));
+  
+  // Provide a wrapper around the entire form, since we'll replace the whole
+  // thing with each submit.
+  $form['#prefix'] = '<div id="wizard-form-wrapper">';
+  $form['#suffix'] = '</div>';
+  $form['#tree'] = TRUE; // We want to deal with hierarchical form values.
+
+  // $form_state['storage'] has no specific drupal meaning, but it is
+  // traditional to keep variables for multistep forms there.
+  $step = empty($form_state['storage']['step']) ? 0 : $form_state['storage']['step'];
+  $form_state['storage']['step'] = $step;
+
+  $last_step = count($steps) - 1;
+  
+  $form["checklist"] = array('#markup' => theme('aplus_papers_checklist', array('steps' => $steps, 'current' => $step)));
+
+  $form["step_$step"] = $steps[$step];
+  if (isset($form["step_$step"]['textarea'])) {
+    $form["step_$step"]['textarea']['#default_value'] = empty($form_state['values']["step_$step"]['textarea']) ? '' : $form_state['values']["step_$step"]['textarea'];
+    $form["step_$step"]['textarea']['#rows'] = 6;
+  }
+  if (isset($form["step_$step"]['title'])) {
+    $form["step_$step"]['title']['#default_value'] = empty($form_state['values']["step_$step"]['title']) ? '' : $form_state['values']["step_$step"]['title'];
+  }
+  if (isset($form["step_$step"]['name'])) {
+    $form["step_$step"]['name']['#default_value'] = empty($form_state['values']["step_$step"]['name']) ? '' : $form_state['values']["step_$step"]['name'];
+  }
+  if (isset($form["step_$step"]['date'])) {
+    $form["step_$step"]['date']['#default_value'] = empty($form_state['values']["step_$step"]['date']) ? '' : $form_state['values']["step_$step"]['date'];
+  }
+  if ($step == 0) {
+    $form['next'] = array(
+      '#type' => 'submit',
+      '#value' => t('Start Helper'),
+      '#prefix' => '<div class="aplus-start-button">',
+      '#suffix' => '</div>',
+      '#ajax' => array(
+        'wrapper' => 'wizard-form-wrapper',
+        'callback' => 'aplus_papers_multistep_form_callback',
+        'effect' => 'fade',
+        'progress' => array(
+          'type' => 'throbber',
+          'message' => '<div class="hh-throbber-message">Please wait</div>',
+        ),
+      ),
+    );
+  }
+  else {
+    $form['start_over'] = array(
+      '#prefix' => '<div id="aplus-submit-buttons">',
+      '#markup' => l('Start Over', 'node/' . $form["step_$step"]['#parent_nid'], array('attributes' => array('class' => array('aplus-start-over')))),
+    );
+
+   $form['prev'] = array(
+      '#type' => 'submit',
+      '#value' => t("Previous step"),
+
+      // Since all info will be discarded, don't validate on 'prev'.
+      '#limit_validation_errors' => array(),
+      // #submit is required to use #limit_validation_errors
+      '#submit' => array('aplus_papers_multistep_form_submit'),
+      '#ajax' => array(
+        'wrapper' => 'wizard-form-wrapper',
+        'callback' => 'aplus_papers_multistep_form_callback',
+        'effect' => 'fade',
+        'progress' => array(
+          'type' => 'throbber',
+          'message' => '<div class="hh-throbber-message">Please wait</div>',
+        ),
+      ),
+    );
+
+    if ($step < $last_step) {
+      $form['next'] = array(
+        '#type' => 'submit',
+        '#value' => t('Next step'),
+        '#suffix' => '</div>', //#aplus-submit-buttons
+        '#ajax' => array(
+          'wrapper' => 'wizard-form-wrapper',
+          'callback' => 'aplus_papers_multistep_form_callback',
+          'effect' => 'fade',
+          'progress' => array(
+            'type' => 'throbber',
+            'message' => '<div class="hh-throbber-message">Please wait</div>',
+          ),
+        ),
+      );
+    }
+    if ($step == $last_step - 1) {
+      // Get default values from previous form entries.
+      foreach ($form["step_$step"] as $key => $data) {
+        $form_state['#review_step'] = "step_$step";
+        if (is_numeric($key)) {
+          foreach ($data as $field => $field_data) {
+            if ($field == 'title' || $field == 'name' || $field == 'date') {
+              $form["step_$step"][$key][$field]['#default_value'] = $form_state['storage']['values']["step_$key"][$field];
+            }
+            if ($field == 'textarea') { 
+              $form["step_$step"][$key][$field]['#default_value'] = $form_state['storage']['values']["step_$key"][$field];
+              // Calculate approximate number of rows based on 85 characters per line, 
+              // plus the number of line breaks.
+              $lines = explode("\n", $form["step_$step"][$key][$field]['#default_value']);
+              $characters = strlen($form["step_$step"][$key][$field]['#default_value']);
+              $form["step_$step"][$key][$field]['#rows'] = ($characters / 85) + count($lines);
+            }  
+          }  
+        }  
+      }  
+    }  
+    if ($step == $last_step) {
+      $form['submit'] = array(
+        '#prefix' => '</div><div id="aplus-print-save-buttons"><div><a class="button" href="#" onclick="window.print();return false;">Print</a></div>',
+        '#type' => 'submit',
+        '#value' => t("Save"),
+        '#suffix' => '</div>', //#aplus-print-save-buttons
+      );
+      $form['description'] = array(
+        '#markup' => aplus_papers_final_step_content($form_state),
+        '#weight' => 0,
+      );
+    }
+  }
+
+  return $form;
+}
+
+function aplus_papers_multistep_form_callback($form, $form_state) {
+  return $form;
+}
+
+/**
+ * Submit function for aplus_papers_multistep_form.
+ *
+ * In AJAX this is only submitted when the final submit button is clicked,
+ * but in the non-javascript situation, it is submitted with every
+ * button click.
+ *
+ */
+function aplus_papers_multistep_form_submit($form, &$form_state) {
+  // Save away the current information.
+  $current_step = 'step_' . $form_state['storage']['step'];
+  if (!empty($form_state['values'][$current_step])) {
+    $form_state['storage']['values'][$current_step] = $form_state['values'][$current_step];
+  }
+
+  // If coming from review step, pre-populate all fields with that data.
+  if (isset($form_state['#review_step'])) {
+    $review_step = $form_state['#review_step'];
+    if (isset($form_state['input'][$review_step])) {
+      foreach ($form_state['input'][$review_step] as $step => $fields) {
+        $form_state['storage']['values']["step_$step"] = $fields;
+      }
+    }
+  }
+
+  // Increment or decrement the step as needed. Recover values if they exist.
+  if ($form_state['triggering_element']['#value'] == t('Next step') || $form_state['triggering_element']['#value'] == t('Start Helper')) {
+    $form_state['storage']['step']++;
+    // If values have already been entered for this step, recover them from
+    // $form_state['storage'] to pre-populate them.
+    $step_name = 'step_' . $form_state['storage']['step'];
+    if (!empty($form_state['storage']['values'][$step_name])) {
+      $form_state['values'][$step_name] = $form_state['storage']['values'][$step_name];
+    }
+  }
+  if ($form_state['triggering_element']['#value'] == t('Previous step')) {
+    $form_state['storage']['step']--;
+    // Recover our values from $form_state['storage'] to pre-populate them.
+    $step_name = 'step_' . $form_state['storage']['step'];
+    $form_state['values'][$step_name] = $form_state['storage']['values'][$step_name];
+  }
+  if ($form_state['triggering_element']['#value'] == t('Save')) {
+    // Save the paper as a .txt file
+    drupal_add_http_header('Content-Disposition', 'attachment; filename="a-plus-papers"');
+    drupal_add_http_header('Content-Type', 'text/plain;charset=utf-8');
+    $paper = aplus_papers_save_content($form_state);
+    print filter_xss($paper);
+    exit;
+  }
+
+  // Otherwise, we still have work to do.
+  $form_state['rebuild'] = TRUE;
+}
+
+/**
+ * Prepare final step content.
+ */
+function aplus_papers_final_step_content($form_state) {
+  $title = $date = $name = $textarea = '';
+  foreach ($form_state['storage']['values'] as $step => $data) {
+    if ($step != $form_state['#review_step']) {
+      $title .= isset($data['title']) ? '<div class="paper-title">' . check_plain($data['title']) . '</div>' : '';
+      $date .= isset($data['date']) ? '<div class="paper-date">' . check_plain($data['date']) . '</div>' : '';
+      $name .= isset($data['name']) ? '<div class="student-name">' . check_plain($data['name']) . '</div>' : '';
+      $textarea .= isset($data['textarea']) ? '<p>' . check_markup($data['textarea']) . '</p>' : '';
+    }
+  } 
+  return '<div id="aplus-final-step"><h2 class="node-title">' . t('Completed Paper Preview') . '</h2>' . $title . $date . $name . '<div class="paper-textarea">' . $textarea . '</div></div>';
+}  
+
+
+/**
+ * Prepare content for txt file.
+ */
+function aplus_papers_save_content($form_state) {
+  $paper = '';
+  foreach ($form_state['storage']['values'] as $step => $data) {
+    if ($step != $form_state['#review_step']) {
+      $paper .= isset($data['title']) ? $data['title'] . "\n\n" : '';
+      $paper .= isset($data['name']) ? $data['name'] . "\n\n" : '';
+      $paper .= isset($data['date']) ? $data['date'] . "\n\n" : '';
+      $paper .= isset($data['textarea']) ? $data['textarea'] . "\n\n" : '';
+    }
+  }
+  return $paper;
+}

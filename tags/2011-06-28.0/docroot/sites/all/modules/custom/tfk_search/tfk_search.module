@@ -1,0 +1,1337 @@
+<?php
+
+/**
+ * @file
+ * Logic for Photos and Video section and Worksheets.
+ */
+
+/**
+ * Implementation of hook_menu.
+ */
+function tfk_search_menu(){
+  $items = array();
+  
+  $items['photos-video'] = array(
+  	'title' => 'Photos & Video',
+  	'page callback' => 'tfk_search_photos_and_video',
+  	'access callback' => 'user_access',
+  	'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+  $items['worksheets'] = array(
+  	'title' => 'Worksheets',
+  	'page callback' => 'tfk_search_worksheets',
+  	'access callback' => 'user_access',
+  	'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+  $items['myfr/%ctools_js/saves/%'] = array(
+      'title' => 'Worksheets',
+      'page callback' => 'ctools_ajax_save_srch',
+      'page arguments' => array(1,3),
+      'access callback' => TRUE,
+      'type' => MENU_CALLBACK
+  );
+   $items['myfr/%ctools_js/saves'] = array(
+      'title' => 'Worksheets',
+      'page callback' => 'ctools_ajax_save_srch',
+      'page arguments' => array(1),
+      'access callback' => TRUE,
+      'type' => MENU_CALLBACK
+  );
+  return $items;
+}
+
+/**
+ * Implementation of hook_init.
+ */
+function tfk_search_init(){
+  
+  // Include our custom SolrBaseQuery class.
+  module_load_include('inc', 'tfk_search', 'TimeIncSolrBaseQuery');
+  
+  // Provide styling for Photos & Video section.
+  if(arg(0) == 'photos-video') {
+    // Styles for search results and first sidebar.
+    drupal_add_css(drupal_get_path('module', 'tfk_search'). '/css/tfk_search.css', 'file');
+    // Styles for favorite links and blocks.
+    #drupal_add_css(drupal_get_path('module', 'tfk_favorites'). '/css/tfk_favorites.css', 'file');
+  }
+  
+  // Worksheets inherit and override Photos & Video CSS.
+  if(arg(0) == 'worksheets') {
+    drupal_add_css(drupal_get_path('module', 'tfk_search'). '/css/tfk_search.css', 'file');
+    drupal_add_css(drupal_get_path('module', 'tfk_search'). '/css/tfk_worksheets.css', 'file');
+  }
+}
+
+/**
+ * Implementation of hook_theme.
+ */
+function tfk_search_theme($existing, $type, $theme, $path) {
+  return array(
+    // Custom "top pager" for photos-video section. From common.inc.
+    'pager_top' => array(
+      'variables' => array('tags' => array(), 'element' => 0, 'parameters' => array(), 'quantity' => 9),
+      'file' => 'tfk_search_pager.inc',
+    ),
+    // Featured block for photos-video section.
+    'tfk_featured_block' => array(
+      'variables' => array('tfkSearchFeaturedItem' => NULL),
+    ),
+    // Worksheets.
+    'tfk_search_worksheet_saved' => array(
+      'template' => 'tfk-search-worksheet-saved',
+      'variables' => array('list' => NULL)
+    ),
+    // Related content.
+    'tfk_search_related_content' => array(
+      'variables' => array('related_content' => array(), 'quantity_articles' => 1),
+    ),
+  );
+}
+
+/**
+ * Theme additional content block.
+ *
+ * @return
+ *   Returns HTML output for a related content block.
+ */
+function theme_tfk_search_related_content($variables) {
+  $related_content = $variables['related_content'];
+  
+  $output .= '<div id="featured-related-content-title" class="addit-content">'. t('Additional Content'). '</div>';
+  $output .= '<div id="featured-related-content" class="related-content-wrap">';
+  
+  // Related content.
+  for($key = 0; $key < $variables['quantity_articles']; $key++) {
+    $output .= '<div class="addit-related-articles">';
+      $link = l($related_content[$key]['title'], $related_content[$key]['path']);
+      $related = ($related_content[$key]['type'] == 'article') ? 'Related ': '';
+      $output .= '<div class="addit-related-articles-label">'. strtoupper(t($related. '@type:', array('@type' => $related_content[$key]['type']))). '</div>';
+      $output .= '<div class="addit-related-articles-title">'. $link. '</div>';
+      #$output .= '<div class="addit-related-articles-download"> Download PDF</div>';
+ 		$output .= '</div>';
+  }
+
+  $output .= '</div>';
+  return $output;
+}
+
+/**
+ * Apache Solr search field, stores title of related content node.
+ *
+ * @var string
+ */
+define('TFK_SEARCH_RELATED_TITLE', 'sm_field_additional_content_titles');
+
+/**
+ * Apache Solr search field, stores URL path of related content node.
+ *
+ * @var string
+ */
+define('TFK_SEARCH_RELATED_PATH', 'sm_field_additional_content_paths');
+
+/**
+ * Apache Solr search field, stores content type of related content node.
+ *
+ * @var string
+ */
+define('TFK_SEARCH_RELATED_TYPE', 'sm_field_additional_content_types');
+
+/**
+ * Implementation of hook_apachesolr_update_index.
+ *
+ * Here we add additional fields to the ApacheSolrDocument. What we add here
+ * is then available on each search result.
+ *
+ * @param ApacheSolrDocument $document
+ *   Document object representing the node.
+ * @param stdClass $node
+ *   Node object.
+ * @param string $namespace
+ *   Search namespace.
+ *
+ * @see apachesolr_node_to_document
+ */
+function tfk_search_apachesolr_update_index(&$document, $node, $namespace) {
+  if (isset($node->field_date)){
+
+    $tmp_date =  field_get_items('node', $node, 'field_date');
+    $date = $tmp_date[0]['value'];
+    $date = date('Y', $date);
+    $document->addField('sm_editorial_date_tfk', $date);
+  }
+  
+  // Index related articles node reference field.
+  if(isset($node->field_additional_content) && !empty($node->field_additional_content)) {
+    
+    $anonymous_user = user_load(0);
+    $additional_content =  field_get_items('node', $node, 'field_additional_content');
+    
+    foreach($additional_content as $node) {
+      // We verify that the related content is publicly accessible.
+      if(node_access('view', node_load($node['nid']), $anonymous_user)) {
+        // We index the title and path to avoid doing a node_load() or l() on each search result.
+        $document->addField(TFK_SEARCH_RELATED_TITLE, $node['node']->title);
+        $document->addField(TFK_SEARCH_RELATED_PATH, $node['node']->uri['path']);
+        $document->addField(TFK_SEARCH_RELATED_TYPE, $node['node']->type);
+      }
+    }
+  }
+  
+}
+
+function tfk_search_apachesolr_facets() {
+  $facets['sm_editorial_date_tfk'] = array(
+    'info' => t('Year of the Node'),
+    'facet_field' => 'sm_editorial_date_tfk',
+    );
+  return $facets;
+}
+
+/**
+ * Implementation of hook_block_info.
+ */
+function tfk_search_block_info() {
+  $blocks = array();
+  
+  // Photos and Video title block.
+  $blocks['tfk_search_photos_video_title'] = array(
+    'info' => t('TFK Search Photos and Video title'),
+    'visibility' => BLOCK_VISIBILITY_LISTED,
+    'pages' => 'photos-video',
+    'region' => 'sidebar_first',
+    'cache' => DRUPAL_CACHE_GLOBAL,
+  );
+  
+  // Photos and Video back to all block.
+  $blocks['tfk_search_photos_video_back'] = array(
+    'info' => t('TFK Search Photos and Video back to all'),
+    'visibility' => BLOCK_VISIBILITY_LISTED,
+    'cache' => DRUPAL_CACHE_GLOBAL,
+  );
+  
+  // Photos and Video Featured block.
+  $blocks['tfk_search_photos_video_featured'] = array(
+    'info' => t('TFK Search Photos and Video Featured'),
+    'visibility' => BLOCK_VISIBILITY_LISTED,
+    'pages' => 'photos-video',
+    'region' => 'highlighted',
+    'cache' => DRUPAL_CACHE_GLOBAL,
+  );
+  
+  // Worksheet first sidebar top title.
+  $blocks['tfk_search_ws_leftbar_title'] = array(
+    'info' => t('TFK Worksheets First Sidebar Top Title'),
+    'cache' => DRUPAL_CACHE_GLOBAL,
+  );
+  
+  // Worksheet saved searches block.
+  $blocks['tfk_search_worksheet_saved'] = array(
+    'info' => t('TFK Worksheets "My saved searches"')
+  );
+  
+  // Worksheet "Save your search" block.
+  $blocks['tfk_search_worksheet_user_save'] = array(
+    'info' => t('TFK Worksheets "Save your search"')
+  );
+  
+  // Custom facet blocks.
+  $facets = tfk_search_apachesolr_facets();
+  foreach ($facets as $delta => $facet){
+    $blocks[$delta] = array_merge($facets[$delta], array('cache' => DRUPAL_CACHE_PER_PAGE));
+  }
+  
+  return $blocks;
+}
+
+/**
+ * Implementation of hook_block_view.
+ */
+function tfk_search_block_view($delta='') {
+  $block = array();
+  $settings = variable_get('tfk_search_settings', tfk_search_default_settings());
+  
+  switch ($delta) {
+    
+    case 'sm_editorial_date_tfk':
+      $block['subject'] = t('Custom ApacheSolrFilter');
+
+      if (apachesolr_has_searched()) {
+        $response = apachesolr_static_response_cache();
+  
+        if (empty($response)) {
+          return;
+        }
+        $query = apachesolr_current_query();
+        $block['content'] = apachesolr_facet_block($response, $query, 'tfk_search', $delta, $delta, t($facet['info']));
+      }else{
+        $block['content'] = '';
+      }
+    break;
+    
+    // Photos and Video title block.
+    case 'tfk_search_photos_video_title':
+      $block['content'] = $settings['tfk_search_photos_video_title']['title'];
+    break;
+    
+    // Back to all Photos and Videos.
+    case 'tfk_search_photos_video_back':
+      $link_content = '<div id="back-btn-img"></div>';
+      $link_content .= 'BACK TO ALL<br /> PHOTOS AND VIDEOS';
+      $link_options = array('html' => TRUE, 'attributes' => array('id' => array('tfk-search-back-link')));
+      $block['content'] = l(t($link_content), 'photos-video', $link_options);
+    break;
+    
+    // Photos and Video Featured block.
+    case 'tfk_search_photos_video_featured':
+      $featured_item = tfk_search_get_featured_block();
+      if($featured_item != FALSE) {
+        $block['content'] = theme('tfk_featured_block', $featured_item);
+      } else {
+        // Suppress the block.
+        $block['content'] = '';
+      }
+    break;
+   
+   // My saved searches.
+   case 'tfk_search_worksheet_saved':
+     $block['title'] = "MY SAVED SEARCHES";
+     $block['content'] = _tfk_search_get_saved_searches_block();
+   break;
+   
+   // Worksheet "Save your search" block.
+   case 'tfk_search_worksheet_user_save':
+     $block['content'] = tfk_search_save_your_search();
+   break;
+     
+   case 'tfk_search_ws_leftbar_title':
+     $block['content'] = t("SEARCH PRINTABLES ARCHIVE");
+   break;
+  }
+  
+  return $block;
+}
+
+/**
+ * Creates content for "Save This Search" block.
+ *
+ * When the button in this block is clicked, a CTools modal window appears.
+ *
+ * @see tfk_search_block_view()
+ */
+function tfk_search_save_your_search() {
+  
+  $path = drupal_get_path('module', 'tfk_search');
+  
+  $query = apachesolr_current_query();
+  $filters = $query->get_filters();
+  $str = '';
+  foreach($filters as $filter){
+    $str .= $filter['#query'] . ' ';
+  }
+    
+  $output = "<div class='savebtn'>";
+  $output .= ctools_modal_text_button(
+    theme('image', array('path' => $path. '/images/save-this-search.png', 'title' => 'Save This Search', 'alt' => 'Save This Search')),
+    // Ajax callback path.
+    'myfr/ajax/saves/'. $str,
+    t('Save your search'),
+    'ctools-modal-ctools-sample-style');
+  $output .= "</div>";
+
+  return $output;
+}
+
+function tfk_search_default_settings() {
+  return array(
+    'tfk_search_photos_video_title' => array(
+      'title' => t('SEARCH PHOTOS & VIDEOS'),
+    ),
+    'tfk_search_photos_video_back' => array(
+      'title' => t('BACK TO ALL PHOTOS AND VIDEOS'),
+    )
+  );
+}
+
+/**
+ * Implementation of hook_block_configure.
+ */
+function tfk_search_block_configure($delta='') {
+  if($delta == 'sm_editorial_date_tfk'){
+      return apachesolr_facetcount_form('sm_editorial_date_tfk', $delta);
+  }
+}
+
+/**
+ * Implementation of hook_block_save.
+ */
+function tfk_search_block_save($delta = '', $edit = array()){
+  if($delta == 'solr_filter_year'){
+     apachesolr_facetcount_save($edit);
+  }
+  return;
+}
+
+/**
+ * Render content for "tfk_search_worksheet_saved" block.
+ *
+ * Used for the "My saved searches" block.
+ *
+ * @see tfk_search_block_view()
+ */
+function _tfk_search_get_saved_searches_block(){
+  ctools_include('modal');
+  ctools_modal_add_js();
+
+  return theme('tfk_search_worksheet_saved', _tfk_get_saved_searches());
+}
+
+/**
+ * Gather variables for tfk_search_worksheet_saved theme template.
+ *
+ * @see tfk_search_theme()
+ * @see _tfk_search_get_saved_searches_block()
+ */
+function _tfk_get_saved_searches(){
+  $saved_searches = array();
+
+  global $user;
+
+  $result = db_query('SELECT * FROM tfk_search_saved_searches WHERE saved_by_uid = :saved_by_uid', array('saved_by_uid' => $user->uid));
+
+  foreach ($result as $k => $record) {
+    $saved_searches[$k]['name'] = $record->search_name;
+    $saved_searches[$k]['saved_search_id'] = $record->saved_search_id;
+    $saved_searches[$k]['filters'] = $record->search_filters;
+    $saved_searches[$k]['url'] = url('worksheets',array('query'=>array('filters'=>$record->search_filters)));
+  }
+
+  $list = array('saved_searches' => $saved_searches,);
+  
+  $query = apachesolr_current_query();
+  // Don't access query object properties if it doesn't exist.
+  if($query) {
+    $filters = $query->get_filters();
+    $str = '';
+    foreach($filters as $filter){
+      $str .= $filter['#query'] . ' ';
+    }
+    $list['current_str'] = $str;
+  }
+  
+  return $list;
+}
+
+/**
+ * Default theming function for Featured block.
+ *
+ * @param array $variables
+ *
+ * @see tfk_search_theme()
+ */
+function theme_tfk_featured_block(&$variables) {
+  $tfkSearchFeaturedItem = $variables['tfkSearchFeaturedItem'];
+  $output = '<div id="tfk-search-photos-video-featured">';
+  $output .= '<div class="top-story-right-square">&nbsp</div>';
+  $url = 'node/'. $tfkSearchFeaturedItem->nid;
+  
+  $output .= '<div class="g1">';
+  $link_options = array('html' => TRUE, 'attributes' => array('class' => array('featured-item', 'content-type-'. $tfkSearchFeaturedItem->type), 'title' => $tfkSearchFeaturedItem->title));
+  $output .= l(theme('image', array('path' => $tfkSearchFeaturedItem->featured_item->abspath, 'title' => $tfkSearchFeaturedItem->title, 'alt' => $tfkSearchFeaturedItem->title)), $url, $link_options);
+  $output .= '</div>';
+  
+  $output .= '<div class="g2">';
+  $output .= '<div class="featured-label">FEATURED</div>';
+  $output .= "<h2 class='featured-title'>". l($tfkSearchFeaturedItem->title, $url). "</h2>";
+  $output .= "<div class='featured-date'>". date('F j, Y', $tfkSearchFeaturedItem->created). "</div>";
+  $output .= "<div class='featured-dek'>{$tfkSearchFeaturedItem->body}</div>";
+  $output .= '<div class="featured-link">'. l('View '. ($tfkSearchFeaturedItem->type == 'slideshow'? 'Photo Slide-Show': 'Video'), $url). '</div>';
+  
+  // Thumbnails. Only for slideshows.
+  if($tfkSearchFeaturedItem->type == 'slideshow') {
+    $output .= '<div class="featured-thumbnails">';
+    $link_options['class'] = array('featured-thumbnail');
+    foreach($tfkSearchFeaturedItem->slideshow_images as $image) {
+      $output .= '<span class="featured-thumbnails">';
+      $output .= l(theme('image', array('path' => $image->abspath, 'title' => $tfkSearchFeaturedItem->title, 'alt' => $tfkSearchFeaturedItem->title )), $url, $link_options);
+      $output .= '</span>';
+    }
+    
+    $output .= '</div>';
+  }
+  $output .= '</div><!--./g2-->';
+  
+  // Related content. @todo Pass some real data to it.
+  $output .= theme('related_content');
+  
+  $output .= '</div>';// ./tfk-search-photos-video-featured
+  return $output;
+}
+
+/**
+ * Preprocessor for theme_tfk_featured_block().
+ *
+ * @param array $variables
+ *
+ * @see theme_tfk_featured_block()
+ */
+function tfk_search_preprocess_tfk_featured_block(&$vars) {
+  // Truncate Featured item teaser on a word vocabulary.
+  $vars['tfkSearchFeaturedItem']->body = truncate_utf8($vars['tfkSearchFeaturedItem']->body['und'][0]['safe_value'], '160', TRUE, TRUE, 10);
+}
+
+/**
+ * db_query() callback for loading additional Featured item data.
+ *
+ * @author rallen8440
+ */
+class tfkSearchFeaturedItem {
+  function __construct() {
+    foreach(get_object_vars(node_load($this->nid)) as $prop => $value) {
+      $this->$prop = $value;
+    }
+    if($this->type == 'slideshow') {
+      $this->slideshow_images = array();
+      $this->featured_item = node_load(array_shift(array_shift($this->field_slideshow_images['und'])));
+      $this->featured_item->abspath = tfk_search_get_thumbnail($this->featured_item->field_image['und'][0]['fid'], 'tfk_270x270');
+      foreach($this->field_slideshow_images['und'] as $image) {
+        $_image = node_load($image['nid']);
+        $_image->abspath = tfk_search_get_thumbnail($_image->field_image['und'][0]['fid'], 'tfk_60x60');
+        $this->slideshow_images[] = $_image;
+      }
+    }
+    if($this->type == 'video') {
+      $test = null; //@todo Load the video.
+    }
+  }
+}
+
+/**
+ * Loads data for the Photos and Video featured item.
+ *
+ * @return
+ *   Array with data for theme_tfk_featured_block() if successful. FALSE otherwise.
+ *
+ * @see tfk_search_block_view()
+ */
+function tfk_search_get_featured_block() {
+  // Get the featured node.
+  $fn_query = "
+    SELECT
+  		fn.nid AS nid
+  	FROM
+  	  node fn # featured_node
+  	  INNER JOIN flag_content f ON fn.nid = f.content_id
+  	  WHERE fn.type IN ('slideshow', 'video')
+  	  #WHERE fn.type IN ('video')
+  	ORDER BY fn.created DESC
+  	LIMIT 1";
+	
+  $result = array('tfkSearchFeaturedItem' => array_shift(db_query($fn_query, array(), array('fetch' => 'tfkSearchFeaturedItem',))->fetchAll()));
+  if(empty($result['tfkSearchFeaturedItem'])) {
+    watchdog('TFK Search', 'Could not find data to populate the Featured item block.', array(), WATCHDOG_ERROR);
+    return FALSE;
+  } else {
+    return $result;
+  }
+}
+
+/**
+ * Return the URL for an image derivative given a style and image path.
+ *
+ * Generates the image derivative if it has not been previously built.
+ *
+ * @param int $fid
+ *   File id.
+ * @param string $style
+ *   Style preset.
+ *
+ * @return
+ *   The absolute URL where a style image can be downloaded, suitable for use in an tag.
+ *   FALSE if the derivative cannot be generated.
+ */
+function tfk_search_get_thumbnail($fid, $style) {
+  $file = file_load($fid);
+  $file->newpath = image_style_path($style, $file->uri);
+  
+  // Generate the image style derivative if it doesn't exist.
+  if(!file_exists($file->newpath)) {
+    if(!image_style_create_derivative(image_style_load($style), $file->uri, $file->newpath)) {
+      watchdog('tfk_search_get_thumbnail', 'Failed to create image derivative for fid: @fid', array('@fid' => $file->fid), WATCHDOG_WARNING);
+      return FALSE;
+    }
+  }
+  
+  return image_style_url($style, $file->uri);
+}
+
+/**
+ * Preprocessor for page.
+ *
+ * @param array $vars
+ */
+function tfk_search_preprocess_page(&$variables) {
+  // Set title on Photos & Video search page.
+  if(arg(0) == 'photos-video') {
+    drupal_set_title('Photos & Video');
+    $variables->title == 'Photos & Video';
+    $variables['section_title'] = 'PHOTOS & VIDEO';
+  }
+  if(arg(0) == 'worksheets') {
+    $variables['section_title'] = 'PRINTABLES';
+    
+    drupal_set_title('Worksheets');
+    $variables->title == 'Woksheets';
+  }
+}
+
+/**
+ * Block preprocessor.
+ *
+ * @param array $variables
+ *
+ * @see tfkSearchFeaturedItem
+ */
+function tfk_search_preprocess_block(&$variables) {
+
+  // Specific template suggestions for photos-video blocks.
+  if(arg(0) == 'photos-video') {
+    $variables['theme_hook_suggestions'] = array_merge(
+      array(
+      "block__apachesolr_search__tfk_search__{$variables['block']->module}__{$variables['block']->delta}",
+      'block__apachesolr_search__tfk_search__photos_video',
+      'block__apachesolr_search__tfk_search',
+      ),
+      $variables['theme_hook_suggestions']
+    );
+    
+    if($variables['block']->delta == 'im_10_field_article_category') {
+      $variables['block']->subject = 'All Subjects';
+    }
+  }
+  
+  // Worksheet left column block tweaks.
+  if(arg(0) == 'worksheets') {
+
+    if($variables['block']->delta == 'tfk_favorites_links') {
+      // Unset the .last class from the real last block.
+      $key = array_search('last', $variables['classes_array'], TRUE);
+      if($key != FALSE) {
+        $classes = & $variables['classes_array'];
+        unset($classes[$key]);
+      }
+    }
+    // And add it to the "Save this search" block. Needed to make multiple blocks look like one.
+    if($variables['block']->delta == 'tfk_search_worksheet_user_save') {
+      $variables['classes_array'][] = 'last';
+    }
+  }
+  
+}
+
+/**
+ * Preprocess current search text.
+ *
+ * @param array $vars
+ */
+function tfk_search_preprocess_apachesolr_currentsearch(&$vars) {
+  //@todo Change default text.
+}
+
+/**
+ * Preprocess the result set.
+ *
+ * @param array $vars
+ */
+function tfk_search_preprocess_search_results(&$vars) {
+ 
+  // Specific template suggestions for all the results on photos and video.
+  if(arg(0) == 'photos-video') {
+    $vars['theme_hook_suggestions'] = array_merge(
+      array('search_results__tfk_search__photos_video', 'search_results__tfk_search'),
+      $vars['theme_hook_suggestions']
+    );
+    
+    $vars['custom_search'] = TRUE;
+    
+    // Custom top pager.
+    $vars['pager_top'] = theme('pager_top', array('tags' => NULL));
+    
+    $vars['ordered_list_id'] = 'tfk-search-results-photos-video';
+  }
+  
+  if(arg(0) == 'worksheets') {
+    
+    $vars['custom_search'] = TRUE;
+    
+    // Custom top pager.
+    $vars['pager_top'] = theme('pager_top', array('tags' => NULL, 'quantity' => 8));
+    
+    $vars['ordered_list_id'] = 'tfk-search-results-photos-video';
+    
+  }
+}
+
+/**
+ * Preprocess custom top pager.
+ *
+ * The top pager is themed differently, and displays 'extra' information.
+ *
+ * @param array $vars
+ *
+ * @see theme_pager_top
+ */
+function tfk_search_preprocess_pager_top(&$vars) {
+  
+  $page_type = arg(0);
+  
+  // Page title.
+  if($page_type == 'worksheets') {
+    $vars['pager_title'] = 'Printables Archive';
+  } else {
+    $vars['pager_title'] = 'Photos & Videos Archive';
+  }
+  
+  // If there are no active filters.
+  if(!array_key_exists('filters', $_GET)) {
+    
+    if($page_type == 'worksheets') {
+      $vars['pager_active_filter'] = 'Viewing: All Grades, All Themes, All Skills';
+    } else {
+      $vars['pager_active_filter'] = 'Viewing: All Subjects, All Themes';
+    }
+    
+  
+  // Else get active filters.
+  } else if(array_key_exists('filters', $_GET) && !empty($_GET['filters'])) {
+    $query = apachesolr_current_query();
+    $active_filters = $query->get_filters();
+    
+    if(!empty($active_filters)) {
+      $vars['pager_active_filter'] = 'Viewing: ';
+      
+      // Note: to keep things simple, we are retrieving only the current filter,
+      // but if neccesary we could use the Taxonomy API to retrieve the next
+      // or all term parents.
+      // @todo Unhardcode the vid in the filter names.
+      $default_filters = array(
+        'worksheets' => array(
+        	'im_28_field_grade_level' => array('active' => FALSE, 'default_text' => 'All Grades', 'filters' => array()),
+        	'im_36_field_themes' => array('active' => FALSE, 'default_text' => 'All Themes', 'filters' => array()),
+          'im_35_field_skills' => array('active' => FALSE, 'default_text' => 'All Skills', 'filters' => array()),
+        ),
+        'photos-video' => array(
+        	'im_10_field_article_category' => array('active' => FALSE, 'default_text' => 'All Subjects', 'filters' => array()),
+        	'im_36_field_themes' => array('active' => FALSE, 'default_text' => 'All Themes', 'filters' => array()),
+        ),
+      );
+      
+      // Sort.
+      foreach($active_filters as $filter) {
+        
+        // Disable default text if active and substitute with active filters.
+        if(array_key_exists($filter['#name'], $default_filters[$page_type])) {
+          $default_filters[$page_type][$filter['#name']]['active'] = TRUE;
+          $default_filters[$page_type][$filter['#name']]['filters'][] = taxonomy_term_title(taxonomy_term_load($filter['#value']));
+        }
+        
+      }
+      
+      // Merge.
+      $sorted_filters = array();
+      foreach($default_filters[$page_type] as $facet) {
+        if(!$facet['active']) {
+          $sorted_filters[] = $facet['default_text'];
+        } else {
+          $sorted_filters[] = implode(', ', $facet['filters']);
+        }
+      }
+      
+      // Implode.
+      $vars['pager_active_filter'] .= implode(', ', $sorted_filters);
+            
+    }
+    
+  }
+  
+}
+
+/**
+ * Preprocess individual search results.
+ *
+ * @param array $vars
+ */
+function tfk_search_preprocess_search_result(&$vars) {
+    $vars['tfk_search_cont_type'] = $vars['result']['fields']['bundle_name'];
+   
+    // Add specific template suggestions for invividual results on photos and video.
+    // Shuffle the order of the suggestions to prioritize the use of our template on top of the default.
+    // The first template to be found is implemented.
+    // @link http://api.drupal.org/api/drupal/includes--theme.inc/function/theme.
+    $base_path = arg(0);
+    $style = 'square_thumbnail';
+    
+    if($base_path == 'photos-video') {
+      $vars['theme_hook_suggestions'] = array_merge(
+        array('search_result__tfk_search__photos_video', 'search_result__tfk_search'),
+        $vars['theme_hook_suggestions']
+      );
+      $style = '115x115';
+    }
+
+    if($base_path == 'worksheets') {
+      $vars['theme_hook_suggestions'] = array_merge(
+        array('search_result__tfk_search__worksheets', 'search_result__tfk_search'),
+        $vars['theme_hook_suggestions']
+      );
+      $style = '115x115';
+    }
+    
+    switch ($vars['result']['fields']['bundle']) {
+      
+      case 'minisite':
+        $nid = $vars['result']['fields']['entity_id'];
+        $node = node_load($nid);
+
+        if(isset($node->field_minisite_tout_image)){
+          $tmp_img_nid =  field_get_items('node', $node, 'field_minisite_tout_image');
+          $uri = $tmp_img_nid[0]['uri'];
+          $newpath = image_style_path('square_thumbnail',$uri);
+          $abspath = file_create_url($newpath);
+          $vars['tfk_search_res_image'] = $abspath;
+        }
+      break;
+      
+      case 'atw_destination':
+        $nid = $vars['result']['fields']['entity_id'];
+        $node = node_load($nid);
+  
+        if(isset($node->field_tout_image)){
+          $tmp_img_nid =  field_get_items('node', $node, 'field_tout_image');
+          $img_nid = $tmp_img_nid[0]['nid'];
+  
+          $result = db_query('select fi.field_image_fid,fm.filename from {field_data_field_image} fi
+            left join {file_managed} fm on fi.field_image_fid = fm.fid
+            where fi.entity_type = :bundle_type and fi.entity_id = :img_nid',array('bundle_type'=>'node','img_nid'=>$img_nid));
+          $record = $result->fetch();
+          $img_filename = file_build_uri(basename($record->filename));
+  
+          $newpath = image_style_path('square_thumbnail',$img_filename);
+          $abspath = file_create_url($newpath);
+          $vars['tfk_search_res_image'] = $abspath;
+        }
+      break;
+      
+      case 'video':
+        $nid = $vars['result']['fields']['entity_id'];
+        $node = node_load($nid);
+        if(isset($node->field_video_thumbnail)){
+          $tmp_img_nid =  field_get_items('node', $node, 'field_video_thumbnail');
+          $uri = $tmp_img_nid[0]['uri'];
+          $newpath = image_style_path($style, $uri);
+          $abspath = file_create_url($newpath);
+          $vars['tfk_search_res_image'] = $abspath;
+        }
+        
+        // Flag link.
+        tfk_search_get_flag_link($vars, $nid, 'favorites');
+      break;
+      
+      case 'worksheet':
+        $worksheet_nid = $vars['result']['fields']['entity_id'];
+
+        $node = node_load($worksheet_nid);
+ 
+        if(isset($node->field_worksheet_thumbnail_image)){
+          $tmp_img_nid =  field_get_items('node', $node, 'field_worksheet_thumbnail_image');
+          $uri = $tmp_img_nid[0]['uri'];
+          $newpath = image_style_path($style, $uri);
+          $abspath = file_create_url($newpath);
+          $vars['tfk_search_res_image'] = $abspath;
+        }
+        if(isset($node->field_grade_level)){
+          $tmp_tid = field_get_items('node', $node, 'field_grade_level');
+          $tid = $tmp_tid[0]['tid'];
+          $name_res =  db_query('select name from taxonomy_term_data where tid = :tid',array('tid' => $tid ));
+          $name = $name_res->fetch();
+          $name = $name->name;
+          $vars['tfk_search_cont_type_suffix'] = $name;
+        }
+        if(isset($node->field_skills)){
+          $tmp_tid = field_get_items('node', $node, 'field_skills');
+          $tid = $tmp_tid[0]['tid'];
+          $name_res =  db_query('select name from taxonomy_term_data where tid = :tid',array('tid' => $tid ));
+          $name = $name_res->fetch();
+          $name = $name->name;
+          $vars['tfk_search_cont_type'] = rtrim($name, 's');
+          
+          // Body, trimmed to three lines of text.
+          $body = field_get_items('node', $node, 'body');
+          if(!empty($body) && !empty($body[0])) {
+            if(!empty($body[0]['safe_summary'])) {
+              $vars['snippet'] = truncate_utf8($body[0]['safe_summary'], '200', TRUE, TRUE, 10);
+            } elseif(!empty($body[0]['safe_value'])) {
+              $vars['snippet'] = truncate_utf8($body[0]['safe_value'], '200', TRUE, TRUE, 10);
+            }
+          }
+          
+          // See Related Article link.
+          $related_articles = field_get_items('node', $node, 'field_related_articles');
+          if($related_articles != FALSE) {
+            // @todo We should be indexing this data instead of node_loading it.
+            // Too much node loads may eliminate the speed advantage provided by Solr.
+            // Only doing this because we have a presentation today.
+            $article_nid = array_shift(array_shift($related_articles));
+            if($article_nid) {
+              $article_node = node_load($article_nid);
+              $vars['node_link'] = l('See Related Article', 'node/'. $article_node->nid,
+                array('attributes' => array('title' => $article_node->title, 'class' => array('worksheet-article-ref')))
+              );
+            }
+          }
+                  
+        }
+        
+        // Download this [worksheet type] link.
+        if(isset($node->field_worksheet_pdf)){
+          $vars['tfk_worksheet_pdf_url'] = '';
+          $tmp_pdf =  field_get_items('node', $node, 'field_worksheet_pdf');
+          $pdf_tmp_uri = $tmp_pdf[0]['uri'];
+          
+          if($pdf_path = file_create_url($pdf_tmp_uri)){
+            $vars['tfk_worksheet_pdf_link'] = l('Download this '. ((!empty($name)) ? rtrim($name, 's') : 'Worksheet'), $pdf_path);
+          }
+        }
+        
+        // This is code that will get us a flag html with a working flag link to put in a template.
+        tfk_search_get_flag_link($vars, $worksheet_nid, 'favorites');
+        
+        // Content type CSS class.
+        $vars['classes_array'][] = 'worksheet';
+        $vars['classes_array'][] = (!empty($name)) ? strtolower(rtrim($name, 's')) : 'worksheet';
+      break;
+
+      case 'slideshow':
+        $nid = $vars['result']['fields']['entity_id'];
+        $node = node_load($nid);
+        if(isset($node->field_slideshow_images)) {
+          $tmp_img_nid =  field_get_items('node', $node, 'field_slideshow_images');
+          $img_nid = $tmp_img_nid[0]['nid'];
+          $result = db_query('select fi.field_image_fid,fm.filename from {field_data_field_image} fi
+            left join {file_managed} fm on fi.field_image_fid = fm.fid
+            where fi.entity_type = :bundle_type and fi.entity_id = :img_nid',array('bundle_type'=>'node','img_nid'=>$img_nid));
+          $record = $result->fetch();
+          $file = file_load($record->field_image_fid);
+          if(isset($file->uri)) {
+            $file->newpath = image_style_path($style, $file->uri);
+            
+            // Generate the image style derivative if it doesn't exist.
+            if(!file_exists($file->newpath)) {
+              $success = image_style_create_derivative(image_style_load($style), $file->uri, $file->newpath);
+            }
+            
+            $vars['tfk_search_res_image'] = image_style_url($style, $file->uri);
+          }
+        }
+        
+        // Flag link.
+        tfk_search_get_flag_link($vars, $nid, 'favorites');
+      break;
+      
+      case 'article':
+        $nid = $vars['result']['fields']['entity_id'];
+        $node = node_load($nid);
+        if(isset($node->field_tout_image)){
+          $tmp_img_nid =  field_get_items('node', $node, 'field_tout_image');
+          $img_nid = $tmp_img_nid[0]['nid'];
+  
+          $result = db_query('select fi.field_image_fid,fm.filename from {field_data_field_image} fi
+            left join {file_managed} fm on fi.field_image_fid = fm.fid
+            where fi.entity_type = :bundle_type and fi.entity_id = :img_nid',array('bundle_type'=>'node','img_nid'=>$img_nid));
+          $record = $result->fetch();
+          $img_filename = file_build_uri(basename($record->filename));
+  
+          $newpath = image_style_path('square_thumbnail',$img_filename);
+          $abspath = file_create_url($newpath);
+          $vars['tfk_search_res_image'] = $abspath;
+        }
+        if(isset($node->field_article_category)){
+          $tmp_tid = field_get_items('node', $node, 'field_article_category');
+          $tid = $tmp_tid[0]['tid'];
+          $name_res =  db_query('select name from taxonomy_term_data where tid = :tid',array('tid' => $tid ));
+          $name = $name_res->fetch();
+          $name = $name->name;
+          $vars['tfk_search_res_category'] = $name;
+        }
+      break;
+          
+      //default:
+      //  ;
+      //break;
+    }
+    
+    // Photos & Video -specific- preprocessing.
+    if(arg(0) == 'photos-video') {
+      $vars['classes_array'][] = 'tfk-search-result';
+      
+      // Theming for results with thumbnails.
+      if(array_key_exists('tfk_search_res_image', $vars)) {
+        $vars['classes_array'][] = 'with-image';
+      }
+      
+      // View Full Article, on Photos and Video only do for videos.
+      if($node->type == 'video') {
+        $additional_contents = field_get_items('node', $node, 'field_additional_content');
+        if($additional_contents != FALSE) {
+          // @todo We should be indexing this data instead of node_loading it.
+          // Too much node loads may eliminate the speed advantage provided by Solr.
+          // Only doing this because we have a presentation today.
+          foreach($additional_contents as $additional_content) {
+            $additional_node = node_load($additional_content['nid']);
+            if($additional_node && $additional_node->type == 'article') {
+              // Break on the first article we find.
+              break;
+            }
+          }
+        }
+        $vars['node_link'] = l('View Full Article', 'node/'. $additional_node->nid,
+          array('attributes' => array('title' => $additional_node->title))
+        );
+      }
+        
+      // Related content.
+      $related_content = array();
+
+      if(array_key_exists(TFK_SEARCH_RELATED_TITLE, $vars['result']['fields'])
+        && array_key_exists(TFK_SEARCH_RELATED_PATH, $vars['result']['fields'])) {
+        
+        foreach($vars['result']['fields'][TFK_SEARCH_RELATED_TITLE] as $key => $rc_title) {
+          
+          // Translate content type to a human readable form.
+          switch ($vars['result']['fields'][TFK_SEARCH_RELATED_TYPE][$key]) {
+            case 'atw_destination':
+              $content_type = 'destination';
+            break;
+            
+            default:
+              $content_type = $vars['result']['fields'][TFK_SEARCH_RELATED_TYPE][$key];
+            break;
+          }
+          
+          // Add related content item.
+          $related_content[] = array(
+          	'title' => $rc_title,
+            'path' => $vars['result']['fields'][TFK_SEARCH_RELATED_PATH][$key],
+            'type' => $content_type
+          );
+        }
+      // Videos.
+      } else {
+        $items = field_get_items('node', $node, 'field_related_photos_video');
+        if(!empty($items)) {
+          $related_nid = array_shift(array_shift($items));
+          $related_node = node_load($related_nid);
+          
+          // Add related content item.
+          $related_content[] = array(
+          	'title' => $related_node->title,
+            'path' => 'node/'. $related_nid,
+            'type' => $related_node->type,
+          );
+        }
+        
+        $vars['snippet'] = array_shift(array_shift(field_get_items('node', $node, 'body')));
+      }
+      
+      // Theme related content.
+      if(!empty($related_content)) {
+        $vars['related_content'] = theme('tfk_search_related_content', array('related_content' => $related_content));
+      }
+
+      
+      // Minor stuff.
+      strtoupper($vars['tfk_search_cont_type']);
+      
+      // @todo Add a dek field to the slideshow, or trim snippet.
+      
+      // @todo Load additional content / related article.
+
+      // Unset stuff that we are not going to use.
+      unset($vars['info']);
+    }
+    
+
+}
+
+/**
+ * Implementation of hook_apachesolr_modify_query().
+ */
+function tfk_search_apachesolr_modify_query($query, $caller) {
+  // Limit the search results to image and video content type.
+  // Only apply these filters when we are in the photos and video page.
+  if($query->get_base_path() === 'photos-video') {
+    $subquery = apachesolr_drupal_query();
+    $subquery->add_filter('bundle', 'video');
+    $subquery->add_filter('bundle', 'slideshow');
+    $query->add_subquery($subquery, 'OR');
+    
+    // Retrieve related content fields.
+    $query->params['fl'] .= ','. implode(',', array(TFK_SEARCH_RELATED_TITLE, TFK_SEARCH_RELATED_PATH, TFK_SEARCH_RELATED_TYPE));
+
+    // Limit the number of rows per page to 4 per spec.
+    $query->params['rows'] = 4;
+  }
+
+  if($query->get_base_path() === 'worksheets') {
+    $subquery = apachesolr_drupal_query();
+    $subquery->add_filter('bundle', 'worksheet');
+    $query->add_subquery($subquery, 'OR');
+    
+    // Limit the number of rows per page to 8 per spec.
+    $query->params['rows'] = 8;
+  }
+  
+  if($caller == 'apachesolr_search' && ($query->get_base_path() !== 'photos-video') && ($query->get_base_path() !== 'worksheets')) {
+    global $user;
+    if(count($user->roles) == 1 && $user->roles[1] == 'anonymous user'){
+     $query->add_filter("bundle", 'worksheet',TRUE);
+     $query->add_filter("bundle", 'mini_lesson',TRUE);
+    }
+  }
+}
+
+function tfk_search_form_alter(&$form, &$form_state, $form_id) {
+  if($form_id == 'search_form'){
+    $form['basic']['keys']['#title'] = '';
+  }
+}
+
+/**
+ * Photos and Video menu callback.
+ */
+function tfk_search_photos_and_video() {
+
+  module_load_include('module', 'search');
+  
+  $filterstring = isset($_GET['filters']) ? $_GET['filters'] : '';
+  $solrsort = isset($_GET['solrsort']) ? $_GET['solrsort'] : '';
+  $page = isset($_GET['page']) ? $_GET['page'] : 0;
+  $base_path = 'photos-video';
+  
+  $response = apachesolr_search_run(search_get_keys(), $filterstring, $solrsort, $base_path, $page, 'apachesolr_search');
+  
+  return theme('search_results', array('results' => $response));
+    
+}
+
+/**
+ * Worksheet menu callback.
+ */
+function tfk_search_worksheets() {
+
+  //delete selected saved searches
+  if($_POST){
+    foreach($_POST as $sid => $val){
+      db_query('delete from tfk_search_saved_searches where saved_search_id = :saved_search_id',array('saved_search_id' => $sid ));
+    }
+  }
+
+  // Include the CTools tools that we need.
+  ctools_include('ajax');
+  ctools_include('modal');
+  
+  // Add CTools' javascript to the page.
+  ctools_modal_add_js();
+  
+  // Create our own javascript that will be used to theme a modal.
+  $sample_style = array(
+    'ctools-sample-style' => array(
+      'modalSize' => array(
+        'type' => 'fixed',
+        'width' => 400,
+        'height' => 250,
+        'addWidth' => 20,
+        'addHeight' => 15,
+      ),
+      'modalOptions' => array(
+        'opacity' => .5,
+        'background-color' => '#000',
+      ),
+      'animation' => 'fadeIn',
+      'modalTheme' => 'CToolsSampleModal',
+      'throbber' => theme('image', array('path' => ctools_image_path('ajax-loader.gif', 'ctools_ajax_sample'), 'alt' => t('Loading...'), 'title' => t('Loading'))),
+    ),
+  );
+
+  drupal_add_js($sample_style, 'setting');
+  // Since we have our js, css and images in well-known named directories,
+  // CTools makes it easy for us to just use them without worrying about
+  // using drupal_get_path() and all that ugliness.
+  ctools_add_js('ctools-ajax-sample', 'tfk_search');
+  ctools_add_css('ctools-ajax-sample', 'tfk_search');
+  
+
+  module_load_include('module', 'search');
+  $filterstring = isset($_GET['filters']) ? $_GET['filters'] : '';
+  $solrsort = isset($_GET['solrsort']) ? $_GET['solrsort'] : '';
+  $page = isset($_GET['page']) ? $_GET['page'] : 0;
+  $base_path = 'worksheets';
+  $response = apachesolr_search_run(search_get_keys(), $filterstring, $solrsort, $base_path, $page, 'apachesolr_search');
+  
+  return theme('search_results', array('results' => $response));
+}
+
+/**
+ * Menu callback for "myfr/%ctools_js/saves/%" and "myfr/%ctools_js/saves".
+ *
+ * @see tfk_search_menu()
+ */
+function ctools_ajax_save_srch($js = NULL,$filterstr = NULL) {
+
+  if(!$filterstr){
+      $filterstr = '';
+  }
+  
+  ctools_include('modal');
+  ctools_include('ajax');
+
+  $form_state = array(
+    'ajax' => TRUE,
+      'title' => t('Worksheets'),
+      //'no_redirect' => TRUE,
+    //'rerender' => TRUE,
+  );
+
+  $form_state['curr_filters'] = $filterstr;
+
+
+  $output = ctools_modal_form_wrapper('worksheets_save_srch', $form_state);
+
+  if (empty($output)) {
+      //$output[] = ctools_modal_command_loading();
+  }
+    
+    print ajax_render($output);
+    exit;
+}
+
+/**
+ * Form API implementation.
+ *
+ * Renders the CTools modal form for "Save your search" button.
+ *
+ * @see ctools_ajax_save_srch()
+ */
+function worksheets_save_srch($form, &$form_state) {
+  $path = drupal_get_path('module', 'tfk_search');
+  $form_state['title'] = t('NAME SAVED SEARCH');
+  
+  //@todo Admin interface for worksheet variables.
+  $form['description'] = array(
+  	'#markup' => "<div class='svd-srch-desc'>". t(
+      variable_get('worksheets_modal_save_desc',
+  		'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed mollis diam nec felis interdum interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed mollis diam nec felis interdum interdum interdum.')
+    ). "</div>"
+  );
+  
+  $form['savedname'] = array(
+    '#title' => t('Name of Search:'),
+    '#type' => 'textfield',
+    '#default_value' => '',
+    '#required' => TRUE,
+    '#size' => 50,
+  );
+
+  $form['submit'] = array(
+    '#prefix' => '<div class="svd-srch-submit">',
+    '#type' => 'image_button',
+    '#src' => $path. '/images/save-search.png',
+    '#suffix' => '</div>',
+  );
+    
+  return $form;
+}
+
+/**
+ * Submit callback for worksheets_save_srch() form.
+ */
+function worksheets_save_srch_submit(&$form, &$form_state) {
+  ctools_include('modal');
+  ctools_include('ajax');
+  global $user;
+  $form_data = array();
+
+
+  $commands = array();
+  if(isset($form_state['input']['savedname']) ){
+    $nid = array();
+    $form_data['op_uid'] = $user->uid;
+    $form_data['filters'] = $form_state['curr_filters'];
+    $form_data['searchname'] = $form_state['input']['savedname'];
+    //this is where we save stuff
+    $nid = db_insert('tfk_search_saved_searches') // Table name no longer needs {}
+          ->fields(array(
+            'search_name' => $form_data['searchname'],
+            'search_filters' => $form_data['filters'],
+            'saved_by_uid' => $form_data['op_uid'],
+          ))
+          ->execute();
+
+    $div_to_append  = '<div class="savedsrch">';
+    $div_to_append .= '<a href="'.url('worksheets',array('query'=>array('filters'=>$form_state['curr_filters']))).'">'.$form_state['input']['savedname'].'</a>';
+    $div_to_append .= '<input type="checkbox" name="'.$nid.'" id="'.$nid.'"/>';
+    $div_to_append .= '</div>';
+
+    $commands[] = ajax_command_append('#savsearches',$div_to_append);
+    
+  }
+
+  
+  $commands[] = ajax_command_html('#mymodaldiv', 'Your search has been saved');
+  $commands[] = ctools_modal_command_dismiss();
+  
+  print ajax_render($commands);
+  exit;
+}
+
+
+
+/**
+ * Helper function for grabbing search keys.
+ */
+function search_get_keys() {
+  static $return;
+  if (!isset($return)) {
+    // Extract keys as remainder of path
+    // Note: support old GET format of searches for existing links.
+    $path = explode('/', $_GET['q'], 2);
+    $keys = empty($_REQUEST['keys']) ? '' : $_REQUEST['keys'];
+    $return = count($path) == 2 ? $path[1] : $keys;
+  }
+  return $return;
+}
+
+/**
+ * Helper function for creating flag links.
+ *
+ * This is code that will get us a flag html with a working flag link to put in a template.
+ *
+ * @param array $vars
+ *   Search result variables.
+ * @param string $nid
+ *   Node nid.
+ * @param string $flag_name
+ *   Name of the flag.
+ */
+function tfk_search_get_flag_link(&$vars, $nid, $flag_name = 'favorites') {
+  // This is code that will get us a flag html with a working flag link to put in a template.
+  $flag = flag_get_flag($flag_name);
+  if($flag != FALSE) {
+    $flag_link = flag_create_link($flag_name, $nid);
+    $vars['favorites_flag_link'] = $flag_link;
+  } else {
+    return FALSE;
+  }
+}
