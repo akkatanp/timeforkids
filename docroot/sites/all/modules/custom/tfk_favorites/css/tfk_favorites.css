@@ -40,3 +40,16 @@ body.page-my-favorites li.search-result div.col2 {
   margin: 0 0 0 10px;
   max-width: inherit;
 }
+
+li.search-result .content-type .ctype-suffix {
+    float: right;
+    padding-right: 10px;
+}
+
+/* Favorites link */
+li.search-result .flag-favorites {
+  display: inline-block;
+  background: url("/sites/all/modules/custom/tfk_search/images/star-favorite-icon.png") no-repeat;
+  padding-left: 18px;
+  height: 20px;
+}
