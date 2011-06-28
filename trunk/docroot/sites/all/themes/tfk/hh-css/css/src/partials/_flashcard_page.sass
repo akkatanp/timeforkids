@@ -1,35 +1,26 @@
 .view-flashcard-landing-page.view-id-flashcard_landing_page
+  padding: 20px 10px
+  +clearfix
   .view-header
-    display: block
-    width: 250px
-    background: #E6E6E6
-    padding: 5px 15px 10px
-    float: right
-    border: 1px solid #CFCFCF
-    margin: 0 10px 15px
+    +tfk-box
     .creation-link
+      margin-top: 10px
       text-align: center
-      margin: 10px
       a
-        color: white
-        background: #D71700
-        padding: 5px
+        background: #d71700
         +border-radius(20px)
         +box-shadow(#999 2px 2px 2px 2px)
+        color: white
         margin: 10px
+        padding: 5px
   h3.views-accordion-flashcard_landing_page-page_1-header
-    width: 440px
-    border: 0px
-    background: #DDDDDD
-    +border-radius(0px)
+    background: #ddd
+    border: 0
+    +border-radius(0)
     font-size: 140%
-    line-height: 0
-    padding: 0
-    margin-top: 20px
-    margin-left: 10px
-    padding: 5px
+    line-height: 1
+    width: 440px
     span.ui-icon.ui-icon-triangle-1-e
-      //display: none
       background-image: url('../../images/arrow_right.png')
       background-position: 0 0
     span.ui-icon.ui-icon-triangle-1-s
@@ -38,11 +29,10 @@
     a
       margin-top: -10px
   .ui-accordion-content, &.view-display-id-page_2
-    width: 340px
-    border: 0px
-    margin-left: 10px
-    overflow: visible
+    border: 0
     margin-top: 0
+    overflow: visible
+    width: 340px
     .views-row
       +clearfix
     .field-content
