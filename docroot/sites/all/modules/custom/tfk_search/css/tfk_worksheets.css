@@ -145,8 +145,7 @@ body.section-worksheets .region-sidebar-first .section {
 }
 
 .column.sidebar .block-apachesolr-search,
-.column.sidebar .block-tfk-search,
-.column.sidebar .block-tfk-favorites {
+.column.sidebar .block-tfk-search {
   background-color: #D9EFFE;
 }
 
@@ -201,47 +200,6 @@ body.section-worksheets .region-sidebar-first .section {
 #block-tfk-search-tfk-search-worksheet-saved.block .savedsrch .savedsrch-checkbox {
   display: inline-block;
   float: right;
-}
-
-/* My Favorites */
-#block-tfk-favorites-tfk-favorites-links.block {
-  margin-top: 8px;
-  padding: 0;
-  border: none;
-}
-
-#block-tfk-favorites-tfk-favorites-links.block h2 {
-  font-size: 1em;
-  font-weight: bold;  
-}
-
-#block-tfk-favorites-tfk-favorites-links.block .header {
-  height: 31px;
-}
-
-#block-tfk-favorites-tfk-favorites-links.block .content {
-  background: url("/sites/all/modules/custom/tfk_search/images/my-favs-block-bg.png") no-repeat;
-}
-
-#block-tfk-favorites-tfk-favorites-links.block .body {
-  border: 3px solid #ACDBFC;
-  border-top: none;  
-}
-
-#block-tfk-favorites-tfk-favorites-links.block .header .header-content {
-  padding-top: 10px;
-  padding-left: 11px;
-  font-size: 1em;
-  font-weight: bold;  
-}
-
-#block-tfk-favorites-tfk-favorites-links.block .body .myfavs {
-  padding: 7px 10px 6px 10px;
-  text-align: center;
-}
-
-#block-tfk-favorites-tfk-favorites-links.block .body .myfavs .view-all {
-  margin-bottom: 5px;
 }
 
 /* Modal popup - "Name saved search" */
