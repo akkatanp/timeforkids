@@ -90,9 +90,8 @@ function grammar_wizard_multistep_form($form, &$form_state, $questions) {
 
 function grammar_wizard_multistep_form_callback($form, &$form_state) {
   $current_step = 'step_' . $form_state['storage']['step'];
-  if (!isset($form_state['correct_answer'])) {
-    //$form_state['storage']['step']++;
-  }
+  $correct_answer = $form[$current_step]['#correct_answer'];
+  $selected_answer = $form_state['input'][$current_step]['question']; 
 
   // Form needs to be rebuilt because it will possibly have different content.
   $form = drupal_rebuild_form('grammar_wizard_multistep_form', $form_state);
@@ -110,6 +109,9 @@ function grammar_wizard_multistep_form_callback($form, &$form_state) {
     }
     else {
       $form['check_answer']['#value'] = t('Check Answer');
+    }
+    if ($correct_answer != $selected_answer) {
+      $form[$current_step]['question'][$selected_answer]['#title'] = '<span class="grammar-wizard-incorrect">' . check_plain($selected_answer) . '</span>';
     }
   }
   $form['next']['#access'] = isset($form_state['correct_answer']) ? TRUE : FALSE;
