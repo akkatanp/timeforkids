@@ -60,6 +60,7 @@ function grammar_wizard_multistep_form($form, &$form_state, $questions) {
       '#type' => 'submit',
       '#value' => t('Check Answer'),
       '#submit' => array('grammar_wizard_check_answer'),
+      '#weight' => 10,
       '#ajax' => array(
         'wrapper' => 'wizard-form-wrapper',
         'callback' => 'grammar_wizard_multistep_form_callback',
@@ -68,6 +69,7 @@ function grammar_wizard_multistep_form($form, &$form_state, $questions) {
     $form['next'] = array(
       '#type' => 'submit',
       '#value' => t('Next Question'),
+      '#weight' => 11,
       '#ajax' => array(
         'wrapper' => 'wizard-form-wrapper',
         'callback' => 'grammar_wizard_multistep_form_callback',
@@ -78,6 +80,7 @@ function grammar_wizard_multistep_form($form, &$form_state, $questions) {
     $form['next'] = array(
       '#type' => 'submit',
       '#value' => t('See my Results'),
+      '#weight' => 12,
       '#ajax' => array(
         'wrapper' => 'wizard-form-wrapper',
         'callback' => 'grammar_wizard_multistep_form_callback',
@@ -100,10 +103,10 @@ function grammar_wizard_multistep_form_callback($form, $form_state) {
   if (isset($form_state['student_answers'][$current_step])) {
     if ($form_state['student_answers'][$current_step] == 1) {
       $form['check_answer']['#access'] = FALSE; 
-      $form['question_result'] = array('#markup' => $form_state['question_result'], '#weight' => 1,);
+      $form['question_result'] = array('#markup' => $form_state['question_result'], '#weight' => .9,);
     }  
     else {
-      $form['question_result'] = array('#markup' => $form_state['question_result'], '#weight' => 1,);
+      $form['question_result'] = array('#markup' => $form_state['question_result'], '#weight' => .9,);
     }
 
     if (isset($form_state['correct_answer']) && !$form_state['correct_answer']) {
