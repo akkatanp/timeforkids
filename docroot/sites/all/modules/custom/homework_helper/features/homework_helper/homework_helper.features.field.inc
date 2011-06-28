@@ -291,6 +291,71 @@ function homework_helper_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-a_paper-field_paper_description'
+  $fields['node-a_paper-field_paper_description'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_paper_description',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'module' => 'text',
+      'settings' => array(),
+      'translatable' => '1',
+      'type' => 'text_long',
+    ),
+    'field_instance' => array(
+      'bundle' => 'a_paper',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'The explanatory text that appears when a student begins the essay.',
+      'display' => array(
+        'default' => array(
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '7',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_paper_description',
+      'label' => 'Description',
+      'required' => 1,
+      'settings' => array(
+        'text_processing' => '1',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'rows' => '5',
+        ),
+        'type' => 'text_textarea',
+        'weight' => '2',
+      ),
+    ),
+  );
+
   // Exported field: 'node-a_paper-field_paper_image'
   $fields['node-a_paper-field_paper_image'] = array(
     'field_config' => array(
@@ -511,6 +576,73 @@ function homework_helper_field_default_fields() {
         ),
         'type' => 'file_generic',
         'weight' => '7',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-a_paper-field_summary'
+  $fields['node-a_paper-field_summary'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_summary',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '255',
+      ),
+      'translatable' => '1',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'a_paper',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'The short summary of this paper that appears on the A+ Papers landing page.',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '8',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_summary',
+      'label' => 'Summary',
+      'required' => 1,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '255',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '1',
       ),
     ),
   );
@@ -1559,6 +1691,75 @@ function homework_helper_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-paper_step-field_step_checkbox'
+  $fields['node-paper_step-field_step_checkbox'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_step_checkbox',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '255',
+      ),
+      'translatable' => '1',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'paper_step',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'If left blank, no text will appear in checkbox for this step. <br />
+If this step includes Name and Date or Title fields, no text will appear in the checkbox for this step<br />
+Ex. <em>I wrote a paragraph that summarizes my viewpoint.</em>',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '2',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_step_checkbox',
+      'label' => 'Checkbox Text',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '60',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '2',
+      ),
+    ),
+  );
+
   // Exported field: 'node-paper_step-field_step_example'
   $fields['node-paper_step-field_step_example'] = array(
     'field_config' => array(
@@ -2284,6 +2485,7 @@ function homework_helper_field_default_fields() {
   t('Author');
   t('Body');
   t('Category');
+  t('Checkbox Text');
   t('Checklist PDF');
   t('Checklist Title');
   t('Correct Answer');
@@ -2292,6 +2494,9 @@ function homework_helper_field_default_fields() {
   t('Flashcard');
   t('Grammar Practice');
   t('Graphic Organizer');
+  t('If left blank, no text will appear in checkbox for this step. <br />
+If this step includes Name and Date or Title fields, no text will appear in the checkbox for this step<br />
+Ex. <em>I wrote a paragraph that summarizes my viewpoint.</em>');
   t('Image');
   t('Include Name & Date fields');
   t('Include Textarea?');
@@ -2300,7 +2505,10 @@ function homework_helper_field_default_fields() {
   t('Rule');
   t('Sample Paper');
   t('Step-by-Step Instructions');
+  t('Summary');
   t('Textarea Label');
+  t('The explanatory text that appears when a student begins the essay.');
+  t('The short summary of this paper that appears on the A+ Papers landing page.');
   t('Title of checklist which will appear on the web only. Example: 7 Step Persuasive Essay');
   t('Weight');
   t('Wrong Answers');

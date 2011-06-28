@@ -54,7 +54,7 @@ function homework_helper_node_info() {
       'help' => '',
     ),
     'grammar_practice_reward_image' => array(
-      'name' => t('Grammar Practice Reward Image'),
+      'name' => t('Grammar Practice Trophy'),
       'base' => 'node_content',
       'description' => t('An image that displays when a student masters a grammar practice quiz.'),
       'has_title' => '1',
