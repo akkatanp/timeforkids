@@ -1,135 +1,72 @@
 /* Links -------------------------------------------------------------- */
-body.markup-elements h1.section-title {
-  font-size: 2.286em;
-  line-height: 1.5em;
-  background-color: #d3d3d3;
+/* Typography -------------------------------------------------------------- */
+html {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* The following classes are for use with @extend. */
+.serif, body {
+  font-family: Georgia, serif;
+}
+
+.sans {
+  font-family: sans-serif;
+}
+
+.mono {
+  font-family: Consolas, Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif;
+}
+
+.caps, .allcaps, .smallcaps {
+  letter-spacing: 0.1em;
+}
+
+.headers {
+  font-family: sans-serif;
+}
+
+.allcaps {
   text-transform: uppercase;
-  padding-left: 12px;
 }
-body.markup-elements h1.section-title a {
+
+.amp {
+  font-family: GoudyBookletter1911Regular, "Goudy Old Style", Baskerville, Palatino, Georgia, serif;
+}
+
+.smallcaps {
+  font-variant: small-caps;
+}
+
+/* Body -------------------------------------------------------------- */
+body {
   color: black;
+  background: white;
 }
-body.markup-elements h1.section-title a:visited {
-  color: black;
+
+/* Selected Text -------------------------------------------------------------- */
+/* -moz- must be declared separately */
+::-moz-selection {
+  color: white;
+  background: #d71700;
+  text-shadow: none;
 }
-body.markup-elements h1.section-title a:hover {
-  color: #d71700;
+
+::selection {
+  color: white;
+  background: #d71700;
+  text-shadow: none;
 }
-body.markup-elements h1.section-title a:active {
-  color: #d71700;
-}
-body.markup-elements h1.section-title a {
-  text-decoration: none;
-}
-body.markup-elements h1.section-title a:visited {
-  border-bottom-color: black;
-}
-body.markup-elements h1.section-title a:hover {
-  border-bottom-color: #d71700;
-}
-body.markup-elements h1.section-title a:active {
-  border-bottom-color: #d71700;
-}
-body.markup-elements article.element {
-  *zoom: 1;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  margin-bottom: 24px;
-  padding-bottom: 23px;
-}
-body.markup-elements article.element:after {
-  content: "\0020";
-  display: block;
-  height: 0;
-  clear: both;
-  overflow: hidden;
-  visibility: hidden;
-}
-body.markup-elements article.element:last-child {
-  padding-bottom: 0;
-  border-bottom-width: 0;
-  margin-bottom: 0;
-}
-body.markup-elements article.element h2.element-title {
-  font-size: 1em;
+
+/* Establish baseline rhythm
+ * from compass/typography/_vertical_rhythm */
+body {
+  font-size: 87.5%;
   line-height: 1.714em;
-  background-color: gray;
-  color: white;
-  text-transform: uppercase;
-  padding-left: 12px;
 }
-body.markup-elements article.element h2.element-title a {
-  color: white;
-}
-body.markup-elements article.element h2.element-title a:visited {
-  color: white;
-}
-body.markup-elements article.element h2.element-title a:hover {
-  color: #d71700;
-}
-body.markup-elements article.element h2.element-title a:active {
-  color: #d71700;
-}
-body.markup-elements article.element h2.element-title a {
-  text-decoration: none;
-}
-body.markup-elements article.element h2.element-title a:visited {
-  border-bottom-color: white;
-}
-body.markup-elements article.element h2.element-title a:hover {
-  border-bottom-color: #d71700;
-}
-body.markup-elements article.element h2.element-title a:active {
-  border-bottom-color: #d71700;
-}
-body.markup-elements article.element .example {
-  *zoom: 1;
-  border-bottom: 1px dashed rgba(0, 0, 0, 0.1);
-  margin-bottom: 12px;
-  padding-bottom: 11px;
-  *zoom: 1;
-}
-body.markup-elements article.element .example:after {
-  content: "\0020";
-  display: block;
-  height: 0;
-  clear: both;
-  overflow: hidden;
-  visibility: hidden;
-}
-body.markup-elements article.element .example:last-child {
-  padding-bottom: 0;
-  border-bottom-width: 0;
-  margin-bottom: 0;
-}
-body.markup-elements article.element .example:after {
-  content: "\0020";
-  display: block;
-  height: 0;
-  clear: both;
-  overflow: hidden;
-  visibility: hidden;
-}
-body.markup-elements article.element .example .markup {
-  display: inline;
-  float: left;
-  width: 64.228%;
-  margin-right: 2.439%;
-}
-body.markup-elements article.element .example .markup + .show-source {
-  display: inline;
-  float: left;
-  width: 30.894%;
-  margin-right: 2.439%;
-  display: inline;
-  float: right;
-  margin-right: 0;
-  #margin-left: -24px;
-}
-body.markup-elements article.element .example .markup + .show-source .show-hide {
-  text-align: right;
-}
-body.markup-elements article.element .example .markup + .show-source + p {
-  clear: both;
+
+html > body {
+  font-size: 14px;
 }
 
 .container, body #container {
@@ -264,11 +201,11 @@ body.page-node-99 #content .homework-helper-title {
   font-weight: bold;
   margin-bottom: 0;
   line-height: 1;
-  padding: 2.439%;
+  padding: 24px;
 }
 body.page-node-98 #content .field-item p,
 body.page-node-99 #content .field-item p {
-  padding: 0 2.439% 2.439% 2.439%;
+  padding: 0 24px 24px 24px;
 }
 body.page-node-98 #content p,
 body.page-node-99 #content p {
@@ -276,7 +213,7 @@ body.page-node-99 #content p {
 }
 body.page-node-98 #content .row,
 body.page-node-99 #content .row {
-  padding: 2.439%;
+  padding: 24px;
   border-top: 1px solid #cecece;
 }
 body.page-node-98 #content .row p,
@@ -429,7 +366,7 @@ body.node-type-a-paper #content .field-name-field-step-example, body.node-type-p
   background: #dddddd;
   border: 1px solid #cecece;
   margin: 10px;
-  padding: 2.439%;
+  padding: 24px;
 }
 body.node-type-a-paper #content .field-name-field-step-example p, body.node-type-paper-step #content .field-name-field-step-example p {
   margin-bottom: 0;
