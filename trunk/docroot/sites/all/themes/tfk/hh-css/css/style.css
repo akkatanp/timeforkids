@@ -6,7 +6,7 @@ html {
 }
 
 /* The following classes are for use with @extend. */
-.serif, body {
+.serif {
   font-family: Georgia, serif;
 }
 
@@ -113,11 +113,11 @@ body.homework-helper #content #block-menu-menu-homework-help {
   margin-bottom: 10px;
   height: 140px;
 }
-body.homework-helper #content #block-menu-menu-homework-help li.first {
+body.homework-helper #content #block-menu-menu-homework-help .content li.first {
   float: left;
   padding: 10px;
 }
-body.homework-helper #content #block-menu-menu-homework-help li.first a#menu-writing-center {
+body.homework-helper #content #block-menu-menu-homework-help .content li.first a#menu-writing-center {
   color: white;
   padding: 10px 254px 10px 10px;
   background: #d71700;
@@ -125,26 +125,26 @@ body.homework-helper #content #block-menu-menu-homework-help li.first a#menu-wri
   display: inline;
   float: left;
 }
-body.homework-helper #content #block-menu-menu-homework-help li.first ul.menu {
+body.homework-helper #content #block-menu-menu-homework-help .content li.first ul.menu {
   padding: 10px;
 }
-body.homework-helper #content #block-menu-menu-homework-help li.first ul.menu li.first, body.homework-helper #content #block-menu-menu-homework-help li.first ul.menu li.last {
+body.homework-helper #content #block-menu-menu-homework-help .content li.first ul.menu li.first, body.homework-helper #content #block-menu-menu-homework-help .content li.first ul.menu li.last {
   padding: 0;
 }
-body.homework-helper #content #block-menu-menu-homework-help li.first ul.menu {
+body.homework-helper #content #block-menu-menu-homework-help .content li.first ul.menu {
   display: inline;
   float: left;
   clear: both;
 }
-body.homework-helper #content #block-menu-menu-homework-help li.last {
+body.homework-helper #content #block-menu-menu-homework-help .content li.last {
   display: inline;
   float: left;
   padding: 10px;
 }
-body.homework-helper #content #block-menu-menu-homework-help li.last ul.menu li.first {
+body.homework-helper #content #block-menu-menu-homework-help .content li.last ul.menu li.first {
   float: none;
 }
-body.homework-helper #content #block-menu-menu-homework-help li.last a#menu-study-helper {
+body.homework-helper #content #block-menu-menu-homework-help .content li.last a#menu-study-helper {
   color: white;
   padding: 10px 254px 10px 10px;
   background: #999999;
@@ -152,13 +152,13 @@ body.homework-helper #content #block-menu-menu-homework-help li.last a#menu-stud
   display: inline;
   float: left;
 }
-body.homework-helper #content #block-menu-menu-homework-help li.last ul.menu {
+body.homework-helper #content #block-menu-menu-homework-help .content li.last ul.menu {
   padding: 10px;
 }
-body.homework-helper #content #block-menu-menu-homework-help li.last ul.menu li.first, body.homework-helper #content #block-menu-menu-homework-help li.last ul.menu li.last {
+body.homework-helper #content #block-menu-menu-homework-help .content li.last ul.menu li.first, body.homework-helper #content #block-menu-menu-homework-help .content li.last ul.menu li.last {
   padding: 0;
 }
-body.homework-helper #content #block-menu-menu-homework-help li.last ul.menu {
+body.homework-helper #content #block-menu-menu-homework-help .content li.last ul.menu {
   display: inline;
   float: left;
   clear: both;
