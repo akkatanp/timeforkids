@@ -145,11 +145,18 @@ if(drupal_is_front_page()) {
         </h1>
       <?php endif;?>
 
-      <?php if(array_key_exists('sidebar_top', $rendered)): ?>
-        <?php print $rendered['sidebar_top']; ?>
-      <?php endif; ?>
-
-      <?php print render($page['sidebar_first']); ?>
+      <div id="first-column">
+        <?php if(array_key_exists('sidebar_bottom', $page)): ?>
+          <?php print render($page['sidebar_top']); ?>
+        <?php endif; ?>
+  
+        <?php print render($page['sidebar_first']); ?>
+        
+        <?php if(array_key_exists('sidebar_bottom', $page)): ?>
+          <?php print render($page['sidebar_bottom']); ?>
+        <?php endif; ?>
+      </div>
+      
       <?php if(array_key_exists('editor_menu', $page)): ?>
         <?php print render($page['editor_menu']); ?>
       <?php endif; ?>

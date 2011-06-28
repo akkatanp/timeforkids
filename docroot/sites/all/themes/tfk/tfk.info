@@ -81,6 +81,7 @@ regions[editor_menu]    = Editorial Sidebar Menu
 regions[help]           = Help
 regions[sidebar_top]    = Sidebar top
 regions[sidebar_first]  = First sidebar
+regions[sidebar_bottom] = Sidebar Bottom
 regions[sidebar_second] = Second sidebar
 regions[navigation]     = Navigation bar
 regions[highlighted]    = Highlighted

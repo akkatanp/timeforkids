@@ -101,14 +101,22 @@ body {
  * First sidebar
  */
 .region-sidebar-first {
-	position: relative;
-	float: left;
-	width: 250px;
-	margin-right: 8px;
+
 }
 
 .front .region-sidebar-first {
 	display: none;
+}
+
+.region-sidebar-bottom {
+
+}
+
+#first-column {
+  position: relative;
+  float: left;
+  width: 250px;
+  margin-right: 8px;
 }
 
 /*
