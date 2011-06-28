@@ -44,6 +44,12 @@ function tfk_photos_video_context_default_contexts() {
           'region' => 'sidebar_first',
           'weight' => '-7',
         ),
+        'tfk_favorites-tfk_favorites_links' => array(
+          'module' => 'tfk_favorites',
+          'delta' => 'tfk_favorites_links',
+          'region' => 'sidebar_bottom',
+          'weight' => '-10',
+        ),
         'tfk_search-tfk_search_photos_video_featured' => array(
           'module' => 'tfk_search',
           'delta' => 'tfk_search_photos_video_featured',
