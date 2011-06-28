@@ -3,8 +3,6 @@ body.page-homework-helper-grammar-wizard
     .homework-helper-title
       +homework-helper-title
       font-size: $ms0
-    .grammar-wizard-incorrect
-      color: $tfk-red 
   #block-system-main
     padding: 20px
     .content
@@ -21,6 +19,17 @@ body.page-homework-helper-grammar-wizard
             width: 400px
           td.views-field-title-1
             +float-right
+          tr.even
+            border-bottom: none
+            td.views-field
+              background: white
+              padding: 20px
+            td.views-field-title
+              font-size: 18px
+              font-weight: bold
+              width: 400px
+            td.views-field-title-1
+              +float-right
 
 #node-186
   .content
@@ -38,5 +47,7 @@ body.page-homework-helper-grammar-wizard
         +float-left
         margin: 10px
         
-        
+.grammar-wizard-incorrect
+  color: $tfk-red 
+
         
