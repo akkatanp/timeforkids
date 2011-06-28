@@ -5,76 +5,13 @@ body.node-type-a-paper, body.node-type-paper-step
     font-size: $ms-1
     line-height: $ms1
     width: 768px
-    #homework-help-content
-      position: relative
-      padding: 10px 10px 10px 20px
-      border: 1px solid #cecece        
-      #block-system-main
-        +trailer
-        a
-          margin-right: 10px
-        .messages
-          width: 440px
-          position: absolute
-          left: 0
-          margin: 0
-      .homework-helper-title
-        position: absolute
-        top: 65px
-      .content-type-title
-        +homework-helper-title
-        font-size: $ms1
-        +float-left
-        width: 200px
     .paper-textarea
       width: 480px
       padding: 36px 0 12px
       p
         text-indent: 40px
         margin-bottom: 1em
-    #aplus-papers-checklist-block
-      border: 1px solid #cecece
-      list-style: none
-      width: 220px
-      +float-right
-      .aplus-papers-checklist-title
-        color: white
-        background-color: $tfk-red
-        padding: 2px
-        font-weight: bold
-        text-transform: uppercase
-        border: 10px solid #dddddd
-        text-align: center
-      ul#aplus-papers-checklist
-        margin-bottom: 0  
-      li
-        border-bottom: 1px solid #cecece
-        background: #dddddd url(images/checkbox-unchecked.gif)
-        background-repeat: no-repeat
-        background-position: 0 .5em
-        margin: 0
-        padding: 10px 35px
-        color: $tfk-red
-        font-weight: bold
-      li.current
-        border-bottom: 1px solid #cecece
-        background: white url(images/checkbox-unchecked.gif)
-        background-repeat: no-repeat
-        background-position: 0 .7em
-        margin: 0
-        padding: 10px 35px
-        color: $black
-      li.checked
-        border-bottom: 1px solid #cecece
-        background: white url(images/checkbox-checked.gif)
-        background-repeat: no-repeat
-        background-position: 0 .7em
-        margin: 0
-        padding: 10px 35px
-        color: $black      
-      li.last
-        border-bottom: 0
-    h2.node-title a
+    .node-title a
       color: $black
       font-size: $ms2
       line-height: $ms1
@@ -104,29 +41,12 @@ body.node-type-a-paper, body.node-type-paper-step
     .aplus-overview
       width: 505px
       font-size: 14px
+      padding-top: 60px
     .content .content 
       .form-item input
         font-size: 14px
       .content 
         font-size: 14px
-    #aplus-submit-buttons
-      background: #dddddd
-      padding: 10px
-      width: 480px
-      border: 1px solid #cecece
-      height: 25px
-      margin-top: -20px
-      text-align: right
-      +float-left
-      .aplus-start-over
-        background: url(images/tfk-red-arrow.png)
-        background-repeat: no-repeat
-        +float-left
-        font-style: italic
-        font-family: $font-serifs
-        color: $tfk-red
-        padding: 3px 0 0 42px
-        height: 35px
     .node-paper-step
       padding: 10px 0
       width: 500px
@@ -136,18 +56,7 @@ body.node-type-a-paper, body.node-type-paper-step
         padding: 0 0 10px 
       h2.node-title
         margin: 0 0 10px 0
-    #aplus-review-step, #aplus-final-step
-      width: 480px
-      +float-left
-      margin-top: 10px
-      h2.node-title
-        margin: 0 0 10px 0
-      .a-plus-review-description
-        font-weight: bold
-        margin-bottom: 10px
-      label
-        font-size: $ms1
-        padding: 0 0 10px
+        padding-top: 20px
     button,
     input[type="reset"],
     input[type="submit"],
@@ -176,14 +85,6 @@ body.node-type-a-paper, body.node-type-paper-step
       outline: 0
       overflow: visible
       padding: 4px 12px 4px
-    #aplus-print-save-buttons
-      text-align: center
-      clear: right
-      padding-top: 10px
-      width: 230px
-      +float-right
-      input
-        margin-top: 10px
     .paper-title
       font-size: $ms2
       text-align: center
@@ -193,7 +94,115 @@ body.node-type-a-paper, body.node-type-paper-step
     .student-name
       +float-left
       font-size: $ms0
-      
+
+#aplus-submit-buttons
+  background: #dddddd
+  padding: 10px
+  width: 480px
+  border: 1px solid #cecece
+  height: 25px
+  margin-top: -20px
+  text-align: right
+  +float-left
+  .aplus-start-over
+    background: url(images/tfk-red-arrow.png)
+    background-repeat: no-repeat
+    +float-left
+    font-style: italic
+    font-family: $font-serifs
+    color: $tfk-red
+    padding: 3px 0 0 42px
+    height: 35px
+
+#aplus-papers-checklist-block
+  border: 1px solid #cecece
+  list-style: none
+  width: 220px
+  +float-right
+  .aplus-papers-checklist-title
+    color: white
+    background-color: $tfk-red
+    padding: 2px
+    font-weight: bold
+    text-transform: uppercase
+    border: 10px solid #dddddd
+    text-align: center
+  li
+    border-bottom: 1px solid #cecece
+    background: #dddddd url(images/checkbox-unchecked.gif)
+    background-repeat: no-repeat
+    background-position: 0 .5em
+    margin: 0
+    padding: 10px 35px
+    color: $tfk-red
+    font-weight: bold
+  li.current
+    border-bottom: 1px solid #cecece
+    background: white url(images/checkbox-unchecked.gif)
+    background-repeat: no-repeat
+    background-position: 0 .7em
+    margin: 0
+    padding: 10px 35px
+    color: $black
+  li.checked
+    border-bottom: 1px solid #cecece
+    background: white url(images/checkbox-checked.gif)
+    background-repeat: no-repeat
+    background-position: 0 .7em
+    margin: 0
+    padding: 10px 35px
+    color: $black      
+  li.last
+    border-bottom: 0
+
+ul#aplus-papers-checklist
+  margin-bottom: 0  
+
+#aplus-review-step, #aplus-final-step
+  width: 480px
+  +float-left
+  margin-top: 10px
+  h2.node-title
+    margin: 0 0 10px 0
+  .a-plus-review-description
+    font-weight: bold
+    margin-bottom: 10px
+  label
+    font-size: $ms1
+    padding: 0 0 10px
+
+#aplus-print-save-buttons
+  text-align: center
+  clear: right
+  padding-top: 10px
+  width: 230px
+  +float-right
+  input
+    margin-top: 10px
+
+#homework-help-content
+  position: relative
+  .homework-helper-title
+    position: absolute
+    top: 65px
+    left: 12px
+    text-transform: uppercase
+  .content-type-title
+    +homework-helper-title
+    font-size: $ms1
+    +float-left
+    width: 100%
+
+#block-system-main
+  +trailer
+  a
+    margin-right: 10px
+  .messages
+    width: 440px
+    position: absolute
+    left: 0
+    margin: 0
+
 body.page-homework-helper-a-plus-papers
   .view-a-papers
     .view-header
@@ -210,25 +219,26 @@ body.page-homework-helper-a-plus-papers
       padding-right: 10px
       border-bottom: 1px solid #cecece
       padding-bottom: $baseline
-  #block-system-main
-    border-top: 1px solid #cecece
-    border-right: 1px solid #cecece
-    border-left: 1px solid #cecece
-    +trailer
-    .views-field-title
+    .views-row-last
+      border-bottom: 0px
+
+#block-system-main
+  border: 1px solid #cecece
+  +trailer
+  .views-field-title
+    a
+      font-size: 20px
+  .views-field-field-paper-image
+    +float-left
+    margin: 0 0 0 -125px
+  .views-field-nothing
+    +leader
+    .related-pdfs
+      border: 4px solid #addcfa
+      background: #ddeeff url(images/pdf-image.png)
+      background-repeat: no-repeat
+      background-position: 0 .5em
+      padding: 5px 5px 5px 30px
+      +box-shadow(transparentize($black, 0.5) 0 2px 4px)
       a
-        font-size: 20px
-    .views-field-field-paper-image
-      +float-left
-      margin: 0 0 0 -125px
-    .views-field-nothing
-      +leader
-      .related-pdfs
-        border: 4px solid #addcfa
-        background: #ddeeff url(images/pdf-image.png)
-        background-repeat: no-repeat
-        background-position: 0 .5em
-        padding: 5px 5px 5px 30px
-        +box-shadow(transparentize($black, 0.5) 0 2px 4px)
-        a
-          margin-right: 10px
+        margin-right: 10px
