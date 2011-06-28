@@ -102,6 +102,11 @@ function tfk_preprocess_page(&$variables, $hook) {
     $variables['content_type_title'] = tfk_content_type_title($variables['node']->type);
     $variables['theme_hook_suggestions'][] = 'page__homework_helper';
   }  
+
+  if ($variables['node']->type == 'grammar_practice') {
+    $variables['grammar_practice_header'] = l('Try Another', 'homework-helper/grammar-wizard/grammar-practice', array('attributes' => array('class' => array('button', 'try-another'))));
+  }  
+ 
 }
 // */
 
