@@ -25,6 +25,13 @@ function tfk_search_menu(){
   	'access arguments' => array('access content'),
     'type' => MENU_CALLBACK,
   );
+  $items['tfk-magazine'] = array(
+  	'title' => 'TFK Magazine',
+  	'page callback' => 'tfk_search_magazine',
+  	'access callback' => 'user_access',
+  	'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
   $items['myfr/%ctools_js/saves/%'] = array(
       'title' => 'Worksheets',
       'page callback' => 'ctools_ajax_save_srch',
@@ -1092,7 +1099,17 @@ function tfk_search_apachesolr_modify_query($query, $caller) {
     // Limit the number of rows per page to 8 per spec.
     $query->params['rows'] = 8;
   }
-  
+
+  if($query->get_base_path() === 'tfk-magazine') {
+    $subquery = apachesolr_drupal_query();
+    $subquery->add_filter('bundle', 'magazine_issue');
+    $query->add_subquery($subquery, 'OR');
+
+    // Limit the number of rows per page to 8 per spec.
+    $query->params['rows'] = 8;
+  }
+
+
   if($caller == 'apachesolr_search' && ($query->get_base_path() !== 'photos-video') && ($query->get_base_path() !== 'worksheets')) {
     global $user;
     if(count($user->roles) == 1 && $user->roles[1] == 'anonymous user'){
@@ -1124,6 +1141,17 @@ function tfk_search_photos_and_video() {
   
   return theme('search_results', array('results' => $response));
     
+}
+
+
+function tfk_search_magazine(){
+  $filterstring = isset($_GET['filters']) ? $_GET['filters'] : '';
+  $solrsort = isset($_GET['solrsort']) ? $_GET['solrsort'] : '';
+  $page = isset($_GET['page']) ? $_GET['page'] : 0;
+  $base_path = 'tfk-magazine';
+  $response = apachesolr_search_run(search_get_keys(), $filterstring, $solrsort, $base_path, $page, 'apachesolr_search');
+
+  return theme('search_results', array('results' => $response));
 }
 
 /**
