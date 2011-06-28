@@ -8,7 +8,7 @@ $(document).ready(function() {
 	//hide notification if it is there
 	$('#hide-notification').click(function(){
 		$.ajax({
-			url: '<?php echo url('notification/hide/'.$notification_data['notification_nid']);?>',
+			url: $(this).attr('rel'),
 			success: function(data) {
 				if (data == 'success') {
 					$('.notification').fadeOut('fast');
@@ -16,7 +16,6 @@ $(document).ready(function() {
 			}
 		});
 	});
-
 });
 
 (function($) {
