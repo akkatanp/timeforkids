@@ -11,7 +11,7 @@ $(document).ready(function() {
 			url: $(this).attr('rel'),
 			success: function(data) {
 				if (data == 'success') {
-					$('.notification').fadeOut('fast');
+					$('.notification').slideUp('fast');
 				}
 			}
 		});
