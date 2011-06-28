@@ -33,6 +33,18 @@ function tfk_helper_drush_command() {
       'temporary file path' => dt('Temporary file path.'),
     ),
   );
+  
+  $items['tfk-clear'] = array(
+    'description' => 'Clear all tables including general cache.',
+    'callback' => '_tfk_helper_clear_cache',
+    'aliases' => array('tfk-cc'),
+    'arguments' => array(
+      'cache' => dt('Cache bin to clear.'),
+    ),
+    'options' => array(
+      'cid' => 'Cache id of the cache entry to clear.',
+    ),
+  );
 
   return $items;
 }
@@ -75,11 +87,43 @@ function tfk_helper_solr_dis() {
 
 /**
  * Set public and temporary file paths.
+ *
+ * Example: drush sfp sites/default/files /Users/rallen8440/tmp
  */
 function tfk_helper_set_file_paths() {
  $args = func_get_args();
- variable_set('file_public_path', $args[0]);
- drush_log("file_public_path set to {$args[0]}", 'success');
- variable_set('file_temporary_path', $args[1]);
- drush_log("file_temporary_path set to {$args[1]}", 'success');
+ if(empty($args)) {
+   drush_log('Public and temporary path arguments not specified.', 'warning');
+ } else {
+   variable_set('file_public_path', $args[0]);
+   drush_log("file_public_path set to {$args[0]}", 'success');
+   variable_set('file_temporary_path', $args[1]);
+   drush_log("file_temporary_path set to {$args[1]}", 'success');
+ }
+}
+
+function _tfk_helper_clear_cache() {
+  $args = func_get_args();
+  if(empty($args)) {
+    // Do what 'drush cc all' already does, clear the cache_page and cache_block bins.
+    cache_clear_all();
+    drush_log('"cache_page" and "cache_block" bins cleared', 'success');
+    
+    // Then delete the general cache table as well, which currently can only be done by the admin UI cache clear.
+    cache_clear_all(NULL, 'cache');
+    drush_log('"cache" bin was cleared', 'success');
+  }
+    
+  // This is for clearing a cid within a specific bin, if you happen to know it.
+  if(drush_get_option('cid')) {
+    if(!array_key_exists(0, $args)) {
+      print('You must specify a cache bin when using the cid option');
+    } else {
+      cache_clear_all(drush_get_option('cid'), $args[0]);
+    }
+  }
+  if(array_key_exists(0, $args)) {
+    cache_clear_all(NULL, $args[0]);
+  }
+  
 }
