@@ -24,7 +24,7 @@ function homework_helper_menu_default_menu_links() {
     'external' => '0',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '-46',
+    'weight' => '-48',
     'parent_path' => 'node/98',
   );
   // Translatables
