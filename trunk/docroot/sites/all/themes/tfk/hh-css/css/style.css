@@ -1140,3 +1140,62 @@ body.page-homework-helper-writing-tips #content a.button {
   overflow: visible;
   padding: 4px 12px 4px;
 }
+
+body.page-homework-helper-a-plus-papers .view-a-papers .view-header {
+  border-bottom: 1px solid #cecece;
+  padding-bottom: 10px;
+  padding-left: 15px;
+  margin-bottom: 1.714em;
+}
+body.page-homework-helper-a-plus-papers .view-a-papers .view-header .content-type-title {
+  background-image: url(images/tfk-red-tag.png);
+  background-repeat: no-repeat;
+  padding: 12px 12px 12px 24px;
+  height: 23px;
+  color: white;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 0;
+  margin-top: 10px;
+  margin-left: -22px;
+  font-size: 18px;
+  margin-left: -17px;
+}
+body.page-homework-helper-a-plus-papers .view-a-papers .views-row {
+  padding-left: 135px;
+  padding-right: 10px;
+  border-bottom: 1px solid #cecece;
+  padding-bottom: 24px;
+}
+body.page-homework-helper-a-plus-papers #block-system-main {
+  border-top: 1px solid #cecece;
+  border-right: 1px solid #cecece;
+  border-left: 1px solid #cecece;
+  margin-bottom: 1.714em;
+}
+body.page-homework-helper-a-plus-papers #block-system-main .views-field-title a {
+  font-size: 20px;
+}
+body.page-homework-helper-a-plus-papers #block-system-main .views-field-field-paper-image {
+  display: inline;
+  float: left;
+  margin: 0 0 0 -125px;
+}
+body.page-homework-helper-a-plus-papers #block-system-main .views-field-nothing {
+  margin-top: 1.714em;
+}
+body.page-homework-helper-a-plus-papers #block-system-main .views-field-nothing .related-pdfs {
+  border: 4px solid #addcfa;
+  background: #ddeeff url(images/pdf-image.png);
+  background-repeat: no-repeat;
+  background-position: 0 0.5em;
+  padding: 5px 5px 5px 30px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.5) 0 2px 4px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.5) 0 2px 4px;
+  -o-box-shadow: rgba(0, 0, 0, 0.5) 0 2px 4px;
+  box-shadow: rgba(0, 0, 0, 0.5) 0 2px 4px;
+}
+body.page-homework-helper-a-plus-papers #block-system-main .views-field-nothing .related-pdfs a {
+  margin-right: 10px;
+}
