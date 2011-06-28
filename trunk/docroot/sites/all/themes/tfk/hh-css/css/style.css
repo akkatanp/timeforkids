@@ -59,7 +59,7 @@ body {
 }
 
 /* Establish baseline rhythm
- * from compass/typography/_vertical_rhythm */
+ * from compass/typography/_vertical_rhythm 
 body {
   font-size: 87.5%;
   line-height: 1.714em;
@@ -67,7 +67,7 @@ body {
 
 html > body {
   font-size: 14px;
-}
+}*/
 
 .container, body #container {
   *zoom: 1;
