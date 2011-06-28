@@ -1352,6 +1352,10 @@ body.page-node-186 #homework-help-content .homework-helper-title {
   line-height: 120%;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_grammar-wizard\.sass}line{font-family:\0000318}}
+#node-186 .content .row h2 a:hover {
+  color: #ffaea4;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_grammar-wizard\.sass}line{font-family:\0000320}}
 #node-186 .content .row .img {
   display: inline;
   float: left;
