@@ -8,6 +8,8 @@ body.homework-helper
     font-size: $ms-1
     line-height: $ms1
     width: 768px
+    a.button
+      +tfk-submit-button
     a
       &:hover
         color: lighten($tfk-red, 40.0)
@@ -120,3 +122,5 @@ body.page-node-99
   .hh-throbber-message
     width: 130px
 
+.homework-helper-title
+  +homework-helper-title
