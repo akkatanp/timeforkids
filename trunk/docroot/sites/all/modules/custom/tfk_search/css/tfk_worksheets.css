@@ -36,7 +36,7 @@ div.search-result-links {
 
 body.section-worksheets li.worksheet .col2 {
   display: block;
-  max-width: inherit;
+  width: inherit;
   /* margin: 0 0 0 10px; */
 }
 

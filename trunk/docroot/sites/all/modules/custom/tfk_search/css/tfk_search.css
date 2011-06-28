@@ -188,7 +188,7 @@ li.tfk-search-result {
 
 .col2 {
   display: inline-block;
-  max-width: 360px;
+  width: 360px;
   margin: 0 0 0 10px;
 }
 
@@ -260,7 +260,7 @@ div#tfk-search-pager-top .item-list ul li {
 div#featured-related-content-title {
 	font-size: 1em;
 	font-weight: bold;
-	margin: 20px 0px 5px 0px;
+	margin: 5px 0px 5px 0px;
 }
 
 div#featured-related-content {
@@ -297,4 +297,19 @@ div#featured-related-content .addit-related-articles .addit-related-articles-tit
 
 div#featured-related-content .addit-related-articles .addit-related-articles-download {
   color: #eb1c24;
+}
+
+/**
+ * Photos and Videos Favorites 
+ */
+body.section-photos-video ol#tfk-search-results-photos-video .search-result-links {
+  margin-top: 15px;
+  text-align: right;
+}
+
+li.search-result .flag-favorites {
+  display: inline-block;
+  background: url("/sites/all/modules/custom/tfk_search/images/star-favorite-icon.png") no-repeat;
+  padding-left: 18px;
+  height: 20px;
 }
