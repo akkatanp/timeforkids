@@ -146,7 +146,7 @@ if(drupal_is_front_page()) {
       <?php endif;?>
 
       <div id="first-column">
-        <?php if(array_key_exists('sidebar_bottom', $page)): ?>
+        <?php if(array_key_exists('sidebar_top', $page)): ?>
           <?php print render($page['sidebar_top']); ?>
         <?php endif; ?>
   
