@@ -1338,6 +1338,26 @@ body.page-node-186 #homework-help-content .homework-helper-title {
   margin-left: -17px;
 }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_grammar-wizard\.sass}line{font-family:\0000310}}
+#node-186 .content .row {
+  display: inline;
+  float: left;
+  border-top: 1px solid #cecece;
+  padding: 24px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_grammar-wizard\.sass}line{font-family:\0000314}}
+#node-186 .content .row h2 a {
+  color: #d71700;
+  font-size: 32px;
+  line-height: 120%;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_grammar-wizard\.sass}line{font-family:\0000318}}
+#node-186 .content .row .img {
+  display: inline;
+  float: left;
+  margin: 10px;
+}
+
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_writers-toolbox\.sass}line{font-family:\000031}}
 .writers-toolbox {
   *zoom: 1;
