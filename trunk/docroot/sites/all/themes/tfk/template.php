@@ -169,6 +169,8 @@ function tfk_content_type_title($type) {
       break;
     case 'flashcard':
       $output = t('Flashcard Maker');
+    case 'grammar_practice':
+      $output = t('Grammar Practice');
   }
   return $output;
 }
