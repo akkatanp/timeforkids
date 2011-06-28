@@ -69,6 +69,9 @@
         <?php endif; ?>
       
 	      <div id="homework-help-content">
+          <?php if ($grammar_practice_header): ?>
+            <div id="grammar_practice_header"><?php print $grammar_practice_header; ?></div>
+          <?php endif; ?>
           <?php if ($content_type_title): ?>
             <div class="content-type-title"><?php print $content_type_title; ?> </div>
           <?php endif; ?>
