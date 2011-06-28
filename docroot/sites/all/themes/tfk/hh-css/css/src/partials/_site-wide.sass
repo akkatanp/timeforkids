@@ -18,41 +18,42 @@ body.homework-helper
       background: #dddddd
       margin-bottom: 10px
       height: 140px
-      li.first
-        float: left
-        padding: 10px
-        a#menu-writing-center
-          color: $white
-          padding: 10px 254px 10px 10px
-          background: $tfk-red
-          text-transform: uppercase
-          +float-left
-        ul.menu
+      .content
+        li.first
+          float: left
           padding: 10px
-          li.first, li.last
-            padding: 0
-        ul.menu
+          a#menu-writing-center
+            color: $white
+            padding: 10px 254px 10px 10px
+            background: $tfk-red
+            text-transform: uppercase
+            +float-left
+          ul.menu
+            padding: 10px
+            li.first, li.last
+              padding: 0
+          ul.menu
+            +float-left
+            clear: both
+        li.last
           +float-left
-          clear: both
-      li.last
-        +float-left
-        padding: 10px
-        ul.menu
-          li.first
-            float: none
-        a#menu-study-helper
-          color: $white
-          padding: 10px 254px 10px 10px
-          background: #999999
-          text-transform: uppercase
-          +float-left
-        ul.menu
           padding: 10px
-          li.first, li.last
-            padding: 0
-        ul.menu
-          +float-left
-          clear: both
+          ul.menu
+            li.first
+              float: none
+          a#menu-study-helper
+            color: $white
+            padding: 10px 254px 10px 10px
+            background: #999999
+            text-transform: uppercase
+            +float-left
+          ul.menu
+            padding: 10px
+            li.first, li.last
+              padding: 0
+          ul.menu
+            +float-left
+            clear: both
     #homework-helper-title
       font-size: $ms0
       border-bottom: 0
