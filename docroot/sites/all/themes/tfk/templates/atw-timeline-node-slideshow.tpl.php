@@ -24,7 +24,8 @@
 		<div class="event" id="event-<?php print $i ?>"<?//php if ($i != 0) echo ' style="display: none;"'; ?>>
 		
 			<div class="event-image"><img src="<?php print $image['image_path'] ?>" /></div>
-			
+
+			<?php if(isset($image['image_credit'])):?><div class="event-credit"><?php print $image['image_credit'];?></div><?php endif;?>
 			<div class="event-text">
 				<h3><?php print $image['event_title'] ?></h3>
 				<?php print $image['event_copy'] ?>
