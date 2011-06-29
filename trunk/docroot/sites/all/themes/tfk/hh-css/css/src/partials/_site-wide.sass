@@ -1,4 +1,4 @@
-body.homework-helper
+.homework-helper
   #main-wrapper
     .region-sidebar-first .section
       margin-bottom: 10px
@@ -17,45 +17,28 @@ body.homework-helper
       width: 480px
     #block-menu-menu-homework-help
       border: 1px solid #cecece
-      background: #dddddd
+      background: #ddd
       margin-bottom: 10px
-      height: 140px
       .content
-        li.first
-          float: left
+        .menu
           padding: 10px
-          a#menu-writing-center
-            color: $white
-            padding: 10px 254px 10px 10px
-            background: $tfk-red
-            text-transform: uppercase
+        & > .menu
+          +clearfix
+          padding-bottom: 0
+          & > li
             +float-left
-          ul.menu
-            padding: 10px
-            li.first, li.last
-              padding: 0
-          ul.menu
-            +float-left
-            clear: both
-        li.last
-          +float-left
-          padding: 10px
-          ul.menu
-            li.first
-              float: none
-          a#menu-study-helper
-            color: $white
-            padding: 10px 254px 10px 10px
-            background: #999999
-            text-transform: uppercase
-            +float-left
-          ul.menu
-            padding: 10px
-            li.first, li.last
-              padding: 0
-          ul.menu
-            +float-left
-            clear: both
+            width: 50%
+      #menu-writing-center,
+      #menu-study-helper
+        color: $white
+        padding: 10px
+        text-transform: uppercase
+        display: block
+      #menu-writing-center
+        background: $tfk-red
+        margin-right: 10px
+      #menu-study-helper
+        background: #999
     #homework-helper-title
       font-size: $ms0
       border-bottom: 0
@@ -63,14 +46,13 @@ body.homework-helper
       text-transform: uppercase
     h2.node-title
       +trailer
-  .block
-    margin: 0px
+  .block,
   .node
-    margin: 0px
+    margin: 0
 
 // WRITING CENTER LANDING PAGE
-body.page-node-98,
-body.page-node-99
+.page-node-98,
+.page-node-99
   #content
     #homework-help-content
       +trailer
@@ -104,7 +86,7 @@ body.page-node-99
         &:hover
           color: lighten($tfk-red, 40.0)
 
-#homework-help-content 
+#homework-help-content
   +clearfix
   border: 1px solid #cecece
   .progress-disabled
@@ -114,13 +96,10 @@ body.page-node-99
     font-size: 1.5em
     padding: 30px
     position: fixed
-    left: 40% 
+    left: 40%
     top: 40%
     border: 4px solid #addcfa
     background: #ddeeff
     +box-shadow(transparentize($black, 0.5) 0 2px 4px)
   .hh-throbber-message
     width: 130px
-
-.homework-helper-title
-  +homework-helper-title
