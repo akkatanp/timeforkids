@@ -1,44 +1,54 @@
 /* Links -------------------------------------------------------------- */
 /* Typography -------------------------------------------------------------- */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/defaults\/_defaults\.sass}line{font-family:\0000311}}
 html {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 }
 
 /* The following classes are for use with @extend. */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/defaults\/_defaults\.sass}line{font-family:\0000316}}
 .serif {
   font-family: Georgia, serif;
 }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/defaults\/_defaults\.sass}line{font-family:\0000319}}
 .sans {
   font-family: sans-serif;
 }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/defaults\/_defaults\.sass}line{font-family:\0000322}}
 .mono {
   font-family: Consolas, Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif;
 }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/defaults\/_defaults\.sass}line{font-family:\0000325}}
 .caps, .allcaps, .smallcaps {
   letter-spacing: 0.1em;
 }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/defaults\/_defaults\.sass}line{font-family:\0000328}}
 .headers {
   font-family: sans-serif;
 }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/defaults\/_defaults\.sass}line{font-family:\0000332}}
 .allcaps {
   text-transform: uppercase;
 }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/defaults\/_defaults\.sass}line{font-family:\0000336}}
 .amp {
   font-family: GoudyBookletter1911Regular, "Goudy Old Style", Baskerville, Palatino, Georgia, serif;
 }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/defaults\/_defaults\.sass}line{font-family:\0000339}}
 .smallcaps {
   font-variant: small-caps;
 }
 
 /* Body -------------------------------------------------------------- */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/defaults\/_defaults\.sass}line{font-family:\0000346}}
 body {
   color: black;
   background: white;
@@ -46,12 +56,14 @@ body {
 
 /* Selected Text -------------------------------------------------------------- */
 /* -moz- must be declared separately */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/defaults\/_defaults\.sass}line{font-family:\0000354}}
 ::-moz-selection {
   color: white;
   background: #d71700;
   text-shadow: none;
 }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/defaults\/_defaults\.sass}line{font-family:\0000359}}
 ::selection {
   color: white;
   background: #d71700;
@@ -60,40 +72,48 @@ body {
 
 /* Establish baseline rhythm
  * from compass/typography/_vertical_rhythm */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/lib\/gems\/1\.8\/gems\/compass-0\.11\.3\/frameworks\/compass\/stylesheets\/compass\/typography\/_vertical_rhythm\.scss}line{font-family:\0000326}}
 body {
   font-size: 87.5%;
   line-height: 1.714em;
 }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/lib\/gems\/1\.8\/gems\/compass-0\.11\.3\/frameworks\/compass\/stylesheets\/compass\/typography\/_vertical_rhythm\.scss}line{font-family:\0000330}}
 html > body {
   font-size: 14px;
 }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/grids\/_grids_susy\.sass}line{font-family:\000034}}
 .container, body #container {
   *zoom: 1;
   margin: auto;
   width: 984px;
   max-width: 100%;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/lib\/gems\/1\.8\/gems\/compass-0\.11\.3\/frameworks\/compass\/stylesheets\/compass\/utilities\/general\/_clearfix\.scss}line{font-family:\0000338}}
 .container:after, body #container:after {
   content: "";
   display: table;
   clear: both;
 }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/grids\/_grids_susy\.sass}line{font-family:\000038}}
 .wireframe {
   outline: 1px dashed red;
 }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/grids\/_grids_susy\.sass}line{font-family:\0000319}}
 body #container > header, body #container > #main, body #container > footer {
   clear: both;
   margin-left: 1.22%;
   margin-right: 1.22%;
 }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_site-wide\.sass}line{font-family:\000033}}
 .homework-helper #main-wrapper .region-sidebar-first .section {
   margin-bottom: 10px;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_site-wide\.sass}line{font-family:\000035}}
 .homework-helper #content {
   font-family: sans-serif;
   font-weight: normal;
@@ -101,6 +121,7 @@ body #container > header, body #container > #main, body #container > footer {
   line-height: 18px;
   width: 768px;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_site-wide\.sass}line{font-family:\0000311}}
 .homework-helper #content a.button {
   -webkit-appearance: none;
   -moz-border-radius: 9px;
@@ -119,30 +140,37 @@ body #container > header, body #container > #main, body #container > footer {
   overflow: visible;
   padding: 4px 12px 4px;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_site-wide\.sass}line{font-family:\0000314}}
 .homework-helper #content a:hover {
   color: #ffaea4;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_site-wide\.sass}line{font-family:\0000316}}
 .homework-helper #content .paper-textarea {
   width: 480px;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_site-wide\.sass}line{font-family:\0000318}}
 .homework-helper #content #block-menu-menu-homework-help {
   border: 1px solid #cecece;
   background: #dddddd;
   margin-bottom: 10px;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_site-wide\.sass}line{font-family:\0000323}}
 .homework-helper #content #block-menu-menu-homework-help .content .menu {
   padding: 10px;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_site-wide\.sass}line{font-family:\0000325}}
 .homework-helper #content #block-menu-menu-homework-help .content > .menu {
   overflow: hidden;
   *zoom: 1;
   padding-bottom: 0;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_site-wide\.sass}line{font-family:\0000328}}
 .homework-helper #content #block-menu-menu-homework-help .content > .menu > li {
   display: inline;
   float: left;
   width: 50%;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_site-wide\.sass}line{font-family:\0000331}}
 .homework-helper #content #block-menu-menu-homework-help #menu-writing-center,
 .homework-helper #content #block-menu-menu-homework-help #menu-study-helper {
   color: white;
@@ -150,37 +178,45 @@ body #container > header, body #container > #main, body #container > footer {
   text-transform: uppercase;
   display: block;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_site-wide\.sass}line{font-family:\0000337}}
 .homework-helper #content #block-menu-menu-homework-help #menu-writing-center {
   background: #d71700;
   margin-right: 10px;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_site-wide\.sass}line{font-family:\0000340}}
 .homework-helper #content #block-menu-menu-homework-help #menu-study-helper {
   background: #999999;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_site-wide\.sass}line{font-family:\0000342}}
 .homework-helper #content #homework-helper-title {
   font-size: 14px;
   border-bottom: 0;
   padding: 20px;
   text-transform: uppercase;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_site-wide\.sass}line{font-family:\0000347}}
 .homework-helper #content h2.node-title {
   margin-bottom: 1.714em;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_site-wide\.sass}line{font-family:\0000349}}
 .homework-helper .block,
 .homework-helper .node {
   margin: 0;
 }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_site-wide\.sass}line{font-family:\0000357}}
 .page-node-98 #content #homework-help-content,
 .page-node-99 #content #homework-help-content {
   margin-bottom: 1.714em;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_site-wide\.sass}line{font-family:\0000360}}
 .page-node-98 #content #homework-help-content .img img,
 .page-node-99 #content #homework-help-content .img img {
   display: inline;
   float: left;
   margin: 10px;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_site-wide\.sass}line{font-family:\0000363}}
 .page-node-98 #content .homework-helper-title,
 .page-node-99 #content .homework-helper-title {
   text-transform: none;
@@ -190,24 +226,29 @@ body #container > header, body #container > #main, body #container > footer {
   line-height: 1;
   padding: 24px;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_site-wide\.sass}line{font-family:\0000371}}
 .page-node-98 #content .field-item p,
 .page-node-99 #content .field-item p {
   padding: 0 24px 24px 24px;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_site-wide\.sass}line{font-family:\0000373}}
 .page-node-98 #content p,
 .page-node-99 #content p {
   margin-top: 0;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_site-wide\.sass}line{font-family:\0000375}}
 .page-node-98 #content .row,
 .page-node-99 #content .row {
   padding: 24px;
   border-top: 1px solid #cecece;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_site-wide\.sass}line{font-family:\0000378}}
 .page-node-98 #content .row p,
 .page-node-99 #content .row p {
   margin-top: 0;
   padding: 0;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_site-wide\.sass}line{font-family:\0000381}}
 .page-node-98 #content .row h2 a,
 .page-node-99 #content .row h2 a {
   color: #d71700;
@@ -215,20 +256,24 @@ body #container > header, body #container > #main, body #container > footer {
   line-height: 120%;
   margin: 0;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_site-wide\.sass}line{font-family:\0000386}}
 .page-node-98 #content .row h2 a:hover,
 .page-node-99 #content .row h2 a:hover {
   color: #ffaea4;
 }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_site-wide\.sass}line{font-family:\0000389}}
 #homework-help-content {
   overflow: hidden;
   *zoom: 1;
   border: 1px solid #cecece;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_site-wide\.sass}line{font-family:\0000392}}
 #homework-help-content .progress-disabled {
   float: none;
   display: inline;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_site-wide\.sass}line{font-family:\0000395}}
 #homework-help-content .ajax-progress {
   font-size: 1.5em;
   padding: 30px;
@@ -242,14 +287,17 @@ body #container > header, body #container > #main, body #container > footer {
   -o-box-shadow: rgba(0, 0, 0, 0.5) 0 2px 4px;
   box-shadow: rgba(0, 0, 0, 0.5) 0 2px 4px;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_site-wide\.sass}line{font-family:\00003104}}
 #homework-help-content .hh-throbber-message {
   width: 130px;
 }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_site-wide\.sass}line{font-family:\00003107}}
 img {
   vertical-align: middle;
 }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\000033}}
 .node-type-a-paper #content,
 .node-type-paper-step #content {
   font-family: sans-serif;
@@ -258,11 +306,13 @@ img {
   line-height: 18px;
   width: 768px;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\000039}}
 .node-type-a-paper #content #homework-help-content,
 .node-type-paper-step #content #homework-help-content {
   position: relative;
   padding: 10px 10px 10px 20px;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000312}}
 .node-type-a-paper #content #homework-help-content .content-type-title,
 .node-type-paper-step #content #homework-help-content .content-type-title {
   background: transparent url(images/tfk-red-tag.png) no-repeat -8px 0;
@@ -278,22 +328,26 @@ img {
   float: left;
   width: 200px;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000317}}
 .node-type-a-paper #content .paper-textarea,
 .node-type-paper-step #content .paper-textarea {
   width: 480px;
   padding: 36px 0 12px;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000320}}
 .node-type-a-paper #content .paper-textarea p,
 .node-type-paper-step #content .paper-textarea p {
   text-indent: 40px;
   margin-bottom: 1em;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000323}}
 .node-type-a-paper #content .node-title a,
 .node-type-paper-step #content .node-title a {
   color: black;
   font-size: 20px;
   line-height: 18px;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000327}}
 .node-type-a-paper #content .field-name-field-step-example,
 .node-type-paper-step #content .field-name-field-step-example {
   background: #dddddd;
@@ -301,11 +355,13 @@ img {
   margin: 10px;
   padding: 24px;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000332}}
 .node-type-a-paper #content .field-name-field-step-example p,
 .node-type-paper-step #content .field-name-field-step-example p {
   margin-bottom: 0;
   font-style: italic;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000335}}
 .node-type-a-paper #content .form-type-textfield,
 .node-type-a-paper #content .form-type-textarea,
 .node-type-paper-step #content .form-type-textfield,
@@ -318,6 +374,7 @@ img {
   border: 1px solid #cecece;
   font-size: 14px;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000344}}
 .node-type-a-paper #content .form-type-textfield label,
 .node-type-a-paper #content .form-type-textarea label,
 .node-type-paper-step #content .form-type-textfield label,
@@ -325,26 +382,31 @@ img {
   font-size: 18px;
   padding: 0 0 10px;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000347}}
 .node-type-a-paper #content .aplus-start-button,
 .node-type-paper-step #content .aplus-start-button {
   margin-left: 213px;
   margin-top: 20px;
   margin-bottom: 40px;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000351}}
 .node-type-a-paper #content .aplus-overview,
 .node-type-paper-step #content .aplus-overview {
   width: 505px;
   font-size: 14px;
   padding-top: 60px;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000356}}
 .node-type-a-paper #content .content .content .form-item input,
 .node-type-paper-step #content .content .content .form-item input {
   font-size: 14px;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000358}}
 .node-type-a-paper #content .content .content .content,
 .node-type-paper-step #content .content .content .content {
   font-size: 14px;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000360}}
 .node-type-a-paper #content .node-paper-step,
 .node-type-paper-step #content .node-paper-step {
   padding: 10px 0;
@@ -352,16 +414,19 @@ img {
   display: inline;
   float: left;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000364}}
 .node-type-a-paper #content .node-paper-step label,
 .node-type-paper-step #content .node-paper-step label {
   font-size: 18px;
   padding: 0 0 10px;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000367}}
 .node-type-a-paper #content .node-paper-step h2.node-title,
 .node-type-paper-step #content .node-paper-step h2.node-title {
   margin: 0 0 10px 0;
   padding-top: 20px;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000370}}
 .node-type-a-paper #content button,
 .node-type-a-paper #content input[type="reset"],
 .node-type-a-paper #content input[type="submit"],
@@ -388,6 +453,7 @@ img {
   padding: 3px 10px 4px;
   margin-right: 10px;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000386}}
 .node-type-a-paper #content a.button,
 .node-type-paper-step #content a.button {
   -webkit-appearance: none;
@@ -407,17 +473,20 @@ img {
   overflow: visible;
   padding: 4px 12px 4px;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000388}}
 .node-type-a-paper #content .paper-title,
 .node-type-paper-step #content .paper-title {
   font-size: 20px;
   text-align: center;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000391}}
 .node-type-a-paper #content .paper-date,
 .node-type-paper-step #content .paper-date {
   display: inline;
   float: right;
   font-size: 14px;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000394}}
 .node-type-a-paper #content .student-name,
 .node-type-paper-step #content .student-name {
   display: inline;
@@ -425,6 +494,7 @@ img {
   font-size: 14px;
 }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000398}}
 #aplus-submit-buttons {
   background: #dddddd;
   padding: 10px;
@@ -436,6 +506,7 @@ img {
   display: inline;
   float: left;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003107}}
 #aplus-submit-buttons .aplus-start-over {
   background: url(images/tfk-red-arrow.png);
   background-repeat: no-repeat;
@@ -448,6 +519,7 @@ img {
   height: 35px;
 }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003117}}
 #aplus-papers-checklist-block {
   border: 1px solid #cecece;
   list-style: none;
@@ -455,6 +527,7 @@ img {
   display: inline;
   float: right;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003122}}
 #aplus-papers-checklist-block .aplus-papers-checklist-title {
   color: white;
   background-color: #d71700;
@@ -464,6 +537,7 @@ img {
   border: 10px solid #dddddd;
   text-align: center;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003130}}
 #aplus-papers-checklist-block li {
   border-bottom: 1px solid #cecece;
   background: #dddddd url(images/checkbox-unchecked.gif) no-repeat 0 0.5em;
@@ -472,22 +546,27 @@ img {
   margin: 0;
   padding: 10px 35px;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003137}}
 #aplus-papers-checklist-block li.current, #aplus-papers-checklist-block li.checked {
   background-color: white;
   background-position: 0 0.7em;
   color: black;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003142}}
 #aplus-papers-checklist-block li.checked {
   background-image: white;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003144}}
 #aplus-papers-checklist-block li.last {
   border-bottom: 0;
 }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003147}}
 ul#aplus-papers-checklist {
   margin-bottom: 0;
 }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003150}}
 #aplus-review-step,
 #aplus-final-step {
   width: 480px;
@@ -495,21 +574,25 @@ ul#aplus-papers-checklist {
   float: left;
   margin-top: 10px;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003155}}
 #aplus-review-step h2.node-title,
 #aplus-final-step h2.node-title {
   margin: 0 0 10px 0;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003157}}
 #aplus-review-step .a-plus-review-description,
 #aplus-final-step .a-plus-review-description {
   font-weight: bold;
   margin-bottom: 10px;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003160}}
 #aplus-review-step label,
 #aplus-final-step label {
   font-size: 18px;
   padding: 0 0 10px;
 }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003164}}
 #aplus-print-save-buttons {
   text-align: center;
   clear: right;
@@ -518,16 +601,19 @@ ul#aplus-papers-checklist {
   display: inline;
   float: right;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003170}}
 #aplus-print-save-buttons input {
   margin-top: 10px;
 }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003175}}
 .page-homework-helper-a-plus-papers .view-a-papers .view-header {
   border-bottom: 1px solid #cecece;
   padding-bottom: 10px;
   padding-left: 15px;
   margin-bottom: 1.714em;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003180}}
 .page-homework-helper-a-plus-papers .view-a-papers .view-header .content-type-title {
   background: transparent url(images/tfk-red-tag.png) no-repeat -8px 0;
   padding: 12px;
@@ -540,26 +626,32 @@ ul#aplus-papers-checklist {
   font-size: 18px;
   margin-left: -17px;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003184}}
 .page-homework-helper-a-plus-papers .view-a-papers .views-row {
   padding-left: 135px;
   padding-right: 10px;
   border-bottom: 1px solid #cecece;
   padding-bottom: 24px;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003189}}
 .page-homework-helper-a-plus-papers .view-a-papers .views-row-last {
   border-bottom: 0;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003192}}
 .page-homework-helper-a-plus-papers .view-a-papers .views-field-title a {
   font-size: 20px;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003194}}
 .page-homework-helper-a-plus-papers .view-a-papers .views-field-field-paper-image {
   display: inline;
   float: left;
   margin: 0 0 0 -125px;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003197}}
 .page-homework-helper-a-plus-papers .view-a-papers .views-field-nothing {
   margin-top: 1.714em;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003199}}
 .page-homework-helper-a-plus-papers .view-a-papers .views-field-nothing .related-pdfs {
   border: 4px solid #addcfa;
   background: #ddeeff url(images/pdf-image.png);
@@ -571,28 +663,33 @@ ul#aplus-papers-checklist {
   -o-box-shadow: rgba(0, 0, 0, 0.5) 0 2px 4px;
   box-shadow: rgba(0, 0, 0, 0.5) 0 2px 4px;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003206}}
 .page-homework-helper-a-plus-papers .view-a-papers .views-field-nothing .related-pdfs a {
   margin-right: 10px;
 }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000315}}
 .node-type-flashcard.not-logged-in div.tabs,
 .page-homework-helper-flashcards.not-logged-in div.tabs,
 .page-node-add-flashcard.not-logged-in div.tabs,
 .page-homework-helper-my-flashcards.not-logged-in div.tabs {
   display: none;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000317}}
 .node-type-flashcard #content,
 .page-homework-helper-flashcards #content,
 .page-node-add-flashcard #content,
 .page-homework-helper-my-flashcards #content {
   width: 768px;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000319}}
 .node-type-flashcard #content h2.node-title,
 .page-homework-helper-flashcards #content h2.node-title,
 .page-node-add-flashcard #content h2.node-title,
 .page-homework-helper-my-flashcards #content h2.node-title {
   display: none;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000321}}
 .node-type-flashcard .node-flashcard-form,
 .node-type-flashcard .node-flashcard,
 .page-homework-helper-flashcards .node-flashcard-form,
@@ -605,6 +702,7 @@ ul#aplus-papers-checklist {
   margin: 10px;
   padding: 20px;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000327}}
 .node-type-flashcard .node-flashcard-form > div,
 .page-homework-helper-flashcards .node-flashcard-form > div,
 .page-node-add-flashcard .node-flashcard-form > div,
@@ -620,6 +718,7 @@ ul#aplus-papers-checklist {
   *zoom: 1;
   position: relative;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/lib\/gems\/1\.8\/gems\/compass-0\.11\.3\/frameworks\/compass\/stylesheets\/compass\/utilities\/general\/_clearfix\.scss}line{font-family:\0000338}}
 .node-type-flashcard .node-flashcard-form > div:after,
 .page-homework-helper-flashcards .node-flashcard-form > div:after,
 .page-node-add-flashcard .node-flashcard-form > div:after,
@@ -628,18 +727,21 @@ ul#aplus-papers-checklist {
   display: table;
   clear: both;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000334}}
 .node-type-flashcard .node-flashcard-form .form-item-title input,
 .page-homework-helper-flashcards .node-flashcard-form .form-item-title input,
 .page-node-add-flashcard .node-flashcard-form .form-item-title input,
 .page-homework-helper-my-flashcards .node-flashcard-form .form-item-title input {
   width: 80%;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000337}}
 .node-type-flashcard .node-flashcard-form .field-type-flashcard .form-item,
 .page-homework-helper-flashcards .node-flashcard-form .field-type-flashcard .form-item,
 .page-node-add-flashcard .node-flashcard-form .field-type-flashcard .form-item,
 .page-homework-helper-my-flashcards .node-flashcard-form .field-type-flashcard .form-item {
   margin-bottom: 0;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000339}}
 .node-type-flashcard .node-flashcard-form .field-type-flashcard .field-multiple-table,
 .page-homework-helper-flashcards .node-flashcard-form .field-type-flashcard .field-multiple-table,
 .page-node-add-flashcard .node-flashcard-form .field-type-flashcard .field-multiple-table,
@@ -647,6 +749,7 @@ ul#aplus-papers-checklist {
   margin-bottom: 1em;
   width: 100%;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000342}}
 .node-type-flashcard .node-flashcard-form .field-type-flashcard .field-multiple-table tbody,
 .node-type-flashcard .node-flashcard-form .field-type-flashcard .field-multiple-table tr,
 .page-homework-helper-flashcards .node-flashcard-form .field-type-flashcard .field-multiple-table tbody,
@@ -657,12 +760,14 @@ ul#aplus-papers-checklist {
 .page-homework-helper-my-flashcards .node-flashcard-form .field-type-flashcard .field-multiple-table tr {
   border: none;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000345}}
 .node-type-flashcard .node-flashcard-form .field-type-flashcard .field-multiple-table td,
 .page-homework-helper-flashcards .node-flashcard-form .field-type-flashcard .field-multiple-table td,
 .page-node-add-flashcard .node-flashcard-form .field-type-flashcard .field-multiple-table td,
 .page-homework-helper-my-flashcards .node-flashcard-form .field-type-flashcard .field-multiple-table td {
   padding: 1em;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000347}}
 .node-type-flashcard .node-flashcard-form .field-type-flashcard .field-multiple-table td div:last-child,
 .page-homework-helper-flashcards .node-flashcard-form .field-type-flashcard .field-multiple-table td div:last-child,
 .page-node-add-flashcard .node-flashcard-form .field-type-flashcard .field-multiple-table td div:last-child,
@@ -670,12 +775,14 @@ ul#aplus-papers-checklist {
   margin-left: 1em;
   padding-top: 1em;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000350}}
 .node-type-flashcard .node-flashcard-form .field-type-flashcard .field-multiple-table td input,
 .page-homework-helper-flashcards .node-flashcard-form .field-type-flashcard .field-multiple-table td input,
 .page-node-add-flashcard .node-flashcard-form .field-type-flashcard .field-multiple-table td input,
 .page-homework-helper-my-flashcards .node-flashcard-form .field-type-flashcard .field-multiple-table td input {
   width: 80%;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000352}}
 .node-type-flashcard .node-flashcard-form .field-type-flashcard .field-add-more-submit,
 .page-homework-helper-flashcards .node-flashcard-form .field-type-flashcard .field-add-more-submit,
 .page-node-add-flashcard .node-flashcard-form .field-type-flashcard .field-add-more-submit,
@@ -701,6 +808,7 @@ ul#aplus-papers-checklist {
   -o-box-shadow: rgba(0, 0, 0, 0.5) 0 2px 4px;
   box-shadow: rgba(0, 0, 0, 0.5) 0 2px 4px;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000365}}
 .node-type-flashcard .node-flashcard-form .form-actions,
 .page-homework-helper-flashcards .node-flashcard-form .form-actions,
 .page-node-add-flashcard .node-flashcard-form .form-actions,
@@ -711,6 +819,7 @@ ul#aplus-papers-checklist {
   margin: 0;
   z-index: 10;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000371}}
 .node-type-flashcard .node-flashcard-form .form-actions input,
 .page-homework-helper-flashcards .node-flashcard-form .form-actions input,
 .page-node-add-flashcard .node-flashcard-form .form-actions input,
@@ -726,6 +835,7 @@ ul#aplus-papers-checklist {
   width: 100px;
   -webkit-appearance: none;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000383}}
 .node-type-flashcard .node-flashcard .study-helper-help,
 .page-homework-helper-flashcards .node-flashcard .study-helper-help,
 .page-node-add-flashcard .node-flashcard .study-helper-help,
@@ -734,6 +844,7 @@ ul#aplus-papers-checklist {
   padding-left: 20px;
   margin-top: 1.714em;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000387}}
 .node-type-flashcard .node-flashcard .study-helper-url,
 .page-homework-helper-flashcards .node-flashcard .study-helper-url,
 .page-node-add-flashcard .node-flashcard .study-helper-url,
@@ -741,6 +852,7 @@ ul#aplus-papers-checklist {
   *zoom: 1;
   clear: both;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/lib\/gems\/1\.8\/gems\/compass-0\.11\.3\/frameworks\/compass\/stylesheets\/compass\/utilities\/general\/_clearfix\.scss}line{font-family:\0000338}}
 .node-type-flashcard .node-flashcard .study-helper-url:after,
 .page-homework-helper-flashcards .node-flashcard .study-helper-url:after,
 .page-node-add-flashcard .node-flashcard .study-helper-url:after,
@@ -749,6 +861,7 @@ ul#aplus-papers-checklist {
   display: table;
   clear: both;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000390}}
 .node-type-flashcard .node-flashcard .study-helper-url .form-item,
 .page-homework-helper-flashcards .node-flashcard .study-helper-url .form-item,
 .page-node-add-flashcard .node-flashcard .study-helper-url .form-item,
@@ -757,6 +870,7 @@ ul#aplus-papers-checklist {
   float: left;
   margin: 0;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000393}}
 .node-type-flashcard .node-flashcard .study-helper-url .form-item input,
 .page-homework-helper-flashcards .node-flashcard .study-helper-url .form-item input,
 .page-node-add-flashcard .node-flashcard .study-helper-url .form-item input,
@@ -764,6 +878,7 @@ ul#aplus-papers-checklist {
   background-color: #d71700;
   border-color: #d71700;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\0000396}}
 .node-type-flashcard .node-flashcard .study-helper-url #study-helper-copy,
 .page-homework-helper-flashcards .node-flashcard .study-helper-url #study-helper-copy,
 .page-node-add-flashcard .node-flashcard .study-helper-url #study-helper-copy,
@@ -792,6 +907,7 @@ ul#aplus-papers-checklist {
   float: left;
 }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003106}}
 .node-type-flashcard .content-type-title {
   background: transparent url(images/tfk-red-tag.png) no-repeat -8px 0;
   padding: 12px;
@@ -802,12 +918,14 @@ ul#aplus-papers-checklist {
   margin-top: 10px;
   text-transform: uppercase;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003108}}
 .node-type-flashcard .homework-helper-title {
   font-size: 16px;
   font-weight: bold;
   margin: 1em 0 0 1em;
 }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003116}}
 .page-homework-helper-flashcards .homework-helper-title,
 .page-node-add-flashcard .homework-helper-title,
 .page-homework-helper-my-flashcards .homework-helper-title {
@@ -821,6 +939,7 @@ ul#aplus-papers-checklist {
   text-transform: uppercase;
 }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003119}}
 .flashcard-cycle {
   background-color: white;
   -moz-border-radius: 10px;
@@ -832,10 +951,12 @@ ul#aplus-papers-checklist {
   padding: 20px;
   position: relative;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003124}}
 .flashcard-cycle .flashcard-cycle-mode {
   float: none;
   position: static;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003127}}
 .flashcard-cycle .flashcard-cycle-mode .flashcard-cycle-wrapper {
   text-align: center;
   -webkit-appearance: none;
@@ -860,6 +981,7 @@ ul#aplus-papers-checklist {
   cursor: pointer;
   overflow: visible;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003136}}
 .flashcard-cycle .flashcard-cycle-mode .flashcard-cycle-wrapper > * {
   display: -moz-inline-box;
   -moz-box-orient: vertical;
@@ -867,13 +989,16 @@ ul#aplus-papers-checklist {
   vertical-align: middle;
   *vertical-align: auto;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/lib\/gems\/1\.8\/gems\/compass-0\.11\.3\/frameworks\/compass\/stylesheets\/compass\/css3\/_inline-block\.scss}line{font-family:\000037}}
 .flashcard-cycle .flashcard-cycle-mode .flashcard-cycle-wrapper > * {
   *display: inline;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003138}}
 .flashcard-cycle .flashcard-cycle-mode label[for=flashcard-cycle-mode] {
   line-height: 1.5;
   margin-right: 1em;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003141}}
 .flashcard-cycle a.shuffle,
 .flashcard-cycle a.restart,
 .flashcard-cycle a.edit {
@@ -898,6 +1023,33 @@ ul#aplus-papers-checklist {
   padding: 8px 24px;
   margin-right: 20px;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003150}}
+.flashcard-cycle .flashcard-help-button {
+  float: right;
+  padding: 0.35em;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003153}}
+.flashcard-cycle .flashcard-help-button a.flashcard-help {
+  -webkit-appearance: none;
+  -moz-border-radius: 14px;
+  -webkit-border-radius: 14px;
+  -o-border-radius: 14px;
+  -ms-border-radius: 14px;
+  -khtml-border-radius: 14px;
+  border-radius: 14px;
+  background: white url(./images/question-button.png) no-repeat 4px 3px;
+  border: 3px solid #d71700;
+  font: bold 12px/1.2 Arial, sans-serif;
+  padding: 4px 20px;
+  width: auto;
+  height: auto;
+  margin: 0 25px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.5) 0 2px 4px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.5) 0 2px 4px;
+  -o-box-shadow: rgba(0, 0, 0, 0.5) 0 2px 4px;
+  box-shadow: rgba(0, 0, 0, 0.5) 0 2px 4px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003165}}
 .flashcard-cycle .flashcard-cycle-pager a {
   color: #d71700;
   display: inline;
@@ -906,10 +1058,12 @@ ul#aplus-papers-checklist {
   height: 35px;
   width: 51px;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003171}}
 .flashcard-cycle .flashcard-cycle-pager a.prev {
   background: url(images/tfk-red-arrow.png) no-repeat scroll 2px 0 transparent;
   padding-left: 42px;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003174}}
 .flashcard-cycle .flashcard-cycle-pager a.flip {
   -webkit-appearance: none;
   -moz-border-radius: 14px;
@@ -930,10 +1084,12 @@ ul#aplus-papers-checklist {
   -o-box-shadow: rgba(0, 0, 0, 0.5) 0 2px 4px;
   box-shadow: rgba(0, 0, 0, 0.5) 0 2px 4px;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003185}}
 .flashcard-cycle .flashcard-cycle-pager a.next {
   background: url(images/tfk-red-arrow-right.png) no-repeat scroll 36px 0 transparent;
   padding-right: 42px;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003188}}
 .flashcard-cycle .flashcard-cycle-cards {
   background: #f8e549;
   width: 500px;
@@ -950,6 +1106,7 @@ ul#aplus-papers-checklist {
   -o-box-shadow: rgba(0, 0, 0, 0.25) -4px 4px 6px;
   box-shadow: rgba(0, 0, 0, 0.25) -4px 4px 6px;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003196}}
 .flashcard-cycle .flashcard-cycle-cards ul.question li.answer {
   font-size: 20px;
   padding-top: 70px;
@@ -957,6 +1114,7 @@ ul#aplus-papers-checklist {
   font-weight: bold;
   margin: 10px;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003203}}
 .flashcard-cycle .flashcard-cycle-cards ul.question .item-list ul.answer {
   background: white;
   width: 325px;
@@ -970,16 +1128,19 @@ ul#aplus-papers-checklist {
   border-radius: 11px;
   border: 4px solid #999999;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003210}}
 .flashcard-cycle .flashcard-cycle-cards ul.question .item-list ul.answer li.first {
   font-size: 20px;
   padding: 15px;
   color: #d71700;
   margin: 0;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003215}}
 .flashcard-cycle .flashcard-cycle-card {
   width: 500px;
   height: 250px;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003218}}
 .flashcard-cycle .flashcard-cycle-mark {
   position: absolute;
   top: 80px;
@@ -989,6 +1150,7 @@ ul#aplus-papers-checklist {
   float: left;
 }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003225}}
 .flashcard-numbering {
   display: inline;
   float: right;
@@ -998,15 +1160,18 @@ ul#aplus-papers-checklist {
   z-index: 10;
   width: 60px;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003232}}
 .flashcard-numbering span.flashcard-numbering-current {
   font-weight: bold;
 }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_flashcard_page\.sass}line{font-family:\000031}}
 .view-flashcard-landing-page.view-id-flashcard_landing_page {
   padding: 20px 10px;
   overflow: hidden;
   *zoom: 1;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_flashcard_page\.sass}line{font-family:\000034}}
 .view-flashcard-landing-page.view-id-flashcard_landing_page .view-header {
   background: #e6e6e6;
   border: 1px solid #cecece;
@@ -1015,14 +1180,17 @@ ul#aplus-papers-checklist {
   padding: 15px;
   width: 250px;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_homework-helper\.sass}line{font-family:\0000317}}
 .view-flashcard-landing-page.view-id-flashcard_landing_page .view-header h2 {
   margin-top: 0;
   margin-bottom: 10px;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_flashcard_page\.sass}line{font-family:\000036}}
 .view-flashcard-landing-page.view-id-flashcard_landing_page .view-header .creation-link {
   margin-top: 10px;
   text-align: center;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_flashcard_page\.sass}line{font-family:\000039}}
 .view-flashcard-landing-page.view-id-flashcard_landing_page .view-header .creation-link a {
   background: #d71700;
   -moz-border-radius: 20px;
@@ -1039,6 +1207,7 @@ ul#aplus-papers-checklist {
   margin: 10px;
   padding: 5px;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_flashcard_page\.sass}line{font-family:\0000316}}
 .view-flashcard-landing-page.view-id-flashcard_landing_page h3.views-accordion-flashcard_landing_page-page_1-header {
   background: #dddddd;
   border: 0;
@@ -1052,27 +1221,33 @@ ul#aplus-papers-checklist {
   line-height: 1;
   width: 440px;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_flashcard_page\.sass}line{font-family:\0000323}}
 .view-flashcard-landing-page.view-id-flashcard_landing_page h3.views-accordion-flashcard_landing_page-page_1-header span.ui-icon.ui-icon-triangle-1-e {
   background-image: url("../../images/arrow_right.png");
   background-position: 0 0;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_flashcard_page\.sass}line{font-family:\0000326}}
 .view-flashcard-landing-page.view-id-flashcard_landing_page h3.views-accordion-flashcard_landing_page-page_1-header span.ui-icon.ui-icon-triangle-1-s {
   background-image: url("../../images/arrow_down.png");
   background-position: 0 0;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_flashcard_page\.sass}line{font-family:\0000329}}
 .view-flashcard-landing-page.view-id-flashcard_landing_page h3.views-accordion-flashcard_landing_page-page_1-header a {
   margin-top: -10px;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_flashcard_page\.sass}line{font-family:\0000331}}
 .view-flashcard-landing-page.view-id-flashcard_landing_page .ui-accordion-content, .view-flashcard-landing-page.view-id-flashcard_landing_page.view-display-id-page_2 {
   border: 0;
   margin-top: 0;
   overflow: visible;
   width: 340px;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_flashcard_page\.sass}line{font-family:\0000336}}
 .view-flashcard-landing-page.view-id-flashcard_landing_page .ui-accordion-content .views-row, .view-flashcard-landing-page.view-id-flashcard_landing_page.view-display-id-page_2 .views-row {
   overflow: hidden;
   *zoom: 1;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_flashcard_page\.sass}line{font-family:\0000339}}
 .view-flashcard-landing-page.view-id-flashcard_landing_page .ui-accordion-content .field-content:before, .view-flashcard-landing-page.view-id-flashcard_landing_page.view-display-id-page_2 .field-content:before {
   content: url("../../images/card_icon.png");
   clear: both;
@@ -1080,10 +1255,12 @@ ul#aplus-papers-checklist {
   float: left;
   margin-right: 10px;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_flashcard_page\.sass}line{font-family:\0000344}}
 .view-flashcard-landing-page.view-id-flashcard_landing_page .ui-accordion-content .field-content a, .view-flashcard-landing-page.view-id-flashcard_landing_page.view-display-id-page_2 .field-content a {
   font-size: 120%;
 }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_writing-tip\.sass}line{font-family:\000032}}
 .page-homework-helper-writing-tips #content {
   font-family: sans-serif;
   font-weight: normal;
@@ -1091,10 +1268,12 @@ ul#aplus-papers-checklist {
   line-height: 18px;
   width: 768px;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_writing-tip\.sass}line{font-family:\000038}}
 .page-homework-helper-writing-tips #content #homework-help-content {
   position: relative;
   padding: 10px;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_writing-tip\.sass}line{font-family:\0000311}}
 .page-homework-helper-writing-tips #content #homework-help-content .homework-helper-title {
   background: transparent url(images/tfk-red-tag.png) no-repeat -8px 0;
   padding: 12px;
@@ -1108,6 +1287,7 @@ ul#aplus-papers-checklist {
   margin-left: -13px;
   margin-top: 0;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_writing-tip\.sass}line{font-family:\0000316}}
 .page-homework-helper-writing-tips #content #homework-help-content .ui-accordion .ui-accordion-header {
   background: #dddddd;
   clear: left;
@@ -1115,37 +1295,47 @@ ul#aplus-papers-checklist {
   font-size: 14px;
   margin-bottom: 10px;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_writing-tip\.sass}line{font-family:\0000322}}
 .page-homework-helper-writing-tips #content #homework-help-content .ui-accordion .ui-accordion-header a {
   padding: 0;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_writing-tip\.sass}line{font-family:\0000324}}
 .page-homework-helper-writing-tips #content #homework-help-content .ui-accordion .ui-accordion-header a:last-child {
   padding: 15px 0 15px 25px;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_writing-tip\.sass}line{font-family:\0000326}}
 .page-homework-helper-writing-tips #content #homework-help-content .ui-accordion-content-active {
   margin-bottom: 10px;
   border: 1px solid #cecece;
   padding: 20px;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_writing-tip\.sass}line{font-family:\0000330}}
 .page-homework-helper-writing-tips #content #homework-help-content .ui-accordion-content-active .views-field-title {
   margin-bottom: 1.714em;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_writing-tip\.sass}line{font-family:\0000332}}
 .page-homework-helper-writing-tips #content #homework-help-content .ui-accordion-content-active .views-field-title span.views-label-title {
   font-weight: bold;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_writing-tip\.sass}line{font-family:\0000334}}
 .page-homework-helper-writing-tips #content #homework-help-content .ui-accordion-content-active .views-field-title span.field-content {
   font-weight: bold;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_writing-tip\.sass}line{font-family:\0000336}}
 .page-homework-helper-writing-tips #content #homework-help-content .ui-accordion-content-active .views-field-body {
   border-bottom: 1px solid #cecece;
   padding-bottom: 20px;
   margin-bottom: 1.714em;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_writing-tip\.sass}line{font-family:\0000339}}
 .page-homework-helper-writing-tips #content #homework-help-content .ui-accordion-content-active .views-field-body span.views-label-body {
   font-weight: bold;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_writing-tip\.sass}line{font-family:\0000341}}
 .page-homework-helper-writing-tips #content #homework-help-content .ui-accordion-content-active .views-field-body p {
   font-style: italic;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_writing-tip\.sass}line{font-family:\0000344}}
 .page-homework-helper-writing-tips #content #webform-client-form-144 {
   background: #dddddd;
   padding: 10px;
@@ -1156,13 +1346,16 @@ ul#aplus-papers-checklist {
   font-size: 14px;
   margin-bottom: 1.714em;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_writing-tip\.sass}line{font-family:\0000353}}
 .page-homework-helper-writing-tips #content #webform-client-form-144 label {
   font-size: 18px;
   padding: 0 0 10px;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_writing-tip\.sass}line{font-family:\0000356}}
 .page-homework-helper-writing-tips #content #webform-client-form-144 label h2.node-title {
   margin: 0 0 10px 0;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_writing-tip\.sass}line{font-family:\0000358}}
 .page-homework-helper-writing-tips #content button,
 .page-homework-helper-writing-tips #content input[type="reset"],
 .page-homework-helper-writing-tips #content input[type="submit"],
@@ -1185,6 +1378,7 @@ ul#aplus-papers-checklist {
   padding: 3px 10px 4px;
   margin-right: 10px;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_writing-tip\.sass}line{font-family:\0000374}}
 .page-homework-helper-writing-tips #content a.button {
   -webkit-appearance: none;
   -moz-border-radius: 9px;
@@ -1204,6 +1398,7 @@ ul#aplus-papers-checklist {
   padding: 4px 12px 4px;
 }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_grammar-wizard\.sass}line{font-family:\000033}}
 .page-homework-helper-grammar-wizard .homework-helper-title,
 .page-node-186 .homework-helper-title {
   background: transparent url(images/tfk-red-tag.png) no-repeat -8px 0;
@@ -1217,52 +1412,64 @@ ul#aplus-papers-checklist {
   font-size: 14px;
 }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_grammar-wizard\.sass}line{font-family:\000038}}
 .view-grammar-practice table {
   border: 1px solid #cecece;
   margin: 20px;
   width: 100%;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_grammar-wizard\.sass}line{font-family:\0000313}}
 .view-grammar-practice tbody .views-field {
   padding: 20px;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_grammar-wizard\.sass}line{font-family:\0000315}}
 .view-grammar-practice .views-field-title {
   font-size: 18px;
   font-weight: bold;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_grammar-wizard\.sass}line{font-family:\0000318}}
 .view-grammar-practice tr {
   border-bottom: none;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_grammar-wizard\.sass}line{font-family:\0000320}}
 .view-grammar-practice tr.odd {
   background: white;
 }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_grammar-wizard\.sass}line{font-family:\0000324}}
 .page-node-186 .node {
   margin-top: 10px;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_grammar-wizard\.sass}line{font-family:\0000326}}
 .page-node-186 .node .row {
   overflow: hidden;
   *zoom: 1;
   border-top: 1px solid #cecece;
   padding: 2em 1em;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_grammar-wizard\.sass}line{font-family:\0000330}}
 .page-node-186 .node .row h2 {
   font-size: 32px;
   line-height: 1.2;
   margin: 0;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_grammar-wizard\.sass}line{font-family:\0000334}}
 .page-node-186 .node .row .img {
   display: inline;
   float: left;
   margin-right: 10px;
 }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_grammar-wizard\.sass}line{font-family:\0000338}}
 span.grammar-wizard-incorrect {
   color: #d71700;
 }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_writers-toolbox\.sass}line{font-family:\000032}}
 .page-node-226 .region-content {
   padding: 20px;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_writers-toolbox\.sass}line{font-family:\000034}}
 .page-node-226 .homework-helper-title {
   background: transparent url(images/tfk-red-tag.png) no-repeat -8px 0;
   padding: 12px;
@@ -1274,14 +1481,17 @@ span.grammar-wizard-incorrect {
   text-transform: uppercase;
 }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_writers-toolbox\.sass}line{font-family:\000036}}
 .writers-toolbox {
   *zoom: 1;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/lib\/gems\/1\.8\/gems\/compass-0\.11\.3\/frameworks\/compass\/stylesheets\/compass\/utilities\/general\/_clearfix\.scss}line{font-family:\0000338}}
 .writers-toolbox:after {
   content: "";
   display: table;
   clear: both;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_writers-toolbox\.sass}line{font-family:\000038}}
 .writers-toolbox .toolbox-links {
   background: #e6e6e6;
   border: 1px solid #cecece;
@@ -1294,10 +1504,12 @@ span.grammar-wizard-incorrect {
   background: none;
   width: 400px;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_homework-helper\.sass}line{font-family:\0000317}}
 .writers-toolbox .toolbox-links h2 {
   margin-top: 0;
   margin-bottom: 10px;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_writers-toolbox\.sass}line{font-family:\0000313}}
 .writers-toolbox .toolbox-pdfs {
   background: #e6e6e6;
   border: 1px solid #cecece;
@@ -1306,6 +1518,7 @@ span.grammar-wizard-incorrect {
   padding: 15px;
   width: 250px;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timekids\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_homework-helper\.sass}line{font-family:\0000317}}
 .writers-toolbox .toolbox-pdfs h2 {
   margin-top: 0;
   margin-bottom: 10px;

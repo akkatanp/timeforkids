@@ -191,3 +191,9 @@ function tfk_css_alter(&$css) {
 function tfk_preprocess_flashcard_cycle_mark(&$variables) {
   $variables['title'] = t('Mark this card for extra practice');
 }
+
+function tfk_preprocess_flashcard_cycle(&$variables) {
+  // TODO: When we know more about the help page, we can link it here.
+  $variables['help'] = l(t('Help'), '', array('attributes' => array('class' => array('flashcard-help'))));
+}
+
