@@ -1,18 +1,39 @@
-#node-186
-  .content
+.page-homework-helper-grammar-wizard,
+.page-node-186
+  .homework-helper-title
+    +homework-helper-title
+    font-size: $ms0
+
+.view-grammar-practice
+  table
+    border: 1px solid #cecece
+    margin: 20px
+    width: 100%
+  tbody
+    .views-field
+      padding: 20px
+  .views-field-title
+    font-size: 18px
+    font-weight: bold
+  tr
+    border-bottom: none
+    &.odd
+      background: white
+
+.page-node-186
+  .node
+    margin-top: 10px
     .row
-      +float-left
+      +clearfix
       border-top: 1px solid #cecece
-      padding: 24px
-      h2 a
-        color: $tfk-red
-        font-size: 32px
-        line-height: 120%
-        &:hover
-          color: lighten($tfk-red, 40.0)
+      padding: 2em 1em
+      h2
+        font-size: $ms4
+        line-height: 1.2
+        margin: 0
       .img
         +float-left
-        margin: 10px
+        margin-right: 10px
 
 span.grammar-wizard-incorrect
   color: $tfk-red

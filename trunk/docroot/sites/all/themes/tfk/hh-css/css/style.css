@@ -246,6 +246,10 @@ body #container > header, body #container > #main, body #container > footer {
   width: 130px;
 }
 
+img {
+  vertical-align: middle;
+}
+
 .node-type-a-paper #content,
 .node-type-paper-step #content {
   font-family: sans-serif;
@@ -1200,24 +1204,56 @@ ul#aplus-papers-checklist {
   padding: 4px 12px 4px;
 }
 
-#node-186 .content .row {
-  display: inline;
-  float: left;
+.page-homework-helper-grammar-wizard .homework-helper-title,
+.page-node-186 .homework-helper-title {
+  background: transparent url(images/tfk-red-tag.png) no-repeat -8px 0;
+  padding: 12px;
+  height: 23px;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  margin-top: 10px;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+.view-grammar-practice table {
+  border: 1px solid #cecece;
+  margin: 20px;
+  width: 100%;
+}
+.view-grammar-practice tbody .views-field {
+  padding: 20px;
+}
+.view-grammar-practice .views-field-title {
+  font-size: 18px;
+  font-weight: bold;
+}
+.view-grammar-practice tr {
+  border-bottom: none;
+}
+.view-grammar-practice tr.odd {
+  background: white;
+}
+
+.page-node-186 .node {
+  margin-top: 10px;
+}
+.page-node-186 .node .row {
+  overflow: hidden;
+  *zoom: 1;
   border-top: 1px solid #cecece;
-  padding: 24px;
+  padding: 2em 1em;
 }
-#node-186 .content .row h2 a {
-  color: #d71700;
+.page-node-186 .node .row h2 {
   font-size: 32px;
-  line-height: 120%;
+  line-height: 1.2;
+  margin: 0;
 }
-#node-186 .content .row h2 a:hover {
-  color: #ffaea4;
-}
-#node-186 .content .row .img {
+.page-node-186 .node .row .img {
   display: inline;
   float: left;
-  margin: 10px;
+  margin-right: 10px;
 }
 
 span.grammar-wizard-incorrect {
