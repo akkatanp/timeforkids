@@ -1,11 +1,20 @@
-=homework-helper-title
+=tfk-button
+  background: $tfk-red url(../images/button.png) repeat-x
+  +box-shadow(transparentize($black, 0.5) 0 2px 4px, lighten($tfk-red, 20%) -3px 3px 5px inset)
+  border: none
+  outline: 0
+  color: white
+  cursor: pointer
+  overflow: visible
+
+=tfk-header-tag
   background: transparent url(images/tfk-red-tag.png) no-repeat -8px 0
   padding: 12px
   height: 23px
   color: $white
   font-size: $ms0
   font-weight: bold
-  margin-top: 10px
+  margin: 10px 0 0
   text-transform: uppercase
 
 =tfk-box
@@ -30,3 +39,24 @@
   outline: 0
   overflow: visible
   padding: 4px 12px 4px
+
+.homework-helper-title
+  font-size: 36px
+  font-weight: bold
+  line-height: 1
+  margin: 10px 0 0 20px
+
+.tfk-header-tag
+  +tfk-header-tag
+  & + .homework-helper-title
+    font-size: 16px
+
+.homework-helper-content
+  border: 1px solid #cecece
+  +clearfix
+  position: relative
+  .node
+    margin: 10px 20px
+  .view
+    padding: 20px
+    +clearfix

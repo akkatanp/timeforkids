@@ -68,14 +68,14 @@
           <ul class="action-links"><?php print render($action_links); ?></ul>
         <?php endif; ?>
 
-        <div id="homework-help-content">
-          <?php if ($content_type_title): ?>
-            <div class="content-type-title"><?php print $content_type_title; ?> </div>
-          <?php endif; ?>
+        <div class="homework-helper-content">
           <?php if ($grammar_practice_header): ?>
             <div id="grammar_practice_header"><?php print $grammar_practice_header; ?></div>
           <?php endif; ?>
-          <?php if ($title): ?>
+          <?php if ($tfk_header_tag): ?>
+            <div class="tfk-header-tag"><?php print $tfk_header_tag; ?></div>
+          <?php endif; ?>
+          <?php if ($node && $title): ?>
             <div class="homework-helper-title"><?php print $title; ?></div>
           <?php endif; ?>
           <?php print render($page['content']); ?>

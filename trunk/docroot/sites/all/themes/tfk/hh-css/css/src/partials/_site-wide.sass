@@ -39,56 +39,29 @@
         margin-right: 10px
       #menu-study-helper
         background: #999
-    #homework-helper-title
-      font-size: $ms0
-      border-bottom: 0
-      padding: 20px
-      text-transform: uppercase
     h2.node-title
       +trailer
-  .block,
-  .node
-    margin: 0
 
 // WRITING CENTER LANDING PAGE
 .page-node-98,
 .page-node-99
-  #content
-    #homework-help-content
-      +trailer
-      .img
-        img
-          +float-left
-          margin: 10px
-    .homework-helper-title
-      text-transform: none
-      font-size: $ms4
-      font-weight: bold
-      margin-bottom: 0
-      line-height: 1
-      padding: $gutter
-    .field-item
-      p
-        padding: 0 $gutter $gutter $gutter
-    p
-      margin-top: 0
+  .node
     .row
-      padding: $gutter
+      +clearfix
       border-top: 1px solid #cecece
-      p
-        margin-top: 0
-        padding: 0
-      h2 a
-        color: $tfk-red
+      padding: 2em 1em
+      h2
         font-size: $ms4
-        line-height: 120%
+        line-height: 1.2
         margin: 0
-        &:hover
-          color: lighten($tfk-red, 40.0)
+      .img
+        +float-left
+        margin-right: 10px
+    .field-item
+      & > p
+        padding-bottom: 20px
 
-#homework-help-content
-  +clearfix
-  border: 1px solid #cecece
+.homework-helper-content
   .progress-disabled
     float: none
     display: inline

@@ -1,13 +1,6 @@
-.page-homework-helper-grammar-wizard,
-.page-node-186
-  .homework-helper-title
-    +homework-helper-title
-    font-size: $ms0
-
 .view-grammar-practice
   table
     border: 1px solid #cecece
-    margin: 20px
     width: 100%
   tbody
     .views-field
@@ -21,19 +14,9 @@
       background: white
 
 .page-node-186
-  .node
-    margin-top: 10px
-    .row
-      +clearfix
-      border-top: 1px solid #cecece
-      padding: 2em 1em
-      h2
-        font-size: $ms4
-        line-height: 1.2
-        margin: 0
-      .img
-        +float-left
-        margin-right: 10px
+  @extend .page-node-99
+  .homework-helper-title
+    +tfk-header-tag
 
 span.grammar-wizard-incorrect
   color: $tfk-red
