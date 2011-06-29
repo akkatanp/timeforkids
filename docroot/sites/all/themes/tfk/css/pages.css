@@ -1647,3 +1647,29 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 	background: url("../images/atw-sightseeing-close.png") no-repeat;
 }
 
+/* Ad containers */
+#banner_728x90 {
+    width:744px;
+    background:url("../images/advertisment-vert.png") no-repeat left top;
+    float:right;
+}
+#banner_728x90 > * {
+    margin-left:16px;
+}
+#banner_160x600 {
+    height:615px;
+    width:160px;
+    background:url("../images/advertisment-hor.png") no-repeat left top;
+    overflow:hidden;/*needed for child to respect margin*/
+}
+#banner_160x600 > * {
+    margin-top:15px;
+}
+#banner_728x90_footer {
+    width:744px;
+    background:url("../images/advertisment-vert.png") no-repeat left top;
+    margin-left:12px;
+}
+#banner_728x90_footer > * {
+    margin-left:16px;
+}
