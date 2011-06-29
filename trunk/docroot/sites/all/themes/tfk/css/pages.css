@@ -1666,9 +1666,11 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
     margin-top:15px;
 }
 #banner_728x90_footer {
+    position:relative;
     width:744px;
     background:url("../images/advertisment-vert.png") no-repeat left top;
     margin-left:12px;
+    top:12px;
 }
 #banner_728x90_footer > * {
     margin-left:16px;
