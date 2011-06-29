@@ -1,12 +1,3 @@
-=tfk-button
-  background: $tfk-red url(../images/button.png) repeat-x
-  +box-shadow(transparentize($black, 0.5) 0 2px 4px, lighten($tfk-red, 20%) -3px 3px 5px inset)
-  border: none
-  outline: 0
-  color: white
-  cursor: pointer
-  overflow: visible
-
 .node-type-flashcard,
 .page-homework-helper-flashcards,
 .page-node-add-flashcard,
@@ -21,9 +12,9 @@
   .node-flashcard-form,
   .node-flashcard
     background: transparent url(images/flashcard-background.jpg) repeat
-    margin: 10px
     padding: 20px
   .node-flashcard-form
+    margin: 10px 20px
     & > div
       background-color: white
       +border-radius(10px)
@@ -101,20 +92,6 @@
         margin-left: 1em
         margin-top: 1em
         +float-left
-
-.node-type-flashcard
-  .content-type-title
-    +homework-helper-title
-  .homework-helper-title
-    font-size: 16px
-    font-weight: bold
-    margin: 1em 0 0 1em
-
-.page-homework-helper-flashcards,
-.page-node-add-flashcard,
-.page-homework-helper-my-flashcards
-  .homework-helper-title
-    +homework-helper-title
 
 .flashcard-cycle
   background-color: white

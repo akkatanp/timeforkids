@@ -99,7 +99,7 @@ function tfk_preprocess_page(&$variables, $hook) {
   }
 
   if ($variables['section_title'] == t('Homework Helper')) {
-    $variables['content_type_title'] = tfk_content_type_title($variables['node']->type);
+    $variables['tfk_header_tag'] = tfk_header_tag($variables['node']->type);
     $variables['theme_hook_suggestions'][] = 'page__homework_helper';
   }
 
@@ -159,10 +159,7 @@ function STARTERKIT_preprocess_block(&$variables, $hook) {
 }
 // */
 
-/**
- * For homework helper pages, create a section title based on content type.
- */
-function tfk_content_type_title($type) {
+function tfk_header_tag($type) {
   $output = '';
   switch ($type) {
     case 'a_paper':
@@ -174,6 +171,8 @@ function tfk_content_type_title($type) {
     case 'grammar_practice':
       $output = t('Grammar Practice');
       break;
+    case '':
+      $output = drupal_get_title();
   }
   return $output;
 }
