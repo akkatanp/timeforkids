@@ -58,25 +58,6 @@ function tfk_favorites_feature_views_default_views() {
   $handler->display->display_options['relationships']['flag_content_rel']['table'] = 'node';
   $handler->display->display_options['relationships']['flag_content_rel']['field'] = 'flag_content_rel';
   $handler->display->display_options['relationships']['flag_content_rel']['flag'] = 'favorites';
-  /* Relationship: Content: Taxonomy terms on node */
-  $handler->display->display_options['relationships']['term_node_tid']['id'] = 'term_node_tid';
-  $handler->display->display_options['relationships']['term_node_tid']['table'] = 'node';
-  $handler->display->display_options['relationships']['term_node_tid']['field'] = 'term_node_tid';
-  $handler->display->display_options['relationships']['term_node_tid']['required'] = 0;
-  $handler->display->display_options['relationships']['term_node_tid']['vocabularies'] = array(
-    'article_bylines' => 0,
-    'article_categories' => 0,
-    'tips' => 0,
-    'grade_levels' => 0,
-    'magazine_issue_num' => 0,
-    'magazine_volumes' => 0,
-    'regions' => 0,
-    'skills' => 0,
-    'tags' => 0,
-    'tfk_extra_category' => 0,
-    'tfk_extra_pdf' => 0,
-    'themes' => 0,
-  );
   /* Relationship: Content: Related Article (field_related_articles) */
   $handler->display->display_options['relationships']['field_related_articles_nid']['id'] = 'field_related_articles_nid';
   $handler->display->display_options['relationships']['field_related_articles_nid']['table'] = 'field_data_field_related_articles';
@@ -89,38 +70,38 @@ function tfk_favorites_feature_views_default_views() {
   $handler->display->display_options['relationships']['field_slideshow_images_nid']['field'] = 'field_slideshow_images_nid';
   $handler->display->display_options['relationships']['field_slideshow_images_nid']['required'] = 0;
   $handler->display->display_options['relationships']['field_slideshow_images_nid']['delta'] = '0';
-  /* Field: Taxonomy term: Name */
-  $handler->display->display_options['fields']['name']['id'] = 'name';
-  $handler->display->display_options['fields']['name']['table'] = 'taxonomy_term_data';
-  $handler->display->display_options['fields']['name']['field'] = 'name';
-  $handler->display->display_options['fields']['name']['relationship'] = 'term_node_tid';
-  $handler->display->display_options['fields']['name']['label'] = '';
-  $handler->display->display_options['fields']['name']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['name']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['name']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['name']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['name']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['name']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['name']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['name']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['name']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['name']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['name']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['name']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['name']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['name']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['name']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['name']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['name']['hide_alter_empty'] = 0;
-  $handler->display->display_options['fields']['name']['link_to_taxonomy'] = 0;
+  /* Field: Content: Skills */
+  $handler->display->display_options['fields']['field_skills']['id'] = 'field_skills';
+  $handler->display->display_options['fields']['field_skills']['table'] = 'field_data_field_skills';
+  $handler->display->display_options['fields']['field_skills']['field'] = 'field_skills';
+  $handler->display->display_options['fields']['field_skills']['label'] = '';
+  $handler->display->display_options['fields']['field_skills']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_skills']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_skills']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_skills']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_skills']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_skills']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_skills']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_skills']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_skills']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_skills']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_skills']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_skills']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_skills']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_skills']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_skills']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_skills']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_skills']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_skills']['hide_alter_empty'] = 0;
+  $handler->display->display_options['fields']['field_skills']['type'] = 'taxonomy_term_reference_plain';
+  $handler->display->display_options['fields']['field_skills']['field_api_classes'] = 0;
   /* Field: Fields: Grade Level */
   $handler->display->display_options['fields']['field_grade_level']['id'] = 'field_grade_level';
   $handler->display->display_options['fields']['field_grade_level']['table'] = 'field_data_field_grade_level';
   $handler->display->display_options['fields']['field_grade_level']['field'] = 'field_grade_level';
   $handler->display->display_options['fields']['field_grade_level']['label'] = '';
   $handler->display->display_options['fields']['field_grade_level']['alter']['alter_text'] = 1;
-  $handler->display->display_options['fields']['field_grade_level']['alter']['text'] = '<span class="ctype">[name]</span>
+  $handler->display->display_options['fields']['field_grade_level']['alter']['text'] = '<span class="ctype">[field_skills]</span>
 <span class="ctype-suffix"> [field_grade_level]</span>';
   $handler->display->display_options['fields']['field_grade_level']['alter']['make_link'] = 0;
   $handler->display->display_options['fields']['field_grade_level']['alter']['absolute'] = 0;
