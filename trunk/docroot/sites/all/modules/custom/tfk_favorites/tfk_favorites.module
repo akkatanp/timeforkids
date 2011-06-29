@@ -57,26 +57,32 @@ function _tfk_favorites_links_block_content() {
   // We add the CSS here so the block can be added to multiple pages with ease.
   drupal_add_css(drupal_get_path('module', 'tfk_favorites'). '/css/tfk_my_favorites_block.css');
 
-  $ref = arg(0);
+  $path = arg(0);
   
   $favorites_module_path = drupal_get_path('module', 'tfk_favorites');
   $search_module_path = drupal_get_path('module', 'tfk_search');
   
   // Add JS settings and file. These are used for the clear all favorites Javascript.
-  drupal_add_js(array('tfk_favorites' => array('ajax_callback' => url('tfkfav/ajax/del'), 'ref' => $ref, 'success' => TFK_FAVS_AJAX_SUCCESS)), 'setting');
+  drupal_add_js(array('tfk_favorites' => array('ajax_callback' => url('tfkfav/ajax/del'), 'ref' => $path, 'success' => TFK_FAVS_AJAX_SUCCESS)), 'setting');
   drupal_add_js($favorites_module_path. '/js/tfk_favorites.js', 'file');
 
   // View all my favorites link.
-  $link_options = array('html' => TRUE, 'attributes' => array('title' => 'All Teacher Resources'));
-  $view_all = l(theme('image', array('path' => $search_module_path. '/images/all-teacher-resources.png', 'alt' => 'All Teacher Resources', 'attributes' => array('title' => 'All Teacher Resources'))), 'my-favorites', $link_options);
+  if($path == 'worksheets') {
+    $link_options = array('html' => TRUE, 'attributes' => array('title' => 'All Teacher Resources'));
+    $view_all = l(theme('image', array('path' => $search_module_path. '/images/all-teacher-resources.png', 'alt' => 'All Teacher Resources', 'attributes' => array('title' => 'All Teacher Resources'))), 'my-favorites', $link_options);
+  } else {
+    $link_options = array('html' => TRUE, 'attributes' => array('title' => 'View All My Favorites'));
+    $view_all = l(theme('image', array('path' => $search_module_path. '/images/view-all-my-favorites.png', 'alt' => 'View All My Favorites', 'attributes' => array('title' => 'View All My Favorites'))), 'my-favorites', $link_options);
+  }
+
   
   // Clear favorites link.
   $link_options['attributes']['fragment'] = ' '; // Adds the # at the end of the link.
   $link_options['attributes'] = array('title' => 'Clear All Favorites', 'id' => 'delfavs');
-  $clear_all = l(theme('image', array('path' => $search_module_path. '/images/clear-all-favorites.png', 'alt' => 'Clear All Favorites', 'attributes' => array('title' => 'Clear All Favorites'))), $ref, $link_options);
+  $clear_all = l(theme('image', array('path' => $search_module_path. '/images/clear-all-favorites.png', 'alt' => 'Clear All Favorites', 'attributes' => array('title' => 'Clear All Favorites'))), $path, $link_options);
   
   // Theme output.
-  $variables = array('ref' => $ref, 'view_all' => $view_all, 'clear_all' => $clear_all);
+  $variables = array('ref' => $path, 'view_all' => $view_all, 'clear_all' => $clear_all);
   return theme('tfk_favorites_links', $variables);
 }
 
