@@ -250,4 +250,13 @@ function study_helper_node_access($node, $op, $account) {
       return NODE_ACCESS_ALLOW;
     }  
   }
+}
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ *
+ * Alter "Ask a Question" webform.
+ */
+function study_helper_form_webform_client_form_306_alter(&$form, &$form_state, $form_id) {
+  drupal_add_js(drupal_get_path('module', 'study_helper') . '/js/writing_tips.js', 'file');
 }  
