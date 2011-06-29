@@ -188,7 +188,7 @@ function tfk_favorites_feature_views_default_views() {
   $handler->display->display_options['fields']['field_worksheet_pdf']['label'] = '';
   $handler->display->display_options['fields']['field_worksheet_pdf']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_worksheet_pdf']['alter']['alter_text'] = 1;
-  $handler->display->display_options['fields']['field_worksheet_pdf']['alter']['text'] = 'Download this [name]';
+  $handler->display->display_options['fields']['field_worksheet_pdf']['alter']['text'] = 'Download this [field_skills]';
   $handler->display->display_options['fields']['field_worksheet_pdf']['alter']['make_link'] = 1;
   $handler->display->display_options['fields']['field_worksheet_pdf']['alter']['path'] = '[field_worksheet_pdf]';
   $handler->display->display_options['fields']['field_worksheet_pdf']['alter']['absolute'] = 0;
