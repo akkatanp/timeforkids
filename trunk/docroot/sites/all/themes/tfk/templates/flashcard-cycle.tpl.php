@@ -7,11 +7,13 @@
 
 <div class="flashcard-cycle clearfix">
   <div class="flashcard-cycle-buttons flashcard-cycle-toolbar clearfix">
-    <?php if ($restart = render($restart)): ?>
-      <?php print $restart; ?>
-    <?php endif; ?>
     <?php if ($edit = render($edit)): ?>
       <?php print $edit; ?>
+    <?php endif; ?>
+  </div>
+  <div class="flashcard-help-button">
+    <?php if ($help = render($help)): ?>
+      <?php print $help; ?>
     <?php endif; ?>
   </div>
   <div class="flashcard-cycle-cards">
