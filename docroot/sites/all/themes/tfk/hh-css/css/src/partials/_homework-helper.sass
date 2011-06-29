@@ -1,7 +1,10 @@
-=tfk-button
+=tfk-button($radius: 24px)
+  -webkit-appearance: none
   background: $tfk-red url(../images/button.png) repeat-x
   +box-shadow(transparentize($black, 0.5) 0 2px 4px, lighten($tfk-red, 20%) -3px 3px 5px inset)
+  +border-radius($radius)
   border: none
+  font: normal 12px/1.2 Arial, sans-serif
   outline: 0
   color: white
   cursor: pointer
@@ -9,12 +12,12 @@
 
 =tfk-header-tag
   background: transparent url(images/tfk-red-tag.png) no-repeat -8px 0
-  padding: 12px
-  height: 23px
   color: $white
   font-size: $ms0
   font-weight: bold
+  height: 23px
   margin: 10px 0 0
+  padding: 12px
   text-transform: uppercase
 
 =tfk-box
@@ -27,18 +30,27 @@
     margin-top: 0
     margin-bottom: 10px
 
-=tfk-submit-button
+=tfk-submit-button($color: red)
   -webkit-appearance: none
-  +border-radius(11px)
-  background: $tfk-red url(../images/button.png) repeat-x
-  border: 1px solid
-  border-color: #ddd #bbb #999
+  +border-radius(1em)
+  background:
+    image: url(../images/button.png)
+    repeat: repeat-x
   cursor: pointer
-  color: white
   font: normal 12px/1.2 Arial, sans-serif
   outline: 0
   overflow: visible
-  padding: 4px 12px 4px
+  padding: 4px 1em
+  @if $color == red
+    background-color: $tfk-red
+    border: 1px solid #ddd #bbb #999
+    color: white
+  @else
+    background-color: white
+    border: 3px solid $tfk-red
+    +box-shadow(transparentize($black, 0.5) 0 2px 4px)
+    color: $tfk-red
+    font-weight: bold
 
 .homework-helper-title
   font-size: 36px
