@@ -91,3 +91,39 @@ div#slideshow-container div#slideshow div.header {
 	margin-top: 20px;
 }
 
+
+
+/* Other stuff */
+body.page-node.node-type-slideshow #slideshow-info div.image-date {
+  font-size: 10px;
+  margin: 7px 0px;
+}
+
+body.page-node.node-type-slideshow #slideshow-related-content #featured-related-content-title {
+  margin-top: 0px;
+  color: #333;
+}
+
+body.page-node.node-type-slideshow #slideshow-related-content {
+  margin-top: 15px;
+}
+
+body.page-node.node-type-slideshow #slideshow-info,
+body.page-node.node-type-slideshow .addit-related-articles-label,
+body.page-node.node-type-slideshow #block-tfk-helper-more-items-block h2.more-items-label,
+#block-system-main .content h2.node-title,
+body.page-node.node-type-slideshow #slideshow-container #slide-count {
+	color: #333;
+}
+
+#block-system-main .content h2.node-title {
+	margin: 0 0 10px 0px;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+body.page-node.node-type-slideshow #block-system-main {
+	margin-bottom: 0px;
+}
+
+

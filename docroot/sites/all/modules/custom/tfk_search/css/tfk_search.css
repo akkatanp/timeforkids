@@ -313,3 +313,55 @@ li.search-result .flag-favorites {
   padding-left: 18px;
   height: 20px;
 }
+
+/* photos and vide content type */
+/*
+div.col1 .content-type-slideshow .icon {
+  position: inherit;
+  bottom: 20px;
+  right: 20px;
+  width: 32px;
+  height: 22px;
+  z-index: 2;
+  background: url(../images/photo-camera-icon.png) no-repeat;
+}
+
+div.col1 .content-type-video .icon {
+  position: relative;
+  bottom: 20px;
+  right: 20px;
+  width: 32px;
+  height: 22px;
+  z-index: 2;
+  background: url(../images/video-camera-icon.png) no-repeat;
+  background-color: red;
+}*/
+
+
+body.section-photos-video div#tfk-search-photos-video-featured .icon {
+  height: 22px;
+  margin: -34px 0 0 225px;
+  position: relative;
+  width: 32px;
+  z-index: 2;
+}
+
+body.section-photos-video ol#tfk-search-results-photos-video .icon,
+body.section-my-favorites ol#tfk-search-results-photos-video .icon {
+  height: 22px;
+  margin: -34px 0 0 75px;
+  position: relative;
+  width: 32px;
+  z-index: 2;
+}
+
+body.section-photos-video .content-type-slideshow .icon,
+body.section-my-favorites .content-type-slideshow .icon {
+  background: url(../images/photo-camera-icon.png) no-repeat;
+}
+
+body.section-photos-video .content-type-video .icon, 
+body.section-my-favorites .content-type-video .icon {
+  background: url(../images/video-camera-icon.png) no-repeat;
+}
+
