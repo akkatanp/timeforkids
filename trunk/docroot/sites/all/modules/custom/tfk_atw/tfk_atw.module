@@ -258,16 +258,18 @@ function _get_atw_timeline_slideshow_images(){
         $event_nid = $tmp_event_nid['value'];
         $timelines_data[$k]['event_nid'] = $event_nid;
 
-        $result = db_query('select ec.field_timeline_event_copy_value as event_copy ,ep.field_timeline_event_photo_fid,fm.uri as file_uri,et.field_timeline_event_text_value as timeline_title
+        $result = db_query('select ec.field_timeline_event_copy_value as event_copy ,ep.field_timeline_event_photo_fid,fm.uri as file_uri,et.field_timeline_event_text_value as timeline_title,fpc.field_photo_credit_value as photo_credit
             from {field_data_field_timeline_event_copy} ec left join {field_data_field_timeline_event_photo} ep on ec.entity_id = ep.entity_id
             left join {file_managed} fm on ep.field_timeline_event_photo_fid = fm.fid
             left join {field_data_field_timeline_event_text} et on ec.entity_id = et.entity_id
+            left join {field_data_field_photo_credit} fpc on ec.entity_id = fpc.entity_id 
             where ec.entity_id = :event_nid',array('event_nid' => $event_nid));
         $record = $result->fetch();
         $timelines_data[$k]['event_copy'] = $record->event_copy;
         $timelines_data[$k]['event_title'] = $record->timeline_title;
         $timelines_data[$k]['image_path'] = image_style_path('tfk_rect_large',$record->file_uri);
         $timelines_data[$k]['image_path'] = file_create_url($timelines_data[$k]['image_path']);
+        $timelines_data[$k]['image_credit'] = $record->photo_credit;
     }
 
     $is_admin_editor = 0;
@@ -283,8 +285,6 @@ function _get_atw_timeline_slideshow_images(){
         $additional_content[$i]['nid'] = $add_cont['nid'];
         $additional_content[$i]['title'] = $add_cont['node']->title;
     }
-
-
 
 
     $tmp_url = explode('/',request_uri());
