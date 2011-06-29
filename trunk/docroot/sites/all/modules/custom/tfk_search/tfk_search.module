@@ -807,6 +807,16 @@ function tfk_search_preprocess_search_result(&$vars) {
       );
       $style = '115x115';
     }
+
+
+    if($base_path == 'tfk-magazine') {
+      $vars['theme_hook_suggestions'] = array_merge(
+        array('search_result__tfk_search__magazine', 'search_result__tfk_search'),
+        $vars['theme_hook_suggestions']
+      );
+      $style = '115x115';
+    }
+
     
     switch ($vars['result']['fields']['bundle']) {
       
@@ -857,7 +867,105 @@ function tfk_search_preprocess_search_result(&$vars) {
         // Flag link.
         tfk_search_get_flag_link($vars, $nid, 'favorites');
       break;
-      
+
+
+
+      case 'magazine_issue':
+        $nid = $vars['result']['fields']['entity_id'];
+        $magazine = node_load($nid);
+
+        //lets populate array of additional data for this node type search result
+        ////////////ISSUE DATE///////////////////////
+        $tmp_date =  field_get_items('node', $magazine, 'field_date');
+        $vars['magazine_issue_date_linux'] = $tmp_date[0]['value'];
+
+        ////////////GRADE LEVEL///////////////////////
+        $tmp_tid = field_get_items('node', $magazine, 'field_grade_level');
+        $tid = $tmp_tid[0]['tid'];
+        $name_res =  db_query('select name from taxonomy_term_data where tid = :tid',array('tid' => $tid ));
+        $name = $name_res->fetch();
+        $name = $name->name;
+        $vars['magazine_issue_grade_level'] = $name;
+
+        //////////////COVER IMAGE///////////////////
+        $tmp_img_nid =  field_get_items('node', $magazine, 'field_cover');
+        $img_nid = $tmp_img_nid[0]['nid'];
+        $result = db_query('select fi.field_image_fid,fm.filename from {field_data_field_image} fi
+          left join {file_managed} fm on fi.field_image_fid = fm.fid
+          where fi.entity_type = :bundle_type and fi.entity_id = :img_nid',array('bundle_type'=>'node','img_nid'=>$img_nid));
+        $record = $result->fetch();
+        $file = file_load($record->field_image_fid);
+        if(isset($file->uri)) {
+            $file->newpath = image_style_path($style, $file->uri);
+            // Generate the image style derivative if it doesn't exist.
+            if(!file_exists($file->newpath)) {
+              $success = image_style_create_derivative(image_style_load($style), $file->uri, $file->newpath);
+            }
+            $vars['tfk_search_res_image'] = image_style_url($style, $file->uri);
+          }
+
+
+         //////////Getting Cover Stories//////////////
+         $tmp_stories = field_get_items('node', $magazine, 'field_cover_story');
+         foreach($tmp_stories as $k => $story){
+           $vars['magazine_cover_stories'][$k]['title'] = $story['title'];
+           $vars['magazine_cover_stories'][$k]['url'] = $story['url'];
+         }
+
+         //////////Getting In The News//////////////
+         $tmp_inthenews = field_get_items('node', $magazine, 'field_in_the_news');
+         foreach($tmp_inthenews as $k => $inthenew){
+           $vars['magazine_in_the_news'][$k]['title'] = $inthenew['title'];
+           $vars['magazine_in_the_news'][$k]['url'] = $inthenew['url'];
+         }
+
+         //////////Getting TOP 5//////////////
+         $tmp_topfive = field_get_items('node', $magazine, 'field_top_5');
+         foreach($tmp_topfive as $k => $topfive){
+           $vars['magazine_topfive'][$k]['title'] = $topfive['title'];
+           $vars['magazine_topfive'][$k]['url'] = $topfive['url'];
+         }
+
+         //////////Getting whosnews//////////////
+         $tmp_whosnews = field_get_items('node', $magazine, 'field_whos_news');
+         foreach($tmp_whosnews as $k => $whosnew){
+           $vars['magazine_whosnews'][$k]['title'] = $whosnew['title'];
+           $vars['magazine_whosnews'][$k]['url'] = $whosnew['url'];
+         }
+
+         //////////Getting morenews//////////////
+         $tmp_morenews = field_get_items('node', $magazine, 'field_more_news');
+         foreach($tmp_morenews as $k => $morenew){
+           $vars['magazine_morenews'][$k]['title'] = $morenew['title'];
+           $vars['magazine_morenews'][$k]['url'] = $morenew['url'];
+         }
+
+         ///////////GETTING ADDITIONAL CONTENT////////
+         ////////////////////Materials////////////////
+         $tmp_materials = field_get_items('node', $magazine, 'field_materials');
+         foreach($tmp_materials as $k=>$tmp_material){
+           //i want to get the title without doing an extra node_load
+           $sql = 'SELECT title FROM {node} WHERE nid = :nid';
+           $result = db_query($sql,array('nid'=>$tmp_material['nid']));
+           $link_title = $result->fetch();
+           $vars['magazine_materials'][$k]['title'] = $link_title->title;
+           $vars['magazine_materials'][$k]['nid'] = $tmp_material['nid'];
+         }
+
+         ////////////////////Related Resources////////////////
+         $tmp_related = field_get_items('node', $magazine, 'field_related_resources');
+         foreach($tmp_related as $k=>$tmp_rel){
+           //i want to get the title without doing an extra node_load
+           $sql = 'SELECT title FROM {node} WHERE nid = :nid';
+           $result = db_query($sql,array('nid'=>$tmp_rel['nid']));
+           $link_title = $result->fetch();
+           $vars['magazine_related'][$k]['title'] = $link_title->title;
+           $vars['magazine_related'][$k]['nid'] = $tmp_rel['nid'];
+         }
+
+        break;
+
+
       case 'worksheet':
         $worksheet_nid = $vars['result']['fields']['entity_id'];
 
