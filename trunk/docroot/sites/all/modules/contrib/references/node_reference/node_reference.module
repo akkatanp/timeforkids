@@ -40,7 +40,7 @@ function node_reference_field_info() {
       'default_widget'    => 'options_select', //  node_reference_autocomplete',
       'default_formatter' => 'node_reference_default',
       // Support hook_entity_property_info() from contrib "Entity API".
-      //'property_type' => 'node',
+      'property_type' => 'node',
     ),
   );
 }
