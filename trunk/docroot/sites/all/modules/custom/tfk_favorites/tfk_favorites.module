@@ -109,16 +109,109 @@ function _tfk_fav_del(){
 }
 
 /**
+ * Preprocessing for the My Favorites page View.
+ *
  * Implementation of hook_preprocess_view_view_fields.
  *
  * @param array $variables
  *   Stuff comming from views.
  */
-//function tfk_favorites_preprocess_views_view_fields(&$variables, $hook) {
-//  $view = $variables['view'];
-//  if($view->name == 'user_favorites' && $view->current_display == 'page') {
-//  }
-//}
+function tfk_favorites_preprocess_views_view_fields(&$variables, $hook) {
+  $view = $variables['view'];
+  if($view->name == 'user_favorites' && $view->current_display == 'page') {
+    $test = null;
+    $content_type = $variables['row']->_field_data['nid']['entity']->type;
+    
+    if($content_type == 'slideshow' || $content_type == 'video') {
+      // For Slideshows and Videos substitute grade w/ content type.
+      $variables['fields']['field_grade_level']->content = '
+      <div class="field-content content-type"><span class="ctype">'. ucfirst($content_type). '</span>
+      <span class="ctype-suffix">&nbsp;</span></div>';
+      
+      // Title.
+      $title_link = l($variables['row']->node_title, 'node/'. $variables['row']->nid);
+      
+      // Additional content box.
+      if(!empty($variables['row']->field_field_additional_content)) {
+        $additional_content = $variables['row']->field_field_additional_content[0]['raw']['node'];
+        $related = ($additional_content->type == 'article') ? 'Related ': '';
+        $additional_content_box = '
+          <div id="featured-related-content-title" class="addit-content">Additional Content</div>
+          <div id="featured-related-content" class="related-content-wrap">
+            <div class="addit-related-articles">
+              <div class="addit-related-articles-label">'. strtoupper(t($related. '@type:', array('@type' => $content_type))). '</div>
+              <div class="addit-related-articles-title">'. l($additional_content->title, 'nid/'. $additional_content->nid). '</div>
+          	</div>
+          </div>
+        ';
+      }
+      
+      $icon = '<div class="icon"></div>';
+      
+      if($content_type == 'video') {
+        $related_article = '';
+        if(!empty($variables['row']->field_field_video_thumbnail)) {
+          #$variables['row']->field_field_video_thumbnail[0]['rendered']['#prefix'] = 'foo';
+          $variables['row']->field_field_video_thumbnail[0]['rendered']['#suffix'] = $icon;
+          $thumbnail = render($variables['row']->field_field_video_thumbnail);
+          
+        }
+      } else {
+        $related_article = '';
+      }
+      
+      if($content_type == 'slideshow') {
+        // This is a image that is related to the slideshow.
+        // We need to link the that image to the slideshow, not the image itself.
+        if(!empty($variables['row']->field_field_image)) {
+          $_image = render($variables['row']->field_field_image);
+          $thumbnail = l($_image. $icon, 'node/'. $variables['row']->nid, array('html' => TRUE, 'attributes' => array('title' => $variables['row']->node_title)));
+        } else {
+          $thumbnail = '';
+        }
+
+      }
+      
+      $body = field_get_items('node', $variables[row]->_field_data[nid][entity], 'body');
+      if($body != FALSE) {
+        $body = $body[0]['safe_value'];
+      } else {
+        $body = '';
+      }
+      
+      
+      
+      // The HTML below was defined within the title field of the View.
+      // Worksheets use it, but Slideshows and Videos need to override it:
+      //  - The title is not linked for worksheets, but it is for Videos and Slideshows.
+      //  - Slideshows have no related article, only Videos.
+      //  - The body field comes from a different place.
+      //  - Thumbnails come from a different place in Slideshows, Videos and Worksheets.
+      $variables['fields']['title']->content = '
+        <div class="field-content row2">
+          <div class="col1 content-type-'. $content_type. '">'. $thumbnail. '</div>
+          <div class="col2">
+            <h3 class="title">
+              '. $title_link. '
+            </h3>
+            
+            '. $related_article. '
+            
+            <div class="search-snippet-info">
+             <div class="search-snippet-body">
+             	 '. $body. '
+             </div>
+            </div>
+            
+            '. $additional_content_box. '
+          
+          </div>
+        </div>';
+    }
+    
+    
+  }
+}
 
 /**
  * Preprocess Views list.
