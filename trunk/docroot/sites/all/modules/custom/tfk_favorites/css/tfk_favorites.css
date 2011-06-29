@@ -33,12 +33,17 @@ li.search-result div.col1 img {
 body.page-my-favorites li.search-result div.col2 {
   display: block;
   margin: 0 0 0 10px;
-  max-width: inherit;
+  width: inherit;
+	padding-right: 10px;
 }
 
 li.search-result .content-type .ctype-suffix {
     float: right;
     padding-right: 10px;
+}
+
+body.section-my-favorites div#featured-related-content {
+  margin-left: 115px;
 }
 
 /* Favorites link */
