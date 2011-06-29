@@ -267,7 +267,7 @@ function tfk_helper_get_slideshow_data($nid) {
     foreach($images as $image){
       // Title.
       $title = $image['node']->title;
-      
+           
       // Caption.
       $caption = array_pop(array_shift(field_get_items('node', $image['node'], 'field_caption')));
       
@@ -276,6 +276,9 @@ function tfk_helper_get_slideshow_data($nid) {
       
       // Images.
       $image_field = array_shift(field_get_items('node', $image['node'], 'field_image'));
+      
+      // Date.
+      $date = tfk_helper_render_field('node', $node, 'field_date');
       
       // Description.
       $body = array_shift(field_get_items('node', $image['node'], 'body'));
@@ -295,6 +298,7 @@ function tfk_helper_get_slideshow_data($nid) {
           'caption'     => $caption,
           'credit'      => $credit,
           'description' => $description,
+          'date' 				=> $date,
         );
       }
       
@@ -306,6 +310,110 @@ function tfk_helper_get_slideshow_data($nid) {
   } else {
     return FALSE;
   }
+}
+
+/**
+ * Renders a single item from a field using the Field and Render APIs.
+ *
+ * Use this function to get the value of a field and render it in one shot.
+ *
+ * Example usage:
+ * Basic example - rendering the first item of a field with it's default display settings.
+ * @code
+ *   $rendered_field = tfk_helper_render_field('node', $image['node'], 'field_image');
+ * @endcode
+ * Rendering the second item of a field with custom specified display settings.
+ * @code
+ *   $display = array('settings' => array('image_style' => 'tfk_square_large'));
+ *   $test = tfk_helper_render_field('node', $image['node'], 'field_image', 0, $display);
+ * @endcode
+ *
+ * Before the rendered field is returned, drupal_alter('field_attach_view') is
+ * called.
+ *
+ * For best usage, see the documentation for:
+ * @see field_get_items()
+ * @see field_view_value()
+ * @see field_view_field()
+ * @see render()
+ * @see drupal_alter()
+ *
+ * @todo Write a multiple-value version of this function.
+ * @todo Document how to find the display settings.
+ *
+ * @param string $entity_type
+ *   The type of $entity.
+ * @param stdClass $entity
+ *   The entity containing the data to be displayed.
+ * @param string $field_name
+ *   The field to be displayed.
+ * @param int $item_key
+ *   (optional) The field item to display, e.g., on a multiple node reference field,
+ *   render the first node reference. Defaults to 0.
+ * @param array $display
+ *   (optional) Can be either the name of a view mode, or an array of display settings.
+ *   Can be either:
+ *   - The name of a view mode. The field will be displayed according to the
+ *     display settings specified for this view mode in the $instance
+ *     definition for the field in the entity's bundle.
+ *     If no display settings are found for the view mode, the settings for
+ *     the 'default' view mode will be used.
+ *   - An array of display settings, as found in the 'display' entry of
+ *     $instance definitions. The following key/value pairs are allowed:
+ *     - label: (string) Position of the label. The default 'field' theme
+ *       implementation supports the values 'inline', 'above' and 'hidden'.
+ *       Defaults to 'above'.
+ *     - type: (string) The formatter to use. Defaults to the
+ *       'default_formatter' for the field type, specified in
+ *       hook_field_info(). The default formatter will also be used if the
+ *       requested formatter is not available.
+ *     - settings: (array) Settings specific to the formatter. Defaults to the
+ *       formatter's default settings, specified in
+ *       hook_field_formatter_info().
+ *     - weight: (float) The weight to assign to the renderable element.
+ *       Defaults to 0.
+ *   See field_view_field() for more information.
+ * @param $langcode
+ *   (optional) The language code $entity->{$field_name} has to be displayed in.
+ *   Defaults to the current language.
+ *
+ * @return
+ *   Rendered element using drupal_render().
+ */
+function tfk_helper_render_field($entity_type, $entity, $field_name, $item_key = 0, $display = array(), $langcode = NULL) {
+
+  $field_values = field_get_items($entity_type, $entity, $field_name, $langcode);
+  if($field_values != FALSE) {
+    $field_value = $field_values[$item_key];
+    $render_array = field_view_value($entity_type, $entity, $field_name, $field_value, $display, $langcode);
+    $rendered_value = render($render_array);
+    return $rendered_value;
+  }
+
+}
+
+/**
+ * Returns a render array for a single field delta.
+ *
+ * This allows the implementor to alter the render array before calling render().
+ * You can use this function to add elements to render arrays like the $content or
+ * region arrays in preprocess functions. See tfk_helper_render_field() for an
+ * explanation of the parameters.
+ *
+ * @see tfk_helper_render_field()
+ *
+ * @return
+ *   Render array for a single field delta.
+ */
+function tfk_helper_pre_render_field($entity_type, $entity, $field_name, $item_key = 0, $display = array(), $langcode = NULL) {
+
+  $field_values = field_get_items($entity_type, $entity, $field_name, $langcode);
+  if($field_values != FALSE) {
+    $field_value = $field_values[$item_key];
+    $render_array = field_view_value($entity_type, $entity, $field_name, $field_value, $display, $langcode);
+    return $render_array;
+  }
+
 }
 
 /**
@@ -432,7 +540,7 @@ class tfkHelperFeaturedItem {
     $this->title = l($featured_node->title, $url); // Alternatively load 'safe_summary'.
     // Trim and filter the body to ensure valid and safe markup.
     // Cache the filtered output in the {cache_filter} table.
-    // @todo Make the trim count a setting.
+    // @todo Make the trim count a setting. @todo We should not be accessing 'und'.
     $this->body = check_markup(truncate_utf8($featured_node->body['und'][0]['safe_value'], self::$body_trim, TRUE, TRUE, 10), self::$snippet_format, '', TRUE);
     $this->link = l('See '. ucfirst($featured_node->type), $url);
     
