@@ -42,10 +42,11 @@ function grammar_wizard_prepare_question($node) {
     $answers[] = $choices[$key]['safe_value'];
   }
   shuffle($answers);
+  $alpha = 'a';
   foreach ($answers as $key => $answer) {
-    $answer_options[$answer] = $answer;
+    $answer_options[$answer] = $alpha . '. ' . $answer;
+    $alpha++;
   }
-
   $form['question'] = array(
     '#type' => 'radios',
     '#options' => $answer_options,
