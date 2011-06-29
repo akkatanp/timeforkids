@@ -88,25 +88,25 @@ function STARTERKIT_preprocess_html(&$variables, $hook) {
 function tfk_preprocess_page(&$variables, $hook) {
   $variables['theme_hook_suggestions'][] = 'page__'. $variables['node']->type;
   if ($variables['node']->type == "board_member") {
-      $variables['title'] = "Teacher Community";
+    $variables['title'] = "Teacher Community";
   }
   if (isset($variables['page']['content']['system_main']['#theme']) && $variables['page']['content']['system_main']['#theme'] == "user_profile") {
-      if ($variables['page']['content']['system_main']['field_is_board_member']['#items'][0]['value'] == "yes") {
-          $variables['title'] = "Teacher Community";
-      } else {
-          $variables['title'] = "My Account";
-      }
+    if ($variables['page']['content']['system_main']['field_is_board_member']['#items'][0]['value'] == "yes") {
+      $variables['title'] = "Teacher Community";
+    } else {
+      $variables['title'] = "My Account";
+    }
   }
 
   if ($variables['section_title'] == t('Homework Helper')) {
     $variables['content_type_title'] = tfk_content_type_title($variables['node']->type);
     $variables['theme_hook_suggestions'][] = 'page__homework_helper';
-  }  
+  }
 
   if ($variables['node']->type == 'grammar_practice') {
     $variables['grammar_practice_header'] = l('Try Another', 'homework-helper/grammar-wizard/grammar-practice', array('attributes' => array('class' => array('button', 'try-another'))));
-  }  
- 
+  }
+
 }
 // */
 
@@ -170,15 +170,19 @@ function tfk_content_type_title($type) {
       break;
     case 'flashcard':
       $output = t('Flashcard Maker');
+      break;
     case 'grammar_practice':
       $output = t('Grammar Practice');
+      break;
   }
   return $output;
 }
 
-
+/**
+ * Implements hook_css_alter().
+ */
 function tfk_css_alter(&$css) {
-  //alter css to display as link tags
+  // Alter css to display as link tags.
   foreach ($css as $key => $value) {
     $css[$key]['preprocess'] = FALSE;
   }
