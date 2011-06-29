@@ -62,8 +62,6 @@ function tfk_ads_omni_preprocess_page(&$variables){
         $omniture_vars .= "var s_code=s_time.t();if(s_code)document.write(s_code)\n";
         drupal_add_js($omniture_vars, 'inline');
     }
-    dpm($variables);
-    dpm($ad_omni_config['test-path']);
 }
 //Creates the HTML/JS snippet for ads
 function tfk_ads_omni_create_ad($name,$width,$height,$type='regular',$position=NULL){
