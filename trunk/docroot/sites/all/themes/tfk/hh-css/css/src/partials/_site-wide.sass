@@ -1,4 +1,13 @@
 .homework-helper
+  a.button
+    +tfk-submit-button
+  button,
+  input[type="reset"],
+  input[type="submit"],
+  input[type="button"]
+    +tfk-submit-button
+    padding: 3px 10px 4px
+    margin-right: 10px
   #main-wrapper
     .region-sidebar-first .section
       margin-bottom: 10px
@@ -9,8 +18,6 @@
     line-height: $ms1
     width: 768px
     a
-      &.button
-        +tfk-submit-button
       &:hover
         color: lighten($tfk-red, 40.0)
     .paper-textarea
