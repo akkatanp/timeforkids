@@ -106,7 +106,10 @@ function tfk_preprocess_page(&$variables, $hook) {
   if ($variables['node']->type == 'grammar_practice') {
     $variables['grammar_practice_header'] = l('Try Another', 'homework-helper/grammar-wizard/grammar-practice', array('attributes' => array('class' => array('button', 'try-another'))));
   }
-
+  
+  if ($variables['node']->type == 'flashcard') {
+    $variables['flashcards_return'] = l('Back to Flashcard Sets', 'homework-helper/flashcards');
+  }
 }
 // */
 
