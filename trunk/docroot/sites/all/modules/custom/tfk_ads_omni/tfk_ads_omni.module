@@ -19,7 +19,7 @@ function tfk_ads_omni_preprocess_page(&$variables){
     if ($ad_omni_config['is_channel'] == 1) {
         $ad_factory .= "adFactory.setChannelPage();";
     }
-    if ($ad_omni_config['node_path'] == 1) {
+    if (isset($ad_omni_config['node_path'])) {
         $ad_factory .= "adFactory.setContentPage();";
     }
     drupal_add_js($ad_factory, 'inline');
@@ -29,9 +29,9 @@ function tfk_ads_omni_preprocess_page(&$variables){
     $variables['ad']['banner_160x600'] = tfk_ads_omni_create_ad('banner_160x600',160,600,'regular');
     $variables['ad']['banner_728x90_footer'] = tfk_ads_omni_create_ad('banner_728x90_footer',728,90,'regular',2);
     /*Inject ad calls into blocks, overriding placeholder ad*/
-    tfk_ads_omni_form_alter('sidebar', $variables['page']['sidebar_second']['block_1'], $variables['ad']['banner_160x600']);
-    //tfk_ads_omni_form_alter('footer', $variables['page'], $variables['ad']['banner_728x90_footer']);
-    tfk_ads_omni_form_alter('footer', $variables['page']['footer'], $variables['ad']['banner_728x90_footer']);
+    tfk_ads_omni_form_alter('block_1', $variables['page']['sidebar_second'], $variables['ad']['banner_160x600']);
+    tfk_ads_omni_form_alter('block_21', $variables['page']['footer'], $variables['ad']['banner_728x90_footer']);
+    
     /*Omniture*/
    if (!$variables['is_admin'] == "true") {//Exclude from admin pages
         /*Omniture account and js lib. Account must come before js include*/
@@ -62,6 +62,7 @@ function tfk_ads_omni_preprocess_page(&$variables){
         $omniture_vars .= "var s_code=s_time.t();if(s_code)document.write(s_code)\n";
         drupal_add_js($omniture_vars, 'inline');
     }
+    dpm($variables['page']['sidebar_second']);
 }
 //Creates the HTML/JS snippet for ads
 function tfk_ads_omni_create_ad($name,$width,$height,$type='regular',$position=NULL){
@@ -157,15 +158,8 @@ function tfk_ads_omni_get_config_vars(&$variables){
 }
 //This overrides a block with a real ad call
 function tfk_ads_omni_form_alter($form_id, &$form, $content) {
-    if ($form_id == 'sidebar') {//Sidebar ad
-        $alteration = array('#description' => t('Overridden via ad module'),'#markup' => $content);
-        $form['content'] = array_merge($form['content'], $alteration);
-    }
-    if ($form_id == 'footer') {//footer ad
-        $alteration = array('#description' => t('Overridden via ad module'),'#markup' => $content);
-        $form['block_21'] = array_merge($form['block_21'], $alteration);
-    }
-
+    $alteration = array('#description' => t('Overridden via ad module'),'#markup' => $content);
+    $form["$form_id"] = array_merge($form["$form_id"], $alteration);
 }
 //Retrieve the omniture suite account name
 function tfk_ads_omni_get_account() {
