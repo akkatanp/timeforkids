@@ -33,6 +33,7 @@ function grammar_wizard_prepare_question($node) {
   $form['description'] = node_view($node, 'full');
 
   // Combine the correct and incorrect choices and randomize their order.
+  $answer_options = array();
   $answer = field_get_items('node', $node, 'field_grammar_practice_answer');
   $rule = field_get_items('node', $node, 'field_grammar_practice_rule');
   $choices = field_get_items('node', $node, 'field_grammar_practice_choices');
@@ -42,13 +43,12 @@ function grammar_wizard_prepare_question($node) {
   }
   shuffle($answers);
   foreach ($answers as $key => $answer) {
-    $answers[$answer] = $answer;
-    unset($answers[$key]);
+    $answer_options[$answer] = $answer;
   }
 
   $form['question'] = array(
     '#type' => 'radios',
-    '#options' => $answers,
+    '#options' => $answer_options,
     '#title' => check_plain($node->title),
   );
 
