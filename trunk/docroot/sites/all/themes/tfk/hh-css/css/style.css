@@ -1375,7 +1375,7 @@ span.grammar-wizard-incorrect {
   display: inline;
   float: left;
   background: none;
-  width: 400px;
+  width: 360px;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_homework-helper\.sass}line{font-family:\0000326}}
 .writers-toolbox .toolbox-links h2 {
@@ -1397,17 +1397,14 @@ span.grammar-wizard-incorrect {
   margin-bottom: 10px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_404-page\.sass}line{font-family:\000034}}
-body.page-node-167 #content .content .content {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_404-page\.sass}line{font-family:\000032}}
+.page-node-167 .node {
+  background: #ffedeb;
+  border: 1px solid #d71700;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 160%;
   padding: 40px;
   text-align: center;
-  border: 1px solid #d71700;
   width: 686px;
-  background: #ffedeb;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_404-page\.sass}line{font-family:\0000310}}
-body.page-node-167 #content .content .content p {
-  font-weight: bold;
-  font-size: 18px;
-  line-height: 160%;
 }
