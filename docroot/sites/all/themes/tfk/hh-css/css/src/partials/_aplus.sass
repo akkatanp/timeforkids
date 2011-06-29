@@ -1,4 +1,5 @@
-body.node-type-a-paper, body.node-type-paper-step
+.node-type-a-paper,
+.node-type-paper-step
   #content
     font-family: $font-sans
     font-weight: normal
@@ -24,15 +25,16 @@ body.node-type-a-paper, body.node-type-paper-step
       font-size: $ms2
       line-height: $ms1
     .field-name-field-step-example
-      background: #dddddd
+      background: #ddd
       border: 1px solid #cecece
       margin: 10px
       padding: $gutter
       p
         margin-bottom: 0
         font-style: italic
-    .form-type-textfield, .form-type-textarea
-      background: #dddddd
+    .form-type-textfield,
+    .form-type-textarea
+      background: #ddd
       padding: 10px
       width: 480px
       margin-top: 0
@@ -50,10 +52,10 @@ body.node-type-a-paper, body.node-type-paper-step
       width: 505px
       font-size: 14px
       padding-top: 60px
-    .content .content 
+    .content .content
       .form-item input
         font-size: 14px
-      .content 
+      .content
         font-size: 14px
     .node-paper-step
       padding: 10px 0
@@ -61,7 +63,7 @@ body.node-type-a-paper, body.node-type-paper-step
       +float-left
       label
         font-size: $ms1
-        padding: 0 0 10px 
+        padding: 0 0 10px
       h2.node-title
         margin: 0 0 10px 0
         padding-top: 20px
@@ -94,7 +96,7 @@ body.node-type-a-paper, body.node-type-paper-step
       font-size: $ms0
 
 #aplus-submit-buttons
-  background: #dddddd
+  background: #ddd
   padding: 10px
   width: 480px
   border: 1px solid #cecece
@@ -123,7 +125,7 @@ body.node-type-a-paper, body.node-type-paper-step
     padding: 2px
     font-weight: bold
     text-transform: uppercase
-    border: 10px solid #dddddd
+    border: 10px solid #ddd
     text-align: center
   li
     border-bottom: 1px solid #cecece
@@ -138,14 +140,15 @@ body.node-type-a-paper, body.node-type-paper-step
       background-position: 0 0.7em
       color: $black
     &.checked
-    background-image: white
+      background-image: white
     &.last
       border-bottom: 0
 
 ul#aplus-papers-checklist
   margin-bottom: 0
 
-#aplus-review-step, #aplus-final-step
+#aplus-review-step,
+#aplus-final-step
   width: 480px
   +float-left
   margin-top: 10px
@@ -167,7 +170,7 @@ ul#aplus-papers-checklist
   input
     margin-top: 10px
 
-body.page-homework-helper-a-plus-papers
+.page-homework-helper-a-plus-papers
   .view-a-papers
     .view-header
       border-bottom: 1px solid #cecece
@@ -184,7 +187,7 @@ body.page-homework-helper-a-plus-papers
       border-bottom: 1px solid #cecece
       padding-bottom: $baseline
     .views-row-last
-      border-bottom: 0px
+      border-bottom: 0
     .views-field-title
       a
         font-size: 20px
@@ -202,4 +205,3 @@ body.page-homework-helper-a-plus-papers
         +box-shadow(transparentize($black, 0.5) 0 2px 4px)
         a
           margin-right: 10px
-          

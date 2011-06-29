@@ -7,113 +7,114 @@
   cursor: pointer
   overflow: visible
 
-body
-  &.node-type-flashcard,
-  &.page-homework-helper-flashcards,
-  &.page-node-add-flashcard,
-  &.page-homework-helper-my-flashcards
-    &.not-logged-in
-      div.tabs
-        display: none
-    #content
-      width: 768px
-      h2.node-title
-        display: none
-    .node-flashcard-form,
-    .node-flashcard
-      background: transparent url(images/flashcard-background.jpg) repeat
-      margin: 10px
-      padding: 20px
-    .node-flashcard-form
-      & > div
-        background-color: white
-        +border-radius(10px)
-        padding: 10px
-        +pie-clearfix
-        position: relative
-      .form-item-title
-        input
-          width: 80%
-      .field-type-flashcard
-        .form-item
-          margin-bottom: 0
-        .field-multiple-table
-          margin-bottom: 1em
-          width: 100%
-          tbody,
-          tr
-            border: none
-          td
-            padding: 1em
-            div:last-child
-              margin-left: 1em
-              padding-top: 1em
-            input
-              width: 80%
-        .field-add-more-submit
-          -webkit-appearance: none
-          +border-radius(14px)
-          background: #fff url(../images/button.png) repeat-x
-          border: 3px solid $tfk-red
-          color: $tfk-red
-          cursor: pointer
-          font: bold 12px/1.2 Arial, sans-serif
-          height: auto
-          padding: 4px 20px
-          margin: 0
-          width: auto
-          +box-shadow(transparentize($black, 0.5) 0 2px 4px)
-      .form-actions
-        position: absolute
-        bottom: 0.5em
-        right: 0
-        margin: 0
-        z-index: 10
-        input
-          background: url(images/tfk-red-arrow-right.png) no-repeat scroll 42px 3px transparent
+.node-type-flashcard,
+.page-homework-helper-flashcards,
+.page-node-add-flashcard,
+.page-homework-helper-my-flashcards
+  &.not-logged-in
+    div.tabs
+      display: none
+  #content
+    width: 768px
+    h2.node-title
+      display: none
+  .node-flashcard-form,
+  .node-flashcard
+    background: transparent url(images/flashcard-background.jpg) repeat
+    margin: 10px
+    padding: 20px
+  .node-flashcard-form
+    & > div
+      background-color: white
+      +border-radius(10px)
+      padding: 10px
+      +pie-clearfix
+      position: relative
+    .form-item-title
+      input
+        width: 80%
+    .field-type-flashcard
+      .form-item
+        margin-bottom: 0
+      .field-multiple-table
+        margin-bottom: 1em
+        width: 100%
+        tbody,
+        tr
           border: none
-          color: $tfk-red
-          cursor: pointer
-          font: bold 12px/1.2 Arial, sans-serif
-          height: 30px
-          padding: 3px
-          text-align: left
-          width: 100px
-          -webkit-appearance: none
-    .node-flashcard
-      .study-helper-help
-        clear: both
-        padding-left: 20px
-        +leader
-      .study-helper-url
-        +pie-clearfix
-        clear: both
-        .form-item
-          +float-left
-          margin: 0
+        td
+          padding: 1em
+          div:last-child
+            margin-left: 1em
+            padding-top: 1em
           input
-            background-color: $tfk-red
-            border-color: $tfk-red
-        #study-helper-copy
-          -webkit-appearance: none
-          +border-radius(24px)
-          +tfk-button
-          padding: 0.5em 1em
-          margin-left: 1em
-          margin-top: 1em
-          +float-left
-  &.node-type-flashcard
-    .content-type-title
-      +homework-helper-title
-    .homework-helper-title
-      font-size: 16px
-      font-weight: bold
-      margin: 1em 0 0 1em
-  &.page-homework-helper-flashcards,
-  &.page-node-add-flashcard,
-  &.page-homework-helper-my-flashcards
-    .homework-helper-title
-      +homework-helper-title
+            width: 80%
+      .field-add-more-submit
+        -webkit-appearance: none
+        +border-radius(14px)
+        background: #fff url(../images/button.png) repeat-x
+        border: 3px solid $tfk-red
+        color: $tfk-red
+        cursor: pointer
+        font: bold 12px/1.2 Arial, sans-serif
+        height: auto
+        padding: 4px 20px
+        margin: 0
+        width: auto
+        +box-shadow(transparentize($black, 0.5) 0 2px 4px)
+    .form-actions
+      position: absolute
+      bottom: 0.5em
+      right: 0
+      margin: 0
+      z-index: 10
+      input
+        background: url(images/tfk-red-arrow-right.png) no-repeat scroll 42px 3px transparent
+        border: none
+        color: $tfk-red
+        cursor: pointer
+        font: bold 12px/1.2 Arial, sans-serif
+        height: 30px
+        padding: 3px
+        text-align: left
+        width: 100px
+        -webkit-appearance: none
+  .node-flashcard
+    .study-helper-help
+      clear: both
+      padding-left: 20px
+      +leader
+    .study-helper-url
+      +pie-clearfix
+      clear: both
+      .form-item
+        +float-left
+        margin: 0
+        input
+          background-color: $tfk-red
+          border-color: $tfk-red
+      #study-helper-copy
+        -webkit-appearance: none
+        +border-radius(24px)
+        +tfk-button
+        padding: 0.5em 1em
+        margin-left: 1em
+        margin-top: 1em
+        +float-left
+
+.node-type-flashcard
+  .content-type-title
+    +homework-helper-title
+  .homework-helper-title
+    font-size: 16px
+    font-weight: bold
+    margin: 1em 0 0 1em
+
+.page-homework-helper-flashcards,
+.page-node-add-flashcard,
+.page-homework-helper-my-flashcards
+  .homework-helper-title
+    +homework-helper-title
 
 .flashcard-cycle
   background-color: white
