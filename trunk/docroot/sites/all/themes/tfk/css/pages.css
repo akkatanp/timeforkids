@@ -250,18 +250,24 @@ ul.links li {
 .view-board-members .view-content table td .views-field-title-1 {
     margin-top: 10px;
 }
+.page-teacher-board-members .region-sidebar-first div.section, .node-type-board-member .region-sidebar-first div.section {/*removes grey bg, padding, border inherited from navigation.css for this block only*/
+    background:none;
+    border:none;
+    padding:0;
+}
 #block-views-board-members-block-1 {
     border: 1px solid #CECECE;
     background:#daf0fe;
     height:200px;
     padding: 10px 10px 10px 10px;
 }
-#block-views-board-members-block-1 h2 {
-    font-size:1.0em;
-    font-family: "arial black", arial, sans-serif;
-    margin-bottom: 10px;
-    padding-bottom: 6px;
-    text-transform: uppercase;
+#block-views-board-members-block-1 h2  {
+	padding-top:10px; width:242px; 
+	background-image: url(../images/tfk-featured-teacher.png); 
+	background-repeat: no-repeat;
+	overflow: hidden;
+	height: 0;
+        margin-left:-4px;
 }
 #block-views-board-members-block-1 .views-field-title a {
     font-size:1.2em;
@@ -339,7 +345,6 @@ ul.links li {
 	text-transform: uppercase;
 	margin: 0;
 }
-
 /* front page */
 #block-views-homepage-top-story-block-1 {
 	float: left;
