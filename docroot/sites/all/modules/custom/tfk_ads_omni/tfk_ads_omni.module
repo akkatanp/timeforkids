@@ -95,7 +95,7 @@ function tfk_ads_omni_get_config_vars(&$variables){
      * $channel_array['node_path'] Current node leaf
      * $channel_array['omni_pagename'] omnivar pagename
      * $channel_array['omni_account'] omniture account. 
-     * $channel_array['omni_grade_level'] grade level when the user is a teacher
+     * $channel_array['omni_grade_level'] grade level of the content if it has one.
      * $channel_array['omni_user_status'] registered or non-registered
      * $channel_array['omni_ctype'] content type as described by node->type
      */
@@ -105,13 +105,13 @@ function tfk_ads_omni_get_config_vars(&$variables){
      if (isset($variables['user']->roles) && in_array('teacher',$variables['user']->roles) == 1) {
          $ad_zone_prefix = "teacher";
          $user_data = user_load($variables['user']->uid);
-         $user_grade_level = field_get_items('user', $user_data, 'field_grade_level');
+         /*$user_grade_level = field_get_items('user', $user_data, 'field_grade_level');
          if (isset($user_grade_level[0]['tid'])) {
             $result = db_query('SELECT DISTINCT name FROM taxonomy_term_data WHERE tid = '.$user_grade_level[0]['tid']);
             foreach ($result as $record) {
                $channel_array['omni_grade_level'] = $record->name;
             }
-         }
+         }*//*grade level actually comes from content not user*/
      } else {
          $ad_zone_prefix = "kids";
      }
@@ -135,6 +135,10 @@ function tfk_ads_omni_get_config_vars(&$variables){
             if (!empty($variables['node']) ) {
                     $channel_array['node_path'] = $path_array[1];//Node
                     $channel_array['omni_pagename'] .= $channel_array['channel']."|".tfk_ads_omni_format_omniture($variables['node']->title);
+                    $grade_level = field_get_items('node', $variables['node'], 'field_grade_level');
+                    if (isset($grade_level[0]['taxonomy_term']->name)) {
+                        $channel_array['omni_grade_level'] = $grade_level[0]['taxonomy_term']->name;
+                    }
                     if (isset($variables['node']->type)) {
                         $channel_array['ctype'] = tfk_ads_omni_format_omniture($variables['node']->type);
                     } else {
