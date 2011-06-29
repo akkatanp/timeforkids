@@ -81,6 +81,9 @@
           <?php if ($node && $title): ?>
             <div class="homework-helper-title"><?php print $title; ?></div>
           <?php endif; ?>
+          <?php if ($flashcards_return): ?>
+            <div class="flashcards-return"><?php print $flashcards_return; ?></div>
+          <?php endif; ?>
           <?php print render($page['content']); ?>
         </div>
 
