@@ -304,8 +304,12 @@ function tfk_search_block_view($delta='') {
    
    // My saved searches.
    case 'tfk_search_worksheet_saved':
-     $block['title'] = "MY SAVED SEARCHES";
-     $block['content'] = _tfk_search_get_saved_searches_block();
+     $my_saved_searches = _tfk_search_get_saved_searches_block() ;
+     if($my_saved_searches != FALSE) {
+       $block['title'] = "MY SAVED SEARCHES";
+       $block['content'] = $my_saved_searches;
+     }
+
    break;
    
    // Worksheet "Save your search" block.
@@ -389,10 +393,14 @@ function tfk_search_block_save($delta = '', $edit = array()){
  * @see tfk_search_block_view()
  */
 function _tfk_search_get_saved_searches_block(){
-  ctools_include('modal');
-  ctools_modal_add_js();
-
-  return theme('tfk_search_worksheet_saved', _tfk_get_saved_searches());
+  $saved_searches  = _tfk_get_saved_searches();
+  if($saved_searches != FALSE) {
+    ctools_include('modal');
+    ctools_modal_add_js();
+    return theme('tfk_search_worksheet_saved', $saved_searches);
+  } else {
+    return FALSE;
+  }
 }
 
 /**
@@ -402,33 +410,36 @@ function _tfk_search_get_saved_searches_block(){
  * @see _tfk_search_get_saved_searches_block()
  */
 function _tfk_get_saved_searches(){
-  $saved_searches = array();
-
-  global $user;
 
   $result = db_query('SELECT * FROM tfk_search_saved_searches WHERE saved_by_uid = :saved_by_uid', array('saved_by_uid' => $user->uid));
-
-  foreach ($result as $k => $record) {
-    $saved_searches[$k]['name'] = $record->search_name;
-    $saved_searches[$k]['saved_search_id'] = $record->saved_search_id;
-    $saved_searches[$k]['filters'] = $record->search_filters;
-    $saved_searches[$k]['url'] = url('worksheets',array('query'=>array('filters'=>$record->search_filters)));
-  }
-
-  $list = array('saved_searches' => $saved_searches,);
-  
-  $query = apachesolr_current_query();
-  // Don't access query object properties if it doesn't exist.
-  if($query) {
-    $filters = $query->get_filters();
-    $str = '';
-    foreach($filters as $filter){
-      $str .= $filter['#query'] . ' ';
+  if($result->rowCount() > 0) {
+    $saved_searches = array();
+    global $user;
+    
+    foreach ($result as $k => $record) {
+      $saved_searches[$k]['name'] = $record->search_name;
+      $saved_searches[$k]['saved_search_id'] = $record->saved_search_id;
+      $saved_searches[$k]['filters'] = $record->search_filters;
+      $saved_searches[$k]['url'] = url('worksheets',array('query'=>array('filters'=>$record->search_filters)));
     }
-    $list['current_str'] = $str;
-  }
   
-  return $list;
+    $list = array('saved_searches' => $saved_searches,);
+    
+    $query = apachesolr_current_query();
+    // Don't access query object properties if it doesn't exist.
+    if($query) {
+      $filters = $query->get_filters();
+      $str = '';
+      foreach($filters as $filter){
+        $str .= $filter['#query'] . ' ';
+      }
+      $list['current_str'] = $str;
+    }
+    
+    return $list;
+  } else {
+    return FALSE;
+  }
 }
 
 /**
@@ -444,9 +455,10 @@ function theme_tfk_featured_block(&$variables) {
   $output .= '<div class="top-story-right-square">&nbsp</div>';
   $url = 'node/'. $tfkSearchFeaturedItem->nid;
   
-  $output .= '<div class="g1">';
-  $link_options = array('html' => TRUE, 'attributes' => array('class' => array('featured-item', 'content-type-'. $tfkSearchFeaturedItem->type), 'title' => $tfkSearchFeaturedItem->title));
-  $output .= l(theme('image', array('path' => $tfkSearchFeaturedItem->featured_item->abspath, 'title' => $tfkSearchFeaturedItem->title, 'alt' => $tfkSearchFeaturedItem->title)), $url, $link_options);
+  $output .= '<div class="g1'. ' content-type-'. $tfkSearchFeaturedItem->type. '">';
+  $link_options = array('html' => TRUE, 'attributes' => array('class' => array('featured-item'), 'title' => $tfkSearchFeaturedItem->title));
+  $icon = '<div class="icon"></div>';
+  $output .= l(theme('image', array('path' => $tfkSearchFeaturedItem->featured_item->abspath, 'title' => $tfkSearchFeaturedItem->title, 'alt' => $tfkSearchFeaturedItem->title)). $icon, $url, $link_options);
   $output .= '</div>';
   
   $output .= '<div class="g2">';
