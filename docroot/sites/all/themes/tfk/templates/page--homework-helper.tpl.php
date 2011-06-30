@@ -78,11 +78,11 @@
           <?php if ($grammar_practice_header): ?>
             <div id="grammar_practice_header"><?php print $grammar_practice_header; ?></div>
           <?php endif; ?>
-          <?php if ($node && $title): ?>
-            <div class="homework-helper-title"><?php print $title; ?></div>
-          <?php endif; ?>
           <?php if ($flashcards_return): ?>
             <div class="flashcards-return"><?php print $flashcards_return; ?></div>
+          <?php endif; ?>
+          <?php if ($node && $title): ?>
+            <div class="homework-helper-title"><?php print $title; ?></div>
           <?php endif; ?>
           <?php print render($page['content']); ?>
         </div>
