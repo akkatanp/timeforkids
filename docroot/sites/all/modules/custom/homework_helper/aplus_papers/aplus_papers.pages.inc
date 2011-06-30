@@ -85,9 +85,9 @@ function aplus_papers_review_step($steps) {
   $form['#prefix'] = '<div id="aplus-review-step">';
   $form['#suffix'] = '</div>';
   $form['description'] = array(
-    '#markup' => '<h2 class="node-title">' . t('Review Your Paper') . '</h2><div class="a-plus-review-description">' . t('Read through and check each section for errors.') . '</div>',
+    '#markup' => '<h2 class="node-title">' . t('Revising and Editing') . '</h2><div class="a-plus-review-description">' . t('Carefully read each section of your paper. You can make changes here before printing your work. Make sure that what you wrote is clear and easy to understand. Check your spelling and punctuation too.') . '</div>',
   );
-  $form['#checklist'] = t('Review your work');
+  $form['#checklist'] = t('I reviewed my work.');
   $form['#parent_nid'] = arg(1); 
   
   foreach ($steps as $step) {
