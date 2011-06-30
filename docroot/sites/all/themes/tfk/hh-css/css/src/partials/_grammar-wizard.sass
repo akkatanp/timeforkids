@@ -1,6 +1,17 @@
+=tfk-grammar-sidebar
+  background: $tfk-yellow
+  border: 1px solid #cecece
+  +float-right
+  margin-left: 30px
+  padding: 20px
+  text-align: center
+  width: 208px
+  h2
+    margin: 0
+
 .view-grammar-practice
+  border: 1px solid #cecece
   table
-    border: 1px solid #cecece
     width: 100%
   tbody
     .views-field
@@ -13,21 +24,20 @@
     &.odd
       background: white
   &.view-display-id-page_1
+    padding: 10px
     .view-header
-      background: $tfk-yellow
-      border: 1px solid #cecece
-      +float-right
-      padding: 20px
-      text-align: center
-      width: 250px
-      h2
-        margin: 0
+      +tfk-grammar-sidebar
+      a
+        margin-top: 10px
+    .views-row
+      +clearfix
+      margin-top: 20px
     h3
       font-size: 30px
       line-height: 1.2
-      margin: 0 0 20px
+      margin: 0
     .view-content
-      width: 420px
+      width: 424px
       span.field-content
         font-size: 20px
       p
@@ -37,7 +47,6 @@
       border: 1px solid #cecece
       font-style: italic
       padding: 10px
-      +trailer
 
 .page-node-186
   @extend .page-node-99
@@ -46,3 +55,38 @@
 
 span.grammar-wizard-incorrect
   color: $tfk-red
+
+.node-type-grammar-practice
+  .node-grammar-practice
+    border: 1px solid #cecece
+    padding: 10px
+    margin-top: 0
+  #grammar_practice_header,
+  .homework-helper-title
+    margin: 0 20px
+    padding: 10px
+    border:
+      color: #cecece
+      style: solid
+      width: 0 1px
+  .homework-helper-title
+    font-size: 30px
+    line-height: 1.2
+  #grammar_practice_header
+    border-top: 1px solid #cecece
+  #grammar-wizard-numbering
+    clear: left
+    +float-right
+  .node-grammar-practice-question
+    +float-left
+    margin: 0
+    h2
+      margin: 0
+    & + .form-item
+      +float-left
+      width: 424px
+  input[type="submit"]
+    clear: left
+    display: block
+  #grammar-wizard-see-rules
+    +tfk-grammar-sidebar
