@@ -25,7 +25,7 @@
   border: 1px solid #cecece
   +float-right
   padding: 15px
-  width: 250px
+  width: 220px
   h2
     margin-top: 0
     margin-bottom: 10px
@@ -36,6 +36,7 @@
   background:
     image: url(../images/button.png)
     repeat: repeat-x
+  border-style: solid
   cursor: pointer
   font: normal 12px/1.2 Arial, sans-serif
   outline: 0
@@ -43,11 +44,15 @@
   padding: 4px 1em
   @if $color == red
     background-color: $tfk-red
-    border: 1px solid #ddd #bbb #999
+    border:
+      color: #ddd #bbb #999
+      width: 1px
     color: white
   @else
     background-color: white
-    border: 3px solid $tfk-red
+    border:
+      color: $tfk-red
+      width: 3px
     +box-shadow(transparentize($black, 0.5) 0 2px 4px)
     color: $tfk-red
     font-weight: bold
