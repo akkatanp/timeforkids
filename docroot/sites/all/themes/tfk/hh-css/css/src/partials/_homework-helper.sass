@@ -1,3 +1,12 @@
+=tfk-return-button($italic: false)
+  background: url(images/tfk-red-arrow.png) no-repeat scroll 2px 0 transparent
+  color: $tfk-red
+  +float-left
+  padding: 3px 3px 3px 42px
+  @if $italic == italic
+    font-style: italic
+    font-family: $font-serifs
+
 =tfk-button($radius: 24px)
   -webkit-appearance: none
   background: $tfk-red url(../images/button.png) repeat-x
@@ -65,9 +74,7 @@
 
 .tfk-header-tag
   +tfk-header-tag
-  & + .homework-helper-title
-    font-size: 16px
-  & + .flashcards-return + .homework-helper-title
+  & ~ .homework-helper-title
     font-size: 16px
 
 .homework-helper-content
@@ -79,7 +86,7 @@
     margin-bottom: 0
   .node,
   .view
-    margin: 10px 20px
+    margin: 10px 19px
     +clearfix
   .progress-disabled
     float: none

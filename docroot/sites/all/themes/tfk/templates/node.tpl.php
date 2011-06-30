@@ -129,9 +129,11 @@
       <div class="unpublished"><?php print t('Unpublished'); ?></div>
     <?php endif; ?>
   
-    <div class="submitted">
-      <?php print $submitted; ?>
-    </div>
+    <?php if ($submitted): ?>
+      <div class="submitted">
+        <?php print $submitted; ?>
+      </div>
+    <?php endif; ?>
   
     <div class="content"<?php print $content_attributes; ?>>
       <?php
