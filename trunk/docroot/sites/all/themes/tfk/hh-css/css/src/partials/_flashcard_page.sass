@@ -1,16 +1,5 @@
 .view-flashcard-landing-page.view-id-flashcard_landing_page
-  .view-header
-    +tfk-box
-    .creation-link
-      margin-top: 10px
-      text-align: center
-      a
-        background: #d71700
-        +border-radius(20px)
-        +box-shadow(#999 2px 2px 2px 2px)
-        color: white
-        margin: 10px
-        padding: 5px
+  float: left 
   h3.views-accordion-flashcard_landing_page-page_1-header
     background: #ddd
     border: 0
@@ -41,3 +30,22 @@
         margin-right: 10px
       a
         font-size: 120%
+#block-block-21, #block-study-helper-0
+  +tfk-box
+  margin: 0 10px 10px 0
+  clear: right
+  .creation-link
+    margin-top: 10px
+    text-align: center
+    a
+      background: #d71700
+      +border-radius(20px)
+      +box-shadow(#999 2px 2px 2px 2px)
+      color: white
+      margin: 10px
+      padding: 5px
+#block-study-helper-0
+  a.my-flashcards-link
+    background: url("images/tfk-red-arrow-right.png") no-repeat right 0
+    padding: 3px 42px 3px 0
+    float: right
