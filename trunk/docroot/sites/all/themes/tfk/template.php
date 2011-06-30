@@ -103,10 +103,15 @@ function tfk_preprocess_page(&$variables, $hook) {
     $variables['theme_hook_suggestions'][] = 'page__homework_helper';
   }
 
+  if ($view = views_get_page_view()) {
+    if ($view->name == 'grammar_practice') {
+      $variables['grammar_practice_header'] = ' ';
+    }
+  }
   if ($variables['node']->type == 'grammar_practice') {
     $variables['grammar_practice_header'] = l('Try Another', 'homework-helper/grammar-wizard/grammar-practice', array('attributes' => array('class' => array('try-another'))));
   }
-  
+
   if ($variables['node']->type == 'flashcard') {
     $variables['flashcards_return'] = l('Back to Flashcard Sets', 'homework-helper/flashcards');
   }
