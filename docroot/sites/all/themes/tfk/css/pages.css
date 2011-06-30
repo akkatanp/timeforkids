@@ -1659,3 +1659,40 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 #banner_728x90_footer > * {
     margin-left:16px;
 }
+
+/*Mini-lessons*/
+.node-mini-lesson {
+    border: 1px solid #CECECE;
+    padding: 15px 10px 15px 10px;
+}
+.node-mini-lesson .grade-bar {
+    background-color:#D71700;
+    width:98%;
+    text-transform:uppercase;
+    color:#FFFFFF;
+    font-weight:bold;
+    padding:3px 5px 3px 5px;
+}
+.node-mini-lesson .grade-bar #grade-bar-title {
+    display:inline;
+}
+.node-mini-lesson .grade-bar #grade-bar-grade-level {
+    display:inline;
+    float:right;
+}
+.node-mini-lesson h2 {
+    font-size: 2.0em;
+    margin-bottom: 10px;
+}
+.node-mini-lesson .lesson-deck {
+    font-size: 1.0em;
+    font-weight:bold;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+    border-bottom: 1px dotted #CECECE;
+}
+.node-mini-lesson .lesson-body {
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+    border-bottom: 1px dotted #CECECE;
+}
