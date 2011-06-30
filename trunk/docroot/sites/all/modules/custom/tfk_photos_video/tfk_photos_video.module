@@ -41,7 +41,7 @@ function tfk_photos_video_preprocess_node(&$variables) {
     if($additional_content !== FALSE) {
       $variables['related_content'] = theme('tfk_search_related_content', $additional_content);
     } else {
-      $variables['related_content'] = 'no related content';
+      $variables['related_content'] = '';
     }
     
     // Title
