@@ -691,6 +691,16 @@ function tfk_search_preprocess_search_results(&$vars) {
     $vars['ordered_list_id'] = 'tfk-search-results-photos-video';
     
   }
+
+
+  if(arg(0) == 'tfk-magazine'){
+    $vars['custom_search'] = TRUE;
+
+    $vars['pager_top'] = theme('pager_top', array('tags' => NULL, 'quantity' => 8));
+    
+    $vars['ordered_list_id'] = 'tfk-search-results-photos-video';
+  }
+
 }
 
 /**
@@ -709,6 +719,8 @@ function tfk_search_preprocess_pager_top(&$vars) {
   // Page title.
   if($page_type == 'worksheets') {
     $vars['pager_title'] = 'Printables Archive';
+  } elseif ($page_type == 'tfk-magazine') {
+    $vars['pager_title'] = 'Magazine Archive';
   } else {
     $vars['pager_title'] = 'Photos & Videos Archive';
   }
@@ -718,6 +730,8 @@ function tfk_search_preprocess_pager_top(&$vars) {
     
     if($page_type == 'worksheets') {
       $vars['pager_active_filter'] = 'Viewing: All Grades, All Themes, All Skills';
+    } elseif ($page_type == 'tfk-magazine') {
+      $vars['pager_active_filter'] = 'Viewing: All Grades, All Years';
     } else {
       $vars['pager_active_filter'] = 'Viewing: All Subjects, All Themes';
     }
