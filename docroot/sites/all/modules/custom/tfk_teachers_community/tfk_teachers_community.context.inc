@@ -22,7 +22,7 @@ function tfk_teachers_community_context_default_contexts() {
         'teacher_community_question' => 'teacher_community_question',
       ),
       'options' => array(
-        'node_form' => '0',
+        'node_form' => '1',
       ),
     ),
     'views' => array(
@@ -37,14 +37,14 @@ function tfk_teachers_community_context_default_contexts() {
         'tfk_teachers_community-tfk_teachers_comm_more_topics' => array(
           'module' => 'tfk_teachers_community',
           'delta' => 'tfk_teachers_comm_more_topics',
-          'region' => 'sidebar_first',
-          'weight' => '-58',
+          'region' => 'sidebar_bottom',
+          'weight' => '-10',
         ),
         'views-board_members-block_2' => array(
           'module' => 'views',
           'delta' => 'board_members-block_2',
-          'region' => 'sidebar_first',
-          'weight' => '-57',
+          'region' => 'sidebar_bottom',
+          'weight' => '-9',
         ),
       ),
     ),
