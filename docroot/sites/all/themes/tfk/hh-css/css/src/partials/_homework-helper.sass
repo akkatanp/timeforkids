@@ -33,6 +33,7 @@
 =tfk-submit-button($color: red)
   -webkit-appearance: none
   +border-radius(1em)
+  +box-shadow(transparentize($black, 0.75) 2px 2px 1px)
   background:
     image: url(../images/button.png)
     repeat: repeat-x
@@ -45,7 +46,7 @@
   @if $color == red
     background-color: $tfk-red
     border:
-      color: #ddd #bbb #999
+      color: $tfk-red
       width: 1px
     color: white
   @else
@@ -53,7 +54,6 @@
     border:
       color: $tfk-red
       width: 3px
-    +box-shadow(transparentize($black, 0.5) 0 2px 4px)
     color: $tfk-red
     font-weight: bold
 
