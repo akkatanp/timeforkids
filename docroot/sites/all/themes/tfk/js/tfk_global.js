@@ -38,7 +38,7 @@ $(document).ready(function() {
 				'left': (($(window).width() / 2) - 350) + 'px'
 			}).appendTo($(document.body));
 			
-			var loginForm = $('#login-container').clone().hide().show().appendTo(lightBox);
+			var loginForm = $('#login-container').clone().appendTo(lightBox).hide().show();
 			var loginHeader = loginForm.find('#login-header');
 			var closeButton = $('<a></a>').addClass('close-button').appendTo(loginHeader).click(closeLightBox);
 		};
