@@ -80,8 +80,7 @@
  * @see zen_preprocess_node()
  * @see template_process()
  */
-dpm($content);
-?><!-- node-mini-lesson -->
+?>
 <div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
   
     <?php if ($unpublished): ?>
