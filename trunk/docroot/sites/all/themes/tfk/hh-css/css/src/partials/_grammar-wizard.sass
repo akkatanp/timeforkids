@@ -67,22 +67,34 @@ span.grammar-wizard-incorrect
     margin-top: 0
   #grammar_practice_header,
   .homework-helper-title
-    margin: 0 20px
-    padding: 10px
+    margin: 0 19px
+  .homework-helper-title
     border:
       color: #cecece
       style: solid
       width: 0 1px
-  .homework-helper-title
     font-size: 30px
     line-height: 1.2
+    padding: 10px
   #grammar_practice_header
-    border-top: 1px solid #cecece
+    background-color: #666
+    height: 100px
+    position: relative
+    width: 728px
+    .try-another
+      +tfk-return-button
+      color: white
+      position: absolute
+      bottom: 10px
+      right: 10px
   #grammar-wizard-numbering
     clear: left
     +float-right
   #grammar-wizard-result
     clear: left
+  #grammar-wizard-results,
+  .view-grammar-practice-trophies
+    +float-left
   #grammar-wizard-rule
     +tfk-yellow-box
     padding: 10px

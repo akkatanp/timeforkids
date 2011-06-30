@@ -133,8 +133,7 @@
       height: 35px
       width: 51px
       &.prev
-        background: url(images/tfk-red-arrow.png) no-repeat scroll 2px 0 transparent
-        padding-left: 42px
+        +tfk-return-button
       &.flip
         +tfk-submit-button(white)
         height: auto
@@ -196,11 +195,6 @@
     float: right
     margin-right: 25px
     a
-      background: url("images/tfk-red-arrow.png") no-repeat
-      font-family: Georgia,serif
-      height: 28px
-      padding: 3px 0 0 42px
-      font-style: italic
-      display: block
+      +tfk-return-button(italic)
   .content
     clear: both
