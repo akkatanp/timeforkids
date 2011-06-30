@@ -261,7 +261,3 @@ function study_helper_node_access($node, $op, $account) {
 function study_helper_form_webform_client_form_306_alter(&$form, &$form_state, $form_id) {
   drupal_add_js(drupal_get_path('module', 'study_helper') . '/js/writing_tips.js', 'file');
 }
-
-function study_helper_menu_alter(&$items) {
-  $items['node/%node/edit']['title'] = 'hello';
-}  
