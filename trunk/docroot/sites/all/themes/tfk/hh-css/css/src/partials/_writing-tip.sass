@@ -56,24 +56,43 @@
   .block-title
     +tfk-submit-button
     +float-left
+    margin-left: 20px
   .content
     background: $tfk-yellow
-    padding: 10px
+    padding: 20px
     margin: 20px
     +clearfix
   
 #webform-client-form-306
-  #webform-component-question-first-name
-    +float-left
-  #webform-component-question-age
-    +float-left
-  #webform-component-question
-    +float-left
-  #edit-submit
-    +float-left
-    clear: both
+  .block
+    margin-bottom: 0
+  .form-item
+    margin-top: 0
   .writing-tips-form-close
     +float-right
+
+#webform-component-question-first-name
+  +float-left
+  margin-right: 20px
+  label
+    text-transform: uppercase
+    font-style: bold
+
+#webform-component-question-age
+  +float-left
+  label
+    text-transform: uppercase
+    font-style: bold
+
+#webform-component-question
+  +float-left
+  label
+    text-transform: uppercase
+    font-style: bold
+
+#edit-submit
+  +float-left
+  clear: both
   
 .writing-tips-form-close
   +tfk-submit-button(white)
