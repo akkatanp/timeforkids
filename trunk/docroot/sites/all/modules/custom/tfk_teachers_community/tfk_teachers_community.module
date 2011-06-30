@@ -355,6 +355,8 @@ function tfk_teachers_community_preprocess_comment(&$variables, $hook) {
  */
 function tfk_teachers_community_form_teacher_community_question_node_form_alter(&$form, &$form_state, $form_id) {
   
+  dpm($form);
+  
   // Cleanup extraneous fields.
   $form['menu']['#access'] = FALSE;
   $form['locations']['#access'] = FALSE;
@@ -390,6 +392,11 @@ function tfk_teachers_community_form_teacher_community_question_node_form_alter(
     $path = drupal_get_path('module', 'tfk_teachers_community');
     $form['actions']['submit']['#src'] = $path. '/images/submit-your-question.png';
   }
+  
+  // Supress promote and sticky options.
+  $form['options']['promote']['#access'] = FALSE;
+  $form['options']['sticky']['#access'] = FALSE;
+  
 }
 
 /**
