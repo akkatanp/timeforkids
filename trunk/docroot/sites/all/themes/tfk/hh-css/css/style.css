@@ -140,23 +140,28 @@ body #container > header, body #container > #main, body #container > footer {
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_homework-helper\.sass}line{font-family:\0000368}}
 .homework-helper-content {
   border: 1px solid #cecece;
+  position: relative;
   overflow: hidden;
   *zoom: 1;
-  position: relative;
+  margin-bottom: 1.714em;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_homework-helper\.sass}line{font-family:\0000372}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_homework-helper\.sass}line{font-family:\0000373}}
+.homework-helper-content .block {
+  margin-bottom: 0;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_homework-helper\.sass}line{font-family:\0000375}}
 .homework-helper-content .node,
 .homework-helper-content .view {
   margin: 10px 20px;
   overflow: hidden;
   *zoom: 1;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_homework-helper\.sass}line{font-family:\0000376}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_homework-helper\.sass}line{font-family:\0000379}}
 .homework-helper-content .progress-disabled {
   float: none;
   display: inline;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_homework-helper\.sass}line{font-family:\0000379}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_homework-helper\.sass}line{font-family:\0000382}}
 .homework-helper-content .ajax-progress {
   font-size: 1.5em;
   padding: 30px;
@@ -170,7 +175,7 @@ body #container > header, body #container > #main, body #container > footer {
   -o-box-shadow: rgba(0, 0, 0, 0.5) 0 2px 4px;
   box-shadow: rgba(0, 0, 0, 0.5) 0 2px 4px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_homework-helper\.sass}line{font-family:\0000388}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_homework-helper\.sass}line{font-family:\0000391}}
 .homework-helper-content .hh-throbber-message {
   width: 130px;
 }
@@ -325,7 +330,7 @@ img {
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\000034}}
 .node-type-a-paper #content .paper-textarea,
 .node-type-paper-step #content .paper-textarea {
-  width: 480px;
+  width: 460px;
   padding: 36px 0 12px;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\000037}}
@@ -362,7 +367,7 @@ img {
 .node-type-paper-step #content .form-type-textarea {
   background: #dddddd;
   padding: 10px;
-  width: 480px;
+  width: 460px;
   margin-top: 0;
   clear: left;
   border: 1px solid #cecece;
@@ -403,7 +408,7 @@ img {
 .node-type-a-paper #content .node-paper-step,
 .node-type-paper-step #content .node-paper-step {
   padding: 10px 0;
-  width: 500px;
+  width: 460px;
   display: inline;
   float: left;
 }
@@ -444,7 +449,7 @@ img {
 #aplus-submit-buttons {
   background: #dddddd;
   padding: 10px;
-  width: 480px;
+  width: 460px;
   border: 1px solid #cecece;
   height: 25px;
   margin-top: -20px;
@@ -515,7 +520,7 @@ ul#aplus-papers-checklist {
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\00003118}}
 #aplus-review-step,
 #aplus-final-step {
-  width: 480px;
+  width: 460px;
   display: inline;
   float: left;
   margin-top: 10px;
