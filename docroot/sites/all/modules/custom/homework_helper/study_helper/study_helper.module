@@ -48,13 +48,17 @@ function study_helper_form_node_form_alter(&$form, &$form_state, $form_id) {
     }
     drupal_add_css(drupal_get_path('module', 'study_helper') . '/study-helper.css');
     drupal_set_title(t('Flashcard Maker'));
-    $form['options']['status']['#default_value'] = 1;
     $form['actions']['submit']['#value'] = t('Begin');
     $form['actions']['preview_changes']['#access'] = FALSE;
     $form['field_flashcard'][$form['field_flashcard']['#language']]['add_more']['#value'] = t('Add Card');
     $form['title']['#title'] = t('Title:');
     $form['title']['#description'] = t('What are your flashcards about?');  
     $form['#prefix'] = '<div class="flashcards-return">'. l('Back to Flashcard Sets', 'homework-helper/flashcards') . '</div>';
+    
+    // Set teacher and anonymous flashcards to published by default.
+    if (isset($user->roles[5]) || !$user->uid) {
+      $form['options']['status']['#default_value'] = 1;
+    }  
   }
 }
 
