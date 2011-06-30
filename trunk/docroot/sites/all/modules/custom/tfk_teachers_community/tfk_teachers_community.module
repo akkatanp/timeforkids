@@ -467,17 +467,24 @@ function tfk_teachers_community_get_teacher_topics() {
   if(is_null($view)) {
     return FALSE;
   } else {
+
+    $current_node = menu_get_object('node', 1);
+    if($current_node) {
+	    $view->set_arguments(array($current_node->nid));
+    }
+
     $view->execute();
-  	if(!empty($view->result)) {
-	    foreach($view->result as $result) {
-        $items['items'][] = l($result->node_title, 'node/'. $result->nid);
-	    }
-  		return $items;
-  	} else {
-  	  return FALSE;
-  	}
+    if(!empty($view->result)) {
+	  foreach($view->result as $result) {
+		  $items['items'][] = l($result->node_title, 'node/'. $result->nid);
+	  }
+	  return $items;
+    } else {
+      return FALSE;
+    }
   }
 }
+
 
 /**
  * Returns HTML for a list or nested list of items.
