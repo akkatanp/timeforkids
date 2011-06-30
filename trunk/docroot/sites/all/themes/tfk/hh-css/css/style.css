@@ -189,6 +189,10 @@ body #container > header, body #container > #main, body #container > footer {
   -ms-border-radius: 1em;
   -khtml-border-radius: 1em;
   border-radius: 1em;
+  -moz-box-shadow: rgba(0, 0, 0, 0.25) 2px 2px 1px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.25) 2px 2px 1px;
+  -o-box-shadow: rgba(0, 0, 0, 0.25) 2px 2px 1px;
+  box-shadow: rgba(0, 0, 0, 0.25) 2px 2px 1px;
   background-image: url(../images/button.png);
   background-repeat: repeat-x;
   border-style: solid;
@@ -198,7 +202,7 @@ body #container > header, body #container > #main, body #container > footer {
   overflow: visible;
   padding: 4px 1em;
   background-color: #d71700;
-  border-color: #dddddd #bbbbbb #999999;
+  border-color: #d71700;
   border-width: 1px;
   color: white;
   margin-top: 10px;
@@ -215,6 +219,10 @@ body #container > header, body #container > #main, body #container > footer {
   -ms-border-radius: 1em;
   -khtml-border-radius: 1em;
   border-radius: 1em;
+  -moz-box-shadow: rgba(0, 0, 0, 0.25) 2px 2px 1px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.25) 2px 2px 1px;
+  -o-box-shadow: rgba(0, 0, 0, 0.25) 2px 2px 1px;
+  box-shadow: rgba(0, 0, 0, 0.25) 2px 2px 1px;
   background-image: url(../images/button.png);
   background-repeat: repeat-x;
   border-style: solid;
@@ -224,7 +232,7 @@ body #container > header, body #container > #main, body #container > footer {
   overflow: visible;
   padding: 4px 1em;
   background-color: #d71700;
-  border-color: #dddddd #bbbbbb #999999;
+  border-color: #d71700;
   border-width: 1px;
   color: white;
   padding: 3px 10px 4px;
@@ -692,6 +700,10 @@ ul#aplus-papers-checklist {
   -ms-border-radius: 1em;
   -khtml-border-radius: 1em;
   border-radius: 1em;
+  -moz-box-shadow: rgba(0, 0, 0, 0.25) 2px 2px 1px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.25) 2px 2px 1px;
+  -o-box-shadow: rgba(0, 0, 0, 0.25) 2px 2px 1px;
+  box-shadow: rgba(0, 0, 0, 0.25) 2px 2px 1px;
   background-image: url(../images/button.png);
   background-repeat: repeat-x;
   border-style: solid;
@@ -703,10 +715,6 @@ ul#aplus-papers-checklist {
   background-color: white;
   border-color: #d71700;
   border-width: 3px;
-  -moz-box-shadow: rgba(0, 0, 0, 0.5) 0 2px 4px;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.5) 0 2px 4px;
-  -o-box-shadow: rgba(0, 0, 0, 0.5) 0 2px 4px;
-  box-shadow: rgba(0, 0, 0, 0.5) 0 2px 4px;
   color: #d71700;
   font-weight: bold;
   padding: 4px 1em;
@@ -930,6 +938,10 @@ ul#aplus-papers-checklist {
   -ms-border-radius: 1em;
   -khtml-border-radius: 1em;
   border-radius: 1em;
+  -moz-box-shadow: rgba(0, 0, 0, 0.25) 2px 2px 1px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.25) 2px 2px 1px;
+  -o-box-shadow: rgba(0, 0, 0, 0.25) 2px 2px 1px;
+  box-shadow: rgba(0, 0, 0, 0.25) 2px 2px 1px;
   background-image: url(../images/button.png);
   background-repeat: repeat-x;
   border-style: solid;
@@ -941,10 +953,6 @@ ul#aplus-papers-checklist {
   background-color: white;
   border-color: #d71700;
   border-width: 3px;
-  -moz-box-shadow: rgba(0, 0, 0, 0.5) 0 2px 4px;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.5) 0 2px 4px;
-  -o-box-shadow: rgba(0, 0, 0, 0.5) 0 2px 4px;
-  box-shadow: rgba(0, 0, 0, 0.5) 0 2px 4px;
   color: #d71700;
   font-weight: bold;
   height: auto;
@@ -1228,6 +1236,10 @@ ul#aplus-papers-checklist {
   -ms-border-radius: 1em;
   -khtml-border-radius: 1em;
   border-radius: 1em;
+  -moz-box-shadow: rgba(0, 0, 0, 0.25) 2px 2px 1px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.25) 2px 2px 1px;
+  -o-box-shadow: rgba(0, 0, 0, 0.25) 2px 2px 1px;
+  box-shadow: rgba(0, 0, 0, 0.25) 2px 2px 1px;
   background-image: url(../images/button.png);
   background-repeat: repeat-x;
   border-style: solid;
@@ -1237,7 +1249,7 @@ ul#aplus-papers-checklist {
   overflow: visible;
   padding: 4px 1em;
   background-color: #d71700;
-  border-color: #dddddd #bbbbbb #999999;
+  border-color: #d71700;
   border-width: 1px;
   color: white;
   display: inline;
@@ -1317,6 +1329,10 @@ ul#aplus-papers-checklist {
   -ms-border-radius: 1em;
   -khtml-border-radius: 1em;
   border-radius: 1em;
+  -moz-box-shadow: rgba(0, 0, 0, 0.25) 2px 2px 1px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.25) 2px 2px 1px;
+  -o-box-shadow: rgba(0, 0, 0, 0.25) 2px 2px 1px;
+  box-shadow: rgba(0, 0, 0, 0.25) 2px 2px 1px;
   background-image: url(../images/button.png);
   background-repeat: repeat-x;
   border-style: solid;
@@ -1328,10 +1344,6 @@ ul#aplus-papers-checklist {
   background-color: white;
   border-color: #d71700;
   border-width: 3px;
-  -moz-box-shadow: rgba(0, 0, 0, 0.5) 0 2px 4px;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.5) 0 2px 4px;
-  -o-box-shadow: rgba(0, 0, 0, 0.5) 0 2px 4px;
-  box-shadow: rgba(0, 0, 0, 0.5) 0 2px 4px;
   color: #d71700;
   font-weight: bold;
 }
@@ -1555,6 +1567,10 @@ span.grammar-wizard-incorrect {
   -ms-border-radius: 1em;
   -khtml-border-radius: 1em;
   border-radius: 1em;
+  -moz-box-shadow: rgba(0, 0, 0, 0.25) 2px 2px 1px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.25) 2px 2px 1px;
+  -o-box-shadow: rgba(0, 0, 0, 0.25) 2px 2px 1px;
+  box-shadow: rgba(0, 0, 0, 0.25) 2px 2px 1px;
   background-image: url(../images/button.png);
   background-repeat: repeat-x;
   border-style: solid;
@@ -1566,10 +1582,6 @@ span.grammar-wizard-incorrect {
   background-color: white;
   border-color: #d71700;
   border-width: 3px;
-  -moz-box-shadow: rgba(0, 0, 0, 0.5) 0 2px 4px;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.5) 0 2px 4px;
-  -o-box-shadow: rgba(0, 0, 0, 0.5) 0 2px 4px;
-  box-shadow: rgba(0, 0, 0, 0.5) 0 2px 4px;
   color: #d71700;
   font-weight: bold;
   display: inline;
