@@ -168,8 +168,8 @@ function grammar_wizard_final_question_content($form_state) {
   }  
 
   if ($incorrect == 0) {
-    $output = views_embed_view('grammar_practice_trophies');
-    $output .= '<div id="grammar-wizard-results"><h2>Your Results:</h2><div>Correct: ' . $correct . '</div><div>Incorrect: ' . $incorrect . '</div><h2>Congratulations!</h2></div>';
+    $output = '<div id="grammar-wizard-results"><h2>Your Results:</h2><div>Correct: ' . $correct . '</div><div>Incorrect: ' . $incorrect . '</div><h2>Congratulations!</h2></div>';
+    $output .= views_embed_view('grammar_practice_trophies');
   }  
   else {
     $output .= '<div id="grammar-wizard-results"><h2>Your Results:</h2><div>Correct: ' . $correct . '</div><div>Incorrect: ' . $incorrect . '</div></div>';
