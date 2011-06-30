@@ -113,9 +113,9 @@ function tfk_lucie_user_entitlements($token){
 function tfk_lucie_check_user($email,$password){
   //$url = 'http://cgi.timeinc.com/webservices/customers/'.check_plain($email).'/TK/auth_token';
   $url = 'http://qa-subscription.timeinc.com:80/webservices/customers/'.check_plain($email).'/TK/auth_token';
-  $pass_arr = array('password'=>$password, 'CGI-App-Id' => 'com.timeinc.tk.web');
+  $pass_arr = array('password'=>$password, 'CGI-App-Id' => 'com.timeinc.tk.web', 'deviceid' => 'TK.WEB', 'deviceip' => ip_address());
   $pass = drupal_json_encode($pass_arr);
-
+  
   $response = drupal_http_request($url,
           array('headers' => array('Content-Type'=>'application/json'),
               'method'=> 'POST',
