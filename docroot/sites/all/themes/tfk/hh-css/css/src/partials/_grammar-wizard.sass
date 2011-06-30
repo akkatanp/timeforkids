@@ -1,13 +1,16 @@
-=tfk-grammar-sidebar
+=tfk-yellow-box
   background: $tfk-yellow
   border: 1px solid #cecece
+  h2
+    margin: 0
+
+=tfk-grammar-sidebar
+  +tfk-yellow-box
   +float-right
   margin-left: 30px
   padding: 20px
   text-align: center
   width: 208px
-  h2
-    margin: 0
 
 .view-grammar-practice
   border: 1px solid #cecece
@@ -77,6 +80,27 @@ span.grammar-wizard-incorrect
   #grammar-wizard-numbering
     clear: left
     +float-right
+  #grammar-wizard-result
+    clear: left
+  #grammar-wizard-rule
+    +tfk-yellow-box
+    padding: 10px
+    margin-bottom: 10px
+    width: 404px
+    h3,
+    #grammar-wizard-example
+      background-color: #f9fbca
+      border:
+        color: #cecece
+        style: solid
+        width: 0 1px
+    h3
+      border-top-width: 1px
+      margin: 10px 0 0
+      padding: 10px 10px 0
+    #grammar-wizard-example
+      border-bottom-width: 1px
+      padding: 0 10px 10px
   .node-grammar-practice-question
     +float-left
     margin: 0
@@ -87,6 +111,12 @@ span.grammar-wizard-incorrect
       width: 424px
   input[type="submit"]
     clear: left
-    display: block
+    +float-left
+    & + input
+      clear: none
+    &:not([id|="edit-check-answer"])
+      +tfk-submit-button(white)
+      +float-right
+      margin-right: 276px
   #grammar-wizard-see-rules
     +tfk-grammar-sidebar
