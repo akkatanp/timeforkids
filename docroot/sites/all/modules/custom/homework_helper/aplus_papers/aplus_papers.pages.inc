@@ -32,7 +32,7 @@ function aplus_papers_first_step($node) {
   $description = field_get_items('node', $node, 'field_paper_description');
   $description = $description[0]['safe_value'];
   $form['description'] = array(
-    '#markup' => '<div class="aplus-overview"><h2 class="node-title"></h2>' . $description . '</div>',
+    '#markup' => '<div class="aplus-overview">' . $description . '</div>',
   );
   $form['#parent_nid'] = $node->nid;
   return $form;
