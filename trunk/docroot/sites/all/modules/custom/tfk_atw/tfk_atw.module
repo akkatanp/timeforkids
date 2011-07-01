@@ -747,16 +747,22 @@ function tfk_atw_preprocess_node(&$vars, $hook) {
         $tmp_url = explode('/',request_uri());
         $tmp_url = array_slice($tmp_url, -3, 3, true);
         $tmp_url = array_merge(array(),$tmp_url);
+        
         if($record->type == 'atw_destination'){
           $country_alias = $tmp_url[1].'/'.$tmp_url[2];
         }else{
           $country_alias = $tmp_url[0].'/'.$tmp_url[1];
         }
 
+        $cntr_node = drupal_lookup_path('source',$country_alias);
+        $tmp_nd = explode('/',$cntr_node);
+        $src_country_nid = $tmp_nd[1];
+
+        $query = db_query('select title from node where nid = :nid',array('nid'=>$src_country_nid));
+        $cnt = $query->fetch();
+        $vars['src_country_title'] = $cnt->title;
+
         $vars['return_path'] = $country_alias.'/native-lingo';
-
-
-
     }
 
     if($vars['type'] == 'atw_sightseeing'){
