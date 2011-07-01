@@ -25,7 +25,7 @@ function tfk_user_profile_schema(){
 				'not null' => TRUE
 			)
 		),
-		'primary key' => array('ulaid'),
+		'primary key' => array('aiid'),
 		'unique keys' => array(
     		'lid_uid' => array('lid', 'uid'),
   		)
