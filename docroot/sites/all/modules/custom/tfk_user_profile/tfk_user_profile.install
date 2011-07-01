@@ -32,4 +32,4 @@ function tfk_user_profile_schema(){
 	);
 	return $schema;
 }
-?>
+
