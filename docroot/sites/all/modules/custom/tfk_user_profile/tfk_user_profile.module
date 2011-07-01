@@ -19,11 +19,11 @@ function tfk_check_lucie_user($lucieData){
 * Insert a row into the table: users_role
 * for a new teacher that has logged in
 */
-function tfk_insert_teacher_role($uid=0, $existingUser=false){
+function tfk_insert_teacher_role($uid=0){
 	$rid = db_query("SELECT rid FROM {role} WHERE name = :name", array(':name' => 'teacher'))->fetchField();   	   
 	if ($rid && $uid) {
 		$fields = array('uid' => $uid, 'rid' => $rid);
-		db_insert('users_roles')->fields($fields)->execute();
+		db_merge('users_roles')->key(array('uid'=>$uid))->fields($fields)->updateFields($fields)->execute();
 	}
 }
 /**
@@ -82,6 +82,7 @@ function tfk_user_profile_login_validate( $form, &$form_state ){
 			tfk_update_lucie_login($response, $existingUser);
 		 	user_external_login_register( $response['userId'], 'project_authentication' );
         	$account = user_external_load($response['userId']);
+        	tfk_insert_teacher_role($account->uid);
 			$form_state['uid'] = $account->uid;
 		}
     }
