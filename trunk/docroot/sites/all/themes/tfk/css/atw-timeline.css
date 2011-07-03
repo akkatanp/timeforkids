@@ -17,7 +17,7 @@
 }
 
 #timeline-container #event-year {
-	display: inline-block;
+	display: inline;
 	position: relative;
 	font: normal 14px "arial black";
 	border: solid 1px #cecece;
