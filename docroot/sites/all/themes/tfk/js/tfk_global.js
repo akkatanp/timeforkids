@@ -39,7 +39,7 @@ $(document).ready(function() {
 			}).appendTo($(document.body));
 			
 			var loginForm = $('#login-container').html();
-			lightBox.html(loginForm);
+			var loginContainer = $('<div></div>').attr('id', 'login-container').html(loginForm).appendTo(lightbox);
 			var loginHeader = $('#lightbox #login-header');
 			var closeButton = $('<a></a>').addClass('close-button').appendTo(loginHeader).click(closeLightBox);
 		};
