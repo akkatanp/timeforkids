@@ -6,7 +6,6 @@ $(document).ready(function() {
 
 (function($) {
 	$.fn.timeline = function() {
-		alert('here');
 		var events = this.children();
 		events = events.not('.clearfix');
 		var numEvents = events.length;
