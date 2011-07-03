@@ -1609,7 +1609,9 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 	background: #000;
 	z-index: 2;
 	-webkit-opacity: 0.5;
+	-moz-opacity: 0.5;
 	opacity: 0.5;
+	filter: alpha(opacity = 50);
 }
 
 #lightbox {
