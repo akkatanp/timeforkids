@@ -1,6 +1,7 @@
 var $ = jQuery;
 
 $(document).ready(function() {
+	alert('here');
 	$('#event-container').timeline();
 });
 
