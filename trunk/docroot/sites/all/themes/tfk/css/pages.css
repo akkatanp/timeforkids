@@ -2023,7 +2023,7 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 }
 
 #daylife-container #current-time {
-	display: inline-block;
+	display: inline;
 	position: relative;
 	font: normal 14px "arial black";
 	border: solid 1px #cecece;
