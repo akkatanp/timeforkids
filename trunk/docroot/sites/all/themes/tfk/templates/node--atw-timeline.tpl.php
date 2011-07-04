@@ -106,8 +106,8 @@
       // We hide the comments and links now so that we can render them later.
       hide($content['comments']);
       hide($content['links']);?>
-      <link rel="stylesheet" href="/sites/all/themes/tfk/css/atw-timeline.css" />
-	  <script type="text/javascript" src="/sites/all/themes/tfk/js/atw-timeline.js"></script>
+      <link rel="stylesheet" href="http://timedev2.prod.acquia-sites.com/sites/all/themes/tfk/css/atw-timeline.css" />
+	  <script type="text/javascript" src="http://timedev2.prod.acquia-sites.com/sites/all/themes/tfk/js/atw-timeline.js"></script>
 
 		<div class="atw-graphic-header"></div>
 
