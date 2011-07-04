@@ -37,7 +37,6 @@ function grammar_wizard_multistep_form($form, &$form_state, $node) {
   $form_state['cache'] = TRUE;
   // The questions should be cached, so that they aren't shuffled while on the same form.
   $questions = isset($form_state['storage']['questions']) ? $form_state['storage']['questions'] : grammar_wizard_prepare_questions($node);
-  //dpm($questions);
   $form_state['storage']['questions'] = $questions;
 
   // $form_state['storage'] has no specific drupal meaning, but it is
@@ -52,7 +51,7 @@ function grammar_wizard_multistep_form($form, &$form_state, $node) {
       // If they answered the question wrong, then mark the answer they chose.
       $answer = $form_state['storage']['values']["step_$step"]['question'];
       $alpha_answer = $form["step_$step"]['question']['#options'][$answer];
-      $form["step_$step"]['question']['#options'][$answer] = '<span class="grammar-wizard-incorrect">' . check_plain($alpha_answer) . '</span>';
+      $form["step_$step"]['question']['#options'][$answer] = '<span class="grammar-wizard-incorrect">' . $alpha_answer . '</span>';
     }
     $form["step_$step"]['question']['#default_value'] = empty($form_state['values']["step_$step"]['question']) ? '' : $form_state['values']["step_$step"]['question'];
   }
@@ -184,9 +183,8 @@ function grammar_wizard_final_question_content($form_state) {
  */
 function grammar_wizard_check_answer($form, &$form_state) {
   $current_step = 'step_' . $form_state['storage']['step'];
-  $correct_answer = $form[$current_step]['#correct_answer'];
+  $correct_answer = check_plain($form[$current_step]['#correct_answer']);
   $selected_answer = $form_state['input'][$current_step]['question']; 
-
   if ($correct_answer == $selected_answer) {
     $form_state['storage']['correct_answer'] = TRUE;
     $form_state['storage']['question_result'] = '<div id="grammar-wizard-result"><h2>You Got It!</h2><div id="grammar-wizard-rule"><h2>You Understand:</h2>' . $form[$current_step]['#rule'] . '<h3>Example:</h3><div id="grammar-wizard-example">' . $form[$current_step]['#rule_example'] . '</div></div></div>';
