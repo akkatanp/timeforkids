@@ -81,6 +81,8 @@
  * @see template_process()
  */
 ?>
+<!--link rel="stylesheet" href="/sites/all/themes/tfk/css/atw-daylife.css" /-->
+<script type="text/javascript" src="/sites/all/themes/tfk/js/atw-daylife.js"></script>
 <div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
 
   <?php print $user_picture; ?>
@@ -109,8 +111,6 @@
       hide($content['comments']);
       hide($content['links']);
 	?>
-<link rel="stylesheet" href="/sites/all/themes/tfk/css/atw-daylife.css" />
-<script type="text/javascript" src="/sites/all/themes/tfk/js/atw-daylife.js"></script>
 
 	<div class="atw-graphic-header"></div>
 
