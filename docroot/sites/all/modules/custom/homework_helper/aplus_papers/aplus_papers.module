@@ -131,7 +131,8 @@ function aplus_papers_multistep_form($form, &$form_state, $steps) {
    $form['prev'] = array(
       '#type' => 'submit',
       '#value' => t("Back"),
-
+      '#attributes' => array('class' => array('aplus-back')),
+      '#value' => t("Back"),
       // Since all info will be discarded, don't validate on 'prev'.
       '#limit_validation_errors' => array(),
       // #submit is required to use #limit_validation_errors
@@ -151,6 +152,7 @@ function aplus_papers_multistep_form($form, &$form_state, $steps) {
       $form['next'] = array(
         '#type' => 'submit',
         '#value' => t('Next'),
+        '#attributes' => array('class' => array('aplus-next')),
         '#suffix' => '</div>', //#aplus-submit-buttons
         '#ajax' => array(
           'wrapper' => 'wizard-form-wrapper',
