@@ -41,7 +41,8 @@
 
 <?php if(strlen($fields['field_resources_list']->content) != 0):?>
     <div class="related-content-wrap">
-        <div class="addit-content"><?php print $fields['field_resources_label']->content;?></div>
+        <!--<div class="addit-content"><?php print $fields['field_resources_label']->content;?></div>-->
+      <div class="addit-content">Additional Content</div>
         <?php if($fields['field_resources_list']): ?>
            <div class="addit-mini-lessons">WORKSHEETS : <?php print $fields['field_resources_list']->content;?></div>
         <?php endif; ?>
