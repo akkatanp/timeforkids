@@ -881,7 +881,14 @@ function tfk_search_preprocess_search_result(&$vars) {
     if($base_path == 'search') {
       $favorite_links = FALSE;
     }
-
+    
+    // Title.
+    $title = $vars['title'];
+    $vars['title'] = l($title, 'node/'. $vars['result']['fields']['entity_id'], array('html' => TRUE));
+    $attributes = array('class' => array('thumbnail', 'content-type-'. $vars['result']['fields']['bundle']));
+    $thumb_attr = $attributes;
+    $link_attr = array('html' => TRUE, 'attributes' => $attributes);
+    
     
     switch ($vars['result']['fields']['bundle']) {
       
@@ -894,7 +901,8 @@ function tfk_search_preprocess_search_result(&$vars) {
           $uri = $tmp_img_nid[0]['uri'];
           $newpath = image_style_path($style, $uri);
           $abspath = file_create_url($newpath);
-          $vars['tfk_search_res_image'] = $abspath;
+          $thumbnail = theme('image', array('path' => $abspath, 'alt' => $title, 'title' => $title, 'attributes' => $thumb_attr));
+          $vars['thumbnail'] = l($thumbnail, 'node/'. $vars['result']['fields']['entity_id'], $link_attr);
         }
       break;
       
@@ -914,7 +922,8 @@ function tfk_search_preprocess_search_result(&$vars) {
   
           $newpath = image_style_path($style, $img_filename);
           $abspath = file_create_url($newpath);
-          $vars['tfk_search_res_image'] = $abspath;
+          $thumbnail = theme('image', array('path' => $abspath, 'alt' => $title, 'title' => $title, 'attributes' => $thumb_attr));
+          $vars['thumbnail'] = l($thumbnail, 'node/'. $vars['result']['fields']['entity_id'], $link_attr);
         }
       break;
       
@@ -926,13 +935,16 @@ function tfk_search_preprocess_search_result(&$vars) {
           $uri = $tmp_img_nid[0]['uri'];
           $newpath = image_style_path($style, $uri);
           $abspath = file_create_url($newpath);
-          $vars['tfk_search_res_image'] = $abspath;
+          $icon = '<div class="icon"></div>';
+          $thumbnail = theme('image', array('path' => $abspath, 'alt' => $title, 'title' => $title, 'attributes' => $thumb_attr)). $icon;
+          $vars['thumbnail'] = l($thumbnail, 'node/'. $vars['result']['fields']['entity_id'], $link_attr);
         }
         
         // Flag link.
         if($favorite_links) {
           tfk_search_get_flag_link($vars, $nid, 'favorites');
         }
+        
       break;
 
 
@@ -1037,13 +1049,17 @@ function tfk_search_preprocess_search_result(&$vars) {
         $worksheet_nid = $vars['result']['fields']['entity_id'];
 
         $node = node_load($worksheet_nid);
+        
+        // Worksheets don't link to the node page.
+        $vars['title'] = $title;
  
         if(isset($node->field_worksheet_thumbnail_image)){
           $tmp_img_nid =  field_get_items('node', $node, 'field_worksheet_thumbnail_image');
           $uri = $tmp_img_nid[0]['uri'];
           $newpath = image_style_path($style, $uri);
           $abspath = file_create_url($newpath);
-          $vars['tfk_search_res_image'] = $abspath;
+          // Worksheets don't link to the node page.
+          $vars['thumbnail'] = theme('image', array('path' => $abspath, 'alt' => $title, 'title' => $title, 'attributes' => $thumb_attr));
         }
         if(isset($node->field_grade_level)){
           $tmp_tid = field_get_items('node', $node, 'field_grade_level');
@@ -1128,7 +1144,10 @@ function tfk_search_preprocess_search_result(&$vars) {
               $success = image_style_create_derivative(image_style_load($style), $file->uri, $file->newpath);
             }
             
-            $vars['tfk_search_res_image'] = image_style_url($style, $file->uri);
+            $abspath = image_style_url($style, $file->uri);
+            $icon = '<div class="icon"></div>';
+            $thumbnail = theme('image', array('path' => $abspath, 'alt' => $title, 'title' => $title, 'attributes' => $thumb_attr)). $icon;
+            $vars['thumbnail'] = l($thumbnail, 'node/'. $vars['result']['fields']['entity_id'], $link_attr);
           }
         }
         
@@ -1153,7 +1172,8 @@ function tfk_search_preprocess_search_result(&$vars) {
   
           $newpath = image_style_path($style, $img_filename);
           $abspath = file_create_url($newpath);
-          $vars['tfk_search_res_image'] = $abspath;
+          $thumbnail = theme('image', array('path' => $abspath, 'alt' => $title, 'title' => $title, 'attributes' => $thumb_attr));
+          $vars['thumbnail'] = l($thumbnail, 'node/'. $vars['result']['fields']['entity_id'], $link_attr);
         }
         if(isset($node->field_article_category)){
           $tmp_tid = field_get_items('node', $node, 'field_article_category');
