@@ -84,8 +84,8 @@
   
   <div class='row2'>
     <div class='col1'>
-      <?php if($tfk_search_res_image):?>
-        <img alt="<?php print $title; ?>" title="<?php print $title; ?>" class="thumbnail <?php if(array_key_exists('bundle', $result)) print 'content-type-'. $result[bundle]; ?>" src="<?php print $tfk_search_res_image;?>" />
+      <?php if($thumbnail):?>
+      	<?php print $thumbnail; ?>
       <?php endif;?>
     </div>
    

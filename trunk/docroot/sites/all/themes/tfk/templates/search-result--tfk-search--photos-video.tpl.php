@@ -72,15 +72,8 @@
   
   <div class='row2'>
     <div class='col1'>
-      <?php if($tfk_search_res_image):?>
-        <?php if(array_key_exists('link', $result)): ?>
-          <a href="<?php print $result['link']; ?>" class="<?php if(array_key_exists('bundle', $result)) print 'content-type-'. $result[bundle]; ?>">
-          	<img alt="<?php print $title; ?>" title="<?php print $title; ?>" class="thumbnail" src="<?php print $tfk_search_res_image;?>" />
-          	<div class='icon'></div>
-          </a>
-        <?php else: ?>
-        	<img alt="<?php print $title; ?>" title="<?php print $title; ?>" class="thumbnail <?php if(array_key_exists('bundle', $result)) print 'content-type-'. $result[bundle]; ?>" src="<?php print $tfk_search_res_image;?>" />
-        <?php endif;?>
+      <?php if($thumbnail):?>
+      	<?php print $thumbnail; ?>
       <?php endif;?>
     </div>
    
