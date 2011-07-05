@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	var map = $('map');
+	var map = $('#sightseeing-map');
 	var locations = map.children();
 	
 	var locationClick = function(e) {
