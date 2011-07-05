@@ -133,6 +133,72 @@ div#block-views-tfk-section-photos-video-block div.views-field-body p {
   font-size: 12px;
 }
 
+
+/* Generic search rules */
+ol.search-results {
+  border: 1px solid #CECECE;
+  padding: 10px;
+}
+
+ol.search-results li div.content-type {
+  background-color: #D71700;
+  color: white;
+  font-weight: bold;
+  font-size: 1.0em;
+  padding: 3.35px 0 2.76px 11px;
+  margin-bottom: 7px;
+}
+
+ol.search-results li h3.title {
+  margin: 0 0 5px 0;
+}
+
+ol.search-results li h3.title a:link,
+ol.search-results li h3.title a:visited {
+  color: black;
+  font-size: 1.17em;
+}
+
+ol.search-results li.with-image {
+  /*min-height: 215px;*/
+}
+
+ol.search-results li.search-result {
+  min-height: 150px;
+}
+
+li.search-result {
+  margin: 0 0 10px 0;
+}
+
+.row2 {
+  margin: 0pt;
+}
+
+.col1 {
+  float: left;
+  margin: 0px;
+  min-height: 118.2px;
+}
+
+.col2 {
+  display: inline-block;
+  width: 360px;
+  margin: 0 0 0 10px;
+}
+
+.region-highlighted .first.block-tfk-search {
+  background-color: #E6E6E6;
+  min-height: 30px;
+  padding: 8px 0px 7px 10px;
+  margin-bottom: 7px;
+}
+
+.region-highlighted .first.block-tfk-search h2 {
+  font-size: 1.5em;
+  margin: 0 0 10px 0;
+}
+
 /* Search results */
 
 ol#tfk-search-results-photos-video {
@@ -174,22 +240,6 @@ ol#tfk-search-results-photos-video li.with-image img.thumbnail {
 
 li.tfk-search-result {
 	margin: 0 0 10px 0;
-}
-
-.row2 {
-	margin: 0pt;
-}
-
-.col1 {
-	float: left;
-	margin: 0px;
-	min-height: 118.2px;
-}
-
-.col2 {
-  display: inline-block;
-  width: 360px;
-  margin: 0 0 0 10px;
 }
 
 ol#tfk-search-results-photos-video li.tfk-search-result .col2 h3.title a {
@@ -315,29 +365,6 @@ li.search-result .flag-favorites {
 }
 
 /* photos and vide content type */
-/*
-div.col1 .content-type-slideshow .icon {
-  position: inherit;
-  bottom: 20px;
-  right: 20px;
-  width: 32px;
-  height: 22px;
-  z-index: 2;
-  background: url(../images/photo-camera-icon.png) no-repeat;
-}
-
-div.col1 .content-type-video .icon {
-  position: relative;
-  bottom: 20px;
-  right: 20px;
-  width: 32px;
-  height: 22px;
-  z-index: 2;
-  background: url(../images/video-camera-icon.png) no-repeat;
-  background-color: red;
-}*/
-
-
 body.section-photos-video div#tfk-search-photos-video-featured .icon {
   height: 22px;
   margin: -34px 0 0 225px;
@@ -364,4 +391,91 @@ body.section-photos-video .content-type-video .icon,
 body.section-my-favorites .content-type-video .icon {
   background: url(../images/video-camera-icon.png) no-repeat;
 }
+
+#block-tfk-search-tfk-search-photos-video-featured.block div#tfk-search-photos-video-featured div.featured-date {
+  margin-bottom: 20px;
+}
+
+/*
+ * Site-wide search page rules.
+ */
+#block-tfk-search-tfk-search-sidebar-filter {
+	background-color: #999;
+	margin: 0px;
+	border-left: 1px solid #CECECE;
+	border-right: 1px solid #CECECE;
+	border-top: 1px solid #999;
+	padding-left: 12px;
+	padding-top: 10px;
+}
+
+#block-tfk-search-tfk-search-sidebar-filter .content > h2 {
+  color: #FFF;
+  margin: 0 0 10px 0;
+  font-family: "arial black", Arial;
+  font-size: 14px;
+}
+
+#block-tfk-search-tfk-search-sidebar-filter .content>h2+div {
+	color: #FFF;
+	font-size: 12px;
+	font-weight: bold;
+	margin: 0 0 6px 0;
+}
+
+#search-block-form {
+	padding-bottom: 14px;
+}
+
+#search-block-form .element-invisible {
+	display: none;
+}
+
+#block-tfk-search-tfk-search-sidebar-filter .form-item {
+	margin: 0px;
+	vertical-align: middle;
+}
+
+#block-tfk-search-tfk-search-sidebar-filter .form-item.form-type-textfield {
+  margin-right: 9px;
+}
+
+#edit-search-block-form--2 {
+  background: none repeat scroll 0 0 #FFF;
+  border-color: #696969 #8C8C8C #ADADAD #808080;
+  border-radius: 12px 12px 12px 12px;
+  border-style: solid;
+  border-width: 1px;
+  border-top: 2px solid #696969;
+  color: #777;
+  display: block;
+  float: left;
+  height: 14px;
+  padding: 4px 8px 4px 8px;
+  margin-right: 9px;
+  font: italic 11px arial;
+}
+
+body.page-search-site .region-sidebar-first .first.block h2 {
+	margin-top: 0px;
+}
+
+body.page-search-site .region-sidebar-first .block-apachesolr-search {
+  border-bottom: 1px dotted #8A8A8A;
+	margin: 0px;
+}
+
+body.page-search-site .region-sidebar-first .block-apachesolr-search h2 {
+  font-size: 12px;
+	font-weight: 12px;
+	color: #333;
+	margin: 10px 0;
+}
+
+body.page-search-site .region-sidebar-first .block-apachesolr-search .item-list ul li {
+  margin: 0 0 0.25em 11px;
+}
+
+
+
 

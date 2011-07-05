@@ -70,6 +70,11 @@ function tfk_search_init(){
     drupal_add_css(drupal_get_path('module', 'tfk_search'). '/css/tfk_search.css', 'file');
     drupal_add_css(drupal_get_path('module', 'tfk_search'). '/css/tfk_worksheets.css', 'file');
   }
+  
+  // Site-wide search.
+  if(arg(0) == 'search') {
+    drupal_add_css(drupal_get_path('module', 'tfk_search'). '/css/tfk_search.css', 'file');
+  }
 }
 
 /**
@@ -250,6 +255,15 @@ function tfk_search_block_info() {
     $blocks[$delta] = array_merge($facets[$delta], array('cache' => DRUPAL_CACHE_PER_PAGE));
   }
   
+  // Site-wide search content header.
+  $blocks['tfk_search_cont_hdr'] = array(
+    'info' => t('TFK Search Content Header'),
+  );
+  
+  $blocks['tfk_search_sidebar_filter'] = array(
+    'info' => t('TFK Search Filter Search By'),
+  );
+  
   return $blocks;
 }
 
@@ -262,6 +276,7 @@ function tfk_search_block_view($delta='') {
   
   switch ($delta) {
     
+    // Year of the node filter.
     case 'sm_editorial_date_tfk':
       $block['subject'] = t('Custom ApacheSolrFilter');
 
@@ -317,9 +332,33 @@ function tfk_search_block_view($delta='') {
      $block['content'] = tfk_search_save_your_search();
    break;
      
-   case 'tfk_search_ws_leftbar_title':
-     $block['content'] = t("SEARCH PRINTABLES ARCHIVE");
-   break;
+    case 'tfk_search_ws_leftbar_title':
+      $block['content'] = t("SEARCH PRINTABLES ARCHIVE");
+    break;
+   
+    // Site-wide search content header.
+    case 'tfk_search_cont_hdr':
+      $block['content'] = '<h2>'. t("Search Results"). '</h2>';
+    break;
+    
+    // Site-wide search filter search.
+    case 'tfk_search_sidebar_filter':
+      $output = '<h2>'. t("FILTER MY SEARCH BY"). '</h2>';
+      $output .= '<div>'. t('Search Term:'). '</div>';
+      $form = drupal_get_form('search_block_form');
+      
+      // Modify submit button.
+      $form['actions']['submit']['#type'] = 'image_button';
+      $form['actions']['submit']['#src'] = drupal_get_path('module', 'tfk_search'). '/images/go-button.png';
+      unset($form['actions']['submit']['#value']);
+      $form['actions']['submit']['#button_type'] = 'image_button';
+      $form['actions']['submit']['#theme_wrappers'][0] = 'image_button';
+      $form['search_block_form']['#value'] = 'Search';
+      $form['search_block_form']['#size'] = '32';
+      
+      $output .= render($form);
+      $block['content'] = $output;
+    break;
   }
   
   return $block;
@@ -592,6 +631,8 @@ function tfk_search_get_thumbnail($fid, $style) {
  * @param array $vars
  */
 function tfk_search_preprocess_page(&$variables) {
+  $_variables = & $variables;
+  
   // Set title on Photos & Video search page.
   if(arg(0) == 'photos-video') {
     drupal_set_title('Photos & Video');
@@ -603,6 +644,11 @@ function tfk_search_preprocess_page(&$variables) {
     
     drupal_set_title('Worksheets');
     $variables->title == 'Woksheets';
+  }
+  if(arg(0) == 'search') {
+    // Force the removal of the default search box displayed by Drupal.
+    $variables['section_title'] = 'PRINTABLES';
+    unset($_variables['page']['content']['system_main']['search_form']);
   }
 }
 
@@ -804,14 +850,16 @@ function tfk_search_preprocess_search_result(&$vars) {
     // The first template to be found is implemented.
     // @link http://api.drupal.org/api/drupal/includes--theme.inc/function/theme.
     $base_path = arg(0);
-    $style = 'square_thumbnail';
+    $style = '115x115';
+    
+    // Determines whether to print favorite links on search results or not.
+    $favorite_links = TRUE;
     
     if($base_path == 'photos-video') {
       $vars['theme_hook_suggestions'] = array_merge(
         array('search_result__tfk_search__photos_video', 'search_result__tfk_search'),
         $vars['theme_hook_suggestions']
       );
-      $style = '115x115';
     }
 
     if($base_path == 'worksheets') {
@@ -819,7 +867,6 @@ function tfk_search_preprocess_search_result(&$vars) {
         array('search_result__tfk_search__worksheets', 'search_result__tfk_search'),
         $vars['theme_hook_suggestions']
       );
-      $style = '115x115';
     }
 
 
@@ -828,7 +875,11 @@ function tfk_search_preprocess_search_result(&$vars) {
         array('search_result__tfk_search__magazine', 'search_result__tfk_search'),
         $vars['theme_hook_suggestions']
       );
-      $style = '115x115';
+    }
+    
+    // Site-wide search.
+    if($base_path == 'search') {
+      $favorite_links = FALSE;
     }
 
     
@@ -841,7 +892,7 @@ function tfk_search_preprocess_search_result(&$vars) {
         if(isset($node->field_minisite_tout_image)){
           $tmp_img_nid =  field_get_items('node', $node, 'field_minisite_tout_image');
           $uri = $tmp_img_nid[0]['uri'];
-          $newpath = image_style_path('square_thumbnail',$uri);
+          $newpath = image_style_path($style, $uri);
           $abspath = file_create_url($newpath);
           $vars['tfk_search_res_image'] = $abspath;
         }
@@ -861,7 +912,7 @@ function tfk_search_preprocess_search_result(&$vars) {
           $record = $result->fetch();
           $img_filename = file_build_uri(basename($record->filename));
   
-          $newpath = image_style_path('square_thumbnail',$img_filename);
+          $newpath = image_style_path($style, $img_filename);
           $abspath = file_create_url($newpath);
           $vars['tfk_search_res_image'] = $abspath;
         }
@@ -879,7 +930,9 @@ function tfk_search_preprocess_search_result(&$vars) {
         }
         
         // Flag link.
-        tfk_search_get_flag_link($vars, $nid, 'favorites');
+        if($favorite_links) {
+          tfk_search_get_flag_link($vars, $nid, 'favorites');
+        }
       break;
 
 
@@ -1047,7 +1100,9 @@ function tfk_search_preprocess_search_result(&$vars) {
         }
         
         // This is code that will get us a flag html with a working flag link to put in a template.
-        tfk_search_get_flag_link($vars, $worksheet_nid, 'favorites');
+        if($favorite_links) {
+          tfk_search_get_flag_link($vars, $worksheet_nid, 'favorites');
+        }
         
         // Content type CSS class.
         $vars['classes_array'][] = 'worksheet';
@@ -1078,7 +1133,9 @@ function tfk_search_preprocess_search_result(&$vars) {
         }
         
         // Flag link.
-        tfk_search_get_flag_link($vars, $nid, 'favorites');
+        if($favorite_links) {
+          tfk_search_get_flag_link($vars, $nid, 'favorites');
+        }
       break;
       
       case 'article':
@@ -1094,7 +1151,7 @@ function tfk_search_preprocess_search_result(&$vars) {
           $record = $result->fetch();
           $img_filename = file_build_uri(basename($record->filename));
   
-          $newpath = image_style_path('square_thumbnail',$img_filename);
+          $newpath = image_style_path($style, $img_filename);
           $abspath = file_create_url($newpath);
           $vars['tfk_search_res_image'] = $abspath;
         }
@@ -1105,6 +1162,10 @@ function tfk_search_preprocess_search_result(&$vars) {
           $name = $name_res->fetch();
           $name = $name->name;
           $vars['tfk_search_res_category'] = $name;
+        }
+        
+        if($base_path = 'search') {
+          $vars['tfk_search_result_link_1'] = l('Download this article', 'node/'. $nid);
         }
       break;
           
@@ -1240,6 +1301,19 @@ function tfk_search_apachesolr_modify_query($query, $caller) {
     $query->add_subquery($subquery, 'OR');
 
     // Limit the number of rows per page to 8 per spec.
+    $query->params['rows'] = 8;
+  }
+  
+  // Site-wide search.
+  if($query->get_base_path() === 'search/site') {
+    $subquery = apachesolr_drupal_query();
+    $content_types = array('article', 'slideshow', 'video', 'atw_destination', 'minisite', 'worksheet', 'mini_lesson');
+    foreach($content_types as $content_type) {
+      $subquery->add_filter('bundle', $content_type);
+    }
+    $query->add_subquery($subquery, 'OR');
+
+    // Limit the number of rows per page.
     $query->params['rows'] = 8;
   }
 
