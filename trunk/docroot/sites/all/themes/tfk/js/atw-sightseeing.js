@@ -17,10 +17,10 @@ $(document).ready(function() {
 			'weight': '0',
 			'src': $(this).attr('href')
 		}).appendTo(document.body).load(function() {
-			alert('here');
 			var locationBody = $(this).contents().find('body');
 			var locationTable = $(locationBody).find('table');
 			var locationImg = locationTable.find('img');
+			alert('here');
 			var locationName = $('<h1></h1>').text(locationTable.find('.boldBlack20 font').text());
 			var locationText = $('<p></p>').text(locationTable.find('.storyText').eq(1).text());
 			
