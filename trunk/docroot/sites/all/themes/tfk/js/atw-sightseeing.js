@@ -17,6 +17,7 @@ $(document).ready(function() {
 			'weight': '0',
 			'src': $(this).attr('href')
 		}).appendTo(document.body).load(function() {
+			alert('here');
 			var locationBody = $(this).contents().find('body');
 			var locationTable = $(locationBody).find('table');
 			var locationImg = locationTable.find('img');
