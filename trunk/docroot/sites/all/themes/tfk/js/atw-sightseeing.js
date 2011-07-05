@@ -2,7 +2,7 @@ $(document).ready(function() {
 	var map = $('map');
 	var locations = map.children();
 	
-	alert(locations);
+	alert(map);
 	
 	var locationClick = function(e) {
 		e.preventDefault();
