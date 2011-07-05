@@ -1,8 +1,8 @@
-var $ = jQuery;
-
 $(document).ready(function() {
 	var map = $('map');
 	var locations = map.children();
+	
+	alert(locations);
 	
 	var locationClick = function(e) {
 		e.preventDefault();
