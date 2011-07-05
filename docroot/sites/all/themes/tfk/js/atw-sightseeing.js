@@ -20,7 +20,8 @@ $(document).ready(function() {
 			var locationBody = $(this).contents().find('body');
 			var locationTable = $(locationBody).find('table');
 			var locationImg = new Image();
-			locationImg.src = locationTable.find('img').eq(0).src;
+			alert(locationTable.find('img').src);
+			locationImg.src = locationTable.find('img').src;
 			var locationName = $('<h1></h1>').text(locationTable.find('.boldBlack20 font').text());
 			var locationText = $('<p></p>').text(locationTable.find('.storyText').eq(1).text());
 			
