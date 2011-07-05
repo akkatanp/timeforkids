@@ -1365,6 +1365,7 @@ span.grammar-wizard-incorrect {
   display: inline;
   float: left;
   margin: 0;
+  width: 424px;
 }
 .node-type-grammar-practice .node-grammar-practice-question h2 {
   margin: 0;
