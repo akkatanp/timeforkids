@@ -43,7 +43,8 @@
 
 <?php if(strlen($fields['field_minisite_resources']->content) != 0):?>
     <div class="related-content-wrap">
-        <div class="addit-content"><?php print $fields['field_minisite_resources_label']->content;?></div>
+        <!--<div class="addit-content"><?php print $fields['field_minisite_resources_label']->content;?></div>-->
+      <div class="addit-content">Additional Content</div>
         <?php if($fields['field_minisite_resources']): ?>
            <div class="addit-mini-lessons">WORKSHEETS : <?php print $fields['field_minisite_resources']->content;?></div>
         <?php endif; ?>

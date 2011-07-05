@@ -111,10 +111,10 @@ function _tfk_news_current_filters(){
     }else{
       $arg = arg(1);
       if(!is_numeric(arg(1))){
-        $str .= 'Viewing: '.arg(1).';';
+        $str .= 'Viewing: '.ucfirst(arg(1)).';';
       }
       if(is_numeric(arg(1))){
-        $str .= 'Year: '.arg(1);
+        $str .= 'Year: '.ucfirst(arg(1));
       }
     }
     return $str;
