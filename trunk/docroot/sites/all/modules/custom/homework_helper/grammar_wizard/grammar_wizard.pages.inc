@@ -70,6 +70,7 @@ function grammar_wizard_prepare_question($node) {
  * Show the results page.
  */
 function grammar_wizard_results() {
+  $form['#parent_nid'] = arg(1); 
   return $form;
 } 
 
