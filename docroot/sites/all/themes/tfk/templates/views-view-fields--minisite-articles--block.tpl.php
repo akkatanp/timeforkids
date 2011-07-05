@@ -39,8 +39,8 @@
 <?php if(strlen($fields['field_related_articles_1']->content) != 0 || strlen($fields['field_related_articles']->content) != 0):?>
     <div class="related-content-wrap">
         <div class="addit-content">Additional Content</div>
-        <?php if($fields['field_related_articles']): ?>
-           <div class="addit-related-articles"><?php print $fields['field_related_articles']->label;?><?php print $fields['field_related_articles']->content;?></div>
+        <?php if($fields['field_related_articles_1']): ?>
+           <div class="addit-related-articles"><?php //print $fields['field_related_articles']->label;?><?php print $fields['field_related_articles']->content;?></div>
         <?php endif; ?>
     </div>
 <?php endif;?>
