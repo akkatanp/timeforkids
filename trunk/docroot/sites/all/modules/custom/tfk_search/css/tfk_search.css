@@ -476,6 +476,31 @@ body.page-search-site .region-sidebar-first .block-apachesolr-search .item-list 
   margin: 0 0 0.25em 11px;
 }
 
+li.search-result .content-type .ctype-suffix {
+	float: right;
+	padding-right: 10px;
+}
 
+/*
+ * Bottom pager
+ */
+
+#block-system-main .content > .item-list .pager {
+	text-align: right;
+	padding-right: 8px;
+	margin-top: 10px;
+}
+
+#block-system-main .content > .item-list .last {
+	padding-right: 0px;
+	margin-right: 0px;
+}
+
+#block-system-main .content > .item-list li {
+  margin: 0 0 0 12px;
+  color: #d71700;
+  padding: 0px;
+  font-size: 11px;
+}
 
 
