@@ -130,7 +130,7 @@ function aplus_papers_multistep_form($form, &$form_state, $steps) {
 
    $form['prev'] = array(
       '#type' => 'submit',
-      '#value' => t("Previous step"),
+      '#value' => t("Previous"),
 
       // Since all info will be discarded, don't validate on 'prev'.
       '#limit_validation_errors' => array(),
@@ -150,7 +150,7 @@ function aplus_papers_multistep_form($form, &$form_state, $steps) {
     if ($step < $last_step) {
       $form['next'] = array(
         '#type' => 'submit',
-        '#value' => t('Next step'),
+        '#value' => t('Next'),
         '#suffix' => '</div>', //#aplus-submit-buttons
         '#ajax' => array(
           'wrapper' => 'wizard-form-wrapper',
@@ -231,7 +231,7 @@ function aplus_papers_multistep_form_submit($form, &$form_state) {
   }
 
   // Increment or decrement the step as needed. Recover values if they exist.
-  if ($form_state['triggering_element']['#value'] == t('Next step') || $form_state['triggering_element']['#value'] == t('Start Helper')) {
+  if ($form_state['triggering_element']['#value'] == t('Next') || $form_state['triggering_element']['#value'] == t('Start Helper')) {
     $form_state['storage']['step']++;
     // If values have already been entered for this step, recover them from
     // $form_state['storage'] to pre-populate them.
@@ -240,7 +240,7 @@ function aplus_papers_multistep_form_submit($form, &$form_state) {
       $form_state['values'][$step_name] = $form_state['storage']['values'][$step_name];
     }
   }
-  if ($form_state['triggering_element']['#value'] == t('Previous step')) {
+  if ($form_state['triggering_element']['#value'] == t('Previous')) {
     $form_state['storage']['step']--;
     // Recover our values from $form_state['storage'] to pre-populate them.
     $step_name = 'step_' . $form_state['storage']['step'];
