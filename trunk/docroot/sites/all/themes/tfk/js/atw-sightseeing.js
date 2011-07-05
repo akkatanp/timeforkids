@@ -43,7 +43,7 @@ $(document).ready(function() {
 			locationMask.appendTo($('#map-container'));
 			locationDiv.appendTo($('#map-container'));
 		});
-	}
+	};
 	
 	locations.each(function(i, location) {
 		$(location).removeAttr('onclick');
