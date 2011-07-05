@@ -189,7 +189,7 @@ function study_helper_node_view($node, $view_mode, $langcode) {
         '#value' => url('flashcard/' . $node->uuid, array('absolute' => TRUE)),
       ),
       'copy' => array(
-        '#markup' => '<div id="study-helper-copy">' . t('Copy') . '</div>',
+        '#markup' => '<div id="study-helper-copy">' . t('Copy URL') . '</div>',
       )
     );
   }
