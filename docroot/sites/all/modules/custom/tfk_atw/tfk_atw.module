@@ -265,11 +265,23 @@ function _get_atw_timeline_slideshow_images(){
             left join {field_data_field_photo_credit} fpc on ec.entity_id = fpc.entity_id 
             where ec.entity_id = :event_nid',array('event_nid' => $event_nid));
         $record = $result->fetch();
+        $timelines_data[$k]['image_shape'] = 'undefined';
+        
         $timelines_data[$k]['event_copy'] = $record->event_copy;
         $timelines_data[$k]['event_title'] = $record->timeline_title;
         $timelines_data[$k]['image_path'] = image_style_path('tfk_rect_large',$record->file_uri);
         $timelines_data[$k]['image_path'] = file_create_url($timelines_data[$k]['image_path']);
+
         $timelines_data[$k]['image_credit'] = $record->photo_credit;
+        $tst = image_get_info($record->file_uri);
+        if($tst['width'] > $tst['height']){
+          $timelines_data[$k]['image_shape'] = 'horizontal';
+        }elseif($tst['width'] < $tst['height']){
+          $timelines_data[$k]['image_shape'] = 'vertical';
+        }elseif($tst['width'] == $tst['height']){
+          $timelines_data[$k]['image_shape'] = 'square';
+        }
+
     }
 
     $is_admin_editor = 0;
