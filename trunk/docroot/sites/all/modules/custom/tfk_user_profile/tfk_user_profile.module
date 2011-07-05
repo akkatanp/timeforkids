@@ -168,6 +168,7 @@ function tfk_user_profile_form($form, &$form_state, $user_profile) {
              );
             $current_grade_level = $user_profile['elements']['#account']->field_grade_level['und']['0']['tid'];
         }
+
 	$form['nickname'] = array(
 		'#type' => 'textfield',
 		'#title' => t('Nickname'),
@@ -182,7 +183,25 @@ function tfk_user_profile_form($form, &$form_state, $user_profile) {
 		'#options' => $grade_levels,
                 '#default_value' => isset($user_profile) ? $current_grade_level : ''
 	);
-	
+
+
+
+        global $user;
+        if (in_array("editor", $user->roles)) {
+            $form['password'] = array(
+                  '#type' => 'password',
+                  '#title' => t('New Password'),
+                  '#required' => FALSE,
+            );
+
+            $form['password_confirm'] = array(
+                  '#type' => 'password',
+                  '#title' => t('Confirm Password'),
+                  '#required' => FALSE,
+            );
+
+        }
+
 	$form['save'] = array(
 		'#type' => 'submit',
 		'#value' => t('Save Your Settings'),
@@ -202,6 +221,21 @@ function tfk_user_profile_form_submit($form, &$form_state) {
                     db_update('field_data_field_grade_level')->condition('entity_id', $updated_user_profile->uid)->fields(array('field_grade_level_tid'=>$updated_user_profile->grade_level))->execute();
                     drupal_set_message(t('Account settings updated.'));
                     cache_clear_all($cid = 'field:user:'.$updated_user_profile->uid, $table = 'cache_field', $wildcard = FALSE);
+
+                    global $user;
+                    if (in_array("editor", $user->roles)) {
+                      if(isset($form_state['values']['password']) && !empty($form_state['values']['password'])) {
+
+                        if($form_state['values']['password'] != $form_state['values']['password_confirm']){
+                          drupal_set_message('Please Provide Matching Passwords then submit again.');
+                        }else{
+                          require_once drupal_get_path() . 'includes/password.inc';
+                          $hashpass = user_hash_password($form_state['values']['password']);
+                          db_query('update {users} set pass= :pass where uid = :uid',array('pass'=>$hashpass,'uid'=> $user->uid));
+                          drupal_set_message('Your password has been changed');
+                        }
+                      }
+                    }
                 }
 	}
 }
