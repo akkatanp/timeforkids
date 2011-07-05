@@ -1,5 +1,5 @@
 <?php //echo $sightseeing_data['cust_node_title'];?>
-<link rel="stylesheet" href="/sites/all/themes/tfk/css/atw-sightseeing.css" />
+<!--link rel="stylesheet" href="/sites/all/themes/tfk/css/atw-sightseeing.css" /-->
 <script src="/sites/all/themes/tfk/js/atw-sightseeing.js"></script>
 
 <?php if($sightseeing_data['is_admin_editor'] == 1):?>
