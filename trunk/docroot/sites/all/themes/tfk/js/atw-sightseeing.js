@@ -2,11 +2,13 @@ $(document).ready(function() {
 	var map = $('map');
 	var locations = map.children();
 	
-	alert(locations.length);
-	
 	var locationClick = function(e) {
 		e.preventDefault();
-		$('#location-iframe').remove();
+		
+		if ($('#location-iframe')) {
+			$('#location-iframe').remove();
+		}
+		
 		var locationFrame = $('<iframe></iframe>').attr({
 			'id' : 'location-iframe',
 			'framborder': '0',
