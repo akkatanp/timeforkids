@@ -1019,6 +1019,16 @@ ul#aplus-papers-checklist {
   float: right;
 }
 
+.flashcards-return {
+  margin-bottom: 12px;
+}
+
+.page-node-add-flashcard #edit-actions #edit-submit {
+  box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+}
+
 .page-homework-helper-writing-tips .ui-accordion .ui-accordion-header {
   background: #dddddd;
   clear: left;
