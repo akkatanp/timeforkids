@@ -27,6 +27,7 @@
                                 echo '<a href="'.url('field-collection/field-timeline-event/'.$image['event_nid'].'/edit',array('query'=>array('destination' => $return_path))).'">[edit]</a>';
                                 echo ' - <a href="'.url('field-collection/field-timeline-event/'.$image['event_nid'].'/delete',array('query'=>array('destination' => $return_path))).'">[delete]</a>';
                                 ?>
+                                <!-- MIKE : <?php print $image['image_shape'] // can be "undefined" , "horizontal","vertical","square" ?> -->
 				<?php endif;?>
 			</div>
 			<div class="clearfix"></div>
