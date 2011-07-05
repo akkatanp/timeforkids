@@ -503,4 +503,22 @@ li.search-result .content-type .ctype-suffix {
   font-size: 11px;
 }
 
+/**
+ * Slideshow and Video icons.
+ */
 
+#block-system-main .search-result .icon {
+	height: 22px;
+	margin: -34px 0 0 75px;
+	position: relative;
+	width: 32px;
+	z-index: 2;
+}
+
+#block-system-main .search-result .content-type-video .icon {
+	background: url("../images/video-camera-icon.png") no-repeat scroll 0 0 transparent;
+}
+
+#block-system-main .search-result .content-type-slideshow .icon {
+	background: url("../images/photo-camera-icon.png") no-repeat scroll 0 0 transparent;
+}
