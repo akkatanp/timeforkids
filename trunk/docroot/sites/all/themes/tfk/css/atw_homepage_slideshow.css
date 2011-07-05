@@ -52,7 +52,7 @@ h2.block-title {
 #slideshow-container #slideshow {
 	position: relative;
 	width: 488px;
-	height: 370px;
+	height: 360px;
 }
 
 #slideshow .header {
@@ -67,7 +67,7 @@ h2.block-title {
 
 #slideshow .footer {
 	position: absolute;
-	top: 338px;
+	top: 328px;
 	left: 0px;
 	width: 476px;
 	height: 20px;
@@ -115,21 +115,21 @@ h2.block-title {
 	top: 0px;
 	left: 0px;
 	width: 488px;
-	height: 370px;
+	height: 360px;
 	overflow: hidden;
 }
 
 #slideshow .inner {
 	position: absolute;
-	top: 0px;
+	top: 100px;
 	left: 0px;
-	height: 370px;
+	height: 260px;
 }
 
 #slideshow .inner img {
 	float: left;
 	width: 488px;
-	height: 370px;
+	height: 260px;
 }
 
 #slideshow-info .credit,
