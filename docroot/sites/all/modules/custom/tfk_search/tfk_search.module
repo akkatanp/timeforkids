@@ -502,7 +502,7 @@ function theme_tfk_featured_block(&$variables) {
   
   $output .= '<div class="g2">';
   $output .= '<div class="featured-label">FEATURED</div>';
-  $output .= "<h2 class='featured-title'>". l($tfkSearchFeaturedItem->title, $url). "</h2>";
+  $output .= l('<h2 class="featured-title">'. $tfkSearchFeaturedItem->title. '</h2>', $url, array('html' => TRUE));
   $output .= "<div class='featured-date'>". date('F j, Y', $tfkSearchFeaturedItem->created). "</div>";
   $output .= "<div class='featured-dek'>{$tfkSearchFeaturedItem->body}</div>";
   $output .= '<div class="featured-link">'. l('View '. ($tfkSearchFeaturedItem->type == 'slideshow'? 'Photo Slide-Show': 'Video'), $url). '</div>';
@@ -510,7 +510,7 @@ function theme_tfk_featured_block(&$variables) {
   // Thumbnails. Only for slideshows.
   if($tfkSearchFeaturedItem->type == 'slideshow') {
     $output .= '<div class="featured-thumbnails">';
-    $link_options['class'] = array('featured-thumbnail');
+    $link_options['attributes']['class'] = array('featured-thumbnail');
     foreach($tfkSearchFeaturedItem->slideshow_images as $image) {
       $output .= '<span class="featured-thumbnails">';
       $output .= l(theme('image', array('path' => $image->abspath, 'title' => $tfkSearchFeaturedItem->title, 'alt' => $tfkSearchFeaturedItem->title )), $url, $link_options);
@@ -519,6 +519,16 @@ function theme_tfk_featured_block(&$variables) {
     
     $output .= '</div>';
   }
+  
+  // Favorites link.
+  $flag = flag_get_flag('favorites');
+  if($flag != FALSE) {
+    $flag_link = flag_create_link('favorites', $tfkSearchFeaturedItem->nid);
+    $output .= '<div class="featured-flag-link">';
+    $output .= $flag_link;
+    $output .= '</div>';
+  }
+  
   $output .= '</div><!--./g2-->';
   
   // Related content. @todo Pass some real data to it.
@@ -550,15 +560,34 @@ class tfkSearchFeaturedItem {
     foreach(get_object_vars(node_load($this->nid)) as $prop => $value) {
       $this->$prop = $value;
     }
+    
     if($this->type == 'slideshow') {
       $this->slideshow_images = array();
-      $this->featured_item = node_load(array_shift(array_shift($this->field_slideshow_images['und'])));
-      $this->featured_item->abspath = tfk_search_get_thumbnail($this->featured_item->field_image['und'][0]['fid'], 'tfk_270x270');
-      foreach($this->field_slideshow_images['und'] as $image) {
-        $_image = node_load($image['nid']);
-        $_image->abspath = tfk_search_get_thumbnail($_image->field_image['und'][0]['fid'], 'tfk_60x60');
-        $this->slideshow_images[] = $_image;
+      
+      $images = field_get_items('node', $this, 'field_slideshow_images');
+      if($images != FALSE) {
+      	$this->featured_item = node_load(array_shift(array_shift($images)));
+      	
+      	$featured_image = field_get_items('node', $this->featured_item, 'field_image');
+      	if($featured_image != FALSE) {
+      	  $featured_image = array_shift($featured_image);
+      	  $this->featured_item->abspath = tfk_search_get_thumbnail($featured_image['fid'], 'tfk_270x270');
+      	}
+      	
+      	if(count($images)) {
+          foreach($images as $image) {
+            $_image = field_get_items('node', node_load($image['nid']), 'field_image');
+            if($_image != FALSE) {
+              $_image = array_shift($_image);
+              $_image['abspath'] = tfk_search_get_thumbnail($_image['fid'], 'tfk_60x60');
+              $this->slideshow_images[] = (object) $_image;
+            }
+          }
+      	}
       }
+
+      
+
     }
     if($this->type == 'video') {
       $test = null; //@todo Load the video.
