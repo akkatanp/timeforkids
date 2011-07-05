@@ -27,8 +27,8 @@
   <?php if(isset($custom_search)): ?>
     
    <?php if(isset($pager_top)): ?>
-    	c<?php print $pager_top; ?>
-    <?php endif; ?>!
+    	<?php print $pager_top; ?>
+    <?php endif; ?>
     
     <ol id="tfk-search-results-photos-video" class="search-results<?php if($module): ?><?php print $module; ?>-results<?php endif; ?>" class="search-results">
       <?php print $search_results; ?>
