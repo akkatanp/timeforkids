@@ -19,12 +19,12 @@ $(document).ready(function() {
 		}).appendTo(document.body).load(function() {
 			var locationBody = $(this).contents().find('body');
 			var locationTable = $(locationBody).find('table');
-			var locationImg = locationTable.find('img');
+			var locationImg = new Image();
+			locationImg.src = locationTable.find('img').eq(0).src;
 			var locationName = $('<h1></h1>').text(locationTable.find('.boldBlack20 font').text());
 			var locationText = $('<p></p>').text(locationTable.find('.storyText').eq(1).text());
 			
 			var locationDiv = $('<div></div>').attr('id', 'location-container').append(locationImg).append(locationName).append(locationText);
-			alert('here');
 			locationDiv.css({
 				'top': $('#map-container img').position().top + 'px',
 				'left': '0px',
