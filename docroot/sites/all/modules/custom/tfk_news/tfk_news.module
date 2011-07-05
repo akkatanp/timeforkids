@@ -105,7 +105,7 @@ function _tfk_news_homepage_mini_lessons(){
 
 function _tfk_news_current_filters(){
   if(arg(0) == 'news-archive'){
-    $str = '';
+    $str = '<div class="newsarc">News Archive</div>';
     if(count(arg()) == 1){
       $str .= 'Viewing All News;';
     }else{
