@@ -336,6 +336,12 @@ input[type=submit],
 	-moz-box-shadow: 2px 2px 2px #999;
 	-webkit-box-shadow: 2px 2px 2px #999;
 }
+button:hover,
+input[type=button]:hover,
+input[type=submit]:hover,
+.form-submit:hover {
+	background: #900;
+}
 
 /*
  * Links
