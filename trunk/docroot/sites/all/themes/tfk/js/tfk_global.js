@@ -41,10 +41,11 @@ $(document).ready(function() {
 			var loginForm = $('#login-container').html();
 			var loginContainer = $('<div></div>').attr('id', 'login-container').html(loginForm).appendTo(lightBox);
 			var loginHeader = $('#lightbox #login-header');
-			var closeButton = $('<a></a>').addClass('close-button').appendTo(loginHeader).click(closeLightBox);
+			var closeButton = $('<a></a>').addClass('close-button').click(closeLightBox).appendTo(loginHeader);
 		};
 		
-		var closeLightBox = function() {
+		var closeLightBox = function(e) {
+			e.preventDefault();
 			$('#lightbox').remove();
 			$('#mask').remove();
 			$('body').css('overflow', 'auto');

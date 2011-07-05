@@ -317,7 +317,22 @@ option {
 textarea {
 }
 
-button {
+button,
+input[type=button],
+input[type=submit],
+.form-submit {
+	font: bold 11px arial;
+	background: #d71700;
+	color: #fff;
+	padding: 6px 8px;
+	border: none;
+	cursor: pointer;
+	border-radius: 12px;
+	-moz-border-radius: 12px;
+	-webkit-border-radius: 12px;
+	box-shadow: 2px 2px 2px #999;
+	-moz-box-shadow: 2px 2px 2px #999;
+	-webkit-box-shadow: 2px 2px 2px #999;
 }
 
 /*
@@ -335,6 +350,7 @@ a:visited  {
 
 a:hover,
 a:focus {
+	text-decoration: underline;
 }
 
 a:active {
