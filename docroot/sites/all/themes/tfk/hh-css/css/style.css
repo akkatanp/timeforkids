@@ -17,31 +17,27 @@
 }
 
 /* Establish baseline rhythm */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_homework-helper\.sass}line{font-family:\0000369}}
-.homework-helper-title {
-  font-size: 36px;
-  font-weight: bold;
-  line-height: 1;
-  margin: 10px 0 0 20px;
-}
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_homework-helper\.sass}line{font-family:\0000375}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_homework-helper\.sass}line{font-family:\0000378}}
 .tfk-header-tag {
-  background: transparent url(images/tfk-red-tag.png) no-repeat -8px 0;
+  background: transparent url(images/tfk-red-tag-extended.png) no-repeat top right;
   color: white;
-  font-size: 14px;
+  font-size: 18px;
+  line-height: 30px;
   font-weight: bold;
   height: 23px;
-  margin: 10px 0 0;
-  padding: 12px;
+  padding: 12px 24px;
   text-transform: uppercase;
+  margin-top: 5px;
+  display: inline;
+  float: left;
+  margin-bottom: 1.714em;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_homework-helper\.sass}line{font-family:\0000377}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_homework-helper\.sass}line{font-family:\0000380}}
 .tfk-header-tag ~ .homework-helper-title {
   font-size: 16px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_homework-helper\.sass}line{font-family:\0000380}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_homework-helper\.sass}line{font-family:\0000383}}
 .homework-helper-content {
   border: 1px solid #cecece;
   position: relative;
@@ -49,23 +45,23 @@
   *zoom: 1;
   margin-bottom: 1.714em;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_homework-helper\.sass}line{font-family:\0000385}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_homework-helper\.sass}line{font-family:\0000388}}
 .homework-helper-content .block {
   margin-bottom: 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_homework-helper\.sass}line{font-family:\0000387}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_homework-helper\.sass}line{font-family:\0000390}}
 .homework-helper-content .node,
 .homework-helper-content .view {
   margin: 10px 19px;
   overflow: hidden;
   *zoom: 1;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_homework-helper\.sass}line{font-family:\0000391}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_homework-helper\.sass}line{font-family:\0000394}}
 .homework-helper-content .progress-disabled {
   float: none;
   display: inline;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_homework-helper\.sass}line{font-family:\0000394}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_homework-helper\.sass}line{font-family:\0000397}}
 .homework-helper-content .ajax-progress {
   font-size: 1.5em;
   padding: 30px;
@@ -79,7 +75,7 @@
   -o-box-shadow: rgba(0, 0, 0, 0.5) 0 2px 4px;
   box-shadow: rgba(0, 0, 0, 0.5) 0 2px 4px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_homework-helper\.sass}line{font-family:\00003103}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_homework-helper\.sass}line{font-family:\00003106}}
 .homework-helper-content .hh-throbber-message {
   width: 130px;
 }
@@ -1041,7 +1037,7 @@ ul#aplus-papers-checklist {
   margin: 0 10px 10px 0;
   clear: right;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_homework-helper\.sass}line{font-family:\0000338}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_homework-helper\.sass}line{font-family:\0000341}}
 .page-homework-helper-flashcards #block-block-21 h2, .page-homework-helper-flashcards #block-study-helper-0 h2 {
   margin-top: 0;
   margin-bottom: 10px;
@@ -1390,14 +1386,18 @@ ul#aplus-papers-checklist {
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_grammar-wizard\.sass}line{font-family:\0000357}}
 .page-node-186 .homework-helper-title {
-  background: transparent url(images/tfk-red-tag.png) no-repeat -8px 0;
+  background: transparent url(images/tfk-red-tag-extended.png) no-repeat top right;
   color: white;
-  font-size: 14px;
+  font-size: 18px;
+  line-height: 30px;
   font-weight: bold;
   height: 23px;
-  margin: 10px 0 0;
-  padding: 12px;
+  padding: 12px 24px;
   text-transform: uppercase;
+  margin-top: 5px;
+  display: inline;
+  float: left;
+  margin-bottom: 1.714em;
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_grammar-wizard\.sass}line{font-family:\0000360}}
@@ -1600,14 +1600,18 @@ span.grammar-wizard-incorrect {
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_writers-toolbox\.sass}line{font-family:\000032}}
 .page-node-226 .homework-helper-title {
-  background: transparent url(images/tfk-red-tag.png) no-repeat -8px 0;
+  background: transparent url(images/tfk-red-tag-extended.png) no-repeat top right;
   color: white;
-  font-size: 14px;
+  font-size: 18px;
+  line-height: 30px;
   font-weight: bold;
   height: 23px;
-  margin: 10px 0 0;
-  padding: 12px;
+  padding: 12px 24px;
   text-transform: uppercase;
+  margin-top: 5px;
+  display: inline;
+  float: left;
+  margin-bottom: 1.714em;
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_writers-toolbox\.sass}line{font-family:\000034}}
@@ -1633,7 +1637,7 @@ span.grammar-wizard-incorrect {
   background: none;
   width: 430px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_homework-helper\.sass}line{font-family:\0000338}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_homework-helper\.sass}line{font-family:\0000341}}
 .writers-toolbox .toolbox-links h2 {
   margin-top: 0;
   margin-bottom: 10px;
@@ -1647,7 +1651,7 @@ span.grammar-wizard-incorrect {
   padding: 15px;
   width: 220px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_homework-helper\.sass}line{font-family:\0000338}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_homework-helper\.sass}line{font-family:\0000341}}
 .writers-toolbox .toolbox-pdfs h2 {
   margin-top: 0;
   margin-bottom: 10px;

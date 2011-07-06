@@ -20,14 +20,17 @@
   overflow: visible
 
 =tfk-header-tag
-  background: transparent url(images/tfk-red-tag.png) no-repeat -8px 0
+  background: transparent url(images/tfk-red-tag-extended.png) no-repeat top right
   color: $white
-  font-size: $ms0
+  font-size: $ms1
+  line-height: 30px
   font-weight: bold
   height: 23px
-  margin: 10px 0 0
-  padding: 12px
+  padding: 12px 24px
   text-transform: uppercase
+  margin-top: 5px
+  +float-left
+  +trailer
 
 =tfk-box
   background: #e6e6e6
@@ -66,11 +69,11 @@
     color: $tfk-red
     font-weight: bold
 
-.homework-helper-title
-  font-size: 36px
-  font-weight: bold
-  line-height: 1
-  margin: 10px 0 0 20px
+// .homework-helper-title
+//   font-size: 36px
+//   font-weight: bold
+//   line-height: 1
+//   margin: 10px 0 0 20px
 
 .tfk-header-tag
   +tfk-header-tag
