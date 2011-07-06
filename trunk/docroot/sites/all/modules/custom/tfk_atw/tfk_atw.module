@@ -720,7 +720,7 @@ function tfk_atw_preprocess_node(&$vars, $hook) {
 
         $vars['lingo_phrases']['basic'] = array();
         $vars['lingo_phrases']['next_level'] = array();
-
+        $vars['lingo_photo_credit'] = '';
         foreach( $vars['field_native_lingo_phrase'] as $k => $lingo_phrase ){
             $phrase_nid = $lingo_phrase['value'];
             $result = db_query('select pt.field_lingo_phrase_text_value as phrase_text,
