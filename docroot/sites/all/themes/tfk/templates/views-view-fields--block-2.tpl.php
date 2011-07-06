@@ -41,7 +41,7 @@
 
 <?php if(strlen($fields['field_related_articles']->content) != 0):?>
     <div class="related-content-wrap">
-        <div class="addit-content"><?php print $fields['field_related_articles_1']->content;?></div>
+        <div class="addit-content"><?php //print $fields['field_related_articles_1']->content;?></div>
         <?php if($fields['field_related_articles']): ?>
            <div class="addit-mini-lessons"><?php print $fields['field_related_articles']->content;?></div>
         <?php endif; ?>
