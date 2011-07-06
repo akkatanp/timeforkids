@@ -30,11 +30,13 @@ function aplus_papers_prepare_steps($node) {
 
 function aplus_papers_first_step($node) {
   $description = field_get_items('node', $node, 'field_paper_description');
-  $description = $description[0]['safe_value'];
   $form['description'] = array(
-    '#markup' => '<div class="aplus-overview">' . $description . '</div>',
+    '#prefix' => '<div class="aplus-overview">',
+    '#suffix' => '</div>',
+    '#markup' => $description[0]['safe_value'],
   );
   $form['#parent_nid'] = $node->nid;
+
   return $form;
 }
 
@@ -44,19 +46,19 @@ function aplus_papers_prepare_step($node) {
     $form['title'] = array(
       '#type' => 'textfield',
       '#required' => TRUE,
-      '#title' => 'Title:',
+      '#title' => t('Title'),
     );
   }
   if ($node->field_step_name_date && $node->field_step_name_date[$node->language][0]['value']) {
     $form['name'] = array(
       '#type' => 'textfield',
       '#required' => TRUE,
-      '#title' => 'Name:',
+      '#title' => t('Name'),
     );
     $form['date'] = array(
       '#type' => 'textfield',
       '#required' => TRUE,
-      '#title' => 'Date:',
+      '#title' => t('Date'),
     );
   }
   if ($node->field_step_text_area[$node->language][0]['value']) {
@@ -68,9 +70,9 @@ function aplus_papers_prepare_step($node) {
   }
   if ($node->field_step_checkbox) {
     $form['#checklist'] = $node->field_step_checkbox[$node->language][0]['value'];
-  }  
-  $form['#parent_nid'] = arg(1); 
-  
+  }
+  $form['#parent_nid'] = arg(1);
+
   return $form;
 }
 
@@ -88,8 +90,8 @@ function aplus_papers_review_step($steps) {
     '#markup' => '<h2 class="node-title">' . t('Revising and Editing') . '</h2><div class="a-plus-review-description">' . t('Carefully read each section of your paper. You can make changes here before printing your work. Make sure that what you wrote is clear and easy to understand. Check your spelling and punctuation too.') . '</div>',
   );
   $form['#checklist'] = t('I reviewed my work.');
-  $form['#parent_nid'] = arg(1); 
-  
+  $form['#parent_nid'] = arg(1);
+
   foreach ($steps as $step) {
     unset($step['description']);
     $form[] = $step;
@@ -101,7 +103,6 @@ function aplus_papers_review_step($steps) {
  * Prepare final step.
  */
 function aplus_papers_final_step() {
-  $form['#parent_nid'] = arg(1); 
+  $form['#parent_nid'] = arg(1);
   return $form;
-} 
-
+}
