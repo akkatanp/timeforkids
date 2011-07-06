@@ -1,0 +1,206 @@
+<?php
+/**
+ * Handles Ads and Omniture for TFK
+ */
+
+//Add required JS files to HEAD element and set Ad and Omniture variables
+function tfk_ads_omni_preprocess_page(&$variables){
+    global $pager_total_items;
+    $num_items = $pager_total_items[0];
+    /*Ad js lib*/
+    $ti_ad_library = "http://img.timeinc.net/shared/static/js/tii_ads.js";
+    drupal_add_js($ti_ad_library,'external');
+    $ad_omni_config = tfk_ads_omni_get_config_vars($variables);/*array used by both ads and omniture*/
+    /*adFactory config*/
+    $ad_factory = "var adConfig = new TiiAdConfig(\"3475.tfk\");adConfig.setCmSitename(\"cm.tfk\");adConfig.setRevSciTracking(true);";
+    $ad_factory .= "var adFactory = new TiiAdFactory(adConfig, \"".$ad_omni_config['zone']."\");";
+    $ad_factory .= "adFactory.setChannel(\"".$ad_omni_config['channel']."\");";
+    $ad_factory .= "adFactory.setSubchannel(\"".$ad_omni_config['sub_channel']."\");";
+    if ($ad_omni_config['is_channel'] == 1) {
+        $ad_factory .= "adFactory.setChannelPage();";
+    }
+    if (isset($ad_omni_config['node_path'])) {
+        $ad_factory .= "adFactory.setContentPage();";
+    }
+    drupal_add_js($ad_factory, 'inline');
+    /*Set ad call values*/
+    $variables['ad']['banner_728x90'] = tfk_ads_omni_create_ad('banner_728x90',728,90,'regular',1);
+    //$variables['ad']['banner_160x190'] = tfk_ads_omni_create_ad('banner_160x190',160,190,'regular'); Handled via CMS
+    $variables['ad']['banner_160x600'] = tfk_ads_omni_create_ad('banner_160x600',160,600,'regular');
+    $variables['ad']['banner_728x90_footer'] = tfk_ads_omni_create_ad('banner_728x90_footer',728,90,'regular',2);
+    /*Inject ad calls into blocks, overriding placeholder ad*/
+    tfk_ads_omni_form_alter('block_1', $variables['page']['sidebar_second'], $variables['ad']['banner_160x600']);
+    tfk_ads_omni_form_alter('block_21', $variables['page']['footer'], $variables['ad']['banner_728x90_footer']);
+    
+    /*Omniture*/
+   if (!$variables['is_admin'] == "true") {//Exclude from admin pages
+        /*Omniture account and js lib. Account must come before js include*/
+        $omniture_account .= "var s_account='".$channel_array['omni_account']."';";
+        $tfk_omni_library = drupal_get_path('theme', 'tfk') .'/js/timekids-omniture.js';
+        drupal_add_js($omniture_account, 'inline');
+        drupal_add_js($tfk_omni_library,'file');
+        /*Omniture vars*/
+        $omniture_vars .= "s_time.channel = 'tfk';\n";
+        if ($variables['node']->nid == 167) {
+            //404 Page
+            $omniture_vars .= "s_time.pageType = 'errorPage';\n";
+        } else {
+            $omniture_vars .= "s_time.pageName = '".$ad_omni_config['omni_pagename']."';\n";
+            $omniture_vars .= "s_time.prop16 = '".tfk_ads_omni_format_omniture($ad_omni_config['channel'])."';\n";
+            if (isset($ad_omni_config['sub_channel'])) {$omniture_vars .= "s_time.prop11 = '".tfk_ads_omni_format_omniture($ad_omni_config['sub_channel'])."';\n";}
+            if (isset($ad_omni_config['omni_grade_level'])) {$omniture_vars .= "s_time.prop9 = '".$ad_omni_config['omni_grade_level']."';\n";}
+            $omniture_vars .= "s_time.prop13 = '".$ad_omni_config['omni_user_status']."';\n";
+            if (isset($ad_omni_config['ctype'])) {$omniture_vars .= "s_time.prop15 = '".$ad_omni_config['ctype']."';\n";}
+            if ($ad_omni_config['channel'] == "search") {
+                if (!isset($_GET['page'])) {//Only want number of search results while on page 1.
+                    $omniture_vars .= "s_time.prop26 = '".$num_items."';\n";
+                }
+                $omniture_vars .= "s_time.prop18 = '".$ad_omni_config['omni_search_term']."';\n";
+            }
+        }
+        $omniture_vars .= "s_time.prop17 = location.href;\n";
+        $omniture_vars .= "var s_code=s_time.t();if(s_code)document.write(s_code)\n";
+        drupal_add_js($omniture_vars, 'inline');
+    }
+}
+//Creates the HTML/JS snippet for ads
+function tfk_ads_omni_create_ad($name,$width,$height,$type='regular',$position=NULL){
+    /**
+     * Arguments
+     * $name: Used for the div id.
+     * $height: Used for adFactory.getAd
+     * $width: Used for adFactory.getAd
+     * $type: can be regular or cm
+     * $position: Adds ad.setPosition($position) if needed
+     * $zone: Override the zone if needed
+     */
+     if (isset($position)) {
+        $ad_position = "ad.setPosition($position);";
+     }
+     if ($type == "regular") {
+        $ad_tag = "<div id=\"$name\"><div><script type=\"text/javascript\">ad = adFactory.getAd($width, $height);".$ad_position."ad.write();</script></div></div>";
+     } elseif ($type == "cm") {
+        $ad_tag = "<div id=\"$name\"><script type=\"text/javascript\">adFactory.getCmAd($width, $height, \"global\", \"tout\").write();</script></div>";
+     }
+     return $ad_tag;
+}
+//Determines the channel structure for use with Ads and Omniture
+function tfk_ads_omni_get_config_vars(&$variables){
+    /**
+     * Determines the channel structure for use with Ads and Omniture
+     * $channel_array['is_channel']  This is a main channel page, ie homepage, news, around the world, etc
+     * $channel_array['zone'] Current ad zone
+     * $channel_array['channel'] Current channel name
+     * $channel_array['sub_channel'] Current sub channel name
+     * $channel_array['node_path'] Current node leaf
+     * $channel_array['omni_pagename'] omnivar pagename
+     * $channel_array['omni_account'] omniture account. 
+     * $channel_array['omni_grade_level'] grade level of the content if it has one.
+     * $channel_array['omni_user_status'] registered or non-registered
+     * $channel_array['omni_ctype'] content type as described by node->type
+     */
+     $channel_array['omni_pagename'] = "tfk|"; 
+     $channel_array['omni_user_status'] = "non-registered";
+     //First let's determine if we are in the kid or teacher site
+     if (isset($variables['user']->roles) && in_array('teacher',$variables['user']->roles) == 1) {
+         $ad_zone_prefix = "teacher";
+         $user_data = user_load($variables['user']->uid);
+         /*$user_grade_level = field_get_items('user', $user_data, 'field_grade_level');
+         if (isset($user_grade_level[0]['tid'])) {
+            $result = db_query('SELECT DISTINCT name FROM taxonomy_term_data WHERE tid = '.$user_grade_level[0]['tid']);
+            foreach ($result as $record) {
+               $channel_array['omni_grade_level'] = $record->name;
+            }
+         }*//*grade level actually comes from content not user*/
+     } else {
+         $ad_zone_prefix = "kids";
+     }
+     $channel_array['omni_pagename'] .= $ad_zone_prefix."|";
+     if (isset($variables['user']->roles) && in_array('authenticated user',$variables['user']->roles) == 1) {//any authenticated user, not just teachers
+         $channel_array['omni_user_status'] = "registered";
+     }
+     if (base_path() == "/") {
+        $path_array = explode("/", drupal_get_path_alias(request_uri(), 1));
+        array_shift($path_array);
+     } else {
+        $path_array = explode("/", str_replace(base_path(), '', drupal_get_path_alias(request_uri(), 1)));
+     }
+     if (strlen($path_array[0]) < 1) {
+         $channel_array['channel'] = "homepage";
+         $channel_array['is_channel'] = 1;
+         $channel_array['omni_pagename'] .= "home";
+     } else {
+         $channel_array['channel'] = tfk_ads_omni_channel_override($path_array[0]);
+         if (count($path_array) > 1) {
+            if (!empty($variables['node']) ) {
+                    $channel_array['node_path'] = $path_array[1];//Node
+                    $channel_array['omni_pagename'] .= $channel_array['channel']."|".tfk_ads_omni_format_omniture($variables['node']->title);
+                    $grade_level = field_get_items('node', $variables['node'], 'field_grade_level');
+                    if (isset($grade_level[0]['taxonomy_term']->name)) {
+                        $channel_array['omni_grade_level'] = $grade_level[0]['taxonomy_term']->name;
+                    }
+                    if (isset($variables['node']->type)) {
+                        $channel_array['ctype'] = tfk_ads_omni_format_omniture($variables['node']->type);
+                    } else {
+                        $channel_array['ctype'] = "article";
+                    }
+                    if (in_array('comment',$path_array) == 1) {
+                        $channel_array['omni_action'] = "comment";
+                    }
+            } else {
+                    $channel_array['sub_channel'] = $path_array[1];//Sub-channel
+                    $channel_array['omni_pagename'] .= $channel_array['channel']."|".$channel_array['sub_channel'];
+            }
+        } else {
+            $channel_array['is_channel'] = 1;
+            $channel_array['omni_pagename'] .= $channel_array['channel']."|channel page";
+        }
+     }
+     $channel_array['zone'] = $ad_zone_prefix."/".$channel_array['channel'];
+     $channel_array['omni_account'] = tfk_ads_omni_get_account();
+     $channel_array['omni_pagename'] = tfk_ads_omni_format_omniture($channel_array['omni_pagename']);
+     if ($channel_array['channel'] == "search") {
+         $channel_array['omni_search_term'] = array_shift(explode("?", $path_array[2]));
+     }
+     $channel_array['test-path'] = $path_array;
+     return $channel_array;
+}
+//This overrides a block with a real ad call
+function tfk_ads_omni_form_alter($form_id, &$form, $content) {
+    $alteration = array('#description' => t('Overridden via ad module'),'#markup' => $content);
+    $form["$form_id"] = array_merge($form["$form_id"], $alteration);
+}
+//Retrieve the omniture suite account name
+function tfk_ads_omni_get_account() {
+    $current_hostname = $_ENV["HOSTNAME"];
+    $omniture_account = "";
+    switch ($current_hostname) {
+        case "timedev.prod.acquia-sites.com":
+            $omniture_account = "timekidscomqa";/*QA*/
+        case "time.prod.acquia-sites.com":
+        case "www.timeforkids.com":
+            $omniture_account = "timekidscom";/*Prod*/
+        case "timedev2.prod.acquia-sites.com":
+        default:
+            $omniture_account = "timekidscomdev";/*DEV. Localhost etc should default to dev*/
+    }
+    return $omniture_account;
+}
+//Overrides certain channel values for omniture reporting only
+function tfk_ads_omni_channel_override($channel_name) {
+    switch ($channel_name) {
+        case "destination":
+            $override_channel = "around the world";
+        default:
+            $override_channel = $channel_name;
+    }
+    return $override_channel;
+}
+//Cleans up strings for omniture
+function tfk_ads_omni_format_omniture($string) {
+	$string = str_replace("_", " ", $string);
+        $string = str_replace("-", " ", $string);
+        $string = str_replace("'", "", $string);
+        $string = strtolower($string);
+	return $string;
+}

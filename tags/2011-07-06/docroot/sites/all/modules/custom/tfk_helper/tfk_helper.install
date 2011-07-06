@@ -1,0 +1,23 @@
+<?php
+
+/**
+ * @file
+ * Place all the site update hooks here for consistency and ease of access.
+ */
+
+/**
+ * Install site-wide search Feature.
+ */
+function tfk_helper_update_7000($ret = NULL) {
+  // Remove existing Context.
+  $context = context_load('search pages');
+  if($context != FALSE) {
+    $res = context_delete($context);
+    if($res) {
+      $ret[] = 'Removed old search pages context from database.';
+    }
+  }
+  // Install Feature. We use this function instead of module_install because
+  // it takes care of installing dependencies.
+  features_install_modules(array('tfk_site_wide_search'));
+}
