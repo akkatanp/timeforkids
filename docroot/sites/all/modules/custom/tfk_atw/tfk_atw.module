@@ -207,6 +207,9 @@ function _get_atw_daylife_slideshow_images(){
     $intr_tmp = field_get_items('node', $node, 'field_person_intro');
     $node_data['daylife_speaker_intro'] = $intr_tmp[0]['value'];
 
+    $credit_tmp =  field_get_items('node', $node, 'field_person_photo_credit');
+    $node_data['daylife_speaker_credit'] = $credit_tmp[0]['value'];
+
     $tmp_day_nid =  field_get_items('node', $node, 'field_day_in_life_time');
 
     $result = db_query('select ti.field_day_in_life_time_item_value,ti.entity_id,
