@@ -4,6 +4,9 @@
 	<div id="speaker-intro">
 		<?php print $node_data['daylife_speaker_intro'];?>
 	</div>
+        <div id="speaker-credit">
+		<?php print $node_data['daylife_speaker_credit'];?>
+	</div>
 	
 	<div class="clock active"></div>
 	
