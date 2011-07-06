@@ -25,7 +25,7 @@
 ?>
 <?php foreach ($fields as $id => $field): ?>
 
-    <?php if($id != 'field_resources_list' && $id != 'field_resources_label'):?>
+    <?php if($id != 'field_related_articles' && $id != 'field_resources_label'):?>
       <?php if (!empty($field->separator)): ?>
         <?php print $field->separator; ?>
       <?php endif; ?>
@@ -39,12 +39,12 @@
 
 
 
-<?php if(strlen($fields['field_resources_list']->content) != 0):?>
+<?php if(strlen($fields['field_related_articles']->content) != 0):?>
     <div class="related-content-wrap">
-        <!--<div class="addit-content"><?php print $fields['field_resources_label']->content;?></div>-->
+        <!--<div class="addit-content"><?php print $fields['field_related_articles']->content;?></div>-->
       <div class="addit-content">Additional Content</div>
-        <?php if($fields['field_resources_list']): ?>
-           <div class="addit-mini-lessons">WORKSHEETS : <?php print $fields['field_resources_list']->content;?></div>
+        <?php if($fields['field_related_articles']): ?>
+           <div class="addit-mini-lessons"><?php print $fields['field_related_articles']->content;?></div>
         <?php endif; ?>
 
     </div>
