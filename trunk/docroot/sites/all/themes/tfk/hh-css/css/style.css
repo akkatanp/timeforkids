@@ -16,45 +16,7 @@
   text-shadow: none;
 }
 
-/* Establish baseline rhythm
- * from compass/typography/_vertical_rhythm */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/\.gem\/ruby\/1\.8\/gems\/compass-0\.11\.3\/frameworks\/compass\/stylesheets\/compass\/typography\/_vertical_rhythm\.scss}line{font-family:\0000326}}
-body {
-  font-size: 87.5%;
-  line-height: 1.714em;
-}
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/\.gem\/ruby\/1\.8\/gems\/compass-0\.11\.3\/frameworks\/compass\/stylesheets\/compass\/typography\/_vertical_rhythm\.scss}line{font-family:\0000330}}
-html > body {
-  font-size: 14px;
-}
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/grids\/_grids_susy\.sass}line{font-family:\000034}}
-.container, body #container {
-  *zoom: 1;
-  margin: auto;
-  width: 984px;
-  max-width: 100%;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/\.gem\/ruby\/1\.8\/gems\/compass-0\.11\.3\/frameworks\/compass\/stylesheets\/compass\/utilities\/general\/_clearfix\.scss}line{font-family:\0000338}}
-.container:after, body #container:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/grids\/_grids_susy\.sass}line{font-family:\000038}}
-.wireframe {
-  outline: 1px dashed red;
-}
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/grids\/_grids_susy\.sass}line{font-family:\0000319}}
-body #container > header, body #container > #main, body #container > footer {
-  clear: both;
-  margin-left: 1.22%;
-  margin-right: 1.22%;
-}
-
+/* Establish baseline rhythm */
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_homework-helper\.sass}line{font-family:\0000369}}
 .homework-helper-title {
   font-size: 36px;
