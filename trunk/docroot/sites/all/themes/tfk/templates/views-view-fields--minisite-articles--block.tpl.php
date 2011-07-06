@@ -40,7 +40,7 @@
     <div class="related-content-wrap">
         <div class="addit-content"><?php print $fields['field_related_articles_1']->content;?></div>
         <?php if($fields['field_related_articles_1']): ?>
-           <div class="addit-related-articles"><?php //print $fields['field_related_articles']->label;?><?php print $fields['field_related_articles']->content;?></div>
+           <div class="addit-related-articles"><?php //print $fields['field_related_articles']->label;?><?php print $fields['field_related_articles_1']->content;?></div>
         <?php endif; ?>
     </div>
 <?php endif;?>
