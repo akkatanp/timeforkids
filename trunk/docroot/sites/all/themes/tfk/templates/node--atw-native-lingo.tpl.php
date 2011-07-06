@@ -123,15 +123,11 @@ $speaker_photo = file_create_url(image_style_path('tfk_rect_large',$speaker_phot
 		<?php print render($content['body']); ?>
 
 
-       <!--THIS IS PHOTO CREDIT -----> <?php print render($content['field_person_photo_credit']); ?>
+       <!--THIS IS PHOTO CREDIT --> <?php print render($content['field_person_photo_credit']); ?>
 
 
 		<div id="image-container">
 			<img src="<?php echo $speaker_photo; ?>" />
-
-                        
-
-                        
 
 			<div id="audio-box">
 				<h2>I'm Speaking <?php echo $title; ?>!</h2>
