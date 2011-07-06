@@ -1,59 +1,5 @@
 /* Links -------------------------------------------------------------- */
-/* Typography -------------------------------------------------------------- */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/defaults\/_defaults\.sass}line{font-family:\0000311}}
-html {
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-}
-
-/* The following classes are for use with @extend. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/defaults\/_defaults\.sass}line{font-family:\0000316}}
-.serif {
-  font-family: Georgia, serif;
-}
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/defaults\/_defaults\.sass}line{font-family:\0000319}}
-.sans {
-  font-family: sans-serif;
-}
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/defaults\/_defaults\.sass}line{font-family:\0000322}}
-.mono {
-  font-family: Consolas, Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif;
-}
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/defaults\/_defaults\.sass}line{font-family:\0000325}}
-.caps, .allcaps, .smallcaps {
-  letter-spacing: 0.1em;
-}
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/defaults\/_defaults\.sass}line{font-family:\0000328}}
-.headers {
-  font-family: sans-serif;
-}
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/defaults\/_defaults\.sass}line{font-family:\0000332}}
-.allcaps {
-  text-transform: uppercase;
-}
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/defaults\/_defaults\.sass}line{font-family:\0000336}}
-.amp {
-  font-family: GoudyBookletter1911Regular, "Goudy Old Style", Baskerville, Palatino, Georgia, serif;
-}
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/defaults\/_defaults\.sass}line{font-family:\0000339}}
-.smallcaps {
-  font-variant: small-caps;
-}
-
 /* Body -------------------------------------------------------------- */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/defaults\/_defaults\.sass}line{font-family:\0000346}}
-body {
-  color: black;
-  background: white;
-}
-
 /* Selected Text -------------------------------------------------------------- */
 /* -moz- must be declared separately */
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/defaults\/_defaults\.sass}line{font-family:\0000354}}
@@ -1179,8 +1125,9 @@ ul#aplus-papers-checklist {
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
 }
+
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_flashcard_page\.sass}line{font-family:\0000366}}
-.page-node-add-flashcard #block-system-main #flashcard-node-form label {
+#flashcard-node-form label {
   display: inline;
   float: left;
   margin-right: 10px;
