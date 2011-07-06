@@ -1,11 +1,11 @@
 .node-type-a-paper,
 .node-type-paper-step
   .paper-textarea
-    width: 460px
     padding: 36px 0 12px
+    width: 460px
     p
-      text-indent: 40px
       margin-bottom: 1em
+      text-indent: 40px
   h2
     margin-top: 0
   .node-title a
@@ -18,17 +18,17 @@
     margin: 10px
     padding: 10px
     p
-      margin-bottom: 0
       font-style: italic
+      margin-bottom: 0
   .form-type-textfield,
   .form-type-textarea
     background: #ddd
+    border: 1px solid #cecece
+    clear: left
+    font-size: 14px
+    margin-top: 0
     padding: 10px
     width: 460px
-    margin-top: 0
-    clear: left
-    border: 1px solid #cecece
-    font-size: 14px
     label
       font-size: $ms1
       padding: 0 0 10px
@@ -40,15 +40,14 @@
     font-size: 14px
     width: 460px
   .content .content
-    .form-item input
-      font-size: 14px
+    .form-item input,
     .content
       font-size: 14px
   .node-paper-step
+    +float-left
     margin: 0
     padding: 10px 0
     width: 460px
-    +float-left
     label
       font-size: $ms1
       padding: 0 0 10px
@@ -56,6 +55,8 @@
       margin: 0 0 10px 0
   .paper-title
     font-size: $ms2
+    line-height: 1
+    margin: 1em 0
     text-align: center
   .paper-date
     +float-right
@@ -66,33 +67,35 @@
 
 #aplus-submit-buttons
   background: #ddd
-  padding: 10px
-  width: 460px
   border: 1px solid #cecece
-  height: 25px
-  text-align: right
-  margin-top: -22px
   +float-left
+  height: 25px
+  margin-top: -22px
+  padding: 10px
+  text-align: right
+  width: 460px
   .aplus-start-over
     +tfk-return-button(italic)
 
 #aplus-papers-checklist-block
-  border: 1px solid #cecece
   position: absolute
   right: 10px
   top: 10px
   width: 240px
+  .aplus-papers-checklist
+    border: 1px solid #cecece
+    margin-bottom: 0
   .aplus-papers-checklist-title
-    color: white
     background-color: $tfk-red
-    padding: 2px
-    font-weight: bold
-    text-transform: uppercase
     border: 10px solid #ddd
+    color: white
+    font-weight: bold
+    padding: 2px
     text-align: center
+    text-transform: uppercase
   li
-    border-bottom: 1px dashed #cecece
     background: #ddd url(images/checkbox-unchecked.gif) no-repeat 0 0.5em
+    border-bottom: 1px dashed #cecece
     color: $tfk-red
     font-weight: bold
     margin: 0
@@ -106,33 +109,32 @@
       background-image: url(images/checkbox-checked.gif)
     &.last
       border-bottom: 0
-
-ul#aplus-papers-checklist
-  margin-bottom: 0
+  .aplus-print-save-buttons
+    clear: right
+    +float-right
+    padding-top: 10px
+    text-align: center
+    width: 230px
+    a
+      font-weight: bold
+      +inline-block
+    input
+      margin: 10px 0 0
 
 #aplus-review-step,
 #aplus-final-step
-  width: 460px
   +float-left
   margin-top: 10px
+  width: 460px
   .node-title
     margin: 0 0 10px 0
   .a-plus-review-description
+    font-size: 14px
     font-weight: bold
     margin-bottom: 10px
-    font-size: 14px
   label
     font-size: $ms1
     padding: 0 0 10px
-
-#aplus-print-save-buttons
-  text-align: center
-  clear: right
-  padding-top: 10px
-  width: 230px
-  +float-right
-  input
-    margin-top: 10px
 
 .page-homework-helper-a-plus-papers
   .view-a-papers
@@ -142,9 +144,8 @@ ul#aplus-papers-checklist
       padding-left: 15px
       +trailer
     .views-row
-      padding: 20px 10px 10px 135px
       border-bottom: 1px solid #cecece
-      padding-bottom: $baseline
+      padding: 20px 10px $baseline 135px
     .views-row-last
       border-bottom: 0
     .views-field-title
@@ -156,12 +157,9 @@ ul#aplus-papers-checklist
     .views-field-nothing
       +leader
       .related-pdfs
+        background: #ddeeff url(images/pdf-image.png) 0 0.5em no-repeat
         border: 4px solid #addcfa
-        background: #ddeeff url(images/pdf-image.png)
-        background-repeat: no-repeat
-        background-position: 0 .5em
-        padding: 5px 5px 5px 30px
         +box-shadow(transparentize($black, 0.5) 0 2px 4px)
+        padding: 5px 5px 5px 30px
         a
           margin-right: 3px
-
