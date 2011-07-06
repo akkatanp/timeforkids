@@ -25,7 +25,7 @@
 ?>
 <?php foreach ($fields as $id => $field): ?>
 
-    <?php if($id != 'field_minisite_resources' && $id != 'field_minisite_resources_label'):?>
+    <?php if($id != 'field_related_articles' && $id != 'field_related_articles_1'):?>
       <?php if (!empty($field->separator)): ?>
         <?php print $field->separator; ?>
       <?php endif; ?>
