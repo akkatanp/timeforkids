@@ -115,6 +115,7 @@
     position: absolute
   a.shuffle
     left: -315px
+    *width: 50px
   .flashcard-help-button
     float: right
     padding: 0.5em
@@ -134,8 +135,6 @@
     a
       color: $tfk-red
       +float-left
-      padding: 3px
-      height: 35px
       width: 51px
       &.prev
         +tfk-return-button
@@ -148,6 +147,7 @@
       &.next
         background: url(images/tfk-red-arrow-right.png) no-repeat scroll 36px 0 transparent
         padding-right: 42px
+        *height: 30px
   .flashcard-cycle-cards
     background: $tfk-yellow
     width: 500px
@@ -184,6 +184,9 @@
     left: 120px
     z-index: 10
     +float-left
+  .flashcard-cycle-pager  
+    *float: none
+    *margin-left: 110px
 
 .flashcard-numbering
   +float-right
@@ -203,3 +206,4 @@
       +tfk-return-button(italic)
   .content
     clear: both
+

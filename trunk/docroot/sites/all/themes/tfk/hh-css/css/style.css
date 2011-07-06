@@ -708,6 +708,7 @@ img {
 }
 .flashcard-cycle a.shuffle {
   left: -315px;
+  *width: 50px;
 }
 .flashcard-cycle .flashcard-help-button {
   float: right;
@@ -738,8 +739,6 @@ img {
   color: #d71700;
   display: inline;
   float: left;
-  padding: 3px;
-  height: 35px;
   width: 51px;
 }
 .flashcard-cycle .flashcard-cycle-pager a.prev {
@@ -782,6 +781,7 @@ img {
 .flashcard-cycle .flashcard-cycle-pager a.next {
   background: url(images/tfk-red-arrow-right.png) no-repeat scroll 36px 0 transparent;
   padding-right: 42px;
+  *height: 30px;
 }
 .flashcard-cycle .flashcard-cycle-cards {
   background: #f8e549;
@@ -837,10 +837,12 @@ img {
   display: inline;
   float: left;
 }
+.flashcard-cycle .flashcard-cycle-pager {
+  *float: none;
+  *margin-left: 110px;
+}
 
 .flashcard-numbering {
-  display: inline;
-  float: right;
   position: absolute;
   top: 60px;
   left: 200px;
