@@ -121,11 +121,15 @@ $speaker_photo = file_create_url(image_style_path('tfk_rect_large',$speaker_phot
                 <h1><?php echo $src_country_title; ?>: Native Lingo</h1>
 
 		<?php print render($content['body']); ?>
-		
+
+
+       <!--THIS IS PHOTO CREDIT -----> <?php print render($content['field_person_photo_credit']); ?>
+
+
 		<div id="image-container">
 			<img src="<?php echo $speaker_photo; ?>" />
 
-                        <?php print render($content['field_person_photo_credit']); ?>
+                        
 
                         
 
