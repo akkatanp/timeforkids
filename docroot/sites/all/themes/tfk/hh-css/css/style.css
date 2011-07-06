@@ -349,7 +349,7 @@ img {
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tim\/checkout\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000356}}
 .node-type-a-paper .paper-title,
 .node-type-paper-step .paper-title {
-  font-size: 20px;
+  font-size: 1.7em;
   line-height: 1;
   margin: 1em 0;
   text-align: center;
@@ -359,14 +359,14 @@ img {
 .node-type-paper-step .paper-date {
   display: inline;
   float: right;
-  font-size: 14px;
+  font-size: 1.2em;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tim\/checkout\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000364}}
 .node-type-a-paper .student-name,
 .node-type-paper-step .student-name {
   display: inline;
   float: left;
-  font-size: 14px;
+  font-size: 1.2em;
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tim\/checkout\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000368}}
