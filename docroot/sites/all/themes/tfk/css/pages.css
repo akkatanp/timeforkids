@@ -385,20 +385,8 @@ ul.links li {
 	border: solid 3px white;
 }
 
-.view-homepage-minisite .related-content-wrap {
-	position: absolute;
-	bottom: 20px;
-	width: 216px;
-}
-
 #block-views-homepage-destination-block-1  {
 	position: relative;
-}
-
-#block-views-homepage-destination-block-1  .related-content-wrap {
-	position: absolute;
-	bottom: 10px;
-	width: 216px;
 }
 
 .view-homepage-minisite .views-field-nothing {
@@ -418,6 +406,13 @@ ul.links li {
 	padding: 2px;
 	color: white;
 	background: #999;
+}
+
+#block-views-homepage-destination-block-1  .related-content-wrap,
+.view-homepage-minisite .related-content-wrap {
+	position: absolute;
+	bottom: 20px;
+	width: 216px;
 }
 
 #block-views-homepage-news-block-block-1 {
@@ -745,16 +740,12 @@ ul.links li {
 
 .field-name-field-mini-lessons .field-label,
 .field-name-field-related-articles .field-label,
-.views-field-field-related-articles .item-list ul li,
-.related-content-wrap .addit-mini-lessons,
-.related-content-wrap .addit-related-articles {
+.views-field-field-related-articles .item-list ul li {
 	padding: 2px 0 2px 20px;
 	line-height: 16px;
 }
 
-.views-field-field-related-articles .item-list ul li a,
-.related-content-wrap .addit-mini-lessons .field-content a,
-.related-content-wrap .addit-related-articles .field-content a {
+.views-field-field-related-articles .item-list ul li a {
 	font-weight: normal;
 }
 
@@ -1006,7 +997,7 @@ ul.links li {
 
 .related-content-wrap .addit-content {
 	position: absolute;
-	top: -20px;
+	top: -30px;
 	left: -4px;
 	font-weight: bold;
 	margin-top: 10px;
@@ -1027,11 +1018,11 @@ ul.links li {
 }
 
 .related-content-wrap .addit-mini-lessons {
-	background: url("../images/related-article-icon.png") no-repeat 0px 2px;
+	background: url("../images/mini-lessons-icon.png") no-repeat 0px 2px;
 }
 
 .related-content-wrap .addit-related-articles {
-	background: url("../images/mini-lessons-icon.png") no-repeat 0px 2px;
+	background: url("../images/related-article-icon.png") no-repeat 0px 2px;
 }
 
 .node-type-article .group_additional_content {
