@@ -588,6 +588,7 @@ ul.links li {
 #block-views-homepage-top-story-block-1 {
 	float: left;
 	width: 510px;
+	margin-right: 8px;
 }
 
 .view-homepage-top-story {
@@ -737,27 +738,6 @@ ul.links li {
 	font-weight: normal;
 }
 
-.views-field-field-related-articles-1,
-.related-content-wrap {
-	background: #d9effe;
-	border: solid 3px #acdbfc;
-	padding: 2px 4px;
-	-moz-box-shadow: 2px 2px 4px #666;
-	-webkit-box-shadow: 2px 2px 4px 666;
-	box-shadow: 2px 2px 4px #666;
-}
-
-.related-content-wrap {
-	margin-top: 10px;
-}
-
-.related-content-wrap .addit-content {
-	position: absolute;
-	top: -20px;
-	left: -4px;
-	font-weight: bold;
-}
-
 .views-field-field-related-articles .item-list ul,
 .views-field-field-related-articles .item-list ul li {
 	margin: 0;
@@ -772,33 +752,10 @@ ul.links li {
 	line-height: 16px;
 }
 
-
-.views-field-field-related-articles .item-list ul li,
-.field-name-field-mini-lessons .field-label,
-.related-content-wrap .addit-mini-lessons {
-	background: url("../images/mini-lessons-icon.png") no-repeat 0px 2px;
-}
-
-.field-name-field-related-articles .field-label,
-.related-content-wrap .addit-related-articles {
-	background: url("../images/related-article-icon.png") no-repeat 0px 2px;
-}
-
-.related-content-wrap .addit-mini-lessons .field-content,
-.related-content-wrap .addit-related-articles .field-content {
-	display: inline;
-}
-
 .views-field-field-related-articles .item-list ul li a,
 .related-content-wrap .addit-mini-lessons .field-content a,
 .related-content-wrap .addit-related-articles .field-content a {
 	font-weight: normal;
-}
-
-.view-homepage-top-story  .related-content-wrap,
-.view-teacher-news-top-story .related-content-wrap ,
-.view-kid-reporters-channel-top-story .related-content-wrap  {
-	clear: both;
 }
 
 /* news block */
@@ -1033,12 +990,16 @@ ul.links li {
 	font-size: 10px;
 	font-weight: bold;
 }
+
+/* additional content */
 .related-content-wrap {
 	position: relative;
+	bottom: 10px;
 	background: #d9effe;
 	border: solid 3px #acdbfc;
 	margin-top: 20px;
 	padding: 2px 4px;
+	clear: both;
 	-moz-box-shadow: 2px 2px 4px #666;
 	-webkit-box-shadow: 2px 2px 4px 666;
 	box-shadow: 2px 2px 4px #666;
@@ -1049,6 +1010,14 @@ ul.links li {
 	top: -20px;
 	left: -4px;
 	font-weight: bold;
+}
+
+.related-content-wrap a {
+	font-weight: normal;
+}
+
+.related-content-wrap .field-content {
+	display: inline;
 }
 
 .related-content-wrap .addit-mini-lessons,
@@ -1065,21 +1034,6 @@ ul.links li {
 	background: url("../images/mini-lessons-icon.png") no-repeat 0px 2px;
 }
 
-.related-content-wrap .addit-mini-lessons .field-content,
-.related-content-wrap .addit-related-articles .field-content {
-	display: inline;
-}
-
-.related-content-wrap .addit-mini-lessons .field-content a,
-.related-content-wrap .addit-related-articles .field-content a {
-	font-weight: normal;
-}
-
-.view-homepage-top-story  .related-content-wrap,
-.view-teacher-news-top-story .related-content-wrap ,
-.view-kid-reporters-channel-top-story .related-content-wrap  {
-	clear: both;
-}
 .node-type-article .group_additional_content {
 	background: #d9effe;
 	border: solid 3px #acdbfc;
