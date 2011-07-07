@@ -347,7 +347,7 @@ ul.links li {
 }
 
 /* front page */
-.front #block-syustem-main {
+.front #block-system-main {
 	display: none;
 }
 
@@ -587,11 +587,12 @@ ul.links li {
 /* top story block */
 #block-views-homepage-top-story-block-1 {
 	float: left;
+	width: 510px;
 }
 
 .view-homepage-top-story {
 	float: left;
-	width: 510px;
+	width: 478px;
 	height: 358px;
 	margin-right: 8px;
 	margin-bottom: 10px;
