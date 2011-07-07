@@ -43,7 +43,7 @@ function _tfk_extras_taxonomy_navigation(){
 
   $vid = 11; //vocabulary id for tfk_extras categories
   //now we have to get all taxonomy terms from this vocabulary that have articles
-  $result = db_query('select distinct ti.tid,td.name from taxonomy_index ti left join taxonomy_term_data td on ti.tid = td.tid left join node n on n.nid = ti.nid where n.type = :type and td.vid = :vid',array('type'=>'tfk_extra','vid'=>$vid));
+  $result = db_query('select distinct ti.tid,td.name from taxonomy_index ti left join taxonomy_term_data td on ti.tid = td.tid left join node n on n.nid = ti.nid where n.type = :type and td.vid = :vid order by td.name ASC',array('type'=>'tfk_extra','vid'=>$vid));
   $terms = array();
 
   foreach ($result as $i=> $record) {
