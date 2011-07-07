@@ -1408,6 +1408,8 @@ function tfk_search_magazine(){
   $base_path = 'tfk-magazine';
   $response = apachesolr_search_run(search_get_keys(), $filterstring, $solrsort, $base_path, $page, 'apachesolr_search');
 
+  drupal_set_title('TFK Magazine');
+
   return theme('search_results', array('results' => $response));
 }
 
