@@ -408,13 +408,6 @@ ul.links li {
 	background: #999;
 }
 
-#block-views-homepage-destination-block-1  .related-content-wrap,
-.view-homepage-minisite .related-content-wrap {
-	position: absolute;
-	bottom: 20px;
-	width: 216px;
-}
-
 #block-views-homepage-news-block-block-1 {
 	float: left;
 	width: 510px;
@@ -816,14 +809,6 @@ ul.links li {
 	margin-bottom: 10px;
 }
 
-.view-homepage-news-block table td .related-content-wrap,
-.view-teacher-news-news-block table td .related-content-wrap,
-.view-kid-reporters-channel-news-block table td .related-content-wrap {
-	position: absolute;
-	bottom: 10px;
-	width: 216px;
-}
-
 /* kid reporter */
 .node-kid-reporter {
 	border: solid 1px #cecece;
@@ -1023,6 +1008,27 @@ ul.links li {
 
 .related-content-wrap .addit-related-articles {
 	background: url("../images/related-article-icon.png") no-repeat 0px 2px;
+}
+
+.view-homepage-top-story .related-content-wrap {
+	position: absolute;
+	bottom: 10px;
+	width: 358px;
+}
+
+.view-homepage-minisite .related-content-wrap {
+	position: absolute;
+	bottom: 20px;
+	width: 216px;
+}
+
+.view-homepage-destination .related-content-wrap,
+.view-homepage-news-block table td .related-content-wrap,
+.view-teacher-news-news-block table td .related-content-wrap,
+.view-kid-reporters-channel-news-block table td .related-content-wrap {
+	position: absolute;
+	bottom: 10px;
+	width: 216px;
 }
 
 .node-type-article .group_additional_content {
