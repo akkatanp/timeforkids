@@ -493,7 +493,9 @@ ul.links li {
 }
 
 /* top story block */
-.view-homepage-top-story {
+.view-homepage-top-story,
+.view-teacher-news-top-story,
+.view-kid-reporters-channel-top-story {
 	float: left;
 	width: 478px;
 	height: 358px;
