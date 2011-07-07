@@ -242,6 +242,21 @@ li.search-result {
   margin: 0 0 10px 0;
 }
 
+li.search-result .search-snippet-body {
+	margin-bottom: 25px;
+	min-height: 43.2px;
+}
+
+body.page-photos-video .view-full-article + .search-snippet-info {
+	margin-bottom: 16px;
+	min-height: 43.2px;
+}
+
+body.page-photos-video .search-snippet-info {
+  margin-bottom: 32px;
+  min-height: 43.2px;
+}
+
 /* Search results */
 
 ol#tfk-search-results-photos-video {
@@ -258,7 +273,7 @@ ol#tfk-search-results-photos-video li div.content-type {
 }
 
 ol#tfk-search-results-photos-video li h3.title {
-  margin: 0 0 5px 0;
+  margin: 0;
 }
 
 ol#tfk-search-results-photos-video li h3.title a:link,
