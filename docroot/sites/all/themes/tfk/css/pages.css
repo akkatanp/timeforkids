@@ -994,7 +994,6 @@ ul.links li {
 /* additional content */
 .related-content-wrap {
 	position: relative;
-	bottom: 10px;
 	background: #d9effe;
 	border: solid 3px #acdbfc;
 	margin-top: 20px;
