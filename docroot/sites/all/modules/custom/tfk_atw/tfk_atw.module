@@ -14,14 +14,14 @@ function tfk_atw_init(){
 
 function tfk_atw_menu(){
   $items['around-the-world'] = array(
-		'title' => 'Around The World Page',
+		'title' => 'Around The World',
 		'page callback' => 'atw_page_callback',
 		'access callback' => 'user_access',
 		'access arguments' => array('access content')
 	);
 
   $items['around-the-world/map'] = array(
-		'title' => 'Around The World Page with Map',
+		'title' => 'Around The World',
 		'page callback' => 'atw_page_map_callback',
 		'access callback' => 'user_access',
 		'access arguments' => array('access content')
