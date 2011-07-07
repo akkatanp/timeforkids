@@ -423,14 +423,14 @@ ul.links li {
 	margin-right: 10px;
 }
 
-#block-views-homepage-destination-block-1 .content {
+.view-homepage-destination {
 	width: 230px;
 	height: 310px;
 	padding: 20px 9px;
 	border: solid 1px #cecece;
 }
 
-#block-views-homepage-destination-block-1 .content .views-field-nothing {
+.view-homepage-destination .views-field-nothing {
 	background: #d71700;
 	color: white;
 	font: bold 14px Arial;
@@ -439,28 +439,27 @@ ul.links li {
 	clear: right;
 }
 
-#block-views-homepage-destination-block-1 .content .views-field-nothing a {
+.view-homepage-destination .views-field-nothing a {
 	color: white;
 	text-transform: uppercase;
 }
 
-#block-views-homepage-destination-block-1 .content .views-field-field-image {
+.view-homepage-destination  .views-field-field-image {
 	width: 228px;
 	height: 118px;
 	border: solid 1px #cecece;
 	margin-bottom: 10px;
 }
 
-#block-views-homepage-destination-block-1 .content .views-field-field-image img {
+.view-homepage-destination .views-field-field-image img {
 	width: 228px;
 	height: 118px;
 }
 
-#block-views-homepage-destination-block-1 .content .views-field-title a {
+.view-homepage-destination  .views-field-title a {
 	font: normal 20px arial;
 	margin-bottom: 10px;
 }
-
 
 #block-views-c909bfc47773a85d7de307e584c9ea89,
 #block-views-d9ecdac86a36421c8c519cb6d2d4b832 {
