@@ -499,6 +499,7 @@ ul.links li {
 	float: left;
 	width: 478px;
 	height: 358px;
+	clear: right;
 }
 
 #block-views-minisite-articles-block-2,
