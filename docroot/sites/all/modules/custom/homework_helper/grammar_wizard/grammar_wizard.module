@@ -81,7 +81,7 @@ function grammar_wizard_multistep_form($form, &$form_state, $node) {
       $form['check_answer'] = array(
         '#type' => 'submit',
         '#value' => !isset($form_state['storage']['correct_answer']) ? t('Check Answer') : t('Try Again'),
-        '#weight' => 10,
+        '#weight' => 0,
         '#ajax' => array(
           'wrapper' => 'wizard-form-wrapper',
           'callback' => 'grammar_wizard_multistep_form_callback',
@@ -95,7 +95,7 @@ function grammar_wizard_multistep_form($form, &$form_state, $node) {
         '#type' => 'submit',
         '#value' => $step == $last_step - 1 ? t('See my Results') : t('Next Question'),
         '#access' => isset($form_state['storage']['correct_answer']) ? TRUE : FALSE,
-        '#weight' => 11,
+        '#weight' => 0,
         '#ajax' => array(
           'wrapper' => 'wizard-form-wrapper',
           'callback' => 'grammar_wizard_multistep_form_callback',
@@ -104,7 +104,7 @@ function grammar_wizard_multistep_form($form, &$form_state, $node) {
       $form['question_result'] = array('#markup' => $form_state['storage']['question_result'], '#weight' => 1,);
     }
   }
-    
+   
   return $form;
 }
 
@@ -202,7 +202,7 @@ function grammar_wizard_check_answer($form, &$form_state) {
   }
   else {
     $form_state['storage']['correct_answer'] = FALSE;
-    $form_state['storage']['question_result'] = '<div id="grammar-wizard-result"><h2>Try Again!</h2><div id="grammar-wizard-rule"><h2>Remember:</h2>' . $form[$current_step]['#rule'] . '<h3>Example:</h3><div id="grammar-wizard-example">' . $form[$current_step]['#rule_example'] . '</div></div></div>';
+    $form_state['storage']['question_result'] = '<div id="grammar-wizard-result"><h2>Incorrect!</h2><div id="grammar-wizard-rule"><h2>Remember:</h2>' . $form[$current_step]['#rule'] . '<h3>Example:</h3><div id="grammar-wizard-example">' . $form[$current_step]['#rule_example'] . '</div></div></div>';
     $form_state['storage']['student_answers'][$current_step] = 0;
   }  
 }  
