@@ -5,6 +5,7 @@
  */
 function grammar_wizard_prepare_questions($node) {
   $questions = array();
+  $instructions = $node->field_punctuation_instructions[$node->language][0]['value'];
   // Find 5 random questions from this quiz.
   $result = db_query_range("
     SELECT f.entity_id from field_data_field_grammar_practice f
@@ -25,6 +26,7 @@ function grammar_wizard_prepare_questions($node) {
       $questions[] = grammar_wizard_prepare_question($node);
     }
   }
+  $questions[0]['#instructions'] = $instructions; 
   $questions[] = grammar_wizard_results();
   return $questions;
 }
