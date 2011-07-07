@@ -1010,25 +1010,28 @@ ul.links li {
 	background: url("../images/related-article-icon.png") no-repeat 0px 2px;
 }
 
+/*
 .view-homepage-top-story .related-content-wrap {
 	position: absolute;
 	bottom: 10px;
 	width: 358px;
 }
+*/
 
 .view-homepage-minisite .related-content-wrap {
 	position: absolute;
 	bottom: 20px;
-	width: 216px;
+	width: 100%;
 }
 
+.view-homepage-top-story .related-content-wrap,
 .view-homepage-destination .related-content-wrap,
 .view-homepage-news-block table td .related-content-wrap,
 .view-teacher-news-news-block table td .related-content-wrap,
 .view-kid-reporters-channel-news-block table td .related-content-wrap {
 	position: absolute;
 	bottom: 10px;
-	width: 216px;
+	width: 100%;
 }
 
 .node-type-article .group_additional_content {
