@@ -61,7 +61,7 @@ function grammar_wizard_multistep_form($form, &$form_state, $node) {
   }
 
   $form['view_rules'] = array(
-    '#markup' => '<div id="grammar-wizard-see-rules"><h2>See The Rules Again</h2><p>You can read the rules, but you\'ll have to restart the quiz again.</p>' . l('View Rules', 'homework-helper/grammar-practice/rules/' . $form["step_$step"]['#parent_nid'], array('attributes' => array('class' => array('button')))) . '</div>',
+    '#markup' => '<div id="grammar-wizard-see-rules"><h2>See The Rules Again</h2><p>You can read the rules, but you\'ll have to restart the quiz again.</p>' . l('View Rules', 'homework-helper/punctuation-practice/rules/' . $form["step_$step"]['#parent_nid'], array('attributes' => array('class' => array('button')))) . '</div>',
     '#weight' => -2, 
   );
 
