@@ -71,11 +71,12 @@
   <?php endif;?>
   
   <div class='row2'>
-    <div class='col1'>
-      <?php if($thumbnail):?>
+    
+    <?php if($thumbnail):?>
+    	<div class='col1'>
       	<?php print $thumbnail; ?>
-      <?php endif;?>
-    </div>
+    	</div>
+    <?php endif;?>
    
   	<div class='col2'>
       <?php if($tfk_search_res_grade_level):?>
