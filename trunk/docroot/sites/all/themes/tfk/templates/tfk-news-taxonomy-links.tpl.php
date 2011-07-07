@@ -1,4 +1,4 @@
-<?php echo l('ALL NEWS','news-archive');?>
+<?php echo l('NEWS ARCHIVE','news-archive');?>
 
 <ul class="menu">
 <?php foreach($terms_with_articles as $term): ?>
