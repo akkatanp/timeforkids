@@ -993,7 +993,7 @@ ul.links li {
 
 /* additional content */
 .related-content-wrap {
-	position: absolute;
+	position: relative;
 	bottom: 10px;
 	background: #d9effe;
 	border: solid 3px #acdbfc;
