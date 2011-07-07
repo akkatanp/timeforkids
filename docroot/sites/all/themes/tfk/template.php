@@ -109,7 +109,7 @@ function tfk_preprocess_page(&$variables, $hook) {
     }
   }
   if ($variables['node']->type == 'grammar_practice') {
-    $variables['grammar_practice_header'] = l('Try Another', 'homework-helper/grammar-wizard/grammar-practice', array('attributes' => array('class' => array('try-another'))));
+    $variables['grammar_practice_header'] = l('Try Another', 'homework-helper/grammar-wizard/punctuation-practice', array('attributes' => array('class' => array('try-another'))));
   }
 
   if ($variables['node']->type == 'flashcard') {
@@ -185,15 +185,6 @@ function tfk_header_tag($type) {
   return $output;
 }
 
-/**
- * Implements hook_css_alter().
- */
-function tfk_css_alter(&$css) {
-  // Alter css to display as link tags.
-  foreach ($css as $key => $value) {
-    $css[$key]['preprocess'] = FALSE;
-  }
-}
 
 function tfk_preprocess_flashcard_cycle_mark(&$variables) {
   $variables['title'] = t('Mark this card for extra practice');
