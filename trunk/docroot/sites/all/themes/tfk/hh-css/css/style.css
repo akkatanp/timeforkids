@@ -360,7 +360,7 @@ img {
 .node-type-paper-step .paper-title {
   font-size: 1.7em;
   line-height: 1;
-  margin: 1em 0;
+  margin: 2.5em 0 1em 0;
   text-align: center;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/timeforkids-svn\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_aplus\.sass}line{font-family:\0000362}}
