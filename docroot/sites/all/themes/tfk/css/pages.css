@@ -993,7 +993,7 @@ ul.links li {
 
 /* additional content */
 .related-content-wrap {
-	position: relative;
+	position: absolute;
 	bottom: 10px;
 	background: #d9effe;
 	border: solid 3px #acdbfc;
@@ -1010,6 +1010,7 @@ ul.links li {
 	top: -20px;
 	left: -4px;
 	font-weight: bold;
+	margin-top: 10px;
 }
 
 .related-content-wrap a {
