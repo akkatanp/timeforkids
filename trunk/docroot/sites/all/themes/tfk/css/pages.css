@@ -743,6 +743,11 @@ ul.links li {
 	border: 0;
 }
 
+.view-teacher-news-news-block table,
+.view-kid-reporters-channel-news-block table {
+	float: left;
+}
+
 .view-homepage-news-block table td,
 .view-teacher-news-news-block table td,
 .view-kid-reporters-channel-news-block table td {
