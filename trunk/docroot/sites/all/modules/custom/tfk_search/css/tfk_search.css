@@ -117,12 +117,16 @@ div#block-tfk-search-tfk-search-photos-video-title {
 }
 
 body.section-photos-video div.region-sidebar-first h2.block-title {
-  font-size: 10pt;
+  font-size: 12px;
+	font-weight: bold;
+	color: #333;
 }
 
 body.section-photos-video div.region-sidebar-first a.apachesolr-facet:link, 
 body.section-photos-video div.region-sidebar-first a.apachesolr-facet:visited {
-  font-weight:normal
+  font-weight:normal;
+	font-size: 12px;
+	color: #333;
 }
 
 div#block-views-tfk-section-photos-video-block div.views-field-type {
@@ -185,11 +189,12 @@ ol.search-results li div.content-type {
 
 ol.search-results li h3.title {
   margin: 0 0 5px 0;
+	color: #000;
 }
 
 ol.search-results li h3.title a:link,
 ol.search-results li h3.title a:visited {
-  color: black;
+  color: #D71700;
   font-size: 1.17em;
 }
 
