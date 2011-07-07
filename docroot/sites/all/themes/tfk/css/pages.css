@@ -493,13 +493,15 @@ ul.links li {
 }
 
 /* top story block */
+.view-homepage-top-story {
+	float: left;
+}
+
 .view-homepage-top-story,
 .view-teacher-news-top-story,
 .view-kid-reporters-channel-top-story {
-	float: left;
 	width: 478px;
 	height: 358px;
-	clear: right;
 }
 
 #block-views-minisite-articles-block-2,
@@ -735,17 +737,16 @@ ul.links li {
 }
 
 /* news block */
+.page-news #main-content {
+	display: none;
+}
+
 .view-homepage-news-block table,
 .view-teacher-news-news-block table,
 .view-kid-reporters-channel-news-block table {
 	margin: 0;
 	border-collapse: collapse;
 	border: 0;
-}
-
-.view-teacher-news-news-block table,
-.view-kid-reporters-channel-news-block table {
-	float: left;
 }
 
 .view-homepage-news-block table td,
