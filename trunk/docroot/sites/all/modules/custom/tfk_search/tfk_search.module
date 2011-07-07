@@ -1104,7 +1104,11 @@ function tfk_search_preprocess_search_result(&$vars) {
           $name_res =  db_query('select name from taxonomy_term_data where tid = :tid',array('tid' => $tid ));
           $name = $name_res->fetch();
           $name = $name->name;
-          $vars['tfk_search_cont_type'] = rtrim($name, 's');
+
+          // Only worksheets page shows the skills in lieu of the content type.
+          if($base_path == 'worksheets') {
+            $vars['tfk_search_cont_type'] = rtrim($name, 's');
+          }
           
           // Body, trimmed to three lines of text.
           $body = field_get_items('node', $node, 'body');
