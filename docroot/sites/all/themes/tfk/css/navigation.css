@@ -695,9 +695,12 @@
 
 #block-views-mini-site-home-block-1 .views-field-title a,
 .view-atw-page-featured-destination .views-field-title a {
-	color: #d71700;
 	font-size: 20px;
-	text-decoration: none;
+}
+
+#block-views-mini-site-home-block-1 .views-field-field-minisite-tout-image,
+.view-atw-page-featured-destination .views-field-field-country-map {
+	margin-bottom: 10px;
 }
 
 #block-views-mini-site-home-block-1 .field-content img,
