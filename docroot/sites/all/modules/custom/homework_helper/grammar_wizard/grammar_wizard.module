@@ -72,16 +72,24 @@ function grammar_wizard_multistep_form($form, &$form_state, $node) {
     );
   } 
   else {
+    if ($step == 0) {
+      $form['instructions'] = array(
+        '#markup' => '<div id="grammar-instructions">' . $form['step_0']['#instructions'] . '</div>',
+        '#weight' => -3,
+      );
+    }  
+    
     $form['numbering'] = array(
       '#markup' => '<div id="grammar-wizard-numbering">' . ($step + 1) . ' of ' . (count($questions) - 1) . '</div>',  
       '#weight' => -1,
     );
+    
     // Only show this button if no answer has been submitted or if an incorrect answer was submitted.
     if (!isset($form_state['storage']['correct_answer']) || !$form_state['storage']['correct_answer']) {
       $form['check_answer'] = array(
         '#type' => 'submit',
         '#value' => !isset($form_state['storage']['correct_answer']) ? t('Check Answer') : t('Try Again'),
-        '#weight' => 0,
+        '#weight' => 1,
         '#ajax' => array(
           'wrapper' => 'wizard-form-wrapper',
           'callback' => 'grammar_wizard_multistep_form_callback',
@@ -95,7 +103,7 @@ function grammar_wizard_multistep_form($form, &$form_state, $node) {
         '#type' => 'submit',
         '#value' => $step == $last_step - 1 ? t('See my Results') : t('Next Question'),
         '#access' => isset($form_state['storage']['correct_answer']) ? TRUE : FALSE,
-        '#weight' => 0,
+        '#weight' => 1,
         '#ajax' => array(
           'wrapper' => 'wizard-form-wrapper',
           'callback' => 'grammar_wizard_multistep_form_callback',
@@ -104,7 +112,7 @@ function grammar_wizard_multistep_form($form, &$form_state, $node) {
       $form['question_result'] = array('#markup' => $form_state['storage']['question_result'], '#weight' => 1,);
     }
   }
-   
+  
   return $form;
 }
 
