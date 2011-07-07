@@ -13,7 +13,7 @@ function tfk_news_menu(){
 
 
 function _teacher_news_callback(){
-   drupal_set_title('News Archive');
+   drupal_set_title('News');
   return '';
 }
 
