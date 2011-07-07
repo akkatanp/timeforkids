@@ -1379,8 +1379,13 @@ function tfk_search_apachesolr_modify_query($query, $caller) {
 function tfk_search_form_alter(&$form, &$form_state, $form_id) {
   if($form_id == 'search_form'){
     $form['basic']['keys']['#title'] = '';
+    $form['basic']['submit'] = array(
+      '#type' => 'submit',
+      '#value' => t('Go'), 
+    );
   }
 }
+
 
 /**
  * Photos and Video menu callback.
