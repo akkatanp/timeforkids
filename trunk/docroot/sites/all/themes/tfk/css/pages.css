@@ -347,7 +347,6 @@ ul.links li {
 }
 
 /* front page */
-/* front page grid */
 .front #block-system-main {
 	display: none;
 }
@@ -371,7 +370,6 @@ ul.links li {
 	width: 250px;
 	margin-bottom: 10px;
 }
-/* end front page grid */
 
 .view-homepage-minisite {
 	position: relative;
@@ -493,15 +491,9 @@ ul.links li {
 }
 
 /* top story block */
-.view-homepage-top-story {
-	float: left;
-}
-
-.view-homepage-top-story,
 .view-teacher-news-top-story,
 .view-kid-reporters-channel-top-story {
-	width: 478px;
-	height: 358px;
+	margin-bottom: 10px;
 }
 
 #block-views-minisite-articles-block-2,
@@ -510,6 +502,8 @@ ul.links li {
 .view-teacher-news-top-story,
 .view-kid-reporters-channel-top-story {
 	position: relative;
+	width: 478px;
+	height: 358px;
 	border: solid 6px #d71700;
 	padding: 20px 10px 10px 10px;
 }
