@@ -10,7 +10,7 @@ define("TFK_FAVS_AJAX_SUCCESS", "success");
 
 function tfk_favorites_menu(){
   $items['tfkfav/ajax/del'] = array(
-    'title' => 'Around The World Page',
+    'title' => 'Around The World',
     'page callback' => '_tfk_fav_del',
     'access callback' => 'user_access',
     'access arguments' => array('access content')
