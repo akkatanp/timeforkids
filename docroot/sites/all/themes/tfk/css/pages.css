@@ -587,7 +587,6 @@ ul.links li {
 /* top story block */
 #block-views-homepage-top-story-block-1 {
 	float: left;
-	width: 510px;
 }
 
 .view-homepage-top-story {
@@ -595,7 +594,7 @@ ul.links li {
 	width: 510px;
 	height: 358px;
 	margin-right: 8px;
-	margin-bottom: 10px
+	margin-bottom: 10px;
 }
 
 #block-views-minisite-articles-block-2,
