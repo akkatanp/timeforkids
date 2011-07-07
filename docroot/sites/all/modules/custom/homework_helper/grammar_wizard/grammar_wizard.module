@@ -47,11 +47,15 @@ function grammar_wizard_multistep_form($form, &$form_state, $node) {
 
   $form["step_$step"] = $questions[$step];
   if (isset($form["step_$step"]['question'])) {
-    if (isset($form_state['storage']['correct_answer']) && !$form_state['storage']['correct_answer']) {
-      // If they answered the question wrong, then mark the answer they chose.
-      $answer = $form_state['storage']['values']["step_$step"]['question'];
-      $alpha_answer = $form["step_$step"]['question']['#options'][$answer];
-      $form["step_$step"]['question']['#options'][$answer] = '<span class="grammar-wizard-incorrect">' . $alpha_answer . '</span>';
+    if (isset($form_state['storage']['correct_answer'])) {
+      // Disable the radio buttons if the question was answered.
+      $form["step_$step"]['question']['#disabled'] = TRUE;
+      if (!$form_state['storage']['correct_answer']) {
+        // If they answered the question wrong, then mark the answer they chose.
+        $answer = $form_state['storage']['values']["step_$step"]['question'];
+        $alpha_answer = $form["step_$step"]['question']['#options'][$answer];
+        $form["step_$step"]['question']['#options'][$answer] = '<span class="grammar-wizard-incorrect">' . $alpha_answer . '</span>';
+      }
     }
     $form["step_$step"]['question']['#default_value'] = empty($form_state['values']["step_$step"]['question']) ? '' : $form_state['values']["step_$step"]['question'];
   }
@@ -142,8 +146,11 @@ function grammar_wizard_multistep_form_submit($form, &$form_state) {
     }
     unset($form_state['storage']['correct_answer']);
   }
-  else if (in_array($button_value, array(t('Check Answer'), t('Try Again')))) {
+  else if (in_array($button_value, array(t('Check Answer')))) {
     grammar_wizard_check_answer($form, $form_state);
+  }
+  else if (in_array($button_value, array(t('Try Again')))) {
+    grammar_wizard_try_again($form, $form_state);
   }
 
   // Otherwise, we still have work to do.
@@ -199,4 +206,18 @@ function grammar_wizard_check_answer($form, &$form_state) {
     $form_state['storage']['student_answers'][$current_step] = 0;
   }  
 }  
+
+/**
+ * Submit callback for try again button on grammar wizard quiz.
+ */
+function grammar_wizard_try_again($form, &$form_state) {
+  $current_step = 'step_' . $form_state['storage']['step'];
+
+  // Clear out elements indicating that the question was answered.
+  unset($form_state['storage']['correct_answer']);
+  unset($form_state['storage']['question_result']);
+
+  // Ensure that the answer is not marked as correct.
+  $form_state['storage']['student_answers'][$current_step] = 0;
+}
 
