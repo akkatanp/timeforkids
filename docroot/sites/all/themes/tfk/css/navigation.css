@@ -356,13 +356,8 @@
 	padding: 0;
 }
 
-.region-sidebar-first .section a {
-	text-decoration: none;
-}
-
 .region-sidebar-first .section #block-views-random-kid-reporters-block {
 	margin-top: 10px;
-	/*display: none;*/
 }
 
 /* Teacher news sidebar */
