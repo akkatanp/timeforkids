@@ -952,6 +952,13 @@ function tfk_search_preprocess_search_result(&$vars) {
           $thumbnail = theme('image', array('path' => $abspath, 'alt' => $title, 'title' => $title, 'attributes' => $thumb_attr));
           $vars['thumbnail'] = l($thumbnail, 'node/'. $vars['result']['fields']['entity_id'], $link_attr);
         }
+        
+        $body = field_get_items('node', $node, 'body');
+        if(!empty($body[0]['safe_summary'])) {
+          $teaser = $body[0]['safe_summary'];
+        } elseif(!empty($body[0]['safe_value'])) {
+          $teaser = $body[0]['safe_value'];
+        }
       break;
       
       case 'atw_destination':
@@ -993,6 +1000,12 @@ function tfk_search_preprocess_search_result(&$vars) {
           tfk_search_get_flag_link($vars, $nid, 'favorites');
         }
         
+        $body = field_get_items('node', $node, 'body');
+        if(!empty($body[0]['safe_summary'])) {
+          $teaser = $body[0]['safe_summary'];
+        } elseif(!empty($body[0]['safe_value'])) {
+          $teaser = $body[0]['safe_value'];
+        }
       break;
 
 
@@ -1207,6 +1220,13 @@ function tfk_search_preprocess_search_result(&$vars) {
         if($favorite_links) {
           tfk_search_get_flag_link($vars, $nid, 'favorites');
         }
+        
+        $body = field_get_items('node', $node, 'body');
+        if(!empty($body[0]['safe_summary'])) {
+          $teaser = $body[0]['safe_summary'];
+        } elseif(!empty($body[0]['safe_value'])) {
+          $teaser = $body[0]['safe_value'];
+        }
       break;
       
       case 'article':
@@ -1239,12 +1259,28 @@ function tfk_search_preprocess_search_result(&$vars) {
         if($base_path = 'search') {
           $vars['tfk_search_result_link_1'] = l('Download this article', 'node/'. $nid);
         }
+        
+        // We still trim the deck, just for safety.
+        $body = field_get_items('node', $node, 'field_deck');
+        if(!empty($body[0]['safe_value'])) {
+          $teaser = $body[0]['safe_value'];
+        }
       break;
           
       //default:
       //  ;
       //break;
     }
+    
+    // All search interfaces.
+    if($teaser) {
+      if(strlen($teaser) > 200) {
+        $vars['snippet'] = truncate_utf8($teaser, '200', TRUE, TRUE, 200);
+      } else {
+        $vars['snippet'] = $teaser;
+      }
+    }
+    
     
     // Photos & Video -specific- preprocessing.
     if(arg(0) == 'photos-video') {
