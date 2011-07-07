@@ -189,12 +189,12 @@ ol.search-results li div.content-type {
 ol.search-results li h3.title {
   margin: 0 0 5px 0;
 	color: #000;
+	font-size: 20px;
 }
 
 ol.search-results li h3.title a:link,
 ol.search-results li h3.title a:visited {
   color: #D71700;
-  font-size: 1.17em;
 }
 
 ol.search-results li.with-image {
