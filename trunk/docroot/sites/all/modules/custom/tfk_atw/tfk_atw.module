@@ -37,11 +37,12 @@ function tfk_atw_menu(){
 }
 
 function atw_page_callback(){
-   //drupal_set_title('');
+   drupal_set_title('Around The World');
   return '';
 }
 
 function atw_page_map_callback(){
+  drupal_set_title('Around The World');
   return '';
 }
 
