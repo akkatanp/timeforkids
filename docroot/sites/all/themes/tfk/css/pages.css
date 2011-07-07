@@ -345,13 +345,10 @@ ul.links li {
 	text-transform: uppercase;
 	margin: 0;
 }
+
 /* front page */
-#block-views-homepage-top-story-block-1 {
-	float: left;
-	width: 510px;
-	height: 400px;
-	margin-right: 8px;
-	margin-bottom: 10px
+.front #block-syustem-main {
+	display: none;
 }
 
 #block-views-homepage-minisite-block-1 {
@@ -587,7 +584,20 @@ ul.links li {
 	margin-bottom: 10px;
 }
 
-/* teacher and kid reporter news top story*/
+/* top story block */
+#block-views-homepage-top-story-block-1 {
+	float: left;
+	width: 510px;
+}
+
+.view-homepage-top-story {
+	float: left;
+	width: 510px;
+	height: 358px;
+	margin-right: 8px;
+	margin-bottom: 10px
+}
+
 #block-views-minisite-articles-block-2,
 #block-views-minisite-articles-block-3,
 .view-homepage-top-story,
@@ -596,10 +606,6 @@ ul.links li {
 	position: relative;
 	border: solid 6px #d71700;
 	padding: 20px 10px 10px 10px;
-}
-
-.view-homepage-top-story {
-	height: 358px;
 }
 
 .top-story-right-square {
