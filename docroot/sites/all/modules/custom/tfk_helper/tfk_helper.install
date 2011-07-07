@@ -107,7 +107,8 @@ function tfk_helper_update_7003(&$ret) {
   }
   
   // Revert Feature, define View from code.
-  features_revert(array('tfk_favorite_feature'));
+  // Doesn't work, probably expects an object.
+  //features_revert(array('tfk_favorite_feature'));
 }
 
 
