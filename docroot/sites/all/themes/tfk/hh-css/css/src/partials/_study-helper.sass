@@ -122,17 +122,14 @@
     float: right
     padding: 0.5em
     margin-bottom: 1.0em
-    a.flashcard-help
+    .flashcard-help
       -webkit-appearance: none
       +border-radius(14px)
-      background: #fff url(./images/question-button.png) no-repeat 4px 3px
+      +box-shadow(transparentize($black, 0.5) 0 2px 4px)
+      background: #fff url(./images/question-button.png) no-repeat 8px 3px
       border: 3px solid $tfk-red
       font: bold 12px/1.2 Arial, sans-serif
-      padding: 4px 20px
-      width: auto
-      height: auto
-      margin: 0 25px
-      +box-shadow(transparentize($black, 0.5) 0 2px 4px)
+      padding: 4px 12px 4px 28px
   .flashcard-cycle-pager
     a
       color: $tfk-red
@@ -148,7 +145,7 @@
         margin: 0 25px
       &.next
         background: url(images/tfk-red-arrow-right.png) no-repeat scroll 36px 0 transparent
-        padding-right: 42px
+        padding: 3px 42px 3px 3px
   .flashcard-cycle-cards
     background: $tfk-yellow
     width: 500px
@@ -201,8 +198,8 @@
 
 .homework-helper-content
   .flashcards-return
-    float: right
-    margin-right: 25px
+    +float-right
+    margin: 12px 25px 12px 0
     a
       +tfk-return-button(italic)
   .content
