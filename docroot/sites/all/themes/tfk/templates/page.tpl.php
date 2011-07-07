@@ -141,6 +141,8 @@ if(drupal_is_front_page()) {
         <h1 class="title" id="section-title">
           <?php if(isset($section_title)):?>
             <?php print $section_title; ?>
+          <?php else: ?>
+          	<?php print $title; ?>
           <?php endif; ?>
         </h1>
       <?php endif;?>
