@@ -1986,6 +1986,11 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 	margin: 0 0 6px 0;
 }
 
+#daylife-container #speaker-headline {
+	font: bold 20px arial;
+	margin-bottom: 4px;
+}
+
 #daylife-container #speaker-intro p {
 	margin: 0;
 }
