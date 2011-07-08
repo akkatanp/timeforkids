@@ -859,20 +859,20 @@
 
 #block-views-global-right-sidebar-block-1 .content a {
 	height: 16px;
-	padding-left: 16px;
+	padding-left: 20px;
 	background: url("../images/mini-lessons-icon.png") no-repeat;
 }
 
 #block-views-global-right-sidebar-block-2 .content a {
 	height: 16px;
-	padding-left: 16px;
-	background: url("../images/related-article-icon.png") no-repeat;
+	padding-left: 20px;
+	background: url("../images/worksheet-icon.png") no-repeat;
 }
 
 #block-views-global-right-sidebar-block-3 .content a {
 	height: 16px;
-	padding-left: 16px;
-	background: url("../images/worksheet-icon.png") no-repeat;
+	padding-left: 20px;
+	background: url("../images/related-article-icon.png") no-repeat;
 }
 
 #block-block-18  .content p{
