@@ -480,102 +480,6 @@ function tfk_worksheets_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-worksheet-field_worksheet_related'
-  $fields['node-worksheet-field_worksheet_related'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_worksheet_related',
-      'foreign keys' => array(
-        'nid' => array(
-          'columns' => array(
-            'nid' => 'nid',
-          ),
-          'table' => 'node',
-        ),
-      ),
-      'indexes' => array(
-        'nid' => array(
-          0 => 'nid',
-        ),
-      ),
-      'module' => 'node_reference',
-      'settings' => array(
-        'referenceable_types' => array(
-          'article' => 'article',
-          'atw_day_in_life' => 0,
-          'atw_destination' => 'atw_destination',
-          'atw_homepage_nodeblock' => 0,
-          'atw_native_lingo' => 0,
-          'atw_sightseeing' => 0,
-          'atw_timeline' => 0,
-          'book' => 0,
-          'global_right_sidebar_promo' => 0,
-          'image' => 'image',
-          'kid_reporter' => 0,
-          'magazine_issue' => 'magazine_issue',
-          'mini_lesson' => 0,
-          'minisite' => 'minisite',
-          'notification_homepage' => 0,
-          'page' => 0,
-          'slideshow' => 0,
-          'tfk_extra' => 0,
-          'video' => 'video',
-          'webform' => 0,
-          'worksheet' => 'worksheet',
-        ),
-        'view' => array(
-          'args' => array(),
-          'display_name' => '',
-          'view_name' => '',
-        ),
-      ),
-      'translatable' => '1',
-      'type' => 'node_reference',
-    ),
-    'field_instance' => array(
-      'bundle' => 'worksheet',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'node_reference',
-          'settings' => array(),
-          'type' => 'node_reference_default',
-          'weight' => 9,
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_worksheet_related',
-      'label' => 'Related',
-      'required' => 0,
-      'settings' => array(
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'node_reference',
-        'settings' => array(
-          'autocomplete_match' => 'contains',
-          'autocomplete_path' => 'node_reference/autocomplete',
-          'size' => '120',
-        ),
-        'type' => 'node_reference_autocomplete',
-        'weight' => '7',
-      ),
-    ),
-  );
-
   // Exported field: 'node-worksheet-field_worksheet_thumbnail_image'
   $fields['node-worksheet-field_worksheet_thumbnail_image'] = array(
     'field_config' => array(
@@ -666,8 +570,8 @@ function tfk_worksheets_field_default_fields() {
       'indexes' => array(),
       'module' => 'metatags_quick',
       'settings' => array(
-        0 => 'meta_name',
         'meta_name' => 'description',
+        0 => 'meta_name',
       ),
       'translatable' => '0',
       'type' => 'metatags_quick',
@@ -721,8 +625,8 @@ function tfk_worksheets_field_default_fields() {
       'indexes' => array(),
       'module' => 'metatags_quick',
       'settings' => array(
-        0 => 'meta_name',
         'meta_name' => 'keywords',
+        0 => 'meta_name',
       ),
       'translatable' => '0',
       'type' => 'metatags_quick',
@@ -770,7 +674,6 @@ function tfk_worksheets_field_default_fields() {
   t('Grade Level');
   t('Meta Description');
   t('Meta Keywords');
-  t('Related');
   t('Related Article');
   t('Skills');
   t('Themes');
