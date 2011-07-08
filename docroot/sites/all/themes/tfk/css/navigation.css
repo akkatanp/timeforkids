@@ -377,6 +377,14 @@
 	margin-bottom: 10px;
 }
 
+#block-tfk-extras-tfk-extras-taxonomy-links a {
+	display: block;
+	font: normal 14px "arial black";
+	color: #fff;
+	background: #d71700;
+	padding: 10px;
+}
+
 #block-tfk-news-tfk-news-taxonomy-links a {
 	display: block;
 	font: normal 14px "arial black";
