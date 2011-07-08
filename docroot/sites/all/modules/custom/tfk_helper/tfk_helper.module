@@ -626,3 +626,29 @@ function tfk_helper_get_featured_block_sidebar($flag_name, $thumbnail_field, $dy
   }
   	
 }
+
+/**
+ * Check the roles of the current user.
+ *
+ * @param array $roles
+ */
+function tfk_helper_user_has_role($roles = array('editor', 'teacher', 'administrator')) {
+  global $user;
+  
+  // uid 1 has permissions to everything.
+  if($user->uid == 1) {
+    return TRUE;
+  }
+  
+  $grant = array();
+  foreach($roles as $role) {
+    $rid = array_search($role, $user->roles);
+    if($rid !== FALSE) {
+      $grant[] = $role;
+    }
+  }
+  
+  return (!empty($grant)) ? TRUE: FALSE;
+}
+
+
