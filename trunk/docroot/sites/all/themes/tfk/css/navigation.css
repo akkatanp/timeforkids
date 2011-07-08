@@ -798,14 +798,17 @@
 }*/
 
 /* right sidebar */
-#block-block-19 ,
+.teacher-resources-label {
+	margin: 10px 0 0 0;
+}
+
 #block-views-global-right-sidebar-block-1,
-#block-views-global-right-sidebar-block-2, 
+#block-views-global-right-sidebar-block-2,
 #block-views-global-right-sidebar-block-3 {
 	margin: 0;
 }
 
-#block-block-19 .content,
+.teacher-resources-label,
 #block-views-global-right-sidebar-block .view-header {
 	height: 20px;
 	font: normal 14px "arial black";
@@ -860,11 +863,16 @@
 	background: url("../images/mini-lessons-icon.png") no-repeat;
 }
 
-#block-views-global-right-sidebar-block-2 .content a,
-#block-views-global-right-sidebar-block-3 .content a {
+#block-views-global-right-sidebar-block-2 .content a {
 	height: 16px;
 	padding-left: 16px;
 	background: url("../images/related-article-icon.png") no-repeat;
+}
+
+#block-views-global-right-sidebar-block-3 .content a {
+	height: 16px;
+	padding-left: 16px;
+	background: url("../images/worksheet-icon.png") no-repeat;
 }
 
 #block-block-18  .content p{
@@ -927,4 +935,3 @@
 	color: white;
 	text-decoration: none;
 }
-
