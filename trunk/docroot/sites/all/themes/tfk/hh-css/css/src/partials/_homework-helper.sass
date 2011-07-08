@@ -9,8 +9,8 @@
 
 =tfk-button($radius: 24px)
   -webkit-appearance: none
-  background: $tfk-red url(../images/button.png) repeat-x
-  +box-shadow(transparentize($black, 0.5) 0 2px 4px, lighten($tfk-red, 20%) -3px 3px 5px inset)
+  background-color: $tfk-red
+  +box-shadow(default, lighten($tfk-red, 20%) -3px 3px 5px inset)
   +border-radius($radius)
   border: none
   font: normal 12px/1.2 Arial, sans-serif
@@ -44,11 +44,7 @@
 =tfk-submit-button($color: red)
   -webkit-appearance: none
   +border-radius(1em)
-  +box-shadow(transparentize($black, 0.75) 2px 2px 1px)
-  background:
-    image: url(../images/button.png)
-    repeat: repeat-x
-  border-style: solid
+  +box-shadow
   cursor: pointer
   font: normal 12px/1.2 Arial, sans-serif
   outline: 0
@@ -56,15 +52,11 @@
   padding: 4px 1em
   @if $color == red
     background-color: $tfk-red
-    border:
-      color: $tfk-red
-      width: 1px
+    border: 1px solid $tfk-red
     color: white
   @else
     background-color: white
-    border:
-      color: $tfk-red
-      width: 3px
+    border: 3px solid $tfk-red
     color: $tfk-red
     font-weight: bold
 
@@ -102,6 +94,6 @@
     top: 40%
     border: 4px solid #addcfa
     background: #ddeeff
-    +box-shadow(transparentize($black, 0.5) 0 2px 4px)
+    +box-shadow
   .hh-throbber-message
     width: 130px

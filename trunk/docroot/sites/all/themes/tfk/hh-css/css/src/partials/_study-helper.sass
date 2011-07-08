@@ -106,30 +106,27 @@
     label[for=flashcard-cycle-mode]
       line-height: 1.5
       margin-right: 1em
-  a.shuffle,
-  a.restart,
-  a.edit
-    +tfk-button
-    padding: 8px 24px
-    left: -30px
-    position: absolute
-  a.shuffle
-    left: -315px
-    *width: 50px
-  a.edit
-    *width: 50px
+  a
+    &.shuffle,
+    &.restart,
+    &.edit
+      +tfk-button
+      padding: 8px 24px
+      left: -30px
+      position: absolute
+    &.shuffle
+      left: -315px
+      *width: 50px
+    &.edit
+      *width: 50px
   .flashcard-help-button
-    float: right
-    padding: 0.5em
-    margin-bottom: 1.0em
+    +float-right
+    margin: 0.5em 0.5em 1.5em
     .flashcard-help
-      -webkit-appearance: none
+      +tfk-submit-button(white)
       +border-radius(14px)
-      +box-shadow(transparentize($black, 0.5) 0 2px 4px)
-      background: #fff url(./images/question-button.png) no-repeat 8px 3px
-      border: 3px solid $tfk-red
-      font: bold 12px/1.2 Arial, sans-serif
-      padding: 4px 12px 4px 28px
+      background: url(./images/question-button.png) no-repeat 8px 3px
+      padding-left: 28px
   .flashcard-cycle-pager
     a
       color: $tfk-red
@@ -152,7 +149,7 @@
     text-align: center
     margin-bottom: 10px
     +border-radius(14px)
-    +box-shadow(transparentize($black, 0.75) -4px 4px 6px)
+    +box-shadow($default-box-shadow-color -4px 4px 6px)
     ul.question
       li.answer
         font-size: $ms2
