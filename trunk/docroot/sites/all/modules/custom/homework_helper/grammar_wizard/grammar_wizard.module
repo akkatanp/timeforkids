@@ -112,6 +112,7 @@ function grammar_wizard_multistep_form($form, &$form_state, $node) {
       $form['check_answer'] = array(
         '#type' => 'submit',
         '#value' => !isset($form_state['storage']['correct_answer']) ? t('Check Answer') : t('Try Again'),
+        '#name' => !isset($form_state['storage']['correct_answer']) ? 'check_answer' : 'try_again',
         '#weight' => 1,
         '#ajax' => array(
           'wrapper' => 'wizard-form-wrapper',
@@ -124,8 +125,9 @@ function grammar_wizard_multistep_form($form, &$form_state, $node) {
     if (isset($form_state['storage']['correct_answer'])) {
       $form['next'] = array(
         '#type' => 'submit',
-        '#value' => $step == $last_step - 1 ? t('See my Results') : t('Next Question'),
-        '#access' => isset($form_state['storage']['correct_answer']) ? TRUE : FALSE,
+        '#value' => ($step == $last_step - 1) ? t('See my Results') : t('Next Question'),
+        '#name' => ($step == $last_step - 1) ? 'see_results' : 'next_question',
+        '#access' => isset($form_state['storage']['correct_answer']),
         '#weight' => 2,
         '#ajax' => array(
           'wrapper' => 'wizard-form-wrapper',
@@ -163,24 +165,27 @@ function grammar_wizard_multistep_form_submit($form, &$form_state) {
   }
 
   // Determine which button was pressed.
-  $button_value = $form_state['triggering_element']['#value'];
+  switch ($form_state['triggering_element']['#name']) {
+    case 'next_question':
+    case 'see_results':
+      // Increment or decrement the step as needed.
+      $form_state['storage']['step']++;
+      // If values have already been entered for this step, recover them from
+      // $form_state['storage'] to pre-populate them.
+      $step_name = 'step_' . $form_state['storage']['step'];
+      if (!empty($form_state['storage']['values'][$step_name])) {
+        $form_state['values'][$step_name] = $form_state['storage']['values'][$step_name];
+      }
+      unset($form_state['storage']['correct_answer']);
+      break;
 
-  // Increment or decrement the step as needed. Recover values if they exist.
-  if (in_array($button_value, array(t('Next Question'), t('See my Results')))) {
-    $form_state['storage']['step']++;
-    // If values have already been entered for this step, recover them from
-    // $form_state['storage'] to pre-populate them.
-    $step_name = 'step_' . $form_state['storage']['step'];
-    if (!empty($form_state['storage']['values'][$step_name])) {
-      $form_state['values'][$step_name] = $form_state['storage']['values'][$step_name];
-    }
-    unset($form_state['storage']['correct_answer']);
-  }
-  elseif (in_array($button_value, array(t('Check Answer')))) {
-    grammar_wizard_check_answer($form, $form_state);
-  }
-  elseif (in_array($button_value, array(t('Try Again')))) {
-    grammar_wizard_try_again($form, $form_state);
+    case 'check_answer':
+      grammar_wizard_check_answer($form, $form_state);
+      break;
+
+    case 'try_again':
+      grammar_wizard_try_again($form, $form_state);
+      break;
   }
 
   // Otherwise, we still have work to do.
