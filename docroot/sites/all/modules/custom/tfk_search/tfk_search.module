@@ -448,7 +448,8 @@ function _tfk_search_get_saved_searches_block(){
  * @see tfk_search_theme()
  * @see _tfk_search_get_saved_searches_block()
  */
-function _tfk_get_saved_searches(){
+function _tfk_get_saved_searches() {
+  global $user;
 
   $result = db_query('SELECT * FROM tfk_search_saved_searches WHERE saved_by_uid = :saved_by_uid', array('saved_by_uid' => $user->uid));
   if($result->rowCount() > 0) {
