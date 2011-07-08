@@ -208,6 +208,9 @@ function _get_atw_daylife_slideshow_images(){
     $intr_tmp = field_get_items('node', $node, 'field_person_intro');
     $node_data['daylife_speaker_intro'] = $intr_tmp[0]['value'];
 
+    $intr_tmp = field_get_items('node', $node, 'field_person_headline');
+    $node_data['daylife_speaker_headline'] = $intr_tmp[0]['value'];
+
     $credit_tmp =  field_get_items('node', $node, 'field_person_photo_credit');
     $node_data['daylife_speaker_credit'] = $credit_tmp[0]['value'];
 
