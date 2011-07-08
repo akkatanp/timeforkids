@@ -381,15 +381,19 @@ function tfk_search_save_your_search() {
   foreach($filters as $filter){
     $str .= $filter['#query'] . ' ';
   }
+  
+  if(tfk_helper_user_has_role()) {
+    $output = "<div class='savebtn'>";
+    $output .= ctools_modal_text_button(
+      theme('image', array('path' => $path. '/images/save-this-search.png', 'title' => 'Save This Search', 'alt' => 'Save This Search')),
+      // Ajax callback path.
+      'myfr/ajax/saves/'. $str,
+      t('Save your search'),
+      'ctools-modal-ctools-sample-style');
+    $output .= "</div>";
+  }
     
-  $output = "<div class='savebtn'>";
-  $output .= ctools_modal_text_button(
-    theme('image', array('path' => $path. '/images/save-this-search.png', 'title' => 'Save This Search', 'alt' => 'Save This Search')),
-    // Ajax callback path.
-    'myfr/ajax/saves/'. $str,
-    t('Save your search'),
-    'ctools-modal-ctools-sample-style');
-  $output .= "</div>";
+
 
   return $output;
 }
@@ -532,8 +536,26 @@ function theme_tfk_featured_block(&$variables) {
   
   $output .= '</div><!--./g2-->';
   
-  // Related content. @todo Pass some real data to it.
-  $output .= theme('related_content');
+  // Related content.
+  /*
+  if(tfk_helper_user_has_role()) {
+    #$related_content =  field_get_items('node', $tfkSearchFeaturedItem, 'field_additional_content'); #field_related_photos_video
+    $items = field_get_items('node', $tfkSearchFeaturedItem, 'field_additional_content');
+    
+    if(!empty($items)) {
+      $related_nid = array_shift(array_shift($items));
+      $related_node = node_load($related_nid);
+      
+      // Add related content item.
+      $related_content[] = array(
+        'title' => $related_node->title,
+        'path' => 'node/'. $related_nid,
+        'type' => $related_node->type,
+      );
+    }
+    
+    $output .= theme('tfk_search_related_content', array('related_content' => $related_content));
+  }*/
   
   $output .= '</div>';// ./tfk-search-photos-video-featured
   return $output;
@@ -1382,7 +1404,9 @@ function tfk_search_preprocess_search_result(&$vars) {
       
       // Theme related content.
       if(!empty($related_content)) {
-        $vars['related_content'] = theme('tfk_search_related_content', array('related_content' => $related_content));
+        if(tfk_helper_user_has_role()) {
+          $vars['related_content'] = theme('tfk_search_related_content', array('related_content' => $related_content));
+        }
       }
 
       
