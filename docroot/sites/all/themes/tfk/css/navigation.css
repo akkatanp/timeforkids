@@ -885,13 +885,17 @@
 	background: #d71700;
 	color: white;
 	text-decoration: none;
-	padding: 6px 8px;
+	padding: 4px 8px;
 	-moz-border-radius: 12px;
 	-webkit-border-radius: 12px;
 	border-radius: 12px;
 	-moz-box-shadow: 2px 2px 2px #999;
 	-webkit-box-shadow: 2px 2px 2px #999;
 	box-shadow: 2px 2px 2px #999;
+}
+
+#block-block-18  .content a :hover {
+	background: #900;
 }
 
 /* Footer Nav */
