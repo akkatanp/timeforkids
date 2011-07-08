@@ -55,6 +55,13 @@ h2.block-title {
 	height: 360px;
 }
 
+#slideshow-container.regular #slideshow {
+	position: relative;
+	width: 488px;
+	height: 268px;
+}
+
+
 #slideshow .header {
 	position: absolute;
 	top: 0px;
@@ -126,10 +133,23 @@ h2.block-title {
 	height: 260px;
 }
 
+.regular #slideshow .inner {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	height: 268px;
+}
+
 #slideshow .inner img {
 	float: left;
 	width: 488px;
 	height: 260px;
+}
+
+.regular #slideshow .inner img {
+	float: left;
+	width: 488px;
+	height: 268px;
 }
 
 #slideshow-info .credit,
