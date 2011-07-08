@@ -45,7 +45,7 @@
   position: relative;
   overflow: hidden;
   *zoom: 1;
-  margin-bottom: 1.714em;
+  margin-bottom: 10px;
 }
 .homework-helper-content .block {
   margin-bottom: 0;
@@ -68,10 +68,10 @@
   top: 40%;
   border: 4px solid #addcfa;
   background: #ddeeff;
-  -moz-box-shadow: rgba(0, 0, 0, 0.5) 0 2px 4px;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.5) 0 2px 4px;
-  -o-box-shadow: rgba(0, 0, 0, 0.5) 0 2px 4px;
-  box-shadow: rgba(0, 0, 0, 0.5) 0 2px 4px;
+  -moz-box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.25);
+  -o-box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.25);
+  box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.25);
 }
 .homework-helper-content .hh-throbber-message {
   width: 130px;
@@ -85,21 +85,17 @@
   -ms-border-radius: 1em;
   -khtml-border-radius: 1em;
   border-radius: 1em;
-  -moz-box-shadow: rgba(0, 0, 0, 0.25) 2px 2px 1px;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.25) 2px 2px 1px;
-  -o-box-shadow: rgba(0, 0, 0, 0.25) 2px 2px 1px;
-  box-shadow: rgba(0, 0, 0, 0.25) 2px 2px 1px;
-  background-image: url(../images/button.png);
-  background-repeat: repeat-x;
-  border-style: solid;
+  -moz-box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.25);
+  -o-box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.25);
+  box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.25);
   cursor: pointer;
   font: normal 12px/1.2 Arial, sans-serif;
   outline: 0;
   overflow: visible;
   padding: 4px 1em;
   background-color: #d71700;
-  border-color: #d71700;
-  border-width: 1px;
+  border: 1px solid #d71700;
   color: white;
   margin-top: 10px;
 }
@@ -114,21 +110,17 @@
   -ms-border-radius: 1em;
   -khtml-border-radius: 1em;
   border-radius: 1em;
-  -moz-box-shadow: rgba(0, 0, 0, 0.25) 2px 2px 1px;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.25) 2px 2px 1px;
-  -o-box-shadow: rgba(0, 0, 0, 0.25) 2px 2px 1px;
-  box-shadow: rgba(0, 0, 0, 0.25) 2px 2px 1px;
-  background-image: url(../images/button.png);
-  background-repeat: repeat-x;
-  border-style: solid;
+  -moz-box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.25);
+  -o-box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.25);
+  box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.25);
   cursor: pointer;
   font: normal 12px/1.2 Arial, sans-serif;
   outline: 0;
   overflow: visible;
   padding: 4px 1em;
   background-color: #d71700;
-  border-color: #d71700;
-  border-width: 1px;
+  border: 1px solid #d71700;
   color: white;
   padding: 3px 10px 4px;
   margin-right: 10px;
@@ -190,7 +182,7 @@
   background: #999999;
 }
 .homework-helper .node-title {
-  margin-bottom: 1.714em;
+  margin-bottom: 10px;
 }
 
 .page-node-98 .node .row,
@@ -442,7 +434,7 @@ img {
   border-bottom: 1px solid #cecece;
   padding-bottom: 10px;
   padding-left: 15px;
-  margin-bottom: 1.714em;
+  margin-bottom: 10px;
 }
 .page-homework-helper-a-plus-papers .view-a-papers .views-row {
   border-bottom: 1px solid #cecece;
@@ -460,15 +452,15 @@ img {
   margin: 0 0 0 -125px;
 }
 .page-homework-helper-a-plus-papers .view-a-papers .views-field-nothing {
-  margin-top: 1.714em;
+  margin-top: 10px;
 }
 .page-homework-helper-a-plus-papers .view-a-papers .views-field-nothing .related-pdfs {
   background: #ddeeff url(images/pdf-image.png) 0 0.5em no-repeat;
   border: 4px solid #addcfa;
-  -moz-box-shadow: rgba(0, 0, 0, 0.5) 0 2px 4px;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.5) 0 2px 4px;
-  -o-box-shadow: rgba(0, 0, 0, 0.5) 0 2px 4px;
-  box-shadow: rgba(0, 0, 0, 0.5) 0 2px 4px;
+  -moz-box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.25);
+  -o-box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.25);
+  box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.25);
   padding: 5px 5px 5px 30px;
 }
 .page-homework-helper-a-plus-papers .view-a-papers .views-field-nothing .related-pdfs a {
@@ -540,21 +532,17 @@ img {
   -ms-border-radius: 1em;
   -khtml-border-radius: 1em;
   border-radius: 1em;
-  -moz-box-shadow: rgba(0, 0, 0, 0.25) 2px 2px 1px;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.25) 2px 2px 1px;
-  -o-box-shadow: rgba(0, 0, 0, 0.25) 2px 2px 1px;
-  box-shadow: rgba(0, 0, 0, 0.25) 2px 2px 1px;
-  background-image: url(../images/button.png);
-  background-repeat: repeat-x;
-  border-style: solid;
+  -moz-box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.25);
+  -o-box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.25);
+  box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.25);
   cursor: pointer;
   font: normal 12px/1.2 Arial, sans-serif;
   outline: 0;
   overflow: visible;
   padding: 4px 1em;
   background-color: white;
-  border-color: #d71700;
-  border-width: 3px;
+  border: 3px solid #d71700;
   color: #d71700;
   font-weight: bold;
   padding: 4px 1em;
@@ -584,13 +572,13 @@ img {
 .node-flashcard .study-helper-help {
   clear: both;
   padding-left: 20px;
-  margin-top: 1.714em;
+  margin-top: 10px;
 }
 .node-flashcard .study-helper-url {
   *zoom: 1;
   clear: both;
   padding-left: 20px;
-  margin-top: 1.714em;
+  margin-top: 10px;
 }
 .node-flashcard .study-helper-url:after {
   content: "";
@@ -611,11 +599,11 @@ img {
 }
 .node-flashcard .study-helper-url #study-helper-copy {
   -webkit-appearance: none;
-  background: #d71700 url(../images/button.png) repeat-x;
-  -moz-box-shadow: rgba(0, 0, 0, 0.5) 0 2px 4px, #ff533e -3px 3px 5px inset;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.5) 0 2px 4px, #ff533e -3px 3px 5px inset;
-  -o-box-shadow: rgba(0, 0, 0, 0.5) 0 2px 4px, #ff533e -3px 3px 5px inset;
-  box-shadow: rgba(0, 0, 0, 0.5) 0 2px 4px, #ff533e -3px 3px 5px inset;
+  background-color: #d71700;
+  -moz-box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.25), #ff533e -3px 3px 5px inset;
+  -webkit-box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.25), #ff533e -3px 3px 5px inset;
+  -o-box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.25), #ff533e -3px 3px 5px inset;
+  box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.25), #ff533e -3px 3px 5px inset;
   -moz-border-radius: 24px;
   -webkit-border-radius: 24px;
   -o-border-radius: 24px;
@@ -657,11 +645,11 @@ img {
   position: static;
   padding: 8px 24px;
   -webkit-appearance: none;
-  background: #d71700 url(../images/button.png) repeat-x;
-  -moz-box-shadow: rgba(0, 0, 0, 0.5) 0 2px 4px, #ff533e -3px 3px 5px inset;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.5) 0 2px 4px, #ff533e -3px 3px 5px inset;
-  -o-box-shadow: rgba(0, 0, 0, 0.5) 0 2px 4px, #ff533e -3px 3px 5px inset;
-  box-shadow: rgba(0, 0, 0, 0.5) 0 2px 4px, #ff533e -3px 3px 5px inset;
+  background-color: #d71700;
+  -moz-box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.25), #ff533e -3px 3px 5px inset;
+  -webkit-box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.25), #ff533e -3px 3px 5px inset;
+  -o-box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.25), #ff533e -3px 3px 5px inset;
+  box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.25), #ff533e -3px 3px 5px inset;
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
   -o-border-radius: 10px;
@@ -689,15 +677,13 @@ img {
   line-height: 1.5;
   margin-right: 1em;
 }
-.flashcard-cycle a.shuffle,
-.flashcard-cycle a.restart,
-.flashcard-cycle a.edit {
+.flashcard-cycle a.shuffle, .flashcard-cycle a.restart, .flashcard-cycle a.edit {
   -webkit-appearance: none;
-  background: #d71700 url(../images/button.png) repeat-x;
-  -moz-box-shadow: rgba(0, 0, 0, 0.5) 0 2px 4px, #ff533e -3px 3px 5px inset;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.5) 0 2px 4px, #ff533e -3px 3px 5px inset;
-  -o-box-shadow: rgba(0, 0, 0, 0.5) 0 2px 4px, #ff533e -3px 3px 5px inset;
-  box-shadow: rgba(0, 0, 0, 0.5) 0 2px 4px, #ff533e -3px 3px 5px inset;
+  background-color: #d71700;
+  -moz-box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.25), #ff533e -3px 3px 5px inset;
+  -webkit-box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.25), #ff533e -3px 3px 5px inset;
+  -o-box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.25), #ff533e -3px 3px 5px inset;
+  box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.25), #ff533e -3px 3px 5px inset;
   -moz-border-radius: 24px;
   -webkit-border-radius: 24px;
   -o-border-radius: 24px;
@@ -722,26 +708,39 @@ img {
   *width: 50px;
 }
 .flashcard-cycle .flashcard-help-button {
+  display: inline;
   float: right;
-  padding: 0.5em;
-  margin-bottom: 1em;
+  margin: 0.5em 0.5em 1.5em;
 }
 .flashcard-cycle .flashcard-help-button .flashcard-help {
   -webkit-appearance: none;
+  -moz-border-radius: 1em;
+  -webkit-border-radius: 1em;
+  -o-border-radius: 1em;
+  -ms-border-radius: 1em;
+  -khtml-border-radius: 1em;
+  border-radius: 1em;
+  -moz-box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.25);
+  -o-box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.25);
+  box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  font: normal 12px/1.2 Arial, sans-serif;
+  outline: 0;
+  overflow: visible;
+  padding: 4px 1em;
+  background-color: white;
+  border: 3px solid #d71700;
+  color: #d71700;
+  font-weight: bold;
   -moz-border-radius: 14px;
   -webkit-border-radius: 14px;
   -o-border-radius: 14px;
   -ms-border-radius: 14px;
   -khtml-border-radius: 14px;
   border-radius: 14px;
-  -moz-box-shadow: rgba(0, 0, 0, 0.5) 0 2px 4px;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.5) 0 2px 4px;
-  -o-box-shadow: rgba(0, 0, 0, 0.5) 0 2px 4px;
-  box-shadow: rgba(0, 0, 0, 0.5) 0 2px 4px;
-  background: white url(./images/question-button.png) no-repeat 8px 3px;
-  border: 3px solid #d71700;
-  font: bold 12px/1.2 Arial, sans-serif;
-  padding: 4px 12px 4px 28px;
+  background: url(./images/question-button.png) no-repeat 8px 3px;
+  padding-left: 28px;
 }
 .flashcard-cycle .flashcard-cycle-pager a {
   color: #d71700;
@@ -764,21 +763,17 @@ img {
   -ms-border-radius: 1em;
   -khtml-border-radius: 1em;
   border-radius: 1em;
-  -moz-box-shadow: rgba(0, 0, 0, 0.25) 2px 2px 1px;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.25) 2px 2px 1px;
-  -o-box-shadow: rgba(0, 0, 0, 0.25) 2px 2px 1px;
-  box-shadow: rgba(0, 0, 0, 0.25) 2px 2px 1px;
-  background-image: url(../images/button.png);
-  background-repeat: repeat-x;
-  border-style: solid;
+  -moz-box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.25);
+  -o-box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.25);
+  box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.25);
   cursor: pointer;
   font: normal 12px/1.2 Arial, sans-serif;
   outline: 0;
   overflow: visible;
   padding: 4px 1em;
   background-color: white;
-  border-color: #d71700;
-  border-width: 3px;
+  border: 3px solid #d71700;
   color: #d71700;
   font-weight: bold;
   height: auto;
@@ -794,7 +789,7 @@ img {
   background: #f8e549;
   width: 500px;
   text-align: center;
-  margin-bottom: 1.714em;
+  margin-bottom: 10px;
   -moz-border-radius: 14px;
   -webkit-border-radius: 14px;
   -o-border-radius: 14px;
@@ -929,7 +924,8 @@ img {
   font-size: 120%;
 }
 
-.page-homework-helper-flashcards #block-block-21, .page-homework-helper-flashcards #block-study-helper-0 {
+.page-homework-helper-flashcards #block-block-21,
+.page-homework-helper-flashcards #block-study-helper-0 {
   background: #e6e6e6;
   border: 1px solid #cecece;
   display: inline;
@@ -939,15 +935,18 @@ img {
   margin: 0 10px 10px 0;
   clear: right;
 }
-.page-homework-helper-flashcards #block-block-21 h2, .page-homework-helper-flashcards #block-study-helper-0 h2 {
+.page-homework-helper-flashcards #block-block-21 h2,
+.page-homework-helper-flashcards #block-study-helper-0 h2 {
   margin-top: 0;
   margin-bottom: 10px;
 }
-.page-homework-helper-flashcards #block-block-21 .creation-link, .page-homework-helper-flashcards #block-study-helper-0 .creation-link {
+.page-homework-helper-flashcards #block-block-21 .creation-link,
+.page-homework-helper-flashcards #block-study-helper-0 .creation-link {
   margin-top: 10px;
   text-align: center;
 }
-.page-homework-helper-flashcards #block-block-21 .creation-link a, .page-homework-helper-flashcards #block-study-helper-0 .creation-link a {
+.page-homework-helper-flashcards #block-block-21 .creation-link a,
+.page-homework-helper-flashcards #block-study-helper-0 .creation-link a {
   background: #d71700;
   -moz-border-radius: 20px;
   -webkit-border-radius: 20px;
@@ -955,10 +954,10 @@ img {
   -ms-border-radius: 20px;
   -khtml-border-radius: 20px;
   border-radius: 20px;
-  -moz-box-shadow: #999999 2px 2px 2px 2px;
-  -webkit-box-shadow: #999999 2px 2px 2px 2px;
-  -o-box-shadow: #999999 2px 2px 2px 2px;
-  box-shadow: #999999 2px 2px 2px 2px;
+  -moz-box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.25);
+  -o-box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.25);
+  box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.25);
   color: white;
   margin: 10px;
   padding: 5px;
@@ -970,9 +969,10 @@ img {
 }
 
 .page-node-add-flashcard #edit-actions #edit-submit {
-  box-shadow: none;
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
+  -o-box-shadow: none;
+  box-shadow: none;
 }
 
 #flashcard-node-form label {
@@ -1044,7 +1044,7 @@ img {
   clear: left;
   border: 1px solid #cecece;
   font-size: 14px;
-  margin-bottom: 1.714em;
+  margin-bottom: 10px;
 }
 .page-homework-helper-writing-tips #webform-client-form-144 label {
   font-size: 18px;
@@ -1067,21 +1067,17 @@ img {
   -ms-border-radius: 1em;
   -khtml-border-radius: 1em;
   border-radius: 1em;
-  -moz-box-shadow: rgba(0, 0, 0, 0.25) 2px 2px 1px;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.25) 2px 2px 1px;
-  -o-box-shadow: rgba(0, 0, 0, 0.25) 2px 2px 1px;
-  box-shadow: rgba(0, 0, 0, 0.25) 2px 2px 1px;
-  background-image: url(../images/button.png);
-  background-repeat: repeat-x;
-  border-style: solid;
+  -moz-box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.25);
+  -o-box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.25);
+  box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.25);
   cursor: pointer;
   font: normal 12px/1.2 Arial, sans-serif;
   outline: 0;
   overflow: visible;
   padding: 4px 1em;
   background-color: #d71700;
-  border-color: #d71700;
-  border-width: 1px;
+  border: 1px solid #d71700;
   color: white;
   display: inline;
   float: left;
@@ -1143,21 +1139,17 @@ img {
   -ms-border-radius: 1em;
   -khtml-border-radius: 1em;
   border-radius: 1em;
-  -moz-box-shadow: rgba(0, 0, 0, 0.25) 2px 2px 1px;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.25) 2px 2px 1px;
-  -o-box-shadow: rgba(0, 0, 0, 0.25) 2px 2px 1px;
-  box-shadow: rgba(0, 0, 0, 0.25) 2px 2px 1px;
-  background-image: url(../images/button.png);
-  background-repeat: repeat-x;
-  border-style: solid;
+  -moz-box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.25);
+  -o-box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.25);
+  box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.25);
   cursor: pointer;
   font: normal 12px/1.2 Arial, sans-serif;
   outline: 0;
   overflow: visible;
   padding: 4px 1em;
   background-color: white;
-  border-color: #d71700;
-  border-width: 3px;
+  border: 3px solid #d71700;
   color: #d71700;
   font-weight: bold;
 }
@@ -1340,21 +1332,17 @@ span.grammar-wizard-incorrect {
   -ms-border-radius: 1em;
   -khtml-border-radius: 1em;
   border-radius: 1em;
-  -moz-box-shadow: rgba(0, 0, 0, 0.25) 2px 2px 1px;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.25) 2px 2px 1px;
-  -o-box-shadow: rgba(0, 0, 0, 0.25) 2px 2px 1px;
-  box-shadow: rgba(0, 0, 0, 0.25) 2px 2px 1px;
-  background-image: url(../images/button.png);
-  background-repeat: repeat-x;
-  border-style: solid;
+  -moz-box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.25);
+  -o-box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.25);
+  box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.25);
   cursor: pointer;
   font: normal 12px/1.2 Arial, sans-serif;
   outline: 0;
   overflow: visible;
   padding: 4px 1em;
   background-color: white;
-  border-color: #d71700;
-  border-width: 3px;
+  border: 3px solid #d71700;
   color: #d71700;
   font-weight: bold;
   display: inline;
