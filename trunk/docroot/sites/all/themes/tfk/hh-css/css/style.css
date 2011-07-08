@@ -146,6 +146,9 @@
 .homework-helper #content a:hover {
   color: #ffaea4;
 }
+.homework-helper #content a:active {
+  color: black;
+}
 .homework-helper .paper-textarea {
   width: 480px;
 }
@@ -1277,17 +1280,17 @@ span.grammar-wizard-incorrect {
   display: inline;
   float: left;
 }
-.node-type-grammar-practice #grammar-wizard-rule {
+.node-type-grammar-practice .grammar-wizard-rule {
   background: #f8e549;
   border: 1px solid #cecece;
   padding: 10px;
   margin-bottom: 10px;
   width: 404px;
 }
-.node-type-grammar-practice #grammar-wizard-rule h2 {
+.node-type-grammar-practice .grammar-wizard-rule h2 {
   margin: 0;
 }
-.node-type-grammar-practice #grammar-wizard-rule .button {
+.node-type-grammar-practice .grammar-wizard-rule .button {
   display: -moz-inline-box;
   -moz-box-orient: vertical;
   display: inline-block;
@@ -1295,24 +1298,17 @@ span.grammar-wizard-incorrect {
   *vertical-align: auto;
   margin-top: 10px;
 }
-.node-type-grammar-practice #grammar-wizard-rule .button {
+.node-type-grammar-practice .grammar-wizard-rule .button {
   *display: inline;
 }
-.node-type-grammar-practice #grammar-wizard-rule h3,
-.node-type-grammar-practice #grammar-wizard-rule #grammar-wizard-example {
+.node-type-grammar-practice .grammar-wizard-example {
   background-color: #f9fbca;
-  border-color: #cecece;
-  border-style: solid;
-  border-width: 0 1px;
+  border: 1px solid #cecece;
+  margin-top: 10px;
+  padding: 10px;
 }
-.node-type-grammar-practice #grammar-wizard-rule h3 {
-  border-top-width: 1px;
-  margin: 10px 0 0;
-  padding: 10px 10px 0;
-}
-.node-type-grammar-practice #grammar-wizard-rule #grammar-wizard-example {
-  border-bottom-width: 1px;
-  padding: 0 10px 10px;
+.node-type-grammar-practice .grammar-wizard-example h3 {
+  margin: 0;
 }
 .node-type-grammar-practice .node-grammar-practice-question {
   display: inline;
@@ -1402,13 +1398,12 @@ span.grammar-wizard-incorrect {
 .page-homework-helper-grammar-wizard #grammar_practice_header,
 .page-homework-helper-grammar-practice #grammar_practice_header {
   background-color: #666666;
+  display: inline;
+  float: right;
   height: 100px;
   margin: 0 19px;
   position: relative;
   width: 728px;
-  display: inline;
-  float: right;
-  margin-bottom: 1.714em;
 }
 .node-type-grammar-practice #grammar_practice_header .try-another,
 .page-homework-helper-grammar-wizard #grammar_practice_header .try-another,
