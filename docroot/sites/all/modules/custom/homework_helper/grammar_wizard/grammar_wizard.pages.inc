@@ -26,7 +26,7 @@ function grammar_wizard_prepare_questions($node) {
       $questions[] = grammar_wizard_prepare_question($node);
     }
   }
-  $questions[0]['#instructions'] = $instructions; 
+  $questions[0]['#instructions'] = $instructions;
   $questions[] = grammar_wizard_results();
   return $questions;
 }
@@ -55,7 +55,7 @@ function grammar_wizard_prepare_question($node) {
     '#title' => check_plain($node->title),
   );
 
-  $form['#parent_nid'] = arg(1); 
+  $form['#parent_nid'] = arg(1);
   $form['#correct_answer'] = $node->field_grammar_practice_answer[$node->language][0]['value'];
 
   $rule_node = node_load($node->field_grammar_practice_rule[$node->language][0]['nid']);
@@ -72,7 +72,6 @@ function grammar_wizard_prepare_question($node) {
  * Show the results page.
  */
 function grammar_wizard_results() {
-  $form['#parent_nid'] = arg(1); 
+  $form['#parent_nid'] = arg(1);
   return $form;
-} 
-
+}

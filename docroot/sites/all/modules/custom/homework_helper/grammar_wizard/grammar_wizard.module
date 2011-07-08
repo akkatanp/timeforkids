@@ -62,7 +62,7 @@ function grammar_wizard_multistep_form($form, &$form_state, $node) {
 
   $form['view_rules'] = array(
     '#markup' => '<div id="grammar-wizard-see-rules"><h2>See The Rules Again</h2><p>You can read the rules, but you\'ll have to restart the quiz again.</p>' . l('View Rules', 'homework-helper/punctuation-practice/rules/' . $form["step_$step"]['#parent_nid'], array('attributes' => array('class' => array('button')))) . '</div>',
-    '#weight' => -2, 
+    '#weight' => -2,
   );
 
   if ($step == $last_step) {
@@ -70,20 +70,20 @@ function grammar_wizard_multistep_form($form, &$form_state, $node) {
       '#markup' => grammar_wizard_final_question_content($form_state),
       '#weight' => 0,
     );
-  } 
+  }
   else {
     if ($step == 0) {
       $form['instructions'] = array(
         '#markup' => '<div id="grammar-instructions">' . $form['step_0']['#instructions'] . '</div>',
         '#weight' => -3,
       );
-    }  
-    
+    }
+
     $form['numbering'] = array(
-      '#markup' => '<div id="grammar-wizard-numbering">' . ($step + 1) . ' of ' . (count($questions) - 1) . '</div>',  
+      '#markup' => '<div id="grammar-wizard-numbering">' . ($step + 1) . ' of ' . (count($questions) - 1) . '</div>',
       '#weight' => -1,
     );
-    
+
     // Only show this button if no answer has been submitted or if an incorrect answer was submitted.
     if (!isset($form_state['storage']['correct_answer']) || !$form_state['storage']['correct_answer']) {
       $form['check_answer'] = array(
@@ -112,7 +112,7 @@ function grammar_wizard_multistep_form($form, &$form_state, $node) {
       $form['question_result'] = array('#markup' => $form_state['storage']['question_result'], '#weight' => 1,);
     }
   }
-  
+
   return $form;
 }
 
@@ -179,19 +179,19 @@ function grammar_wizard_final_question_content($form_state) {
     if ($answer == 0) {
       $incorrect++;
     }
-  }  
+  }
 
   if ($incorrect == 0) {
     $output = '<div id="grammar-wizard-results"><h2>Your Results:</h2><div>Correct: ' . $correct . '</div><div>Incorrect: ' . $incorrect . '</div><h2>Congratulations!</h2></div>';
     $output .= views_embed_view('grammar_practice_trophies');
-  }  
+  }
   else {
     $output .= '<div id="grammar-wizard-results"><h2>Your Results:</h2><div>Correct: ' . $correct . '</div><div>Incorrect: ' . $incorrect . '</div></div>';
-  }  
+  }
 
 
   return $output;
-}  
+}
 
 /**
  * Submit callback for answer checking button on grammar wizard quiz.
@@ -199,12 +199,12 @@ function grammar_wizard_final_question_content($form_state) {
 function grammar_wizard_check_answer($form, &$form_state) {
   $current_step = 'step_' . $form_state['storage']['step'];
   $correct_answer = check_plain($form[$current_step]['#correct_answer']);
-  $selected_answer = $form_state['input'][$current_step]['question']; 
+  $selected_answer = $form_state['input'][$current_step]['question'];
   if ($correct_answer == $selected_answer) {
     $form_state['storage']['correct_answer'] = TRUE;
     $form_state['storage']['question_result'] = '<div id="grammar-wizard-result"><h2>You Got It!</h2><div id="grammar-wizard-rule"><h2>You Understand:</h2>' . $form[$current_step]['#rule'] . '<h3>Example:</h3><div id="grammar-wizard-example">' . $form[$current_step]['#rule_example'] . '</div></div></div>';
     $form_state['storage']['student_answers'][$current_step] = 1;
-  }  
+  }
   elseif (!isset($selected_answer)) {
     drupal_set_message('Please select an answer.', 'warning');
   }
@@ -212,8 +212,8 @@ function grammar_wizard_check_answer($form, &$form_state) {
     $form_state['storage']['correct_answer'] = FALSE;
     $form_state['storage']['question_result'] = '<div id="grammar-wizard-result"><h2>Incorrect!</h2><div id="grammar-wizard-rule"><h2>Remember:</h2>' . $form[$current_step]['#rule'] . '<h3>Example:</h3><div id="grammar-wizard-example">' . $form[$current_step]['#rule_example'] . '</div></div></div>';
     $form_state['storage']['student_answers'][$current_step] = 0;
-  }  
-}  
+  }
+}
 
 /**
  * Submit callback for try again button on grammar wizard quiz.
@@ -228,4 +228,3 @@ function grammar_wizard_try_again($form, &$form_state) {
   // Ensure that the answer is not marked as correct.
   $form_state['storage']['student_answers'][$current_step] = 0;
 }
-

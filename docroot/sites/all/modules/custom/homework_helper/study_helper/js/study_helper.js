@@ -11,6 +11,6 @@
       var clip = new ZeroClipboard.Client();
       clip.setText(value);
       clip.glue('study-helper-copy');
-    } 
+    }
   }
 }(jQuery));
