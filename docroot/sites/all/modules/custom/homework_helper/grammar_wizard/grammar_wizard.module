@@ -45,42 +45,65 @@ function grammar_wizard_multistep_form($form, &$form_state, $node) {
   $form_state['storage']['step'] = $step;
   $last_step = count($questions) - 1;
 
-  $form["step_$step"] = $questions[$step];
-  if (isset($form["step_$step"]['question'])) {
+  $step_name = "step_$step";
+  $form[$step_name] = $questions[$step];
+  if (isset($form[$step_name]['question'])) {
     if (isset($form_state['storage']['correct_answer'])) {
       // Disable the radio buttons if the question was answered.
-      $form["step_$step"]['question']['#disabled'] = TRUE;
+      $form[$step_name]['question']['#disabled'] = TRUE;
       if (!$form_state['storage']['correct_answer']) {
         // If they answered the question wrong, then mark the answer they chose.
-        $answer = $form_state['storage']['values']["step_$step"]['question'];
-        $alpha_answer = $form["step_$step"]['question']['#options'][$answer];
-        $form["step_$step"]['question']['#options'][$answer] = '<span class="grammar-wizard-incorrect">' . $alpha_answer . '</span>';
+        $answer = $form_state['storage']['values'][$step_name]['question'];
+        $alpha_answer = $form[$step_name]['question']['#options'][$answer];
+        $form[$step_name]['question']['#options'][$answer] = '<span class="grammar-wizard-incorrect">' . $alpha_answer . '</span>';
       }
     }
-    $form["step_$step"]['question']['#default_value'] = empty($form_state['values']["step_$step"]['question']) ? '' : $form_state['values']["step_$step"]['question'];
+    $form[$step_name]['question']['#default_value'] = !empty($form_state['values'][$step_name]['question']) ? $form_state['values'][$step_name]['question'] : '';
   }
 
   $form['view_rules'] = array(
-    '#markup' => '<div id="grammar-wizard-see-rules"><h2>See The Rules Again</h2><p>You can read the rules, but you\'ll have to restart the quiz again.</p>' . l('View Rules', 'homework-helper/punctuation-practice/rules/' . $form["step_$step"]['#parent_nid'], array('attributes' => array('class' => array('button')))) . '</div>',
+    '#prefix' => '<div id="grammar-wizard-see-rules">',
+    '#suffix' => '</div>',
     '#weight' => -2,
+    'header' => array(
+      '#prefix' => '<h2>',
+      '#suffix' => '</h2>',
+      '#markup' => t('See the Rules Again'),
+    ),
+    'body' => array(
+      '#prefix' => '<p>',
+      '#suffix' => '</p>',
+      '#markup' => t("You can read the rules, but you'll have to restart the quiz again."),
+    ),
+    'link' => array(
+      '#theme' => 'link',
+      '#text' => t('View Rules'),
+      '#path' => 'homework-helper/punctuation-practice/rules/' . $form[$step_name]['#parent_nid'],
+      '#options' => array(
+        'attributes' => array(
+          'class' => array('button'),
+        ),
+      ),
+    ),
   );
 
   if ($step == $last_step) {
-    $form['description'] = array(
-      '#markup' => grammar_wizard_final_question_content($form_state),
-      '#weight' => 0,
-    );
+    $form['description'] = grammar_wizard_final_question_content($form_state);
   }
   else {
     if ($step == 0) {
       $form['instructions'] = array(
-        '#markup' => '<div id="grammar-instructions">' . $form['step_0']['#instructions'] . '</div>',
+        '#prefix' => '<div id="grammar-instructions">',
+        '#suffix' => '</div>',
+        '#markup' => $form['step_0']['#instructions'],
         '#weight' => -3,
       );
     }
 
     $form['numbering'] = array(
-      '#markup' => '<div id="grammar-wizard-numbering">' . ($step + 1) . ' of ' . (count($questions) - 1) . '</div>',
+      '#prefix' => '<div id="grammar-wizard-numbering">',
+      '#suffix' => '</div>',
+      '#markup' => ($step + 1) . ' of ' . (count($questions) - 1),
       '#weight' => -1,
     );
 
@@ -103,13 +126,13 @@ function grammar_wizard_multistep_form($form, &$form_state, $node) {
         '#type' => 'submit',
         '#value' => $step == $last_step - 1 ? t('See my Results') : t('Next Question'),
         '#access' => isset($form_state['storage']['correct_answer']) ? TRUE : FALSE,
-        '#weight' => 1,
+        '#weight' => 2,
         '#ajax' => array(
           'wrapper' => 'wizard-form-wrapper',
           'callback' => 'grammar_wizard_multistep_form_callback',
         ),
       );
-      $form['question_result'] = array('#markup' => $form_state['storage']['question_result'], '#weight' => 1,);
+      $form['question_result'] = $form_state['storage']['question_result'];
     }
   }
 
@@ -121,8 +144,7 @@ function grammar_wizard_multistep_form($form, &$form_state, $node) {
  */
 function grammar_wizard_multistep_form_callback($form, &$form_state) {
   // Form needs to be rebuilt because it will possibly have different content.
-  $form = drupal_rebuild_form('grammar_wizard_multistep_form', $form_state);
-  return $form;
+  return drupal_rebuild_form('grammar_wizard_multistep_form', $form_state);
 }
 
 /**
@@ -154,10 +176,10 @@ function grammar_wizard_multistep_form_submit($form, &$form_state) {
     }
     unset($form_state['storage']['correct_answer']);
   }
-  else if (in_array($button_value, array(t('Check Answer')))) {
+  elseif (in_array($button_value, array(t('Check Answer')))) {
     grammar_wizard_check_answer($form, $form_state);
   }
-  else if (in_array($button_value, array(t('Try Again')))) {
+  elseif (in_array($button_value, array(t('Try Again')))) {
     grammar_wizard_try_again($form, $form_state);
   }
 
@@ -181,14 +203,34 @@ function grammar_wizard_final_question_content($form_state) {
     }
   }
 
+  $output = array(
+    '#prefix' => '<div id="grammar-wizard-results">',
+    '#suffix' => '</div>',
+    '#weight' => 0,
+    'title' => array(
+      '#prefix' => '<h2>',
+      '#suffix' => '</h2>',
+      '#markup' => t('Your Results') . ':',
+    ),
+    'correct' => array(
+      '#prefix' => '<div>',
+      '#suffix' => '</div>',
+      '#markup' => t('Correct') . ': ' . $correct,
+    ),
+    'incorrect' => array(
+      '#prefix' => '<div>',
+      '#suffix' => '</div>',
+      '#markup' => t('Incorrect') . ': ' . $incorrect,
+    ),
+  );
   if ($incorrect == 0) {
-    $output = '<div id="grammar-wizard-results"><h2>Your Results:</h2><div>Correct: ' . $correct . '</div><div>Incorrect: ' . $incorrect . '</div><h2>Congratulations!</h2></div>';
-    $output .= views_embed_view('grammar_practice_trophies');
+    $output['congrats'] = array(
+      '#prefix' => '<h2>',
+      '#suffix' => '</h2>',
+      '#markup' => t('Congratulations!'),
+    );
+    $output['#suffix'] .= views_embed_view('grammar_practice_trophies');
   }
-  else {
-    $output .= '<div id="grammar-wizard-results"><h2>Your Results:</h2><div>Correct: ' . $correct . '</div><div>Incorrect: ' . $incorrect . '</div></div>';
-  }
-
 
   return $output;
 }
@@ -200,19 +242,63 @@ function grammar_wizard_check_answer($form, &$form_state) {
   $current_step = 'step_' . $form_state['storage']['step'];
   $correct_answer = check_plain($form[$current_step]['#correct_answer']);
   $selected_answer = $form_state['input'][$current_step]['question'];
-  if ($correct_answer == $selected_answer) {
-    $form_state['storage']['correct_answer'] = TRUE;
-    $form_state['storage']['question_result'] = '<div id="grammar-wizard-result"><h2>You Got It!</h2><div id="grammar-wizard-rule"><h2>You Understand:</h2>' . $form[$current_step]['#rule'] . '<h3>Example:</h3><div id="grammar-wizard-example">' . $form[$current_step]['#rule_example'] . '</div></div></div>';
-    $form_state['storage']['student_answers'][$current_step] = 1;
-  }
-  elseif (!isset($selected_answer)) {
+
+  // Perform validaton?
+  if (!isset($selected_answer)) {
     drupal_set_message('Please select an answer.', 'warning');
+    return;
+  }
+
+  // Set the interface text based on correctness of answer.
+  if ($form_state['storage']['correct_answer'] = ($correct_answer == $selected_answer)) {
+    $title = t('You Got It');
+    $rule = t('You Understand');
   }
   else {
-    $form_state['storage']['correct_answer'] = FALSE;
-    $form_state['storage']['question_result'] = '<div id="grammar-wizard-result"><h2>Incorrect!</h2><div id="grammar-wizard-rule"><h2>Remember:</h2>' . $form[$current_step]['#rule'] . '<h3>Example:</h3><div id="grammar-wizard-example">' . $form[$current_step]['#rule_example'] . '</div></div></div>';
-    $form_state['storage']['student_answers'][$current_step] = 0;
+    $title = t('Incorrect');
+    $rule = t('Remember');
   }
+
+  // Step is either 0 or 1, corresponding to the boolean 'correct_answer'.
+  $form_state['storage']['student_answers'][$current_step] = (int) $form_state['storage']['correct_answer'];
+
+  // Build a render array of our results.
+  $form_state['storage']['question_result'] = array(
+    '#prefix' => '<div id="grammar-wizard-result">',
+    '#suffix' => '</div>',
+    '#weight' => 1,
+    'title' => array(
+      '#prefix' => '<h2>',
+      '#suffix' => '</h2>',
+      '#markup' => $title . '!',
+    ),
+    'rule' => array(
+      '#prefix' => '<div class="grammar-wizard-rule">',
+      '#suffix' => '</div>',
+      'title' => array(
+        '#prefix' => '<h2>',
+        '#suffix' => '</h2>',
+        '#markup' => $rule . ':',
+      ),
+      'body' => array(
+        '#markup' => $form[$current_step]['#rule'],
+      ),
+      'example' => array(
+        '#prefix' => '<div class="grammar-wizard-example">',
+        '#suffix' => '</div>',
+        'title' => array(
+          '#prefix' => '<h3>',
+          '#suffix' => '</h3>',
+          '#markup' => t('Example') . ':',
+        ),
+        'body' => array(
+          '#prefix' => '<div>',
+          '#suffix' => '</div>',
+          '#markup' => $form[$current_step]['#rule_example'],
+        ),
+      ),
+    ),
+  );
 }
 
 /**
