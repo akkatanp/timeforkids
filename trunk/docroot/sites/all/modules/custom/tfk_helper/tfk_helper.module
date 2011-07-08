@@ -631,6 +631,11 @@ function tfk_helper_get_featured_block_sidebar($flag_name, $thumbnail_field, $dy
  * Check the roles of the current user.
  *
  * @param array $roles
+ *   Roles to check for.
+ *   Defaults to 'editor', 'teacher', and 'administrator'.
+ *
+ * @return
+ *   TRUE if the current user has one of the $roles, otherwise FALSE.
  */
 function tfk_helper_user_has_role($roles = array('editor', 'teacher', 'administrator')) {
   global $user;
@@ -641,8 +646,8 @@ function tfk_helper_user_has_role($roles = array('editor', 'teacher', 'administr
   }
   
   $grant = array();
-  foreach($roles as $role) {
-    $rid = array_search($role, $user->roles);
+  foreach($user->roles as $role) {
+    $rid = array_search($role, $roles);
     if($rid !== FALSE) {
       $grant[] = $role;
     }
