@@ -35,7 +35,7 @@ function tfk_helper_update_7000(&$ret) {
   // Install Feature. We use this function instead of module_install because
   // it takes care of installing dependencies.
   features_install_modules(array('tfk_site_wide_search'));
-  watchdog('tfk_schema_updates', 'tfk_helper: Installed site-wide search module.');
+  watchdog('tfk_schema_updates', 'tfk_helper: Installed site-wide search Feature.');
 }
 
 /**
@@ -67,12 +67,12 @@ function tfk_helper_update_7001(&$ret) {
  * @see apachesolr_enabled_facets_form_submit
  */
 function tfk_helper_update_7002(&$ret) {
-  #module_load_include('module', 'apachesolr');
-  
-  #$enabled = apachesolr_server_variable_get(, 'apachesolr_enabled_facets', array());
+  // How to see what are the currently enabled facets.
+  // $server_id = variable_get('apachesolr_default_server');
+  // $enabled = apachesolr_server_variable_get($server_id, 'apachesolr_enabled_facets', array());
   
   $server_id = variable_get('apachesolr_default_server');
-  // Hardcode list of facets. If we were to have multiple sites using the same
+  // Hardcoded list of facets. If we were to have multiple sites using the same
   // code, those numeric ids would need to be dynamic, but for now that's not the case.
   $enabled = array(
     'apachesolr_search' => array (
@@ -105,10 +105,61 @@ function tfk_helper_update_7003(&$ret) {
       watchdog('tfk_schema_updates', 'tfk_helper: deleted database version of user_favorites View');
     }
   }
-  
-  // Revert Feature, define View from code.
-  // Doesn't work, probably expects an object.
-  //features_revert(array('tfk_favorite_feature'));
 }
 
+/**
+ * Delete field_worksheet_related field, manually revert tfk_worksheets feature.
+ */
+function tfk_helper_update_7004(&$ret) {
+  // Note: we will be using the field_related_articles shared field from now on.
+  // We delete field_worksheet_related then revert the tfk_worksheets Feature
+  // so the database version of the Feature can pick up the settings from it's
+  // code version (namely the new field_related_articles instance).
+  // BEFORE: https://skitch.com/richard-alexander-allen/fe71r/worksheet-localhost
+  
+  // Delete field_worksheet_related field.
+  field_delete_field('field_worksheet_related');
+  watchdog('tfk_schema_updates', 'tfk_helper: deleted the field_worksheet_related field and all of it\'s instances.');
+  
+  // Enable Features before reverting them.
+  if(!module_exists('tfk_favorites_feature')) {
+    features_install_modules(array('tfk_favorites_feature'));
+    watchdog('tfk_schema_updates', 'tfk_helper: installed tfk_favorites_feature search Feature.');
+  }
+  	
+  // Manually revert Features, defines favorites View from code, instantiates field_related_articles field, etc.
+  $features = array('tfk_favorites_feature', 'tfk_worksheets', 'tfk_site_wide_search');
+  tfk_helper_features_revert($features);
+  
+  watchdog('tfk_schema_updates', 'tfk_helper: reverted tfk_favorites_feature and tfk_worksheets Features. Instantiate field_related_articles field on Worksheet content type.');
 
+  // AFTER: https://skitch.com/richard-alexander-allen/fe7i7/worksheet-localhost
+}
+
+function tfk_helper_features_revert($modules = array()) {
+  module_load_include('inc', 'features', 'features.export');
+  features_include();
+  
+  foreach($modules as $module) {
+    if(($feature = feature_load($module, TRUE)) && module_exists($module)) {
+      
+      $components = array();
+      foreach (array_keys($feature->info['features']) as $component) {
+        if (features_hook($component, 'features_revert')) {
+          $components[] = $component;
+        }
+      }
+      if(!empty($components)) {
+        foreach($components as $component) {
+          features_revert(array($module => array($component)));
+          watchdog('tfk_schema_updates', 'Reverted !component.', array('!component' => $component));
+        }
+      }
+      
+    } elseif($feature) {
+      watchdog('tfk_schema_updates', 'The feature !feature is not enabled.', array('!feature' => $module));
+    } else {
+      watchdog('tfk_schema_updates', 'The feature !feature could not be found.', array('!feature' => $module));
+    }
+  }
+}
