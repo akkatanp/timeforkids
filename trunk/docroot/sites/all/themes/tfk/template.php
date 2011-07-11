@@ -111,8 +111,9 @@ function tfk_preprocess_page(&$variables, $hook) {
     $variables['tfk_header_tag'] = tfk_header_tag($variables['node']->type);
     $variables['theme_hook_suggestions'][] = 'page__homework_helper';
   }
-
-  if ($view = views_get_page_view()) {
+  
+  $view = views_get_page_view();
+  if ($view) {
     if ($view->name == 'grammar_practice') {
       $variables['grammar_practice_header'] = ' ';
     }
