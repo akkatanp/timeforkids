@@ -167,12 +167,14 @@ define('TFK_SEARCH_RELATED_TYPE', 'sm_field_additional_content_types');
  * @see apachesolr_node_to_document
  */
 function tfk_search_apachesolr_update_index(&$document, $node, $namespace) {
-  if (isset($node->field_date)){
-
+  // Index date field.
+  if(isset($node->field_date)){
     $tmp_date =  field_get_items('node', $node, 'field_date');
     $date = $tmp_date[0]['value'];
     $date = date('Y', $date);
     $document->addField('sm_editorial_date_tfk', $date);
+  } else {
+    $document->addField('sm_editorial_date_tfk', date('Y', $node->created));
   }
   
   // Index related articles node reference field.
@@ -278,7 +280,7 @@ function tfk_search_block_view($delta='') {
     
     // Year of the node filter.
     case 'sm_editorial_date_tfk':
-      $block['subject'] = t('Custom ApacheSolrFilter');
+      $block['subject'] = t('Select a Date Range');
 
       if (apachesolr_has_searched()) {
         $response = apachesolr_static_response_cache();
@@ -287,7 +289,7 @@ function tfk_search_block_view($delta='') {
           return;
         }
         $query = apachesolr_current_query();
-        $block['content'] = apachesolr_facet_block($response, $query, 'tfk_search', $delta, $delta, t($facet['info']));
+        $block['content'] = apachesolr_facet_block($response, $query, 'tfk_search', $delta, $delta);
       }else{
         $block['content'] = '';
       }
