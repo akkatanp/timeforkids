@@ -342,7 +342,7 @@ function tfk_worksheets_field_default_fields() {
   $fields['node-worksheet-field_themes'] = array(
     'field_config' => array(
       'active' => '1',
-      'cardinality' => '1',
+      'cardinality' => '3',
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_themes',
@@ -570,8 +570,8 @@ function tfk_worksheets_field_default_fields() {
       'indexes' => array(),
       'module' => 'metatags_quick',
       'settings' => array(
-        'meta_name' => 'description',
         0 => 'meta_name',
+        'meta_name' => 'description',
       ),
       'translatable' => '0',
       'type' => 'metatags_quick',
@@ -599,7 +599,7 @@ function tfk_worksheets_field_default_fields() {
       'entity_type' => 'node',
       'field_name' => 'meta_description',
       'label' => 'Meta Description',
-      'required' => 1,
+      'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
       ),
@@ -625,8 +625,8 @@ function tfk_worksheets_field_default_fields() {
       'indexes' => array(),
       'module' => 'metatags_quick',
       'settings' => array(
-        'meta_name' => 'keywords',
         0 => 'meta_name',
+        'meta_name' => 'keywords',
       ),
       'translatable' => '0',
       'type' => 'metatags_quick',
@@ -654,7 +654,7 @@ function tfk_worksheets_field_default_fields() {
       'entity_type' => 'node',
       'field_name' => 'meta_keywords',
       'label' => 'Meta Keywords',
-      'required' => 1,
+      'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
       ),
