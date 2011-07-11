@@ -30,7 +30,7 @@ function tfk_ads_omni_preprocess_page(&$variables){
     $variables['ad']['banner_728x90_footer'] = tfk_ads_omni_create_ad('banner_728x90_footer',728,90,'regular',2);
     /*Inject ad calls into blocks, overriding placeholder ad*/
     tfk_ads_omni_form_alter('block_1', $variables['page']['sidebar_second'], $variables['ad']['banner_160x600']);
-    tfk_ads_omni_form_alter('block_22', $variables['page']['footer'], $variables['ad']['banner_728x90_footer']);
+    tfk_ads_omni_form_alter('block_26', $variables['page']['footer'], $variables['ad']['banner_728x90_footer']);
     
     /*Omniture*/
    if (!$variables['is_admin'] == "true") {//Exclude from admin pages
