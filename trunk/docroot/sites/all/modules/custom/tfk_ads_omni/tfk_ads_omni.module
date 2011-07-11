@@ -30,8 +30,12 @@ function tfk_ads_omni_preprocess_page(&$variables){
     $variables['ad']['banner_160x600'] = tfk_ads_omni_create_ad('banner_160x600',160,600,'regular');
     $variables['ad']['banner_728x90_footer'] = tfk_ads_omni_create_ad('banner_728x90_footer',728,90,'regular',2);
     /*Inject ad calls into blocks, overriding placeholder ad*/
-    tfk_ads_omni_form_alter('block_1', $variables['page']['sidebar_second'], $variables['ad']['banner_160x600']);
-    tfk_ads_omni_form_alter('block_26', $variables['page']['footer'], $variables['ad']['banner_728x90_footer']);
+    $block_form_state['rebuild'] = 'true';
+    $block_form_state['change_ad'] = 1;
+    $block_form_state['values'] = $variables['ad']['banner_160x600'];
+    tfk_ads_omni_form_alter($variables['page']['sidebar_second'], $block_form_state, 'block_1');
+    $block_form_state['values'] = $variables['ad']['banner_728x90_footer'];
+    tfk_ads_omni_form_alter($variables['page']['footer'], $block_form_state, 'block_26');
     
     /*Omniture*/
    if (!$variables['is_admin'] == "true") {//Exclude from admin pages
@@ -42,14 +46,14 @@ function tfk_ads_omni_preprocess_page(&$variables){
         drupal_add_js($tfk_omni_library,'file');
         /*Omniture vars*/
         $omniture_vars .= "s_time.channel = 'tfk';\n";
-        if ($variables['node']->nid == 167) {
+        if (array_key_exists('node',$variables) && $variables['node']->nid == 167) {
             //404 Page
             $omniture_vars .= "s_time.pageType = 'errorPage';\n";
         } else {
             $omniture_vars .= "s_time.pageName = '".$ad_omni_config['omni_pagename']."';\n";
             $omniture_vars .= "s_time.prop16 = '".tfk_ads_omni_format_omniture($ad_omni_config['channel'])."';\n";
-            if (isset($ad_omni_config['sub_channel'])) {$omniture_vars .= "s_time.prop11 = '".tfk_ads_omni_format_omniture($ad_omni_config['sub_channel'])."';\n";}
-            if (isset($ad_omni_config['omni_grade_level'])) {$omniture_vars .= "s_time.prop9 = '".$ad_omni_config['omni_grade_level']."';\n";}
+            if ($ad_omni_config['sub_channel']) {$omniture_vars .= "s_time.prop11 = '".tfk_ads_omni_format_omniture($ad_omni_config['sub_channel'])."';\n";}
+            if (array_key_exists('omni_grade_level',$ad_omni_config)) {$omniture_vars .= "s_time.prop9 = '".$ad_omni_config['omni_grade_level']."';\n";}
             $omniture_vars .= "s_time.prop13 = '".$ad_omni_config['omni_user_status']."';\n";
             if (isset($ad_omni_config['ctype'])) {$omniture_vars .= "s_time.prop15 = '".$ad_omni_config['ctype']."';\n";}
             if ($ad_omni_config['channel'] == "search") {
@@ -104,7 +108,7 @@ function tfk_ads_omni_get_config_vars(&$variables){
      */
      $channel_array['omni_pagename'] = "tfk|";
      $channel_array['omni_user_status'] = "non-registered";
-     $channel_array['is_channel'] = "";
+     $channel_array['is_channel'] = "";$channel_array['channel'] = "";$channel_array['sub_channel'] = "";
      //First let's determine if we are in the kid or teacher site
      if (isset($variables['user']->roles) && in_array('teacher',$variables['user']->roles) == 1) {
          $ad_zone_prefix = "teacher";
@@ -170,10 +174,12 @@ function tfk_ads_omni_get_config_vars(&$variables){
      return $channel_array;
 }
 //This overrides a block with a real ad call
-function tfk_ads_omni_form_alter($form_id, &$form, $content) {
-    $alteration = array('#description' => t('Overridden via ad module'),'#markup' => $content);
-    if(isset($form) && is_string($form_id)) {
-         $form["$form_id"] = array_merge($form["$form_id"], $alteration);
+function tfk_ads_omni_form_alter(&$form, &$form_state, $form_id) {
+    if(is_array($form) && is_string($form_id)) {
+         if(array_key_exists($form_id, $form) && array_key_exists('change_ad', $form_state)) {
+            $alteration = array('#description' => t('Overridden via ad module'),'#markup' => $form_state['values']);
+            $form["$form_id"] = array_merge($form["$form_id"], $alteration);
+         }
     }
 }
 //Retrieve the omniture suite account name
