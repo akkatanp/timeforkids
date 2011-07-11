@@ -79,7 +79,7 @@ function tfk_ads_omni_create_ad($name,$width,$height,$type='regular',$position=N
         $ad_position = "ad.setPosition($position);";
      }
      if ($type == "regular") {
-        $ad_tag = "<div id=\"$name\"><div><script type=\"text/javascript\">ad = adFactory.getAd($width, $height);".$ad_position."ad.write();</script></div></div>";
+        $ad_tag = "<div id=\"$name\"><div><script type=\"text/javascript\">ad = adFactory.getAd($width, $height);".$position."ad.write();</script></div></div>";
      } elseif ($type == "cm") {
         $ad_tag = "<div id=\"$name\"><script type=\"text/javascript\">adFactory.getCmAd($width, $height, \"global\", \"tout\").write();</script></div>";
      }
@@ -95,12 +95,12 @@ function tfk_ads_omni_get_config_vars(&$variables){
      * $channel_array['sub_channel'] Current sub channel name
      * $channel_array['node_path'] Current node leaf
      * $channel_array['omni_pagename'] omnivar pagename
-     * $channel_array['omni_account'] omniture account. 
+     * $channel_array['omni_account'] omniture account.
      * $channel_array['omni_grade_level'] grade level of the content if it has one.
      * $channel_array['omni_user_status'] registered or non-registered
      * $channel_array['omni_ctype'] content type as described by node->type
      */
-     $channel_array['omni_pagename'] = "tfk|"; 
+     $channel_array['omni_pagename'] = "tfk|";
      $channel_array['omni_user_status'] = "non-registered";
      //First let's determine if we are in the kid or teacher site
      if (isset($variables['user']->roles) && in_array('teacher',$variables['user']->roles) == 1) {
