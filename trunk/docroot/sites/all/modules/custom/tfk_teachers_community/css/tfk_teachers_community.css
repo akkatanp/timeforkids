@@ -155,12 +155,13 @@ div#block-system-main div.node-teacher-community-question.view-mode-full {
   border: 1px solid #CCCCCC;
   padding: 7px 5px 5px 7px;
 }
-div#block-system-main div.node-teacher-community-question.view-mode-full h2.node-title a {
-  font-size: 1.67em;
-  line-height: 100%;
-}
+
 div#block-system-main div.node-teacher-community-question.view-mode-full h2.node-title {
   margin: 20px 0 10px;
+  font-size: 30px;
+  line-height: 100%;
+  color: #D71700;
+  font-weight: bold;
 }
 
 
