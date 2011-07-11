@@ -190,9 +190,12 @@ function tfk_ads_omni_get_account() {
         case "qa.timeforkids.com":
         case "timedev.prod.acquia-sites.com":
             $omniture_account = "timekidscomqa";/*QA*/
+            break;
         case "time.prod.acquia-sites.com":
         case "www.timeforkids.com":
+        case "timeforkids.com":
             $omniture_account = "timekidscom";/*Prod*/
+            break;
         case "timedev2.prod.acquia-sites.com":
         case "dev.timeforkids.com":
         default:
