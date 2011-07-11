@@ -1,0 +1,21 @@
+diff --git flashcard_anonymous/flashcard_anonymous.module flashcard_anonymous/flashcard_anonymous.module
+index 42d26f5..a0a7f71 100644
+--- flashcard_anonymous/flashcard_anonymous.module
++++ flashcard_anonymous/flashcard_anonymous.module
+@@ -80,6 +80,16 @@ function flashcard_anonymous_process_node(&$variables) {
+ }
+ 
+ /**
++ * Add the node object to the page variables. It will otherwise not be added,
++ * as it relies on menu_get_object() in template_preprocess_page.
++ */
++function flashcard_anonymous_preprocess_page(&$variables) {
++  if ($node = menu_get_object('flashcard_anonymous_uuid')) {
++    $variables['node'] = $node;
++  }
++}
++
++/**
+  * Returns whether the current page is the full page view of the passed-in flashcard.
+  */
+ function flashcard_anonymous_is_page($node) {

@@ -1,0 +1,70 @@
+<?php
+
+/**
+ * @file
+ * Custom integration for flag_weights.com.
+ */
+
+/**
+ * Implementation of hook_install().
+ */
+function flag_weights_install() {
+  $ret = array();
+
+  // Add a field to the existing flag_content table (Flag module)
+  $field = array(
+    'type' => 'int',
+    'not null' => TRUE,
+    'default' => 0,
+    'size' => 'tiny',
+    'initial' => 0, // Sets initial value for preexisting nodes.
+    // 'description' => t('Flag weight within region.'),
+  );
+
+  db_add_field('flag_content', 'weight', $field);
+
+  // Add a field to the existing flags table (Flag module)
+  $field = array(
+     'type' => 'int',
+     'not null' => TRUE,
+     'default' => 0,
+     'size' => 'tiny',
+     'initial' => 0, // Sets initial value for preexisting nodes.
+     'description' => 'Default weight applied to new items.',
+   );
+
+  db_add_field('flags', 'default_weight', $field);
+
+}
+
+/**
+ * Add a new column to the {flags} table for storing the default weight.
+ */
+function flag_weights_update_6000() {
+  $ret = array();
+
+  $field = array(
+     'type' => 'int',
+     'not null' => TRUE,
+     'default' => 0,
+     'size' => 'tiny',
+     'initial' => 0, // Sets initial value for preexisting nodes.
+     'description' => 'Default weight applied to new items.',
+   );
+  db_add_field($ret, 'flags', 'default_weight', $field);
+
+  return $ret;
+}
+
+/**
+ * Implementation of hook_uninstall().
+ */
+function flag_weights_uninstall() {
+  $ret = array();
+  if (db_table_exists('flag_content') && db_field_exists('flag_content', 'weight')) {
+    db_drop_field('flag_content', 'weight');
+  }
+  if (db_table_exists('flags') && db_field_exists('flags', 'default_weight')) {
+    db_drop_field('flags', 'default_weight');
+  }
+}
