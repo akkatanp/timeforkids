@@ -188,7 +188,7 @@ ol.search-results li div.content-type {
 
 ol.search-results li h3.title {
   margin: 0 0 5px 0;
-	color: #000;
+	color: #333;
 	font-size: 20px;
 }
 
@@ -522,7 +522,8 @@ body.page-search-site .region-sidebar-first .block-apachesolr-search {
 	margin: 0px;
 }
 
-body.page-search-site .region-sidebar-first .block-apachesolr-search h2 {
+body.page-search-site .region-sidebar-first .block-apachesolr-search h2,
+body.page-search-site .region-sidebar-first .block-tfk-search h2  {
   font-size: 12px;
 	font-weight: 12px;
 	color: #333;
