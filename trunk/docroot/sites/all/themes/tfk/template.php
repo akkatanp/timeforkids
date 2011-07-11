@@ -86,10 +86,19 @@ function STARTERKIT_preprocess_html(&$variables, $hook) {
  *   The name of the template being rendered ("page" in this case.)
  */
 function tfk_preprocess_page(&$variables, $hook) {
-  $variables['theme_hook_suggestions'][] = 'page__'. $variables['node']->type;
-  if ($variables['node']->type == "board_member") {
-    $variables['title'] = "Teacher Community";
+  if(array_key_exists('node', $variables)) {
+    $variables['theme_hook_suggestions'][] = 'page__'. $variables['node']->type;
+    if ($variables['node']->type == "board_member") {
+      $variables['title'] = "Teacher Community";
+    }
+    if ($variables['node']->type == 'grammar_practice') {
+      $variables['grammar_practice_header'] = l('Try Another', 'homework-helper/grammar-wizard/punctuation-practice', array('attributes' => array('class' => array('try-another'))));
+    }
+    if ($variables['node']->type == 'flashcard') {
+      $variables['flashcards_return'] = l('Back to Flashcard Sets', 'homework-helper/flashcards');
+    }
   }
+  
   if (isset($variables['page']['content']['system_main']['#theme']) && $variables['page']['content']['system_main']['#theme'] == "user_profile") {
     if ($variables['page']['content']['system_main']['field_is_board_member']['#items'][0]['value'] == "yes") {
       $variables['title'] = "Teacher Community";
@@ -107,13 +116,6 @@ function tfk_preprocess_page(&$variables, $hook) {
     if ($view->name == 'grammar_practice') {
       $variables['grammar_practice_header'] = ' ';
     }
-  }
-  if ($variables['node']->type == 'grammar_practice') {
-    $variables['grammar_practice_header'] = l('Try Another', 'homework-helper/grammar-wizard/punctuation-practice', array('attributes' => array('class' => array('try-another'))));
-  }
-
-  if ($variables['node']->type == 'flashcard') {
-    $variables['flashcards_return'] = l('Back to Flashcard Sets', 'homework-helper/flashcards');
   }
 }
 // */
