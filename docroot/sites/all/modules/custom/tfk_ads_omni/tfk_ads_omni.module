@@ -30,7 +30,7 @@ function tfk_ads_omni_preprocess_page(&$variables){
     $variables['ad']['banner_728x90_footer'] = tfk_ads_omni_create_ad('banner_728x90_footer',728,90,'regular',2);
     /*Inject ad calls into blocks, overriding placeholder ad*/
     tfk_ads_omni_form_alter('block_1', $variables['page']['sidebar_second'], $variables['ad']['banner_160x600']);
-    tfk_ads_omni_form_alter('block_21', $variables['page']['footer'], $variables['ad']['banner_728x90_footer']);
+    tfk_ads_omni_form_alter('block_22', $variables['page']['footer'], $variables['ad']['banner_728x90_footer']);
     
     /*Omniture*/
    if (!$variables['is_admin'] == "true") {//Exclude from admin pages
@@ -62,6 +62,7 @@ function tfk_ads_omni_preprocess_page(&$variables){
         $omniture_vars .= "var s_code=s_time.t();if(s_code)document.write(s_code)\n";
         drupal_add_js($omniture_vars, 'inline');
     }
+    
 }
 //Creates the HTML/JS snippet for ads
 function tfk_ads_omni_create_ad($name,$width,$height,$type='regular',$position=NULL){
@@ -111,7 +112,7 @@ function tfk_ads_omni_get_config_vars(&$variables){
             foreach ($result as $record) {
                $channel_array['omni_grade_level'] = $record->name;
             }
-         }*//*grade level actually comes from content not user*/
+         }*//*grade level actually comes from content not user. See below within node data where this value is being set*/
      } else {
          $ad_zone_prefix = "kids";
      }
