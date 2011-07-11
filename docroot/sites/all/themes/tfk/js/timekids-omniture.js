@@ -1,4 +1,4 @@
-/* SiteCatalyst code version: H.23.2. (2011-05-12)
+/* SiteCatalyst code version: H.23.2. (2011-07-08)
 Copyright 1996-2011 Adobe, Inc. All Rights Reserved More info available at http://www.omniture.com */
 var s_time=s_gi(s_account)
 /************************** CONFIG SECTION **************************/
@@ -54,7 +54,7 @@ s_time.doPlugins=s_time_doPlugins
 /*----------------- User Action Tracking----------------*/
 function omniTrack(desc){
 if(typeof(desc)=='undefined')return 0;
-var s = s_gi(s_account); 
+var s_time = s_gi(s_account); 
 s_time.linkTrackVars = 'prop20,prop14,eVar43,events'; 
 s_time.linkTrackEvents = 'event43'; 
 s_time.prop20 = desc;
@@ -62,6 +62,14 @@ s_time.prop14 = s_time.pageName;
 s_time.tl(this,'o',desc);
 s_time.linkTrackVars = s_time.linkTrackEvents = 'None';
 s_time.prop20 = s_time.prop14 = s_time.events = s_time.eVar43 = '';
+}
+/*----------------- Pagination Tracking----------------*/
+function omniPgTrack(desc){
+if(typeof(desc)=='undefined')return 0;
+var s_time = s_gi(s_account);
+s_time.events = "event1";
+s_time.prop28 = s_time.pageName + '|' + desc; 
+s_time.t();
 }
 /*----------------- Plugins-------------------*/
 /* Plugin: getQueryParam 2.3 */
@@ -237,9 +245,8 @@ s_time.m_i("Media");
 /* WARNING: Changing any of the below variables will cause drastic
 changes to how your visitor data is collected.  Changes should only be
 made when instructed to do so by your account manager.*/
-s_time.trackingServer="timeinc.122.2o7.net"
-// s_time.trackingServer="metrics.timeforkids.com"
-// s_time.trackingServerSecure="smetrics.timeforkids.com"
+s_time.trackingServer="metrics.timeforkids.com";
+s_time.trackingServerSecure="smetrics.timeforkids.com";
 /************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
 var s_code='',s_objectID;function s_gi(un,pg,ss){var c="s.version='H.23.2';s.an=s_an;s.logDebug=function(m){var s=this,tcf=new Function('var e;try{console.log(\"'+s.rep(s.rep(m,\"\\n\",\"\\\\n\"),\""
 +"\\\"\",\"\\\\\\\"\")+'\");}catch(e){}');tcf()};s.cls=function(x,c){var i,y='';if(!c)c=this.an;for(i=0;i<x.length;i++){n=x.substring(i,i+1);if(c.indexOf(n)>=0)y+=n}return y};s.fl=function(x,l){retur"
