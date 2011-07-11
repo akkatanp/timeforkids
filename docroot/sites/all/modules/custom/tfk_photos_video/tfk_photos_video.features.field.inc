@@ -249,7 +249,7 @@ function tfk_photos_video_field_default_fields() {
       'entity_type' => 'node',
       'field_name' => 'field_article_category',
       'label' => 'Category',
-      'required' => 0,
+      'required' => 1,
       'settings' => array(
         'user_register_form' => FALSE,
       ),
@@ -442,7 +442,7 @@ function tfk_photos_video_field_default_fields() {
   $fields['node-slideshow-field_themes'] = array(
     'field_config' => array(
       'active' => '1',
-      'cardinality' => '1',
+      'cardinality' => '3',
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_themes',
@@ -494,7 +494,7 @@ function tfk_photos_video_field_default_fields() {
       'entity_type' => 'node',
       'field_name' => 'field_themes',
       'label' => 'Themes',
-      'required' => 1,
+      'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
       ),
@@ -1080,7 +1080,7 @@ function tfk_photos_video_field_default_fields() {
   $fields['node-video-field_themes'] = array(
     'field_config' => array(
       'active' => '1',
-      'cardinality' => '1',
+      'cardinality' => '3',
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_themes',
@@ -1131,7 +1131,7 @@ function tfk_photos_video_field_default_fields() {
       'entity_type' => 'node',
       'field_name' => 'field_themes',
       'label' => 'Themes',
-      'required' => 1,
+      'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
       ),
