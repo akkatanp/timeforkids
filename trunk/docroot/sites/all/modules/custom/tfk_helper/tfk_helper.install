@@ -137,6 +137,14 @@ function tfk_helper_update_7004(&$ret) {
 }
 
 /**
+ * Revert features.
+ */
+function tfk_helper_update_7005($ret) {
+  $features = array('tfk_favorites_feature', 'tfk_worksheets', 'tfk_site_wide_search', 'tfk_photos_videos');
+  tfk_helper_features_revert($features);
+}
+
+/**
  * Helper function for manually reverting Features.
  *
  * Helps automate feature reversal through hook_update_N(), useful for
