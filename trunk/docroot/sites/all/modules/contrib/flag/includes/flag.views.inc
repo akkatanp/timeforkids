@@ -1,5 +1,4 @@
 <?php
-// $Id: flag.views.inc,v 1.3 2010/12/20 13:48:37 mooffie Exp $
 
 /**
  * @file

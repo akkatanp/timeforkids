@@ -1,5 +1,4 @@
 <?php
-// $Id: flag_handler_field_ops.inc,v 1.5 2010/12/28 00:06:04 mooffie Exp $
 
 /**
  * @file

@@ -1,5 +1,4 @@
 <?php
-// $Id: flag.token.inc,v 1.5 2010/09/03 04:35:06 mooffie Exp $
 
 /**
  * @file
