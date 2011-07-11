@@ -333,7 +333,7 @@ function _get_atw_destination_slideshow_images(){
       $img_data = $image['node'];
       $tmp_img_uri = field_get_items('node', $img_data, 'field_image');
       $img_uri = $tmp_img_uri[0]['uri'];
-      $images[$k]['image_path'] = image_style_path('square_thumbnail',$img_uri);
+      $images[$k]['image_path'] = image_style_path('tfk_rect_large',$img_uri);
       $images[$k]['image_path'] = file_create_url($images[$k]['image_path']);
       $images[$k]['image_title'] = $img_data->title;
     }
@@ -517,6 +517,7 @@ function _tfk_atw_block_content_data(){
       $slideshow_data[$record->destination_nid]['destination_path'] = drupal_lookup_path('alias','node/'.$record->destination_nid);
       $slideshow_data[$record->destination_nid]['image_title'] = $rec->title;
       $slideshow_data[$record->destination_nid]['image_filename'] = $rec->filename;
+
     }
   }
   $list = array('destinations_data' => $slideshow_data);
