@@ -136,6 +136,12 @@ function tfk_helper_update_7004(&$ret) {
   // AFTER: https://skitch.com/richard-alexander-allen/fe7i7/worksheet-localhost
 }
 
+/**
+ * Helper function for manually reverting Features.
+ *
+ * Helps automate feature reversal through hook_update_N(), useful for
+ * environemnts where drush fra is not part of the deployment procedure.
+ */
 function tfk_helper_features_revert($modules = array()) {
   module_load_include('inc', 'features', 'features.export');
   features_include();
