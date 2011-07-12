@@ -1803,19 +1803,22 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 
 #timeline-container #event-container .event.vertical .event-image {
 	float: right;
-	width: 180px;
-	height: 240px;
+	width: 182px;
+	height: 242px;
+	border: solid 1px #cecece;
 }
 
 #timeline-container #event-container .event.horizontal .event-image {
 	float: left;
-	width: 240px;
-	height: 180px;
+	width: 242px;
+	height: 182px;
 	margin-right: 10px;
+	border: solid 1px #cecece;
 }
 
 #timeline-container #event-container .event.horizontal .event-image .event-credit {
-	font: normal 9px #999;
+	font: normal 9px arial;
+	color: #999;
 	text-align: right;
 }
 
@@ -1831,13 +1834,13 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 
 #timeline-container #event-container .event.vertical .event-text {
 	float: left;
-	width: 254px;
+	width: 272px;
 	margin-right: 10px;
 }
 
 #timeline-container #event-container .event.horizontal .event-text {
 	float: right;
-	width: 194px;
+	width: 212px;
 }
 
 #timeline-container #event-container .event .event-text h3 {
