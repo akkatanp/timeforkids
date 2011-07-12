@@ -958,6 +958,10 @@ ul.links li {
 	font-weight: bold;
 }
 
+.node-type-article .field-name-field-body p {
+	margin-bottom: 10px;
+}
+
 /* additional content */
 .related-content-wrap {
 	position: relative;
