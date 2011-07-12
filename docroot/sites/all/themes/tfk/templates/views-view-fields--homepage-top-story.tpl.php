@@ -52,7 +52,7 @@ $slide_block = module_invoke('tfk_news', 'block_view','tfk-news-homepage-mini-le
         <div class="addit-content">Additional Content</div>
         <?php if($fields['field_mini_lessons']): ?>
 
-           <div class="addit-mini-lessons"><?php print $fields['field_mini_lessons']->label;?> : <?php print render($slide_block['content']);?></div>
+           <div class="addit-mini-lessons"><?php print $fields['field_mini_lessons']->label;?> : <?php print $fields['field_mini_lessons']->content;//print render($slide_block['content']);?></div>
         <?php endif; ?>
 
         <?php if($fields['field_related_articles']): ?>
