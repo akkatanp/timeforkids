@@ -39,7 +39,7 @@
 		<?php endforeach;?>
 	</div>
 	
-	<?php if(!empty($related_content)): ?>
+	<?php if(tfk_helper_user_has_role() && !empty($related_content)): ?>
 		<div id="slideshow-related-content"><?php print $related_content; ?></div>
 	<?php endif; ?>
 </div>
