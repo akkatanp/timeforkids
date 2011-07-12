@@ -127,7 +127,7 @@
 
   <div class="related_content_wrap">
     <?php if(count($magazine_materials) >0 || count($magazine_related) > 0 ):?>
-       <h2>Additional Content</h2>
+       <h2 class="addit-content">Additional Content</h2>
     <?php endif;?>
 
     <?php if(isset($magazine_materials) && count($magazine_materials) > 0): ?>
