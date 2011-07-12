@@ -178,3 +178,10 @@ function tfk_helper_update_7005($ret) {
   tfk_helper_features_revert($features);
 }
 
+/**
+ * Install flag_abuse module and enable it for the tfk_teachers_community.
+ */
+function tfk_helper_update_7006($ret) {
+  module_enable(array('flag_abuse'));
+  tfk_helper_features_revert(array('tfk_teachers_community'));
+}
