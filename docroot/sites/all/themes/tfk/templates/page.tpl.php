@@ -202,7 +202,6 @@ if(drupal_is_front_page()) {
       
       <?php print render($page['content']); ?>
   
-      <?php print $feed_icons; ?>
       </div></div><!-- /.section, /#content -->
 
     </div><!-- /#main -->
