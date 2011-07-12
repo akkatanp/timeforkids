@@ -122,7 +122,6 @@ function theme_tfk_search_related_content($variables) {
       $related = ($related_content[$key]['type'] == 'article') ? 'Related ': '';
       $output .= '<div class="addit-related-articles-label">'. strtoupper(t($related. '@type:', array('@type' => $related_content[$key]['type']))). '</div>';
       $output .= '<div class="addit-related-articles-title">'. $link. '</div>';
-      #$output .= '<div class="addit-related-articles-download"> Download PDF</div>';
  		$output .= '</div>';
   }
 
@@ -518,12 +517,13 @@ function theme_tfk_featured_block(&$variables) {
   if($tfkSearchFeaturedItem->type == 'slideshow') {
     $output .= '<div class="featured-thumbnails">';
     $link_options['attributes']['class'] = array('featured-thumbnail');
-    foreach($tfkSearchFeaturedItem->slideshow_images as $image) {
+    $count = count($tfkSearchFeaturedItem->slideshow_images);
+    for($i = 0; $i < 3 && $i < $count; $i++) {
+      $image = $tfkSearchFeaturedItem->slideshow_images[$i];
       $output .= '<span class="featured-thumbnails">';
       $output .= l(theme('image', array('path' => $image->abspath, 'title' => $tfkSearchFeaturedItem->title, 'alt' => $tfkSearchFeaturedItem->title )), $url, $link_options);
       $output .= '</span>';
     }
-    
     $output .= '</div>';
   }
   
@@ -539,25 +539,9 @@ function theme_tfk_featured_block(&$variables) {
   $output .= '</div><!--./g2-->';
   
   // Related content.
-  /*
   if(tfk_helper_user_has_role()) {
-    #$related_content =  field_get_items('node', $tfkSearchFeaturedItem, 'field_additional_content'); #field_related_photos_video
-    $items = field_get_items('node', $tfkSearchFeaturedItem, 'field_additional_content');
-    
-    if(!empty($items)) {
-      $related_nid = array_shift(array_shift($items));
-      $related_node = node_load($related_nid);
-      
-      // Add related content item.
-      $related_content[] = array(
-        'title' => $related_node->title,
-        'path' => 'node/'. $related_nid,
-        'type' => $related_node->type,
-      );
-    }
-    
-    $output .= theme('tfk_search_related_content', array('related_content' => $related_content));
-  }*/
+    $output .= theme('tfk_search_related_content', array('related_content' => $tfkSearchFeaturedItem->related_content));
+  }
   
   $output .= '</div>';// ./tfk-search-photos-video-featured
   return $output;
@@ -579,8 +563,12 @@ function tfk_search_preprocess_tfk_featured_block(&$vars) {
  * db_query() callback for loading additional Featured item data.
  *
  * @author rallen8440
+ *
+ * @see theme_tfk_search_related_content()
+ * @see theme_tfk_featured_block()
  */
 class tfkSearchFeaturedItem {
+  
   function __construct() {
     foreach(get_object_vars(node_load($this->nid)) as $prop => $value) {
       $this->$prop = $value;
@@ -588,35 +576,53 @@ class tfkSearchFeaturedItem {
     
     if($this->type == 'slideshow') {
       $this->slideshow_images = array();
-      
       $images = field_get_items('node', $this, 'field_slideshow_images');
-      if($images != FALSE) {
-      	$this->featured_item = node_load(array_shift(array_shift($images)));
-      	
-      	$featured_image = field_get_items('node', $this->featured_item, 'field_image');
-      	if($featured_image != FALSE) {
-      	  $featured_image = array_shift($featured_image);
-      	  $this->featured_item->abspath = tfk_search_get_thumbnail($featured_image['fid'], 'tfk_270x270');
-      	}
-      	
-      	if(count($images)) {
-          foreach($images as $image) {
-            $_image = field_get_items('node', node_load($image['nid']), 'field_image');
-            if($_image != FALSE) {
-              $_image = array_shift($_image);
-              $_image['abspath'] = tfk_search_get_thumbnail($_image['fid'], 'tfk_60x60');
-              $this->slideshow_images[] = (object) $_image;
-            }
-          }
-      	}
-      }
-
       
-
+    	$this->featured_item = node_load(array_shift(array_shift($images)));
+    	$featured_image = field_get_items('node', $this->featured_item, 'field_image');
+    	
+      if($images != FALSE && count($images)) {
+        foreach($images as $image) {
+          $_image = field_get_items('node', node_load($image['nid']), 'field_image');
+          if($_image != FALSE) {
+            $_image = array_shift($_image);
+            $filesystem_path = drupal_realpath($_image['uri']);
+            
+            // Degrade gracefully, skip this image if it doesn't exist.
+            if(!file_exists($filesystem_path)) {
+              continue;
+            }
+            
+            $_image['abspath'] = tfk_search_get_thumbnail($_image['fid'], 'tfk_60x60');
+            $this->slideshow_images[] = (object) $_image;
+          }
+        }
+      }
     }
+    
     if($this->type == 'video') {
-      $test = null; //@todo Load the video.
+      $featured_image = field_get_items('node', $this, 'field_video_thumbnail');
     }
+    
+    // Featured item.
+  	if($featured_image != FALSE) {
+  	  $featured_image = array_shift($featured_image);
+  	  $this->featured_item->abspath = tfk_search_get_thumbnail($featured_image['fid'], 'tfk_270x270');
+  	}
+    
+    // Additional content.
+    $additional_contents = field_get_items('node', $this, 'field_additional_content');
+    if($additional_contents != FALSE) {
+      $nid = array_shift(array_shift($additional_contents));
+      $related_node = node_load($nid);
+      if($related_node != FALSE) {
+        // related_content's format must conform to what theme_tfk_search_related_content() expects.
+        $this->related_content = array(array('title' => $related_node->title, 'type' => tfk_helper_get_content_type_label($related_node->type), 'path' => 'node/'. $nid));
+      } else {
+        $this->related_content = FALSE;
+      }
+    }
+    
   }
 }
 
@@ -634,10 +640,11 @@ function tfk_search_get_featured_block() {
     SELECT
   		fn.nid AS nid
   	FROM
-  	  node fn # featured_node
-  	  INNER JOIN flag_content f ON fn.nid = f.content_id
+  	  node fn
+  	  INNER JOIN flag_content fc ON fn.nid = fc.content_id
+      INNER JOIN flags f ON fc.fid = f.fid
   	  WHERE fn.type IN ('slideshow', 'video')
-  	  #WHERE fn.type IN ('video')
+			AND f.name = 'photos_videos_featured'
   	ORDER BY fn.created DESC
   	LIMIT 1";
 	
