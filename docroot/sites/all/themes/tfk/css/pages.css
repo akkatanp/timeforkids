@@ -1801,16 +1801,28 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 	box-shadow: 2px 2px 2px #999;
 }
 
-#timeline-container #event-container .event .event-image {
+#timeline-container #event-container .event.vertical .event-image {
 	float: left;
-	width: 280px;
-	height: 200px;
+	width: 180px;
+	height: 240px;
 	margin-right: 10px;
 }
 
-#timeline-container #event-container .event .event-image  img {
+#timeline-container #event-container .event.horizontal .event-image {
+	float: right;
+	width: 240px;
+	height: 180px;
+	margin-left: 10px;
+}
+
+#timeline-container #event-container .event.vertical .event-image  img {
+	width: 180px;
+	height: 240px;
+}
+
+#timeline-container #event-container .event.horizontal .event-image  img {
 	width: 280px;
-	height: 200px;
+	height: 180px;
 }
 
 #timeline-container #event-container .event .event-text {
