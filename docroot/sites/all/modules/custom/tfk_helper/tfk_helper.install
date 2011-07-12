@@ -21,6 +21,40 @@
  */
 
 /**
+ * Helper function for manually reverting Features.
+ *
+ * Helps automate feature reversal through hook_update_N(), useful for
+ * environemnts where drush fra is not part of the deployment procedure.
+ */
+function tfk_helper_features_revert($modules = array()) {
+  module_load_include('inc', 'features', 'features.export');
+  features_include();
+  
+  foreach($modules as $module) {
+    if(($feature = feature_load($module, TRUE)) && module_exists($module)) {
+      
+      $components = array();
+      foreach (array_keys($feature->info['features']) as $component) {
+        if (features_hook($component, 'features_revert')) {
+          $components[] = $component;
+        }
+      }
+      if(!empty($components)) {
+        foreach($components as $component) {
+          features_revert(array($module => array($component)));
+          watchdog('tfk_schema_updates', 'Reverted !component.', array('!component' => $component));
+        }
+      }
+      
+    } elseif($feature) {
+      watchdog('tfk_schema_updates', 'The feature !feature is not enabled.', array('!feature' => $module));
+    } else {
+      watchdog('tfk_schema_updates', 'The feature !feature could not be found.', array('!feature' => $module));
+    }
+  }
+}
+
+/**
  * Install site-wide search Feature.
  */
 function tfk_helper_update_7000(&$ret) {
@@ -144,36 +178,3 @@ function tfk_helper_update_7005($ret) {
   tfk_helper_features_revert($features);
 }
 
-/**
- * Helper function for manually reverting Features.
- *
- * Helps automate feature reversal through hook_update_N(), useful for
- * environemnts where drush fra is not part of the deployment procedure.
- */
-function tfk_helper_features_revert($modules = array()) {
-  module_load_include('inc', 'features', 'features.export');
-  features_include();
-  
-  foreach($modules as $module) {
-    if(($feature = feature_load($module, TRUE)) && module_exists($module)) {
-      
-      $components = array();
-      foreach (array_keys($feature->info['features']) as $component) {
-        if (features_hook($component, 'features_revert')) {
-          $components[] = $component;
-        }
-      }
-      if(!empty($components)) {
-        foreach($components as $component) {
-          features_revert(array($module => array($component)));
-          watchdog('tfk_schema_updates', 'Reverted !component.', array('!component' => $component));
-        }
-      }
-      
-    } elseif($feature) {
-      watchdog('tfk_schema_updates', 'The feature !feature is not enabled.', array('!feature' => $module));
-    } else {
-      watchdog('tfk_schema_updates', 'The feature !feature could not be found.', array('!feature' => $module));
-    }
-  }
-}
