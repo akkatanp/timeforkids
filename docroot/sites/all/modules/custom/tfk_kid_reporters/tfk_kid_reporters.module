@@ -13,6 +13,6 @@ function tfk_kid_reporters_menu(){
 
 
 function _kid_reporters_callback(){
-   drupal_set_title('Kid Reporter');
+  drupal_set_title('Kid Reporter');
   return '';
 }
