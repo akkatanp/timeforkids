@@ -2080,5 +2080,17 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 
 .page-tfk-magazine .search-results .search-result img {
 	float: left;
+	width: 115px;
 	margin: 0 10px 10px 0;
+}
+
+.page-tfk-magazine .search-results .search-result .in-this-issue {
+	float: left;
+	width:215px;
+	margin-right: 10px;
+}
+
+.page-tfk-magazine .search-results .search-result .related_content_wrap {
+	float: left;
+	width: 120px;
 }
