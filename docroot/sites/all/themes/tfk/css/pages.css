@@ -2071,9 +2071,10 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 }
 
 .page-tfk-magazine .search-results .search-result  .title a {
-	font: bold 12px "arial black";
+	font: normal 12px "arial black";
 	color: white;
 	text-decoration: none;
+	text-transform: uppercase;
 }
 
 .page-tfk-magazine .search-results .search-result img {
