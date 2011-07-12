@@ -656,4 +656,23 @@ function tfk_helper_user_has_role($roles = array('editor', 'teacher', 'administr
   return (!empty($grant)) ? TRUE: FALSE;
 }
 
-
+/**
+ * Central function for rendering human-readable content type labels.
+ *
+ * @param string $content_type
+ *   Machine-readable version of the content type.
+ *
+ * @return
+ *   Human-readable version of the content type.
+ */
+function tfk_helper_get_content_type_label($content_type) {
+    if($content_type == 'atw_destination') {
+      return 'AROUND THE WORLD';
+    } else {
+      return $content_type;
+    }
+    
+    // If our content types were label-friendly, we could have used these.
+    //dpm(node_type_get_name($related_node));
+    //dpm(node_type_get_type($related_node));
+}
