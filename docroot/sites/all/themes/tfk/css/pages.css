@@ -2059,6 +2059,10 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 	margin-bottom: 10px;
 }
 
+.page-tfk-magazine #tfk-search-pager-top h2 {
+	margin: 0;
+}
+
 .page-tfk-magazine .search-results .search-result {
 	border: solid 1px #cecece;
 	padding: 10px;
@@ -2101,5 +2105,5 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 
 .page-tfk-magazine .search-results .search-result .related-content-wrap {
 	float: left;
-	width: 100px;
+	width: 150px;
 }
