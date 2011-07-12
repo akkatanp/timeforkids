@@ -1834,13 +1834,13 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 
 #timeline-container #event-container .event.vertical .event-text {
 	float: left;
-	width: 272px;
+	width: 262px;
 	margin-right: 10px;
 }
 
 #timeline-container #event-container .event.horizontal .event-text {
 	float: right;
-	width: 212px;
+	width: 202px;
 }
 
 #timeline-container #event-container .event .event-text h3 {
