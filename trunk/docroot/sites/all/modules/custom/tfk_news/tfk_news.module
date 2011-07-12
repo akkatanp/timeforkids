@@ -355,6 +355,24 @@ function tfk_news_preprocess_block(&$variables){
   }
 }
 
+function tfk_news_preprocess_page(&$vars) {
+
+  $rgs = arg();
+  if(count($rgs) == 2 && ($rgs[0] == 'node') && is_numeric($rgs[1])){
+    $node = node_load($rgs[1]);
+
+    if($node->type == 'article'){
+      $vars['section_title'] = 'News';
+      if(isset($node->field_kid_reporter['und'][0])){
+        $vars['section_title'] = 'Kid Reporeters';
+      }
+    }
+    
+  }
+}
+
+
+
 function tfk_news_preprocess_node(&$variables){
   $variables['is_kid_reporter_article'] = 0;
 

@@ -276,6 +276,7 @@ function _get_atw_timeline_slideshow_images(){
         
         $timelines_data[$k]['event_copy'] = $record->event_copy;
         $timelines_data[$k]['event_title'] = $record->timeline_title;
+
         $timelines_data[$k]['image_path'] = image_style_path('tfk_rect_large',$record->file_uri);
         $timelines_data[$k]['image_path'] = file_create_url($timelines_data[$k]['image_path']);
 
@@ -516,6 +517,7 @@ function _tfk_atw_block_content_data(){
       $slideshow_data[$record->destination_nid]['destination_nid'] = $record->destination_nid;
       $slideshow_data[$record->destination_nid]['destination_path'] = drupal_lookup_path('alias','node/'.$record->destination_nid);
       $slideshow_data[$record->destination_nid]['image_title'] = $rec->title;
+
       $slideshow_data[$record->destination_nid]['image_filename'] = $rec->filename;
 
     }
