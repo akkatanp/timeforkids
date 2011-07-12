@@ -1803,15 +1803,15 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 
 #timeline-container #event-container .event.vertical .event-image {
 	float: right;
-	width: 182px;
-	height: 242px;
+	width: 180px;
+	height: 240px;
 	border: solid 1px #cecece;
 }
 
 #timeline-container #event-container .event.horizontal .event-image {
 	float: left;
-	width: 242px;
-	height: 182px;
+	width: 240px;
+	height: 180px;
 	margin-right: 10px;
 	border: solid 1px #cecece;
 }
@@ -1834,13 +1834,13 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 
 #timeline-container #event-container .event.vertical .event-text {
 	float: left;
-	width: 262px;
+	width: 252px;
 	margin-right: 10px;
 }
 
 #timeline-container #event-container .event.horizontal .event-text {
 	float: right;
-	width: 202px;
+	width: 192px;
 }
 
 #timeline-container #event-container .event .event-text h3 {
