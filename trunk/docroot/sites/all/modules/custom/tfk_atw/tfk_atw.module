@@ -349,7 +349,7 @@ function _tfk_atw_destination_related_data(){
 
     if(arg(0) == 'node' && is_numeric(arg(1))){ //DESTINATION
         $nid = arg(1);
-        $sql = db_query('select type,title from node where nid = :nid and status = 1',array(':nid' => $nid));
+        $sql = db_query('select type,title from node where nid = :nid ',array(':nid' => $nid));
         $record = $sql->fetch();
 
         $tmp_url = explode('/',request_uri());
@@ -425,7 +425,7 @@ function _tfk_atw_destination_navigation_data(){
         if($record->type == 'atw_destination'){
            $nid = arg(1);
            $node = node_load($nid);
-           $sql = db_query('select nid,type,title from node where nid = :nid and status = 1',array(':nid' => $nid));
+           $sql = db_query('select nid,type,title from node where nid = :nid',array(':nid' => $nid));
            $record = $sql->fetch();
            $vars['alias'] = drupal_lookup_path('alias', 'node/'.$nid);
            $vars['navigation_block_title'] = $record->title;
@@ -456,7 +456,7 @@ function _tfk_atw_destination_navigation_data(){
         $source_destination = drupal_lookup_path('source', $parent_alias);
         $source_nid_tmp = explode('/',$source_destination);
         $source_nid = $source_nid_tmp[1];
-        $sql = db_query('select type,title from node where nid = :nid and status = 1',array(':nid' => $source_nid));
+        $sql = db_query('select type,title from node where nid = :nid ',array(':nid' => $source_nid));
         $record = $sql->fetch();
         $vars['alias'] = $parent_alias;
         $vars['navigation_block_title'] = $record->title;
@@ -499,7 +499,7 @@ function _tfk_atw_block_content_data(){
           cs.field_country_slideshow_nid as flagged_slideshow_nid
           from {node} n left join {flag_content} fc on fc.content_id = n.nid
           left join {field_data_field_country_slideshow} cs on cs.entity_id = n.nid
-          where fc.fid = :fid and n.status = 1',array(':fid' => $fid));
+          where fc.fid = :fid ',array(':fid' => $fid));
 
   $slideshow_data = array();
 
@@ -512,7 +512,7 @@ function _tfk_atw_block_content_data(){
         LEFT JOIN {node} n ON n.nid = si.field_slideshow_images_nid
         LEFT JOIN {field_data_field_image} fi ON fi.entity_id = si.field_slideshow_images_nid
         LEFT JOIN {file_managed} fm ON fm.fid = fi.field_image_fid
-        WHERE si.entity_id = :eid and n.status = 1 LIMIT 0,1',array(':eid' => $record->flagged_slideshow_nid));
+        WHERE si.entity_id = :eid  LIMIT 0,1',array(':eid' => $record->flagged_slideshow_nid));
     foreach($image_result as $rec){
       $slideshow_data[$record->destination_nid]['destination_nid'] = $record->destination_nid;
       $slideshow_data[$record->destination_nid]['destination_path'] = drupal_lookup_path('alias','node/'.$record->destination_nid);
@@ -534,7 +534,7 @@ function _get_worksheets_by_nid($nid){
         from {field_data_field_resources_list} rl  left join {node} n on rl.field_resources_list_nid = n.nid
         left join {field_data_field_worksheet_pdf}  wp on wp.entity_id = rl.field_resources_list_nid
         left join {file_managed} fm on fm.fid = wp.field_worksheet_pdf_fid
-        where rl.entity_id = :nid and n.status = 1',array(':nid' => $nid));
+        where rl.entity_id = :nid ',array(':nid' => $nid));
     foreach ($result as $i => $record) {
        $vars[$i]['filepath'] = file_create_url(file_build_uri(basename($record->filename)));
        $vars[$i]['title'] = $record->worksheet_title;
@@ -545,7 +545,7 @@ function _get_worksheets_by_nid($nid){
 function _get_related_articles_by_nid($nid){
    $vars = array();
    $result = db_query('select ra.field_related_articles_nid, n.title from
-       field_data_field_related_articles ra left join node n on n.nid = ra.field_related_articles_nid where ra.entity_id = :nid and n.status = 1',array(':nid' => $nid));
+       field_data_field_related_articles ra left join node n on n.nid = ra.field_related_articles_nid where ra.entity_id = :nid ',array(':nid' => $nid));
    foreach ($result as $i => $record) {
        $vars[$i]['alias'] = drupal_lookup_path('alias','node/'.$record->field_related_articles_nid);
        $vars[$i]['title'] = $record->title;
@@ -569,21 +569,21 @@ function tfk_atw_tokens($type, $tokens, array $data = array(), array $options = 
     if ($type == 'node' && !empty($data['node'])) {
         if($data['node']->type == 'atw_timeline'){
           $nid =  $data['node']->nid;
-          $result = db_query('select rt.entity_id,n.type from field_data_field_timeline rt left join node n on rt.entity_id = n.nid where rt.field_timeline_nid = :timeline_nid and n.type = :type and n.status = 1',array(':type'=>'atw_destination',':timeline_nid'=>$nid));
+          $result = db_query('select rt.entity_id,n.type from field_data_field_timeline rt left join node n on rt.entity_id = n.nid where rt.field_timeline_nid = :timeline_nid and n.type = :type and ',array(':type'=>'atw_destination',':timeline_nid'=>$nid));
           $record = $result->fetch();
           $alias = str_replace('destination/','',drupal_lookup_path('alias','node/'.$record->entity_id));
         }
 
         if($data['node']->type == 'atw_native_lingo'){
             $nid =  $data['node']->nid;
-            $result = db_query('select nl.entity_id,n.type from field_data_field_native_lingo nl left join node n on nl.entity_id = n.nid where nl.field_native_lingo_nid = :lingo_nid and n.type = :type and n.status = 1',array(':type'=>'atw_destination',':lingo_nid'=>$nid));
+            $result = db_query('select nl.entity_id,n.type from field_data_field_native_lingo nl left join node n on nl.entity_id = n.nid where nl.field_native_lingo_nid = :lingo_nid and n.type = :type and ',array(':type'=>'atw_destination',':lingo_nid'=>$nid));
             $record = $result->fetch();
             $alias = str_replace('destination/','',drupal_lookup_path('alias','node/'.$record->entity_id));
         }
 
         if($data['node']->type == 'atw_day_in_life'){
             $nid =  $data['node']->nid;
-            $result = db_query('select nl.entity_id,n.type from  field_data_field_day_in_life nl left join node n on nl.entity_id = n.nid where nl.field_day_in_life_nid = :day_in_life_nid and n.type = :type and n.status = 1',array(':type'=>'atw_destination',':day_in_life_nid'=>$nid));
+            $result = db_query('select nl.entity_id,n.type from  field_data_field_day_in_life nl left join node n on nl.entity_id = n.nid where nl.field_day_in_life_nid = :day_in_life_nid and n.type = :type ',array(':type'=>'atw_destination',':day_in_life_nid'=>$nid));
             $record = $result->fetch();
             $alias = str_replace('destination/','',drupal_lookup_path('alias','node/'.$record->entity_id));
         }
@@ -591,7 +591,7 @@ function tfk_atw_tokens($type, $tokens, array $data = array(), array $options = 
 
         if($data['node']->type == 'atw_sightseeing'){
             $nid = $data['node']->nid;
-            $result = db_query('select nl.entity_id,n.type from field_data_field_sightseeing nl left join node n on nl.entity_id = n.nid where nl.field_sightseeing_nid = :sight_nid and n.type = :type and n.status = 1',array(':type'=>'atw_destination',':sight_nid'=>$data['node']->nid));
+            $result = db_query('select nl.entity_id,n.type from field_data_field_sightseeing nl left join node n on nl.entity_id = n.nid where nl.field_sightseeing_nid = :sight_nid and n.type = :type ',array(':type'=>'atw_destination',':sight_nid'=>$data['node']->nid));
             $record = $result->fetch();
             $alias = str_replace('destination/','',drupal_lookup_path('alias','node/'.$record->entity_id));
         }
