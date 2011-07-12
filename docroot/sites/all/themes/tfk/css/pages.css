@@ -2060,14 +2060,23 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 	padding: 10px;
 }
 
-.page-tfk-magazine ol.search-results li {
+.page-tfk-magazine .search-results .search-result {
 	border: solid 1px #cecece;
 	padding: 10px;
 }
 
-.page-tfk-magazine ol.search-results li  h3 {
-	font: bold 12px "arial black";
-	color: white;
+.page-tfk-magazine .search-results .search-result .title {
 	background: #d71700;
 	padding: 4px;
+}
+
+.page-tfk-magazine .search-results .search-result  .title a {
+	font: bold 12px "arial black";
+	color: white;
+	text-decoration: none;
+}
+
+.page-tfk-magazine .search-results .search-result img {
+	float: left;
+	margin: 0 10px 10px 0;
 }
