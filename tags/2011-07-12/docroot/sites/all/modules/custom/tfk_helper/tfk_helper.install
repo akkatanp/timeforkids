@@ -1,0 +1,179 @@
+<?php
+
+/**
+ * @file
+ * Place all the site update hooks here for consistency and ease of access.
+ *
+ * Here we use the word old to refer to user-defined exportables such as
+ * Views and Contexts. When these exportables are defined through the GUI for
+ * the first time, they are not owned by your Feature (they are owned by
+ * something else), confusing CLI and GUI-based revert commands. To properly
+ * revert an exportable:
+ *
+ *  - Export it from the database to the Feature for the first time.
+ *  - Delete the exportable from the database using the GUI.
+ *  - Enable the Feature.
+ *    When you enable the Feature, the database is again populated with your
+ *    exportable, but this time it is owned by your Feature, and all revert
+ *    attempts will work properly.
+ *
+ * See wiki for more information.
+ */
+
+/**
+ * Install site-wide search Feature.
+ */
+function tfk_helper_update_7000(&$ret) {
+  // Remove existing Context.
+  $context = context_load('search pages');
+  if($context != FALSE) {
+    $res = context_delete($context);
+    if($res) {
+      watchdog('tfk_schema_updates', 'tfk_helper: Removed old search pages context from database.');
+    }
+  }
+  // Install Feature. We use this function instead of module_install because
+  // it takes care of installing dependencies.
+  features_install_modules(array('tfk_site_wide_search'));
+  watchdog('tfk_schema_updates', 'tfk_helper: Installed site-wide search Feature.');
+}
+
+/**
+ * Install Worksheets.
+ */
+function tfk_helper_update_7001(&$ret) {
+  // Disable Worksheets if it is enabled already.
+  if(module_exists('tfk_worksheets')) {
+    module_disable(array('tfk_worksheets'));
+    watchdog('tfk_schema_updates', 'tfk_helper: Disabled tfk_worksheets feature.');
+  }
+  // Remove existing Context.
+  $context = context_load('Worksheets');
+  if($context != FALSE) {
+    $res = context_delete($context);
+    if($res) {
+      watchdog('tfk_schema_updates', 'tfk_helper: Deleted old Worksheets context.');
+    }
+  }
+  // Install Feature. We use this function instead of module_install because
+  // it takes care of installing dependencies.
+  features_install_modules(array('tfk_worksheets'));
+  watchdog('tfk_schema_updates', 'tfk_helper: Enabled tfk_worksheets feature.');
+}
+
+/**
+ * Propagate Solr search facet visibility.
+ *
+ * @see apachesolr_enabled_facets_form_submit
+ */
+function tfk_helper_update_7002(&$ret) {
+  // How to see what are the currently enabled facets.
+  // $server_id = variable_get('apachesolr_default_server');
+  // $enabled = apachesolr_server_variable_get($server_id, 'apachesolr_enabled_facets', array());
+  
+  $server_id = variable_get('apachesolr_default_server');
+  // Hardcoded list of facets. If we were to have multiple sites using the same
+  // code, those numeric ids would need to be dynamic, but for now that's not the case.
+  $enabled = array(
+    'apachesolr_search' => array (
+      'bundle' => 'bundle',
+      'im_10_field_article_category' => 'im_10_field_article_category',
+      'im_28_field_grade_level' => 'im_28_field_grade_level',
+      'im_35_field_skills' => 'im_35_field_skills',
+      'im_163_field_study_helper' => 'im_163_field_study_helper',
+      'im_36_field_themes' => 'im_36_field_themes',
+    ),
+    'tfk_search' => array(),
+  );
+  
+  // Enable facets.
+  apachesolr_save_enabled_facets($server_id, $enabled);
+  
+  // This cache being stale can prevent new facet filters from working.
+  apachesolr_clear_cache($server_id);
+}
+
+/**
+ * Remove user_favorites View from database and recreate from Features code so
+ * we can properly revert the View.
+ */
+function tfk_helper_update_7003(&$ret) {
+  // Delete user-defined View.
+  $view = views_get_view('user_favorites');
+  if($view) {
+    if(views_delete_view($view)) {
+      watchdog('tfk_schema_updates', 'tfk_helper: deleted database version of user_favorites View');
+    }
+  }
+}
+
+/**
+ * Delete field_worksheet_related field, manually revert tfk_worksheets feature.
+ */
+function tfk_helper_update_7004(&$ret) {
+  // Note: we will be using the field_related_articles shared field from now on.
+  // We delete field_worksheet_related then revert the tfk_worksheets Feature
+  // so the database version of the Feature can pick up the settings from it's
+  // code version (namely the new field_related_articles instance).
+  // BEFORE: https://skitch.com/richard-alexander-allen/fe71r/worksheet-localhost
+  
+  // Delete field_worksheet_related field.
+  field_delete_field('field_worksheet_related');
+  watchdog('tfk_schema_updates', 'tfk_helper: deleted the field_worksheet_related field and all of it\'s instances.');
+  
+  // Enable Features before reverting them.
+  if(!module_exists('tfk_favorites_feature')) {
+    features_install_modules(array('tfk_favorites_feature'));
+    watchdog('tfk_schema_updates', 'tfk_helper: installed tfk_favorites_feature search Feature.');
+  }
+  	
+  // Manually revert Features, defines favorites View from code, instantiates field_related_articles field, etc.
+  $features = array('tfk_favorites_feature', 'tfk_worksheets', 'tfk_site_wide_search');
+  tfk_helper_features_revert($features);
+  
+  watchdog('tfk_schema_updates', 'tfk_helper: reverted tfk_favorites_feature and tfk_worksheets Features. Instantiate field_related_articles field on Worksheet content type.');
+
+  // AFTER: https://skitch.com/richard-alexander-allen/fe7i7/worksheet-localhost
+}
+
+/**
+ * Revert features.
+ */
+function tfk_helper_update_7005($ret) {
+  $features = array('tfk_favorites_feature', 'tfk_worksheets', 'tfk_site_wide_search', 'tfk_photos_videos');
+  tfk_helper_features_revert($features);
+}
+
+/**
+ * Helper function for manually reverting Features.
+ *
+ * Helps automate feature reversal through hook_update_N(), useful for
+ * environemnts where drush fra is not part of the deployment procedure.
+ */
+function tfk_helper_features_revert($modules = array()) {
+  module_load_include('inc', 'features', 'features.export');
+  features_include();
+  
+  foreach($modules as $module) {
+    if(($feature = feature_load($module, TRUE)) && module_exists($module)) {
+      
+      $components = array();
+      foreach (array_keys($feature->info['features']) as $component) {
+        if (features_hook($component, 'features_revert')) {
+          $components[] = $component;
+        }
+      }
+      if(!empty($components)) {
+        foreach($components as $component) {
+          features_revert(array($module => array($component)));
+          watchdog('tfk_schema_updates', 'Reverted !component.', array('!component' => $component));
+        }
+      }
+      
+    } elseif($feature) {
+      watchdog('tfk_schema_updates', 'The feature !feature is not enabled.', array('!feature' => $module));
+    } else {
+      watchdog('tfk_schema_updates', 'The feature !feature could not be found.', array('!feature' => $module));
+    }
+  }
+}
