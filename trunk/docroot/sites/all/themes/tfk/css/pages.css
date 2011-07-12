@@ -661,7 +661,6 @@ ul.links li {
 	margin-bottom: 10px;
 }
 
-
 #block-views-mini-site-home-block-3 .views-field-title a {
 	font: bold 30px arial;
 	color: black;
@@ -966,7 +965,6 @@ ul.links li {
 	border: solid 3px #acdbfc;
 	margin-top: 20px;
 	padding: 2px 4px;
-	clear: both;
 	-moz-box-shadow: 2px 2px 4px #666;
 	-webkit-box-shadow: 2px 2px 4px 666;
 	box-shadow: 2px 2px 4px #666;
@@ -2064,6 +2062,7 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 .page-tfk-magazine .search-results .search-result {
 	border: solid 1px #cecece;
 	padding: 10px;
+	margin: 0px;
 }
 
 .page-tfk-magazine .search-results .search-result h3.title {
@@ -2102,5 +2101,5 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 
 .page-tfk-magazine .search-results .search-result .related-content-wrap {
 	float: left;
-	width: 120px;
+	width: 100px;
 }
