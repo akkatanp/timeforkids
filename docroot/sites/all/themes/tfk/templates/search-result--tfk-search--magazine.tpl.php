@@ -66,9 +66,9 @@
  */
 ?>
 <li class="<?php print $classes; ?>"<?php print $attributes; ?>>
-  <?php if($tfk_search_cont_type):?>
-    Content type:<?php print $tfk_search_cont_type;?>
-  <?php endif;?>
+  <?php// if($tfk_search_cont_type):?>
+   <!-- Content type:<?php print $tfk_search_cont_type;?> -->
+  <?php// endif;?>
 
   <?php if($tfk_search_res_grade_level):?>
     Grade Level:<?php print $tfk_search_res_grade_level;?>
@@ -78,14 +78,14 @@
   <h3 class="title"<?php print $title_attributes; ?>>
     <a href="<?php print $url; ?>"><?php print $title; ?></a>
   </h3>
+  
   <?php print render($title_suffix); ?>
+  
   <?php if($tfk_search_res_image):?>
     <img src="<?php print $tfk_search_res_image;?>">
   <?php endif;?>
 
-
-    <br/><h2>CUSTOM FIELDS TO APPEAR ON A SNIPPET:</h2>
-
+  <div class="in-this-issue">
     <?php if(isset($magazine_cover_stories) && count($magazine_cover_stories) > 0): ?>
       <h3>Cover Story</h3>
       <?php foreach($magazine_cover_stories as $item):?>
@@ -123,8 +123,9 @@
         <a href="<?php echo url($item['url']);?>"><?php echo $item['title'];?></a><br/>
       <?php endforeach;?>
     <?php endif; ?>
+  </div>
 
-
+  <div class="related_content_wrap">
     <?php if(count($magazine_materials) >0 || count($magazine_related) > 0 ):?>
        <h2>Additional Content</h2>
     <?php endif;?>
@@ -142,6 +143,7 @@
         <a href="<?php echo url($item['url']);?>"><?php echo $item['title'];?></a><br/>
       <?php endforeach;?>
     <?php endif; ?>
+  </div>
 
 
 
