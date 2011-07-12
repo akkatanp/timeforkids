@@ -147,9 +147,6 @@
   
   <div class="clearfix"></div>
 
-
-
-
   <div class="search-snippet-info">
     <?php if ($snippet) : ?>
       <p class="search-snippet"<?php print $content_attributes; ?>><?php print $snippet; ?></p>
