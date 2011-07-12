@@ -364,7 +364,7 @@ function tfk_news_preprocess_page(&$vars) {
     if($node->type == 'article'){
       $vars['section_title'] = 'News';
       if(isset($node->field_kid_reporter['und'][0])){
-        $vars['section_title'] = 'Kid Reporeters';
+        $vars['section_title'] = 'Kid Reporters';
       }
     }
     
