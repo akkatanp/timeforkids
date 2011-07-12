@@ -2046,3 +2046,28 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 	border: solid 1px #cecece;
 	padding: 6px;
 }
+
+/* TFK magazine */
+.page-tfk-magazine .first-column .section {
+	background: none;
+	padding: 0;
+	border: 0;
+}
+
+.page-tfk-magazine .tfk-search-pager-top {
+	border: solid 1px #cecece;
+	background: #d9effe;
+	padding: 10px;
+}
+
+.page-tfk-magazine ol.search-results li {
+	border: solid 1px #cecece;
+	padding: 10px;
+}
+
+.page-tfk-magazine ol.search-results li  h3 {
+	font: bold 12px "arial black";
+	color: white;
+	background: #d71700;
+	padding: 4px;
+}
