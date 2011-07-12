@@ -540,7 +540,9 @@ function theme_tfk_featured_block(&$variables) {
   
   // Related content.
   if(tfk_helper_user_has_role() && $tfkSearchFeaturedItem->related_content) {
+    $output .= '<div class="featured-item-related-item">';
     $output .= theme('tfk_search_related_content', array('related_content' => $tfkSearchFeaturedItem->related_content));
+    $output .= '</div>';
   }
   
   $output .= '</div>';// ./tfk-search-photos-video-featured
