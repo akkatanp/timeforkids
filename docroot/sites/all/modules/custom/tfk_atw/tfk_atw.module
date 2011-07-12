@@ -418,7 +418,7 @@ function _tfk_atw_destination_navigation_data(){
 
     if(arg(0) == 'node' && is_numeric(arg(1))){
         $nid = arg(1);
-        $sql = db_query('select type,title from node where nid = :nid and status = 1',array(':nid' => $nid));
+        $sql = db_query('select type,title from node where nid = :nid',array(':nid' => $nid));
         $record = $sql->fetch();
 
 
@@ -859,6 +859,103 @@ function tfk_atw_node_update($node) {
       }
     }
     
+    if(isset($node->field_destination_quiz) && !empty($node->field_destination_quiz['und'][0]['nid'])){
+      $quiz_nid = $node->field_destination_quiz['und'][0]['nid'];
+
+      $country_alias = drupal_lookup_path('alias','node/'.$node->nid);
+      $new_quiz_alias = $country_alias.'/challenge';
+
+      //lets check if such alias already exists, and if yes , delete it and put with new values
+      $sql = db_query('select * from url_alias where source = :source and alias = :new_quiz_alias',array(':source'=>'node/'.$quiz_nid,'new_quiz_alias' => $new_quiz_alias));
+      $res = $sql->fetch();
+
+      if(isset($res->pid)){
+        //this means such alias mapped to this timeline exists , no need for anything to change
+      }else{
+        //lets insert a new alias for us
+        $sql = db_query('insert into url_alias(source,alias,language) values(:source,:alias,:language)',array(':source'=>'node/'.$quiz_nid, ':language' => 'und',':alias' => $new_quiz_alias));
+      }
+    }
+
+    if(isset($node->field_day_in_life) && !empty($node->field_day_in_life['und'][0]['nid'])){
+      $day_nid = $node->field_day_in_life['und'][0]['nid'];
+
+      $country_alias = drupal_lookup_path('alias','node/'.$node->nid);
+      $new_day_alias = $country_alias.'/day-in-life';
+
+      //lets check if such alias already exists, and if yes , delete it and put with new values
+      $sql = db_query('select * from url_alias where source = :source and alias = :new_quiz_alias',array(':source'=>'node/'.$day_nid,'new_quiz_alias' => $new_day_alias));
+      $res = $sql->fetch();
+
+      if(isset($res->pid)){
+        //this means such alias mapped to this timeline exists , no need for anything to change
+      }else{
+        //lets insert a new alias for us
+        $sql = db_query('insert into url_alias(source,alias,language) values(:source,:alias,:language)',array(':source'=>'node/'.$day_nid, ':language' => 'und',':alias' => $new_day_alias));
+      }
+    }
+
+    if(isset($node->field_sightseeing) && !empty($node->field_sightseeing['und'][0]['nid'])){
+      $sight_nid = $node->field_sightseeing['und'][0]['nid'];
+
+      $country_alias = drupal_lookup_path('alias','node/'.$node->nid);
+      $new_sight_alias = $country_alias.'/sightseeing';
+
+      //lets check if such alias already exists, and if yes , delete it and put with new values
+      $sql = db_query('select * from url_alias where source = :source and alias = :new_quiz_alias',array(':source'=>'node/'.$sight_nid,'new_quiz_alias' => $new_sight_alias));
+      $res = $sql->fetch();
+
+      if(isset($res->pid)){
+        //this means such alias mapped to this timeline exists , no need for anything to change
+      }else{
+        //lets insert a new alias for us
+        $sql = db_query('insert into url_alias(source,alias,language) values(:source,:alias,:language)',array(':source'=>'node/'.$sight_nid, ':language' => 'und',':alias' => $new_sight_alias));
+      }
+    }
+
+
+  }
+}
+
+function tfk_atw_node_save($node) {
+
+  if($node->type == 'atw_destination'){
+    if(isset($node->field_timeline) && !empty($node->field_timeline['und'][0]['nid'])){
+      $timeline_nid = $node->field_timeline['und'][0]['nid'];
+
+      $country_alias = drupal_lookup_path('alias','node/'.$node->nid);
+      $new_timeline_alias = $country_alias.'/history-timeline';
+
+      //lets check if such alias already exists, and if yes , delete it and put with new values
+      $sql = db_query('select * from url_alias where source = :source and alias = :new_timeline_alias',array(':source'=>'node/'.$timeline_nid,'new_timeline_alias' => $new_timeline_alias));
+      $res = $sql->fetch();
+
+      if(isset($res->pid)){
+        //this means such alias mapped to this timeline exists , no need for anything to change
+      }else{
+        //lets insert a new alias for us
+        $sql = db_query('insert into url_alias(source,alias,language) values(:source,:alias,:language)',array(':source'=>'node/'.$timeline_nid, ':language' => 'und',':alias' => $new_timeline_alias));
+      }
+    }
+
+    if(isset($node->field_native_lingo) && !empty($node->field_native_lingo['und'][0]['nid'])){
+      $lingo_nid = $node->field_native_lingo['und'][0]['nid'];
+
+      $country_alias = drupal_lookup_path('alias','node/'.$node->nid);
+      $new_lingo_alias = $country_alias.'/native-lingo';
+
+      //lets check if such alias already exists, and if yes , delete it and put with new values
+      $sql = db_query('select * from url_alias where source = :source and alias = :new_lingo_alias',array(':source'=>'node/'.$lingo_nid,'new_lingo_alias' => $new_lingo_alias));
+      $res = $sql->fetch();
+
+      if(isset($res->pid)){
+        //this means such alias mapped to this timeline exists , no need for anything to change
+      }else{
+        //lets insert a new alias for us
+        $sql = db_query('insert into url_alias(source,alias,language) values(:source,:alias,:language)',array(':source'=>'node/'.$lingo_nid, ':language' => 'und',':alias' => $new_lingo_alias));
+      }
+    }
+
     if(isset($node->field_destination_quiz) && !empty($node->field_destination_quiz['und'][0]['nid'])){
       $quiz_nid = $node->field_destination_quiz['und'][0]['nid'];
 
