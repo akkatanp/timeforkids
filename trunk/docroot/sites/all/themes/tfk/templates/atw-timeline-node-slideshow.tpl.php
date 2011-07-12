@@ -30,12 +30,12 @@
                                 <!-- MIKE : <?php print $image['image_shape'] // can be "undefined" , "horizontal","vertical","square" ?> -->
 				<?php endif;?>
 			</div>
-			<div class="clearfix"></div>
+			<div class="clearfix" style="clear: both;"></div>
 		</div>
 		
 		<?php $i++; ?>
 		<?php endforeach; ?>
-		<div class="clearfix"></div>
+		<div class="clearfix" style="clear: both;"></div>
 	</div>
 
 <!--
