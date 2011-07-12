@@ -22,7 +22,11 @@ div#block-tfk-search-tfk-search-photos-video-featured {
 }
 
 div#tfk-search-photos-video-featured {
-  margin-bottom: 15px;
+  padding-bottom: 10px;
+}
+
+.featured-item-related-item {
+	padding: 0 12px 0 10px;
 }
 
 div#tfk-search-photos-video-featured div.featured-label {
@@ -76,7 +80,6 @@ div#tfk-search-photos-video-featured .featured-dek {
 div#tfk-search-photos-video-featured .g1 {
 	vertical-align: top;
 	width: 270px;
-	height: 295px;
 	display: inline-block;
 }
 
