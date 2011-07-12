@@ -2072,7 +2072,7 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 	margin: 0 0 10px 0;
 }
 
-.page-tfk-magazine .search-results .search-result  .title a {
+.page-tfk-magazine .search-results .search-result .title a {
 	font: normal 12px "arial black";
 	color: white;
 	text-decoration: none;
@@ -2089,6 +2089,15 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 	float: left;
 	width:215px;
 	margin-right: 10px;
+}
+
+.page-tfk-magazine .search-results .search-result .in-this-issue h3 {
+	margin: 0;
+	font: bold 12px arial;
+}
+
+.page-tfk-magazine .search-results .search-result .in-this-issue a {
+	font-weight: normal;
 }
 
 .page-tfk-magazine .search-results .search-result .related_content_wrap {
