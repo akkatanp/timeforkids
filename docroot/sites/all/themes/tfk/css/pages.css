@@ -2066,9 +2066,10 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 	padding: 10px;
 }
 
-.page-tfk-magazine .search-results .search-result .title {
+.page-tfk-magazine .search-results .search-result h3.title {
 	background: #d71700;
 	padding: 4px;
+	margin: 0 0 10px 0;
 }
 
 .page-tfk-magazine .search-results .search-result  .title a {
