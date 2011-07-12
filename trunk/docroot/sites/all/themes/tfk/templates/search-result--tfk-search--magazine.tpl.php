@@ -144,6 +144,8 @@
       <?php endforeach;?>
     <?php endif; ?>
   </div>
+  
+  <div class="clearfix></div>
 
 
 
