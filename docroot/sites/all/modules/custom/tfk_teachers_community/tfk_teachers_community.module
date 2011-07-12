@@ -322,19 +322,9 @@ function tfk_teachers_community_preprocess_comment(&$variables, $hook) {
     // Change submitted date format.
     $variables['submitted'] = date('n/j/Y', $variables['comment']->changed);
     
-    // Supress links for non-editorial/admin users.
-    $auth_roles = array('administrator', 'editor');
-    $supress_links = TRUE;
-    foreach($auth_roles as $auth_role) {
-      // If current user is the auth list, show him the links.
-      if(array_search($auth_role, $variables['user']->roles) !== FALSE) {
-        $supress_links = FALSE;
-      }
-    }
-    if($supress_links) {
-      unset($_variables['content']['links']);
-    }
-  
+    // Disable reply ability, it breaks the design.
+    unset($_variables['content']['links']['comment']['#links']['comment-reply']);
+      
     // Unset variables we are not going to use.
     unset($_variables['permalink']);
     unset($_variables['status']);
