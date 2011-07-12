@@ -29,6 +29,48 @@ function tfk_teachers_community_views_api() {
 }
 
 /**
+ * Implementation of hook_flag_default_flags().
+ */
+function tfk_teachers_community_flag_default_flags() {
+  $flags = array();
+  // Exported flag: "Comment Abuse".
+  $flags['abuse_comment'] = array(
+    'content_type' => 'comment',
+    'title' => 'Comment Abuse',
+    'global' => 0,
+    'types' => array(
+      0 => 'teacher_community_question',
+    ),
+    'flag_short' => 'Report Abuse',
+    'flag_long' => 'Flag this content as offensive.',
+    'flag_message' => '',
+    'unflag_short' => 'Flag as non-offensive',
+    'unflag_long' => 'Flag this content as non-offensive.',
+    'unflag_message' => '',
+    'unflag_denied_text' => 'Flagged for abuse',
+    'link_type' => 'toggle',
+    'roles' => array(
+      'flag' => array(
+        0 => '2',
+        1 => '3',
+        2 => '4',
+        3 => '5',
+        4 => '6',
+      ),
+      'unflag' => array(),
+    ),
+    'access_author' => '',
+    'show_on_comment' => 1,
+    'module' => 'tfk_teachers_community',
+    'locked' => array(
+      0 => 'name',
+    ),
+    'api_version' => 2,
+  );
+  return $flags;
+}
+
+/**
  * Implementation of hook_node_info().
  */
 function tfk_teachers_community_node_info() {
