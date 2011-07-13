@@ -44,6 +44,10 @@ function tfk_ads_omni_preprocess_page(&$variables){
         $tfk_omni_library = drupal_get_path('theme', 'tfk') .'/js/timekids-omniture.js';
         drupal_add_js($omniture_account, 'inline');
         drupal_add_js($tfk_omni_library,'file');
+        if($variables['node']->type == 'slideshow') {
+            $tfk_ctype_omni_library = drupal_get_path('theme', 'tfk') .'/js/tfk-ctype-omni.js';
+            drupal_add_js($tfk_ctype_omni_library,'file');
+        }
         /*Omniture vars*/
         $omniture_vars .= "s_time.channel = 'tfk';\n";
         if (array_key_exists('node',$variables) && $variables['node']->nid == 167) {
