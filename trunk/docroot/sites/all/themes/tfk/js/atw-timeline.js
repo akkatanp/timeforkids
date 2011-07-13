@@ -56,7 +56,7 @@ $(document).ready(function() {
 			}
 			
 			if (prevNum < leftNode) {
-				inner.animate({'left': ((leftNode - prevNum) * nodeWidth)) + 'px'}, 500, function() {
+				inner.animate({'left': ((leftNode - prevNum) * nodeWidth) + 'px'}, 500, function() {
 					$('#event-node-' + prevNum).trigger('click');
 				});
 				leftNode = leftNode - prevNum;
