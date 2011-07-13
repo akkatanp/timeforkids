@@ -15,7 +15,7 @@ $(document).ready(function() {
 		var topline = $('#line-above');
 		var bottomline = $('#line-below');
 		var prev = $('#prev');
-		var next = $('#prev');
+		var next = $('#next');
 		
 		var showHideEvent = function() {
 			nodes.each(function(i, node) {
@@ -43,12 +43,12 @@ $(document).ready(function() {
 		
 		var prevEvent = function() {
 			var activeNode = timebar.find('.active');
-			alert(activeNode.id);
+			alert(activeNode.attr('id'));
 		}
 		
 		var nextEvent = function() {
 			var activeNode = timebar.find('.active');
-			alert(activeNode.id);
+			alert(activeNode.attr('id'));
 		}
 		
 		if (numEvents) {
