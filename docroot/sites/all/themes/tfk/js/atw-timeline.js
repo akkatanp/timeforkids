@@ -14,6 +14,8 @@ $(document).ready(function() {
 		var timebar = $('#event-timeline-bar');
 		var topline = $('#line-above');
 		var bottomline = $('#line-below');
+		var prev = $('#prev');
+		var next = $('#prev');
 		
 		var showHideEvent = function() {
 			nodes.each(function(i, node) {
@@ -39,6 +41,16 @@ $(document).ready(function() {
 			year.animate({'left': yearPos + 'px'}, 500);
 		}
 		
+		var prevEvent = function() {
+			var activeNode = timebar.find('.active');
+			alert(activeNode.id);
+		}
+		
+		var nextEvent = function() {
+			var activeNode = timebar.find('.active');
+			alert(activeNode.id);
+		}
+		
 		if (numEvents) {
 			for (i=0;i<numEvents;i++) {
 				var node = $('<div></div>').attr('id', 'event-node-' + i).addClass('event-node').appendTo(timebar);
@@ -57,6 +69,9 @@ $(document).ready(function() {
 			nodes.each(function(i, node) {
 				$(node).click(showHideEvent);
 			});
+			
+			prev.click(prevEvent);
+			next.click(nextEvent);
 		}
 	};
 })($);
