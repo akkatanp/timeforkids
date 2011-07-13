@@ -59,7 +59,7 @@ $(document).ready(function() {
 				inner.animate({'left': ((leftNode - prevNum) * nodeWidth) + 'px'}, 500, function() {
 					$('#event-node-' + prevNum).trigger('click');
 				});
-				leftNode = leftNode - prevNum;
+				leftNode = leftNode - maxNodes - 1;
 			} else {
 				$('#event-node-' + prevNum).trigger('click');
 			}
@@ -76,10 +76,10 @@ $(document).ready(function() {
 			}
 			
 			if (nextNum > maxNodes - 1) {
-				inner.animate({'left': (-1 * ((nextNum - (maxNodes - 1)) * nodeWidth)) + 'px'}, 500, function() {
+				inner.animate({'left': (-1 * maxNodes * nodeWidth)) + 'px'}, 500, function() {
 					$('#event-node-' + nextNum).trigger('click');
 				});
-				leftNode = nextNum - (maxNodes - 1);
+				leftNode = maxNodes + 1;
 			} else {
 				$('#event-node-' + nextNum).trigger('click');
 			}
