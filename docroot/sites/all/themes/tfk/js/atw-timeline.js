@@ -12,10 +12,13 @@ $(document).ready(function() {
 		var eventContainer = $('#event-container');
 		var year = $('#event-year');
 		var timebar = $('#event-timeline-bar');
+		var inner = timebar.find('#inner');
 		var topline = $('#line-above');
 		var bottomline = $('#line-below');
 		var prev = $('#prev');
 		var next = $('#next');
+		var maxNodes = 19;
+		var nodeWidth = 24;
 		
 		var showHideEvent = function() {
 			nodes.each(function(i, node) {
@@ -42,8 +45,8 @@ $(document).ready(function() {
 		}
 		
 		var prevEvent = function() {
-			var numNodes = timebar.children().length - 1;
-			var activeNode = timebar.find('.active');
+			var numNodes = nodes.length - 1;
+			var activeNode = inner.find('.active');
 			var nodeNum = parseInt(activeNode.attr('id').split('-')[2]);
 			if (nodeNum == 0) {
 				var prevNum = numNodes;
@@ -54,8 +57,8 @@ $(document).ready(function() {
 		}
 		
 		var nextEvent = function() {
-			var numNodes = timebar.children().length - 1;
-			var activeNode = timebar.find('.active');
+			var numNodes = nodes.length - 1;
+			var activeNode = inner.find('.active');
 			var nodeNum = parseInt(activeNode.attr('id').split('-')[2]);
 			if (nodeNum == numNodes) {
 				var nextNum = 0;
@@ -67,7 +70,7 @@ $(document).ready(function() {
 		
 		if (numEvents) {
 			for (i=0;i<numEvents;i++) {
-				var node = $('<div></div>').attr('id', 'event-node-' + i).addClass('event-node').appendTo(timebar);
+				var node = $('<div></div>').attr('id', 'event-node-' + i).addClass('event-node').appendTo(inner);
 				if (i == 0) {
 					node.addClass('active');
 					year.text($('#event-0').find('.event-text h3').text());
@@ -79,7 +82,8 @@ $(document).ready(function() {
 				}
 			}
 			
-			var nodes = timebar.children();
+			var nodes = inner.children();
+			alert(inner.width());
 			nodes.each(function(i, node) {
 				$(node).click(showHideEvent);
 			});

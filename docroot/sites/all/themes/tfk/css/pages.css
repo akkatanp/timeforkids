@@ -1756,11 +1756,10 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 #timeline-container #event-timeline-bar {
 	float: left;
 	position: relative;
-	height: 7px;
-	width: 456px;
+	height: 19px;
+	width: 468px;
 	background: #d71700;
-	padding: 6px;
-	margin: 0;
+	overflow: hidden;
 }
 
 #timeline-container #event-timeline-bar-container #prev, 
@@ -1779,16 +1778,25 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 	background: url(../images/timeline-right-arrow.png) no-repeat 0px 3px;
 }
 
-#timeline-container #event-timeline-bar .event-node {
+#timeline-container #event-timeline-bar #inner {
+	position: absolute;
+	top: 0px;
+	left: 0px;
 	float: left;
 	height: 7px;
-	width: 7px;
+	padding: 6px;
+}
+
+#timeline-container #event-timeline-bar #inner .event-node {
+	float: left;
+	height: 7px;
+	width: 8px;
 	margin: 0 8px;
 	background: url("../images/slideshow-white-dot.png") no-repeat;
 	cursor: pointer;
 }
 
-#timeline-container #event-timeline-bar .event-node.active {
+#timeline-container #event-timeline-bar #inner .event-node.active {
 	background: url("../images/slideshow-black-dot.png") no-repeat;
 }
 
