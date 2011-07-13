@@ -42,11 +42,12 @@ $(document).ready(function() {
 		}
 		
 		var prevEvent = function() {
+			var numNodes = timebar.children().length - 1;
 			var activeNode = timebar.find('.active');
 			var nodeNum = parseInt(activeNode.attr('id').split('-')[2]);
 			if (nodeNum == 0) {
-				var prevNum = numEvents;
-				alert(numEvents);
+				var prevNum = numNodes;
+				alert(numNodes);
 			} else {
 				var prevNum = nodeNum - 1;
 			}
@@ -54,9 +55,10 @@ $(document).ready(function() {
 		}
 		
 		var nextEvent = function() {
+			var numNodes = timebar.children().length - 1;
 			var activeNode = timebar.find('.active');
 			var nodeNum = parseInt(activeNode.attr('id').split('-')[2]);
-			if (nodeNum == numEvents) {
+			if (nodeNum == numNodes) {
 				var nextNum = 0;
 				alert(0);
 			} else {
