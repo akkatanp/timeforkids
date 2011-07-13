@@ -43,12 +43,24 @@ $(document).ready(function() {
 		
 		var prevEvent = function() {
 			var activeNode = timebar.find('.active');
-			alert(activeNode.attr('id'));
+			var nodeNum = parseInt(activeNode.attr('id').split('-')[2]);
+			if (nodeNum == 0) {
+				var prevNum = numEvents;
+			} else {
+				var prevNum = nodeNum - 1;
+			}
+			$('#event-node-' + prevNum).trigger('click');
 		}
 		
 		var nextEvent = function() {
 			var activeNode = timebar.find('.active');
-			alert(activeNode.attr('id'));
+			var nodeNum = parseInt(activeNode.attr('id').split('-')[2]);
+			if (nodeNum == numEvents) {
+				var nextNum = 0;
+			} else {
+				var nextNum = nodeNum + 1;
+			}
+			$('#event-node-' + nextNum).trigger('click');
 		}
 		
 		if (numEvents) {
