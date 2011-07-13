@@ -102,6 +102,7 @@ $(document).ready(function() {
 			}
 			
 			var nodes = inner.children();
+			inner.width(nodes.length * nodeWidth);
 			nodes.each(function(i, node) {
 				$(node).click(showHideEvent);
 			});
