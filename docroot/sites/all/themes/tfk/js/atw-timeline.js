@@ -76,7 +76,7 @@ $(document).ready(function() {
 			}
 			
 			if (nextNum > maxNodes - 1) {
-				inner.animate({'left': (-1 * maxNodes * nodeWidth)) + 'px'}, 500, function() {
+				inner.animate({'left': (-1 * maxNodes * nodeWidth) + 'px'}, 500, function() {
 					$('#event-node-' + nextNum).trigger('click');
 				});
 				leftNode = maxNodes + 1;
