@@ -60,11 +60,9 @@ $(document).ready(function() {
 					$('#event-node-' + prevNum).trigger('click');
 				});
 				leftNode = leftNode - prevNum;
-			} else }
+			} else {
 				$('#event-node-' + prevNum).trigger('click');
 			}
-			
-			$('#event-node-' + prevNum).trigger('click');
 		}
 		
 		var nextEvent = function() {
@@ -82,7 +80,7 @@ $(document).ready(function() {
 					$('#event-node-' + nextNum).trigger('click');
 				});
 				leftNode = nextNum - (maxNodes - 1);
-			} else }
+			} else {
 				$('#event-node-' + nextNum).trigger('click');
 			}
 		}
