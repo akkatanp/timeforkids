@@ -191,6 +191,6 @@ function tfk_helper_update_7006($ret) {
  */
 function tfk_helper_update_7007($ret) {
   if(module_exists('tfk_worksheets')) {
-    tfk_helper_features_revert('tfk_worksheets');
+    tfk_helper_features_revert(array('tfk_worksheets'));
   }
 }
