@@ -114,7 +114,7 @@
 
     <div class="atw-graphic-header"></div>
     <div id="sightseeing-container">
-    <h1><?php echo $destination_title; ?>: Sight Seeing Guide</h1>
+    <h1><?php echo $destination_title; ?>: Sightseeing Guide</h1>
     <div id="map-container">
         <?php echo $sightseeing_body; ?>
     </div>
