@@ -83,7 +83,6 @@ $(document).ready(function() {
 			}
 			
 			var nodes = inner.children();
-			alert(inner.width());
 			nodes.each(function(i, node) {
 				$(node).click(showHideEvent);
 			});
