@@ -37,6 +37,11 @@ $(document).ready(function() {
 			$(this).addClass('active');
 			
 			linePos = $(this).position().left + ($(this).width() / 2) + 16;
+			
+			if (nodeNum > maxNodes -1) {
+				linePos = linePos - (maxNodes * nodeWidth);
+			}
+			
 			topline.animate({'left': linePos + 'px'}, 500);
 			bottomline.animate({'left': linePos + 'px'}, 500);
 			
