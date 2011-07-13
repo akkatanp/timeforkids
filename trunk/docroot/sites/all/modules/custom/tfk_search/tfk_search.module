@@ -1234,7 +1234,7 @@ function tfk_search_preprocess_search_result(&$vars) {
           $pdf_tmp_uri = $tmp_pdf[0]['uri'];
           
           if($pdf_path = file_create_url($pdf_tmp_uri)){
-            $vars['tfk_worksheet_pdf_link'] = l('Download this '. ((!empty($name)) ? rtrim($name, 's') : 'Worksheet'), $pdf_path);
+            $vars['tfk_worksheet_pdf_link'] = l('Download this Printable', $pdf_path);
           }
         }
         
