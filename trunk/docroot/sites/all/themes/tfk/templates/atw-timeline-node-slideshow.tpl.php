@@ -4,7 +4,9 @@
 	<div id="line-above"></div>
 	<div id="event-timeline-bar-container">
 		<div id="prev"></div>
-		<div id="event-timeline-bar"></div>
+		<div id="event-timeline-bar">
+			<div id="inner"></div>
+		</div>
 		<div id="next"></div>
 	</div>
 	<div id="line-below"></div>
