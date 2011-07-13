@@ -19,6 +19,7 @@ $(document).ready(function() {
 		var next = $('#next');
 		var maxNodes = 19;
 		var nodeWidth = 24;
+		var leftNode = 0;
 		
 		var showHideEvent = function() {
 			nodes.each(function(i, node) {
@@ -53,6 +54,16 @@ $(document).ready(function() {
 			} else {
 				var prevNum = nodeNum - 1;
 			}
+			
+			if (prevNum < leftNode) {
+				inner.animate({'left': ((leftNode - prevNum) * nodeWidth)) + 'px'}, 500, function() {
+					$('#event-node-' + prevNum).trigger('click');
+				});
+				leftNode = leftNode - prevNum;
+			} else }
+				$('#event-node-' + prevNum).trigger('click');
+			}
+			
 			$('#event-node-' + prevNum).trigger('click');
 		}
 		
@@ -65,7 +76,15 @@ $(document).ready(function() {
 			} else {
 				var nextNum = nodeNum + 1;
 			}
-			$('#event-node-' + nextNum).trigger('click');
+			
+			if (nextNum > maxNodes - 1) {
+				inner.animate({'left': (-1 * ((nextNum - (maxNodes - 1)) * nodeWidth)) + 'px'}, 500, function() {
+					$('#event-node-' + nextNum).trigger('click');
+				});
+				leftNode = nextNum - (maxNodes - 1);
+			} else }
+				$('#event-node-' + nextNum).trigger('click');
+			}
 		}
 		
 		if (numEvents) {
