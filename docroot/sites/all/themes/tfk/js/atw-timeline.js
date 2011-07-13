@@ -46,6 +46,7 @@ $(document).ready(function() {
 			var nodeNum = parseInt(activeNode.attr('id').split('-')[2]);
 			if (nodeNum == 0) {
 				var prevNum = numEvents;
+				alert(numEvents);
 			} else {
 				var prevNum = nodeNum - 1;
 			}
@@ -57,6 +58,7 @@ $(document).ready(function() {
 			var nodeNum = parseInt(activeNode.attr('id').split('-')[2]);
 			if (nodeNum == numEvents) {
 				var nextNum = 0;
+				alert(0);
 			} else {
 				var nextNum = nodeNum + 1;
 			}
