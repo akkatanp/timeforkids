@@ -1770,6 +1770,14 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 	float: left;
 }
 
+#timeline-container #event-timeline-bar-container #prev {
+	background: url(../images/timeline-left-arrow.png) no repeat 0px 3px;
+}
+
+#timeline-container #event-timeline-bar-container #next {
+	background: url(../images/timeline-right-arrow.png) no repeat 0px 3px;
+}
+
 #timeline-container #event-timeline-bar .event-node {
 	float: left;
 	height: 7px;
