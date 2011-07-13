@@ -1826,10 +1826,9 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 }
 
 #timeline-container #event-container .event.horizontal .event-image {
-	float: left;
+	float: right;
 	width: 240px;
 	height: 180px;
-	margin-right: 10px;
 	border: solid 1px #cecece;
 }
 
@@ -1856,7 +1855,7 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 }
 
 #timeline-container #event-container .event.horizontal .event-text {
-	float: right;
+	float: left;
 	width: 192px;
 }
 
