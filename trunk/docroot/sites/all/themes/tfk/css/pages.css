@@ -1768,14 +1768,15 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 	width: 10px;
 	height: 19px;
 	float: left;
+	cursor: pointer;
 }
 
 #timeline-container #event-timeline-bar-container #prev {
-	background: url(../images/timeline-left-arrow.png) no repeat 0px 3px;
+	background: url(../images/timeline-left-arrow.png) no-repeat 0px 3px;
 }
 
 #timeline-container #event-timeline-bar-container #next {
-	background: url(../images/timeline-right-arrow.png) no repeat 0px 3px;
+	background: url(../images/timeline-right-arrow.png) no-repeat 0px 3px;
 }
 
 #timeline-container #event-timeline-bar .event-node {
