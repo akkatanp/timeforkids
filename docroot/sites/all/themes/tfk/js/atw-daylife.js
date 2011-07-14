@@ -48,7 +48,7 @@ $(document).ready(function() {
 			}
 			
 			if (prevNum < leftActivity) {
-				inner.animate({'left': ((leftActivity - maxactivities - 1) * activityWidth) + 'px'}, 500, function() {
+				inner.animate({'left': ((leftActivity - maxActivities - 1) * activityWidth) + 'px'}, 500, function() {
 					$('#clock-' + prevNum).trigger('click');
 				});
 				leftActivity = leftActivity - maxActivities - 1;
