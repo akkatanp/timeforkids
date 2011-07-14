@@ -13,7 +13,7 @@ function features_misc_context_default_contexts() {
   $context = new stdClass;
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
-  $context->name = 'Global Editor Navigation';
+  $context->name = 'global_editor_navigation';
   $context->description = '';
   $context->tag = 'global navigation';
   $context->conditions = array(
@@ -31,43 +31,49 @@ function features_misc_context_default_contexts() {
           'module' => 'views',
           'delta' => 'global_right_sidebar-block',
           'region' => 'sidebar_second',
-          'weight' => '-56',
+          'weight' => '-10',
+        ),
+        'views-6b3cdbf51f6a41d742e65dbcf2d85234' => array(
+          'module' => 'views',
+          'delta' => '6b3cdbf51f6a41d742e65dbcf2d85234',
+          'region' => 'sidebar_second',
+          'weight' => '-9',
         ),
         'block-19' => array(
           'module' => 'block',
           'delta' => 19,
           'region' => 'sidebar_second',
-          'weight' => '-55',
+          'weight' => '-8',
         ),
         'views-global_right_sidebar-block_1' => array(
           'module' => 'views',
           'delta' => 'global_right_sidebar-block_1',
           'region' => 'sidebar_second',
-          'weight' => '-54',
+          'weight' => '-7',
         ),
         'views-global_right_sidebar-block_3' => array(
           'module' => 'views',
           'delta' => 'global_right_sidebar-block_3',
           'region' => 'sidebar_second',
-          'weight' => '-53',
+          'weight' => '-6',
         ),
         'views-global_right_sidebar-block_2' => array(
           'module' => 'views',
           'delta' => 'global_right_sidebar-block_2',
           'region' => 'sidebar_second',
-          'weight' => '-52',
+          'weight' => '-5',
         ),
         'block-18' => array(
           'module' => 'block',
           'delta' => 18,
           'region' => 'sidebar_second',
-          'weight' => '-51',
+          'weight' => '-4',
         ),
         'block-1' => array(
           'module' => 'block',
           'delta' => 1,
           'region' => 'sidebar_second',
-          'weight' => '-50',
+          'weight' => '-3',
         ),
         'menu-menu-tfk-global-navigation' => array(
           'module' => 'menu',
@@ -91,7 +97,7 @@ function features_misc_context_default_contexts() {
           'module' => 'menu',
           'delta' => 'menu-tfk-teachers-menu',
           'region' => 'header',
-          'weight' => '-6',
+          'weight' => '-7',
         ),
         'menu-menu-tfk-footer-primary' => array(
           'module' => 'menu',
@@ -108,7 +114,7 @@ function features_misc_context_default_contexts() {
         'block-6' => array(
           'module' => 'block',
           'delta' => 6,
-          'region' => 'bottom',
+          'region' => 'footer',
           'weight' => '-10',
         ),
       ),
@@ -119,12 +125,12 @@ function features_misc_context_default_contexts() {
   // Translatables
   // Included for use with string extractors like potx.
   t('global navigation');
-  $export['Global Editor Navigation'] = $context;
+  $export['global_editor_navigation'] = $context;
 
   $context = new stdClass;
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
-  $context->name = 'Global Public Navigation';
+  $context->name = 'global_public_navigation';
   $context->description = '';
   $context->tag = 'global navigation';
   $context->conditions = array(
@@ -137,9 +143,9 @@ function features_misc_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'views-1ea0d8b2d55a5c36ff9aeecb766072b0' => array(
+        'views-e1fd7ec0792e427785c60f04deef22cf' => array(
           'module' => 'views',
-          'delta' => '1ea0d8b2d55a5c36ff9aeecb766072b0',
+          'delta' => 'e1fd7ec0792e427785c60f04deef22cf',
           'region' => 'sidebar_second',
           'weight' => '-10',
         ),
@@ -176,7 +182,7 @@ function features_misc_context_default_contexts() {
         'block-6' => array(
           'module' => 'block',
           'delta' => 6,
-          'region' => 'bottom',
+          'region' => 'footer',
           'weight' => '-10',
         ),
       ),
@@ -187,18 +193,18 @@ function features_misc_context_default_contexts() {
   // Translatables
   // Included for use with string extractors like potx.
   t('global navigation');
-  $export['Global Public Navigation'] = $context;
+  $export['global_public_navigation'] = $context;
 
   $context = new stdClass;
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
-  $context->name = 'Global Teacher Navigation';
+  $context->name = 'global_teacher_navigation';
   $context->description = '';
   $context->tag = 'global navigation';
   $context->conditions = array(
     'user' => array(
       'values' => array(
-        'authenticated user' => 'authenticated user',
+        'teacher' => 'teacher',
       ),
     ),
   );
@@ -210,6 +216,18 @@ function features_misc_context_default_contexts() {
           'delta' => 'global_right_sidebar-block',
           'region' => 'sidebar_second',
           'weight' => '-10',
+        ),
+        'views-e1fd7ec0792e427785c60f04deef22cf' => array(
+          'module' => 'views',
+          'delta' => 'e1fd7ec0792e427785c60f04deef22cf',
+          'region' => 'sidebar_second',
+          'weight' => '-9',
+        ),
+        'block-19' => array(
+          'module' => 'block',
+          'delta' => 19,
+          'region' => 'sidebar_second',
+          'weight' => '-8',
         ),
         'views-global_right_sidebar-block_1' => array(
           'module' => 'views',
@@ -280,7 +298,7 @@ function features_misc_context_default_contexts() {
         'block-6' => array(
           'module' => 'block',
           'delta' => 6,
-          'region' => 'bottom',
+          'region' => 'footer',
           'weight' => '-10',
         ),
       ),
@@ -291,7 +309,7 @@ function features_misc_context_default_contexts() {
   // Translatables
   // Included for use with string extractors like potx.
   t('global navigation');
-  $export['Global Teacher Navigation'] = $context;
+  $export['global_teacher_navigation'] = $context;
 
   return $export;
 }
