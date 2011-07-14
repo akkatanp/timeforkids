@@ -80,6 +80,8 @@
  * @see zen_preprocess_node()
  * @see template_process()
  */
+
+$addit_content = $content['group_additional_content'];
 ?>
 <?php if($is_kid_reporter_article == 1){
             unset($content['group_date_and_author']['field_article_byline']);
@@ -113,7 +115,9 @@
 	print render($content['field_article_category']);?>
 
 	  <h1><?php print $title; ?></h1>
-      <?php print render($content);?>
+      <?php print render($content);?><br/>
+          <b>Additional Content:</b><br/>
+     <?php  print render($addit_content); ?>
   </div>
 
   <?php print render($content['links']); ?>
