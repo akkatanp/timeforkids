@@ -2043,21 +2043,6 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 	width: 206px;
 }
 
-#daylife-container .clock {
-	position: relative;
-	float: left;
-	width: 42px;
-	height: 42px;
-	background: #fff;
-	margin-right: 8px;
-	cursor: pointer;
-	background: url("../images/daylife-grey-clock.png") no-repeat;
-}
-
-#daylife-container .clock.active {
-	background: url("../images/daylife-black-clock.png") no-repeat;
-}
-
 #daylife-container #activities  {
 	float: left;
 	width: 158px;
@@ -2067,12 +2052,57 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 	font: bold 18px arial;
 }
 
-#daylife-container #daylife-bar {
+#daylife-container #daylife-bar-container {
 	border-top: dotted 1px #cecece;
 	margin-top: 10px;
 	padding-top: 10px;
 	height: 42px;
+	width: 488px;
 	position: relative;
+}
+
+#daylife-container #daylife-bar-container #prev {
+	float: left;
+	width: 14px;
+	height: 42px;
+	background: url(../images/timeline-left-arrow.png) no-repeat 0px 11px;
+}
+
+#daylife-container #daylife-bar-container #next {
+	float: left;
+	width: 14px;
+	height: 42px;
+	background: url(../images/timeline-right-arrow.png) no-repeat 0px 11px;
+}
+
+#daylife-container #daylife-bar-container #daylife-bar {
+	position: relative;
+	float: left;
+	width: 460px;
+	height: 42px;
+	overflow: hidden;
+}
+
+#daylife-container #daylife-bar-container #daylife-bar #inner {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	height: 42px;
+}
+
+#daylife-container .clock {
+	position: relative;
+	float: left;
+	width: 42px;
+	height: 42px;
+	background: #fff;
+	margin: 0 2px;
+	cursor: pointer;
+	background: url("../images/daylife-grey-clock.png") no-repeat;
+}
+
+#daylife-container .clock.active {
+	background: url("../images/daylife-black-clock.png") no-repeat;
 }
 
 #daylife-container #line-below {
