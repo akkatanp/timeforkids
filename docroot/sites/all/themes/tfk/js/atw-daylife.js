@@ -44,7 +44,8 @@ $(document).ready(function() {
 			
 			if (activityNum == 0) {
 				var prevNum = activities.length - 1;
-				page = Math.floor(activities.length/maxActivities) + 1;
+				page = Math.floor(activities.length/maxActivities);
+				alert(page);
 			} else {
 				var prevNum = activityNum - 1;
 			}
