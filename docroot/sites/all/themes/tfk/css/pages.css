@@ -2198,4 +2198,7 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 	font: bold 12px arial;
 }
 
-
+/*RSS Icon*/
+.feed-icon {
+    display:none;
+}
