@@ -17,6 +17,7 @@ $(document).ready(function() {
 		var activityWidth = 46;
 		var activityNum = 0;
 		var leftActivity = 0;
+		var page = 1;
 		
 		var showHideActivity = function() {
 			activities.each(function(i, activity) {
@@ -28,13 +29,10 @@ $(document).ready(function() {
 			thisTime.text($(this).attr('title'));
 			
 			linePos = $(this).position().left + (activityWidth / 2) + 14;
-			
-			if (activityNum > maxActivities - 1) {
-				linePos = linePos - (maxActivities * activityWidth);
-			}
+			linePos = linePos - ((page - 1) * (maxActivities * activityWidth));
+			timePos = linePos - (thisTime.width() / 2) - 7;
 			
 			bottomline.animate({'left': linePos + 'px'}, 500);
-			timePos = linePos - (thisTime.width() / 2) - 7;
 			if (timePos < 0) timePos = 0;
 			thisTime.animate({'left': timePos + 'px'}, 500);
 		};
@@ -42,6 +40,7 @@ $(document).ready(function() {
 		var prevEvent = function() {
 			var activity = inner.find('.active');
 			var activityNum = parseInt(activity.attr('id').split('-')[1]);
+			
 			if (activityNum == 0) {
 				var prevNum = activities.length - 1;
 			} else {
@@ -49,10 +48,11 @@ $(document).ready(function() {
 			}
 			
 			if (prevNum < leftActivity) {
-				inner.animate({'left': ((leftActivity - maxActivities - 1) * activityWidth) + 'px'}, 500, function() {
+				inner.animate({'left': ((leftActivity - (maxActivities * page) - 1) * activityWidth) + 'px'}, 500, function() {
 					$('#clock-' + prevNum).trigger('click');
 				});
-				leftActivity = leftActivity - maxActivities - 1;
+				leftActivity = leftActivity - maxActivities;
+				page--;
 			} else {
 				$('#clock-' + prevNum).trigger('click');
 			}
@@ -61,23 +61,26 @@ $(document).ready(function() {
 		var nextEvent = function() {
 			var activity = inner.find('.active');
 			var activityNum = parseInt(activity.attr('id').split('-')[1]);
+			
 			if (activityNum == activities.length - 1) {
 				var nextNum = 0;
 			} else {
 				var nextNum = activityNum + 1;
 			}
 			
-			if (nextNum > maxActivities - 1) {
-				inner.animate({'left': (-1 * maxActivities * activityWidth) + 'px'}, 500, function() {
+			if (nextNum > (maxActivities * page) - 1) {
+				inner.animate({'left': (-1 * (maxActivities * page) * activityWidth) + 'px'}, 500, function() {
 					$('#clock-' + nextNum).trigger('click');
 				});
-				leftActivity = maxActivities + 1;
+				leftActivity = (maxActivities * page) + 1;
+				page++;
 			} else {
 				$('#clock-' + nextNum).trigger('click');
 			}
 		}
 		
 		if (activities.length) {
+			inner.width(activities.length * activityWidth);
 			activities.each(function(i, activity) {
 				if (i == 0) {
 					$(activity).addClass('active');
@@ -85,12 +88,12 @@ $(document).ready(function() {
 					$('#activity-text').text($(activity).attr('rel'));
 					thisTime.text($(activity).attr('title'));
 					
-					linePos = $(activity).position().left + ($(activity).width() / 2);
+					linePos = $(activity).position().left + ($(activity).width() / 2) + 14;
 					bottomline.css('left', linePos + 'px');
 				}
 				$(activity).click(showHideActivity);
 			});
-			inner.width(activities.length * activityWidth);
+			
 			prev.click(prevEvent);
 			next.click(nextEvent);
 		}
