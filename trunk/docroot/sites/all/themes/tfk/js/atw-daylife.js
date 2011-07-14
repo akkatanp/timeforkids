@@ -52,7 +52,7 @@ $(document).ready(function() {
 				inner.animate({'left': ((maxActivities * activityWidth) * page) + 'px'}, 500, function() {
 					$('#clock-' + prevNum).trigger('click');
 				});
-				leftActivity = leftActivity - maxActivities;
+				leftActivity = leftActivity - maxActivities - 1;
 				page--;
 			} else {
 				$('#clock-' + prevNum).trigger('click');
