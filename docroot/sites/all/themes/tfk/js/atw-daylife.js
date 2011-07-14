@@ -44,7 +44,7 @@ $(document).ready(function() {
 			
 			if (activityNum == 0) {
 				var prevNum = activities.length - 1;
-				if (activities.length > maxActivities) {
+				if (prevNum > maxActivities) {
 					page = Math.floor(activities.length/maxActivities) + 1;
 					leftActivity = maxActivities * page;
 				}
