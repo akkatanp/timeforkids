@@ -78,6 +78,16 @@ function tfk_search_init(){
 }
 
 /**
+ * Implementation of hook_theme_registry_alter.
+ *
+ * @see theme_apachesolr_facet_link()
+ */
+function tfk_search_theme_registry_alter(&$theme_registry) {
+  $theme_registry['apachesolr_facet_link']['function'] = 'theme_tfk_search_facet_link';
+  $theme_registry['apachesolr_facet_link']['theme path'] = drupal_get_path('module', 'tfk_search');
+}
+
+/**
  * Implementation of hook_theme.
  */
 function tfk_search_theme($existing, $type, $theme, $path) {
@@ -101,6 +111,30 @@ function tfk_search_theme($existing, $type, $theme, $path) {
       'variables' => array('related_content' => array(), 'quantity_articles' => 1),
     ),
   );
+}
+
+/**
+ * Custom version of theme_apachesolr_facet_link() for generating facet links.
+ *
+ * Apachesolr facet links are coded in theme_apachesolr_facet_link() in a
+ * way that we cannot modify the HTML of the link (e.g., we want to insert a
+ * span that contain the parenthesis with the count). This is not doable using
+ * only the preprocessor.
+ *
+ * @param array $vars
+ *
+ * @see theme_apachesolr_facet_link()
+ */
+function theme_tfk_search_facet_link($vars) {
+  // Allow HTML.
+  $vars['options']['html'] = TRUE;
+  
+  $vars['options']['attributes']['class'][] = 'apachesolr-facet';
+  if($vars['active']) {
+    $vars['options']['attributes']['class'][] = 'active';
+  }
+  $vars['options']['attributes']['class'] = implode(' ', $vars['options']['attributes']['class']);
+  return apachesolr_l($vars['facet_text'] . "<span class='solr-facet-link-count'> ({$vars['count']})</span>",  $vars['path'], $vars['options']);
 }
 
 /**
