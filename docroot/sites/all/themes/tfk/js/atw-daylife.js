@@ -52,7 +52,7 @@ $(document).ready(function() {
 				inner.animate({'left': ((page - 1) * (maxActivities * activityWidth)) + 'px'}, 500, function() {
 					$('#clock-' + prevNum).trigger('click');
 				});
-				leftActivity = leftActivity - maxActivities;
+				leftActivity = leftActivity - maxActivities - 1;
 			} else {
 				$('#clock-' + prevNum).trigger('click');
 			}
@@ -73,7 +73,7 @@ $(document).ready(function() {
 				inner.animate({'left': (-1 * ((page - 1) * (maxActivities * activityWidth))) + 'px'}, 500, function() {
 					$('#clock-' + nextNum).trigger('click');
 				});
-				leftActivity = (maxActivities * page);
+				leftActivity = (maxActivities * page) + 1;
 			} else {
 				$('#clock-' + nextNum).trigger('click');
 			}
