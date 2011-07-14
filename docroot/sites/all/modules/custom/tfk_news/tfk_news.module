@@ -294,9 +294,6 @@ function tfk_news_views_query_alter(&$view, &$query) {
   if($view->name == 'news_archive'){
     if(strlen(arg(1)) == 4 && is_numeric(arg(1))){
 
-      print_r($query);
-
-
       unset($query->where[0]['conditions'][2]);
 
       $jan = mktime(0, 0, 0, '12', '31', arg(1)-1);
