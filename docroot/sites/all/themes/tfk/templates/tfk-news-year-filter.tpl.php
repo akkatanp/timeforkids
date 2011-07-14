@@ -1,5 +1,6 @@
 
 <div id="news-sidebar-year-filter">
+  !U!@Y!Y@IO!UY@IO
 <form action="">
 	<p>Select a date range</p>
 	<label for="yeardropdown">Year</label>
