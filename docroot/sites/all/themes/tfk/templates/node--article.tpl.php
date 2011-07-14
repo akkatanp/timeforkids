@@ -81,6 +81,10 @@
  * @see template_process()
  */
 ?>
+<?php if($is_kid_reporter_article == 1){
+            unset($content['group_date_and_author']['field_article_byline']);
+          }?>
+
 <div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?>  <?php if($is_kid_reporter_article == 1){echo 'is-kid-reporter-article';}?> clearfix"<?php print $attributes; ?>>
 
   <?php print $user_picture; ?>
@@ -106,9 +110,8 @@
       // We hide the comments and links now so that we can render them later.
       hide($content['comments']);
       hide($content['links']);
-
-     // print_r($node);exit;
 	print render($content['field_article_category']);?>
+
 	  <h1><?php print $title; ?></h1>
       <?php print render($content);?>
   </div>
