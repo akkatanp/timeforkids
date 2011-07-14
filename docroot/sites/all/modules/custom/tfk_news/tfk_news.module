@@ -419,6 +419,12 @@ function tfk_news_preprocess_page(&$vars) {
       }
     }
   }
+
+  if($rgs[0] == 'news-archive'){
+    $vars['section_title'] = 'News';
+  }
+
+
 }
 
 
