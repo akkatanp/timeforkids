@@ -55,7 +55,9 @@ function tfk_search_menu(){
 function tfk_search_init(){
   
   // Include our custom SolrBaseQuery class.
-  module_load_include('inc', 'tfk_search', 'TimeIncSolrBaseQuery');
+  if(module_exists('apachesolr')) {
+    module_load_include('inc', 'tfk_search', 'TimeIncSolrBaseQuery');
+  }
   
   // Provide styling for Photos & Video section.
   if(arg(0) == 'photos-video') {
@@ -1409,8 +1411,11 @@ function tfk_search_preprocess_search_result(&$vars) {
             'type' => $related_node->type,
           );
         }
-        
-        $vars['snippet'] = array_shift(array_shift(field_get_items('node', $node, 'body')));
+         
+        $body = field_get_items('node', $node, 'body');
+        if($body) {
+          $vars['snippet'] = array_shift(array_shift($body));
+        }
       }
       
       // Theme related content.
@@ -1435,29 +1440,50 @@ function tfk_search_preprocess_search_result(&$vars) {
 
 }
 
+  /**
+   * Adds a filter to the query.
+   *
+   * @param string $name
+   *   The facet field name.
+   * @param string $value
+   *   The facet field value.
+   * @param boolean $exclude
+   *   Set to TRUE to filter out documents matching $value.
+   * @param string $local
+   *   Solr LocalParams.
+   *
+   * @return DrupalSolrQueryInterface
+   *   The called object.
+   */
+  #function addFilter($name, $value, $exclude = FALSE, $local = '');
+
 /**
- * Implementation of hook_apachesolr_modify_query().
+ * Implementation of hook_apachesolr_query_alter().
  */
-function tfk_search_apachesolr_modify_query($query, $caller) {
+function tfk_search_apachesolr_query_alter($query, $caller) {
   // Limit the search results to image and video content type.
   // Only apply these filters when we are in the photos and video page.
   if($query->get_base_path() === 'photos-video') {
-    $subquery = apachesolr_drupal_query();
-    $subquery->add_filter('bundle', 'video');
-    $subquery->add_filter('bundle', 'slideshow');
-    $query->add_subquery($subquery, 'OR');
+    $subquery = apachesolr_drupal_query('apachesolr');
+    $subquery->addFilter('bundle', 'video');
+    $subquery->addFilter('bundle', 'slideshow');
+    $query->addFilterSubQuery($subquery, 'OR');
     
     // Retrieve related content fields.
-    $query->params['fl'] .= ','. implode(',', array(TFK_SEARCH_RELATED_TITLE, TFK_SEARCH_RELATED_PATH, TFK_SEARCH_RELATED_TYPE));
+    #$query->params['fl'] .= ','. implode(',', array(TFK_SEARCH_RELATED_TITLE, TFK_SEARCH_RELATED_PATH, TFK_SEARCH_RELATED_TYPE));
+    #$query->addParam('fl', $value);
+    $query->addParams(array('fl' => array(TFK_SEARCH_RELATED_TITLE, TFK_SEARCH_RELATED_PATH, TFK_SEARCH_RELATED_TYPE)));
 
     // Limit the number of rows per page to 4 per spec.
-    $query->params['rows'] = 4;
+    #$query->params['rows'] = 4;
+    #$query->addParams
+    #$query->replaceParam('rows', 4);
   }
 
   if($query->get_base_path() === 'worksheets') {
     $subquery = apachesolr_drupal_query();
-    $subquery->add_filter('bundle', 'worksheet');
-    $query->add_subquery($subquery, 'OR');
+    $subquery->addFilter('bundle', 'worksheet');
+    $query->addFilterSubQuery($subquery, 'OR');
     
     // Limit the number of rows per page to 8 per spec.
     $query->params['rows'] = 8;
@@ -1465,8 +1491,8 @@ function tfk_search_apachesolr_modify_query($query, $caller) {
 
   if($query->get_base_path() === 'tfk-magazine') {
     $subquery = apachesolr_drupal_query();
-    $subquery->add_filter('bundle', 'magazine_issue');
-    $query->add_subquery($subquery, 'OR');
+    $subquery->addFilter('bundle', 'magazine_issue');
+    $query->addFilterSubQuery($subquery, 'OR');
 
     // Limit the number of rows per page to 8 per spec.
     $query->params['rows'] = 8;
@@ -1477,9 +1503,9 @@ function tfk_search_apachesolr_modify_query($query, $caller) {
     $subquery = apachesolr_drupal_query();
     $content_types = array('article', 'slideshow', 'video', 'atw_destination', 'minisite', 'worksheet', 'mini_lesson');
     foreach($content_types as $content_type) {
-      $subquery->add_filter('bundle', $content_type);
+      $subquery->addFilter('bundle', $content_type);
     }
-    $query->add_subquery($subquery, 'OR');
+    $query->addFilterSubQuery($subquery, 'OR');
 
     // Limit the number of rows per page.
     $query->params['rows'] = 8;
@@ -1489,8 +1515,8 @@ function tfk_search_apachesolr_modify_query($query, $caller) {
   if($caller == 'apachesolr_search' && ($query->get_base_path() !== 'photos-video') && ($query->get_base_path() !== 'worksheets')) {
     global $user;
     if(count($user->roles) == 1 && $user->roles[1] == 'anonymous user'){
-     $query->add_filter("bundle", 'worksheet',TRUE);
-     $query->add_filter("bundle", 'mini_lesson',TRUE);
+     $query->addFilter("bundle", 'worksheet',TRUE);
+     $query->addFilter("bundle", 'mini_lesson',TRUE);
     }
   }
 }
@@ -1515,6 +1541,8 @@ function tfk_search_form_alter(&$form, &$form_state, $form_id) {
 
 /**
  * Photos and Video menu callback.
+ *
+ * @see apachesolr_search_search_execute
  */
 function tfk_search_photos_and_video() {
 
@@ -1525,7 +1553,8 @@ function tfk_search_photos_and_video() {
   $page = isset($_GET['page']) ? $_GET['page'] : 0;
   $base_path = 'photos-video';
   
-  $response = apachesolr_search_run(search_get_keys(), $filterstring, $solrsort, $base_path, $page, 'apachesolr_search');
+  #$response = apachesolr_search_run(search_get_keys(), $filterstring, $solrsort, $base_path, $page, 'apachesolr_search');
+  $response = apachesolr_search_run('apachesolr', array('q' => search_get_keys(), 'fq' => $filterstring), $solrsort, $base_path, pager_find_page());
   
   return theme('search_results', array('results' => $response));
     
