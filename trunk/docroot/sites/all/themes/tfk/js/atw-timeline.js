@@ -85,7 +85,7 @@ $(document).ready(function() {
 			var activeNode = inner.find('.active');
 			var nodeNum = parseInt(activeNode.attr('id').split('-')[2]);
 			
-			if (nodeNum == numNodes) {
+			if (nodeNum == events.length - 1) {
 				var nextNum = 0;
 				page = 0;
 			} else {
