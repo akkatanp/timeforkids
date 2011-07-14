@@ -51,10 +51,16 @@ $(document).ready(function() {
 			}
 			
 			if (prevNum < leftActivity) {
-				if(prevNum != activities.length - 1) page--;
-				inner.animate({'left': ((page - 1) * (maxActivities * activityWidth)) + 'px'}, 500, function() {
-					$('#clock-' + prevNum).trigger('click');
-				});
+				page--;
+				if(prevNum == activities.length - 1) {
+					inner.animate({'left': (-1 * (page) * (maxActivities * activityWidth))) + 'px'}, 500, function() {
+						$('#clock-' + prevNum).trigger('click');
+					});				
+				} else {
+					inner.animate({'left': ((page - 1) * (maxActivities * activityWidth)) + 'px'}, 500, function() {
+						$('#clock-' + prevNum).trigger('click');
+					});
+				}
 				leftActivity = leftActivity - maxActivities;
 			} else {
 				$('#clock-' + prevNum).trigger('click');
