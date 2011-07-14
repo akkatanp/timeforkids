@@ -26,7 +26,7 @@ $(document).ready(function() {
 			$('#activity-text').text($(this).attr('rel'));
 			thisTime.text($(this).attr('title'));
 			
-			linePos = $(this).position().left + (activityWidth / 2);
+			linePos = $(this).position().left + (activityWidth / 2) + 14;
 			bottomline.animate({'left': linePos + 'px'}, 500);
 			
 			timePos = linePos - (thisTime.width() / 2) - 7;
