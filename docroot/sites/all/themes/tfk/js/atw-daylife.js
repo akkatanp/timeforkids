@@ -15,6 +15,7 @@ $(document).ready(function() {
 		var next = $('#next');
 		var maxActivities = 10;
 		var activityWidth = 46;
+		var activityNum = 0;
 		var leftActivity = 0;
 		
 		var showHideActivity = function() {
@@ -27,8 +28,12 @@ $(document).ready(function() {
 			thisTime.text($(this).attr('title'));
 			
 			linePos = $(this).position().left + (activityWidth / 2) + 14;
-			bottomline.animate({'left': linePos + 'px'}, 500);
 			
+			if (activityNum > maxActivities -1) {
+				linePos = linePos - (maxNodes * nodeWidth);
+			}
+			
+			bottomline.animate({'left': linePos + 'px'}, 500);
 			timePos = linePos - (thisTime.width() / 2) - 7;
 			if (timePos < 0) timePos = 0;
 			thisTime.animate({'left': timePos + 'px'}, 500);
