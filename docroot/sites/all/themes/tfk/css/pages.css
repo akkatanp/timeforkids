@@ -2066,6 +2066,7 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 	width: 14px;
 	height: 42px;
 	background: url(../images/timeline-left-arrow.png) no-repeat 0px 11px;
+	cursor: pointer;
 }
 
 #daylife-container #daylife-bar-container #next {
@@ -2073,6 +2074,7 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 	width: 14px;
 	height: 42px;
 	background: url(../images/timeline-right-arrow.png) no-repeat 0px 11px;
+	cursor: pointer;
 }
 
 #daylife-container #daylife-bar-container #daylife-bar {
