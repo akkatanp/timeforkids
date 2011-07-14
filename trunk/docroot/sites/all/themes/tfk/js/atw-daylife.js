@@ -53,7 +53,7 @@ $(document).ready(function() {
 			if (prevNum < leftActivity) {
 				page--;
 				if(prevNum == activities.length - 1) {
-					inner.animate({'left': (-1 * (page) * (maxActivities * activityWidth))) + 'px'}, 500, function() {
+					inner.animate({'left': (-1 * ((page) * (maxActivities * activityWidth))) + 'px'}, 500, function() {
 						$('#clock-' + prevNum).trigger('click');
 					});				
 				} else {
