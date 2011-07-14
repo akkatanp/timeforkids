@@ -38,7 +38,7 @@ $(document).ready(function() {
 			var activity = inner.find('.active');
 			var activityNum = parseInt(activity.attr('id').split('-')[1]);
 			if (activityNum == 0) {
-				var prevNum = activities.length;
+				var prevNum = activities.length - 1;
 			} else {
 				var prevNum = activityNum - 1;
 			}
@@ -56,7 +56,7 @@ $(document).ready(function() {
 		var nextEvent = function() {
 			var activity = inner.find('.active');
 			var activityNum = parseInt(activity.attr('id').split('-')[1]);
-			if (activityNum == activities.length) {
+			if (activityNum == activities.length - 1) {
 				var nextNum = 0;
 			} else {
 				var nextNum = activityNum + 1;
