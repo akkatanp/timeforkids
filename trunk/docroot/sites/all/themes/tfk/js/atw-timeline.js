@@ -17,9 +17,12 @@ $(document).ready(function() {
 		var bottomline = $('#line-below');
 		var prev = $('#prev');
 		var next = $('#next');
+		var numNodes = 0;
 		var maxNodes = 19;
 		var nodeWidth = 24;
+		var nodeNum = 0;
 		var leftNode = 0;
+		var page = 1;
 		
 		var showHideEvent = function() {
 			nodes.each(function(i, node) {
@@ -31,16 +34,13 @@ $(document).ready(function() {
 			});
 			
 			var nodeNum = parseInt(this.id.split('-')[2]);
-			var thisEvent = events.eq(nodeNum)
+			var thisEvent = events.eq(nodeNum);
 			thisEvent.fadeIn(500);
 			year.text(thisEvent.find('.event-text h3').text());
 			$(this).addClass('active');
 			
 			linePos = $(this).position().left + ($(this).width() / 2) + 16;
-			
-			if (nodeNum > maxNodes -1) {
-				linePos = linePos - (maxNodes * nodeWidth);
-			}
+			linePos = linePos - ((page - 1) * (maxNodes * nodeWidth));
 			
 			topline.animate({'left': linePos + 'px'}, 500);
 			bottomline.animate({'left': linePos + 'px'}, 500);
@@ -51,40 +51,53 @@ $(document).ready(function() {
 		}
 		
 		var prevEvent = function() {
-			var numNodes = nodes.length - 1;
 			var activeNode = inner.find('.active');
-			var nodeNum = parseInt(activeNode.attr('id').split('-')[2]);
+			nodeNum = parseInt(activeNode.attr('id').split('-')[2]);
+			
 			if (nodeNum == 0) {
-				var prevNum = numNodes;
+				var prevNum = events.length - 1;
+				if (prevNum > maxNodes - 1) {
+					page = Math.floor(events.length/maxNodes) + 1;
+					leftNode = maxNodes * page;
+				}
 			} else {
 				var prevNum = nodeNum - 1;
 			}
 			
 			if (prevNum < leftNode) {
-				inner.animate({'left': ((leftNode - maxNodes - 1) * nodeWidth) + 'px'}, 500, function() {
-					$('#event-node-' + prevNum).trigger('click');
-				});
-				leftNode = leftNode - maxNodes - 1;
+				if (prevNum == events.length - 1) {
+					inner.animate({'left': (-1 * ((page - 1) * (maxNodes * nodeWidth))) + 'px'}, 500, function() {
+						$('#event-node-' + prevNum).trigger('click');
+					});
+				} else {
+					page--;
+					inner.animate({'left': ((page - 1) * (maxNodes * nodeWidth)) + 'px'}, 500, function() {
+						$('#event-node-' + prevNum).trigger('click');
+					});
+				}
+				leftNode = leftNode - maxNodes;
 			} else {
 				$('#event-node-' + prevNum).trigger('click');
 			}
 		}
 		
 		var nextEvent = function() {
-			var numNodes = nodes.length - 1;
 			var activeNode = inner.find('.active');
 			var nodeNum = parseInt(activeNode.attr('id').split('-')[2]);
+			
 			if (nodeNum == numNodes) {
 				var nextNum = 0;
+				page = 0;
 			} else {
 				var nextNum = nodeNum + 1;
 			}
 			
-			if (nextNum > maxNodes - 1) {
-				inner.animate({'left': (-1 * maxNodes * nodeWidth) + 'px'}, 500, function() {
+			if (nextNum == (maxNodes * page)) {
+				inner.animate({'left': (-1 * ((page) * (maxNodes * nodeWidth))) + 'px'}, 500, function() {
 					$('#event-node-' + nextNum).trigger('click');
 				});
-				leftNode = maxNodes + 1;
+				leftNode = (maxNodes * page);
+				page++;
 			} else {
 				$('#event-node-' + nextNum).trigger('click');
 			}
