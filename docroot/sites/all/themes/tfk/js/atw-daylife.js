@@ -48,8 +48,7 @@ $(document).ready(function() {
 			}
 			
 			if (prevNum < leftActivity) {
-				alert(leftActivity);
-				inner.animate({'left': ((maxActivities * activityWidth) * page) + 'px'}, 500, function() {
+				inner.animate({'left': ((leftActivity - maxactivities - 1) * activityWidth) + 'px'}, 500, function() {
 					$('#clock-' + prevNum).trigger('click');
 				});
 				leftActivity = leftActivity - maxActivities - 1;
@@ -70,7 +69,6 @@ $(document).ready(function() {
 			}
 			
 			if (nextNum > (maxActivities * page) - 1) {
-				alert((maxActivities * page) - 1);
 				inner.animate({'left': (-1 * ((maxActivities * activityWidth) * page)) + 'px'}, 500, function() {
 					$('#clock-' + nextNum).trigger('click');
 				});
