@@ -1,16 +1,16 @@
 <?php //echo $cust_node_title;?>
 	
-	<div id="image-container"><img src="<?php print $node_data['daylife_speaker_photo'];?>" /></div>
+	<div id="image-container">
+		<img src="<?php print $node_data['daylife_speaker_photo'];?>" />
+		<div id="speaker-credit"><?php print $node_data['daylife_speaker_credit'];?></div>
+	</div>
 
-        <div id="speaker-headline">
-                <?php print $node_data['daylife_speaker_headline'];?>
-        </div>
-
+	<div id="speaker-headline">
+		<?php print $node_data['daylife_speaker_headline'];?>
+	</div>
+	
 	<div id="speaker-intro">
 		<?php print $node_data['daylife_speaker_intro'];?>
-	</div>
-    <div id="speaker-credit">
-		<?php print $node_data['daylife_speaker_credit'];?>
 	</div>
 	
 	<div class="clock active"></div>

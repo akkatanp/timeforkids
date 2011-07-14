@@ -2016,6 +2016,12 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 	height: 270px;
 }
 
+#daylife-container #image-container #speaker-credit {
+	font: normal 9px arial;
+	color: #999;
+	text-align: right;
+}
+
 #daylife-container #speaker-intro {
 	float: left;
 	width: 208px;
