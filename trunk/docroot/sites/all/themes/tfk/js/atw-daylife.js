@@ -48,7 +48,7 @@ $(document).ready(function() {
 			}
 			
 			if (prevNum < leftActivity) {
-				inner.animate({'left': ((maxActivities * activityWidth) * page) + 'px'}, 500, function() {
+				inner.animate({'left': ((maxActivities * activityWidth) * (page - 1)) + 'px'}, 500, function() {
 					$('#clock-' + prevNum).trigger('click');
 				});
 				leftActivity = leftActivity - maxActivities;
