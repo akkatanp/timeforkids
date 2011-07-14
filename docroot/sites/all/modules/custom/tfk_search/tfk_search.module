@@ -1502,7 +1502,14 @@ function tfk_search_form_alter(&$form, &$form_state, $form_id) {
       '#type' => 'submit',
       '#value' => t('Go'),
     );
+
+    drupal_add_js('jQuery(document).ready(function () { $(".search-form .form-text").val("Search");});', 'inline');
+
+    $form['basic']['keys']['#attributes']['onblur'] = "if (this.value == '') {this.value = 'Search';}";
+    $form['basic']['keys']['#attributes']['onfocus'] = "if (this.value == 'Search') {this.value = '';}";
   }
+
+
 }
 
 
