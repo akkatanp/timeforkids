@@ -418,14 +418,14 @@ function _tfk_atw_destination_navigation_data(){
 
     if( count(arg()) == 2 && arg(0) == 'node' && is_numeric(arg(1))){
         $nid = arg(1);
-        $sql = db_query('select type,title from node where nid = :nid and status = 1',array(':nid' => $nid));
+        $sql = db_query('select type,title from node where nid = :nid',array(':nid' => $nid));
         $record = $sql->fetch();
 
 
         if($record->type == 'atw_destination'){
            $nid = arg(1);
            $node = node_load($nid);
-           $sql = db_query('select nid,type,title from node where nid = :nid and status = 1',array(':nid' => $nid));
+           $sql = db_query('select nid,type,title from node where nid = :nid ',array(':nid' => $nid));
            $record = $sql->fetch();
            $vars['alias'] = drupal_lookup_path('alias', 'node/'.$nid);
            $vars['navigation_block_title'] = $record->title;
