@@ -96,13 +96,13 @@
       <?php endif;?>
     
       <h3 class="title"<?php print $title_attributes; ?>>
-          <?php if(!empty($title_prefix)): ?>
-          	<?php print render($title_prefix); ?>
-          <?php endif; ?>
-          <?php print $title; ?>
-          <?php if(!empty($title_suffix)): ?>
-          	<?php print render($title_suffix); ?>
-          <?php endif; ?>
+        <?php if(!empty($title_prefix)): ?>
+        	<?php print render($title_prefix); ?>
+        <?php endif; ?>
+        <?php print $title; ?>
+        <?php if(!empty($title_suffix)): ?>
+        	<?php print render($title_suffix); ?>
+        <?php endif; ?>
       </h3>
       
       <?php if(!empty($node_link)):?>
