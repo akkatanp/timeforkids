@@ -48,7 +48,7 @@ $(document).ready(function() {
 			}
 			
 			if (prevNum < leftActivity) {
-				alert('here');
+				alert(leftActivity);
 				inner.animate({'left': ((maxActivities * activityWidth) * page) + 'px'}, 500, function() {
 					$('#clock-' + prevNum).trigger('click');
 				});
@@ -70,7 +70,7 @@ $(document).ready(function() {
 			}
 			
 			if (nextNum > (maxActivities * page) - 1) {
-				alert('here');
+				alert((maxActivities * page) - 1);
 				inner.animate({'left': (-1 * ((maxActivities * activityWidth) * page)) + 'px'}, 500, function() {
 					$('#clock-' + nextNum).trigger('click');
 				});
