@@ -90,7 +90,7 @@ $(document).ready(function() {
 				}
 				$(activity).click(showHideActivity);
 			});
-			
+			inner.width(activities.length * activityWidth);
 			prev.click(prevEvent);
 			next.click(nextEvent);
 		}
