@@ -126,15 +126,24 @@ function tfk_search_theme($existing, $type, $theme, $path) {
  * @see theme_apachesolr_facet_link()
  */
 function theme_tfk_search_facet_link($vars) {
-  // Allow HTML.
-  $vars['options']['html'] = TRUE;
   
   $vars['options']['attributes']['class'][] = 'apachesolr-facet';
   if($vars['active']) {
     $vars['options']['attributes']['class'][] = 'active';
   }
   $vars['options']['attributes']['class'] = implode(' ', $vars['options']['attributes']['class']);
-  return apachesolr_l($vars['facet_text'] . "<span class='solr-facet-link-count'> ({$vars['count']})</span>",  $vars['path'], $vars['options']);
+  
+  //Different search interfaces have different specifications for the facet count.
+  $interface = arg(0);
+  if($interface == 'worksheets' || $interface == 'photos-video') {
+    return apachesolr_l($vars['facet_text'],  $vars['path'], $vars['options']);
+  } else {
+    // Allow HTML.
+    $vars['options']['html'] = TRUE;
+    
+    return apachesolr_l($vars['facet_text'] . "<span class='solr-facet-link-count'> ({$vars['count']})</span>",  $vars['path'], $vars['options']);
+  }
+  
 }
 
 /**
