@@ -17,7 +17,7 @@ $(document).ready(function() {
 		var activityWidth = 46;
 		var activityNum = 0;
 		var leftActivity = 0;
-		var page = 1;
+		var page = 0;
 		
 		var showHideActivity = function() {
 			activities.each(function(i, activity) {
@@ -29,7 +29,7 @@ $(document).ready(function() {
 			thisTime.text($(this).attr('title'));
 			
 			linePos = $(this).position().left + (activityWidth / 2) + 14;
-			linePos = linePos - ((page - 1) * (maxActivities * activityWidth));
+			linePos = linePos - ((page) * (maxActivities * activityWidth));
 			timePos = linePos - (thisTime.width() / 2) - 7;
 			
 			bottomline.animate({'left': linePos + 'px'}, 500);
@@ -48,11 +48,11 @@ $(document).ready(function() {
 			}
 			
 			if (prevNum < leftActivity) {
-				page--;
-				inner.animate({'left': ((page - 1) * (maxActivities * activityWidth)) + 'px'}, 500, function() {
+				inner.animate({'left': ((page) * (maxActivities * activityWidth)) + 'px'}, 500, function() {
 					$('#clock-' + prevNum).trigger('click');
 				});
-				leftActivity = leftActivity - maxActivities - 1;
+				leftActivity = leftActivity - maxActivities;
+				page--;
 			} else {
 				$('#clock-' + prevNum).trigger('click');
 			}
@@ -69,11 +69,11 @@ $(document).ready(function() {
 			}
 			
 			if (nextNum > (maxActivities * page) - 1) {
-				page++;
-				inner.animate({'left': (-1 * ((page - 1) * (maxActivities * activityWidth))) + 'px'}, 500, function() {
+				inner.animate({'left': (-1 * ((page) * (maxActivities * activityWidth))) + 'px'}, 500, function() {
 					$('#clock-' + nextNum).trigger('click');
 				});
-				leftActivity = (maxActivities * page) + 1;
+				leftActivity = (maxActivities * page);
+				page++;
 			} else {
 				$('#clock-' + nextNum).trigger('click');
 			}
