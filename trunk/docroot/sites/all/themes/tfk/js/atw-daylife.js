@@ -68,7 +68,7 @@ $(document).ready(function() {
 				var nextNum = activityNum + 1;
 			}
 			
-			if (nextNum => (maxActivities * page)) {
+			if (nextNum == (maxActivities * page)) {
 				inner.animate({'left': (-1 * ((page) * (maxActivities * activityWidth))) + 'px'}, 500, function() {
 					$('#clock-' + nextNum).trigger('click');
 				});
