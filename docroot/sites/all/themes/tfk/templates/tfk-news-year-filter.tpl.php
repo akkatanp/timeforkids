@@ -1,10 +1,11 @@
 
 <div id="news-sidebar-year-filter">
-  !U!@Y!Y@IO!UY@IO
+  
 <form action="">
 	<p>Select a date range</p>
 	<label for="yeardropdown">Year</label>
 	<select id="yeardropdown" name="listofyears">
+          <option id="news-all" value="all">all</option>
     <?php foreach($list_of_years as $year): ?>
 		<option id="<?php echo $year;?>"><?php echo $year;?></option>
     <?php endforeach; ?>
