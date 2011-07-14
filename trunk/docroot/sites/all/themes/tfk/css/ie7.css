@@ -36,3 +36,9 @@ tr.odd th,
 tr.odd td {
   border-bottom: 1px solid #ccc; /* IE doesn't display borders on table rows */
 }
+.view-kid-reporters-channel-top-story .related-content-wrap,
+.view-homepage-top-story .related-content-wrap,
+.view-teacher-news-top-story .related-content-wrap {
+	position: absolute;
+        left:10px;
+}
