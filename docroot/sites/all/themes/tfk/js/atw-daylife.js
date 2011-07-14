@@ -29,7 +29,7 @@ $(document).ready(function() {
 			
 			linePos = $(this).position().left + (activityWidth / 2) + 14;
 			
-			if (activityNum > maxActivities -1) {
+			if (activityNum > maxActivities - 1) {
 				linePos = linePos - (maxActivities * activityWidth);
 			}
 			
