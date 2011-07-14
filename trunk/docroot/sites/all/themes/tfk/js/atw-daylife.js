@@ -23,10 +23,25 @@ $(document).ready(function() {
 			activities.each(function(i, activity) {
 				$(activity).removeClass('active');
 			});
+			
 			$(this).addClass('active');
 			$('#activity-time').text($(this).attr('title'));
 			$('#activity-text').text($(this).attr('rel'));
 			thisTime.text($(this).attr('title'));
+			
+			activityNum = parseInt(activity.attr('id').split('-')[1]);
+			
+			if (activityNum < leftActivity) {
+				page--;
+				inner.animate({'left': ((page - 1) * (maxActivities * activityWidth)) + 'px'}, 500);
+				leftActivity = leftActivity - maxActivities;
+			}
+			
+			if (activityNum == (maxActivities * page)) {
+				inner.animate({'left': (-1 * ((page) * (maxActivities * activityWidth))) + 'px'}, 500);
+				leftActivity = (maxActivities * page);
+				page++;
+			}
 			
 			linePos = $(this).position().left + (activityWidth / 2) + 14;
 			linePos = linePos - ((page - 1) * (maxActivities * activityWidth));
@@ -39,7 +54,7 @@ $(document).ready(function() {
 		
 		var prevEvent = function() {
 			var activity = inner.find('.active');
-			var activityNum = parseInt(activity.attr('id').split('-')[1]);
+			activityNum = parseInt(activity.attr('id').split('-')[1]);
 			
 			if (activityNum == 0) {
 				var prevNum = activities.length - 1;
@@ -47,15 +62,7 @@ $(document).ready(function() {
 				var prevNum = activityNum - 1;
 			}
 			
-			if (prevNum < leftActivity) {
-				page--;
-				inner.animate({'left': ((page - 1) * (maxActivities * activityWidth)) + 'px'}, 500, function() {
-					$('#clock-' + prevNum).trigger('click');
-				});
-				leftActivity = leftActivity - maxActivities;
-			} else {
-				$('#clock-' + prevNum).trigger('click');
-			}
+			$('#clock-' + prevNum).trigger('click');
 		}
 		
 		var nextEvent = function() {
@@ -68,15 +75,7 @@ $(document).ready(function() {
 				var nextNum = activityNum + 1;
 			}
 			
-			if (nextNum == (maxActivities * page)) {
-				inner.animate({'left': (-1 * ((page) * (maxActivities * activityWidth))) + 'px'}, 500, function() {
-					$('#clock-' + nextNum).trigger('click');
-				});
-				leftActivity = (maxActivities * page);
-				page++;
-			} else {
-				$('#clock-' + nextNum).trigger('click');
-			}
+			$('#clock-' + nextNum).trigger('click');
 		}
 		
 		if (activities.length) {
