@@ -74,7 +74,7 @@ $(document).ready(function() {
 				inner.animate({'left': (-1 * ((maxActivities * activityWidth) * page)) + 'px'}, 500, function() {
 					$('#clock-' + nextNum).trigger('click');
 				});
-				leftActivity = (maxActivities * page) + 1;
+				leftActivity = (maxActivities * page);
 				page++;
 			} else {
 				$('#clock-' + nextNum).trigger('click');
