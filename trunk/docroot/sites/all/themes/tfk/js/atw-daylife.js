@@ -29,20 +29,6 @@ $(document).ready(function() {
 			$('#activity-text').text($(this).attr('rel'));
 			thisTime.text($(this).attr('title'));
 			
-			activityNum = parseInt(activity.attr('id').split('-')[1]);
-			
-			if (activityNum < leftActivity) {
-				page--;
-				inner.animate({'left': ((page - 1) * (maxActivities * activityWidth)) + 'px'}, 500);
-				leftActivity = leftActivity - maxActivities;
-			}
-			
-			if (activityNum == (maxActivities * page)) {
-				inner.animate({'left': (-1 * ((page) * (maxActivities * activityWidth))) + 'px'}, 500);
-				leftActivity = (maxActivities * page);
-				page++;
-			}
-			
 			linePos = $(this).position().left + (activityWidth / 2) + 14;
 			linePos = linePos - ((page - 1) * (maxActivities * activityWidth));
 			timePos = linePos - (thisTime.width() / 2) - 7;
@@ -58,11 +44,20 @@ $(document).ready(function() {
 			
 			if (activityNum == 0) {
 				var prevNum = activities.length - 1;
+				page = Math.floor(activities.length/maxActivities) + 1;
 			} else {
 				var prevNum = activityNum - 1;
 			}
 			
-			$('#clock-' + prevNum).trigger('click');
+			if (prevNum < leftActivity) {
+				page--;
+				inner.animate({'left': ((page - 1) * (maxActivities * activityWidth)) + 'px'}, 500, function() {
+					$('#clock-' + prevNum).trigger('click');
+				});
+				leftActivity = leftActivity - maxActivities;
+			} else {
+				$('#clock-' + prevNum).trigger('click');
+			}
 		}
 		
 		var nextEvent = function() {
@@ -71,11 +66,20 @@ $(document).ready(function() {
 			
 			if (activityNum == activities.length - 1) {
 				var nextNum = 0;
+				page = 0;
 			} else {
 				var nextNum = activityNum + 1;
 			}
 			
-			$('#clock-' + nextNum).trigger('click');
+			if (nextNum == (maxActivities * page)) {
+				inner.animate({'left': (-1 * ((page) * (maxActivities * activityWidth))) + 'px'}, 500, function() {
+					$('#clock-' + nextNum).trigger('click');
+				});
+				leftActivity = (maxActivities * page);
+				page++;
+			} else {
+				$('#clock-' + nextNum).trigger('click');
+			}
 		}
 		
 		if (activities.length) {
