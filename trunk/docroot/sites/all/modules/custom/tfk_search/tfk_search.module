@@ -925,7 +925,7 @@ function tfk_search_preprocess_pager_top(&$vars) {
  * @param array $vars
  */
 function tfk_search_preprocess_search_result(&$vars) {
-    $vars['tfk_search_cont_type'] = $vars['result']['fields']['bundle_name'];
+    $vars['tfk_search_cont_type'] = strtoupper($vars['result']['fields']['bundle_name']);
    
     // Add specific template suggestions for invividual results on photos and video.
     // Shuffle the order of the suggestions to prioritize the use of our template on top of the default.
