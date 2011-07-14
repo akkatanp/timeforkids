@@ -48,11 +48,11 @@ $(document).ready(function() {
 			}
 			
 			if (prevNum < leftActivity) {
-				inner.animate({'left': ((maxActivities * activityWidth) * (page - 1)) + 'px'}, 500, function() {
+				page--;
+				inner.animate({'left': ((page - 1) * (maxActivities * activityWidth)) + 'px'}, 500, function() {
 					$('#clock-' + prevNum).trigger('click');
 				});
 				leftActivity = leftActivity - maxActivities;
-				page--;
 			} else {
 				$('#clock-' + prevNum).trigger('click');
 			}
@@ -69,11 +69,11 @@ $(document).ready(function() {
 			}
 			
 			if (nextNum > (maxActivities * page) - 1) {
-				inner.animate({'left': (-1 * ((maxActivities * activityWidth) * page)) + 'px'}, 500, function() {
+				page++;
+				inner.animate({'left': (-1 * ((page - 1) * (maxActivities * activityWidth))) + 'px'}, 500, function() {
 					$('#clock-' + nextNum).trigger('click');
 				});
 				leftActivity = (maxActivities * page);
-				page++;
 			} else {
 				$('#clock-' + nextNum).trigger('click');
 			}
