@@ -9,7 +9,7 @@
 	<div id="speaker-intro">
 		<?php print $node_data['daylife_speaker_intro'];?>
 	</div>
-        <div id="speaker-credit">
+    <div id="speaker-credit">
 		<?php print $node_data['daylife_speaker_credit'];?>
 	</div>
 	
@@ -19,12 +19,19 @@
 		<div id="activity-time"></div>
 		<div id="activity-text"></div>
 	</div>
-	<br clear="all" />
 	
-	<div id="daylife-bar" class="clearfix">
-		<?php foreach($daylife_data as $data):?>
-		<div class="clock" title="<?php print $data['time'];?>" rel="<?php print $data['activity'];?>"></div>
-		<?php endforeach;?>	
+	<div style="clear: both;"></div>
+	
+	<div id="daylife-bar-container">
+		<div id="prev"></div>
+		<div id="daylife-bar">
+			<div id="inner">
+				<?php foreach($daylife_data as $data):?>
+				<div class="clock" title="<?php print $data['time'];?>" rel="<?php print $data['activity'];?>"></div>
+				<?php endforeach;?>
+			</div>
+		</div>
+		<div id="next"></div>
 	</div>
 	<div id="line-below"></div>
 	<div id="current-time"></div>
