@@ -5,7 +5,7 @@
 	<p>Select a date range</p>
 	<label for="yeardropdown">Year</label>
 	<select id="yeardropdown" name="listofyears">
-          <option id="news-all" value="all">all</option>
+          <option id="news-all" value="all">All</option>
     <?php foreach($list_of_years as $year): ?>
 		<option id="<?php echo $year;?>"><?php echo $year;?></option>
     <?php endforeach; ?>
