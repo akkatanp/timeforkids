@@ -1113,6 +1113,10 @@ ul.links li {
 	background: url(../images/kid-reporter-badge.png) no-repeat;
 }
 
+.node-type-article .reporter-badge .reporter-link-a {
+	display: block;
+}
+
 /*
  * Around The World
  */
