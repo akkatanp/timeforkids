@@ -1081,9 +1081,9 @@ ul.links li {
 	float: right;
 	margin-left: 10px;
 	margin-bottom: 10px;
-	width: 120px;
-	height: 100px;
-	padding: 10px;
+	width: 140px;
+	height: 115px;
+	padding: 4px;
 	border: solid 1px #cecece;
 	background: #dedede;
 	position: relative:
@@ -1101,18 +1101,17 @@ ul.links li {
 	width: 60px;
 	height: 60px;
 	border: solid 1px #cecece;
-	clear: right;
+	clear: both;
 }
 
 
 .node-type-article .is-kid-reporter-article .reporter-badge #badge-badge {
 	position: absolute;
 	top: 10px;
-	right: 10px;
+	left: 70px;
 	width: 56px;
 	height: 98px;
 	background: url(../images/kid-reporter-badge.png) no-repeat;
-	z-index: 300;
 }
 /*
  * Around The World
