@@ -1077,19 +1077,19 @@ ul.links li {
 	margin-bottom: 10px;
 }
 
-.node-type-article .is-kid-reporter-article .reporter-badge {
+.node-type-article .reporter-badge {
+	position: relative;
 	float: right;
 	margin-left: 10px;
 	margin-bottom: 10px;
 	width: 140px;
 	height: 115px;
-	padding: 4px;
+	padding: 6px;
 	border: solid 1px #cecece;
 	background: #dedede;
-	position: relative:
 }
 
-.node-type-article .is-kid-reporter-article .reporter-badge #badge-header{
+.node-type-article .reporter-badge #badge-header{
 	background: #d71700;
 	color: white;
 	font: normal 12px "arial black";
@@ -1097,15 +1097,14 @@ ul.links li {
 	margin-bottom: 4px;
 }
 
-.node-type-article .is-kid-reporter-article .reporter-badge img {
+.node-type-article .reporter-badge img {
 	width: 60px;
 	height: 60px;
 	border: solid 1px #cecece;
 	clear: both;
 }
 
-
-.node-type-article .is-kid-reporter-article .reporter-badge #badge-badge {
+.node-type-article .reporter-badge #badge-badge {
 	position: absolute;
 	top: 10px;
 	left: 70px;
@@ -1113,6 +1112,7 @@ ul.links li {
 	height: 98px;
 	background: url(../images/kid-reporter-badge.png) no-repeat;
 }
+
 /*
  * Around The World
  */
