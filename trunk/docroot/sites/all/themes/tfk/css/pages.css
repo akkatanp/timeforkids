@@ -2228,7 +2228,13 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 	margin-right: 10px;
 }
 
-.page-tfk-magazine .search-results .search-result .related-content-wrap h3,
+.page-tfk-magazine .search-results .search-result .related-content-wrap h3 {
+	margin-bottom: 4px;
+	padding-bottom: 4px;
+	border-bottom: dotted 1px #cecece;
+	font: bold italic 12px arial;
+}
+
 .page-tfk-magazine .search-results .search-result .in-this-issue h3 {
 	margin: 0;
 	font: bold 12px arial;
