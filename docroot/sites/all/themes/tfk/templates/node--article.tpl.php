@@ -82,6 +82,7 @@
  */
 
 $addit_content = $content['group_additional_content'];
+$content['group_additional_content']['#prefix'] = '<b>Additional Content:</b><br/>'.$content['group_additional_content']['#prefix'];
 ?>
 <?php if($is_kid_reporter_article == 1){
             unset($content['group_date_and_author']['field_article_byline']);
