@@ -88,40 +88,50 @@
   <div class="in-this-issue">
     <?php if(isset($magazine_cover_stories) && count($magazine_cover_stories) > 0): ?>
       <h3>Cover Story</h3>
+	  <ul>
       <?php foreach($magazine_cover_stories as $item):?>
-        <a href="<?php echo url($item['url']);?>"><?php echo $item['title'];?></a><br/>
+        <li>&bull; <a href="<?php echo url($item['url']);?>"><?php echo $item['title'];?></a></li>
       <?php endforeach;?>
+	  </ul>
     <?php endif; ?>
 
 
     <?php if(isset($magazine_in_the_news) && count($magazine_in_the_news) > 0): ?>
     <h3>In The News</h3>
-    <?php foreach($magazine_in_the_news as $item):?>
-        <a href="<?php echo url($item['url']);?>"><?php echo $item['title'];?></a><br/>
+	<ul>
+	  <?php foreach($magazine_in_the_news as $item):?>
+        <li>&bull; <a href="<?php echo url($item['url']);?>"><?php echo $item['title'];?></a></li>
       <?php endforeach;?>
+	</ul>
     <?php endif; ?>
 
 
     <?php if(isset($magazine_topfive) && count($magazine_topfive) > 0): ?>
       <h3>Top 5</h3>
+	  <ul>
       <?php foreach($magazine_topfive as $item):?>
-        <a href="<?php echo url($item['url']);?>"><?php echo $item['title'];?></a><br/>
+        <li>&bull; <a href="<?php echo url($item['url']);?>"><?php echo $item['title'];?></a></li>
       <?php endforeach;?>
+	  </ul>
     <?php endif; ?>
 
 
     <?php if(isset($magazine_whosnews) && count($magazine_whosnews) > 0): ?>
       <h3>Who's News</h3>
+	  <ul>
       <?php foreach($magazine_whosnews as $item):?>
-        <a href="<?php echo url($item['url']);?>"><?php echo $item['title'];?></a><br/>
+        <li>&bull; <a href="<?php echo url($item['url']);?>"><?php echo $item['title'];?></a></li>
       <?php endforeach;?>
+	  </ul>
     <?php endif; ?>
 
     <?php if(isset($magazine_morenews) && count($magazine_morenews) > 0): ?>
       <h3>More News</h3>
+	  <ul>
       <?php foreach($magazine_morenews as $item):?>
-        <a href="<?php echo url($item['url']);?>"><?php echo $item['title'];?></a><br/>
+        <li>&bull; <a href="<?php echo url($item['url']);?>"><?php echo $item['title'];?></a></li>
       <?php endforeach;?>
+	  </ul>
     <?php endif; ?>
   </div>
 
