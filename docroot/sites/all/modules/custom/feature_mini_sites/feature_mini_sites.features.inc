@@ -33,6 +33,14 @@ function feature_mini_sites_views_api() {
  */
 function feature_mini_sites_node_info() {
   $items = array(
+    'mini_site_home' => array(
+      'name' => t('Mini-site Home'),
+      'base' => 'node_content',
+      'description' => t('Edit Title and Description for the mini-site landing page.'),
+      'has_title' => '1',
+      'title_label' => t('Title'),
+      'help' => '',
+    ),
     'minisite' => array(
       'name' => t('Minisite'),
       'base' => 'node_content',
