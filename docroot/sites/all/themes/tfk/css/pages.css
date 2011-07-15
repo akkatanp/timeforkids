@@ -2239,6 +2239,12 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 	font-weight: normal;
 }
 
+.page-tfk-magazine .search-results .search-result .in-this-issue ul {
+	margin: 0 0 10px 0;
+	padding: 0;
+	list-style-type: none;
+}
+
 .page-tfk-magazine .search-results .search-result .related-content-wrap {
 	float: left;
 	width: 130px;
