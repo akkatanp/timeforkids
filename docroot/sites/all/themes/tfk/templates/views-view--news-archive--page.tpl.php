@@ -26,17 +26,18 @@
  * @ingroup views_templates
  */
 ?>
-<?php
-      //logic that shows the destination slideshow
-      $slide_block = module_invoke('tfk_news', 'block_view','tfk-news-year-filter');
-	  print render($slide_block['content']);
-	?>
 
 <?php if ($pager): ?>
   <div class="custom-top-pager">
       <?php print $pager; ?>
   </div>
 <?php endif; ?>
+
+<?php
+      //logic that shows the destination slideshow
+      $slide_block = module_invoke('tfk_news', 'block_view','tfk-news-current-filters');
+	  print render($slide_block['content']);
+	?>
 
 <div class="<?php print $classes; ?>">
   <?php print render($title_prefix); ?>
