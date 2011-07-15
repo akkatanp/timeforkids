@@ -802,6 +802,10 @@
 }*/
 
 /* right sidebar */
+.region-sidebar-second  .block {
+	margin-bottom: 0;
+}
+
 .teacher-resources-label {
 	margin: 10px 0 0 0;
 }
