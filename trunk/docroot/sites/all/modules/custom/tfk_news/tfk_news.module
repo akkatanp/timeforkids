@@ -164,7 +164,7 @@ function _tfk_news_homepage_mini_lessons(){
 
 function _tfk_news_current_filters(){
   if(arg(0) == 'news-archive'){
-    $str = '<div class="newsarc">News Archive</div><div class="newsarcsmall">';
+    $str = '<div class="currfilters"><div class="newsarc">News Archive</div><div class="newsarcsmall">';
     if(count(arg()) == 1){
       $str .= 'Viewing All News;';
     }else{
@@ -176,7 +176,7 @@ function _tfk_news_current_filters(){
         $str .= 'Year: '.ucfirst(arg(1));
       }
     }
-    return $str.'</div>';
+    return $str.'</div></div>';
   }else{
     return '';
   }
