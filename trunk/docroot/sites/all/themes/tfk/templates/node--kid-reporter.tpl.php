@@ -108,7 +108,9 @@
       hide($content['links']);
 
      // print_r($node);exit;?>
-
+    <div class="kidrepheader">
+     <h2>Kid Reporter - <?php print $title; ?></h2>
+     </div>
 	 <?php print render($content['field_profile_image']); ?>
 	 <h1><?php	print $title; ?></h1>
      <?php print render($content);?>
