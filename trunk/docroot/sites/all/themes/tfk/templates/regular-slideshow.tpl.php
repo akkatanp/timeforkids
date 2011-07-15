@@ -28,7 +28,7 @@
 			  <?php if(!empty($image_obj['caption'])): ?>
 			  	<span class="caption"><?php echo $image_obj['caption']; ?></span> /
 			  <?php endif; ?>
-			  <?php if(!empty($image_obj['caption'])): ?>
+			  <?php if(!empty($image_obj['credit'])): ?>
 			  	<span class="credit"><?php echo $image_obj['credit']; ?></span>
 			  <?php endif; ?>
 			</div>
