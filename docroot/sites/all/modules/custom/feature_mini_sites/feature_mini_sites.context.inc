@@ -13,7 +13,7 @@ function feature_mini_sites_context_default_contexts() {
   $context = new stdClass;
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
-  $context->name = 'Minisite Landing Page';
+  $context->name = 'minisite_landing_page';
   $context->description = '';
   $context->tag = 'minisite';
   $context->conditions = array(
@@ -22,20 +22,33 @@ function feature_mini_sites_context_default_contexts() {
         'mini-sites' => 'mini-sites',
       ),
     ),
-    'views' => array(
+    'user' => array(
       'values' => array(
-        'minisite_home' => 'minisite_home',
+        'anonymous user' => 'anonymous user',
+        'teacher' => 'teacher',
       ),
     ),
   );
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'views-minisite_home-block_1' => array(
+        'views-mini_site_home-block_1' => array(
           'module' => 'views',
-          'delta' => 'minisite_home-block_1',
+          'delta' => 'mini_site_home-block_1',
           'region' => 'sidebar_first',
           'weight' => '-10',
+        ),
+        'views-mini_site_home-block_2' => array(
+          'module' => 'views',
+          'delta' => 'mini_site_home-block_2',
+          'region' => 'content',
+          'weight' => '-77',
+        ),
+        'views-mini_site_home-block' => array(
+          'module' => 'views',
+          'delta' => 'mini_site_home-block',
+          'region' => 'content',
+          'weight' => '-76',
         ),
       ),
     ),
@@ -45,12 +58,12 @@ function feature_mini_sites_context_default_contexts() {
   // Translatables
   // Included for use with string extractors like potx.
   t('minisite');
-  $export['Minisite Landing Page'] = $context;
+  $export['minisite_landing_page'] = $context;
 
   $context = new stdClass;
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
-  $context->name = 'Minisite Landing Page for Editors';
+  $context->name = 'minisite_landing_page_for_editors';
   $context->description = '';
   $context->tag = 'minisite';
   $context->conditions = array(
@@ -62,7 +75,6 @@ function feature_mini_sites_context_default_contexts() {
     'user' => array(
       'values' => array(
         'administrator' => 'administrator',
-        'anonymous user' => 'anonymous user',
         'editor' => 'editor',
       ),
     ),
@@ -96,12 +108,12 @@ function feature_mini_sites_context_default_contexts() {
   // Translatables
   // Included for use with string extractors like potx.
   t('minisite');
-  $export['Minisite Landing Page for Editors'] = $context;
+  $export['minisite_landing_page_for_editors'] = $context;
 
   $context = new stdClass;
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
-  $context->name = 'Minisite Node VIew';
+  $context->name = 'minisite_node_view';
   $context->description = '';
   $context->tag = 'minisite';
   $context->conditions = array(
@@ -160,12 +172,12 @@ function feature_mini_sites_context_default_contexts() {
   // Translatables
   // Included for use with string extractors like potx.
   t('minisite');
-  $export['Minisite Node VIew'] = $context;
+  $export['minisite_node_view'] = $context;
 
   $context = new stdClass;
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
-  $context->name = 'Minisite Node VIew for Teachers';
+  $context->name = 'minisite_node_view_for_teachers';
   $context->description = '';
   $context->tag = 'minisite';
   $context->conditions = array(
@@ -232,7 +244,7 @@ function feature_mini_sites_context_default_contexts() {
   // Translatables
   // Included for use with string extractors like potx.
   t('minisite');
-  $export['Minisite Node VIew for Teachers'] = $context;
+  $export['minisite_node_view_for_teachers'] = $context;
 
   return $export;
 }
