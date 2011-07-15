@@ -2147,11 +2147,18 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 
 .page-tfk-magazine #block-apachesolr-search-im-28-field-grade-level h2 {
 	font: bold italic 12px arial;
+	margin: 0;
+}
+
+.page-tfk-magazine #block-apachesolr-search-im-28-field-grade-level ul.menu {
+	margin: 0;
+	padding: 0;
 }
 
 .page-tfk-magazine #block-menu-menu-publishing-calendar-menu {
 	border: solid 1px #cecece;
 	padding: 10px;
+	background: white;
 }
 
 .page-tfk-magazine #block-menu-menu-publishing-calendar-menu h2 {
