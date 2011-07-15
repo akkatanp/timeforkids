@@ -1023,12 +1023,12 @@ function tfk_search_preprocess_search_result(&$vars) {
     $nid = $vars['result']['fields']['entity_id'];
     $node = node_load($nid);
     $vars['render'] = TRUE;
-    if($node === FALSE) {
+    //if($node === FALSE) {
       // "Hijack" the rendering process by using a custom variable that causes
       // the search-result[--suggestion].tpl.php template to return an empty string.
-      $vars['render'] = FALSE;
-      return;
-    }
+      //$vars['render'] = FALSE;
+      //return;
+    //}
     
     switch ($vars['result']['fields']['bundle']) {
       
