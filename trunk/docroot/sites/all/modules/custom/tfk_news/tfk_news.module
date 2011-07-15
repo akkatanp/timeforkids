@@ -410,6 +410,7 @@ function tfk_news_preprocess_block(&$variables){
 
 function tfk_news_preprocess_page(&$vars) {
   $rgs = arg();
+
   if(count($rgs) == 2 && ($rgs[0] == 'node') && is_numeric($rgs[1])){
     $node = node_load($rgs[1]);
     if($node->type == 'article'){
@@ -418,6 +419,12 @@ function tfk_news_preprocess_page(&$vars) {
         $vars['section_title'] = 'Kid Reporters';
       }
     }
+
+    if($node->type == 'kid_reporter'){
+      $vars['section_title'] = 'Kid Reporters';
+    }
+
+
   }
 
   if($rgs[0] == 'news-archive'){
