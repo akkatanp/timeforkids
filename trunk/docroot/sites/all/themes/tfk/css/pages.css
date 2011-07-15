@@ -1419,12 +1419,18 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 .page-extras .block-views .field-type-image {
 	float: left;
 	width: 142px;
+	height: 189px;
 	margin: 0 10px 10px 0;
 }
 
 .page-extras .block-views .field-type-image img {
 	width: 140px;
+	height: 187px;
 	border: solid 1px #cecece;
+}
+
+.page-extras .field-name-field-tfk-extra-deck {
+	font-weight: bold;
 }
 
 .page-extras .block-views h3 {
