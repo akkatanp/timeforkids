@@ -963,6 +963,23 @@ ul.links li {
 	margin-bottom: 10px;
 }
 
+.inline-image {
+	float: left;
+	margin: 0 10px 10px 0;
+}
+
+.inline-image .credit {
+	text-align: left;
+	font: normal 9px arial;
+	color: #999;
+	text-transform: uppercase;
+	height: 10px;
+}
+
+.inline-image .caption {
+	font: normal 10px arial;
+}
+
 /* additional content */
 .related-content-wrap {
 	position: relative;
@@ -1105,8 +1122,8 @@ ul.links li {
 
 .node-type-article .reporter-badge #badge-badge {
 	position: absolute;
-	top: 10px;
-	right: 10px;
+	top: 5px;
+	right: 5px;
 	width: 56px;
 	height: 98px;
 	background: url(../images/kid-reporter-badge.png) no-repeat;
