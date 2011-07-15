@@ -424,6 +424,10 @@ function tfk_news_preprocess_page(&$vars) {
       $vars['section_title'] = 'Kid Reporters';
     }
 
+    if($node->type == 'mini_lesson'){
+      $vars['section_title'] = 'News';
+    }
+
 
   }
 
