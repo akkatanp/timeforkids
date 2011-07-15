@@ -729,7 +729,7 @@ ul.links li {
 	border: solid 1px #cecece;
 	background: url(../images/tfk-kid-reporter-head.png) no-repeat 10px 10px;
 	width: 488px;
-	height: 101px;
+	height: 100px;
 	padding: 10px;
 	font-size: 0px;
 	margin-bottom: 10px;
@@ -924,7 +924,7 @@ ul.links li {
 
 .node-type-article .is-kid-reporter-article .field-name-field-article-category {
 	width: 488px;
-	height: 101px;
+	height: 100px;
 	background: transparent url('../images/tfk-kid-reporter-head.png') no-repeat;
 }
 
@@ -1100,7 +1100,7 @@ ul.links li {
 .atw-graphic-header {
 	border: solid 1px #cecece;
 	padding: 10px 9px;
-	width: 490px;
+	width: 488px;
 	height: 100px;
 	background: url(../images/atw-head.png) no-repeat 10px 10px;
 	margin-bottom: 10px;
