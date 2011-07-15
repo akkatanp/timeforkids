@@ -29,6 +29,51 @@ function feature_mini_sites_views_api() {
 }
 
 /**
+ * Implementation of hook_flag_default_flags().
+ */
+function feature_mini_sites_flag_default_flags() {
+  $flags = array();
+  // Exported flag: "Minisite Featured".
+  $flags['minisite_featured'] = array(
+    'content_type' => 'node',
+    'title' => 'Minisite Featured',
+    'global' => '1',
+    'types' => array(
+      0 => 'minisite',
+    ),
+    'flag_short' => 'Minisite Featured',
+    'flag_long' => '',
+    'flag_message' => '',
+    'unflag_short' => 'Remove Minisite Featured',
+    'unflag_long' => '',
+    'unflag_message' => '',
+    'unflag_denied_text' => '',
+    'link_type' => 'toggle',
+    'roles' => array(
+      'flag' => array(
+        0 => '3',
+        1 => '4',
+      ),
+      'unflag' => array(
+        0 => '3',
+        1 => '4',
+      ),
+    ),
+    'show_on_page' => 0,
+    'show_on_teaser' => 0,
+    'show_on_form' => 1,
+    'access_author' => '',
+    'i18n' => 0,
+    'api_version' => 2,
+    'module' => 'feature_mini_sites',
+    'locked' => array(
+      0 => 'name',
+    ),
+  );
+  return $flags;
+}
+
+/**
  * Implementation of hook_node_info().
  */
 function feature_mini_sites_node_info() {
