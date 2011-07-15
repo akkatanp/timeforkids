@@ -536,10 +536,8 @@ class tfkHelperFeaturedItem {
       
     $url = 'node/'. $featured_node->nid;
     $this->title = l($featured_node->title, $url); // Alternatively load 'safe_summary'.
-    // Trim and filter the body to ensure valid and safe markup.
-    // Cache the filtered output in the {cache_filter} table.
-    // @todo Make the trim count a setting. @todo We should not be accessing 'und'.
-    $this->body = check_markup(truncate_utf8($featured_node->body['und'][0]['safe_value'], self::$body_trim, TRUE, TRUE, 10), self::$snippet_format, '', TRUE);
+    $body = field_get_items('node', $featured_node, ($featured_node->type == 'slideshow') ? 'field_slideshow_description': 'field_video_description');
+    $this->body = check_markup(truncate_utf8($body[0]['safe_value'], self::$body_trim, TRUE, TRUE, 10), self::$snippet_format, '', TRUE);
     $this->link = l('See '. ucfirst($featured_node->type), $url);
     
     if($featured_node->type == 'slideshow') {
