@@ -17,8 +17,11 @@
 		<div class="event <?php print $image['image_shape'] ?>" id="event-<?php print $i ?>"<?//php if ($i != 0) echo ' style="display: none;"'; ?>>
 		
 			<div class="event-image">
-				<img src="<?php print $image['image_path'] ?>" />
+				<?php $imgStr = substr($image['image_path'], -6); ?>
+				<?php if ($imgStr != 'public'): ?>
+				<img src="<?php print $image['image_path']; ?>" />
 				<?php if(isset($image['image_credit'])):?><div class="event-credit"><?php print $image['image_credit'];?></div><?php endif;?>
+				<?php endif; ?>
 			</div>
 
 			
@@ -32,7 +35,6 @@
                                 echo '<a href="'.url('field-collection/field-timeline-event/'.$image['event_nid'].'/edit',array('query'=>array('destination' => $return_path))).'">[edit]</a>';
                                 echo ' - <a href="'.url('field-collection/field-timeline-event/'.$image['event_nid'].'/delete',array('query'=>array('destination' => $return_path))).'">[delete]</a>';
                                 ?>
-                                <!-- MIKE : <?php print $image['image_shape'] // can be "undefined" , "horizontal","vertical","square" ?> -->
 				<?php endif;?>
 			</div>
 			<div class="clearfix" style="clear: both;"></div>
