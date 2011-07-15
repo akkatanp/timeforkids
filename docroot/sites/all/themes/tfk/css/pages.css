@@ -969,7 +969,7 @@ ul.links li {
 }
 
 .inline-img .credit {
-	text-align: left;
+	text-align: right;
 	font: normal 9px arial;
 	color: #999;
 	text-transform: uppercase;
