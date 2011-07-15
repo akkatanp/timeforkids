@@ -1094,13 +1094,14 @@ ul.links li {
 	color: white;
 	font: normal 12px "arial black";
 	padding: 4px;
-	margin: bottom: 4px;
+	margin-bottom: 4px;
 }
 
 .node-type-article .is-kid-reporter-article .reporter-badge img {
 	width: 60px;
 	height: 60px;
 	border: solid 1px #cecece;
+	clear: right;
 }
 
 
