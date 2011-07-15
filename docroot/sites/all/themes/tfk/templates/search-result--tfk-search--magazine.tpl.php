@@ -65,6 +65,7 @@
  * @see template_process()
  */
 ?>
+<?php if($render): ?>
 <li class="<?php print $classes; ?>"<?php print $attributes; ?>>
   <?php// if($tfk_search_cont_type):?>
    <!-- Content type:<?php print $tfk_search_cont_type;?> -->
@@ -166,3 +167,4 @@
     <?php endif; ?>
   </div>
 </li>
+<?php endif; ?>

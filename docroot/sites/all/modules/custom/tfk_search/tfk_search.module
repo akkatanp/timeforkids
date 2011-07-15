@@ -1019,12 +1019,20 @@ function tfk_search_preprocess_search_result(&$vars) {
     $link_attr = array('html' => TRUE, 'attributes' => $attributes);
     
     
+    // Avoid further preprocessing if this node doesn't exist on this server.
+    $nid = $vars['result']['fields']['entity_id'];
+    $node = node_load($nid);
+    $vars['render'] = TRUE;
+    if($node === FALSE) {
+      // "Hijack" the rendering process by using a custom variable that causes
+      // the search-result[--suggestion].tpl.php template to return an empty string.
+      $vars['render'] = FALSE;
+      return;
+    }
+    
     switch ($vars['result']['fields']['bundle']) {
       
       case 'minisite':
-        $nid = $vars['result']['fields']['entity_id'];
-        $node = node_load($nid);
-
         if(isset($node->field_minisite_tout_image)){
           $tmp_img_nid =  field_get_items('node', $node, 'field_minisite_tout_image');
           $uri = $tmp_img_nid[0]['uri'];
@@ -1048,9 +1056,6 @@ function tfk_search_preprocess_search_result(&$vars) {
       break;
       
       case 'atw_destination':
-        $nid = $vars['result']['fields']['entity_id'];
-        $node = node_load($nid);
-  
         if(isset($node->field_tout_image)){
           $tmp_img_nid =  field_get_items('node', $node, 'field_tout_image');
           $img_nid = $tmp_img_nid[0]['nid'];
@@ -1082,8 +1087,6 @@ function tfk_search_preprocess_search_result(&$vars) {
       break;
       
       case 'video':
-        $nid = $vars['result']['fields']['entity_id'];
-        $node = node_load($nid);
         if(isset($node->field_video_thumbnail)){
           $tmp_img_nid =  field_get_items('node', $node, 'field_video_thumbnail');
           $uri = $tmp_img_nid[0]['uri'];
@@ -1112,8 +1115,7 @@ function tfk_search_preprocess_search_result(&$vars) {
 
 
       case 'magazine_issue':
-        $nid = $vars['result']['fields']['entity_id'];
-        $magazine = node_load($nid);
+        $magazine = $node;
 
         //lets populate array of additional data for this node type search result
         ////////////ISSUE DATE///////////////////////
@@ -1208,9 +1210,7 @@ function tfk_search_preprocess_search_result(&$vars) {
 
 
       case 'worksheet':
-        $worksheet_nid = $vars['result']['fields']['entity_id'];
-
-        $node = node_load($worksheet_nid);
+        $worksheet_nid = $nid;
         
         // Worksheets don't link to the node page.
         $vars['title'] = $title;
@@ -1294,8 +1294,6 @@ function tfk_search_preprocess_search_result(&$vars) {
       break;
 
       case 'slideshow':
-        $nid = $vars['result']['fields']['entity_id'];
-        $node = node_load($nid);
         if(isset($node->field_slideshow_images)) {
           $tmp_img_nid =  field_get_items('node', $node, 'field_slideshow_images');
           $img_nid = $tmp_img_nid[0]['nid'];
@@ -1327,8 +1325,6 @@ function tfk_search_preprocess_search_result(&$vars) {
       break;
       
       case 'article':
-        $nid = $vars['result']['fields']['entity_id'];
-        $node = node_load($nid);
         if(isset($node->field_tout_image)){
           $tmp_img_nid =  field_get_items('node', $node, 'field_tout_image');
           $img_nid = $tmp_img_nid[0]['nid'];
@@ -1474,7 +1470,7 @@ function tfk_search_preprocess_search_result(&$vars) {
       // Unset stuff that we are not going to use.
       unset($vars['info']);
     }
-    
+    $test = null;
 
 }
 
