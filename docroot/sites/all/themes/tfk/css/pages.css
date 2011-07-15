@@ -963,12 +963,12 @@ ul.links li {
 	margin-bottom: 10px;
 }
 
-.inline-image {
+.inline-img {
 	float: left;
 	margin: 0 10px 10px 0;
 }
 
-.inline-image .credit {
+.inline-img .credit {
 	text-align: left;
 	font: normal 9px arial;
 	color: #999;
@@ -976,7 +976,7 @@ ul.links li {
 	height: 10px;
 }
 
-.inline-image .caption {
+.inline-img .caption {
 	font: normal 10px arial;
 }
 
