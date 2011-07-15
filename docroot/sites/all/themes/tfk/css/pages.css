@@ -2136,10 +2136,42 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 }
 
 /* TFK magazine */
-.page-tfk-magazine .first-column .section {
-	background: none;
+.page-tfk-magazine .region-sidebar-first .section {
+	background: #daf0fe;
+}
+
+.page-tfk-magazine #block-apachesolr-search-im-28-field-grade-level {
+	border-bottom: dotted 1px #cecece;
+	margin-bottom: 20px;
+}
+
+.page-tfk-magazine #block-apachesolr-search-im-28-field-grade-level h2 {
+	font: bold italic 12px arial;
+}
+
+.page-tfk-magazine #block-menu-menu-publishing-calendar-menu {
+	border: solid 1px #cecece;
+	padding: 10px;
+}
+
+.page-tfk-magazine #block-menu-menu-publishing-calendar-menu h2 {
+	font: normal 14px "arial black";
+	text-align: center;
+	text-transform: uppercase;
+	color: white;
+	background: #d71700;
+	padding: 4px;
+}
+
+.page-tfk-magazine #block-menu-menu-publishing-calendar-menu ul.menu {
+	margin: 10px 0 0;
 	padding: 0;
-	border: 0;
+}
+
+.page-tfk-magazine #block-menu-menu-publishing-calendar-menu ul.menu li {
+	padding-bottom: 10px;
+	border-bottom: solide 1px #cecece;
+	margin-bottom: 10px;
 }
 
 .page-tfk-magazine #tfk-search-pager-top {
