@@ -10,6 +10,80 @@
 function feature_mini_sites_field_default_fields() {
   $fields = array();
 
+  // Exported field: 'node-mini_site_home-body'
+  $fields['node-mini_site_home-body'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(
+        0 => 'node',
+      ),
+      'field_name' => 'body',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'module' => 'text',
+      'settings' => array(),
+      'translatable' => '1',
+      'type' => 'text_with_summary',
+    ),
+    'field_instance' => array(
+      'bundle' => 'mini_site_home',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'hidden',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 0,
+        ),
+        'teaser' => array(
+          'label' => 'hidden',
+          'module' => 'text',
+          'settings' => array(
+            'trim_length' => 600,
+          ),
+          'type' => 'text_summary_or_trimmed',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'body',
+      'label' => 'Description',
+      'required' => 1,
+      'settings' => array(
+        'display_summary' => 0,
+        'text_processing' => '1',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'rows' => '5',
+          'summary_rows' => 5,
+        ),
+        'type' => 'text_textarea_with_summary',
+        'weight' => -4,
+      ),
+      'widget_type' => 'text_textarea_with_summary',
+    ),
+  );
+
   // Exported field: 'node-minisite-body'
   $fields['node-minisite-body'] = array(
     'field_config' => array(
@@ -77,7 +151,7 @@ function feature_mini_sites_field_default_fields() {
           'summary_rows' => 5,
         ),
         'type' => 'text_textarea_with_summary',
-        'weight' => '-4',
+        'weight' => '1',
       ),
       'widget_type' => 'text_textarea_with_summary',
     ),
@@ -168,7 +242,7 @@ function feature_mini_sites_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'node_reference_autocomplete',
-        'weight' => '0',
+        'weight' => '5',
       ),
     ),
   );
@@ -242,7 +316,118 @@ function feature_mini_sites_field_default_fields() {
           'progress_indicator' => 'throbber',
         ),
         'type' => 'image_image',
-        'weight' => '-3',
+        'weight' => '2',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-minisite-field_minisite_related_content'
+  $fields['node-minisite-field_minisite_related_content'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '-1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_minisite_related_content',
+      'foreign keys' => array(
+        'nid' => array(
+          'columns' => array(
+            'nid' => 'nid',
+          ),
+          'table' => 'node',
+        ),
+      ),
+      'indexes' => array(
+        'nid' => array(
+          0 => 'nid',
+        ),
+      ),
+      'module' => 'node_reference',
+      'settings' => array(
+        'referenceable_types' => array(
+          'a_paper' => 0,
+          'article' => 0,
+          'atw_day_in_life' => 0,
+          'atw_destination' => 0,
+          'atw_homepage_nodeblock' => 0,
+          'atw_native_lingo' => 0,
+          'atw_sightseeing' => 0,
+          'atw_timeline' => 0,
+          'board_member' => 0,
+          'book' => 0,
+          'flashcard' => 0,
+          'global_right_sidebar_promo' => 0,
+          'grammar_practice' => 0,
+          'grammar_practice_question' => 0,
+          'grammar_practice_reward_image' => 0,
+          'grammar_practice_rule' => 0,
+          'image' => 0,
+          'kid_reporter' => 0,
+          'kid_reporter_bottom_nodeblock' => 0,
+          'magazine_issue' => 0,
+          'mini_lesson' => 0,
+          'mini_site_home' => 0,
+          'minisite' => 0,
+          'news_channel_nodeblock' => 0,
+          'page' => 0,
+          'paper_step' => 0,
+          'pdf_quiz' => 0,
+          'slideshow' => 0,
+          'store' => 0,
+          'tfk_extra' => 0,
+          'tfk_extras_bottom_nodeblock' => 0,
+          'tfk_extras_top_nodeblock' => 0,
+          'tfk_notification' => 0,
+          'video' => 0,
+          'webform' => 0,
+          'worksheet' => 'worksheet',
+          'writing_tips' => 0,
+        ),
+        'view' => array(
+          'args' => array(),
+          'display_name' => '',
+          'view_name' => '',
+        ),
+      ),
+      'translatable' => '1',
+      'type' => 'node_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'minisite',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '7',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_minisite_related_content',
+      'label' => 'Additional Content',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'node_reference',
+        'settings' => array(
+          'autocomplete_match' => 'contains',
+          'autocomplete_path' => 'node_reference/autocomplete',
+          'size' => '60',
+        ),
+        'type' => 'node_reference_autocomplete',
+        'weight' => '8',
       ),
     ),
   );
@@ -332,7 +517,7 @@ function feature_mini_sites_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'node_reference_autocomplete',
-        'weight' => '2',
+        'weight' => '7',
       ),
     ),
   );
@@ -403,7 +588,7 @@ function feature_mini_sites_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '1',
+        'weight' => '6',
       ),
     ),
   );
@@ -477,7 +662,7 @@ function feature_mini_sites_field_default_fields() {
           'progress_indicator' => 'throbber',
         ),
         'type' => 'image_image',
-        'weight' => '-1',
+        'weight' => '4',
       ),
     ),
   );
@@ -551,13 +736,14 @@ function feature_mini_sites_field_default_fields() {
           'progress_indicator' => 'throbber',
         ),
         'type' => 'image_image',
-        'weight' => '-2',
+        'weight' => '3',
       ),
     ),
   );
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Additional Content');
   t('Articles');
   t('Description');
   t('Header Image');

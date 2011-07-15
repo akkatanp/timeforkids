@@ -50,6 +50,57 @@ function feature_mini_sites_context_default_contexts() {
   $context = new stdClass;
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
+  $context->name = 'Minisite Landing Page for Editors';
+  $context->description = '';
+  $context->tag = 'minisite';
+  $context->conditions = array(
+    'path' => array(
+      'values' => array(
+        'mini-sites' => 'mini-sites',
+      ),
+    ),
+    'user' => array(
+      'values' => array(
+        'administrator' => 'administrator',
+        'anonymous user' => 'anonymous user',
+        'editor' => 'editor',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'views-mini_site_home-block_1' => array(
+          'module' => 'views',
+          'delta' => 'mini_site_home-block_1',
+          'region' => 'sidebar_first',
+          'weight' => '-10',
+        ),
+        'views-mini_site_home-block_3' => array(
+          'module' => 'views',
+          'delta' => 'mini_site_home-block_3',
+          'region' => 'content',
+          'weight' => '-60',
+        ),
+        'views-mini_site_home-block' => array(
+          'module' => 'views',
+          'delta' => 'mini_site_home-block',
+          'region' => 'content',
+          'weight' => '-59',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 1;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('minisite');
+  $export['Minisite Landing Page for Editors'] = $context;
+
+  $context = new stdClass;
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
   $context->name = 'Minisite Node VIew';
   $context->description = '';
   $context->tag = 'minisite';
