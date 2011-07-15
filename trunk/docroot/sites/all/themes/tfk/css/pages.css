@@ -1083,7 +1083,7 @@ ul.links li {
 	margin-left: 10px;
 	margin-bottom: 10px;
 	width: 130px;
-	height: 105px;
+	height: 125px;
 	padding: 5px;
 	border: solid 1px #cecece;
 	background: #dedede;
@@ -1101,7 +1101,6 @@ ul.links li {
 	width: 60px;
 	height: 60px;
 	border: solid 1px #cecece;
-	clear: both;
 }
 
 .node-type-article .reporter-badge #badge-badge {
@@ -1115,6 +1114,8 @@ ul.links li {
 
 .node-type-article .reporter-badge .reporter-link-a {
 	display: block;
+	vertical-align: bottom;
+	color: black;
 }
 
 /*
