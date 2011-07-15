@@ -65,6 +65,7 @@
  * @see template_process()
  */
 ?>
+<?php if($render): ?>
 <li class="<?php print $classes; ?>"<?php print $attributes; ?>>
 
   <?php if($tfk_search_res_skills):?>
@@ -144,3 +145,4 @@
   </div>
   
 </li>
+<?php endif; ?>
