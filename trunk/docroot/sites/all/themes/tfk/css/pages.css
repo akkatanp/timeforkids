@@ -2176,9 +2176,9 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 }
 
 .page-tfk-magazine #block-menu-menu-publishing-calendar-menu ul.menu li {
-	padding-bottom: 10px;
-	border-bottom: solide 1px #cecece;
-	margin-bottom: 10px;
+	padding-bottom: 4px;
+	border-bottom: solid 1px #cecece;
+	margin-bottom: 4px;
 }
 
 .page-tfk-magazine #tfk-search-pager-top {
