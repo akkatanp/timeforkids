@@ -279,7 +279,7 @@ function tfk_helper_get_slideshow_data($nid) {
       $date = tfk_helper_render_field('node', $node, 'field_date');
       
       // Description.
-      $body = array_shift(field_get_items('node', $image['node'], 'field_slideshow_descritpion'));
+      $body = array_shift(field_get_items('node', $image['node'], 'body'));
       if(!empty($body['safe_summary'])) {
         $description = $body['safe_summary'];
       } else {
