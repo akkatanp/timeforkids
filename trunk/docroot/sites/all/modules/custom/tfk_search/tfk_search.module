@@ -549,11 +549,15 @@ function theme_tfk_featured_block(&$variables) {
   $output .= l(theme('image', array('path' => $tfkSearchFeaturedItem->featured_item->abspath, 'title' => $tfkSearchFeaturedItem->title, 'alt' => $tfkSearchFeaturedItem->title)). $icon, $url, $link_options);
   $output .= '</div>';
   
+  $body = field_get_items('node', $tfkSearchFeaturedItem, ($tfkSearchFeaturedItem->type == 'slideshow') ? 'field_slideshow_description': 'field_video_description');
+  if($body) {
+    $body = $body[0]['safe_value'];
+  }
   $output .= '<div class="g2">';
   $output .= '<div class="featured-label">FEATURED</div>';
   $output .= l('<h2 class="featured-title">'. $tfkSearchFeaturedItem->title. '</h2>', $url, array('html' => TRUE));
   $output .= "<div class='featured-date'>". date('F j, Y', $tfkSearchFeaturedItem->created). "</div>";
-  $output .= "<div class='featured-dek'>{$tfkSearchFeaturedItem->body}</div>";
+  $output .= "<div class='featured-dek'>{$body}</div>";
   $output .= '<div class="featured-link">'. l('View '. ($tfkSearchFeaturedItem->type == 'slideshow'? 'Photo Slide-Show': 'Video'), $url). '</div>';
   
   // Thumbnails. Only for slideshows.
@@ -1097,11 +1101,9 @@ function tfk_search_preprocess_search_result(&$vars) {
           tfk_search_get_flag_link($vars, $nid, 'favorites');
         }
         
-        $body = field_get_items('node', $node, 'body');
-        if(!empty($body[0]['safe_summary'])) {
-          $teaser = $body[0]['safe_summary'];
-        } elseif(!empty($body[0]['safe_value'])) {
-          $teaser = $body[0]['safe_value'];
+        $body = field_get_items('node', $node, 'field_video_description');
+        if(!empty($body[0]['value'])) {
+          $teaser = $body[0]['value'];
         }
         
         $vars['tfk_search_result_link_1'] = l('View the Video', 'node/'. $nid);
@@ -1318,11 +1320,9 @@ function tfk_search_preprocess_search_result(&$vars) {
         
         $vars['tfk_search_result_link_1'] = l('View this Slideshow', 'node/'. $nid);
         
-        $body = field_get_items('node', $node, 'body');
-        if(!empty($body[0]['safe_summary'])) {
-          $teaser = $body[0]['safe_summary'];
-        } elseif(!empty($body[0]['safe_value'])) {
-          $teaser = $body[0]['safe_value'];
+        $body = field_get_items('node', $node, 'field_slideshow_description');
+        if(!empty($body[0]['value'])) {
+          $teaser = $body[0]['value'];
         }
       break;
       
