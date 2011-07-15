@@ -64,11 +64,11 @@ function feature_mini_sites_flag_default_flags() {
     'show_on_form' => 1,
     'access_author' => '',
     'i18n' => 0,
-    'api_version' => 2,
     'module' => 'feature_mini_sites',
     'locked' => array(
       0 => 'name',
     ),
+    'api_version' => 2,
   );
   return $flags;
 }
