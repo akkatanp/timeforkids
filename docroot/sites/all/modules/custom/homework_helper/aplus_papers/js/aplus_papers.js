@@ -14,7 +14,7 @@
 
       window.onbeforeunload = function() {
         if (step == true) {
-          return 'If you leave the page you will lose everything you have written and worked on so far. Are you sure you want to leave?';
+          return 'If you leave this page, you will lose everything you have written so far. Are you sure you want to leave?';
         }
       }
     }
