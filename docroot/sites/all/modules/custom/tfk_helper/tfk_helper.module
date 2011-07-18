@@ -452,7 +452,6 @@ function tfk_helper_get_more_items() {
       // Video. @todo Theme video thumbnails once they are ready.
       if($result->node_type == 'video') {
         $thumbnail = drupal_render($result->field_field_video_upload[0]['raw']);
-        
         // Don't show this Video if it does not have a thumbnail.
         $continue = (empty($thumbnail)) ? TRUE : FALSE;
       }
@@ -466,6 +465,7 @@ function tfk_helper_get_more_items() {
         if(empty($result->field_field_image[0]['rendered']['#item']['title'])) {
           $result->field_field_image[0]['rendered']['#item']['title'] = $result->node_title;
         }
+        $result->field_field_image[0]['rendered']['#suffix'] = '<div class="icon"></div>';
         $thumbnail = drupal_render($result->field_field_image[0]['rendered']);
         
         // Don't show this Video if it does not have a thumbnail.
@@ -500,8 +500,8 @@ function theme_photos_video_more($variables) {
   $output .= '<div class="more-items-content">';
   foreach($items as $item) {
     $output .= '<div class="more-items-col">';
-    $output .= $item['image'];
-    $output .= '<div class="more-items-item-title">'. $item['title']. '</div>';
+      $output .= $item['image'];
+      $output .= '<div class="more-items-item-title">'. $item['title']. '</div>';
     $output .= '</div>';
   }
   $output .= '</div>'; // More items content.
@@ -563,7 +563,8 @@ class tfkHelperFeaturedItem {
   function get_thumbnail($file, $url) {
     $thumbnail_path = image_style_url(self::$image_style, $file->uri);
     $link_options = array('html' => TRUE, 'attributes' => array('class' => self::$thumbnail_class));
-    $this->image = l(theme('image', array('path' => $thumbnail_path)), $url, $link_options);
+    $icon = '<div class="icon"></div>';
+    $this->image = l(theme('image', array('path' => $thumbnail_path)). $icon, $url, $link_options);
   }
 }
 
