@@ -441,6 +441,12 @@ function tfk_helper_get_more_items() {
     $index = 0;
     $continue = FALSE;
     $result_qty = count($view->result);
+    
+    // Shuffle results.
+    shuffle($view->result);
+    
+    $icon = '<div class="icon"></div>';
+    
     // Iterate through View results until we have 4 items with images.
     for ($i = 0; $i < $qty; $i++) {
       // If we have iterated through the whole result set.
@@ -449,9 +455,11 @@ function tfk_helper_get_more_items() {
       }
       $result = $view->result[$index];
       
-      // Video. @todo Theme video thumbnails once they are ready.
+      // Video thumbnails.
       if($result->node_type == 'video') {
-        $thumbnail = drupal_render($result->field_field_video_upload[0]['raw']);
+        $result->field_field_video_thumbnail[0]['rendered']['#suffix'] = $icon;
+        $thumbnail = drupal_render($result->field_field_video_thumbnail[0]['rendered']);
+        
         // Don't show this Video if it does not have a thumbnail.
         $continue = (empty($thumbnail)) ? TRUE : FALSE;
       }
@@ -465,7 +473,7 @@ function tfk_helper_get_more_items() {
         if(empty($result->field_field_image[0]['rendered']['#item']['title'])) {
           $result->field_field_image[0]['rendered']['#item']['title'] = $result->node_title;
         }
-        $result->field_field_image[0]['rendered']['#suffix'] = '<div class="icon"></div>';
+        $result->field_field_image[0]['rendered']['#suffix'] = $icon;
         $thumbnail = drupal_render($result->field_field_image[0]['rendered']);
         
         // Don't show this Video if it does not have a thumbnail.
