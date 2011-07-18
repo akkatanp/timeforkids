@@ -16,17 +16,20 @@
     attach: function (context, settings) {
 
       // Delete favorites listener.
-      $('#delfavs').click(function(){
-        $('.throbber').show();
-        $.ajax({
-          url: settings.tfk_favorites.ajax_callback,
-          success: function(data) {
-            if(data == settings.tfk_favorites.success){
-              $('.throbber').hide();
-              location.href = settings.tfk_favorites.ref;
+      $('#delfavs', context).click(function(){
+        var confirmation = confirm("Are you sure you want to delete your favorites?");
+        if(confirmation) {
+          $.ajax({
+            url: settings.tfk_favorites.ajax_callback,
+            success: function(data) {
+              if(data == settings.tfk_favorites.success){
+                $('.throbber').hide();
+                location.href = settings.tfk_favorites.ref;
+              }
             }
-          }
-        });
+          });
+          $('.throbber').show();
+        }
       });
 
     }
