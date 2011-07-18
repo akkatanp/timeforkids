@@ -126,4 +126,19 @@ body.page-node.node-type-slideshow #block-system-main {
 	margin-bottom: 0px;
 }
 
+/* Icons */
+body.section-photos-video .icon {
+  height: 22px;
+  margin: -34px 0 10px 75px;
+  position: relative;
+  width: 32px;
+  z-index: 2;
+}
 
+body.section-photos-video .content-type-slideshow .icon {
+  background: url(/sites/all/modules/custom/tfk_search/images/photo-camera-icon.png) no-repeat;
+}
+
+body.section-photos-video .content-type-video .icon {
+  background: url(/sites/all/modules/custom/tfk_search/images/video-camera-icon.png) no-repeat;
+}
