@@ -1632,7 +1632,7 @@ function tfk_search_worksheets() {
 
   module_load_include('module', 'search');
   $filterstring = isset($_GET['filters']) ? $_GET['filters'] : '';
-  $solrsort = isset($_GET['solrsort']) ? $_GET['solrsort'] : '';
+  $solrsort = isset($_GET['solrsort']) ? $_GET['solrsort'] : 'ds_created desc';
   $page = isset($_GET['page']) ? $_GET['page'] : 0;
   $base_path = 'worksheets';
   $response = apachesolr_search_run(search_get_keys(), $filterstring, $solrsort, $base_path, $page, 'apachesolr_search');
