@@ -227,11 +227,11 @@ function tfk_teachers_community_views_default_views() {
   $handler->display->display_options['fields']['view_node']['empty_zero'] = 0;
   $handler->display->display_options['fields']['view_node']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['view_node']['text'] = 'View The Discussion';
-  /* Sort criterion: Content: Comment count */
-  $handler->display->display_options['sorts']['comment_count']['id'] = 'comment_count';
-  $handler->display->display_options['sorts']['comment_count']['table'] = 'node_comment_statistics';
-  $handler->display->display_options['sorts']['comment_count']['field'] = 'comment_count';
-  $handler->display->display_options['sorts']['comment_count']['order'] = 'DESC';
+  /* Sort criterion: Content: Last comment time */
+  $handler->display->display_options['sorts']['last_comment_timestamp']['id'] = 'last_comment_timestamp';
+  $handler->display->display_options['sorts']['last_comment_timestamp']['table'] = 'node_comment_statistics';
+  $handler->display->display_options['sorts']['last_comment_timestamp']['field'] = 'last_comment_timestamp';
+  $handler->display->display_options['sorts']['last_comment_timestamp']['order'] = 'DESC';
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
