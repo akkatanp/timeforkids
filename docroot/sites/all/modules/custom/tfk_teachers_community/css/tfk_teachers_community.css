@@ -211,10 +211,23 @@ div.comment.even {
   padding-bottom: 15px;
 }
 
+body.page-node-add-teacher-community-question #page_pre_section { 
+	font-size: 20px;
+	font-weight: bold;
+	color: #333;
+	margin-bottom: 10px;
+}
+
 body.page-node-add-teacher-community-question #content .section > h2 {
 	font-size: 28px;
 	line-height: normal;
 	margin: 0 0 10px 0;
+	color: #333;
+}
+
+body.page-node-add-teacher-community-question #content .section {
+	border: 1px solid #CECECE;
+	padding: 10px;
 }
 
 /* New Comments */
