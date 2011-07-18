@@ -3,7 +3,45 @@
  * Implementation of form_alter().
  */
 function tfk_user_profile_form_user_login_alter( &$form, $form_state ){
-    $form['#validate'] = array(  'user_login_name_validate','user_login_authenticate_validate', 'tfk_user_profile_login_validate', 'user_login_final_validate' );
+    $form['#validate'] = array(  'user_login_name_validate','user_login_authenticate_validate', 'tfk_user_profile_login_validate', 'tfk_user_login_final_validate' );
+}
+/** Use a custom final validate function to redirect or show
+ *  a custom error message when the user fails to validate
+ *  or authenticate via LUCIE
+ */
+function tfk_user_login_final_validate($form, &$form_state) {
+	if (empty($form_state['uid'])) {
+		// Always register an IP-based failed login event.
+		flood_register_event('failed_login_attempt_ip', variable_get('user_failed_login_ip_window', 3600));
+		// Register a per-user failed login event.
+		if (isset($form_state['flood_control_user_identifier'])) {
+	  		flood_register_event('failed_login_attempt_user', variable_get('user_failed_login_user_window', 21600), $form_state['flood_control_user_identifier']);
+		}	
+		
+		if (isset($form_state['lucie_error'])) {
+			if ($form_state['lucie_error'] == 'user_locked') {
+				form_set_error('name', t('Your account has been locked.  A new temporary password has been sent to your email.'));
+				watchdog('user', 'Account Locked: Login attempt failed for %user.', array('%user' => $form_state['values']['name']));
+			} else {
+				form_set_error('name', t('Your subscription to TIME For Kids has expired.  Please visit ***URL*** to renew your subscription.'));
+				watchdog('user', 'Subcscription expired: Login attempt failed for %user.', array('%user' => $form_state['values']['name']));
+			}
+		} elseif (isset($form_state['flood_control_triggered'])) {
+			if ($form_state['flood_control_triggered'] == 'user') {
+				form_set_error('name', format_plural(variable_get('user_failed_login_user_limit', 5), 'Sorry, there has been more than one failed login attempt for this account. It is temporarily blocked. Try again later or <a href="@url">request a new password</a>.', 'Sorry, there have been more than @count failed login attempts for this account. It is temporarily blocked. Try again later or <a href="@url">request a new password</a>.', array('@url' => url('user/password'))));
+	  		} else {
+				// We did not find a uid, so the limit is IP-based.
+				form_set_error('name', t('Sorry, too many failed login attempts from your IP address. This IP address is temporarily blocked. Try again later or <a href="@url">request a new password</a>.', array('@url' => url('user/password'))));
+	  		}
+		} else {
+	  		form_set_error('name', t('Sorry, unrecognized username or password. <a href="@password">Have you forgotten your password?</a>', array('@password' => url('user/password'))));
+	  		watchdog('user', 'Login attempt failed for %user.', array('%user' => $form_state['values']['name']));
+		}
+	} elseif (isset($form_state['flood_control_user_identifier'])) {
+		// Clear past failures for this user so as not to block a user who might
+		// log in and out more than once in an hour.
+		flood_clear_event('failed_login_attempt_user', $form_state['flood_control_user_identifier']);
+	}
 }
 /**
  * Check to see if this user has a record in the users_lucie_account table.
@@ -23,6 +61,12 @@ function tfk_insert_teacher_role($uid=0){
 	$rid = db_query("SELECT rid FROM {role} WHERE name = :name", array(':name' => 'teacher'))->fetchField();   	   
 	if ($rid && $uid) {
 		$fields = array('uid' => $uid, 'rid' => $rid);
+		// delete any roles associated to this LUCIE user that are not 'teacher'
+		db_delete('users_roles')->condition(db_and()
+				->condition('uid', $uid)
+				->condition('rid', $rid, '!=')
+		)->execute();
+		// make sure that this user has a 'teacher' role associated to it. 
 		db_merge('users_roles')->key(array('uid'=>$uid))->fields($fields)->updateFields($fields)->execute();
 	}
 }
@@ -65,7 +109,7 @@ function tfk_update_lucie_login($lucieData, $existingUser) {
  */
 function tfk_user_profile_login_validate( $form, &$form_state ){
     $username = $form_state['values']['name'];
-    $response = tfk_lucie_check_user($username, $form_state['values']['pass'] );
+    $response = tfk_lucie_check_user($username, &$form_state);
     if (!empty($response))
     {
     	// check to see if a record exists in the lucie mapping table
@@ -112,21 +156,22 @@ function tfk_lucie_user_entitlements($token){
   $url = 'http://qa-subscription.timeinc.com:80/webservices/entitlements?CGI-App-Id=com.timeinc.tk.web';
   $response = drupal_http_request($url, array('headers' => array('Content-Type'=>'application/json', 'CGI-token' => $token),
 	'method'=> 'GET'
-   ));
+  ));
+  // Decode the JSON data and pass to the call to get the user information
+  $dataResponse = drupal_json_decode($response->data);
+  
   if($response->code == 200){
-	// Decode the JSON data and pass to the call to get the user information
-	$dataResponse = drupal_json_decode($response->data);
-	return $dataResponse['issues'][0]['activeSubscription'];
+  	return $dataResponse['issues'][0]['activeSubscription'];
   }
 } 
 /**
  * This function will authenticate a user in the LUCIE system.
  * A token is returned which must be used in any additional calls to LUCIE.
  */
-function tfk_lucie_check_user($email,$password){
+function tfk_lucie_check_user($email, &$form_state){
   //$url = 'http://cgi.timeinc.com/webservices/customers/'.check_plain($email).'/TK/auth_token';
   $url = 'http://qa-subscription.timeinc.com:80/webservices/customers/'.check_plain($email).'/TK/auth_token';
-  $pass_arr = array('password'=>$password, 'CGI-App-Id' => 'com.timeinc.tk.web', 'deviceid' => 'TK.WEB', 'deviceip' => ip_address());
+  $pass_arr = array('password'=>$form_state['values']['pass'], 'CGI-App-Id' => 'com.timeinc.tk.web', 'deviceid' => 'TK.WEB', 'deviceip' => ip_address());
   $pass = drupal_json_encode($pass_arr);
   
   $response = drupal_http_request($url,
@@ -135,15 +180,24 @@ function tfk_lucie_check_user($email,$password){
               'data' => $pass,
               'CGI-App-Id' => 'com.timeinc.tk.web'
               ));
-  if($response->code == 201){
-  	// Decode the JSON data and pass to the call to get the user information
-	$dataResponse = drupal_json_decode($response->data);
-	if (tfk_lucie_user_entitlements($dataResponse['token'])) {
-		return tfk_lucie_get_user_info($email, $dataResponse['token']);
-  	} else {
-  		// set message or redirect to page here
-  		drupal_set_message(t('Your Subscription To Time For Kids has Expired'), 'error');
-  	}
+  // Decode the JSON data and pass to the call to get the user information
+  $dataResponse = drupal_json_decode($response->data);
+	
+  // process the LUCIE login response.
+  // some actions are based on the $response code, others $response_code + json parameter
+  switch ($response->code) {
+  	case 201:
+  		if (tfk_lucie_user_entitlements($dataResponse['token'])) {
+			return tfk_lucie_get_user_info($email, $dataResponse['token']);
+		} else {
+			$form_state['lucie_error'] = 'sub_expired';
+  		}
+  		break;
+  	case 404:
+  		if ($dataResponse['userLockedOut']) {
+  			$form_state['lucie_error'] = 'user_locked';
+  		}
+  		break;
   }
   return false;
 }
