@@ -211,6 +211,12 @@ div.comment.even {
   padding-bottom: 15px;
 }
 
+body.page-node-add-teacher-community-question #content .section > h2 {
+	font-size: 28px;
+	line-height: normal;
+	margin: 0 0 10px 0;
+}
+
 /* New Comments */
 .new-comment-label {
   background-color: #D71700;
