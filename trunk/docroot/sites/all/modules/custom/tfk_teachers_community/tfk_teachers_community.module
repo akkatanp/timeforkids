@@ -117,6 +117,9 @@ function tfk_teachers_community_preprocess_page(&$variables, $hook) {
     
     $btn_id = "form#teacher-community-question-node-form div#edit-actions input#edit-submit";
     $btn_img = "/images/submit-your-question-active.png";
+    
+    // Page title.
+    $variables['page_pre_section'] = 'Submit to the Teachers Community';
   }
   
   // Node view page, Spec 17B.

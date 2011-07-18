@@ -166,43 +166,50 @@ if(drupal_is_front_page()) {
         <?php print render($page['before_content']); ?>
       <?php endif; ?>
       
-      <div id="content" class="column"><div class="section">
-  
-      <?php if(isset($page_suggestion_box)): ?>
-        <?php print $page_suggestion_box; ?>
-      <?php endif;?>
-  
-      <?php print render($page['highlighted']); ?>
-      <?php print $breadcrumb; ?>
-      <a id="main-content"></a>
-      <?php print render($title_prefix); ?>
-      <?php if ($title): // Not printing the title in page.tpl because it is getting printed @ node.tpl. ?>
-        <!-- <h1 class="title" id="page-title"><?php print $title; ?></h1>-->
-      <?php endif; ?>
-      <?php print render($title_suffix); ?>
+      <div id="content" class="column">
       
-      <?php if(!empty($messages)): ?>
-        <?php print $messages; ?>
-      <?php endif; ?>
+        <?php if(isset($page_pre_section)):?>
+        	<div id='page_pre_section'><?php print $page_pre_section; ?></div>
+        <?php endif; ?>
       
-      <?php if ($tabs = render($tabs)): ?>
-        <div class="tabs"><?php print $tabs; ?></div>
-      <?php endif; ?>
-      <?php print render($page['help']); ?>
-      <?php if ($action_links): ?>
-        <ul class="action-links"><?php print render($action_links); ?></ul>
-      <?php endif; ?>
-        
-      <?php if(isset($top_suggestion_msg)): ?>
-        <div id='top-suggestion-box' class="suggestion-box">
-          <div class='msg'><?php print $top_suggestion_msg; ?></div>
-          <div class='link'><?php print $top_suggestion_link; ?></div>
-        </div>
-      <?php endif; ?>
+      	<div class="section">
+      	
+          <?php if(isset($page_suggestion_box)): ?>
+            <?php print $page_suggestion_box; ?>
+          <?php endif;?>
       
-      <?php print render($page['content']); ?>
+          <?php print render($page['highlighted']); ?>
+          <?php print $breadcrumb; ?>
+          <a id="main-content"></a>
+          <?php print render($title_prefix); ?>
+          <?php if ($title): // Not printing the title in page.tpl because it is getting printed @ node.tpl. ?>
+            <!-- <h1 class="title" id="page-title"><?php print $title; ?></h1>-->
+          <?php endif; ?>
+          <?php print render($title_suffix); ?>
+          
+          <?php if(!empty($messages)): ?>
+            <?php print $messages; ?>
+          <?php endif; ?>
+          
+          <?php if ($tabs = render($tabs)): ?>
+            <div class="tabs"><?php print $tabs; ?></div>
+          <?php endif; ?>
+          <?php print render($page['help']); ?>
+          <?php if ($action_links): ?>
+            <ul class="action-links"><?php print render($action_links); ?></ul>
+          <?php endif; ?>
+            
+          <?php if(isset($top_suggestion_msg)): ?>
+            <div id='top-suggestion-box' class="suggestion-box">
+              <div class='msg'><?php print $top_suggestion_msg; ?></div>
+              <div class='link'><?php print $top_suggestion_link; ?></div>
+            </div>
+          <?php endif; ?>
+      
+          <?php print render($page['content']); ?>
   
-      </div></div><!-- /.section, /#content -->
+      	</div>
+      </div><!-- /.section, /#content -->
 
     </div><!-- /#main -->
 
