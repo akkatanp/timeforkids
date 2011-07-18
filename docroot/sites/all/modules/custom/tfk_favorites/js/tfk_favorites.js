@@ -15,6 +15,7 @@
   Drupal.behaviors.tfk_favorites = {
     attach: function (context, settings) {
 
+      // Delete favorites listener.
       $('#delfavs').click(function(){
         $('.throbber').show();
         $.ajax({
