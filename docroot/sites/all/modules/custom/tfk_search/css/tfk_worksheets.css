@@ -225,3 +225,9 @@ body.section-worksheets .popups-container label[for=edit-savedname] {
 body.section-worksheets .popups-container .svd-srch-submit {
   text-align: right;
 }
+
+body.section-worksheets .popups-container .svd-srch-submit input {
+	border: none;
+	background: none;
+	box-shadow: none;
+}
