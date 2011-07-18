@@ -396,8 +396,11 @@
 	color: #fff;
 	background: #999;
 	padding: 10px;
+	text-decoration: none;
 }
 
+#block-tfk-extras-tfk-extras-taxonomy-links a:hover,
+#block-tfk-news-tfk-news-taxonomy-links a:hover,
 #block-tfk-extras-tfk-extras-taxonomy-links a.active,
 #block-tfk-news-tfk-news-taxonomy-links a.active {
 	background: #d71700;
@@ -412,8 +415,14 @@
 	padding: 0px;
 }
 
+#block-tfk-extras-tfk-extras-taxonomy-links ul.menu li a:hover,
+#block-tfk-news-tfk-news-taxonomy-links ul.menu li a:hover {
+	text-decoration: underline;
+}
+
 #block-tfk-extras-tfk-extras-taxonomy-links ul.menu li a.active,
 #block-tfk-news-tfk-news-taxonomy-links ul.menu li a.active {
+	color: #555;
 	background: none;
 }
 
