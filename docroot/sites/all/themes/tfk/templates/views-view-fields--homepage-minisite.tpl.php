@@ -27,7 +27,7 @@
 
 <?php foreach ($fields as $id => $field): ?>
 
-    <?php if($id != 'field_minisite_related_content' && $id != 'field_minisite_resources_label'):?>
+    <?php if($id != 'field_related_articles_1'):?>
       <?php if (!empty($field->separator)): ?>
         <?php print $field->separator; ?>
       <?php endif; ?>
@@ -41,11 +41,11 @@
 
 
 
-<?php if(strlen($fields['field_minisite_related_content']->content) != 0):?>
+<?php if(strlen($fields['field_related_articles_1']->content) != 0):?>
     <div class="related-content-wrap">
       <div class="addit-content">Additional Content</div>
-        <?php if($fields['field_minisite_related_content']): ?>
-           <div class="addit-mini-lessons"><?php print $fields['field_minisite_related_content']->content;?></div>
+        <?php if($fields['field_related_articles_1']): ?>
+           <div class="addit-mini-lessons"><?php print $fields['field_related_articles_1']->content;?></div>
         <?php endif; ?>
        
     </div>
