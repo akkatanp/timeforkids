@@ -758,6 +758,7 @@ ul.links li {
 	height: 310px;
 	padding: 20px 9px;
 	border: solid 1px #cecece;
+	vertical-align: top;
 }
 
 .view-homepage-news-block table td.col-1,
