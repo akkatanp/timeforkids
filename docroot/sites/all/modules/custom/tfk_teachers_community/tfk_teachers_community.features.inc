@@ -37,7 +37,7 @@ function tfk_teachers_community_flag_default_flags() {
   $flags['abuse_comment'] = array(
     'content_type' => 'comment',
     'title' => 'Comment Abuse',
-    'global' => 0,
+    'global' => '0',
     'types' => array(
       0 => 'teacher_community_question',
     ),
