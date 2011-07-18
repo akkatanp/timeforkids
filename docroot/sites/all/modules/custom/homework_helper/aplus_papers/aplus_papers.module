@@ -75,7 +75,6 @@ function aplus_papers_checklist($steps, $current) {
  * @param $form_state
  */
 function aplus_papers_multistep_form($form, &$form_state, $steps) {
-  drupal_add_js(drupal_get_path('module', 'aplus_papers') . '/js/aplus_papers.js', 'file');
   drupal_add_css(drupal_get_path('module', 'aplus_papers') . '/aplus-papers-print.css', array('media' => 'print'));
 
   // Provide a wrapper around the entire form, since we'll replace the whole
@@ -90,6 +89,10 @@ function aplus_papers_multistep_form($form, &$form_state, $steps) {
   $form_state['storage']['step'] = $step;
 
   $last_step = count($steps) - 1;
+
+  if ($step > 0) {
+    drupal_add_js(drupal_get_path('module', 'aplus_papers') . '/js/aplus_papers.js', 'file');
+  }  
 
   $form['checklist'] = aplus_papers_checklist($steps, $step);
 
