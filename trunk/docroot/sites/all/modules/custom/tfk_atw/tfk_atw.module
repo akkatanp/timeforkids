@@ -714,7 +714,7 @@ function tfk_atw_form_alter(&$form,&$form_state,$form_id) {
                         $country_alias = $tmp_url[0].'/'.$tmp_url[1];
                       }
                         $form['retrybutton'] = array(
-  				'#markup' => '<a clas="retry" href="'.url('destination/'.$country_alias.'/challenge').'">Try Again</a>'
+  				'#markup' => '<a clas="retry" href="'.url($country_alias.'/challenge').'">Try Again</a>'
   			);
   		}
   		else {
