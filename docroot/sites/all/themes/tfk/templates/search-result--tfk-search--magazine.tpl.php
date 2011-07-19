@@ -75,10 +75,11 @@
   <?php print render($title_prefix); ?>
   <h3 class="title"<?php print $title_attributes; ?>>
     <a href="<?php print $url; ?>"><?php print $title; ?></a>
-    
+    <span style="text-align:right;align:right;">
     <?php if($magazine_issue_grade_level):?>
     Grade Level:<?php print $magazine_issue_grade_level;?>
     <?php endif;?>
+    </span>
   </h3>
   
   <?php print render($title_suffix); ?>
