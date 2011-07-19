@@ -7,7 +7,7 @@ function tfk_page_paths_menu(){
 	$items = array();
 
         $items['store'] = array(
-		'title' => 'Store',
+		'title' => 'TFK Store',
 		'page callback' => 'tfk_pv_page_callback',
 		'access callback' => 'user_access',
 		'access arguments' => array('access content')
