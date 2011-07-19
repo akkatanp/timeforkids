@@ -8,7 +8,7 @@ function tfk_page_paths_menu(){
 
         $items['store'] = array(
 		'title' => 'TFK Store',
-		'page callback' => 'tfk_pv_page_callback',
+		'page callback' => 'tfk_store_callback',
 		'access callback' => 'user_access',
 		'access arguments' => array('access content')
 	);
@@ -50,6 +50,12 @@ function tfk_page_paths_menu(){
 	);
 	return $items;
 }
+
+
+function tfk_store_callback(){
+  return drupal_set_title('TFK Store');
+}
+
 
 function tfk_pv_page_callback() {
 	return '';
