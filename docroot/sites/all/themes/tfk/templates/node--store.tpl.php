@@ -87,7 +87,7 @@
 
   <?php print render($title_prefix); ?>
   <?php if (!$page && $title): ?>
-    <h2<?php print $title_attributes; ?>><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h2>
+   <!-- <h2<?php print $title_attributes; ?>><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h2>-->
   <?php endif; ?>
   <?php print render($title_suffix); ?>
 
@@ -110,7 +110,7 @@
     ?>
 	
 	<div id="featured-books">
-    <h2>FEATURED BOOKS</h2>
+    <h2>FEATURED</h2>
     <?php foreach($store_books as $store_book):?>
 	<div class="featured-book">
       <a href="<?php print $store_book['book_link'];?>"><img src="<?php print $store_book['book_cover'];?>"/></a><br/>
