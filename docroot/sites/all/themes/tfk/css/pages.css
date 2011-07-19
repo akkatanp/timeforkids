@@ -1627,9 +1627,13 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 
 #hide-notification {
 	position: absolute;
+	height: 12px;
+	line-height: 12px;
 	top: 10px;
 	right: 10px;
 	font: normal 11px arial;
+	padding-right: 15px;
+	background: url(../images/red-close-box.png) no-repeat right top;
 }
 
 /* lightbox */
