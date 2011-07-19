@@ -1376,7 +1376,7 @@ ul.links li {
 
 .content .custom-top-pager {
 	position: relative;
-	top: 20px;
+	top: 10px;
 	color: #d71700;
 	z-index: 2;
 }
