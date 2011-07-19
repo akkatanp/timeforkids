@@ -569,7 +569,9 @@
 	color: #fff;
 	background: #d71700;
 	padding: 10px;
+	text-decoration: none;
 	text-transform: uppercase;
+	background: url(../images/white-back-arrow.png) no-repeat 16px 10px;
 }
 
 #block-views-random-kid-reporters-block,
