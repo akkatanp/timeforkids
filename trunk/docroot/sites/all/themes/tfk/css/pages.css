@@ -2055,14 +2055,14 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 
 #daylife-container #image-container {
 	float: left;
-	width: 270px;
+	width: 240px;
 	height: 280px;
 	margin-right: 10px;
 }
 
 #daylife-container #image-container img {
-	width: 270px;
-	height: 270px;
+	width: 240px;
+	height: 180px;
 }
 
 #daylife-container #image-container #speaker-credit {
