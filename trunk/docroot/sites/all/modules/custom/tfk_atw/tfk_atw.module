@@ -47,6 +47,7 @@ function atw_page_map_callback(){
 }
 
 function atw_challenge_callback($destination_name){
+  drupal_set_title('Around The World');
 
   $alias = 'destination/'.$destination_name;
   $parent_path = drupal_lookup_path('source',$alias);
