@@ -70,14 +70,15 @@
   <?php// if($tfk_search_cont_type):?>
    <!-- Content type:<?php print $tfk_search_cont_type;?> -->
   <?php// endif;?>
-  ;;;<?php print $magazine_issue_grade_level;?>!!!
-  <?php if($tfk_search_res_grade_level):?>
-    Grade Level:<?php print $tfk_search_res_grade_level;?>
-  <?php endif;?>
+  
 
   <?php print render($title_prefix); ?>
   <h3 class="title"<?php print $title_attributes; ?>>
     <a href="<?php print $url; ?>"><?php print $title; ?></a>
+    
+    <?php if($magazine_issue_grade_level):?>
+    Grade Level:<?php print $magazine_issue_grade_level;?>
+    <?php endif;?>
   </h3>
   
   <?php print render($title_suffix); ?>
