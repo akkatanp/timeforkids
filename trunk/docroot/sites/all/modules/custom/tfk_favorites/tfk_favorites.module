@@ -68,14 +68,8 @@ function _tfk_favorites_links_block_content() {
     drupal_add_js($favorites_module_path. '/js/tfk_favorites.js', 'file');
   
     // View all my favorites link.
-    if($path == 'worksheets') {
-      $link_options = array('html' => TRUE, 'attributes' => array('title' => 'All Teacher Resources'));
-      $view_all = l(theme('image', array('path' => $search_module_path. '/images/all-teacher-resources.png', 'alt' => 'All Teacher Resources', 'attributes' => array('title' => 'All Teacher Resources'))), 'my-favorites', $link_options);
-    } else {
-      $link_options = array('html' => TRUE, 'attributes' => array('title' => 'View All My Favorites'));
-      $view_all = l(theme('image', array('path' => $search_module_path. '/images/view-all-my-favorites.png', 'alt' => 'View All My Favorites', 'attributes' => array('title' => 'View All My Favorites'))), 'my-favorites', $link_options);
-    }
-  
+    $link_options = array('html' => TRUE, 'attributes' => array('title' => 'View All My Favorites'));
+    $view_all = l(theme('image', array('path' => $search_module_path. '/images/view-all-my-favorites.png', 'alt' => 'View All My Favorites', 'attributes' => array('title' => 'View All My Favorites'))), 'my-favorites', $link_options);
     
     // Clear favorites link.
     $link_options['attributes']['fragment'] = ' '; // Adds the # at the end of the link.
