@@ -230,6 +230,10 @@ body.page-node-add-teacher-community-question #content .section {
 	padding: 10px;
 }
 
+ul.pager li {
+	color: #333;
+}
+
 /* New Comments */
 .new-comment-label {
   background-color: #D71700;
