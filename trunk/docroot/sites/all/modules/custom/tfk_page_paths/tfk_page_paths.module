@@ -52,8 +52,10 @@ function tfk_page_paths_menu(){
 }
 
 
+
 function tfk_store_callback(){
-  return drupal_set_title('TFK Store');
+  return '';
+  //return drupal_set_title('TFK Store');
 }
 
 
