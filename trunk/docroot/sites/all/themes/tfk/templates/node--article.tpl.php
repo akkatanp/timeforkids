@@ -1,4 +1,4 @@
-<?php
+<?php echo $is_teacher;
 /**
  * @file
  * Zen theme's implementation to display a node.
