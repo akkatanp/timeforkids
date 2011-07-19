@@ -146,14 +146,14 @@
     <?php if(isset($magazine_materials) && count($magazine_materials) > 0): ?>
       <h3>Materials</h3>
       <?php foreach($magazine_materials as $item):?>
-        <a href="<?php echo url($item['url']);?>"><?php echo $item['title'];?></a><br/>
+        <a href="<?php echo $item['url'];?>"><?php echo $item['title'];?></a><br/>
       <?php endforeach;?>
     <?php endif; ?>
 
     <?php if(isset($magazine_related) && count($magazine_related) > 0): ?>
       <h3>Related Resources</h3>
       <?php foreach($magazine_related as $item):?>
-        <a href="<?php echo url($item['url']);?>"><?php echo $item['title'];?></a><br/>
+        <a href="<?php echo $item['url'];?>"><?php echo $item['title'];?></a><br/>
       <?php endforeach;?>
     <?php endif; ?>
   </div>
