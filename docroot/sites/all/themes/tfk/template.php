@@ -180,7 +180,7 @@ function tfk_header_tag($type) {
       $output = t('Flashcard Maker');
       break;
     case 'grammar_practice':
-      $output = t('Grammar Practice');
+      $output = t('Punctuation Practice');
       break;
     case '':
       $output = drupal_get_title();
