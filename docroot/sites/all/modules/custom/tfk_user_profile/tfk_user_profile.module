@@ -36,7 +36,7 @@ function tfk_user_profile_user_login(&$edit, $account) {
 //    }
 
 
-  $GLOBALS['destination'] = url('around-the-world');
+  $GLOBALS['destination'] = 'tfk-magazine';
 
 }
 
