@@ -2320,7 +2320,7 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 }
 
 
-.foot-credit{width:200px;}
+.foot-credit{width:400px;float:right;text-align:right;}
 
 .foot-credit .creditval{
   
