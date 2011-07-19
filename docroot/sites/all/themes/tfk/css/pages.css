@@ -1383,14 +1383,16 @@ ul.links li {
 
 .content .custom-top-pager .item-list {
 	float: right;
+	padding-right: 10px;
 }
 
-.content .custom-top-pager .item-list li a {
-	color: #d71700;
+.content .custom-top-pager .item-list li a,
+.content .custom-top-pager .item-list .pager-current {
+	color: black;
 }
 
 .content .custom-top-pager .item-list li a.active {
-	color: black;
+	color: #d71700;
 }
 
 /*
