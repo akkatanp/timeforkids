@@ -1364,7 +1364,6 @@ ul.links li {
 	border: solid 1px #cecece;
 	margin-bottom: 10px;
 	position: relative;
-	top: -20px;
 }
 
 .content .currfilters .newsarc {
@@ -1384,6 +1383,14 @@ ul.links li {
 
 .content .custom-top-pager .item-list {
 	float: right;
+}
+
+.content .custom-top-pager .item-list li a {
+	color: #d71700;
+}
+
+.content .custom-top-pager .item-list li a.active {
+	color: black;
 }
 
 /*
