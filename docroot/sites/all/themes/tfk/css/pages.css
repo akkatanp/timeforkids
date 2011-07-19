@@ -1386,7 +1386,7 @@ ul.links li {
 }
 
 .content .custom-top-pager .item-list li  {
-	margin-left: 8px;
+	margin: 0;
 }
 
 .content .custom-top-pager .item-list li a,
