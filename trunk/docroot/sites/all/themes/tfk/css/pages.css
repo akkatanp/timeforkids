@@ -2313,10 +2313,8 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 .challengeheader{
   background: url("../images/atw-head.png") no-repeat scroll 0 0 transparent;
     height: 100px;
-    left: 0;
-    position: absolute;
-    top: 0;
     width: 488px;
+    margin-left:10px;
     z-index: 2;
 }
 
