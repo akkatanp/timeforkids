@@ -1285,7 +1285,7 @@ ul.links li {
 	margin-bottom: 10px;
 }
 
-/* news aarchive */
+/* news archive */
 .page-news-archive #block-tfk-news-tfk-news-current-filters {
 	border: solid 1px #cecece;
 	background: #dedede;
@@ -1358,6 +1358,25 @@ ul.links li {
 	box-shadow: 2px 2px 4px #666;
 }
 
+.content .currfilters {
+	background: #dedede;
+	padding: 10px;
+	border: solid 1px #cecece;
+}
+
+.content .currfilters .newsarc {
+	font: bold 20px arial;
+}
+
+.content .currfilters .newsarcsmall {
+	font-style: italic;
+}
+
+.content .custom-top-pager {
+	color: #d71700;
+	position: relative;
+	top: 20px;
+}
 
 /*
  * Photos and Video Section.
