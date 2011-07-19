@@ -235,6 +235,12 @@ body.page-node-add-teacher-community-question #content .section {
 	color: #D71700;
 }
 
+#bottom-suggestion-box .link {
+	border: none;
+	text-align: right;
+	display: inherit;
+}
+
 /* New Comments */
 .new-comment-label {
   background-color: #D71700;
