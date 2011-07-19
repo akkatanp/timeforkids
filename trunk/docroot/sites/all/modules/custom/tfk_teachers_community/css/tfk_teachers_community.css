@@ -230,8 +230,9 @@ body.page-node-add-teacher-community-question #content .section {
 	padding: 10px;
 }
 
-ul.pager li {
-	color: #333;
+.view-id-teacher_community_topic_list .item-list ul li,
+.view-id-teacher_community_topic_list .item-list ul li a {
+	color: #D71700;
 }
 
 /* New Comments */
