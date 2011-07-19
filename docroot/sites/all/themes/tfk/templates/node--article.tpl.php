@@ -1,4 +1,4 @@
-!<?php echo $is_teacher;echo 'X!!';
+<?php
 /**
  * @file
  * Zen theme's implementation to display a node.
@@ -81,8 +81,14 @@
  * @see template_process()
  */
 
-$addit_content = $content['group_additional_content'];
-$content['group_additional_content']['#prefix'] = '<b>Additional Content:</b><br/>'.$content['group_additional_content']['#prefix'];
+
+if($is_anon == 1){
+  unset($content['group_additional_content']);
+}else{
+  $addit_content = $content['group_additional_content'];
+  $content['group_additional_content']['#prefix'] = '<b>Additional Content:</b><br/>'.$content['group_additional_content']['#prefix'];
+}
+
 ?>
 <?php if($is_kid_reporter_article == 1){
             unset($content['group_date_and_author']['field_article_byline']);
@@ -117,8 +123,11 @@ $content['group_additional_content']['#prefix'] = '<b>Additional Content:</b><br
 
 	  <h1><?php print $title; ?></h1>
       <?php print render($content);?><br/>
-          <b>Additional Content:</b><br/>
-     <?php  print render($addit_content); ?>
+
+          <?php if($is_anon == 0):?>
+            <b>Additional Content:</b><br/>
+            <?php  print render($addit_content); ?>
+          <?php endif;?>
   </div>
 
   <?php print render($content['links']); ?>

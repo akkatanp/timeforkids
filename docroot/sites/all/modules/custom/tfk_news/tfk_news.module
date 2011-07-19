@@ -441,9 +441,22 @@ function tfk_news_preprocess_page(&$vars) {
 
 
 function tfk_news_preprocess_node(&$variables){
+
+
   $variables['is_kid_reporter_article'] = 0;
 
   if($variables['type'] == 'article'){
+
+
+    $is_anon = 0;
+    global $user;
+    $user_roles = $user->roles;
+    if(count($user_roles) == 1 && in_array('anonymous user',$user_roles)){
+      $is_anon = 1;
+    }
+    $variables['is_anon'] = $is_anon;
+
+
     //print_R($variables);
     if(isset($variables['field_kid_reporter']['und'][0]['nid'])){
       $variables['is_kid_reporter_article'] = 1;
