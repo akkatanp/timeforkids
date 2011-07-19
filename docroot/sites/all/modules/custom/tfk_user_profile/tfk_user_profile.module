@@ -28,19 +28,11 @@ function tfk_user_profile_form_user_login_alter( &$form, $form_state ){
 
 function tfk_user_profile_user_login(&$edit, $account) {
 
-print_r($account);
-
-echo $account->field_grade_level['und'][0]['tid'];
-
-
   if(!isset($account->field_grade_level['und'][0]['tid'])){
     }else{
-      echo 'GRADE PRESENT';
-      $GLOBALS['destination'] = 'around-the-world';
+      $GLOBALS['destination'] = drupal_get_destination();
     }
 
-
-    exit;
 }
 
 
