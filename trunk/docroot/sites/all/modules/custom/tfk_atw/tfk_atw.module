@@ -508,9 +508,10 @@ function _tfk_atw_block_content_data(){
     $slideshow_data[$record->destination_nid]= array();
     //now lets get the data for the first image of the slideshow
 
-    $image_result = db_query('SELECT si.field_slideshow_images_nid, n.title, fi.field_image_fid, fm.filename
+    $image_result = db_query('SELECT si.field_slideshow_images_nid, n.title,dfc.field_credit_value as credit_value,  fi.field_image_fid, fm.filename
         FROM {field_data_field_slideshow_images} AS si
         LEFT JOIN {node} n ON n.nid = si.field_slideshow_images_nid
+        LEFT JOIN {field_data_field_credit} dfc on n.nid = dfc.entity_id
         LEFT JOIN {field_data_field_image} fi ON fi.entity_id = si.field_slideshow_images_nid
         LEFT JOIN {file_managed} fm ON fm.fid = fi.field_image_fid
         WHERE si.entity_id = :eid and n.status = 1 LIMIT 0,1',array(':eid' => $record->flagged_slideshow_nid));
@@ -518,7 +519,7 @@ function _tfk_atw_block_content_data(){
       $slideshow_data[$record->destination_nid]['destination_nid'] = $record->destination_nid;
       $slideshow_data[$record->destination_nid]['destination_path'] = drupal_lookup_path('alias','node/'.$record->destination_nid);
       $slideshow_data[$record->destination_nid]['image_title'] = $rec->title;
-
+      $slideshow_data[$record->destination_nid]['image_credit'] = $rec->credit_value;
       $slideshow_data[$record->destination_nid]['image_filename'] = $rec->filename;
 
     }
