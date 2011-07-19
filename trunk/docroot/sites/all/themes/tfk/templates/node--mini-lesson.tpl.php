@@ -80,6 +80,11 @@
  * @see zen_preprocess_node()
  * @see template_process()
  */
+if (isset($content['field_grade_level'][0]['#title']) && preg_match("/-/",$content['field_grade_level'][0]['#title'])) {
+    $grade_text = "Grades ".$content['field_grade_level'][0]['#title'];
+} else {
+    $grade_text = "Grade ".$content['field_grade_level'][0]['#title'];
+}
 ?>
 <div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
   
@@ -92,7 +97,7 @@
     </div>
   
     <div class="content"<?php print $content_attributes; ?>>
-        <div class="grade-bar"><div id="grade-bar-title">Mini-lesson</div><div id="grade-bar-grade-level"><?php echo $content['field_grade_level'][0]['#title']; ?></div></div>
+        <div class="grade-bar"><div id="grade-bar-title">Mini-lesson</div><div id="grade-bar-grade-level"><?php echo $grade_text; ?></div></div>
         <h2><?php echo $title;?></h2>
         <div class="lesson-deck"><?php echo render($content['field_mini_deck']); ?></div>
         <div class="lesson-body"><?php echo render($content['body']); ?></div>
