@@ -705,10 +705,16 @@ function tfk_atw_form_alter(&$form,&$form_state,$form_id) {
   			}
 
 
-                        $nodal = drupal_get_path('alias', 'node/'.$dest_slug);
-
+                        $tmp_url = explode('/',request_uri());
+                      $tmp_url = array_slice($tmp_url, -3, 3, true);
+                      $tmp_url = array_merge(array(),$tmp_url);
+                      if($record->type == 'atw_destination'){
+                        $country_alias = $tmp_url[1].'/'.$tmp_url[2];
+                      }else{
+                        $country_alias = $tmp_url[0].'/'.$tmp_url[1];
+                      }
                         $form['retrybutton'] = array(
-  				'#markup' => '<a clas="retry" href="'.url($nodal).'">Try Again</a>'
+  				'#markup' => '<a clas="retry" href="'.url('destination/'.$country_alias.'/challenge').'">Try Again</a>'
   			);
   		}
   		else {
