@@ -81,9 +81,9 @@
  * @see template_process()
  */
 ?>
-
+<div class="challengeheader"></div>
 <div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
-  <div class="header"></div>
+  
   <?php print $user_picture; ?>
 
   <?php print render($title_prefix); ?>
