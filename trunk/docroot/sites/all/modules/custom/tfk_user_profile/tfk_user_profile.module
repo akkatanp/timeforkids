@@ -31,7 +31,7 @@ function tfk_user_profile_user_login(&$edit, $account) {
 
   if(!isset($account->field_grade_level['und'][0]['tid'])){
     }else{
-       $GLOBALS['destination'] = drupal_get_destination();
+       $GLOBALS['destination'] = current_path();
     }
 }
 
