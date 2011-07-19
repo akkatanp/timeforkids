@@ -703,8 +703,12 @@ function tfk_atw_form_alter(&$form,&$form_state,$form_id) {
   					'#markup' => $value
   				);
   			}
+
+
+                        $nodal = drupal_get_path('alias', 'node/'.$dest_slug);
+
                         $form['retrybutton'] = array(
-  				'#markup' => url('destination/'.$dest_slug.'/challenge')
+  				'#markup' => '<a clas="retry" href="'.url($nodal).'">Try Again</a>'
   			);
   		}
   		else {
