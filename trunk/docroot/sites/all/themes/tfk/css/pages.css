@@ -1386,11 +1386,14 @@ ul.links li {
 	padding-right: 10px;
 }
 
+.content .custom-top-pager .item-list li  {
+	margin-left: 8px;
+}
+
 .content .custom-top-pager .item-list li a,
 .content .custom-top-pager .item-list .pager-current {
 	color: black;
 	font-weight: normal;
-	margin-left: 8px;
 }
 
 .content .custom-top-pager .item-list li a.active {
