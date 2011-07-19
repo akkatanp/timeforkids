@@ -31,7 +31,7 @@ function tfk_user_profile_user_login(&$edit, $account) {
 
 
   if(isset($account->field_grade_level['und'][0]['tid'])){
-      $GLOBALS['destination'] = 'around-the-world';exit;
+      $GLOBALS['destination'] = 'around-the-world';
     }else{
       //not redirecting anywhere , go set a grade
       //$GLOBALS['destination'] = 'around-the-world';
