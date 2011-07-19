@@ -1193,7 +1193,7 @@ function tfk_search_preprocess_search_result(&$vars) {
            $link_title = $result->fetch();
            $vars['magazine_materials'][$k]['title'] = $link_title->title;
            $vars['magazine_materials'][$k]['nid'] = $tmp_material['nid'];
-           $vars['magazine_materials'][$k]['url'] = drupal_get_path('alias','node/'.$tmp_material['nid']);
+           $vars['magazine_materials'][$k]['url'] = drupal_lookup_path('alias','node/'.$tmp_material['nid']);
          }
 
          ////////////////////Related Resources////////////////
@@ -1205,7 +1205,7 @@ function tfk_search_preprocess_search_result(&$vars) {
            $link_title = $result->fetch();
            $vars['magazine_related'][$k]['title'] = $link_title->title;
            $vars['magazine_related'][$k]['nid'] = $tmp_rel['nid'];
-           $vars['magazine_related'][$k]['url'] = drupal_get_path('alias','node/'.$tmp_rel['nid']);
+           $vars['magazine_related'][$k]['url'] = drupal_lookup_path('alias','node/'.$tmp_rel['nid']);
          }
 
         break;
