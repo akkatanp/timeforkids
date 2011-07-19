@@ -1389,10 +1389,12 @@ ul.links li {
 .content .custom-top-pager .item-list li a,
 .content .custom-top-pager .item-list .pager-current {
 	color: black;
+	font-weight: normal;
 }
 
 .content .custom-top-pager .item-list li a.active {
 	color: #d71700;
+	font-weight: normal;
 }
 
 /*
