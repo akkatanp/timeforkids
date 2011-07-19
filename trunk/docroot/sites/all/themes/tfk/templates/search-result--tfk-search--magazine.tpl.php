@@ -70,7 +70,7 @@
   <?php// if($tfk_search_cont_type):?>
    <!-- Content type:<?php print $tfk_search_cont_type;?> -->
   <?php// endif;?>
-  ;;;<?php print $tfk_search_res_grade_level;?>!!!
+  ;;;<?php print $magazine_issue_grade_level;?>!!!
   <?php if($tfk_search_res_grade_level):?>
     Grade Level:<?php print $tfk_search_res_grade_level;?>
   <?php endif;?>
