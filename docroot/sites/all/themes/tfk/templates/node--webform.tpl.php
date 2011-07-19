@@ -115,6 +115,8 @@
 
 
       print render($content);
+
+      
     ?>
   </div>
 

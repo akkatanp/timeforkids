@@ -703,6 +703,9 @@ function tfk_atw_form_alter(&$form,&$form_state,$form_id) {
   					'#markup' => $value
   				);
   			}
+                        $form['retrybutton'] = array(
+  				'#markup' => url('destination/'.$dest_slug.'/challenge')
+  			);
   		}
   		else {
   			$form['#submit'][]='tfk_atw_quiz_submit';
