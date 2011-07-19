@@ -19,6 +19,12 @@
 			</div>
 		</div>
 	</div>
+
+        <?php foreach($destinations_data as $image_k => $image_obj): ?>
+                 <div class="credit" style="display: none;"><?php echo $image_obj['image_credit']; ?></div>
+        <?php endforeach;?>
+
+
   <?php print views_embed_view('atw_homepage_nodeblock');?>
 </div>
 
