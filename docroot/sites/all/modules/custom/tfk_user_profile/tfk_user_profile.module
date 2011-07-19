@@ -29,15 +29,10 @@ function tfk_user_profile_form_user_login_alter( &$form, $form_state ){
 
 function tfk_user_profile_user_login(&$edit, $account) {
 
-//  if(!isset($account->field_grade_level['und'][0]['tid'])){
-//    }else{
-//      $_REQUEST['destination'] = 'around-the-world';
-//      $GLOBALS['destination'] = drupal_get_destination();
-//    }
-
-
-  $GLOBALS['destination'] = 'tfk-magazine';
-
+  if(!isset($account->field_grade_level['und'][0]['tid'])){
+    }else{
+       $GLOBALS['destination'] = 'tfk-magazine';
+    }
 }
 
 
