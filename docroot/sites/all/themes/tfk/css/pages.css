@@ -2306,3 +2306,18 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 .feed-icon {
     display:none;
 }
+
+
+/*sergei voitenko */
+
+.node-webform .header{
+  background: url("../images/atw-head.png") no-repeat scroll 0 0 transparent;
+    height: 100px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 488px;
+    z-index: 2;
+}
+
+/*sergei voitenko end */
