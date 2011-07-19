@@ -1359,8 +1359,6 @@ ul.links li {
 }
 
 .content .currfilters {
-	position: relative;
-	top: -40px;
 	background: #dedede;
 	padding: 10px;
 	border: solid 1px #cecece;
