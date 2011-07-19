@@ -1,10 +1,46 @@
 <?php
+
 /**
  * Implementation of form_alter().
  */
 function tfk_user_profile_form_user_login_alter( &$form, $form_state ){
     $form['#validate'] = array(  'user_login_name_validate','user_login_authenticate_validate', 'tfk_user_profile_login_validate', 'tfk_user_login_final_validate' );
+  //  $form['#submit'][] = '_user_profile_submit';
 }
+
+//function _user_profile_submit($form, &$form_state) {
+//  if (!empty($form_state['uid'])) {
+//    $uid = $form_state['uid'];
+//    //1st of all we gotta check if the user has a grade level
+//    $user = user_load($uid);
+//
+//
+//    if(isset($user->field_grade_level['und'][0]['tid'])){
+//      echo 'already has a greade';
+//    }else{
+//      $GLOBALS['destination'] = 'node/add';
+//      $_REQUEST['destination'] = 'node/add';
+//
+//    }
+//  }
+//
+//}
+
+
+
+function tfk_user_profile_user_login(&$edit, $account) {
+
+  if(isset($account->field_grade_level['und'][0]['tid'])){
+      $GLOBALS['destination'] = drupal_get_destination();
+    }else{
+      //not redirecting anywhere , go set a grade
+      //$GLOBALS['destination'] = 'around-the-world';
+    }
+
+}
+
+
+
 /** Use a custom final validate function to redirect or show
  *  a custom error message when the user fails to validate
  *  or authenticate via LUCIE
