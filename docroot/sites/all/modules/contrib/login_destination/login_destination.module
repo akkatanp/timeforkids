@@ -295,6 +295,11 @@ function login_destination_drupal_goto_alter(&$path, &$options, &$http_response_
  */
 function login_destination_prepare_goto($destination) {
   // Check if $_GET['destination'] should overwrite us
+
+  global $user;
+  print_r($user);exit;
+
+
   if (!isset($_GET['destination']) || !variable_get('login_destination_preserve_destination', FALSE)) {
     $GLOBALS['destination'] = $destination;
   }
