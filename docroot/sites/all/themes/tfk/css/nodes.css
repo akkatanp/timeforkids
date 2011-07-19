@@ -67,3 +67,71 @@ h2.node-title /* Node title */ {
 
 .node ul.links /* Node links. See also the ul.links declaration in the pages.css. */ {
 }
+ /* 404 page */
+.page-node-167 #section-title {
+    display:none;
+}
+.page-node-167 .node {
+    line-height: 160%;
+    padding-left:40px;
+    width:390px;
+}
+.page-node-167 .node .not-found-not-available {
+    font-size: 2em;
+    line-height: 150%;
+    font-weight: bold;
+    text-transform:uppercase;
+    margin-bottom:10px;
+}
+.page-node-167 .node .not-found-click {
+    background: none repeat scroll 0 0 #D71700;
+    border-radius: 12px 12px 12px 12px;
+    box-shadow: 2px 2px 2px #999999;
+    color: white;
+    font: bold 11px arial;
+    padding: 6px 8px;
+}
+.page-node-167 .node .form-text {
+    background: none repeat scroll 0 0 #DEDEDE;
+    border-color: #999999 #CECECE #CECECE #999999;
+    border-radius: 12px 12px 12px 12px;
+    border-style: solid;
+    border-width: 1px;
+    color: #555555;
+    display: block;
+    float: left;
+    font: italic 11px arial;
+    height: 11px;
+    margin: 5px 5px 5px 0px;
+    padding: 5px 6px;
+    width: 200px;
+}
+.page-node-167 .node .form-submit {
+    display: block;
+    float: left;
+    margin: 4px 0;
+    width: 52px;
+    text-transform:uppercase;
+}
+.page-node-167 .node .not-found-click a {
+    color: white;
+    text-transform:uppercase;
+}
+.page-node-167 .node .not-found-or {
+    font-size: 2em;
+    line-height: 150%;
+    font-weight: bold;
+    text-transform:uppercase;
+    margin-top:10px;
+}
+.page-node-167 .content h2 {
+    font-size: 3em;
+    color: #d71700;
+    font-weight: bold;
+    text-transform:uppercase;
+    margin:10px 0px;
+}
+.page-node-167 #content {
+    border: 5px solid #d71700;
+    width:758px;
+}
