@@ -1618,6 +1618,7 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 	-moz-box-shadow: 2px 2px 2px #999999;
 	-webkit-box-shadow: 2px 2px 2px #999999;
 	box-shadow: 2px 2px 2px #999999;
+	margin-bottom: 10px;
 }
 
 .notification h1 {
