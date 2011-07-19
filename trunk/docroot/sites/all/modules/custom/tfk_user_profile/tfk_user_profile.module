@@ -29,7 +29,7 @@ function _user_profile_submit($form, &$form_state) {
 function tfk_user_profile_user_login(&$edit, $account) {
 
 
-
+print_r($account);exit;
   if(isset($account->field_grade_level['und'][0]['tid'])){
       $GLOBALS['destination'] = 'around-the-world';
     }else{
