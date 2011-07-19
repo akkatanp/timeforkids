@@ -1379,13 +1379,16 @@ span.grammar-wizard-incorrect {
 
 .node-type-grammar-practice .view-grammar-practice,
 .page-homework-helper-grammar-wizard .view-grammar-practice,
-.page-homework-helper-grammar-practice .view-grammar-practice {
+.page-homework-helper-grammar-practice .view-grammar-practice,
+.homework-helper-content .view-grammar-practice {
   margin-top: 0;
 }
 .node-type-grammar-practice #grammar_practice_header,
 .page-homework-helper-grammar-wizard #grammar_practice_header,
-.page-homework-helper-grammar-practice #grammar_practice_header {
+.page-homework-helper-grammar-practice #grammar_practice_header,
+.homework-helper-content #grammar_practice_header {
   background-color: #666666;
+  background: url(../../images/tuttle_puncprac_header.png);
   display: inline;
   float: right;
   height: 100px;
@@ -1395,7 +1398,8 @@ span.grammar-wizard-incorrect {
 }
 .node-type-grammar-practice #grammar_practice_header .try-another,
 .page-homework-helper-grammar-wizard #grammar_practice_header .try-another,
-.page-homework-helper-grammar-practice #grammar_practice_header .try-another {
+.page-homework-helper-grammar-practice #grammar_practice_header .try-another,
+.homework-helper-content #grammar_practice_header .try-another {
   background: url(images/tfk-red-arrow.png) no-repeat scroll 2px 0 transparent;
   color: #d71700;
   display: inline;
@@ -1456,4 +1460,15 @@ span.grammar-wizard-incorrect {
 .writers-toolbox .toolbox-pdfs h2 {
   margin-top: 0;
   margin-bottom: 10px;
+}
+
+.page-node-167 .node {
+  background: #ffedeb;
+  border: 1px solid #d71700;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 160%;
+  padding: 40px;
+  text-align: center;
+  width: 645px;
 }
