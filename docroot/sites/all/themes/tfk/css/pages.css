@@ -164,8 +164,13 @@ ul.links li {
   padding: 0 1em 0 0; /* LTR */
 }
 
+.item-list .pager a {
+  color:#D71700;
+}
+
 .item-list .pager /* A list of page numbers when more than 1 page of content is available */ {
   padding: 0;
+  text-align: right;
 }
 
 .item-list .pager li /* Each page number in the pager list */ {
