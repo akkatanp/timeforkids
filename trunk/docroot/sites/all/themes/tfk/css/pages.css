@@ -552,7 +552,7 @@ ul.links li {
 	left: -11px;
 }
 
-#block-views-minisite-articles-block-2 .views-field-field-lrg-sq-image i img,
+#block-views-minisite-articles-block-2 .views-field-field-lrg-sq-image img,
 #block-views-minisite-articles-block-3 .views-field-field-lrg-sq-image img,
 .view-homepage-top-story .views-field-field-lrg-sq-image img,
 .view-teacher-news-top-story .views-field-field-lrg-sq-image img,
@@ -577,8 +577,8 @@ ul.links li {
 	color: #999;
 }
 
-#block-views-minisite-articles-block-2  .views-field-field-caption,
-#block-views-minisite-articles-block-3  .views-field-field-caption,
+#block-views-minisite-articles-block-2  .views-field-field-image-caption,
+#block-views-minisite-articles-block-3  .views-field-field-image-caption,
 .view-homepage-top-story .views-field-field-image-caption,
 .view-teacher-news-top-story .views-field-field-image-caption,
 .view-kid-reporters-channel-top-story  .views-field-field-image-caption {
