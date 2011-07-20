@@ -1019,15 +1019,14 @@ function tfk_search_apachesolr_modify_query($query, $caller) {
 
     // Limit the number of rows per page.
     $query->params['rows'] = 8;
-  }
-
-
-  if($caller == 'apachesolr_search' && ($query->get_base_path() !== 'photos-video') && ($query->get_base_path() !== 'worksheets')) {
+    
+    // Optionally limit content type visibility to anons if required by business.
+    /*
     global $user;
     if(count($user->roles) == 1 && $user->roles[1] == 'anonymous user'){
      $query->add_filter("bundle", 'worksheet',TRUE);
      $query->add_filter("bundle", 'mini_lesson',TRUE);
-    }
+    }*/
   }
 }
 
