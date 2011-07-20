@@ -977,166 +977,332 @@ function tfk_search_preprocess_pager_top(&$vars) {
  * @param array $vars
  */
 function tfk_search_preprocess_search_result(&$vars) {
-    $vars['tfk_search_cont_type'] = strtoupper($vars['result']['fields']['bundle_name']);
-   
-    // Add specific template suggestions for invividual results on photos and video.
-    // Shuffle the order of the suggestions to prioritize the use of our template on top of the default.
-    // The first template to be found is implemented.
-    // @link http://api.drupal.org/api/drupal/includes--theme.inc/function/theme.
-    $base_path = arg(0);
-    $style = '115x115';
-    
-    // Determines whether to print favorite links on search results or not.
-    $favorite_links = TRUE;
-    
-    if($base_path == 'photos-video') {
-      $vars['theme_hook_suggestions'] = array_merge(
-        array('search_result__tfk_search__photos_video', 'search_result__tfk_search'),
-        $vars['theme_hook_suggestions']
-      );
-    }
+  $vars['tfk_search_cont_type'] = strtoupper($vars['result']['fields']['bundle_name']);
+ 
+  // Add specific template suggestions for invividual results on photos and video.
+  // Shuffle the order of the suggestions to prioritize the use of our template on top of the default.
+  // The first template to be found is implemented.
+  // @link http://api.drupal.org/api/drupal/includes--theme.inc/function/theme.
+  $base_path = arg(0);
+  $style = '115x115';
+  
+  // Determines whether to print favorite links on search results or not.
+  $favorite_links = TRUE;
+  
+  if($base_path == 'photos-video') {
+    $vars['theme_hook_suggestions'] = array_merge(
+      array('search_result__tfk_search__photos_video', 'search_result__tfk_search'),
+      $vars['theme_hook_suggestions']
+    );
+  }
 
-    if($base_path == 'worksheets') {
-      $vars['theme_hook_suggestions'] = array_merge(
-        array('search_result__tfk_search__worksheets', 'search_result__tfk_search'),
-        $vars['theme_hook_suggestions']
-      );
-    }
+  if($base_path == 'worksheets') {
+    $vars['theme_hook_suggestions'] = array_merge(
+      array('search_result__tfk_search__worksheets', 'search_result__tfk_search'),
+      $vars['theme_hook_suggestions']
+    );
+  }
 
 
-    if($base_path == 'tfk-magazine') {
-      $vars['theme_hook_suggestions'] = array_merge(
-        array('search_result__tfk_search__magazine', 'search_result__tfk_search'),
-        $vars['theme_hook_suggestions']
-      );
-    }
+  if($base_path == 'tfk-magazine') {
+    $vars['theme_hook_suggestions'] = array_merge(
+      array('search_result__tfk_search__magazine', 'search_result__tfk_search'),
+      $vars['theme_hook_suggestions']
+    );
+  }
+  
+  // Site-wide search.
+  if($base_path == 'search') {
+    $favorite_links = FALSE;
+  }
+  
+  // Title.
+  $title = $vars['title'];
+  $vars['title'] = l($title, 'node/'. $vars['result']['fields']['entity_id'], array('html' => TRUE));
+  $attributes = array('class' => array('thumbnail', 'content-type-'. $vars['result']['fields']['bundle']));
+  $thumb_attr = $attributes;
+  $link_attr = array('html' => TRUE, 'attributes' => $attributes);
+  
+  
+  // Avoid further preprocessing if this node doesn't exist on this server.
+  $nid = $vars['result']['fields']['entity_id'];
+  $node = node_load($nid);
+  $vars['render'] = TRUE;
+  //if($node === FALSE) {
+    // "Hijack" the rendering process by using a custom variable that causes
+    // the search-result[--suggestion].tpl.php template to return an empty string.
+    //$vars['render'] = FALSE;
+    //return;
+  //}
+  
+  switch ($vars['result']['fields']['bundle']) {
     
-    // Site-wide search.
-    if($base_path == 'search') {
-      $favorite_links = FALSE;
-    }
-    
-    // Title.
-    $title = $vars['title'];
-    $vars['title'] = l($title, 'node/'. $vars['result']['fields']['entity_id'], array('html' => TRUE));
-    $attributes = array('class' => array('thumbnail', 'content-type-'. $vars['result']['fields']['bundle']));
-    $thumb_attr = $attributes;
-    $link_attr = array('html' => TRUE, 'attributes' => $attributes);
-    
-    
-    // Avoid further preprocessing if this node doesn't exist on this server.
-    $nid = $vars['result']['fields']['entity_id'];
-    $node = node_load($nid);
-    $vars['render'] = TRUE;
-    //if($node === FALSE) {
-      // "Hijack" the rendering process by using a custom variable that causes
-      // the search-result[--suggestion].tpl.php template to return an empty string.
-      //$vars['render'] = FALSE;
-      //return;
-    //}
-    
-    switch ($vars['result']['fields']['bundle']) {
+    case 'minisite':
+      if(isset($node->field_minisite_tout_image)){
+        $tmp_img_nid =  field_get_items('node', $node, 'field_minisite_tout_image');
+        $uri = $tmp_img_nid[0]['uri'];
+        $filesystem_path = drupal_realpath($uri);
+        if(file_exists($filesystem_path)) {
+          $newpath = image_style_path($style, $uri);
+          $abspath = file_create_url($newpath);
+          $thumbnail = theme('image', array('path' => $abspath, 'alt' => $title, 'title' => $title, 'attributes' => $thumb_attr));
+          $vars['thumbnail'] = l($thumbnail, 'node/'. $vars['result']['fields']['entity_id'], $link_attr);
+        }
+      }
       
-      case 'minisite':
-        if(isset($node->field_minisite_tout_image)){
-          $tmp_img_nid =  field_get_items('node', $node, 'field_minisite_tout_image');
-          $uri = $tmp_img_nid[0]['uri'];
-          $filesystem_path = drupal_realpath($uri);
-          if(file_exists($filesystem_path)) {
+      $body = field_get_items('node', $node, 'body');
+      if(!empty($body[0]['safe_summary'])) {
+        $teaser = $body[0]['safe_summary'];
+      } elseif(!empty($body[0]['safe_value'])) {
+        $teaser = $body[0]['safe_value'];
+      }
+      
+      $vars['tfk_search_result_link_1'] = l('Go to Minisite', 'node/'. $nid);
+    break;
+    
+    case 'atw_destination':
+      if(isset($node->field_tout_image)){
+        $tmp_img_nid =  field_get_items('node', $node, 'field_tout_image');
+        $img_nid = $tmp_img_nid[0]['nid'];
+
+        $result = db_query('select fi.field_image_fid,fm.filename from {field_data_field_image} fi
+          left join {file_managed} fm on fi.field_image_fid = fm.fid
+          where fi.entity_type = :bundle_type and fi.entity_id = :img_nid',array('bundle_type'=>'node','img_nid'=>$img_nid));
+        $record = $result->fetch();
+        
+        if($record) {
+          $uri = file_build_uri(basename($record->filename));
+          if(file_exists(drupal_realpath($uri))) {
             $newpath = image_style_path($style, $uri);
             $abspath = file_create_url($newpath);
             $thumbnail = theme('image', array('path' => $abspath, 'alt' => $title, 'title' => $title, 'attributes' => $thumb_attr));
             $vars['thumbnail'] = l($thumbnail, 'node/'. $vars['result']['fields']['entity_id'], $link_attr);
           }
         }
-        
-        $body = field_get_items('node', $node, 'body');
-        if(!empty($body[0]['safe_summary'])) {
-          $teaser = $body[0]['safe_summary'];
-        } elseif(!empty($body[0]['safe_value'])) {
-          $teaser = $body[0]['safe_value'];
-        }
-        
-        $vars['tfk_search_result_link_1'] = l('Go to Minisite', 'node/'. $nid);
-      break;
+      }
       
-      case 'atw_destination':
-        if(isset($node->field_tout_image)){
-          $tmp_img_nid =  field_get_items('node', $node, 'field_tout_image');
-          $img_nid = $tmp_img_nid[0]['nid'];
-  
-          $result = db_query('select fi.field_image_fid,fm.filename from {field_data_field_image} fi
-            left join {file_managed} fm on fi.field_image_fid = fm.fid
-            where fi.entity_type = :bundle_type and fi.entity_id = :img_nid',array('bundle_type'=>'node','img_nid'=>$img_nid));
-          $record = $result->fetch();
-          
-          if($record) {
-            $uri = file_build_uri(basename($record->filename));
-            if(file_exists(drupal_realpath($uri))) {
-              $newpath = image_style_path($style, $uri);
-              $abspath = file_create_url($newpath);
-              $thumbnail = theme('image', array('path' => $abspath, 'alt' => $title, 'title' => $title, 'attributes' => $thumb_attr));
-              $vars['thumbnail'] = l($thumbnail, 'node/'. $vars['result']['fields']['entity_id'], $link_attr);
-            }
-          }
-        }
-        
-        $body = field_get_items('node', $node, 'body');
-        if(!empty($body[0]['summary'])) {
-          $teaser = $body[0]['summary'];
-        } elseif(!empty($body[0]['value'])) {
-          $teaser = $body[0]['value'];
-        }
-        
-        $vars['tfk_search_result_link_1'] = l('Go to '. $node->title. ' Around the World', 'node/'. $nid);
-      break;
+      $body = field_get_items('node', $node, 'body');
+      if(!empty($body[0]['summary'])) {
+        $teaser = $body[0]['summary'];
+      } elseif(!empty($body[0]['value'])) {
+        $teaser = $body[0]['value'];
+      }
       
-      case 'video':
-        if(isset($node->field_video_thumbnail)){
-          $tmp_img_nid =  field_get_items('node', $node, 'field_video_thumbnail');
-          $uri = $tmp_img_nid[0]['uri'];
-          if(file_exists(drupal_realpath($uri))) {
-            $icon = '<div class="icon"></div>';
-            $newpath = image_style_path($style, $uri);
-            $abspath = file_create_url($newpath);
-            $thumbnail = theme('image', array('path' => $abspath, 'alt' => $title, 'title' => $title, 'attributes' => $thumb_attr)). $icon;
-            $vars['thumbnail'] = l($thumbnail, 'node/'. $vars['result']['fields']['entity_id'], $link_attr);
-          }
+      $vars['tfk_search_result_link_1'] = l('Go to '. $node->title. ' Around the World', 'node/'. $nid);
+    break;
+    
+    case 'video':
+      if(isset($node->field_video_thumbnail)){
+        $tmp_img_nid =  field_get_items('node', $node, 'field_video_thumbnail');
+        $uri = $tmp_img_nid[0]['uri'];
+        if(file_exists(drupal_realpath($uri))) {
+          $icon = '<div class="icon"></div>';
+          $newpath = image_style_path($style, $uri);
+          $abspath = file_create_url($newpath);
+          $thumbnail = theme('image', array('path' => $abspath, 'alt' => $title, 'title' => $title, 'attributes' => $thumb_attr)). $icon;
+          $vars['thumbnail'] = l($thumbnail, 'node/'. $vars['result']['fields']['entity_id'], $link_attr);
         }
-        
-        // Flag link.
-        if($favorite_links) {
-          tfk_search_get_flag_link($vars, $nid, 'favorites');
-        }
-        
-        $body = field_get_items('node', $node, 'field_video_description');
-        if(!empty($body[0]['value'])) {
-          $teaser = $body[0]['value'];
-        }
-        
-        $vars['tfk_search_result_link_1'] = l('View the Video', 'node/'. $nid);
+      }
+      
+      // Flag link.
+      if($favorite_links) {
+        tfk_search_get_flag_link($vars, $nid, 'favorites');
+      }
+      
+      $body = field_get_items('node', $node, 'field_video_description');
+      if(!empty($body[0]['value'])) {
+        $teaser = $body[0]['value'];
+      }
+      
+      $vars['tfk_search_result_link_1'] = l('View the Video', 'node/'. $nid);
+    break;
+
+
+
+    case 'magazine_issue':
+      $magazine = $node;
+
+      //lets populate array of additional data for this node type search result
+      ////////////ISSUE DATE///////////////////////
+      $tmp_date =  field_get_items('node', $magazine, 'field_date');
+      $vars['magazine_issue_date_linux'] = $tmp_date[0]['value'];
+
+      ////////////GRADE LEVEL///////////////////////
+      $tmp_tid = field_get_items('node', $magazine, 'field_grade_level');
+      $tid = $tmp_tid[0]['tid'];
+      $name_res =  db_query('select name from taxonomy_term_data where tid = :tid',array('tid' => $tid ));
+      $name = $name_res->fetch();
+      $name = $name->name;
+      $vars['magazine_issue_grade_level'] = $name;
+
+      //////////////COVER IMAGE///////////////////
+      $tmp_img_nid =  field_get_items('node', $magazine, 'field_cover');
+      $img_nid = $tmp_img_nid[0]['nid'];
+      $result = db_query('select fi.field_image_fid,fm.filename from {field_data_field_image} fi
+        left join {file_managed} fm on fi.field_image_fid = fm.fid
+        where fi.entity_type = :bundle_type and fi.entity_id = :img_nid',array('bundle_type'=>'node','img_nid'=>$img_nid));
+      $record = $result->fetch();
+      $file = file_load($record->field_image_fid);
+      if(isset($file->uri) && file_exists(drupal_realpath($file->uri))) {
+        $newpath = image_style_path($style, $file->uri);
+        $abspath = file_create_url($newpath);
+        $thumbnail = theme('image', array('path' => $abspath, 'alt' => $title, 'title' => $title, 'attributes' => $thumb_attr));
+        $vars['thumbnail'] = l($thumbnail, 'node/'. $vars['result']['fields']['entity_id'], $link_attr);
+        //@todo for temporarily supporting the separate template. Delete this variable when we merge templates.
+        $vars['tfk_search_res_image'] = image_style_url($style, $file->uri);
+      }
+
+
+       //////////Getting Cover Stories//////////////
+       $tmp_stories = field_get_items('node', $magazine, 'field_cover_story');
+       foreach($tmp_stories as $k => $story){
+         $vars['magazine_cover_stories'][$k]['title'] = $story['title'];
+         $vars['magazine_cover_stories'][$k]['url'] = $story['url'];
+       }
+
+       //////////Getting In The News//////////////
+       $tmp_inthenews = field_get_items('node', $magazine, 'field_in_the_news');
+       foreach($tmp_inthenews as $k => $inthenew){
+         $vars['magazine_in_the_news'][$k]['title'] = $inthenew['title'];
+         $vars['magazine_in_the_news'][$k]['url'] = $inthenew['url'];
+       }
+
+       //////////Getting TOP 5//////////////
+       $tmp_topfive = field_get_items('node', $magazine, 'field_top_5');
+       foreach($tmp_topfive as $k => $topfive){
+         $vars['magazine_topfive'][$k]['title'] = $topfive['title'];
+         $vars['magazine_topfive'][$k]['url'] = $topfive['url'];
+       }
+
+       //////////Getting whosnews//////////////
+       $tmp_whosnews = field_get_items('node', $magazine, 'field_whos_news');
+       foreach($tmp_whosnews as $k => $whosnew){
+         $vars['magazine_whosnews'][$k]['title'] = $whosnew['title'];
+         $vars['magazine_whosnews'][$k]['url'] = $whosnew['url'];
+       }
+
+       //////////Getting morenews//////////////
+       $tmp_morenews = field_get_items('node', $magazine, 'field_more_news');
+       foreach($tmp_morenews as $k => $morenew){
+         $vars['magazine_morenews'][$k]['title'] = $morenew['title'];
+         $vars['magazine_morenews'][$k]['url'] = $morenew['url'];
+       }
+
+       ///////////GETTING ADDITIONAL CONTENT////////
+       ////////////////////Materials////////////////
+       $tmp_materials = field_get_items('node', $magazine, 'field_materials');
+       foreach($tmp_materials as $k=>$tmp_material){
+         //i want to get the title without doing an extra node_load
+         $sql = 'SELECT title FROM {node} WHERE nid = :nid';
+         $result = db_query($sql,array('nid'=>$tmp_material['nid']));
+         $link_title = $result->fetch();
+         $vars['magazine_materials'][$k]['title'] = $link_title->title;
+         $vars['magazine_materials'][$k]['nid'] = $tmp_material['nid'];
+         $vars['magazine_materials'][$k]['url'] = drupal_lookup_path('alias','node/'.$tmp_material['nid']);
+       }
+
+       ////////////////////Related Resources////////////////
+       $tmp_related = field_get_items('node', $magazine, 'field_related_resources');
+       foreach($tmp_related as $k=>$tmp_rel){
+         //i want to get the title without doing an extra node_load
+         $sql = 'SELECT title FROM {node} WHERE nid = :nid';
+         $result = db_query($sql,array('nid'=>$tmp_rel['nid']));
+         $link_title = $result->fetch();
+         $vars['magazine_related'][$k]['title'] = $link_title->title;
+         $vars['magazine_related'][$k]['nid'] = $tmp_rel['nid'];
+         $vars['magazine_related'][$k]['url'] = drupal_lookup_path('alias','node/'.$tmp_rel['nid']);
+       }
+
       break;
 
 
+    case 'worksheet':
+      $worksheet_nid = $nid;
+      
+      // Worksheets don't link to the node page.
+      $vars['title'] = $title;
 
-      case 'magazine_issue':
-        $magazine = $node;
-
-        //lets populate array of additional data for this node type search result
-        ////////////ISSUE DATE///////////////////////
-        $tmp_date =  field_get_items('node', $magazine, 'field_date');
-        $vars['magazine_issue_date_linux'] = $tmp_date[0]['value'];
-
-        ////////////GRADE LEVEL///////////////////////
-        $tmp_tid = field_get_items('node', $magazine, 'field_grade_level');
+      if(isset($node->field_worksheet_thumbnail_image)){
+        $tmp_img_nid =  field_get_items('node', $node, 'field_worksheet_thumbnail_image');
+        $uri = $tmp_img_nid[0]['uri'];
+        if(file_exists(drupal_realpath($uri))) {
+          $newpath = image_style_path($style, $uri);
+          $abspath = file_create_url($newpath);
+          // Worksheets don't link to the node page.
+          $vars['thumbnail'] = theme('image', array('path' => $abspath, 'alt' => $title, 'title' => $title, 'attributes' => $thumb_attr));
+        }
+      }
+      if(isset($node->field_grade_level)){
+        $tmp_tid = field_get_items('node', $node, 'field_grade_level');
         $tid = $tmp_tid[0]['tid'];
         $name_res =  db_query('select name from taxonomy_term_data where tid = :tid',array('tid' => $tid ));
         $name = $name_res->fetch();
         $name = $name->name;
-        $vars['magazine_issue_grade_level'] = $name;
+        $vars['tfk_search_cont_type_suffix'] = 'GRADE '. $name;
+      }
+      if(isset($node->field_skills)){
+        $tmp_tid = field_get_items('node', $node, 'field_skills');
+        $tid = $tmp_tid[0]['tid'];
+        $name_res =  db_query('select name from taxonomy_term_data where tid = :tid',array('tid' => $tid ));
+        $name = $name_res->fetch();
+        $name = $name->name;
 
-        //////////////COVER IMAGE///////////////////
-        $tmp_img_nid =  field_get_items('node', $magazine, 'field_cover');
+        // Worksheets don't show the skills in lieu of the content type anymore, space is left blank (per Sally).
+        if($base_path == 'worksheets') {
+          $vars['tfk_search_cont_type'] = '&nbsp;'; //rtrim($name, 's');
+        }
+        
+        // Body, trimmed to three lines of text.
+        $body = field_get_items('node', $node, 'body');
+        if(!empty($body) && !empty($body[0])) {
+          if(!empty($body[0]['safe_summary'])) {
+            $vars['snippet'] = truncate_utf8($body[0]['safe_summary'], '200', TRUE, TRUE, 10);
+          } elseif(!empty($body[0]['safe_value'])) {
+            $vars['snippet'] = truncate_utf8($body[0]['safe_value'], '200', TRUE, TRUE, 10);
+          }
+        }
+        
+        // See Related Article link.
+        $related_articles = field_get_items('node', $node, 'field_related_articles');
+        if($related_articles != FALSE) {
+          // @todo We should be indexing this data instead of node_loading it.
+          // Too much node loads may eliminate the speed advantage provided by Solr.
+          // Only doing this because we have a presentation today.
+          $article_nid = array_shift(array_shift($related_articles));
+          if($article_nid) {
+            $article_node = node_load($article_nid);
+            $vars['node_link'] = l('See Related Article', 'node/'. $article_node->nid,
+              array('attributes' => array('title' => $article_node->title, 'class' => array('worksheet-article-ref')))
+            );
+          }
+        }
+                
+      }
+      
+      // Download this [worksheet type] link.
+      if(isset($node->field_worksheet_pdf)){
+        $vars['tfk_worksheet_pdf_url'] = '';
+        $tmp_pdf =  field_get_items('node', $node, 'field_worksheet_pdf');
+        $pdf_tmp_uri = $tmp_pdf[0]['uri'];
+        
+        if($pdf_path = file_create_url($pdf_tmp_uri)){
+          $vars['tfk_worksheet_pdf_link'] = l('Download this Printable', $pdf_path);
+        }
+      }
+      
+      // This is code that will get us a flag html with a working flag link to put in a template.
+      if($favorite_links) {
+        tfk_search_get_flag_link($vars, $worksheet_nid, 'favorites');
+      }
+      
+      // Content type CSS class.
+      $vars['classes_array'][] = 'worksheet';
+      $vars['classes_array'][] = (!empty($name)) ? strtolower(rtrim($name, 's')) : 'worksheet';
+    break;
+
+    case 'slideshow':
+      if(isset($node->field_slideshow_images)) {
+        $tmp_img_nid =  field_get_items('node', $node, 'field_slideshow_images');
         $img_nid = $tmp_img_nid[0]['nid'];
         $result = db_query('select fi.field_image_fid,fm.filename from {field_data_field_image} fi
           left join {file_managed} fm on fi.field_image_fid = fm.fid
@@ -1144,340 +1310,173 @@ function tfk_search_preprocess_search_result(&$vars) {
         $record = $result->fetch();
         $file = file_load($record->field_image_fid);
         if(isset($file->uri) && file_exists(drupal_realpath($file->uri))) {
-          $newpath = image_style_path($style, $file->uri);
-          $abspath = file_create_url($newpath);
-          $thumbnail = theme('image', array('path' => $abspath, 'alt' => $title, 'title' => $title, 'attributes' => $thumb_attr));
+          $file->newpath = image_style_path($style, $file->uri);
+          $abspath = image_style_url($style, $file->uri);
+          $icon = '<div class="icon"></div>';
+          $thumbnail = theme('image', array('path' => $abspath, 'alt' => $title, 'title' => $title, 'attributes' => $thumb_attr)). $icon;
           $vars['thumbnail'] = l($thumbnail, 'node/'. $vars['result']['fields']['entity_id'], $link_attr);
-          //@todo for temporarily supporting the separate template. Delete this variable when we merge templates.
-          $vars['tfk_search_res_image'] = image_style_url($style, $file->uri);
         }
+      }
+      
+      // Flag link.
+      if($favorite_links) {
+        tfk_search_get_flag_link($vars, $nid, 'favorites');
+      }
+      
+      $vars['tfk_search_result_link_1'] = l('View this Slideshow', 'node/'. $nid);
+      
+      $body = field_get_items('node', $node, 'field_slideshow_description');
+      if(!empty($body[0]['value'])) {
+        $teaser = $body[0]['value'];
+      }
+    break;
+    
+    case 'article':
+      if(isset($node->field_tout_image)){
+        $tmp_img_nid =  field_get_items('node', $node, 'field_tout_image');
+        $img_nid = $tmp_img_nid[0]['nid'];
 
-
-         //////////Getting Cover Stories//////////////
-         $tmp_stories = field_get_items('node', $magazine, 'field_cover_story');
-         foreach($tmp_stories as $k => $story){
-           $vars['magazine_cover_stories'][$k]['title'] = $story['title'];
-           $vars['magazine_cover_stories'][$k]['url'] = $story['url'];
-         }
-
-         //////////Getting In The News//////////////
-         $tmp_inthenews = field_get_items('node', $magazine, 'field_in_the_news');
-         foreach($tmp_inthenews as $k => $inthenew){
-           $vars['magazine_in_the_news'][$k]['title'] = $inthenew['title'];
-           $vars['magazine_in_the_news'][$k]['url'] = $inthenew['url'];
-         }
-
-         //////////Getting TOP 5//////////////
-         $tmp_topfive = field_get_items('node', $magazine, 'field_top_5');
-         foreach($tmp_topfive as $k => $topfive){
-           $vars['magazine_topfive'][$k]['title'] = $topfive['title'];
-           $vars['magazine_topfive'][$k]['url'] = $topfive['url'];
-         }
-
-         //////////Getting whosnews//////////////
-         $tmp_whosnews = field_get_items('node', $magazine, 'field_whos_news');
-         foreach($tmp_whosnews as $k => $whosnew){
-           $vars['magazine_whosnews'][$k]['title'] = $whosnew['title'];
-           $vars['magazine_whosnews'][$k]['url'] = $whosnew['url'];
-         }
-
-         //////////Getting morenews//////////////
-         $tmp_morenews = field_get_items('node', $magazine, 'field_more_news');
-         foreach($tmp_morenews as $k => $morenew){
-           $vars['magazine_morenews'][$k]['title'] = $morenew['title'];
-           $vars['magazine_morenews'][$k]['url'] = $morenew['url'];
-         }
-
-         ///////////GETTING ADDITIONAL CONTENT////////
-         ////////////////////Materials////////////////
-         $tmp_materials = field_get_items('node', $magazine, 'field_materials');
-         foreach($tmp_materials as $k=>$tmp_material){
-           //i want to get the title without doing an extra node_load
-           $sql = 'SELECT title FROM {node} WHERE nid = :nid';
-           $result = db_query($sql,array('nid'=>$tmp_material['nid']));
-           $link_title = $result->fetch();
-           $vars['magazine_materials'][$k]['title'] = $link_title->title;
-           $vars['magazine_materials'][$k]['nid'] = $tmp_material['nid'];
-           $vars['magazine_materials'][$k]['url'] = drupal_lookup_path('alias','node/'.$tmp_material['nid']);
-         }
-
-         ////////////////////Related Resources////////////////
-         $tmp_related = field_get_items('node', $magazine, 'field_related_resources');
-         foreach($tmp_related as $k=>$tmp_rel){
-           //i want to get the title without doing an extra node_load
-           $sql = 'SELECT title FROM {node} WHERE nid = :nid';
-           $result = db_query($sql,array('nid'=>$tmp_rel['nid']));
-           $link_title = $result->fetch();
-           $vars['magazine_related'][$k]['title'] = $link_title->title;
-           $vars['magazine_related'][$k]['nid'] = $tmp_rel['nid'];
-           $vars['magazine_related'][$k]['url'] = drupal_lookup_path('alias','node/'.$tmp_rel['nid']);
-         }
-
-        break;
-
-
-      case 'worksheet':
-        $worksheet_nid = $nid;
-        
-        // Worksheets don't link to the node page.
-        $vars['title'] = $title;
- 
-        if(isset($node->field_worksheet_thumbnail_image)){
-          $tmp_img_nid =  field_get_items('node', $node, 'field_worksheet_thumbnail_image');
-          $uri = $tmp_img_nid[0]['uri'];
+        $result = db_query('select fi.field_image_fid,fm.filename from {field_data_field_image} fi
+          left join {file_managed} fm on fi.field_image_fid = fm.fid
+          where fi.entity_type = :bundle_type and fi.entity_id = :img_nid',array('bundle_type'=>'node','img_nid'=>$img_nid));
+        $record = $result->fetch();
+        if($record) {
+          $uri = file_build_uri(basename($record->filename));
           if(file_exists(drupal_realpath($uri))) {
-            $newpath = image_style_path($style, $uri);
-            $abspath = file_create_url($newpath);
-            // Worksheets don't link to the node page.
-            $vars['thumbnail'] = theme('image', array('path' => $abspath, 'alt' => $title, 'title' => $title, 'attributes' => $thumb_attr));
-          }
-        }
-        if(isset($node->field_grade_level)){
-          $tmp_tid = field_get_items('node', $node, 'field_grade_level');
-          $tid = $tmp_tid[0]['tid'];
-          $name_res =  db_query('select name from taxonomy_term_data where tid = :tid',array('tid' => $tid ));
-          $name = $name_res->fetch();
-          $name = $name->name;
-          $vars['tfk_search_cont_type_suffix'] = 'GRADE '. $name;
-        }
-        if(isset($node->field_skills)){
-          $tmp_tid = field_get_items('node', $node, 'field_skills');
-          $tid = $tmp_tid[0]['tid'];
-          $name_res =  db_query('select name from taxonomy_term_data where tid = :tid',array('tid' => $tid ));
-          $name = $name_res->fetch();
-          $name = $name->name;
-
-          // Worksheets don't show the skills in lieu of the content type anymore, space is left blank (per Sally).
-          if($base_path == 'worksheets') {
-            $vars['tfk_search_cont_type'] = '&nbsp;'; //rtrim($name, 's');
-          }
-          
-          // Body, trimmed to three lines of text.
-          $body = field_get_items('node', $node, 'body');
-          if(!empty($body) && !empty($body[0])) {
-            if(!empty($body[0]['safe_summary'])) {
-              $vars['snippet'] = truncate_utf8($body[0]['safe_summary'], '200', TRUE, TRUE, 10);
-            } elseif(!empty($body[0]['safe_value'])) {
-              $vars['snippet'] = truncate_utf8($body[0]['safe_value'], '200', TRUE, TRUE, 10);
-            }
-          }
-          
-          // See Related Article link.
-          $related_articles = field_get_items('node', $node, 'field_related_articles');
-          if($related_articles != FALSE) {
-            // @todo We should be indexing this data instead of node_loading it.
-            // Too much node loads may eliminate the speed advantage provided by Solr.
-            // Only doing this because we have a presentation today.
-            $article_nid = array_shift(array_shift($related_articles));
-            if($article_nid) {
-              $article_node = node_load($article_nid);
-              $vars['node_link'] = l('See Related Article', 'node/'. $article_node->nid,
-                array('attributes' => array('title' => $article_node->title, 'class' => array('worksheet-article-ref')))
-              );
-            }
-          }
-                  
-        }
-        
-        // Download this [worksheet type] link.
-        if(isset($node->field_worksheet_pdf)){
-          $vars['tfk_worksheet_pdf_url'] = '';
-          $tmp_pdf =  field_get_items('node', $node, 'field_worksheet_pdf');
-          $pdf_tmp_uri = $tmp_pdf[0]['uri'];
-          
-          if($pdf_path = file_create_url($pdf_tmp_uri)){
-            $vars['tfk_worksheet_pdf_link'] = l('Download this Printable', $pdf_path);
-          }
-        }
-        
-        // This is code that will get us a flag html with a working flag link to put in a template.
-        if($favorite_links) {
-          tfk_search_get_flag_link($vars, $worksheet_nid, 'favorites');
-        }
-        
-        // Content type CSS class.
-        $vars['classes_array'][] = 'worksheet';
-        $vars['classes_array'][] = (!empty($name)) ? strtolower(rtrim($name, 's')) : 'worksheet';
-      break;
-
-      case 'slideshow':
-        if(isset($node->field_slideshow_images)) {
-          $tmp_img_nid =  field_get_items('node', $node, 'field_slideshow_images');
-          $img_nid = $tmp_img_nid[0]['nid'];
-          $result = db_query('select fi.field_image_fid,fm.filename from {field_data_field_image} fi
-            left join {file_managed} fm on fi.field_image_fid = fm.fid
-            where fi.entity_type = :bundle_type and fi.entity_id = :img_nid',array('bundle_type'=>'node','img_nid'=>$img_nid));
-          $record = $result->fetch();
-          $file = file_load($record->field_image_fid);
-          if(isset($file->uri) && file_exists(drupal_realpath($file->uri))) {
-            $file->newpath = image_style_path($style, $file->uri);
-            $abspath = image_style_url($style, $file->uri);
+            $file->newpath = image_style_path($style, $uri);
+            $abspath = image_style_url($style, $uri);
             $icon = '<div class="icon"></div>';
             $thumbnail = theme('image', array('path' => $abspath, 'alt' => $title, 'title' => $title, 'attributes' => $thumb_attr)). $icon;
             $vars['thumbnail'] = l($thumbnail, 'node/'. $vars['result']['fields']['entity_id'], $link_attr);
           }
         }
-        
-        // Flag link.
-        if($favorite_links) {
-          tfk_search_get_flag_link($vars, $nid, 'favorites');
-        }
-        
-        $vars['tfk_search_result_link_1'] = l('View this Slideshow', 'node/'. $nid);
-        
-        $body = field_get_items('node', $node, 'field_slideshow_description');
-        if(!empty($body[0]['value'])) {
-          $teaser = $body[0]['value'];
-        }
-      break;
+      }
+      if(isset($node->field_article_category)){
+        $tmp_tid = field_get_items('node', $node, 'field_article_category');
+        $tid = $tmp_tid[0]['tid'];
+        $name_res =  db_query('select name from taxonomy_term_data where tid = :tid',array('tid' => $tid ));
+        $name = $name_res->fetch();
+        $name = $name->name;
+        $vars['tfk_search_res_category'] = $name;
+      }
       
-      case 'article':
-        if(isset($node->field_tout_image)){
-          $tmp_img_nid =  field_get_items('node', $node, 'field_tout_image');
-          $img_nid = $tmp_img_nid[0]['nid'];
+      if($base_path = 'search') {
+        $vars['tfk_search_result_link_1'] = l('Read the Full Article', 'node/'. $nid);
+      }
+      
+      // We still trim the deck, just for safety.
+      $body = field_get_items('node', $node, 'field_deck');
+      if(!empty($body[0]['safe_value'])) {
+        $teaser = $body[0]['safe_value'];
+      }
+    break;
+        
+    //default:
+    //  ;
+    //break;
+  }
   
-          $result = db_query('select fi.field_image_fid,fm.filename from {field_data_field_image} fi
-            left join {file_managed} fm on fi.field_image_fid = fm.fid
-            where fi.entity_type = :bundle_type and fi.entity_id = :img_nid',array('bundle_type'=>'node','img_nid'=>$img_nid));
-          $record = $result->fetch();
-          if($record) {
-            $uri = file_build_uri(basename($record->filename));
-            if(file_exists(drupal_realpath($uri))) {
-              $file->newpath = image_style_path($style, $uri);
-              $abspath = image_style_url($style, $uri);
-              $icon = '<div class="icon"></div>';
-              $thumbnail = theme('image', array('path' => $abspath, 'alt' => $title, 'title' => $title, 'attributes' => $thumb_attr)). $icon;
-              $vars['thumbnail'] = l($thumbnail, 'node/'. $vars['result']['fields']['entity_id'], $link_attr);
-            }
+  // All search interfaces.
+  if($teaser) {
+    if(strlen($teaser) > 185) {
+      $vars['snippet'] = truncate_utf8($teaser, '185', TRUE, TRUE);
+    } else {
+      $vars['snippet'] = $teaser;
+    }
+  }
+  
+  
+  // Photos & Video -specific- preprocessing.
+  if(arg(0) == 'photos-video') {
+    $vars['classes_array'][] = 'tfk-search-result';
+    
+    // Theming for results with thumbnails.
+    if(array_key_exists('tfk_search_res_image', $vars)) {
+      $vars['classes_array'][] = 'with-image';
+    }
+    
+    // View Full Article, on Photos and Video only do for videos.
+    if($node->type == 'video') {
+      $additional_contents = field_get_items('node', $node, 'field_additional_content');
+      if($additional_contents != FALSE) {
+        // @todo We should be indexing this data instead of node_loading it.
+        // Too much node loads may eliminate the speed advantage provided by Solr.
+        // Only doing this because we have a presentation today.
+        foreach($additional_contents as $additional_content) {
+          $additional_node = node_load($additional_content['nid']);
+          if($additional_node && $additional_node->type == 'article') {
+            // Break on the first article we find.
+            break;
           }
         }
-        if(isset($node->field_article_category)){
-          $tmp_tid = field_get_items('node', $node, 'field_article_category');
-          $tid = $tmp_tid[0]['tid'];
-          $name_res =  db_query('select name from taxonomy_term_data where tid = :tid',array('tid' => $tid ));
-          $name = $name_res->fetch();
-          $name = $name->name;
-          $vars['tfk_search_res_category'] = $name;
-        }
+      }
+      $vars['node_link'] = l('View Full Article', 'node/'. $additional_node->nid,
+        array('attributes' => array('title' => $additional_node->title))
+      );
+    }
+      
+    // Related content.
+    $related_content = array();
+
+    if(array_key_exists(TFK_SEARCH_RELATED_TITLE, $vars['result']['fields'])
+      && array_key_exists(TFK_SEARCH_RELATED_PATH, $vars['result']['fields'])) {
+      
+      foreach($vars['result']['fields'][TFK_SEARCH_RELATED_TITLE] as $key => $rc_title) {
         
-        if($base_path = 'search') {
-          $vars['tfk_search_result_link_1'] = l('Read the Full Article', 'node/'. $nid);
-        }
-        
-        // We still trim the deck, just for safety.
-        $body = field_get_items('node', $node, 'field_deck');
-        if(!empty($body[0]['safe_value'])) {
-          $teaser = $body[0]['safe_value'];
-        }
-      break;
+        // Translate content type to a human readable form.
+        switch ($vars['result']['fields'][TFK_SEARCH_RELATED_TYPE][$key]) {
+          case 'atw_destination':
+            $content_type = 'destination';
+          break;
           
-      //default:
-      //  ;
-      //break;
-    }
-    
-    // All search interfaces.
-    if($teaser) {
-      if(strlen($teaser) > 185) {
-        $vars['snippet'] = truncate_utf8($teaser, '185', TRUE, TRUE);
-      } else {
-        $vars['snippet'] = $teaser;
-      }
-    }
-    
-    
-    // Photos & Video -specific- preprocessing.
-    if(arg(0) == 'photos-video') {
-      $vars['classes_array'][] = 'tfk-search-result';
-      
-      // Theming for results with thumbnails.
-      if(array_key_exists('tfk_search_res_image', $vars)) {
-        $vars['classes_array'][] = 'with-image';
-      }
-      
-      // View Full Article, on Photos and Video only do for videos.
-      if($node->type == 'video') {
-        $additional_contents = field_get_items('node', $node, 'field_additional_content');
-        if($additional_contents != FALSE) {
-          // @todo We should be indexing this data instead of node_loading it.
-          // Too much node loads may eliminate the speed advantage provided by Solr.
-          // Only doing this because we have a presentation today.
-          foreach($additional_contents as $additional_content) {
-            $additional_node = node_load($additional_content['nid']);
-            if($additional_node && $additional_node->type == 'article') {
-              // Break on the first article we find.
-              break;
-            }
-          }
+          default:
+            $content_type = $vars['result']['fields'][TFK_SEARCH_RELATED_TYPE][$key];
+          break;
         }
-        $vars['node_link'] = l('View Full Article', 'node/'. $additional_node->nid,
-          array('attributes' => array('title' => $additional_node->title))
+        
+        // Add related content item.
+        $related_content[] = array(
+        	'title' => $rc_title,
+          'path' => $vars['result']['fields'][TFK_SEARCH_RELATED_PATH][$key],
+          'type' => $content_type
         );
       }
+    // Videos.
+    } else {
+      $items = field_get_items('node', $node, 'field_related_photos_video');
+      if(!empty($items)) {
+        $related_nid = array_shift(array_shift($items));
+        $related_node = node_load($related_nid);
         
-      // Related content.
-      $related_content = array();
-
-      if(array_key_exists(TFK_SEARCH_RELATED_TITLE, $vars['result']['fields'])
-        && array_key_exists(TFK_SEARCH_RELATED_PATH, $vars['result']['fields'])) {
-        
-        foreach($vars['result']['fields'][TFK_SEARCH_RELATED_TITLE] as $key => $rc_title) {
-          
-          // Translate content type to a human readable form.
-          switch ($vars['result']['fields'][TFK_SEARCH_RELATED_TYPE][$key]) {
-            case 'atw_destination':
-              $content_type = 'destination';
-            break;
-            
-            default:
-              $content_type = $vars['result']['fields'][TFK_SEARCH_RELATED_TYPE][$key];
-            break;
-          }
-          
-          // Add related content item.
-          $related_content[] = array(
-          	'title' => $rc_title,
-            'path' => $vars['result']['fields'][TFK_SEARCH_RELATED_PATH][$key],
-            'type' => $content_type
-          );
-        }
-      // Videos.
-      } else {
-        $items = field_get_items('node', $node, 'field_related_photos_video');
-        if(!empty($items)) {
-          $related_nid = array_shift(array_shift($items));
-          $related_node = node_load($related_nid);
-          
-          // Add related content item.
-          $related_content[] = array(
-          	'title' => $related_node->title,
-            'path' => 'node/'. $related_nid,
-            'type' => $related_node->type,
-          );
-        }
-        
-        $vars['snippet'] = array_shift(array_shift(field_get_items('node', $node, 'body')));
+        // Add related content item.
+        $related_content[] = array(
+        	'title' => $related_node->title,
+          'path' => 'node/'. $related_nid,
+          'type' => $related_node->type,
+        );
       }
       
-      // Theme related content.
-      if(!empty($related_content)) {
-        if(tfk_helper_user_has_role()) {
-          $vars['related_content'] = theme('tfk_search_related_content', array('related_content' => $related_content));
-        }
-      }
-
-      
-      // Minor stuff.
-      strtoupper($vars['tfk_search_cont_type']);
-      
-      // @todo Add a dek field to the slideshow, or trim snippet.
-      
-      // @todo Load additional content / related article.
-
-      // Unset stuff that we are not going to use.
-      unset($vars['info']);
+      $vars['snippet'] = array_shift(array_shift(field_get_items('node', $node, 'body')));
     }
-    $test = null;
+    
+    // Theme related content.
+    if(!empty($related_content)) {
+      if(tfk_helper_user_has_role()) {
+        $vars['related_content'] = theme('tfk_search_related_content', array('related_content' => $related_content));
+      }
+    }
+
+    
+    // Minor stuff.
+    strtoupper($vars['tfk_search_cont_type']);
+    
+    // @todo Add a dek field to the slideshow, or trim snippet.
+    
+    // @todo Load additional content / related article.
+
+    // Unset stuff that we are not going to use.
+    unset($vars['info']);
+  }
 
 }
 
