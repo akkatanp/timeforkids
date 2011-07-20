@@ -76,7 +76,7 @@ function tfk_extras_preprocess_node(&$variables){
         $item_tmp = entity_load('field_collection_item', array($item['value']));
         $term = taxonomy_term_load($item_tmp[$item['value']]->field_tfk_extra_pdf_taxonomy['und'][0]['tid']);
         $pdfs[$z]['term_name'] = $term->name;
-        $pdfs[$z]['pdf_title'] = check_plain($item_tmp[$item['value']]->field_tfk_extra_pdf_headline['und'][0]['value']);
+        $pdfs[$z]['pdf_title'] = strip_tags($item_tmp[$item['value']]->field_tfk_extra_pdf_headline['und'][0]['value']);
         $pdfs[$z]['pdf_url'] =  file_create_url($item_tmp[$item['value']]->field_tfk_extra_pdf_file['und'][0]['uri']);
     }
 
