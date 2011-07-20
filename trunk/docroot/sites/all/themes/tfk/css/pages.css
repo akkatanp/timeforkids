@@ -2376,4 +2376,11 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 .foot-credit .creditval{
   
 }
+
+
+#block-views-board-members-block-2 .view-header {
+    border: none;
+    padding: 0px;
+}
+
 /*sergei voitenko end */
