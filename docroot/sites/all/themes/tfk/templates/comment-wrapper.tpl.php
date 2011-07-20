@@ -53,7 +53,7 @@ $comment_form = render($content['comment_form']);
   <?php endif; ?>
   
   <?php if(isset($bottom_suggestion_msg)): ?>
-  	<div id='bottom-suggestion-box'>
+  	<div id='bottom-suggestion-box' class="suggestion-box">
   		<div class='msg'><?php print $bottom_suggestion_msg; ?></div>
   		<div class='link'><?php print $bottom_suggestion_link; ?></div>
   	</div>
