@@ -51,7 +51,14 @@ function tfk_page_paths_menu(){
 	return $items;
 }
 
-
+function tfk_page_paths_perm() {
+  return array(
+    'access protected content' => array(
+      'title' => t('TFK Custom Permission '),
+      'description' => t('TFK Custom Permission'),
+    )
+  );
+}
 
 function tfk_store_callback(){
   return '';
