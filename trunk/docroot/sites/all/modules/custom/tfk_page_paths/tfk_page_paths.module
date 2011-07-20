@@ -51,10 +51,10 @@ function tfk_page_paths_menu(){
 	return $items;
 }
 
-function tfk_page_paths_perm() {
+function tfk_page_paths_permission() {
   return array(
     'access protected content' => array(
-      'title' => t('TFK Custom Permission '),
+      'title' => t('TFK Custom Permission'),
       'description' => t('TFK Custom Permission'),
     )
   );
