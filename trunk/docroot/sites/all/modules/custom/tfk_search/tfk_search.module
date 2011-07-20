@@ -760,6 +760,11 @@ function tfk_search_preprocess_page(&$variables) {
     $variables['section_title'] = 'SEARCH';
     unset($_variables['page']['content']['system_main']['search_form']);
   }
+  
+  // Supress Featured block if facets are active.
+  if(isset($_GET['filters'])) {
+    unset($_variables['page']['highlighted']['tfk_search_tfk_search_photos_video_featured']);
+  }
 }
 
 /**
