@@ -10,7 +10,7 @@ function tfk_page_paths_menu(){
 		'title' => 'TFK Store',
 		'page callback' => 'tfk_store_callback',
 		'access callback' => 'user_access',
-		'access arguments' => array('access content')
+		'access arguments' => array('access protected content')
 	);
         $items['magazine'] = array(
 		'title' => 'TFK Magazine',
