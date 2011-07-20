@@ -481,14 +481,14 @@ ul.links li {
 .view-id-homepage_news_for_teachers .views-field-field-image {
 	float: left;
 	height: 92px;
-	width: 62px;
+	width: 52px;
 	margin: 0 10px 10px 0;
 }
 
 .view-id-homepage_news_for_teachers .views-field-field-image img {
 	border: solid 1px #cecece;
-	width: 60px;
-	height: 60px;
+	width: 50px;
+	height: 50px;
 }
 
 .view-id-homepage_news_for_teachers .views-field-field-article-url-1 a {
