@@ -263,6 +263,8 @@ ul.links li {
 #block-views-board-members-block-1 {
     border: 1px solid #CECECE;
     background:#daf0fe;
+    min-height:200px;
+    height:auto !important;
     height:200px;
     padding: 10px 10px 10px 10px;
 }
