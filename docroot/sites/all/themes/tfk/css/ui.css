@@ -51,11 +51,11 @@
 .tfk-jump-reminder {text-align:center;margin-top:10px;}
 #tfk-jump-continue {
     position:absolute;
-    top:170px;
+    top:180px;
     left:300px;
 }
 #tfk-jump-back {
     position:absolute;
-    top:220px;
+    top:230px;
     left:300px;
 }
