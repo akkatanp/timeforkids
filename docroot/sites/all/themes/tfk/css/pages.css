@@ -2074,12 +2074,12 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 	border: solid 1px #cecece;
 	background: #dedede;
 	height: 25px;
-	line-height: 25px;
 	padding: 10px;
 }
 
 #native-lingo-container #image-container #audio-box  #audio-player-box .hear-it {
-	line-height: 25px;
+	height: 12px;
+	padding: 11px 0 12px 0;
 }
 
 #jplayer_play,
