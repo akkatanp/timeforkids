@@ -5,7 +5,7 @@
 }
 
 #sightseeing-container h1 {
-	font: normal 30px arial;
+	font: bold 30px arial;
 	margin: 4px 0;
 	line-height: 1;
 }
@@ -19,6 +19,7 @@
 }
 
 #sightseeing-container #map-container p:first-child {
+	font: normal 14px arial;
 	padding-bottom: 10px;
 	border-bottom: dotted 1px #cecece;
 	margin: 4px 0 10px 0;
