@@ -790,6 +790,8 @@ ul.links li {
 .view-kid-reporters-channel-news-block table td .views-field-name a {
 	color: white;
 	text-transform: uppercase;
+        font-size:12px;
+        font-family: "Arial Black";
 }
 
 .view-homepage-news-block table td .views-field-field-lrg-rect-image,
@@ -801,6 +803,14 @@ ul.links li {
 	margin-bottom: 10px;
 }
 
+.secondary-tout-image-credit {
+    color: #999999;
+    font: 9px arial;
+    text-align: right;
+    text-transform: uppercase;
+    margin-bottom:10px;
+}
+
 .view-homepage-news-block table td .views-field-field-lrg-rect-image img,
 .view-teacher-news-news-block table td .views-field-field-lrg-rect-image img,
 .view-kid-reporters-channel-news-block table td .views-field-field-lrg-rect-image img {
@@ -808,11 +818,20 @@ ul.links li {
 	height: 120px;
 }
 
-.view-homepage-news-block table td .views-field-title a,
-.view-teacher-news-news-block table td .views-field-title a,
-.view-kid-reporters-channel-news-block table td .views-field-title a {
-	font: normal 20px arial;
+.view-homepage-news-block table td .views-field-title,
+.view-teacher-news-news-block table td .views-field-title,
+.view-kid-reporters-channel-news-block table td .views-field-title {/*secondary tout title*/
+        margin-bottom:14px;
+        font: bold 20px arial;
 }
+
+.view-homepage-news-block table td .views-field-title-1,
+.view-teacher-news-news-block table td .views-field-title-1,
+.view-kid-reporters-channel-news-block table td .views-field-title-1 {/*view full article link*/
+        margin-top:12px;
+        font: normal 12px "Arial Black";
+}
+
 
 /* kid reporter */
 .node-kid-reporter {
@@ -1006,6 +1025,8 @@ ul.links li {
 	left: -4px;
 	font-weight: bold;
 	margin-top: 10px;
+        font-family: Arial Black;
+        font-size:12px;
 }
 
 .related-content-wrap a {
@@ -1022,6 +1043,9 @@ ul.links li {
 	padding: 2px 0 2px 20px;
 	line-height: 16px;
 	text-transform: uppercase;
+        font-size:11px;
+        font-weight: bold;
+        font-family: Arial;
 }
 
 .related-content-wrap .addit-mini-lessons, .node-type-article .field-name-field-mini-lessons {
