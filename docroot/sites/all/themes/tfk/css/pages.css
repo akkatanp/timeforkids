@@ -2078,9 +2078,9 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 }
 
 #native-lingo-container #image-container #audio-box  #audio-player-box .hear-it {
-	float: left;
+	display: inline-block;
 	height: 12px;
-	padding: 11px 0 12px 0;
+	margin: 11px 0 12px 0;
 }
 
 #jplayer_play,
