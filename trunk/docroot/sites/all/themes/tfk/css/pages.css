@@ -1208,7 +1208,7 @@ ul.links li {
 	background: url(../images/atw-list-icon.png) no-repeat 0px 0px;
 }
 
-#block-tfk-atw-atw-page-list-map-switch a.list-view :hover {
+#block-tfk-atw-atw-page-list-map-switch a.list-view:hover {
 	background: url(../images/atw-list-icon.png) no-repeat 0px -22px;
 }
 
