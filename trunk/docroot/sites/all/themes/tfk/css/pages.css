@@ -1272,7 +1272,7 @@ ul.links li {
 /* ATW Destination */
 .node-type-atw-destination .group-destination-facts {
 	float: left;
-	width: 310px;
+	width: 326px;
 	padding: 10px;
 	margin-right: 8px;
 	border: solid 1px #cecece;
@@ -1280,7 +1280,7 @@ ul.links li {
 
 .node-type-atw-destination .group-destination-images {
 	float: left;
-	width: 148px;
+	width: 130px;
 	padding: 10px;
 	border: solid 1px #cecece;
 }
