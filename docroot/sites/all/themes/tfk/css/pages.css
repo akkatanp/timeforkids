@@ -2172,7 +2172,7 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 
 #daylife-container #speaker-intro {
 	float: left;
-	width: 268px;
+	width: 298px;
 	padding-bottom: 6px;
 	margin-bottom: 6px;
 	border-bottom: dotted 1px #cecece;
@@ -2194,12 +2194,7 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 
 #daylife-container #activities {
 	float: left;
-	width: 206px;
-}
-
-#daylife-container #activities  {
-	float: left;
-	width: 158px;
+	width: 252px;
 }
 
 #daylife-container #activities  #activity-time {
@@ -2274,6 +2269,7 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 	font: normal 14px "arial black";
 	border: solid 1px #cecece;
 	padding: 6px;
+	margin-bottom: 10px;
 }
 
 /* TFK magazine */
