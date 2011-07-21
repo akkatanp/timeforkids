@@ -89,6 +89,10 @@ if($is_anon == 1){
   $content['group_additional_content']['#prefix'] = '<b>Additional Content:</b><br/>'.$content['group_additional_content']['#prefix'];
 }
 
+print_r($content['field_related_articles']);
+
+
+
 ?>
 <?php if($is_kid_reporter_article == 1){
             unset($content['group_date_and_author']['field_article_byline']);
