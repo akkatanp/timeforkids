@@ -89,7 +89,7 @@ if($is_anon == 1){
   $content['group_additional_content']['#prefix'] = '<b>Additional Content:</b><br/>'.$content['group_additional_content']['#prefix'];
 }
 
-print_r($content['field_related_articles']);
+print_r($content['group_additional_content']);
 
 
 
