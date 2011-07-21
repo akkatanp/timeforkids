@@ -724,7 +724,7 @@
 
 .view-atw-page-featured-destination .views-field-field-country-map {
 	width: 236px;
-	margin-right: 7px;
+	margin-right: 0 7px 0 0;
 }
 
 .view-atw-page-featured-destination .views-field-field-country-map img {
@@ -733,21 +733,16 @@
 }
 
 .view-atw-page-featured-destination .views-field-field-atw-map-credit {
-	margin-right: 7px;
 	text-align: right;
-	font: normal 10px Arial;
+	font: normal 9px Arial;
 	color: #999;
-	margin-bottom: 14px;
+	margin: 0 7px 14px 0;
+
 }
 
-.view-atw-page-featured-destination .views-field-title {
-	margin-right: 7px;
-	margin-bottom: 14px;
-}
-
+.view-atw-page-featured-destination .views-field-title,
 .view-atw-page-featured-destination .views-field-field-description {
-	margin-right: 7px;
-	margin-bottom: 14px;
+	margin: 0 7px 14px 0;
 }
 
 /* mini sites sidebar */
