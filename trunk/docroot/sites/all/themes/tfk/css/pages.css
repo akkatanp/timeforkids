@@ -325,7 +325,7 @@ ul.links li {
 .node-board-member .field-name-field-member-photo img {
     border:1px solid #CECECE;
 }
-.view-board-members .view-content .views-field-field-grade-level, .view-board-members .view-content .views-field-field-location, #block-views-board-members-block-1 .views-field-field-grade-level, #block-views-board-members-block-1 .views-field-field-location, #block-views-board-members-block-2 .views-row .views-field-field-grade-level,#block-views-board-members-block-2 .views-row .views-field-field-location, .node-board-member .field-name-field-location, .node-board-member .field-name-field-grade-level {
+.view-board-members .view-content .views-field-field-grade-level, .view-board-members .view-content .views-field-field-location, #block-views-board-members-block-1 .views-field-field-grade-level, #block-views-board-members-block-1 .views-field-field-location, #block-views-board-members-block-2 .views-row .views-field-field-grade-level,#block-views-board-members-block-2 .views-row .views-field-field-location, .node-board-member .field-name-field-location, .node-board-member .field-name-field-grade-level, .node-board-member .board-member-grade {
     font-weight:bold;
     color:#373737;
 }
@@ -352,6 +352,7 @@ ul.links li {
 	text-transform: uppercase;
 	margin: 0;
 }
+
 
 /* front page */
 .front #block-system-main {
