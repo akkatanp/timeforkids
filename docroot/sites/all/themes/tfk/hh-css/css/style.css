@@ -811,7 +811,6 @@ img {
 .flashcard-cycle .flashcard-cycle-cards ul.question .item-list ul.answer {
   background: white;
   width: 325px;
-  height: 50px;
   margin: 10px 0 0 75px;
   -moz-border-radius: 11px;
   -webkit-border-radius: 11px;
