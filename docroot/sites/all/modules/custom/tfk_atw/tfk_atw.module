@@ -736,6 +736,27 @@ function tfk_atw_form_alter(&$form,&$form_state,$form_id) {
 
 //PREPROCESSORS
 
+function tfk_atw_preprocess_page(&$vars, $hook) {
+
+  $arg = arg();
+
+  if(count($arg) == 2 && is_numeric($arg[1])){
+    $nid = $arg[1];
+    $result = db_query('select n.type from node n where n.nid = :nid',array(':nid'=>$nid));
+    $record = $result->fetch();
+
+    $type = $record->type;
+
+    if (substr($type, 0, 3) === 'atw'){
+      $vars['section_title'] = "Around The World";
+    }
+
+
+  }
+}
+
+
+
 function tfk_atw_preprocess_node(&$vars, $hook) {
 
     if($vars['type'] == 'atw_native_lingo'){
@@ -827,8 +848,6 @@ function tfk_atw_preprocess_node(&$vars, $hook) {
 
     if($vars['type'] == 'atw_destination'){
       $vars['section_title'] = "Around The World";
-      //$vars['node']->field_country_code['und'][0]['value'] = 'http://google.com';
-      //print_r($vars['node']);
     }
 
 
