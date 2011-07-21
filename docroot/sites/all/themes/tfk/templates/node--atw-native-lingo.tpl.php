@@ -118,13 +118,9 @@ $speaker_photo = file_create_url(image_style_path('tfk_rect_large',$speaker_phot
 	
 	<div id="native-lingo-container">
 		<!--<h1><?php echo $title; ?>: Native Lingo</h1>-->
-                <h1><?php echo $src_country_title; ?>: Native Lingo</h1>
+        <h1><?php echo $src_country_title; ?>: Native Lingo</h1>
 
 		<?php print render($content['body']); ?>
-
-
-       <!--THIS IS PHOTO CREDIT --> <?php print render($content['field_person_photo_credit']); ?>
-
 
 		<div id="image-container">
 			<img src="<?php echo $speaker_photo; ?>" />
@@ -138,10 +134,11 @@ $speaker_photo = file_create_url(image_style_path('tfk_rect_large',$speaker_phot
 					<a href="#" id="jplayer_play" class="jp-play"></a>
 					<a href="#" id="jplayer_pause" class="jp-pause"></a>
 					<a href="#" id="jplayer_stop" class="jp-stop"></a>
-					Hear it spoken
+					<span class="hear-it">Hear it spoken</span>
 				</div>
 			</div>
 		</div>
+		<?php print render($content['field_person_photo_credit']); ?>
 		
 		<h1>How Do I Say?</h1>
 		
