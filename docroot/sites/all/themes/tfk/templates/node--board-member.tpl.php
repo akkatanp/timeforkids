@@ -81,7 +81,6 @@
  * @see template_process()
  */
 
-//print print_r($node, TRUE);
 ?>
 <h2 class="tfk-user-profile-title">Teacher Board Member &#8212; <?php echo $title; ?></h2>
 <div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
@@ -98,7 +97,7 @@
   <?php
     print "<span class=\"teacher-community-profile-board-member-name\">".render($node->title)."</span>";
     print render($content['field_member_photo']);
-    print render($content['field_grade_level']);
+    print "<div class=\"board-member-grade\">Grade ".$content['field_grade_level'][0]['#markup']."</div>";
     print render($content['field_location']);
     print render($content['body']);
   ?>
