@@ -700,21 +700,36 @@
 	text-transform: uppercase;
 }
 
-.region-sidebar-first .section .view-atw-page-featured-destination {
+/* ATW landing page sidebar */
+.view-atw-page-featured-destination {
 	background: url(../images/atw-sidebar-head.png) no-repeat top left;
 	padding-top: 20px;
 }
 
 .view-atw-page-featured-destination .views-field-field-country-map {
 	width: 236px;
-	height: 216px;
-	margin-bottom: 14px;
+	margin-right: 7px;
 }
 
 .view-atw-page-featured-destination .views-field-field-country-map img {
 	width: 230px;
-	height: 210px;
 	border: solid 3px #fff;
+}
+
+.view-atw-page-featured-destination .views-field-field-atw-map-credit {
+	margin-right: 7px;
+	text-align: right;
+	font: normal 10px Arial;
+	color: #999;
+	margin-bottom: 14px;
+}
+
+.view-atw-page-featured-destination .views-field-title {
+	margin-bottom: 14px;
+}
+
+.view-atw-page-featured-destination .views-field-field-description {
+	margin-bottom: 14px;
 }
 
 /* mini sites sidebar */
