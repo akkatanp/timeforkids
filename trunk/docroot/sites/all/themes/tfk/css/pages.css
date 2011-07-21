@@ -2011,13 +2011,13 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 }
 
 #native-lingo-container h1 {
-	font: normal 30px arial;
+	font: bold 30px arial;
 	line-height: 1;
 	margin: 0 0 4px 0;
 }
 
 #native-lingo-container .field-name-body p {
-	font: normal 12px arial;
+	font: normal 14px arial;
 	padding-bottom: 10px;
 	border-bottom: dotted 1px #cecece;
 	margin: 4px 0 10px 0;
@@ -2036,6 +2036,11 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 	top: 0px;
 	left: 0px;
 	z-index: 1;
+}
+
+#native-lingo-container .field-name-field-person-photo-credit {
+	font: normal 9px arial;
+	text-align: right;
 }
 
 #native-lingo-container #image-container #audio-box {
@@ -2070,7 +2075,11 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 	background: #dedede;
 	height: 25px;
 	line-height: 25px;
-	padding: 4px 2px 2px 4px;
+	padding: 10px;
+}
+
+#native-lingo-container #image-container #audio-box  #audio-player-box .hear-it {
+	line-height: 25px;
 }
 
 #jplayer_play,
