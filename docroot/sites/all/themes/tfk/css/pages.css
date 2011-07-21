@@ -2050,7 +2050,7 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 	width: 230px;
 	border: solid 1px #cecece;
 	background: #fff;
-	padding: 6px;
+	padding: 10px;
 	z-index: 2;
 }
 
@@ -2074,12 +2074,12 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 	border: solid 1px #cecece;
 	background: #dedede;
 	height: 25px;
-	padding: 10px;
+	padding: 4px 6px 4px 6px;
 }
 
 #native-lingo-container #image-container #audio-box  #audio-player-box .hear-it {
 	position: relative;
-	top: -11px;
+	top: -10px;
 }
 
 #jplayer_play,
