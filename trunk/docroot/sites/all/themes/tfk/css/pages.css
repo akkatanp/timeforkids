@@ -2140,13 +2140,13 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 }
 
 #daylife-container h1 {
-	font: normal 30px arial;
+	font: bold 30px arial;
 	line-height: 1;
 	margin: 4px 0;
 }
 
 #daylife-container .field-name-body p {
-	font: normal 12px arial;
+	font: normal 14px arial;
 	padding-bottom: 10px;
 	border-bottom: dotted 1px #cecece;
 	margin: 4px 0 10px 0;
@@ -2154,14 +2154,14 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 
 #daylife-container #image-container {
 	float: left;
-	width: 240px;
-	height: 280px;
+	width: 180px;
+	height: 250px;
 	margin-right: 10px;
 }
 
 #daylife-container #image-container img {
-	width: 240px;
-	height: 180px;
+	width: 180px;
+	height: 240px;
 }
 
 #daylife-container #image-container #speaker-credit {
@@ -2172,14 +2172,14 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 
 #daylife-container #speaker-intro {
 	float: left;
-	width: 208px;
+	width: 268px;
 	padding-bottom: 6px;
 	margin-bottom: 6px;
 	border-bottom: dotted 1px #cecece;
 }
 
 #daylife-container #speaker-intro strong {
-	font: bold 18px arial;
+	font: bold 20px arial;
 	margin: 0 0 6px 0;
 }
 
@@ -2203,7 +2203,7 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 }
 
 #daylife-container #activities  #activity-time {
-	font: bold 18px arial;
+	font: bold 20px arial;
 }
 
 #daylife-container #daylife-bar-container {
