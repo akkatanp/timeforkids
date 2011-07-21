@@ -89,7 +89,12 @@ if($is_anon == 1){
   $content['group_additional_content']['#prefix'] = '<b>Additional Content:</b><br/>'.$content['group_additional_content']['#prefix'];
 }
 
-print_r($content['group_additional_content']);
+$visible=1;
+if(!isset($content['group_additional_content']['field_mini_lessons'])&& !isset($content['group_additional_content']['field_related_articles']))
+{
+  unset($content['group_additional_content']);
+  $visible=0;
+ }
 
 
 
@@ -128,7 +133,7 @@ print_r($content['group_additional_content']);
 	  <h1><?php print $title; ?></h1>
       <?php print render($content);?><br/>
 
-          <?php if($is_anon == 0):?>
+          <?php if($is_anon == 0 && $visible == 1  ):?>
             <b>Additional Content:</b><br/>
             <?php  print render($addit_content); ?>
           <?php endif;?>
