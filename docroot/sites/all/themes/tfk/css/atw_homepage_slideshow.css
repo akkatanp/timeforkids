@@ -61,6 +61,11 @@ h2.block-title {
 	height: 268px;
 }
 
+#slideshow-container .foot-credit {
+	text-align:right;
+	font: normal 9px Arial;
+	color: #999;
+}
 
 #slideshow .header {
 	position: absolute;
