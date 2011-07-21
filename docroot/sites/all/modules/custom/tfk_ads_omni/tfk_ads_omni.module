@@ -26,12 +26,15 @@ function tfk_ads_omni_preprocess_page(&$variables){
     drupal_add_js($ad_factory, 'inline');
     /*Set ad call values*/
     $variables['ad']['banner_728x90'] = tfk_ads_omni_create_ad('banner_728x90',728,90,'regular',1);
-    //$variables['ad']['banner_160x190'] = tfk_ads_omni_create_ad('banner_160x190',160,190,'regular'); Handled via CMS
+    $variables['ad']['banner_160x190'] = tfk_ads_omni_create_ad('banner_160x190',160,190,'regular');
     $variables['ad']['banner_160x600'] = tfk_ads_omni_create_ad('banner_160x600',160,600,'regular');
     $variables['ad']['banner_728x90_footer'] = tfk_ads_omni_create_ad('banner_728x90_footer',728,90,'regular',2);
     /*Inject ad calls into blocks, overriding placeholder ad*/
     $block_form_state['rebuild'] = 'true';
     $block_form_state['change_ad'] = 1;
+    $block_form_state['values'] = $variables['ad']['banner_160x190'];
+    tfk_ads_omni_form_alter($variables['page']['sidebar_second'], $block_form_state, 'views_6b3cdbf51f6a41d742e65dbcf2d85234');/*logged in*/
+    tfk_ads_omni_form_alter($variables['page']['sidebar_second'], $block_form_state, 'views_e1fd7ec0792e427785c60f04deef22cf');/*not logged in*/
     $block_form_state['values'] = $variables['ad']['banner_160x600'];
     tfk_ads_omni_form_alter($variables['page']['sidebar_second'], $block_form_state, 'block_1');
     $block_form_state['values'] = $variables['ad']['banner_728x90_footer'];
