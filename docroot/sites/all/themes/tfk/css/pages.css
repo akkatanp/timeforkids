@@ -2028,7 +2028,6 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 	width: 488px;
 	height: 260px;
 	border: solid 1px #cecece;
-	margin-bottom: 10px;
 }
 
 #native-lingo-container #image-container img {
@@ -2040,7 +2039,9 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 
 #native-lingo-container .field-name-field-person-photo-credit {
 	font: normal 9px arial;
+	color: #999;
 	text-align: right;
+	margin-bottom: 10px;
 }
 
 #native-lingo-container #image-container #audio-box {
