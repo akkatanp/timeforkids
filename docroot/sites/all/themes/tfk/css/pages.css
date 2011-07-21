@@ -1209,7 +1209,7 @@ ul.links li {
 }
 
 #block-tfk-atw-atw-page-list-map-switch a.list-view :hover {
-	background: url(../images/atw-list-icon.png) no-repeat 0px 22px;
+	background: url(../images/atw-list-icon.png) no-repeat 0px -22px;
 }
 
 #block-tfk-atw-atw-page-list-map-switch a.map-view {
@@ -1222,7 +1222,7 @@ ul.links li {
 }
 
 #block-tfk-atw-atw-page-list-map-switch a.map-view:hover {
-	background: url(../images/atw-globe-icon.png) no-repeat 0px 22px;
+	background: url(../images/atw-globe-icon.png) no-repeat 0px -22px;
 }
 
 /* ATW destination listing */
