@@ -349,9 +349,10 @@
  * First sidebar
  */
 .region-sidebar-first .section {
+	position: relative;
 	background: #e6e6e6;
 	border: solid 1px #cecece;
-	padding: 10px;
+	padding: 10px 0px 10px 7px;
 }
 
 .region-sidebar-first .section ul.menu {
@@ -702,6 +703,19 @@
 .region-sidebar-first .section .view-atw-page-featured-destination {
 	background: url(../images/atw-sidebar-head.png) no-repeat top left;
 	padding-top: 20px;
+	height: 20px;
+}
+
+.view-atw-page-featured-destination .views-field-field-country-map {
+	width: 236px;
+	height: 216px;
+	margin-bottom: 14px;
+}
+
+.view-atw-page-featured-destination .views-field-field-country-map img {
+	width: 230px;
+	height: 210px;
+	border: solid 3px #fff;
 }
 
 /* mini sites sidebar */
@@ -724,10 +738,9 @@
 	margin-bottom: 10px;
 }
 
-#block-views-mini-site-home-block-1 .field-content img,
-.view-atw-page-featured-destination .field-content img {
-	width: 222px;
-	border: solid 4px #fff;
+#block-views-mini-site-home-block-1 .field-content img {
+	width: 230px;
+	border: solid 3px #fff;
 }
 
 .node-type-minisite .region-sidebar-first .section {
@@ -815,13 +828,6 @@
 	color: white;
 	background: #999;
 }
-
-/*#block-views-minisite-articles-block-6 .view-content .views-row .views-field-field-tout-image {
-	float: left;
-	height: 60px;
-	width: 60px;
-	border: solid 1px #cecece;
-}*/
 
 /* right sidebar */
 .region-sidebar-second  .block {
