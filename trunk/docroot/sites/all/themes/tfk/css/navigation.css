@@ -724,7 +724,7 @@
 
 .view-atw-page-featured-destination .views-field-field-country-map {
 	width: 236px;
-	margin-right: 0 7px 0 0;
+	margin: 0 7px 0 0;
 }
 
 .view-atw-page-featured-destination .views-field-field-country-map img {
@@ -760,8 +760,7 @@
 	font-size: 20px;
 }
 
-#block-views-mini-site-home-block-1 .views-field-field-minisite-tout-image,
-.view-atw-page-featured-destination .views-field-field-country-map {
+#block-views-mini-site-home-block-1 .views-field-field-minisite-tout-image {
 	margin-bottom: 10px;
 }
 
