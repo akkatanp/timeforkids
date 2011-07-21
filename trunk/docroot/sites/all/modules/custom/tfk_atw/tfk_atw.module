@@ -826,7 +826,7 @@ function tfk_atw_preprocess_node(&$vars, $hook) {
     }
 
     if($vars['type'] == 'atw_destination'){
-      
+      $vars['section_title'] = "Around The World";
       //$vars['node']->field_country_code['und'][0]['value'] = 'http://google.com';
       //print_r($vars['node']);
     }
