@@ -1250,11 +1250,11 @@ ul.links li {
 	border-right: solid 1px #cecece;
 }
 
-.page-around-the-world .view-content table tr.row-first {
+.page-around-the-world .view-content table tr:nth-child(even) {
 	background: #fff;
 }
 
-.page-around-the-world .view-content table tr.row-last {
+.page-around-the-world .view-content table tr:nth-child(odd) {
 	background: #ddd;
 }
 

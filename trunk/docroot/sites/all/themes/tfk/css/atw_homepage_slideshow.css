@@ -15,7 +15,12 @@ h2.block-title {
 }
 
 #slideshow-container p {
-	margin: 10px;
+	margin: 0;
+}
+
+#slideshow-container p a {
+	display: block;
+	margin-top: 10px;
 }
 
 #slideshow-container #slideshow-controls {
