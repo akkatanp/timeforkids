@@ -134,7 +134,7 @@ $speaker_photo = file_create_url(image_style_path('tfk_rect_large',$speaker_phot
 					<a href="#" id="jplayer_play" class="jp-play"></a>
 					<a href="#" id="jplayer_pause" class="jp-pause"></a>
 					<a href="#" id="jplayer_stop" class="jp-stop"></a>
-					<span class="hear-it">Hear it spoken</span>
+					<div class="hear-it">Hear it spoken</div>
 				</div>
 			</div>
 		</div>
