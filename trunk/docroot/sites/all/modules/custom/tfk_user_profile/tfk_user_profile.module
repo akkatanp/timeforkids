@@ -23,7 +23,7 @@ function tfk_user_profile_user_login(&$edit, $account) {
  function tfk_user_account($op, &$account){
    switch($op){
      case 'load':
-     	$grade_level = db_query("SELECT field_grade_level_tid FROM {field_data_field_grade_level} WHERE entity_id = :entity_id",  array('entity_id' => $account->uid))->fetchField();
+     	$grade_level = db_query("SELECT field_grade_level_tid FROM {field_data_field_grade_level} WHERE entity_id = :entity_id AND entity_type = 'user'",  array('entity_id' => $account->uid))->fetchField();
 		$account->grade_level = $grade_level;
      break;
    }
