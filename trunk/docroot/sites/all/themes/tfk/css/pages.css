@@ -1784,7 +1784,7 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 }
 
 #sightseeing-container h1 {
-	font: normal 30px arial;
+	font: bold 30px arial;
 	margin: 4px 0;
 	line-height: 1;
 }
@@ -1798,6 +1798,7 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 }
 
 #sightseeing-container #map-container p:first-child {
+	font: normal 14px arial;
 	padding-bottom: 10px;
 	border-bottom: dotted 1px #cecece;
 	margin: 4px 0 10px 0;
@@ -1856,12 +1857,13 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 }
 
 #timeline-container h1 {
-	font: normal 30px arial;
+	font: bold 30px arial;
 	line-height: 1;
 	margin: 4px 0;
 }
 
 #timeline-container .field-name-body  p {
+	font: normal 14px arial;
 	padding-bottom: 10px;
 	border-bottom: dotted 1px #cecece;
 	margin: 4px 0 10px 0;
@@ -1967,7 +1969,7 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 	border: solid 1px #cecece;
 }
 
-#timeline-container #event-container .event.horizontal .event-image .event-credit {
+#timeline-container #event-container .event .event-image .event-credit {
 	font: normal 9px arial;
 	color: #999;
 	text-align: right;
