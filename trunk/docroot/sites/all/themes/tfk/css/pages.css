@@ -2079,7 +2079,7 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 
 #native-lingo-container #image-container #audio-box  #audio-player-box .hear-it {
 	position: relative;
-	top: 11px;
+	top: -11px;
 }
 
 #jplayer_play,
