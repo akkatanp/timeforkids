@@ -1173,7 +1173,7 @@ ul.links li {
  */
 .atw-graphic-header {
 	border: solid 1px #cecece;
-	padding: 10px 9px;
+	padding: 10px;
 	width: 488px;
 	height: 100px;
 	background: url(../images/atw-head.png) no-repeat 10px 10px;
@@ -2135,7 +2135,7 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 /* ATW Day in the Life */
 #daylife-container {
 	border: solid 1px #cecece;
-	padding: 10px;
+	padding: 10px 10px 20px 10px;
 	position: relative;
 }
 
