@@ -725,10 +725,12 @@
 }
 
 .view-atw-page-featured-destination .views-field-title {
+	margin-right: 7px;
 	margin-bottom: 14px;
 }
 
 .view-atw-page-featured-destination .views-field-field-description {
+	margin-right: 7px;
 	margin-bottom: 14px;
 }
 
