@@ -696,6 +696,12 @@
 	border: none;
 }
 
+.page-around-the-world .region-sidebar-first .section {
+	background: #e6e6e6;
+	border: solid 1px #cecece;
+	padding: 10px 0px 10px 7px;
+}
+
 #block-tfk-atw-atw-destination-navigation {
 	background: #e6e6e6;
 	border: solid 1px #cecece;
