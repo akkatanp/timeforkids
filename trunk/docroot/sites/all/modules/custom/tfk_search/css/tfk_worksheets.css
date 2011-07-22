@@ -231,3 +231,8 @@ body.section-worksheets .popups-container .svd-srch-submit input {
 	background: none;
 	box-shadow: none;
 }
+
+body.section-worksheets .region-sidebar-first .item-list ul li li {
+  margin: 0 0 0 15px;
+  padding: 0;
+}
