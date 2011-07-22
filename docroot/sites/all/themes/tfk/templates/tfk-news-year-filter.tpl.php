@@ -1,3 +1,16 @@
+<script>
+  $(document).ready(function(){
+    alert(22);
+    $('#yearsubmit').click(function(){
+
+      var yr = $('#yeardropdown').val();
+      alert(33);
+      alert(yr);
+    });
+  });
+  //onClick="location.href='<?php echo url('news-archive')?>/'+ document.getElementById('yeardropdown').value;" 
+</script>
+
 
 <div id="news-sidebar-year-filter">
   
@@ -11,7 +24,7 @@
     <?php endforeach; ?>
 	</select>
 	<div class="button-holder">
-		<input type="button" id="yearsubmit" onClick="location.href='<?php echo url('news-archive')?>/'+ document.getElementById('yeardropdown').value;" value="Submit Date Range">	
+		<input type="button" id="yearsubmit" value="Submit Date Range">	
 	</div>
 	<div class="clearfix"></div>
 </form>
