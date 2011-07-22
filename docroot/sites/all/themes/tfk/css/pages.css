@@ -1327,6 +1327,10 @@ ul.links li {
 	margin-bottom: 10px;
 }
 
+.section-around-the-world .node-webform .form-type-item {
+	margin: 0;
+}
+
 .section-around-the-world .node-webform .form-radios {
 	margin-bottom: 10px;
 }
