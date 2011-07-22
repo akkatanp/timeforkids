@@ -1,12 +1,12 @@
 <script>
-  $(document).ready(function(){
-    $('#yearsubmit').click(function(event){
-      event.preventDefault();
-
-      var yr = $('#yeardropdown').val();
-      location.href= '<?php echo url('news-archive')?>/' + yr;
-    });
-  });
+//  $(document).ready(function(){
+//    $('#yearsubmit').click(function(event){
+//      event.preventDefault();
+//
+//      var yr = $('#yeardropdown').val();
+//      location.href= '<?php echo url('news-archive')?>/' + yr;
+//    });
+//  });
 </script>
 
 
