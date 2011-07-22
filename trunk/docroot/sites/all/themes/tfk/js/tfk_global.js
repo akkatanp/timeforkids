@@ -16,7 +16,16 @@ $(document).ready(function() {
 			}
 		});
 	});
+
+
+      $('#yearsubmit').click(function(event){
+      event.preventDefault();
+      var yr = $('#yeardropdown').val();
+      location.href= '/news-archive/' + yr;
+    });
 });
+
+
 
 (function($) {
 	$.fn.loginBox = function() {		
