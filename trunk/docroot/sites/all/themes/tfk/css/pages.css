@@ -668,13 +668,13 @@ ul.links li {
 }
 
 /* mini-sites */
-.view-mini-site-home {
+#block-views-mini-site-home-block-3 {
 	border: solid 1px #cecece;
 	padding: 10px;
 	margin-bottom: 10px;
 }
 
-.view-mini-site-home .views-field-title {
+#block-views-mini-site-home-block-3 .views-field-title {
 	font: bold 30px arial;
 	color: black;
 }
