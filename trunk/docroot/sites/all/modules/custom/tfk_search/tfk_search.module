@@ -6,6 +6,12 @@
  */
 
 /**
+ * Path to magazine search interface.
+ * @var string
+ */
+define('TFK_SEARCH_MAGAZINE_PATH', 'tfk-magazine');
+
+/**
  * Implementation of hook_menu.
  */
 function tfk_search_menu(){
@@ -25,7 +31,7 @@ function tfk_search_menu(){
   	'access arguments' => array('access protected content'),
     'type' => MENU_CALLBACK,
   );
-  $items['tfk-magazine'] = array(
+  $items[TFK_SEARCH_MAGAZINE_PATH] = array(
   	'title' => 'TFK Magazine',
   	'page callback' => 'tfk_search_magazine',
   	'access callback' => 'user_access',
@@ -75,6 +81,12 @@ function tfk_search_init(){
   if(arg(0) == 'search') {
     drupal_add_css(drupal_get_path('module', 'tfk_search'). '/css/tfk_search.css', 'file');
   }
+  
+  // Magazines.
+  if(arg(0) == TFK_SEARCH_MAGAZINE_PATH) {
+    drupal_add_css(drupal_get_path('module', 'tfk_search'). '/css/tfk_search.css', 'file');
+    drupal_add_css(drupal_get_path('module', 'tfk_search'). '/css/tfk_magazines.css', 'file');
+  }
 }
 
 /**
@@ -118,8 +130,7 @@ function tfk_search_theme($existing, $type, $theme, $path) {
  *
  * Apachesolr facet links are coded in theme_apachesolr_facet_link() in a
  * way that we cannot modify the HTML of the link (e.g., we want to insert a
- * span that contain the parenthesis with the count). This is not doable using
- * only the preprocessor.
+ * span that contain the parenthesis with the count).
  *
  * @param array $vars
  *
@@ -135,8 +146,12 @@ function theme_tfk_search_facet_link($vars) {
   
   //Different search interfaces have different specifications for the facet count.
   $interface = arg(0);
-  if($interface == 'worksheets' || $interface == 'photos-video') {
+  
+  // Supress facet count.
+  if($interface == 'worksheets' || $interface == 'photos-video' || $interface == TFK_SEARCH_MAGAZINE_PATH) {
     return apachesolr_l($vars['facet_text'],  $vars['path'], $vars['options']);
+
+  // Show facet count.
   } else {
     // Allow HTML.
     $vars['options']['html'] = TRUE;
@@ -771,6 +786,30 @@ function tfk_search_preprocess_page(&$variables) {
   if(isset($_GET['filters'])) {
     unset($_variables['page']['highlighted']['tfk_search_tfk_search_photos_video_featured']);
   }
+  
+  // TFK Magazine.
+  if(arg(0) == TFK_SEARCH_MAGAZINE_PATH) {
+    // Force the removal of the default search box displayed by Drupal.
+
+    // Alter region render array, insert region title.
+    $title = '<div class="search-sidebar-title">SEARCH MAGAZINE ARCHIVE</div>';
+    array_unshift($variables['page']['sidebar_first'], array('region_title' => array('#markup' => $title)));
+    
+    // Alter menu block.
+    if(isset($variables['page']['sidebar_bottom']['menu_menu-publishing-calendar-menu'])) {
+      
+      $item_list = array('type' => 'ul', 'items' => array());
+      $variables['page']['sidebar_bottom']['menu_menu-publishing-calendar-menu']['#block']->subject = 'PUBLISHING CALENDAR';
+      
+      foreach($variables['page']['sidebar_bottom']['menu_menu-publishing-calendar-menu']['content'] as $key => $render_array) {
+        if(is_numeric($key)) {
+          $item_list['items'][] = '<div class="pubcal-link"><div class="left">'. $render_array['#title']. '</div><div class="right">'. l('View', $render_array['#href']). '</div></div>';
+        }
+      }
+    }
+    $themed_list = theme('item_list', $item_list);
+    $variables['page']['sidebar_bottom']['menu_menu-publishing-calendar-menu']['content'] = array('#markup' => $themed_list);
+  }
 }
 
 /**
@@ -879,7 +918,7 @@ function tfk_search_preprocess_search_results(&$vars) {
   }
 
 
-  if(arg(0) == 'tfk-magazine'){
+  if(arg(0) == TFK_SEARCH_MAGAZINE_PATH){
     $vars['custom_search'] = TRUE;
 
     $vars['pager_top'] = theme('pager_top', array('tags' => NULL, 'quantity' => 8));
@@ -905,7 +944,7 @@ function tfk_search_preprocess_pager_top(&$vars) {
   // Page title.
   if($page_type == 'worksheets') {
     $vars['pager_title'] = 'Printables Archive';
-  } elseif ($page_type == 'tfk-magazine') {
+  } elseif ($page_type == TFK_SEARCH_MAGAZINE_PATH) {
     $vars['pager_title'] = 'Magazine Archive';
   } else {
     $vars['pager_title'] = 'Photos & Videos Archive';
@@ -916,7 +955,7 @@ function tfk_search_preprocess_pager_top(&$vars) {
     
     if($page_type == 'worksheets') {
       $vars['pager_active_filter'] = 'Viewing: All Grades, All Themes, All Skills';
-    } elseif ($page_type == 'tfk-magazine') {
+    } elseif ($page_type == TFK_SEARCH_MAGAZINE_PATH) {
       $vars['pager_active_filter'] = 'Viewing: All Grades, All Years';
     } else {
       $vars['pager_active_filter'] = 'Viewing: All Subjects, All Themes';
@@ -1005,7 +1044,7 @@ function tfk_search_apachesolr_modify_query($query, $caller) {
     $query->params['rows'] = 8;
   }
 
-  if($query->get_base_path() === 'tfk-magazine') {
+  if($query->get_base_path() === TFK_SEARCH_MAGAZINE_PATH) {
     $subquery = apachesolr_drupal_query();
     $subquery->add_filter('bundle', 'magazine_issue');
     $query->add_subquery($subquery, 'OR');
@@ -1078,7 +1117,7 @@ function tfk_search_magazine(){
   $filterstring = isset($_GET['filters']) ? $_GET['filters'] : '';
   $solrsort = isset($_GET['solrsort']) ? $_GET['solrsort'] : '';
   $page = isset($_GET['page']) ? $_GET['page'] : 0;
-  $base_path = 'tfk-magazine';
+  $base_path = TFK_SEARCH_MAGAZINE_PATH;
   $response = apachesolr_search_run(search_get_keys(), $filterstring, $solrsort, $base_path, $page, 'apachesolr_search');
 
   drupal_set_title('TFK Magazine');
@@ -1329,7 +1368,7 @@ function tfk_search_preprocess_search_result(&$vars) {
   }
 
 
-  if($base_path == 'tfk-magazine') {
+  if($base_path == TFK_SEARCH_MAGAZINE_PATH) {
     $vars['theme_hook_suggestions'] = array_merge(
       array('search_result__tfk_search__magazine', 'search_result__tfk_search'),
       $vars['theme_hook_suggestions']
@@ -1473,45 +1512,28 @@ function tfk_search_preprocess_search_result(&$vars) {
         $abspath = file_create_url($newpath);
         $thumbnail = theme('image', array('path' => $abspath, 'alt' => $title, 'title' => $title, 'attributes' => $thumb_attr));
         $vars['thumbnail'] = l($thumbnail, 'node/'. $vars['result']['fields']['entity_id'], $link_attr);
-        //@todo for temporarily supporting the separate template. Delete this variable when we merge templates.
+        //For temporarily supporting the separate template. Delete this variable if we merge templates.
         $vars['tfk_search_res_image'] = image_style_url($style, $file->uri);
       }
-
-
-       //////////Getting Cover Stories//////////////
-       $tmp_stories = field_get_items('node', $magazine, 'field_cover_story');
-       foreach($tmp_stories as $k => $story){
-         $vars['magazine_cover_stories'][$k]['title'] = $story['title'];
-         $vars['magazine_cover_stories'][$k]['url'] = $story['url'];
-       }
-
-       //////////Getting In The News//////////////
-       $tmp_inthenews = field_get_items('node', $magazine, 'field_in_the_news');
-       foreach($tmp_inthenews as $k => $inthenew){
-         $vars['magazine_in_the_news'][$k]['title'] = $inthenew['title'];
-         $vars['magazine_in_the_news'][$k]['url'] = $inthenew['url'];
-       }
-
-       //////////Getting TOP 5//////////////
-       $tmp_topfive = field_get_items('node', $magazine, 'field_top_5');
-       foreach($tmp_topfive as $k => $topfive){
-         $vars['magazine_topfive'][$k]['title'] = $topfive['title'];
-         $vars['magazine_topfive'][$k]['url'] = $topfive['url'];
-       }
-
-       //////////Getting whosnews//////////////
-       $tmp_whosnews = field_get_items('node', $magazine, 'field_whos_news');
-       foreach($tmp_whosnews as $k => $whosnew){
-         $vars['magazine_whosnews'][$k]['title'] = $whosnew['title'];
-         $vars['magazine_whosnews'][$k]['url'] = $whosnew['url'];
-       }
-
-       //////////Getting morenews//////////////
-       $tmp_morenews = field_get_items('node', $magazine, 'field_more_news');
-       foreach($tmp_morenews as $k => $morenew){
-         $vars['magazine_morenews'][$k]['title'] = $morenew['title'];
-         $vars['magazine_morenews'][$k]['url'] = $morenew['url'];
-       }
+      
+      $list_fields = array('Cover Story' =>'field_cover_story', 'In The News' => 'field_in_the_news', 'Top 5' => 'field_top_5',
+      'Who\'s News' => 'field_whos_news', 'More News' => 'field_more_news');
+      $lists = array();
+      foreach($list_fields as $name => $field) {
+        $items = field_get_items('node', $magazine, $field);
+        if(!empty($items)) {
+          $lists[$name] = array();
+          foreach($items as $item) {
+            $lists[$name][] = l($item['title'], $item['url']);
+          }
+        }
+      }
+      $vars['magazine_lists'] = array();
+      if(!empty($lists)) {
+        foreach($lists as $name => $list) {
+          $vars['magazine_lists'][$name] = theme('item_list', array('type' => 'ul', 'items' => $list));
+        }
+      }
 
        ///////////GETTING ADDITIONAL CONTENT////////
        ////////////////////Materials////////////////
@@ -1521,9 +1543,11 @@ function tfk_search_preprocess_search_result(&$vars) {
          $sql = 'SELECT title FROM {node} WHERE nid = :nid';
          $result = db_query($sql,array('nid'=>$tmp_material['nid']));
          $link_title = $result->fetch();
-         $vars['magazine_materials'][$k]['title'] = $link_title->title;
-         $vars['magazine_materials'][$k]['nid'] = $tmp_material['nid'];
-         $vars['magazine_materials'][$k]['url'] = drupal_lookup_path('alias','node/'.$tmp_material['nid']);
+         if($link_title) {
+           $vars['magazine_materials'][$k]['title'] = $link_title->title;
+           $vars['magazine_materials'][$k]['nid'] = $tmp_material['nid'];
+           $vars['magazine_materials'][$k]['url'] = drupal_lookup_path('alias','node/'.$tmp_material['nid']);
+         }
        }
 
        ////////////////////Related Resources////////////////
@@ -1533,9 +1557,16 @@ function tfk_search_preprocess_search_result(&$vars) {
          $sql = 'SELECT title FROM {node} WHERE nid = :nid';
          $result = db_query($sql,array('nid'=>$tmp_rel['nid']));
          $link_title = $result->fetch();
-         $vars['magazine_related'][$k]['title'] = $link_title->title;
-         $vars['magazine_related'][$k]['nid'] = $tmp_rel['nid'];
-         $vars['magazine_related'][$k]['url'] = drupal_lookup_path('alias','node/'.$tmp_rel['nid']);
+         if($link_title) {
+           $vars['magazine_related'][$k]['title'] = $link_title->title;
+           $vars['magazine_related'][$k]['nid'] = $tmp_rel['nid'];
+           $vars['magazine_related'][$k]['url'] = drupal_lookup_path('alias','node/'.$tmp_rel['nid']);
+         }
+       }
+       
+       // Supress additional resources box if empty.
+       if((!empty($vars['magazine_materials'])) && (!empty($vars['magazine_related']))) {
+         $vars['show_related_resources'] = TRUE;
        }
 
       break;
