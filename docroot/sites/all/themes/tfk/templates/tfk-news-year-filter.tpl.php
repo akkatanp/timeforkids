@@ -1,11 +1,12 @@
 <script>
   $(document).ready(function(){
-    $('#yearsubmit').click(function(){
+    $('#yearsubmit').click(function(event){
+      event.preventDefault();
+
       var yr = $('#yeardropdown').val();
       location.href= '<?php echo url('news-archive')?>/' + yr;
     });
   });
-  //onClick="location.href='<?php echo url('news-archive')?>/'+ document.getElementById('yeardropdown').value;" 
 </script>
 
 
