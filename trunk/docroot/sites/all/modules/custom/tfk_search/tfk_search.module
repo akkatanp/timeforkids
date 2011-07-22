@@ -807,8 +807,11 @@ function tfk_search_preprocess_page(&$variables) {
         }
       }
     }
-    $themed_list = theme('item_list', $item_list);
-    $variables['page']['sidebar_bottom']['menu_menu-publishing-calendar-menu']['content'] = array('#markup' => $themed_list);
+    if(!empty($item_list['items'])) {
+      $themed_list = theme('item_list', $item_list);
+      $variables['page']['sidebar_bottom']['menu_menu-publishing-calendar-menu']['content'] = array('#markup' => $themed_list);
+    }
+
   }
 }
 
