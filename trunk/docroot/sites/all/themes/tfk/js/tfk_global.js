@@ -35,10 +35,17 @@ $(document).ready(function() {
 (function($) {
 
         $.fn.takeUserTo = function(){
+          
+
+
           $(this).click(function(e) {
-            e.preventDefault();
-            alert(223);
-          }
+			e.preventDefault();
+                        alert(223);
+			createLightBox();
+		});
+
+
+
         }
 
 
