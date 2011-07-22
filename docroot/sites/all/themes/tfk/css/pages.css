@@ -1847,6 +1847,12 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 	margin: 4px 0 10px 0;
 }
 
+#sightseeing-container .map-credit {
+	text-align: right;
+	font: normal 9px arial;
+	color: #999;
+}
+
 #location-mask {
 	position: absolute;
 	width: 488px;
