@@ -24,7 +24,7 @@ function tfk_user_profile_user_load($users, $test = NULL) {
   foreach($users as $user) {
     $grade_tid = field_get_items('user', $user, 'field_grade_level');
     if($grade_tid) {
-      $grade_level = taxonomy_term_load($grade_tid[0]['tid']);
+      $user->grade_level = taxonomy_term_load($grade_tid[0]['tid']);
     }
   }
 }
