@@ -606,3 +606,15 @@ li.search-result .content-type .ctype-suffix {
 #block-system-main .search-result .content-type-slideshow .icon {
 	background: url("../images/photo-camera-icon.png") no-repeat scroll 0 0 transparent;
 }
+
+body .region-sidebar-first .item-list ul,
+.region-sidebar-first .item-list ul li {
+	margin: 0;
+	line-height: 175%;
+}
+
+/* Misc */
+.region-sidebar-first .item-list ul li li {
+  margin: 0 0 0 15px;
+  padding: 0;
+}
