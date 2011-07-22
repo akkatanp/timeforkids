@@ -20,7 +20,10 @@ function tfk_news_menu(){
 
 function _test_issues_callback(){
 
-  $email = 'TEST_TK@GMAIL.COM';
+  $list = array();
+
+
+  $email = 'TEST_TK_DIGITAL@TEST.COM';
   $password= 'welcome123';
 
   $url = 'http://qa-subscription.timeinc.com:80/webservices/customers/'.check_plain($email).'/TK/auth_token';
@@ -37,6 +40,8 @@ function _test_issues_callback(){
 
 
     $dataResponse = drupal_json_decode($response->data);
+
+
     $token = $dataResponse['token'];
 
     $url = 'http://qa-subscription.timeinc.com:80/webservices/entitlements?CGI-App-Id=com.timeinc.tk.web';
@@ -44,22 +49,25 @@ function _test_issues_callback(){
 	'method'=> 'GET'
    ));
 
-//   $entresponse =  drupal_json_decode($entresponse->data);
+   $entresponse =  drupal_json_decode($entresponse->data);
 //
-//   $url = 'http://qa-subscription.timeinc.com:80/webservices/issues?userid=TEST_TK@GMAIL.COM';
+//   $url = 'http://qa-subscription.timeinc.com:80/webservices/issues?userid='.$email;
 //    $tmpresponse = drupal_http_request($url, array('headers' => array('Content-Type'=>'application/json', 'CGI-token' => $token),
 //	'method'=> 'GET'
 //   ));
 
+   print_r($tmpresponse);
 
-    print_r($tmpresponse);
 
 
   }else{
     echo 'ERROR GETTING TOKEN';exit;
   }
+  
 
-  return '';
+  $list['testvar'] = 'TEST';
+  echo  theme('tfk_news_issues_page',$list);
+  drupal_exit();
 }
 
 function _teacher_news_callback(){
@@ -266,7 +274,11 @@ function tfk_news_theme() {
       // so you declare what variables get passed within that argument instead.
       // See http://drupal.org/node/224333#theme_changes
       'variables' => array('element' => NULL),
-    )
+    ),
+     'tfk_news_issues_page'=> array(
+      'template' => 'tfk-news-issues-page',
+      'variables' => array('list' => NULL),
+    ),
     
   );
 }
@@ -410,7 +422,7 @@ function tfk_news_preprocess_block(&$variables){
 
 function tfk_news_preprocess_page(&$vars) {
   $rgs = arg();
-
+  
   if(count($rgs) == 2 && ($rgs[0] == 'node') && is_numeric($rgs[1])){
     $node = node_load($rgs[1]);
     if($node->type == 'article'){
@@ -434,6 +446,15 @@ function tfk_news_preprocess_page(&$vars) {
   if($rgs[0] == 'news-archive'){
     $vars['section_title'] = 'News';
   }
+
+
+  $is_anon = 0;
+    global $user;
+    $user_roles = $user->roles;
+    if(count($user_roles) == 1 && in_array('anonymous user',$user_roles)){
+      $is_anon = 1;
+    }
+    $variables['is_anon'] = $is_anon;
 
 
 }
