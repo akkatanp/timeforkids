@@ -926,14 +926,13 @@ ul.links li {
 }
 
 .node-type-article .content h1 {
-	color: #d71700;
 	font: bold 30px arial;
-	margin: 4px 0;
+	margin: 0 0 10px 0;
 }
 
 .node-type-article .field-name-field-article-category {
 	background: #d71700;
-	margin-bottom: 10px;
+	margin-bottom: 35px;
 }
 
 .node-type-article .field-name-field-article-category .field-items {
@@ -960,8 +959,8 @@ ul.links li {
 }
 
 .node-type-article .field-name-field-deck {
-	font-weight: bold;
-	margin-bottom: 6px;
+	font: normal 14px arial;
+	margin-bottom: 10px;
 }
 
 .node-type-article .group_date_and_author {
@@ -986,8 +985,23 @@ ul.links li {
 	font-weight: bold;
 }
 
+.node-type-article b {
+	font: normal 12px "arial black";
+	margin-bottom: 6px;
+}
+
+.node-type-article br {
+	display: none;
+}
+
 .node-type-article .field-name-field-body p {
-	margin-bottom: 10px;
+	line-height: 15px;
+	margin-bottom: 15px;
+}
+
+.node-type-article .field-name-field-body p  b {
+	font: bold 14px arial;
+	margin-bottom: 0;
 }
 
 .inline-img {
@@ -1091,7 +1105,12 @@ ul.links li {
 	box-shadow: 2px 2px 4px #666;
 }
 
-.node-type-article .group_additional_content .field-label,
+.node-type-article .group_additional_content .field-label {
+	display: inline;
+	font: bold 11px arial;
+	text-transform: uppercase;
+}
+
 .node-type-article .group_additional_content .field-items,
 .node-type-article .group_additional_content .field-item {
 	display: inline;
@@ -1113,16 +1132,15 @@ ul.links li {
 }
 
 .node-type-article .field-name-field-image-credit {
-	font-size: 10px;
+	font: normal 9px arial;
 	color: #999;
-	height: 12px;
 	text-align: right;
+	margin-bottom: 5px;
 }
 
 .node-type-article .field-name-field-image-caption {
-	font-size: 10px;
-	color: #555;
-	line-height: 13px;
+	font: normal 10px arial;
+	color: #666;
 	margin-bottom: 10px;
 }
 
