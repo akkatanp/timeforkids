@@ -36,7 +36,7 @@
       <?php print $field->wrapper_suffix; ?>
     <?php endif; ?>
 <?php endforeach; ?>
-
+*<?php print $is_anon;?>*
 <?php if($is_anon == 0):?>
 <?php if(strlen($fields['field_mini_lessons']->content) != 0 || strlen($fields['field_related_articles']->content) != 0):?>
     <div class="related-content-wrap">
@@ -51,3 +51,4 @@
     </div>
 <?php endif;?>
 <?php endif;?>
+*
