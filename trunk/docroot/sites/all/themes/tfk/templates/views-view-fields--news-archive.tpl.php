@@ -44,19 +44,18 @@ if(count($user_roles) == 1 && in_array('anonymous user',$user_roles)){
       <?php print $field->wrapper_suffix; ?>
     <?php endif; ?>
 <?php endforeach; ?>
-*<?php print $is_anon;?>*
-<?php if($is_anon == 0):?>
-<?php if(strlen($fields['field_mini_lessons']->content) != 0 || strlen($fields['field_related_articles']->content) != 0):?>
-    <div class="related-content-wrap">
-        <div class="addit-content">Additional Content</div>
-        <?php if($fields['field_mini_lessons']): ?>
-           <div class="addit-mini-lessons"><?php print $fields['field_mini_lessons']->label;?> : <?php print $fields['field_mini_lessons']->content;?></div>
-        <?php endif; ?>
 
-        <?php if($fields['field_related_articles']): ?>
-           <div class="addit-related-articles"><?php print $fields['field_related_articles']->label;?> : <?php print $fields['field_related_articles']->content;?></div>
-        <?php endif; ?>
-    </div>
+<?php if($is_anon == 0):?>
+  <?php if(strlen($fields['field_mini_lessons']->content) != 0 || strlen($fields['field_related_articles']->content) != 0):?>
+      <div class="related-content-wrap">
+          <div class="addit-content">Additional Content</div>
+          <?php if($fields['field_mini_lessons']): ?>
+             <div class="addit-mini-lessons"><?php print $fields['field_mini_lessons']->label;?> : <?php print $fields['field_mini_lessons']->content;?></div>
+          <?php endif; ?>
+
+          <?php if($fields['field_related_articles']): ?>
+             <div class="addit-related-articles"><?php print $fields['field_related_articles']->label;?> : <?php print $fields['field_related_articles']->content;?></div>
+          <?php endif; ?>
+      </div>
+  <?php endif;?>
 <?php endif;?>
-<?php endif;?>
-*
