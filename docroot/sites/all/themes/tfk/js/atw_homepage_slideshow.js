@@ -17,6 +17,7 @@ var nextSlideImg = function() {
 	$('#clicks').children().each(function(i, img) {
 		$(img).removeClass('active');
 		$('.title-container').children().eq(i).hide();
+                $('.foot-credit').children().eq(i).hide();
 	});
 	
 	$('#slideshow-container #slideshow .inner').animate({'left': (-1 * (nextImgNum * 488)) + 'px'}, 500);
