@@ -206,3 +206,7 @@ ol#tfk-search-results-photos-video.search-results .search-result h3.title {
   margin: 0 0 5px 0;
   line-height: 100%;
 }
+
+#tfk-search-pager-top .item-list .pager li {
+  padding: 0 0.3em;
+}
