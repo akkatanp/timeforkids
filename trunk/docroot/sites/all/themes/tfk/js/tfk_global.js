@@ -18,14 +18,17 @@ $(document).ready(function() {
 	});
 
 
-      $('#yearsubmit').click(function(e){
+        $('#yearsubmit').takeUserTo();
 
-        takeUserTo();
+
+   //   $('#yearsubmit').click(function(e){
+
+   //     takeUserTo();
 
 //        e.preventDefault();
 //        var yr = $('#yeardropdown').val();
 //        location.href= '/news-archive/' + yr;
-    });
+  //  });
 });
 
 
