@@ -438,10 +438,9 @@
 
 #news-sidebar-year-filter p {
 	margin: 0 0 10px 0;
-	font: bold 12px "Arial";
-	font-style: italic;
-	color: #555;
+	font: bold 12px arial;
 }
+
 #news-sidebar-year-filter label {
 	display: inline;
 }
@@ -597,7 +596,7 @@
 .node-type-kid-reporter .region-sidebar-first .views-row,
 .section-tfk-kid-reporters .region-sidebar-first .views-row,
 .section-kid-reporter .region-sidebar-first .views-row {
-	padding-bottom: 6px;
+	padding-bottom: 10px;
 	margin-bottom: 10px;
 	border-bottom: dotted 1px #cecece;
 }
@@ -642,7 +641,7 @@
 	background: #d71700;
 	color: white;
 	text-decoration: none;
-	padding: 6px 8px;
+	padding: 4px 8px;
 	margin: 10px 0;
 	-moz-border-radius: 12px;
 	-webkit-border-radius: 12px;
@@ -650,6 +649,13 @@
 	-moz-box-shadow: 2px 2px 2px #999;
 	-webkit-box-shadow: 2px 2px 2px #999;
 	box-shadow: 2px 2px 2px #999;
+}
+
+#block-views-random-kid-reporters-block .view-footer a:hover,
+.node-type-kid-reporter .region-sidebar-first .view-footer a:hover,
+.section-tfk-kid-reporters  .region-sidebar-first .view-footer a:hover
+.section-kid-reporter .region-sidebar-first .view-footer a:hover {
+	background: #900;
 }
 
 #block-views-featured-kid-reporter-block  {
@@ -671,20 +677,31 @@
 	width: 115px;
 	height: 115px;
 }
-.more-reporters-class {/*More kid reporters header*/
-    font: bold 12px "arial black";
+
+/* More kid reporters */
+.more-reporters-class {
+    font: normal 12px "arial black";
     border-bottom: dotted 1px #cecece;
+	padding-bottom: 10px;
     margin-bottom:10px;
 }
+
+#block-views-random-kid-reporters-block .views-row {
+	line-height: 15px;
+}
+
 #block-views-random-kid-reporters-block .views-field-title a {/*More kid reporters title*/
-    font-size:14px;
+    font: bold 14px arial;
 }
+
 #block-views-random-kid-reporters-block .views-field-field-location {/*More kid reporters location */
-    font: bold 12px "arial";
+    font: bold 12px arial;
 }
+
 #block-views-random-kid-reporters-block .views-field-field-kid-reporter-age {/*More kid reporters age*/
     font: bold 12px "arial";
 }
+
 #block-views-random-kid-reporters-block .views-field-title-1  {/*More kid reporters learn more link*/
     margin-top:10px;
 }
