@@ -1588,6 +1588,8 @@ function tfk_search_preprocess_search_result(&$vars) {
          // Supress additional resources box if empty.
          if((!empty($vars['magazine_materials'])) && (!empty($vars['magazine_related']))) {
            $vars['show_related_resources'] = TRUE;
+         } else {
+           $vars['show_related_resources'] = FALSE;
          }
        }
 
