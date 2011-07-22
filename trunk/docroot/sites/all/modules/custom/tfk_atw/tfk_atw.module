@@ -26,7 +26,7 @@ function tfk_atw_menu(){
 		'access callback' => 'user_access',
 		'access arguments' => array('access content')
 	);
-  $items['destination/%/challenge'] = array(
+  $items['around-the-world/%/challenge'] = array(
 		'title' => 'Challenge quiz',
 		'page callback' => 'atw_challenge_callback',
                 'page arguments' => array(1),
@@ -49,7 +49,7 @@ function atw_page_map_callback(){
 function atw_challenge_callback($destination_name){
   drupal_set_title('Around The World');
 
-  $alias = 'destination/'.$destination_name;
+  $alias = 'around-the-world/'.$destination_name;
   $parent_path = drupal_lookup_path('source',$alias);
   $tmp_nid = explode('/',$parent_path);
   $parent_nid = $tmp_nid[1];
@@ -574,21 +574,21 @@ function tfk_atw_tokens($type, $tokens, array $data = array(), array $options = 
           $nid =  $data['node']->nid;
           $result = db_query('select rt.entity_id,n.type from field_data_field_timeline rt left join node n on rt.entity_id = n.nid where rt.field_timeline_nid = :timeline_nid and n.type = :type and n.status = 1',array(':type'=>'atw_destination',':timeline_nid'=>$nid));
           $record = $result->fetch();
-          $alias = str_replace('destination/','',drupal_lookup_path('alias','node/'.$record->entity_id));
+          $alias = str_replace('around-the-world/','',drupal_lookup_path('alias','node/'.$record->entity_id));
         }
 
         if($data['node']->type == 'atw_native_lingo'){
             $nid =  $data['node']->nid;
             $result = db_query('select nl.entity_id,n.type from field_data_field_native_lingo nl left join node n on nl.entity_id = n.nid where nl.field_native_lingo_nid = :lingo_nid and n.type = :type and n.status = 1',array(':type'=>'atw_destination',':lingo_nid'=>$nid));
             $record = $result->fetch();
-            $alias = str_replace('destination/','',drupal_lookup_path('alias','node/'.$record->entity_id));
+            $alias = str_replace('around-the-world/','',drupal_lookup_path('alias','node/'.$record->entity_id));
         }
 
         if($data['node']->type == 'atw_day_in_life'){
             $nid =  $data['node']->nid;
             $result = db_query('select nl.entity_id,n.type from  field_data_field_day_in_life nl left join node n on nl.entity_id = n.nid where nl.field_day_in_life_nid = :day_in_life_nid and n.type = :type and n.status = 1',array(':type'=>'atw_destination',':day_in_life_nid'=>$nid));
             $record = $result->fetch();
-            $alias = str_replace('destination/','',drupal_lookup_path('alias','node/'.$record->entity_id));
+            $alias = str_replace('around-the-world/','',drupal_lookup_path('alias','node/'.$record->entity_id));
         }
 
 
@@ -596,7 +596,7 @@ function tfk_atw_tokens($type, $tokens, array $data = array(), array $options = 
             $nid = $data['node']->nid;
             $result = db_query('select nl.entity_id,n.type from field_data_field_sightseeing nl left join node n on nl.entity_id = n.nid where nl.field_sightseeing_nid = :sight_nid and n.type = :type and n.status = 1',array(':type'=>'atw_destination',':sight_nid'=>$data['node']->nid));
             $record = $result->fetch();
-            $alias = str_replace('destination/','',drupal_lookup_path('alias','node/'.$record->entity_id));
+            $alias = str_replace('around-the-world/','',drupal_lookup_path('alias','node/'.$record->entity_id));
         }
 
         foreach ($tokens as $name => $original) {
