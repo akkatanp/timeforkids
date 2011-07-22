@@ -22,6 +22,14 @@
  *
  * @ingroup views_templates
  */
+
+$is_anon = 0;
+global $user;
+$user_roles = $user->roles;
+if(count($user_roles) == 1 && in_array('anonymous user',$user_roles)){
+  $is_anon = 1;
+}
+
 ?>
 <?php foreach ($fields as $id => $field): ?>
 
