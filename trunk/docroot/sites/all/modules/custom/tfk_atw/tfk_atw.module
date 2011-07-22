@@ -334,12 +334,11 @@ function _get_atw_destination_slideshow_images(){
     foreach($tmp_imgs as $k => $image){
       $img_data = $image['node'];
       $tmp_img_uri = field_get_items('node', $img_data, 'field_image');
-        print_R($image);
-
       $img_uri = $tmp_img_uri[0]['uri'];
       $images[$k]['image_path'] = image_style_path('tfk_rect_large',$img_uri);
       $images[$k]['image_path'] = file_create_url($images[$k]['image_path']);
       $images[$k]['image_title'] = $img_data->title;
+      $images[$k]['image_credit'] = $image['node']->field_credit['und'][0]['value'];
     }
   }
   $list = array('images_data' => $images);
