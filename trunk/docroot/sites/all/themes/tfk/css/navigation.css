@@ -688,8 +688,9 @@
 #block-views-random-kid-reporters-block .views-field-title-1  {/*More kid reporters learn more link*/
     margin-top:10px;
 }
+
 /* ATW sidebar */
-.section-destination .region-sidebar-first .section {
+.section-around-the-world .region-sidebar-first .section {
 	padding: 0;
 	background: none;
 	border: none;
