@@ -32,17 +32,17 @@ $(document).ready(function() {
 });
 
 
-(function($){
-    $.fn.takeUserTo = function(){
-      alert(223);
-    }
-})(jQuery);
-
-
-
-
 (function($) {
-	$.fn.loginBox = function() {		
+
+        $.fn.takeUserTo = function(){
+          $(this).click(function(e) {
+            e.preventDefault();
+            alert(223);
+          }
+        }
+
+
+        $.fn.loginBox = function() {
 		$(this).click(function(e) {
 			e.preventDefault();
 			createLightBox();
