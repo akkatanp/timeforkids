@@ -17,17 +17,17 @@ function tfk_user_profile_user_login(&$edit, $account) {
 }
 
 /**
- * Implementation of hook_user
- * Adds the grade level data to the user object
+ * Implementation of hook_user_load.
  */
- function tfk_user_account($op, &$account){
-   switch($op){
-     case 'load':
-     	$grade_level = db_query("SELECT field_grade_level_tid FROM {field_data_field_grade_level} WHERE entity_id = :entity_id AND entity_type = 'user'",  array('entity_id' => $account->uid))->fetchField();
-		$account->grade_level = $grade_level;
-     break;
-   }
- }
+function tfk_user_profile_user_load($users, $test = NULL) {
+  // Load the grade level into the global user object.
+  foreach($users as $user) {
+    $grade_tid = field_get_items('user', $user, 'field_grade_level');
+    if($grade_tid) {
+      $grade_level = taxonomy_term_load($grade_tid[0]['tid']);
+    }
+  }
+}
 
 /** Use a custom final validate function to redirect or show
  *  a custom error message when the user fails to validate
@@ -40,7 +40,7 @@ function tfk_user_login_final_validate($form, &$form_state) {
 		// Register a per-user failed login event.
 		if (isset($form_state['flood_control_user_identifier'])) {
 	  		flood_register_event('failed_login_attempt_user', variable_get('user_failed_login_user_window', 21600), $form_state['flood_control_user_identifier']);
-		}	
+		}
 		
 		if (isset($form_state['lucie_error'])) {
 			if ($form_state['lucie_error'] == 'user_locked') {
@@ -71,7 +71,7 @@ function tfk_user_login_final_validate($form, &$form_state) {
  * Check to see if this user has a record in the users_lucie_account table.
  */
 function tfk_check_lucie_user($lucieData){
-	$result = db_query("SELECT aiid, lid, uid, username FROM {users_lucie_account} WHERE lid = :lid", array(':lid' => $lucieData['uidpk']));   	   
+	$result = db_query("SELECT aiid, lid, uid, username FROM {users_lucie_account} WHERE lid = :lid", array(':lid' => $lucieData['uidpk']));
 	while ($obj = $result->fetchObject()) {
 		 return $obj;
 	}
@@ -82,7 +82,7 @@ function tfk_check_lucie_user($lucieData){
 * for a new teacher that has logged in
 */
 function tfk_insert_teacher_role($uid=0){
-	$rid = db_query("SELECT rid FROM {role} WHERE name = :name", array(':name' => 'teacher'))->fetchField();   	   
+	$rid = db_query("SELECT rid FROM {role} WHERE name = :name", array(':name' => 'teacher'))->fetchField();
 	if ($rid && $uid) {
 		$fields = array('uid' => $uid, 'rid' => $rid);
 		// delete any roles associated to this LUCIE user that are not 'teacher'
@@ -90,7 +90,7 @@ function tfk_insert_teacher_role($uid=0){
 				->condition('uid', $uid)
 				->condition('rid', $rid, '!=')
 		)->execute();
-		// make sure that this user has a 'teacher' role associated to it. 
+		// make sure that this user has a 'teacher' role associated to it.
 		db_merge('users_roles')->key(array('uid'=>$uid))->fields($fields)->updateFields($fields)->execute();
 	}
 }
@@ -140,7 +140,7 @@ function tfk_user_profile_login_validate( $form, &$form_state ){
     	// check to see if a record exists in the lucie mapping table
  		$existingUser = tfk_check_lucie_user($response);
  		
- 		if (empty($existingUser)) { 			
+ 		if (empty($existingUser)) {
         	user_external_login_register( $username, 'project_authentication' );
         	$account = user_external_load($username);
         	tfk_user_account('load', $account);
@@ -191,7 +191,7 @@ function tfk_lucie_user_entitlements($token){
   if($response->code == 200){
   	return $dataResponse['issues'][0]['activeSubscription'];
   }
-} 
+}
 /**
  * This function will authenticate a user in the LUCIE system.
  * A token is returned which must be used in any additional calls to LUCIE.
@@ -327,7 +327,7 @@ function tfk_user_profile (&$user_profile) {
     global $user;
     if (isset($user_profile['elements']['#account']->field_is_board_member)) {
         if ($user_profile['elements']['#account']->field_is_board_member['und']['0']['value'] == "yes") {
-            //Show board member page. 
+            //Show board member page.
            drupal_set_title('Teacher Community');
            $output = t("<h2 class=\"tfk-user-profile-title\">Teacher Board Member &#8212; ".$user_profile['elements']['#account']->name."</h2><div id=\"tfk-user-profile-board-member-wrapper\">");
            $output .= $user_profile['elements']['user_picture']['#markup'];
