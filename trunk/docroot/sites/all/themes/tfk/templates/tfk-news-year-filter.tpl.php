@@ -1,11 +1,8 @@
 <script>
   $(document).ready(function(){
-    alert(22);
     $('#yearsubmit').click(function(){
-
       var yr = $('#yeardropdown').val();
-      alert(33);
-      alert(yr);
+      location.href= '<?php echo url('news-archive')?>/' + yr;
     });
   });
   //onClick="location.href='<?php echo url('news-archive')?>/'+ document.getElementById('yeardropdown').value;" 
