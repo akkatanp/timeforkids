@@ -1303,7 +1303,7 @@ ul.links li {
 }
 
 /* ATW Challenge */
-.section-around-the-world .region-content {
+.section-around-the-world.node-type-webform .region-content {
 	border: solid 1px #cecece;
 	padding: 10px;
 }
@@ -1312,6 +1312,7 @@ ul.links li {
 	width: 488px;
 	height: 100px;
 	background: url(../images/atw-head.png) no-repeat;
+	margin-bottom: 10px;
 }
 
 .section-around-the-world .node-webform h2 {
