@@ -1311,7 +1311,7 @@ ul.links li {
 .challengeheader {
 	width: 488px;
 	height: 100px;
-	background: url(../images/atw-head.png) no-repeat 10px 10px;
+	background: url(../images/atw-head.png) no-repeat;
 }
 
 .section-around-the-world .node-webform h2 {
@@ -1326,11 +1326,7 @@ ul.links li {
 	margin-bottom: 10px;
 }
 
-.section-around-the-world .node-webform .form-item {
-	margin: 0;
-}
-
-.page-destination-united-states-america-challenge .form-radios {
+.section-around-the-world .node-webform .form-radios {
 	margin-bottom: 10px;
 }
 
