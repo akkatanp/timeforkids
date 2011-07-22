@@ -1552,36 +1552,42 @@ function tfk_search_preprocess_search_result(&$vars) {
        ///////////GETTING ADDITIONAL CONTENT////////
        ////////////////////Materials////////////////
        $tmp_materials = field_get_items('node', $magazine, 'field_materials');
-       foreach($tmp_materials as $k=>$tmp_material){
-         //i want to get the title without doing an extra node_load
-         $sql = 'SELECT title FROM {node} WHERE nid = :nid';
-         $result = db_query($sql,array('nid'=>$tmp_material['nid']));
-         $link_title = $result->fetch();
-         if($link_title) {
-           $vars['magazine_materials'][$k]['title'] = $link_title->title;
-           $vars['magazine_materials'][$k]['nid'] = $tmp_material['nid'];
-           $vars['magazine_materials'][$k]['url'] = drupal_lookup_path('alias','node/'.$tmp_material['nid']);
+       if($tmp_materials) {
+        foreach($tmp_materials as $k=>$tmp_material){
+           //i want to get the title without doing an extra node_load
+           $sql = 'SELECT title FROM {node} WHERE nid = :nid';
+           $result = db_query($sql,array('nid'=>$tmp_material['nid']));
+           $link_title = $result->fetch();
+           if($link_title) {
+             $vars['magazine_materials'][$k]['title'] = $link_title->title;
+             $vars['magazine_materials'][$k]['nid'] = $tmp_material['nid'];
+             $vars['magazine_materials'][$k]['url'] = drupal_lookup_path('alias','node/'.$tmp_material['nid']);
+           }
          }
        }
 
+
        ////////////////////Related Resources////////////////
        $tmp_related = field_get_items('node', $magazine, 'field_related_resources');
-       foreach($tmp_related as $k=>$tmp_rel){
-         //i want to get the title without doing an extra node_load
-         $sql = 'SELECT title FROM {node} WHERE nid = :nid';
-         $result = db_query($sql,array('nid'=>$tmp_rel['nid']));
-         $link_title = $result->fetch();
-         if($link_title) {
-           $vars['magazine_related'][$k]['title'] = $link_title->title;
-           $vars['magazine_related'][$k]['nid'] = $tmp_rel['nid'];
-           $vars['magazine_related'][$k]['url'] = drupal_lookup_path('alias','node/'.$tmp_rel['nid']);
+       if($tmp_related) {
+         foreach($tmp_related as $k=>$tmp_rel){
+           //i want to get the title without doing an extra node_load
+           $sql = 'SELECT title FROM {node} WHERE nid = :nid';
+           $result = db_query($sql,array('nid'=>$tmp_rel['nid']));
+           $link_title = $result->fetch();
+           if($link_title) {
+             $vars['magazine_related'][$k]['title'] = $link_title->title;
+             $vars['magazine_related'][$k]['nid'] = $tmp_rel['nid'];
+             $vars['magazine_related'][$k]['url'] = drupal_lookup_path('alias','node/'.$tmp_rel['nid']);
+           }
+         }
+         
+         // Supress additional resources box if empty.
+         if((!empty($vars['magazine_materials'])) && (!empty($vars['magazine_related']))) {
+           $vars['show_related_resources'] = TRUE;
          }
        }
-       
-       // Supress additional resources box if empty.
-       if((!empty($vars['magazine_materials'])) && (!empty($vars['magazine_related']))) {
-         $vars['show_related_resources'] = TRUE;
-       }
+
 
       break;
 
