@@ -1172,8 +1172,22 @@ function tfk_search_worksheets() {
   ctools_add_css('ctools-ajax-sample', 'tfk_search');
   
 
+  // When a teacher browses the worksheets the search should be pre-populated with their grade.
+  if(isset($_GET['filters'])) {
+    $filterstring = $_GET['filters'];
+  } else {
+    if(!isset($_GET['solrsort'])) {
+      global $user;
+      $user = user_load($user->uid);
+      if($user && isset($user->grade_level)) {
+        $filterstring = 'im_28_field_grade_level:'. $user->grade_level->tid;
+      } else {
+        $filterstring = '';
+      }
+    }
+  }
+  
   module_load_include('module', 'search');
-  $filterstring = isset($_GET['filters']) ? $_GET['filters'] : '';
   $solrsort = isset($_GET['solrsort']) ? $_GET['solrsort'] : 'ds_created desc';
   $page = isset($_GET['page']) ? $_GET['page'] : 0;
   $base_path = 'worksheets';
