@@ -18,8 +18,8 @@ $(document).ready(function() {
 	});
 
 
-      $('#yearsubmit').click(function(event){
-      event.preventDefault();
+      $('#yearsubmit').click(function(e){
+      e.preventDefault();
       var yr = $('#yeardropdown').val();
       location.href= '/news-archive/' + yr;
     });
