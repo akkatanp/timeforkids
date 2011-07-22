@@ -454,7 +454,7 @@ function tfk_news_preprocess_page(&$vars) {
     if(count($user_roles) == 1 && in_array('anonymous user',$user_roles)){
       $is_anon = 1;
     }
-    $variables['is_anon'] = $is_anon;
+    $vars['is_anon'] = $is_anon;
 
 
 }
