@@ -994,6 +994,12 @@ ul.links li {
 	display: none;
 }
 
+.node-type-article .field-name-field-body {
+	padding-bottom: 10px;
+	border-bottom: dotted 1px #cecece;
+	margin-bottom: 10px;
+}
+
 .node-type-article .field-name-field-body p {
 	line-height: 15px;
 	margin-bottom: 15px;
@@ -1001,7 +1007,6 @@ ul.links li {
 
 .node-type-article .field-name-field-body p  b {
 	font: bold 14px arial;
-	margin-bottom: 0;
 }
 
 .inline-img {
@@ -1182,7 +1187,7 @@ ul.links li {
 .node-type-article .reporter-badge .reporter-link-a {
 	display: block;
 	vertical-align: bottom;
-	color: black;
+	font: bold 11px arial;
 }
 
 /*
