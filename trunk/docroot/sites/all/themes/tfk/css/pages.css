@@ -668,14 +668,13 @@ ul.links li {
 }
 
 /* mini-sites */
-#block-views-mini-site-home-block-3,
-#block-views-minisite-articles-block-7 {
+.view-mini-site-home {
 	border: solid 1px #cecece;
 	padding: 10px;
 	margin-bottom: 10px;
 }
 
-#block-views-mini-site-home-block-3 .views-field-title a {
+.view-mini-site-home .views-field-title {
 	font: bold 30px arial;
 	color: black;
 }
@@ -1171,6 +1170,7 @@ ul.links li {
 /*
  * Around The World
  */
+ .challengeheader,
 .atw-graphic-header {
 	border: solid 1px #cecece;
 	padding: 10px;
@@ -2285,18 +2285,6 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 /*RSS Icon*/
 .feed-icon {
     display:none;
-}
-
-
-/*sergei voitenko */
-
-.challengeheader{
-  background: url("../images/atw-head.png") no-repeat scroll 0 0 transparent;
-    height: 100px;
-    width: 488px;
-    margin-left:10px;
-    margin-bottom:10px;
-    z-index: 2;
 }
 
 #block-views-board-members-block-2 .view-header {
