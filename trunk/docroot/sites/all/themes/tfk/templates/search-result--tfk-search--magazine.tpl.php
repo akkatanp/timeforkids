@@ -88,12 +88,14 @@
     <img src="<?php print $tfk_search_res_image;?>">
   <?php endif;?>
 
-  <div class="in-this-issue">
-    <?php foreach($magazine_lists as $name => $list):?>
-      <h3><?php print $name; ?>:</h3>
-      <?php print $list; ?>
-    <?php endforeach;?>
-  </div>
+	<?php if($magazine_lists):?>
+    <div class="in-this-issue">
+      <?php foreach($magazine_lists as $name => $list):?>
+        <h3><?php print $name; ?>:</h3>
+        <?php print $list; ?>
+      <?php endforeach;?>
+    </div>
+	<?php endif; ?>
   
   <?php if($show_related_resources): ?>
     <div class="related-content-wrap">
