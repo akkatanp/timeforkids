@@ -89,84 +89,34 @@
   <?php endif;?>
 
   <div class="in-this-issue">
-    <?php if(isset($magazine_cover_stories) && count($magazine_cover_stories) > 0): ?>
-      <h3>Cover Story</h3>
-	  <ul>
-      <?php foreach($magazine_cover_stories as $item):?>
-        <li>&bull; <a href="<?php echo url($item['url']);?>"><?php echo $item['title'];?></a></li>
-      <?php endforeach;?>
-	  </ul>
-    <?php endif; ?>
-
-
-    <?php if(isset($magazine_in_the_news) && count($magazine_in_the_news) > 0): ?>
-    <h3>In The News</h3>
-	<ul>
-	  <?php foreach($magazine_in_the_news as $item):?>
-        <li>&bull; <a href="<?php echo url($item['url']);?>"><?php echo $item['title'];?></a></li>
-      <?php endforeach;?>
-	</ul>
-    <?php endif; ?>
-
-
-    <?php if(isset($magazine_topfive) && count($magazine_topfive) > 0): ?>
-      <h3>Top 5</h3>
-	  <ul>
-      <?php foreach($magazine_topfive as $item):?>
-        <li>&bull; <a href="<?php echo url($item['url']);?>"><?php echo $item['title'];?></a></li>
-      <?php endforeach;?>
-	  </ul>
-    <?php endif; ?>
-
-
-    <?php if(isset($magazine_whosnews) && count($magazine_whosnews) > 0): ?>
-      <h3>Who's News</h3>
-	  <ul>
-      <?php foreach($magazine_whosnews as $item):?>
-        <li>&bull; <a href="<?php echo url($item['url']);?>"><?php echo $item['title'];?></a></li>
-      <?php endforeach;?>
-	  </ul>
-    <?php endif; ?>
-
-    <?php if(isset($magazine_morenews) && count($magazine_morenews) > 0): ?>
-      <h3>More News</h3>
-	  <ul>
-      <?php foreach($magazine_morenews as $item):?>
-        <li>&bull; <a href="<?php echo url($item['url']);?>"><?php echo $item['title'];?></a></li>
-      <?php endforeach;?>
-	  </ul>
-    <?php endif; ?>
-  </div>
-
-  <div class="related-content-wrap">
-    <?php if(count($magazine_materials) >0 || count($magazine_related) > 0 ):?>
-       <h2 class="addit-content">Additional Content</h2>
-    <?php endif;?>
-
-    <?php if(isset($magazine_materials) && count($magazine_materials) > 0): ?>
-      <h3>Materials</h3>
-      <?php foreach($magazine_materials as $item):?>
-        <a href="<?php echo $item['url'];?>"><?php echo $item['title'];?></a><br/>
-      <?php endforeach;?>
-    <?php endif; ?>
-
-    <?php if(isset($magazine_related) && count($magazine_related) > 0): ?>
-      <h3>Related Resources</h3>
-      <?php foreach($magazine_related as $item):?>
-        <a href="<?php echo $item['url'];?>"><?php echo $item['title'];?></a><br/>
-      <?php endforeach;?>
-    <?php endif; ?>
+    <?php foreach($magazine_lists as $name => $list):?>
+      <h3><?php print $name; ?>:</h3>
+      <?php print $list; ?>
+    <?php endforeach;?>
   </div>
   
+  <?php if($show_related_resources): ?>
+    <div class="related-content-wrap">
+      <?php if(count($magazine_materials) >0 || count($magazine_related) > 0 ):?>
+         <h2 class="addit-content">Additional Content:</h2>
+      <?php endif;?>
+  
+      <?php if(isset($magazine_materials) && count($magazine_materials) > 0): ?>
+        <h3>Materials:</h3>
+        <?php foreach($magazine_materials as $item):?>
+          <a href="<?php echo $item['url'];?>"><?php echo $item['title'];?></a><br/>
+        <?php endforeach;?>
+      <?php endif; ?>
+  
+      <?php if(isset($magazine_related) && count($magazine_related) > 0): ?>
+        <h3>Related Resources:</h3>
+        <?php foreach($magazine_related as $item):?>
+          <a href="<?php echo $item['url'];?>"><?php echo $item['title'];?></a><br/>
+        <?php endforeach;?>
+      <?php endif; ?>
+    </div>
+  <?php endif; ?>
+  
   <div class="clearfix"></div>
-
-  <div class="search-snippet-info">
-    <?php if ($snippet) : ?>
-      <p class="search-snippet"<?php print $content_attributes; ?>><?php print $snippet; ?></p>
-    <?php endif; ?>
-    <?php if ($info) : ?>
-      <p class="search-info"><?php print $info; ?></p>
-    <?php endif; ?>
-  </div>
 </li>
 <?php endif; ?>
