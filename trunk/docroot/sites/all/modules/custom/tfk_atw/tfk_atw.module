@@ -452,9 +452,9 @@ function _tfk_atw_destination_navigation_data(){
     }
 
 
-    if(arg(0) == 'destination' &&  arg(2) == 'challenge'){
+    if(arg(0) == 'around-the-world' &&  arg(2) == 'challenge'){
         //getting nid of the parente
-        $parent_alias = 'destination/'.arg(1);
+        $parent_alias = 'around-the-world/'.arg(1);
         $source_destination = drupal_lookup_path('source', $parent_alias);
         $source_nid_tmp = explode('/',$source_destination);
         $source_nid = $source_nid_tmp[1];
