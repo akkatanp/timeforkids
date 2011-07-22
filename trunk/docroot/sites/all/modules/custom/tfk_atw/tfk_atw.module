@@ -672,7 +672,7 @@ function tfk_atw_form_alter(&$form,&$form_state,$form_id) {
 	  if ($node->type == 'webform') {
 	           $dest_slug = arg(1);
               //$form['#action'] = url('destination/'.$dest_slug.'/challenge');
-              print_r($form);
+                   $form['actions']['submit']['#value'] = 'Go';
   		if (isset($form_state['storage'])) {
 
   			$questions = $form['#node']->webform['components'];
