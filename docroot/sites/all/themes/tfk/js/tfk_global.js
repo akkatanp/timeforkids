@@ -17,35 +17,18 @@ $(document).ready(function() {
 		});
 	});
 
-
         $('#yearsubmit').takeUserTo();
-
-
-   //   $('#yearsubmit').click(function(e){
-
-   //     takeUserTo();
-
-//        e.preventDefault();
-//        var yr = $('#yeardropdown').val();
-//        location.href= '/news-archive/' + yr;
-  //  });
 });
 
 
 (function($) {
 
         $.fn.takeUserTo = function(){
-          
-
-
           $(this).click(function(e) {
 			e.preventDefault();
-                        alert(223);
-			createLightBox();
+                        var yr = $('#yeardropdown').val();
+                        location.href= '/news-archive/' + yr;
 		});
-
-
-
         }
 
 
