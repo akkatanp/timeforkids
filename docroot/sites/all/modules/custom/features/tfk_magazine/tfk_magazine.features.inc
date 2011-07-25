@@ -12,4 +12,25 @@ function tfk_magazine_ctools_plugin_api() {
   if ($module == "context" && $api == "context") {
     return array("version" => 3);
   }
+  list($module, $api) = func_get_args();
+  if ($module == "strongarm" && $api == "strongarm") {
+    return array("version" => 1);
+  }
+}
+
+/**
+ * Implementation of hook_node_info().
+ */
+function tfk_magazine_node_info() {
+  $items = array(
+    'magazine_issue' => array(
+      'name' => t('Magazine Issue'),
+      'base' => 'node_content',
+      'description' => '',
+      'has_title' => '1',
+      'title_label' => t('Title'),
+      'help' => '',
+    ),
+  );
+  return $items;
 }
