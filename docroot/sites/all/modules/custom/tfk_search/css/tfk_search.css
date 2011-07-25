@@ -521,6 +521,9 @@ body.section-my-favorites .content-type-video .icon {
 
 #block-tfk-search-tfk-search-sidebar-filter .form-item.form-type-textfield {
   margin-right: 9px;
+  <!--[if IE]>
+  	margin-right: 0px;
+  ![endif]-->
 }
 
 #edit-search-block-form--2 {
