@@ -427,16 +427,14 @@ ul.links li {
 	position: absolute;
 	bottom: 0px;
 	right: 0px;
-	height: 14px;
-	padding-left: 14px;
-	background: url(../images/left-grey-corner.png) no-repeat;
+	height: 16px;
+	padding-left: 16px;
+	background: #999 url(../images/left-grey-corner.png) no-repeat;
 }
 
 .view-homepage-minisite .views-field-nothing a {
 	font: normal l1px arial;
-	height: 14px;
 	color: white;
-	background: #999;
 }
 
 .view-homepage-minisite .related-content-wrap {
