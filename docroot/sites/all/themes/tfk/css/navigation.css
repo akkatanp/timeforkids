@@ -1010,14 +1010,14 @@
 .region-footer ul.menu {
 	display: inline;
 	list-style-type: none;
-	height: 14px;
+	height: 12px;
 	padding: 10px;
 }
 
 .region-footer ul.menu li {
 	display: inline;
-	height: 10px;
-	padding: 2px 8px;
+	height: 11px;
+	padding: 1px 8px;
 	border-right: solid 1px #fff;
 }
 
@@ -1029,8 +1029,7 @@
 .region-footer ul.menu li.leaf a:link,
 .region-footer ul.menu li.leaf a:active,
 .region-footer ul.menu li.leaf a:visited {
-	font-weight: normal;
-	font-size: 10px;
+	font: normal 11px arial;
 	color: white;
 	text-decoration: none;
 }
