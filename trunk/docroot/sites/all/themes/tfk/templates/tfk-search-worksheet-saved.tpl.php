@@ -1,7 +1,7 @@
 <script>
   $(document).ready(function(){
       $("#svdsrdsubm").click(function(event) {
-      //event.preventDefault();
+      event.preventDefault();
       alert(123123);
     });
   });
