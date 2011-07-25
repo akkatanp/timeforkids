@@ -472,7 +472,6 @@ ul.links li {
 	width: 230px;
 	height: 120px;
 	border: solid 1px #cecece;
-	margin-bottom: 10px;
 }
 
 .view-homepage-destination .views-field-field-image img {
@@ -480,9 +479,18 @@ ul.links li {
 	height: 120px;
 }
 
-.view-homepage-destination  .views-field-title a {
-	font: normal 20px arial;
+.view-homepage-destination .views-field-field-credit {
+	font: normal 9px arial;
+	color: #999;
+	text-align: right;
 	margin-bottom: 10px;
+}
+.view-homepage-destination  .views-field-title {
+	margin-bottom: 14px;
+}
+
+.view-homepage-destination  .views-field-title a {
+	font: bold 20px arial;
 }
 
 #block-views-c909bfc47773a85d7de307e584c9ea89,
