@@ -588,8 +588,8 @@ function theme_tfk_featured_block(&$variables) {
   $output .= l(theme('image', array('path' => $tfkSearchFeaturedItem->featured_item->abspath, 'title' => $tfkSearchFeaturedItem->title, 'alt' => $tfkSearchFeaturedItem->title)). $icon, $url, $link_options);
   $output .= '</div>';
   
-  $body = field_get_items('node', $tfkSearchFeaturedItem, ($tfkSearchFeaturedItem->type == 'slideshow') ? 'field_slideshow_description': 'field_video_description');
-  if($body) {
+  $body = ($tfkSearchFeaturedItem->type == 'slideshow') ? field_get_items('node', $tfkSearchFeaturedItem, 'field_slideshow_description'): $tfkSearchFeaturedItem->body;
+  if($tfkSearchFeaturedItem->type == 'slideshow') {
     $body = $body[0]['safe_value'];
   }
   $output .= '<div class="g2">';
