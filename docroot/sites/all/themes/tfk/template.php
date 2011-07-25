@@ -138,7 +138,8 @@ function tfk_preprocess_node(&$variables, $hook) {
     foreach (element_children($variables['content']['field_flashcard']) as $delta) {
       $flashcard = &$variables['content']['field_flashcard'][$delta]['#items'][0];
       $flashcard['data'] = check_markup($flashcard['data'], 'bad_words');
-      $flashcard['children'][0] = check_markup($flashcard['children'][0], 'bad_words');
+      // Flashcards with an answer of '0' do not disaply correctly if run through the bad_words filter.
+      $flashcard['children'][0] = is_numeric($flashcard['children'][0]) ? $flashcard['children'][0] : check_markup($flashcard['children'][0], 'bad_words');
     }
   }
 }
