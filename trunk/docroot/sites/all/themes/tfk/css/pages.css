@@ -483,6 +483,7 @@ ul.links li {
 	font: normal 9px arial;
 	color: #999;
 	text-align: right;
+	text-transform: uppercase;
 	margin-bottom: 10px;
 }
 .view-homepage-destination  .views-field-title {
@@ -491,6 +492,10 @@ ul.links li {
 
 .view-homepage-destination  .views-field-title a {
 	font: bold 20px arial;
+}
+
+.view-homepage-destination  .views-field-field-description {
+	line-height: 15px;
 }
 
 #block-views-c909bfc47773a85d7de307e584c9ea89,
