@@ -980,7 +980,7 @@ function tfk_search_preprocess_pager_top(&$vars) {
     if($page_type == TFK_SEARCH_WORKSHEETS_PATH) {
       $vars['pager_active_filter'] = 'Viewing: All Grades, All Themes, All Skills';
     } elseif ($page_type == TFK_SEARCH_MAGAZINE_PATH) {
-      $vars['pager_active_filter'] = 'Viewing: All Grades, All Years';
+      $vars['pager_active_filter'] = 'Viewing: All Grades';
     } else {
       $vars['pager_active_filter'] = 'Viewing: All Subjects, All Themes';
     }
@@ -988,51 +988,51 @@ function tfk_search_preprocess_pager_top(&$vars) {
   // Else get active filters.
   } else if( (array_key_exists('filters', $_GET) && !empty($_GET['filters'])) || !empty($active_filters)) {
     
-    if(!empty($active_filters)) {
-      $vars['pager_active_filter'] = 'Viewing: ';
+    $vars['pager_active_filter'] = 'Viewing: ';
+    
+    // Note: to keep things simple, we are retrieving only the current filter,
+    // but if neccesary we could use the Taxonomy API to retrieve the next
+    // or all term parents.
+    // @todo Unhardcode the vid in the filter names.
+    $default_filters = array(
+      TFK_SEARCH_WORKSHEETS_PATH => array(
+      	'im_28_field_grade_level' => array('active' => FALSE, 'default_text' => 'All Grades', 'filters' => array()),
+      	'im_36_field_themes' => array('active' => FALSE, 'default_text' => 'All Themes', 'filters' => array()),
+        'im_35_field_skills' => array('active' => FALSE, 'default_text' => 'All Skills', 'filters' => array()),
+      ),
+      TFK_SEARCH_PHOTOSVIDEO_PATH => array(
+      	'im_10_field_article_category' => array('active' => FALSE, 'default_text' => 'All Subjects', 'filters' => array()),
+      	'im_36_field_themes' => array('active' => FALSE, 'default_text' => 'All Themes', 'filters' => array()),
+      ),
+      TFK_SEARCH_MAGAZINE_PATH => array(
+      	'im_28_field_grade_level' => array('active' => FALSE, 'default_text' => 'All Grades', 'filters' => array()),
+      ),
+    );
+    
+    // Sort.
+    foreach($active_filters as $filter) {
       
-      // Note: to keep things simple, we are retrieving only the current filter,
-      // but if neccesary we could use the Taxonomy API to retrieve the next
-      // or all term parents.
-      // @todo Unhardcode the vid in the filter names.
-      $default_filters = array(
-        TFK_SEARCH_WORKSHEETS_PATH => array(
-        	'im_28_field_grade_level' => array('active' => FALSE, 'default_text' => 'All Grades', 'filters' => array()),
-        	'im_36_field_themes' => array('active' => FALSE, 'default_text' => 'All Themes', 'filters' => array()),
-          'im_35_field_skills' => array('active' => FALSE, 'default_text' => 'All Skills', 'filters' => array()),
-        ),
-        TFK_SEARCH_PHOTOSVIDEO_PATH => array(
-        	'im_10_field_article_category' => array('active' => FALSE, 'default_text' => 'All Subjects', 'filters' => array()),
-        	'im_36_field_themes' => array('active' => FALSE, 'default_text' => 'All Themes', 'filters' => array()),
-        ),
-      );
-      
-      // Sort.
-      foreach($active_filters as $filter) {
-        
-        // Disable default text if active and substitute with active filters.
-        if(array_key_exists($filter['#name'], $default_filters[$page_type])) {
-          $default_filters[$page_type][$filter['#name']]['active'] = TRUE;
-          $default_filters[$page_type][$filter['#name']]['filters'][] = taxonomy_term_title(taxonomy_term_load($filter['#value']));
-        }
-        
+      // Disable default text if active and substitute with active filters.
+      if(array_key_exists($filter['#name'], $default_filters[$page_type])) {
+        $default_filters[$page_type][$filter['#name']]['active'] = TRUE;
+        $default_filters[$page_type][$filter['#name']]['filters'][] = taxonomy_term_title(taxonomy_term_load($filter['#value']));
       }
       
-      // Merge.
-      $sorted_filters = array();
-      foreach($default_filters[$page_type] as $facet) {
-        if(!$facet['active']) {
-          $sorted_filters[] = $facet['default_text'];
-        } else {
-          $sorted_filters[] = implode(', ', $facet['filters']);
-        }
-      }
-      
-      // Implode.
-      $vars['pager_active_filter'] .= implode(', ', $sorted_filters);
-            
     }
     
+    // Merge.
+    $sorted_filters = array();
+    foreach($default_filters[$page_type] as $facet) {
+      if(!$facet['active']) {
+        $sorted_filters[] = $facet['default_text'];
+      } else {
+        $sorted_filters[] = implode(', ', $facet['filters']);
+      }
+    }
+    
+    // Implode.
+    $vars['pager_active_filter'] .= implode(', ', $sorted_filters);
+            
   }
   
 }
