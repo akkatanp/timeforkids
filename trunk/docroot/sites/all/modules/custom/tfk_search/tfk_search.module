@@ -12,6 +12,24 @@
 define('TFK_SEARCH_MAGAZINE_PATH', 'tfk-magazine');
 
 /**
+ * Path to worksheets search interface.
+ * @var string
+ */
+define('TFK_SEARCH_WORKSHEETS_PATH', 'worksheets');
+
+/**
+ * Path to Photos and Video search interface.
+ * @var string
+ */
+define('TFK_SEARCH_PHOTOSVIDEO_PATH', 'photos-video');
+
+/**
+ * Path to site-wide search interface.
+ * @var string
+ */
+define('TFK_SEARCH_SITESEARCH_PATH', 'search');
+
+/**
  * Implementation of hook_menu.
  */
 function tfk_search_menu(){
