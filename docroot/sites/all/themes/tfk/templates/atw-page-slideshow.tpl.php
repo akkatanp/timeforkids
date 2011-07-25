@@ -14,7 +14,7 @@
 		<div class="footer">
 			<div class="title-container">
 			<?php foreach($destinations_data as $image_k => $image_obj): ?>
-				 <div class="title" style="display: none;"><?php echo $image_obj['image_title']; ?></div>
+				 <div class="title" style="display: none;"><?php echo $image_obj['destination_title']; ?> : <?php echo $image_obj['image_title']; ?></div>
 			<?php endforeach;?>
 			</div>
 		</div>
