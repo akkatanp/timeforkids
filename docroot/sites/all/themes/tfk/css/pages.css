@@ -530,6 +530,10 @@ ul.links li {
 	line-height: 15px;
 }
 
+.view-id-homepage_news_for_teachers .views-field-field-article-url {
+	display: inline;
+}
+
 .view-id-homepage_news_for_teachers .views-field-field-article-url-1 a {
 	font: bold 20px arial;
 }
