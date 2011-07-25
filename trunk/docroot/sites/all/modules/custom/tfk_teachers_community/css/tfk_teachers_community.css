@@ -255,4 +255,10 @@ body.page-node-add-teacher-community-question #content .section {
   font-size: 1.08em;
 }
 
+/* Misc */
+#teacher-community-question-node-form input {
+	background: none;
+	border: none;
+	box-shadow: none;
+}
 
