@@ -466,6 +466,7 @@ ul.links li {
 	font: normal 12px "arial black";
 	color: white;
 	text-transform: uppercase;
+	text-decoration: none;
 }
 
 .view-homepage-destination  .views-field-field-image {
