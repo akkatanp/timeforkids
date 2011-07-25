@@ -517,6 +517,7 @@ function _tfk_atw_block_content_data(){
         LEFT JOIN {file_managed} fm ON fm.fid = fi.field_image_fid
         WHERE si.entity_id = :eid and n.status = 1 LIMIT 0,1',array(':eid' => $record->flagged_slideshow_nid));
     foreach($image_result as $rec){
+      $slideshow_data[$record->destination_nid]['destination_title'] = $record->destination_title;
       $slideshow_data[$record->destination_nid]['destination_nid'] = $record->destination_nid;
       $slideshow_data[$record->destination_nid]['destination_path'] = drupal_lookup_path('alias','node/'.$record->destination_nid);
       $slideshow_data[$record->destination_nid]['image_title'] = $rec->title;
