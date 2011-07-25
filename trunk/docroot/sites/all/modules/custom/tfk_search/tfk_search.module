@@ -1565,7 +1565,15 @@ function tfk_search_preprocess_search_result(&$vars) {
         }
       }
 
-      print_r($lists);
+      $extra_fields = array('In The News' => 'field_in_the_news', 'Top 5' => 'field_top_5',
+      'Who\'s News' => 'field_whos_news', 'More News' => 'field_more_news');
+
+      $mag_extra_items = array();
+      foreach($extra_fields as $val){
+        $extraitems = field_get_items('node', $magazine, 'field_more_news');
+        print_R($extraitems);
+        $mag_extra_items[$val]['title'] = '';
+      }
 
 
       $vars['magazine_lists'] = array();
