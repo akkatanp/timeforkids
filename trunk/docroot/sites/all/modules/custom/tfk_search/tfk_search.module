@@ -981,7 +981,7 @@ function tfk_search_preprocess_pager_top(&$vars) {
     if($page_type == TFK_SEARCH_WORKSHEETS_PATH) {
       $vars['pager_active_filter'] = 'Viewing: All Grades, All Themes, All Skills';
     } elseif ($page_type == TFK_SEARCH_MAGAZINE_PATH) {
-      $vars['pager_active_filter'] = 'Viewing: All Grades';
+      $vars['pager_active_filter'] = 'Viewing: All Grades, All Years';
     } else {
       $vars['pager_active_filter'] = 'Viewing: All Subjects, All Themes';
     }
@@ -1007,6 +1007,7 @@ function tfk_search_preprocess_pager_top(&$vars) {
       ),
       TFK_SEARCH_MAGAZINE_PATH => array(
       	'im_28_field_grade_level' => array('active' => FALSE, 'default_text' => 'All Grades', 'filters' => array()),
+        'sm_editorial_date_tfk' => array('active' => FALSE, 'default_text' => 'All Years', 'filters' => array()),
       ),
     );
     
@@ -1016,7 +1017,11 @@ function tfk_search_preprocess_pager_top(&$vars) {
       // Disable default text if active and substitute with active filters.
       if(array_key_exists($filter['#name'], $default_filters[$page_type])) {
         $default_filters[$page_type][$filter['#name']]['active'] = TRUE;
-        $default_filters[$page_type][$filter['#name']]['filters'][] = taxonomy_term_title(taxonomy_term_load($filter['#value']));
+        if($filter['#name'] != 'sm_editorial_date_tfk') {
+          $default_filters[$page_type][$filter['#name']]['filters'][] = taxonomy_term_title(taxonomy_term_load($filter['#value']));
+        } else {
+          $default_filters[$page_type][$filter['#name']]['filters'][] = $filter['#value'];
+        }
       }
       
     }
