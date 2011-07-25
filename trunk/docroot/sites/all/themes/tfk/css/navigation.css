@@ -132,8 +132,9 @@
 #teacher-nav-container .inner .content .field-content,
 #teacher-nav-container .inner .content p {
 	margin: 0;
-	height: 20px;
-	padding: 6px 0;
+	height: 18px;
+	line-height: 18px;
+	padding: 8px 0 6px 0;
 	font: bold 12px arial;
 	font-style: italic;
 	color: #555;
