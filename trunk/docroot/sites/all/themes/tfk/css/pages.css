@@ -839,7 +839,7 @@ ul.links li {
     margin-bottom: 10px;
 }
 
-.view-homepage-news-block table td .views-field-field-deck
+.view-homepage-news-block table td .views-field-field-deck,
 .view-teacher-news-news-block table td .views-field-field-deck,
 .view-kid-reporters-channel-news-block table td .views-field-field-deck {
 	line-height: 15px;
