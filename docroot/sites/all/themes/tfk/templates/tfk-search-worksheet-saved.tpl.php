@@ -1,8 +1,10 @@
 <script>
-$("#svdsrdsubm").click(function(event) {
-  event.preventDefault();
-  alert(2342345);
-});
+  $(document).ready(function(){
+      $("#svdsrdsubm").click(function() {
+      event.preventDefault();
+      alert(2342345);
+    });
+  });
 </script>
 
 <div id="mymodaldiv">
