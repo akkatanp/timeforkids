@@ -1565,7 +1565,7 @@ function tfk_search_preprocess_search_result(&$vars) {
               if($field == 'field_cover_story'){
                 $lists[$name][] = l($item['title'], $item['url']);
               }else{
-                $lists[$name][] = l($item['value'], 'www.timeforkids.com/digital');
+                $lists[$name][] = l($item['value'], 'http://www.timeforkids.com/digital');
               }
               
             }
@@ -1574,12 +1574,9 @@ function tfk_search_preprocess_search_result(&$vars) {
         
       }
 
-
       $vars['magazine_lists'] = array();
       if(!empty($lists)) {
         foreach($lists as $name => $list) {
-          print_r($list);
-
 
           $vars['magazine_lists'][$name] = theme('item_list', array('type' => 'ul', 'items' => $list));
         }
