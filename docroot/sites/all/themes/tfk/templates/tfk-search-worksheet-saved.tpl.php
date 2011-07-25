@@ -1,3 +1,10 @@
+<script>
+$("#svdsrdsubm").click(function(event) {
+  event.preventDefault();
+  alert(2342345);
+});
+</script>
+
 <div id="mymodaldiv">
   
 </div>
@@ -13,7 +20,7 @@
 
   </div>
   <div class="submbtn">
-    <input type="image" src="/sites/all/modules/custom/tfk_search/images/delete-this-search.png" />
+    <input id="svdsrdsubm" type="image" src="/sites/all/modules/custom/tfk_search/images/delete-this-search.png" />
   </div>
 </form>
 <?php endif; ?>
