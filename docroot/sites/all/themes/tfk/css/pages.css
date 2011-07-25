@@ -459,11 +459,10 @@ ul.links li {
 	clear: right;
 	background: #d71700;
 	color: white;
-	font: normal 12px "arial black";
-	padding: 2px 6px;
 }
 
 .view-homepage-destination .views-field-nothing a {
+	font: normal 12px "arial black";
 	color: white;
 	text-transform: uppercase;
 }
