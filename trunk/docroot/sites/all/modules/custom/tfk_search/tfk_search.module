@@ -1555,18 +1555,23 @@ function tfk_search_preprocess_search_result(&$vars) {
       'Who\'s News' => 'field_whos_news', 'More News' => 'field_more_news');
       $lists = array();
       foreach($list_fields as $name => $field) {
-        $items = field_get_items('node', $magazine, $field);
+        
+          $items = field_get_items('node', $magazine, $field);
+          if(!empty($items)) {
+            $lists[$name] = array();
+            foreach($items as $item) {
 
-        if(!empty($items)) {
-          $lists[$name] = array();
-          foreach($items as $item) {
-            $lists[$name][] = l($item['title'], $item['url']);
+              if($field == 'field_cover_story'){
+                $lists[$name][] = l($item['title'], $item['url']);
+              }else{
+                $lists[$name][] = l($item['value'], 'www.timeforkids.com/digital');
+              }
+              
+            }
           }
-        }
+        
+        
       }
-
-
-      print_r($lists);
 
 
       $extra_fields = array('In The News' => 'field_in_the_news', 'Top 5' => 'field_top_5',
