@@ -1,8 +1,8 @@
 <script>
   $(document).ready(function(){
-      $("#svdsrdsubm").click(function() {
-      event.preventDefault();
-      alert(2342345);
+      $("#svdsrdsubm").click(function(event) {
+      //event.preventDefault();
+      alert(123123);
     });
   });
 </script>
