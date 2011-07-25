@@ -544,7 +544,7 @@ class tfkHelperFeaturedItem {
       
     $url = 'node/'. $featured_node->nid;
     $this->title = l($featured_node->title, $url); // Alternatively load 'safe_summary'.
-    $body = field_get_items('node', $featured_node, ($featured_node->type == 'slideshow') ? 'field_slideshow_description': 'field_video_description');
+    $body = field_get_items('node', $featured_node, ($featured_node->type == 'slideshow') ? 'field_slideshow_description': 'body');
     $this->body = check_markup(truncate_utf8($body[0]['safe_value'], self::$body_trim, TRUE, TRUE, 10), self::$snippet_format, '', TRUE);
     $this->link = l('See '. ucfirst($featured_node->type), $url);
     
