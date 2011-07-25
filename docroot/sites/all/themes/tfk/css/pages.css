@@ -430,11 +430,10 @@ ul.links li {
 	height: 14px;
 	padding-left: 14px;
 	background: url(../images/left-grey-corner.png) no-repeat;
-	overflow: hidden;
 }
 
 .view-homepage-minisite .views-field-nothing a {
-	font: norma l1px arial;
+	font: normal l1px arial;
 	height: 14px;
 	color: white;
 	background: #999;
