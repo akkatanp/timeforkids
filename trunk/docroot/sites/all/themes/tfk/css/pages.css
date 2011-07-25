@@ -425,21 +425,25 @@ ul.links li {
 
 .view-homepage-minisite .views-field-nothing {
 	position: absolute;
-	height: 14px;
-	line-height: 10px;
 	bottom: 0px;
 	right: 0px;
+	height: 14px;
 	padding-left: 14px;
 	background: url(../images/left-grey-corner.png) no-repeat;
 	overflow: hidden;
 }
 
 .view-homepage-minisite .views-field-nothing a {
-	font: normal 9px arial;
-	height: 10px;
-	padding: 2px;
+	font: norma l1px arial;
+	height: 14px;
 	color: white;
 	background: #999;
+}
+
+.view-homepage-minisite .related-content-wrap {
+	position: absolute;
+	bottom: 30px;
+	width: 216px;
 }
 
 .view-homepage-news-block .col-1 {
@@ -1101,12 +1105,6 @@ ul.links li {
 	position: absolute;
 	bottom: 10px;
 	width: 464px;
-}
-
-.view-homepage-minisite .related-content-wrap {
-	position: absolute;
-	bottom: 20px;
-	width: 216px;
 }
 
 .view-homepage-destination .related-content-wrap,
