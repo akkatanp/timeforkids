@@ -35,14 +35,14 @@ define('TFK_SEARCH_SITESEARCH_PATH', 'search');
 function tfk_search_menu(){
   $items = array();
   
-  $items['photos-video'] = array(
+  $items[TFK_SEARCH_PHOTOSVIDEO_PATH] = array(
   	'title' => 'Photos & Video',
   	'page callback' => 'tfk_search_photos_and_video',
   	'access callback' => 'user_access',
   	'access arguments' => array('access content'),
     'type' => MENU_CALLBACK,
   );
-  $items['worksheets'] = array(
+  $items[TFK_SEARCH_WORKSHEETS_PATH] = array(
   	'title' => 'Worksheets',
   	'page callback' => 'tfk_search_worksheets',
   	'access callback' => 'user_access',
@@ -82,7 +82,7 @@ function tfk_search_init(){
   module_load_include('inc', 'tfk_search', 'TimeIncSolrBaseQuery');
   
   // Provide styling for Photos & Video section.
-  if(arg(0) == 'photos-video') {
+  if(arg(0) == TFK_SEARCH_PHOTOSVIDEO_PATH) {
     // Styles for search results and first sidebar.
     drupal_add_css(drupal_get_path('module', 'tfk_search'). '/css/tfk_search.css', 'file');
     // Styles for favorite links and blocks.
@@ -90,13 +90,13 @@ function tfk_search_init(){
   }
   
   // Worksheets inherit and override Photos & Video CSS.
-  if(arg(0) == 'worksheets') {
+  if(arg(0) == TFK_SEARCH_WORKSHEETS_PATH) {
     drupal_add_css(drupal_get_path('module', 'tfk_search'). '/css/tfk_search.css', 'file');
     drupal_add_css(drupal_get_path('module', 'tfk_search'). '/css/tfk_worksheets.css', 'file');
   }
   
   // Site-wide search.
-  if(arg(0) == 'search') {
+  if(arg(0) == TFK_SEARCH_PHOTOSVIDEO_PATH) {
     drupal_add_css(drupal_get_path('module', 'tfk_search'). '/css/tfk_search.css', 'file');
   }
   
@@ -166,7 +166,7 @@ function theme_tfk_search_facet_link($vars) {
   $interface = arg(0);
   
   // Supress facet count.
-  if($interface == 'worksheets' || $interface == 'photos-video' || $interface == TFK_SEARCH_MAGAZINE_PATH) {
+  if($interface == TFK_SEARCH_WORKSHEETS_PATH || $interface == TFK_SEARCH_PHOTOSVIDEO_PATH || $interface == TFK_SEARCH_MAGAZINE_PATH) {
     return apachesolr_l($vars['facet_text'],  $vars['path'], $vars['options']);
 
   // Show facet count.
@@ -783,18 +783,18 @@ function tfk_search_preprocess_page(&$variables) {
   $_variables = & $variables;
   
   // Set title on Photos & Video search page.
-  if(arg(0) == 'photos-video') {
+  if(arg(0) == TFK_SEARCH_PHOTOSVIDEO_PATH) {
     drupal_set_title('Photos & Video');
     $variables->title == 'Photos & Video';
     $variables['section_title'] = 'PHOTOS & VIDEO';
   }
-  if(arg(0) == 'worksheets') {
+  if(arg(0) == TFK_SEARCH_WORKSHEETS_PATH) {
     $variables['section_title'] = 'PRINTABLES';
     
     drupal_set_title('Worksheets');
     $variables->title == 'Woksheets';
   }
-  if(arg(0) == 'search') {
+  if(arg(0) == TFK_SEARCH_SITESEARCH_PATH) {
     // Force the removal of the default search box displayed by Drupal.
     $variables['section_title'] = 'SEARCH';
     unset($_variables['page']['content']['system_main']['search_form']);
@@ -843,7 +843,7 @@ function tfk_search_preprocess_page(&$variables) {
 function tfk_search_preprocess_block(&$variables) {
 
   // Specific template suggestions for photos-video blocks.
-  if(arg(0) == 'photos-video') {
+  if(arg(0) == TFK_SEARCH_PHOTOSVIDEO_PATH) {
     $variables['theme_hook_suggestions'] = array_merge(
       array(
       "block__apachesolr_search__tfk_search__{$variables['block']->module}__{$variables['block']->delta}",
@@ -859,7 +859,7 @@ function tfk_search_preprocess_block(&$variables) {
   }
   
   // Worksheet left column block tweaks.
-  if(arg(0) == 'worksheets') {
+  if(arg(0) == TFK_SEARCH_WORKSHEETS_PATH) {
 
     if($variables['block']->delta == 'tfk_favorites_links') {
       // Unset the .last class from the real last block.
@@ -913,7 +913,7 @@ function tfk_search_preprocess_apachesolr_currentsearch(&$vars) {
 function tfk_search_preprocess_search_results(&$vars) {
  
   // Specific template suggestions for all the results on photos and video.
-  if(arg(0) == 'photos-video') {
+  if(arg(0) == TFK_SEARCH_PHOTOSVIDEO_PATH) {
     $vars['theme_hook_suggestions'] = array_merge(
       array('search_results__tfk_search__photos_video', 'search_results__tfk_search'),
       $vars['theme_hook_suggestions']
@@ -927,7 +927,7 @@ function tfk_search_preprocess_search_results(&$vars) {
     $vars['ordered_list_id'] = 'tfk-search-results-photos-video';
   }
   
-  if(arg(0) == 'worksheets') {
+  if(arg(0) == TFK_SEARCH_WORKSHEETS_PATH) {
     
     $vars['custom_search'] = TRUE;
     
@@ -963,7 +963,7 @@ function tfk_search_preprocess_pager_top(&$vars) {
   $page_type = arg(0);
   
   // Page title.
-  if($page_type == 'worksheets') {
+  if($page_type == TFK_SEARCH_WORKSHEETS_PATH) {
     $vars['pager_title'] = 'Printables Archive';
   } elseif ($page_type == TFK_SEARCH_MAGAZINE_PATH) {
     $vars['pager_title'] = 'Magazine Archive';
@@ -974,7 +974,7 @@ function tfk_search_preprocess_pager_top(&$vars) {
   // If there are no active filters.
   if(!array_key_exists('filters', $_GET)) {
     
-    if($page_type == 'worksheets') {
+    if($page_type == TFK_SEARCH_WORKSHEETS_PATH) {
       $vars['pager_active_filter'] = 'Viewing: All Grades, All Themes, All Skills';
     } elseif ($page_type == TFK_SEARCH_MAGAZINE_PATH) {
       $vars['pager_active_filter'] = 'Viewing: All Grades, All Years';
@@ -1043,7 +1043,7 @@ function tfk_search_preprocess_pager_top(&$vars) {
 function tfk_search_apachesolr_modify_query($query, $caller) {
   // Limit the search results to image and video content type.
   // Only apply these filters when we are in the photos and video page.
-  if($query->get_base_path() === 'photos-video') {
+  if($query->get_base_path() === TFK_SEARCH_PHOTOSVIDEO_PATH) {
     $subquery = apachesolr_drupal_query();
     $subquery->add_filter('bundle', 'video');
     $subquery->add_filter('bundle', 'slideshow');
@@ -1056,7 +1056,7 @@ function tfk_search_apachesolr_modify_query($query, $caller) {
     $query->params['rows'] = 4;
   }
 
-  if($query->get_base_path() === 'worksheets') {
+  if($query->get_base_path() === TFK_SEARCH_WORKSHEETS_PATH) {
     $subquery = apachesolr_drupal_query();
     $subquery->add_filter('bundle', 'worksheet');
     $query->add_subquery($subquery, 'OR');
@@ -1388,14 +1388,14 @@ function tfk_search_preprocess_search_result(&$vars) {
   // Determines whether to print favorite links on search results or not.
   $favorite_links = TRUE;
   
-  if($base_path == 'photos-video') {
+  if($base_path == TFK_SEARCH_PHOTOSVIDEO_PATH) {
     $vars['theme_hook_suggestions'] = array_merge(
       array('search_result__tfk_search__photos_video', 'search_result__tfk_search'),
       $vars['theme_hook_suggestions']
     );
   }
 
-  if($base_path == 'worksheets') {
+  if($base_path == TFK_SEARCH_WORKSHEETS_PATH) {
     $vars['theme_hook_suggestions'] = array_merge(
       array('search_result__tfk_search__worksheets', 'search_result__tfk_search'),
       $vars['theme_hook_suggestions']
@@ -1411,7 +1411,7 @@ function tfk_search_preprocess_search_result(&$vars) {
   }
   
   // Site-wide search.
-  if($base_path == 'search') {
+  if($base_path == TFK_SEARCH_SITESEARCH_PATH) {
     $favorite_links = FALSE;
   }
   
@@ -1759,7 +1759,7 @@ function tfk_search_preprocess_search_result(&$vars) {
         $vars['tfk_search_res_category'] = $name;
       }
       
-      if($base_path = 'search') {
+      if($base_path == TFK_SEARCH_SITESEARCH_PATH) {
         $vars['tfk_search_result_link_1'] = l('Read the Full Article', 'node/'. $nid);
       }
       
@@ -1786,7 +1786,7 @@ function tfk_search_preprocess_search_result(&$vars) {
   
   
   // Photos & Video -specific- preprocessing.
-  if(arg(0) == 'photos-video') {
+  if($base_path == TFK_SEARCH_PHOTOSVIDEO_PATH) {
     $vars['classes_array'][] = 'tfk-search-result';
     
     // Theming for results with thumbnails.
