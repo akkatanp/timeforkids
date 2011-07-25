@@ -344,7 +344,8 @@ input[type=submit]:hover,
 	background: #900;
 }
 
-.node-type-teacher-community-question .form-submit {
+.node-type-teacher-community-question .form-submit,
+#teacher-community-question-node-form .form-submit {
 	padding: 0;
 	border-radius: 0;
 	-moz-border-radius: 0;
