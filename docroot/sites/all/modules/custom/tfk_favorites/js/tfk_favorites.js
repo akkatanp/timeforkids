@@ -31,6 +31,16 @@
           $('.throbber').show();
         }
       });
+      
+      // Delete this search.
+      $('#deleteThisSearch', context).click(function(event){
+        var confirmation = confirm("Are you sure you want to delete this search?");
+        if(!confirmation) {
+          event.preventDefault();
+        } else {
+          // Let it run it's course.
+        }
+      });  
 
     }
   };
