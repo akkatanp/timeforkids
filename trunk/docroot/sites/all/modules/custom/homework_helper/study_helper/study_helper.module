@@ -54,6 +54,9 @@ function study_helper_form_node_form_alter(&$form, &$form_state, $form_id) {
     $form['title']['#description'] = t('What are your flashcards about?');
     $form['#prefix'] = '<div class="flashcards-return">'. l('Back to Flashcard Sets', 'homework-helper/flashcards') . '</div>';
 
+    $language = $form['field_flashcard']['#language'];
+    $form['field_flashcard'][$language]['add_more']['#submit'] = array('study_helper_flashcard_field_add_more_submit');
+
     // Set teacher and anonymous flashcards to published by default.
     if (isset($user->roles[5]) || !$user->uid) {
       $form['options']['status']['#default_value'] = 1;
@@ -164,7 +167,7 @@ function study_helper_node_prepare($node) {
     if (isset($node->field_flashcard)) {
       $count = count($node->field_flashcard[$node->language]);
     }
-    for ($delta = $count; ($delta < $count + 5); $delta++) {
+    for ($delta = $count; ($delta < $count + 2); $delta++) {
       $node->field_flashcard[$node->language][$delta] = array('question' => '', 'answer' => '');
     }
   }
@@ -284,4 +287,29 @@ function study_helper_node_access($node, $op, $account) {
  */
 function study_helper_form_webform_client_form_306_alter(&$form, &$form_state, $form_id) {
   drupal_add_js(drupal_get_path('module', 'study_helper') . '/js/writing_tips.js', 'file');
+}
+
+/**
+ * Submit handler for the "Add another item" button of a field form.
+ *
+ *  Copied from field_add_more_submit.  Allows us to add more than
+ *  one item at a time.
+ */
+function study_helper_flashcard_field_add_more_submit($form, &$form_state) {
+  // Determine how many fields to add.
+  $items_to_add = (int) variable_get('study_helper_flashcard_items_to_add', 5);
+  $button = $form_state['clicked_button'];
+
+  // Go one level up in the form, to the widgets container.
+  $element = drupal_array_get_nested_value($form, array_slice($button['#array_parents'], 0, -1));
+  $field_name = $element['#field_name'];
+  $langcode = $element['#language'];
+  $parents = $element['#field_parents'];
+
+  // Increment the items count.
+  $field_state = field_form_get_state($parents, $field_name, $langcode, $form_state);
+  $field_state['items_count'] = $field_state['items_count'] + $items_to_add;
+  field_form_set_state($parents, $field_name, $langcode, $form_state, $field_state);
+
+  $form_state['rebuild'] = TRUE;
 }
