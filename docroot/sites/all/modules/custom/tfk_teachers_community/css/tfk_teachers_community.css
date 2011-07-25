@@ -69,8 +69,12 @@ div.view.view-id-teacher_community_topic_list .views-row {
   padding: 10px;
 }
 
-div.view.view-id-teacher_community_topic_list .views-row:not(.views-row-last) {
+div.view.view-id-teacher_community_topic_list .views-row {
   border-bottom: 2px solid #CECECE;
+}
+
+div.view.view-id-teacher_community_topic_list .views-row-last {
+  border-bottom: none;
 }
 
 div.view.view-id-teacher_community_topic_list .views-field-name, 
