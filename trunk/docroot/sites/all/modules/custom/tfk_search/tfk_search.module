@@ -1571,11 +1571,11 @@ function tfk_search_preprocess_search_result(&$vars) {
       $mag_extra_items = array();
       
       foreach($extra_fields as $val){
-        $extraitems = field_get_items('node', $magazine, 'field_more_news');
+        $extraitems = field_get_items('node', $magazine, $val);
         foreach($extraitems as $extraitem){
-          $myitem = array();
-          $myitem['title'] = $myitem['value'];
-          $mag_extra_items[$val][] = $myitem;
+//          $myitem = array();
+//          $myitem['title'] = $myitem['value'];
+//          $mag_extra_items[$val][] = $myitem;
         }
       }
 
