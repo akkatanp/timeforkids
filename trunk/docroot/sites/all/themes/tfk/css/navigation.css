@@ -86,7 +86,6 @@
 }
 
 #teacher-nav-container {
-	width: 100%;
 	background: url("../images/teacher-nav-bar-back.png") repeat-x;
 	background: -moz-linear-gradient(100% 100% 90deg,  #94bcd8, #acdbfc);
 	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#acdbfc), to(#94bcd8));
@@ -117,13 +116,17 @@
 	height: 32px;
 }
 
-#teacher-nav-container .inner #block-views-homepage-username-block,
+#block-views-homepage-username-block {
+	float: left;
+	width: 200px;
+	height: 32px;
+}
+
 #teacher-nav-container .inner #block-block-3 ,
 #teacher-nav-container .inner #block-block-11 {
-	height: 32px;
 	float: left;
-	width: 150px;
-	margin: 0;
+	width: 128px;
+	height: 32px;
 }
 
 #teacher-nav-container .inner .content .field-content,
@@ -131,7 +134,7 @@
 	margin: 0;
 	height: 20px;
 	padding: 6px 0;
-	font: bold 14px "Times New Roman";
+	font: bold 12px arial;
 	font-style: italic;
 	color: #555;
 }
