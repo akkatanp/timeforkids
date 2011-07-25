@@ -381,9 +381,9 @@ ul.links li {
 
 .view-homepage-minisite {
 	position: relative;
-	width: 228px;
+	width: 241px;
 	height: 378px;
-	padding: 10px;
+	padding: 15px 0 10px 7px;
 	background: #dedede;
 	border: solid 1px #cecece;
 }
@@ -393,17 +393,32 @@ ul.links li {
 	padding-top: 20px;
 }
 
+.view-homepage-minisite .views-field-title {
+	margin-bottom: 15px;
+}
+
 .view-homepage-minisite .views-field-title a {
 	font: bold 20px arial;
 }
 
+.view-homepage-minisite .views-field-body {
+	line-height: 15px;
+}
+
 .view-homepage-minisite .views-field-field-minisite-tout-image {
-	margin-bottom: 10px;
+	width: 236px;
 }
 
 .view-homepage-minisite .views-field-field-minisite-tout-image img {
-	width: 222px;
+	width: 230px;
 	border: solid 3px white;
+}
+
+.view-homepage-minisite .views-field-field-minisite-tout-credit {
+	font: normal 9px arial;
+	color: #999;
+	text-align: right;
+	margin-bottom: 10px;
 }
 
 .view-homepage-minisite .views-field-nothing {
