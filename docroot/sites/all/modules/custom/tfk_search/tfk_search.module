@@ -1556,6 +1556,9 @@ function tfk_search_preprocess_search_result(&$vars) {
       $lists = array();
       foreach($list_fields as $name => $field) {
         $items = field_get_items('node', $magazine, $field);
+
+        print_r($items);
+
         if(!empty($items)) {
           $lists[$name] = array();
           foreach($items as $item) {
