@@ -538,8 +538,11 @@ body.section-my-favorites .content-type-video .icon {
   float: left;
   height: 14px;
   padding: 4px 8px 4px 8px;
-  margin-right: 9px;
   font: italic 11px arial;
+  margin-right: 9px;
+  <!--[if IE]>
+    margin-right: 0px;
+  ![endif]-->  
 }
 
 body.page-search-site .region-sidebar-first .first.block h2 {
