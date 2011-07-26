@@ -388,6 +388,25 @@ function tfk_teachers_community_form_teacher_community_question_node_form_alter(
   $form['options']['promote']['#access'] = FALSE;
   $form['options']['sticky']['#access'] = FALSE;
   
+  // tkfs127: After the teacher submits the question a pop up window should appear with the following message:
+  //Thank you for your question or comment. TFK editors will review it. Please check back!
+  $form['actions']['submit']['#submit'][] = 'tfk_teachers_community_form_submit_handler';
+}
+
+/**
+ * Custom form submit handler for new teacher community questions.
+ *
+ * @see tfk_teachers_community_form_teacher_community_question_node_form_alter
+ */
+function tfk_teachers_community_form_submit_handler($variables, $form_state) {
+  // Remove status message set by the default form submit handler.
+  $_SESSION['messages']['status'] = array();
+  
+  // And override with our own status message.
+  drupal_set_message('Thank you for your question or comment. TFK editors will review it. Please check back!');
+  
+  // Then redirect the user back to the topic list, since the question is going to be unpublished by default.
+  drupal_goto('teacher-community/topic-list');
 }
 
 /**
