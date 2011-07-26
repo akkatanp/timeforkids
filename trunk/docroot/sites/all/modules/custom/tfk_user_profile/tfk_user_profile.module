@@ -303,7 +303,17 @@ function tfk_user_profile_form_submit($form, &$form_state) {
 
                 if(isset($form_state['values']['uid'])) {
                     $updated_user_profile->uid = $form_state['values']['uid'];
-                    db_merge('field_data_field_nickname')->condition('entity_id', $updated_user_profile->uid)->fields(array('field_nickname_value'=>$updated_user_profile->nickname))->execute();
+
+                         db_merge('field_data_field_nickname')
+        ->key(array(
+        'entity_id' => $updated_user_profile->uid,
+            'entity_type' => 'user'
+      ))
+        ->fields(array('field_nickname_value' => $updated_user_profile->nickname))
+        ->execute();
+
+
+                    //db_merge('field_data_field_nickname')->condition('entity_id', $updated_user_profile->uid)->fields(array('field_nickname_value'=>$updated_user_profile->nickname))->execute();
                     db_merge('field_data_field_grade_level')->condition('entity_id', $updated_user_profile->uid)->fields(array('field_grade_level_tid'=>$updated_user_profile->grade_level))->execute();
                     drupal_set_message(t('Account settings updated.'));
                     cache_clear_all($cid = 'field:user:'.$updated_user_profile->uid, $table = 'cache_field', $wildcard = FALSE);
