@@ -943,7 +943,7 @@ ul.links li {
 	display: block;
 	float: left;
 	width: 230px;
-	min-height: 100px;
+	min-height: 120px;
 	border: solid 1px #cecece;
 	padding: 10px 9px;
 	margin: 4px 0;
@@ -964,12 +964,17 @@ ul.links li {
 	float: left;
 	margin-right: 10px;
 	width: 62px;
-	min-height: 90px;
+	min-height: 100px;
 }
 
 .view-mini-site-home .view-content table td .views-field-field-thumbnail-image img,
 .view-all-kid-reporters .view-content table td .views-field-field-thumbnail-image img {
 	border: solid 1px #cecece;
+}
+
+.view-mini-site-home .view-content table td .views-field-body,
+.view-all-kid-reporters .view-content table td .views-field-body {
+	line-height: 15px;
 }
 
 .view-all-kid-reporters .view-content table td .views-field-title-1 {
