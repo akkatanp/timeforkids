@@ -1854,6 +1854,18 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 #banner_160x190 > * {
     margin-top:15px;
 }
+#banner_728x90_jump_helper {
+    display:none;
+}
+#banner_160x190_jump_helper {
+    display:none;
+}
+#banner_160x600_jump_helper {
+    display:none;
+}
+#banner_728x90_footer_jump_helper {
+    display:none;
+}
 /*Mini-lessons*/
 .node-mini-lesson {
     border: 1px solid #CECECE;
