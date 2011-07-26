@@ -92,7 +92,7 @@ function tfk_ads_omni_create_ad($name,$width,$height,$type='regular',$position=N
         $ad_position = "ad.setPosition($position);";
      }
      if ($type == "regular") {
-        $ad_tag = "<div id=\"$name\"><div><script type=\"text/javascript\">ad = adFactory.getAd($width, $height);".$ad_position."ad.write();</script></div></div>";
+        $ad_tag = "<div id=\"$name\"><div id=\"$name"."_jump_helper\">&nbsp;</div><div id=\"$name"."_container\"><script type=\"text/javascript\">ad = adFactory.getAd($width, $height);".$ad_position."ad.write();</script></div></div>";
      } elseif ($type == "cm") {
         $ad_tag = "<div id=\"$name\"><script type=\"text/javascript\">adFactory.getCmAd($width, $height, \"global\", \"tout\").write();</script></div>";
      }
