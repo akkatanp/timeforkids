@@ -13,6 +13,39 @@ function tfk_magazine_context_default_contexts() {
   $context = new stdClass;
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
+  $context->name = 'publishing_calendar';
+  $context->description = 'Block placement for publishing calendar.';
+  $context->tag = 'Misc';
+  $context->conditions = array(
+    'path' => array(
+      'values' => array(
+        'pub-schedule/*' => 'pub-schedule/*',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'menu-menu-publishing-calendar-menu' => array(
+          'module' => 'menu',
+          'delta' => 'menu-publishing-calendar-menu',
+          'region' => 'sidebar_bottom',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Block placement for publishing calendar.');
+  t('Misc');
+  $export['publishing_calendar'] = $context;
+
+  $context = new stdClass;
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
   $context->name = 'tfk_magazine';
   $context->description = 'tfk Magazines block';
   $context->tag = 'search';

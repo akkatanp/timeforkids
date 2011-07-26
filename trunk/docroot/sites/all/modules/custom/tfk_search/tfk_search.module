@@ -806,31 +806,33 @@ function tfk_search_preprocess_page(&$variables) {
     unset($_variables['page']['highlighted']['tfk_search_tfk_search_photos_video_featured']);
   }
   
-  // TFK Magazine.
+  // Publishing calendar menu block.
+  if(isset($variables['page']['sidebar_bottom']['menu_menu-publishing-calendar-menu'])) {
+    // Alter menu block.
+    $item_list = array('type' => 'ul', 'items' => array());
+    $variables['page']['sidebar_bottom']['menu_menu-publishing-calendar-menu']['#block']->subject = 'PUBLISHING CALENDAR';
+    
+    foreach($variables['page']['sidebar_bottom']['menu_menu-publishing-calendar-menu']['content'] as $key => $render_array) {
+      if(is_numeric($key)) {
+        $item_list['items'][] = '<div class="pubcal-link"><div class="left">'. $render_array['#title']. '</div><div class="right">'. l('View', $render_array['#href']). '</div></div>';
+      }
+    }
+    
+    if(!empty($item_list['items'])) {
+      $themed_list = theme('item_list', $item_list);
+      $variables['page']['sidebar_bottom']['menu_menu-publishing-calendar-menu']['content'] = array('#markup' => $themed_list);
+    }
+    
+    // Add CSS.
+    drupal_add_css(drupal_get_path('module', 'tfk_search'). '/css/tfk_magazines.css', 'file');
+  }
+  
   if(arg(0) == TFK_SEARCH_MAGAZINE_PATH) {
     // Force the removal of the default search box displayed by Drupal.
 
     // Alter region render array, insert region title.
     $title = '<div class="search-sidebar-title">SEARCH MAGAZINE ARCHIVE</div>';
     array_unshift($variables['page']['sidebar_first'], array('region_title' => array('#markup' => $title)));
-    
-    // Alter menu block.
-    if(isset($variables['page']['sidebar_bottom']['menu_menu-publishing-calendar-menu'])) {
-      
-      $item_list = array('type' => 'ul', 'items' => array());
-      $variables['page']['sidebar_bottom']['menu_menu-publishing-calendar-menu']['#block']->subject = 'PUBLISHING CALENDAR';
-      
-      foreach($variables['page']['sidebar_bottom']['menu_menu-publishing-calendar-menu']['content'] as $key => $render_array) {
-        if(is_numeric($key)) {
-          $item_list['items'][] = '<div class="pubcal-link"><div class="left">'. $render_array['#title']. '</div><div class="right">'. l('View', $render_array['#href']). '</div></div>';
-        }
-      }
-    }
-    if(!empty($item_list['items'])) {
-      $themed_list = theme('item_list', $item_list);
-      $variables['page']['sidebar_bottom']['menu_menu-publishing-calendar-menu']['content'] = array('#markup' => $themed_list);
-    }
-
   }
 }
 
