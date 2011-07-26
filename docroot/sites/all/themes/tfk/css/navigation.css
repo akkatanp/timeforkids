@@ -492,6 +492,13 @@
 	margin-left: 0;
 }
 
+.node-type-minisite .views-field-field-minisite-resources ul li a,
+.node-type-atw-destination  .region-sidebar-first .content ul.related li a,
+.page-destination .region-sidebar-first .content ul.related li a,
+.section-destination  .region-sidebar-first .content ul.related li a {
+	line-height: 15px;
+}
+
 /*kid reporter sidebar */
 .node-type-kid-reporter .region-sidebar-first .section,
 .section-tfk-kid-reporters .region-sidebar-first .section,
@@ -638,6 +645,7 @@
 	margin: 0;
 }
 
+#block-views-minisite-articles-block-6 .view-footer a ,
 #block-views-random-kid-reporters-block .view-footer a,
 .node-type-kid-reporter .region-sidebar-first .view-footer a,
 .section-tfk-kid-reporters  .region-sidebar-first .view-footer a,
@@ -853,15 +861,15 @@
 	border: solid 1px #cecece;
 	padding: 10px;
 	position: relative;
+	margin-top: 10px;
 }
 
 #block-views-minisite-articles-block-6 .view-header p {
-	text-align: center;
 	text-transform: uppercase;
-	color: white;
-	background: #d71700;
-	margin: 0 0 10px 0;
-	font: normal 14px "arial black";
+	font: normal 12px "arial black";
+	padding-bottom: 10px;
+	border-bottom: dotted 1px #cecece;
+	margin-bottom: 10px;
 }
 
 #block-views-minisite-articles-block-6 .view-content .views-row {
@@ -889,25 +897,6 @@
 
 #block-views-minisite-articles-block-6 .view-content .views-row .field-content a {
 	font: bold 20px arial;
-}
-
-#block-views-minisite-articles-block-6 .view-footer {
-	position: absolute;
-	height: 14px;
-	line-height: 10px;
-	bottom: 0px;
-	right: 0px;
-	padding-left: 14px;
-	background: url(../images/left-grey-corner.png) no-repeat;
-	overflow: hidden;
-}
-
-#block-views-minisite-articles-block-6 .view-footer a {
-	font: normal 9px arial;
-	height: 10px;
-	padding: 2px;
-	color: white;
-	background: #999;
 }
 
 /* right sidebar */
