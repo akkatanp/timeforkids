@@ -2423,5 +2423,9 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
     text-align: right;
     padding-right:10px;
 }
+#block-menu-menu-publishing-calendar-menu a.active{
+  color:#D71700 !important;
+}
+
 
 /*sergei voitenko end */
