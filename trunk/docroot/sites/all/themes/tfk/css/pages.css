@@ -712,15 +712,15 @@ ul.links li {
 }
 
 /* mini-sites */
-#block-views-mini-site-home-block-3,
-#block-views-mini-site-home-block-4 {
+#block-views-mini-site-home-block-2,
+#block-views-mini-site-home-block-3 {
 	border: solid 1px #cecece;
 	padding: 10px;
 	margin-bottom: 10px;
 }
 
-#block-views-mini-site-home-block-3 .views-field-title,
-#block-views-mini-site-home-block-4 .views-field-title {
+#block-views-mini-site-home-block-2 .views-field-title,
+#block-views-mini-site-home-block-3 .views-field-title {
 	font: bold 30px arial;
 	line-height: 30px;
 }
