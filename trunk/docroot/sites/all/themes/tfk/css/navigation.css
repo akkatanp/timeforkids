@@ -781,7 +781,7 @@
 
 /* mini sites sidebar */
 .page-mini-sites .region-sidebar-first .section {
-	margin-top: 15px;
+	padding-top: 15px;
 }
 
 #block-views-mini-site-home-block-1 {
