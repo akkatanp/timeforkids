@@ -239,7 +239,7 @@ function tfk_user_profile_menu_alter(&$items) {
 function tfk_user_profile_form($form, &$form_state, $user_profile) {
         $vid = 6; //vocabulary id for grade level
         $result = db_query('SELECT DISTINCT ti.tid,td.name from taxonomy_index ti left join taxonomy_term_data td on ti.tid = td.tid WHERE td.vid = :vid',array('vid'=>$vid));
-        $grade_levels = array();
+        $grade_levels = array('0'=>'Please Select');
         foreach ($result as $record) {
             $grade_levels[$record->tid] = $record->name;
         }
