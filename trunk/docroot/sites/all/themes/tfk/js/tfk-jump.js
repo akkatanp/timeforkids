@@ -101,10 +101,8 @@ $(document).ready(function() {
   // Add 'external' CSS class to all external links
   $('a:external').addClass('external');
 
-  $('.external').click(function() {
-    var link = $(this).attr('href');
-
-    $('<div class="tfk-jump">You are leaving <a href="/">timeforkids.com</a> to check out a web site we recommended.  While TIME for Kids has reviewed  the site you are about to visit, we can&apos;t monitor changes to the site, advertisements or links to other sites.<br/><br/>Be sure to get permission from a parent before giving out any information about yourself online.  Never give your full name, phone number or address online.  To read more read <a href="/info/privacy-policy">TFK&apos;s privacy policy</a>. <div class="tfk-jump-reminder">(Remember to read the privacy policy of any new site you visit.)</div> <span id="tfk-jump-continue">going to the web site</span><span id="tfk-jump-back">to timeforkids.com</span></div>').dialog({
+  function tfkJumpPage(link) {
+      $('<div class="tfk-jump"><br/>You are leaving <a href="/">timeforkids.com</a> to check out a web site we recommended.  While TIME for Kids has reviewed  the site you are about to visit, we can&apos;t monitor changes to the site, advertisements or links to other sites.<br/><br/>Be sure to get permission from a parent before giving out any information about yourself online.  Never give your full name, phone number or address online.  To read more read <a href="/info/privacy-policy">TFK&apos;s privacy policy</a>. <div class="tfk-jump-reminder">(Remember to read the privacy policy of any new site you visit.)</div> <span id="tfk-jump-continue">going to the web site</span><span id="tfk-jump-back">to timeforkids.com</span></div>').dialog({
       title: "",
       modal : true,
       width : 626,
@@ -119,6 +117,120 @@ $(document).ready(function() {
         }
       }
     });
+  }
+
+  //This handles content links and image ads
+  $('.external').click(function() {
+    var link = $(this).attr('href');
+    tfkJumpPage(link);
     return false;
   });
-});
+  
+  
+//IE specific
+function tfkGetAdLocationIE(objName) {
+   var output = "";
+   var flashVars = "";
+   var keyValues = "";
+   var flashVarsArray = new Array();
+   if ﻿($(objName + " object").attr('name').toLowerCase() == "ebreportingflash") {
+       //Eyeblaster/Mediamind Rich Media Tag
+       //Go further to get the actual ad
+       $(objName).find('object').each(function() {
+           if ﻿($(this).attr('name').toLowerCase() != "ebreportingflash") {
+                $(this).children('param').each(function() {
+                    if($(this).attr('name').toLowerCase() == "flashvars"){
+                      flashVars = $(this).attr('value');
+                     }
+                });
+           }
+        });
+   } else {
+       //Served Flash
+       $(objName + " object").children('param').each(function() {
+          if($(this).attr('name').toLowerCase() == "flashvars"){
+             flashVars = $(this).attr('value');
+          }
+          if($(this).attr('name').toLowerCase() == "movie"){
+             movieVar = $(this).attr('value');
+          }
+        });
+   }
+   //flashVars = new String($(objName).html().match(/flashvars="([^"]*")/g));
+   //flashVars = flashVars.substr(0, flashVars.length - 1);flashVarsClean = flashVarsClean.substr(11, flashVarsClean.length);
+   if (flashVars.substr(0, 1) != "&" && flashVars != "") {  
+       flashVars = "&" + flashVars;
+       keyValues = flashVars.split(/&/);
+   }
+   if (flashVars == "") {
+       flashVars = movieVar;
+       keyValues = flashVars.split(/\?/);
+   }
+   for (var i in keyValues) {
+        var flashVar = keyValues[i].split(/=/);
+        flashVarsArray[flashVar[0]] = flashVar[1];
+    }
+   output = unescape(flashVarsArray['clickTag']);
+   return output; 
+}
+function tfkAdCSSHelper(adUnit, width, height) {
+    //adjust CSS in cases when we need to activate the helper div.
+    width = width + "px";height = height + "px";
+    $("#" + adUnit + "_jump_helper").css({'position' : 'absolute', 'width' : width , 'height' : height, 'background-color' : 'blue', 'opacity' : '0', 'filter' : 'alpha(opacity=0)', 'display' : 'inline'});
+}
+function tfkAdJumpTrigger(location) {
+    if (tfkAdLocations[location] != "") {
+        tfkJumpPage(tfkAdLocations[location]);
+        return false;
+    } else {
+        return true;
+    }
+}
+  //This handles flash and iframe ads
+  var tfkAdUnits = new Array("banner_728x90","banner_160x190","banner_160x600", "banner_728x90_footer");
+  var tfkAdElementName = "";
+  var tfkAdTargetLocation = "";
+  var tfkAdLocations = new Array();
+  var tfkAdwidth = new Array();
+  var tfkAdheight = new Array();
+  var tfkDimensionArray = new Array();
+  var tfkiFrameSrcArray = new Array();
+  for (var i = 0; i < tfkAdUnits.length; i++) {
+    tfkAdElementName = "#" + tfkAdUnits[i];
+    tfkAdEmbedName = "#" + tfkAdUnits[i] + " object";
+    tfkAdTargetLocation = "#" + tfkAdUnits[i] + " noscript";
+    tfkAdIframe = "#" + tfkAdUnits[i] + "_container iframe";
+    tfkDimensionArray[i] = tfkAdUnits[i].substr(7,tfkAdUnits[i].length).split(/x/);
+    tfkAdwidth[i] = tfkDimensionArray[i][0];
+    tfkAdheight[i] = tfkDimensionArray[i][1];
+    tfkAdLocations["#"+tfkAdUnits[i]] = "";
+    if ($(tfkAdEmbedName).length > 0) {//Flash
+        tfkAdTargetLocation = new String($(tfkAdTargetLocation).text().toLowerCase().match(/href="([^"]*")/g));
+        if ($.browser.msie) {
+            tfkAdTargetLocation = new String(tfkGetAdLocationIE(tfkAdElementName));
+        }
+        if (tfkAdTargetLocation.length > 0) {
+            tfkAdFinalUrl = tfkAdTargetLocation.substr(0, tfkAdTargetLocation.length - 1);tfkAdFinalUrl = tfkAdFinalUrl.substr(6, tfkAdFinalUrl.length);
+            //These object manipulations are needed to keep click from propagating downward into the flash. For IE, we have a CSS trick
+            $(tfkAdEmbedName + " param[name=wmode]").attr('value','transparent');
+            $(tfkAdElementName + " embed").attr('wmode','transparent');
+            if ($.browser.msie) {
+                 tfkAdFinalUrl = tfkAdTargetLocation;
+                 tfkAdCSSHelper(tfkAdUnits[i], tfkAdwidth[i], tfkAdheight[i]);
+             } 
+             tfkAdLocations["#"+tfkAdUnits[i]] = tfkAdFinalUrl;
+        }
+    }
+    if ($(tfkAdIframe).length > 0) {//Iframe
+          tfkiFrameSrcArray[i] = $(tfkAdIframe).attr('src').split(/click=/);
+          tfkAdFinalUrl = tfkiFrameSrcArray[i][1];
+          tfkAdLocations["#"+tfkAdUnits[i]] = tfkAdFinalUrl;
+          tfkAdCSSHelper(tfkAdUnits[i], tfkAdwidth[i], tfkAdheight[i]);
+    }
+  }
+//Can't iterate though using dynamic vars, jquery's event handlers end up taking the last value otherwise
+$('#banner_728x90').mousedown(function() {tfkAdJumpTrigger('#banner_728x90');}); 
+$('#banner_160x190').mousedown(function() {tfkAdJumpTrigger('#banner_160x190');});
+$('#banner_160x600').mousedown(function() {tfkAdJumpTrigger('#banner_160x600');});
+$('#banner_728x90_footer').mousedown(function() {tfkAdJumpTrigger('#banner_728x90_footer');});
+});//End doc ready
