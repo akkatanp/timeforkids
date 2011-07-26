@@ -307,7 +307,10 @@ function tfk_user_profile_form_submit($form, &$form_state) {
                          db_merge('field_data_field_nickname')
         ->key(array(
         'entity_id' => $updated_user_profile->uid,
-            'entity_type' => 'user'
+            'entity_type' => 'user',
+            'deleted' => 0,
+            'delta' => 0,
+            'language' => 'und'
       ))
         ->fields(array('field_nickname_value' => $updated_user_profile->nickname))
         ->execute();
