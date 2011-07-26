@@ -54,11 +54,13 @@ function aplus_papers_prepare_step($node) {
       '#type' => 'textfield',
       '#required' => TRUE,
       '#title' => t('Name'),
+      '#attributes' => array('class' => array('aplus-name')),
     );
     $form['date'] = array(
       '#type' => 'textfield',
       '#required' => TRUE,
       '#title' => t('Date'),
+      '#attributes' => array('class' => array('aplus-date')),
     );
   }
   if ($node->field_step_text_area[$node->language][0]['value']) {
