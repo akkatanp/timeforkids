@@ -1,0 +1,37 @@
+/**
+ * @file
+ * CSS targeted specifically for all versions of IE.
+ *
+ * Be careful! In most cases you should be using ie7.css or ie6.css
+ */
+
+/*Ads*/
+/*These are used to make the jump overlay work properly*/
+#banner_728x90_jump_helper {
+    position:absolute;
+    width:728px;height:90px;
+    background-color:blue;
+    opacity:0;filter: alpha(opacity=0);
+    display:inline;
+}
+#banner_160x190_jump_helper {
+    position:absolute;
+    width:160px;height:190px;
+    background-color:blue;
+    opacity:0;filter: alpha(opacity=0);
+    display:inline;
+}
+#banner_160x600_jump_helper {
+    position:absolute;
+    width:160px;height:600px;
+    background-color:blue;
+    opacity:0;filter: alpha(opacity=0);
+    display:inline;
+}
+#banner_728x90_footer_jump_helper {
+    position:absolute;
+    width:728px;height:90px;
+    background-color:blue;
+    opacity:0;filter: alpha(opacity=0);
+    display:inline;
+}
