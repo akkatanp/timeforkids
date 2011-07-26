@@ -725,7 +725,6 @@ ul.links li {
 	line-height: 30px;
 }
 
-#block-views-mini-site-home-block .views-row,
 #block-views-minisite-articles-block-1 table td,
 #block-views-minisite-articles-block table td {
 	display: block;
@@ -741,7 +740,6 @@ ul.links li {
 	margin-right: 8px;
 }
 
-#block-views-mini-site-home-block .views-field-field-minisite-tout-image,
 #block-views-minisite-articles-block-1 .views-field-field-lrg-sq-image,
 #block-views-minisite-articles-block .views-field-field-lrg-sq-image {
 	float: left;
@@ -750,7 +748,6 @@ ul.links li {
 	margin: 0 10px 10px 0;
 }
 
-#block-views-mini-site-home-block .views-field-field-minisite-tout-image img,
 #block-views-minisite-articles-block-1 .views-field-field-lrg-sq-image img,
 #block-views-minisite-articles-block .views-field-field-lrg-sq-image img {
 	width: 60px;
@@ -758,7 +755,6 @@ ul.links li {
 	border: solid 1px #cecece;
 }
 
-#block-views-mini-site-home-block .views-field-title,
 #block-views-minisite-articles-block-1  .views-field-title,
 #block-views-minisite-articles-block-1 .views-field-field-deck,
 #block-views-minisite-articles-block  .views-field-title,
@@ -771,7 +767,6 @@ ul.links li {
 	display: none;
 }
 
-#block-views-mini-site-home-block .views-field-title a,
 #block-views-minisite-articles-block-1 .views-field-title a,
 #block-views-minisite-articles-block .views-field-title a {
 	font: bold 20px arial;
