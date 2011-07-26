@@ -631,6 +631,7 @@
 	border: solid 1px #cecece;
 }
 
+#block-views-minisite-articles-block-6 .view-footer,
 #block-views-random-kid-reporters-block .view-footer,
 .node-type-kid-reporter .region-sidebar-first .view-footer,
 .section-tfk-kid-reporters .region-sidebar-first .view-footer,
@@ -665,6 +666,7 @@
 	box-shadow: 2px 2px 2px #999;
 }
 
+#block-views-minisite-articles-block-6 .view-footer a :hover,
 #block-views-random-kid-reporters-block .view-footer a:hover,
 .node-type-kid-reporter .region-sidebar-first .view-footer a:hover,
 .section-tfk-kid-reporters  .region-sidebar-first .view-footer a:hover
