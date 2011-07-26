@@ -255,7 +255,7 @@ function tfk_user_profile_form($form, &$form_state, $user_profile) {
 		'#type' => 'textfield',
 		'#title' => t('Nickname'),
 		'#required' => TRUE,
-                '#description' => '(Nickname can be 6-8 characters long)',
+                '#description' => '(Nickname can be 6-18 characters long)',
                 '#default_value' => isset($user_profile) ? $user_profile['elements']['#account']->field_nickname['und']['0']['value'] : ''
 	);
 	
