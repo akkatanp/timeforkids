@@ -305,7 +305,7 @@ function tfk_user_profile_form_submit($form, &$form_state) {
                     $updated_user_profile->uid = $form_state['values']['uid'];
 
                     if(strlen($updated_user_profile->nickname) < 6 || strlen($updated_user_profile->nickname) > 18){
-                      form_set_error('zz','AJdhasfhasklfh');
+                      form_set_error('zz','Nickname can be 6-18 characters long');
                       return;
                     }else{
                        db_merge('field_data_field_nickname')
@@ -318,8 +318,19 @@ function tfk_user_profile_form_submit($form, &$form_state) {
                      ))->fields(array('field_nickname_value' => $updated_user_profile->nickname))->execute();
                     }
 
+
+                    db_merge('field_data_field_grade_level')
+                      ->key(array(
+                      'entity_id' => $updated_user_profile->uid,
+                          'entity_type' => 'user',
+                          'deleted' => 0,
+                          'delta' => 0,
+                          'language' => 'und'
+                     ))->fields(array('field_grade_level_tid' => $updated_user_profile->grade_level))->execute();
+
+
                     //db_merge('field_data_field_nickname')->condition('entity_id', $updated_user_profile->uid)->fields(array('field_nickname_value'=>$updated_user_profile->nickname))->execute();
-                    db_merge('field_data_field_grade_level')->condition('entity_id', $updated_user_profile->uid)->fields(array('field_grade_level_tid'=>$updated_user_profile->grade_level))->execute();
+                    //db_merge('field_data_field_grade_level')->condition('entity_id', $updated_user_profile->uid)->fields(array('field_grade_level_tid'=>$updated_user_profile->grade_level))->execute();
                     drupal_set_message(t('Account settings updated.'));
                     cache_clear_all($cid = 'field:user:'.$updated_user_profile->uid, $table = 'cache_field', $wildcard = FALSE);
  					
