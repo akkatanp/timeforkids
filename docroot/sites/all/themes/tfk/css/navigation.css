@@ -799,6 +799,7 @@
 
 #block-views-mini-site-home-block-1 .field-content img {
 	width: 230px;
+	height: 120px;
 	border: solid 3px #fff;
 }
 
@@ -816,6 +817,11 @@
 
 #block-views-mini-site-home-block-1 .views-field-title a {
 	font: bold 20px arial;
+}
+
+#block-views-mini-site-home-block-1 .views-field-body {
+	line-height: 15px;
+	margin: 0 7px 15px 0;
 }
 
 .node-type-minisite .region-sidebar-first .section {
