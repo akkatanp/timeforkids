@@ -243,8 +243,6 @@ function tfk_user_profile_form($form, &$form_state, $user_profile) {
         foreach ($result as $record) {
             $grade_levels[$record->tid] = $record->name;
         }
-        print_r($user_profile);
-
 
         if(isset($user_profile)) {
             $form['uid'] = array(
@@ -302,6 +300,8 @@ function tfk_user_profile_form_submit($form, &$form_state) {
 		$updated_user_profile = new stdClass();
 		$updated_user_profile->nickname = $form_state['values']['nickname'];
 		$updated_user_profile->grade_level = $form_state['values']['grade_level'];
+
+                print_R($form_state);
                 if(isset($form_state['values']['uid'])) {
                     $updated_user_profile->uid = $form_state['values']['uid'];
                     db_update('field_data_field_nickname')->condition('entity_id', $updated_user_profile->uid)->fields(array('field_nickname_value'=>$updated_user_profile->nickname))->execute();
