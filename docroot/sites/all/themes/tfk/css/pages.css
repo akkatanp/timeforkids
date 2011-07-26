@@ -2417,4 +2417,10 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
     padding: 0px;
 }
 
+.view-atw-page-featured-destination .views-field-field-atw-tout-credit{
+    color: #999999;
+    font: 9px arial;
+    text-align: right;
+}
+
 /*sergei voitenko end */
