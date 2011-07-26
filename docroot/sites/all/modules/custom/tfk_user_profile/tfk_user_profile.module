@@ -243,6 +243,9 @@ function tfk_user_profile_form($form, &$form_state, $user_profile) {
         foreach ($result as $record) {
             $grade_levels[$record->tid] = $record->name;
         }
+        print_r($user_profile);
+
+
         if(isset($user_profile)) {
             $form['uid'] = array(
                 '#type' => 'value',
