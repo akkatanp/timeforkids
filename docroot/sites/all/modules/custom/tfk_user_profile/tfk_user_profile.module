@@ -304,17 +304,19 @@ function tfk_user_profile_form_submit($form, &$form_state) {
                 if(isset($form_state['values']['uid'])) {
                     $updated_user_profile->uid = $form_state['values']['uid'];
 
-                         db_merge('field_data_field_nickname')
-        ->key(array(
-        'entity_id' => $updated_user_profile->uid,
-            'entity_type' => 'user',
-            'deleted' => 0,
-            'delta' => 0,
-            'language' => 'und'
-      ))
-        ->fields(array('field_nickname_value' => $updated_user_profile->nickname))
-        ->execute();
-
+                    if(strlen($updated_user_profile->nickname) < 6 || strlen($updated_user_profile->nickname) > 18){
+                      form_set_error('zz','AJdhasfhasklfh');
+                      return;
+                    }else{
+                       db_merge('field_data_field_nickname')
+                      ->key(array(
+                      'entity_id' => $updated_user_profile->uid,
+                          'entity_type' => 'user',
+                          'deleted' => 0,
+                          'delta' => 0,
+                          'language' => 'und'
+                     ))->fields(array('field_nickname_value' => $updated_user_profile->nickname))->execute();
+                    }
 
                     //db_merge('field_data_field_nickname')->condition('entity_id', $updated_user_profile->uid)->fields(array('field_nickname_value'=>$updated_user_profile->nickname))->execute();
                     db_merge('field_data_field_grade_level')->condition('entity_id', $updated_user_profile->uid)->fields(array('field_grade_level_tid'=>$updated_user_profile->grade_level))->execute();
