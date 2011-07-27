@@ -50,26 +50,6 @@ function features_misc_menu_default_menu_links() {
     'expanded' => '0',
     'weight' => '25',
   );
-  // Exported menu link: menu-tfk-footer-primary:kid-reporter
-  $menu_links['menu-tfk-footer-primary:kid-reporter'] = array(
-    'menu_name' => 'menu-tfk-footer-primary',
-    'link_path' => 'kid-reporter',
-    'router_path' => 'kid-reporter',
-    'link_title' => 'Kid Reporters',
-    'options' => array(
-      'attributes' => array(
-        'class' => array(
-          0 => 'kid_reporter',
-        ),
-      ),
-    ),
-    'module' => 'menu',
-    'hidden' => '0',
-    'external' => '0',
-    'has_children' => '0',
-    'expanded' => '0',
-    'weight' => '5',
-  );
   // Exported menu link: menu-tfk-footer-primary:news
   $menu_links['menu-tfk-footer-primary:news'] = array(
     'menu_name' => 'menu-tfk-footer-primary',
@@ -195,7 +175,7 @@ function features_misc_menu_default_menu_links() {
     'menu_name' => 'menu-tfk-footer-secondary',
     'link_path' => 'node/172',
     'router_path' => 'node/%',
-    'link_title' => 'Advertising & Sponsorship',
+    'link_title' => 'Advertisement & Sponsorship',
     'options' => array(
       'attributes' => array(),
     ),
@@ -261,26 +241,6 @@ function features_misc_menu_default_menu_links() {
     'has_children' => '0',
     'expanded' => '0',
     'weight' => '-45',
-  );
-  // Exported menu link: menu-tfk-global-navigation:kid-reporter
-  $menu_links['menu-tfk-global-navigation:kid-reporter'] = array(
-    'menu_name' => 'menu-tfk-global-navigation',
-    'link_path' => 'kid-reporter',
-    'router_path' => 'kid-reporter',
-    'link_title' => 'Kid Reporters',
-    'options' => array(
-      'attributes' => array(
-        'class' => array(
-          0 => 'kid-reporter',
-        ),
-      ),
-    ),
-    'module' => 'menu',
-    'hidden' => '0',
-    'external' => '0',
-    'has_children' => '0',
-    'expanded' => '0',
-    'weight' => '-49',
   );
   // Exported menu link: menu-tfk-global-navigation:news
   $menu_links['menu-tfk-global-navigation:news'] = array(
@@ -465,13 +425,12 @@ function features_misc_menu_default_menu_links() {
   // Translatables
   // Included for use with string extractors like potx.
   t('About Us');
-  t('Advertising & Sponsorship');
+  t('Advertisement & Sponsorship');
   t('Around the World');
   t('Contact Us');
   t('Customer Service');
   t('Digital Edition');
   t('Homework Helper');
-  t('Kid Reporters');
   t('News');
   t('Photos & Video');
   t('Printables');
