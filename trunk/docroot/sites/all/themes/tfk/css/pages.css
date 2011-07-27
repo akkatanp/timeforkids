@@ -1394,62 +1394,6 @@ ul.links li {
 }
 
 /* ATW Challenge */
-.section-around-the-world.node-type-webform .region-content {
-	border: solid 1px #cecece;
-	padding: 10px;
-}
-
-.challengeheader {
-	width: 488px;
-	height: 100px;
-	background: url(../images/atw-head.png) no-repeat;
-	margin-bottom: 10px;
-}
-
-.section-around-the-world .node-webform h2 {
-	font: bold 30px arial;
-	margin: 0 0 10px 0;
-}
-
-.section-around-the-world .node-webform .content h1 {
-	font: bold 20px arial;
-	margin: 0 0 10px 0;
-}
-
-.section-around-the-world .node-webform .field-name-body {
-	font: normal 14px arial;
-	padding-bottom: 10px;
-	border-bottom: dotted 1px #cecece;
-	margin-bottom: 10px;
-}
-
-.section-around-the-world .node-webform .form-type-item {
-	margin: 0 0 10px 0;
-}
-
-.section-around-the-world .node-webform .form-radios {
-	margin-bottom: 10px;
-}
-
-.section-around-the-world .node-webform .content a {
-	font: bold 11px arial;
-	background: #d71700;
-	color: #fff;
-	padding: 4px 8px;
-	margin-top: 10px;
-	cursor: pointer;
-	text-decoration: none;
-	border-radius: 12px;
-	-moz-border-radius: 12px;
-	-webkit-border-radius: 12px;
-	box-shadow: 2px 2px 2px #999;
-	-moz-box-shadow: 2px 2px 2px #999;
-	-webkit-box-shadow: 2px 2px 2px #999;
-}
-
-.section-around-the-world .node-webform .content a :hover{
-	background: #900;
-}
 
 /* news archive */
 .page-news-archive #block-tfk-news-tfk-news-current-filters {
