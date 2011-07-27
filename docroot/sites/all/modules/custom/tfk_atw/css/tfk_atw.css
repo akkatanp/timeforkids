@@ -1,0 +1,26 @@
+form.webform-client-form div {
+}
+
+form.webform-client-form div > div.form-item {
+}
+
+div#block-system-main > div.content {
+	border: 1px solid #CECECE;
+	padding: 10px;
+}
+
+form.webform-client-form div > div.form-type-item label {
+	color: #333;
+}
+
+div.field-name-body {
+	border-bottom: 1px dotted #999;
+	padding-bottom: 10px;
+}
+
+body.node-type-webform.section-destination .content div.node-webform.view-mode-full > h2 {
+	font-size: 28px;
+	line-height: 100%;
+	color: #333;
+	margin: 0 0 10px 0;
+}
