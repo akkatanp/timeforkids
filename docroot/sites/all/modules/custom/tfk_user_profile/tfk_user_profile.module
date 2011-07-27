@@ -404,7 +404,7 @@ function tfk_user_profile_block_view($delta='') {
 
 function _tfk_profile_settings(){
   return theme('tfk_profile_settings');
-  return '';
+  //return '';
 }
 
 function tfk_user_profile_theme() {
