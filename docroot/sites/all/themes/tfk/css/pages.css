@@ -1837,7 +1837,7 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 
 /* Ad containers */
 #banner_728x90 {
-	margin-top: 10px;
+    margin-top: 10px;
     width:744px;
     background:url("../images/advertisment-vert.png") no-repeat left top;
     float:right;
