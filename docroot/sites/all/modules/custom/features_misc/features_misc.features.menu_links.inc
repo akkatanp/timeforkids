@@ -55,7 +55,7 @@ function features_misc_menu_default_menu_links() {
     'menu_name' => 'menu-tfk-footer-primary',
     'link_path' => 'kid-reporter',
     'router_path' => 'kid-reporter',
-    'link_title' => 'Kid Reporter',
+    'link_title' => 'Kid Reporters',
     'options' => array(
       'attributes' => array(
         'class' => array(
@@ -149,18 +149,14 @@ function features_misc_menu_default_menu_links() {
     'router_path' => 'node/%',
     'link_title' => 'About Us',
     'options' => array(
-      'attributes' => array(
-        'class' => array(
-          0 => 'about-us',
-        ),
-      ),
+      'attributes' => array(),
     ),
     'module' => 'menu',
     'hidden' => '0',
     'external' => '0',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '0',
+    'weight' => '-50',
   );
   // Exported menu link: menu-tfk-footer-secondary:node/169
   $menu_links['menu-tfk-footer-secondary:node/169'] = array(
@@ -169,38 +165,14 @@ function features_misc_menu_default_menu_links() {
     'router_path' => 'node/%',
     'link_title' => 'Customer Service',
     'options' => array(
-      'attributes' => array(
-        'class' => array(
-          0 => 'customer-service',
-        ),
-      ),
+      'attributes' => array(),
     ),
     'module' => 'menu',
     'hidden' => '0',
     'external' => '0',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '5',
-  );
-  // Exported menu link: menu-tfk-footer-secondary:node/170
-  $menu_links['menu-tfk-footer-secondary:node/170'] = array(
-    'menu_name' => 'menu-tfk-footer-secondary',
-    'link_path' => 'node/170',
-    'router_path' => 'node/%',
-    'link_title' => 'Subscribe & Renew',
-    'options' => array(
-      'attributes' => array(
-        'class' => array(
-          0 => 'subscribe-renew',
-        ),
-      ),
-    ),
-    'module' => 'menu',
-    'hidden' => '0',
-    'external' => '0',
-    'has_children' => '0',
-    'expanded' => '0',
-    'weight' => '10',
+    'weight' => '-49',
   );
   // Exported menu link: menu-tfk-footer-secondary:node/171
   $menu_links['menu-tfk-footer-secondary:node/171'] = array(
@@ -209,38 +181,30 @@ function features_misc_menu_default_menu_links() {
     'router_path' => 'node/%',
     'link_title' => 'Contact Us',
     'options' => array(
-      'attributes' => array(
-        'class' => array(
-          0 => 'contact-us',
-        ),
-      ),
+      'attributes' => array(),
     ),
     'module' => 'menu',
     'hidden' => '0',
     'external' => '0',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '15',
+    'weight' => '-47',
   );
   // Exported menu link: menu-tfk-footer-secondary:node/172
   $menu_links['menu-tfk-footer-secondary:node/172'] = array(
     'menu_name' => 'menu-tfk-footer-secondary',
     'link_path' => 'node/172',
     'router_path' => 'node/%',
-    'link_title' => 'Advertisement & Sponsorship',
+    'link_title' => 'Advertising & Sponsorship',
     'options' => array(
-      'attributes' => array(
-        'class' => array(
-          0 => 'ad-sponspor',
-        ),
-      ),
+      'attributes' => array(),
     ),
     'module' => 'menu',
     'hidden' => '0',
     'external' => '0',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '20',
+    'weight' => '-46',
   );
   // Exported menu link: menu-tfk-footer-secondary:node/173
   $menu_links['menu-tfk-footer-secondary:node/173'] = array(
@@ -249,18 +213,14 @@ function features_misc_menu_default_menu_links() {
     'router_path' => 'node/%',
     'link_title' => 'Privacy Policy',
     'options' => array(
-      'attributes' => array(
-        'class' => array(
-          0 => 'privacy-policy',
-        ),
-      ),
+      'attributes' => array(),
     ),
     'module' => 'menu',
     'hidden' => '0',
     'external' => '0',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '25',
+    'weight' => '-45',
   );
   // Exported menu link: menu-tfk-global-navigation:around-the-world
   $menu_links['menu-tfk-global-navigation:around-the-world'] = array(
@@ -307,7 +267,7 @@ function features_misc_menu_default_menu_links() {
     'menu_name' => 'menu-tfk-global-navigation',
     'link_path' => 'kid-reporter',
     'router_path' => 'kid-reporter',
-    'link_title' => 'Kid Reporter',
+    'link_title' => 'Kid Reporters',
     'options' => array(
       'attributes' => array(
         'class' => array(
@@ -505,13 +465,13 @@ function features_misc_menu_default_menu_links() {
   // Translatables
   // Included for use with string extractors like potx.
   t('About Us');
-  t('Advertisement & Sponsorship');
+  t('Advertising & Sponsorship');
   t('Around the World');
   t('Contact Us');
   t('Customer Service');
   t('Digital Edition');
   t('Homework Helper');
-  t('Kid Reporter');
+  t('Kid Reporters');
   t('News');
   t('Photos & Video');
   t('Printables');

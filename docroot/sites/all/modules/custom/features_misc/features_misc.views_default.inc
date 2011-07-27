@@ -723,21 +723,23 @@ function features_misc_views_default_views() {
   $handler->display->display_options['fields']['field_nickname']['field'] = 'field_nickname';
   $handler->display->display_options['fields']['field_nickname']['label'] = '';
   $handler->display->display_options['fields']['field_nickname']['alter']['alter_text'] = 1;
-  $handler->display->display_options['fields']['field_nickname']['alter']['text'] = 'Welcome [field_nickname]!';
+  $handler->display->display_options['fields']['field_nickname']['alter']['text'] = 'Hello, [field_nickname]!';
   $handler->display->display_options['fields']['field_nickname']['alter']['make_link'] = 0;
   $handler->display->display_options['fields']['field_nickname']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_nickname']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_nickname']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_nickname']['alter']['trim_whitespace'] = 0;
   $handler->display->display_options['fields']['field_nickname']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_nickname']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_nickname']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_nickname']['alter']['strip_tags'] = 0;
   $handler->display->display_options['fields']['field_nickname']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_nickname']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['field_nickname']['element_label_colon'] = 0;
+  $handler->display->display_options['fields']['field_nickname']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_nickname']['element_default_classes'] = 1;
   $handler->display->display_options['fields']['field_nickname']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_nickname']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_nickname']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['field_nickname']['field_api_classes'] = 0;
   /* Filter criterion: User: Active */
   $handler->display->display_options['filters']['status']['id'] = 'status';
