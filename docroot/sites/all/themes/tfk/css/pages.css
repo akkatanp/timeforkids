@@ -762,6 +762,10 @@ ul.links li {
 	display: inline;
 }
 
+#block-views-minisite-articles-block .views-field-field-deck {
+	line-height: 15px;
+}
+
 #block-views-minisite-articles-block-1 .views-field-field-date,
 #block-views-minisite-articles-block  .views-field-field-date {
 	display: none;
@@ -770,6 +774,17 @@ ul.links li {
 #block-views-minisite-articles-block-1 .views-field-title a,
 #block-views-minisite-articles-block .views-field-title a {
 	font: bold 20px arial;
+}
+
+#block-views-minisite-articles-block-7 {
+	border: solid 1px #cecece;
+	padding: 10px;
+	margin-bottom: 10px;
+}
+
+#block-views-minisite-articles-block-7 img{
+	width: 488px;
+	height: 100px;
 }
 
 /* kid reporter header */
@@ -1018,7 +1033,7 @@ ul.links li {
 }
 
 .node-type-article .field-name-field-deck {
-	font: normal 14px arial;
+	font: bold 14px arial;
 	margin-bottom: 10px;
 }
 
