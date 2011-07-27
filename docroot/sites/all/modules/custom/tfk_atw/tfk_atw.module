@@ -722,7 +722,10 @@ function tfk_atw_form_alter(&$form,&$form_state,$form_id) {
   			);
   		}
   		else {
-  			$form['#submit'][]='tfk_atw_quiz_submit';
+
+
+                  print_r($form);
+                  $form['#submit'][]='tfk_atw_quiz_submit';
   		}
 	  }
      
