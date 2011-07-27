@@ -420,6 +420,7 @@ ul.links li {
 	font: normal 9px arial;
 	color: #999;
 	text-align: right;
+	text-transform: uppercase;
 	margin: 0 6px 10px 0;
 }
 
@@ -1206,6 +1207,7 @@ ul.links li {
 	font: normal 9px arial;
 	color: #999;
 	text-align: right;
+	text-transform: uppercase;
 	margin-bottom: 5px;
 }
 
@@ -1626,6 +1628,7 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 
 .node-type-video .field-name-field-credit {
 	text-align: right;
+	text-transform: uppercase;
 	font: normal 9px arial;
 	color: #999;
 }
@@ -1951,6 +1954,7 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 
 #sightseeing-container .map-credit {
 	text-align: right;
+	text-transform: uppercase;
 	font: normal 9px arial;
 	color: #999;
 }
@@ -2124,6 +2128,7 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 	font: normal 9px arial;
 	color: #999;
 	text-align: right;
+	text-transform: uppercase;
 }
 
 #timeline-container #event-container .event.vertical .event-image  img {
@@ -2192,6 +2197,7 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 	font: normal 9px arial;
 	color: #999;
 	text-align: right;
+	text-transform: uppercase;
 	margin-bottom: 10px;
 }
 
@@ -2318,6 +2324,7 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 	font: normal 9px arial;
 	color: #999;
 	text-align: right;
+	text-transform: uppercase;
 }
 
 #daylife-container #speaker-intro {
@@ -2439,6 +2446,7 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
     color: #999999;
     font: 9px arial;
     text-align: right;
+	text-transform: uppercase;
     padding-right:10px;
 }
 #block-menu-menu-publishing-calendar-menu a.active{
