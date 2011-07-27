@@ -2,8 +2,8 @@
 
 function tfk_kid_reporters_menu(){
   $items = array();
-  $items['kid-reporter'] = array(
-		'title' => 'Kid Reporter',
+  $items['kid-reporters'] = array(
+		'title' => 'Kid Reporters',
 		'page callback' => '_kid_reporters_callback',
 		'access callback' => 'user_access',
 		'access arguments' => array('access content')
@@ -13,6 +13,6 @@ function tfk_kid_reporters_menu(){
 
 
 function _kid_reporters_callback(){
-  drupal_set_title('Kid Reporter');
+  drupal_set_title('Kid Reporters');
   return '';
 }
