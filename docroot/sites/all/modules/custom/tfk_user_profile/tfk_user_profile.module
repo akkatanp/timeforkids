@@ -374,3 +374,45 @@ function tfk_user_profile (&$user_profile) {
     }
     return $output;
 }
+
+
+function tfk_search_block_info() {
+  $blocks = array();
+
+  // Photos and Video title block.
+  $blocks['tfk-profile-settings'] = array(
+    'info' => t('TFK Profile Settings'),
+    'visibility' => BLOCK_VISIBILITY_LISTED,
+    'cache' => DRUPAL_CACHE_GLOBAL,
+  );
+  
+
+  return $blocks;
+}
+
+
+function tfk_atw_block_view($delta='') {
+  $block = array();
+  switch ($delta) {
+    case 'tfk-profile-settings':
+      $block['subject'] = t('TFK Profile Settings');
+      $block['content'] = _tfk_profile_settings();
+    break;
+  }
+  return $block;
+}
+
+
+function _tfk_profile_settings(){
+  return theme('tfk_profile_settings');
+  return '';
+}
+
+function tfk_atw_theme() {
+  return array(
+    'tfk_profile_settings' => array(
+      'template' => 'tfk-profile-settings',
+      'variables' => array('list' => NULL),
+    )
+  );
+}
