@@ -376,9 +376,8 @@ function tfk_user_profile (&$user_profile) {
 }
 
 
-function tfk_search_block_info() {
+function tfk_user_profile_block_info() {
   $blocks = array();
-
   // Photos and Video title block.
   $blocks['tfk-profile-settings'] = array(
     'info' => t('TFK Profile Settings'),
@@ -391,7 +390,7 @@ function tfk_search_block_info() {
 }
 
 
-function tfk_atw_block_view($delta='') {
+function tfk_user_profile_block_view($delta='') {
   $block = array();
   switch ($delta) {
     case 'tfk-profile-settings':
