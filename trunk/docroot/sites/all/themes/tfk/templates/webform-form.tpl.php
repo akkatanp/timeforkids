@@ -26,6 +26,13 @@
 
   // Print out the main part of the form.
   // Feel free to break this up and move the pieces within the array.
+  $n = 1;
+  foreach($form['submitted'] as $key => $component) {
+    if(isset($component['question']['#title'])) {
+      $form['submitted'][$key]['question']['#title'] = $n. '. '. $form['submitted'][$key]['question']['#title'];
+      $n++;
+    }
+  }
   print drupal_render($form['submitted']);
 
   // Always print out the entire $form. This renders the remaining pieces of the

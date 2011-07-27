@@ -9,6 +9,11 @@ function tfk_atw_init(){
     drupal_add_js($js_path,'file');
     drupal_add_css($css_path,'file');
   }
+  
+  $node = menu_get_object('node', 1);
+  if($node->type == 'webform') {
+    drupal_add_css(drupal_get_path('module', 'tfk_atw'). '/css/tfk_atw.css');
+  }
 }
 
 
