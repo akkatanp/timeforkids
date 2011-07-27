@@ -344,6 +344,16 @@ img {
   font-style: italic;
   font-family: Georgia, serif;
 }
+#aplus-submit-buttons .aplus-back {
+  background: #d71700 url(images/aplus-back.png) no-repeat;
+  background-position: 5px 5px;
+  padding: 4px 10px 4px 18px;
+}
+#aplus-submit-buttons .aplus-next {
+  background: #d71700 url(images/aplus-next.png) no-repeat;
+  background-position: 37px 5px;
+  padding: 4px 18px 4px 10px;
+}
 
 #aplus-papers-checklist-block {
   position: absolute;
