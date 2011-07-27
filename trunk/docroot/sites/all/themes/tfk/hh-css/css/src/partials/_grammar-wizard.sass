@@ -80,6 +80,7 @@ span.grammar-wizard-incorrect
   #grammar-wizard-result
     clear: left
     margin: 0.7em 0 0
+    float: left
   #grammar-wizard-results,
   .view-grammar-practice-trophies
     +float-left
@@ -101,9 +102,15 @@ span.grammar-wizard-incorrect
     width: 424px
     h2
       margin: 0
+      line-height: 1.5em  
     & + .form-item
       +float-left
       width: 424px
+  .form-item
+    .form-item
+      margin-top: 8px
+    .form-disabled
+      color: gray
   input[type="submit"]
     clear: left
     +float-left

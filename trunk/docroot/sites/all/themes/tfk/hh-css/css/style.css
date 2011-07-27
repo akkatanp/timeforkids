@@ -1265,6 +1265,7 @@ span.grammar-wizard-incorrect {
 .node-type-grammar-practice #grammar-wizard-result {
   clear: left;
   margin: 0.7em 0 0;
+  float: left;
 }
 .node-type-grammar-practice #grammar-wizard-results,
 .node-type-grammar-practice .view-grammar-practice-trophies {
@@ -1309,11 +1310,18 @@ span.grammar-wizard-incorrect {
 }
 .node-type-grammar-practice .node-grammar-practice-question h2 {
   margin: 0;
+  line-height: 1.5em;
 }
 .node-type-grammar-practice .node-grammar-practice-question + .form-item {
   display: inline;
   float: left;
   width: 424px;
+}
+.node-type-grammar-practice .form-item .form-item {
+  margin-top: 8px;
+}
+.node-type-grammar-practice .form-item .form-disabled {
+  color: gray;
 }
 .node-type-grammar-practice input[type="submit"] {
   clear: left;
