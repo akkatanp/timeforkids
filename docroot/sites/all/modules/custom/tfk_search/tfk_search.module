@@ -1568,13 +1568,7 @@ function tfk_search_preprocess_search_result(&$vars) {
           if(!empty($items)) {
             $lists[$name] = array();
             foreach($items as $item) {
-
-              if($field == 'field_cover_story'){
                 $lists[$name][] = l($item['title'], $item['url']);
-              }else{
-                $lists[$name][] = l($item['value'], 'http://www.timeforkids.com/digital');
-              }
-              
             }
           }
         
