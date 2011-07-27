@@ -1,0 +1,72 @@
+<?php
+
+/**
+ * Implementation of menu_hook.
+ */
+function tfk_page_paths_menu(){
+	$items = array();
+
+        $items['store'] = array(
+		'title' => 'TFK Store',
+		'page callback' => 'tfk_store_callback',
+		'access callback' => 'user_access',
+		'access arguments' => array('access content')
+	);
+        $items['magazine'] = array(
+		'title' => 'TFK Magazine',
+		'page callback' => 'tfk_pv_page_callback',
+		'access callback' => 'user_access',
+		'access arguments' => array('access content')
+	);
+        $items['digital-edition'] = array(
+		'title' => 'Digital Edition',
+		'page callback' => 'tfk_pv_page_callback',
+		'access callback' => 'user_access',
+		'access arguments' => array('access protected content')
+	);
+        $items['extras'] = array(
+		'title' => 'TFK Extras',
+		'page callback' => 'tfk_pv_page_callback',
+		'access callback' => 'user_access',
+		'access arguments' => array('access content')
+	);
+        $items['subscribe-renew'] = array(
+		'title' => 'Subscribe & Renew',
+		'page callback' => 'tfk_pv_page_callback',
+		'access callback' => 'user_access',
+		'access arguments' => array('access protected content')
+	);
+        $items['mini-sites'] = array(
+		'title' => 'Mini-Sites',
+		'page callback' => 'tfk_pv_page_callback',
+		'access callback' => 'user_access',
+		'access arguments' => array('access content')
+	);        
+        $items['info'] = array(
+		'title' => 'Info',
+		'page callback' => 'tfk_pv_page_callback',
+		'access callback' => 'user_access',
+		'access arguments' => array('access content')
+	);
+	return $items;
+}
+
+function tfk_page_paths_permission() {
+  return array(
+    'access protected content' => array(
+      'title' => t('TFK Custom Permission'),
+      'description' => t('TFK Custom Permission'),
+    )
+  );
+}
+
+function tfk_store_callback(){
+  return '';
+  //return drupal_set_title('TFK Store');
+}
+
+
+function tfk_pv_page_callback() {
+	return '';
+}
+
