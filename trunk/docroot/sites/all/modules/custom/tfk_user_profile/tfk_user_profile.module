@@ -407,7 +407,7 @@ function _tfk_profile_settings(){
   return '';
 }
 
-function tfk_atw_theme() {
+function tfk_user_profile_theme() {
   return array(
     'tfk_profile_settings' => array(
       'template' => 'tfk-profile-settings',
