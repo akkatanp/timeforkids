@@ -149,8 +149,12 @@ form table .item-list ul {
 	display: none;
 }
 
+#login-form-container p br {
+	margin: 10px 0;
+}
+
 #login-container .form-item {
-	margin: 4px 0;
+	margin-bottom: 10px;
 }
 
 #login-container .form-text {
