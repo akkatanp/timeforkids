@@ -357,6 +357,12 @@ function tfk_teachers_community_form_teacher_community_question_node_form_alter(
   $form['author']['#access'] = FALSE;
   $form['options']['#access'] = TRUE;
   
+  // tks283: Hide the published options for non-editorial users.
+  // Only editors can edit their own questions.
+  if(!user_access('Teacher Community Question: Edit own content')) {
+    $form['options']['#access'] = FALSE;
+  }
+  
   // Change the default Core title textfield to a texarea.
   $form['title']['#type'] = 'textarea';
   $form['title']['#maxlength'] = 500;
