@@ -391,7 +391,7 @@ ul.links li {
 .not-logged-in .view-homepage-minisite {
 	position: relative;
 	width: 244px;
-	height: 273px;
+	height: 293px;
 	padding: 15px 0 10px 6px;
 	background: #dedede;
 	border: solid 1px #cecece;
@@ -847,7 +847,7 @@ ul.links li {
 	border: 0;
 }
 
-.view-homepage-news-block table td,
+.logged-in .view-homepage-news-block table td,
 .view-teacher-news-news-block table td,
 .view-kid-reporters-channel-news-block table td {
 	position: relative;
@@ -855,6 +855,17 @@ ul.links li {
 	float: left;
 	width: 230px;
 	height: 310px;
+	padding: 20px 9px;
+	border: solid 1px #cecece;
+	vertical-align: top;
+}
+
+.not-logged-in .view-homepage-news-block table td {
+	position: relative;
+	display: block;
+	float: left;
+	width: 230px;
+	height: 250px;
 	padding: 20px 9px;
 	border: solid 1px #cecece;
 	vertical-align: top;
