@@ -880,22 +880,24 @@ function tfk_search_preprocess_block(&$variables) {
   
   // Alter filter title for all search interfaces.
   // This is hardcoded on apachesolr_search.module apachesolr_search_block_view().
-  switch($variables['block']->delta) {
-    case 'bundle':
-      $variables['block']->subject = t('Content Types');
-      break;
-    case 'im_28_field_grade_level':
-      $variables['block']->subject = t('Grade Level');
-      break;
-    case 'im_10_field_article_category':
-      $variables['block']->subject = t('Categories');
-      break;
-    case 'im_36_field_themes':
-      $variables['block']->subject = t('Themes');
-      break;
-    case 'im_35_field_skills':
-      $variables['block']->subject = t('Skills');
-      break;
+  if ($variables['block']->module == 'apachesolr_search') {
+    switch($variables['block']->delta) {
+      case 'bundle':
+        $variables['block']->subject = t('Content Types');
+        break;
+      case 'im_28_field_grade_level':
+        $variables['block']->subject = t('Grade Level');
+        break;
+      case 'im_10_field_article_category':
+        $variables['block']->subject = t('Categories');
+        break;
+      case 'im_36_field_themes':
+        $variables['block']->subject = t('Themes');
+        break;
+      case 'im_35_field_skills':
+        $variables['block']->subject = t('Skills');
+        break;
+    }
   }
 }
 
