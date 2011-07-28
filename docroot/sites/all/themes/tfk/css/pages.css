@@ -555,6 +555,11 @@ ul.links li {
 	padding: 20px 10px 10px 10px;
 	margin-bottom: 10px;
 }
+
+.not-logged-in .view-homepage-top-story {
+	height: 258px;
+}
+
 .view-homepage-top-story .views-field-title-2,
 .view-teacher-news-top-story .views-field-title-1, 
 .view-kid-reporters-channel-top-story .views-field-title-1 {/*View full article*/
