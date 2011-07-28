@@ -210,3 +210,23 @@ ol#tfk-search-results-photos-video.search-results .search-result h3.title {
 #tfk-search-pager-top .item-list .pager li {
   padding: 0 0.3em;
 }
+
+#block-tfk-search-tfk-magazine-back-btn {
+	background-color: #D71700;
+	font-family: "arial black", arial, sans-serif;
+	font-size: 9px;
+	padding: 19px 0px 19px 10px;
+	padding: 10px;
+	margin-bottom: 10px;
+}
+
+#block-tfk-search-tfk-magazine-back-btn h2 {
+	background: url('/sites/all/themes/tfk/images/white-back-arrow.png') no-repeat;
+	padding-left: 15px;
+	margin: 0;
+	line-height: 100%;
+}
+
+#block-tfk-search-tfk-magazine-back-btn a {
+	color: #FFF;
+}
