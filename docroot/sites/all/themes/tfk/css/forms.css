@@ -136,12 +136,17 @@ form table .item-list ul {
 
 #login-container h2 {
 	font: bold 20px arial;
-	margin: 4px 0;
+	margin: 20px 0 30px 0;
+	padding-left: 10px;
 }
 
 #login-form-container {
-	padding-bottom: 10px;
+	padding: 0 0 10px 10px;
 	border-bottom: dotted 1px #cecece;
+}
+
+#login-form-container p br {
+	display: none;
 }
 
 #login-container .form-item {
@@ -150,19 +155,4 @@ form table .item-list ul {
 
 #login-container .form-text {
 	border: solid 1px #999;
-}
-
-#login-container .form-submit {
-	font: bold 11px arial;
-	background: #d71700;
-	color: #fff;
-	padding: 6px 8px;
-	border: none;
-	cursor: pointer;
-	border-radius: 12px;
-	-moz-border-radius: 12px;
-	-webkit-border-radius: 12px;
-	box-shadow: 2px 2px 2px #999;
-	-moz-box-shadow: 2px 2px 2px #999;
-	-webkit-box-shadow: 2px 2px 2px #999;
 }
