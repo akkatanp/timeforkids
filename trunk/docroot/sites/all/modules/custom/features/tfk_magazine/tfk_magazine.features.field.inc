@@ -1,7 +1,8 @@
 <?php
 /**
  * @file
- * tfk_magazine.features.field.inc
+ * tfk_magazine.features.field.inc test
+ *
  */
 
 /**
