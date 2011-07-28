@@ -952,11 +952,12 @@ ul.links li {
 .view-mini-site-home .view-content table td,
 .view-all-kid-reporters .view-content table td {
 	display: block;
+	position: relative;
 	float: left;
 	width: 230px;
 	border: solid 1px #cecece;
 	padding: 10px 9px;
-	margin: 4px 0;
+	margin: 5px 0;
 }
 
 .view-mini-site-home .view-content table td.col-1,
@@ -985,6 +986,9 @@ ul.links li {
 .view-mini-site-home .view-content table td .views-field-body,
 .view-all-kid-reporters .view-content table td .views-field-body {
 	line-height: 15px;
+	position: relative;
+	right: 10px;
+	width: 160px;
 }
 
 .view-all-kid-reporters .view-content table td .views-field-title-1 {
