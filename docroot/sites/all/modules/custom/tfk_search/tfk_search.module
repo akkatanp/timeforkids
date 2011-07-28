@@ -342,6 +342,11 @@ function tfk_search_block_info() {
     'info' => t('TFK Search Filter Search By'),
   );
   
+  // Back to TFK Magazine.
+  $blocks['tfk_magazine_back_btn'] = array(
+    'info' => t('TFK Magazine Back Button'),
+  );
+
   return $blocks;
 }
 
@@ -417,6 +422,11 @@ function tfk_search_block_view($delta='') {
     // Site-wide search content header.
     case 'tfk_search_cont_hdr':
       $block['content'] = '<h2>'. t("Search Results"). '</h2>';
+    break;
+    
+    // Back to TFK Magazine.
+    case 'tfk_magazine_back_btn':
+      $block['content'] = '<h2>'. l(t("BACK TO TFK MAGAZINE"), 'tfk-magazine'). '</h2>';
     break;
     
     // Site-wide search filter search.
