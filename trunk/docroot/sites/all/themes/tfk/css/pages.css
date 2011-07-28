@@ -987,7 +987,7 @@ ul.links li {
 .view-all-kid-reporters .view-content table td .views-field-body {
 	line-height: 15px;
 	position: relative;
-	right: 10px;
+	float: right;
 	width: 160px;
 }
 
