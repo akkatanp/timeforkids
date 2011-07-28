@@ -161,6 +161,6 @@ form table .item-list ul {
 	border: solid 1px #999;
 }
 
-#login-container h2 a {
+#login-container h2 a:first-child {
 	margin-right: 50px;
 }
