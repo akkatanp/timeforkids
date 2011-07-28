@@ -103,7 +103,7 @@ function tfk_news_block_view($delta='') {
       $block['content'] = _tfk_news_taxonomy_navigation();
       break;
     case 'tfk-news-year-filter':
-      $block['subject'] = t('Dropdown with years to filter articles.'); 
+      $block['subject'] = t('Dropdown with years to filter articles.');
       $block['content'] = _tfk_news_year_filter();
       break;
     case 'tfk-news-current-filters':
@@ -195,7 +195,7 @@ function _tfk_news_taxonomy_navigation(){
 
   $term = arg(1);
 
-  $vid = 3; //vocabulary id for article categories 
+  $vid = 3; //vocabulary id for article categories
   //now we have to get all taxonomy terms from this vocabulary that have articles
   $result = db_query('select distinct ti.tid,td.name from taxonomy_index ti left join taxonomy_term_data td on ti.tid = td.tid left join node n on n.nid = ti.nid where n.type = :type and td.vid = :vid',array('type'=>'article','vid'=>$vid));
   $terms = array();
@@ -516,5 +516,3 @@ function tfk_news_preprocess_views_view_fields(&$variables){
   }
 
 }
-
-?>
