@@ -954,7 +954,6 @@ ul.links li {
 	display: block;
 	float: left;
 	width: 230px;
-	height: 100px;
 	border: solid 1px #cecece;
 	padding: 10px 9px;
 	margin: 4px 0;
@@ -976,7 +975,6 @@ ul.links li {
 	float: left;
 	margin-right: 10px;
 	width: 62px;
-	height: 100px;
 }
 
 .view-mini-site-home .view-content table td .views-field-field-thumbnail-image img,
