@@ -1,0 +1,39 @@
+<?php
+/**
+ * @file
+ * feature_kid_reporters_updated.features.menu_links.inc
+ */
+
+/**
+ * Implementation of hook_menu_default_menu_links().
+ */
+function feature_kid_reporters_updated_menu_default_menu_links() {
+  $menu_links = array();
+
+  // Exported menu link: menu-kid-reporter-listings-link:tfk-kid-reporters
+  $menu_links['menu-kid-reporter-listings-link:tfk-kid-reporters'] = array(
+    'menu_name' => 'menu-kid-reporter-listings-link',
+    'link_path' => 'tfk-kid-reporters',
+    'router_path' => 'tfk-kid-reporters',
+    'link_title' => 'Back to kid reporters listing page',
+    'options' => array(
+      'attributes' => array(
+        'class' => array(
+          0 => 'kid-reporters-link',
+        ),
+      ),
+    ),
+    'module' => 'menu',
+    'hidden' => '0',
+    'external' => '0',
+    'has_children' => '0',
+    'expanded' => '0',
+    'weight' => '0',
+  );
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Back to kid reporters listing page');
+
+
+  return $menu_links;
+}
