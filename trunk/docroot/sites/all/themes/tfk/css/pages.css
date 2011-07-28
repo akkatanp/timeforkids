@@ -379,10 +379,19 @@ ul.links li {
 	margin-bottom: 10px;
 }
 
-.view-homepage-minisite {
+.logged-in .view-homepage-minisite {
 	position: relative;
 	width: 244px;
 	height: 373px;
+	padding: 15px 0 10px 6px;
+	background: #dedede;
+	border: solid 1px #cecece;
+}
+
+.not-logged-in .view-homepage-minisite {
+	position: relative;
+	width: 244px;
+	height: 273px;
 	padding: 15px 0 10px 6px;
 	background: #dedede;
 	border: solid 1px #cecece;
