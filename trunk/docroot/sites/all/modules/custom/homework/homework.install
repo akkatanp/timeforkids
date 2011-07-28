@@ -50,4 +50,3 @@ $schema['homework_uid'] = array(
 	return $schema;
 
 }
-?>
