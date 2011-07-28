@@ -1,5 +1,4 @@
 core = "7.x"
-dependencies[] = "feature_tfk_kid_reporters"
 dependencies[] = "tfk_news"
 description = "Feature Kid Reporters Updated"
 features[context][] = "kid_reporter_for_anon"
