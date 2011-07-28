@@ -329,27 +329,25 @@ function tfk_magazine_field_default_fields() {
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_in_the_news',
-      'foreign keys' => array(
-        'format' => array(
-          'columns' => array(
-            'format' => 'format',
-          ),
-          'table' => 'filter_format',
-        ),
-      ),
-      'indexes' => array(
-        'format' => array(
-          0 => 'format',
-        ),
-      ),
-      'module' => 'text',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'module' => 'link',
       'settings' => array(
-        'max_length' => '255',
-        'maxlength_field_in_the_news_js' => 0,
-        'maxlength_field_in_the_news_text' => 'Content limited to !limit characters, remaining: <strong>!remaining</strong>',
+        'attributes' => array(
+          'class' => '',
+          'rel' => '',
+          'target' => 'default',
+        ),
+        'display' => array(
+          'url_cutoff' => 80,
+        ),
+        'enable_tokens' => 1,
+        'title' => 'optional',
+        'title_value' => '',
+        'url' => 0,
       ),
       'translatable' => '1',
-      'type' => 'text',
+      'type' => 'link_field',
     ),
     'field_instance' => array(
       'bundle' => 'magazine_issue',
@@ -359,10 +357,10 @@ function tfk_magazine_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'text',
+          'module' => 'link',
           'settings' => array(),
-          'type' => 'text_default',
-          'weight' => 16,
+          'type' => 'default',
+          'weight' => 20,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -373,19 +371,28 @@ function tfk_magazine_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_in_the_news',
-      'label' => 'Section: In the News',
+      'label' => 'Section : In the News',
       'required' => 0,
       'settings' => array(
-        'text_processing' => '0',
+        'attributes' => array(
+          'class' => '',
+          'rel' => '',
+          'target' => 'default',
+        ),
+        'display' => array(
+          'url_cutoff' => '80',
+        ),
+        'enable_tokens' => 1,
+        'title' => 'optional',
+        'title_value' => '',
+        'url' => 0,
         'user_register_form' => FALSE,
       ),
       'widget' => array(
-        'active' => 1,
-        'module' => 'text',
-        'settings' => array(
-          'size' => '60',
-        ),
-        'type' => 'text_textfield',
+        'active' => 0,
+        'module' => 'link',
+        'settings' => array(),
+        'type' => 'link_field',
         'weight' => '6',
       ),
     ),
@@ -568,27 +575,25 @@ function tfk_magazine_field_default_fields() {
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_more_news',
-      'foreign keys' => array(
-        'format' => array(
-          'columns' => array(
-            'format' => 'format',
-          ),
-          'table' => 'filter_format',
-        ),
-      ),
-      'indexes' => array(
-        'format' => array(
-          0 => 'format',
-        ),
-      ),
-      'module' => 'text',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'module' => 'link',
       'settings' => array(
-        'max_length' => '255',
-        'maxlength_field_more_news_js' => 0,
-        'maxlength_field_more_news_text' => 'Content limited to !limit characters, remaining: <strong>!remaining</strong>',
+        'attributes' => array(
+          'class' => '',
+          'rel' => '',
+          'target' => 'default',
+        ),
+        'display' => array(
+          'url_cutoff' => 80,
+        ),
+        'enable_tokens' => 1,
+        'title' => 'optional',
+        'title_value' => '',
+        'url' => 0,
       ),
       'translatable' => '1',
-      'type' => 'text',
+      'type' => 'link_field',
     ),
     'field_instance' => array(
       'bundle' => 'magazine_issue',
@@ -598,10 +603,10 @@ function tfk_magazine_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'text',
+          'module' => 'link',
           'settings' => array(),
-          'type' => 'text_default',
-          'weight' => 19,
+          'type' => 'default',
+          'weight' => 23,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -615,16 +620,25 @@ function tfk_magazine_field_default_fields() {
       'label' => 'Section: More News',
       'required' => 0,
       'settings' => array(
-        'text_processing' => '0',
+        'attributes' => array(
+          'class' => '',
+          'rel' => '',
+          'target' => 'default',
+        ),
+        'display' => array(
+          'url_cutoff' => '80',
+        ),
+        'enable_tokens' => 1,
+        'title' => 'optional',
+        'title_value' => '',
+        'url' => 0,
         'user_register_form' => FALSE,
       ),
       'widget' => array(
-        'active' => 1,
-        'module' => 'text',
-        'settings' => array(
-          'size' => '60',
-        ),
-        'type' => 'text_textfield',
+        'active' => 0,
+        'module' => 'link',
+        'settings' => array(),
+        'type' => 'link_field',
         'weight' => '9',
       ),
     ),
@@ -734,27 +748,25 @@ function tfk_magazine_field_default_fields() {
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_top_5',
-      'foreign keys' => array(
-        'format' => array(
-          'columns' => array(
-            'format' => 'format',
-          ),
-          'table' => 'filter_format',
-        ),
-      ),
-      'indexes' => array(
-        'format' => array(
-          0 => 'format',
-        ),
-      ),
-      'module' => 'text',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'module' => 'link',
       'settings' => array(
-        'max_length' => '255',
-        'maxlength_field_top_5_js' => 0,
-        'maxlength_field_top_5_text' => 'Content limited to !limit characters, remaining: <strong>!remaining</strong>',
+        'attributes' => array(
+          'class' => '',
+          'rel' => '',
+          'target' => 'default',
+        ),
+        'display' => array(
+          'url_cutoff' => 80,
+        ),
+        'enable_tokens' => 1,
+        'title' => 'optional',
+        'title_value' => '',
+        'url' => 0,
       ),
       'translatable' => '1',
-      'type' => 'text',
+      'type' => 'link_field',
     ),
     'field_instance' => array(
       'bundle' => 'magazine_issue',
@@ -764,10 +776,10 @@ function tfk_magazine_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'text',
+          'module' => 'link',
           'settings' => array(),
-          'type' => 'text_default',
-          'weight' => 17,
+          'type' => 'default',
+          'weight' => 21,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -778,19 +790,28 @@ function tfk_magazine_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_top_5',
-      'label' => 'Section: Top 5',
+      'label' => 'Section : Top 5',
       'required' => 0,
       'settings' => array(
-        'text_processing' => '0',
+        'attributes' => array(
+          'class' => '',
+          'rel' => '',
+          'target' => 'default',
+        ),
+        'display' => array(
+          'url_cutoff' => '80',
+        ),
+        'enable_tokens' => 1,
+        'title' => 'optional',
+        'title_value' => '',
+        'url' => 0,
         'user_register_form' => FALSE,
       ),
       'widget' => array(
-        'active' => 1,
-        'module' => 'text',
-        'settings' => array(
-          'size' => '60',
-        ),
-        'type' => 'text_textfield',
+        'active' => 0,
+        'module' => 'link',
+        'settings' => array(),
+        'type' => 'link_field',
         'weight' => '7',
       ),
     ),
@@ -877,27 +898,25 @@ function tfk_magazine_field_default_fields() {
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_whos_news',
-      'foreign keys' => array(
-        'format' => array(
-          'columns' => array(
-            'format' => 'format',
-          ),
-          'table' => 'filter_format',
-        ),
-      ),
-      'indexes' => array(
-        'format' => array(
-          0 => 'format',
-        ),
-      ),
-      'module' => 'text',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'module' => 'link',
       'settings' => array(
-        'max_length' => '255',
-        'maxlength_field_whos_news_js' => 0,
-        'maxlength_field_whos_news_text' => 'Content limited to !limit characters, remaining: <strong>!remaining</strong>',
+        'attributes' => array(
+          'class' => '',
+          'rel' => '',
+          'target' => 'default',
+        ),
+        'display' => array(
+          'url_cutoff' => 80,
+        ),
+        'enable_tokens' => 1,
+        'title' => 'optional',
+        'title_value' => '',
+        'url' => 0,
       ),
       'translatable' => '1',
-      'type' => 'text',
+      'type' => 'link_field',
     ),
     'field_instance' => array(
       'bundle' => 'magazine_issue',
@@ -907,10 +926,10 @@ function tfk_magazine_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'text',
+          'module' => 'link',
           'settings' => array(),
-          'type' => 'text_default',
-          'weight' => 18,
+          'type' => 'default',
+          'weight' => 22,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -924,16 +943,25 @@ function tfk_magazine_field_default_fields() {
       'label' => 'Section: Who\'s News',
       'required' => 0,
       'settings' => array(
-        'text_processing' => '0',
+        'attributes' => array(
+          'class' => '',
+          'rel' => '',
+          'target' => 'default',
+        ),
+        'display' => array(
+          'url_cutoff' => '80',
+        ),
+        'enable_tokens' => 1,
+        'title' => 'optional',
+        'title_value' => '',
+        'url' => 0,
         'user_register_form' => FALSE,
       ),
       'widget' => array(
-        'active' => 1,
-        'module' => 'text',
-        'settings' => array(
-          'size' => '60',
-        ),
-        'type' => 'text_textfield',
+        'active' => 0,
+        'module' => 'link',
+        'settings' => array(),
+        'type' => 'link_field',
         'weight' => '8',
       ),
     ),
@@ -1059,10 +1087,10 @@ function tfk_magazine_field_default_fields() {
   t('Meta Keywords');
   t('Publish Date');
   t('Related Resources');
+  t('Section : In the News');
+  t('Section : Top 5');
   t('Section: Cover Story');
-  t('Section: In the News');
   t('Section: More News');
-  t('Section: Top 5');
   t('Section: Who\'s News');
   t('Volume');
 
