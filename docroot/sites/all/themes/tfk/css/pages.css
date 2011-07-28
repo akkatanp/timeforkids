@@ -987,14 +987,15 @@ ul.links li {
 .view-mini-site-home .view-content table td .views-field-body,
 .view-all-kid-reporters .view-content table td .views-field-body {
 	line-height: 15px;
-	position: relative;
+	float: right;
 	width: 160px;
 }
 
 .view-all-kid-reporters .view-content table td .views-field-title-1 {
 	margin-top: 10px;
 	position: relative;
-	left: 72px;
+	float: right;
+	width: 160px;
 }
 
 /* news article */
