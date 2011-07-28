@@ -1,0 +1,137 @@
+/**
+ * @file
+ * Node Styling
+ *
+ * Style anything that isn't in the $content variable.
+ */
+
+
+.node /* Node wrapper */ {
+}
+
+.preview .node /* Preview of the content before submitting new or updated content */ {
+  /* background-color: #ffffea; */ /* Drupal core uses a #ffffea background */
+}
+
+.node-promoted /* A node that has been promoted to the front page */ {
+}
+
+.node-sticky /* A sticky node (displayed before others in a list) */ {
+}
+
+.node-unpublished /* Unpublished nodes */ {
+  /* background-color: #fff4f4; */ /* Drupal core uses a #fff4f4 background */
+}
+
+.node-unpublished div.unpublished,
+.comment-unpublished div.unpublished /* The word "Unpublished" displayed underneath the content. */ {
+  height: 0;
+  overflow: visible;
+  color: #d8d8d8;
+  font-size: 75px;
+  line-height: 1;
+  font-family: Impact, "Arial Narrow", Helvetica, sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+  word-wrap: break-word; /* A very nice CSS3 property */
+}
+
+.node-by-viewer /* A node created by the current user */ {
+}
+
+.node-teaser /* A node displayed as teaser */ {
+}
+
+/* All nodes are given a node-FOO class that describes the type of content that
+ * it is. If you create a new content type called "my-custom-type", it will
+ * receive a "node-my-custom-type" class.
+ */
+.node-page /* Page content node */ {
+}
+
+.node-article /* Article content node */ {
+}
+
+h2.node-title /* Node title */ {
+}
+
+.node .user-picture /* The picture of the node author */ {
+}
+
+.node .submitted /* The "posted by" information */ {
+}
+
+.node .content /* Node's content wrapper */ {
+}
+
+.node ul.links /* Node links. See also the ul.links declaration in the pages.css. */ {
+}
+ /* 404 page */
+.page-node-167 #section-title {
+    display:none;
+}
+.page-node-167 .node {
+    line-height: 160%;
+    padding-left:40px;
+    width:390px;
+}
+.page-node-167 .node .not-found-not-available {
+    font-size: 2em;
+    line-height: 150%;
+    font-weight: bold;
+    text-transform:uppercase;
+    margin-bottom:10px;
+}
+.page-node-167 .node .not-found-click {
+    background: none repeat scroll 0 0 #D71700;
+    border-radius: 12px 12px 12px 12px;
+    box-shadow: 2px 2px 2px #999999;
+    color: white;
+    font: bold 11px arial;
+    padding: 6px 8px;
+}
+.page-node-167 .node .form-text {
+    background: none repeat scroll 0 0 #DEDEDE;
+    border-color: #999999 #CECECE #CECECE #999999;
+    border-radius: 12px 12px 12px 12px;
+    border-style: solid;
+    border-width: 1px;
+    color: #555555;
+    display: block;
+    float: left;
+    font: italic 11px arial;
+    height: 11px;
+    margin: 5px 5px 5px 0px;
+    padding: 5px 6px;
+    width: 200px;
+}
+.page-node-167 .node .form-submit {
+    display: block;
+    float: left;
+    margin: 4px 0;
+    width: 52px;
+    text-transform:uppercase;
+}
+.page-node-167 .node .not-found-click a {
+    color: white;
+    text-transform:uppercase;
+}
+.page-node-167 .node .not-found-or {
+    font-size: 2em;
+    line-height: 150%;
+    font-weight: bold;
+    text-transform:uppercase;
+    margin-top:10px;
+}
+.page-node-167 .content h2 {
+    font-size: 3em;
+    color: #d71700;
+    font-weight: bold;
+    text-transform:uppercase;
+    margin:10px 0px;
+}
+.page-node-167 #content {
+    border: 5px solid #d71700;
+    width:758px;
+}
