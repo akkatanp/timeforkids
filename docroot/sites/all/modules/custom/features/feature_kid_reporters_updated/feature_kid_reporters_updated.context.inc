@@ -13,6 +13,44 @@ function feature_kid_reporters_updated_context_default_contexts() {
   $context = new stdClass;
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
+  $context->name = 'all_kid_reporters';
+  $context->description = '';
+  $context->tag = 'kid reporter';
+  $context->conditions = array(
+    'views' => array(
+      'values' => array(
+        'all_kid_reporters:page' => 'all_kid_reporters:page',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'menu-menu-kid-reporter-articles-link' => array(
+          'module' => 'menu',
+          'delta' => 'menu-kid-reporter-articles-link',
+          'region' => 'sidebar_first',
+          'weight' => '-78',
+        ),
+        'views-featured_kid_reporter-block' => array(
+          'module' => 'views',
+          'delta' => 'featured_kid_reporter-block',
+          'region' => 'sidebar_first',
+          'weight' => '-77',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('kid reporter');
+  $export['all_kid_reporters'] = $context;
+
+  $context = new stdClass;
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
   $context->name = 'kid_reporter_content_type_display';
   $context->description = '';
   $context->tag = 'kid reporter';
