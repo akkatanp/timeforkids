@@ -1,8 +1,7 @@
 <?php
 /**
  * @file
- * tfk_magazine.features.field.inc test
- *
+ * tfk_magazine.features.field.inc
  */
 
 /**
@@ -980,8 +979,8 @@ function tfk_magazine_field_default_fields() {
       'indexes' => array(),
       'module' => 'metatags_quick',
       'settings' => array(
-        'meta_name' => 'description',
         0 => 'meta_name',
+        'meta_name' => 'description',
       ),
       'translatable' => '0',
       'type' => 'metatags_quick',
@@ -1035,8 +1034,8 @@ function tfk_magazine_field_default_fields() {
       'indexes' => array(),
       'module' => 'metatags_quick',
       'settings' => array(
-        'meta_name' => 'keywords',
         0 => 'meta_name',
+        'meta_name' => 'keywords',
       ),
       'translatable' => '0',
       'type' => 'metatags_quick',
