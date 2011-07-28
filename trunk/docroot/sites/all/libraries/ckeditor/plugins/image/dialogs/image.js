@@ -2,7 +2,6 @@
 Copyright (c) 2003-2011, CKSource - Frederico Knabben. All rights reserved.
 For licensing, see LICENSE.html or http://ckeditor.com/license
 */
-
 (function()
 {
 	var imageDialog = function( editor, dialogType )
@@ -15,7 +14,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 			regexGetSize = /^\s*(\d+)((px)|\%)?\s*$/i,
 			regexGetSizeOrEmpty = /(^\s*(\d+)((px)|\%)?\s*$)|^$/i,
 			pxLengthRegex = /^\d+px$/;
-
+                      
 		var onSizeChange = function()
 		{
 			var value = this.getValue(),	// This = input element.
@@ -301,7 +300,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 				this.originalElement = editor.document.createElement( 'img' );
 				this.originalElement.setAttribute( 'alt', '' );
 				this.originalElement.setCustomData( 'isReady', 'false' );
-
+                                
 				if ( link )
 				{
 					this.linkElement = link;
@@ -388,6 +387,8 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 			},
 			onOk : function()
 			{
+                                 
+                                
 				// Edit existing Image.
 				if ( this.imageEditMode )
 				{
@@ -436,10 +437,18 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 					this.imageElement.setAttribute( 'alt', '' );
 				}
 				
+                                this.commitContent( IMAGE, this.imageElement );//Must be before the wrapper if you need image data. DM
 				// Create a new wrapper div for the image
 				if ( !this.wrapperEditMode ) {
 					this.wrapperElement = editor.document.createElement( 'div' );
 					this.wrapperElement.setAttribute( 'class', 'inline-img' );
+                                        //wrapper width style fixes issues with caption text following to the side of the image for long captions. DM
+                                        var widthForWrapper = this.imageElement.$.naturalWidth+"px";
+                                        if (this.imageElement.getStyle( 'width' )) {
+                                            widthForWrapper = this.imageElement.getStyle( 'width' );
+                                        }
+                                        widthForWrapper = "width:"+widthForWrapper+";";
+                                        this.wrapperElement.setAttribute( 'style', widthForWrapper );
 				}					
 
 				// Create a new link.
@@ -447,7 +456,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 					this.linkElement = editor.document.createElement( 'a' );
 
 				// Set attributes.
-				this.commitContent( IMAGE, this.imageElement );
+				//this.commitContent( IMAGE, this.imageElement );
 				this.commitContent( LINK, this.linkElement );
 				
 				// Set the span for the credit
@@ -459,6 +468,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 				this.captionElement.setAttribute( 'class', 'caption' );
 				this.captionElement.appendText( this.imageElement.getAttribute( 'alt' ) );
 								
+                                        
 				// Remove empty style attribute.
 				if ( !this.imageElement.getAttribute( 'style' ) )
 					this.imageElement.removeAttribute( 'style' );
@@ -509,6 +519,8 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 						this.captionElement.appendTo( this.wrapperElement );
 					}
 				}
+                                
+                                
 			},
 			onLoad : function()
 			{
@@ -753,6 +765,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 																{
 																	if ( value )
 																		element.setStyle( 'width', CKEDITOR.tools.cssLength( value ) );
+                                                                                                                                           
 																	else
 																		element.removeStyle( 'width' );
 
