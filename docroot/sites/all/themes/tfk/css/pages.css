@@ -976,6 +976,7 @@ ul.links li {
 	float: left;
 	margin-right: 10px;
 	width: 62px;
+	height: 100px;
 }
 
 .view-mini-site-home .view-content table td .views-field-field-thumbnail-image img,
@@ -987,12 +988,13 @@ ul.links li {
 .view-all-kid-reporters .view-content table td .views-field-body {
 	line-height: 15px;
 	position: relative;
-	left: 72px;
 	width: 160px;
 }
 
 .view-all-kid-reporters .view-content table td .views-field-title-1 {
 	margin-top: 10px;
+	position: relative;
+	left: 72px;
 }
 
 /* news article */
