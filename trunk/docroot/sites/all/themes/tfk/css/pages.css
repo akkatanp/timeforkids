@@ -660,6 +660,15 @@ ul.links li {
 	text-decoration: none;
 }
 
+#block-views-minisite-articles-block-2 .views-field-title,
+#block-views-minisite-articles-block-3 .views-field-title,
+.view-homepage-top-story .view-content .views-field-title,
+.view-teacher-news-top-story .view-content .views-field-title,
+.view-kid-reporters-channel-top-story .views-field-title {
+	margin-top:5px;/*Lead story headline. Can't add margin to a elements*/
+}
+
+
 #block-views-minisite-articles-block-2 .views-field-field-date,
 #block-views-minisite-articles-block-3 .views-field-field-date,
 .view-homepage-top-story .view-content .views-field-field-date,
@@ -898,8 +907,7 @@ ul.links li {
 .view-homepage-news-block table td .views-field-title-1,
 .view-teacher-news-news-block table td .views-field-title-1,
 .view-kid-reporters-channel-news-block table td .views-field-title-1 {/*view full article link*/
-	margin-top:12px;
-	font: normal 12px "Arial Black";
+	font: bold 12px "Arial";
 }
 
 /* kid reporter */
@@ -1114,7 +1122,7 @@ ul.links li {
 
 .related-content-wrap .addit-content {
 	position: absolute;
-	top: -30px;
+	top: -34px;
 	left: -4px;
 	font: normal 12px "arial black";
 	margin-top: 10px;
