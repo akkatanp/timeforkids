@@ -52,7 +52,7 @@ function grammar_wizard_prepare_question($node) {
   $form['question'] = array(
     '#type' => 'radios',
     '#options' => $answer_options,
-    '#title' => check_plain($node->title),
+    '#title' => '',
   );
 
   $form['#parent_nid'] = arg(1);
