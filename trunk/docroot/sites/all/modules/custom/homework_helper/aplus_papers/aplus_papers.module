@@ -10,6 +10,12 @@
  */
 function aplus_papers_node_view($node, $view_mode) {
   if ($node->type == 'a_paper' && $view_mode == 'full') {
+    drupal_add_js(libraries_get_path('ckeditor') . '/ckeditor.js', array('group' => JS_THEME, 'every_page' => TRUE));
+    drupal_add_js('/sites/all/modules/contrib/wysiwyg/editors/js/ckeditor-3.0.js');
+    drupal_add_js(drupal_get_path('module', 'wysiwyg') . '/wysiwyg.init.js');
+    drupal_add_js(drupal_get_path('module', 'wysiwyg') . '/editors/js/none.js');
+    drupal_add_js(drupal_get_path('module', 'media') . '/js//wysiwyg-media.js');
+    
     module_load_include('inc', 'aplus_papers', 'aplus_papers.pages');
     $steps = aplus_papers_prepare_steps($node);
     $node->content['aplus_papers'] = drupal_get_form('aplus_papers_multistep_form', $steps);
@@ -217,7 +223,7 @@ function aplus_papers_multistep_form($form, &$form_state, $steps) {
       $form['description'] = aplus_papers_final_step_content($form_state);
     }
   }
-
+  
   return $form;
 }
 
