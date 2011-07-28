@@ -160,3 +160,7 @@ form table .item-list ul {
 #login-container .form-text {
 	border: solid 1px #999;
 }
+
+#login-container h2 a {
+	margin-right: 50px;
+}
