@@ -154,7 +154,7 @@ form table .item-list ul {
 }
 
 #login-container .form-item {
-	margin-bottom: 10px;
+	margin: 0 0 10px 0;
 }
 
 #login-container .form-text {

@@ -47,7 +47,7 @@ $(document).ready(function() {
 			}).appendTo($(document.body));
 			
 			var lightBox = $('<div></div>').attr('id', 'lightbox').css({
-				'top': (($(window).height() / 2) - 175) + $(window).scrollTop() + 'px',
+				'top': (($(window).height() / 2) - 185) + $(window).scrollTop() + 'px',
 				'left': (($(window).width() / 2) - 350) + 'px'
 			}).appendTo($(document.body));
 			
