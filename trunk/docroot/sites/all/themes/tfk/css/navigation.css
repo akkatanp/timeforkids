@@ -667,10 +667,10 @@
 	box-shadow: 2px 2px 2px #999;
 }
 
-#block-views-minisite-articles-block-6 .view-footer a :hover,
+#block-views-minisite-articles-block-6 .view-footer a:hover,
 #block-views-random-kid-reporters-block .view-footer a:hover,
 .node-type-kid-reporter .region-sidebar-first .view-footer a:hover,
-.section-tfk-kid-reporters  .region-sidebar-first .view-footer a:hover
+.section-tfk-kid-reporters  .region-sidebar-first .view-footer a:hover,
 .section-kid-reporter .region-sidebar-first .view-footer a:hover {
 	background: #900;
 }
