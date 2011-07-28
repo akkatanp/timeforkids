@@ -457,9 +457,16 @@ ul.links li {
 	margin-right: 10px;
 }
 
-.view-homepage-destination {
+.logged-in .view-homepage-destination {
 	width: 230px;
 	height: 310px;
+	padding: 20px 9px;
+	border: solid 1px #cecece;
+}
+
+.not-logged-in .view-homepage-destination {
+	width: 230px;
+	height: 260px;
 	padding: 20px 9px;
 	border: solid 1px #cecece;
 }
@@ -865,7 +872,7 @@ ul.links li {
 	display: block;
 	float: left;
 	width: 230px;
-	height: 250px;
+	height: 260px;
 	padding: 20px 9px;
 	border: solid 1px #cecece;
 	vertical-align: top;
