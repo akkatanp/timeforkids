@@ -13,6 +13,47 @@ function feature_kid_reporters_updated_context_default_contexts() {
   $context = new stdClass;
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
+  $context->name = 'kid_reporter_content_type_display';
+  $context->description = '';
+  $context->tag = 'kid reporter';
+  $context->conditions = array(
+    'node' => array(
+      'values' => array(
+        'kid_reporter' => 'kid_reporter',
+      ),
+      'options' => array(
+        'node_form' => '0',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'menu-menu-kid-reporter-listings-link' => array(
+          'module' => 'menu',
+          'delta' => 'menu-kid-reporter-listings-link',
+          'region' => 'sidebar_first',
+          'weight' => '-22',
+        ),
+        'views-5df91b7baddd5da5443c54ebe9079cd3' => array(
+          'module' => 'views',
+          'delta' => '5df91b7baddd5da5443c54ebe9079cd3',
+          'region' => 'sidebar_first',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('kid reporter');
+  $export['kid_reporter_content_type_display'] = $context;
+
+  $context = new stdClass;
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
   $context->name = 'kid_reporter_for_anon';
   $context->description = 'kid_reporter_for_anon';
   $context->tag = 'kid reporter';
