@@ -95,7 +95,7 @@ function tfk_preprocess_page(&$variables, $hook) {
       $variables['grammar_practice_header'] = l('Try Another', 'homework-helper/grammar-wizard/punctuation-practice', array('attributes' => array('class' => array('try-another'))));
     }
     if ($variables['node']->type == 'flashcard') {
-      $variables['flashcards_return'] = l('Back to Flashcard Sets', 'homework-helper/flashcards');
+      $variables['flashcards_return'] = l('Back to Flash-card Sets', 'homework-helper/flashcards');
     }
   }
   
@@ -181,7 +181,7 @@ function tfk_header_tag($type) {
       $output = t('A+ Papers');
       break;
     case 'flashcard':
-      $output = t('Flashcard Maker');
+      $output = t('Flash-card Maker');
       break;
     case 'grammar_practice':
       $output = t('Punctuation Practice');
