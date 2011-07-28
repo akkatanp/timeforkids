@@ -1,0 +1,49 @@
+form.webform-client-form div {
+}
+
+form.webform-client-form div > div.form-item {
+}
+
+div#block-system-main > div.content {
+	border: 1px solid #CECECE;
+	padding: 10px;
+}
+
+form.webform-client-form div > div.form-type-item label {
+	color: #333;
+}
+
+div.field-name-body {
+	border-bottom: 1px dotted #999;
+	padding-bottom: 10px;
+}
+
+body.node-type-webform.section-destination .content div.node-webform.view-mode-full > h2 {
+	font-size: 28px;
+	line-height: 100%;
+	color: #333;
+	margin: 0 0 10px 0;
+}
+.region-sidebar-first #block-tfk-atw-atw-destination-related h3 {
+  background: -moz-linear-gradient(100% 100% 90deg, #5EA1D3, #7BC3F5) repeat scroll 0 0 transparent;
+  color: #000000;
+  font: 12px "arial black";
+  margin: 10px 0 0;
+  padding: 6px 0 6px 6px;
+  text-transform: uppercase;
+}
+
+.section-destination .region-sidebar-first ul.related {
+	-moz-border-bottom-colors: none;
+	-moz-border-image: none;
+	-moz-border-left-colors: none;
+	-moz-border-right-colors: none;
+	-moz-border-top-colors: none;
+	background: none repeat scroll 0 0 #D9EFFE;
+	border-color: black #ACDBFC #ACDBFC;
+	border-right: 2px solid #ACDBFC;
+	border-style: solid;
+	border-width: 1px 2px 2px;
+	margin-top: 0;
+	padding: 10px;
+}

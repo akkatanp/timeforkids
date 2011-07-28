@@ -1,0 +1,203 @@
+.node-type-flashcard
+  &.not-logged-in
+    div.tabs
+      display: none
+  .node-title
+    display: none
+
+.node-flashcard-form,
+.node-flashcard
+  background: transparent url(images/flashcard-background.jpg) repeat
+  padding: 20px
+
+.node-flashcard-form
+  margin: 10px 20px
+  & > div
+    background-color: white
+    +border-radius(10px)
+    padding: 10px
+    +pie-clearfix
+    position: relative
+  .form-item-title
+    input
+      width: 80%
+  .field-type-flashcard
+    .form-item
+      margin-bottom: 0
+    .field-multiple-table
+      margin-bottom: 1em
+      width: 100%
+      tbody,
+      tr
+        border: none
+      td
+        padding: 1em
+        div:last-child
+          margin-left: 1em
+          padding-top: 1em
+        input
+          width: 80%
+    .field-add-more-submit
+      +tfk-submit-button(white)
+      padding: 4px 1em
+      margin: 0
+      width: auto
+  .form-actions
+    position: absolute
+    bottom: 0.5em
+    right: 0
+    margin: 0
+    z-index: 10
+    input
+      background: url(images/tfk-red-arrow-right.png) no-repeat scroll 42px 3px transparent
+      border: none
+      color: $tfk-red
+      cursor: pointer
+      font: bold 12px/1.2 Arial, sans-serif
+      height: 30px
+      padding: 3px
+      text-align: left
+      width: 100px
+      -webkit-appearance: none
+
+.node-flashcard
+  .study-helper-help
+    clear: both
+    padding-left: 20px
+    margin-top: 10px
+  .study-helper-url
+    +pie-clearfix
+    clear: both
+    padding-left: 20px
+    margin-top: 10px
+    .form-item
+      +float-left
+      margin: 0
+      input
+        background-color: $tfk-red
+        border-color: $tfk-red
+        color: white
+        padding: 3px
+        width: 97%
+    #study-helper-copy
+      +tfk-button
+      padding: 0.5em 1em
+      margin-left: 1em
+      margin-top: 16px
+      +float-left
+
+.flashcard-cycle
+  background-color: white
+  +border-radius(10px)
+  padding: 20px
+  position: relative
+  .flashcard-cycle-mode
+    float: none
+    position: static
+    .flashcard-cycle-wrapper
+      text-align: center
+      -webkit-appearance: none
+      float: none
+      position: static
+      padding: 8px 24px
+      +tfk-button(10px)
+      & > *
+        +inline-block
+    label[for=flashcard-cycle-mode]
+      line-height: 1.5
+      margin-right: 1em
+  a
+    &.shuffle,
+    &.restart,
+    &.edit
+      +tfk-button
+      padding: 8px 24px
+      left: -30px
+      position: absolute
+    &.shuffle
+      left: -315px
+      *width: 50px
+    &.edit
+      *width: 50px
+  .flashcard-help-button
+    +float-right
+    margin: 0.5em 0.5em 1.5em
+    .flashcard-help
+      +tfk-submit-button(white)
+      +border-radius(14px)
+      background: url(./images/question-button.png) no-repeat 8px 3px
+      padding-left: 28px
+  .flashcard-cycle-pager
+    a
+      color: $tfk-red
+      +float-left
+      width: 51px
+      &.prev
+        +tfk-return-button
+      &.flip
+        +tfk-submit-button(white)
+        height: auto
+        padding: 4px 20px
+        width: auto
+        margin: 0 25px
+      &.next
+        background: url(images/tfk-red-arrow-right.png) no-repeat scroll 36px 0 transparent
+        padding: 3px 42px 3px 3px
+  .flashcard-cycle-cards
+    background: $tfk-yellow
+    width: 500px
+    text-align: center
+    margin-bottom: 10px
+    +border-radius(14px)
+    +box-shadow($default-box-shadow-color -4px 4px 6px)
+    ul.question
+      li.answer
+        font-size: $ms2
+        padding-top: 70px
+        text-align: center
+        font-weight: bold
+        margin: 10px
+      .item-list
+        ul.answer
+          background: white
+          width: 325px
+          margin: 10px 0 0 75px
+          +border-radius(11px)
+          border: 4px solid lighten($black, 60.0)
+          li.first
+            font-size: $ms2
+            padding: 15px
+            color: $tfk-red
+            margin: 0
+  .flashcard-cycle-card
+    width: 500px
+    height: 250px
+  .flashcard-cycle-mark
+    position: absolute
+    top: 80px
+    left: 120px
+    z-index: 10
+    +float-left
+  .flashcard-cycle-pager  
+    *float: none
+    *margin-left: 110px
+
+.flashcard-numbering
+  +float-right
+  position: absolute
+  top: 60px
+  left: 200px
+  z-index: 10
+  width: 60px
+  span.flashcard-numbering-current
+    font-weight: bold
+
+.homework-helper-content
+  .flashcards-return
+    +float-right
+    margin: 12px 25px 12px 0
+    a
+      +tfk-return-button(italic)
+  .content
+    clear: both
+
