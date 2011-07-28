@@ -557,7 +557,6 @@ ul.links li {
 	position: relative;
 	width: 478px;
 	min-height:358px;
-	height:auto !important;
 	border: solid 6px #d71700;
 	padding: 20px 10px 10px 10px;
 	margin-bottom: 10px;
@@ -567,7 +566,6 @@ ul.links li {
 	position: relative;
 	width: 478px;
 	min-height:358px;
-	height:auto !important;
 	border: solid 6px #d71700;
 	padding: 20px 10px 10px 10px;
 	margin-bottom: 10px;
