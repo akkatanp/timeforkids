@@ -106,10 +106,8 @@ function tfk_search_init(){
     drupal_add_css(drupal_get_path('module', 'tfk_search'). '/css/tfk_magazines.css', 'file');
   }
   
-  // Add Javascript used across all search interfaces.
-  if(array_search(arg(0), array(TFK_SEARCH_PHOTOSVIDEO_PATH, TFK_SEARCH_WORKSHEETS_PATH, TFK_SEARCH_SITESEARCH_PATH, TFK_SEARCH_MAGAZINE_PATH))) {
-    drupal_add_js(drupal_get_path('module', 'tfk_search'). '/js/tfk_search.js', 'file');
-  }
+  // Add Javascript used globally.
+  drupal_add_js(drupal_get_path('module', 'tfk_search'). '/js/tfk_search.js', 'file');
 }
 
 /**
