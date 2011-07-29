@@ -982,6 +982,9 @@ ul.links li {
 	width: 270px;
 	height: 270px;
 }
+.field-name-field-kid-reporter-age  {
+	height: 20px;
+}
 
 .node-kid-reporter .field-name-field-location,
 .node-kid-reporter .field-name-field-grade-level {
