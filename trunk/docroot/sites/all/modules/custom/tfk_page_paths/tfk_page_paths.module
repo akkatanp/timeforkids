@@ -48,7 +48,25 @@ function tfk_page_paths_menu(){
 		'access callback' => 'user_access',
 		'access arguments' => array('access content')
 	);
+        $items['404page'] = array(
+		'title' => 'Page Not Found',
+		'page callback' => 'tfk_not_found_page',
+		'access callback' => 'user_access',
+		'access arguments' => array('access content')
+	);
 	return $items;
+}
+
+function tfk_not_found_page(){
+  return theme('tfk_not_found_page');
+}
+function tfk_atw_theme() {
+  return array(
+    'tfk_not_found_page' => array(
+      'template' => 'tfk-not-found-page',
+      'variables' => array('list' => NULL),
+    )
+  );
 }
 
 function tfk_page_paths_permission() {
@@ -64,6 +82,9 @@ function tfk_store_callback(){
   return '';
   //return drupal_set_title('TFK Store');
 }
+
+
+
 
 
 function tfk_pv_page_callback() {
