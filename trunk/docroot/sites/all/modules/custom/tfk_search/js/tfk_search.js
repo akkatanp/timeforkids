@@ -14,7 +14,7 @@
         sFields[index] = $(Element, context);
         
         sFields[index].val('Search').blur(function() {
-          if(sFields[index].val() == '') {
+          if($.trim(sFields[index].val()) == '') {
             sFields[index].val('Search');
           }
         }).focus(function() {   
