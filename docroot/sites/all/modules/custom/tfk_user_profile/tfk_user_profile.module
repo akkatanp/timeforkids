@@ -8,7 +8,7 @@ function tfk_user_profile_form_user_login_alter( &$form, $form_state ){
    	$form['#action'] = '';
 }
 
-function tfk_user_profile_user_login(&$edit, $account) {
+/*function tfk_user_profile_user_login(&$edit, $account) {
 
   if(!isset($account->field_grade_level['und'][0]['tid'])){
     
@@ -16,7 +16,7 @@ function tfk_user_profile_user_login(&$edit, $account) {
        $GLOBALS['destination'] =  $_SERVER["HTTP_REFERER"];
        drupal_goto($_SERVER["HTTP_REFERER"]);
     }
-}
+}*/
 
 /**
  * Implementation of hook_user_load.
@@ -27,6 +27,8 @@ function tfk_user_profile_user_load($users, $test = NULL) {
     $grade_tid = field_get_items('user', $user, 'field_grade_level');
     if($grade_tid) {
       $user->grade_level = taxonomy_term_load($grade_tid[0]['tid']);
+      $GLOBALS['destination'] =  $_SERVER["HTTP_REFERER"];
+      drupal_goto($_SERVER["HTTP_REFERER"]);
     }
   }
 }
@@ -145,7 +147,6 @@ function tfk_user_profile_login_validate( $form, &$form_state ){
  		if (empty($existingUser)) {
         	user_external_login_register( $username, 'project_authentication' );
         	$account = user_external_load($username);
-        	tfk_user_account('load', $account);
         	// insert a record into the mapping table
         	tfk_insert_lucie_user($response, $account->uid, $username);
         	tfk_insert_teacher_role($account->uid);
@@ -154,10 +155,8 @@ function tfk_user_profile_login_validate( $form, &$form_state ){
 			tfk_update_lucie_login($response, $existingUser);
 		 	user_external_login_register( $response['userId'], 'project_authentication' );
         	$account = user_external_load($response['userId']);
-        	tfk_user_account('load', $account);
         	tfk_insert_teacher_role($account->uid);
 			$form_state['uid'] = $account->uid;
-			//die(print_r($user));
 		}
     }
 }
