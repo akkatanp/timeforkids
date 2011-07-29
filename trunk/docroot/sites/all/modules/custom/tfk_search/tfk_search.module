@@ -105,6 +105,9 @@ function tfk_search_init(){
     drupal_add_css(drupal_get_path('module', 'tfk_search'). '/css/tfk_search.css', 'file');
     drupal_add_css(drupal_get_path('module', 'tfk_search'). '/css/tfk_magazines.css', 'file');
   }
+  
+  // Add Javascript used globally.
+  drupal_add_js(drupal_get_path('module', 'tfk_search'). '/js/tfk_search.js', 'file');
 }
 
 /**
@@ -444,11 +447,8 @@ function tfk_search_block_view($delta='') {
       //$form['search_block_form']['#value'] = 'FOO';
       $form['search_block_form']['#size'] = '27';
       
-      $form['search_block_form']['#attributes']['onblur'] = "if (this.value == '') {this.value = 'Search';}";
-      $form['search_block_form']['#attributes']['onfocus'] = "if (this.value == 'Search') {this.value = '';}";
-      $form['search_block_form']['#attached']['js'] = array(
-        'jQuery(document).ready(function () { $("#search-form--2 input.form-text").val("Search");});', 'inline'
-      );
+      // Needed for the JQuery selector.
+      $form['#attributes']['class'] = array('search-form');
       
       $output .= render($form);
       $block['content'] = $output;
@@ -1126,11 +1126,6 @@ function tfk_search_form_alter(&$form, &$form_state, $form_id) {
       '#type' => 'submit',
       '#value' => t('Go'),
     );
-
-    drupal_add_js('jQuery(document).ready(function () { $("#search-form input.form-text").val("Search");});', 'inline');
-
-    $form['basic']['keys']['#attributes']['onblur'] = "if (this.value == '') {this.value = 'Search';}";
-    $form['basic']['keys']['#attributes']['onfocus'] = "if (this.value == 'Search') {this.value = '';}";
   }
 }
 
