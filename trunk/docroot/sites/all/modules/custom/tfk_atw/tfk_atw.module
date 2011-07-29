@@ -31,7 +31,7 @@ function tfk_atw_menu(){
 		'access callback' => 'user_access',
 		'access arguments' => array('access content')
 	);
-  $items['around-the-world/%/challenge'] = array(
+  $items['destination/%/challenge'] = array(
 		'title' => 'Challenge quiz',
 		'page callback' => 'atw_challenge_callback',
                 'page arguments' => array(1),
