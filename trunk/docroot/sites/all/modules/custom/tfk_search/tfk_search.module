@@ -442,7 +442,7 @@ function tfk_search_block_view($delta='') {
       $form['actions']['submit']['#button_type'] = 'image_button';
       $form['actions']['submit']['#theme_wrappers'][0] = 'image_button';
       //$form['search_block_form']['#value'] = 'FOO';
-      $form['search_block_form']['#size'] = '32';
+      $form['search_block_form']['#size'] = '27';
       
       $form['search_block_form']['#attributes']['onblur'] = "if (this.value == '') {this.value = 'Search';}";
       $form['search_block_form']['#attributes']['onfocus'] = "if (this.value == 'Search') {this.value = '';}";
