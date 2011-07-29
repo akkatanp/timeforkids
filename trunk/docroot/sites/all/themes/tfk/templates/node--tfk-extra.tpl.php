@@ -114,6 +114,8 @@
     <?php print render($content['field_tfk_extra_image']);?>
 	<h3><?php echo $title;?></h3>
     <?php print render($content['field_tfk_extra_deck']);?>
+    
+    <?php print render($content['body']); ?>
 
     <?php if(count($pdfs) > 0):?>
       <?php foreach($pdfs as $pdf):?>
