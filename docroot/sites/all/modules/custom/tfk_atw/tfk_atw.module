@@ -605,6 +605,16 @@ function tfk_atw_tokens($type, $tokens, array $data = array(), array $options = 
             $alias = str_replace('destination/','',drupal_lookup_path('alias','node/'.$record->entity_id));
         }
 
+
+        if($data['node']->type == 'webform'){
+          $nid = $data['node']->nid;
+            $result = db_query('select nl.entity_id,n.type from field_data_field_destination_quiz nl left join node n on nl.entity_id = n.nid where nl.field_destination_quiz_nid = :quiz_nid and n.type = :type and n.status = 1',array(':type'=>'atw_destination',':quiz_nid'=>$data['node']->nid));
+            $record = $result->fetch();
+            if(is_numeric($record->entity_id)){
+              $alias = str_replace('destination/','',drupal_lookup_path('alias','node/'.$record->entity_id));
+            }
+        }
+
         foreach ($tokens as $name => $original) {
           if($name == 'parent_destination'){
               $replacements[$original] = $alias;
