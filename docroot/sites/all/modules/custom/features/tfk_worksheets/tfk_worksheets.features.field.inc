@@ -324,7 +324,7 @@ function tfk_worksheets_field_default_fields() {
       'entity_type' => 'node',
       'field_name' => 'field_skills',
       'label' => 'Skills',
-      'required' => 1,
+      'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
       ),
@@ -394,7 +394,7 @@ function tfk_worksheets_field_default_fields() {
       'entity_type' => 'node',
       'field_name' => 'field_themes',
       'label' => 'Themes',
-      'required' => 1,
+      'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
       ),
