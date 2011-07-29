@@ -83,15 +83,11 @@
 ?>
 
 
-<div class="kidcustomclass">
-      Put whatever u want
-    </div>
-
-
-    <div class="kidrepheader">
-     <h2>Kid Reporter - <?php print $title; ?></h2>
-     </div>
-
+	<div class="kid-reporter-header"></div>
+	
+	<h2>Kid Reporter - <?php print $title; ?></h2>
+	
+	
 <div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
 		
   <?php print $user_picture; ?>

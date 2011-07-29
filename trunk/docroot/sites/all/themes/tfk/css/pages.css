@@ -831,7 +831,8 @@ ul.links li {
 }
 
 /* kid reporter header */
-.page-kid-reporter #content h2.block-title {
+.page-kid-reporter #content h2.block-title,
+.kid-reporter-header {
 	border: solid 1px #cecece;
 	background: url(../images/tfk-kid-reporter-head.png) no-repeat 10px 10px;
 	width: 488px;
@@ -955,6 +956,11 @@ ul.links li {
 }
 
 /* kid reporter */
+.node-type-kid-reporter h2 {
+	fnnt: bold 20px arial;
+	margin: 0 0 10px 0;
+}
+
 .node-kid-reporter {
 	border: solid 1px #cecece;
 	padding: 10px;
@@ -962,8 +968,7 @@ ul.links li {
 
 .node-kid-reporter .content h1 {
 	color: #d71700;
-	line-height: 1;
-	margin: 0 0 4px 0;
+	margin: 0 0 10px 0;
 }
 
 .node-kid-reporter .field-type-image {
