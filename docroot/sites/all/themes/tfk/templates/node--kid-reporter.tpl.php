@@ -81,6 +81,17 @@
  * @see template_process()
  */
 ?>
+
+
+<div class="kidcustomclass">
+      Put whatever u want
+    </div>
+
+
+    <div class="kidrepheader">
+     <h2>Kid Reporter - <?php print $title; ?></h2>
+     </div>
+
 <div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
 		
   <?php print $user_picture; ?>
@@ -100,17 +111,6 @@
       <?php print $submitted; ?>
     </div>
   <?php endif; ?>
-
-    <div class="kidcustomclass">
-      Put whatever u want
-    </div>
-
-
-    <div class="kidrepheader">
-     <h2>Kid Reporter - <?php print $title; ?></h2>
-     </div>
-
-    
   <div class="content"<?php print $content_attributes; ?>>
     <?php
       // We hide the comments and links now so that we can render them later.
