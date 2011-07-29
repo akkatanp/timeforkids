@@ -155,7 +155,7 @@ function tfk_user_profile_login_validate( $form, &$form_state ){
         	$account = user_external_load($response['userId']);
         	tfk_insert_teacher_role($account->uid);
 			$form_state['uid'] = $account->uid;
-			$GLOBALS['destination'] =  $_SERVER["HTTP_REFERER"];
+			drupal_goto($_SERVER["HTTP_REFERER"]);
 		}
     }
 }
