@@ -60,7 +60,8 @@ function tfk_page_paths_menu(){
 function tfk_not_found_page(){
   return theme('tfk_not_found_page');
 }
-function tfk_atw_theme() {
+
+function tfk_page_paths_theme() {
   return array(
     'tfk_not_found_page' => array(
       'template' => 'tfk-not-found-page',
