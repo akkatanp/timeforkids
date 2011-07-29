@@ -26,11 +26,17 @@ function tfk_magazine_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
+        'tfk_search-tfk_magazine_back_btn' => array(
+          'module' => 'tfk_search',
+          'delta' => 'tfk_magazine_back_btn',
+          'region' => 'sidebar_bottom',
+          'weight' => '-10',
+        ),
         'menu-menu-publishing-calendar-menu' => array(
           'module' => 'menu',
           'delta' => 'menu-publishing-calendar-menu',
           'region' => 'sidebar_bottom',
-          'weight' => '-10',
+          'weight' => '-9',
         ),
       ),
     ),
