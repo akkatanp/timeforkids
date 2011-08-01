@@ -175,6 +175,7 @@
 	background: url(../images/main-nav-sprite.png) no-repeat 0px 0px;
 }
 
+.section-news-archive #global-nav-container ul.menu a.news,
 .section-news #global-nav-container ul.menu a.news,
 #global-nav-container ul.menu a.news.active,
 #global-nav-container ul.menu a.news:hover {
