@@ -112,7 +112,7 @@ function tfk_news_block_view($delta='') {
       break;
     case 'tfk-news-latest-news-link':
       $block['subject'] = t('Block with text "Latest News".');
-      $block['content'] = '<div class="link-latest-news">LATEST NEWS</div>';
+      $block['content'] = '<div class="link-latest-news">'.l('LATEST NEWS','news').'</div>';
       break;
     case 'tfk-news-homepage-mini-lessons':
       $block['subject'] = t('Block with proper mini lessons for homepage');
