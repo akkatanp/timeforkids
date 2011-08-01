@@ -382,7 +382,8 @@ function tfk_news_node_view($node, $view_mode, $langcode) {
 
     $body = preg_replace('/[\r\n]+/', '', $body);
     $reg = preg_match_all('/<p>(.*?)<\/p>/i',$body,$matches);
-
+    print_r($matches);
+    
     $paragraphs_count = count($matches[1]);
     $half_index = round($paragraphs_count / 2);
 
