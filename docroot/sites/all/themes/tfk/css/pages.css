@@ -167,6 +167,7 @@ ul.links li {
 .item-list .pager a {
   color:#D71700;
   font-weight: normal;
+  font-size:11px;
 }
 
 .item-list .pager /* A list of page numbers when more than 1 page of content is available */ {
