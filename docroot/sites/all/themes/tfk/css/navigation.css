@@ -394,6 +394,7 @@
 	margin-bottom: 10px;
 }
 
+#block-tfk-news-tfk-news-latest-news-link a,
 #block-tfk-extras-tfk-extras-taxonomy-links a,
 #block-tfk-news-tfk-news-taxonomy-links a {
 	display: block;
@@ -405,8 +406,10 @@
 	margin-right: 7px;
 }
 
+#block-tfk-news-tfk-news-latest-news-link a:hover,
 #block-tfk-extras-tfk-extras-taxonomy-links a:hover,
 #block-tfk-news-tfk-news-taxonomy-links a:hover,
+#block-tfk-news-tfk-news-latest-news-link a.active,
 #block-tfk-extras-tfk-extras-taxonomy-links a.active,
 #block-tfk-news-tfk-news-taxonomy-links a.active {
 	background: #d71700;
