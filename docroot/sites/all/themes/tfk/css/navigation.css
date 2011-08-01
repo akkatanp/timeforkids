@@ -578,6 +578,7 @@
 #block-menu-menu-kid-reporter-listings-link ul.menu li a {
 	display: block;
 	font: normal 14px "arial black";
+	line-height: 15px;
 	color: #fff;
 	padding: 10px 10px 10px 30px;
 	text-decoration: none;
@@ -676,7 +677,12 @@
 }
 
 #block-views-featured-kid-reporter-block  {
-	background: #dedede;
+	padding: 20px 0 0 10px;
+	background:#dedede url(../images/tfk-featured-kid-reproter.png) no-repeat 10px 0px;
+}
+
+#block-views-featured-kid-reporter-block h2 {
+	display: none;
 }
 
 #block-views-featured-kid-reporter-block .view-content {
