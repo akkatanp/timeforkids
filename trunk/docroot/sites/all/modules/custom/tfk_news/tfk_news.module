@@ -398,8 +398,8 @@ function tfk_news_node_view($node, $view_mode, $langcode) {
 
     array_splice($matches[2],$half_index,0,$badge);
     $body = '';
-    foreach($matches[2] as $paragraph){
-      $body .= '<p>'.$paragraph.'</p>';
+    foreach($matches[2] as $k => $paragraph){
+      $body .= '<p '.$matches[1][$k].'>'.$paragraph.'</p>';
     }
    $node->content['field_body'][0]['#markup'] = $body;
 
