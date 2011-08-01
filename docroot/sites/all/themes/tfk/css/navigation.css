@@ -677,12 +677,25 @@
 }
 
 #block-views-featured-kid-reporter-block  {
-	padding: 20px 0 0 10px;
+	padding: 30px 0 0 10px;
 	background:#dedede url(../images/tfk-featured-kid-reproter.png) no-repeat 10px 10px;
 }
 
 #block-views-featured-kid-reporter-block h2 {
 	display: none;
+}
+
+#block-views-featured-kid-reporter-block .views-field-title a {
+	font-size: 14px;
+}
+
+#block-views-featured-kid-reporter-block .views-field-field-kid-reporter-age,
+#block-views-featured-kid-reporter-block .views-field-field-location-1 {
+	font-weight: bold;
+}
+
+#block-views-featured-kid-reporter-block .views-field-field-featured-deck {
+	line-height: 15px;
 }
 
 #block-views-featured-kid-reporter-block .view-content {
