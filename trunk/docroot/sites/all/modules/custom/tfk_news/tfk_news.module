@@ -472,7 +472,14 @@ function tfk_news_preprocess_page(&$vars) {
 }
 
 function tfk_preprocess_html(&$variables) {
-    $variables['classes_array'][] = 'my-new-body-class';
+  if(count($rgs) == 2 && ($rgs[0] == 'node') && is_numeric($rgs[1])){
+    $node = node_load($rgs[1]);
+    if($node->type == 'article'){
+      if(isset($node->field_kid_reporter['und'][0])){
+        $variables['classes_array'][] = 'with-kid-reporter';
+      }
+    }
+  }
 } 
 
 
