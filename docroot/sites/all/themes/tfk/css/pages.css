@@ -2608,14 +2608,21 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 }
 
 /* publishing schedule */
+.publishing-schedule-pdf {
+	font-weight: bold;
+}
+
+.publishing-schedule-pdf a {
+	height: 16px;
+	line-height: 16px;
+	padding-left: 20px;
+	background: url(../images/pdf-icon.png) no-repeat;
+	margin-bottom: 10px;
+}
 .publishing-schedule-row {
 	border: solid 1px #cecece;
 	padding: 10px;
 	line-height: 15px;
-}
-
-.publishing-schedule-row:first-child {
-	margin-top: 10px;
 }
 
 .publishing-schedule-month {
