@@ -2528,19 +2528,19 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 .page-404page #section-title {
     display:none;
 }
-.page-404page .node {
+.page-404page .content {
     line-height: 160%;
     padding-left:40px;
     width:390px;
 }
-.page-404page .node .not-found-not-available {
+.page-404page .content .not-found-not-available {
     font-size: 2em;
     line-height: 150%;
     font-weight: bold;
     text-transform:uppercase;
     margin-bottom:10px;
 }
-.page-404page .node .not-found-click {
+.page-404page .content .not-found-click {
     background: none repeat scroll 0 0 #D71700;
     border-radius: 12px 12px 12px 12px;
     box-shadow: 2px 2px 2px #999999;
@@ -2548,7 +2548,7 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
     font: bold 11px arial;
     padding: 6px 8px;
 }
-.page-404page .node .form-text {
+.page-404page .content .form-text {
     background: none repeat scroll 0 0 #DEDEDE;
     border-color: #999999 #CECECE #CECECE #999999;
     border-radius: 12px 12px 12px 12px;
@@ -2563,18 +2563,18 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
     padding: 5px 6px;
     width: 200px;
 }
-.page-404page .node .form-submit {
+.page-404page .content .form-submit {
     display: block;
     float: left;
     margin: 4px 0;
     width: 52px;
     text-transform:uppercase;
 }
-.page-404page .node .not-found-click a {
+.page-404page .content .not-found-click a {
     color: white;
     text-transform:uppercase;
 }
-.page-404page .node .not-found-or {
+.page-404page .content .not-found-or {
     font-size: 2em;
     line-height: 150%;
     font-weight: bold;
