@@ -2528,7 +2528,7 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 .page-404page #section-title {
     display:none;
 }
-.page-404page .content {
+.page-404page .content #block-system-main {
     line-height: 160%;
     padding-left:40px;
     width:390px;
