@@ -166,6 +166,7 @@ ul.links li {
 
 .item-list .pager a {
   color:#D71700;
+  font-weight: normal;
 }
 
 .item-list .pager /* A list of page numbers when more than 1 page of content is available */ {
@@ -1551,11 +1552,16 @@ ul.links li {
 .view-news-archive .views-field-field-date {
 	font-size: 9px;
 	color: #555;
+        line-height:7px;
+        margin-top:5px;
 }
 
-.view-news-archive .views-field-field-deck,
+.view-news-archive .views-field-field-deck,.view-news-archive .views-field-field-deck .field-content,
 .view-news-archive .views-field-title-1 {
 	display: inline;
+}
+.view-news-archive .related-content-wrap {
+    margin-top:27px;
 }
 
 .view-news-archive .views-field-field-related-articles {
@@ -1591,10 +1597,15 @@ ul.links li {
 
 .content .currfilters .newsarc {
 	font: bold 20px arial;
+        margin-bottom:0px;
+        padding-bottom:0px;
 }
 
 .content .currfilters .newsarcsmall {
 	font-style: italic;
+        margin-top:0;padding-top:0;
+        line-height:7px;
+        font-family: Georgia, serif;
 }
 
 .content .custom-top-pager {
@@ -1602,6 +1613,7 @@ ul.links li {
 	top: 10px;
 	color: #d71700;
 	z-index: 2;
+        font-size:11px;
 }
 
 .content .custom-top-pager .item-list {
