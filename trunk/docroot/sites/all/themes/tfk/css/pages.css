@@ -1954,7 +1954,8 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
     width:98%;
     text-transform:uppercase;
     color:#FFFFFF;
-    font-weight:bold;
+    font-size:12px;
+    font-family: "Arial Black", Arial, sans-serif;
     padding:3px 5px 3px 5px;
 }
 .node-mini-lesson .grade-bar #grade-bar-title {
@@ -1965,11 +1966,11 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
     float:right;
 }
 .node-mini-lesson h2 {
-    font-size: 2.0em;
+    font-size: 30px;
     margin-bottom: 10px;
 }
 .node-mini-lesson .lesson-deck {
-    font-size: 1.0em;
+    font-size: 14px;
     font-weight:bold;
     padding-bottom: 5px;
     margin-bottom: 5px;
