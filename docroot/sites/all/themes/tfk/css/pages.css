@@ -1771,10 +1771,11 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 	margin: 0 0 10px 0;
 }
 
-.page-extras .block-views .tfk-extra-pdf {
+.tfk-extra-pdf {
 	font-weight: bold;
 }
-.page-extras .block-views .tfk-extra-pdf a {
+
+.tfk-extra-pdf a {
 	height: 16px;
 	line-height: 16px;
 	padding-left: 20px;
