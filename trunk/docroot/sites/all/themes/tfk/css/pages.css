@@ -559,28 +559,23 @@ ul.links li {
 }
 
 /* top story block */
-#block-views-minisite-articles-block-2,
-#block-views-minisite-articles-block-3,
-.view-teacher-news-top-story,
-.view-kid-reporters-channel-top-story {
-	position: relative;
-	width: 478px;
-	min-height:358px;
-	border: solid 6px #d71700;
-	padding: 20px 10px 10px 10px;
-	margin-bottom: 10px;
-}
-
+.logged-in #block-views-minisite-articles-block-2,
+.logged-in #block-views-minisite-articles-block-3,
+.logged-in .view-teacher-news-top-story,
+.logged-in .view-kid-reporters-channel-top-story,
 .logged-in .view-homepage-top-story {
 	position: relative;
 	width: 478px;
 	min-height:358px;
-	height:auto !important;
 	border: solid 6px #d71700;
 	padding: 20px 10px 10px 10px;
 	margin-bottom: 10px;
 }
 
+.not-logged-in #block-views-minisite-articles-block-2,
+.not-logged-in #block-views-minisite-articles-block-3,
+.not-logged-in .view-teacher-news-top-story,
+.not-logged-in .view-kid-reporters-channel-top-story,
 .not-logged-in .view-homepage-top-story {
 	position: relative;
 	width: 478px;
