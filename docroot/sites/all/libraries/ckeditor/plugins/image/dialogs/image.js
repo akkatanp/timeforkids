@@ -448,6 +448,10 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
                                             widthForWrapper = this.imageElement.getStyle( 'width' );
                                         }
                                         widthForWrapper = "width:"+widthForWrapper+";";
+                                        if (this.imageElement.getStyle( 'float' )) {
+                                            floatForWrapper = "float:"+this.imageElement.getStyle( 'float' )+";";
+                                            widthForWrapper = widthForWrapper + " " + floatForWrapper;
+                                        }
                                         this.wrapperElement.setAttribute( 'style', widthForWrapper );
 				}					
 
