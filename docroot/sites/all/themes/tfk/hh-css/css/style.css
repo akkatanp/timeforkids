@@ -844,7 +844,7 @@ img {
   position: absolute;
   top: 80px;
   left: 120px;
-  z-index: 10;
+  z-index: 100;
   display: inline;
   float: left;
 }
