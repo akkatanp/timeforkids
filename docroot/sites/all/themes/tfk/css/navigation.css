@@ -169,11 +169,13 @@
 	overflow: hidden;
 }
 
+.node-type-article.with-kid-reporter #global-nav-container ul.menu a.news,
 #global-nav-container ul.menu a.news {
 	width: 50px;
 	background: url(../images/main-nav-sprite.png) no-repeat 0px 0px;
 }
 
+.section-news #global-nav-container ul.menu a.news,
 #global-nav-container ul.menu a.news.active,
 #global-nav-container ul.menu a.news:hover {
 	background: url(../images/main-nav-sprite.png) no-repeat 0px -32px;
@@ -184,6 +186,7 @@
 	background: url(../images/main-nav-sprite.png) no-repeat -50px 0px;
 }
 
+.node-type-article.with-kid-reporter #global-nav-container ul.menu a.kid-reporter,
 #global-nav-container ul.menu a.kid-reporter.active,
 #global-nav-container ul.menu a.kid-reporter:hover {
 	background: url(../images/main-nav-sprite.png) no-repeat -50px -32px;
