@@ -439,6 +439,8 @@ function tfk_news_preprocess_page(&$vars) {
       $vars['section_title'] = 'News';
       if(isset($node->field_kid_reporter['und'][0])){
         $vars['section_title'] = 'Kid Reporters';
+        $vars['custclass'] = 'withkidrep';
+
       }
     }
 
@@ -469,6 +471,9 @@ function tfk_news_preprocess_page(&$vars) {
 
 }
 
+function tfk_preprocess_html(&$variables) {
+    $variables['classes_array'][] = 'my-new-body-class';
+} 
 
 
 function tfk_news_preprocess_node(&$variables){
