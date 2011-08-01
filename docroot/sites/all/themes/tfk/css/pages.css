@@ -566,7 +566,7 @@ ul.links li {
 .logged-in .view-homepage-top-story {
 	position: relative;
 	width: 478px;
-	min-height:358px;
+	min-height: 358px;
 	border: solid 6px #d71700;
 	padding: 20px 10px 10px 10px;
 	margin-bottom: 10px;
@@ -579,19 +579,20 @@ ul.links li {
 .not-logged-in .view-homepage-top-story {
 	position: relative;
 	width: 478px;
-	min-height:258px;
+	min-height: 273px;
 	border: solid 6px #d71700;
 	padding: 20px 10px 10px 10px;
 	margin-bottom: 10px;
 }
 
+.view-homepage-top-story {
+	margin-bottom: 0px;
+}
+
 .view-homepage-top-story .views-field-title-2,
 .view-teacher-news-top-story .views-field-title-1, 
 .view-kid-reporters-channel-top-story .views-field-title-1 {/*View full article*/
-        margin-bottom:70px;
-}
-.view-homepage-top-story {
-	margin-bottom: 0px;
+	margin-bottom:70px;
 }
 
 .top-story-right-square {
