@@ -1040,12 +1040,18 @@ ul.links li {
 	color: #d71700;
 }
 
-.view-mini-site-home .view-content table td .views-field-field-minisite-tout-image,
-.view-all-kid-reporters .view-content table td .views-field-field-thumbnail-image {
+.view-mini-site-home .view-content table td .views-field-field-minisite-tout-image {
 	float: left;
 	margin-right: 10px;
 	width: 62px;
 	height: 62px;
+}
+
+.view-all-kid-reporters .view-content table td .views-field-field-thumbnail-image {
+	float: left;
+	margin-right: 10px;
+	width: 62px;
+	height: 100px;
 }
 
 .view-mini-site-home .view-content table td .views-field-field-thumbnail-image img,
