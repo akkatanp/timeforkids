@@ -2605,3 +2605,19 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
     border: 5px solid #d71700;
     width:758px;
 }
+
+/* publishing schedule */
+.publishing-schedule-row {
+	border: solid 1px #cecece;
+	padding: 10px;
+	line-height: 15px;
+}
+
+.publishing-schedule-month {
+	background: #d71700;
+	font: normal 12px "arial black";
+	padding: 4px;
+	color: white;
+	margin-bottom: 10px;
+	text-transform: uppercase;
+}
