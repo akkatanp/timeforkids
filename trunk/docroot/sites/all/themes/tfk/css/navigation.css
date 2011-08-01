@@ -681,6 +681,10 @@
 	background:#dedede url(../images/tfk-featured-kid-reproter.png) no-repeat 10px 10px;
 }
 
+#block-views-featured-kid-reporter-block .views-row {
+	border-bottom: none;
+}
+
 #block-views-featured-kid-reporter-block h2 {
 	display: none;
 }
