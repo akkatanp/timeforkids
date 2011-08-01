@@ -2614,6 +2614,10 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 	line-height: 15px;
 }
 
+.publishing-schedule-row:first-child {
+	margin-top: 10px;
+}
+
 .publishing-schedule-month {
 	background: #d71700;
 	font: normal 12px "arial black";
