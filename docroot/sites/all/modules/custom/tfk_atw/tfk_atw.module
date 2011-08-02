@@ -701,7 +701,7 @@ function tfk_atw_form_alter(&$form,&$form_state,$form_id) {
   			// $form['#array_parents'] = $old_form ['#array_parents'];
 
   			$form['message']= array(
-  				'#markup' => t('<h1>Not Bad! You got %correct correct answers of %total</h1>',
+  				'#markup' => t('<h1>'.strip_tags('Not Bad! You got %correct correct answers of %total').'</h1>',
   						array('%correct' => $form_state['storage']['correct_answers'],
   							  '%total' => $form_state['storage']['total_answers']
   			)));
