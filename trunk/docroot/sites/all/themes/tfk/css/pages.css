@@ -1499,12 +1499,6 @@ ul.links li {
 }
 
 /* ATW Destination */
-.section-destination .region-sidebar-first .section {
-	background: none;
-	border: 0;
-	padding: 0;
-}
-
 .node-type-atw-destination .group-destination-facts {
 	float: left;
 	width: 326px;
