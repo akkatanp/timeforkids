@@ -385,6 +385,10 @@
 	display: none;
 }
 
+.node-type-article.section-news.with-kid-reporter #block-views-random-kid-reporters-block {
+	display: block;
+}
+
 /* Teacher news sidebar */
 #block-tfk-news-tfk-news-latest-news-link {
 	margin-bottom: 10px;
