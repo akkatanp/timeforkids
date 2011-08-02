@@ -119,6 +119,8 @@
       *width: 50px
     &.edit
       *width: 50px
+    &.restart,
+      bottom: 0
   .flashcard-help-button
     +float-right
     margin: 0.5em 0.5em 1.5em
@@ -153,7 +155,7 @@
     ul.question
       li.answer
         font-size: $ms2
-        padding-top: 70px
+        padding-top: 50px
         text-align: center
         font-weight: bold
         margin: 10px
@@ -171,13 +173,15 @@
             margin: 0
   .flashcard-cycle-card
     width: 500px
-    height: 250px
+    min-height: 270px
+    *height: 250px
   .flashcard-cycle-mark
     position: absolute
-    top: 80px
-    left: 120px
-    z-index: 100
-    +float-left
+    bottom: 120px 
+    left: 242px 
+    z-index: 100 
+    input.form-checkbox
+      margin-top: 0
   .flashcard-cycle-pager  
     *float: none
     *margin-left: 110px
