@@ -1062,12 +1062,17 @@ ul.links li {
 	float: left;
 	margin-right: 10px;
 	width: 62px;
-	height: 100px;
+	height: 80px;
 }
 
 .view-mini-site-home .view-content table td .views-field-field-thumbnail-image img,
 .view-all-kid-reporters .view-content table td .views-field-field-thumbnail-image img {
 	border: solid 1px #cecece;
+}
+
+.view-all-kid-reporters .view-content table td .views-field-field-kid-reporter-age,
+.view-all-kid-reporters .view-content table td .views-field-field-location {
+	font: bold 12px arial;
 }
 
 .view-mini-site-home .view-content table td .views-field-body,
