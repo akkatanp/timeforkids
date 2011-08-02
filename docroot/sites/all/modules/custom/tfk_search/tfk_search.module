@@ -841,8 +841,13 @@ function tfk_search_preprocess_page(&$variables) {
     // Force the removal of the default search box displayed by Drupal.
 
     // Alter region render array, insert region title.
-    $title = '<div class="search-sidebar-title">SEARCH MAGAZINE ARCHIVE</div>';
-    array_unshift($variables['page']['sidebar_first'], array('region_title' => array('#markup' => $title)));
+
+    global $user;
+    $roles_arr = $user->roles;
+    if(count($roles_arr) != 1){ // means anonymous
+      $title = '<div class="search-sidebar-title">SEARCH MAGAZINE ARCHIVE</div>';
+      array_unshift($variables['page']['sidebar_first'], array('region_title' => array('#markup' => $title)));
+    }
   }
 }
 
