@@ -997,16 +997,11 @@ ul.links li {
 	height: 270px;
 }
 
-.node-kid-reporter .views-field-title a  {
-	font-size: 14px;
-}
-
 .field-name-field-kid-reporter-age  {
 	height: 20px;
 }
 
-.node-kid-reporter .field-name-field-location,
-.node-kid-reporter .field-name-field-grade-level {
+.node-kid-reporter .field-name-field-location {
 	font-weight: bold;
 }
 
@@ -1060,6 +1055,10 @@ ul.links li {
 	font: bold 20px arial;
 	line-height: 20px;
 	color: #d71700;
+}
+
+.view-all-kid-reporters .view-content table td.views-field-title a {
+	font-size: 14px;
 }
 
 .view-mini-site-home .view-content table td .views-field-field-minisite-tout-image {
