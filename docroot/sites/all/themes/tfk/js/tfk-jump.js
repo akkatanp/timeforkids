@@ -104,10 +104,12 @@ $(document).ready(function() {
   // This handles content links and image ads.
   $('.external').each(function(index, Element) {
     eLink = $(Element);
-    eventData = {
-      location: eLink.attr('href')
-    };    
-    eLink.mousedown(eventData, tfkJumpEventHandler);
+    if(typeof(eLink.attr('href')) != "undefined") {
+      eventData = {
+        location: eLink.attr('href')
+      };    
+      eLink.click(eventData, tfkJumpEventHandler);
+    }
   });
   
   
