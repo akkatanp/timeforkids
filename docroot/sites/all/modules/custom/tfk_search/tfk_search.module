@@ -470,6 +470,9 @@ function tfk_search_save_your_search() {
   $path = drupal_get_path('module', 'tfk_search');
   
   $query = apachesolr_current_query();
+  if(!$query) {
+    return;
+  }
   $filters = $query->get_filters();
   $str = '';
   foreach($filters as $filter){
@@ -847,6 +850,14 @@ function tfk_search_preprocess_page(&$variables) {
     if(count($roles_arr) != 1){ // means anonymous
       $title = '<div class="search-sidebar-title">SEARCH MAGAZINE ARCHIVE</div>';
       array_unshift($variables['page']['sidebar_first'], array('region_title' => array('#markup' => $title)));
+    }
+  }
+  
+  // Unset some blocks for anon users.
+  if(arg(0) == TFK_SEARCH_WORKSHEETS_PATH) {
+    global $user;
+    if(!user_access('access protected content', $user)) {
+      unset($_variables['page']['sidebar_first']['tfk_search_tfk_search_ws_leftbar_title']);
     }
   }
 }
