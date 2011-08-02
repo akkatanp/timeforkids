@@ -101,15 +101,15 @@ $(document).ready(function() {
   // Add 'external' CSS class to all external links
   $('a:external').addClass('external');
 
-  //This handles content links and image ads
-  $('.external').click(function() {
-    eventObject = {
+  // This handles content links and image ads.
+  $('.external').each(function(index, Element) {
+    eLink = $(Element);
+    eventData = {
         data: {
-          location: $(this).attr('href')
+          location: eLink.attr('href')
         }
-    };
-    tfkJumpEventHandler(eventObject);
-    return false;
+    };    
+    eLink.mousedown(eventData, tfkJumpEventHandler);
   });
   
   
@@ -231,6 +231,7 @@ function tfkAdCSSHelper(adUnit, width, height) {
   );
   
   function tfkJumpEventHandler(eventObject) {
+    
     sdialog = '<div class="tfk-jump"><br/>You are leaving <a href="/">timeforkids.com</a> to check out a web site we recommended.  While TIME for Kids has reviewed  the site you are about to visit, we can&apos;t monitor changes to the site, advertisements or links to other sites.<br/><br/>Be sure to get permission from a parent before giving out any information about yourself online.  Never give your full name, phone number or address online.  To read more read <a href="/info/privacy-policy">TFK&apos;s privacy policy</a>. <div class="tfk-jump-reminder">(Remember to read the privacy policy of any new site you visit.)</div> <span id="tfk-jump-continue">going to the web site</span><span id="tfk-jump-back">to timeforkids.com</span></div>';
     $(sdialog).dialog({
       title: "",
