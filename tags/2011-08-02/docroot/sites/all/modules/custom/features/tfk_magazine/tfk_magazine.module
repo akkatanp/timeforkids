@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the TFK Magazine feature.
+ */
+
+include_once('tfk_magazine.features.inc');
