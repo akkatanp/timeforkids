@@ -717,6 +717,9 @@ img {
 .flashcard-cycle a.edit {
   *width: 50px;
 }
+.flashcard-cycle a.restart {
+  bottom: 0;
+}
 .flashcard-cycle .flashcard-help-button {
   display: inline;
   float: right;
@@ -813,7 +816,7 @@ img {
 }
 .flashcard-cycle .flashcard-cycle-cards ul.question li.answer {
   font-size: 20px;
-  padding-top: 70px;
+  padding-top: 50px;
   text-align: center;
   font-weight: bold;
   margin: 10px;
@@ -838,15 +841,17 @@ img {
 }
 .flashcard-cycle .flashcard-cycle-card {
   width: 500px;
-  height: 250px;
+  min-height: 270px;
+  *height: 250px;
 }
 .flashcard-cycle .flashcard-cycle-mark {
   position: absolute;
-  top: 80px;
-  left: 120px;
+  bottom: 120px;
+  left: 242px;
   z-index: 100;
-  display: inline;
-  float: left;
+}
+.flashcard-cycle .flashcard-cycle-mark input.form-checkbox {
+  margin-top: 0;
 }
 .flashcard-cycle .flashcard-cycle-pager {
   *float: none;
