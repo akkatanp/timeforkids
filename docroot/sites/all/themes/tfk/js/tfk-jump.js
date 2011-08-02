@@ -101,24 +101,6 @@ $(document).ready(function() {
   // Add 'external' CSS class to all external links
   $('a:external').addClass('external');
 
-  function tfkJumpPage(link) {
-      $('<div class="tfk-jump"><br/>You are leaving <a href="/">timeforkids.com</a> to check out a web site we recommended.  While TIME for Kids has reviewed  the site you are about to visit, we can&apos;t monitor changes to the site, advertisements or links to other sites.<br/><br/>Be sure to get permission from a parent before giving out any information about yourself online.  Never give your full name, phone number or address online.  To read more read <a href="/info/privacy-policy">TFK&apos;s privacy policy</a>. <div class="tfk-jump-reminder">(Remember to read the privacy policy of any new site you visit.)</div> <span id="tfk-jump-continue">going to the web site</span><span id="tfk-jump-back">to timeforkids.com</span></div>').dialog({
-      title: "",
-      modal : true,
-      width : 626,
-      buttons: {
-        'Continue': function() {
-          $(this).dialog('close').remove();
-          window.open(link);
-        },
-        'Go Back': function() {
-          $(this).dialog('close').remove();
-          return false;
-        }
-      }
-    });
-  }
-
   //This handles content links and image ads
   $('.external').click(function() {
     var link = $(this).attr('href');
@@ -228,9 +210,57 @@ function tfkAdJumpTrigger(location) {
           tfkAdCSSHelper(tfkAdUnits[i], tfkAdwidth[i], tfkAdheight[i]);
     }
   }
-//Can't iterate though using dynamic vars, jquery's event handlers end up taking the last value otherwise
-$('#banner_728x90').mousedown(function() {tfkAdJumpTrigger('#banner_728x90');}); 
-$('#banner_160x190').mousedown(function() {tfkAdJumpTrigger('#banner_160x190');});
-$('#banner_160x600').mousedown(function() {tfkAdJumpTrigger('#banner_160x600');});
-$('#banner_728x90_footer').mousedown(function() {tfkAdJumpTrigger('#banner_728x90_footer');});
+
+  // What we used to have:
+  // $('#banner_728x90').mousedown(function() {tfkAdJumpTrigger('#banner_728x90');}); 
+  
+  var adObjects = new Array(
+    {
+      'id': '#banner_728x90',
+      'obj': $("#banner_728x90 object")
+    },
+    {
+      'id': '#banner_160x190',
+      'obj': $("#banner_160x190 object")
+    },
+    {
+      'id': '#banner_160x600',
+      'obj': $("#banner_160x600 object")
+    },
+    {
+      'id': '#banner_728x90_footer',
+      'obj': $("#banner_728x90_footer object")
+    }
+  );
+  
+  function tfkJumpEventHandler(eventObject) {
+    sdialog = '<div class="tfk-jump"><br/>You are leaving <a href="/">timeforkids.com</a> to check out a web site we recommended.  While TIME for Kids has reviewed  the site you are about to visit, we can&apos;t monitor changes to the site, advertisements or links to other sites.<br/><br/>Be sure to get permission from a parent before giving out any information about yourself online.  Never give your full name, phone number or address online.  To read more read <a href="/info/privacy-policy">TFK&apos;s privacy policy</a>. <div class="tfk-jump-reminder">(Remember to read the privacy policy of any new site you visit.)</div> <span id="tfk-jump-continue">going to the web site</span><span id="tfk-jump-back">to timeforkids.com</span></div>';
+    $(sdialog).dialog({
+      title: "",
+      modal : true,
+      width : 626,
+      buttons: {
+        'Continue': function() {
+          $(this).dialog('close').remove();
+          window.open(eventObject.data.location);
+        },
+        'Go Back': function() {
+          $(this).dialog('close').remove();
+          return false;
+        }
+      }
+    });
+    return false;
+  }
+  
+  for(i = 0; i < adObjects.length; i++) {  
+    if(adObjects[i].obj.length != 0) {    
+      // A map of data that will be passed to the event handler.
+      eventData = {
+          location: tfkAdLocations[adObjects[i].id]
+      }
+      adObjects[i].obj.mousedown(eventData, tfkJumpEventHandler); 
+    }
+  }
+
 });//End doc ready
