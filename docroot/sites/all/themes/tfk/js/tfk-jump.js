@@ -103,8 +103,12 @@ $(document).ready(function() {
 
   //This handles content links and image ads
   $('.external').click(function() {
-    var link = $(this).attr('href');
-    tfkJumpPage(link);
+    eventObject = {
+        data: {
+          location: $(this).attr('href')
+        }
+    };
+    tfkJumpEventHandler(eventObject);
     return false;
   });
   
@@ -160,14 +164,7 @@ function tfkAdCSSHelper(adUnit, width, height) {
     width = width + "px";height = height + "px";
     $("#" + adUnit + "_jump_helper").css({'position' : 'absolute', 'width' : width , 'height' : height, 'background-color' : 'blue', 'opacity' : '0', 'filter' : 'alpha(opacity=0)', 'display' : 'inline'});
 }
-function tfkAdJumpTrigger(location) {
-    if (tfkAdLocations[location] != "") {
-        tfkJumpPage(tfkAdLocations[location]);
-        return false;
-    } else {
-        return true;
-    }
-}
+
   //This handles flash and iframe ads
   var tfkAdUnits = new Array("banner_728x90","banner_160x190","banner_160x600", "banner_728x90_footer");
   var tfkAdElementName = "";
@@ -211,24 +208,6 @@ function tfkAdJumpTrigger(location) {
     }
   }
   
-  function tfkJumpPage(link) {
-    $('<div class="tfk-jump"><br/>You are leaving <a href="/">timeforkids.com</a> to check out a web site we recommended.  While TIME for Kids has reviewed  the site you are about to visit, we can&apos;t monitor changes to the site, advertisements or links to other sites.<br/><br/>Be sure to get permission from a parent before giving out any information about yourself online.  Never give your full name, phone number or address online.  To read more read <a href="/info/privacy-policy">TFK&apos;s privacy policy</a>. <div class="tfk-jump-reminder">(Remember to read the privacy policy of any new site you visit.)</div> <span id="tfk-jump-continue">going to the web site</span><span id="tfk-jump-back">to timeforkids.com</span></div>').dialog({
-      title: "",
-      modal : true,
-      width : 626,
-      buttons: {
-        'Continue': function() {
-          $(this).dialog('close').remove();
-          window.open(link);
-        },
-        'Go Back': function() {
-          $(this).dialog('close').remove();
-          return false;
-        }
-      }
-    });
-  }  
-
   // What we used to have:
   // $('#banner_728x90').mousedown(function() {tfkAdJumpTrigger('#banner_728x90');}); 
   
