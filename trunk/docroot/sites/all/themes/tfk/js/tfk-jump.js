@@ -105,9 +105,7 @@ $(document).ready(function() {
   $('.external').each(function(index, Element) {
     eLink = $(Element);
     eventData = {
-        data: {
-          location: eLink.attr('href')
-        }
+      location: eLink.attr('href')
     };    
     eLink.mousedown(eventData, tfkJumpEventHandler);
   });
@@ -241,6 +239,7 @@ function tfkAdCSSHelper(adUnit, width, height) {
         'Continue': function() {
           $(this).dialog('close').remove();
           window.open(eventObject.data.location);
+          return false;
         },
         'Go Back': function() {
           $(this).dialog('close').remove();
