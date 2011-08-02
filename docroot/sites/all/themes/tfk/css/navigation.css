@@ -696,13 +696,17 @@
 	display: none;
 }
 
+.node-type-kid-reporter .region-sidebar-first .views-field-title a ,
 #block-views-featured-kid-reporter-block .views-field-title a {
 	font-size: 14px;
 }
 
+.node-type-kid-reporter .region-sidebar-first .views-field-field-kid-reporter-age,
+.node-type-kid-reporter .region-sidebar-first .views-field-field-location-1,
 #block-views-featured-kid-reporter-block .views-field-field-kid-reporter-age,
 #block-views-featured-kid-reporter-block .views-field-field-location-1 {
 	font-weight: bold;
+	line-height: 15px;
 }
 
 #block-views-featured-kid-reporter-block .views-field-field-featured-deck {
