@@ -45,6 +45,12 @@ function tfk_helper_drush_command() {
       'cid' => 'Cache id of the cache entry to clear.',
     ),
   );
+  
+  $items['rallen-revert'] = array(
+    'description' => 'Revert Features through code.',
+    'callback' => '_tfk_helper_features_revert',
+    'aliases' => array('rr'),
+  );
 
   return $items;
 }
@@ -126,4 +132,37 @@ function _tfk_helper_clear_cache() {
     cache_clear_all(NULL, $args[0]);
   }
   
+}
+
+function _tfk_helper_features_revert() {
+  $args = func_get_args();
+  if(!empty($args)) {
+    
+    module_load_include('inc', 'features', 'features.export');
+    features_include();
+    
+    foreach($args as $module) {
+      if(($feature = feature_load($module, TRUE)) && module_exists($module)) {
+        
+        $components = array();
+        foreach (array_keys($feature->info['features']) as $component) {
+          if (features_hook($component, 'features_revert')) {
+            $components[] = $component;
+          }
+        }
+        if(!empty($components)) {
+          foreach($components as $component) {
+            features_revert(array($module => array($component)));
+            watchdog('tfk_schema_updates', 'Reverted !component.', array('!component' => $component));
+            print 'Reverted '. $component. ' for '. $module. '.'. PHP_EOL;
+          }
+        }
+        
+      } elseif($feature) {
+        watchdog('tfk_schema_updates', 'The feature !feature is not enabled.', array('!feature' => $module));
+      } else {
+        watchdog('tfk_schema_updates', 'The feature !feature could not be found.', array('!feature' => $module));
+      }
+    }
+  }
 }
