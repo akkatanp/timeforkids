@@ -2123,6 +2123,7 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 #timeline-container #event-year {
 	display: inline;
 	position: relative;
+	top: 10px;
 	font: normal 14px "arial black";
 	border: solid 1px #cecece;
 	padding: 6px;
@@ -2249,7 +2250,7 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 }
 
 #timeline-container #event-container .event .event-text h3 {
-	font: normal 12px "arial black";
+	font: normal 14px "arial black";
 	padding-bottom: 6px;
 	border-bottom: dotted 1px #555;
 	margin: 0 0 6px 0;
