@@ -1015,6 +1015,7 @@ ul.links li {
 	border: solid 1px #cecece;
 	padding: 120px 10px 10px 10px;
 	background: url(../images/tfk-kid-reporter-head.png) no-repeat 10px 10px;
+	margin-bottom: 20px;
 }
 
 .view-all-kid-reporters .view-header p {
