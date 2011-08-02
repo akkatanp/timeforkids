@@ -68,6 +68,7 @@ h2.block-title {
 
 #slideshow-container .foot-credit {
 	text-align:right;
+	text-transform: uppercase;
 	font: normal 9px Arial;
 	color: #999;
 }
