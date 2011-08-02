@@ -1,3 +1,10 @@
+.challengeheader {
+  width: 488px;
+  height: 100px;
+  background: url(../images/atw-head.png) no-repeat;
+  margin-bottom: 10px;
+}
+
 form.webform-client-form div {
 }
 
