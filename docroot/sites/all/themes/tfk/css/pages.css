@@ -997,6 +997,10 @@ ul.links li {
 	height: 270px;
 }
 
+.node-kid-reporter .views-field-title a  {
+	font-size: 14px;
+}
+
 .field-name-field-kid-reporter-age  {
 	height: 20px;
 }
