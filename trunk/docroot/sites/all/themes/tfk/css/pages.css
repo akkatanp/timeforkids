@@ -980,7 +980,8 @@ ul.links li {
 }
 
 .node-kid-reporter .content h1 {
-	color: #d71700;
+	font: bold 30px arial;
+	line-height: 30px;
 	margin: 0 0 10px 0;
 }
 
@@ -995,6 +996,7 @@ ul.links li {
 	width: 270px;
 	height: 270px;
 }
+
 .field-name-field-kid-reporter-age  {
 	height: 20px;
 }
@@ -1002,7 +1004,11 @@ ul.links li {
 .node-kid-reporter .field-name-field-location,
 .node-kid-reporter .field-name-field-grade-level {
 	font-weight: bold;
- }
+}
+
+.node-kid-reporter .field-name-body {
+	line-height: 15px;
+}
 
 /* kid reporter and mini-sites listings */
 .view-all-kid-reporters .view-header {
