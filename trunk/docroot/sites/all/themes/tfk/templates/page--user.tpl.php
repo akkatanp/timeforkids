@@ -150,11 +150,10 @@
     <?php print render($page['sidebar_second']); ?>
     <div id="tfk-user-profile-wrapper">
         <?php if ($title): ?>
-            <h1 class="title" id="user-title"><?php print $title; ?></h1>
+            <h1 class="title" id="user-title"><?php print $title; ?></h1> 
         <?php endif; ?>
     
     <?php print render($page['sidebar_first']); ?>
-       <hr class="tfk-user-profile-divider"/>
        <div id="content" class="column">
         <div class="section">
       <?php print render($page['highlighted']); ?>
