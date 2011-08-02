@@ -1092,12 +1092,14 @@ ul.links li {
 }
 
 .node-type-article .field-name-field-article-category {
+	height: 20px;
 	background: #d71700;
 	margin-bottom: 35px;
 }
 
 .node-type-article .field-name-field-article-category .field-items {
 	text-align: center;
+	height: 20px;
 }
 
 .node-type-article .field-name-field-article-category .field-item {
@@ -1105,7 +1107,8 @@ ul.links li {
 	background: #fff;
 	text-transform: uppercase;
 	font: normal 18px "arial black";
-	height: 18px;
+	line-height: 20px;
+	height: 20px;
 	padding: 0 4px;
 }
 
