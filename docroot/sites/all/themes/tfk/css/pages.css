@@ -186,11 +186,6 @@ ul.links li {
 }
 
 /* user profile */
-.tfk-user-profile-divider {
-    height:5px;
-    background:#D71700;
-    border:none;
-}
 .tfk-user-profile-title {
     color:#373737;
 }
@@ -205,8 +200,13 @@ ul.links li {
     padding:5px;
 }
 #user-title {
-    text-transform: uppercase;
     color:#373737;
+    border-bottom: 6px solid #D71700;
+    float: left;
+    font: 18px "arial black";
+    margin: 0 0 10px;
+    text-transform: uppercase;
+    width: 768px;
 }
 .user-picture {
     float:left;
@@ -220,6 +220,31 @@ ul.links li {
 #tfk-user-profile-board-member-wrapper {
     border:1px solid #CECECE;
     padding:10px;
+}
+#tfk-user-profile-wrapper .region-sidebar-first .section{/*Settings box*/
+    background: none repeat scroll 0 0 #E6E6E6;
+    border: 1px solid #CECECE;
+    padding: 10px;
+    position: relative;
+    top:20px;
+    float:left;
+    margin-right:5px;
+    width:230px;
+}
+#tfk-user-profile-wrapper .region-sidebar-first h2 {
+    display:none;
+}
+#tfk-user-profile-wrapper .region-sidebar-first .settingsheader {
+    background-color: #D71700;
+    color: #FFFFFF;
+    font-size: 1.08em;
+    margin: 0;
+    padding: 5px 0 3px;
+    text-align: center;
+    font-family:"Arial Black", Arial, sans-serif;
+}
+#tfk-user-profile-wrapper .settingslink {
+    padding-top:5px;
 }
 /* Teacher Community Pages aka Board Members */
 .view-board-members .view-header {

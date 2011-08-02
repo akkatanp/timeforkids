@@ -3,12 +3,12 @@
      SETTINGS
    </div>
    <div class="settingslink">
-     <a href="<?php echo url('');?>" class="active">Profile</a>
+     <strong>Profile</strong>
    </div>
    <div class="settingslink">
-    <a href="" class="active">Change Password</a>
+    <a href="#NEED_LINK">Change Password</a>
    </div>
    <div class="settingslink">
-     <a href="" class="active">Subscription</a>
+     <a href="#NEED_LINK">Subscription</a>
    </div>
 </div>
