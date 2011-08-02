@@ -958,7 +958,7 @@ ul.links li {
 .view-homepage-news-block table td .views-field-title,
 .view-teacher-news-news-block table td .views-field-title,
 .view-kid-reporters-channel-news-block table td .views-field-title {/*secondary tout title*/
-	margin-bottom: 14px;
+	margin-bottom: 7px;/*Total space is 14px*/
 	font: bold 20px arial;
 }
 
