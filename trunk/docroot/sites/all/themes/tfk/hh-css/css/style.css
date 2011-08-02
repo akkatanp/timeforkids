@@ -718,7 +718,11 @@ img {
   *width: 50px;
 }
 .flashcard-cycle a.restart {
-  bottom: 0;
+  background: none;
+  bottom: 22px;
+  box-shadow: none;
+  left: auto;
+  right: 22px;
 }
 .flashcard-cycle .flashcard-help-button {
   display: inline;
