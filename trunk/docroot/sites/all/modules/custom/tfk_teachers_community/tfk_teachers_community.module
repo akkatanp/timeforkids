@@ -142,8 +142,13 @@ function tfk_teachers_community_preprocess_page(&$variables, $hook) {
       'link_title' => 'Submit to the TFK Teacher Community',
       'link_dest' => 'node/add/teacher-community-question'
     );
-    $variables['page_suggestion_box'] = theme('suggestion_box', $suggestion);
-        
+
+    global $user;
+    $roles_arr = $user->roles;
+    if(count($roles_arr) != 1){
+      $variables['page_suggestion_box'] = theme('suggestion_box', $suggestion);
+    }
+    
     # drupal_add_html_head($data = NULL, $key = NULL)
     # drupal_get_html_head();
   }
