@@ -1,0 +1,56 @@
+<?php
+// $Id$
+
+function block_id($block) {
+  return check_plain(block_id_attributes($block));
+}
+
+function block_id_attributes($block, $reset = FALSE) {
+  static $blocks;
+  if (is_null($blocks) || $reset) {
+    $result = db_query("SELECT module, delta, css_id FROM {block_id}");
+    while ($row = db_fetch_object($result)) {
+      $blocks[$row->module][$row->delta] = $row->css_id;
+    }
+  }
+  if (isset($blocks[$block->module][$block->delta])) {
+    return $blocks[$block->module][$block->delta];
+  }
+  else {
+    return NULL;
+  }
+}
+
+function block_id_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_id == 'block_admin_configure' || $form_id == 'block_add_block_form') {
+    $block->module = $form['module']['#value'];
+    $block->delta = $form['delta']['#value'];
+    $attributes = block_id_attributes($block);
+    $form['block_id'] = array(
+      '#type' => 'fieldset',
+      '#title' => t('Block ID settings'),
+      '#collapsible' => TRUE,
+      '#weight' => -1,
+    );
+    $form['block_id']['css_id'] = array(
+      '#type' => 'textfield',
+      '#title' => t('CSS id'),
+      '#default_value' => $attributes,
+    );
+    $form['#submit'][] = 'block_id_form_submit';
+  }
+}
+
+function block_id_form_submit($form, &$form_state) {
+  if ($form_state['values']['form_id'] == 'block_admin_configure' || $form_state['values']['form_id'] == 'block_add_block_form') {
+    if (isset($form_state['values']['css_id']) && user_access('administer blocks')) {
+      $module = $form_state['values']['module'];
+      $delta = $form_state['values']['delta'];
+      $id = $form_state['values']['css_id'];
+      db_query("DELETE FROM {block_id} WHERE module = '%s' AND delta = '%s'", $module, $delta);
+      if (!empty($id)) {
+        db_query("INSERT INTO {block_id} (module, delta, css_id) VALUES ('%s', '%s', '%s')", $module, $delta, $id);
+      }
+    }
+  }
+}

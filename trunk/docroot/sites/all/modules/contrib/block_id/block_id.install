@@ -1,0 +1,21 @@
+<?php
+// $Id$
+
+function block_id_schema() {
+  $schema['block_id'] = array(
+      'fields' => array(
+           'module' => array('type' => 'varchar', 'length' => '50', 'not null' => TRUE),
+           'delta' => array('type' => 'varchar', 'length' => '32', 'not null' => TRUE),
+           'css_id' => array('type' => 'varchar', 'length' => '50', 'not null' => TRUE)),
+      'primary key' => array('module', 'delta'),
+  );
+  return $schema;
+}
+
+function block_id_install() {
+  drupal_install_schema('block_id');
+}
+
+function block_id_uninstall() {
+  drupal_uninstall_schema('block_id');
+}
