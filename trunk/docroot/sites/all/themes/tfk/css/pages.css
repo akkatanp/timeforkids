@@ -2121,12 +2121,11 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 }
 
 #timeline-container #event-year {
-	display: inline;
 	position: relative;
-	top: 10px;
 	font: normal 14px "arial black";
 	border: solid 1px #cecece;
 	padding: 6px;
+	width: auto;
 }
 
 #timeline-container #line-above,
@@ -2226,6 +2225,7 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 	color: #999;
 	text-align: right;
 	text-transform: uppercase;
+	margin-bottom: 10px;
 }
 
 #timeline-container #event-container .event.vertical .event-image  img {
