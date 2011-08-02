@@ -14,8 +14,26 @@ form.webform-client-form div > div.form-type-item label {
 }
 
 div.field-name-body {
+	font: normal 14px arial;
+	line-height: 15px;
 	border-bottom: 1px dotted #999;
 	padding-bottom: 10px;
+}
+
+.node-type-webform.section-destination .content a {
+  font: bold 11px arial;
+  background: #d71700;
+  color: #fff;
+  padding: 4px 8px;
+  margin-top: 10px;
+  cursor: pointer;
+  text-decoration: none;
+  border-radius: 12px;
+  -moz-border-radius: 12px;
+  -webkit-border-radius: 12px;
+  box-shadow: 2px 2px 2px #999;
+  -moz-box-shadow: 2px 2px 2px #999;
+  -webkit-box-shadow: 2px 2px 2px #999;
 }
 
 body.node-type-webform.section-destination .content div.node-webform.view-mode-full > h2 {
