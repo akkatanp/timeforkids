@@ -2121,11 +2121,11 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 }
 
 #timeline-container #event-year {
+	display: inline-block;
 	position: relative;
 	font: normal 14px "arial black";
 	border: solid 1px #cecece;
 	padding: 6px;
-	width: auto;
 }
 
 #timeline-container #line-above,
