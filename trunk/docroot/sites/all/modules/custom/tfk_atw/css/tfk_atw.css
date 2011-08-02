@@ -20,7 +20,7 @@ div.field-name-body {
 	padding-bottom: 10px;
 }
 
-.node-type-webform.section-destination .content a {
+.node-type-webform.section-destination .content .node-webform.view-mode-full a {
   font: bold 11px arial;
   background: #d71700;
   color: #fff;
@@ -36,7 +36,7 @@ div.field-name-body {
   -webkit-box-shadow: 2px 2px 2px #999;
 }
 
-.node-type-webform.section-destination .content a:hover {
+.node-type-webform.section-destination .content .node-webform.view-mode-full a:hover {
 	background: #900;
 }
 
