@@ -746,10 +746,11 @@
 }
 
 /* ATW sidebar */
-.section-around-the-world .region-sidebar-first .section {
+.section-around-the-world .region-sidebar-first .section,
+.section-destination .region-sidebar-first .section {
 	padding: 0;
 	background: none;
-	border: none;
+	border: 0;
 }
 
 .page-around-the-world .region-sidebar-first .section {
