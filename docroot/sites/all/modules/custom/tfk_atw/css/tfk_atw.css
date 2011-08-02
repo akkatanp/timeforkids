@@ -16,7 +16,7 @@ form.webform-client-form div > div.form-type-item label {
 div.field-name-body {
 	font: normal 14px arial;
 	line-height: 15px;
-	border-bottom: 1px dotted #999;
+	border-bottom: 1px dotted #cecece;
 	padding-bottom: 10px;
 }
 
@@ -36,12 +36,16 @@ div.field-name-body {
   -webkit-box-shadow: 2px 2px 2px #999;
 }
 
+.node-type-webform.section-destination .content a:hover {
+	background: #900;
+}
+
 body.node-type-webform.section-destination .content div.node-webform.view-mode-full > h2 {
-	font-size: 28px;
-	line-height: 100%;
-	color: #333;
+	font: bold 30px arial;
+	line-height: 30px;
 	margin: 0 0 10px 0;
 }
+
 .region-sidebar-first #block-tfk-atw-atw-destination-related h3 {
   background: -moz-linear-gradient(100% 100% 90deg, #5EA1D3, #7BC3F5) repeat scroll 0 0 transparent;
   color: #000000;
