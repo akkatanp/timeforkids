@@ -540,6 +540,7 @@ ul.links li {
 
 .view-homepage-destination  .views-field-title a {
 	font: bold 20px arial;
+	line-height: 20px;
 }
 
 .view-homepage-destination  .views-field-field-description {
@@ -969,6 +970,7 @@ ul.links li {
 .view-kid-reporters-channel-news-block table td .views-field-title {/*secondary tout title*/
 	margin-bottom: 7px;/*Total space is 14px*/
 	font: bold 20px arial;
+	line-height: 20px;
 }
 
 .view-homepage-news-block table td .views-field-title-1,
