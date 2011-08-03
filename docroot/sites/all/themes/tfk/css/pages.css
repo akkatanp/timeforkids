@@ -1784,6 +1784,16 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 body.page-extras .block > .content > p {
 	font: bold 20px arial;
 	color: #333;
+	margin: 10px 4px;
+}
+
+body.page-extras .block-views .content .view-content .views-row {
+	padding: 14px 0;
+	border-bottom: 1px solid #CECECE;
+}
+
+body.page-extras .block-views .content .view-content .views-row.views-row-last {
+  border-bottom: 0;
 }
 
 /* TFK Store */
