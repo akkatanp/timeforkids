@@ -167,6 +167,7 @@
 	height: 32px;
 	text-indent: -9999px;
 	overflow: hidden;
+        outline:none;
 }
 
 .node-type-article.with-kid-reporter #global-nav-container ul.menu a.news,
