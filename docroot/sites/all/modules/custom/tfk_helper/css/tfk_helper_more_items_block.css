@@ -8,6 +8,11 @@
   margin-right: 5px;
 }
 
+* html .more-items-col {
+  display: block;
+  float: left;
+}
+
 .more-items-col .more-items-item-title{
 	width: 115px;
 }
