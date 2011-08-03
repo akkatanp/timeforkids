@@ -893,6 +893,31 @@ img {
   clear: both;
 }
 
+#flashcard-help-popup {
+  background: white;
+  padding: 10px;
+  position: absolute;
+  z-index: 101;
+}
+#flashcard-help-popup h2 {
+  background: #d71700;
+  color: white;
+  font: 14px "arial black";
+  padding: 10px;
+  position: relative;
+  text-transform: uppercase;
+  margin: 0;
+}
+#flashcard-help-popup .close-button {
+  background: url("../../images/atw-sightseeing-close.png") no-repeat scroll 0 0 transparent;
+  cursor: pointer;
+  height: 12px;
+  position: absolute;
+  right: 18px;
+  top: 18px;
+  width: 12px;
+}
+
 .view-flashcard-landing-page.view-id-flashcard_landing_page {
   float: left;
 }

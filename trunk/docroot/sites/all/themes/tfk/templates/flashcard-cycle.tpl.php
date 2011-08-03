@@ -7,9 +7,6 @@
 
 <div class="flashcard-cycle clearfix">
   <div class="flashcard-cycle-buttons flashcard-cycle-toolbar clearfix">
-    <?php if ($restart = render($restart)): ?>
-      <?php print $restart; ?>
-    <?php endif; ?>
     <?php if ($edit = render($edit)): ?>
       <?php print $edit; ?>
     <?php endif; ?>
@@ -40,5 +37,8 @@
   <div class="flashcard-cycle-buttons flashcard-cycle-mode clearfix">
     <?php print $mode; ?>
   </div>
+  <?php endif; ?>
+  <?php if ($restart = render($restart)): ?>
+    <?php print $restart; ?>
   <?php endif; ?>
 </div>

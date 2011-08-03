@@ -310,6 +310,7 @@ function tfk_preprocess_flashcard_cycle_mark(&$variables) {
 
 function tfk_preprocess_flashcard_cycle(&$variables) {
   // TODO: When we know more about the help page, we can link it here.
-  $variables['help'] = l(t('Help'), '', array('attributes' => array('class' => array('flashcard-help'))));
+  drupal_add_js(drupal_get_path('theme', 'tfk'). '/js/flashcard_help.js','file');
+  $variables['help'] = l(t('Help'), '#', array('attributes' => array('class' => array('flashcard-help'))));
 }
 
