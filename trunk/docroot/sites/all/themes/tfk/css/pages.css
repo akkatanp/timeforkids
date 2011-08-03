@@ -409,7 +409,7 @@ ul.links li {
 .logged-in .view-homepage-minisite {
 	position: relative;
 	width: 244px;
-	height: 383px;
+	height: 363px;
 	padding: 15px 0 0 6px;
 	background: #dedede;
 	border: solid 1px #cecece;
@@ -604,7 +604,7 @@ ul.links li {
 .not-logged-in .view-homepage-top-story {
 	position: relative;
 	width: 478px;
-	height: 258px;
+	height: 28px;
 	border: solid 6px #d71700;
 	padding: 20px 10px 10px 10px;
 	margin-bottom: 10px;
