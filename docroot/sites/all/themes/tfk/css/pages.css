@@ -1781,7 +1781,7 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 	text-transform: none;
 }
 
-.block > .content > p {
+body.page-extras .block > .content > p {
 	font: bold 20px arial;
 	color: #333;
 }
