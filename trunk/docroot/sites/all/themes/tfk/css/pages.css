@@ -1781,6 +1781,11 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 	text-transform: none;
 }
 
+.block > .content > p > strong {
+	font: bold 20px arial;
+	color: #333;
+}
+
 /* TFK Store */
 .page-store #featured-books {
 	float: left;
