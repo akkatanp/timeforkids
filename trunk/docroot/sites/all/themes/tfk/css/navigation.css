@@ -295,12 +295,12 @@
 
 #teacher-nav-container ul.menu a.digital_edition {
 	width: 120px;
-	background: url(../images/sub-nav-sprite.png) no-repeat -362px 0px;
+	background: url(../images/sub-nav-sprite.png) no-repeat -364px 0px;
 }
 
 #teacher-nav-container ul.menu a.digital_edition.active,
 #teacher-nav-container ul.menu a.digital_edition:hover {
-	background: url(../images/sub-nav-sprite.png) no-repeat -362px -32px;
+	background: url(../images/sub-nav-sprite.png) no-repeat -364px -32px;
 }
 
 #teacher-nav-container ul.menu a.subscribe-renew {
