@@ -779,6 +779,11 @@ ul.links li {
 	line-height: 30px;
 }
 
+#block-views-mini-site-home-block-2 .views-field-body,
+#block-views-mini-site-home-block-2 .views-field-body {
+	line-height: 15px;
+}
+
 #block-views-minisite-articles-block-1 table td,
 #block-views-minisite-articles-block table td {
 	display: block;
