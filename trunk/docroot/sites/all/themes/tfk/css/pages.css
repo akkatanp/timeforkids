@@ -1103,6 +1103,7 @@ ul.links li {
 
 .node-type-article .content h1 {
 	font: bold 30px arial;
+	line-height: 30px;
 	margin: 0 0 10px 0;
 }
 
