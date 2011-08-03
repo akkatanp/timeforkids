@@ -1182,7 +1182,7 @@ ul.links li {
 
 .node-type-article .field-name-field-body p {
 	line-height: 15px;
-	margin-bottom: 15px;
+	margin-bottom: 10px;
 }
 
 .node-type-article .field-name-field-body p  b {
@@ -1312,7 +1312,6 @@ ul.links li {
 	color: #999;
 	text-align: right;
 	text-transform: uppercase;
-	margin-bottom: 5px;
 }
 
 .node-type-article .field-name-field-image-caption {
