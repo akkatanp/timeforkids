@@ -1,6 +1,7 @@
 /* Required JS for jump page for external links
  * includes jQuery UI Button, jQuery UI Position, jQuery UI Dialog
  * 
+ * These are not included in the standard drupal jquery libs
  * */
 /*!
  * jQuery UI 1.8.14
@@ -91,6 +92,8 @@ height:this.height()});c.fn.bgiframe&&b.bgiframe();this.instances.push(b);return
 b=Math.max(document.documentElement.offsetHeight,document.body.offsetHeight);return a<b?c(window).height()+"px":a+"px"}else return c(document).height()+"px"},width:function(){var a,b;if(c.browser.msie){a=Math.max(document.documentElement.scrollWidth,document.body.scrollWidth);b=Math.max(document.documentElement.offsetWidth,document.body.offsetWidth);return a<b?c(window).width()+"px":a+"px"}else return c(document).width()+"px"},resize:function(){var a=c([]);c.each(c.ui.dialog.overlay.instances,function(){a=
 a.add(this)});a.css({width:0,height:0}).css({width:c.ui.dialog.overlay.width(),height:c.ui.dialog.overlay.height()})}});c.extend(c.ui.dialog.overlay.prototype,{destroy:function(){c.ui.dialog.overlay.destroy(this.$el)}})})(jQuery);
 ;
+//Init namespace
+if (typeof TFKADS == 'undefined' || !TFKADS) {window.TFKADS = {};}
 $(document).ready(function() {
   // Creating custom :external selector
   $.expr[':'].external = function(obj){
@@ -101,146 +104,18 @@ $(document).ready(function() {
   // Add 'external' CSS class to all external links
   $('a:external').addClass('external');
 
-  // This handles content links and image ads.
-  $('.external').each(function(index, Element) {
-    eLink = $(Element);
-    if(typeof(eLink.attr('href')) != "undefined") {
-      eventData = {
-        location: eLink.attr('href')
-      };    
-      eLink.click(eventData, tfkJumpEventHandler);
-    }
-  });
-  
-  
-//IE specific
-function tfkGetAdLocationIE(objName) {
-   var output = "";
-   var flashVars = "";
-   var keyValues = "";
-   var flashVarsArray = new Array();
-   if ﻿($(objName + " object").attr('name').toLowerCase() == "ebreportingflash") {
-       //Eyeblaster/Mediamind Rich Media Tag
-       //Go further to get the actual ad
-       $(objName).find('object').each(function() {
-           if ﻿($(this).attr('name').toLowerCase() != "ebreportingflash") {
-                $(this).children('param').each(function() {
-                    if($(this).attr('name').toLowerCase() == "flashvars"){
-                      flashVars = $(this).attr('value');
-                     }
-                });
-           }
-        });
-   } else {
-       //Served Flash
-       $(objName + " object").children('param').each(function() {
-          if($(this).attr('name').toLowerCase() == "flashvars"){
-             flashVars = $(this).attr('value');
-          }
-          if($(this).attr('name').toLowerCase() == "movie"){
-             movieVar = $(this).attr('value');
-          }
-        });
-   }
-   //flashVars = new String($(objName).html().match(/flashvars="([^"]*")/g));
-   //flashVars = flashVars.substr(0, flashVars.length - 1);flashVarsClean = flashVarsClean.substr(11, flashVarsClean.length);
-   if (flashVars.substr(0, 1) != "&" && flashVars != "") {  
-       flashVars = "&" + flashVars;
-       keyValues = flashVars.split(/&/);
-   }
-   if (flashVars == "") {
-       flashVars = movieVar;
-       keyValues = flashVars.split(/\?/);
-   }
-   for (var i in keyValues) {
-        var flashVar = keyValues[i].split(/=/);
-        flashVarsArray[flashVar[0]] = flashVar[1];
-    }
-   output = unescape(flashVarsArray['clickTag']);
-   return output; 
-}
-function tfkAdCSSHelper(adUnit, width, height) {
-    //adjust CSS in cases when we need to activate the helper div.
-    width = width + "px";height = height + "px";
-    $("#" + adUnit + "_jump_helper").css({'position' : 'absolute', 'width' : width , 'height' : height, 'background-color' : 'blue', 'opacity' : '0', 'filter' : 'alpha(opacity=0)', 'display' : 'inline'});
-}
-
-  //This handles flash and iframe ads
-  var tfkAdUnits = new Array("banner_728x90","banner_160x190","banner_160x600", "banner_728x90_footer");
-  var tfkAdElementName = "";
-  var tfkAdTargetLocation = "";
-  var tfkAdLocations = new Array();
-  var tfkAdwidth = new Array();
-  var tfkAdheight = new Array();
-  var tfkDimensionArray = new Array();
-  var tfkiFrameSrcArray = new Array();
-  for (var i = 0; i < tfkAdUnits.length; i++) {
-    tfkAdElementName = "#" + tfkAdUnits[i];
-    tfkAdEmbedName = "#" + tfkAdUnits[i] + " object";
-    tfkAdTargetLocation = "#" + tfkAdUnits[i] + " noscript";
-    tfkAdIframe = "#" + tfkAdUnits[i] + "_container iframe";
-    tfkDimensionArray[i] = tfkAdUnits[i].substr(7,tfkAdUnits[i].length).split(/x/);
-    tfkAdwidth[i] = tfkDimensionArray[i][0];
-    tfkAdheight[i] = tfkDimensionArray[i][1];
-    tfkAdLocations["#"+tfkAdUnits[i]] = "";
-    if ($(tfkAdEmbedName).length > 0) {//Flash
-        tfkAdTargetLocation = new String($(tfkAdTargetLocation).text().toLowerCase().match(/href="([^"]*")/g));
-        if ($.browser.msie) {
-            tfkAdTargetLocation = new String(tfkGetAdLocationIE(tfkAdElementName));
-        }
-        if (tfkAdTargetLocation.length > 0) {
-            tfkAdFinalUrl = tfkAdTargetLocation.substr(0, tfkAdTargetLocation.length - 1);tfkAdFinalUrl = tfkAdFinalUrl.substr(6, tfkAdFinalUrl.length);
-            //These object manipulations are needed to keep click from propagating downward into the flash. For IE, we have a CSS trick
-            $(tfkAdEmbedName + " param[name=wmode]").attr('value','transparent');
-            $(tfkAdElementName + " embed").attr('wmode','transparent');
-            if ($.browser.msie) {
-                 tfkAdFinalUrl = tfkAdTargetLocation;
-                 tfkAdCSSHelper(tfkAdUnits[i], tfkAdwidth[i], tfkAdheight[i]);
-             } 
-             tfkAdLocations["#"+tfkAdUnits[i]] = tfkAdFinalUrl;
-        }
-    }
-    if ($(tfkAdIframe).length > 0) {//Iframe
-          tfkiFrameSrcArray[i] = $(tfkAdIframe).attr('src').split(/click=/);
-          tfkAdFinalUrl = tfkiFrameSrcArray[i][1];
-          tfkAdLocations["#"+tfkAdUnits[i]] = tfkAdFinalUrl;
-          tfkAdCSSHelper(tfkAdUnits[i], tfkAdwidth[i], tfkAdheight[i]);
-    }
-  }
-  
-  // What we used to have:
-  // $('#banner_728x90').mousedown(function() {tfkAdJumpTrigger('#banner_728x90');}); 
-  
-  var adObjects = new Array(
-    {
-      'id': '#banner_728x90',
-      'obj': $("#banner_728x90 object")
-    },
-    {
-      'id': '#banner_160x190',
-      'obj': $("#banner_160x190 object")
-    },
-    {
-      'id': '#banner_160x600',
-      'obj': $("#banner_160x600 object")
-    },
-    {
-      'id': '#banner_728x90_footer',
-      'obj': $("#banner_728x90_footer object")
-    }
-  );
-  
-  function tfkJumpEventHandler(eventObject) {
-    
-    sdialog = '<div class="tfk-jump"><br/>You are leaving <a href="/">timeforkids.com</a> to check out a web site we recommended.  While TIME for Kids has reviewed  the site you are about to visit, we can&apos;t monitor changes to the site, advertisements or links to other sites.<br/><br/>Be sure to get permission from a parent before giving out any information about yourself online.  Never give your full name, phone number or address online.  To read more read <a href="/info/privacy-policy">TFK&apos;s privacy policy</a>. <div class="tfk-jump-reminder">(Remember to read the privacy policy of any new site you visit.)</div> <span id="tfk-jump-continue">going to the web site</span><span id="tfk-jump-back">to timeforkids.com</span></div>';
-    $(sdialog).dialog({
+  //Create the jump dialog
+  function tfkJumpPage(link) {
+    jumpDialog = '<div class="tfk-jump">You are leaving <a href="/">timeforkids.com</a> to check out a web site we recommended.  While TIME for Kids has reviewed  the site you are about to visit, we can&apos;t monitor changes to the site, advertisements or links to other sites.<br/><br/>Be sure to get permission from a parent before giving out any information about yourself online.  Never give your full name, phone number or address online.  To read more read <a href="/info/privacy-policy">TFK&apos;s privacy policy</a>. <div class="tfk-jump-reminder">(Remember to read the privacy policy of any new site you visit.)</div> </div>';
+    buttonDescription = '<div id="tfk-jump-button-description"><div id="tfk-jump-continue">going to the web site</div><div id="tfk-jump-back">to timeforkids.com</div></div><div style="clear:both;">&nbsp;</div>';
+    $(jumpDialog).dialog({
       title: "",
       modal : true,
       width : 626,
       buttons: {
         'Continue': function() {
           $(this).dialog('close').remove();
-          window.open(eventObject.data.location);
+          window.open(link);
           return false;
         },
         'Go Back': function() {
@@ -249,17 +124,150 @@ function tfkAdCSSHelper(adUnit, width, height) {
         }
       }
     });
+    $(buttonDescription).appendTo("div.ui-dialog-buttonpane");
     return false;
   }
   
-  for(i = 0; i < adObjects.length; i++) {  
-    if(adObjects[i].obj.length != 0) {    
-      // A map of data that will be passed to the event handler.
-      eventData = {
-          location: tfkAdLocations[adObjects[i].id]
-      }
-      adObjects[i].obj.mousedown(eventData, tfkJumpEventHandler); 
-    }
+  //Handler for flash/iframe
+  function tfkJumpPageHandler(event) {
+    tfkJumpPage(event.data.element);
+    event.preventDefault();
   }
 
+  //This handles content links and image ads
+  $('.external').click(function() {
+    var link = $(this).attr('href');
+    tfkJumpPage(link);
+    return false;
+  });
+  
+//Retrieves the ad location in a variety of ways for different types of flash ads
+function tfkGetFlashAdLocation(objName) {
+    var output = "";
+    var flashVars = "";
+    var keyValues = "";
+    var targetLocation = "";
+    var finalUrl = "";
+    var isEyeBlaster ="";
+    var flashVarsArray = new Array();
+    if ($(objName + " object").length > 0) {
+        if ﻿($(objName + " object").attr('name').toLowerCase() == "ebreportingflash") {
+            //Eyeblaster/Mediamind Rich Media Tag
+            //Go further to get the actual ad
+            $(objName).find('object').each(function() {
+                if ﻿($(this).attr('name').toLowerCase() != "ebreportingflash") {
+                    $(this).children('param').each(function() {
+                        if($(this).attr('name').toLowerCase() == "flashvars"){
+                            flashVars = $(this).attr('value');
+                        }
+                    });
+                 }
+            });
+            isEyeBlaster = "1";
+        } else {
+            //first party served Flash
+            $(objName + " object").children('param').each(function() {
+                if($(this).attr('name').toLowerCase() == "flashvars"){
+                    flashVars = $(this).attr('value');
+                }
+                if($(this).attr('name').toLowerCase() == "movie"){
+                    movieVar = $(this).attr('value');
+                }
+            });
+        }
+    } else if ($(objName + " object").length < 1 && $(objName + " embed").length > 0) {
+        if ﻿($(objName + " embed").attr('name').toLowerCase() == "ebreportingflash") {
+            //Sometimes the ad creative skips the object tag and just has an embed
+            $(objName).find('embed').each(function() {
+                if ﻿($(this).attr('name').toLowerCase() != "ebreportingflash") {
+                    flashVars = $(this).attr('flashvars');
+                }
+            });
+            isEyeBlaster = "1";
+        } else {
+            //first party served Flash
+            flashVars = $(objName + " embed").attr('flashvars');
+        }
+              
+    }
+    if (isEyeBlaster == "" && $.browser.msie == "undefined") {
+        adTargetLocation = new String($(objName + " noscript").text().toLowerCase().match(/href="([^"]*")/g));
+        tfkAdFinalUrl = adTargetLocation.substr(0, adTargetLocation.length - 1);tfkAdFinalUrl = tfkAdFinalUrl.substr(6, tfkAdFinalUrl.length);
+    } else {
+       if (flashVars.substr(0, 1) != "&" && flashVars != "") {  
+           flashVars = "&" + flashVars;
+       }
+       if (flashVars != "") {
+           keyValues = flashVars.split(/&/);
+       }
+       if (flashVars == "") {
+           flashVars = movieVar;
+           keyValues = flashVars.split(/\?/);
+       }
+       for (var i in keyValues) {
+            var flashVar = keyValues[i].split(/=/);
+            flashVarsArray[flashVar[0]] = flashVar[1];
+       }
+       tfkAdFinalUrl = unescape(flashVarsArray['clickTag']);
+    }
+   return tfkAdFinalUrl; 
+}
+
+//adjust CSS in cases when we need to activate the helper div.
+function tfkAdCSSHelper(adUnit, width, height) {
+    width = width + "px";height = height + "px";
+    $("#" + adUnit + "_jump_helper").css({'position' : 'absolute', 'width' : width , 'height' : height, 'background-color' : 'blue', 'opacity' : '0', 'filter' : 'alpha(opacity=0)', 'display' : 'inline'});
+}
+
+//This handles flash and iframe ads
+  TFKADS.adUnits = new Array("banner_728x90","banner_160x190","banner_160x600", "banner_728x90_footer");
+  TFKADS.adElementName = "";
+  TFKADS.adTargetLocation = "";
+  TFKADS.tfkAdLocations = new Array();
+  TFKADS.adwidth = new Array();
+  TFKADS.adheight = new Array();
+  TFKADS.dimensionArray = new Array();
+  TFKADS.iFrameSrcArray = new Array();
+  for (var i = 0; i < TFKADS.adUnits.length; i++) {
+    TFKADS.adElementName = "#" + TFKADS.adUnits[i];
+    tfkAdEmbedName = "#" + TFKADS.adUnits[i] + " object";
+    if ($(tfkAdEmbedName).length < 1) {
+        //Let's see if it's just an embed. Sometimes the ad creative is like this.
+        if ($("#"+TFKADS.adUnits[i]+" embed").length > 0) {
+            tfkAdEmbedName = "#"+TFKADS.adUnits[i]+" embed";
+        }
+    }
+    TFKADS.adTargetLocation = "#" + TFKADS.adUnits[i] + " noscript";
+    tfkAdIframe = "#" + TFKADS.adUnits[i] + "_container iframe";
+    TFKADS.dimensionArray[i] = TFKADS.adUnits[i].substr(7,TFKADS.adUnits[i].length).split(/x/);
+    TFKADS.adwidth[i] = TFKADS.dimensionArray[i][0];
+    TFKADS.adheight[i] = TFKADS.dimensionArray[i][1];
+    TFKADS.tfkAdLocations["#"+TFKADS.adUnits[i]] = "";
+    if ($(tfkAdEmbedName).length > 0) {//Flash
+        tfkAdFinalUrl = tfkGetFlashAdLocation(TFKADS.adElementName);
+        /*TFKADS.adTargetLocation = new String($(TFKADS.adTargetLocation).text().toLowerCase().match(/href="([^"]*")/g));
+        if ($.browser.msie) {
+            TFKADS.adTargetLocation = new String(tfkGetAdLocationIE(TFKADS.adElementName));
+        }*/
+        if (TFKADS.adTargetLocation.length > 0) {
+            //tfkAdFinalUrl = TFKADS.adTargetLocation.substr(0, TFKADS.adTargetLocation.length - 1);tfkAdFinalUrl = tfkAdFinalUrl.substr(6, tfkAdFinalUrl.length);
+            //These object manipulations are needed to keep click from propagating downward into the flash. For IE, we have a CSS trick
+            $(tfkAdEmbedName + " param[name=wmode]").attr('value','transparent');
+            $(TFKADS.adElementName + " embed").attr('wmode','transparent');
+             if ($.browser.msie) {
+                 /*tfkAdFinalUrl = TFKADS.adTargetLocation;*/
+                 tfkAdCSSHelper(TFKADS.adUnits[i], TFKADS.adwidth[i], TFKADS.adheight[i]);
+             } 
+             TFKADS.tfkAdLocations[TFKADS.adElementName] = tfkAdFinalUrl;
+             $(TFKADS.adElementName).bind("mousedown", {element: TFKADS.tfkAdLocations[TFKADS.adElementName]}, tfkJumpPageHandler);//Must use mouseDown as click will not work with flash
+        }
+    }
+    if ($(tfkAdIframe).length > 0) {//Iframe
+          TFKADS.iFrameSrcArray[i] = $(tfkAdIframe).attr('src').split(/click=/);
+          tfkAdFinalUrl = TFKADS.iFrameSrcArray[i][1];
+          TFKADS.tfkAdLocations["#"+TFKADS.adUnits[i]] = tfkAdFinalUrl;
+          tfkAdCSSHelper(TFKADS.adUnits[i], TFKADS.adwidth[i], TFKADS.adheight[i]);
+          $(TFKADS.adElementName).bind("mousedown", {element: TFKADS.tfkAdLocations[TFKADS.adElementName]}, tfkJumpPageHandler);
+    }
+  }
 });//End doc ready
