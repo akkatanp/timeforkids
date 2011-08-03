@@ -49,13 +49,16 @@
     text-transform:uppercase;
 }
 .tfk-jump-reminder {text-align:center;margin-top:10px;}
+div.ui-dialog-buttonset {
+    float:left;
+}
+#tfk-jump-button-description {
+    float:right;
+    margin-right:180px;
+}
 #tfk-jump-continue {
-    position:absolute;
-    top:180px;
-    left:300px;
+    margin-top:5px;
 }
 #tfk-jump-back {
-    position:absolute;
-    top:230px;
-    left:300px;
+    margin-top:37px;
 }
