@@ -301,6 +301,12 @@ body.page-teacher-community-topic-list .view-board-members .view-header h3 {
 	text-align: right;
 }
 
+.views-field-field-member-photo {
+	float: left;
+	margin-right: 10px;
+	height: 90px;
+}
+
 /* New Comments */
 .new-comment-label {
   background-color: #D71700;
