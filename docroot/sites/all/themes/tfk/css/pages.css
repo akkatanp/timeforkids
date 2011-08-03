@@ -1722,7 +1722,6 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 /* TFK extras */
 .page-extras #content .block-views {
 	border: solid 1px #cecece;
-	padding: 10px;
 }
 
 .page-extras .block-views h2.block-title {
@@ -1731,7 +1730,7 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 	background: #d71700;
 	text-transform: uppercase;
 	padding: 2px;
-	margin: 0 0 10px 0;
+	margin: 10px 10px 0 10px;
 }
 
 .page-extras .block-views .field-type-image {
@@ -1790,7 +1789,7 @@ body.page-extras .block > .content > p {
 }
 
 body.page-extras .block-views .content .view-content .views-row {
-	padding: 14px 0;
+	padding: 14px 10px;
 	border-bottom: 1px solid #CECECE;
 }
 
