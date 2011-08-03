@@ -150,52 +150,88 @@
         background: url(images/tfk-red-arrow-right.png) no-repeat scroll 36px 0 transparent
         padding: 3px 42px 3px 3px
   .flashcard-cycle-cards
-    background: $tfk-yellow
+    +border-radius(0)
+    +box-shadow(rgba($black, 0) 0 0 0)
+.flashcard-cycle-card
+  position: relative
+  $perspective: 800
+  .card-front, .card-back
     width: 500px
+    height: 250px
+    background: $tfk-yellow
     text-align: center
     margin-bottom: 10px
     +border-radius(14px)
-    +box-shadow($default-box-shadow-color -4px 4px 6px)
-    ul.question
-      li.answer
-        font-size: $ms2
-        padding-top: 50px
-        text-align: center
-        font-weight: bold
-        margin: 10px
-      .item-list
-        ul.answer
-          background: white
-          width: 325px
-          margin: 10px 0 0 75px
-          +border-radius(11px)
-          border: 4px solid lighten($black, 60.0)
-          li.first
-            font-size: $ms2
-            padding: 15px
-            color: $tfk-red
-            margin: 0
-  .flashcard-cycle-card
-    width: 500px
-    min-height: 270px
-    *height: 250px
-  .flashcard-cycle-mark
+    border: 1px solid scale-color($tfk-yellow, $lightness: -20%)
+    +backface-visibility(hidden)
+    +transition-property(all)
+    +transition-duration(0.5s)
+    +transition-timing-function(ease-in)
+  .card-front
+    position: relative
+    z-index: 2
+    +rotate3d(1, 0, 0, 0deg, $perspective)
+    +box-shadow($default-box-shadow-color -2px 2px 6px)
+  .card-back
     position: absolute
-    bottom: 120px 
-    left: 242px 
-    z-index: 100 
-    input.form-checkbox
-      margin-top: 0
-  .flashcard-cycle-pager  
-    *float: none
-    *margin-left: 110px
+    top: 0
+    left: 0
+    z-index: 1
+    +rotate3d(1, 0, 0, 180deg, $perspective)
+    +box-shadow(change-color($default-box-shadow-color, $alpha: 0.15) -4px 4px 8px)
+    ul
+      display: block !important
+  .showing &
+    .card-front
+      +rotate3d(1, 0, 0, -180deg, $perspective)
+    .card-back
+      +rotate3d(1, 0, 0, 0deg, $perspective)
+  // &:hover
+  //   .card-front
+  //     +rotate3d(1, 0, 0, -180deg, $perspective)
+  //   .card-back
+  //     +rotate3d(1, 0, 0, 0deg, $perspective)
+  ul
+    li
+      font-size: $ms2
+      padding-top: 70px
+      text-align: center
+      font-weight: bold
+      margin: 10px
+    .item-list
+      ul.answer
+        background: white
+        // width: 325px
+        // margin: 10px 0 0 75px
+        margin-top: 10px
+        +border-radius(11px)
+        border: 4px solid lighten($black, 60.0)
+        li.first
+          font-size: $ms2
+          line-height: 22px
+          padding: 15px
+          color: $tfk-red
+          margin: 0
+.flashcard-cycle-mark
+  position: absolute
+  // top: 80px
+  // left: 120px
+  top: 40px
+  left: 150px
+  z-index: 100
+  +float-left
+.flashcard-cycle-pager  
+  *float: none
+  *margin-left: 110px  
 
 .flashcard-numbering
   +float-right
   position: absolute
-  top: 60px
-  left: 200px
-  z-index: 10
+  // top: 60px
+  // left: 200px
+  top: 20px
+  left: 170px
+  z-index: 100
   width: 60px
   span.flashcard-numbering-current
     font-weight: bold
