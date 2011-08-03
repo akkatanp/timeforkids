@@ -4,12 +4,8 @@
 
 .more-items-col {
   vertical-align: top;
-  display: inline-block;
-  margin-right: 5px;
-}
-
-* html .more-items-col {
   display: block;
+  margin-right: 5px;
   float: left;
 }
 
@@ -20,6 +16,7 @@
 #more-items {
   border: 1px solid #CECECE;
   padding: 10px 9px;
+  min-height: 180px;
 }
 
 #more-items h2 {
