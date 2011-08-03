@@ -60,6 +60,13 @@ function tfk_teachers_community_block_info() {
     'cache' => DRUPAL_CACHE_GLOBAL,
   );
   
+  // Teacher Community Topic List editable text area under "Got a Question? Need Advice on Lesson Plans?"
+  $blocks['tfk_teachers_topic_textarea'] = array(
+    'info' => t('TFK Teachers Community More Topics Textarea'),
+    'visibility' => BLOCK_VISIBILITY_LISTED,
+    'cache' => DRUPAL_CACHE_GLOBAL,
+  );
+  
   return $blocks;
 }
 
@@ -86,9 +93,59 @@ function tfk_teachers_community_block_view($delta='') {
       }
     break;
     
+    // Teacher Community Topic List editable text area under "Got a Question? Need Advice on Lesson Plans?"
+    case 'tfk_teachers_topic_textarea':
+      $textarea = variable_get('tfk_teachers_topic_textarea', '');
+      if($textarea != '') {
+        $block['content'] = $textarea;
+      }
+    break;
+    
   }
   
   return $block;
+}
+
+/**
+ * @see block_custom_block_form
+ */
+function tfk_teachers_community_block_configure($delta='') {
+  $form = array();
+  
+  switch ($delta) {
+    
+    // Teacher Community Topic List editable text area under "Got a Question? Need Advice on Lesson Plans?"
+    case 'tfk_teachers_topic_textarea':
+      $form['tfk_teachers_topic_textarea'] = array(
+        '#type' => 'textarea',
+        '#title' => 'Editable textarea',
+        '#default_value' => variable_get('tfk_teachers_topic_textarea', ''),
+      );
+      return $form;
+    break;
+    
+  }
+  
+  return $form;
+}
+
+function tfk_teachers_community_block_save($delta='', $edit = array()) {
+  if ($delta == 'tfk_teachers_topic_textarea') {
+    variable_set('tfk_teachers_topic_textarea', $edit['tfk_teachers_topic_textarea']);
+  }
+}
+
+/**
+ * Modify the default admin interface for some of our custom blocks.
+ */
+function tfk_teachers_community_form_block_admin_configure_alter(&$form, &$form_state, $form_id) {
+ if($form['delta']['#value'] == 'tfk_teachers_topic_textarea') {
+   // Hide stuff we don't want users to see.
+   $form['settings']['title']['#type'] = 'hidden';
+   $form['regions']['#access'] = FALSE;
+   $form['visibility']['#access'] = FALSE;
+   $form['visibility_title']['#access'] = FALSE;
+ }
 }
 
 /**
@@ -109,11 +166,17 @@ function tfk_teachers_community_preprocess_page(&$variables, $hook) {
     //$page['before_content'] = t('<h2>Submit to the Teachers Community</h2>');
     drupal_set_title(t('Submit to the Teachers Community'));
     
+    $textarea = variable_get('tfk_teachers_topic_textarea', '');
+    if(user_access('administer blocks')) {
+      $module = 'tfk_teachers_community';
+      $delta = 'tfk_teachers_topic_textarea';
+      $textarea .= '<div class="admin-link">'. l(t('Edit block'), "admin/structure/block/manage/$module/$delta/configure", array('query' => drupal_get_destination())). '</div>';
+    }
+
     // Hardcode help message. The one coming from the Drupal interface contains bad markup (>.<)!
     $variables['page']['help']['system_help']['#markup'] = t("
 			<h2>Got a Question? Need Advice on Lesson Plans?</h2>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-    ");
+    "). $textarea;
     
     $btn_id = "form#teacher-community-question-node-form div#edit-actions input#edit-submit";
     $btn_img = "/images/submit-your-question-active.png";
