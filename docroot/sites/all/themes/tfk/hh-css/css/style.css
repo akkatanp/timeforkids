@@ -803,8 +803,25 @@ img {
   padding: 3px 42px 3px 3px;
 }
 .flashcard-cycle .flashcard-cycle-cards {
-  background: #f8e549;
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  -o-border-radius: 0;
+  -ms-border-radius: 0;
+  -khtml-border-radius: 0;
+  border-radius: 0;
+  -moz-box-shadow: rgba(0, 0, 0, 0) 0 0 0;
+  -webkit-box-shadow: rgba(0, 0, 0, 0) 0 0 0;
+  -o-box-shadow: rgba(0, 0, 0, 0) 0 0 0;
+  box-shadow: rgba(0, 0, 0, 0) 0 0 0;
+}
+
+.flashcard-cycle-card {
+  position: relative;
+}
+.flashcard-cycle-card .card-front, .flashcard-cycle-card .card-back {
   width: 500px;
+  height: 250px;
+  background: #f8e549;
   text-align: center;
   margin-bottom: 10px;
   -moz-border-radius: 14px;
@@ -813,22 +830,65 @@ img {
   -ms-border-radius: 14px;
   -khtml-border-radius: 14px;
   border-radius: 14px;
-  -moz-box-shadow: rgba(0, 0, 0, 0.25) -4px 4px 6px;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.25) -4px 4px 6px;
-  -o-box-shadow: rgba(0, 0, 0, 0.25) -4px 4px 6px;
-  box-shadow: rgba(0, 0, 0, 0.25) -4px 4px 6px;
+  border: 1px solid #f6dc0b;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -moz-transition-property: all;
+  -webkit-transition-property: all;
+  -o-transition-property: all;
+  transition-property: all;
+  -moz-transition-duration: 0.5s;
+  -webkit-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -moz-transition-timing-function: ease-in;
+  -webkit-transition-timing-function: ease-in;
+  -o-transition-timing-function: ease-in;
+  transition-timing-function: ease-in;
 }
-.flashcard-cycle .flashcard-cycle-cards ul.question li.answer {
+.flashcard-cycle-card .card-front {
+  position: relative;
+  z-index: 2;
+  -webkit-transform: perspective(800) rotate3d(1, 0, 0, 0deg);
+  transform: perspective(800) rotate3d(1, 0, 0, 0deg);
+  -moz-box-shadow: rgba(0, 0, 0, 0.25) -2px 2px 6px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.25) -2px 2px 6px;
+  -o-box-shadow: rgba(0, 0, 0, 0.25) -2px 2px 6px;
+  box-shadow: rgba(0, 0, 0, 0.25) -2px 2px 6px;
+}
+.flashcard-cycle-card .card-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  -webkit-transform: perspective(800) rotate3d(1, 0, 0, 180deg);
+  transform: perspective(800) rotate3d(1, 0, 0, 180deg);
+  -moz-box-shadow: rgba(0, 0, 0, 0.15) -4px 4px 8px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.15) -4px 4px 8px;
+  -o-box-shadow: rgba(0, 0, 0, 0.15) -4px 4px 8px;
+  box-shadow: rgba(0, 0, 0, 0.15) -4px 4px 8px;
+}
+.flashcard-cycle-card .card-back ul {
+  display: block !important;
+}
+.showing .flashcard-cycle-card .card-front {
+  -webkit-transform: perspective(800) rotate3d(1, 0, 0, -180deg);
+  transform: perspective(800) rotate3d(1, 0, 0, -180deg);
+}
+.showing .flashcard-cycle-card .card-back {
+  -webkit-transform: perspective(800) rotate3d(1, 0, 0, 0deg);
+  transform: perspective(800) rotate3d(1, 0, 0, 0deg);
+}
+.flashcard-cycle-card ul li {
   font-size: 20px;
-  padding-top: 50px;
+  padding-top: 70px;
   text-align: center;
   font-weight: bold;
   margin: 10px;
 }
-.flashcard-cycle .flashcard-cycle-cards ul.question .item-list ul.answer {
+.flashcard-cycle-card ul .item-list ul.answer {
   background: white;
-  width: 325px;
-  margin: 10px 0 0 75px;
+  margin-top: 10px;
   -moz-border-radius: 11px;
   -webkit-border-radius: 11px;
   -o-border-radius: 11px;
@@ -837,27 +897,24 @@ img {
   border-radius: 11px;
   border: 4px solid #999999;
 }
-.flashcard-cycle .flashcard-cycle-cards ul.question .item-list ul.answer li.first {
+.flashcard-cycle-card ul .item-list ul.answer li.first {
   font-size: 20px;
+  line-height: 22px;
   padding: 15px;
   color: #d71700;
   margin: 0;
 }
-.flashcard-cycle .flashcard-cycle-card {
-  width: 500px;
-  min-height: 270px;
-  *height: 250px;
-}
-.flashcard-cycle .flashcard-cycle-mark {
+
+.flashcard-cycle-mark {
   position: absolute;
-  bottom: 120px;
-  left: 242px;
+  top: 40px;
+  left: 150px;
   z-index: 100;
+  display: inline;
+  float: left;
 }
-.flashcard-cycle .flashcard-cycle-mark input.form-checkbox {
-  margin-top: 0;
-}
-.flashcard-cycle .flashcard-cycle-pager {
+
+.flashcard-cycle-pager {
   *float: none;
   *margin-left: 110px;
 }
@@ -866,9 +923,9 @@ img {
   display: inline;
   float: right;
   position: absolute;
-  top: 60px;
-  left: 200px;
-  z-index: 10;
+  top: 20px;
+  left: 170px;
+  z-index: 100;
   width: 60px;
 }
 .flashcard-numbering span.flashcard-numbering-current {

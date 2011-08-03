@@ -18,8 +18,22 @@
   </div>
   <div class="flashcard-cycle-cards">
     <?php foreach ($items as $item): ?>
+      <?php 
+      $question = $item; 
+      unset($question['#items'][0]['children']);
+      unset($question['#items'][0]['class']);
+      $question['#attributes']['class'][] = 'front';
+      $answer = $item;
+      $answer['#attributes']['class'][0] = 'answer';
+      $answer['#attributes']['class'][] = 'back';
+      ?>
     <div class="flashcard-cycle-card">
-      <?php print render($item); ?>
+      <div class="card-front">
+        <?php print render($question); ?>
+      </div>
+      <div class="card-back">
+        <?php print render($answer); ?>
+      </div>
     </div>
     <?php endforeach; ?>
   </div>

@@ -111,13 +111,40 @@
             .find('.flip')
               .click(
                 function() {
-                  card
-                    .find('.flashcard-cycle-card:visible ul.answer')
-                      .toggle(cycleSpeed)
-                    .end();
-                  if (card.hasClass('showing') && Drupal.settings.flashcardCycle.flip == 'next') {
-                    current = cardNumber('next', current, counts[modeChecked]);
-                    card.cycle('next');
+                  if ( $('html').hasClass('csstransforms3d') ) {
+                    if (card.hasClass('showing') && Drupal.settings.flashcardCycle.flip == 'next') {
+                      card
+                        .find('.flashcard-cycle-card:visible .card-back')
+                          .bind('webkitTransitionEnd oTransitionEnd transitionEnd', function() {
+                            $(this).unbind('webkitTransitionEnd').unbind('oTransitionEnd').unbind('transitionEnd');
+                            current = cardNumber('next', current, counts[modeChecked]);
+                            card.cycle('next');
+                          });
+                    }
+                  } 
+                  else {
+                    if ( card.hasClass('showing') ) {
+                      card
+                        .find('.flashcard-cycle-card:visible .card-front')
+                          .show()
+                          .end()
+                        .find('.flashcard-cycle-card:visible .card-back')
+                          .hide()
+                          .end();
+                    }
+                    else {
+                      card
+                        .find('.flashcard-cycle-card:visible .card-front')
+                          .hide()
+                          .end()
+                        .find('.flashcard-cycle-card:visible .card-back')
+                          .show()
+                          .end();
+                    }
+                    if (card.hasClass('showing') && Drupal.settings.flashcardCycle.flip == 'next') {
+                      current = cardNumber('next', current, counts[modeChecked]);
+                      card.cycle('next');
+                    }
                   }
                   card.toggleClass('showing');
                 }
@@ -127,10 +154,40 @@
             .find('.next, .prev')
               .click(
                 function() {
-                  card
-                    .cycle($(this).attr('class').split(/\b/)[0])
-                    .removeClass('showing');
+                  if ( $('html').hasClass('csstransforms3d') ) {
+                    $thisButton = $(this);
+                    if (card.hasClass('showing')) {
+                      card
+                        .removeClass('showing')
+                        .find('.flashcard-cycle-card:visible .card-back')
+                          .bind('webkitTransitionEnd', function() {
+                            $(this).unbind('webkitTransitionEnd').unbind('oTransitionEnd').unbind('transitionEnd');
+                            card
+                              .cycle($thisButton.attr('class').split(/\b/)[0])
+                            current = cardNumber($thisButton.attr('class').split(/\b/)[0], current, counts[modeChecked]);
+                          });
+                    } 
+                    else {
+                      card
+                        .cycle($thisButton.attr('class').split(/\b/)[0])
+                      current = cardNumber($thisButton.attr('class').split(/\b/)[0], current, counts[modeChecked]);
+                    }
+                  }
+                  else {
+                    if ( card.hasClass('showing') ) {
+                      card
+                        .find('.flashcard-cycle-card:visible .card-front')
+                          .show()
+                          .end()
+                        .find('.flashcard-cycle-card:visible .card-back')
+                          .hide()
+                          .end();
+                    }
+                    card
+                      .cycle($(this).attr('class').split(/\b/)[0])
+                      .removeClass('showing');
                     current = cardNumber($(this).attr('class').split(/\b/)[0], current, counts[modeChecked]);
+                  }
                 }
               )
               .each(
