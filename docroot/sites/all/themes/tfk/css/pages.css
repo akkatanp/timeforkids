@@ -310,9 +310,11 @@ ul.links li {
     border: 1px solid #CECECE;
     background:#ffffff;
     padding:10px;
-
+    margin-top:10px;
 }
 #block-views-board-members-block-2 h2 {
+    margin-top:0;
+    padding-top:0;
     font-size:1.0em;
     font-family: "arial black", arial, sans-serif;
     margin-bottom: 10px;
@@ -340,6 +342,7 @@ ul.links li {
     text-decoration: none;
     margin-left:50px;
     display:block;
+    text-align:center;
 }
 .node-board-member {
     border:1px solid #CECECE;
