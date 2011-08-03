@@ -13,9 +13,9 @@ function tfk_teachers_community_context_default_contexts() {
   $context = new stdClass;
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
-  $context->name = 'TFK Teacher Community';
+  $context->name = 'tfk_teacher_community';
   $context->description = 'Block placements for Teacher Community pages.';
-  $context->tag = 'TFK Teacher Community';
+  $context->tag = 'TFK';
   $context->conditions = array(
     'node' => array(
       'values' => array(
@@ -38,11 +38,11 @@ function tfk_teachers_community_context_default_contexts() {
           'module' => 'tfk_teachers_community',
           'delta' => 'tfk_teachers_comm_more_topics',
           'region' => 'sidebar_bottom',
-          'weight' => '-10',
+          'weight' => '-75',
         ),
-        'views-board_members-block_2' => array(
+        'views-4dd757237991afc15893b55c57cc03ef' => array(
           'module' => 'views',
-          'delta' => 'board_members-block_2',
+          'delta' => '4dd757237991afc15893b55c57cc03ef',
           'region' => 'sidebar_bottom',
           'weight' => '-9',
         ),
@@ -54,8 +54,8 @@ function tfk_teachers_community_context_default_contexts() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Block placements for Teacher Community pages.');
-  t('TFK Teacher Community');
-  $export['TFK Teacher Community'] = $context;
+  t('TFK');
+  $export['tfk_teacher_community'] = $context;
 
   return $export;
 }
