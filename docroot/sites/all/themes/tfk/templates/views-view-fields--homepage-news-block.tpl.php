@@ -42,7 +42,7 @@
 
 
 <?php if(strlen($fields['field_mini_lessons']->content) != 0 || strlen($fields['field_related_articles']->content) != 0):?>
-    qqq<div class="related-content-wrap">
+    <div class="related-content-wrap">
         <div class="addit-content">Additional Content</div>
         <?php if($fields['field_mini_lessons']): ?>
            <div class="addit-mini-lessons"><?php print $fields['field_mini_lessons']->label;?> : <?php print $fields['field_mini_lessons']->content;?></div>
