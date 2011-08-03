@@ -245,17 +245,11 @@ function tfkAdCSSHelper(adUnit, width, height) {
     TFKADS.tfkAdLocations["#"+TFKADS.adUnits[i]] = "";
     if ($(tfkAdEmbedName).length > 0) {//Flash
         tfkAdFinalUrl = tfkGetFlashAdLocation(TFKADS.adElementName);
-        /*TFKADS.adTargetLocation = new String($(TFKADS.adTargetLocation).text().toLowerCase().match(/href="([^"]*")/g));
-        if ($.browser.msie) {
-            TFKADS.adTargetLocation = new String(tfkGetAdLocationIE(TFKADS.adElementName));
-        }*/
         if (TFKADS.adTargetLocation.length > 0) {
-            //tfkAdFinalUrl = TFKADS.adTargetLocation.substr(0, TFKADS.adTargetLocation.length - 1);tfkAdFinalUrl = tfkAdFinalUrl.substr(6, tfkAdFinalUrl.length);
             //These object manipulations are needed to keep click from propagating downward into the flash. For IE, we have a CSS trick
             $(tfkAdEmbedName + " param[name=wmode]").attr('value','transparent');
             $(TFKADS.adElementName + " embed").attr('wmode','transparent');
              if ($.browser.msie) {
-                 /*tfkAdFinalUrl = TFKADS.adTargetLocation;*/
                  tfkAdCSSHelper(TFKADS.adUnits[i], TFKADS.adwidth[i], TFKADS.adheight[i]);
              } 
              TFKADS.tfkAdLocations[TFKADS.adElementName] = tfkAdFinalUrl;
