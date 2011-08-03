@@ -275,12 +275,12 @@
 
 #teacher-nav-container ul.menu a.worksheets {
 	width: 92px;
-	background: url(../images/sub-nav-sprite.png) no-repeat -112px 0px;
+	background: url(../images/sub-nav-sprite.png) no-repeat -116px 0px;
 }
 
 #teacher-nav-container ul.menu a.worksheets.active,
 #teacher-nav-container ul.menu a.worksheets:hover {
-	background: url(../images/sub-nav-sprite.png) no-repeat -112px -32px;
+	background: url(../images/sub-nav-sprite.png) no-repeat -116px -32px;
 }
 
 #teacher-nav-container ul.menu a.teacher-community {
