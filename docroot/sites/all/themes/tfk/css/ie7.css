@@ -64,7 +64,6 @@ div#tfk-search-photos-video-featured div.g1 {
     display: inline;
 }
 /*Magazine Archive*/
-.pubcal-link > div {
-    zoom:1;
-    display: inline;
+.pubcal-link .right {
+    margin-top:-16px;
 }
