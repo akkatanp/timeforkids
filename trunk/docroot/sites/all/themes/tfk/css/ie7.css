@@ -42,3 +42,15 @@ tr.odd td {
 	position: absolute;
         left:10px;
 }
+/* Homespace secondary tout spacing*/
+.view-homepage-news-block table td.col-1, .view-teacher-news-news-block table td.col-1, .view-kid-reporters-channel-news-block table td.col-1 {
+    position:relative;
+    left:-3px;
+}
+.view-homepage-news-block table td.col-2, .view-teacher-news-news-block table td.col-2, .view-kid-reporters-channel-news-block table td.col-2 {
+    position:relative;
+    right:-3px;
+}
+.view-homepage-news-block table, .view-teacher-news-news-block table, .view-kid-reporters-channel-news-block table {
+    border-collapse: separate;
+}
