@@ -700,9 +700,25 @@ function tfk_atw_form_alter(&$form,&$form_state,$form_id) {
   			$form['#parents'] = $old_form ['#parents'];
   			// $form['#array_parents'] = $old_form ['#array_parents'];
 
-  			$form['message']= array(
-  				'#markup' => t('<h1>Not Bad! You got '.$form_state['storage']['correct_answers'].' correct answers of '.$form_state['storage']['total_answers'].'</h1>')
-  			);
+
+
+                        if($form_state['storage']['correct_answers'] > 0 && $form_state['storage']['correct_answers'] < 3){
+                          $form['message']= array(
+                                  '#markup' => t('<h1>Try again! You got '.$form_state['storage']['correct_answers'].' correct answers of '.$form_state['storage']['total_answers'].'</h1>')
+                          );
+                        }elseif($form_state['storage']['correct_answers'] > 2 && $form_state['storage']['correct_answers'] < 6){
+                          $form['message']= array(
+                                  '#markup' => t('<h1>Not Bad! You got '.$form_state['storage']['correct_answers'].' correct answers of '.$form_state['storage']['total_answers'].'</h1>')
+                          );
+                        }elseif($form_state['storage']['correct_answers'] > 5 && $form_state['storage']['correct_answers'] < 9){
+                          $form['message']= array(
+                                  '#markup' => t('<h1>Nice Job! You got '.$form_state['storage']['correct_answers'].' correct answers of '.$form_state['storage']['total_answers'].'</h1>')
+                          );
+                        }else{
+                          $form['message']= array(
+                                  '#markup' => t('<h1>Nice Job! You got '.$form_state['storage']['correct_answers'].' correct answers of '.$form_state['storage']['total_answers'].'</h1>')
+                          );
+                        }
 
   			if(!empty($questions))
   			foreach($questions as $key => $question) {
