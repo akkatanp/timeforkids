@@ -44,9 +44,13 @@ function aplus_papers_prepare_step($node) {
   $form['description'] = node_view($node, 'full');
   if ($node->field_step_title && $node->field_step_title[$node->language][0]['value']) {
     $form['title'] = array(
-      '#type' => 'textfield',
+      '#type' => 'text_format',
+      '#rows' => 1,
+      '#format' => 'simple_html',
       '#required' => TRUE,
       '#title' => t('Title'),
+      '#prefix' => '<div class="aplus-single-line">',
+      '#suffix' => '</div>',
     );
   }
   if ($node->field_step_name_date && $node->field_step_name_date[$node->language][0]['value']) {
@@ -65,9 +69,12 @@ function aplus_papers_prepare_step($node) {
   }
   if ($node->field_step_text_area[$node->language][0]['value']) {
     $form['textarea'] = array(
-      '#type' => 'textarea',
+      '#type' => 'text_format',
+      '#format' => 'simple_html',
       '#required' => TRUE,
       '#title' => isset($node->field_step_text_label[$node->language][0]['value']) ? $node->field_step_text_label[$node->language][0]['value'] : check_plain($node->title),
+      '#prefix' => '<div class="aplus-multi-line">',
+      '#suffix' => '</div>',
     );
   }
   if ($node->field_step_checkbox) {
