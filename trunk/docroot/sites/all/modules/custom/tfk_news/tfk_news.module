@@ -424,7 +424,7 @@ function tfk_news_preprocess_block(&$variables){
     $node = node_load(arg(1));
     if(!isset($node->field_kid_reporter['und'][0])){
       if($variables['block']->delta == 'random_kid_reporters-block'){
-        $variables['content'] = '';
+        unset($variables['content']);
       }
     }
   }
