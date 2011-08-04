@@ -188,6 +188,8 @@
 	background: url(../images/main-nav-sprite.png) no-repeat -50px 0px;
 }
 
+.node-type-kid-reporter  #global-nav-container ul.menu a.kid-reporter,
+.section-tfk-kid-reporters  #global-nav-container ul.menu a.kid-reporter,
 .node-type-article.with-kid-reporter #global-nav-container ul.menu a.kid-reporter,
 #global-nav-container ul.menu a.kid-reporter.active,
 #global-nav-container ul.menu a.kid-reporter:hover {
