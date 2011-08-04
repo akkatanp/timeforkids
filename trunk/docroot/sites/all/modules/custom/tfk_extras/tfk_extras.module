@@ -85,3 +85,14 @@ function tfk_extras_preprocess_node(&$variables){
   }
 
 }
+
+/**
+ * Page preprocessor.
+ */
+function tfk_extras_preprocess_page(&$variables) {
+  
+  // Set title on Photos & Video search page.
+  if(arg(0) == 'extras') {
+    $variables['section_title'] = 'TFK Extra';
+  }
+}
