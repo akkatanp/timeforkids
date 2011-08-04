@@ -307,6 +307,13 @@ body.page-teacher-community-topic-list .view-board-members .view-header h3 {
 	height: 90px;
 }
 
+#block-views-4dd757237991afc15893b55c57cc03ef div.view-teacher-board-nodeblock-view div.views-row {
+	border: 0;
+	margin: 0;
+	padding: 0;
+	min-height: inherit;
+}
+
 /* New Comments */
 .new-comment-label {
   background-color: #D71700;
