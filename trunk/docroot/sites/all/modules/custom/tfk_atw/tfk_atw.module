@@ -702,7 +702,7 @@ function tfk_atw_form_alter(&$form,&$form_state,$form_id) {
 
 
 
-                        if($form_state['storage']['correct_answers'] > 0 && $form_state['storage']['correct_answers'] < 3){
+                        if($form_state['storage']['correct_answers'] >= 0 && $form_state['storage']['correct_answers'] < 3){
                           $form['message']= array(
                                   '#markup' => t('<h1>Try again! You got '.$form_state['storage']['correct_answers'].' correct answers of '.$form_state['storage']['total_answers'].'</h1>')
                           );
