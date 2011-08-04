@@ -175,9 +175,14 @@ form table .item-list ul {
 	margin-left: 20px;
 }
 
+#login-container #message-box  ul#message-list li {
+	margin-bottom: 20px;
+}
+
 #login-container  #login-footer {
 	border-top: dotted 1px #cecece;
 	padding: 20px 10px 0 10px;
+	clear: both;
 }
 
 #login-form-container h2 {
@@ -209,5 +214,5 @@ form table .item-list ul {
 }
 
 #login-footer a:first-child {
-	margin-right: 50px;
+	margin-right: 150px;
 }
