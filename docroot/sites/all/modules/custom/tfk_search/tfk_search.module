@@ -1320,6 +1320,9 @@ function worksheets_save_srch($form, &$form_state) {
 
 /**
  * Submit callback for worksheets_save_srch() form.
+ *
+ * This callback adds the markup to the "My saved searches" block after
+ * the user saves a search.
  */
 function worksheets_save_srch_submit(&$form, &$form_state) {
   ctools_include('modal');
