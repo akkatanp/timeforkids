@@ -94,6 +94,10 @@ a.add(this)});a.css({width:0,height:0}).css({width:c.ui.dialog.overlay.width(),h
 
 //Init namespace
 if (typeof TFKADS == 'undefined' || !TFKADS) {window.TFKADS = {};}
+
+//External domains that we don't want to go through the jump page for. timeforkids.com is included just in case our own domain shows up in a flash ad
+TFKADS.domainExceptions = new Array("timeforkidsdigital.com","timeinc.com","timeinc.net", "timeforkids.com","acquia-sites.com");
+
 $(document).ready(function() {
   // Creating custom :external selector
   $.expr[':'].external = function(obj){
@@ -106,6 +110,12 @@ $(document).ready(function() {
 
   //Create the jump dialog
   function tfkJumpPage(link) {
+    for (var n = 0; n < TFKADS.domainExceptions.length; n++) {
+        if (~link.indexOf(TFKADS.domainExceptions[n])) {
+            location.href = link;
+            return false;
+        }
+    }
     jumpDialog = '<div class="tfk-jump">You are leaving <a href="/">timeforkids.com</a> to check out a web site we recommended.  While TIME for Kids has reviewed  the site you are about to visit, we can&apos;t monitor changes to the site, advertisements or links to other sites.<br/><br/>Be sure to get permission from a parent before giving out any information about yourself online.  Never give your full name, phone number or address online.  To read more read <a href="/info/privacy-policy">TFK&apos;s privacy policy</a>. <div class="tfk-jump-reminder">(Remember to read the privacy policy of any new site you visit.)</div> </div>';
     buttonDescription = '<div id="tfk-jump-button-description"><div id="tfk-jump-continue">going to the web site</div><div id="tfk-jump-back">to timeforkids.com</div></div><div style="clear:both;">&nbsp;</div>';
     $(jumpDialog).dialog({
@@ -208,7 +218,7 @@ function tfkGetFlashAdLocation(objName) {
             var flashVar = keyValues[i].split(/=/);
             flashVarsArray[flashVar[0]] = flashVar[1];
        }
-       tfkAdFinalUrl = unescape(flashVarsArray['clickTag']);
+       tfkAdFinalUrl = new String(unescape(flashVarsArray['clickTag']));
     }
    return tfkAdFinalUrl; 
 }
