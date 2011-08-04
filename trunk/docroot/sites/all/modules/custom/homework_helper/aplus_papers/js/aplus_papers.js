@@ -14,12 +14,16 @@
 
       window.onbeforeunload = function() {
         if ($("input").hasClass('aplus-name') && $('.aplus-name').val() || $("input").hasClass('aplus-date') && $('.aplus-date').val()) {
+          console.log('sorry');
           return 'If you leave this page, you will lose everything you have written so far. Are you sure you want to leave?';
         }
-        else {
+        else if ($("input").hasClass('aplus-name') || $("input").hasClass('aplus-name')) {
+          console.log('yes');
           step = false;
         }
+        
         if (step == true) {
+          console.log('no');
           return 'If you leave this page, you will lose everything you have written so far. Are you sure you want to leave?';
         }
       }
