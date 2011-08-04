@@ -896,14 +896,6 @@ img {
   -webkit-transform: perspective(800) rotate3d(1, 0, 0, 0deg);
   transform: perspective(800) rotate3d(1, 0, 0, 0deg);
 }
-.flashcard-cycle-card:hover .card-front {
-  -webkit-transform: perspective(800) rotate3d(1, 0, 0, -180deg);
-  transform: perspective(800) rotate3d(1, 0, 0, -180deg);
-}
-.flashcard-cycle-card:hover .card-back {
-  -webkit-transform: perspective(800) rotate3d(1, 0, 0, 0deg);
-  transform: perspective(800) rotate3d(1, 0, 0, 0deg);
-}
 .flashcard-cycle-card ul li {
   font-size: 20px;
   padding-top: 70px;
