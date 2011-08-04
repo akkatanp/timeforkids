@@ -67,14 +67,14 @@
 ?>
 <?php if($render): ?>
 <li class="<?php print $classes; ?>"<?php print $attributes; ?>>
-  <?php// if($tfk_search_cont_type):?>
-   <!-- Content type:<?php print $tfk_search_cont_type;?> -->
-  <?php// endif;?>
+  <?php // if($tfk_search_cont_type):?>
+   <!-- Content type:<?php //print $tfk_search_cont_type;?> -->
+  <?php // endif;?>
   
 
   <?php print render($title_prefix); ?>
   <h3 class="title"<?php print $title_attributes; ?>>
-    <a href="<?php print $url; ?>"><?php print $title; ?></a>
+    <?php print $title; ?>
     <span style="text-align:right;float:right;color:white;">
     <?php if($magazine_issue_grade_level):?>
     Grade <?php print $magazine_issue_grade_level;?>

@@ -1446,9 +1446,12 @@ function tfk_search_preprocess_search_result(&$vars) {
     $favorite_links = FALSE;
   }
   
-  // Title.
-  $title = $vars['title'];
-  $vars['title'] = l($title, 'node/'. $vars['result']['fields']['entity_id'], array('html' => TRUE));
+  // Title. Magazine titles are not linked.
+  if($base_path != TFK_SEARCH_MAGAZINE_PATH) {
+    $title = $vars['title'];
+    $vars['title'] = l($title, 'node/'. $vars['result']['fields']['entity_id'], array('html' => TRUE));
+  }
+
   $attributes = array('class' => array('thumbnail', 'content-type-'. $vars['result']['fields']['bundle']));
   $thumb_attr = $attributes;
   $link_attr = array('html' => TRUE, 'attributes' => $attributes);
