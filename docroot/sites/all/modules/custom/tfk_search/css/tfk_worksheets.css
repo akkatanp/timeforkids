@@ -201,6 +201,17 @@ body.section-worksheets .region-sidebar-first .section {
   float: right;
 }
 
+#mymodaldiv {
+	text-align: center;
+}
+
+#mymodaldiv .svd-msg {
+	background-color: #D9EFFE;
+	border: 1px solid #CECECE;
+	margin-bottom: 6px;
+	color: #333;
+}
+
 /* Modal popup - "Name saved search" */
 body.section-worksheets .popups-container {
   padding: 9px;
