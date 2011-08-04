@@ -522,7 +522,6 @@ function tfk_search_block_save($delta = '', $edit = array()){
   if($delta == 'solr_filter_year'){
      apachesolr_facetcount_save($edit);
   }
-  return;
 }
 
 /**
@@ -1345,8 +1344,8 @@ function worksheets_save_srch_submit(&$form, &$form_state) {
           ->execute();
 
     $div_to_append  = '<div class="savedsrch">';
-    $div_to_append .= '<a href="'.url('worksheets',array('query'=>array('filters'=>$form_state['curr_filters']))).'">'.$form_state['input']['savedname'].'</a>';
-    $div_to_append .= '<input type="checkbox" name="'.$nid.'" id="'.$nid.'"/>';
+    $div_to_append .= '<div class="savedsrch-label"><a href="'.url('worksheets',array('query'=>array('filters'=>$form_state['curr_filters']))).'">'.$form_state['input']['savedname'].'</a></div>';
+    $div_to_append .= '<div class="savedsrch-checkbox"><input type="checkbox" name="'.$nid.'" id="'.$nid.'"/></div>';
     $div_to_append .= '</div>';
 
     $commands[] = ajax_command_append('#savsearches',$div_to_append);
