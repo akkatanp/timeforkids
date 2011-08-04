@@ -124,51 +124,76 @@ form table .item-list ul {
   margin: 0;
 }
 
-/* login form */
+/* lightbox login form */
 #login-container #login-header {
 	font: normal 14px "arial black";
 	color: white;
 	background: #d71700;
 	padding: 10px;
+	border: solid 1px #933;
 	text-transform: uppercase;
 	position: relative;
+	margin-bottom: 20px;
 }
 
-#login-container h2 {
+#login-header .close-button {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	width: 12px;
+	height: 12px;
+	cursor: pointer;
+	background: url("../images/atw-sightseeing-close.png") no-repeat;
+}
+
+#login-container #login-form-container {
+	float: left;
+	width: 325px;
+	height: 250px;
+	margin: 0 10px;
+}
+
+#login-container #message-box {
+	float: left;
+	width: 305px;
+	height: 230px;
+	padding: 10px;
+	margin-right: 10px;
+	background: #dedede;
+}
+
+#login-container  #login-footer {
+	border-top: dotted 1px #cecece;
+	padding: 20px 10px 0 10px;
+}
+
+#login-form-container h2 {
 	font: bold 20px arial;
-	margin: 20px 0 30px 0;
-	padding-left: 10px;
-}
-
-#login-form-container {
-	padding: 0 0 10px 10px;
-	border-bottom: dotted 1px #cecece;
+	line-height: 20px;
+	margin-bottom: 10px;
 }
 
 #login-form-container p br {
 	display: none;
 }
 
-#login-form-container p br {
-	margin: 10px 0;
-}
-
-#login-container a {
+#login-form-container a {
 	font-weight: normal;
 }
 
-#login-container .form-item {
+#login-form-container .form-item {
 	margin: 0 0 10px 0;
 }
 
-#login-container .form-text {
+#login-form-container .form-text {
 	border: solid 1px #999;
 }
 
-#login-container h2 a {
-	font-weight: bold;
+#login-footer a {
+	font: bold 20x arial;
+	line-height: 20px;
 }
 
-#login-container h2 a:first-child {
+#login-footer a:first-child {
 	margin-right: 50px;
 }
