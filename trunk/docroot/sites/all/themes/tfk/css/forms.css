@@ -166,12 +166,13 @@ form table .item-list ul {
 #login-container #message-box #message-header {
 	font-weight: bold;
 	padding-bottom: 10px;
-	border-bottom: dotted 1px #cecece;
+	border-bottom: dotted 1px #999;
 	margin-bottom: 10px;
 }
 
 #login-container #message-box  ul#message-list {
 	list-style-type: disc;
+	margin-left: 20px;
 }
 
 #login-container  #login-footer {
@@ -198,11 +199,12 @@ form table .item-list ul {
 }
 
 #login-form-container .form-text {
-	border: solid 1px #999;
+	border: solid 1px #cfcfcf;
+	width: 270px;
 }
 
 #login-footer a {
-	font: bold 20x arial;
+	font: bold 20px arial;
 	line-height: 20px;
 }
 
