@@ -2555,6 +2555,10 @@ body.page-extras .block-views .content .view-content .views-row.views-row-last {
 }
 .page-404page .content .not-found-click {
     background: none repeat scroll 0 0 #D71700;
+    -moz-border-radius: 12px;/*older FF*/
+    -moz-box-shadow: 2px 2px 2px #999999;
+    -webkit-border-radius: 12px;/*older safari*/
+    -webkit-box-shadow: 2px 2px 2px #999999;
     border-radius: 12px 12px 12px 12px;
     box-shadow: 2px 2px 2px #999999;
     color: white;
@@ -2564,6 +2568,8 @@ body.page-extras .block-views .content .view-content .views-row.views-row-last {
 .page-404page .content .form-text {
     background: none repeat scroll 0 0 #DEDEDE;
     border-color: #999999 #CECECE #CECECE #999999;
+    -moz-border-radius: 12px;/*older FF*/
+    -webkit-border-radius: 12px;/*older safari*/
     border-radius: 12px 12px 12px 12px;
     border-style: solid;
     border-width: 1px;
