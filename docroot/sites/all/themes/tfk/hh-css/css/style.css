@@ -465,6 +465,7 @@ img {
 .page-homework-helper-a-plus-papers .view-a-papers .views-row {
   border-bottom: 1px solid #cecece;
   padding: 20px 10px 24px 135px;
+  float: left;
 }
 .page-homework-helper-a-plus-papers .view-a-papers .views-row-last {
   border-bottom: 0;
