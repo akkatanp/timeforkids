@@ -146,7 +146,7 @@ form table .item-list ul {
 	background: url("../images/atw-sightseeing-close.png") no-repeat;
 }
 
-#login-container #login-form-container {
+#login-form-container {
 	float: left;
 	width: 325px;
 	height: 250px;
@@ -160,6 +160,7 @@ form table .item-list ul {
 	padding: 10px;
 	margin-right: 10px;
 	background: #dedede;
+	clear: right;
 }
 
 #login-container  #login-footer {
