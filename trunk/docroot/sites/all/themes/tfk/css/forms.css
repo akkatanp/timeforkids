@@ -155,12 +155,23 @@ form table .item-list ul {
 
 #login-container #message-box {
 	float: left;
-	width: 305px;
-	height: 230px;
-	padding: 10px;
+	width: 285px;
+	height: 210px;
+	padding: 20px;
 	margin-right: 10px;
 	background: #dedede;
 	clear: right;
+}
+
+#login-container #message-box #message-header {
+	font-weight: bold;
+	padding-bottom: 10px;
+	border-bottom: dotted 1px #cecece;
+	margin-bottom: 10px;
+}
+
+#login-container #message-box  ul#message-list {
+	list-style-type: disc;
 }
 
 #login-container  #login-footer {
