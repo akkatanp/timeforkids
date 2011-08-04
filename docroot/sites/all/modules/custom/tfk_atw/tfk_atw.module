@@ -711,7 +711,7 @@ function tfk_atw_form_alter(&$form,&$form_state,$form_id) {
   					$value = t('Correct.') . ' ' . $question['extra']['correct_text'];
   				}
   				else {
-  					$value = t('Oopps, you missed this one');
+  					$value = t('Oops, you missed this one.');
   				}
 
   				$form[$question['form_key']] = array (
