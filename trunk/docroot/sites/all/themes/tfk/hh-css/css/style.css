@@ -272,6 +272,22 @@ img {
   font-size: 18px;
   padding: 0 0 10px;
 }
+.node-type-a-paper .aplus-single-line .cke_contents,
+.node-type-paper-step .aplus-single-line .cke_contents {
+  height: 2em !important;
+}
+.node-type-a-paper .aplus-multi-line .cke_contents,
+.node-type-paper-step .aplus-multi-line .cke_contents {
+  height: 20em !important;
+}
+.node-type-a-paper .cke_bottom,
+.node-type-paper-step .cke_bottom {
+  display: none;
+}
+.node-type-a-paper .filter-wrapper,
+.node-type-paper-step .filter-wrapper {
+  display: none;
+}
 .node-type-a-paper .aplus-start-button,
 .node-type-paper-step .aplus-start-button {
   margin: 20px 0;
