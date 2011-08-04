@@ -557,8 +557,9 @@ ul.links li {
 	background: url(../images/homepage-destination-news.png) no-repeat;
 	padding: 10px 10px 10px 260px;
 	width: 496px;
-	height: 66px;
-	overflow: hidden;
+	min-height:66px;
+	height:auto !important;/*This will allow box to grow but allow a minimum height for browsers like IE*/
+        height:66px;
 }
 
 .view-id-homepage_news_for_teachers .views-field-field-image {
