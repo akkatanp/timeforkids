@@ -220,11 +220,11 @@ function _tfk_news_year_filter(){
     $years[]= $record->pubdate;
   }
 
-  print_r(arg());
-
-
   $list = array('list_of_years' => $years);
-
+  $args = arg();
+  if(count($args) == 2 && $args[0] == 'news-archive' && is_numeric($args[1])){
+    $list['selected_year'] = $args[1];
+  }
   return theme('tfk_news_year_filter',$list);
 }
 

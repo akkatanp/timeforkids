@@ -18,7 +18,7 @@
 	<select id="yeardropdown" name="listofyears">
           <option id="news-all" value="all">All</option>
     <?php foreach($list_of_years as $year): ?>
-		<option id="<?php echo $year;?>"><?php echo $year;?></option>
+		<option id="<?php echo $year;?>" <?php if(isset($selected_year) && $selected_year == $year){echo 'selected';}?>  ><?php echo $year;?></option>
     <?php endforeach; ?>
 	</select>
 	<div class="button-holder">
