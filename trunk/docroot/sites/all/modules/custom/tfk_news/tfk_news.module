@@ -219,6 +219,10 @@ function _tfk_news_year_filter(){
   foreach ($result as $record) {
     $years[]= $record->pubdate;
   }
+
+  print_r(arg());
+
+
   $list = array('list_of_years' => $years);
 
   return theme('tfk_news_year_filter',$list);
