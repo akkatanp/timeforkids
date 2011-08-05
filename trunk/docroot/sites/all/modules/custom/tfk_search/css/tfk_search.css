@@ -621,6 +621,11 @@ body .region-sidebar-first .item-list ul,
 	line-height: 175%;
 }
 
+body .region-sidebar-first .item-list ul input,
+.region-sidebar-first .item-list ul li input {
+  margin: 0 2px 0 0;
+}
+
 /* Misc */
 .region-sidebar-first .item-list ul li li {
   margin: 0 0 0 15px;
