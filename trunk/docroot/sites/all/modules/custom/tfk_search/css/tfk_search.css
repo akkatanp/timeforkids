@@ -123,6 +123,8 @@ body.section-photos-video div.region-sidebar-first h2.block-title {
   font-size: 12px;
 	font-weight: bold;
 	color: #333;
+	margin: 10px 0 0 0;
+	line-height: 20px;
 }
 
 body.section-photos-video div.region-sidebar-first a.apachesolr-facet:link, 
@@ -623,4 +625,8 @@ body .region-sidebar-first .item-list ul,
 .region-sidebar-first .item-list ul li li {
   margin: 0 0 0 15px;
   padding: 0;
+}
+
+body.page-photos-video #main .region-sidebar-first .section {
+  padding: 10px;
 }
