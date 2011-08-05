@@ -19,7 +19,6 @@
         else if ($("input").hasClass('aplus-name') || $("input").hasClass('aplus-name')) {
           step = false;
         }
-        
         if (step == true) {
           return 'If you leave this page, you will lose everything you have written so far. Are you sure you want to leave?';
         }
@@ -28,7 +27,7 @@
   }
 
   /**
-   * Override to add a detach to make wysiwyg work in ajax form.
+   * Override to add a detach to the behavior to make wysiwyg work in ajax form.
    */
   Drupal.behaviors.attachWysiwyg = {
     attach: function(context, settings) {
@@ -51,18 +50,10 @@
         var format = 'format' + this.value;
         // Directly attach this editor, if the input format is enabled or there is
         // only one input format at all.
-        if ($this.is(':input')) {
+        if ($this.is(':input')) {          
           Drupal.wysiwygAttach(context, params[format]);
         }
-        // Attach onChange handlers to input format selector elements.
-        if ($this.is('select')) {
-          $this.change(function() {
-            // If not disabled, detach the current and attach a new editor.
-            Drupal.wysiwygDetach(context, params[format]);
-            format = 'format' + this.value;
-            Drupal.wysiwygAttach(context, params[format]);
-          });
-        }
+
         // Detach any editor when the containing form is submitted.
         $('#' + params.field).parents('form').submit(function (event) {
           // Do not detach if the event was cancelled.
