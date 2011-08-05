@@ -45,6 +45,9 @@ div.featured-block-sidebar-link a {
 
 div#block-tfk-search-tfk-search-photos-video-back a {
   color: white;
+	font-family: "arial black", arial, sans-serif;
+	font-weight: normal;
+	line-height: 118%;
 }
 
 /* Video */
@@ -96,7 +99,8 @@ div#slideshow-container div#slideshow div.header {
 /* Other stuff */
 body.page-node.node-type-slideshow #slideshow-info div.image-date {
   font-size: 10px;
-  margin: 7px 0px;
+  margin: 0;
+	line-height: 15px;
 }
 
 body.page-node.node-type-slideshow #slideshow-related-content #featured-related-content-title {

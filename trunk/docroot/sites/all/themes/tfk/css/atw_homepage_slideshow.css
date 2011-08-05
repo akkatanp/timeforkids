@@ -16,6 +16,7 @@ h2.block-title {
 
 #slideshow-container p {
 	margin: 0;
+	line-height: 15px;
 }
 
 #slideshow-container p a {
@@ -178,7 +179,7 @@ h2.block-title {
 }
 
 #slideshow-info h1 {
-	margin: 4px 0;
+	margin: 4px 0 0;
 }
 
 .view-content h3 {
