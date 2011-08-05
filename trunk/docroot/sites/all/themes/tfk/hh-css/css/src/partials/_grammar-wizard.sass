@@ -106,20 +106,21 @@ span.grammar-wizard-incorrect
     & + .form-item
       +float-left
       width: 424px
-  .form-item
+  .content
     .form-item
-      margin-top: 8px
-    .form-disabled
-      color: gray
-  input[type="submit"]
-    clear: left
-    +float-left
-    & + input
-      clear: none
-    &:not([id|="edit-check-answer"])
-      +tfk-submit-button(white)
-      +float-right
-      margin-right: 276px
+      .form-item
+        margin-top: 8px
+      .form-disabled
+        color: gray
+    input[type="submit"]
+      clear: left
+      +float-left
+      & + input
+        clear: none
+      &:not([id|="edit-check-answer"])
+        +tfk-submit-button(white)
+        +float-right
+        margin-right: 276px
   #grammar-wizard-see-rules
     +tfk-grammar-sidebar
   #grammar-instructions
