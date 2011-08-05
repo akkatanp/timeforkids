@@ -1555,7 +1555,7 @@ function tfk_search_preprocess_search_result(&$vars) {
         tfk_search_get_flag_link($vars, $nid, 'favorites');
       }
       
-      $body = field_get_items('node', $node, 'field_video_description');
+      $body = field_get_items('node', $node, 'body');
       if(!empty($body[0]['value'])) {
         $teaser = $body[0]['value'];
       }
