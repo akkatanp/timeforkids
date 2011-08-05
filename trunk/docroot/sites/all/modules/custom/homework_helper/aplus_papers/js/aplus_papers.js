@@ -8,7 +8,7 @@
     attach: function(context, settings) {
       var step = true;
 
-      $('#aplus-print-save-buttons input, .a-plus-overview a').click(function() {
+      $('.aplus-print-save-buttons input, .a-plus-overview a').click(function() {
         step = false;
       });
 
@@ -16,7 +16,7 @@
         if ($("input").hasClass('aplus-name') && $('.aplus-name').val() || $("input").hasClass('aplus-date') && $('.aplus-date').val()) {
           return 'If you leave this page, you will lose everything you have written so far. Are you sure you want to leave?';
         }
-        else if ($("input").hasClass('aplus-name') || $("input").hasClass('aplus-name')) {
+        else if ($("input").hasClass('aplus-name') || $("input").hasClass('aplus-name') || $('.aplus-start-button').length) {
           step = false;
         }
         if (step == true) {
