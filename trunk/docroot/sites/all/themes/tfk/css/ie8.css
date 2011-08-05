@@ -1,0 +1,13 @@
+/**
+ * @file
+ * CSS targeted specifically for Internet Explorer 8 (and earlier) for Windows.
+ *
+ * Any CSS in this file will apply to all versions of IE before IE 9. You can
+ * target specific versions of IE by using conditional comments. See your
+ * sub-theme's .info file for an easy way to use them.
+ */
+ 
+ /*Jump page back button descriptive text*/
+#tfk-jump-back {
+    margin-top:40px;
+}
