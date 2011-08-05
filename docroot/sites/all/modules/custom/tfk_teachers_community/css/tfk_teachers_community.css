@@ -19,19 +19,45 @@
   padding-left: 5px;
 }
 
-.suggestion-box.bottom .link {
-  font-size: 0.92em;	
-	margin-top: 5px;
-}
 
 .suggestion-box.bottom {
   padding: 6px 6px 4px 6px;
 }
 
 .suggestion-box.bottom .link {
-	text-align: right;
-	display: block;
-	border: none;
+  font-size: 0.92em;
+  margin-top: 5px;	
+  display: block;
+  border: 0;
+}
+
+.suggestion-box .link a {
+  background: url('/sites/all/modules/custom/tfk_teachers_community/images/right-arrow.png') 101% 50% no-repeat;
+  display: block;
+  width: 107%;  
+}
+
+.suggestion-box.bottom .link a {
+  margin-left: 44%;
+  width: 252px;
+  background: url("/sites/all/modules/custom/tfk_teachers_community/images/right-arrow.png") no-repeat scroll 100% 50% transparent;
+}
+
+/* The node view page has a different selector */
+body.page-node .suggestion-box .link a {
+	background: url('/sites/all/modules/custom/tfk_teachers_community/images/right-arrow.png') 100% 50% no-repeat;
+	width: 106%;
+}
+
+#bottom-suggestion-box .link {
+  display: block;
+  border: 0;
+}
+
+#bottom-suggestion-box .link a {
+  margin-left: 51%;
+  width: 228px;
+  background: url("/sites/all/modules/custom/tfk_teachers_community/images/right-arrow.png") no-repeat scroll 100% 50% transparent;
 }
 
 /* 17C Suggestion Box pager */
@@ -238,12 +264,6 @@ body.page-node-add-teacher-community-question #content .section {
 .view-id-teacher_community_topic_list .item-list ul li,
 .view-id-teacher_community_topic_list .item-list ul li a {
 	color: #D71700;
-}
-
-#bottom-suggestion-box .link {
-	border: none;
-	text-align: right;
-	display: inherit;
 }
 
 /* Board Members Block (override) */
