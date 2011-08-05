@@ -1860,10 +1860,10 @@ function tfk_search_preprocess_search_result(&$vars) {
             break;
           }
         }
+        $vars['node_link'] = l('View Full Article', 'node/'. $additional_node->nid,
+          array('attributes' => array('title' => $additional_node->title))
+        );
       }
-      $vars['node_link'] = l('View Full Article', 'node/'. $additional_node->nid,
-        array('attributes' => array('title' => $additional_node->title))
-      );
     }
       
     // Related content.
