@@ -421,7 +421,7 @@
 #block-tfk-news-tfk-news-taxonomy-links a.active {
 	background: #d71700;
 }
-.page-news-archive #block-tfk-news-tfk-news-latest-news-link a, 
+
 .page-news-archive #block-tfk-extras-tfk-extras-taxonomy-links a, 
 .page-news-archive #block-tfk-news-tfk-news-taxonomy-links a {/*Force news archive background to red in all archive sub-sections but not articles*/
     background-color: #d71700;
