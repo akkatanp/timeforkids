@@ -599,7 +599,26 @@ function theme_tfk_featured_block(&$variables) {
   $link_options = array('html' => TRUE, 'attributes' => array('class' => array('featured-item'), 'title' => $tfkSearchFeaturedItem->title));
   $icon = '<div class="icon"></div>';
   $output .= l(theme('image', array('path' => $tfkSearchFeaturedItem->featured_item->abspath, 'title' => $tfkSearchFeaturedItem->title, 'alt' => $tfkSearchFeaturedItem->title)). $icon, $url, $link_options);
-  $output .= '</div>';
+  
+  // Caption and credit. @todo It's not O.K. to have field_get_item(s) on the theme layer.
+  $caption = field_get_items('node', $tfkSearchFeaturedItem, 'field_caption');
+  if($caption && !empty($caption[0])) {
+    $caption = $caption[0]['safe_value'];
+  } else {
+    $caption = '';
+  }
+  $credit = field_get_items('node', $tfkSearchFeaturedItem, 'field_credit');
+  if($credit && !empty($credit[0])) {
+    $credit = $credit[0]['safe_value'];
+  } else {
+    $credit = '';
+  }
+  if((!empty($caption)) || (!empty($credit))) {
+    $output .= "<div id='ftr-cap-credit'>". $caption;
+    $output .= ((!empty($credit)) && (!empty($caption))) ? ' / ': '';
+    $output .= $credit. "</div>";
+  }
+  $output .= "</div>";
   
   // Body/description field.
   if($tfkSearchFeaturedItem->type == 'slideshow') {
