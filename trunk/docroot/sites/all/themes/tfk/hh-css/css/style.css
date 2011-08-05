@@ -1158,6 +1158,9 @@ img {
   margin: 10px 10px 0 0;
   font-size: 10px;
 }
+.page-homework-helper-writing-tips .ui-accordion-content-active .views-field-body {
+  margin-left: 126px;
+}
 .page-homework-helper-writing-tips #webform-client-form-144 {
   background: #dddddd;
   padding: 10px;
