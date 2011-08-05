@@ -121,13 +121,17 @@ body.page-node.node-type-slideshow #slideshow-container #slide-count {
 }
 
 #block-system-main .content h2.node-title {
-	margin: 0 0 10px 0px;
+	margin: 0 0 5px 0px;
 	font-size: 20px;
 	font-weight: bold;
 }
 
 body.page-node.node-type-slideshow #block-system-main {
 	margin-bottom: 0px;
+}
+
+body.node-type-video #block-tfk-helper-more-items-block {
+	margin-top: 10px; 
 }
 
 /* Icons */
