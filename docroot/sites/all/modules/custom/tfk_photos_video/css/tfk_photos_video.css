@@ -89,9 +89,9 @@ div#slideshow-container div#slideshow div.header {
 
 .node-type-video #featured-related-content-title,
 .node-type-slideshow #featured-related-content-title {
-	font-size: 1.08em;
-	font-weight: bold;
 	margin-top: 20px;
+  font-family: "arial black",arial,sans-serif;
+  font-size: 12px;	
 }
 
 
