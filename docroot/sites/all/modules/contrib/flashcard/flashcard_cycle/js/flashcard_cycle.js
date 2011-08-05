@@ -53,11 +53,11 @@
                   }
                   else {
                     $(this)
-                      .find('.flashcard-cycle-card:visible .card-front')
-                        .hide()
-                        .end()
                       .find('.flashcard-cycle-card:visible .card-back')
                         .show()
+                        .end()
+                      .find('.flashcard-cycle-card:visible .card-front')
+                        .hide()
                         .end();
                   }
                   if ( $(this).hasClass('showing') ) {
@@ -72,9 +72,7 @@
           counts.all = counts.unmarked = card.children().size();
 
           $(this)
-            .find('ul.answer')
-              .hide()
-            .end()
+            .removeClass('showing')
 
             .find('.flashcard-cycle-toolbar')
               .prepend('<a class="shuffle">Shuffle</a>')
@@ -111,9 +109,6 @@
                 function() {
                   card
                     .removeClass('showing')
-                    .find('ul.answer')
-                      .hide(cycleSpeed)
-                    .end()
                     .cycle(0);
                     current = cardNumber('restart', current, counts[modeChecked]);
                 }
@@ -125,9 +120,12 @@
                 function() {
                   card
                     .removeClass('showing')
-                    .find('ul.answer')
-                      .hide(cycleSpeed)
-                    .end()
+                    .find('.flashcard-cycle-card .card-front')
+                      .show()
+                      .end()
+                    .find('.flashcard-cycle-card .card-back')
+                      .hide()
+                      .end()
                     .cycle({random: true})
                     .cycle('pause');
                     current = cardNumber('restart', current, counts[modeChecked]);
@@ -160,12 +158,12 @@
                           .end();
                     }
                     else {
-                      card
-                        .find('.flashcard-cycle-card:visible .card-front')
-                          .hide()
-                          .end()
+                      card                        
                         .find('.flashcard-cycle-card:visible .card-back')
                           .show()
+                          .end()
+                        .find('.flashcard-cycle-card:visible .card-front')
+                          .hide()
                           .end();
                     }
                     if (card.hasClass('showing') && Drupal.settings.flashcardCycle.flip == 'next') {
@@ -311,10 +309,16 @@
         else {
           $('.flashcard-cycle-mark input').removeAttr('checked');
         }
-        $(curr)
-          .find('ul.answer')
-            .hide(cycleSpeed)
-          .end();
+        
+        if ( $('html').hasClass('no-csstransforms3d') ) {
+          $(curr)
+            .find('.card-front')
+              .show()
+              .end()
+            .find('.card-back')
+              .hide()
+              .end();
+        }
       }
 
       function cardNumber(type, current, total) {
