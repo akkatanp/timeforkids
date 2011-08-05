@@ -54,6 +54,9 @@ tr.odd td {
 .view-homepage-news-block table, .view-teacher-news-news-block table, .view-kid-reporters-channel-news-block table {
     border-collapse: separate;
 }
+.view-homepage-destination {
+    margin-top:2px;
+}
 /*photo-video landing page*/
 div#tfk-search-photos-video-featured div.g1 {
     zoom:1;
@@ -62,6 +65,9 @@ div#tfk-search-photos-video-featured div.g1 {
 #tfk-search-photos-video-featured div.g2 {
     zoom:1;
     display: inline;
+}
+div#tfk-search-photos-video-featured div.featured-label {
+    width:60px;
 }
 /*Magazine Archive*/
 .pubcal-link .right {
