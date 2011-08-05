@@ -377,8 +377,8 @@ ul.links li {
 	display: block;
 	font: normal 14px "arial black";
 	color: #fff;
-	background: #d71700;
-	padding: 10px;
+	background: url("../images/white-back-arrow.png") no-repeat scroll 10px 20px #D71700;
+	padding: 10px 10px 10px 30px;
 	text-transform: uppercase;
 	margin: 0;
 }
