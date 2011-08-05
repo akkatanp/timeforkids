@@ -1290,7 +1290,7 @@ function ctools_ajax_save_srch($js = NULL,$filterstr = NULL) {
  */
 function worksheets_save_srch($form, &$form_state) {
   $path = drupal_get_path('module', 'tfk_search');
-  $form_state['title'] = t('NAME SAVED SEARCH');
+  $form_state['title'] = '&nbsp;';
   
   //@todo Admin interface for worksheet variables.
   $form['description'] = array(
