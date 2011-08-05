@@ -117,6 +117,7 @@
       left: -315px
       *width: 50px
     &.edit
+      left: -210px
       *width: 50px
     &.restart,
       padding: 8px 24px
@@ -137,7 +138,8 @@
     a
       color: $tfk-red
       +float-left
-      width: 51px
+      // width: 51px
+      width: 58px
       &.prev
         +tfk-return-button
       &.flip
@@ -147,7 +149,7 @@
         width: auto
         margin: 0 25px
       &.next
-        background: url(images/tfk-red-arrow-right.png) no-repeat scroll 36px 0 transparent
+        background: url(images/tfk-red-arrow-right.png) no-repeat scroll 42px 0 transparent
         padding: 3px 42px 3px 3px
   .flashcard-cycle-cards
     +border-radius(0)
@@ -159,6 +161,9 @@
     width: 500px
     height: 250px
     background: $tfk-yellow
+    $tfk-yellow-light: scale-color($tfk-yellow, $lightness: 10%)
+    $tfk-yellow-dark: scale-color($tfk-yellow, $lightness: -20%)
+    +background-image(linear-gradient(top, $tfk-yellow-light, $tfk-yellow-dark))
     text-align: center
     margin-bottom: 10px
     +border-radius(14px)
@@ -167,7 +172,7 @@
     +transition-property(all)
     +transition-duration(0.5s)
     +transition-timing-function(ease-in)
-    +transition-delay(0.5s)
+    // +transition-delay(0.5s)
   .card-front
     position: relative
     z-index: 2
@@ -212,8 +217,10 @@
   position: absolute
   // top: 80px
   // left: 120px
-  top: 40px
-  left: 150px
+  // top: 40px
+  // left: 150px
+  top: 26px
+  left: 306px
   z-index: 100
   +float-left
 .flashcard-cycle-pager  
@@ -225,8 +232,10 @@
   position: absolute
   // top: 60px
   // left: 200px
-  top: 20px
-  left: 170px
+  // top: 20px
+  // left: 170px
+  top: 6px
+  left: 190px
   z-index: 100
   width: 60px
   span.flashcard-numbering-current

@@ -844,6 +844,7 @@ img {
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003119}}
 .flashcard-cycle a.edit {
+  left: -210px;
   *width: 50px;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003121}}
@@ -897,7 +898,7 @@ img {
   color: #d71700;
   display: inline;
   float: left;
-  width: 51px;
+  width: 58px;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003141}}
 .flashcard-cycle .flashcard-cycle-pager a.prev {
@@ -936,7 +937,7 @@ img {
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003149}}
 .flashcard-cycle .flashcard-cycle-pager a.next {
-  background: url(images/tfk-red-arrow-right.png) no-repeat scroll 36px 0 transparent;
+  background: url(images/tfk-red-arrow-right.png) no-repeat scroll 42px 0 transparent;
   padding: 3px 42px 3px 3px;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003152}}
@@ -962,6 +963,12 @@ img {
   width: 500px;
   height: 250px;
   background: #f8e549;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #f9e85b), color-stop(100%, #f6dc0b));
+  background-image: -webkit-linear-gradient(top, #f9e85b, #f6dc0b);
+  background-image: -moz-linear-gradient(top, #f9e85b, #f6dc0b);
+  background-image: -o-linear-gradient(top, #f9e85b, #f6dc0b);
+  background-image: -ms-linear-gradient(top, #f9e85b, #f6dc0b);
+  background-image: linear-gradient(top, #f9e85b, #f6dc0b);
   text-align: center;
   margin-bottom: 10px;
   -moz-border-radius: 14px;
@@ -985,10 +992,6 @@ img {
   -webkit-transition-timing-function: ease-in;
   -o-transition-timing-function: ease-in;
   transition-timing-function: ease-in;
-  -moz-transition-delay: 0.5s;
-  -webkit-transition-delay: 0.5s;
-  -o-transition-delay: 0.5s;
-  transition-delay: 0.5s;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003171}}
 .flashcard-cycle-card .card-front {
@@ -1060,8 +1063,8 @@ img {
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/zivtech\/Sites\/oscar-files\/time\/trunk\/docroot\/sites\/all\/themes\/tfk\/hh-css\/css\/src\/partials\/_study-helper\.sass}line{font-family:\00003211}}
 .flashcard-cycle-mark {
   position: absolute;
-  top: 40px;
-  left: 150px;
+  top: 26px;
+  left: 306px;
   z-index: 100;
   display: inline;
   float: left;
@@ -1078,8 +1081,8 @@ img {
   display: inline;
   float: right;
   position: absolute;
-  top: 20px;
-  left: 170px;
+  top: 6px;
+  left: 190px;
   z-index: 100;
   width: 60px;
 }
