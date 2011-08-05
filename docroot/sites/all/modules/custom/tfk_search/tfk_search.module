@@ -601,10 +601,22 @@ function theme_tfk_featured_block(&$variables) {
   $output .= l(theme('image', array('path' => $tfkSearchFeaturedItem->featured_item->abspath, 'title' => $tfkSearchFeaturedItem->title, 'alt' => $tfkSearchFeaturedItem->title)). $icon, $url, $link_options);
   $output .= '</div>';
   
-  $body = ($tfkSearchFeaturedItem->type == 'slideshow') ? field_get_items('node', $tfkSearchFeaturedItem, 'field_slideshow_description'): $tfkSearchFeaturedItem->body;
+  // Body/description field.
   if($tfkSearchFeaturedItem->type == 'slideshow') {
+    $body = field_get_items('node', $tfkSearchFeaturedItem, 'field_slideshow_description');
     $body = $body[0]['safe_value'];
+  } else {
+    if(!is_array($tfkSearchFeaturedItem->body)) {
+      $body = $tfkSearchFeaturedItem->body;
+    } else {
+      $body = field_get_items('node', $tfkSearchFeaturedItem, 'body');
+      $body = $body[0]['safe_value'];
+    }
   }
+  if(!empty($body)) {
+    $body = truncate_utf8($body, '160', TRUE, TRUE, 10);
+  }
+  
   $output .= '<div class="g2">';
   $output .= '<div class="featured-label">FEATURED</div>';
   $output .= l('<h2 class="featured-title">'. $tfkSearchFeaturedItem->title. '</h2>', $url, array('html' => TRUE));
@@ -656,8 +668,7 @@ function theme_tfk_featured_block(&$variables) {
  * @see theme_tfk_featured_block()
  */
 function tfk_search_preprocess_tfk_featured_block(&$vars) {
-  // Truncate Featured item teaser on a word vocabulary.
-  $vars['tfkSearchFeaturedItem']->body = truncate_utf8($vars['tfkSearchFeaturedItem']->body['und'][0]['safe_value'], '160', TRUE, TRUE, 10);
+  // Preprocess here.
 }
 
 /**
