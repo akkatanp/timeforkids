@@ -21,6 +21,10 @@ function tfk_teachers_community_permission() {
       'title' => t('Upload comment avatar'),
       'description' => t('This permission is given to users who can upload comment Avatars, e.g., Administrators, Editors.'),
     ),
+    // Editable teacher community blocks.
+    'administer teacher community blocks' => array(
+      'title' => t('Administer Teacher Community blocks'),
+    ),
   );
   return $perms;
 }
@@ -167,7 +171,7 @@ function tfk_teachers_community_preprocess_page(&$variables, $hook) {
     drupal_set_title(t('Submit to the Teachers Community'));
     
     $textarea = variable_get('tfk_teachers_topic_textarea', '');
-    if(user_access('administer blocks')) {
+    if(user_access('administer teacher community blocks')) {
       $module = 'tfk_teachers_community';
       $delta = 'tfk_teachers_topic_textarea';
       $textarea .= '<div class="admin-link">'. l(t('Edit block'), "admin/structure/block/manage/$module/$delta/configure", array('query' => drupal_get_destination())). '</div>';
