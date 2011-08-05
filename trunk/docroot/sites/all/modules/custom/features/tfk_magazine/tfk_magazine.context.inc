@@ -14,29 +14,26 @@ function tfk_magazine_context_default_contexts() {
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'publishing_calendar';
-  $context->description = 'Block placement for publishing calendar.';
-  $context->tag = 'Misc';
+  $context->description = '';
+  $context->tag = 'publishing_calendar';
   $context->conditions = array(
     'path' => array(
       'values' => array(
-        'pub-schedule/*' => 'pub-schedule/*',
+        'content/grade-k-1' => 'content/grade-k-1',
+        'content/grade-2' => 'content/grade-2',
+        'content/grade-3-4' => 'content/grade-3-4',
+        'content/grade-5-6' => 'content/grade-5-6',
       ),
     ),
   );
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'tfk_search-tfk_magazine_back_btn' => array(
-          'module' => 'tfk_search',
-          'delta' => 'tfk_magazine_back_btn',
-          'region' => 'sidebar_bottom',
-          'weight' => '-10',
-        ),
         'menu-menu-publishing-calendar-menu' => array(
           'module' => 'menu',
           'delta' => 'menu-publishing-calendar-menu',
           'region' => 'sidebar_bottom',
-          'weight' => '-9',
+          'weight' => '-10',
         ),
       ),
     ),
@@ -45,8 +42,7 @@ function tfk_magazine_context_default_contexts() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Block placement for publishing calendar.');
-  t('Misc');
+  t('publishing_calendar');
   $export['publishing_calendar'] = $context;
 
   $context = new stdClass;
