@@ -733,7 +733,7 @@ function tfk_atw_form_alter(&$form,&$form_state,$form_id) {
 
   				$form[$question['form_key']] = array (
   					'#type' => 'item',
-  					'#title' => $question_iterator.' '.$question['name'],
+  					'#title' => $question_iterator.'. '.$question['name'],
   					'#markup' => $value
   				);
                                 
