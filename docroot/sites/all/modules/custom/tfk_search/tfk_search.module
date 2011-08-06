@@ -1148,10 +1148,11 @@ function tfk_search_apachesolr_modify_query($query, $caller) {
     $rls = $user->roles;
 
     if(count($rls) == 1 && $rls[1] == 'anonymous user'){   // ANONYMOUS SEARCH CONTENT TYPES
-        $content_types = array('article', 'slideshow', 'video', 'atw_destination', 'minisite');
+        $content_types = array('article', 'slideshow', 'video', 'atw_destination', 'minisite','tfk_extra');
     }else{ // LOGGED IN SEARCH CONTENT TYPES
-      $content_types = array('article', 'slideshow', 'video', 'atw_destination', 'minisite', 'worksheet', 'mini_lesson');
+      $content_types = array('article', 'slideshow', 'video', 'atw_destination', 'minisite', 'tfk_extra', 'worksheet', 'mini_lesson');
     }
+
     foreach($content_types as $content_type) {
       $subquery->add_filter('bundle', $content_type);
     }
