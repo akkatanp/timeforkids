@@ -230,8 +230,8 @@ function tfk_teachers_community_preprocess_page(&$variables, $hook) {
     }else{
         $variables['section_title'] = t('TEACHER COMMUNITY');
     }
-
-
+    
+    
 
     $module_path = drupal_get_path('module', 'tfk_teachers_community');
     
