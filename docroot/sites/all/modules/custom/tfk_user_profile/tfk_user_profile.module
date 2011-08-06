@@ -6,7 +6,7 @@
 function tfk_user_profile_form_user_login_alter( &$form, $form_state ){
     $form['#validate'] = array(  'user_login_name_validate','user_login_authenticate_validate', 'tfk_user_profile_login_validate', 'tfk_user_login_final_validate' );
    	$form['#action'] = '';
-
+        $form['name']['#title'] = 'Email';
         print_r($form);
 }
 
