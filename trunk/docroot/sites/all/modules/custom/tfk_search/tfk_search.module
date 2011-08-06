@@ -1140,15 +1140,18 @@ function tfk_search_apachesolr_modify_query($query, $caller) {
   }
   
   // Site-wide search.
-  print_R(arg());
-  if($query->get_base_path() === 'search/site') {
+  $args = arg();
+  if($query->get_base_path() === 'search/site' || ($args[0] == 'search' && $args[1] == 'site')) {
     $subquery = apachesolr_drupal_query();
 
     global $user;
     $rls = $user->roles;
-    print_r($rls);
 
-    $content_types = array('article', 'slideshow', 'video', 'atw_destination', 'minisite', 'worksheet', 'mini_lesson');
+    if(count($rls) == 1 && $rls[1] == 'anonymous user'){   // ANONYMOUS SEARCH CONTENT TYPES
+        $content_types = array('article', 'slideshow', 'video', 'atw_destination', 'minisite');
+    }else{ // LOGGED IN SEARCH CONTENT TYPES
+      $content_types = array('article', 'slideshow', 'video', 'atw_destination', 'minisite', 'worksheet', 'mini_lesson');
+    }
     foreach($content_types as $content_type) {
       $subquery->add_filter('bundle', $content_type);
     }
@@ -1171,9 +1174,6 @@ function tfk_search_apachesolr_modify_query($query, $caller) {
  * Modify header search form.
  */
 function tfk_search_form_alter(&$form, &$form_state, $form_id) {
-
-
-    print_R(arg());
 
   if($form_id == 'search_form'){
     $form['basic']['keys']['#title'] = '';
