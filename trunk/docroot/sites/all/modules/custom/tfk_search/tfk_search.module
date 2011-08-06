@@ -1142,6 +1142,11 @@ function tfk_search_apachesolr_modify_query($query, $caller) {
   // Site-wide search.
   if($query->get_base_path() === 'search/site') {
     $subquery = apachesolr_drupal_query();
+
+    global $user;
+    $rls = $user->roles;
+    print_($rls);
+
     $content_types = array('article', 'slideshow', 'video', 'atw_destination', 'minisite', 'worksheet', 'mini_lesson');
     foreach($content_types as $content_type) {
       $subquery->add_filter('bundle', $content_type);
