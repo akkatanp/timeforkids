@@ -223,8 +223,16 @@ function tfk_teachers_community_preprocess_page(&$variables, $hook) {
   // Common actions.
   if($community_question) {
     // Section title.
-    $variables['section_title'] = t('TEACHER COMMUNITY');
-    
+    global $user;
+    $rls = $user->roles;
+    if(count($rls) == 1 && $rls[1] == 'anonymous user'){  // ANONYMOUS USER
+        $variables['section_title'] = t('ACCESS DENIED');
+    }else{
+        $variables['section_title'] = t('TEACHER COMMUNITY');
+    }
+
+
+
     $module_path = drupal_get_path('module', 'tfk_teachers_community');
     
     // Add CSS.
