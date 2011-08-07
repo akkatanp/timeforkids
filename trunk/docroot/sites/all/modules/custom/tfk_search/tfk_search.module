@@ -1633,22 +1633,18 @@ function tfk_search_preprocess_search_result(&$vars) {
       'Who\'s News' => 'field_whos_news', 'More News' => 'field_more_news');
       $lists = array();
       foreach($list_fields as $name => $field) {
-        
-          $items = field_get_items('node', $magazine, $field);
-          if(!empty($items)) {
-            $lists[$name] = array();
-            foreach($items as $item) {
-                $lists[$name][] = l($item['title'], $item['url']);
-            }
+        $items = field_get_items('node', $magazine, $field);
+        if(!empty($items)) {
+          $lists[$name] = array();
+          foreach($items as $item) {
+              $lists[$name][] = l($item['title'], $item['url']);
           }
-        
-        
+        }
       }
 
       $vars['magazine_lists'] = array();
       if(!empty($lists)) {
         foreach($lists as $name => $list) {
-
           $vars['magazine_lists'][$name] = theme('item_list', array('type' => 'ul', 'items' => $list));
         }
       }
