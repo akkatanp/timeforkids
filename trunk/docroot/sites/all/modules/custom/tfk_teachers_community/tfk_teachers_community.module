@@ -389,17 +389,23 @@ function tfk_teachers_community_preprocess_comment(&$variables, $hook) {
     // Add CSS classes.
     $variables['classes'][] = 'teacher_community_question';
     
-    // Link to comment author's profile.
-    $variables['author_profile_link'] = l('See Bio', 'user/'. $variables['comment']->uid);
-    
-    // User profile pictures.
-    if(!empty($variables['comment']->picture)) {
-      $title = $variables['comment']->name;
-      $image = theme('image', array('path' => $variables['comment']->picture, 'title' => $title, 'alt' => $title));
-      $link_options = array('html' => TRUE, 'attributes' => array('title' => $title));
-      $linked_image = l($image, 'user/'. $variables['comment']->uid, $link_options);
-      $variables['picture'] = l($image, 'user/'. $variables['comment']->uid, $link_options);
-      // @todo Confirm: If it's a board member, link to his board profile, or to the regular user profile?
+    // Link to comment author's profile, only if it is a board member (with a profile).
+    $profile_nid = tfk_teacher_community_board_member_profile_nid($variables['comment']->uid);
+    if($profile_nid != FALSE) {
+      $profile = 'node/'. $profile_nid;
+      $variables['author_profile_link'] = l('See Bio', $profile);
+      $variables['author'] = l($variables['comment']->name, $profile);
+      
+      // User profile pictures, only for board members.
+      if(!empty($variables['comment']->picture)) {
+        $title = $variables['comment']->name;
+        $image = theme('image', array('path' => $variables['comment']->picture, 'title' => $title, 'alt' => $title));
+        $link_options = array('html' => TRUE, 'attributes' => array('title' => $title));
+        $variables['picture'] = l($image, $profile, $link_options);
+      }
+    // Else, this is a non-board member user, or a board member without a profile.
+    } else {
+      $profile = $variables['author'] = $variables['comment']->name;
     }
     
     // Change submitted date format.
@@ -411,6 +417,47 @@ function tfk_teachers_community_preprocess_comment(&$variables, $hook) {
     // Unset variables we are not going to use.
     unset($_variables['permalink']);
     unset($_variables['status']);
+  }
+}
+
+/**
+ * Returns the nid to a board member user profile.
+ *
+ * @param int $uid
+ * 	User id.
+ */
+function tfk_teacher_community_board_member_profile_nid($uid) {
+  // Local static cache for performance.
+  static $static_users = array();
+  if(!array_key_exists($uid, $static_users)) {
+    $static_users[$uid] = user_load($uid);
+  }
+  
+  // Shortcut to static cache.
+  $user = & $static_users[$uid];
+  
+  if(isset($user->profile)) {
+    // Link to profile, and save some db queries.
+    return $user->profile;
+  } else {
+    // Users without the board member role.
+    if(array_search('Board Member', $user->roles, TRUE) === FALSE) {
+      return FALSE;
+    } else {
+      // Search to see if this board member has a profile.
+      $result = db_query("SELECT entity_id FROM {field_data_field_board_member_reference} WHERE :uid = field_board_member_reference_uid", array(':uid' => $user->uid));
+      if($result) {
+        $profile_nid = $result->fetchColumn();
+        if($profile_nid != FALSE) {
+          // If found, link to profile and cache results.
+          $user->profile = $profile_nid;
+          return $user->profile;
+        }
+      }
+      
+      // Else, users with the board member role that are lacking a profile.
+      return FALSE;
+    }
   }
 }
 
