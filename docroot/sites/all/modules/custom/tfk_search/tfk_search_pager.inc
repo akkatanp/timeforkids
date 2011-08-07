@@ -87,12 +87,13 @@ function theme_pager_top(&$vars) {
 
     // When there is more than one page, create the pager list.
     if ($i != $pager_max) {
+      /*
       if ($i > 1) {
         $items[] = array(
           'class' => array('pager-ellipsis'),
           'data' => '…',
         );
-      }
+      }*/
       // Now generate the actual pager piece.
       for (; $i <= $pager_last && $i <= $pager_max; $i++) {
         if ($i < $pager_current) {
@@ -114,12 +115,13 @@ function theme_pager_top(&$vars) {
           );
         }
       }
+      /*
       if ($i < $pager_max) {
         $items[] = array(
           'class' => array('pager-ellipsis'),
           'data' => '…',
         );
-      }
+      }*/
     }
     // End generation.
     if ($li_next) {
