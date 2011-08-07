@@ -291,7 +291,7 @@ ol#tfk-search-results-photos-video {
 ol#tfk-search-results-photos-video li div.content-type {
   background-color: #D71700;
   color: white;
-  font-weight: bold;
+  font-family: "arial black", arial, sans-serif;
   font-size: 1.0em;
   padding: 3.35px 0 2.76px 11px;
   margin-bottom: 7px;
@@ -326,7 +326,7 @@ li.tfk-search-result {
 
 ol#tfk-search-results-photos-video li.tfk-search-result .col2 h3.title a {
   color: #D71700;
-  font-size: 1.5em;
+  font-size: 1.67em;
   font-weight: bold;
 }
 
@@ -406,7 +406,7 @@ div#tfk-search-pager-top .item-list ul li {
 div#featured-related-content-title {
 	font-size: 1em;
 	font-family: 'arial black',arial,sans-serif;
-	margin: 5px 0px 5px 0px;
+	margin: 0 0 3px 0;
 }
 
 div#featured-related-content {
