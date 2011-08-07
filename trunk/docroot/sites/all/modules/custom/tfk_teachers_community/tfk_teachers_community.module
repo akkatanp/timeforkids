@@ -659,3 +659,42 @@ function theme_item_list_custom($variables) {
   $output .= '</div>';
   return $output;
 }
+
+/**
+ * Preprocess Views views-view-field.tpl.php template.
+ */
+function tfk_teachers_community_preprocess_views_view_field(&$variables, $hook) {
+  
+  // Modify users_name field output.
+  if($variables['view']->name == 'teacher_community_topic_list' && $variables['field']->field_alias == 'users_name') {
+    //Optionally, filter by display: && $variables[view]->current_display == 'page_1'
+    
+    // Local static cache for performance.
+    static $static_users = array();
+    if(!array_key_exists($variables['row']->users_uid, $static_users)) {
+      $static_users[$variables['row']->users_uid] = user_load($variables['row']->users_uid);
+    }
+    
+    // Shortcut. @todo Save the query result here for performance.
+    //$user = & $static_users[$variables['row']->users_uid];
+    
+    // Unlink users without the board member role.
+    if(array_search('Board Member', $user->roles, TRUE) === FALSE) {
+      $variables['output'] = $variables['row']->users_name;
+    } else {
+      // Search to see if this board member has a profile.
+      $result = db_query("SELECT entity_id FROM {field_data_field_board_member_reference} WHERE :uid = field_board_member_reference_uid", array(':uid' => $user->uid));
+      if($result) {
+        $profile_nid = $result->fetchColumn();
+        if($profile_nid != FALSE) {
+          // If found, link to profile.
+          $variables['output'] = l($variables['row']->users_name, 'node/'. $profile_nid);
+          return;
+        }
+      }
+      // Else unlink users with the board member role lacking a profile.
+      $variables['output'] = $variables['row']->users_name;
+    }
+    
+  }
+}
