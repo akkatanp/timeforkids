@@ -675,26 +675,33 @@ function tfk_teachers_community_preprocess_views_view_field(&$variables, $hook) 
       $static_users[$variables['row']->users_uid] = user_load($variables['row']->users_uid);
     }
     
-    // Shortcut. @todo Save the query result here for performance.
-    //$user = & $static_users[$variables['row']->users_uid];
-    
-    // Unlink users without the board member role.
-    if(array_search('Board Member', $user->roles, TRUE) === FALSE) {
-      $variables['output'] = $variables['row']->users_name;
+    // Shortcut to static cache.
+    $user = & $static_users[$variables['row']->users_uid];
+    if(isset($user->profile)) {
+      // Link to profile, and save some db queries.
+      $variables['output'] = $user->profile;
+      return;
     } else {
-      // Search to see if this board member has a profile.
-      $result = db_query("SELECT entity_id FROM {field_data_field_board_member_reference} WHERE :uid = field_board_member_reference_uid", array(':uid' => $user->uid));
-      if($result) {
-        $profile_nid = $result->fetchColumn();
-        if($profile_nid != FALSE) {
-          // If found, link to profile.
-          $variables['output'] = l($variables['row']->users_name, 'node/'. $profile_nid);
-          return;
+      // Unlink users without the board member role.
+      if(array_search('Board Member', $user->roles, TRUE) === FALSE) {
+        $variables['output'] = $user->name;
+      } else {
+        // Search to see if this board member has a profile.
+        $result = db_query("SELECT entity_id FROM {field_data_field_board_member_reference} WHERE :uid = field_board_member_reference_uid", array(':uid' => $user->uid));
+        if($result) {
+          $profile_nid = $result->fetchColumn();
+          if($profile_nid != FALSE) {
+            // If found, link to profile and cache results.
+            $user->profile = $variables['output'] = l($user->name, 'node/'. $profile_nid);
+            return;
+          }
         }
+        
+        // Else unlink users with the board member role lacking a profile.
+        $variables['output'] = $variables['row']->users_name;
       }
-      // Else unlink users with the board member role lacking a profile.
-      $variables['output'] = $variables['row']->users_name;
     }
-    
+  
   }
+  
 }
