@@ -109,6 +109,7 @@ div.view.view-id-teacher_community_topic_list .views-field-comment-count {
 	color: #333;
 	font-weight: bold;
 	font-size: 11px;
+        line-height:15px;
 }
 
 body.page-teacher-community-topic-list .region-sidebar-first .section {
@@ -171,7 +172,7 @@ body.page-node-add-teacher-community-question #block-system-help p {
 form#teacher-community-question-node-form label[for="edit-title"], div#block-system-main h2.comments_header_title {
   background-color: #D71700;
   color: white;
-  margin-bottom: 14px;
+  /*margin-bottom: 14px;*//*Taken out per tfks212*/
   padding: 5px 0 3px 10px;
 }
 
@@ -199,7 +200,8 @@ div#block-system-main div.node-teacher-community-question.view-mode-full h2.node
 
 
 div#block-system-main h2.comments_header_title {
-  font-size: 1.08em;
+  font-size: 12px;
+  font-family: "Arial Black", Arial, sans-serif;
 }
 div#block-system-main div.node-teacher-community-question.view-mode-full div.col1-wrapper {
   display: inline-block;
