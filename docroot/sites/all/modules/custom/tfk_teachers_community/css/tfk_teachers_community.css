@@ -304,10 +304,11 @@ body.page-teacher-community-topic-list .view-board-members .view-header h3 {
 }
 
 #block-views-4dd757237991afc15893b55c57cc03ef .view-content .views-row {
-	min-height: 90px;
 	border-top: 1px dotted #CECECE;
 	padding-top: 10px;
 	padding-bottom: 10px;
+	min-height: 70px;
+        height: auto !important;/*must have this for IE when using min-height*/
 }
 
 #block-views-4dd757237991afc15893b55c57cc03ef .view-content .views-row-last {
@@ -333,7 +334,7 @@ body.page-teacher-community-topic-list .view-board-members .view-header h3 {
 .views-field-field-member-photo {
 	float: left;
 	margin-right: 10px;
-	height: 90px;
+	height: 70px;
 }
 
 #block-views-4dd757237991afc15893b55c57cc03ef div.view-teacher-board-nodeblock-view div.views-row {
