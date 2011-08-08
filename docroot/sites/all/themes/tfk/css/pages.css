@@ -275,9 +275,9 @@ ul.links li {
 .view-board-members .view-content .views-field-field-member-photo {
     float: left;
     margin-right:8px;
-    min-height:90px;
+    min-height:71px;
     height:auto !important;
-    height:90px;
+    height:71px;
 }
 .view-board-members .view-content table td .views-field-title-1 {
     margin-top: 10px;
