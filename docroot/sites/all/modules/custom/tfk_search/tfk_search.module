@@ -273,7 +273,8 @@ function tfk_search_apachesolr_update_index(&$document, $node, $namespace) {
 
   if($node->type == 'article'){
     $tmp_body =  field_get_items('node', $node, 'field_body');
-    print_r($tmp_body);exit;
+    $art_body = $tmp_body[0]['value'];
+    $document->addField('sm_field_body', $art_body);
   }
 
 
