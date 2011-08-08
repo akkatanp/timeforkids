@@ -450,3 +450,12 @@ ini_set('session.cookie_lifetime', 2000000);
  */
 require('/var/www/site-php/time/time-settings.inc');
 
+/**
+ * Memcached Config Settings
+ *
+ * Add the following line of code to your settings.php file to cache anything normally stored in a cache* table in the Drupal database in Memcached.
+ *
+ */
+ 
+ $conf['cache_inc'] = './sites/all/modules/memcache/memcache.inc';
+ $conf['session_inc'] = './sites/all/modules/memcache/memcache-session.inc';
