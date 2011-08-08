@@ -2605,7 +2605,7 @@ body.page-extras .block-views .content .view-content .views-row.views-row-last {
 }
 .page-404page #content {
     border: 5px solid #d71700;
-    width:758px;
+    width: 758px !important;
 }
 
 /* publishing schedule */
