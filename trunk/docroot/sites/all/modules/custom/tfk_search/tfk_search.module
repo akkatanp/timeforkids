@@ -260,6 +260,13 @@ define('TFK_SEARCH_WORKSHEET_PDF_TITLE', 'sm_field_worksheet_pdf_title');
  */
 define('TFK_SEARCH_ARTICLE_BODY', 'ss_field_body');
 
+/**
+ * Apache Solr search field, represetes the article deck.
+ *
+ * @var string
+ */
+define('TFK_SEARCH_ARTICLE_DECK', 'field_deck');
+
 
 /**
  * Implementation of hook_apachesolr_update_index.
@@ -278,11 +285,17 @@ define('TFK_SEARCH_ARTICLE_BODY', 'ss_field_body');
  */
 function tfk_search_apachesolr_update_index(&$document, $node, $namespace) {
   // Index date field.
-
+  
+  // Add article fields to the index.
   if($node->type == 'article'){
     $tmp_body =  field_get_items('node', $node, 'field_body');
     $art_body = $tmp_body[0]['value'];
     $document->addField(TFK_SEARCH_ARTICLE_BODY, $art_body);
+    
+    $deck = field_get_items('node', $node, TFK_SEARCH_ARTICLE_DECK);
+    if($deck && !empty($deck[0]['value'])) {
+      $document->addField(TFK_SEARCH_ARTICLE_DECK, $deck[0]['value']);
+    }
   }
 
 
@@ -1225,8 +1238,8 @@ function tfk_search_apachesolr_modify_query($query, $caller) {
     $query->add_subquery($subquery, 'OR');
     
     // Retrieve additional content fields.
-    // Body field for articles.
-    $query->params['fl'] .= ','. TFK_SEARCH_ARTICLE_BODY;
+    // Body and deck field for articles.
+    $query->params['fl'] .= ','. implode(',', array(TFK_SEARCH_ARTICLE_BODY, TFK_SEARCH_ARTICLE_DECK));
 
     // Limit the number of rows per page.
     $query->params['rows'] = 8;
@@ -1903,6 +1916,7 @@ function tfk_search_preprocess_search_result(&$vars) {
       }
       
       // We still trim the deck, just for safety.
+      // If one day we take out that node load, use this TFK_SEARCH_ARTICLE_DECK for the deck.
       $body = field_get_items('node', $node, 'field_deck');
       if(!empty($body[0]['safe_value'])) {
         $teaser = $body[0]['safe_value'];
