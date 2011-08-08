@@ -282,6 +282,7 @@ define('TFK_SEARCH_ARTICLE_DECK', 'ss_field_deck');
  *   Search namespace.
  *
  * @see apachesolr_node_to_document
+ * @see ApacheSolrDocument::setField
  */
 function tfk_search_apachesolr_update_index(&$document, $node, $namespace) {
   // Index date field.
@@ -289,15 +290,15 @@ function tfk_search_apachesolr_update_index(&$document, $node, $namespace) {
   // Add article fields to the index.
   if($node->type == 'article'){
     $tmp_body =  field_get_items('node', $node, 'field_body');
-    $art_body = $tmp_body[0]['value'];
-    $document->addField(TFK_SEARCH_ARTICLE_BODY, $art_body);
-    
+    // To avoid modifying the schema.xml, we're stuffing into the content field the body and deck fields.
     $deck = field_get_items('node', $node, 'field_deck');
     if($deck && !empty($deck[0]['value'])) {
+      // We still add the DECK to the index, just in case we want to show a "clean" deck.
+      // Right now we are loading the article deck using a node_load().
       $document->addField(TFK_SEARCH_ARTICLE_DECK, $deck[0]['value']);
+      $document->setField('content', $tmp_body[0]['value']. PHP_EOL. $deck[0]['value']);
     }
   }
-
 
   if(isset($node->field_date)){
     $tmp_date =  field_get_items('node', $node, 'field_date');
@@ -1244,6 +1245,10 @@ function tfk_search_apachesolr_modify_query($query, $caller) {
     // Limit the number of rows per page.
     $query->params['rows'] = 8;
     
+    // Highlight custom fields.
+    //$query->params['hl.fl'][] = TFK_SEARCH_ARTICLE_DECK;
+    //$query->params['hl.fl'][] = TFK_SEARCH_ARTICLE_BODY;
+    
     // Optionally limit content type visibility to anons if required by business.
     /*
     global $user;
@@ -1921,6 +1926,8 @@ function tfk_search_preprocess_search_result(&$vars) {
       if(!empty($body[0]['safe_value'])) {
         $teaser = $body[0]['safe_value'];
       }
+      //$teaser = TFK_SEARCH_ARTICLE_DECK;
+      //$teaser = $vars['result']['fields'][TFK_SEARCH_ARTICLE_DECK]
     break;
         
     //default:
