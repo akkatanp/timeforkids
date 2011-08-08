@@ -53,6 +53,9 @@ function flashcard_anonymous_permission() {
     'view anonymous flashcards' => array(
       'title' => t('View anonymous flashcards'),
     ),
+    'create public flashcards' => array(
+      'title' => t('Create public flashcards'),
+    ),
   );
 }
 
@@ -60,7 +63,13 @@ function flashcard_anonymous_permission() {
  * Disallow direct access to flashcards.
  */
 function flashcard_anonymous_access($op, $node) {
-  return ($node->type == 'flashcard') ? user_access('view anonymous flashcards') : node_access($op, $node);
+  if ($node->type == 'flashcard') {
+    $account = user_load($node->uid);
+    return (user_access('view anonymous flashcards') || (user_access('create public flashcards', $account)));
+  }
+  else {
+    node_access($op, $node);
+  }
 }
 
 /**
