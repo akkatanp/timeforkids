@@ -189,6 +189,7 @@ ul.links li {
 .tfk-user-profile-title {
     color:#373737;
     margin-top:0px;
+    margin-bottom:10px;
 }
 #tfk-user-profile-form {
     border:1px solid #CECECE;
@@ -370,6 +371,13 @@ ul.links li {
 .node-board-member .field-name-field-member-photo img {
     border:1px solid #CECECE;
 }
+.node-board-member .board-member-grade, .node-board-membe field-name-field-location {
+    line-height:15px;
+}
+.node-board-member .field-type-text-with-summary {
+    margin-top:30px;
+    line-height:15px;
+}
 .view-board-members .view-content .views-field-field-grade-level, .view-board-members .view-content .views-field-field-location, #block-views-board-members-block-1 .views-field-field-grade-level, #block-views-board-members-block-1 .views-field-field-location, #block-views-board-members-block-2 .views-row .views-field-field-grade-level,#block-views-board-members-block-2 .views-row .views-field-field-location, .node-board-member .field-name-field-location, .node-board-member .field-name-field-grade-level, .node-board-member .board-member-grade {
     font-weight:bold;
     color:#373737;
@@ -379,7 +387,7 @@ ul.links li {
 }
 .teacher-community-profile-board-member-name {
     font-size:2.0em;
-    color:#D71700;
+    color:black;
     font-weight:bold;
 }
 #block-menu-menu-link-to-board-members h2 {
