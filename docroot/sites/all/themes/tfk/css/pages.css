@@ -294,6 +294,7 @@ ul.links li {
     height:auto !important;
     height:200px;
     padding: 0px 10px 10px 10px;
+    line-height:15px;
 }
 #block-views-board-members-block-1 h2  {
 	padding-top:10px; width:242px; 
@@ -306,6 +307,9 @@ ul.links li {
 }
 #block-views-board-members-block-1 .views-field-title a {
     font-size:1.2em;
+}
+#block-views-board-members-block-1 .views-field-field-location {
+    margin-bottom:15px;
 }
 #block-views-board-members-block-2  {
     border: 1px solid #CECECE;
