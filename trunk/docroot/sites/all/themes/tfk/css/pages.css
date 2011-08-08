@@ -1830,8 +1830,8 @@ body.page-extras .block-views .content .view-content .views-row.views-row-last {
 }
 
 .page-store #featured-books h2 {
-	margin: 0 0 10px 0;
-	font: normal 14px "arial black", arial, sans-serif;
+	margin: 0 0 25px 0;
+	font: normal 12px "arial black", arial, sans-serif;
 	color: white;
 	background: #d71700;
 	text-align: center;
@@ -1842,6 +1842,8 @@ body.page-extras .block-views .content .view-content .views-row.views-row-last {
 	width: 134px;
 	border-bottom: dotted 1px #cecece;
 	margin-bottom: 10px;
+        line-height:15px;
+        color:#666666;
 }
 
 .page-store #featured-books .featured-book:last-child {
