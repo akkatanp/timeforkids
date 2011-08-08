@@ -1900,7 +1900,7 @@ body.page-extras .block-views .content .view-content .views-row.views-row-last {
 	top: 0px;
 	width: 100%;
 	background: #000;
-	z-index: 2;
+	z-index: 100;
 	-webkit-opacity: 0.5;
 	-moz-opacity: 0.5;
 	opacity: 0.5;
