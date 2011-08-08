@@ -61,7 +61,7 @@
 
             .find('.flashcard-cycle-buttons')
               .wrapInner('<div class="flashcard-cycle-wrapper clearfix"></div>')
-              .find('a')
+              .find('a:not(.edit)')
                 .each(
                   function() {
                     if ($(this).attr('class').length > 0) {
