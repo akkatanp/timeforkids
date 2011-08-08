@@ -272,7 +272,7 @@ function tfk_search_apachesolr_update_index(&$document, $node, $namespace) {
   // Index date field.
 
   if($node->type == 'article'){
-    print_r($node);
+    print_r($node);exit;
   }
 
 
