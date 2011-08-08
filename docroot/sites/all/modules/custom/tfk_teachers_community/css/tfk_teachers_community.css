@@ -307,7 +307,7 @@ body.page-teacher-community-topic-list .view-board-members .view-header h3 {
 	border-top: 1px dotted #CECECE;
 	padding-top: 10px;
 	padding-bottom: 10px;
-	min-height: 70px;
+	min-height: 71px;
         height: auto !important;/*must have this for IE when using min-height*/
 }
 
@@ -334,7 +334,7 @@ body.page-teacher-community-topic-list .view-board-members .view-header h3 {
 .views-field-field-member-photo {
 	float: left;
 	margin-right: 10px;
-	height: 70px;
+	height: 71px;
 }
 
 #block-views-4dd757237991afc15893b55c57cc03ef div.view-teacher-board-nodeblock-view div.views-row {
