@@ -231,6 +231,21 @@ define('TFK_SEARCH_RELATED_PATH', 'sm_field_additional_content_paths');
 define('TFK_SEARCH_RELATED_TYPE', 'sm_field_additional_content_types');
 
 /**
+ * Apache Solr search field, represetes a web-accessible URL to a worksheeet
+ * PDF file.
+ *
+ * @var string
+ */
+define('TFK_SEARCH_WORKSHEET_PDF_LINK', 'sm_field_worksheet_pdf_link');
+
+/**
+ * Apache Solr search field, represetes the title of a worksheeet PDF file.
+ *
+ * @var string
+ */
+define('TFK_SEARCH_WORKSHEET_PDF_TITLE', 'sm_field_worksheet_pdf_title');
+
+/**
  * Implementation of hook_apachesolr_update_index.
  *
  * Here we add additional fields to the ApacheSolrDocument. What we add here
@@ -273,6 +288,29 @@ function tfk_search_apachesolr_update_index(&$document, $node, $namespace) {
     }
   }
   
+  // Index PDF link for Magazines->Additional Content->Materials to avoid doing
+  // additional node loads on the tfk-magazine page.
+  if(isset($node->field_materials) && !empty($node->field_materials)) {
+    $materials = field_get_items('node', $node, 'field_materials');
+    foreach($materials as $material) {
+      $material_node = node_load($material['nid']);
+      if($material_node) {
+       
+          if(isset($material_node->field_worksheet_pdf) && !empty($material_node->field_worksheet_pdf)) {
+            $pdfs = field_get_items('node', $material_node, 'field_worksheet_pdf');
+            if($pdfs) {
+              foreach($pdfs as $pdf) {
+                // Download link.
+                $document->addField(TFK_SEARCH_WORKSHEET_PDF_LINK, file_create_url($pdf['uri']));
+                // Worksheet title.
+                $document->addField(TFK_SEARCH_WORKSHEET_PDF_TITLE, $material['node']->title);
+              }
+            }
+          }
+        
+      }
+    }
+  }
 }
 
 function tfk_search_apachesolr_facets() {
@@ -1134,6 +1172,10 @@ function tfk_search_apachesolr_modify_query($query, $caller) {
     $subquery = apachesolr_drupal_query();
     $subquery->add_filter('bundle', 'magazine_issue');
     $query->add_subquery($subquery, 'OR');
+    
+    // Retrieve additional content fields.
+    $query->params['fl'] .= ','. implode(',', array(TFK_SEARCH_WORKSHEET_PDF_LINK, TFK_SEARCH_WORKSHEET_PDF_TITLE));
+    
 
     // Limit the number of rows per page to 8 per spec.
     $query->params['rows'] = 8;
@@ -1650,22 +1692,12 @@ function tfk_search_preprocess_search_result(&$vars) {
       }
 
        ///////////GETTING ADDITIONAL CONTENT////////
-       ////////////////////Materials////////////////
-       $tmp_materials = field_get_items('node', $magazine, 'field_materials');
-       if($tmp_materials) {
-        foreach($tmp_materials as $k=>$tmp_material){
-           //i want to get the title without doing an extra node_load
-           $sql = 'SELECT title FROM {node} WHERE nid = :nid';
-           $result = db_query($sql,array('nid'=>$tmp_material['nid']));
-           $link_title = $result->fetch();
-           if($link_title) {
-             $vars['magazine_materials'][$k]['title'] = $link_title->title;
-             $vars['magazine_materials'][$k]['nid'] = $tmp_material['nid'];
-             $vars['magazine_materials'][$k]['url'] = drupal_lookup_path('alias','node/'.$tmp_material['nid']);
-           }
+       // Materials.
+       if(array_key_exists(TFK_SEARCH_WORKSHEET_PDF_LINK, $vars['result']['fields']) && !empty($vars['result']['fields'][TFK_SEARCH_WORKSHEET_PDF_LINK])) {
+         foreach($vars['result']['fields'][TFK_SEARCH_WORKSHEET_PDF_LINK] as $key => $pdf_link) {
+           $vars['magazine_materials'][$key] = l($vars['result']['fields'][TFK_SEARCH_WORKSHEET_PDF_TITLE][$key], $pdf_link);
          }
        }
-
 
        ////////////////////Related Resources////////////////
        $tmp_related = field_get_items('node', $magazine, 'field_related_resources');
@@ -1683,7 +1715,7 @@ function tfk_search_preprocess_search_result(&$vars) {
          }
          
          // Supress additional resources box if empty.
-         if((!empty($vars['magazine_materials'])) && (!empty($vars['magazine_related']))) {
+         if((!empty($vars['magazine_materials'])) || (!empty($vars['magazine_related']))) {
            $vars['show_related_resources'] = TRUE;
          } else {
            $vars['show_related_resources'] = FALSE;
