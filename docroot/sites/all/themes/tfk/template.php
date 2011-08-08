@@ -207,6 +207,7 @@ function tfk_preprocess_page(&$variables, $hook) {
     }
     if ($variables['node']->type == 'flashcard') {
       $variables['flashcards_return'] = l('Back to Flash-card Sets', 'homework-helper/flashcards');
+      unset($variables['tabs']);
     }
   }
   
@@ -233,7 +234,6 @@ function tfk_preprocess_page(&$variables, $hook) {
     }
   }
 }
-// */
 
 /**
  * Override or insert variables into the node templates.
@@ -254,7 +254,6 @@ function tfk_preprocess_node(&$variables, $hook) {
     }
   }
 }
-// */
 
 /**
  * Override or insert variables into the comment templates.
