@@ -1913,7 +1913,7 @@ body.page-extras .block-views .content .view-content .views-row.views-row-last {
 	height: 380px;
 	padding: 10px;
 	background: white;
-	z-index: 3;
+	z-index: 100;
 }
 
 /* Ad containers */
