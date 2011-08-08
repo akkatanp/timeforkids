@@ -99,14 +99,14 @@
   
   <?php if($show_related_resources): ?>
     <div class="related-content-wrap">
-      <?php if(count($magazine_materials) >0 || count($magazine_related) > 0 ):?>
+      <?php if(!empty($magazine_materials) || !empty($magazine_related)):?>
          <h2 class="addit-content">Additional Content:</h2>
       <?php endif;?>
   
-      <?php if(isset($magazine_materials) && count($magazine_materials) > 0): ?>
+      <?php if(!empty($magazine_materials)): ?>
         <h3>Materials:</h3>
         <?php foreach($magazine_materials as $item):?>
-          <a href="<?php echo $item['url'];?>"><?php echo $item['title'];?></a><br/>
+           <?php print $item; ?>
         <?php endforeach;?>
       <?php endif; ?>
   
