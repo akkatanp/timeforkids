@@ -318,6 +318,9 @@ body.page-teacher-community-topic-list .view-board-members .view-header h3 {
 #block-views-4dd757237991afc15893b55c57cc03ef .views-field-title {
         font-size:14px;
 }
+#block-views-4dd757237991afc15893b55c57cc03ef .views-content {
+        font-weight:bold;
+}
 
 #block-views-4dd757237991afc15893b55c57cc03ef .views-field-field-location {
 	margin-bottom: 15px;
