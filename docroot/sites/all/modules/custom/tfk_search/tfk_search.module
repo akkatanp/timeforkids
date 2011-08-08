@@ -265,7 +265,7 @@ define('TFK_SEARCH_ARTICLE_BODY', 'ss_field_body');
  *
  * @var string
  */
-define('TFK_SEARCH_ARTICLE_DECK', 'field_deck');
+define('TFK_SEARCH_ARTICLE_DECK', 'ss_field_deck');
 
 
 /**
@@ -292,7 +292,7 @@ function tfk_search_apachesolr_update_index(&$document, $node, $namespace) {
     $art_body = $tmp_body[0]['value'];
     $document->addField(TFK_SEARCH_ARTICLE_BODY, $art_body);
     
-    $deck = field_get_items('node', $node, TFK_SEARCH_ARTICLE_DECK);
+    $deck = field_get_items('node', $node, 'field_deck');
     if($deck && !empty($deck[0]['value'])) {
       $document->addField(TFK_SEARCH_ARTICLE_DECK, $deck[0]['value']);
     }
