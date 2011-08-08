@@ -1240,7 +1240,8 @@ function tfk_search_apachesolr_modify_query($query, $caller) {
     
     // Retrieve additional content fields.
     // Body and deck field for articles.
-    $query->params['fl'] .= ','. implode(',', array(TFK_SEARCH_ARTICLE_BODY, TFK_SEARCH_ARTICLE_DECK));
+    // Not indexing TFK_SEARCH_ARTICLE_BODY, for now.
+    $query->params['fl'] .= ',TFK_SEARCH_ARTICLE_DECK';
 
     // Limit the number of rows per page.
     $query->params['rows'] = 8;
