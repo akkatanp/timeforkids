@@ -68,7 +68,7 @@ function flashcard_anonymous_access($op, $node) {
     return (user_access('view anonymous flashcards') || (user_access('create public flashcards', $account)));
   }
   else {
-    node_access($op, $node);
+    return node_access($op, $node);
   }
 }
 
