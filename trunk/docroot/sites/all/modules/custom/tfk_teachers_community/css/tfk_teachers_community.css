@@ -311,6 +311,7 @@ body.page-teacher-community-topic-list .view-board-members .view-header h3 {
 	padding-bottom: 10px;
 	min-height: 71px;
         height: auto !important;/*must have this for IE when using min-height*/
+        height:71px;
 }
 
 #block-views-4dd757237991afc15893b55c57cc03ef .view-content .views-row-last {
