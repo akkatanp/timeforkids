@@ -188,6 +188,7 @@ ul.links li {
 /* user profile */
 .tfk-user-profile-title {
     color:#373737;
+    margin-top:0px;
 }
 #tfk-user-profile-form {
     border:1px solid #CECECE;
