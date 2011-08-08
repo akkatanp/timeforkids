@@ -378,7 +378,7 @@ ul.links li {
 
 #block-menu-menu-link-to-board-members ul.menu li a {
 	display: block;
-	font: normal 14px "arial black";
+	font: normal 14px "arial black", arial, sans-serif;
 	color: #fff;
 	background: url("../images/white-back-arrow.png") no-repeat scroll 10px 20px #D71700;
 	padding: 10px 10px 10px 30px;
@@ -513,7 +513,7 @@ ul.links li {
 }
 
 .view-homepage-destination .views-field-nothing a {
-	font: normal 12px "arial black";
+	font: normal 12px "arial black", arial, sans-serif;
 	color: white;
 	text-transform: uppercase;
 	text-decoration: none;
@@ -929,7 +929,7 @@ ul.links li {
 	color: white;
 	text-transform: uppercase;
 	text-decoration: none;
-	font: normal 12px "arial black";
+	font: normal 12px "arial black", arial, sans-serif;
 }
 
 .view-homepage-news-block table td .views-field-field-lrg-rect-image,
@@ -1137,7 +1137,7 @@ ul.links li {
 	display: inline;
 	background: #fff;
 	text-transform: uppercase;
-	font: normal 18px "arial black";
+	font: normal 18px "arial black", arial, sans-serif;
 	line-height: 20px;
 	height: 20px;
 	padding: 0 4px;
@@ -1181,7 +1181,7 @@ ul.links li {
 }
 
 .node-type-article b {
-	font: normal 12px "arial black";
+	font: normal 12px "arial black", arial, sans-serif;
 	margin-bottom: 6px;
 }
 
@@ -1241,7 +1241,7 @@ ul.links li {
 	position: absolute;
 	top: -30px;
 	left: -4px;
-	font: normal 12px "arial black";
+	font: normal 12px "arial black", arial, sans-serif;
 	margin-top: 10px;
 }
 
