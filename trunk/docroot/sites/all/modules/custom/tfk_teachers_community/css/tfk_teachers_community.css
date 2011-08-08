@@ -306,7 +306,7 @@ body.page-teacher-community-topic-list .view-board-members .view-header h3 {
 #block-views-4dd757237991afc15893b55c57cc03ef .view-content .views-row {
 	min-height: 90px;
 	border-top: 1px dotted #CECECE;
-	padding-top: 4px;
+	padding-top: 10px;
 	padding-bottom: 10px;
 }
 
@@ -323,7 +323,7 @@ body.page-teacher-community-topic-list .view-board-members .view-header h3 {
 }
 
 #block-views-4dd757237991afc15893b55c57cc03ef .views-field-field-location {
-	margin-bottom: 15px;
+	margin-bottom: 8px;
 }
 
 #block-views-4dd757237991afc15893b55c57cc03ef .view-footer {
