@@ -1,6 +1,6 @@
 /**
  * @file
- * Page Styling
+ * Page Styling 
  *
  * Style the markup found in page.tpl.php. Also includes some styling of
  * miscellaneous Drupal elements that appear in the $content variable, such as
@@ -1900,7 +1900,7 @@ body.page-extras .block-views .content .view-content .views-row.views-row-last {
 	top: 0px;
 	width: 100%;
 	background: #000;
-	z-index: 100;
+	z-index: 2;
 	-webkit-opacity: 0.5;
 	-moz-opacity: 0.5;
 	opacity: 0.5;
