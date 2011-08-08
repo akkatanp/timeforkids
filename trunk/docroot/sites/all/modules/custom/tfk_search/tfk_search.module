@@ -254,6 +254,14 @@ define('TFK_SEARCH_WORKSHEET_PDF_LINK', 'sm_field_worksheet_pdf_link');
 define('TFK_SEARCH_WORKSHEET_PDF_TITLE', 'sm_field_worksheet_pdf_title');
 
 /**
+ * Apache Solr search field, represetes the article body.
+ *
+ * @var string
+ */
+define('TFK_SEARCH_ARTICLE_BODY', 'ss_field_body');
+
+
+/**
  * Implementation of hook_apachesolr_update_index.
  *
  * Here we add additional fields to the ApacheSolrDocument. What we add here
@@ -274,7 +282,7 @@ function tfk_search_apachesolr_update_index(&$document, $node, $namespace) {
   if($node->type == 'article'){
     $tmp_body =  field_get_items('node', $node, 'field_body');
     $art_body = $tmp_body[0]['value'];
-    $document->addField('sm_field_body', $art_body);
+    $document->addField(TFK_SEARCH_ARTICLE_BODY, $art_body);
   }
 
 
@@ -1215,6 +1223,10 @@ function tfk_search_apachesolr_modify_query($query, $caller) {
       $subquery->add_filter('bundle', $content_type);
     }
     $query->add_subquery($subquery, 'OR');
+    
+    // Retrieve additional content fields.
+    // Body field for articles.
+    $query->params['fl'] .= ','. TFK_SEARCH_ARTICLE_BODY;
 
     // Limit the number of rows per page.
     $query->params['rows'] = 8;
