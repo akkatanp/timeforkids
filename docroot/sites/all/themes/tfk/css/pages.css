@@ -308,7 +308,7 @@ ul.links li {
 #block-views-board-members-block-1 .views-field-title a {
     font-size:1.2em;
 }
-#block-views-board-members-block-1 .views-field-field-location {
+#block-views-board-members-block-1 .views-field-field-location, #block-views-board-members-block-1 .views-field-body {
     margin-bottom:15px;
 }
 #block-views-board-members-block-2  {
