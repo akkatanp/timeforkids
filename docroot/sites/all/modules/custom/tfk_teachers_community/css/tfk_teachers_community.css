@@ -300,7 +300,7 @@ body.page-teacher-community-topic-list .view-board-members .view-header h3 {
 	background-color: #D71700;
 	padding: 6px 0 5px 0;
 	text-align: center;
-	margin: 0 0 12px 0;
+	margin: 0 0 10px 0;
 }
 
 #block-views-4dd757237991afc15893b55c57cc03ef .view-content .views-row {
@@ -334,6 +334,7 @@ body.page-teacher-community-topic-list .view-board-members .view-header h3 {
 	margin: 0;
 	padding: 0;
 	min-height: inherit;
+        line-height: 15px;
 }
 
 /* New Comments */
