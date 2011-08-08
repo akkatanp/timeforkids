@@ -1830,7 +1830,7 @@ body.page-extras .block-views .content .view-content .views-row.views-row-last {
 }
 
 .page-store #featured-books h2 {
-	margin: 0 0 25px 0;
+	margin: 0 0 0 0;
 	font: normal 12px "arial black", arial, sans-serif;
 	color: white;
 	background: #d71700;
@@ -1838,11 +1838,11 @@ body.page-extras .block-views .content .view-content .views-row.views-row-last {
 }
 
 .page-store #featured-books .featured-book {
-	padding: 0 47px 10px 47px;
+	padding: 25px 47px 25px 47px;
 	width: 134px;
 	border-bottom: dotted 1px #cecece;
 	margin-bottom: 10px;
-        line-height:15px;
+        line-height:25px;
         color:#666666;
 }
 
@@ -1863,7 +1863,7 @@ body.page-extras .block-views .content .view-content .views-row.views-row-last {
 .page-store #store-items .row-item {
 	width: 508px;
 	border: solid 1px #cecece;
-	margin-bottom: 10px;
+	margin-bottom: 20px;
 }
 
 .page-store #store-items .row-item img {
