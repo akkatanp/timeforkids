@@ -293,7 +293,7 @@ ul.links li {
     min-height:200px;
     height:auto !important;
     height:200px;
-    padding: 10px 10px 10px 10px;
+    padding: 0px 10px 10px 10px;
 }
 #block-views-board-members-block-1 h2  {
 	padding-top:10px; width:242px; 
@@ -302,6 +302,7 @@ ul.links li {
 	overflow: hidden;
 	height: 0;
         margin-left:-4px;
+        margin-top:10px;
 }
 #block-views-board-members-block-1 .views-field-title a {
     font-size:1.2em;
