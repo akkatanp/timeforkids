@@ -336,6 +336,11 @@ body.page-teacher-community-topic-list .view-board-members .view-header h3 {
 	min-height: inherit;
         line-height: 15px;
 }
+#block-views-4dd757237991afc15893b55c57cc03ef h3 {
+	margin: 15px 0 0 0;
+        font-family: "Arial Black", Arial, sans-serif;
+        font-size:12px;
+}
 
 /* New Comments */
 .new-comment-label {
