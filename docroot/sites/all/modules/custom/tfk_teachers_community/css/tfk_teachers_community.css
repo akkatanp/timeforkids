@@ -145,7 +145,7 @@ body.node-type-teacher-community-question div.region-sidebar-first div.section {
 #block-tfk-teachers-community-tfk-teachers-comm-more-topics .item-list ul li {
   margin: 10px 0pt 0px 0;
   padding: 0 0 7px 0;
-  border-bottom: 1px solid #CECECE;
+  border-bottom: 1px dotted #CECECE;
 }
 
 #block-tfk-teachers-community-tfk-teachers-comm-more-topics div.btn_link {
