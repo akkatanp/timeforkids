@@ -3,6 +3,14 @@
 /**
  * @file
  * Logic for Photos and Video section and Worksheets.
+ *
+ * TECHNICAL DEBT:
+ * - There's at least a few SQL queries on the search result preprocessor.
+ * The queries should take place when indexing content, and not when searching:
+ *  - Move these queries to the update index hook (create your own Solr fields).
+ *  - Add the new fields to the modify query hook (so they are pulled down from Solr).
+ *  - Finally, substitute the queries on the search result preprocessor for
+ *    the fields coming down from Solr.
  */
 
 /**
