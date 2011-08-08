@@ -177,21 +177,6 @@
  *   );
  * @endcode
  */
-$databases = array (
-  'default' => 
-  array (
-    'default' => 
-    array (
-      'database' => 'timeteam',
-      'username' => 'drupaluser',
-      'password' => '',
-      'host' => '127.0.0.1',
-      'driver' => 'mysql',
-      'port' => '33067',
-      'prefix' => '',
-    ),
-  ),
-);
 
 /**
  * Access control for update.php script.
@@ -458,4 +443,19 @@ ini_set('session.cookie_lifetime', 2000000);
  */
 # $conf['allow_authorize_operations'] = FALSE;
 
+/**
+ * Acquia Config file
+ *
+ * This file is required to connect to an Acquia server and manages the DB connection.
+ */
 require('/var/www/site-php/time/time-settings.inc');
+
+/**
+ * Memcached Config Settings
+ *
+ * Add the following line of code to your settings.php file to cache anything normally stored in a cache* table in the Drupal database in Memcached.
+ *
+ */
+ 
+ $conf['cache_inc'] = './sites/all/modules/memcache/memcache.inc';
+ $conf['session_inc'] = './sites/all/modules/memcache/memcache-session.inc';
