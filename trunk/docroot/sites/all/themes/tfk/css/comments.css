@@ -15,6 +15,7 @@
 }
 
 .comment /* Wrapper for a single comment */ {
+  padding-top: 22px;
 }
 
 .comment-preview /* Preview of the comment before submitting new or updated comment */ {
@@ -63,6 +64,8 @@ h3.comment-title /* Comment title */ {
 }
 
 .comment .submitted /* The "posted by" information */ {
+	font-weight: bold;
+	line-height: 100%;
 }
 
 .comment .content /* Comment's content wrapper */ {
