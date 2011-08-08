@@ -375,7 +375,7 @@ ul.links li {
     line-height:15px;
 }
 .node-board-member .field-type-text-with-summary {
-    margin-top:30px;
+    margin-top:25px;
     line-height:15px;
 }
 .view-board-members .view-content .views-field-field-grade-level, .view-board-members .view-content .views-field-field-location, #block-views-board-members-block-1 .views-field-field-grade-level, #block-views-board-members-block-1 .views-field-field-location, #block-views-board-members-block-2 .views-row .views-field-field-grade-level,#block-views-board-members-block-2 .views-row .views-field-field-location, .node-board-member .field-name-field-location, .node-board-member .field-name-field-grade-level, .node-board-member .board-member-grade {
