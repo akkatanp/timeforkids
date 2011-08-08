@@ -295,20 +295,12 @@ function aplus_papers_final_step_content($form_state) {
     ),
   );
   foreach ($form_state['storage']['values'][$form_state['#review_step']] as $step => $data) {
-    if (isset($data['title'])) {
-      $output['title'] = array(
-        '#prefix' => '<div class="paper-title">',
-        '#suffix' => '</div>',
-        '#markup' => check_markup($data['title']['value'], $data['title']['format']),
-        '#weight' => 1,
-      );
-    }
     if (isset($data['date'])) {
       $output['date'] = array(
         '#prefix' => '<div class="paper-date">',
         '#suffix' => '</div>',
         '#markup' => check_plain($data['date']),
-        '#weight' => 2,
+        '#weight' => 1,
       );
     }
     if (isset($data['name'])) {
@@ -316,6 +308,14 @@ function aplus_papers_final_step_content($form_state) {
         '#prefix' => '<div class="student-name">',
         '#suffix' => '</div>',
         '#markup' => check_plain($data['name']),
+        '#weight' => 2,
+      );
+    }
+    if (isset($data['title'])) {
+      $output['title'] = array(
+        '#prefix' => '<div class="paper-title">',
+        '#suffix' => '</div>',
+        '#markup' => check_markup($data['title']['value'], $data['title']['format']),
         '#weight' => 3,
       );
     }
@@ -341,9 +341,9 @@ function aplus_papers_final_step_content($form_state) {
 function aplus_papers_save_content($form_state) {
   $paper = '';
   foreach ($form_state['storage']['values'][$form_state['#review_step']] as $step => $data) {
-    $paper .= isset($data['title']['value']) ? $data['title']['value'] . "\n\n" : '';
     $paper .= isset($data['name']) ? $data['name'] . "\n\n" : '';
     $paper .= isset($data['date']) ? $data['date'] . "\n\n" : '';
+    $paper .= isset($data['title']['value']) ? $data['title']['value'] . "\n\n" : '';
     $paper .= isset($data['textarea']['value']) ? $data['textarea']['value'] . "\n\n" : '';
   }
   return $paper;
