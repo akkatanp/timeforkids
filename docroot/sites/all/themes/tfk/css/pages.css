@@ -1751,7 +1751,7 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 }
 
 /* TFK extras */
-.page-extras #main .views-row {
+.page-extras #main .block-views {
 	padding: 10px;
 	border: solid 1px #cecece;
 }
