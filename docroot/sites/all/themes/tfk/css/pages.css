@@ -1762,11 +1762,11 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 	padding: 0;
 }
 
-#block-views-tfk-extras-block-3 .view-content > .views-row  {
+#block-views-tfk-extras-block-3 div.view-content > div.views-row  {
 	border-bottom: 0;
 }
 
-#block-views-tfk-extras-block-3 .view-content > .views-row :last-child {
+#block-views-tfk-extras-block-3 div.view-content > div.views-row :last-child {
 	border-bottom: solid 1px #cecece;
 }
 
