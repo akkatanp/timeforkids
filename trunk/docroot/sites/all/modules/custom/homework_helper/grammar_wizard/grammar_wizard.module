@@ -258,7 +258,7 @@ function grammar_wizard_check_answer($form, &$form_state) {
 
   // Set the interface text based on correctness of answer.
   if ($form_state['storage']['correct_answer'] = ($correct_answer == $selected_answer)) {
-    $title = t('You Got It');
+    $title = t('You Got It!');
     $rule = t('You Understand');
   }
   else {
@@ -277,7 +277,7 @@ function grammar_wizard_check_answer($form, &$form_state) {
     'title' => array(
       '#prefix' => '<h2>',
       '#suffix' => '</h2>',
-      '#markup' => $title . '!',
+      '#markup' => $title,
     ),
     'rule' => array(
       '#prefix' => '<div class="grammar-wizard-rule">',
