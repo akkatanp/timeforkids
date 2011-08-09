@@ -1751,7 +1751,7 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 }
 
 /* TFK extras */
-body.page-extras #main .views-row {
+.page-extras #main .views-row {
 	padding: 10px;
 	border: solid 1px #cecece;
 	margin-bottom: 10px;
@@ -1830,10 +1830,6 @@ body.page-extras .block > .content > p {
 	font: bold 20px arial, sans-serif;
 	color: #333;
 	margin: 10px 4px;
-}
-
-body.page-extras #main .views-row.views-row-last {
-  border-bottom: 0;
 }
 
 /* TFK Store */
