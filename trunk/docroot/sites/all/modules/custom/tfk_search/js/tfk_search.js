@@ -6,6 +6,7 @@
   Drupal.behaviors.tfk_search = {
     attach: function (context, settings) {
 
+      // Handlers for search input fields.
       var sFields = new Array();
       $(".search-form input.form-text", context).each(function(index, Element) {
         
@@ -25,6 +26,22 @@
         
       });
       
+      // JQuery UI accordion for facet blocks.
+      $(".region-sidebar-first .block h2", context).click(function() {
+        
+        target = $(this);
+
+        if(!target.hasClass('closed')) {
+          target.css('background', 'url("/sites/all/modules/custom/tfk_search/images/facet-arrow-closed.png") no-repeat scroll 0 0 transparent');
+        } else {
+          target.css('background', 'url("/sites/all/modules/custom/tfk_search/images/facet-arrow-open.png") no-repeat scroll 0 0 transparent');
+        }        
+        
+        // Close facet block.
+        target.toggleClass('closed').next().next().toggle('fast');
+
+      });
+
     }//End attach.
   };
 }(jQuery));
