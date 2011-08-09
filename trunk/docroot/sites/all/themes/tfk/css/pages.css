@@ -1633,16 +1633,15 @@ ul.links li {
 }
 
 /* news archive pager */
-.section-news-archive .custom-top-pager {
+.section-news-archive .region .content {
 	position: relative;
-	top: 20px;
-	right: 10px;
-	z-index: 2;
 }
 
-.section-news-archive .currfilters {
+.section-news-archive .custom-top-pager {
 	position: relative;
-	top: -20px;
+	top: 10px;
+	right: 10px;
+	z-index: 2;
 }
 
 .section-news-archive .item-list {
