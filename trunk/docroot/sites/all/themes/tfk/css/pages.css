@@ -1751,13 +1751,13 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 }
 
 /* TFK extras */
-.page-extras #main .block-views {
+.page-extras .region-content .block-views {
 	padding: 10px;
 	border: solid 1px #cecece;
 	border-bottom: 0;
 }
 
-.page-extras #main .block-views:last-child {
+.page-extras .region-content .block-views:last-child {
 	border-bottom: solid 1px #cecece;
 }
 
