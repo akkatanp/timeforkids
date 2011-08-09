@@ -38,20 +38,16 @@
                 else {
                   if ( $(this).hasClass('showing') ) {
                     $(this)
-                      .find('.flashcard-cycle-card:visible .card-front')
-                        .show()
-                        .end()
-                      .find('.flashcard-cycle-card:visible .card-back')
-                        .hide()
-                        .end();
+                      .find('.flashcard-cycle-card .card-front').removeAttr('style').end()
+                      .find('.flashcard-cycle-card .card-back').removeAttr('style').end();
                   }
                   else {
                     $(this)
-                      .find('.flashcard-cycle-card:visible .card-front')
-                        .hide()
-                        .end()
                       .find('.flashcard-cycle-card:visible .card-back')
                         .show()
+                        .end()
+                      .find('.flashcard-cycle-card:visible .card-front')
+                        .hide()
                         .end();
                   }
                   if ( $(this).hasClass('showing') ) {
@@ -63,6 +59,8 @@
                 $(this).toggleClass('showing');
               }
             );
+            
+          counts.all = counts.unmarked = card.children().size();
           
           $(this)
             .find('.flip')
@@ -83,20 +81,16 @@
                   else {
                     if ( card.hasClass('showing') ) {
                       card
-                        .find('.flashcard-cycle-card:visible .card-front')
-                          .show()
-                          .end()
-                        .find('.flashcard-cycle-card:visible .card-back')
-                          .hide()
-                          .end();
+                        .find('.flashcard-cycle-card .card-front').removeAttr('style').end()
+                        .find('.flashcard-cycle-card .card-back').removeAttr('style').end();
                     }
                     else {
                       card
-                        .find('.flashcard-cycle-card:visible .card-front')
-                          .hide()
-                          .end()
                         .find('.flashcard-cycle-card:visible .card-back')
                           .show()
+                          .end()
+                        .find('.flashcard-cycle-card:visible .card-front')
+                          .hide()
                           .end();
                     }
                     if (card.hasClass('showing') && Drupal.settings.flashcardCycle.flip == 'next') {
@@ -135,12 +129,8 @@
                   else {
                     if ( card.hasClass('showing') ) {
                       card
-                        .find('.flashcard-cycle-card:visible .card-front')
-                          .show()
-                          .end()
-                        .find('.flashcard-cycle-card:visible .card-back')
-                          .hide()
-                          .end();
+                        .find('.flashcard-cycle-card .card-front').removeAttr('style').end()
+                        .find('.flashcard-cycle-card .card-back').removeAttr('style').end();
                     }
                     card
                       .cycle($(this).attr('class').split(/\b/)[0])
@@ -167,7 +157,7 @@
       );
       
       
-      // function copied from line 237 of contrib/flashcard/flashcard_cycle/js/flashcard_cycle.js
+      // function copied wholesale from line 237 of contrib/flashcard/flashcard_cycle/js/flashcard_cycle.js
       function cardNumber(type, current, total) {
         if (type == 'next') {
           current++;
@@ -184,7 +174,7 @@
         if (type == 'restart') {
           current = 1;
         }
-
+        
         $('.flashcard-numbering').html(Drupal.t('!current of !total', {'!current': '<span class="flashcard-numbering-current">' + current + '</span>', '!total': total}));
         return current;
       }
