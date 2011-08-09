@@ -9,16 +9,17 @@
 }
 .suggestion-box .msg {
   display: inline-block;
-  font-size: 0.95em;
+  font-size: 11px;
+  font-weight: bold;
 }
 .suggestion-box .link {
   border-left: 1px solid #666666;
   display: inline-block;
-  font-size: 0.83em;
+  font-size: 11px;
+  font-weight: bold;
   margin-left: 3px;
   padding-left: 5px;
 }
-
 
 .suggestion-box.bottom {
   padding: 6px 6px 4px 6px;
@@ -57,6 +58,12 @@ body.page-node .suggestion-box .link a {
 #bottom-suggestion-box .link a {
   margin-left: 51%;
   width: 228px;
+  background: url("/sites/all/modules/custom/tfk_teachers_community/images/right-arrow.png") no-repeat scroll 100% 50% transparent;
+}
+
+body.page-node #bottom-suggestion-box .link a {
+  margin-left: 47%;
+  width: 250px;
   background: url("/sites/all/modules/custom/tfk_teachers_community/images/right-arrow.png") no-repeat scroll 100% 50% transparent;
 }
 
@@ -165,6 +172,11 @@ body.page-node-add-teacher-community-question #block-system-help h2 {
   margin: 10px 0 0 0;
 }
 
+.node-teacher-community-question .question-date {
+	line-height: 100%;
+	font-size: 10px;
+}
+
 body.page-node-add-teacher-community-question #block-system-help p {
   margin: 10px 0 0 0;
 }
@@ -174,6 +186,9 @@ form#teacher-community-question-node-form label[for="edit-title"], div#block-sys
   color: white;
   /*margin-bottom: 14px;*//*Taken out per tfks212*/
   padding: 5px 0 3px 10px;
+	font-size: 12px;
+	font-weight: normal;
+	font-family: "arial black", arial, sans-serif;
 }
 
 form#teacher-community-question-node-form div#edit-actions,
@@ -212,11 +227,16 @@ div#block-system-main div.node-teacher-community-question.view-mode-full div.col
 }
 
 div#block-system-main div.node-teacher-community-question.view-mode-full .even div.col1-wrapper {
-  margin-left: 9px;
+
 }
 
-div#block-system-main div.node-teacher-community-question.view-mode-full .even {
-	margin: 10px 0 10px 0px;
+div#block-system-main div.node-teacher-community-question.view-mode-full .even.comment {
+  margin-top: 11px;
+}
+
+div#block-system-main div.node-teacher-community-question.view-mode-full .first {
+  margin-top: 0;
+	padding-top: 0;
 }
 
 div#block-system-main div.node-teacher-community-question.view-mode-full div.col2-wrapper {
@@ -226,7 +246,6 @@ div#block-system-main div.node-teacher-community-question.view-mode-full div.col
   padding-left: 10px;
   vertical-align: top;
   width: 330px;
-  min-height: 100px;
 }
 div#block-system-main div.node-teacher-community-question.view-mode-full div.col2-wrapper col2 {
   margin: 0;
@@ -236,6 +255,14 @@ div.field-name-comment-body p:first-child {
   margin-top: 0;
 }
 
+div.field-name-comment-body {
+	line-height: 15px;
+}
+
+div.comment .author-profile-link {
+	margin-top: 13px;
+}
+
 div.comment.even {
   border: 1px solid #CCC;
   background: none repeat scroll 0 0 #D9EFFE;
@@ -243,7 +270,8 @@ div.comment.even {
 
 .comment ul.links.inline {
   text-align: right;
-  padding-bottom: 15px;
+  margin-top: 21px;
+  line-height: 100%;
 }
 
 body.page-node-add-teacher-community-question #page_pre_section { 
@@ -298,32 +326,45 @@ body.page-teacher-community-topic-list .view-board-members .view-header h3 {
 	font-size: 12px;
 	line-height: 80%;
 	color: #FFF;
-	font-family: "Arial Black", Arial, sans-serif;
+	font-weight: normal;
+	font-family: "Arial Black", arial, sans-serif;
 	background-color: #D71700;
 	padding: 6px 0 5px 0;
 	text-align: center;
 	margin: 0 0 10px 0;
 }
 
+#block-views-4dd757237991afc15893b55c57cc03ef .view-header h3 {
+  margin: 15px 0 8px 0;
+  font-weight: normal;
+  font-family: "Arial Black", arial;
+  font-size: 12px;
+}
+
+#block-views-4dd757237991afc15893b55c57cc03ef .view-header p {
+  line-height: 15px;
+}
+
+#block-views-4dd757237991afc15893b55c57cc03ef .views-field-title a {
+	font-size: 14px;
+}
+
+#block-views-4dd757237991afc15893b55c57cc03ef .views-field-field-grade-level,
+#block-views-4dd757237991afc15893b55c57cc03ef .views-field-field-location {
+	font-weight: bold;
+	font-size: 12px;
+}
+
 #block-views-4dd757237991afc15893b55c57cc03ef .view-content .views-row {
+	min-height: 90px;
 	border-top: 1px dotted #CECECE;
-	padding-top: 10px;
+	padding-top: 9px;
 	padding-bottom: 10px;
-	min-height: 71px;
-        height: auto !important;/*must have this for IE when using min-height*/
-        height:71px;
 }
 
 #block-views-4dd757237991afc15893b55c57cc03ef .view-content .views-row-last {
 	margin-bottom: 12px;
 	border-bottom: 1px dotted #CECECE;
-}
-
-#block-views-4dd757237991afc15893b55c57cc03ef .views-field-title {
-        font-size:14px;
-}
-#block-views-4dd757237991afc15893b55c57cc03ef .view-content {
-        font-weight:bold;
 }
 
 #block-views-4dd757237991afc15893b55c57cc03ef .views-field-field-location {
@@ -337,7 +378,7 @@ body.page-teacher-community-topic-list .view-board-members .view-header h3 {
 .views-field-field-member-photo {
 	float: left;
 	margin-right: 10px;
-	height: 71px;
+	height: 90px;
 }
 
 #block-views-4dd757237991afc15893b55c57cc03ef div.view-teacher-board-nodeblock-view div.views-row {
@@ -357,9 +398,10 @@ body.page-teacher-community-topic-list .view-board-members .view-header h3 {
 .new-comment-label {
   background-color: #D71700;
   color: white;
-  margin-bottom: 14px;
+  margin-bottom: 11px;
   padding: 5px 0 3px 10px;
-  font-size: 1.08em;
+  font-size: 12px;
+  font-family: "arial black", arial, sans-serif;
 }
 
 /* Misc */
@@ -373,3 +415,14 @@ body.page-teacher-community-topic-list .view-board-members .view-header h3 {
 	margin-bottom: 10px;
 }
 
+#comment-form .form-item {
+	margin: 0px;
+}
+
+#comment-form #edit-actions {
+	margin-bottom: 7px;
+}
+
+.col1-wrapper .author {
+	font-weight: bold;
+}
