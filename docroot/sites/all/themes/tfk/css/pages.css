@@ -1793,20 +1793,26 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 	font-weight: bold;
 }
 
+.page-extras .block-views .field-name-body {
+	line-height: 15px;
+	margin-bottom: 15px;
+}
+
 .page-extras .block-views h3 {
 	font: normal 20px arial;
+	line-height: 20px;
 	margin: 0 0 10px 0;
 }
 
 .tfk-extra-pdf {
 	font-weight: bold;
+	padding-left: 20px;
+	background: url(../images/pdf-icon.png) no-repeat;
 }
 
 .tfk-extra-pdf a {
 	height: 16px;
 	line-height: 16px;
-	padding-left: 20px;
-	background: url(../images/pdf-icon.png) no-repeat;
 }
 
 #block-views-tfk-extras-block-8 {
