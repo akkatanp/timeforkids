@@ -1757,12 +1757,17 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 	border: solid 1px #cecece;
 }
 
-#block-views-tfk-extras-block-3 .view-content .views-row {
+#block-views-tfk-extras-block-3 {
+	border: 0;
+	padding: 0;
+}
+
+#block-views-tfk-extras-block-3 .view-content .views-row  {
 	border-bottom: 0;
 }
 
-#block-views-tfk-extras-block-3 .view-content .views-row :last-child{
-	border-bottom: solid 1px #cecece;;
+#block-views-tfk-extras-block-3 .view-content .views-row :last-child {
+	border-bottom: solid 1px #cecece;
 }
 
 .view-tfk-extras-top-nodeblock h1 {
