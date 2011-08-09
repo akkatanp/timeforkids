@@ -27,7 +27,9 @@
   padding-top: 10px;
   padding-left: 11px;
   font-size: 1em;
-  font-weight: bold;  
+  font-family: "arial black", arial, sans-serif;
+  vertical-align: middle;
+  line-height: 100%;
 }
 
 #block-tfk-favorites-tfk-favorites-links.block .body .myfavs {
@@ -41,4 +43,8 @@
 
 .block-tfk-favorites {
   background-color: #D9EFFE;
+}
+
+#block-tfk-favorites-tfk-favorites-links .myfavs img {
+	margin-bottom: 5px;
 }
