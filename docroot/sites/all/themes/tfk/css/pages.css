@@ -1634,7 +1634,7 @@ ul.links li {
 
 /* news archive pager */
 .content .custom-top-pager {
-	position: relative;
+	position: absolute;
 	top: 20px;
 	right: 10px;
 	z-index: 2;
