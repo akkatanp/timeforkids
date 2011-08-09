@@ -1758,10 +1758,12 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 
 .view-tfk-extras-top-nodeblock h1{
 	font: bold 30px arial;
+	margin: 0 0 15px 0;
 }
 
 .view-tfk-extras-top-nodeblock p {
 	line-height: 15px;
+	margin: 0 0 15px 0;
 }
 
 .page-extras .block-views h2.block-title {
