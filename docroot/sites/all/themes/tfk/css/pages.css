@@ -1820,12 +1820,12 @@ body.page-extras .block > .content > p {
 	margin: 10px 4px;
 }
 
-body.page-extras .block-views .content .view-content .views-row {
+body.page-extras #main .views-row {
 	padding: 14px 10px;
 	border-bottom: 1px solid #CECECE;
 }
 
-body.page-extras .block-views .content .view-content .views-row.views-row-last {
+body.page-extras #main .views-row.views-row-last {
   border-bottom: 0;
 }
 
