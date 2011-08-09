@@ -1636,12 +1636,8 @@ ul.links li {
 .content .custom-top-pager {
 	position: relative;
 	top: 10px;
-	z-index: 2;
-}
-
-.content .custom-top-pager .item-list {
-	position: relative;
 	right: 10px;
+	z-index: 2;
 }
 
 .section-news-archive .item-list {
