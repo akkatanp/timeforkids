@@ -1875,7 +1875,7 @@ body.page-extras #main .views-row.views-row-last {
 }
 
 .page-store #store-items .row-item .half-row {
-	float: left;
+	display: inline;
 	width: 248px;
 	border: solid 1px #cecece;
 }
