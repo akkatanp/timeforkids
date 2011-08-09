@@ -1757,12 +1757,15 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 	border: solid 1px #cecece;
 }
 
-#block-views-tfk-extras-block-3 {
-	padding: 0;
-	border: 0;
+#block-views-tfk-extras-block-3 .view-content .views-row {
+	border-bottom: 0;
 }
 
-.view-tfk-extras-top-nodeblock h1{
+#block-views-tfk-extras-block-3 .view-content .views-row :last-child{
+	border-bottom: solid 1px #cecece;;
+}
+
+.view-tfk-extras-top-nodeblock h1 {
 	font: bold 30px arial;
 	margin: 0 0 15px 0;
 }
