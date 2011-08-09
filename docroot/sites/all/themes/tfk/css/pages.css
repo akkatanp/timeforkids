@@ -1780,6 +1780,24 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 	margin: 0 0 15px 0;
 }
 
+.featured-tfk-extra {
+	position: relative;
+	background: #dedede;
+	margin-top: 40px;
+}
+
+.featured-tfk-extra  h2.block-title {
+	position: absolute;
+	top: -36px;
+	left: 0px;
+	padding: 0;
+	font: bold 20px arial, sans-serif;
+	margin: 4px 0;
+	color: black;
+	background: none;
+	text-transform: none;
+}
+
 .page-extras .block-views h2.block-title {
 	font: normal 12px "arial black", arial, sans-serif;
 	color: white;
@@ -1824,29 +1842,6 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 .tfk-extra-pdf a {
 	height: 16px;
 	line-height: 16px;
-}
-
-#block-views-tfk-extras-block-8 {
-	position: relative;
-	background: #dedede;
-	margin-top: 40px;
-}
-
-#block-views-tfk-extras-block-8  h2.block-title {
-	position: absolute;
-	top: -36px;
-	left: 0px;
-	font: bold 20px arial, sans-serif;
-	margin: 4px 0;
-	color: black;
-	background: none;
-	text-transform: none;
-}
-
-body.page-extras .block > .content > p {
-	font: bold 20px arial, sans-serif;
-	color: #333;
-	margin: 10px 4px;
 }
 
 /* TFK Store */
