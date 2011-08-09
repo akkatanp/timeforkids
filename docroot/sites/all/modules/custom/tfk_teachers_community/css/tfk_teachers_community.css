@@ -356,12 +356,19 @@ body.page-teacher-community-topic-list .view-board-members .view-header h3 {
 }
 
 #block-views-4dd757237991afc15893b55c57cc03ef .view-content .views-row {
-	min-height: 90px;
+	min-height: 71px;
+        height: auto !important;/*must have this for IE when using min-height*/
+        height:71px;
 	border-top: 1px dotted #CECECE;
-	padding-top: 9px;
+	padding-top: 10px;
 	padding-bottom: 10px;
 }
-
+#block-views-4dd757237991afc15893b55c57cc03ef .views-field-title {
+        font-size:14px;
+}
+#block-views-4dd757237991afc15893b55c57cc03ef .view-content {
+        font-weight:bold;
+}
 #block-views-4dd757237991afc15893b55c57cc03ef .view-content .views-row-last {
 	margin-bottom: 12px;
 	border-bottom: 1px dotted #CECECE;
