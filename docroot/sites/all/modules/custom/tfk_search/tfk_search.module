@@ -890,6 +890,9 @@ function tfk_search_get_featured_block() {
  */
 function tfk_search_get_thumbnail($fid, $style) {
   $file = file_load($fid);
+  if(!empty($file->uri)) {
+    return FALSE;
+  }
   $file->newpath = image_style_path($style, $file->uri);
   
   // Generate the image style derivative if it doesn't exist.
@@ -1618,7 +1621,7 @@ function tfk_search_preprocess_search_result(&$vars) {
         $tmp_img_nid =  field_get_items('node', $node, 'field_minisite_tout_image');
         $uri = $tmp_img_nid[0]['uri'];
         $filesystem_path = drupal_realpath($uri);
-        if(file_exists($filesystem_path)) {
+        if(!empty($uri) && file_exists($filesystem_path)) {
           $newpath = image_style_path($style, $uri);
           $abspath = file_create_url($newpath);
           $thumbnail = theme('image', array('path' => $abspath, 'alt' => $title, 'title' => $title, 'attributes' => $thumb_attr));
@@ -1648,7 +1651,7 @@ function tfk_search_preprocess_search_result(&$vars) {
         
         if($record) {
           $uri = file_build_uri(basename($record->filename));
-          if(file_exists(drupal_realpath($uri))) {
+          if(!empty($uri) && file_exists(drupal_realpath($uri))) {
             $newpath = image_style_path($style, $uri);
             $abspath = file_create_url($newpath);
             $thumbnail = theme('image', array('path' => $abspath, 'alt' => $title, 'title' => $title, 'attributes' => $thumb_attr));
@@ -1671,7 +1674,7 @@ function tfk_search_preprocess_search_result(&$vars) {
       if(isset($node->field_video_thumbnail)){
         $tmp_img_nid =  field_get_items('node', $node, 'field_video_thumbnail');
         $uri = $tmp_img_nid[0]['uri'];
-        if(file_exists(drupal_realpath($uri))) {
+        if(!empty($uri) && file_exists(drupal_realpath($uri))) {
           $icon = '<div class="icon"></div>';
           $newpath = image_style_path($style, $uri);
           $abspath = file_create_url($newpath);
@@ -1719,13 +1722,15 @@ function tfk_search_preprocess_search_result(&$vars) {
         where fi.entity_type = :bundle_type and fi.entity_id = :img_nid',array('bundle_type'=>'node','img_nid'=>$img_nid));
       $record = $result->fetch();
       $file = file_load($record->field_image_fid);
-      if(isset($file->uri) && file_exists(drupal_realpath($file->uri))) {
+      if(!empty($file->uri) && file_exists(drupal_realpath($file->uri))) {
         $newpath = image_style_path($style, $file->uri);
         $abspath = file_create_url($newpath);
         $thumbnail = theme('image', array('path' => $abspath, 'alt' => $title, 'title' => $title, 'attributes' => $thumb_attr));
         $vars['thumbnail'] = l($thumbnail, 'node/'. $vars['result']['fields']['entity_id'], $link_attr);
         //For temporarily supporting the separate template. Delete this variable if we merge templates.
-        $vars['tfk_search_res_image'] = image_style_url($style, $file->uri);
+        if(isset($file->uri)) {
+          $vars['tfk_search_res_image'] = image_style_url($style, $file->uri);
+        }
       }
       
       $list_fields = array('Cover Story' =>'field_cover_story', 'In The News' => 'field_in_the_news', 'Top 5' => 'field_top_5',
@@ -1792,7 +1797,7 @@ function tfk_search_preprocess_search_result(&$vars) {
       if(isset($node->field_worksheet_thumbnail_image)){
         $tmp_img_nid =  field_get_items('node', $node, 'field_worksheet_thumbnail_image');
         $uri = $tmp_img_nid[0]['uri'];
-        if(file_exists(drupal_realpath($uri))) {
+        if(!empty($uri) && file_exists(drupal_realpath($uri))) {
           $newpath = image_style_path($style, $uri);
           $abspath = file_create_url($newpath);
           // Worksheets don't link to the node page.
@@ -1876,7 +1881,7 @@ function tfk_search_preprocess_search_result(&$vars) {
           where fi.entity_type = :bundle_type and fi.entity_id = :img_nid',array('bundle_type'=>'node','img_nid'=>$img_nid));
         $record = $result->fetch();
         $file = file_load($record->field_image_fid);
-        if(isset($file->uri) && file_exists(drupal_realpath($file->uri))) {
+        if(!empty($file->uri) && file_exists(drupal_realpath($file->uri))) {
           $file->newpath = image_style_path($style, $file->uri);
           $abspath = image_style_url($style, $file->uri);
           $icon = '<div class="icon"></div>';
@@ -1903,7 +1908,10 @@ function tfk_search_preprocess_search_result(&$vars) {
       if(isset($node->field_lrg_sq_image)){
           $tmp_img = field_get_items('node',$node,'field_lrg_sq_image');
           
-          $abspath = image_style_url($style, $tmp_img[0]['uri']);
+          if(isset($tmp_img[0]['uri'])) {
+            $abspath = image_style_url($style, $tmp_img[0]['uri']);
+          }
+
           $icon = '<div class="icon"></div>';
           $thumbnail = theme('image', array('path' => $abspath, 'alt' => $tmp_img[0]['title'], 'title' => $tmp_img[0]['title'], 'attributes' => $thumb_attr)). $icon;
           $vars['thumbnail'] = l($thumbnail, 'node/'. $vars['result']['fields']['entity_id'], $link_attr);
