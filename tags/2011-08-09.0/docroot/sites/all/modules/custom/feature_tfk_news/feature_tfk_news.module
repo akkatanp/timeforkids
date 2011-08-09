@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Feature TFK News feature.
+ */
+
+include_once('feature_tfk_news.features.inc');
