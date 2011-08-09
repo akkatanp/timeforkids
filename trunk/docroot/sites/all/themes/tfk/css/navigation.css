@@ -1109,7 +1109,7 @@
 #block-menu-menu-info-pages-menu h2 {
     display:none;
 }
-.page-info .region-sidebar-first .section {
+.page-info .region-sidebar-first .section, .section-info .region-sidebar-first .section {
     width:250px;
 }
 #block-menu-menu-info-pages-menu ul {
