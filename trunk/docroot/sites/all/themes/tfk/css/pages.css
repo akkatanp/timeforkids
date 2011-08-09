@@ -1754,7 +1754,6 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 .page-extras #main .views-row {
 	padding: 10px;
 	border: solid 1px #cecece;
-	margin-bottom: 10px;
 }
 
 .view-tfk-extras-top-nodeblock h1{
@@ -1796,6 +1795,7 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 .page-extras .block-views .field-name-body {
 	line-height: 15px;
 	margin-bottom: 15px;
+	clear: right;
 }
 
 .page-extras .block-views h3 {
@@ -1808,6 +1808,7 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 	font-weight: bold;
 	padding-left: 20px;
 	background: url(../images/pdf-icon.png) no-repeat;
+	line-height: 16px;
 }
 
 .tfk-extra-pdf a {
