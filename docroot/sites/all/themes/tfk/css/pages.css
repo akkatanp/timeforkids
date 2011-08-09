@@ -1050,14 +1050,15 @@ ul.links li {
 /* kid reporter and mini-sites listings */
 .view-all-kid-reporters .view-header {
 	border: solid 1px #cecece;
-	padding: 120px 10px 10px 10px;
+	padding: 128px 10px 10px 10px;
 	background: url(../images/tfk-kid-reporter-head.png) no-repeat 10px 10px;
-	margin-bottom: 15px;
+	margin-bottom: 10px;
 }
 
 .view-all-kid-reporters .view-header p {
 	line-height: 15px;
 }
+
 
 .view-all-kid-reporters .view-header p strong {
 	display: block;
@@ -1079,19 +1080,21 @@ ul.links li {
 	float: left;
 	width: 230px;
 	border: solid 1px #cecece;
-	padding: 10px 9px;
-	margin: 5px 0;
+	padding: 10px 12px 10px 9px;
+	margin: 2px 0;
 	line-height: 15px;
 }
 
+
 .view-mini-site-home .view-content table td.col-1,
 .view-all-kid-reporters .view-content table td.col-1 {
-	margin-right: 8px;
+	margin-right: 4px;
 }
-
+.view-all-kid-reporters .views-field-title {
+    font-size:14px;
+}
 .view-mini-site-home .view-content table td .views-field-title a {
 	font: bold 20px arial, sans-serif;
-	line-height: 20px;
 	color: #d71700;
 }
 
