@@ -1754,6 +1754,7 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 .view-tfk-extras-top-nodeblock {
 	padding: 10px;
 	border: solid 1px #cecece;
+	margin-bottom: 10px;
 }
 
 .view-tfk-extras-top-nodeblock h1{
@@ -1824,7 +1825,7 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 	background: none;
 	text-transform: none;
 }
-
+/*
 body.page-extras .block > .content > p {
 	font: bold 20px arial, sans-serif;
 	color: #333;
@@ -1839,7 +1840,7 @@ body.page-extras #main .views-row {
 body.page-extras #main .views-row.views-row-last {
   border-bottom: 0;
 }
-
+*/
 /* TFK Store */
 .page-store #featured-books {
 	float: left;
