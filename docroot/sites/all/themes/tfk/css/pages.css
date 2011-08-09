@@ -1635,14 +1635,14 @@ ul.links li {
 /* news archive pager */
 .section-news-archive .custom-top-pager {
 	position: relative;
-	top: 10px;
+	top: 20px;
 	right: 10px;
 	z-index: 2;
 }
 
 .section-news-archive .currfilters {
 	position: relative;
-	top: -10px;
+	top: -20px;
 }
 
 .section-news-archive .item-list {
