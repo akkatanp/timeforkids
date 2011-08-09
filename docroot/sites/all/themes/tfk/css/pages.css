@@ -1870,6 +1870,10 @@ body.page-extras #main .views-row.views-row-last {
 	margin-bottom: 20px;
 }
 
+.page-store #store-items .row-item:last-child {
+	border: 0;
+}
+
 .page-store #store-items .row-item img {
 	width: 508px;
 }
