@@ -1754,11 +1754,6 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 .page-extras .region-content .block-views {
 	padding: 10px;
 	border: solid 1px #cecece;
-	border-bottom: 0;
-}
-
-.page-extras .region-content .block-views:last-child {
-	border-bottom: solid 1px #cecece;
 }
 
 .view-tfk-extras-top-nodeblock h1{
