@@ -1105,3 +1105,35 @@
 	color: white;
 	text-decoration: none;
 }
+/*Info pages left nav*/
+#block-menu-menu-info-pages-menu h2 {
+    display:none;
+}
+.page-info .region-sidebar-first .section {
+    width:250px;
+}
+#block-menu-menu-info-pages-menu ul {
+    margin-left:7px;
+    padding-left:0;
+}
+#block-menu-menu-info-pages-menu li a {
+    display: block;
+    background-color:#999999;
+    font: 14px "arial black",arial,san-serif;
+    margin-right: 7px;
+    padding:10px;
+    text-decoration: none;
+    text-transform:uppercase;
+    margin-left:0;
+    color:#FFFFFF;
+    width:210px;
+}
+#block-menu-menu-info-pages-menu li a:hover {
+    text-decoration: none;
+    background-color:#D71700;
+}
+#block-menu-menu-info-pages-menu li a.active {
+    background-color:#D71700;
+    color:#FFFFFF;
+}
+/*end Info pages left nav*/
