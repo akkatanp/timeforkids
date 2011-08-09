@@ -1751,9 +1751,15 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 }
 
 /* TFK extras */
-.page-extras .region-content .block-views {
+.page-extras .region-content .block-views, 
+#block-views-tfk-extras-block-3 .view-content .views-row {
 	padding: 10px;
 	border: solid 1px #cecece;
+}
+
+#block-views-tfk-extras-block-3 {
+	padding: 0;
+	border: 0;
 }
 
 .view-tfk-extras-top-nodeblock h1{
