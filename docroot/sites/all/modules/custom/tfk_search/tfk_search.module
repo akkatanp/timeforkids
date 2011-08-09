@@ -89,6 +89,9 @@ function tfk_search_init(){
   // Include our custom SolrBaseQuery class.
   module_load_include('inc', 'tfk_search', 'TimeIncSolrBaseQuery');
   
+  // Facet accordion behavior is disabled by default.
+  $enable_facet_accordion = FALSE;
+  
   // Provide styling for Photos & Video section.
   if(arg(0) == TFK_SEARCH_PHOTOSVIDEO_PATH) {
     // Styles for search results and first sidebar.
@@ -97,10 +100,13 @@ function tfk_search_init(){
     #drupal_add_css(drupal_get_path('module', 'tfk_favorites'). '/css/tfk_favorites.css', 'file');
   }
   
-  // Worksheets inherit and override Photos & Video CSS.
+  // Worksheets.
+  // They inherit and override Photos & Video CSS.
   if(arg(0) == TFK_SEARCH_WORKSHEETS_PATH) {
     drupal_add_css(drupal_get_path('module', 'tfk_search'). '/css/tfk_search.css', 'file');
     drupal_add_css(drupal_get_path('module', 'tfk_search'). '/css/tfk_worksheets.css', 'file');
+    
+    $enable_facet_accordion = TRUE;
   }
   
   // Site-wide search.
@@ -116,6 +122,9 @@ function tfk_search_init(){
   
   // Add Javascript used globally.
   drupal_add_js(drupal_get_path('module', 'tfk_search'). '/js/tfk_search.js', 'file');
+  
+  // Define facet accordion behavior.
+  drupal_add_js(array('tfk_search' => array('facet_accordion' => $enable_facet_accordion,)), 'setting');
 }
 
 /**
@@ -1942,7 +1951,7 @@ function tfk_search_preprocess_search_result(&$vars) {
         $teaser = $body[0]['safe_value'];
       }
       //$teaser = TFK_SEARCH_ARTICLE_DECK;
-      //$teaser = $vars['result']['fields'][TFK_SEARCH_ARTICLE_DECK]
+      //$teaser = $vars['result']['fields'][TFK_SEARCH_ARTICLE_DECK];
     break;
         
     //default:

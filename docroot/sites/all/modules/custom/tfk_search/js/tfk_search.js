@@ -27,20 +27,22 @@
       });
       
       // JQuery UI accordion for facet blocks.
-      $(".region-sidebar-first .block h2", context).click(function() {
-        
-        target = $(this);
+      if(settings.tfk_search.facet_accordion == true) {
+        $(".region-sidebar-first .block h2", context).click(function() {
+          
+          target = $(this);
 
-        if(!target.hasClass('closed')) {
-          target.css('background', 'url("/sites/all/modules/custom/tfk_search/images/facet-arrow-closed.png") no-repeat scroll 0 0 transparent');
-        } else {
-          target.css('background', 'url("/sites/all/modules/custom/tfk_search/images/facet-arrow-open.png") no-repeat scroll 0 0 transparent');
-        }        
-        
-        // Close facet block.
-        target.toggleClass('closed').next().next().toggle('fast');
+          if(!target.hasClass('closed')) {
+            target.css('background', 'url("/sites/all/modules/custom/tfk_search/images/facet-arrow-closed.png") no-repeat scroll 0 0 transparent');
+          } else {
+            target.css('background', 'url("/sites/all/modules/custom/tfk_search/images/facet-arrow-open.png") no-repeat scroll 0 0 transparent');
+          }        
+          
+          // Close facet block.
+          target.toggleClass('closed').next().next().toggle('fast');
 
-      });
+        });
+      }
 
     }//End attach.
   };
