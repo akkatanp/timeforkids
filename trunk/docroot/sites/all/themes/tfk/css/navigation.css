@@ -141,7 +141,7 @@
 }
 
 #teacher-nav-container .inner .content p a {
-	font: normal 12px arial;
+	font: normal 12px arial, san-serif;
 	height: 16px;
 	padding: 2px 0;
 	color: #d71700;
@@ -334,7 +334,7 @@
 	float: left;
 	width: 110px;
 	height: 11px;
-	font: normal 11px arial;
+	font: normal 11px arial, san-serif;
 	font-style: italic;
 	color: #555;
 	padding: 5px 6px;
@@ -405,7 +405,7 @@
 #block-tfk-extras-tfk-extras-taxonomy-links a,
 #block-tfk-news-tfk-news-taxonomy-links a {
 	display: block;
-	font: normal 14px "arial black";
+	font: normal 14px "arial black", arial, san-serif;
 	color: #fff;
 	background: #999;
 	padding: 10px;
@@ -432,7 +432,7 @@
 #block-tfk-news-tfk-news-taxonomy-links ul.menu li a {
 	display: inline;
 	background: none;
-	font: bold 12px arial;
+	font: bold 12px arial, san-serif;
 	color: #d71700;
 	padding: 0px;
 }
@@ -460,7 +460,7 @@
 
 #news-sidebar-year-filter p {
 	margin: 0 0 10px 0;
-	font: bold 12px arial;
+	font: bold 12px arial, san-serif;
 }
 
 #news-sidebar-year-filter label {
@@ -482,7 +482,7 @@
 .node-type-atw-destination  .region-sidebar-first .content h3.related,
 .page-destination .region-sidebar-first .content h3.related,
 .section-destination  .region-sidebar-first .content h3.related {
-	font: normal 12px "arial black";
+	font: normal 12px "arial black", arial, san-serif;
 	color: #000;
 	padding: 6px 10px;
 	margin: 10px 0 0 0;
@@ -594,7 +594,7 @@
 #block-menu-menu-kid-reporter-articles-link ul.menu li a,
 #block-menu-menu-kid-reporter-listings-link ul.menu li a {
 	display: block;
-	font: normal 14px "arial black";
+	font: normal 14px "arial black", arial, san-serif;
 	line-height: 15px;
 	color: #fff;
 	padding: 10px 10px 10px 30px;
@@ -617,7 +617,7 @@
 .node-type-kid-reporter .region-sidebar-first .block-views h2.block-title,
 .section-tfk-kid-reporters .region-sidebar-first .block-views h2.block-title,
 .section-kid-reporter .region-sidebar-first .block-views h2.block-title {
-	font: normal 12px "arial black";
+	font: normal 12px "arial black", arial, san-serif;
 	text-transform: uppercase;
 	padding-bottom: 6px;
 	margin-bottom: 10px;
@@ -671,7 +671,7 @@
 .node-type-kid-reporter .region-sidebar-first .view-footer a,
 .section-tfk-kid-reporters  .region-sidebar-first .view-footer a,
 .section-kid-reporter .region-sidebar-first .view-footer a {
-	font: bold 11px arial;
+	font: bold 11px arial, san-serif;
 	float: right;
 	background: #d71700;
 	color: white;
@@ -742,7 +742,7 @@
 
 /* More kid reporters */
 .more-reporters-class {
-    font: normal 12px "arial black";
+    font: normal 12px "arial black", arial, san-serif;
     border-bottom: dotted 1px #cecece;
 	padding-bottom: 10px;
     margin-bottom:10px;
@@ -753,15 +753,15 @@
 }
 
 #block-views-random-kid-reporters-block .views-field-title a {/*More kid reporters title*/
-    font: bold 14px arial;
+    font: bold 14px arial, san-serif;
 }
 
 #block-views-random-kid-reporters-block .views-field-field-location {/*More kid reporters location */
-    font: bold 12px arial;
+    font: bold 12px arial, san-serif;
 }
 
 #block-views-random-kid-reporters-block .views-field-field-kid-reporter-age {/*More kid reporters age*/
-    font: bold 12px "arial";
+    font: bold 12px arial, san-serif;
 }
 
 #block-views-random-kid-reporters-block .views-field-title-1  {/*More kid reporters learn more link*/
@@ -795,7 +795,7 @@
 #block-tfk-atw-atw-destination-navigation h3 a {
 	display: block;
 	padding: 10px;
-	font: normal 14px "arial black";
+	font: normal 14px "arial black", arial, san-serif;
 	color: #fff;
 	text-transform: uppercase;
 	text-decoration: none;
@@ -821,7 +821,7 @@
 .view-atw-page-featured-destination .views-field-field-atw-map-credit {
 	text-align: right;
 	text-transform: uppercase;
-	font: normal 9px Arial;
+	font: normal 9px Arial, san-serif;
 	color: #999;
 	margin: 0 7px 14px 0;
 
@@ -833,7 +833,7 @@
 }
 
 .view-atw-page-featured-destination .views-field-title a {
-	font: bold 20px arial;
+	font: bold 20px arial, san-serif;
 }
 
 /* mini sites sidebar */
@@ -861,7 +861,7 @@
 }
 
 #block-views-mini-site-home-block-1 .views-field-field-minisite-tout-credit {
-	font: normal 9px arial;
+	font: normal 9px arial, san-serif;
 	color: #999;
 	text-align: right;
 	text-transform: uppercase;
@@ -873,7 +873,7 @@
 }
 
 #block-views-mini-site-home-block-1 .views-field-title a {
-	font: bold 20px arial;
+	font: bold 20px arial, san-serif;
 	line-height: 20px;
 }
 
@@ -895,7 +895,7 @@
 }
 
 #block-views-minisite-articles-block-4  .view-header {
-	font: normal 14px "arial black";
+	font: normal 14px "arial black", arial, san-serif;
 	color: white;
 	background: #d71700;
 	padding: 10px;
@@ -916,7 +916,7 @@
 
 #block-views-minisite-articles-block-6 .view-header p {
 	text-transform: uppercase;
-	font: normal 12px "arial black";
+	font: normal 12px "arial black", arial, san-serif;
 	padding-bottom: 10px;
 	border-bottom: dotted 1px #cecece;
 	margin-bottom: 10px;
@@ -946,7 +946,7 @@
 }
 
 #block-views-minisite-articles-block-6 .view-content .views-row .field-content a {
-	font: bold 20px arial;
+	font: bold 20px arial, san-serif;
 }
 
 /* right sidebar */
@@ -966,7 +966,7 @@
 
 #block-block-19,
 #block-views-global-right-sidebar-block .view-header {
-	font: normal 12px "arial black";
+	font: normal 12px "arial black", arial, san-serif;
 	text-align: center;
 	color: #000;
 	padding: 6px 0;
@@ -1045,7 +1045,7 @@
 }
 
 #block-block-18  .content a {
-	font: bold 11px arial;
+	font: bold 11px arial, san-serif;
 	background: #d71700;
 	color: white;
 	text-decoration: none;
@@ -1101,7 +1101,7 @@
 .region-footer ul.menu li.leaf a:link,
 .region-footer ul.menu li.leaf a:active,
 .region-footer ul.menu li.leaf a:visited {
-	font: normal 11px arial;
+	font: normal 11px arial, san-serif;
 	color: white;
 	text-decoration: none;
 }
