@@ -98,6 +98,7 @@ function tfk_search_init(){
     drupal_add_css(drupal_get_path('module', 'tfk_search'). '/css/tfk_search.css', 'file');
     // Styles for favorite links and blocks.
     #drupal_add_css(drupal_get_path('module', 'tfk_favorites'). '/css/tfk_favorites.css', 'file');
+    $enable_facet_accordion = TRUE;
   }
   
   // Worksheets.
