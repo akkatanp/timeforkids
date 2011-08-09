@@ -353,7 +353,7 @@ ul.links li {
     border-radius: 12px 12px 12px 12px;
     box-shadow: 2px 2px 2px #999999;
     color: white;
-    font: bold 11px arial;
+    font: bold 11px arial, sans-serif;
     padding: 6px 8px;
     text-decoration: none;
     margin-left:50px;
@@ -463,7 +463,7 @@ ul.links li {
 }
 
 .view-homepage-minisite .views-field-title a {
-	font: bold 20px arial;
+	font: bold 20px arial, sans-serif;
 }
 
 .view-homepage-minisite .views-field-body {
@@ -482,7 +482,7 @@ ul.links li {
 }
 
 .view-homepage-minisite .views-field-field-minisite-tout-credit {
-	font: normal 9px arial;
+	font: normal 9px arial, sans-serif;
 	color: #999;
 	text-align: right;
 	text-transform: uppercase;
@@ -499,7 +499,7 @@ ul.links li {
 }
 
 .view-homepage-minisite .views-field-nothing a {
-	font: normal l1px arial;
+	font: normal 11px arial, sans-serif;
 	color: white;
 }
 
@@ -554,7 +554,7 @@ ul.links li {
 }
 
 .view-homepage-destination .views-field-field-credit {
-	font: normal 9px arial;
+	font: normal 9px arial, sans-serif;
 	color: #999;
 	text-align: right;
 	text-transform: uppercase;
@@ -565,7 +565,7 @@ ul.links li {
 }
 
 .view-homepage-destination  .views-field-title a {
-	font: bold 20px arial;
+	font: bold 20px arial, sans-serif;
 	line-height: 20px;
 }
 
@@ -611,7 +611,7 @@ ul.links li {
 }
 
 .view-id-homepage_news_for_teachers .views-field-field-article-url-1 a {
-	font: bold 20px arial;
+	font: bold 20px arial, sans-serif;
 }
 
 /* top story block */
@@ -691,7 +691,7 @@ ul.links li {
 	height: 10px;
 	width: 270px;
 	text-align: right;
-	font: normal 9px arial;
+	font: normal 9px arial, sans-serif;
 	text-transform: uppercase;
 	color: #999;
 }
@@ -706,7 +706,7 @@ ul.links li {
 	left: 6px;
 	height: 10px;
 	width: 264px;
-	font: normal 9px arial;
+	font: normal 9px arial, sans-serif;
 	color: #555;
 }
 
@@ -730,7 +730,7 @@ ul.links li {
 .view-homepage-top-story .view-content .views-field-title a,
 .view-teacher-news-top-story .view-content .views-field-title a,
 .view-kid-reporters-channel-top-story .views-field-title a {
-	font: bold 30px arial;
+	font: bold 30px arial, sans-serif;
 	line-height: 30px;
 	color: #d71700;
 }
@@ -749,7 +749,7 @@ ul.links li {
 .view-homepage-top-story .view-content .views-field-field-date,
 .view-teacher-news-top-story .view-content .views-field-field-date,
 .view-kid-reporters-channel-top-story .views-field-field-date {
-	font: normal 9px arial;
+	font: normal 9px arial, sans-serif;
 	text-transform: uppercase;
 }
 
@@ -759,7 +759,7 @@ ul.links li {
 .view-teacher-news-top-story .view-content .views-field-field-deck,
 .view-kid-reporters-channel-top-story .views-field-field-deck {
 	margin-top: 20px;
-	font: normal 12px arial;
+	font: normal 12px arial, sans-serif;
 	line-height: 15px;
 }
 
@@ -806,7 +806,7 @@ ul.links li {
 
 #block-views-mini-site-home-block-2 .views-field-title,
 #block-views-mini-site-home-block-3 .views-field-title {
-	font: bold 30px arial;
+	font: bold 30px arial, sans-serif;
 	line-height: 30px;
 }
 
@@ -864,7 +864,7 @@ ul.links li {
 
 #block-views-minisite-articles-block-1 .views-field-title a,
 #block-views-minisite-articles-block .views-field-title a {
-	font: bold 20px arial;
+	font: bold 20px arial, sans-serif;
 }
 
 #block-views-minisite-articles-block-7 {
@@ -940,7 +940,7 @@ ul.links li {
 .view-kid-reporters-channel-news-block table td .views-field-name {
 	background: #d71700;
 	color: white;
-	font: bold 14px Arial;
+	font: bold 14px Arial, sans-serif;
 	padding: 2px 6px;
 	display: inline;
 	clear: right;
@@ -965,7 +965,7 @@ ul.links li {
 
 .views-field-field-image-credit {
     color: #999;
-    font: normal 9px arial;
+    font: normal 9px arial, sans-serif;
     text-align: right;
     text-transform: uppercase;
     margin-bottom: 10px;
@@ -973,7 +973,7 @@ ul.links li {
 
 .secondary-tout-image-credit {
     color: #999999;
-    font: 9px arial;
+    font: 9px arial, sans-serif;
     text-align: right;
     text-transform: uppercase;
     margin-bottom: 10px;
@@ -996,7 +996,7 @@ ul.links li {
 .view-teacher-news-news-block table td .views-field-title,
 .view-kid-reporters-channel-news-block table td .views-field-title {/*secondary tout title*/
 	margin-bottom: 9px;/*Total space is 14px measured*/
-	font: bold 20px arial;
+	font: bold 20px arial, sans-serif;
 	line-height: 20px;
 }
 
@@ -1008,7 +1008,7 @@ ul.links li {
 
 /* kid reporter */
 .node-type-kid-reporter h2 {
-	fnnt: bold 20px arial;
+	fnnt: bold 20px arial, sans-serif;
 	margin: 0 0 10px 0;
 }
 
@@ -1018,7 +1018,7 @@ ul.links li {
 }
 
 .node-kid-reporter .content h1 {
-	font: bold 30px arial;
+	font: bold 30px arial, sans-serif;
 	line-height: 30px;
 	margin: 0 0 10px 0;
 }
@@ -1090,7 +1090,7 @@ ul.links li {
 }
 
 .view-mini-site-home .view-content table td .views-field-title a {
-	font: bold 20px arial;
+	font: bold 20px arial, sans-serif;
 	line-height: 20px;
 	color: #d71700;
 }
@@ -1120,7 +1120,7 @@ ul.links li {
 
 .view-all-kid-reporters .view-content table td .views-field-field-kid-reporter-age,
 .view-all-kid-reporters .view-content table td .views-field-field-location {
-	font: bold 12px arial;
+	font: bold 12px arial, sans-serif;
 }
 
 .view-mini-site-home .view-content table td .views-field-body,
@@ -1140,7 +1140,7 @@ ul.links li {
 }
 
 .node-type-article .content h1 {
-	font: bold 30px arial;
+	font: bold 30px arial, sans-serif;
 	line-height: 30px;
 	margin: 0 0 10px 0;
 }
@@ -1177,7 +1177,7 @@ ul.links li {
 }
 
 .node-type-article .field-name-field-deck {
-	font: bold 14px arial;
+	font: bold 14px arial, sans-serif;
 	margin-bottom: 10px;
 }
 
@@ -1229,7 +1229,7 @@ ul.links li {
 }
 
 .node-type-article .field-name-field-body p  b {
-	font: bold 14px arial;
+	font: bold 14px arial, sans-serif;
 }
 
 .inline-img {
@@ -1239,13 +1239,13 @@ ul.links li {
 
 .inline-img .credit {
 	text-align: right;
-	font: normal 9px arial;
+	font: normal 9px arial, sans-serif;
 	color: #999;
 	text-transform: uppercase;
 }
 
 .inline-img .caption {
-	font: normal 10px arial;
+	font: normal 10px arial, sans-serif;
 }
 
 /* additional content */
@@ -1284,7 +1284,7 @@ ul.links li {
 	text-transform: uppercase;
         font-size:11px;
         font-weight: bold;
-        font-family: Arial;
+        font-family: Arial, sans-serif;
 }
 
 .related-content-wrap .addit-mini-lessons, .node-type-article .field-name-field-mini-lessons {
@@ -1326,7 +1326,7 @@ ul.links li {
 
 .node-type-article .group_additional_content .field-label {
 	display: inline;
-	font: bold 11px arial;
+	font: bold 11px arial, sans-serif;
 	text-transform: uppercase;
 }
 
@@ -1351,14 +1351,14 @@ ul.links li {
 }
 
 .node-type-article .field-name-field-image-credit {
-	font: normal 9px arial;
+	font: normal 9px arial, sans-serif;
 	color: #999;
 	text-align: right;
 	text-transform: uppercase;
 }
 
 .node-type-article .field-name-field-image-caption {
-	font: normal 10px arial;
+	font: normal 10px arial, sans-serif;
 	color: #666;
 	margin-bottom: 10px;
 }
@@ -1401,7 +1401,7 @@ ul.links li {
 .node-type-article .reporter-badge .reporter-link-a {
 	display: block;
 	vertical-align: bottom;
-	font: bold 11px arial;
+	font: bold 11px arial, sans-serif;
 }
 
 /*
@@ -1424,7 +1424,7 @@ ul.links li {
 }
 
 #block-tfk-atw-atw-page-list-map-switch {
-	font: bold 20px arial;
+	font: bold 20px arial, sans-serif;
 	margin-bottom: 10px;
 }
 
@@ -1464,7 +1464,7 @@ ul.links li {
 
 /* ATW destination listing */
 .page-around-the-world .view-content h3 {
-	font: bold 20px arial;
+	font: bold 20px arial, sans-serif;
 	float: left;
 	width: 496px;
 	padding: 6px;
@@ -1548,7 +1548,7 @@ ul.links li {
 }
 
 .page-news-archive #block-tfk-news-tfk-news-current-filters .content {
-	font: bold 20px arial;
+	font: bold 20px arial, sans-serif;
 }
 
 .view-news-archive .views-row {
@@ -1626,7 +1626,7 @@ ul.links li {
 }
 
 .content .currfilters .newsarc {
-	font: bold 20px arial;
+	font: bold 20px arial, sans-serif;
         margin-bottom:0px;
         padding-bottom:0px;
 }
@@ -1716,7 +1716,7 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 }
 
 .node-type-video  h2 {
-	font: bold 20px arial;
+	font: bold 20px arial, sans-serif;
 	margin: 0 0 4px 0;
 }
 
@@ -1728,17 +1728,17 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 .node-type-video .field-name-field-credit {
 	text-align: right;
 	text-transform: uppercase;
-	font: normal 9px arial;
+	font: normal 9px arial, sans-serif;
 	color: #999;
 }
 
 .node-type-video .content h1 {
-	font: normal 30px arial;
+	font: normal 30px arial, sans-serif;
 	margin: 4px 0;
 }
 
 .node-type-video .field-name-field-date {
-	font: normal 9px arial;
+	font: normal 9px arial, sans-serif;
 }
 
 .field-name-field-related-photos-video {
@@ -1748,7 +1748,7 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 }
 
 .field-name-field-related-photos-video .field-label {
-	font: bold 20px arial;
+	font: bold 20px arial, sans-serif;
 }
 
 /* TFK extras */
@@ -1807,7 +1807,7 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 	position: absolute;
 	top: -36px;
 	left: 0px;
-	font: bold 20px arial;
+	font: bold 20px arial, sans-serif;
 	margin: 4px 0;
 	color: black;
 	background: none;
@@ -1815,7 +1815,7 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 }
 
 body.page-extras .block > .content > p {
-	font: bold 20px arial;
+	font: bold 20px arial, sans-serif;
 	color: #333;
 	margin: 10px 4px;
 }
@@ -1906,7 +1906,7 @@ body.page-extras #main .views-row.views-row-last {
 }
 
 .notification h1 {
-	font: bold 20px arial;
+	font: bold 20px arial, sans-serif;
 	margin: 0 0 4px 0;
 }
 
@@ -1916,7 +1916,7 @@ body.page-extras #main .views-row.views-row-last {
 	line-height: 12px;
 	top: 10px;
 	right: 10px;
-	font: normal 11px arial;
+	font: normal 11px arial, sans-serif;
 	padding-right: 15px;
 	background: url(../images/red-close-box.png) no-repeat right top;
 }
@@ -2039,7 +2039,7 @@ body.page-extras #main .views-row.views-row-last {
 }
 
 #sightseeing-container h1 {
-	font: bold 30px arial;
+	font: bold 30px arial, sans-serif;
 	margin: 4px 0;
 	line-height: 1;
 }
@@ -2053,7 +2053,7 @@ body.page-extras #main .views-row.views-row-last {
 }
 
 #sightseeing-container #map-container p:first-child {
-	font: normal 14px arial;
+	font: normal 14px arial, sans-serif;
 	padding-bottom: 10px;
 	border-bottom: dotted 1px #cecece;
 	margin: 4px 0 10px 0;
@@ -2062,7 +2062,7 @@ body.page-extras #main .views-row.views-row-last {
 #sightseeing-container .map-credit {
 	text-align: right;
 	text-transform: uppercase;
-	font: normal 9px arial;
+	font: normal 9px arial, sans-serif;
 	color: #999;
 }
 
@@ -2092,7 +2092,7 @@ body.page-extras #main .views-row.views-row-last {
 
 #location-container h1 {
 	color: white;
-	font: bold 30xp arial;
+	font: bold 30px arial, sans-serif;
 	margin-bottom: 10px;
 }
 
@@ -2119,13 +2119,13 @@ body.page-extras #main .views-row.views-row-last {
 }
 
 #timeline-container h1 {
-	font: bold 30px arial;
+	font: bold 30px arial, sans-serif;
 	line-height: 1;
 	margin: 4px 0;
 }
 
 #timeline-container .field-name-body  p {
-	font: normal 14px arial;
+	font: normal 14px arial, sans-serif;
 	padding-bottom: 10px;
 	border-bottom: dotted 1px #cecece;
 	margin: 4px 0 10px 0;
@@ -2232,7 +2232,7 @@ body.page-extras #main .views-row.views-row-last {
 }
 
 #timeline-container #event-container .event .event-image .event-credit {
-	font: normal 9px arial;
+	font: normal 9px arial, sans-serif;
 	color: #999;
 	text-align: right;
 	text-transform: uppercase;
@@ -2275,13 +2275,13 @@ body.page-extras #main .views-row.views-row-last {
 }
 
 #native-lingo-container h1 {
-	font: bold 30px arial;
+	font: bold 30px arial, sans-serif;
 	line-height: 1;
 	margin: 0 0 4px 0;
 }
 
 #native-lingo-container .field-name-body p {
-	font: normal 14px arial;
+	font: normal 14px arial, sans-serif;
 	padding-bottom: 10px;
 	border-bottom: dotted 1px #cecece;
 	margin: 4px 0 10px 0;
@@ -2302,7 +2302,7 @@ body.page-extras #main .views-row.views-row-last {
 }
 
 #native-lingo-container .field-name-field-person-photo-credit {
-	font: normal 9px arial;
+	font: normal 9px arial, sans-serif;
 	color: #999;
 	text-align: right;
 	text-transform: uppercase;
@@ -2321,7 +2321,7 @@ body.page-extras #main .views-row.views-row-last {
 }
 
 #native-lingo-container #image-container #audio-box h2 {
-	font: bold 18px arial;
+	font: bold 18px arial, sans-serif;
 	padding-bottom: 6px;
 	margin: 0 0 6px 0;
 	border-bottom: dotted 1px #cecece;
@@ -2382,7 +2382,7 @@ body.page-extras #main .views-row.views-row-last {
 }
 
 #native-lingo-container .phrase-list h2 {
-	font: bold 18px arial;
+	font: bold 18px arial, sans-serif;
 	margin: 6px;
 	padding: 0 0 6px 0;
 	border-bottom: dotted 1px #cecece;
@@ -2404,13 +2404,13 @@ body.page-extras #main .views-row.views-row-last {
 }
 
 #daylife-container h1 {
-	font: bold 30px arial;
+	font: bold 30px arial, sans-serif;
 	line-height: 1;
 	margin: 4px 0;
 }
 
 #daylife-container .field-name-body p {
-	font: normal 14px arial;
+	font: normal 14px arial, sans-serif;
 	padding-bottom: 10px;
 	border-bottom: dotted 1px #cecece;
 	margin: 4px 0 10px 0;
@@ -2429,7 +2429,7 @@ body.page-extras #main .views-row.views-row-last {
 }
 
 #daylife-container #image-container #speaker-credit {
-	font: normal 9px arial;
+	font: normal 9px arial, sans-serif;
 	color: #999;
 	text-align: right;
 	text-transform: uppercase;
@@ -2444,12 +2444,12 @@ body.page-extras #main .views-row.views-row-last {
 }
 
 #daylife-container #speaker-intro strong {
-	font: bold 20px arial;
+	font: bold 20px arial, sans-serif;
 	margin: 0 0 6px 0;
 }
 
 #daylife-container #speaker-headline {
-	font: bold 20px arial;
+	font: bold 20px arial, sans-serif;
 	margin-bottom: 4px;
 }
 
@@ -2463,7 +2463,7 @@ body.page-extras #main .views-row.views-row-last {
 }
 
 #daylife-container #activities  #activity-time {
-	font: bold 20px arial;
+	font: bold 20px arial, sans-serif;
 }
 
 #daylife-container #daylife-bar-container {
@@ -2552,9 +2552,9 @@ body.page-extras #main .views-row.views-row-last {
 
 .view-atw-page-featured-destination .views-field-field-atw-tout-credit{
     color: #999999;
-    font: 9px arial;
+    font: 9px arial, sans-serif;
     text-align: right;
-	text-transform: uppercase;
+    text-transform: uppercase;
     padding-right:10px;
 }
 #block-menu-menu-publishing-calendar-menu a.active{
@@ -2570,12 +2570,16 @@ body.page-extras #main .views-row.views-row-last {
     padding-left:40px;
     width:390px;
 }
+/*
 .page-404page .content .not-found-not-available {
     font-size: 2em;
     line-height: 150%;
     font-weight: bold;
     text-transform:uppercase;
     margin-bottom:10px;
+}*//* text version */
+.page-404page .content .not-found-not-available {
+    display:none;
 }
 .page-404page .content .not-found-click {
     background: none repeat scroll 0 0 #D71700;
@@ -2585,9 +2589,12 @@ body.page-extras #main .views-row.views-row-last {
     -webkit-box-shadow: 2px 2px 2px #999999;
     border-radius: 12px 12px 12px 12px;
     box-shadow: 2px 2px 2px #999999;
-    color: white;
-    font: bold 11px arial;
+    font: bold 11px arial, sans-serif;
     padding: 6px 8px;
+}
+.page-404page .content .not-found-click a {
+    color: white;
+    text-transform:uppercase;
 }
 .page-404page .content .form-text {
     background: none repeat scroll 0 0 #DEDEDE;
@@ -2600,9 +2607,9 @@ body.page-extras #main .views-row.views-row-last {
     color: #555555;
     display: block;
     float: left;
-    font: italic 11px arial;
+    font: italic 11px arial, sans-serif;
     height: 11px;
-    margin: 5px 5px 5px 0px;
+    margin: 5px 5px 40px 0px;
     padding: 5px 6px;
     width: 200px;
 }
@@ -2613,23 +2620,40 @@ body.page-extras #main .views-row.views-row-last {
     width: 65px;
     text-transform:uppercase;
 }
-.page-404page .content .not-found-click a {
-    color: white;
-    text-transform:uppercase;
-}
-.page-404page .content .not-found-or {
+
+/*.page-404page .content .not-found-or {
     font-size: 2em;
     line-height: 150%;
     font-weight: bold;
     text-transform:uppercase;
     margin-top:10px;
+}*//*Text version*/
+.page-404page .content .not-found-or {
+    padding-top:23px; width:46px; 
+    background-image: url(../images/not-found-or.png); 
+    background-repeat: no-repeat;
+    overflow: hidden;
+    height: 0;
+    margin-top:20px;
+    margin-bottom:5px;
 }
-.page-404page .content h2 {
+.page-404page .content .not-found-run-search, .page-404page .content .not-found-go-back {
+    font-size:14px;
+}
+/*.page-404page .content h2 {
     font-size: 3em;
     color: #d71700;
     font-weight: bold;
     text-transform:uppercase;
     margin:10px 0px;
+}*//*Text version*/
+.page-404page .content h2 {
+    padding-top:171px; width:373px; 
+    background-image: url(../images/not-found-oops.png); 
+    background-repeat: no-repeat;
+    overflow: hidden;
+    height: 0;
+    margin:40px 0px 20px 0px;
 }
 .page-404page #content {
     border: 5px solid #d71700;
