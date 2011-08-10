@@ -2713,11 +2713,19 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
     padding:10px;
 }
 
-.info-container .large-headline, .info-container-np .large-headline {
+.info-container .large-headline {
     display: block;
     font-size: 30px;
     margin-bottom: 10px;
     margin-top: 4px;
+    font-weight:bold;
+}
+.info-container-np .large-headline {
+    display: block;
+    font-size: 30px;
+    margin-bottom: 10px;
+    margin-left:10px;
+    margin-top:10px;
     font-weight:bold;
 }
 
@@ -2748,6 +2756,7 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 }
 .info-container-np h3 {
     margin-left:10px;
+    margin-top:10px;
 }
 .info-container-np hr {
     width:100%;
