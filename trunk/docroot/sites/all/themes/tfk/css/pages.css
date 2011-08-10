@@ -2722,7 +2722,7 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 }
 
 .info-container p {
-    display:block;
+   margin-bottom:10px;
 }
 .info-issue {
     font-weight:bold;
