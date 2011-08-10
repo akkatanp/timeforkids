@@ -2724,6 +2724,14 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 .info-container p {
    margin-bottom:10px;
 }
+.info-container hr {
+    height:1px;
+    color:#CECECE;
+    width:100%;
+}
+.info-container h3 {
+    font-weight:bold;
+}
 .info-issue {
     font-weight:bold;
     display: inline-block;
