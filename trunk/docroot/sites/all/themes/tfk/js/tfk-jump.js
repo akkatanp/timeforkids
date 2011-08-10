@@ -103,7 +103,7 @@ $(document).ready(function() {
   // To save performance we are not checking against domain array here, we lazy attach and check later
   $.expr[':'].external = function(obj) {
       return !obj.href.match(/^mailto\:/)
-              && (obj.hostname != location.hostname);
+              && (obj.hostname != location.hostname) && obj.hostname;
   };
 
   // Add 'external' CSS class to all external links
