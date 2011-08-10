@@ -178,7 +178,22 @@
         $('.flashcard-numbering').html(Drupal.t('!current of !total', {'!current': '<span class="flashcard-numbering-current">' + current + '</span>', '!total': total}));
         return current;
       }
-      
+      // Use the hotkeys jquery library for better cross-browser keyboard controls.
+      if (settings.flashcardCycle.keyboard) {
+        $('body').unbind('keydown');
+        $(document).bind('keydown', 'space', function() {
+          $('.flip').click();
+          return false;
+        });
+        $(document).bind('keydown', 'left', function() {
+          $('.next').click();
+          return false;
+        });
+        $(document).bind('keydown', 'right', function() {
+          $('.prev').click();
+          return false;
+        });
+      }
     }
   }
 }(jQuery));
