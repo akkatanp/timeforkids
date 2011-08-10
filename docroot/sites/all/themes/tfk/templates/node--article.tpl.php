@@ -100,7 +100,7 @@ if(!isset($content['group_additional_content']['field_mini_lessons'])&& !isset($
 
 ?>
 <?php if($is_kid_reporter_article == 1){
-            unset($content['group_date_and_author']['field_article_byline']);
+            //unset($content['group_date_and_author']['field_article_byline']);
           }?>
 
 <div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?>  <?php if($is_kid_reporter_article == 1){echo 'is-kid-reporter-article';}?> clearfix"<?php print $attributes; ?>>
