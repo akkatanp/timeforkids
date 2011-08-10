@@ -2713,7 +2713,7 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
     padding:10px;
 }
 
-.info-container .large-headline {
+.info-container .large-headline, .info-container-np .large-headline {
     display: block;
     font-size: 2.5em;
     margin-bottom: 10px;
