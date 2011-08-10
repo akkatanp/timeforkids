@@ -2724,13 +2724,20 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 .info-container p {
    margin-bottom:10px;
 }
-.info-container hr {
+.info-container-np {
+    border: 1px solid #CECECE;
+    margin:0px 0px 10px 5px;
+    padding:0px;
+}
+.info-container-np hr {
     height:1px;
     color:#CECECE;
     width:100%;
 }
-.info-container h3 {
+.info-small-head {
     font-weight:bold;
+    color: #333333;
+    font-size:12px;
 }
 .info-issue {
     font-weight:bold;
