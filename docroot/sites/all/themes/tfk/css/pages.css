@@ -870,6 +870,7 @@ ul.links li {
 #block-views-minisite-articles-block-1 .views-field-title a,
 #block-views-minisite-articles-block .views-field-title a {
 	font: bold 20px arial, sans-serif;
+	line-height: 20px;
 }
 
 #block-views-minisite-articles-block-7 {
