@@ -2712,6 +2712,18 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
     margin:0px 0px 10px 5px;
     padding:10px;
 }
+
+.info-container .large-headline {
+    display: block;
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    margin-top: 4px;
+    font-weight:bold;
+}
+
+.info-container p {
+    display:block;
+}
 .info-issue {
     font-weight:bold;
     display: inline-block;
