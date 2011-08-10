@@ -23,5 +23,23 @@ $(document).ready(function() {
                 omniPgTrack(tfkCurrentSlideNum);
             });
         }
+        //Omniture for favorites/save on worksheets
+        if ($('body.page-worksheets').length) {
+            $('.search-result').delegate('a.flag-action', 'mousedown', function() {//click being used by worksheet code, use mousedown
+                omniTrack('favorite');
+            });
+            $('.search-result').delegate('a.unflag-action', 'mousedown', function() {//click being used by worksheet code, use mousedown
+                omniTrack('remove from favorite');
+            });
+            $('.savebtn > a').click(function(event){
+                omniTrack('save search');
+            });
+        }
+        //Omniture for teacher discussion commenting
+        if ($('body.node-type-teacher-community-question').length) {
+            $('#comment-form #edit-submit').click(function(event){
+                omniTrack('comment');
+            });
+        }
         
 });
