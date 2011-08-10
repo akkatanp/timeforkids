@@ -14,9 +14,9 @@ function tfk_ads_omni_preprocess_page(&$variables){
     $ad_omni_config = tfk_ads_omni_get_config_vars($variables);/*array used by both ads and omniture*/
     /*adFactory config*/
     $ad_factory = "var adConfig = new TiiAdConfig(\"3475.tfk\");adConfig.setCmSitename(\"cm.tfk\");adConfig.setRevSciTracking(true);";
-    $ad_factory .= "var adFactory = new TiiAdFactory(adConfig, \"".$ad_omni_config['zone']."\");";
-    $ad_factory .= "adFactory.setChannel(\"".$ad_omni_config['channel']."\");";
-    $ad_factory .= "adFactory.setSubchannel(\"".$ad_omni_config['sub_channel']."\");";
+    $ad_factory .= "var adFactory = new TiiAdFactory(adConfig, \"".filter_xss($ad_omni_config['zone'], array())."\");";
+    $ad_factory .= "adFactory.setChannel(\"".filter_xss($ad_omni_config['channel'], array())."\");";
+    $ad_factory .= "adFactory.setSubchannel(\"".filter_xss($ad_omni_config['sub_channel'], array())."\");";
     if ($ad_omni_config['is_channel'] == 1) {
         $ad_factory .= "adFactory.setChannelPage();";
     }
