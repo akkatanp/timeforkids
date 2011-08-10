@@ -838,11 +838,13 @@
 
 /* mini sites sidebar */
 .page-mini-sites .region-sidebar-first .section {
-	padding-top: 15px;
+        padding-top:15px;
+        width:244px;
+        padding-bottom:9px;
 }
 
 #block-views-mini-site-home-block-1 {
-	background: url(../images/featured-mini-site.png) no-repeat top left;
+	background: url(../images/featured-mini-site.png) no-repeat 2px 0px;
 	padding-top: 20px;
 }
 
@@ -869,7 +871,8 @@
 }
 
 #block-views-mini-site-home-block-1 .views-field-title {
-	margin-bottom: 15px;
+	margin-bottom: 9px;
+        margin-left:2px;
 }
 
 #block-views-mini-site-home-block-1 .views-field-title a {
@@ -879,9 +882,14 @@
 
 #block-views-mini-site-home-block-1 .views-field-body {
 	line-height: 15px;
-	margin: 0 7px 15px 0;
+	margin: 0 10px 15px 2px;
 }
-
+#block-views-mini-site-home-block-1 .views-field-title-1 {
+	line-height: 15px;
+	margin-left:2px;
+        margin-bottom:0;
+        padding-bottom:0;
+}
 .node-type-minisite .region-sidebar-first .section {
 	background: none;
 	border: 0;
