@@ -373,6 +373,10 @@ function tfk_news_node_view($node, $view_mode, $langcode) {
 
     $body = $tmp_body[0]['value'];
 
+    $imgs_reg = preg_match_all('/<div class="inline-img">(.*?)<\/div>/i',$body,$matches_imgs);
+    print_r($matches_imgs);
+
+
     $reporter = $node->field_kid_reporter;
     //lets get thumb_image for the reporter
     $result = db_query('select fm.filename,f.field_thumbnail_image_fid as thumb_fid from {field_data_field_thumbnail_image} f
