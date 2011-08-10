@@ -2723,6 +2723,7 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 
 .info-container p {
    margin-bottom:10px;
+   font:12px "Arial", sans-serif;
 }
 .info-container-np {
     border: 1px solid #CECECE;
@@ -2731,6 +2732,7 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 }
 .info-container-np p {
     margin:0px 0px 10px 10px;
+    font:12px "Arial", sans-serif;
 }
 .info-container-np h2, .info-container-np h3 {
     margin-left:10px;
