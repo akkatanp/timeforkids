@@ -654,3 +654,7 @@ body.page-photos-video .region-sidebar-first .block h2 {
   line-height: 100%;
   padding-left: 25px;
 }
+
+.region-sidebar-first .block .content > .item-list {
+	margin: 0 0 0 23px;
+}
