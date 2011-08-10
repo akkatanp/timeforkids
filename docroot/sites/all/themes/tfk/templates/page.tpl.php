@@ -117,7 +117,8 @@ if(drupal_is_front_page()) {
       //$form = drupal_get_form('search_form');
       //$form['basic']['keys']['#title'] = 'lolopk';
       //print_r($form);
-        print render(drupal_get_form('search_form'));
+        $form = drupal_get_form('search_form');
+        print render($form);
       ?>
     </div>
 
