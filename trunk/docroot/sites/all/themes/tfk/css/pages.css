@@ -1753,8 +1753,7 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 }
 
 /* TFK extras */
-.view-tfk-extras-top-nodeblock,
-.featured-tfk-extra {
+.view-tfk-extras-top-nodeblock {
 	padding: 10px;
 	border: solid 1px #cecece;
 	margin-bottom: 10px;
@@ -1762,6 +1761,13 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 
 .view-tfk-extras-top-nodeblock h1 {
 	margin-bottom: 15px;
+}
+
+.featured-tfk-extra,
+.extras-block {
+	border: solid 1px #cecece;
+	border-bottom: 0;
+	margin-bottom: 10px;
 }
 
 .featured-tfk-extra {
@@ -1780,12 +1786,6 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 	color: black;
 	background: none;
 	text-transform: none;
-}
-
-.extras-block {
-	border: solid 1px #cecece;
-	border-bottom: 0;
-	margin-bottom: 10px;
 }
 
 .extras-block h2.block-title {
