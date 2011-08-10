@@ -2739,6 +2739,7 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
     height:1px;
     color:#CECECE;
     width:100%;
+    padding:0;
 }
 .info-small-head {
     font-weight:bold;
