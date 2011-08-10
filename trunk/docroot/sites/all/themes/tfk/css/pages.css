@@ -832,6 +832,10 @@ ul.links li {
 	margin-right: 8px;
 }
 
+#block-views-minisite-articles-block table td.empty {
+	display: none;
+}
+
 #block-views-minisite-articles-block-1 .views-field-field-lrg-sq-image,
 #block-views-minisite-articles-block .views-field-field-lrg-sq-image {
 	float: left;
