@@ -2,9 +2,13 @@
   $(document).ready(function(){
 
     $('#edit-search-block-form--2').val('Search');
-    alert(2);
-
-  });
+    
+    $('#edit-search-block-form--2').focus(function() {
+        if($('#edit-search-block-form--2').val() == 'Search'){
+          $('#edit-search-block-form--2').val('');
+        }
+    });
+});
 </script>
 <h2 class="not-found-header">Oops!</h2>
 <p class="not-found-not-available">Looks like the page you are looking for has been moved, or is no longer available.</p>
