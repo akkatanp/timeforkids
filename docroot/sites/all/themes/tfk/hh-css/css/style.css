@@ -885,6 +885,10 @@ img {
 .flashcard-cycle-card {
   position: relative;
 }
+.csstransforms3d .flashcard-cycle-card {
+  -webkit-perspective: 800;
+  perspective: 800;
+}
 .flashcard-cycle-card .card-front, .flashcard-cycle-card .card-back {
   width: 500px;
   height: 250px;
@@ -904,8 +908,12 @@ img {
   -khtml-border-radius: 14px;
   border-radius: 14px;
   border: 1px solid #f6dc0b;
+}
+.csstransforms3d .flashcard-cycle-card .card-front, .csstransforms3d .flashcard-cycle-card .card-back {
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
   -moz-transition-property: all;
   -webkit-transition-property: all;
   -o-transition-property: all;
@@ -922,35 +930,45 @@ img {
 .flashcard-cycle-card .card-front {
   position: relative;
   z-index: 2;
-  -webkit-transform: perspective(800) rotate3d(1, 0, 0, 0deg);
-  transform: perspective(800) rotate3d(1, 0, 0, 0deg);
   -moz-box-shadow: rgba(0, 0, 0, 0.25) -2px 2px 6px;
   -webkit-box-shadow: rgba(0, 0, 0, 0.25) -2px 2px 6px;
   -o-box-shadow: rgba(0, 0, 0, 0.25) -2px 2px 6px;
   box-shadow: rgba(0, 0, 0, 0.25) -2px 2px 6px;
+}
+.csstransforms3d .flashcard-cycle-card .card-front {
+  -webkit-transform: rotateX(0deg);
+  transform: rotateX(0deg);
 }
 .flashcard-cycle-card .card-back {
   position: absolute;
   top: 0;
   left: 0;
   z-index: 1;
-  -webkit-transform: perspective(800) rotate3d(1, 0, 0, 180deg);
-  transform: perspective(800) rotate3d(1, 0, 0, 180deg);
   -moz-box-shadow: rgba(0, 0, 0, 0.15) -4px 4px 8px;
   -webkit-box-shadow: rgba(0, 0, 0, 0.15) -4px 4px 8px;
   -o-box-shadow: rgba(0, 0, 0, 0.15) -4px 4px 8px;
   box-shadow: rgba(0, 0, 0, 0.15) -4px 4px 8px;
 }
+.csstransforms3d .flashcard-cycle-card .card-back {
+  -webkit-transform: rotateX(180deg);
+  transform: rotateX(180deg);
+}
 .flashcard-cycle-card .card-back ul {
   display: block !important;
 }
 .showing .flashcard-cycle-card .card-front {
-  -webkit-transform: perspective(800) rotate3d(1, 0, 0, -180deg);
-  transform: perspective(800) rotate3d(1, 0, 0, -180deg);
+  z-index: 2;
+}
+.csstransforms3d .showing .flashcard-cycle-card .card-front {
+  -webkit-transform: rotateX(-180deg);
+  transform: rotateX(-180deg);
 }
 .showing .flashcard-cycle-card .card-back {
-  -webkit-transform: perspective(800) rotate3d(1, 0, 0, 0deg);
-  transform: perspective(800) rotate3d(1, 0, 0, 0deg);
+  z-index: 3;
+}
+.csstransforms3d .showing .flashcard-cycle-card .card-back {
+  -webkit-transform: rotateX(0deg);
+  transform: rotateX(0deg);
 }
 .flashcard-cycle-card ul li {
   font-size: 20px;
