@@ -510,10 +510,16 @@
 	margin-top: 0;
 }
 
+.left-teacher-resources .view-content .views-row {
+	margin-bottom: 4px;
+}
+
+.left-teacher-resources .view-content ul li,
 .node-type-minisite .views-field-field-minisite-resources ul li {
 	margin-left: 0;
 }
 
+.left-teacher-resources .view-content ul li a,
 .node-type-minisite .views-field-field-minisite-resources ul li a,
 .node-type-atw-destination  .region-sidebar-first .content ul.related li a,
 .page-destination .region-sidebar-first .content ul.related li a,
