@@ -2736,6 +2736,10 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 }
 .info-container-np h2, .info-container-np h3 {
     margin-left:10px;
+    margin-top:10px;
+}
+.info-container-np h3 {
+    margin-left:10px;
 }
 .info-container-np hr {
     width:100%;
