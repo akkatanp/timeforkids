@@ -1783,6 +1783,7 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 
 .extras-block {
 	border: solid 1px #cecece;
+	border-bottom: 0;
 	margin-bottom: 10px;
 }
 
@@ -1826,20 +1827,16 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 	margin-bottom: 10px;
 }
 
+.featured-tfk-extra .field-name-body,
 .extras-block .field-name-body {
 	margin-top: 15px;
 	margin-bottom: 15px;
 	clear: right;
 }
 
+.featured-tfk-extra .field-name-body p,
 .extras-block .field-name-body p {
 	margin-bottom: 15px;
-}
-
-.extras-block .block-views h3 {
-	font: normal 20px arial;
-	line-height: 20px;
-	margin: 0 0 10px 0;
 }
 
 .tfk-extra-pdf {
