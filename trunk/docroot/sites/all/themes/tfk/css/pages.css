@@ -2732,4 +2732,7 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
     margin-bottom: 10px;
     text-transform: uppercase;
 }
+.info-grade-test {
+    font: normal 12px "arial black", arial, sans-serif;
+}
 /*end info pages*/
