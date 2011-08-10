@@ -1756,25 +1756,6 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 	border: solid 1px #cecece;
 }
 
-.view-tfk-extras-top-nodeblock h1 {
-	font: bold 30px arial;
-	margin: 0 0 15px 0;
-}
-
-.view-tfk-extras-top-nodeblock p {
-	line-height: 15px;
-	margin: 0 0 15px 0;
-}
-
-.page-extras .block-views h2.block-title {
-	font: normal 12px "arial black", arial, sans-serif;
-	color: white;
-	background: #d71700;
-	text-transform: uppercase;
-	padding: 2px;
-	margin:  0 0 10px 0;
-}
-
 .featured-tfk-extra {
 	position: relative;
 	background: #dedede;
@@ -1793,26 +1774,35 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 	text-transform: none;
 }
 
-.page-extras .block-views .field-type-image {
+.extras-block h2.block-title {
+	font: normal 12px "arial black", arial, sans-serif;
+	color: white;
+	background: #d71700;
+	text-transform: uppercase;
+	padding: 2px;
+	margin:  0 0 10px 0;
+}
+
+.extras-block .field-type-image {
 	float: left;
 	width: 142px;
 	height: 189px;
 	margin: 0 10px 10px 0;
 }
 
-.page-extras .block-views .field-type-image img {
+.extras-block .field-type-image img {
 	width: 140px;
 	height: 187px;
 	border: solid 1px #cecece;
 }
 
-.page-extras .block-views .field-name-body {
+.extras-block.field-name-body {
 	line-height: 15px;
 	margin-bottom: 15px;
 	clear: right;
 }
 
-.page-extras .block-views h3 {
+.extras-block .block-views h3 {
 	font: normal 20px arial;
 	line-height: 20px;
 	margin: 0 0 10px 0;
