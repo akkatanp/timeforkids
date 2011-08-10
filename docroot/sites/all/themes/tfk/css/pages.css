@@ -2715,5 +2715,12 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 }
 
 /*Info pages*/
-
+.info-container {
+    border: 1px solid #CECECE;
+    margin-left:5px;
+    padding:10px;
+}
+.info-issue {
+    margin:10px 50px 10px 50px;
+}
 /*end info pages*/
