@@ -2717,10 +2717,19 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 /*Info pages*/
 .info-container {
     border: 1px solid #CECECE;
-    margin-left:5px;
+    margin:0px 0px 10px 5px;
     padding:10px;
 }
 .info-issue {
     margin:10px 50px 10px 50px;
+    font-weight:bold;
+}
+.info-red-bar {
+    background: #d71700;
+    font: normal 12px "arial black", arial, sans-serif;
+    padding: 4px;
+    color: white;
+    margin-bottom: 10px;
+    text-transform: uppercase;
 }
 /*end info pages*/
