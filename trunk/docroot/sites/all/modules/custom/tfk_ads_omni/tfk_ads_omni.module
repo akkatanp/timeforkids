@@ -42,15 +42,6 @@ function tfk_ads_omni_preprocess_page(&$variables){
 
     /*Omniture*/
     if (!$variables['is_admin'] == "true") {//Exclude from admin pages
-        /*Omniture account and js lib. Account must come before js include*/
-        $omniture_account = "var s_account='".$ad_omni_config['omni_account']."';";
-        $tfk_omni_library = drupal_get_path('theme', 'tfk') .'/js/timekids-omniture.js';
-        drupal_add_js($omniture_account, 'inline');
-        drupal_add_js($tfk_omni_library,'file');
-        if($variables['node']->type == 'slideshow') {
-            $tfk_ctype_omni_library = drupal_get_path('theme', 'tfk') .'/js/tfk-ctype-omni.js';
-            drupal_add_js($tfk_ctype_omni_library,'file');
-        }
         /*Omniture vars*/
         $omniture_vars .= "s_time.channel = 'tfk';\n";
         if (array_key_exists('theme_hook_suggestions',$variables) && $variables['theme_hook_suggestions'][0] == "page__404page") {
@@ -73,6 +64,15 @@ function tfk_ads_omni_preprocess_page(&$variables){
         }
         $omniture_vars .= "s_time.prop17 = location.href;\n";
         $omniture_vars .= "var s_code=s_time.t();if(s_code)document.write(s_code)\n";
+        /*Omniture account and js lib. Account must come before js include*/
+        $omniture_account = "var s_account='".$ad_omni_config['omni_account']."';";
+        $tfk_omni_library = drupal_get_path('theme', 'tfk') .'/js/timekids-omniture.js';
+        drupal_add_js($omniture_account, 'inline');
+        drupal_add_js($tfk_omni_library,'file');
+        if($variables['node']->type == 'slideshow' || $ad_omni_config['channel'] == "worksheets" || $variables['node']->type == 'teacher_community_question') {
+            $tfk_ctype_omni_library = drupal_get_path('theme', 'tfk') .'/js/tfk-ctype-omni.js';
+            drupal_add_js($tfk_ctype_omni_library,'file');
+        }
         drupal_add_js($omniture_vars, 'inline');
     }
     
