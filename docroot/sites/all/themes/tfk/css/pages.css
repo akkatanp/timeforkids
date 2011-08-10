@@ -1783,6 +1783,7 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 
 .extras-block {
 	border: solid 1px #cecece;
+	margin-bottom: 10px;
 }
 
 .extras-block h2.block-title {
@@ -1803,6 +1804,7 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 	border-bottom: 0;
 }
 
+.featured-tfk-extra .field-type-image,
 .extras-block .field-type-image {
 	float: left;
 	width: 142px;
@@ -1810,16 +1812,27 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 	margin: 0 10px 10px 0;
 }
 
+.featured-tfk-extra .field-type-image img,
 .extras-block .field-type-image img {
 	width: 140px;
 	height: 187px;
 	border: solid 1px #cecece;
 }
 
+.featured-tfk-extra h3,
+.extras-block h3 {
+	font: normal 20px arial;
+	margin-bottom: 10px;
+}
+
 .extras-block.field-name-body {
-	line-height: 15px;
+	margin-top: 15px;
 	margin-bottom: 15px;
 	clear: right;
+}
+
+.extras-block.field-name-body p {
+	margin-bottom: 15px;
 }
 
 .extras-block .block-views h3 {
