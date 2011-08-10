@@ -202,6 +202,7 @@ function study_helper_node_view($node, $view_mode, $langcode) {
     }
     drupal_add_js(drupal_get_path('module', 'study_helper') . '/js/modernizer_3d_transforms.js', 'file');
     drupal_add_js(drupal_get_path('module', 'study_helper') . '/js/flashcard_cycle_override.js', array('type' => 'file', 'weight' => 50));
+    drupal_add_js(drupal_get_path('module', 'study_helper') . '/js/flashcard-footer.js', array('type' => 'file', 'scope' => 'footer'));
     $node->content['study_helper_help'] = array(
       '#prefix' => '<div class="study-helper-help">',
       '#suffix' => '</div>',
