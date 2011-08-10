@@ -5,6 +5,5 @@
 <?php
 $block = module_invoke('search', 'block_view', 'search');
 $block['content']['actions']['submit']['#value'] = 'Go';
-print_r($block);
 print render($block); 
 ?>
