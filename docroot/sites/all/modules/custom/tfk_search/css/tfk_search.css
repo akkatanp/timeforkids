@@ -466,7 +466,7 @@ li.search-result .flag-favorites a {
 
 /* photos and vide content type */
 body.section-photos-video div#tfk-search-photos-video-featured .icon {
-  height: 22px;
+  height: 24px;
   margin: -34px 0 0 225px;
   position: relative;
   width: 32px;
@@ -475,7 +475,7 @@ body.section-photos-video div#tfk-search-photos-video-featured .icon {
 
 body.section-photos-video ol#tfk-search-results-photos-video .icon,
 body.section-my-favorites ol#tfk-search-results-photos-video .icon {
-  height: 22px;
+  height: 24px;
   margin: -34px 0 0 75px;
   position: relative;
   width: 32px;
@@ -611,7 +611,7 @@ li.search-result .content-type .ctype-suffix {
  */
 
 #block-system-main .search-result .icon {
-	height: 22px;
+	height: 24px;
 	margin: -34px 0 0 75px;
 	position: relative;
 	width: 32px;
