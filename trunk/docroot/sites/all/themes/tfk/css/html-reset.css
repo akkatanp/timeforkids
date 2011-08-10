@@ -26,6 +26,8 @@
  */
 body {
 	font: normal 12px arial;
+	color: #333;
+	line-height: 15px;
 	margin: 0;
 	padding: 0;
 }
