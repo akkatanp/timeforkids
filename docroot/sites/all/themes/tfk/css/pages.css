@@ -2736,12 +2736,10 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
     margin-left:10px;
 }
 .info-container-np hr {
-    height:1px;
-    color:#CECECE;
     width:100%;
     padding:0;
     border:none;
-    border:1px solid #CECECE;
+    border-top:1px solid #CECECE;
 }
 .info-small-head {
     font-weight:bold;
