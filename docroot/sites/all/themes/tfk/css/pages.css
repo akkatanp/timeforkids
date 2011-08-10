@@ -314,7 +314,8 @@ ul.links li {
     overflow: hidden;
     height: 0;
     margin-left:-4px;
-     margin-top:10px;
+    margin-top:10px;
+    margin-bottom:20px;
 }
 #block-views-board-members-block-1 .views-field-title a {
     font-size:1.2em;
