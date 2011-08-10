@@ -8,6 +8,7 @@
  *
  * @ingroup views_templates
  */
+$emptyclass = '';
 ?>
 <?php if (!empty($title)) : ?>
   <h3><?php print $title; ?></h3>
@@ -17,10 +18,9 @@
     <?php foreach ($rows as $row_number => $columns): ?>
       <tr class="<?php print $row_classes[$row_number]; ?>">
         <?php foreach ($columns as $column_number => $item): ?>
-          <td class="<?php print $column_classes[$row_number][$column_number]; ?>">
-            <?php print_r($item);?>
 
-
+         <?php if(strlen(trim($item))==0){$emptyclass = 'empty';}?>
+          <td class="<?php print $column_classes[$row_number][$column_number]; ?> <?php print $emptyclass;?>">
             <?php print $item; ?>
           </td>
         <?php endforeach; ?>
