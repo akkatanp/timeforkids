@@ -1797,49 +1797,38 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 	margin:  10px 10px 0 10px;
 }
 
-.view-tfk-extras .view-content .views-row ,
-.extras-block .view-content .views-row {
+.view-tfk-extras .view-content .views-row {
 	padding: 10px;
 	border-bottom: solid 1px #cecece;
 }
 
-.view-tfk-extras .field-type-image,
-.featured-tfk-extra .field-type-image,
-.extras-block .field-type-image {
+.view-tfk-extras .field-type-image {
 	float: left;
 	width: 142px;
 	height: 189px;
 	margin: 0 10px 10px 0;
 }
 
-.view-tfk-extras .field-type-image img,
-.featured-tfk-extra .field-type-image img,
-.extras-block .field-type-image img {
+.view-tfk-extras .field-type-image img {
 	width: 140px;
 	height: 187px;
 	border: solid 1px #cecece;
 }
 
 .view-tfk-extras h3,
-.past-partners-head,
-.featured-tfk-extra h3,
-.extras-block h3 {
+.past-partners-head {
 	font: bold 20px arial;
 	line-height: 20px;
 	margin-bottom: 10px;
 }
 
-.view-tfk-extras .field-name-body,
-.featured-tfk-extra .field-name-body,
-.extras-block .field-name-body {
+.view-tfk-extras .field-name-body {
 	margin-top: 15px;
 	margin-bottom: 15px;
 	clear: right;
 }
 
-.view-tfk-extras .field-name-body p,
-.featured-tfk-extra .field-name-body p,
-.extras-block .field-name-body p {
+.view-tfk-extras .field-name-body p {
 	margin-bottom: 15px;
 }
 
