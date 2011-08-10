@@ -1757,6 +1757,10 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 	margin-bottom: 10px;
 }
 
+.view-tfk-extras-top-nodeblock h1 {
+	font: bold 30px arial;
+}
+
 .featured-tfk-extra {
 	position: relative;
 	background: #dedede;
