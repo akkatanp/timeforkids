@@ -2724,8 +2724,9 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
     padding:10px;
 }
 .info-issue {
-    margin:10px 50px 10px 50px;
     font-weight:bold;
+    display: inline-block;
+    margin: 10px 49px;
 }
 .info-red-bar {
     background: #d71700;
