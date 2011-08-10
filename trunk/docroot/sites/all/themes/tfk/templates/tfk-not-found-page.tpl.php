@@ -4,5 +4,6 @@
 <p class="not-found-or">or</p><p class="not-found-run-search">run a search here.</p>
 <?php
 $block = module_invoke('search', 'block_view', 'search');
+print_r($block);
 print render($block); 
 ?>
