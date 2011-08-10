@@ -374,7 +374,11 @@ function tfk_news_node_view($node, $view_mode, $langcode) {
     $body = $tmp_body[0]['value'];
 
     $imgs_reg = preg_match_all('/<div class="inline-img(.*?)<\/div><p>/i',$body,$matches_imgs);
-    print_r($matches_imgs);
+    if(!empty($matches_imgs)){
+      foreach($matches_imgs[0] as $k=>$temp_img){
+        $body = str_replace($temp_img, '<p>'.$temp_img.'</p>', $body);
+      }
+    }
 
 
     $reporter = $node->field_kid_reporter;
