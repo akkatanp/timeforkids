@@ -90,16 +90,25 @@ function tfk_search_init(){
   module_load_include('inc', 'tfk_search', 'TimeIncSolrBaseQuery');
   
   // Facet accordion behavior is disabled by default.
-  $enable_facet_accordion = FALSE;
+  $js_settings = array('tfk_search' => array('facet_accordion' => FALSE,));
+  
+  $path = drupal_get_path('module', 'tfk_search');
   
   // Provide styling for Photos & Video section.
   if(arg(0) == TFK_SEARCH_PHOTOSVIDEO_PATH) {
     // Styles for search results and first sidebar.
-    drupal_add_css(drupal_get_path('module', 'tfk_search'). '/css/tfk_search.css', 'file');
+    drupal_add_css($path. '/css/tfk_search.css', 'file');
     // Styles for favorite links and blocks.
-    #drupal_add_css(drupal_get_path('module', 'tfk_favorites'). '/css/tfk_favorites.css', 'file');
-    $enable_facet_accordion = TRUE;
+    // drupal_add_css(drupal_get_path('module', 'tfk_favorites'). '/css/tfk_favorites.css', 'file');
+    
+    // Enable facet accordion.
+    $js_settings['tfk_search']['facet_accordion'] = TRUE;
+    // The SERP variable indicates what accordion arrow icons to use.
+    $js_settings['tfk_search']['arrow_open'] = $path. '/images/photos-video-arrow-open.png';
+    $js_settings['tfk_search']['arrow_closed'] = $path. '/images/photos-video-arrow-closed.png';
   }
+  
+  //
   
   // Worksheets.
   // They inherit and override Photos & Video CSS.
@@ -107,25 +116,27 @@ function tfk_search_init(){
     drupal_add_css(drupal_get_path('module', 'tfk_search'). '/css/tfk_search.css', 'file');
     drupal_add_css(drupal_get_path('module', 'tfk_search'). '/css/tfk_worksheets.css', 'file');
     
-    $enable_facet_accordion = TRUE;
+    $js_settings['tfk_search']['facet_accordion'] = TRUE;
+    $js_settings['tfk_search']['arrow_open'] = $path. '/images/facet-arrow-open.png'; #facet-arrow-closed
+    $js_settings['tfk_search']['arrow_closed'] = $path. '/images/facet-arrow-closed.png'; #facet-arrow-open
   }
   
   // Site-wide search.
   if(arg(0) == TFK_SEARCH_SITESEARCH_PATH) {
-    drupal_add_css(drupal_get_path('module', 'tfk_search'). '/css/tfk_search.css', 'file');
+    drupal_add_css($path. '/css/tfk_search.css', 'file');
   }
   
   // Magazines.
   if(arg(0) == TFK_SEARCH_MAGAZINE_PATH) {
-    drupal_add_css(drupal_get_path('module', 'tfk_search'). '/css/tfk_search.css', 'file');
-    drupal_add_css(drupal_get_path('module', 'tfk_search'). '/css/tfk_magazines.css', 'file');
+    drupal_add_css($path. '/css/tfk_search.css', 'file');
+    drupal_add_css($path. '/css/tfk_magazines.css', 'file');
   }
   
   // Add Javascript used globally.
-  drupal_add_js(drupal_get_path('module', 'tfk_search'). '/js/tfk_search.js', 'file');
+  drupal_add_js($path. '/js/tfk_search.js', 'file');
   
   // Define facet accordion behavior.
-  drupal_add_js(array('tfk_search' => array('facet_accordion' => $enable_facet_accordion,)), 'setting');
+  drupal_add_js($js_settings, 'setting');
 }
 
 /**
@@ -1969,12 +1980,10 @@ function tfk_search_preprocess_search_result(&$vars) {
   }
   
   // All search interfaces.
-  if($teaser) {
-    if(strlen($teaser) > 185) {
-      $vars['snippet'] = truncate_utf8($teaser, '185', TRUE, TRUE);
-    } else {
-      $vars['snippet'] = $teaser;
-    }
+  if(isset($teaser) && strlen($teaser) > 185) {
+    $vars['snippet'] = truncate_utf8($teaser, '185', TRUE, TRUE);
+  } else {
+    $vars['snippet'] = $vars['result']['fields']['content'];
   }
   
   
