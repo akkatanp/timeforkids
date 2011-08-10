@@ -23,14 +23,14 @@
  * @ingroup views_templates
  */
 ?>
+
 <?php foreach ($fields as $id => $field): ?>
   <?php if($id != 'field_related_articles_1' && $id != 'field_related_articles'):?>
     <?php if (!empty($field->separator)): ?>
       <?php print $field->separator; ?>
     <?php endif; ?>
-
+    <?php print_r($row);?>
     <?php print $field->wrapper_prefix; ?>
-      
       <?php print $field->label_html; ?>
       <?php print $field->content; ?>
     <?php print $field->wrapper_suffix; ?>
