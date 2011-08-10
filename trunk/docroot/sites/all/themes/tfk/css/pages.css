@@ -1820,9 +1820,10 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 	border: solid 1px #cecece;
 }
 
+.past-partners-head,
 .featured-tfk-extra h3,
 .extras-block h3 {
-	font: normal 20px arial;
+	font: bold 20px arial;
 	line-height: 20px;
 	margin-bottom: 10px;
 }
