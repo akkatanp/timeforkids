@@ -30,7 +30,7 @@
     <?php endif; ?>
 
     <?php print $field->wrapper_prefix; ?>
-      !<?php print_r($view);exit;?>!
+      
       <?php print $field->label_html; ?>
       <?php print $field->content; ?>
     <?php print $field->wrapper_suffix; ?>
