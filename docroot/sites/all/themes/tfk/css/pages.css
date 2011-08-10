@@ -1822,16 +1822,17 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 .featured-tfk-extra h3,
 .extras-block h3 {
 	font: normal 20px arial;
+	line-height: 20px;
 	margin-bottom: 10px;
 }
 
-.extras-block.field-name-body {
+.extras-block .field-name-body {
 	margin-top: 15px;
 	margin-bottom: 15px;
 	clear: right;
 }
 
-.extras-block.field-name-body p {
+.extras-block .field-name-body p {
 	margin-bottom: 15px;
 }
 
