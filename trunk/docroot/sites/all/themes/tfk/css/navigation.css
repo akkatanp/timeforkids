@@ -366,16 +366,19 @@
 	padding: 10px 0px 10px 7px;
 }
 
+.region-sidebar-first .section ol.search-results, 
 .region-sidebar-first .section ul.menu {
 	list-style-type: none;
 	padding-left: 10px;
 	margin: 8px 0;
 }
 
+.region-sidebar-first .section ol.search-results li,
 .region-sidebar-first .section ul.menu li {
 	margin: 4px 0;
 }
 
+.region-sidebar-first .section ol.search-results li a,
 .region-sidebar-first .section ul.menu li a {
 	padding: 0;
 }
@@ -478,6 +481,7 @@
 }
 
 /* left sidebar teacher nav */
+.left-teacher-resources .view-header,
 .node-type-minisite .views-field-field-minisite-resources-label,
 .node-type-atw-destination  .region-sidebar-first .content h3.related,
 .page-destination .region-sidebar-first .content h3.related,
@@ -494,6 +498,7 @@
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#7bc3f5, endColorstr=#5ea1d3);
 }
 
+.left-teacher-resources .view-content,
 .node-type-minisite .views-field-field-minisite-resources,
 .node-type-atw-destination  .region-sidebar-first .content ul.related,
 .page-destination .region-sidebar-first .content ul.related,
