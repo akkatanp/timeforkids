@@ -14,9 +14,9 @@ function tfk_ads_omni_preprocess_page(&$variables){
     $ad_omni_config = tfk_ads_omni_get_config_vars($variables);/*array used by both ads and omniture*/
     /*adFactory config*/
     $ad_factory = "var adConfig = new TiiAdConfig(\"3475.tfk\");adConfig.setCmSitename(\"cm.tfk\");adConfig.setRevSciTracking(true);";
-    $ad_factory .= "var adFactory = new TiiAdFactory(adConfig, \"".tfk_ads_sanitize_param($ad_omni_config['zone'])."\");";
-    $ad_factory .= "adFactory.setChannel(\"".tfk_ads_sanitize_param($ad_omni_config['channel'])."\");";
-    $ad_factory .= "adFactory.setSubchannel(\"".tfk_ads_sanitize_param($ad_omni_config['sub_channel'])."\");";
+    $ad_factory .= "var adFactory = new TiiAdFactory(adConfig, \"".$ad_omni_config['zone']."\");";
+    $ad_factory .= "adFactory.setChannel(\"".$ad_omni_config['channel']."\");";
+    $ad_factory .= "adFactory.setSubchannel(\"".$ad_omni_config['sub_channel']."\");";
     if ($ad_omni_config['is_channel'] == 1) {
         $ad_factory .= "adFactory.setChannelPage();";
     }
@@ -147,6 +147,11 @@ function tfk_ads_omni_get_config_vars(&$variables){
          $channel_array['channel'] = "homepage";
          $channel_array['is_channel'] = 1;
          $channel_array['omni_pagename'] .= "home";
+     } elseif (array_key_exists('theme_hook_suggestions',$variables) && $variables['theme_hook_suggestions'][0] == "page__404page") {
+         //Enforce channel as security precaution
+         $channel_array['channel'] = "not found page";
+         $channel_array['sub-channel'] = "";
+         $channel_array['zone'] = "home";
      } else {
          $channel_array['channel'] = tfk_ads_omni_channel_override($path_array[0]);
          if (count($path_array) > 1) {
@@ -237,13 +242,9 @@ function tfk_ads_omni_channel_override($channel_name) {
 //Cleans up strings for omniture
 function tfk_ads_omni_format_omniture($string) {
         $string = urldecode($string);
-		$string = str_replace("_", " ", $string);
+	$string = str_replace("_", " ", $string);
         $string = str_replace("-", " ", $string);
         $string = str_replace("'", "", $string);
         $string = strtolower($string);
 	return $string;
-}
-// Sanitize TiiAdConfig Parameters to prevent XSS
-function tfk_ads_sanitize_param($string) {
-	return filter_xss(preg_replace('/[^a-z\-_0-9\.\/]/i','',$string), array());
 }
