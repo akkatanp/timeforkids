@@ -2729,6 +2729,12 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
     margin:0px 0px 10px 5px;
     padding:0px;
 }
+.info-container-np p {
+    margin:0px 0px 10px 10px;
+}
+.info-container-np h2 {
+    margin-left:10px;
+}
 .info-container-np hr {
     height:1px;
     color:#CECECE;
