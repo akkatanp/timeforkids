@@ -1752,14 +1752,15 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 }
 
 /* TFK extras */
-.page-extras .region-content .block-views {
+.view-tfk-extras-top-nodeblock,
+.featured-tfk-extra {
 	padding: 10px;
 	border: solid 1px #cecece;
 	margin-bottom: 10px;
 }
 
 .view-tfk-extras-top-nodeblock h1 {
-	font: bold 30px arial;
+	margin-bottom: 15px;
 }
 
 .featured-tfk-extra {
@@ -1781,7 +1782,7 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 }
 
 .extras-block {
-	padding: 0;
+	border: solid 1px #cecece;
 }
 
 .extras-block h2.block-title {
