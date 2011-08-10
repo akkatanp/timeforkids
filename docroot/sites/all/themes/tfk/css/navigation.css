@@ -1126,10 +1126,10 @@
     display:none;
 }
 .page-info .region-sidebar-first .section, .section-info .region-sidebar-first .section {
-    width:250px;
+    width:246px;
 }
 #block-menu-menu-info-pages-menu ul {
-    margin-left:7px;
+    margin-left:5px;
     padding-left:0;
 }
 #block-menu-menu-info-pages-menu li a {
