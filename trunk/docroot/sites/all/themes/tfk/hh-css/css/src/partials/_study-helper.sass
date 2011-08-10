@@ -159,7 +159,8 @@
     +box-shadow(rgba($black, 0) 0 0 0)
 .flashcard-cycle-card
   position: relative
-  $perspective: 800
+  .csstransforms3d &
+    +perspective(800)
   .card-front, .card-back
     width: 500px
     height: 250px
@@ -171,30 +172,37 @@
     margin-bottom: 10px
     +border-radius(14px)
     border: 1px solid scale-color($tfk-yellow, $lightness: -20%)
-    +backface-visibility(hidden)
-    +transition-property(all)
-    +transition-duration(0.5s)
-    +transition-timing-function(ease-in)
-    // +transition-delay(0.5s)
+    .csstransforms3d &
+      +backface-visibility(hidden)
+      +transform-style
+      +transition-property(all)
+      +transition-duration(0.5s)
+      +transition-timing-function(ease-in)
   .card-front
     position: relative
     z-index: 2
-    +rotate3d(1, 0, 0, 0deg, $perspective)
     +box-shadow($default-box-shadow-color -2px 2px 6px)
+    .csstransforms3d &
+      +rotateX(0deg)
   .card-back
     position: absolute
     top: 0
     left: 0
     z-index: 1
-    +rotate3d(1, 0, 0, 180deg, $perspective)
     +box-shadow(change-color($default-box-shadow-color, $alpha: 0.15) -4px 4px 8px)
+    .csstransforms3d &
+      +rotateX(180deg)
     ul
       display: block !important
   .showing &
     .card-front
-      +rotate3d(1, 0, 0, -180deg, $perspective)
+      z-index: 2
+      .csstransforms3d &
+        +rotateX(-180deg)
     .card-back
-      +rotate3d(1, 0, 0, 0deg, $perspective)
+      z-index: 3
+      .csstransforms3d &
+        +rotateX(0deg)
   ul
     li
       font-size: $ms2
