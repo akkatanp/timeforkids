@@ -73,3 +73,8 @@ div#tfk-search-photos-video-featured div.featured-label {
 .pubcal-link .right {
     margin-top:-18px;
 }
+/*info pages*/
+.info-issue {
+    zoom:1;
+    display: inline;
+}
