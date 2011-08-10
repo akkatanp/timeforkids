@@ -174,11 +174,16 @@ function _tfk_news_current_filters(){
   if(arg(0) == 'news-archive'){
     $str = '<div class="currfilters"><div class="newsarc">News Archive</div><div class="newsarcsmall">';
     if(count(arg()) == 1){
-      $str .= 'Viewing All News;';
+      $str .= 'Viewing: All News; All Dates;';
     }else{
       $arg = arg(1);
       if(!is_numeric(arg(1))){
-        $str .= 'Viewing: '.ucfirst(arg(1));
+        
+        if(ucfirst(arg(1)) == 'All'){
+          $str .= 'Viewing: '.ucfirst(arg(1)) .' Years;';
+        }else{
+          $str .= 'Viewing: '.ucfirst(arg(1));
+        }
       }
       if(is_numeric(arg(1))){
         $str .= 'Year: '.ucfirst(arg(1));
@@ -294,8 +299,8 @@ function theme_tfk_news_formatter_tfk_news_grade_title($element) {
 
   if($element['element']['node']->type == 'mini_lesson'){
     $nid = $element['element']['node']->nid;
-    $sql = db_query('select td.name from {taxonomy_term_data} td
-            left join {taxonomy_index} ti on td.tid = ti.tid where td.vid = :vid and ti.nid = :nid',array('vid' => 6,'nid' => $nid));
+    $sql = db_query('select td.name from taxonomy_term_data td
+            left join taxonomy_index ti on td.tid = ti.tid where td.vid = :vid and ti.nid = :nid',array('vid' => 6,'nid' => $nid));
     $res_record = $sql->fetch();
     return l('Grade '.$res_record->name,'node/'.$nid);
   }
@@ -413,7 +418,7 @@ function tfk_news_node_view($node, $view_mode, $langcode) {
      $count = count($node->content['field_mini_lessons']['#object']->content['field_mini_lessons']['#items']);
 
      for($i = 0; $i < $count - 1; $i++ ){
-      $node->content['field_mini_lessons']['#object']->content['field_mini_lessons'][$i]['#markup'] .= ',';
+      $node->content['field_mini_lessons']['#object']->content['field_mini_lessons'][$i]['#markup'] .= '&nbsp;&nbsp;|';
      }
 
   }
