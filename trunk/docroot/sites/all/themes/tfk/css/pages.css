@@ -1025,14 +1025,15 @@ ul.links li {
 
 .node-kid-reporter .field-type-image {
 	float: left;
-	height: 270px;
-	width: 270px;
+	height: 272px;
+	width: 272px;
 	margin-right: 10px;
 }
 
 .node-kid-reporter .field-type-image img {
 	width: 270px;
 	height: 270px;
+	border: solid 1px #cecece;
 }
 
 .field-name-field-kid-reporter-age  {
