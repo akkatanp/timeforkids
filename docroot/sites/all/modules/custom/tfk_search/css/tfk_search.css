@@ -647,14 +647,21 @@ body.page-photos-video #main .region-sidebar-first .section {
   padding: 10px;
 }
 
-/* Accordion */
+/**
+ * Accordion
+ */
 body.page-photos-video .region-sidebar-first .block h2 {
   /*font: normal 12px "arial black";*/
   background: url("/sites/all/modules/custom/tfk_search/images/photos-video-arrow-open.png") no-repeat scroll 0 0 transparent;
   line-height: 100%;
   padding-left: 25px;
 }
-
+/* Only facet blocks with accordions should apply this rule */
 .region-sidebar-first .block .content > .item-list {
 	margin: 0 0 0 23px;
 }
+body.page-tfk-magazine .region-sidebar-first .block .content > .item-list,
+body.page-search-site .region-sidebar-first .block .content > .item-list {
+	margin: 0 0 0 2px;
+}
+
