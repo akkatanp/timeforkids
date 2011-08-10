@@ -1,21 +1,16 @@
 <script>
   $(document).ready(function(){
-
     $('#edit-search-block-form--2').val('Search');
-    
     $('#edit-search-block-form--2').focusin(function() {
         if($('#edit-search-block-form--2').val() == 'Search'){
           $('#edit-search-block-form--2').val('');
         }
     });
-
     $('#edit-search-block-form--2').focusout(function() {
         if($('#edit-search-block-form--2').val() == ''){
           $('#edit-search-block-form--2').val('Search');
         }
     });
-
-
 });
 </script>
 <h2 class="not-found-header">Oops!</h2>
