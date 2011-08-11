@@ -999,7 +999,7 @@ img {
 .flashcard-cycle-mark {
   position: absolute;
   top: 26px;
-  left: 306px;
+  left: 246px;
   z-index: 100;
   display: inline;
   float: left;
