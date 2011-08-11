@@ -23,7 +23,8 @@ $(document).ready(function(){
       $.ajax({
             url: '/tfkfav/ajax/del',
             success: function(data) {
-              location.href = data;
+              var pathname = window.location.pathname;
+              location.href = pathname;
             }
           });
     }

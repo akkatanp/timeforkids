@@ -19,9 +19,7 @@
   	<?php if(isset($clear_all)): ?>
   		<?php //print $clear_all; ?>
                 <a href="<?php echo url($ref);?>#" id="delfavs">
-
                 <img alt="Clear All Favorites" src="/sites/all/modules/custom/tfk_search/images/clear-all-favorites.png" typeof="foaf:Image" title="Clear All Favorites">
-
                 </a><br/>
   		<div style="display:none" class="throbber">Clearing favorites</div>
   	<?php else: ?>
