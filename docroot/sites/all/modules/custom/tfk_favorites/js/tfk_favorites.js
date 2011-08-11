@@ -23,7 +23,6 @@ $(document).ready(function(){
       $.ajax({
             url: '/tfkfav/ajax/del',
             success: function(data) {
-              alert(data);
               location.href = data;
             }
           });
