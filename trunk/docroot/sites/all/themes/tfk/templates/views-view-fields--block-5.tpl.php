@@ -22,8 +22,8 @@
  *
  * @ingroup views_templates
  */
-?>aaaa
-<?php if(strlen($fields['field_worksheet_pdf']->content) > 0 || strlen($fields['title']->content) > 0):?>
+?>
+<?php //if(strlen($fields['field_worksheet_pdf']->content) > 0 || strlen($fields['title']->content) > 0):?>
 <?php foreach ($fields as $id => $field): ?>
   <?php if (!empty($field->separator)): ?>
     <?php print $field->separator; ?>
@@ -34,4 +34,4 @@
     <?php print $field->content; ?>
   <?php print $field->wrapper_suffix; ?>
 <?php endforeach; ?>
-<?php endif; ?>
+<?php //endif; ?>
