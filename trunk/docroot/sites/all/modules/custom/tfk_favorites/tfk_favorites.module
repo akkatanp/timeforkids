@@ -80,8 +80,7 @@ function _tfk_favorites_links_block_content() {
     // Clear favorites link.
     $link_options['attributes']['fragment'] = ' '; // Adds the # at the end of the link.
     $link_options['attributes'] = array('title' => 'Clear All Favorites', 'id' => 'delfavs');
-    $clear_all = l(theme('image', array('path' => $search_module_path. '/images/clear-all-favorites.png', 'alt' => 'Clear All Favorites', 'attributes' => array('title' => 'Clear All Favorites'))), $path, $link_options);
-    $clear_all = l(theme('image', array('path' => $search_module_path. '/images/clear-all-favorites.png', 'alt' => 'Clear All Favorites', 'attributes' => array('title' => 'Clear All Favorites'))), '#', $link_options);
+    $clear_all = l(theme('image', array('path' => $search_module_path. '/images/clear-all-favorites.png', 'alt' => 'Clear All Favorites', 'attributes' => array('title' => 'Clear All Favorites'))), $path.'#', $link_options);
 
     // Theme output.
     $variables = array('ref' => $path, 'view_all' => $view_all, 'clear_all' => $clear_all);
