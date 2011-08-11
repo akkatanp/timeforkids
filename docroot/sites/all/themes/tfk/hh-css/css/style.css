@@ -1159,7 +1159,7 @@ img {
   float: right;
 }
 
-.page-node-add-flashcard #edit-actions #edit-submit {
+#flashcard-node-form #edit-actions #edit-submit {
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
   -o-box-shadow: none;
