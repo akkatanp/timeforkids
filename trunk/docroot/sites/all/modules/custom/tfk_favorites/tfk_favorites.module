@@ -125,11 +125,13 @@ function _tfk_fav_deltest(){
   $fid = $flag->fid;
   $res = db_query('select content_id from flag_content where fid = :fid and uid = :uid', array('fid' => $fid, 'uid' => $user->uid));
 
-  print_R($res);
-//  foreach ($res as $k => $record) {
-//    $nid = $record->content_id;
-//    $flag->flag('unflag', $nid, $user);
-//  }
+  foreach ($res as $k => $record) {
+    $nid = $record->content_id;
+    print_r($record);
+
+
+    //$flag->flag('unflag', $nid, $user);
+  }
 //  $resdel = db_query('delete from flag_content where fid = :fid and uid = :uid', array('fid' => $fid, 'uid' => $user->uid));
 //  drupal_set_message('Your favorites have been deleted.');
   return '';
