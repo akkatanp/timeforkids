@@ -17,6 +17,10 @@ include_once('tfk_photos_video.features.inc');
 function tfk_photos_video_preprocess_page(&$variables) {
   if(arg(0) == 'node' && array_key_exists('node', $variables)) {
     if($variables['node']->type == 'slideshow' || $variables['node']->type == 'video') {
+      
+      // Set primary menu link to active. Doing it here bacause Context's menu reaction is not working.
+      $variables['page']['header']['menu_menu-tfk-global-navigation']['content']['984']['#attributes']['class'][] = 'active';
+      
       // Add Slideshow page CSS.
       drupal_add_css(drupal_get_path('module', 'tfk_photos_video'). '/css/tfk_photos_video.css', 'file');
       
