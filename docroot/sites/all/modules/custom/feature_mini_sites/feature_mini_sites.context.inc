@@ -204,19 +204,19 @@ function feature_mini_sites_context_default_contexts() {
           'module' => 'views',
           'delta' => 'minisite_articles-block_4',
           'region' => 'sidebar_first',
-          'weight' => '-38',
+          'weight' => '-83',
         ),
         'views-minisite_articles-block_5' => array(
           'module' => 'views',
           'delta' => 'minisite_articles-block_5',
           'region' => 'sidebar_first',
-          'weight' => '-37',
+          'weight' => '-82',
         ),
         'views-minisite_articles-block_6' => array(
           'module' => 'views',
           'delta' => 'minisite_articles-block_6',
           'region' => 'sidebar_first',
-          'weight' => '-10',
+          'weight' => '-81',
         ),
         'views-minisite_articles-block_7' => array(
           'module' => 'views',
