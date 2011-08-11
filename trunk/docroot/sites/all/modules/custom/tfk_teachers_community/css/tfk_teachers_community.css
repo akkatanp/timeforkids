@@ -62,8 +62,9 @@ body.page-node .suggestion-box .link a {
 }
 
 body.page-node #bottom-suggestion-box .link a {
-  margin-left: 47%;
+  margin-left: 45%;
   width: 250px;
+  padding-right:10px;
   background: url("/sites/all/modules/custom/tfk_teachers_community/images/right-arrow.png") no-repeat scroll 100% 50% transparent;
 }
 
