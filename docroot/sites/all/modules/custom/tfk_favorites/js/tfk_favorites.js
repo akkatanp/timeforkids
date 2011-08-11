@@ -24,7 +24,7 @@ $(document).ready(function(){
             url: '/tfkfav/ajax/del',
             success: function(data) {
               alert(data);
-              location.href = settings.tfk_favorites.ref;
+              location.href = data;
             }
           });
     }
