@@ -28,11 +28,8 @@
 
 $myrows = $rows;
 $myrows = strip_tags($myrows);
-echo 'aa';
-print_r($myrows);
-echo 'aav';
 ?>
-<?php if($rows && !empty($rows)):?>
+<?php if(strlen(trim($myrows)) == 0):?>
   <div class="<?php print $classes; ?>">
     <?php print render($title_prefix); ?>
     <?php if ($title): ?>
