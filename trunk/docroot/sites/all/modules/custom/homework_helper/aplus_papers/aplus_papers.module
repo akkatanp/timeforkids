@@ -148,6 +148,7 @@ function aplus_papers_multistep_form($form, &$form_state, $steps) {
       '#options' => array(
         'attributes' => array(
           'class' => array('aplus-start-over'),
+          'tabindex' => 3,
         ),
       ),
     );
@@ -157,6 +158,7 @@ function aplus_papers_multistep_form($form, &$form_state, $steps) {
       '#value' => t('Back'),
       '#attributes' => array(
         'class' => array('aplus-back'),
+        'tabindex' => 2,
       ),
       // Since all info will be discarded, don't validate on 'prev'.
       '#limit_validation_errors' => array(),
@@ -171,6 +173,7 @@ function aplus_papers_multistep_form($form, &$form_state, $steps) {
         '#value' => t('Next'),
         '#attributes' => array(
           'class' => array('aplus-next'),
+          'tabindex' => 1,
         ),
         '#ajax' => $ajax_default,
       );
@@ -359,7 +362,12 @@ function aplus_papers_save_content($form_state) {
  * We expect only p, em, strong, and u tags.
  */
 function aplus_html_to_rtf($data) {
+  // We should really be using this additional Rtf library for more, 
+  // but we're only relying on it to fix unicode entities such as apostrophes.
+  require_once(drupal_get_path('module', 'aplus_papers') .'/rtf/Rtf.php');
   $output = check_markup($data['value'], $data['format']);
+  $output = decode_entities($output);
+  $output = Util::utf8Unicode($output);
   $output = str_replace('<p>', "\n\\\n\\\n	", $output);
   $output = str_replace('</p>', "", $output);
   $output = str_replace('&nbsp;', " ", $output);
