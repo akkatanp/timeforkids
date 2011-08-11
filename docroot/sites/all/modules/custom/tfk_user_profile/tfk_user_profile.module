@@ -1,11 +1,12 @@
 <?php
+
 /**
  * Implementation of form_alter().
  */
-function tfk_user_profile_form_user_login_alter( &$form, &$form_state ) {
-	$form['#validate'] = array(  'user_login_name_validate','user_login_authenticate_validate', 'tfk_user_profile_login_validate', 'tfk_user_login_final_validate' );
+function tfk_user_profile_form_user_login_alter( &$form, $form_state ){
+    $form['#validate'] = array(  'user_login_name_validate','user_login_authenticate_validate', 'tfk_user_profile_login_validate', 'tfk_user_login_final_validate' );
    	$form['#action'] = '';
-   	$form['name']['#title'] = 'Email';
+        $form['name']['#title'] = 'Email';
 }
 
 function tfk_user_profile_user_login(&$edit, $account) {
@@ -14,6 +15,7 @@ function tfk_user_profile_user_login(&$edit, $account) {
     drupal_goto($_SERVER["HTTP_REFERER"]);
    }
 }
+
 /**
  * Implementation of hook_user_load.
  */
