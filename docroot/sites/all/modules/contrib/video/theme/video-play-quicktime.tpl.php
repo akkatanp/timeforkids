@@ -15,7 +15,8 @@
  */
 ?>
 <object classid="clsid:02BF25D5-8C17-4B23-BC80-D3488ABDDC6B" codebase="http://www.apple.com/qtactivex/qtplugin.cab#version=7,3,0,0"  width="<?php print $video->player_width; ?>" height="<?php print $video->player_height; ?>">
-  <param name="src" value="<?php print $video->files->{$video->player}->url; ?>" />
+  <param name="WMode" value="transparent" />
+  <param name="src" value="<?php print $video->files->{$video->player}->url . "?wmode=transparent"//needed for lightbox compatibility on webkit browsers; ?>" />
   <param name="controller" value="true" />
   <param name="scale" value="tofit" />
   <param name="autoplay" value="<?php print $video->autoplay ? 'true' : 'false'; ?>" />
@@ -23,6 +24,7 @@
   <embed src="<?php print $video->files->{$video->player}->url; ?>"
          type="video/quicktime"
          scale="tofit"
+         wmode="transparent"
          pluginspage="http://www.apple.com/quicktime/download/"
          width="<?php print $video->player_width; ?>"
          height="<?php print $video->player_height; ?>"
