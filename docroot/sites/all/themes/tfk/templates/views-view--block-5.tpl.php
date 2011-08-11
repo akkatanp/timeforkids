@@ -25,8 +25,11 @@
  *
  * @ingroup views_templates
  */
+
+$myrows = $rows;
+$myrows = strip_tags($myrows);
 echo 'aa';
-print_r($rows);
+print_r($myrows);
 echo 'aav';
 ?>
 <?php if($rows && !empty($rows)):?>
