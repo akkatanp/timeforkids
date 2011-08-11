@@ -1092,6 +1092,9 @@ ul.links li {
 	line-height: 15px;
 }
 
+.view-mini-site-home .view-content table td.empty {
+	display: none;
+}
 
 .view-mini-site-home .view-content table td.col-1,
 .view-all-kid-reporters .view-content table td.col-1 {
@@ -1243,7 +1246,7 @@ ul.links li {
 }
 
 .inline-img {
-	margin: 10px;
+	margin: 0 10px 10px 10px;
 }
 
 .inline-img .credit {
