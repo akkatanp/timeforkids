@@ -2245,16 +2245,15 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 
 #timeline-container #event-container .event.vertical .event-image {
 	float: right;
-	width: 180px;
-	height: 270px;
-	border: solid 1px #cecece;
+	width: 182px;
+	height: 272px;
+	
 }
 
 #timeline-container #event-container .event.horizontal .event-image {
 	float: right;
-	width: 240px;
-	height: 180px;
-	border: solid 1px #cecece;
+	width: 242px;
+	height: 182px;
 }
 
 #timeline-container #event-container .event .event-image .event-credit {
@@ -2266,11 +2265,13 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 }
 
 #timeline-container #event-container .event.vertical .event-image  img {
+	border: solid 1px #cecece;
 	width: 180px;
 	height: 240px;
 }
 
 #timeline-container #event-container .event.horizontal .event-image  img {
+	border: solid 1px #cecece;
 	width: 240px;
 	height: 180px;
 }
