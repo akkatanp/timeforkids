@@ -41,5 +41,13 @@ $(document).ready(function() {
                 omniTrack('comment');
             });
         }
-        
+        //Omniture for favorites on photos/video channel page
+        if ($('body.page-photos-video').length) {
+            $('.flag-wrapper').delegate('a.flag-action', 'mousedown', function() {//click being used by favorite code, use mousedown
+                omniTrack('favorite');
+            });
+            $('.flag-wrapper').delegate('a.unflag-action', 'mousedown', function() {//click being used by favorite code, use mousedown
+                omniTrack('remove from favorite');
+            });
+        }
 });
