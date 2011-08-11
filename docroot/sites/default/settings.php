@@ -458,5 +458,5 @@ require('/var/www/site-php/time/time-settings.inc');
  */
  
  $conf['cache_inc'] = './sites/all/modules/contrib/memcache/memcache.inc';
- $conf['session_inc'] = './sites/all/modules/contrib/memcache/memcache-session.inc';
+ //$conf['session_inc'] = './sites/all/modules/contrib/memcache/memcache-session.inc';
 
