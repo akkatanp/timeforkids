@@ -1984,7 +1984,8 @@ function tfk_search_preprocess_search_result(&$vars) {
   
   // All search interfaces.
   if(isset($teaser) && strlen($teaser) > 185) {
-    $vars['snippet'] = truncate_utf8($teaser, '185', TRUE, TRUE);
+    // The pattern "<p>&nbsp;</p>" causes a bug in truncate_utf8. Strip it out.
+    $vars['snippet'] = truncate_utf8(preg_replace("/\<p\>.?&nbsp;.?\<\/p\>/", '', $teaser), '185', TRUE, TRUE, 10);
   } else {
     $vars['snippet'] = $vars['result']['fields']['content'];
   }
@@ -2059,8 +2060,7 @@ function tfk_search_preprocess_search_result(&$vars) {
           'type' => $related_node->type,
         );
       }
-      
-      $vars['snippet'] = array_shift(array_shift(field_get_items('node', $node, 'body')));
+
     }
     
     // Theme related content.
