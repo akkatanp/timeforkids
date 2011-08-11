@@ -124,7 +124,10 @@ function _tfk_fav_del(){
   
   drupal_set_message('Your favorites have been deleted.');
 
-  print TFK_FAVS_AJAX_SUCCESS;
+
+
+  print url('my-favorites');
+  //print TFK_FAVS_AJAX_SUCCESS;
 }
 
 function _tfk_fav_deltest(){
