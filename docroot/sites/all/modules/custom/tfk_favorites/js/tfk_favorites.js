@@ -22,6 +22,8 @@
           $.ajax({
             url: settings.tfk_favorites.ajax_callback,
             success: function(data) {
+
+              alert(data);
               if(data == settings.tfk_favorites.success){
                 $('.throbber').hide();
                 location.href = settings.tfk_favorites.ref;

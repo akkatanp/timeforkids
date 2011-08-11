@@ -106,19 +106,22 @@ function tfk_favorites_theme(){
 function _tfk_fav_del(){
   global $user;
   $flag = flag_get_flag('favorites');
-
   $fid = $flag->fid;
+
+
+  $resnew = db_query('select fcid from flag_content where fid = :fid and uid = :uid', array('fid' => $fid, 'uid' => $user->uid));
+  foreach ($resnew as $k => $recordnew) {
+    $resdel = db_query('delete from flag_content where fcid = :fcid', array('fcid' => $recordnew->fcid));
+  }
+  $resdel = db_query('delete from flag_content where fid = :fid and uid = :uid', array('fid' => $fid, 'uid' => $user->uid));
+
+
   $res = db_query('select content_id from flag_content where fid = :fid and uid = :uid', array('fid' => $fid, 'uid' => $user->uid));
   foreach ($res as $k => $record) {
     $nid = $record->content_id;
     $flag->flag('unflag', $nid, $user->uid,TRUE);
   }
-  $resnew = db_query('select fcid from flag_content where fid = :fid and uid = :uid', array('fid' => $fid, 'uid' => $user->uid));
-  foreach ($resnew as $k => $recordnew) {
-    $resdel = db_query('delete from flag_content where fcid = :fcid', array('fcid' => $recordnew->fcid));
-  }
-
-  $resdel = db_query('delete from flag_content where fid = :fid and uid = :uid', array('fid' => $fid, 'uid' => $user->uid));
+  
   drupal_set_message('Your favorites have been deleted.');
 
   print TFK_FAVS_AJAX_SUCCESS;
