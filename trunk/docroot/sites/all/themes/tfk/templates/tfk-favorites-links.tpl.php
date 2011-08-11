@@ -20,7 +20,7 @@
   		<?php print $clear_all; ?>
   		<div style="display:none" class="throbber">Clearing favorites</div>
   	<?php else: ?>
-  		<a href="<?php echo url($ref);?>#" id="delfavs">Clear All Favorites</a><br/>
+  		<a href="<?php echo url($ref);?>#" id="delfavs">Clear All Favorites.</a><br/>
   		<div style="display:none" class="throbber">Clearing favorites</div>
   	<?php endif; ?>
     <div class="favsnotify"></div>
