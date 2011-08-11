@@ -17,7 +17,7 @@
   		<a href="<?php echo url('my-favorites');?>" >View All My Favorites</a><br/>
   	<?php endif; ?>
   	<?php if(isset($clear_all)): ?>
-  		<?php print $clear_all; ?>
+  		<?php //print $clear_all; ?>
                 <a href="<?php echo url($ref);?>#" id="delfavs">Clear All Favorites</a><br/>
   		<div style="display:none" class="throbber">Clearing favorites</div>
   	<?php else: ?>
