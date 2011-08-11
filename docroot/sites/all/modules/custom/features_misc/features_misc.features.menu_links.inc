@@ -410,11 +410,11 @@ function features_misc_menu_default_menu_links() {
     'expanded' => '0',
     'weight' => '-44',
   );
-  // Exported menu link: menu-tfk-teachers-menu:digital-edition
-  $menu_links['menu-tfk-teachers-menu:digital-edition'] = array(
+  // Exported menu link: menu-tfk-teachers-menu:http://www.timeforkidsdigital.com
+  $menu_links['menu-tfk-teachers-menu:http://www.timeforkidsdigital.com'] = array(
     'menu_name' => 'menu-tfk-teachers-menu',
-    'link_path' => 'digital-edition',
-    'router_path' => 'digital-edition',
+    'link_path' => 'http://www.timeforkidsdigital.com',
+    'router_path' => '',
     'link_title' => 'Digital Edition',
     'options' => array(
       'attributes' => array(
@@ -425,7 +425,7 @@ function features_misc_menu_default_menu_links() {
     ),
     'module' => 'menu',
     'hidden' => '0',
-    'external' => '0',
+    'external' => '1',
     'has_children' => '0',
     'expanded' => '0',
     'weight' => '15',
