@@ -25,6 +25,9 @@
  *
  * @ingroup views_templates
  */
+echo 'aa';
+print_r($rows);
+echo 'aav';
 ?>
 <?php if($rows && !empty($rows)):?>
   <div class="<?php print $classes; ?>">
