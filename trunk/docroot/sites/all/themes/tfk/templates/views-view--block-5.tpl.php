@@ -25,8 +25,9 @@
  *
  * @ingroup views_templates
  */
-
+echo '1';
 print_r($rows);
+echo '2';
 
 ?>
 <div class="<?php print $classes; ?>">
