@@ -730,7 +730,8 @@ function theme_tfk_featured_block(&$variables) {
     }
   }
   if(!empty($body)) {
-    $body = truncate_utf8($body, '160', TRUE, TRUE, 10);
+    // The pattern "<p>&nbsp;</p>" causes a bug in truncate_utf8. Strip it out.
+    $body = truncate_utf8(preg_replace("/\<p\>.?&nbsp;.?\<\/p\>/", '', $body), '160', TRUE, TRUE, 10);
   }
   
   $output .= '<div class="g2">';
@@ -1450,7 +1451,7 @@ function worksheets_save_srch($form, &$form_state) {
   $form['description'] = array(
   	'#markup' => "<div class='svd-srch-desc'>". t(
       variable_get('worksheets_modal_save_desc',
-  		'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed mollis diam nec felis interdum interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed mollis diam nec felis interdum interdum interdum.')
+  		'Type a name for your search in the field below.')
     ). "</div>"
   );
   
