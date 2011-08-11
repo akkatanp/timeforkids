@@ -34,7 +34,11 @@ function features_misc_field_default_fields() {
         ),
       ),
       'module' => 'text',
-      'settings' => array(),
+      'settings' => array(
+        'max_length' => '',
+        'maxlength_body_js' => 0,
+        'maxlength_body_text' => 'Content limited to !limit characters, remaining: <strong>!remaining</strong>',
+      ),
       'translatable' => '1',
       'type' => 'text_with_summary',
     ),
