@@ -134,8 +134,13 @@ function _tfk_fav_deltest(){
     $nid = $record->content_id;
     $flag->flag('unflag', $nid, $user->uid,TRUE);
   }
+
+  
+
+
   $resnew = db_query('select fcid from flag_content where fid = :fid and uid = :uid', array('fid' => $fid, 'uid' => $user->uid));
   foreach ($resnew as $k => $recordnew) {
+    print_r($recordnew);
     $resdel = db_query('delete from flag_content where fcid = :fcid', array('fcid' => $recordnew->fcid));
   }
 
