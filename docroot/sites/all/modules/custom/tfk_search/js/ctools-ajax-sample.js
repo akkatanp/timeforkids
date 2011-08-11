@@ -17,8 +17,8 @@ Drupal.theme.prototype.CToolsSampleModal = function () {
   html += '        <td class="popups-c" valign="top">';
   html += '          <div class="popups-container">';
   html += '            <div class="modal-header popups-title">';
-  html += '              <span id="modal-title" class="modal-title"></span>';
-  html += '              <span class="popups-close"><a class="close" href="#">' + Drupal.CTools.Modal.currentSettings.closeText + '</a></span>';
+  html += '              <span id="modal-title" class="modal-title"></span>'; //Drupal.CTools.Modal.currentSettings.closeText
+  html += '              <span class="popups-close"><a class="close" href="#"> CLOSE WINDOW X </a></span>';
   html += '              <div class="clear-block"></div>';
   html += '            </div>';
   html += '            <div class="modal-scroll"><div id="modal-content" class="modal-content popups-body"></div></div>';
