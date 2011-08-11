@@ -39,9 +39,9 @@ function grammar_wizard_prepare_question($node) {
   $answer = field_get_items('node', $node, 'field_grammar_practice_answer');
   $rule = field_get_items('node', $node, 'field_grammar_practice_rule');
   $choices = field_get_items('node', $node, 'field_grammar_practice_choices');
-  $answers = array($answer[0]['safe_value']);
+  $answers = array(strip_tags($answer[0]['value'], '<em><strong><u>'));
   foreach ($choices as $key => $choice) {
-    $answers[] = $choices[$key]['safe_value'];
+    $answers[] = strip_tags($choices[$key]['value'], '<em><strong><u>');
   }
   shuffle($answers);
   $alpha = 'a';
@@ -62,7 +62,6 @@ function grammar_wizard_prepare_question($node) {
   $form['#rule'] = $rule_node->body[$node->language][0]['safe_value'];
   $form['#rule_title'] = $rule_node->title;
   $form['#rule_example'] = $rule_node->field_grammar_example[$node->language][0]['safe_value'];
-
   $form['#checked'] = NULL;
 
   return $form;
