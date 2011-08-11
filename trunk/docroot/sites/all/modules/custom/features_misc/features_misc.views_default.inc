@@ -308,7 +308,7 @@ function features_misc_views_default_views() {
   $handler->display->display_options['fields']['title_1']['relationship'] = 'nid';
   $handler->display->display_options['fields']['title_1']['label'] = '';
   $handler->display->display_options['fields']['title_1']['alter']['alter_text'] = 1;
-  $handler->display->display_options['fields']['title_1']['alter']['text'] = '<a href="tfk-magazine">View Issue</a>';
+  $handler->display->display_options['fields']['title_1']['alter']['text'] = '<a href="/tfk-magazine">View Issue</a>';
   $handler->display->display_options['fields']['title_1']['alter']['make_link'] = 0;
   $handler->display->display_options['fields']['title_1']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['title_1']['alter']['external'] = 0;
