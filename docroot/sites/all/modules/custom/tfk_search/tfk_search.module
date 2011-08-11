@@ -719,19 +719,28 @@ function theme_tfk_featured_block(&$variables) {
   
   // Body/description field.
   if($tfkSearchFeaturedItem->type == 'slideshow') {
-    $body = field_get_items('node', $tfkSearchFeaturedItem, 'field_slideshow_description');
-    $body = $body[0]['safe_value'];
+    $dirty_body = field_get_items('node', $tfkSearchFeaturedItem, 'field_slideshow_description');
+    $dirty_body = $dirty_body[0]['safe_value'];
   } else {
     if(!is_array($tfkSearchFeaturedItem->body)) {
-      $body = $tfkSearchFeaturedItem->body;
+      $dirty_body = $tfkSearchFeaturedItem->body;
     } else {
-      $body = field_get_items('node', $tfkSearchFeaturedItem, 'body');
-      $body = $body[0]['safe_value'];
+      $dirty_body = field_get_items('node', $tfkSearchFeaturedItem, 'body');
+      $dirty_body = $dirty_body[0]['safe_value'];
     }
   }
-  if(!empty($body)) {
+  
+  if(!empty($dirty_body)) {
     // The pattern "<p>&nbsp;</p>" causes a bug in truncate_utf8. Strip it out.
-    $body = truncate_utf8(preg_replace("/\<p\>.?&nbsp;.?\<\/p\>/", '', $body), '160', TRUE, TRUE, 10);
+    $clean_body = preg_replace("/\<p\>.?&nbsp;.?\<\/p\>/", '', $dirty_body);
+    
+    // Get the first paragraph, and fall back to a character count if there is no paragraph.
+    $first_paragraph = array();
+    $matched = preg_match("/\<p\>.*?\<\/p\>/", $clean_body, $first_paragraph);
+    $body = ($matched) ? $first_paragraph[0] : truncate_utf8($clean_body, '160', TRUE, TRUE, 10);
+  } else {
+    // Print a helpful (but hidden) "error" message if there is no teaser. Use Firebug inspect element to see it.
+    $body = '<!-- body not found or empty -->';
   }
   
   $output .= '<div class="g2">';
@@ -1983,11 +1992,17 @@ function tfk_search_preprocess_search_result(&$vars) {
   }
   
   // All search interfaces.
-  if(isset($teaser) && strlen($teaser) > 185) {
+  if(isset($teaser)) {
     // The pattern "<p>&nbsp;</p>" causes a bug in truncate_utf8. Strip it out.
-    $vars['snippet'] = truncate_utf8(preg_replace("/\<p\>.?&nbsp;.?\<\/p\>/", '', $teaser), '185', TRUE, TRUE, 10);
+    $clean_teaser = preg_replace("/\<p\>.?&nbsp;.?\<\/p\>/", '', $teaser);
+
+    // Get the first paragraph, and fall back to a character count if there is no paragraph.
+    $first_paragraph = array();
+    $matched = preg_match("/\<p\>.*?\<\/p\>/", $clean_teaser, $first_paragraph);
+    $vars['snippet'] = ($matched) ? $first_paragraph[0] : truncate_utf8($clean_teaser, '185', TRUE, TRUE, 10);
   } else {
-    $vars['snippet'] = $vars['result']['fields']['content'];
+    // Print a helpful (but hidden) "error" message if there is no teaser. Use Firebug inspect element to see it.
+    $vars['snippet'] = '<!-- teaser not found or empty -->';
   }
   
   
