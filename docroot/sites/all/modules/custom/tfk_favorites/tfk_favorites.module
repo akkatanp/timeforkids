@@ -15,12 +15,6 @@ function tfk_favorites_menu(){
     'access callback' => 'user_access',
     'access arguments' => array('access content')
   );
-  $items['tfkfav/deltest'] = array(
-    'title' => 'Around The World',
-    'page callback' => '_tfk_fav_deltest',
-    'access callback' => 'user_access',
-    'access arguments' => array('access content')
-  );
   return $items;
 }
 
@@ -124,38 +118,10 @@ function _tfk_fav_del(){
   
   drupal_set_message('Your favorites have been deleted.');
 
-
-
   print url('my-favorites');
   //print TFK_FAVS_AJAX_SUCCESS;
 }
 
-function _tfk_fav_deltest(){
-  global $user;
-  $flag = flag_get_flag('favorites');
-
-  $fid = $flag->fid;
-  $res = db_query('select content_id from flag_content where fid = :fid and uid = :uid', array('fid' => $fid, 'uid' => $user->uid));
-  foreach ($res as $k => $record) {
-    $nid = $record->content_id;
-    $flag->flag('unflag', $nid, $user->uid,TRUE);
-  }
-
-  
-
-
-  $resnew = db_query('select fcid from flag_content where fid = :fid and uid = :uid', array('fid' => $fid, 'uid' => $user->uid));
-  foreach ($resnew as $k => $recordnew) {
-    print_r($recordnew);
-    $resdel = db_query('delete from flag_content where fcid = :fcid', array('fcid' => $recordnew->fcid));
-  }
-
-  $resdel = db_query('delete from flag_content where fid = :fid and uid = :uid', array('fid' => $fid, 'uid' => $user->uid));
-  drupal_set_message('Your favorites have been deleted.');
-
-  print TFK_FAVS_AJAX_SUCCESS;
-  return 'a';
-}
 
 
 /**
