@@ -21,9 +21,10 @@ $(document).ready(function(){
     var confirmation = confirm("Are you sure you want to delete your favorites??");
     if(confirmation) {
       $.ajax({
-            url: 'http://dev.timeforkids.com/tfkfav/ajax/del',
+            url: '/tfkfav/ajax/del',
             success: function(data) {
               alert(data);
+              location.href = settings.tfk_favorites.ref;
             }
           });
     }
