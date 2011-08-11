@@ -261,10 +261,9 @@ body.section-worksheets .popups-container .svd-srch-desc {
 
 body.section-worksheets .popups-container label[for=edit-savedname] {
   padding-bottom: 9px;
-}
-
-body.section-worksheets .popups-container label[for=edit-savedname] {
   float: none;
+	font-family: "arial black", arial, sans-serif;
+	font-size: 12px;
 }
 
 body.section-worksheets .popups-container .svd-srch-submit {
@@ -280,4 +279,14 @@ body.section-worksheets .popups-container .svd-srch-submit input {
 body.section-worksheets .region-sidebar-first .item-list ul li li {
   margin: 0 0 0 15px;
   padding: 0;
+}
+
+div.ctools-sample-modal-content div.popups-title {
+	height: 40px;
+	padding: 0;
+}
+
+.popups-close {
+	margin-top: 12px;
+	font-family: "arial black", arial, sans-serif;
 }
