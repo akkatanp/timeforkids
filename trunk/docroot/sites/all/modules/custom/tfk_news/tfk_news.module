@@ -302,7 +302,14 @@ function theme_tfk_news_formatter_tfk_news_grade_title($element) {
     $sql = db_query('select td.name from taxonomy_term_data td
             left join taxonomy_index ti on td.tid = ti.tid where td.vid = :vid and ti.nid = :nid',array('vid' => 6,'nid' => $nid));
     $res_record = $sql->fetch();
-    return l('Grade '.$res_record->name,'node/'.$nid);
+
+    if($res_record->name == '2'){
+      return l('Grade '.$res_record->name,'node/'.$nid);
+    }else{
+      return l('Grades '.$res_record->name,'node/'.$nid);
+    }
+
+    
   }
   
   return '';
