@@ -230,7 +230,14 @@ function tfk_preprocess_page(&$variables, $hook) {
   $view = views_get_page_view();
   if ($view) {
     if ($view->name == 'grammar_practice') {
-      $variables['grammar_practice_header'] = ' ';
+      if ($view->current_display == 'page') {
+        $variables['grammar_practice_header'] = ' ';
+      }  
+      else {
+        $variables['grammar_practice_header'] = l('Try Another', 'homework-helper/grammar-wizard/punctuation-practice', array('attributes' => array('class' => array('try-another'))));
+      }  
+
+
     }
   }
 }
