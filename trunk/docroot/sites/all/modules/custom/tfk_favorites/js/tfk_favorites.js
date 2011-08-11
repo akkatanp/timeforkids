@@ -11,28 +11,49 @@
 /**
  * Favorites Behavior.
  */
+
+
+
+$(document).ready(function(){
+
+  $('#delfavs').click(function(){
+
+    var confirmation = confirm("Are you sure you want to delete your favorites??");
+    if(confirmation) {
+      $.ajax({
+            url: 'http://dev.timeforkids.com/tfkfav/ajax/del',
+            success: function(data) {
+              alert(data);
+            }
+          });
+    }
+  });
+});
+
+
+
 (function ($) {
   Drupal.behaviors.tfk_favorites = {
     attach: function (context, settings) {
 
       // Delete favorites listener.
-      $('#delfavs', context).click(function(){
-        var confirmation = confirm("Are you sure you want to delete your favorites?");
-        if(confirmation) {
-          $.ajax({
-            url: settings.tfk_favorites.ajax_callback,
-            success: function(data) {
-
-              alert(data);
-              if(data == settings.tfk_favorites.success){
-                $('.throbber').hide();
-                location.href = settings.tfk_favorites.ref;
-              }
-            }
-          });
-          $('.throbber').show();
-        }
-      });
+//      $('#delfavs', context).click(function(){
+//        var confirmation = confirm("Are you sure you want to delete your favorites?");
+//        if(confirmation) {
+//          $.ajax({
+//            url: settings.tfk_favorites.ajax_callback,
+//            success: function(data) {
+//
+//              alert(data);
+//              if(data == settings.tfk_favorites.success){
+//                $('.throbber').hide();
+//                location.href = settings.tfk_favorites.ref;
+//              }
+//            }
+//          });
+//          $('.throbber').show();
+//        }
+//      });
       
       // Delete this search.
       $('#deleteThisSearch', context).click(function(event){
