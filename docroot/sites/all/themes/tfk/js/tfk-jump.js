@@ -1,7 +1,7 @@
 /* Required JS for jump page for external links
  * includes jQuery UI Button, jQuery UI Position, jQuery UI Dialog
  * 
- * These are not included in the standard drupal jquery libs
+ * The stock drupal ones can't be used, they are old and have bugs.
  * */
 /*!
  * jQuery UI 1.8.14
@@ -96,7 +96,7 @@ a.add(this)});a.css({width:0,height:0}).css({width:c.ui.dialog.overlay.width(),h
 if (typeof TFKADS == 'undefined' || !TFKADS) {window.TFKADS = {};}
 
 //External domains that we don't want to go through the jump page for. timeforkids.com is included just in case our own domain shows up in an ad
-TFKADS.domainExceptions = new Array("timeforkidsdigital.com","timeinc.com","timeinc.net", "timeforkids.com","acquia-sites.com");
+TFKADS.domainExceptions = new Array("timeforkidsdigital.com","timeinc.com","timeinc.net", "timeforkids.com","acquia-sites.com","customersvc.com");
 
 $(document).ready(function() {
   // Creating custom :external selector
