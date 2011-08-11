@@ -29,7 +29,7 @@
 $myrows = $rows;
 $myrows = strip_tags($myrows);
 ?>
-<?php if(strlen(trim($myrows)) == 0):?>
+<?php if(strlen(trim($myrows)) != 0):?>
   <div class="<?php print $classes; ?>">
     <?php print render($title_prefix); ?>
     <?php if ($title): ?>
