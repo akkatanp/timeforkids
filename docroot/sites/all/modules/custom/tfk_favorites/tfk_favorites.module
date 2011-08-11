@@ -106,9 +106,8 @@ function _tfk_fav_del(){
   foreach ($res as $k => $record) {
     $nid = $record->content_id;
     $flag->flag('unflag', $nid, $user);
-    $resdel = db_query('delete from flag_content where fid = :fid and uid = :uid', array('fid' => $fid, 'uid' => $user->uid));
   }
-  
+  $resdel = db_query('delete from flag_content where fid = :fid and uid = :uid', array('fid' => $fid, 'uid' => $user->uid));
   drupal_set_message('Your favorites have been deleted.');
 
   print TFK_FAVS_AJAX_SUCCESS;
