@@ -69,7 +69,7 @@ stylesheets-conditional[lte IE 6][all][]  = css/ie6.css
 
 scripts[] = js/tfk_global.js
 scripts[] = js/tfk-jump.js
-script [] = ../modules/contrib/encrypt_submissions/jcryption//jquery.jcryption.js
+script [] = ../modules/contrib/encrypt_submissions/jcryption/jquery.jcryption.js
 script [] = ../modules/contrib/encrypt_submissions/js/encryption_submissions.js
 
 ; The regions defined in Zen's default page.tpl.php file.  The name in
