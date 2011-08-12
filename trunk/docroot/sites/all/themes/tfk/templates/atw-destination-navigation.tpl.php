@@ -1,4 +1,8 @@
-
+<?php if($navigation_data['sightseeing_exists'] == 1 ||
+         $navigation_data['timeline_exists'] == 1 ||
+        $navigation_data['lingo_exists'] == 1 ||
+        $navigation_data['challenge_exists'] == 1 ||
+        $navigation_data['daylife_exists'] == 1):?>
 <div>
 	<h3><?php echo l($navigation_data['navigation_block_title'],$navigation_data['alias'],array('attributes' => array('class'=>array('cssclasshere'))));?></h3>
 	<ul class="menu">
@@ -9,3 +13,4 @@
 		<?php if($navigation_data['daylife_exists'] == 1):?><li><?php echo l('Day in the Life',$navigation_data['alias'].'/day-in-life',array('attributes'=> array('class'=>$navigation_data['daylife_class'])));?></li><?php endif;?>
 	</ul>
 </div>
+<?php endif;?>
