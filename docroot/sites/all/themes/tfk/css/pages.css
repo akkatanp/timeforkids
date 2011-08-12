@@ -2851,3 +2851,8 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
     font: normal 12px "arial black", arial, sans-serif;
 }
 /*end info pages*/
+
+
+body.page-404page #first-column .region-sidebar-first .section{
+  border : none !important;
+}
