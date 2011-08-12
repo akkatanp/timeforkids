@@ -1005,8 +1005,7 @@
 	border: solid 2px #acdbfc;
 	border-top: none;
 	padding: 4px;
-	font-size: 11px;
-	min-height: 128px;
+	font-size: 100px;
 }
 
 #block-views-global-right-sidebar-block .views-field-field-image {
