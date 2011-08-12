@@ -11,6 +11,9 @@
 form.webform-client-form .form-item /* Wrapper for a form element (or group of form elements) and its label */ {
   margin: 0 !important;
 }
+form.webform-client-form .form-item /* Wrapper for a form element (or group of form elements) and its label */ {
+  margin-bottom: 10px !important;
+}
 
 .form-item input.error,
 .form-item textarea.error,
