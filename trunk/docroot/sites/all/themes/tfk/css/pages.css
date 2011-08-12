@@ -332,8 +332,7 @@ ul.links li {
 #block-views-board-members-block-2 h2 {
     margin-top:0;
     padding-top:0;
-    font-size:1.0em;
-    font-family: "arial black", arial, sans-serif;
+    font: normal 12px "arial black", arial, sans-serif;
     margin-bottom: 10px;
     padding-bottom: 6px;
     text-transform: uppercase;
