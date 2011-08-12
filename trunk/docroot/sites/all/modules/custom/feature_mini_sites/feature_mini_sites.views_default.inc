@@ -1881,7 +1881,7 @@ function feature_mini_sites_views_default_views() {
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'fields';
-  $handler->display->display_options['row_options']['hide_empty'] = 1;
+  $handler->display->display_options['row_options']['hide_empty'] = 0;
   $handler->display->display_options['row_options']['default_field_elements'] = 1;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['header'] = FALSE;
@@ -1921,9 +1921,9 @@ function feature_mini_sites_views_default_views() {
   $handler->display->display_options['fields']['field_minisite_resources_label']['alter']['html'] = 0;
   $handler->display->display_options['fields']['field_minisite_resources_label']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_minisite_resources_label']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['field_minisite_resources_label']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['field_minisite_resources_label']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['field_minisite_resources_label']['hide_alter_empty'] = 0;
+  $handler->display->display_options['fields']['field_minisite_resources_label']['hide_empty'] = 1;
+  $handler->display->display_options['fields']['field_minisite_resources_label']['empty_zero'] = 1;
+  $handler->display->display_options['fields']['field_minisite_resources_label']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['field_minisite_resources_label']['field_api_classes'] = 0;
   /* Field: Content: Worksheet PDF */
   $handler->display->display_options['fields']['field_worksheet_pdf']['id'] = 'field_worksheet_pdf';
@@ -1973,9 +1973,9 @@ function feature_mini_sites_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['html'] = 0;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['title']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['title']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['title']['hide_alter_empty'] = 0;
+  $handler->display->display_options['fields']['title']['hide_empty'] = 1;
+  $handler->display->display_options['fields']['title']['empty_zero'] = 1;
+  $handler->display->display_options['fields']['title']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['title']['link_to_node'] = 1;
 
   /* Display: Minisite More Block */
