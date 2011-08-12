@@ -152,8 +152,8 @@ function flashcard_field_formatter_view($entity_type, $entity, $field, $instance
       '#theme' => 'item_list',
       '#items' => array(
         array(
-          'data' => decode_entities(check_plain($item['question'])),
-          'children' => array(decode_entities(check_plain($item['answer']))),
+          'data' => check_plain($item['question']),
+          'children' => array(check_plain($item['answer'])),
           'class' => array('answer'),
         ),
       ),
