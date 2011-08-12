@@ -786,7 +786,8 @@ function tfk_atw_preprocess_page(&$vars, $hook) {
 
     $type = $record->type;
     echo $type;
-    if (substr($type, 0, 3) === 'atw'){
+    //comparing to 'webform' as well since this is a challenge form
+    if (substr($type, 0, 3) === 'atw' || $type =='webform'){
       $vars['section_title'] = "Around The World";
     }
 
