@@ -10,16 +10,6 @@
       
       $('.flashcard-cycle').each(
         function() {
-          
-          var detached;
-          var modeChecked = 'all';
-          var counts = {
-            all : 0,
-            marked : 0,
-            unmarked : 0
-          }
-          var current = 1;
-          
           var card = $(this).find('.flashcard-cycle-cards')
             .unbind('click')
             .click(
