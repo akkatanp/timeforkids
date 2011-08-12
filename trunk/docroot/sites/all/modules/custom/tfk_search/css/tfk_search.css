@@ -508,8 +508,7 @@ body.section-my-favorites .content-type-video .icon {
 #block-tfk-search-tfk-search-sidebar-filter .content > h2 {
   color: #FFF;
   margin: 0 0 10px 0;
-  font-family: "arial black", Arial;
-  font-size: 14px;
+  font: normal 12px "arial black", Arial;
 }
 
 #block-tfk-search-tfk-search-sidebar-filter .content>h2+div {
