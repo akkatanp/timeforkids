@@ -232,6 +232,7 @@
 	background: url(../images/main-nav-sprite.png) no-repeat -606px 0px;
 }
 
+.section-extras #global-nav-container ul.menu a.tfk-extras,
 #global-nav-container ul.menu a.tfk-extras.active,
 #global-nav-container ul.menu a.tfk-extras:hover {
 	background: url(../images/main-nav-sprite.png) no-repeat -606px -32px;
