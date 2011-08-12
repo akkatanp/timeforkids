@@ -185,18 +185,6 @@
 <?php endif;?>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
       <?php print $feed_icons; ?>
     </div></div><!-- /.section, /#content -->
   </div> <!-- user wrapper -->
