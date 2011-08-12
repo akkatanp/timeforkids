@@ -837,13 +837,13 @@
 	text-transform: uppercase;
 	font: normal 9px Arial, san-serif;
 	color: #999;
-	margin: 0 7px 14px 0;
+	margin: 0 7px 0 0;
 
 }
 
 .view-atw-page-featured-destination .views-field-title,
 .view-atw-page-featured-destination .views-field-field-description {
-	margin: 0 7px 14px 0;
+	margin: 14px 7px 14px 0;
 }
 
 .view-atw-page-featured-destination .views-field-title a {
@@ -1005,7 +1005,8 @@
 	border: solid 2px #acdbfc;
 	border-top: none;
 	padding: 4px;
-	font-size: 100px;
+	font-size: 11px;
+	min-height: 100px;
 }
 
 #block-views-global-right-sidebar-block .views-field-field-image {
