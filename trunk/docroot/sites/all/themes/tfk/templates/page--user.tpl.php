@@ -67,7 +67,7 @@
  * @see zen_preprocess_page()
  * @see template_process()
  */
-?>!!!!!!!!!!!!
+?>
 <div id="page-wrapper"><div id="page">
 
 	<div id="header">
@@ -167,7 +167,14 @@
       <?php if ($action_links): ?>
         <ul class="action-links"><?php print render($action_links); ?></ul>
       <?php endif; ?>
-      <?php print render($page['content']); ?>
+      <?php //print render($page['content']); ?>
+
+        <?php
+        $block = module_invoke('block', 'block_view', 'tfk_login_form');
+        print render($block);
+        ?>
+
+
       <?php print $feed_icons; ?>
     </div></div><!-- /.section, /#content -->
   </div> <!-- user wrapper -->
