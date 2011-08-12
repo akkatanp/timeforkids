@@ -936,7 +936,8 @@ function tfk_search_preprocess_page(&$variables) {
   $_variables = & $variables;
   
   // Set title on Photos & Video search page.
-  if(arg(0) == TFK_SEARCH_PHOTOSVIDEO_PATH) {
+  $nodetype = (array_key_exists('node', $variables) && isset($variables['node']->type)) ? $variables['node']->type: FALSE;
+  if(arg(0) == TFK_SEARCH_PHOTOSVIDEO_PATH || $nodetype == 'slideshow' || $nodetype == 'video') {
     drupal_set_title('Photos & Video');
     $variables->title == 'Photos & Video';
     $variables['section_title'] = 'PHOTOS & VIDEO';
