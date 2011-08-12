@@ -470,6 +470,12 @@ ul.links li {
 .view-homepage-minisite .views-field-body {
 	line-height: 15px;
 	margin-right: 6px;
+	display: inline;
+}
+
+.view-homepage-minisite .views-field-body .field-content,
+.view-homepage-minisite .views-field-title-1 {
+	display: inline;
 }
 
 .view-homepage-minisite .views-field-field-minisite-tout-image {
