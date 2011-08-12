@@ -1815,7 +1815,7 @@ function tfk_search_preprocess_search_result(&$vars) {
 
 
     case 'worksheet':
-      $worksheet_nid = $nid;
+      $worksheet_nid = safe_value;
       
       // Worksheets don't link to the node page.
       $vars['title'] = $title;
@@ -1852,11 +1852,14 @@ function tfk_search_preprocess_search_result(&$vars) {
         
         // Body, trimmed to three lines of text.
         $body = field_get_items('node', $node, 'body');
+
         if(!empty($body) && !empty($body[0])) {
           if(!empty($body[0]['safe_summary'])) {
-            $vars['snippet'] = truncate_utf8($body[0]['safe_summary'], '200', TRUE, TRUE, 10);
+            //$vars['snippet'] = truncate_utf8($body[0]['safe_summary'], '200', TRUE, TRUE, 10);
+            $teaser = $body[0]['safe_summary'];
           } elseif(!empty($body[0]['safe_value'])) {
-            $vars['snippet'] = truncate_utf8($body[0]['safe_value'], '200', TRUE, TRUE, 10);
+            //$vars['snippet'] = truncate_utf8($body[0]['safe_value'], '200', TRUE, TRUE, 10);
+            $teaser = $body[0]['safe_value'];
           }
         }
         
