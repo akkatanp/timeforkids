@@ -1685,13 +1685,8 @@ function tfk_search_preprocess_search_result(&$vars) {
       }
       
       $desc = field_get_items('node', $node, 'field_description');
-      print_r($desc);
-
       
-      
-      if(!empty($body[0]['summary'])) {
-        $teaser = $desc[0]['summary'];
-      } elseif(!empty($body[0]['value'])) {
+      if(!empty($desc[0]['value'])) {
         $teaser = $desc[0]['value'];
       }
       
