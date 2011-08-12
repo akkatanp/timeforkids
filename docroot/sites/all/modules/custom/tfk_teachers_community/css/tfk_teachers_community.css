@@ -408,8 +408,7 @@ body.page-teacher-community-topic-list .view-board-members .view-header h3 {
   color: white;
   margin-bottom: 11px;
   padding: 5px 0 3px 10px;
-  font-size: 12px;
-  font-family: "arial black", arial, sans-serif;
+  font: normal 12px "arial black", arial, sans-serif;
 }
 
 /* Misc */
