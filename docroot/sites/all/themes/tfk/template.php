@@ -200,8 +200,6 @@ function tfk_preprocess_page(&$variables, $hook) {
   /* add encrypt js to all pages */
   drupal_add_js(drupal_get_path("module", "encrypt_submissions") . "/jcryption/jquery.jcryption.js");
   drupal_add_js(drupal_get_path("module", "encrypt_submissions") . "/js/encryption_submissions.js");
-  drupal_add_js('$("#user-login").jCryption({submitTrigger:"#edit-submit", submitEvent:"click");', 'inline');
-
   if(array_key_exists('node', $variables)) {
     $variables['theme_hook_suggestions'][] = 'page__'. $variables['node']->type;
     if ($variables['node']->type == "board_member") {
