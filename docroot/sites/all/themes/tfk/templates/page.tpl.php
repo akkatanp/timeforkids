@@ -152,8 +152,10 @@ if(drupal_is_front_page()) {
         <?php if(array_key_exists('sidebar_top', $page)): ?>
           <?php print render($page['sidebar_top']); ?>
         <?php endif; ?>
-  
-        <?php print render($page['sidebar_first']); ?>
+ 
+    		<?php if($title !== "Page Not Found"): ?>
+    			<?php print render($page['sidebar_first']); ?>
+    		<?php endif; ?>
         
         <?php if(array_key_exists('sidebar_bottom', $page)): ?>
           <?php print render($page['sidebar_bottom']); ?>
