@@ -2044,6 +2044,7 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
     background:url("../images/advertisment-vert.png") no-repeat left top;
     margin-left:12px;
     top:12px;
+	margin-bottom: 20px;
 }
 #banner_728x90_footer > * {
     margin-left:16px;
