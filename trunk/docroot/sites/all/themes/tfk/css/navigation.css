@@ -296,7 +296,8 @@
 	background: url(../images/sub-nav-sprite.png) no-repeat -214px 0px;
 }
 
-.section-teacher-board-members  #teacher-nav-container ul.menu a.teacher-community,
+.node-type-teacher-community-question #teacher-nav-container ul.menu a.teacher-community,
+.section-teacher-board-members #teacher-nav-container ul.menu a.teacher-community,
 .section-board-member #teacher-nav-container ul.menu a.teacher-community,
 .section-teacher-community #teacher-nav-container ul.menu a.teacher-community,
 #teacher-nav-container ul.menu a.teacher-community.active,
