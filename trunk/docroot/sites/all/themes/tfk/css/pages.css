@@ -617,11 +617,10 @@ ul.links li {
 	line-height: 15px;
 }
 
-.view-id-homepage_news_for_teachers .views-field-body .field-content {
-	display: inline;
-}
-
-.view-id-homepage_news_for_teachers .views-field-field-article-url {
+.view-id-homepage_news_for_teachers .views-field-body .field-content,
+.view-id-homepage_news_for_teachers .views-field-body .field-content p,
+.view-id-homepage_news_for_teachers .views-field-field-article-url,
+.view-id-homepage_news_for_teachers .views-field-field-article-url .field-content {
 	display: inline;
 }
 
