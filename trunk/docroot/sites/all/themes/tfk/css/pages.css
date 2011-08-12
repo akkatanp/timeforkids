@@ -1160,7 +1160,8 @@ ul.links li {
 	font-size: 14px;
 }
 
-.section-minisite .view-content table td .views-field-field-minisite-thumbnail-image {
+.view-minisite-articles  .views-field-field-minisite-thumbnail-image,
+.view-mini-site-home .view-content table td .views-field-field-minisite-thumbnail-image {
 	float: left;
 	margin-right: 10px;
 	width: 62px;
@@ -1174,7 +1175,8 @@ ul.links li {
 	height: 80px;
 }
 
-.section-minisite .view-content table td .views-field-field-thumbnail-image img,
+.view-minisite-articles  .views-field-field-minisite-thumbnail-image img,
+.view-mini-site-home .view-content table td .views-field-field-thumbnail-image img,
 .view-all-kid-reporters .view-content table td .views-field-field-thumbnail-image img {
 	border: solid 1px #cecece;
 }
