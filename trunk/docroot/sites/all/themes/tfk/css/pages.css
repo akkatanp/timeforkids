@@ -1115,7 +1115,6 @@ ul.links li {
 	line-height: 15px;
 }
 
-
 .view-all-kid-reporters .view-header p strong {
 	display: block;
 	font-size: 30px;
@@ -1161,7 +1160,7 @@ ul.links li {
 	font-size: 14px;
 }
 
-.view-mini-site-home .view-content table td .views-field-field-minisite-tout-image {
+.section-minisite .view-content table td .views-field-field-minisite-thumbnail-image {
 	float: left;
 	margin-right: 10px;
 	width: 62px;
@@ -1175,7 +1174,7 @@ ul.links li {
 	height: 80px;
 }
 
-.view-mini-site-home .view-content table td .views-field-field-thumbnail-image img,
+.section-minisite .view-content table td .views-field-field-thumbnail-image img,
 .view-all-kid-reporters .view-content table td .views-field-field-thumbnail-image img {
 	border: solid 1px #cecece;
 }
