@@ -964,6 +964,7 @@
 
 #block-views-minisite-articles-block-6 .view-content .views-row .field-content a {
 	font: bold 20px arial, san-serif;
+	line-height: 20px;
 }
 
 /* right sidebar */
