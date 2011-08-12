@@ -22,6 +22,7 @@ function homework_helper_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'A+ Papers';
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
@@ -42,14 +43,6 @@ function homework_helper_views_default_views() {
   );
   $handler->display->display_options['row_options']['hide_empty'] = 1;
   $handler->display->display_options['row_options']['default_field_elements'] = 1;
-  /* Header: Global: Text area */
-  $handler->display->display_options['header']['area']['id'] = 'area';
-  $handler->display->display_options['header']['area']['table'] = 'views';
-  $handler->display->display_options['header']['area']['field'] = 'area';
-  $handler->display->display_options['header']['area']['empty'] = FALSE;
-  $handler->display->display_options['header']['area']['content'] = '<div class="content-type-title">A+ Papers</div><p>Pellentesque cursus, velit sed dapibus auctor, eros massa feugiat dolor, at luctus nisi nisl quis lectus. Praesent at volutpat tortor. Etiam diam mi, rhoncus sit amet porttitor vel, dapibus a lacus! Proin ultricies vestibulum sollicitudin. Suspendisse lacinia tempus justo, eget convallis lacus amet.</p>';
-  $handler->display->display_options['header']['area']['format'] = 'full_html';
-  $handler->display->display_options['header']['area']['tokenize'] = 0;
   /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
@@ -158,7 +151,7 @@ function homework_helper_views_default_views() {
   $handler->display->display_options['fields']['field_checklist_file']['label'] = '';
   $handler->display->display_options['fields']['field_checklist_file']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_checklist_file']['alter']['alter_text'] = 1;
-  $handler->display->display_options['fields']['field_checklist_file']['alter']['text'] = 'Checklist,';
+  $handler->display->display_options['fields']['field_checklist_file']['alter']['text'] = 'Checklist';
   $handler->display->display_options['fields']['field_checklist_file']['alter']['make_link'] = 1;
   $handler->display->display_options['fields']['field_checklist_file']['alter']['path'] = '[field_checklist_file]';
   $handler->display->display_options['fields']['field_checklist_file']['alter']['absolute'] = 0;
@@ -214,7 +207,7 @@ function homework_helper_views_default_views() {
   $handler->display->display_options['fields']['field_sample_paper']['label'] = '';
   $handler->display->display_options['fields']['field_sample_paper']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_sample_paper']['alter']['alter_text'] = 1;
-  $handler->display->display_options['fields']['field_sample_paper']['alter']['text'] = 'Model Paper,';
+  $handler->display->display_options['fields']['field_sample_paper']['alter']['text'] = 'Sample Paper,';
   $handler->display->display_options['fields']['field_sample_paper']['alter']['make_link'] = 1;
   $handler->display->display_options['fields']['field_sample_paper']['alter']['path'] = '[field_sample_paper]';
   $handler->display->display_options['fields']['field_sample_paper']['alter']['absolute'] = 0;
@@ -242,7 +235,7 @@ function homework_helper_views_default_views() {
   $handler->display->display_options['fields']['field_step_instructions']['label'] = '';
   $handler->display->display_options['fields']['field_step_instructions']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_step_instructions']['alter']['alter_text'] = 1;
-  $handler->display->display_options['fields']['field_step_instructions']['alter']['text'] = 'Step-by-Step Instructions';
+  $handler->display->display_options['fields']['field_step_instructions']['alter']['text'] = 'Step-by-Step Instructions,';
   $handler->display->display_options['fields']['field_step_instructions']['alter']['make_link'] = 1;
   $handler->display->display_options['fields']['field_step_instructions']['alter']['path'] = '[field_step_instructions]';
   $handler->display->display_options['fields']['field_step_instructions']['alter']['absolute'] = 0;
@@ -269,7 +262,7 @@ function homework_helper_views_default_views() {
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['label'] = '';
   $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div><strong>Additional Content</strong></div>
-<div class="related-pdfs">RELATED PDFS: [field_checklist_file] [field_graphic_organizer] [field_sample_paper] [field_step_instructions]</div>';
+<div class="related-pdfs">RELATED PDFS: [field_sample_paper] [field_step_instructions] [field_graphic_organizer] [field_checklist_file]</div>';
   $handler->display->display_options['fields']['nothing']['alter']['make_link'] = 0;
   $handler->display->display_options['fields']['nothing']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['nothing']['alter']['external'] = 0;
@@ -290,7 +283,6 @@ function homework_helper_views_default_views() {
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';
   $handler->display->display_options['sorts']['title']['field'] = 'title';
-  $handler->display->display_options['sorts']['title']['order'] = 'DESC';
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -349,7 +341,7 @@ function homework_helper_views_default_views() {
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
   $handler->display->display_options['header']['area']['empty'] = FALSE;
-  $handler->display->display_options['header']['area']['content'] = '<p><a href="/node/add/a-paper">+ Add new A+ paper</a> | <a href="/node/add/paper-step">+ Add new A+ paper step</a></p>';
+  $handler->display->display_options['header']['area']['content'] = '<p><a href="/node/add/a-paper?destination=admin/content/homework-helper/a-plus-papers">+ Add new A+ paper</a> | <a href="/node/add/paper-step?destination=admin/content/homework-helper/a-plus-papers">+ Add new A+ paper step</a></p>';
   $handler->display->display_options['header']['area']['format'] = 'full_html';
   $handler->display->display_options['header']['area']['tokenize'] = 0;
   /* No results behavior: Global: Text area */
@@ -517,6 +509,15 @@ function homework_helper_views_default_views() {
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['empty'] = FALSE;
+  $handler->display->display_options['header']['area']['content'] = '<p><a href="/node/add/a-paper?destination=admin/content/homework-helper/a-plus-papers">+ Add new A+ paper</a> | <a href="/node/add/paper-step?destination=admin/content/homework-helper/a-plus-papers">+ Add new A+ paper step</a></p><p>To create an A+ paper, start by adding a new A+ paper, keeping it in an unpublished state. Next add each step of the paper. Each step represents a page the student will view. Each step can include a textarea, name and date fields, a title field, instructional text, example text, and text to show in the checklist. To edit existing steps, click on \'Steps\' below for the corresponding paper.</p><p>You can click on your paper\'s title to view it. When complete, publish your paper and its steps by using the checkboxes and \'Operations\' form. Don\'t forget to publish the steps as well. The published paper will be listed on the <a href="/homework-helper/a-plus-papers">A+ papers landing page</a>.</p>';
+  $handler->display->display_options['header']['area']['format'] = 'full_html';
+  $handler->display->display_options['header']['area']['tokenize'] = 0;
   $handler->display->display_options['defaults']['empty'] = FALSE;
   /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
@@ -620,10 +621,11 @@ function homework_helper_views_default_views() {
   $handler->display->display_options['fields']['status']['empty_zero'] = 0;
   $handler->display->display_options['fields']['status']['type'] = 'published-notpublished';
   $handler->display->display_options['fields']['status']['not'] = 0;
-  /* Field: Content: Nid */
+  /* Field: Steps */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
   $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['ui_name'] = 'Steps';
   $handler->display->display_options['fields']['nid']['label'] = 'Steps';
   $handler->display->display_options['fields']['nid']['alter']['alter_text'] = 1;
   $handler->display->display_options['fields']['nid']['alter']['text'] = 'Steps';
@@ -700,6 +702,15 @@ function homework_helper_views_default_views() {
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['empty'] = TRUE;
+  $handler->display->display_options['header']['area']['content'] = '<p><a href="/node/add/a-paper?destination=admin/content/homework-helper/a-plus-papers">+ Add new A+ paper</a> | <a href="/node/add/paper-step?destination=admin/content/homework-helper/a-plus-papers">+ Add new A+ paper step</a></p><p>This is a list of the steps in a specific A+ paper. You can edit or publish the steps here. The \'weight\' of the step indicates its order relative to the other steps (lower weights will be first).</p><p style="margin-top: 1em; margin-right: 0px; margin-bottom: 1em; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-style: initial; border-color: initial; vertical-align: baseline; ">If you publish a step before you publish its paper, the step will not be listed on the site. Therefore it\'s best to publish all the steps (using the checkboxes and \'Operations\' form) before publishing the paper.</p>';
+  $handler->display->display_options['header']['area']['format'] = 'full_html';
+  $handler->display->display_options['header']['area']['tokenize'] = 0;
   $handler->display->display_options['defaults']['empty'] = FALSE;
   /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
@@ -750,6 +761,7 @@ function homework_helper_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['title']['alter']['external'] = 0;
   $handler->display->display_options['fields']['title']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['trim_whitespace'] = 0;
   $handler->display->display_options['fields']['title']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = 0;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = 0;
@@ -760,7 +772,8 @@ function homework_helper_views_default_views() {
   $handler->display->display_options['fields']['title']['element_default_classes'] = 1;
   $handler->display->display_options['fields']['title']['hide_empty'] = 0;
   $handler->display->display_options['fields']['title']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['title']['link_to_node'] = 1;
+  $handler->display->display_options['fields']['title']['hide_alter_empty'] = 0;
+  $handler->display->display_options['fields']['title']['link_to_node'] = 0;
   /* Field: Content: Edit link */
   $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['table'] = 'node';
@@ -858,18 +871,20 @@ function homework_helper_views_default_views() {
   );
   $handler->display->display_options['path'] = 'admin/content/homework-helper/a-plus-papers/steps/%';
 
-  /* Display: Study Helpers */
-  $handler = $view->new_display('page', 'Study Helpers', 'page_2');
+  /* Display: Flashcards */
+  $handler = $view->new_display('page', 'Flashcards', 'page_2');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'Study Helpers';
+  $handler->display->display_options['title'] = 'Flash Cards';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'table';
   $handler->display->display_options['style_options']['columns'] = array(
     'views_bulk_operations' => 'views_bulk_operations',
     'title' => 'title',
+    'edit_node' => 'edit_node',
     'status' => 'status',
     'name' => 'name',
-    'edit_node' => 'edit_node',
+    'created' => 'created',
+    'rid' => 'name',
   );
   $handler->display->display_options['style_options']['default'] = 'name';
   $handler->display->display_options['style_options']['info'] = array(
@@ -883,6 +898,10 @@ function homework_helper_views_default_views() {
       'align' => '',
       'separator' => '',
     ),
+    'edit_node' => array(
+      'align' => '',
+      'separator' => '',
+    ),
     'status' => array(
       'sortable' => 1,
       'default_sort_order' => 'asc',
@@ -893,9 +912,15 @@ function homework_helper_views_default_views() {
       'sortable' => 1,
       'default_sort_order' => 'asc',
       'align' => '',
+      'separator' => ', ',
+    ),
+    'created' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
       'separator' => '',
     ),
-    'edit_node' => array(
+    'rid' => array(
       'align' => '',
       'separator' => '',
     ),
@@ -913,7 +938,7 @@ function homework_helper_views_default_views() {
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
   $handler->display->display_options['header']['area']['empty'] = TRUE;
-  $handler->display->display_options['header']['area']['content'] = '<p><a href="/node/add/flashcard">+ Add new Flashcard Deck</a></p>';
+  $handler->display->display_options['header']['area']['content'] = '<p><a href="/node/add/flashcard?destination=admin/content/homework-helper/flashcards">+ Add new Flash-card Deck</a></p><p>This is a list of all flash-card decks, including public decks created by editors as well as unlisted decks created by teachers and students. The decks created by students will expire automatically after 2 weeks.</p>';
   $handler->display->display_options['header']['area']['format'] = 'full_html';
   $handler->display->display_options['header']['area']['tokenize'] = 0;
   $handler->display->display_options['defaults']['empty'] = FALSE;
@@ -1042,6 +1067,32 @@ function homework_helper_views_default_views() {
   $handler->display->display_options['fields']['name']['empty_zero'] = 0;
   $handler->display->display_options['fields']['name']['link_to_user'] = 1;
   $handler->display->display_options['fields']['name']['overwrite_anonymous'] = 0;
+  /* Field: Content: Post date */
+  $handler->display->display_options['fields']['created']['id'] = 'created';
+  $handler->display->display_options['fields']['created']['table'] = 'node';
+  $handler->display->display_options['fields']['created']['field'] = 'created';
+  $handler->display->display_options['fields']['created']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['created']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['created']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['created']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['created']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['created']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['created']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['created']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['created']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['created']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['created']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['created']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['created']['element_label_colon'] = 1;
+  $handler->display->display_options['fields']['created']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['created']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['created']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['created']['hide_alter_empty'] = 0;
+  $handler->display->display_options['fields']['created']['date_format'] = 'long';
+  /* Field: User: Roles */
+  $handler->display->display_options['fields']['rid']['id'] = 'rid';
+  $handler->display->display_options['fields']['rid']['table'] = 'users_roles';
+  $handler->display->display_options['fields']['rid']['field'] = 'rid';
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
@@ -1050,9 +1101,9 @@ function homework_helper_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'flashcard' => 'flashcard',
   );
-  $handler->display->display_options['path'] = 'admin/content/homework-helper/study-helper';
+  $handler->display->display_options['path'] = 'admin/content/homework-helper/flashcards';
   $handler->display->display_options['menu']['type'] = 'tab';
-  $handler->display->display_options['menu']['title'] = 'Study Helper';
+  $handler->display->display_options['menu']['title'] = 'Flash Cards';
   $handler->display->display_options['menu']['weight'] = '0';
 
   /* Display: Writing Tips */
@@ -1110,7 +1161,7 @@ function homework_helper_views_default_views() {
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
   $handler->display->display_options['header']['area']['empty'] = TRUE;
-  $handler->display->display_options['header']['area']['content'] = '<p><a href="/node/add/writing-tips">+ Add new Writing Tip</a></p><p><a href="/node/306/webform-results/table">Administer User-submitted Questions</a></p>';
+  $handler->display->display_options['header']['area']['content'] = '<p><a href="/node/add/writing-tips?destination=admin/content/homework-helper/writing-tips">+ Add new Writing Tip</a> | <a href="/node/add/tfk-staff?destination=admin/content/homework-helper/writing-tips">+ Add new TFK Staff</a></p><p><a href="/node/306/webform-results/table">Administer Student-submitted Questions</a></p><p>These are the writing tips created by editors. Use the link above to view the student-submitted questions.</p>';
   $handler->display->display_options['header']['area']['format'] = 'full_html';
   $handler->display->display_options['header']['area']['tokenize'] = 0;
   $handler->display->display_options['defaults']['fields'] = FALSE;
@@ -1225,17 +1276,17 @@ function homework_helper_views_default_views() {
   $handler->display->display_options['menu']['weight'] = '0';
   $handler->display->display_options['menu']['name'] = 'menu-homework-help';
 
-  /* Display: Grammar Practice */
-  $handler = $view->new_display('page', 'Grammar Practice', 'page_4');
+  /* Display: Punctuation Practice */
+  $handler = $view->new_display('page', 'Punctuation Practice', 'page_4');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'Grammar Practice';
+  $handler->display->display_options['title'] = 'Punctuation Practice';
   $handler->display->display_options['defaults']['header'] = FALSE;
   /* Header: Global: Text area */
   $handler->display->display_options['header']['area']['id'] = 'area';
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
-  $handler->display->display_options['header']['area']['empty'] = FALSE;
-  $handler->display->display_options['header']['area']['content'] = '<p><a href="/node/add/grammar-practice">+ Add new Grammar Practice</a> | <a href="/node/add/grammar-practice-question">+ Add new Grammar Practice Question</a> | <a href="/node/add/grammar-practice-rule">+ Add new Grammar Practice Rule</a></p>';
+  $handler->display->display_options['header']['area']['empty'] = TRUE;
+  $handler->display->display_options['header']['area']['content'] = '<p><a href="/node/add/grammar-practice?destination=admin/content/homework-helper/grammar-practice">+ Add new Punctuation Practice</a> | <a href="/node/add/grammar-practice-rule?destination=admin/content/homework-helper/grammar-practice">+ Add new Punctuation Practice Rule</a>&nbsp;|&nbsp;<a href="/node/add/grammar-practice-question?destination=admin/content/homework-helper/grammar-practice">+ Add new Punctuation Practice Question</a></p><p>To create a Punctuation Practice (quiz), start by adding a new Punctuation Practice, keeping it in an unpublished state. Next add each rule for the practice. Finally add each question. &nbsp;To edit existing rules and questions, click on \'Questions &amp; Rules\' below for the corresponding practice.</p><p>You can click on your practice\'s title to view it. When complete, publish it by using the checkboxes and \'Operations\' form. Don\'t forget to publish its questions and rules as well. The published practice will be listed on the&nbsp;<a href="/homework-helper/grammar-wizard/punctuation-practice">Punctuation Practice landing page</a>.</p>';
   $handler->display->display_options['header']['area']['format'] = 'full_html';
   $handler->display->display_options['header']['area']['tokenize'] = 0;
   $handler->display->display_options['defaults']['fields'] = FALSE;
@@ -1367,11 +1418,11 @@ function homework_helper_views_default_views() {
   );
   $handler->display->display_options['path'] = 'admin/content/homework-helper/grammar-practice';
   $handler->display->display_options['menu']['type'] = 'tab';
-  $handler->display->display_options['menu']['title'] = 'Grammar Practice';
+  $handler->display->display_options['menu']['title'] = 'Punctuation Practice';
   $handler->display->display_options['menu']['weight'] = '0';
 
-  /* Display: Grammar Practice Questions and Rules */
-  $handler = $view->new_display('page', 'Grammar Practice Questions and Rules', 'page_5');
+  /* Display: Punctuation Practice Questions and Rules */
+  $handler = $view->new_display('page', 'Punctuation Practice Questions and Rules', 'page_5');
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'table';
   $handler->display->display_options['style_options']['columns'] = array(
@@ -1380,6 +1431,7 @@ function homework_helper_views_default_views() {
     'type' => 'type',
     'edit_node' => 'edit_node',
     'status' => 'status',
+    'field_step_weight' => 'field_step_weight',
   );
   $handler->display->display_options['style_options']['default'] = '-1';
   $handler->display->display_options['style_options']['info'] = array(
@@ -1409,6 +1461,12 @@ function homework_helper_views_default_views() {
       'align' => '',
       'separator' => '',
     ),
+    'field_step_weight' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+    ),
   );
   $handler->display->display_options['style_options']['override'] = 1;
   $handler->display->display_options['style_options']['sticky'] = 0;
@@ -1421,8 +1479,8 @@ function homework_helper_views_default_views() {
   $handler->display->display_options['header']['area']['id'] = 'area';
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
-  $handler->display->display_options['header']['area']['empty'] = FALSE;
-  $handler->display->display_options['header']['area']['content'] = '<p><a href="/node/add/grammar-practice">+ Add new Grammar Practice</a> | <a href="/node/add/grammar-practice-question">+ Add new Grammar Practice Question</a> | <a href="/node/add/grammar-practice-rule">+ Add new Grammar Practice Rule</a></p>';
+  $handler->display->display_options['header']['area']['empty'] = TRUE;
+  $handler->display->display_options['header']['area']['content'] = '<p><a href="/node/add/grammar-practice?destination=admin/content/homework-helper/grammar-practice">+ Add new Punctuation Practice</a>&nbsp;| <a href="/node/add/grammar-practice-rule?destination=admin/content/homework-helper/grammar-practice">+ Add new Punctuation Practice Rule</a>&nbsp;|&nbsp;<a href="/node/add/grammar-practice-question?destination=admin/content/homework-helper/grammar-practice" style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-style: initial; border-color: initial; vertical-align: baseline; color: rgb(0, 116, 189); text-decoration: none; ">+ Add new Punctuation Practice Question</a></p><p><a href="/admin/content/homework-helper/grammar-practice">Go back to Punctuation Practice admin page</a></p><p>This is a list of the rules and questions in a specific Punctuation practice (quiz). You can edit or publish them here. The \'weight\' of the rule indicates its order relative to the other rules (lower weights will be first).</p><p style="margin-top: 1em; margin-right: 0px; margin-bottom: 1em; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-style: initial; border-color: initial; vertical-align: baseline; ">If you publish a rule or question before you publish its practice, it will not be listed on the site. Therefore it\'s best to publish all the rules and questions (using the checkboxes and \'Operations\' form) before publishing the practice.</p>';
   $handler->display->display_options['header']['area']['format'] = 'full_html';
   $handler->display->display_options['header']['area']['tokenize'] = 0;
   $handler->display->display_options['defaults']['fields'] = FALSE;
@@ -1466,6 +1524,7 @@ function homework_helper_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['title']['alter']['external'] = 0;
   $handler->display->display_options['fields']['title']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['trim_whitespace'] = 0;
   $handler->display->display_options['fields']['title']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = 0;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = 0;
@@ -1476,7 +1535,8 @@ function homework_helper_views_default_views() {
   $handler->display->display_options['fields']['title']['element_default_classes'] = 1;
   $handler->display->display_options['fields']['title']['hide_empty'] = 0;
   $handler->display->display_options['fields']['title']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['title']['link_to_node'] = 1;
+  $handler->display->display_options['fields']['title']['hide_alter_empty'] = 0;
+  $handler->display->display_options['fields']['title']['link_to_node'] = 0;
   /* Field: Content: Type */
   $handler->display->display_options['fields']['type']['id'] = 'type';
   $handler->display->display_options['fields']['type']['table'] = 'node';
@@ -1542,6 +1602,32 @@ function homework_helper_views_default_views() {
   $handler->display->display_options['fields']['status']['empty_zero'] = 0;
   $handler->display->display_options['fields']['status']['type'] = 'published-notpublished';
   $handler->display->display_options['fields']['status']['not'] = 0;
+  /* Field: Content: Weight */
+  $handler->display->display_options['fields']['field_step_weight']['id'] = 'field_step_weight';
+  $handler->display->display_options['fields']['field_step_weight']['table'] = 'field_data_field_step_weight';
+  $handler->display->display_options['fields']['field_step_weight']['field'] = 'field_step_weight';
+  $handler->display->display_options['fields']['field_step_weight']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_step_weight']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_step_weight']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_step_weight']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_step_weight']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_step_weight']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_step_weight']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_step_weight']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_step_weight']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_step_weight']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_step_weight']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_step_weight']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_step_weight']['element_label_colon'] = 1;
+  $handler->display->display_options['fields']['field_step_weight']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_step_weight']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_step_weight']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_step_weight']['hide_alter_empty'] = 0;
+  $handler->display->display_options['fields']['field_step_weight']['settings'] = array(
+    'thousand_separator' => ' ',
+    'prefix_suffix' => 1,
+  );
+  $handler->display->display_options['fields']['field_step_weight']['field_api_classes'] = 0;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Content: Grammar Practice (field_grammar_practice) */
   $handler->display->display_options['arguments']['field_grammar_practice_nid']['id'] = 'field_grammar_practice_nid';
@@ -1568,18 +1654,18 @@ function homework_helper_views_default_views() {
   );
   $handler->display->display_options['path'] = 'admin/content/homework-helper/grammar-practice/questions-and-rules/%';
 
-  /* Display: Grammar Practice Trophies */
-  $handler = $view->new_display('attachment', 'Grammar Practice Trophies', 'attachment_1');
+  /* Display: Punctuation Practice Trophies */
+  $handler = $view->new_display('attachment', 'Punctuation Practice Trophies', 'attachment_1');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'Grammar Practice Trophies';
+  $handler->display->display_options['title'] = 'Punctuation Practice Trophies';
   $handler->display->display_options['pager']['type'] = 'some';
   $handler->display->display_options['defaults']['header'] = FALSE;
   /* Header: Global: Text area */
   $handler->display->display_options['header']['area']['id'] = 'area';
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
-  $handler->display->display_options['header']['area']['empty'] = FALSE;
-  $handler->display->display_options['header']['area']['content'] = '<h2>Trophies</h2><p><a href="/node/add/grammar-practice-reward-image">+ Add new Grammar Practice Trophy</a></p>';
+  $handler->display->display_options['header']['area']['empty'] = TRUE;
+  $handler->display->display_options['header']['area']['content'] = '<h2>Trophies</h2><p><a href="/node/add/grammar-practice-reward-image?destination=admin/content/homework-helper/grammar-practice">+ Add new Punctuation Practice Trophy</a></p><p>These are the trophies which appear when a student aces a punctuation practice (a random one is displayed from the list).</p>';
   $handler->display->display_options['header']['area']['format'] = 'full_html';
   $handler->display->display_options['header']['area']['tokenize'] = 0;
   $handler->display->display_options['defaults']['fields'] = FALSE;
@@ -1809,6 +1895,66 @@ function homework_helper_views_default_views() {
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['row_options']['hide_empty'] = 0;
   $handler->display->display_options['row_options']['default_field_elements'] = 1;
+  /* Relationship: Content: Author (field_staff_reference) */
+  $handler->display->display_options['relationships']['field_staff_reference_nid']['id'] = 'field_staff_reference_nid';
+  $handler->display->display_options['relationships']['field_staff_reference_nid']['table'] = 'field_data_field_staff_reference';
+  $handler->display->display_options['relationships']['field_staff_reference_nid']['field'] = 'field_staff_reference_nid';
+  $handler->display->display_options['relationships']['field_staff_reference_nid']['required'] = 0;
+  $handler->display->display_options['relationships']['field_staff_reference_nid']['delta'] = '-1';
+  /* Field: Content: Image */
+  $handler->display->display_options['fields']['field_staff_image']['id'] = 'field_staff_image';
+  $handler->display->display_options['fields']['field_staff_image']['table'] = 'field_data_field_staff_image';
+  $handler->display->display_options['fields']['field_staff_image']['field'] = 'field_staff_image';
+  $handler->display->display_options['fields']['field_staff_image']['relationship'] = 'field_staff_reference_nid';
+  $handler->display->display_options['fields']['field_staff_image']['label'] = '';
+  $handler->display->display_options['fields']['field_staff_image']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_staff_image']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_staff_image']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_staff_image']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_staff_image']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_staff_image']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_staff_image']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_staff_image']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_staff_image']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_staff_image']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_staff_image']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_staff_image']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_staff_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_staff_image']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_staff_image']['hide_empty'] = 1;
+  $handler->display->display_options['fields']['field_staff_image']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_staff_image']['hide_alter_empty'] = 0;
+  $handler->display->display_options['fields']['field_staff_image']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_staff_image']['settings'] = array(
+    'image_style' => '115x115',
+    'image_link' => '',
+  );
+  $handler->display->display_options['fields']['field_staff_image']['field_api_classes'] = 0;
+  /* Field: Content: Short Bio */
+  $handler->display->display_options['fields']['field_staff_short_bio']['id'] = 'field_staff_short_bio';
+  $handler->display->display_options['fields']['field_staff_short_bio']['table'] = 'field_data_field_staff_short_bio';
+  $handler->display->display_options['fields']['field_staff_short_bio']['field'] = 'field_staff_short_bio';
+  $handler->display->display_options['fields']['field_staff_short_bio']['relationship'] = 'field_staff_reference_nid';
+  $handler->display->display_options['fields']['field_staff_short_bio']['label'] = '';
+  $handler->display->display_options['fields']['field_staff_short_bio']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_staff_short_bio']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_staff_short_bio']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_staff_short_bio']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_staff_short_bio']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_staff_short_bio']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_staff_short_bio']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_staff_short_bio']['alter']['max_length'] = '300';
+  $handler->display->display_options['fields']['field_staff_short_bio']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_staff_short_bio']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_staff_short_bio']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_staff_short_bio']['alter']['trim'] = 1;
+  $handler->display->display_options['fields']['field_staff_short_bio']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_staff_short_bio']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_staff_short_bio']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_staff_short_bio']['hide_empty'] = 1;
+  $handler->display->display_options['fields']['field_staff_short_bio']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_staff_short_bio']['hide_alter_empty'] = 0;
+  $handler->display->display_options['fields']['field_staff_short_bio']['field_api_classes'] = 0;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -1876,35 +2022,8 @@ function homework_helper_views_default_views() {
   $handler->display->display_options['fields']['field_tips_category']['element_default_classes'] = 1;
   $handler->display->display_options['fields']['field_tips_category']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_tips_category']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_tips_category']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['field_tips_category']['field_api_classes'] = 0;
-  /* Field: Content: Thumbnail Image */
-  $handler->display->display_options['fields']['field_thumbnail_image']['id'] = 'field_thumbnail_image';
-  $handler->display->display_options['fields']['field_thumbnail_image']['table'] = 'field_data_field_thumbnail_image';
-  $handler->display->display_options['fields']['field_thumbnail_image']['field'] = 'field_thumbnail_image';
-  $handler->display->display_options['fields']['field_thumbnail_image']['label'] = '';
-  $handler->display->display_options['fields']['field_thumbnail_image']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['field_thumbnail_image']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['field_thumbnail_image']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['field_thumbnail_image']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['field_thumbnail_image']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_thumbnail_image']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['field_thumbnail_image']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['field_thumbnail_image']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['field_thumbnail_image']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['field_thumbnail_image']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_thumbnail_image']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['field_thumbnail_image']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['field_thumbnail_image']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_thumbnail_image']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['field_thumbnail_image']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['field_thumbnail_image']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['field_thumbnail_image']['hide_alter_empty'] = 0;
-  $handler->display->display_options['fields']['field_thumbnail_image']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_thumbnail_image']['settings'] = array(
-    'image_style' => 'thumbnail',
-    'image_link' => '',
-  );
-  $handler->display->display_options['fields']['field_thumbnail_image']['field_api_classes'] = 0;
   /* Sort criterion: Content: Category (field_tips_category) */
   $handler->display->display_options['sorts']['field_tips_category_tid']['id'] = 'field_tips_category_tid';
   $handler->display->display_options['sorts']['field_tips_category_tid']['table'] = 'field_data_field_tips_category';

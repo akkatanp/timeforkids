@@ -385,7 +385,9 @@ function homework_helper_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_options_a_paper';
-  $strongarm->value = array();
+  $strongarm->value = array(
+    0 => 'revision',
+  );
   $export['node_options_a_paper'] = $strongarm;
 
   $strongarm = new stdClass;
@@ -393,8 +395,7 @@ function homework_helper_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'node_options_flashcard';
   $strongarm->value = array(
-    0 => 'status',
-    1 => 'revision',
+    0 => 'revision',
   );
   $export['node_options_flashcard'] = $strongarm;
 
@@ -411,7 +412,10 @@ function homework_helper_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_options_grammar_practice_question';
-  $strongarm->value = array();
+  $strongarm->value = array(
+    0 => 'status',
+    1 => 'revision',
+  );
   $export['node_options_grammar_practice_question'] = $strongarm;
 
   $strongarm = new stdClass;
@@ -425,21 +429,28 @@ function homework_helper_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_options_grammar_practice_rule';
-  $strongarm->value = array();
+  $strongarm->value = array(
+    0 => 'status',
+    1 => 'revision',
+  );
   $export['node_options_grammar_practice_rule'] = $strongarm;
 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_options_paper_step';
-  $strongarm->value = array();
+  $strongarm->value = array(
+    0 => 'revision',
+  );
   $export['node_options_paper_step'] = $strongarm;
 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_options_writing_tips';
-  $strongarm->value = array();
+  $strongarm->value = array(
+    0 => 'revision',
+  );
   $export['node_options_writing_tips'] = $strongarm;
 
   $strongarm = new stdClass;
@@ -453,7 +464,7 @@ function homework_helper_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_preview_flashcard';
-  $strongarm->value = '1';
+  $strongarm->value = '0';
   $export['node_preview_flashcard'] = $strongarm;
 
   $strongarm = new stdClass;
