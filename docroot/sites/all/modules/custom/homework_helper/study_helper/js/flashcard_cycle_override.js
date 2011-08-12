@@ -10,6 +10,11 @@
       
       $('.flashcard-cycle').each(
         function() {
+          var counts = {
+            all : 0,
+            marked : 0,
+            unmarked : 0
+          }
           var card = $(this).find('.flashcard-cycle-cards')
             .unbind('click')
             .click(
