@@ -2081,13 +2081,12 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
     padding: 15px 10px 15px 10px;
 }
 .node-mini-lesson .grade-bar {
-    background-color:#D71700;
-    width:98%;
+    background-color:#d71700;
     text-transform:uppercase;
-    color:#FFFFFF;
-    font-size:12px;
-    font-family: "Arial Black", Arial, sans-serif;
+    color:#fff;
+    font: normal 12px "Arial Black", Arial, sans-serif;
     padding:3px 5px 3px 5px;
+	margin-bottom: 20px;
 }
 .node-mini-lesson .grade-bar #grade-bar-title {
     display:inline;
@@ -2097,8 +2096,9 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
     float:right;
 }
 .node-mini-lesson h2 {
-    font-size: 30px;
-    margin-bottom: 10px;
+	font: bold 30px arial;
+	line-height: 30px;
+	margin-bottom: 10px;
 }
 .node-mini-lesson .lesson-deck {
     font-size: 14px;
