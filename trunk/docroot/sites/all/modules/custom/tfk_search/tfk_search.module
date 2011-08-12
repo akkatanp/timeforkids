@@ -1491,6 +1491,8 @@ function worksheets_save_srch($form, &$form_state) {
 function worksheets_save_srch_submit(&$form, &$form_state) {
   ctools_include('modal');
   ctools_include('ajax');
+  ctools_add_js('ajax-responder');
+  
   global $user;
   $form_data = array();
 
