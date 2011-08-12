@@ -369,6 +369,11 @@
 	padding: 10px 0px 10px 7px;
 }
 
+.page-404page .region-sidebar-first .section{
+  border : none !important;
+}
+
+
 .region-sidebar-first .section ol.search-results, 
 .region-sidebar-first .section ul.menu {
 	list-style-type: none;
