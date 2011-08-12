@@ -1782,6 +1782,10 @@ function tfk_search_preprocess_search_result(&$vars) {
        // Materials.
        if(array_key_exists(TFK_SEARCH_WORKSHEET_PDF_LINK, $vars['result']['fields']) && !empty($vars['result']['fields'][TFK_SEARCH_WORKSHEET_PDF_LINK])) {
          foreach($vars['result']['fields'][TFK_SEARCH_WORKSHEET_PDF_LINK] as $key => $pdf_link) {
+
+           echo $pdf_link;
+           echo url('');
+           echo '<br/>';
            $vars['magazine_materials'][$key] = l($vars['result']['fields'][TFK_SEARCH_WORKSHEET_PDF_TITLE][$key], $pdf_link);
          }
        }
