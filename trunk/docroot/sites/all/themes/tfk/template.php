@@ -197,6 +197,10 @@ function tfk_pager($variables) {
  *   The name of the template being rendered ("page" in this case.)
  */
 function tfk_preprocess_page(&$variables, $hook) {
+  /* add encrypt js to all pages */
+  drupal_add_js(drupal_get_path("module", "encrypt_submissions") . "/jcryption/jquery.jcryption.js");
+  drupal_add_js(drupal_get_path("module", "encrypt_submissions") . "/js/encryption_submissions.js");
+
   if(array_key_exists('node', $variables)) {
     $variables['theme_hook_suggestions'][] = 'page__'. $variables['node']->type;
     if ($variables['node']->type == "board_member") {
