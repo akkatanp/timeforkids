@@ -572,6 +572,16 @@ ul.links li {
 
 .view-homepage-destination  .views-field-field-description {
 	line-height: 15px;
+	display: inline;
+}
+
+.view-homepage-destination  .views-field-field-description .field-content {
+	display: inline;
+}
+
+.view-homepage-destination  .views-field-title-1 {
+	display: inline;
+	margin-left: 4px;
 }
 
 #block-views-c909bfc47773a85d7de307e584c9ea89,
@@ -605,6 +615,10 @@ ul.links li {
 .view-id-homepage_news_for_teachers .views-field-body {
 	display: inline;
 	line-height: 15px;
+}
+
+.view-id-homepage_news_for_teachers .views-field-body .field-content {
+	display: inline;
 }
 
 .view-id-homepage_news_for_teachers .views-field-field-article-url {
