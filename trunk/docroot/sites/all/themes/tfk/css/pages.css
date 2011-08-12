@@ -769,7 +769,7 @@ ul.links li {
 .view-homepage-top-story .view-content .views-field-field-date,
 .view-teacher-news-top-story .view-content .views-field-field-date,
 .view-kid-reporters-channel-top-story .views-field-field-date {
-	font: normal 9px arial, sans-serif;
+	font: normal 10px arial, sans-serif;
 	height: 10px;
 	text-transform: uppercase;
 	margin-top: 18px;
@@ -1796,7 +1796,8 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 }
 
 .node-type-video .field-name-field-date {
-	font: normal 9px arial, sans-serif;
+	font: normal 10px arial, sans-serif;
+	text-transform: uppercase;
 }
 
 .field-name-field-related-photos-video {
