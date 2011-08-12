@@ -1522,7 +1522,7 @@ function worksheets_save_srch_submit(&$form, &$form_state) {
   
   $commands[] = ajax_command_html('#mymodaldiv', '<div class="svd-msg">Your search has been saved</div>');
   $commands[] = ctools_modal_command_dismiss();
-  
+  $commands[] = ctools_ajax_command_redirect('worksheets');
   print ajax_render($commands);
   exit;
 }
