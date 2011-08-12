@@ -221,6 +221,7 @@
 	background: url(../images/main-nav-sprite.png) no-repeat -474px 0px;
 }
 
+.section-photos-video #global-nav-container ul.menu a.photos-video,
 #global-nav-container ul.menu li.active a.photos-video,
 #global-nav-container ul.menu a.photos-video.active,
 #global-nav-container ul.menu a.photos-video:hover {
@@ -821,12 +822,12 @@
 	padding-top: 20px;
 }
 
-.view-atw-page-featured-destination .views-field-field-country-map {
+.view-atw-page-featured-destination .views-field-field-image {
 	width: 236px;
 	margin: 0 7px 0 0;
 }
 
-.view-atw-page-featured-destination .views-field-field-country-map img {
+.view-atw-page-featured-destination .views-field-field-image img {
 	width: 230px;
 	border: solid 3px #fff;
 }
