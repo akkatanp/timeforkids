@@ -1631,10 +1631,10 @@ ul.links li {
 }
 
 .view-news-archive .views-field-field-date {
-	font-size: 9px;
-	color: #555;
-        line-height:7px;
-        margin-top:5px;
+	font: normal 10px arial;
+	text-transform: uppercase;
+	line-height:7px;
+	margin:5px 0;
 }
 
 .view-news-archive .views-field-field-deck,.view-news-archive .views-field-field-deck .field-content,
