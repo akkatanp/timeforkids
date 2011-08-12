@@ -545,7 +545,22 @@ class tfkHelperFeaturedItem {
     $url = 'node/'. $featured_node->nid;
     $this->title = l($featured_node->title, $url); // Alternatively load 'safe_summary'.
     $body = field_get_items('node', $featured_node, ($featured_node->type == 'slideshow') ? 'field_slideshow_description': 'body');
-    $this->body = check_markup(truncate_utf8($body[0]['safe_value'], self::$body_trim, TRUE, TRUE, 10), self::$snippet_format, '', TRUE);
+        
+    if(isset($body)) {
+      // The pattern "<p>&nbsp;</p>" causes a bug in truncate_utf8. Strip it out.
+      $clean_body = preg_replace("/\<p\>.?&nbsp;.?\<\/p\>/", '', $body[0]['safe_value']);
+  
+      // Get the first paragraph, and fall back to a character count if there is no paragraph.
+      $first_paragraph = array();
+      $matched = preg_match("/\<p\>.*?\<\/p\>/", $clean_body, $first_paragraph);
+      $this->body = check_markup( ($matched) ? $first_paragraph[0] : truncate_utf8($clean_body, self::$body_trim, TRUE, TRUE, 10) , self::$snippet_format, '', TRUE);
+    } else {
+      // Print a helpful (but hidden) "error" message if there is no teaser. Use Firebug inspect element to see it.
+      $this->body = '<!-- body field not found or empty -->';
+    }
+    
+    //$this->body = check_markup(truncate_utf8($body[0]['safe_value'], self::$body_trim, TRUE, TRUE, 10), self::$snippet_format, '', TRUE);
+
     $this->link = l('See '. ucfirst($featured_node->type), $url);
     
     if($featured_node->type == 'slideshow') {
