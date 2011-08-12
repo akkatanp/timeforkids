@@ -205,7 +205,7 @@ ol.search-results {
 ol.search-results li div.content-type {
   background-color: #D71700;
   color: white;
-  font-weight: bold;
+  font-family: "arial black", arial;
   font-size: 1.0em;
   padding: 3.35px 0 2.76px 11px;
   margin-bottom: 7px;
