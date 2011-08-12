@@ -1,4 +1,0 @@
-; $Id$
-name = Block ID
-description = Allows assigning CSS ids to blocks.
-core = 6.x
