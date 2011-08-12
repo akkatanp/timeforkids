@@ -160,7 +160,7 @@
 .flashcard-cycle-card
   position: relative
   .csstransforms3d &
-    +perspective(800)
+    +perspective(700)
   .card-front, .card-back
     width: 500px
     height: 250px
@@ -178,6 +178,8 @@
       +transition-property(all)
       +transition-duration(0.5s)
       +transition-timing-function(ease-in)
+    .csstransforms3d .not-logged-in & 
+      +transition-delay(0.1s)
   .card-front
     position: relative
     z-index: 2
