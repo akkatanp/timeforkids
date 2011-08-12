@@ -34,7 +34,11 @@ function homework_helper_field_default_fields() {
         ),
       ),
       'module' => 'text',
-      'settings' => array(),
+      'settings' => array(
+        'max_length' => '',
+        'maxlength_body_js' => 0,
+        'maxlength_body_text' => 'Content limited to !limit characters, remaining: <strong>!remaining</strong>',
+      ),
       'translatable' => '1',
       'type' => 'text_with_summary',
     ),
@@ -145,6 +149,15 @@ function homework_helper_field_default_fields() {
         'active' => 1,
         'module' => 'file',
         'settings' => array(
+          'insert' => 0,
+          'insert_class' => '',
+          'insert_default' => array(
+            0 => 'auto',
+          ),
+          'insert_styles' => array(
+            0 => 'auto',
+          ),
+          'insert_width' => '',
           'progress_indicator' => 'throbber',
         ),
         'type' => 'file_generic',
@@ -216,6 +229,15 @@ function homework_helper_field_default_fields() {
         'active' => 1,
         'module' => 'file',
         'settings' => array(
+          'insert' => 0,
+          'insert_class' => '',
+          'insert_default' => array(
+            0 => 'auto',
+          ),
+          'insert_styles' => array(
+            0 => 'auto',
+          ),
+          'insert_width' => '',
           'progress_indicator' => 'throbber',
         ),
         'type' => 'file_generic',
@@ -501,6 +523,15 @@ function homework_helper_field_default_fields() {
         'active' => 1,
         'module' => 'file',
         'settings' => array(
+          'insert' => 0,
+          'insert_class' => '',
+          'insert_default' => array(
+            0 => 'auto',
+          ),
+          'insert_styles' => array(
+            0 => 'auto',
+          ),
+          'insert_width' => '',
           'progress_indicator' => 'throbber',
         ),
         'type' => 'file_generic',
@@ -572,6 +603,15 @@ function homework_helper_field_default_fields() {
         'active' => 1,
         'module' => 'file',
         'settings' => array(
+          'insert' => 0,
+          'insert_class' => '',
+          'insert_default' => array(
+            0 => 'auto',
+          ),
+          'insert_styles' => array(
+            0 => 'auto',
+          ),
+          'insert_width' => '',
           'progress_indicator' => 'throbber',
         ),
         'type' => 'file_generic',
@@ -695,7 +735,7 @@ function homework_helper_field_default_fields() {
         'module' => 'flashcard',
         'settings' => array(),
         'type' => 'flashcard_default',
-        'weight' => 0,
+        'weight' => '2',
       ),
     ),
   );
@@ -724,7 +764,11 @@ function homework_helper_field_default_fields() {
         ),
       ),
       'module' => 'text',
-      'settings' => array(),
+      'settings' => array(
+        'max_length' => '',
+        'maxlength_body_js' => 0,
+        'maxlength_body_text' => 'Content limited to !limit characters, remaining: <strong>!remaining</strong>',
+      ),
       'translatable' => '1',
       'type' => 'text_with_summary',
     ),
@@ -773,6 +817,71 @@ function homework_helper_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-grammar_practice-field_punctuation_instructions'
+  $fields['node-grammar_practice-field_punctuation_instructions'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_punctuation_instructions',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'module' => 'text',
+      'settings' => array(),
+      'translatable' => '1',
+      'type' => 'text_long',
+    ),
+    'field_instance' => array(
+      'bundle' => 'grammar_practice',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'Instructions which will appear on the first question of the punctuation practice.',
+      'display' => array(
+        'default' => array(
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_punctuation_instructions',
+      'label' => 'Instructional Text',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'rows' => '5',
+        ),
+        'type' => 'text_textarea',
+        'weight' => '-4',
+      ),
+    ),
+  );
+
   // Exported field: 'node-grammar_practice_question-body'
   $fields['node-grammar_practice_question-body'] = array(
     'field_config' => array(
@@ -797,7 +906,11 @@ function homework_helper_field_default_fields() {
         ),
       ),
       'module' => 'text',
-      'settings' => array(),
+      'settings' => array(
+        'max_length' => '',
+        'maxlength_body_js' => 0,
+        'maxlength_body_text' => 'Content limited to !limit characters, remaining: <strong>!remaining</strong>',
+      ),
       'translatable' => '1',
       'type' => 'text_with_summary',
     ),
@@ -1149,10 +1262,9 @@ function homework_helper_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
-          'module' => 'node_reference',
+          'label' => 'hidden',
           'settings' => array(),
-          'type' => 'node_reference_default',
+          'type' => 'hidden',
           'weight' => '1',
         ),
         'teaser' => array(
@@ -1179,61 +1291,6 @@ function homework_helper_field_default_fields() {
         ),
         'type' => 'node_reference_autocomplete',
         'weight' => '3',
-      ),
-    ),
-  );
-
-  // Exported field: 'node-grammar_practice_question-field_step_weight'
-  $fields['node-grammar_practice_question-field_step_weight'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_step_weight',
-      'foreign keys' => array(),
-      'indexes' => array(),
-      'module' => 'number',
-      'settings' => array(),
-      'translatable' => '1',
-      'type' => 'number_integer',
-    ),
-    'field_instance' => array(
-      'bundle' => 'grammar_practice_question',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '3',
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_step_weight',
-      'label' => 'Weight',
-      'required' => 0,
-      'settings' => array(
-        'max' => '',
-        'min' => '',
-        'prefix' => '',
-        'suffix' => '',
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 0,
-        'module' => 'number',
-        'settings' => array(),
-        'type' => 'number',
-        'weight' => '6',
       ),
     ),
   );
@@ -1307,6 +1364,15 @@ function homework_helper_field_default_fields() {
         'active' => 1,
         'module' => 'image',
         'settings' => array(
+          'insert' => 0,
+          'insert_class' => '',
+          'insert_default' => array(
+            0 => 'auto',
+          ),
+          'insert_styles' => array(
+            0 => 'auto',
+          ),
+          'insert_width' => '',
           'preview_image_style' => 'thumbnail',
           'progress_indicator' => 'throbber',
         ),
@@ -1340,7 +1406,11 @@ function homework_helper_field_default_fields() {
         ),
       ),
       'module' => 'text',
-      'settings' => array(),
+      'settings' => array(
+        'max_length' => '',
+        'maxlength_body_js' => 0,
+        'maxlength_body_text' => 'Content limited to !limit characters, remaining: <strong>!remaining</strong>',
+      ),
       'translatable' => '1',
       'type' => 'text_with_summary',
     ),
@@ -1441,7 +1511,7 @@ function homework_helper_field_default_fields() {
       'label' => 'Example',
       'required' => 1,
       'settings' => array(
-        'text_processing' => '0',
+        'text_processing' => '1',
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -1641,7 +1711,11 @@ function homework_helper_field_default_fields() {
         ),
       ),
       'module' => 'text',
-      'settings' => array(),
+      'settings' => array(
+        'max_length' => '',
+        'maxlength_body_js' => 0,
+        'maxlength_body_text' => 'Content limited to !limit characters, remaining: <strong>!remaining</strong>',
+      ),
       'translatable' => '1',
       'type' => 'text_with_summary',
     ),
@@ -2250,7 +2324,11 @@ Ex. <em>I wrote a paragraph that summarizes my viewpoint.</em>',
         ),
       ),
       'module' => 'text',
-      'settings' => array(),
+      'settings' => array(
+        'max_length' => '',
+        'maxlength_body_js' => 0,
+        'maxlength_body_text' => 'Content limited to !limit characters, remaining: <strong>!remaining</strong>',
+      ),
       'translatable' => '1',
       'type' => 'text_with_summary',
     ),
@@ -2406,6 +2484,122 @@ Ex. <em>I wrote a paragraph that summarizes my viewpoint.</em>',
     ),
   );
 
+  // Exported field: 'node-writing_tips-field_staff_reference'
+  $fields['node-writing_tips-field_staff_reference'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_staff_reference',
+      'foreign keys' => array(
+        'nid' => array(
+          'columns' => array(
+            'nid' => 'nid',
+          ),
+          'table' => 'node',
+        ),
+      ),
+      'indexes' => array(
+        'nid' => array(
+          0 => 'nid',
+        ),
+      ),
+      'module' => 'node_reference',
+      'settings' => array(
+        'referenceable_types' => array(
+          'a_paper' => 0,
+          'article' => 0,
+          'atw_day_in_life' => 0,
+          'atw_destination' => 0,
+          'atw_homepage_nodeblock' => 0,
+          'atw_native_lingo' => 0,
+          'atw_sightseeing' => 0,
+          'atw_timeline' => 0,
+          'board_member' => 0,
+          'book' => 0,
+          'flashcard' => 0,
+          'global_right_sidebar_promo' => 0,
+          'grammar_practice' => 0,
+          'grammar_practice_question' => 0,
+          'grammar_practice_reward_image' => 0,
+          'grammar_practice_rule' => 0,
+          'homepage_news_for_teachers' => 0,
+          'image' => 0,
+          'kid_reporter' => 0,
+          'kid_reporter_bottom_nodeblock' => 0,
+          'magazine_issue' => 0,
+          'mini_lesson' => 0,
+          'mini_site_home' => 0,
+          'minisite' => 0,
+          'news_channel_nodeblock' => 0,
+          'page' => 0,
+          'paper_step' => 0,
+          'pdf_quiz' => 0,
+          'slideshow' => 0,
+          'store' => 0,
+          'teacher_community_question' => 0,
+          'tfk_extra' => 0,
+          'tfk_extras_bottom_nodeblock' => 0,
+          'tfk_extras_top_nodeblock' => 0,
+          'tfk_notification' => 0,
+          'tfk_staff' => 'tfk_staff',
+          'video' => 0,
+          'webform' => 0,
+          'webform_generic' => 0,
+          'worksheet' => 0,
+          'writing_tips' => 0,
+        ),
+        'view' => array(
+          'args' => array(),
+          'display_name' => '',
+          'view_name' => '',
+        ),
+      ),
+      'translatable' => '1',
+      'type' => 'node_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'writing_tips',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'Reference a TFK staff member as the author of the writing tip with this autocomplete field. You can also <a href="/node/add/tfk-staff" target="_blank">add a TFK Staff member</a> and then reference her here. (This is where you will add the author\'s image for display on the writing tips landing page.)',
+      'display' => array(
+        'default' => array(
+          'label' => 'inline',
+          'module' => 'node_reference',
+          'settings' => array(),
+          'type' => 'node_reference_default',
+          'weight' => '3',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_staff_reference',
+      'label' => 'Author',
+      'required' => 1,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'node_reference',
+        'settings' => array(
+          'autocomplete_match' => 'contains',
+          'autocomplete_path' => 'node_reference/autocomplete',
+          'size' => '60',
+        ),
+        'type' => 'node_reference_autocomplete',
+        'weight' => '3',
+      ),
+    ),
+  );
+
   // Exported field: 'node-writing_tips-field_tips_category'
   $fields['node-writing_tips-field_tips_category'] = array(
     'field_config' => array(
@@ -2501,7 +2695,10 @@ Ex. <em>I wrote a paragraph that summarizes my viewpoint.</em>');
   t('Include Name & Date fields');
   t('Include Textarea?');
   t('Include Title Field');
+  t('Instructional Text');
+  t('Instructions which will appear on the first question of the punctuation practice.');
   t('Parent paper');
+  t('Reference a TFK staff member as the author of the writing tip with this autocomplete field. You can also <a href="/node/add/tfk-staff" target="_blank">add a TFK Staff member</a> and then reference her here. (This is where you will add the author\'s image for display on the writing tips landing page.)');
   t('Rule');
   t('Sample Paper');
   t('Step-by-Step Instructions');
