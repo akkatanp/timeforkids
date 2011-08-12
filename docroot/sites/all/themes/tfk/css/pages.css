@@ -764,7 +764,9 @@ ul.links li {
 .view-teacher-news-top-story .view-content .views-field-field-date,
 .view-kid-reporters-channel-top-story .views-field-field-date {
 	font: normal 9px arial, sans-serif;
+	height: 10px;
 	text-transform: uppercase;
+	margin-top: 18px;
 }
 
 #block-views-minisite-articles-block-2 .views-field-field-deck,
