@@ -64,7 +64,7 @@ function encrypt_submissions_check_library_files_exist($bool_notify_correct_inst
   
   $original_location = variable_get("encrypt_submissions_jcryption_location", "");
   
-  $jcryption_location = drupal_get_path("module", "encrypt_submissions") . "/jcryption/";
+  $jcryption_location = drupal_get_path("module", "encrypt_submissions") . "/jcryption";
   
   $js_file = "$jcryption_location/jquery.jcryption.js";
   $php_file = "$jcryption_location/jcryption.php";
