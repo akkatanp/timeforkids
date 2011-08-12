@@ -274,6 +274,7 @@
 	background: url(../images/sub-nav-sprite.png) no-repeat 0px 0px;
 }
 
+.views-field-field-image #teacher-nav-container ul.menu a.tfk-magazine,
 #teacher-nav-container ul.menu a.tfk-magazine.active,
 #teacher-nav-container ul.menu a.tfk-magazine:hover {
 	background: url(../images/sub-nav-sprite.png) no-repeat 0px -32px
@@ -284,6 +285,7 @@
 	background: url(../images/sub-nav-sprite.png) no-repeat -116px 0px;
 }
 
+.section-worksheets #teacher-nav-container ul.menu a.worksheets,
 #teacher-nav-container ul.menu a.worksheets.active,
 #teacher-nav-container ul.menu a.worksheets:hover {
 	background: url(../images/sub-nav-sprite.png) no-repeat -116px -32px;
@@ -294,6 +296,9 @@
 	background: url(../images/sub-nav-sprite.png) no-repeat -214px 0px;
 }
 
+.section-teacher-board-members  #teacher-nav-container ul.menu a.teacher-community,
+.section-board-member #teacher-nav-container ul.menu a.teacher-community,
+.section-teacher-community #teacher-nav-container ul.menu a.teacher-community,
 #teacher-nav-container ul.menu a.teacher-community.active,
 #teacher-nav-container ul.menu a.teacher-community:hover {
 	background: url(../images/sub-nav-sprite.png) no-repeat -214px -32px;
