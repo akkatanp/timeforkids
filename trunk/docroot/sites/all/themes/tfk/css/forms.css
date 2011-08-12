@@ -126,7 +126,7 @@ form table .item-list ul {
 
 /* lightbox login form */
 #login-container #login-header {
-	font: normal 14px "arial black";
+	font: normal 14px "arial black", arial, sans-serif;
 	color: white;
 	background: #d71700;
 	padding: 10px;
@@ -215,4 +215,9 @@ form table .item-list ul {
 
 #login-footer a:first-child {
 	margin-right: 150px;
+}
+/*Version of the lightbox login form on /user */
+.not-logged-in.page-user #login-container {
+    height:400px;
+    width:680px;
 }
