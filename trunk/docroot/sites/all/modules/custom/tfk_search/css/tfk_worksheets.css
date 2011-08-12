@@ -10,6 +10,7 @@
  * Search results
  */
 .search-result div.search-snippet-body {
+	margin-top: 10px;
 }
 
 .search-result img.thumbnail {
