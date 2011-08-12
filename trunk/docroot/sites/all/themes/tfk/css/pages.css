@@ -1821,10 +1821,15 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 }
 
 .featured-tfk-extra,
+.extras-content,
 .extras-block {
 	border: solid 1px #cecece;
 	border-bottom: 0;
 	margin-bottom: 10px;
+}
+
+.extras-block .extras-content {
+	border: 0;
 }
 
 .featured-tfk-extra {
