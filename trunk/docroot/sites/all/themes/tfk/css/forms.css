@@ -9,7 +9,7 @@
 }
 
 form.webform-client-form .form-type-item /* Wrapper for a form element (or group of form elements) and its label */ {
-  margin-top: 0 !important;
+  margin-top: 10px !important;
   margin-bottom: 0px !important;
 }
 
