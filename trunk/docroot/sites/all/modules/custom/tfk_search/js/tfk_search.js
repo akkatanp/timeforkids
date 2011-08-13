@@ -40,7 +40,7 @@
           
           // Close facet block.
           target.toggleClass('closed');
-		  target.siblings('content').toggle('fast');
+		  target.parent().find('content').toggle('fast');
 
         });
       }
