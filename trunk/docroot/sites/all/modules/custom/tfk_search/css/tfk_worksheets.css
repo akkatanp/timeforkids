@@ -135,9 +135,7 @@ body.section-worksheets .region-sidebar-first .block.block-apachesolr-search li 
 #block-tfk-search-tfk-search-ws-leftbar-title div.content {
   padding: 3.35px 0 2.76px 0;
   color: white;
-  font-size: 1em;
-  font-weight: normal;
-  font-family: "arial black", arial, sans-serif;
+  font: normal 12px "arial black", arial, sans-serif;
   text-align: center;
   background-color: #D71700;
 }
@@ -263,8 +261,7 @@ body.section-worksheets .popups-container .svd-srch-desc {
 body.section-worksheets .popups-container label[for=edit-savedname] {
   padding-bottom: 9px;
   float: none;
-	font-family: "arial black", arial, sans-serif;
-	font-size: 12px;
+	font: normal 12px "arial black", arial, sans-serif;
 }
 
 body.section-worksheets .popups-container .svd-srch-submit {
@@ -289,5 +286,5 @@ div.ctools-sample-modal-content div.popups-title {
 
 .popups-close {
 	margin-top: 12px;
-	font-family: "arial black", arial, sans-serif;
+	font: normal 12px "arial black", arial, sans-serif;
 }

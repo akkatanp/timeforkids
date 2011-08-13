@@ -45,8 +45,7 @@ div.featured-block-sidebar-link a {
 
 div#block-tfk-search-tfk-search-photos-video-back a {
   color: white;
-	font-family: "arial black", arial, sans-serif;
-	font-weight: normal;
+	font: normal 12px "arial black", arial, sans-serif;
 	line-height: 118%;
 }
 
@@ -90,8 +89,7 @@ div#slideshow-container div#slideshow div.header {
 .node-type-video #featured-related-content-title,
 .node-type-slideshow #featured-related-content-title {
 	margin-top: 20px;
-  font-family: "arial black",arial,sans-serif;
-  font-size: 12px;	
+  font: normal 12px "arial black", arial, sans-serif;
 }
 
 

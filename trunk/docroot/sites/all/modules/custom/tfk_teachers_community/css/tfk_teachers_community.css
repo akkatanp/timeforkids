@@ -185,7 +185,7 @@ form#teacher-community-question-node-form label[for="edit-title"], div#block-sys
   color: white;
   /*margin-bottom: 14px;*//*Taken out per tfks212*/
   padding: 5px 0 3px 10px;
-	font-family: normal 12px "arial black", arial, sans-serif;
+	font: normal 12px "arial black", arial, sans-serif;
 }
 
 form#teacher-community-question-node-form div#edit-actions,
@@ -311,8 +311,7 @@ body.page-teacher-community-topic-list .view-board-members .view-header p {
 
 body.page-teacher-community-topic-list .view-board-members .view-header h3 {
   line-height: 100%;
-	font-family: normal 12px "Arial Black", arial;
-	font-weight: normal;
+	font: normal 12px "Arial Black", arial;
 	color: #333;
 	text-transform: uppercase;
 }
@@ -320,7 +319,7 @@ body.page-teacher-community-topic-list .view-board-members .view-header h3 {
 #block-views-4dd757237991afc15893b55c57cc03ef h2.block-title {
 	line-height: 80%;
 	color: #FFF;
-	font-family: normal 12px "Arial Black", arial, sans-serif;
+	font: normal 12px "Arial Black", arial, sans-serif;
 	background-color: #D71700;
 	padding: 6px 0 5px 0;
 	text-align: center;
@@ -329,7 +328,7 @@ body.page-teacher-community-topic-list .view-board-members .view-header h3 {
 
 #block-views-4dd757237991afc15893b55c57cc03ef .view-header h3 {
   margin: 15px 0 8px 0;
-  font-family: normal 12px "Arial Black", arial;
+  font: normal 12px "Arial Black", arial;
 }
 
 #block-views-4dd757237991afc15893b55c57cc03ef .view-header p {
@@ -388,7 +387,7 @@ body.page-teacher-community-topic-list .view-board-members .view-header h3 {
 }
 #block-views-4dd757237991afc15893b55c57cc03ef h3 {
 	margin: 15px 0 8px 0;
-        font-family: normal 12px "Arial Black", Arial, sans-serif;
+        font: normal 12px "Arial Black", Arial, sans-serif;
 }
 
 /* New Comments */
