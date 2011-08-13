@@ -1094,7 +1094,7 @@
 }
 
 /* Footer Nav */
-.front.not-logged-in .region-footer {
+.front .region-footer {
     position:relative;
     top:-222px;
 }

@@ -1553,11 +1553,31 @@ ul.links li {
 	border-right: solid 1px #cecece;
 }
 
-.page-around-the-world .view-content table tr:nth-child(even) {
+.page-around-the-world .view-content table tr:nth-child(even),
+.page-around-the-world .view-content table tr.row-2,
+.page-around-the-world .view-content table tr.row-4,
+.page-around-the-world .view-content table tr.row-6,
+.page-around-the-world .view-content table tr.row-8,
+.page-around-the-world .view-content table tr.row-10,
+.page-around-the-world .view-content table tr.row-12,
+.page-around-the-world .view-content table tr.row-14,
+.page-around-the-world .view-content table tr.row-16,
+.page-around-the-world .view-content table tr.row-18,
+.page-around-the-world .view-content table tr.row-20 {
 	background: #fff;
 }
 
-.page-around-the-world .view-content table tr:nth-child(odd) {
+.page-around-the-world .view-content table tr:nth-child(odd)
+.page-around-the-world .view-content table tr.row-1,
+.page-around-the-world .view-content table tr.row-3,
+.page-around-the-world .view-content table tr.row-5,
+.page-around-the-world .view-content table tr.row-7,
+.page-around-the-world .view-content table tr.row-9,
+.page-around-the-world .view-content table tr.row-11,
+.page-around-the-world .view-content table tr.row-13,
+.page-around-the-world .view-content table tr.row-15,
+.page-around-the-world .view-content table tr.row-17,
+.page-around-the-world .view-content table tr.row-19 {
 	background: #ddd;
 }
 
