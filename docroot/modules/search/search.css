@@ -20,7 +20,7 @@
   margin-bottom: 1em;
 }
 .search-results .search-snippet-info {
-  padding-left: 1em; /* LTR */
+  /*padding-left: 1em;  LTR */
 }
 .search-results .search-info {
   font-size: 0.85em;
