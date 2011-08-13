@@ -1,0 +1,4 @@
+name = A+ Papers
+core = 7.x
+description = Provides a multistep form for interactive A+ Papers.
+package = Homework Helper
