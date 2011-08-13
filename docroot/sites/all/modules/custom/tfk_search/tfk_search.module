@@ -1781,11 +1781,27 @@ function tfk_search_preprocess_search_result(&$vars) {
 
        ///////////GETTING ADDITIONAL CONTENT////////
        // Materials.
+       $materials = field_get_items('node', $node, 'field_materials');
+       if($materials) {
+         foreach($materials as $key => $material_nid) {
+           $material = node_load($material_nid['nid']);
+           if($material) {
+             $worksheet_file = field_get_items('node', $material, 'field_worksheet_pdf');
+             if($worksheet_file) {
+               $worksheet_file = $worksheet_file[0];
+               
+               $vars['magazine_materials'][$key] = l($vars['result']['fields'][TFK_SEARCH_WORKSHEET_PDF_TITLE][$key], file_create_url($worksheet_file['uri']));
+             }
+           }
+         }
+       }
+      
+      /*
        if(array_key_exists(TFK_SEARCH_WORKSHEET_PDF_LINK, $vars['result']['fields']) && !empty($vars['result']['fields'][TFK_SEARCH_WORKSHEET_PDF_LINK])) {
          foreach($vars['result']['fields'][TFK_SEARCH_WORKSHEET_PDF_LINK] as $key => $pdf_link) {
            $vars['magazine_materials'][$key] = l($vars['result']['fields'][TFK_SEARCH_WORKSHEET_PDF_TITLE][$key], $pdf_link);
          }
-       }
+       }*/
 
        ////////////////////Related Resources////////////////
        $tmp_related = field_get_items('node', $magazine, 'field_related_resources');
