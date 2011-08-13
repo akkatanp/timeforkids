@@ -402,6 +402,7 @@ ul.links li {
 #block-menu-menu-link-to-board-members ul.menu li a {
 	display: block;
 	font: normal 14px "arial black", arial, sans-serif;
+	line-height: 15px;
 	color: #fff;
 	background: url("../images/white-back-arrow.png") no-repeat scroll 10px 20px #D71700;
 	padding: 10px 10px 10px 30px;
@@ -409,6 +410,9 @@ ul.links li {
 	margin: 0;
 }
 
+#block-menu-menu-link-to-board-members ul.menu li a:hover {
+	text-decoration: none;
+}
 
 /* front page */
 .front #block-system-main {
