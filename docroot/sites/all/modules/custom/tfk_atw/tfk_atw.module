@@ -284,6 +284,9 @@ function _get_atw_timeline_slideshow_images(){
         $timelines_data[$k]['event_copy'] = $record->event_copy;
         $timelines_data[$k]['event_title'] = $record->timeline_title;
 
+        echo '!'.$record->file_uri.'!<br>';
+
+
         //$timelines_data[$k]['image_path'] = image_style_path('tfk_rect_large',$record->file_uri);
         $timelines_data[$k]['image_path'] = $record->file_uri;//Using full image per tfks317
         $timelines_data[$k]['image_path'] = file_create_url($timelines_data[$k]['image_path']);
