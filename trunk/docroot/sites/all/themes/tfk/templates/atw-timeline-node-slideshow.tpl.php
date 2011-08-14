@@ -18,7 +18,7 @@
 		
 			<div class="event-image">
 				<?php $imgStr = substr($image['image_path'], -6); ?>
-				<?php if ($imgStr != 'public'): ?>
+				<?php if ($imgStr != 'public' && $image['image_attached'] == 1 ): ?>
 				<img src="<?php print $image['image_path']; ?>" />
 				<?php if(isset($image['image_credit'])):?><div class="event-credit"><?php print $image['image_credit'];?></div><?php endif;?>
 				<?php endif; ?>
