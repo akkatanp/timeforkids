@@ -28,7 +28,7 @@
 			<div id="inner">
 				<?php $i = 0; ?>
 				<?php foreach($daylife_data as $data):?>
-				<div class="clock" id="clock-<?php print $i; ?>" title="<?php print $data['time'];?>" rel="<?php print $data['activity'];?>"></div>
+				<div class="clock" id="clock-<?php print $i; ?>" title="<?php print $data['time'];?>" rel="<?php print htmlspecialchars($data['activity']);?>"></div>
 				<?php $i++; ?>
 				<?php endforeach;?>
 			</div>
