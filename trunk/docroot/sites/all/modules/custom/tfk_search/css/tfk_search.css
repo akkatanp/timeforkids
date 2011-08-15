@@ -212,6 +212,7 @@ ol.search-results li h3.title {
   margin: 0 0 5px 0;
 	color: #333;
 	font-size: 20px;
+	line-height: 18px;
 }
 
 ol.search-results li h3.title a:link,
@@ -232,6 +233,16 @@ li.search-result {
 	border-top: none;	
   padding: 10px;
 	margin: 0px;
+}
+
+body.page-search-site .search-results .result-date {
+	font-size: 10px;
+	color: #666;
+	line-height: 15px;
+}
+
+body.page-search-site .search-results .search-snippet-info {
+  padding: 0 0 0 0;
 }
 
 .row2 {
