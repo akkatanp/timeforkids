@@ -118,7 +118,7 @@ function _tfk_fav_del(){
     $flag->flag('unflag', $nid, $user->uid,TRUE);
   }
   
-  drupal_set_message('Your favorites have been deleted.');
+  drupal_set_message('Your favorites have been cleared.');
 
   print TFK_FAVS_AJAX_SUCCESS;
 }
