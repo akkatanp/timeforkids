@@ -72,12 +72,12 @@
  * This is for a custom login form that will be used by both the "user" page and the lightbox
  */
 function tfk_theme($existing, $type, $theme, $path) {
-  	$hooks = zen_theme($existing, $type, $theme, $path);
+	$hooks = zen_theme($existing, $type, $theme, $path);
  	$hooks['user_login'] = array(
         'template' => 'templates/tfk-user-login',
         'arguments' => array('form' => NULL)
-  );
-  return $hooks;
+    );
+  	return $hooks;
 }
 /**
  *	Customized TFK Pager
