@@ -219,11 +219,14 @@ div#block-system-main div.node-teacher-community-question.view-mode-full div.col
   margin-left: 10px;
   vertical-align: top;
   width: 100px;
-  padding-top: 15px;
 }
 
 div#block-system-main div.node-teacher-community-question.view-mode-full .even div.col1-wrapper {
 
+}
+
+div#block-system-main div.node-teacher-community-question.view-mode-full .comment {
+	padding-top: 13px;
 }
 
 div#block-system-main div.node-teacher-community-question.view-mode-full .even.comment {
@@ -232,13 +235,20 @@ div#block-system-main div.node-teacher-community-question.view-mode-full .even.c
 
 div#block-system-main div.node-teacher-community-question.view-mode-full .first {
   margin-top: 0;
-	padding-top: 0;
+}
+
+div#block-system-main div.node-teacher-community-question.view-mode-full .last.comment {
+  margin-bottom: 11px;
+}
+
+div.node-teacher-community-question.view-mode-full .col1 a img {
+	margin-bottom: 10px;
 }
 
 div#block-system-main div.node-teacher-community-question.view-mode-full div.col2-wrapper {
   border-left: 1px solid #CCCCCC;
   display: inline-block;
-  margin: 0 0 0 20px;
+  margin: 0 0 12px 20px;
   padding-left: 10px;
   vertical-align: top;
   width: 330px;
@@ -369,21 +379,21 @@ body.page-teacher-community-topic-list .view-board-members .view-header h3 {
 }
 
 #block-views-4dd757237991afc15893b55c57cc03ef .view-footer {
-	text-align: right;
+  text-align: right;
 }
 
 .views-field-field-member-photo {
-	float: left;
-	margin-right: 10px;
-	height: 90px;
+  float: left;
+  margin-right: 10px;
+  height: 90px;
 }
 
 #block-views-4dd757237991afc15893b55c57cc03ef div.view-teacher-board-nodeblock-view div.views-row {
-	border: 0;
-	margin: 0;
-	padding: 0;
-	min-height: inherit;
-        line-height: 15px;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  min-height: inherit;
+  line-height: 15px;
 }
 #block-views-4dd757237991afc15893b55c57cc03ef h3 {
 	margin: 15px 0 8px 0;
@@ -397,6 +407,7 @@ body.page-teacher-community-topic-list .view-board-members .view-header h3 {
   margin-bottom: 11px;
   padding: 5px 0 3px 10px;
   font: normal 12px "arial black", arial, sans-serif;
+  margin-top: 10px;
 }
 
 /* Misc */
