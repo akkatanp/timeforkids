@@ -1915,7 +1915,7 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 
 .tfk-extra-pdf {
 	font-weight: bold;
-	padding-left: 20px;
+	/*padding-left: 20px;*/
 	background: url(../images/pdf-icon.png) no-repeat;
 	line-height: 16px;
         margin-left:150px;
