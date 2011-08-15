@@ -67,6 +67,10 @@ tr.odd td {
 .view-homepage-news-block table td .views-field-field-lrg-rect-image img, .view-teacher-news-news-block table td .views-field-field-lrg-rect-image img, .view-kid-reporters-channel-news-block table td .views-field-field-lrg-rect-image img {
     position: relative;
     top: -1px;/*1 pixel off in ie7*/
+    border: 1px solid #CECECE;
+}
+.view-homepage-news-block table td .views-field-field-lrg-rect-image, .view-teacher-news-news-block table td .views-field-field-lrg-rect-image, .view-kid-reporters-channel-news-block table td .views-field-field-lrg-rect-image {
+    border: none;
 }
 /*photo-video landing page*/
 div#tfk-search-photos-video-featured div.g1 {
