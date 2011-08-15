@@ -59,16 +59,18 @@ $(document).ready(function() {
 			}).appendTo($(document.body));
 			
 			//clone form and add it to lightbox
-			var loginContainer = $('<div></div>').attr('id', 'login-container').appendTo(lightBox);
-			var loginForm = $('#block-tfk-helper-tfk-helper-login').clone(true).appendTo(loginContainer);
+			//var loginContainer = $('<div></div>').attr('id', 'login-container').appendTo(lightBox);
+			//var loginForm = $('#block-tfk-helper-tfk-helper-login').clone(true).appendTo(loginContainer);
+			//$('#lightbox #block-tfk-helper-tfk-helper-login').show();
 			
-			$('#lightbox #block-tfk-helper-tfk-helper-login').show();
+			var loginForm = $('#block-tfk-helper-tfk-helper-login').html();
+			var loginContainer = $('<div></div>').attr('id', 'login-container').html(loginForm).appendTo(lightBox);
 			
-			//var loginForm = $('#block-tfk-helper-tfk-helper-login').html();
-			//var loginContainer = $('<div></div>').attr('id', 'login-container').html(loginForm).appendTo(lightBox);
+			//change form id
+			$("#lightbox #user-login").removeAttr('id').attr('id','lightbox-login');
 			
 			//add jcryption
-			//$("#lightbox #user-login").jCryption();
+			$("#lightbox-login").jCryption();
 			
 			//attach close button
 			var loginHeader = $('#lightbox #login-header');
