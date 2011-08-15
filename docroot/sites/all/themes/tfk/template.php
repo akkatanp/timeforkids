@@ -67,16 +67,21 @@
  * @param $hook
  *   The name of the template being rendered ("html" in this case.)
  */
-/* -- Delete this line if you want to use this function
-function STARTERKIT_preprocess_html(&$variables, $hook) {
-  $variables['sample_variable'] = t('Lorem ipsum.');
-
-  // The body tag's classes are controlled by the $classes_array variable. To
-  // remove a class from $classes_array, use array_diff().
-  //$variables['classes_array'] = array_diff($variables['classes_array'], array('class-to-remove'));
+/**
+ * Implementation of hook_theme().
+ * This is for a custom login form that will be used by both the "user" page and the lightbox
+ */
+function tfk_theme($existing, $type, $theme, $path) {
+  	$hooks = zen_theme($existing, $type, $theme, $path);
+ 	$hooks['user_login'] = array(
+        'template' => 'templates/tfk-user-login',
+        'arguments' => array('form' => NULL)
+  );
+  return $hooks;
 }
-// */
-
+/**
+ *	Customized TFK Pager
+ */
 function tfk_pager($variables) {
   $tags = $variables['tags'];
   $element = $variables['element'];
