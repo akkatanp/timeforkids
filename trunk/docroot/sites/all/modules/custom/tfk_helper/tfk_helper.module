@@ -26,6 +26,10 @@ function tfk_helper_theme() {
     	'template' => 'regular-slideshow',
     	'variables' => array('images_data' => array(), 'related_content' => ''),
     ),
+    // Lightbox Login.
+    'tfk_login' => array(
+    	'template' => 'tfk-user-login'
+    ),
     // Suggestion Box.
     'suggestion_box' => array(
       'variables' => array(
@@ -108,6 +112,13 @@ function tfk_helper_block_info() {
     'cache' => DRUPAL_CACHE_GLOBAL,
   );
   
+  // TFK Helper Login.
+  $blocks['tfk_helper_login'] = array(
+    'info' => t('TFK Helper Login'),
+    'visibility' => BLOCK_VISIBILITY_LISTED,
+    'cache' => DRUPAL_CACHE_GLOBAL,
+  );
+  
   return $blocks;
 }
 
@@ -151,6 +162,11 @@ function tfk_helper_block_view($delta='') {
         $block['content'] = '<b>No valid images found</b>';
         drupal_set_message('The slideshow could not be rendered because there are no valid images associated to this node.', 'warning');
       }
+    break;
+    
+     // TFK Helper Login.
+    case 'tfk_helper_login':
+        $block['content'] = theme('tfk_login');
     break;
     
   }
