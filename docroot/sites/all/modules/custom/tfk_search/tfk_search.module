@@ -1821,6 +1821,9 @@ function tfk_search_preprocess_search_result(&$vars) {
          }
        }
 
+       print_r($vars['magazine_materials']);
+
+
        //adding PDF Quiz to materials - per tfks 399
 //       $mats = array();
 //       $materials = field_get_items('node',$node,'field_materials');
