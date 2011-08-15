@@ -337,8 +337,8 @@ li.tfk-search-result {
 
 ol#tfk-search-results-photos-video li.tfk-search-result .col2 h3.title a {
   color: #D71700;
-  font-size: 1.67em;
-  font-weight: bold;
+  font: bold 20px arial;
+  line-height: 20px;
 }
 
 
