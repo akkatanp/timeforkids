@@ -1810,13 +1810,11 @@ function tfk_search_preprocess_search_result(&$vars) {
        }
 
        $materials = field_get_items('node',$node,'field_materials');
-
-       print_r($materials);
-
-
+       
        if($materials) {
          foreach($materials as $key => $material_nid) {
            $material = node_load($material_nid['nid']);
+           print_r($material);
            
            if($material) {
 
