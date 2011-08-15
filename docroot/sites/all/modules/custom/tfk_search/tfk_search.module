@@ -1825,9 +1825,11 @@ function tfk_search_preprocess_search_result(&$vars) {
          }
        }
        
-       $vars['magazine_materials'] = array_merge($vars['magazine_materials'],$mats);
+       //$vars['magazine_materials'] = array_merge($vars['magazine_materials'],$mats);
+       echo 'XXXXXXXXXXXXXXXXXXXXX';
        print_r($vars['magazine_materials']);
-
+       print_R($mats);
+       echo 'YYYYYYYYYYYYYYYYYYYYYY';
        
 
 
