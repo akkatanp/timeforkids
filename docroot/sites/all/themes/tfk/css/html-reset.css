@@ -433,3 +433,7 @@ sub {
 
 sup {
 }
+
+.empty {
+	display: none;
+}
