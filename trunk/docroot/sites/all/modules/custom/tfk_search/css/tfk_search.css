@@ -244,6 +244,10 @@ li.search-result {
   min-height: 130px;
 }
 
+body.page-my-favorites .col1 {
+  min-height: 135px;
+}
+
 .col2 {
   display: inline-block;
   width: 360px;
