@@ -94,6 +94,10 @@ function tfk_favorites_feature_views_default_views() {
   $handler->display->display_options['fields']['field_skills']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_skills']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['field_skills']['type'] = 'taxonomy_term_reference_plain';
+  $handler->display->display_options['fields']['field_skills']['group_rows'] = 1;
+  $handler->display->display_options['fields']['field_skills']['delta_limit'] = '1';
+  $handler->display->display_options['fields']['field_skills']['delta_offset'] = '0';
+  $handler->display->display_options['fields']['field_skills']['delta_reversed'] = 1;
   $handler->display->display_options['fields']['field_skills']['field_api_classes'] = 0;
   /* Field: Fields: Grade Level */
   $handler->display->display_options['fields']['field_grade_level']['id'] = 'field_grade_level';
@@ -101,8 +105,8 @@ function tfk_favorites_feature_views_default_views() {
   $handler->display->display_options['fields']['field_grade_level']['field'] = 'field_grade_level';
   $handler->display->display_options['fields']['field_grade_level']['label'] = '';
   $handler->display->display_options['fields']['field_grade_level']['alter']['alter_text'] = 1;
-  $handler->display->display_options['fields']['field_grade_level']['alter']['text'] = '<span class="ctype">[field_skills]</span>
-<span class="ctype-suffix"> [field_grade_level]</span>';
+  $handler->display->display_options['fields']['field_grade_level']['alter']['text'] = '<span class="ctype">&nbsp;</span>
+<span class="ctype-suffix"> GRADE [field_grade_level]</span>';
   $handler->display->display_options['fields']['field_grade_level']['alter']['make_link'] = 0;
   $handler->display->display_options['fields']['field_grade_level']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_grade_level']['alter']['external'] = 0;
@@ -188,7 +192,7 @@ function tfk_favorites_feature_views_default_views() {
   $handler->display->display_options['fields']['field_worksheet_pdf']['label'] = '';
   $handler->display->display_options['fields']['field_worksheet_pdf']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_worksheet_pdf']['alter']['alter_text'] = 1;
-  $handler->display->display_options['fields']['field_worksheet_pdf']['alter']['text'] = 'Download this [field_skills]';
+  $handler->display->display_options['fields']['field_worksheet_pdf']['alter']['text'] = 'Download this Printable';
   $handler->display->display_options['fields']['field_worksheet_pdf']['alter']['make_link'] = 1;
   $handler->display->display_options['fields']['field_worksheet_pdf']['alter']['path'] = '[field_worksheet_pdf]';
   $handler->display->display_options['fields']['field_worksheet_pdf']['alter']['absolute'] = 0;
