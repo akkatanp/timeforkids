@@ -524,7 +524,11 @@ function tfk_photos_video_field_default_fields() {
         ),
       ),
       'module' => 'text',
-      'settings' => array(),
+      'settings' => array(
+        'max_length' => '',
+        'maxlength_body_js' => 0,
+        'maxlength_body_text' => 'Content limited to !limit characters, remaining: <strong>!remaining</strong>',
+      ),
       'translatable' => '1',
       'type' => 'text_with_summary',
     ),
@@ -1268,6 +1272,15 @@ function tfk_photos_video_field_default_fields() {
       'widget' => array(
         'module' => 'image',
         'settings' => array(
+          'insert' => 0,
+          'insert_class' => '',
+          'insert_default' => array(
+            0 => 'auto',
+          ),
+          'insert_styles' => array(
+            0 => 'auto',
+          ),
+          'insert_width' => '',
           'preview_image_style' => 'thumbnail',
           'progress_indicator' => 'throbber',
         ),

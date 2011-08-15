@@ -23,8 +23,10 @@ function tfk_photos_video_strongarm() {
   $strongarm->name = 'apachesolr_type_filter';
   $strongarm->value = array(
     'apachesolr_search' => array(
-      'im_36_field_themes' => 0,
       'im_10_field_article_category' => 0,
+      'im_36_field_themes' => 0,
+      'im_28_field_grade_level' => 0,
+      'im_35_field_skills' => 0,
     ),
   );
   $export['apachesolr_type_filter'] = $strongarm;
