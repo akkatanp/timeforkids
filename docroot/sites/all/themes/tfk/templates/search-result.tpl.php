@@ -106,6 +106,10 @@
         <?php endif; ?>
       </h3>
       
+      <?php if(isset($date)):?>
+        <div class="result-date"><?php print $date; ?></div>
+      <?php endif;?>
+      
       <?php if(!empty($node_link)):?>
         <div class="view-full-article"><?php print $node_link; ?></div>
       <?php endif;?>
