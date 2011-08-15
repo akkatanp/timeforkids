@@ -2199,11 +2199,13 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 	color: white;
 	font: bold 30px arial, sans-serif;
 	margin-bottom: 10px;
+	word-wrap: normal;
 }
 
 #location-container p {
 	color: white;
 	margin: 0;
+	word-wrap: normal;
 }
 
 #location-container #close {
