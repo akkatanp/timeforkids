@@ -4,15 +4,15 @@ var $ = jQuery;
 $(document).ready(function() {
 	//lightbox
 	$('#login-link').loginBox();
-	$('#login-link').click(function(){
+        if ($('.field-type-video').length > 0) {
             //Need to hide video if there is one present. This solution is preferable over wmode=transparent since changing wmode causes issues with the playback controls on quicktime videos
-            if ($('.field-type-video').length > 0) {
+            $('#login-link').click(function(){
                 $('.field-type-video').css('visibility','hidden');
-            }
-        });
-        $('#login-header .close-button').mousedown(function(){
-            $('.field-type-video').css('visibility','visible');
-        });
+            });
+            $('#block-block-20').delegate('a.close-button', 'mousedown', function() {
+                $('.field-type-video').css('visibility','visible');
+            });
+        }
 	//hide notification if it is there
 	$('#hide-notification').click(function(){
 		$.ajax({
