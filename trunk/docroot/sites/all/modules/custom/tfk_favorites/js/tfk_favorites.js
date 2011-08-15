@@ -47,11 +47,6 @@
               if(data == settings.tfk_favorites.success){
                 $('.throbber').hide();
 
-
-                alert(settings.tfk_favorites.ref);
-                
-
-
                 if(settings.tfk_favorites.path != 'my-favorites'){
                   location.href = settings.tfk_favorites.path;
                 }else{
