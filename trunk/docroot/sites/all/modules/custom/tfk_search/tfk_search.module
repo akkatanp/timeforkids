@@ -1855,7 +1855,7 @@ function tfk_search_preprocess_search_result(&$vars) {
                $vars['magazine_related'][$k]['title'] = $resource->title;
                $vars['magazine_related'][$k]['url'] = file_create_url($worksheet_file['uri']);
              }
-           } elseif($resource) {
+           } elseif($resource->type == 'pdf_quiz') {
              // @todo follow sergei's wish someday, save a kitten. Do the same we are doing for the materials.
              // a kitten dies everytime you node_load.
              // sergei: i want to get the title without doing an extra node_load
@@ -1863,10 +1863,23 @@ function tfk_search_preprocess_search_result(&$vars) {
              #$result = db_query($sql,array('nid'=>$rr_nid['nid']));
              #$link_title = $result->fetch();
              #if($link_title) {
+
+
                $vars['magazine_related'][$k]['title'] = $resource->title;
                $vars['magazine_related'][$k]['nid'] = $resource->nid;
-               $vars['magazine_related'][$k]['url'] = drupal_lookup_path('alias', 'node/'. $resource->nid);
+
+               $worksheet_file = field_get_items('node', $resource, 'field_pdf_file');
+               if($worksheet_file) {
+                 $worksheet_file = $worksheet_file[0];
+                 $vars['magazine_related'][$k]['url'] = file_create_url($worksheet_file['uri']);
+               }else{
+                 $vars['magazine_related'][$k]['url'] = drupal_lookup_path('alias', 'node/'. $resource->nid);
+               }
              #}
+           }else{
+             $vars['magazine_related'][$k]['title'] = $resource->title;
+             $vars['magazine_related'][$k]['nid'] = $resource->nid;
+             $vars['magazine_related'][$k]['url'] = drupal_lookup_path('alias', 'node/'. $resource->nid);
            }
 
          }
