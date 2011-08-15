@@ -1820,9 +1820,7 @@ function tfk_search_preprocess_search_result(&$vars) {
                $worksheet_file = $worksheet_file[0];
 
                print_r($worksheet_file);
-
-
-               $vars['magazine_materials'][] = l($vars['result']['fields'][TFK_SEARCH_WORKSHEET_PDF_TITLE][$key], file_create_url($worksheet_file['uri']));
+               $vars['magazine_materials'][] = l($material->title, file_create_url($worksheet_file['uri']));
              } 
            }
          }
