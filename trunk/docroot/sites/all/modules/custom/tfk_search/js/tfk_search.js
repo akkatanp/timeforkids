@@ -39,8 +39,10 @@
           }
           
           // Close facet block.
-          target.toggleClass('closed');
-		  target.next().next().toggle('fast');
+		  alert(target.parent());
+		  
+          //target.toggleClass('closed');
+		  //target.next().next().toggle('fast');
 
         });
       }
