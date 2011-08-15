@@ -150,6 +150,9 @@ function tfk_favorites_preprocess_views_view_fields(&$variables, $hook) {
       $variables['fields']['field_grade_level']->content = '
       <div class="field-content content-type"><span class="ctype">&nbsp;</span>
       <span class="ctype-suffix">GRADE '. $grade. '</span></div>';
+      
+      // Remove related article.
+      $variables['fields']['title']->content = preg_replace('/\<div class="view-full-article"\>.*?\<\/div\>/', '', $variables['fields']['title']->content);
     }
     
     // Slideshows and Videos.
