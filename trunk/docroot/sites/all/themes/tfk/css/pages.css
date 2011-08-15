@@ -1918,11 +1918,13 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 	padding-left: 20px;
 	background: url(../images/pdf-icon.png) no-repeat;
 	line-height: 16px;
+        margin-left:150px;
 }
 
 .tfk-extra-pdf a {
 	height: 16px;
 	line-height: 16px;
+        margin-left:10px;
 }
 
 /* TFK Store */
