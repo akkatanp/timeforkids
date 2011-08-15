@@ -927,6 +927,18 @@ function tfk_search_get_thumbnail($fid, $style) {
 }
 
 /**
+ * Preprocess core pager.
+ */
+function tfk_search_preprocess_pager(&$variables) {
+  
+  // Limit SERP pager items to three.
+  $SERPS = array(TFK_SEARCH_PHOTOSVIDEO_PATH, TFK_SEARCH_WORKSHEETS_PATH, TFK_SEARCH_SITESEARCH_PATH, TFK_SEARCH_MAGAZINE_PATH);
+  if(array_search(arg(0), $SERPS)) {
+    $variables['quantity'] = 3;
+  }
+}
+
+/**
  * Preprocessor for page.
  *
  * @param array $vars
