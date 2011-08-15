@@ -46,11 +46,13 @@ $(document).ready(function() {
 		var createLightBox = function() {
 			$('body').css('overflow', 'hidden');
 			
+			// Lightbox background.
 			var mask = $('<div></div>').attr('id', 'mask').css({
 				'height': $(window).height() + 'px',
 				'top': $(window).scrollTop() + 'px'
 			}).appendTo($(document.body));
 			
+			// Create lightbox element.
 			var lightBox = $('<div></div>').attr('id', 'lightbox').css({
 				'top': (($(window).height() / 2) - 185) + $(window).scrollTop() + 'px',
 				'left': (($(window).width() / 2) - 350) + 'px'
