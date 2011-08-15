@@ -60,6 +60,7 @@ $(document).ready(function() {
 			var loginContainer = $('<div></div>').attr('id', 'login-container').appendTo(lightBox);
 			var loginForm = $('#block-tfk-helper-tfk-helper-login').clone(true).appendTo(loginContainer);
 			
+			$('#lightbox #block-tfk-helper-tfk-helper-login').show();
 			
 			//var loginForm = $('#block-tfk-helper-tfk-helper-login').html();
 			//var loginContainer = $('<div></div>').attr('id', 'login-container').html(loginForm).appendTo(lightBox);
