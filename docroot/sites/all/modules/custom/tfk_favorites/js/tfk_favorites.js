@@ -48,19 +48,15 @@
                 $('.throbber').hide();
 
 
-                alert(ref);
+                alert(settings.tfk_favorites.ref);
                 
 
 
                 if(settings.tfk_favorites.path != 'my-favorites'){
                   location.href = settings.tfk_favorites.path;
                 }else{
-                  if(ref != 'my-favorites'){
-                    
                     $('.view-user-favorites').html('<div class="clearedwrapper">Your favorites have been cleared.<br/><div class="favgobackbtn"><a href="'+ settings.tfk_favorites.ref +'">Go Back</a></div>');
-                  }else{
-                    $('.view-user-favorites').html('<div class="clearedwrapper">Your favorites have been cleared.</div>');
-                  }
+                   // $('.view-user-favorites').html('<div class="clearedwrapper">Your favorites have been cleared.</div>');
                 }
                 
               }
