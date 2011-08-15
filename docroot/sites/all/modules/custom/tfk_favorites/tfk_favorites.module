@@ -63,9 +63,12 @@ function _tfk_favorites_links_block_content() {
   
       $favorites_module_path = drupal_get_path('module', 'tfk_favorites');
       $search_module_path = drupal_get_path('module', 'tfk_search');
-  
+      
+      $referrer = $_SERVER['HTTP_REFERER'];
+
+
       // Add JS settings and file. These are used for the clear all favorites Javascript.
-      drupal_add_js(array('tfk_favorites' => array('ajax_callback' => url('tfkfav/ajax/del'), 'ref' => $path, 'success' => TFK_FAVS_AJAX_SUCCESS)), 'setting');
+      drupal_add_js(array('tfk_favorites' => array('ajax_callback' => url('tfkfav/ajax/del'), 'ref' => $referrer, 'success' => TFK_FAVS_AJAX_SUCCESS)), 'setting');
       drupal_add_js($favorites_module_path. '/js/tfk_favorites.js', 'file');
   
       // View all my favorites link.
