@@ -136,14 +136,28 @@ function _tfk_fav_del(){
 function tfk_favorites_preprocess_views_view_fields(&$variables, $hook) {
   $view = $variables['view'];
   if($view->name == 'user_favorites' && $view->current_display == 'page') {
-    $test = null;
     $content_type = $variables['row']->_field_data['nid']['entity']->type;
-
+    
+    // Worksheets.
+    if($content_type == 'worksheet') {
+      if(isset($variables['row']->field_field_grade_level[0])) {
+        $grade = $variables['row']->field_field_grade_level[0];
+        $grade = render($grade['rendered']);
+      } else {
+        $grade = '&nbsp;';
+      }
+      
+      $variables['fields']['field_grade_level']->content = '
+      <div class="field-content content-type"><span class="ctype">&nbsp;</span>
+      <span class="ctype-suffix">GRADE '. $grade. '</span></div>';
+    }
+    
+    // Slideshows and Videos.
     if($content_type == 'slideshow' || $content_type == 'video') {
       // For Slideshows and Videos substitute grade w/ content type.
-      $variables['fields']['field_grade_level']->content = '
-      <div class="field-content content-type"><span class="ctype">'. ucfirst($content_type). '</span>
-      <span class="ctype-suffix">&nbsp;</span></div>';
+      $variables['fields']['field_grade_level']->content = '<div class="field-content content-type"><span class="ctype">'.
+      strtoupper($content_type).
+      '</span><span class="ctype-suffix">&nbsp;</span></div>';
 
       // Title.
       $title_link = l($variables['row']->node_title, 'node/'. $variables['row']->nid);
