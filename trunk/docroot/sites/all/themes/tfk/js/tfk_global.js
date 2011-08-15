@@ -4,7 +4,12 @@ var $ = jQuery;
 $(document).ready(function() {
 	//lightbox
 	$('#login-link').loginBox();
-	
+	$('#login-link').click(function(){
+            //Need to hide video if there is one present. This solution is preferable over wmode=transparent since changing wmode causes issues with the playback controls on quicktime videos
+            if ($('.field-type-video').length > 0) {
+                $('.field-type-video').attr('visibility','hidden');
+            }
+        });
 	//hide notification if it is there
 	$('#hide-notification').click(function(){
 		$.ajax({
