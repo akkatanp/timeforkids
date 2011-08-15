@@ -1152,7 +1152,7 @@ function tfk_search_preprocess_pager_top(&$vars) {
     } elseif($page_type == TFK_SEARCH_MAGAZINE_PATH) {
       $vars['pager_active_filter'] = 'Viewing: All Grades, All Years';
     } elseif($page_type == TFK_SEARCH_PHOTOSVIDEO_PATH) {
-      $vars['pager_active_filter'] = 'Viewing: All Categories, All Themes';
+      $vars['pager_active_filter'] = 'Viewing: All Categories';
     } else {
       $vars['pager_active_filter'] = 'Viewing: All Subjects, All Themes';
     }
@@ -1174,7 +1174,8 @@ function tfk_search_preprocess_pager_top(&$vars) {
       ),
       TFK_SEARCH_PHOTOSVIDEO_PATH => array(
       	'im_10_field_article_category' => array('active' => FALSE, 'default_text' => 'All Categories', 'filters' => array()),
-      	'im_36_field_themes' => array('active' => FALSE, 'default_text' => 'All Themes', 'filters' => array()),
+        // Removed per tfks394.
+      	//'im_36_field_themes' => array('active' => FALSE, 'default_text' => 'All Themes', 'filters' => array()),
       ),
       TFK_SEARCH_MAGAZINE_PATH => array(
       	'im_28_field_grade_level' => array('active' => FALSE, 'default_text' => 'All Grades', 'filters' => array()),
