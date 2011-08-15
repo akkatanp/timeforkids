@@ -46,11 +46,13 @@
             success: function(data) {
               if(data == settings.tfk_favorites.success){
                 $('.throbber').hide();
-
-                $('.view-user-favorites').html('favorites cleared');
-                alert(settings.tfk_favorites.ref);
-
-                //location.href = settings.tfk_favorites.ref;
+                
+                if(settings.tfk_favorites.ref != 'my-favorites'){
+                  location.href = settings.tfk_favorites.ref;
+                }else{
+                  $('.view-user-favorites').html('favorites cleared');
+                }
+                
               }
             }
           });
