@@ -105,3 +105,7 @@ h2.block-title /* Block title */ {
 
 #block-user-online /* "Who's online" block for a list of the online users */ {
 }
+
+#block-tfk-helper-tfk-helper-login {
+	display:none;
+}
