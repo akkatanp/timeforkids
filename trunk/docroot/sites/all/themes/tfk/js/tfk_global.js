@@ -56,8 +56,14 @@ $(document).ready(function() {
 				'left': (($(window).width() / 2) - 350) + 'px'
 			}).appendTo($(document.body));
 			
+			//clone form and add it to lightbox
 			var loginForm = $('#block-tfk-helper-tfk-helper-login').html();
 			var loginContainer = $('<div></div>').attr('id', 'login-container').html(loginForm).appendTo(lightBox);
+			
+			//add jcryption
+			$("#lightbox #user-login").jCryption();
+			
+			//attach close button
 			var loginHeader = $('#lightbox #login-header');
 			var closeButton = $('<a></a>').addClass('close-button').click(closeLightBox).appendTo(loginHeader);
 		};
