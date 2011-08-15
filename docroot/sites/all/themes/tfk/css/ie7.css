@@ -83,7 +83,7 @@ tr.odd td {
     border: 1px solid #CECECE;
 }
 .view-homepage-news-block table td .views-field-name, .view-teacher-news-news-block table td .views-field-field-article-category .field-content, .view-kid-reporters-channel-news-block table td .views-field-name {
-    z-index:10px;
+    z-index:100px;
 }
 /*photo-video landing page*/
 div#tfk-search-photos-video-featured div.g1 {
