@@ -72,6 +72,13 @@ tr.odd td {
 .view-homepage-news-block table td .views-field-field-lrg-rect-image, .view-teacher-news-news-block table td .views-field-field-lrg-rect-image, .view-kid-reporters-channel-news-block table td .views-field-field-lrg-rect-image {
     border: none;
 }
+.view-homepage-destination .views-field-field-image {
+    border:none;
+}
+.view-homepage-destination .views-field-field-image img {
+    position:relative;
+    top:-1px;
+}
 /*photo-video landing page*/
 div#tfk-search-photos-video-featured div.g1 {
     zoom:1;
