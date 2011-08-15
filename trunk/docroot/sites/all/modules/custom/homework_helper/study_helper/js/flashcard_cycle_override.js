@@ -6,13 +6,7 @@
 
 (function ($) {
   Drupal.behaviors.flashcardCycleCustom = {
-    var cycleSpeed = settings.flashcardCycle.speed;
 
-    $.fn.cycle.defaults.before = clearMarked;
-    $.fn.cycle.defaults.speed = cycleSpeed;
-    $.fn.cycle.defaults.fit = true;
-    $.fn.cycle.defaults.fx = settings.flashcardCycle.fx;
-    
     attach: function (context, settings) {
       
       $('.flashcard-cycle').each(
