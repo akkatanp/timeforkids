@@ -53,3 +53,10 @@ li.search-result .flag-favorites {
   padding-left: 18px;
   height: 20px;
 }
+
+body.page-my-favorites .search-result-download-link {
+  background: url("/sites/all/modules/custom/tfk_search/images/worksheet-icon.png") no-repeat scroll 0 0 transparent;
+  display: inline-block;
+  height: 20px;
+  padding-left: 18px;
+}
