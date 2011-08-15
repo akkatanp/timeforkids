@@ -46,33 +46,23 @@ $(document).ready(function() {
 		var createLightBox = function() {
 			$('body').css('overflow', 'hidden');
 			
-			// Lightbox background.
 			var mask = $('<div></div>').attr('id', 'mask').css({
 				'height': $(window).height() + 'px',
 				'top': $(window).scrollTop() + 'px'
 			}).appendTo($(document.body));
 			
-			// Create lightbox element.
 			var lightBox = $('<div></div>').attr('id', 'lightbox').css({
 				'top': (($(window).height() / 2) - 185) + $(window).scrollTop() + 'px',
 				'left': (($(window).width() / 2) - 350) + 'px'
 			}).appendTo($(document.body));
 			
-			//clone form and add it to lightbox
-			//var loginContainer = $('<div></div>').attr('id', 'login-container').appendTo(lightBox);
-			//var loginForm = $('#block-tfk-helper-tfk-helper-login').clone(true).appendTo(loginContainer);
-			//$('#lightbox #block-tfk-helper-tfk-helper-login').show();
+			var loginForm = $('#user-login').clone();
+			loginForm.removeAttr('id');
+			loginForm.attr('id', 'user_login');
+			loginForm.appendTo(lightBox);
 			
-			var loginForm = $('#block-tfk-helper-tfk-helper-login').html();
-			var loginContainer = $('<div></div>').attr('id', 'login-container').html(loginForm).appendTo(lightBox);
+			$("#user_login").jCryption();
 			
-			//change form id
-			$("#lightbox #user-login").removeAttr('id').attr('id','lightbox-login');
-			
-			//add jcryption
-			$("#lightbox-login").jCryption();
-			
-			//attach close button
 			var loginHeader = $('#lightbox #login-header');
 			var closeButton = $('<a></a>').addClass('close-button').click(closeLightBox).appendTo(loginHeader);
 		};
