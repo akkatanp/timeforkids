@@ -50,9 +50,17 @@ function tfk_favorites_feature_flag_default_flags() {
     'roles' => array(
       'flag' => array(
         0 => '2',
+        1 => '3',
+        2 => '4',
+        3 => '5',
+        4 => '6',
       ),
       'unflag' => array(
         0 => '2',
+        1 => '3',
+        2 => '4',
+        3 => '5',
+        4 => '6',
       ),
     ),
     'show_on_page' => 0,
