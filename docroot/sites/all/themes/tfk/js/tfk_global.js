@@ -9,7 +9,7 @@ $(document).ready(function() {
             $('#login-link').click(function(){
                 $('.field-type-video').css('visibility','hidden');
             });
-            $('#block-block-20').delegate('a.close-button', 'mousedown', function() {
+            $('#block-block-20').delegate('#login-header', 'mousedown', function() {
                 $('.field-type-video').css('visibility','visible');
             });
         }
