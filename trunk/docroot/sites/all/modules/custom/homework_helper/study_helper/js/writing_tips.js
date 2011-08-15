@@ -21,6 +21,12 @@
         $('#block-webform-client-block-306 h2.block-title').show("normal");
         $('#block-webform-client-block-306 .content').hide("normal");
       });
-    }
+      // Go to a specific writing tip via hash (integrates with search results).
+      if (location.hash != '') {
+        var nid = location.hash.replace("#", "");
+        $(".ui-accordion-content .nid-"+nid).parent().prev('.ui-accordion-header').click();
+        $.scrollTo(".ui-accordion-content .nid-"+nid);
+      }
+    } 
   }
 }(jQuery));
