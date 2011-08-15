@@ -397,15 +397,40 @@ function tfk_teachers_community_preprocess_comment(&$variables, $hook) {
       $variables['author'] = l($variables['comment']->name, $profile);
       
       // User profile pictures, only for board members.
-      if(!empty($variables['comment']->picture)) {
+      if(isset($variables['comment']->picture)) {
         $title = $variables['comment']->name;
-        $image = theme('image', array('path' => $variables['comment']->picture, 'title' => $title, 'alt' => $title));
-        $link_options = array('html' => TRUE, 'attributes' => array('title' => $title));
-        $variables['picture'] = l($image, $profile, $link_options);
+        
+        // If Drupal is populating the picture variable with the board member profile image.
+        if(is_string($variables['comment']->picture) && !empty($variables['comment']->picture)) {
+          $pic = $variables['comment']->picture;
+
+        // If Drupal is populating the picture variable with the default user profile image (i.e., from user/182/edit).
+        } elseif(is_object($variables['comment']->picture)) {
+          
+          $board_member = node_load($profile_nid);
+          $photo_field = field_get_items('node', $board_member, 'field_member_photo');
+          $pic = ($photo_field && isset($photo_field[0]['uri'])) ? image_style_url('tfk_square_small', $photo_field[0]['uri']) : FALSE;
+
+        } else {
+          $pic = FALSE;
+        }
+        
+        if($pic !== FALSE) {
+          $image = theme('image', array('path' => $pic, 'title' => $title, 'alt' => $title));
+          $link_options = array('html' => TRUE, 'attributes' => array('title' => $title));
+          $variables['picture'] = l($image, $profile, $link_options);
+        } else {
+          unset($_variables['picture']);
+        }
+
+      } else {
+        // Unset default profile picture for board member users that DO NOT have a board member node picture.
+        unset($_variables['picture']);
       }
     // Else, this is a non-board member user, or a board member without a profile.
     } else {
       $profile = $variables['author'] = $variables['comment']->name;
+      unset($_variables['picture']);
     }
     
     // Change submitted date format.
