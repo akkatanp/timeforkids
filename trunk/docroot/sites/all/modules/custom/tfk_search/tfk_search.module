@@ -1814,6 +1814,10 @@ function tfk_search_preprocess_search_result(&$vars) {
          foreach($materials as $key => $material_nid) {
            $material = node_load($material_nid['nid']);
            if($material) {
+
+             print_r($material);
+
+
              $worksheet_file = field_get_items('node', $material, 'field_worksheet_pdf');
              if($worksheet_file) {
                $worksheet_file = $worksheet_file[0];
