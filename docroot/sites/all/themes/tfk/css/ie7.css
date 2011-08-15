@@ -57,6 +57,17 @@ tr.odd td {
 .view-homepage-destination {
     margin-top:2px;
 }
+/*homepage main image*/
+#block-views-minisite-articles-block-2 .views-field-field-lrg-sq-image, #block-views-minisite-articles-block-3 .views-field-field-lrg-sq-image, .view-homepage-top-story .views-field-field-lrg-sq-image, .view-teacher-news-top-story .views-field-field-lrg-sq-image, .view-kid-reporters-channel-top-story .views-field-field-lrg-sq-image {
+    left: -10px;
+    position: relative;
+    top: -21px;/*1 pixel off in ie7*/
+}
+/*secondary images hp/news */
+.view-homepage-news-block table td .views-field-field-lrg-rect-image img, .view-teacher-news-news-block table td .views-field-field-lrg-rect-image img, .view-kid-reporters-channel-news-block table td .views-field-field-lrg-rect-image img {
+    position: relative;
+    top: -1px;/*1 pixel off in ie7*/
+}
 /*photo-video landing page*/
 div#tfk-search-photos-video-featured div.g1 {
     zoom:1;
