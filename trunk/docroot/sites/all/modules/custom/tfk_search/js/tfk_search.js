@@ -34,12 +34,14 @@
 
           if(!target.hasClass('closed')) { 
             target.css('background', 'url("/'+ settings.tfk_search.arrow_closed +'") no-repeat scroll 0 0 transparent');
-          } else {
+			target.parent().find('.content').slideDown('fast');
+		  } else {
             target.css('background', 'url("/'+ settings.tfk_search.arrow_open +'") no-repeat scroll 0 0 transparent');
-          }
+			target.parent().find('.content').slideUp('fast');
+		  }
           
           // Close facet block.
-		  alert(target.parent().find('.content'));
+		 // alert(target.parent().find('.content'));
 		  
           //target.toggleClass('closed');
 		  //target.next().next().toggle('fast');
