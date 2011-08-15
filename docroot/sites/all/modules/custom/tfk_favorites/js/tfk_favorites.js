@@ -46,7 +46,11 @@
             success: function(data) {
               if(data == settings.tfk_favorites.success){
                 $('.throbber').hide();
-                location.href = settings.tfk_favorites.ref;
+
+                $('.view-user-favorites').html('favorites cleared');
+                alert(settings.tfk_favorites.ref);
+
+                //location.href = settings.tfk_favorites.ref;
               }
             }
           });
