@@ -1813,6 +1813,7 @@ function tfk_search_preprocess_search_result(&$vars) {
        if($materials) {
          foreach($materials as $key => $material_nid) {
            $material = node_load($material_nid['nid']);
+           print_r($material);
            if($material) {
 
              print_r($material);
