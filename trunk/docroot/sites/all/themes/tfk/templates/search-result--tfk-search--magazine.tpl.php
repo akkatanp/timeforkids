@@ -113,7 +113,7 @@
       <?php if(isset($magazine_related) && count($magazine_related) > 0): ?>
         <h3>Related Resources:</h3>
         <?php foreach($magazine_related as $item):?>
-          <a href="<?php echo $item['url'];?>"><?php echo $item['title'];?></a><br/>
+          <a href="<?php echo $item['url'];?>"><?php echo $item['title'];?></a>
         <?php endforeach;?>
       <?php endif; ?>
     </div>
