@@ -531,8 +531,7 @@ function tfk_search_block_view($delta='') {
     
     // Site-wide search filter search.
     case 'tfk_search_sidebar_filter':
-      $output = '<h2>'. t("FILTER MY SEARCH BY"). '</h2>';
-      $output .= '<div>'. t('Search Term:'). '</div>';
+      $output = '<h2>'. t("SEARCH TERM:"). '</h2>';
       $form = drupal_get_form('search_block_form');
       
       // Modify submit button.
