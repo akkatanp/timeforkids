@@ -1816,10 +1816,13 @@ function tfk_search_preprocess_search_result(&$vars) {
            $material = node_load($material_nid['nid']);
            if($material->type == 'pdf_quiz') {
              $worksheet_file = field_get_items('node', $material, 'field_pdf_file');
+
+             print_r($worksheet_file);
+
              if($worksheet_file) {
                $worksheet_file = $worksheet_file[0];
                $vars['magazine_materials'][] = l($vars['result']['fields'][TFK_SEARCH_WORKSHEET_PDF_TITLE][$key], file_create_url($worksheet_file['uri']));
-             }
+             } 
            }
          }
        }
