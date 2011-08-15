@@ -56,7 +56,7 @@ $(document).ready(function() {
 				'left': (($(window).width() / 2) - 350) + 'px'
 			}).appendTo($(document.body));
 			
-			var loginForm = $('#login-container').html();
+			var loginForm = $('#block-tfk-helper-tfk-helper-login').html();
 			var loginContainer = $('<div></div>').attr('id', 'login-container').html(loginForm).appendTo(lightBox);
 			var loginHeader = $('#lightbox #login-header');
 			var closeButton = $('<a></a>').addClass('close-button').click(closeLightBox).appendTo(loginHeader);
