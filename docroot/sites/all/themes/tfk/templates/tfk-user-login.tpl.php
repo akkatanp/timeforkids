@@ -4,7 +4,7 @@ $form = array_shift($variables);
 <div class="logincontent" id="login-container" >
 	<div id="login-header">Log in, Register or subscribe</div><div id="login-form-container">
 		<?php 
-			if(isset($form['form_build_id'])) { >
+			if(isset($form['form_build_id'])) { 
 				print render($form['form_build_id']);
 			}	 
 		?>
