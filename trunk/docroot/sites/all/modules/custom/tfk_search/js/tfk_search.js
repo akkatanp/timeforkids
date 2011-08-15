@@ -39,7 +39,7 @@
           }
           
           // Close facet block.
-		  alert(target.parent());
+		  alert(target.parent().find('.content'));
 		  
           //target.toggleClass('closed');
 		  //target.next().next().toggle('fast');
