@@ -1,7 +1,13 @@
+<?php
+$form = array_shift($variables);
+?>
 <div class="logincontent" id="login-container" >
 	<div id="login-header">Log in, Register or subscribe</div><div id="login-form-container">
 		<form accept-charset="UTF-8" action="/user" id="user-login" method="post">
-			<input name="form_build_id" type="hidden" value="<?php print $form['form_build_id'];?>">
+			<input name="form_build_id" type="hidden" value="">
+			<?php if(isset($form['form_build_id'])): ?>
+				<?php print render($form['form_build_id']); ?>
+			<?php endif; ?>
 			<input name="form_id" value="user_login" type="hidden">
 			<h2>Already Registered for subscriber-only teacher content? Log in now!</h2>
 			<div class="form-item form-type-textfield form-item-name"><label for="edit-name">Email:</label>&nbsp;<input class="form-text required" id="edit-name" maxlength="60" name="name" value="" type="text"></div>
