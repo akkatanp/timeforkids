@@ -13,63 +13,6 @@ function tfk_photos_video_context_default_contexts() {
   $context = new stdClass;
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
-  $context->name = 'TFK Photos and Video';
-  $context->description = 'Left-rail facet placement for PV section.';
-  $context->tag = 'TFK Photos and Video';
-  $context->conditions = array(
-    'path' => array(
-      'values' => array(
-        'photos-video' => 'photos-video',
-      ),
-    ),
-  );
-  $context->reactions = array(
-    'block' => array(
-      'blocks' => array(
-        'tfk_search-tfk_search_photos_video_title' => array(
-          'module' => 'tfk_search',
-          'delta' => 'tfk_search_photos_video_title',
-          'region' => 'sidebar_first',
-          'weight' => '-10',
-        ),
-        'apachesolr_search-im_10_field_article_category' => array(
-          'module' => 'apachesolr_search',
-          'delta' => 'im_10_field_article_category',
-          'region' => 'sidebar_first',
-          'weight' => '-8',
-        ),
-        'apachesolr_search-im_36_field_themes' => array(
-          'module' => 'apachesolr_search',
-          'delta' => 'im_36_field_themes',
-          'region' => 'sidebar_first',
-          'weight' => '-7',
-        ),
-        'tfk_favorites-tfk_favorites_links' => array(
-          'module' => 'tfk_favorites',
-          'delta' => 'tfk_favorites_links',
-          'region' => 'sidebar_bottom',
-          'weight' => '-10',
-        ),
-        'tfk_search-tfk_search_photos_video_featured' => array(
-          'module' => 'tfk_search',
-          'delta' => 'tfk_search_photos_video_featured',
-          'region' => 'highlighted',
-          'weight' => '-10',
-        ),
-      ),
-    ),
-  );
-  $context->condition_mode = 0;
-
-  // Translatables
-  // Included for use with string extractors like potx.
-  t('Left-rail facet placement for PV section.');
-  t('TFK Photos and Video');
-  $export['TFK Photos and Video'] = $context;
-
-  $context = new stdClass;
-  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
-  $context->api_version = 3;
   $context->name = 'TFK Photos and Video - Slideshow';
   $context->description = 'Slideshow block for regular slideshow pages, Featured sidebar and back to all link.';
   $context->tag = 'TFK Photos and Video';
@@ -163,6 +106,57 @@ function tfk_photos_video_context_default_contexts() {
   // Included for use with string extractors like potx.
   t('TFK Photos and Video');
   $export['TFK Photos and Video - Video'] = $context;
+
+  $context = new stdClass;
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'tfk_photos_video';
+  $context->description = 'Context for Photos and Video main landing page.';
+  $context->tag = 'TFK Photos and Video';
+  $context->conditions = array(
+    'path' => array(
+      'values' => array(
+        'photos-video' => 'photos-video',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'tfk_search-tfk_search_photos_video_title' => array(
+          'module' => 'tfk_search',
+          'delta' => 'tfk_search_photos_video_title',
+          'region' => 'sidebar_first',
+          'weight' => '-10',
+        ),
+        'apachesolr_search-im_10_field_article_category' => array(
+          'module' => 'apachesolr_search',
+          'delta' => 'im_10_field_article_category',
+          'region' => 'sidebar_first',
+          'weight' => '-8',
+        ),
+        'tfk_favorites-tfk_favorites_links' => array(
+          'module' => 'tfk_favorites',
+          'delta' => 'tfk_favorites_links',
+          'region' => 'sidebar_bottom',
+          'weight' => '-10',
+        ),
+        'tfk_search-tfk_search_photos_video_featured' => array(
+          'module' => 'tfk_search',
+          'delta' => 'tfk_search_photos_video_featured',
+          'region' => 'highlighted',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Context for Photos and Video main landing page.');
+  t('TFK Photos and Video');
+  $export['tfk_photos_video'] = $context;
 
   return $export;
 }
