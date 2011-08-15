@@ -7,10 +7,7 @@ $(document).ready(function() {
         if ($('.field-type-video').length > 0) {
             //Need to hide video if there is one present. This solution is preferable over wmode=transparent since changing wmode causes issues with the playback controls on quicktime videos
             $('#login-link').click(function(){
-                $('.field-type-video').css('visibility','hidden');
-            });
-            $('#block-block-20').delegate('#login-header', 'mousedown', function() {
-                $('.field-type-video').css('visibility','visible');
+                $('.field-type-video').css('visibility','hidden');//Video doesn't come back if you hit close-button instead of logging in but that's acceptable
             });
         }
 	//hide notification if it is there
