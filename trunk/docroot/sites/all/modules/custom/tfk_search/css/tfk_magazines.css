@@ -171,7 +171,9 @@ ol#tfk-search-results-photos-video.search-results .search-result h3.title {
 }
 
 .search-result .related-content-wrap a {
+        display:block;
 	line-height: 200%;
+        width: 130px;
 }
 
 .page-tfk-magazine .search-result .related-content-wrap {
