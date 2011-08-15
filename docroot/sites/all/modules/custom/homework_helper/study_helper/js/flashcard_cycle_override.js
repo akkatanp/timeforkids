@@ -6,6 +6,13 @@
 
 (function ($) {
   Drupal.behaviors.flashcardCycleCustom = {
+    var cycleSpeed = settings.flashcardCycle.speed;
+
+    $.fn.cycle.defaults.before = clearMarked;
+    $.fn.cycle.defaults.speed = cycleSpeed;
+    $.fn.cycle.defaults.fit = true;
+    $.fn.cycle.defaults.fx = settings.flashcardCycle.fx;
+    
     attach: function (context, settings) {
       
       $('.flashcard-cycle').each(
@@ -15,6 +22,8 @@
             marked : 0,
             unmarked : 0
           }
+          var modeChecked = 'all';
+          var current = 1;
           var card = $(this).find('.flashcard-cycle-cards')
             .unbind('click')
             .click(
@@ -122,7 +131,7 @@
                     }
                   }
                   else {
-                    if ( card.hasClass('showing') ) {
+                    if (card.hasClass('showing')) {
                       card
                         .find('.flashcard-cycle-card .card-front').removeAttr('style').end()
                         .find('.flashcard-cycle-card .card-back').removeAttr('style').end();
@@ -148,6 +157,77 @@
                 }
               )
             .end()
+            .find('.flashcard-cycle-mark input')
+              .unbind('click')
+              .click(
+                function() {
+                  if ($(this).attr('checked')) {
+                    counts.marked++;
+                    counts.unmarked--;
+                  }
+                  else {
+                    counts.marked--;
+                    counts.unmarked++;
+                  }
+
+                  marked = $('.flashcard-cycle-mode input[value="marked"]');
+                  if (counts.marked > 0) {
+                    marked.removeAttr('disabled');
+                  }
+                  else if (!marked.attr('disabled')){
+                    marked.attr('disabled', 'disabled');
+                  }
+
+                  unmarked = $('.flashcard-cycle-mode input[value="unmarked"]');
+                  if (counts.unmarked == 0) {
+                    unmarked.attr('disabled', 'disabled');
+                  }
+                  else if (unmarked.attr('disabled')) {
+                    unmarked.removeAttr('disabled');
+                  }
+
+                  card
+                    .find('.flashcard-cycle-card:visible')
+                      .toggleClass('marked');
+                }
+              )
+            .end()
+
+            .find('.flashcard-cycle-mode input')
+              .each(
+                function() {
+                  if ($(this).attr('value') == 'marked') {
+                    $(this).attr('disabled', 'disabled');
+                  }
+                }
+              )
+              .unbind('click')
+              .click(
+                function() {
+                  value = $(this).attr('value');
+                  if (value != modeChecked) {
+                    modeChecked = value;
+                    current = cardNumber('restart', current, counts[modeChecked]);
+                    if (detached) {
+                      detached.appendTo(card);
+                      detached = null;
+                    }
+                    switch (value) {
+                      case 'marked':
+                        detached = $('.flashcard-cycle-card:not(.marked)').detach();
+                        break;
+                      case 'unmarked':
+                        detached = $('.flashcard-cycle-card.marked').detach();
+                        break;
+                    }
+                    card
+                      .cycle('destroy')
+                      .cycle()
+                      .cycle('pause');
+                  }
+                }
+              )
+            .end();
         }
       );
       
@@ -180,11 +260,11 @@
           $('.flip').click();
           return false;
         });
-        $(document).bind('keydown', 'left', function() {
+        $(document).bind('keydown', 'right', function() {
           $('.next').click();
           return false;
         });
-        $(document).bind('keydown', 'right', function() {
+        $(document).bind('keydown', 'left', function() {
           $('.prev').click();
           return false;
         });
