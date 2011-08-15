@@ -2133,6 +2133,10 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 }
 
 /* ATW Sightseeing */
+#location-iframe {
+	display: none;
+}
+
 #sightseeing-container {
 	border: solid 1px #cecece;
 	padding: 10px;
