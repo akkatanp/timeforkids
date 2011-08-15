@@ -203,14 +203,19 @@ function tfk_favorites_preprocess_views_view_fields(&$variables, $hook) {
 
       }
 
-      $body = field_get_items('node', $variables[row]->_field_data[nid][entity], 'body');
-      if($body != FALSE) {
-        $body = $body[0]['safe_value'];
+      $dirty_body = field_get_items('node', $variables['row']->_field_data['nid']['entity'], 'body');
+      if($dirty_body != FALSE) {
+        // The pattern "<p>&nbsp;</p>" causes a bug in truncate_utf8. Strip it out.
+        $clean_body = preg_replace("/\<p\>.?&nbsp;.?\<\/p\>/", '', $dirty_body[0]['safe_value']);
+        
+        // Get the first paragraph, and fall back to a character count if there is no paragraph.
+        $first_paragraph = array();
+        $matched = preg_match("/\<p\>.*?\<\/p\>/", $clean_body, $first_paragraph);
+        $body = ($matched) ? $first_paragraph[0] : truncate_utf8($clean_body, '160', TRUE, TRUE, 10);
       } else {
-        $body = '';
+        // Print a helpful (but hidden) "error" message if there is no teaser. Use Firebug inspect element to see it.
+        $body = '<!-- body not found or empty -->';
       }
-
-
 
       // The HTML below was defined within the title field of the View.
       // Worksheets use it, but Slideshows and Videos need to override it:
