@@ -10,6 +10,9 @@ $(document).ready(function() {
                 $('.field-type-video').css('visibility','hidden');
             }
         });
+        $('#login-header .close-button').mousedown(function(){
+            $('.field-type-video').css('visibility','visible');
+        });
 	//hide notification if it is there
 	$('#hide-notification').click(function(){
 		$.ajax({
