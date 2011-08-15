@@ -1825,11 +1825,8 @@ function tfk_search_preprocess_search_result(&$vars) {
          }
        }
 
-       print_r($mats);
-
-
        $vars['magazine_materials'] = array_merge((array)$vars['magazine_materials'],(array)$mats);
-
+       print_r($vars['magazine_materials']);
        /*
        $materials = field_get_items('node', $node, 'field_materials');
        if($materials) {
