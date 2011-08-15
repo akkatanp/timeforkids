@@ -47,7 +47,7 @@
               if(data == settings.tfk_favorites.success){
                 $('.throbber').hide();
                 
-                if(settings.tfk_favorites.ref != 'my-favorites'){
+                if(settings.tfk_favorites.path != 'my-favorites'){
                   location.href = settings.tfk_favorites.path;
                 }else{
                   $('.view-user-favorites').html('<div class="clearedwrapper">Your favorites have been cleared.<br/><div class="favgobackbtn"><a href="'+ settings.tfk_favorites.ref +'">Go Back</a></div>');
