@@ -170,8 +170,8 @@ function tfk_helper_block_view($delta='') {
       $form = drupal_get_form('user_login');
 
       // Hardcode some form elements so our Javascript works.
-      $form['#id'] = 'user-login';
-      $form['#form_id'] = 'user_login';
+      #$form['#id'] = 'user-login';
+      #$form['#form_id'] = 'user_login';
       
       $block['content'] = render($form);
     break;
