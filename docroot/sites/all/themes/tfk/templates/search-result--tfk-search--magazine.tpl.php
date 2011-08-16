@@ -74,12 +74,12 @@
 
   <?php print render($title_prefix); ?>
   <h3 class="title"<?php print $title_attributes; ?>>
-    <?php print $title; ?>
     <span style="text-align:right;float:right;color:white;">
-    <?php if($magazine_issue_grade_level):?>
-    Grade <?php print $magazine_issue_grade_level;?>
-    <?php endif;?>
+      <?php if($magazine_issue_grade_level):?>
+    		Grade <?php print $magazine_issue_grade_level;?>
+      <?php endif;?>
     </span>
+    <?php print $title; ?>
   </h3>
   
   <?php print render($title_suffix); ?>
