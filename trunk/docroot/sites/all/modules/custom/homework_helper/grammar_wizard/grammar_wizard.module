@@ -88,7 +88,6 @@ function grammar_wizard_multistep_form($form, &$form_state, $node) {
       ),
     ),
   );
-
   if ($step == $last_step) {
     $form['description'] = grammar_wizard_final_question_content($form_state);
   }
@@ -247,7 +246,7 @@ function grammar_wizard_final_question_content($form_state) {
  */
 function grammar_wizard_check_answer($form, &$form_state) {
   $current_step = 'step_' . $form_state['storage']['step'];
-  $correct_answer = check_plain($form[$current_step]['#correct_answer']);
+  $correct_answer = $form[$current_step]['#correct_answer'];
   $selected_answer = $form_state['input'][$current_step]['question'];
 
   // Perform validaton?
