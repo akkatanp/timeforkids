@@ -9,12 +9,12 @@ function tfk_user_profile_form_user_login_alter( &$form, $form_state){
   	$form['name']['#title'] = 'Email';
 }
 
-function tfk_user_profile_user_login(&$edit, $account) {
-  if(isset($account->field_grade_level['und'][0]['tid'])){
-  	$GLOBALS['destination'] =  $_SERVER["HTTP_REFERER"];
-    drupal_goto($_SERVER["HTTP_REFERER"]);
-   }
-}
+//function tfk_user_profile_user_login(&$edit, $account) {
+//  if(isset($account->field_grade_level['und'][0]['tid'])){
+//  	$GLOBALS['destination'] =  $_SERVER["HTTP_REFERER"];
+//    drupal_goto($_SERVER["HTTP_REFERER"]);
+//   }
+//}
 /**
  * Implementation of hook_user_load.
  */
