@@ -1,4 +1,21 @@
 <?php
+/**
+ * Path to user page
+ * @var string
+ */
+define('TFK_USER_PROFILE_USER_PATH', 'user');
+
+function tfk_user_profile_preprocess_page(&$variables) {
+	global $user;
+	$_variables = & $variables;
+    // Unset some blocks for anon users.
+  	if(!user_access('access protected content', $user)) {	
+		if(arg(0) == TFK_USER_PROFILE_USER_PATH) {
+			unset($_variables['page']['bottom']['tfk_helper_tfk_helper_login']);
+			drupal_add_js(array('encrypt_submissions' => array('encryptForms' => array('user_login' => 'user-login'))), 'setting');
+		}
+	}
+}
 
 /**
  * Implementation of form_alter().
