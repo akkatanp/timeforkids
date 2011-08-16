@@ -261,7 +261,7 @@ body.page-my-favorites .col1 {
 .col2 {
   float: left;
   width: 360px;
-  margin: left;
+  margin-left: 10px;
   clear: right;
 }
 
