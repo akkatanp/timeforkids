@@ -133,3 +133,10 @@ div#tfk-search-photos-video-featured div.featured-label {
   padding-left: 70px;
   min-height: 35px;
 }
+
+.flashcard-cycle-mark {
+  position: static;
+  margin-top: -350px;
+  margin-left: 20px;
+  width: 100%;
+}
