@@ -691,7 +691,7 @@
 	margin: 0;
 }
 
-a.favgobackbtn,
+.favgobackbtn a,
 #block-views-minisite-articles-block-6 .view-footer a,
 #block-views-random-kid-reporters-block .view-footer a,
 .node-type-kid-reporter .region-sidebar-first .view-footer a,
@@ -712,7 +712,7 @@ a.favgobackbtn,
 	box-shadow: 2px 2px 2px #999;
 }
 
-a.favgobackbtn:hover,
+.favgobackbtn a:hover,
 #block-views-minisite-articles-block-6 .view-footer a:hover,
 #block-views-random-kid-reporters-block .view-footer a:hover,
 .node-type-kid-reporter .region-sidebar-first .view-footer a:hover,
