@@ -116,3 +116,8 @@ div#tfk-search-photos-video-featured div.featured-label {
 	display: inline;
 	margin-left:5px;
 }
+
+/* Flashcards */
+.flashcard-numbering {
+  left: 160px;
+}
