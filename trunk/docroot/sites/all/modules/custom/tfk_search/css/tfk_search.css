@@ -259,7 +259,7 @@ body.page-my-favorites .col1 {
 }
 
 .col2 {
-  float: left;
+  display: inline-block;
   width: 360px;
   margin-left: 10px;
   clear: right;
@@ -333,7 +333,7 @@ ol#tfk-search-results-photos-video li.with-image img.thumbnail {
 }
 
 li.tfk-search-result {
-	clear: both;
+	/*clear: both;*/
 }
 
 ol#tfk-search-results-photos-video li.tfk-search-result .col2 h3.title a {
