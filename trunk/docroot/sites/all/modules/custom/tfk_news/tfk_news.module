@@ -501,8 +501,9 @@ function tfk_preprocess_html(&$variables) {
   global $user;
   $roles = $user->roles;
  
-  print_r($roles);
-
+  if(count($roles) == 2 && in_array('teacher', $roles)){
+    $variables['classes_array'][] = 'loggedteacher';
+  }
   if(count($rgs) == 2 && ($rgs[0] == 'node') && is_numeric($rgs[1])){
     $node = node_load($rgs[1]);
     if($node->type == 'article'){
