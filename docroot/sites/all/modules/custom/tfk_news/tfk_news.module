@@ -500,7 +500,7 @@ function tfk_preprocess_html(&$variables) {
 
   global $user;
   $roles = $user->roles;
-
+ 
   print_r($roles);
 
   if(count($rgs) == 2 && ($rgs[0] == 'node') && is_numeric($rgs[1])){
