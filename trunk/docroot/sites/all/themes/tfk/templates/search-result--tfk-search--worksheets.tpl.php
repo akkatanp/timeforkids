@@ -77,9 +77,9 @@
     	<?php if($tfk_search_cont_type_suffix): ?>
     		<span class="ctype"><?php print $tfk_search_cont_type; ?></span>
     		<span class="ctype-suffix"><?php print $tfk_search_cont_type_suffix; ?></span>
+    		<span>&nbsp;</span>
     	<?php else: ?>
     		<?php print $tfk_search_cont_type; ?>
-    		<span>&nbsp;</span>
     	<?php endif; ?>
     </div>
   <?php endif;?>
