@@ -262,6 +262,7 @@ body.page-my-favorites .col1 {
 .col2 {
   float: left;
   width: 360px;
+  clear: right;
 }
 
 .region-highlighted .first.block-tfk-search {
