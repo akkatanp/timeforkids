@@ -712,6 +712,10 @@
 	box-shadow: 2px 2px 2px #999;
 }
 
+.favgobackbtn {
+	margin-top: 10px;
+}
+
 .favgobackbtn a {
 	float: none;
 }
