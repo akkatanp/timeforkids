@@ -191,6 +191,7 @@ t('Home'); ?>" rel="home"><span><?php print $site_name; ?></span></a>
         //$block = module_invoke('block', 'block_view', 'tfk_login_form');
         //print render($block);
         ?>
+        <form action="/user" method="post" id="user-login" accept-charset="UTF-8">
      	<div class="logincontent" id="login-container" >
 			<div id="login-header">Log in, Register or subscribe</div><div id="login-form-container">				
 				<input name="form_id" value="user_login" type="hidden">
@@ -210,6 +211,7 @@ t('Home'); ?>" rel="home"><span><?php print $site_name; ?></span></a>
 				</div>
 			<div class="clearfix" id="login-footer"><a href="https://secure.customersvc.com/servlet/Show?WESPAGE=am/tablet/tk/tk_web_login.jsp&MSDDMOFF=AONF&MSDTRACK=TKSO">Not yet registered?</a> <a href="https://subscription.timeforkids.com/storefront/subscribe-to-time-for-kids/site/tk-digital0711.html?link=1005016">Want to subscribe?</a></div>
 		</div>
+		</form>
       <!--login end -->
 	  <?php endif;?>
 
