@@ -125,3 +125,11 @@ div#tfk-search-photos-video-featured div.featured-label {
 .js .flashcard-cycle-pager {
   margin-left: 0;
 }
+
+.view-flashcard-landing-page.view-id-flashcard_landing_page .ui-accordion-content .field-content, .view-flashcard-landing-page.view-id-flashcard_landing_page.view-display-id-page_2 .field-content {
+  background-image: url("../images/card_icon.png");
+  background-repeat: no-repeat;
+  background-position: top left;
+  padding-left: 70px;
+  min-height: 35px;
+}
