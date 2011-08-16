@@ -121,3 +121,7 @@ div#tfk-search-photos-video-featured div.featured-label {
 .flashcard-numbering {
   left: 160px;
 }
+
+.js .flashcard-cycle-pager {
+  margin-left: 0;
+}
