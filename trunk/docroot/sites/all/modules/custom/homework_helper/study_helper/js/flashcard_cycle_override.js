@@ -8,7 +8,7 @@
   Drupal.behaviors.flashcardCycleCustom = {
 
     attach: function (context, settings) {
-      
+      var cycleSpeed = settings.flashcardCycle.speed;      
       $('.flashcard-cycle').each(
         function() {
           var counts = {
@@ -16,6 +16,7 @@
             marked : 0,
             unmarked : 0
           }
+          var detached;
           var modeChecked = 'all';
           var current = 1;
           var card = $(this).find('.flashcard-cycle-cards')
@@ -100,7 +101,21 @@
                 }
               )
             .end()
-            
+            .find('.shuffle')
+              .unbind('click')
+              .click(
+                function() {
+                  card
+                    .removeClass('showing')
+                    .find('ul.answer')
+                      .hide(cycleSpeed)
+                    .end()
+                    .cycle({random: true})
+                    .cycle('pause');
+                    current = cardNumber('restart', current, counts[modeChecked]);
+                }
+              )
+            .end() 
             .find('.next, .prev')
               .unbind('click')
               .click(
