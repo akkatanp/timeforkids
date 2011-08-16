@@ -712,6 +712,10 @@
 	box-shadow: 2px 2px 2px #999;
 }
 
+.favgobackbtn a {
+	float: none;
+}
+
 .favgobackbtn a:hover,
 #block-views-minisite-articles-block-6 .view-footer a:hover,
 #block-views-random-kid-reporters-block .view-footer a:hover,
