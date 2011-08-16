@@ -1104,7 +1104,8 @@
 }
 
 /* Footer Nav */
-.front .region-footer {
+.front.not-logged-in .region-footer,
+.front.loggedteacher .region-footer {
     position:relative;
     top:-222px;
 }
