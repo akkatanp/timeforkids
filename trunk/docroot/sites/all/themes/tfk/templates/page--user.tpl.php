@@ -212,11 +212,6 @@ t('Home'); ?>" rel="home"><span><?php print $site_name; ?></span></a>
 			<div class="clearfix" id="login-footer"><a href="https://secure.customersvc.com/servlet/Show?WESPAGE=am/tablet/tk/tk_web_login.jsp&MSDDMOFF=AONF&MSDTRACK=TKSO">Not yet registered?</a> <a href="https://subscription.timeforkids.com/storefront/subscribe-to-time-for-kids/site/tk-digital0711.html?link=1005016">Want to subscribe?</a></div>
 		</div>
 		</form>
-		<script type="text/javascript">
-		<!--
-		   $("#user_login").jCryption();
-		 // -->
-		</script>
       <!--login end -->
 	  <?php endif;?>
 
