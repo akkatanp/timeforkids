@@ -659,7 +659,7 @@ ul.links li {
 .not-logged-in .view-homepage-top-story {
 	position: relative;
 	width: 478px;
-	height: 258px;
+	height: 268px;
 	border: solid 6px #d71700;
 	padding: 20px 10px 10px 10px;
 	margin-bottom: 10px;
@@ -712,7 +712,7 @@ ul.links li {
 	position: absolute;
 	top: 272px;
 	left: 0px;
-	height: 10px;
+	height: 20px;
 	width: 270px;
 	text-align: right;
 	font: normal 9px arial, sans-serif;
