@@ -251,7 +251,6 @@ body.page-search-site .search-results .search-snippet-info {
 
 .col1 {
   float: left;
-  margin: 0 10px 0 0;
   min-height: 130px;
 }
 
@@ -262,6 +261,7 @@ body.page-my-favorites .col1 {
 .col2 {
   float: left;
   width: 360px;
+  margin: left;
   clear: right;
 }
 
