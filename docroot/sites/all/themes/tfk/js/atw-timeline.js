@@ -1,8 +1,10 @@
+var $ = jQuery;
+
+$(document).ready(function() {
+	$('#event-container').timeline();
+});
+
 (function($) {
-	$(document).ready(function() {
-		$('#event-container').timeline();
-	});
-	
 	$.fn.timeline = function() {
 		var events = this.children();
 		events = events.not('.clearfix');
@@ -105,14 +107,13 @@
 			for (i=0;i<numEvents;i++) {
 				var node = $('<div></div>').attr('id', 'event-node-' + i).addClass('event-node').appendTo(inner);
 				if (i == 0) {
-					$('#event-' + i).css('visibility', 'visible').show();
 					node.addClass('active');
 					year.text($('#event-0').find('.event-text h3').text());
 					linePos = node.position().left + (node.width() / 2) + 16;
 					topline.css('left', linePos + 'px');
 					bottomline.css('left', linePos + 'px');
 				} else {
-					$('#event-' + i).css('visibility', 'visible').hide();
+					$('#event-' + i).hide();
 				}
 			}
 			
@@ -126,4 +127,4 @@
 			next.click(nextEvent);
 		}
 	};
-})(jQuery);
+})($);
