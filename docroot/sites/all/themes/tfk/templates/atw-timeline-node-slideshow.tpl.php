@@ -14,7 +14,7 @@
 		<?php $i = 0; ?>
 		<?php foreach($images_data as $image):?>
 		
-		<div class="event <?php print $image['image_shape'] ?>" id="event-<?php print $i ?>" style="visibility: hidden;"<? //php if ($i != 0) print ' style="visibility: hidden;"'; endif ?>>
+		<div class="event <?php print $image['image_shape'] ?>" id="event-<?php print $i ?>"<?//php if ($i != 0) echo ' style="display: none;"'; ?>>
 		
 			<div class="event-image">
 				<?php $imgStr = substr($image['image_path'], -6); ?>
@@ -23,6 +23,7 @@
 				<?php if(isset($image['image_credit'])):?><div class="event-credit"><?php print $image['image_credit'];?></div><?php endif;?>
 				<?php endif; ?>
 			</div>
+
 			
 			<div class="event-text">
 				<h3><?php print $image['event_title'] ?></h3>
