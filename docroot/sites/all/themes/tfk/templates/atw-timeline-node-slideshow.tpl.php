@@ -14,7 +14,7 @@
 		<?php $i = 0; ?>
 		<?php foreach($images_data as $image):?>
 		
-		<div class="event <?php print $image['image_shape'] ?>" id="event-<?php print $i ?>"<? php if ($i != 0) echo ' style="visibility: hidden;"'; ?>>
+		<div class="event <?php print $image['image_shape'] ?>" id="event-<?php print $i ?>"<? php if ($i != 0) print ' style="visibility: hidden;"'; endif ?>>
 		
 			<div class="event-image">
 				<?php $imgStr = substr($image['image_path'], -6); ?>
