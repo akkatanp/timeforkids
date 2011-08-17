@@ -105,14 +105,14 @@
 			for (i=0;i<numEvents;i++) {
 				var node = $('<div></div>').attr('id', 'event-node-' + i).addClass('event-node').appendTo(inner);
 				if (i == 0) {
-					$('#event-' + i).visibility('visible').show();
+					$('#event-' + i).css('visibility', 'visible').show();
 					node.addClass('active');
 					year.text($('#event-0').find('.event-text h3').text());
 					linePos = node.position().left + (node.width() / 2) + 16;
 					topline.css('left', linePos + 'px');
 					bottomline.css('left', linePos + 'px');
 				} else {
-					$('#event-' + i).visibility('visible').hide();
+					$('#event-' + i).css('visibility', 'visible').hide();
 				}
 			}
 			
