@@ -223,7 +223,7 @@ function tfk_lucie_check_user($email, &$form_state){
   		break;
   	case 404:
   		if (isset($dataResponse['userLockedOut']) && $dataResponse['userLockedOut']) {
-  			$form_state['lucie_error'] = 'user_locked';
+  			//$form_state['lucie_error'] = 'user_locked';
   		}
   		break;
   }
