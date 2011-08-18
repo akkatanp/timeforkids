@@ -36,9 +36,8 @@ div#tfk-search-photos-video-featured div.featured-label {
   padding: 3px 2px;
   margin: 8px 0 6px 0;
   text-transform: uppercase;
-	width: 105px;
-	text-align: center;
 	font: normal 12px "arial black", arial, sans-serif;*/
+	word-wrap: normal;
 }
 
 div#tfk-search-photos-video-featured .featured-item {
