@@ -70,6 +70,8 @@ function tfk_user_login_final_validate($form, &$form_state) {
 		// log in and out more than once in an hour.
 		flood_clear_event('failed_login_attempt_user', $form_state['flood_control_user_identifier']);
 	}
+	// unset form_state var
+	unset($form_state['lucie_error']);
 }
 /**
  * Check to see if this user has a record in the users_lucie_account table.
