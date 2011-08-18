@@ -125,10 +125,45 @@ function tfk_news_block_view($delta='') {
       $block['subject'] = t('Block with minisite related articles');
       $block['content'] = _tfk_news_minisite_related_articles();
       break;
+  
+    case 'tfk-news-minisite-more':
+      $block['subject'] = t('Block with more minisites for article node view');
+      $block['content'] = _tfk_news_minisite_more();
+      break;
     
   }
   
   return $block;
+}
+
+
+function _tfk_news_minisite_more(){
+    $rgs = arg();
+    if(count($rgs) == 2 && ($rgs[0] == 'node') && is_numeric($rgs[1])){
+        $node = node_load($rgs[1]);
+        if($node->type == 'article'){
+            //lets get the parent minisite  
+            $result = db_query('SELECT DISTINCT entity_id from field_data_field_articles fa where fa.entity_type = :type and fa.bundle = :bundle and fa.field_articles_nid = :nid',array('type'=> 'node','bundle'=>'minisite','nid'=>$node->nid));
+            $record = $result->fetch();
+            if($record){
+                $parent_minisite_nid = $record->entity_id;
+                
+                $min_res = db_query('SELECT DISTINCT node.nid AS nid, node.title AS node_title, :image_entity_type AS field_data_field_minisite_thumbnail_image_node_entity_type, RAND() AS random_field
+                                    FROM 
+                                    {node} node
+                                    WHERE (( (node.status = :status) AND (node.type IN  (:type)) AND (node.nid != :nid OR node.nid IS NULL) ))
+                                    ORDER BY random_field ASC
+                                    LIMIT 3 OFFSET 0',array('image_entity_type' =>'node','status' => 1,'type' => 'minisite','nid' => $parent_minisite_nid));
+                
+                
+                $minisites = array();
+                foreach ($min_res as $i=> $record) {
+                    print_R($record);
+                }
+                
+            }
+        }
+    }
 }
 
 
