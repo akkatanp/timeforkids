@@ -29,17 +29,6 @@ $user_roles = $user->roles;
 if(count($user_roles) == 1 && in_array('anonymous user',$user_roles)){
   $is_anon = 1;
 }
-
-
-$counter = 0;
-
-
-$tmp_arr = $fields;
-unset($tmp_arr['field_mini_lessons']);
-unset($tmp_arr['field_related_articles']);
-unset($tmp_arr['field_lrg_rect_image']);
-$total_count = count($tmp_arr);
-
 ?>
 
 
@@ -58,7 +47,7 @@ $total_count = count($tmp_arr);
     <?php endforeach; ?>
 
 
-!!!
+<div class="rightcol">
 <?php foreach ($fields as $id => $field): ?>
 
     <?php if($id != 'field_mini_lessons' && $id != 'field_related_articles' && $id !='field_lrg_rect_image'):?>
@@ -87,7 +76,4 @@ $total_count = count($tmp_arr);
       </div>
   <?php endif;?>
 <?php endif;?>
-
-***
-
-
+</div>
