@@ -152,10 +152,11 @@ function _tfk_news_minisite_more(){
                 $parent_minisite_nid = $record->entity_id;
                 
                 $min_res = db_query('SELECT DISTINCT node.nid AS nid, node.title AS node_title, :image_entity_type AS field_data_field_minisite_thumbnail_image_node_entity_type, RAND() AS random_field,
-                                    ti.field_minisite_thumbnail_image_fid
+                                    ti.field_minisite_thumbnail_image_fid, fm.filename
                                     FROM 
                                     {node} node
                                     left join field_data_field_minisite_thumbnail_image ti on node.nid = ti.entity_id
+                                    left join file_managed fm on ti.field_minisite_thumbnail_image_fid = fm.fid
                                     WHERE (( (node.status = :status) AND (node.type IN  (:type)) AND (node.nid != :nid OR node.nid IS NULL) ))
                                     ORDER BY random_field ASC
                                     LIMIT 3 OFFSET 0',array('image_entity_type' =>'node','status' => 1,'type' => 'minisite','nid' => $parent_minisite_nid));
@@ -163,9 +164,14 @@ function _tfk_news_minisite_more(){
                 
                 $minisites = array();
                 foreach ($min_res as $i=> $record) {
-                    print_R($record);
+                    $minisites[$i]['title'] = $record->node_title;
+                    $minisites[$i]['nid'] = $record->nid;
+                    if($record->filename){
+                      $minisites[$i]['thumb_path'] = file_create_url(file_build_uri(basename($record->filename)));
+                      $minisites[$i]['thumb_path'] =  image_style_url('tfk_square_small', file_build_uri(basename($record->filename)));
+                    }
                 }
-                
+                print_R($minisites);
             }
         }
     }
