@@ -10,4 +10,6 @@
             
         </div>
     <?php endforeach;?>
+<br />
+<a href="/mini-sites">See More Mini-Sites</a>
 <?php endif; ?>
