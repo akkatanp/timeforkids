@@ -162,8 +162,6 @@ function _tfk_news_minisite_related_articles(){
                     $articles[$i]['minisite_title']= $record->title;
                 }
                 
-                print_r($articles);
-                
                 if(!empty($articles)){
                     $list = array();
                     $list['articles'] = $articles;
