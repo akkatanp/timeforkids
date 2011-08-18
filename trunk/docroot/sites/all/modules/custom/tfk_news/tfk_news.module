@@ -167,11 +167,17 @@ function _tfk_news_minisite_more(){
                     $minisites[$i]['title'] = $record->node_title;
                     $minisites[$i]['nid'] = $record->nid;
                     if($record->filename){
-                      $minisites[$i]['thumb_path'] = file_create_url(file_build_uri(basename($record->filename)));
+                      //$minisites[$i]['thumb_path'] = file_create_url(file_build_uri(basename($record->filename)));
                       $minisites[$i]['thumb_path'] =  image_style_url('tfk_square_small', file_build_uri(basename($record->filename)));
                     }
                 }
-                print_R($minisites);
+                
+                if(!empty($minisites)){
+                    $list = array();
+                    $list['minisites'] = $articles;
+                    return theme('tfk_news_minisite_more',$list);
+                }
+                
             }
         }
     }
@@ -387,6 +393,10 @@ function tfk_news_theme() {
     ),
     'tfk_news_minisite_related_articles'=> array(
       'template' => 'tfk-news-minisite-related-articles',
+      'variables' => array('list' => NULL),
+    ),
+    'tfk_news_minisite_more'=> array(
+      'template' => 'tfk-news-minisite-more',
       'variables' => array('list' => NULL),
     ),
   );
