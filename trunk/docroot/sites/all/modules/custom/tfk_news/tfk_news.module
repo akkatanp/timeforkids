@@ -159,7 +159,7 @@ function _tfk_news_minisite_related_articles(){
                     $articles[$i]['title'] = $record->node_field_data_field_articles_title;
                     $articles[$i]['nid'] = $record->node_field_data_field_articles_nid;
                     $articles[$i]['minisite_nid'] = $record->nid;
-                    $articles[$i]['minisite_title']= $record->title;
+                    $articles[$i]['minisite_title']= $record->node_title;
                 }
                 
                 if(!empty($articles)){
