@@ -174,7 +174,7 @@ function _tfk_news_minisite_more(){
                 
                 if(!empty($minisites)){
                     $list = array();
-                    $list['minisites'] = $articles;
+                    $list['minisites'] = $minisites;
                     return theme('tfk_news_minisite_more',$list);
                 }
                 
