@@ -1653,6 +1653,7 @@ ul.links li {
 .view-news-archive .views-row .rightcol {
 	display: inline-block;
 	width: 360px;
+	min-height: 72px;
 }
 
 .view-news-archive .views-field-title a {
