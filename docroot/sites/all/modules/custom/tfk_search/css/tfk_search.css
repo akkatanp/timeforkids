@@ -345,7 +345,7 @@ ol#tfk-search-results-photos-video li.search-result {
 	padding-bottom: 16px;
 }
 
-ol#tfk-search-results-photos-video li.with-image img.thumbnail {
+#tfk-search-results-photos-video img.thumbnail {
 	border: solid 1px #cecece;
   /*float: left;
   margin-right: 7px;*/
