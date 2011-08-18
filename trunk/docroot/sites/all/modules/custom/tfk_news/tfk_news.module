@@ -145,7 +145,9 @@ function _tfk_news_minisite_related_articles(){
             if($record){
                 $record = $result->fetch();
                 $parent_minisite_nid = $record->entity_id;
-
+                
+                echo $parent_minisite_nid;
+                
                 //now lets get all other articles under that minisite
                 $art_res = db_query('SELECT DISTINCT node.title AS node_title, node_field_data_field_articles.title AS node_field_data_field_articles_title, node_field_data_field_articles.nid AS node_field_data_field_articles_nid, node.created AS node_created, node.nid AS nid
                 FROM 
@@ -164,7 +166,7 @@ function _tfk_news_minisite_related_articles(){
         }
     }
 
-    return '*';
+    return '.';
 }
 
 
