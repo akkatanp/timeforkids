@@ -273,6 +273,9 @@ ul.links li {
     height:100px;
     line-height:15px;
 }
+.view-board-members .view-content table td.empty {
+	display: none;
+}
 .view-board-members .view-content table {
     border-collapse: collapse;
 }
