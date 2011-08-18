@@ -91,7 +91,7 @@ function tfk_news_block_info() {
   $blocks['tfk-news-homepage-mini-lessons'] = array(
     'info' => t('Block with proper mini lessons for homepage')
   );
-  $blocks['tfk-news-minisite-related-articles'] = array(
+  $blocks['tfk-news-minisite-articles'] = array(
     'info' => t('Block with minisite related articles')
   );
   
@@ -121,7 +121,7 @@ function tfk_news_block_view($delta='') {
       $block['subject'] = t('Block with proper mini lessons for homepage');
       $block['content'] = _tfk_news_homepage_mini_lessons();
       break;
-    case 'tfk-news-minisite-related-articles':
+    case 'tfk-news-minisite-articles':
       $block['subject'] = t('Block with minisite related articles');
       $block['content'] = _tfk_news_minisite_related_articles();
       break;
@@ -161,6 +161,9 @@ function _tfk_news_minisite_related_articles(){
                     $articles[$i]['minisite_nid'] = $record->nid;
                     $articles[$i]['minisite_title']= $record->title;
                 }
+                
+                print_r($articles);
+                
                 if(!empty($articles)){
                     $list = array();
                     $list['articles'] = $articles;
