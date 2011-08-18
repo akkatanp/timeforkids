@@ -149,7 +149,7 @@ function _tfk_news_minisite_related_articles(){
 //  }
     
     
-  return '.';
+  return '!';
 }
 
 
