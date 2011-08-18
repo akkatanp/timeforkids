@@ -1,10 +1,8 @@
-var $ = jQuery;
-
-$(document).ready(function() {
-	$('#event-container').timeline();
-});
-
 (function($) {
+	$(document).ready(function() {
+		$('#event-container').timeline();
+	});
+	
 	$.fn.timeline = function() {
 		var events = this.children();
 		events = events.not('.clearfix');
@@ -128,4 +126,4 @@ $(document).ready(function() {
 			next.click(nextEvent);
 		}
 	};
-})($);
+})(jQuery);
