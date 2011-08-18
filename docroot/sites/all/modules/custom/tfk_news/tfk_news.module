@@ -156,7 +156,15 @@ function _tfk_news_minisite_related_articles(){
                 
                 $articles = array();
                 foreach ($art_res as $i=> $record) {
-                    
+                    $articles[$i]['title'] = $record->node_field_data_field_articles_title;
+                    $articles[$i]['nid'] = $record->node_field_data_field_articles_nid;
+                    $articles[$i]['minisite_nid'] = $record->nid;
+                    $articles[$i]['minisite_title']= $record->title;
+                }
+                if(!empty($articles)){
+                    $list = array();
+                    $list['articles'] = $articles;
+                    return theme('tfk_news_minisite_related_articles',$list);
                 }
 
             }
@@ -164,7 +172,7 @@ function _tfk_news_minisite_related_articles(){
         }
     }
 
-    return '.';
+    //return '';
 }
 
 
@@ -330,7 +338,10 @@ function tfk_news_theme() {
       'template' => 'tfk-news-issues-page',
       'variables' => array('list' => NULL),
     ),
-    
+    'tfk_news_minisite_related_articles'=> array(
+      'template' => 'tfk-news-minisite-related-articles',
+      'variables' => array('list' => NULL),
+    ),
   );
 }
 
