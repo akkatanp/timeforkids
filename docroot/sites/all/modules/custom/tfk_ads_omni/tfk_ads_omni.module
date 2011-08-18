@@ -233,7 +233,14 @@ function tfk_ads_omni_channel_override($channel_name) {
         case "destination":
             $override_channel = "around the world";
         case "user":
+        case "users":
             $override_channel = "user account";
+        case "kid reporter":
+        case "tfk kid reporters":
+            $override_channel = "kid reporters";
+        case "mini site":
+        case "minisite":
+            $override_channel = "mini-site";
         default:
             $override_channel = $channel_name;
     }
