@@ -90,7 +90,7 @@ function theme_suggestion_box($options = array()) {
  */
  function tfk_helper_file_download($uri) {
   global $user;
-  if (strpos($uri,'pdf') !== 0) {
+  if (strpos($uri,'pdf') >=0) {
   	if (!array_intersect(array('administrator','editor','teacher'), array_values($user->roles))) {
     	return −1;
    	}
