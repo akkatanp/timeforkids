@@ -1,3 +1,4 @@
+Edit me in : tfk-news-minisite-related-articles.tpl.php
 <?php if(!empty($articles)):?>
 
 TITLE OF THE MINISITE (HAS TO BE IN RED):<?php echo $articles[0]['minisite_title'];?><br />
