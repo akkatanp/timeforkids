@@ -1638,9 +1638,10 @@ ul.links li {
 	margin-right: 10px;
 	width: 117px;
 	height: 62px;
-	position: relative;
+	float: left;
+	/*position: relative;
 	left: 0px;
-	top: 0px;
+	top: 0px;*/
 }
 
 .view-news-archive .views-field-field-lrg-rect-image img {
@@ -1654,7 +1655,6 @@ ul.links li {
 	width: 360px;
 	position: relative;
 	left: 128px;
-	top: -60px;
 }
 
 .view-news-archive .views-field-title a {
