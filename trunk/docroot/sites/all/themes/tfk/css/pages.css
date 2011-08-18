@@ -1638,6 +1638,8 @@ ul.links li {
 	margin-right: 10px;
 	width: 117px;
 	height: 62px;
+	position: relative;
+	left: 0px;
 }
 
 .view-news-archive .views-field-field-lrg-rect-image img {
@@ -1649,6 +1651,8 @@ ul.links li {
 .view-news-archive .views-row .rightcol {
 	display: inline-block;
 	width: 360px;
+	position: relative;
+	left: 128px;
 }
 
 .view-news-archive .views-field-title a {
