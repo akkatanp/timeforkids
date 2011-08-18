@@ -5,6 +5,10 @@
  */
 define('TFK_USER_PROFILE_USER_PATH', 'user');
 
+/**
+ * TFK Preprocess page to remove the second form from "user" page.
+ * 
+ */
 function tfk_user_profile_preprocess_page(&$variables) {
 	global $user;
 	$_variables = & $variables;
@@ -63,7 +67,7 @@ function tfk_user_login_final_validate($form, &$form_state) {
 				form_set_error('name', t('Your account has been locked.  A new temporary password has been sent to your email.'));
 				watchdog('user', 'Account Locked: Login attempt failed for %user.', array('%user' => $form_state['values']['name']));
 			} else {
-				form_set_error('name', t('Your subscription to TIME For Kids has expired.  Please visit ***URL*** to renew your subscription.'));
+				form_set_error('name', t('Your subscription to TIME For Kids has expired.  Please visit <a href="/customerservice">timeforkids.customerservice</a> to renew your subscription.'));
 				watchdog('user', 'Subcscription expired: Login attempt failed for %user.', array('%user' => $form_state['values']['name']));
 			}
 		} elseif (isset($form_state['flood_control_triggered'])) {
