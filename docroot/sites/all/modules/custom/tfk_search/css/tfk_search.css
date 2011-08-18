@@ -30,13 +30,14 @@ div#tfk-search-photos-video-featured {
 }
 
 div#tfk-search-photos-video-featured div.featured-label {
-	background-color: #D71700;
-  color: white;
+	background: #d71700;
 	display: inline-block;
-  padding: 3px 2px;
-  margin: 8px 0 6px 0;
-  text-transform: uppercase;
-	font: normal 12px "arial black", arial, sans-serif;*/
+	color: white;
+	font: normal 12px "arial black", arial, sans-serif;
+	height: 14px;
+	padding: 2px 6px;
+	margin: 8px 0 6px 0;
+	text-transform: uppercase;
 	word-wrap: normal;
 }
 
@@ -46,8 +47,8 @@ div#tfk-search-photos-video-featured .featured-item {
 
 div#tfk-search-photos-video-featured h2.featured-title {
   font-size: 30px;
-	line-height: 98%;
-	margin: 0;
+  line-height: 30px;
+  margin: 0;
 }
 
 div#tfk-search-photos-video-featured h2.featured-title a {
