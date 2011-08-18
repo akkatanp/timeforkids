@@ -91,6 +91,9 @@ function tfk_news_block_info() {
   $blocks['tfk-news-homepage-mini-lessons'] = array(
     'info' => t('Block with proper mini lessons for homepage')
   );
+  $blocks['tfk-news-minisite-related-articles'] = array(
+    'info' => t('Block with minisite related articles')
+  );
   
   return $blocks;
 }
@@ -118,12 +121,20 @@ function tfk_news_block_view($delta='') {
       $block['subject'] = t('Block with proper mini lessons for homepage');
       $block['content'] = _tfk_news_homepage_mini_lessons();
       break;
+    case 'tfk-news-minisite-related-articles':
+      $block['subject'] = t('Block with minisite related articles');
+      $block['content'] = _tfk_news_minisite_related_articles();
+      break;
     
   }
   
   return $block;
 }
 
+
+function _tfk_news_minisite_related_articles(){
+    return '.';
+}
 
 
 function _tfk_news_article_additional(){
