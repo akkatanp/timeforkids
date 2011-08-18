@@ -6,22 +6,6 @@
 define('TFK_USER_PROFILE_USER_PATH', 'user');
 
 /**
- * TFK Preprocess page to remove the second form from "user" page.
- * 
- */
-function tfk_user_profile_preprocess_page(&$variables) {
-	global $user;
-	$_variables = & $variables;
-    // Unset some blocks for anon users.
-  	if(!user_access('access protected content', $user)) {	
-		if(arg(0) == TFK_USER_PROFILE_USER_PATH) {
-			unset($_variables['page']['bottom']['tfk_helper_tfk_helper_login']);
-			drupal_add_js(array('encrypt_submissions' => array('encryptForms' => array('user_login' => 'user-login'))), 'setting');
-		}
-	}
-}
-
-/**
  * Implementation of form_alter().
  */
 function tfk_user_profile_form_user_login_alter( &$form, $form_state){
@@ -67,18 +51,18 @@ function tfk_user_login_final_validate($form, &$form_state) {
 				form_set_error('name', t('Your account has been locked.  A new temporary password has been sent to your email.'));
 				watchdog('user', 'Account Locked: Login attempt failed for %user.', array('%user' => $form_state['values']['name']));
 			} else {
-				form_set_error('name', t('Your subscription to TIME For Kids has expired.  Please visit <a href="@url">timeforkids.com/customerservice</a> to renew your subscription.'), array('@url' => url('/customerservice')));
+				form_set_error('name', t('Your subscription to TIME For Kids has expired.  Please visit <a href="@url">timeforkids.com/customerservice</a> to renew your subscription.'), array('@url' => url('customerservice')));
 				watchdog('user', 'Subcscription expired: Login attempt failed for %user.', array('%user' => $form_state['values']['name']));
 			}
 		} elseif (isset($form_state['flood_control_triggered'])) {
 			if ($form_state['flood_control_triggered'] == 'user') {
-				form_set_error('name', format_plural(variable_get('user_failed_login_user_limit', 5), 'Sorry, there has been more than one failed login attempt for this account. It is temporarily blocked. Try again later or <a href="@url">request a new password</a>.', 'Sorry, there have been more than @count failed login attempts for this account. It is temporarily blocked. Try again later or <a href="@url">request a new password</a>.', array('@url' => url('/customerservice'))));
+				form_set_error('name', format_plural(variable_get('user_failed_login_user_limit', 5), 'Sorry, there has been more than one failed login attempt for this account. It is temporarily blocked. Try again later or <a href="@url">request a new password</a>.', 'Sorry, there have been more than @count failed login attempts for this account. It is temporarily blocked. Try again later or <a href="@url">request a new password</a>.', array('@url' => url('customerservice'))));
 	  		} else {
 				// We did not find a uid, so the limit is IP-based.
-				form_set_error('name', t('Sorry, too many failed login attempts from your IP address. This IP address is temporarily blocked. Try again later or <a href="@url">request a new password</a>.', array('@url' => url('/customerservice'))));
+				form_set_error('name', t('Sorry, too many failed login attempts from your IP address. This IP address is temporarily blocked. Try again later or <a href="@url">request a new password</a>.', array('@url' => url('customerservice'))));
 	  		}
 		} else {
-	  		form_set_error('name', t('Sorry, unrecognized username or password. <a href="@password">Have you forgotten your password?</a>', array('@password' => url('/customerservice'))));
+	  		form_set_error('name', t('Sorry, unrecognized username or password. <a href="@password">Have you forgotten your password?</a>', array('@password' => url('customerservice'))));
 	  		watchdog('user', 'Login attempt failed for %user.', array('%user' => $form_state['values']['name']));
 		}
 	} elseif (isset($form_state['flood_control_user_identifier'])) {
