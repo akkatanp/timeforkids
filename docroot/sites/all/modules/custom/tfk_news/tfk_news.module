@@ -132,7 +132,7 @@ function tfk_news_block_view($delta='') {
     case 'tfk-news-minisite-more':
       $block['subject'] = t('Block with more minisites for article node view');
       $block['content'] = _tfk_news_minisite_more();
-      break;
+      break; 
     
   }
   
