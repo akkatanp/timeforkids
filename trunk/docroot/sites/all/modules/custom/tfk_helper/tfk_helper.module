@@ -84,6 +84,20 @@ function theme_suggestion_box($options = array()) {
 }
 
 /**
+ * Implementation of hook_file_download() 
+ *
+ * Here we restrict who can download a pdf file and ensure that they are 
+ */
+ function tfk_helper_file_download($uri) {
+  global $user;
+  if (strpos($uri,'pdf') !== 0) {
+  	if (!array_intersect(array('administrator','editor','teacher'), array_values($user->roles))) {
+    	return −1;
+   	}
+  }
+}
+
+/**
  * Implementation of hook_block_info.
  *
  * Here we expose blocks that are usable by other modules.
@@ -166,14 +180,7 @@ function tfk_helper_block_view($delta='') {
     
      // TFK Helper Login.
     case 'tfk_helper_login':
-    	#$block['content'] = render(drupal_get_form('user_login'));
-      $form = drupal_get_form('user_login');
-
-      // Hardcode some form elements so our Javascript works.
-      #$form['#id'] = 'user-login';
-      #$form['#form_id'] = 'user_login';
-      
-      $block['content'] = render($form);
+   		$block['content'] = render(drupal_get_form('user_login'));
     break;
     
   }
