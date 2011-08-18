@@ -34,6 +34,7 @@ div#tfk-search-photos-video-featured div.featured-label {
 	display: inline;
 	color: white;
 	font: normal 12px "arial black", arial, sans-serif;
+	line-height: 14px;
 	padding: 2px 6px;
 	text-transform: uppercase;
 	word-wrap: normal;
@@ -268,6 +269,20 @@ body.page-my-favorites .col1 {
   clear: right;
 }
 
+#tfk-search-results-photos-video .col1 {
+	float: left;
+	width: 117px;
+	margin-right: 10px;
+	min-height: 130px;
+}
+
+#tfk-search-results-photos-video .col2 {
+  display: inline-block;
+  width: 360px;
+  min-height: 130px;
+  margin: 0;
+}
+
 .region-highlighted .first.block-tfk-search {
   background-color: #E6E6E6;
   min-height: 30px;
@@ -331,6 +346,7 @@ ol#tfk-search-results-photos-video li.search-result {
 }
 
 ol#tfk-search-results-photos-video li.with-image img.thumbnail {
+	border: solid 1px #cecece;
   /*float: left;
   margin-right: 7px;*/
 }
