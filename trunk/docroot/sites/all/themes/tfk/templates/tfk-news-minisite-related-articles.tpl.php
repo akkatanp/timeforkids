@@ -1,6 +1,6 @@
 <?php if(!empty($articles)):?>
 
-TITLE OF THE MINISITE (HAS TO BE IN RED):<?php echo $articles[0]['minisite_title'];?>
+TITLE OF THE MINISITE (HAS TO BE IN RED):<?php echo $articles[0]['minisite_title'];?><br />
 
 
     <?php foreach($articles as $article):?>
