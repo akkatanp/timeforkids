@@ -141,8 +141,19 @@ function _tfk_news_minisite_related_articles(){
     $node = node_load($rgs[1]);
     if($node->type == 'article'){
         
-      echo ' we are in article';
+      $sql = 'select distinct entity_id from field_data_field_articles fa where fa.entity_type = "node" and fa.bundle ="minisite"
+          and fa.field_articles_nid = ';
         
+      $result = db_query('SELECT DISTINCT entity_id from field_data_field_articles fa where fa.entity_type = :type and fa.bundle = :bundle and fa.field_articles_nid = :nid',array('type'=> 'node','bundle'=>'minisite','nid'=>$node->nid));
+      $record = $result->fetch();
+      
+      print_R($record);
+//      $result = db_query('SELECT DISTINCT date_format(from_unixtime(field_date_value),:format) as pubdate FROM {field_data_field_date} where bundle = :nodetype order by pubdate desc',array('format' => '%Y','nodetype'=>'article'));
+//      $years = array();
+//      foreach ($result as $record) {
+//        $years[]= $record->pubdate;
+//      }
+      
       
     }
 
