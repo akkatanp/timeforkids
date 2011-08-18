@@ -1,3 +1,4 @@
+Edit me in : tfk-news-minisite-more.tpl.php
 <?php if(!empty($minisites)):?>
     <?php foreach($minisites as $minisite):?>
         <div>
