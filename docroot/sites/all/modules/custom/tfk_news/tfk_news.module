@@ -561,6 +561,18 @@ function tfk_news_preprocess_block(&$variables){
         unset($variables['content']);
       }
     }
+    
+    if($node->type == 'article'){
+        $result = db_query('SELECT DISTINCT entity_id from field_data_field_articles fa where fa.entity_type = :type and fa.bundle = :bundle and fa.field_articles_nid = :nid',array('type'=> 'node','bundle'=>'minisite','nid'=>$node->nid));
+        $record = $result->fetch();
+        if($record){
+            if($variables['block']->delta == 'tfk-news-latest-news-link' || $variables['block']->delta == 'tfk-news-year-filter'){
+              unset($variables['content']);
+            }
+        }
+    }
+    
+    
   }
 }
 
