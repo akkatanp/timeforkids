@@ -39,8 +39,8 @@ function tfk_user_profile_user_load($users, $test = NULL) {
  *  or authenticate via LUCIE
  */
 function tfk_user_login_final_validate($form, &$form_state) {
-	die(print_r($form_state));
-if (empty($form_state['uid'])) {
+	die(print_r($form));
+	if (empty($form_state['uid'])) {
 		// Always register an IP-based failed login event.
 		flood_register_event('failed_login_attempt_ip', variable_get('user_failed_login_ip_window', 3600));
 		// Register a per-user failed login event.
