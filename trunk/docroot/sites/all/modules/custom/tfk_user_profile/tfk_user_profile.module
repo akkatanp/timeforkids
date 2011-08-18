@@ -210,8 +210,6 @@ function tfk_lucie_check_user($email, &$form_state){
   // Decode the JSON data and pass to the call to get the user information
   $dataResponse = drupal_json_decode($response->data);
   
-  die(print_r(drupal_json_decode($response->data)));
-  
   // process the LUCIE login response.
   // some actions are based on the $response code, others $response_code + json parameter
   $form_state['lucie_error'] = false;
@@ -224,7 +222,7 @@ function tfk_lucie_check_user($email, &$form_state){
   		}
   		break;
   	case 404:
-  		if (isset($dataResponse['userLockedOut']) && $dataResponse['userLockedOut']) {
+  		if (is_array($dataResponse['userLockedOut']) && $dataResponse['userLockedOut']) {
   			$form_state['lucie_error'] = 'user_locked';
   		}
   		break;
