@@ -94,6 +94,9 @@ function tfk_news_block_info() {
   $blocks['tfk-news-minisite-articles'] = array(
     'info' => t('Block with minisite related articles')
   );
+  $blocks['tfk-news-minisite-more'] = array(
+    'info' => t('Block with more minisites for article node view')
+  );
   
   return $blocks;
 }
