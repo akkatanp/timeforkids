@@ -46,7 +46,7 @@ function tfk_user_login_final_validate($form, &$form_state) {
 	  		flood_register_event('failed_login_attempt_user', variable_get('user_failed_login_user_window', 21600), $form_state['flood_control_user_identifier']);
 		}
 		
-		if (isset($form_state['lucie_error'])) {
+		if (isset($form_state['lucie_error']) && !empty($form_state['lucie_error'])) {
 			if ($form_state['lucie_error'] == 'user_locked') {
 				form_set_error('name', t('Your account has been locked.  A new temporary password has been sent to your email.'));
 				watchdog('user', 'Account Locked: Login attempt failed for %user.', array('%user' => $form_state['values']['name']));
@@ -212,10 +212,11 @@ function tfk_lucie_check_user($email, &$form_state){
 	
   // process the LUCIE login response.
   // some actions are based on the $response code, others $response_code + json parameter
+  $form_state['lucie_error'] = false;
   switch ($response->code) {
   	case 201:
   		if (tfk_lucie_user_entitlements($dataResponse['token'])) {
-			return tfk_lucie_get_user_info($email, $dataResponse['token']);
+  			return tfk_lucie_get_user_info($email, $dataResponse['token']);
 		} else {
 			$form_state['lucie_error'] = 'sub_expired';
   		}
