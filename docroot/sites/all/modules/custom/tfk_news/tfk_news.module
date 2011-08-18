@@ -144,7 +144,7 @@ function _tfk_news_minisite_related_articles(){
       $sql = 'select distinct entity_id from field_data_field_articles fa where fa.entity_type = "node" and fa.bundle ="minisite"
           and fa.field_articles_nid = ';
         
-      $result = db_query('SELECT DISTINCT entity_id from field_data_field_articles fa where fa.entity_type = :type and fa.bundle = :bundle and fa.field_articles_nid = :nid',array('type'=> 'node','bundle'=>'minisite','nid'=>$node->nid));
+      $result = db_query('SELECT DISTINCT entity_id from field_data_field_articles fa where fa.entity_type = :type and fa.bundle = :bundle and fa.field_articles_nid = :nid',array('type'=> 'node','bundle'=>'minisite','nid'=>1111111));
       $record = $result->fetch();
       
       print_R($record);
