@@ -30,7 +30,35 @@ if(count($user_roles) == 1 && in_array('anonymous user',$user_roles)){
   $is_anon = 1;
 }
 
+
+$counter = 0;
+
+
+$tmp_arr = $fields;
+unset($tmp_arr['field_mini_lessons']);
+unset($tmp_arr['field_related_articles']);
+unset($tmp_arr['field_lrg_rect_image']);
+$total_count = count($tmp_arr);
+
 ?>
+
+
+<?php foreach ($fields as $id => $field): ?>
+
+    <?php if($id == 'field_lrg_rect_image'):?>
+      <?php if (!empty($field->separator)): ?>
+        <?php print $field->separator; ?>
+      <?php endif; ?>
+
+      <?php print $field->wrapper_prefix; ?>
+        <?php print $field->label_html; ?>
+        <?php print $field->content; ?>
+      <?php print $field->wrapper_suffix; ?>
+    <?php endif; ?>
+    <?php endforeach; ?>
+
+
+!!!
 <?php foreach ($fields as $id => $field): ?>
 
     <?php if($id != 'field_mini_lessons' && $id != 'field_related_articles' && $id !='field_lrg_rect_image'):?>
@@ -43,9 +71,9 @@ if(count($user_roles) == 1 && in_array('anonymous user',$user_roles)){
         <?php print $field->content; ?>
       <?php print $field->wrapper_suffix; ?>
     <?php endif; ?>
-<?php endforeach; ?>
-
-<?php if($is_anon == 0):?>
+    <?php endforeach; ?>
+    
+    <?php if($is_anon == 0):?>
   <?php if(strlen($fields['field_mini_lessons']->content) != 0 || strlen($fields['field_related_articles']->content) != 0):?>
       <div class="related-content-wrap">
           <div class="addit-content">Additional Content</div>
@@ -59,3 +87,7 @@ if(count($user_roles) == 1 && in_array('anonymous user',$user_roles)){
       </div>
   <?php endif;?>
 <?php endif;?>
+
+***
+
+
