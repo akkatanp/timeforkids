@@ -47,13 +47,12 @@ function tfk_user_login_final_validate($form, &$form_state) {
 		}
 		
 		if (isset($form_state['lucie_error']) && !empty($form_state['lucie_error'])) {
-			print_r($form_state);
-			if ($form_state['lucie_error'] == 'user_locked') {
-				form_set_error('name', t('Your account has been locked.  A new temporary password has been sent to your email.'));
-				watchdog('user', 'Account Locked: Login attempt failed for %user.', array('%user' => $form_state['values']['name']));
-			} else {
+			if ($form_state['lucie_error'] == 'sub_expired') {
 				form_set_error('name', t('Your subscription to TIME For Kids has expired.  Please visit <a href="@url">timeforkids.com/customerservice</a> to renew your subscription.'), array('@url' => url('customerservice')));
 				watchdog('user', 'Subcscription expired: Login attempt failed for %user.', array('%user' => $form_state['values']['name']));
+			} else {
+				form_set_error('name', t('Your account has been locked.  A new temporary password has been sent to your email.'));
+				watchdog('user', 'Account Locked: Login attempt failed for %user.', array('%user' => $form_state['values']['name']));
 			}
 		} elseif (isset($form_state['flood_control_triggered'])) {
 			if ($form_state['flood_control_triggered'] == 'user') {
@@ -224,7 +223,8 @@ function tfk_lucie_check_user($email, &$form_state){
   		break;
   	case 404:
   		if (isset($dataResponse['userLockedOut']) && $dataResponse['userLockedOut']) {
-  			//$form_state['lucie_error'] = 'user_locked';
+  			print_r("HERE");
+  			$form_state['lucie_error'] = 'user_locked';
   		}
   		break;
   }
