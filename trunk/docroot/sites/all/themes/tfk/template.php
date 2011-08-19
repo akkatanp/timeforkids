@@ -199,22 +199,24 @@ function tfk_preprocess_poll_results(&$variables) {
   $html = $variables['results'];
   $pattern = "@class=\"text\"\>(.*)\</div\>@";
   preg_match_all($pattern, $html, $choices); //extract choices
-  print_R($choices);
   
   $pattern = "@style=\"width: (.*)%;\"@";
   preg_match_all($pattern, $html, $votes); //extract percentages
-  print_R($votes);
 
-//
-//  $chart = array(
-//    '#chart_id' => 'poll_chart',
-//    '#type' => CHART_TYPE_PIE_3D,
-//  );
-//// NEED TO FILL IN DATA TO MAKE CHART
-//  for ($c=0; $c < count($choices[1]); $c++) { //make labels and values
-//     $chart['#data'][$choices[1][$c]] = $votes[1][$c]; //number of votes
-//     $chart['#legends'][] = $choices[1][$c] . " (" . $votes[1][$c] . "%)"; // labels
-//  }
+  $chart = array(
+    '#chart_id' => 'poll_chart',
+    '#type' => CHART_TYPE_PIE_3D,
+  );
+  
+// NEED TO FILL IN DATA TO MAKE CHART
+  for ($c=0; $c < count($choices[1]); $c++) { //make labels and values
+     $chart['#data'][$choices[1][$c]] = $votes[1][$c]; //number of votes
+     $chart['#legends'][] = $choices[1][$c] . " (" . $votes[1][$c] . "%)"; // labels
+  }
+
+  print_R(chart_render($chart));
+
+
 //  $variables['results'] = chart_render($chart); //render graph
 }
 
