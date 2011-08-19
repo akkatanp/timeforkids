@@ -213,6 +213,9 @@ function tfk_preprocess_poll_results(&$variables) {
      $chart['#data'][$choices[1][$c]] = $votes[1][$c]; //number of votes
      $chart['#legends'][] = $choices[1][$c] . " (" . $votes[1][$c] . "%)"; // labels
   }
+  $chart['#data_colors'][] = '00ff00';
+  $chart['#data_colors'][] = 'ff0000';
+  $chart['#data_colors'][] = '0000ff';
 
   //print_R($chart);
 
