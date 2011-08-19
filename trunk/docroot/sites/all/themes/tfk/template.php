@@ -214,7 +214,7 @@ function tfk_preprocess_poll_results(&$variables) {
      $chart['#legends'][] = $choices[1][$c] . " (" . $votes[1][$c] . "%)"; // labels
   }
 
-  print_R($chart);
+  //print_R($chart);
 
 
  //#variables['results'] = chart_render($chart); //render graph
