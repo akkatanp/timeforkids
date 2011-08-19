@@ -1469,7 +1469,7 @@ function tfk_search_form_alter(&$form, &$form_state, $form_id) {
 
 
 /**
- * Photos and Video menu callback.
+ * Photos and Video SERP callback.
  */
 function tfk_search_photos_and_video() {
 
@@ -1486,7 +1486,9 @@ function tfk_search_photos_and_video() {
     
 }
 
-
+/**
+ * Magazines SERP callback.
+ */
 function tfk_search_magazine(){
   $filterstring = isset($_GET['filters']) ? $_GET['filters'] : '';
   $solrsort = isset($_GET['solrsort']) ? $_GET['solrsort'] : 'ds_created desc';
@@ -1500,7 +1502,7 @@ function tfk_search_magazine(){
 }
 
 /**
- * Worksheet menu callback.
+ * Worksheets SERP callback.
  */
 function tfk_search_worksheets() {
 
