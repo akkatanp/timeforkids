@@ -1,12 +1,18 @@
 <?php
+/**
+ * Path to user page
+ * @var string
+ */
+define('TFK_USER_PROFILE_USER_PATH', 'user');
 
 /**
  * Implementation of form_alter().
  */
-function tfk_user_profile_form_user_login_alter( &$form, $form_state){
+function tfk_user_profile_form_user_login_alter( &$form, &$form_state){
 	$form['#validate'] = array(  'user_login_name_validate','user_login_authenticate_validate', 'tfk_user_profile_login_validate', 'tfk_user_login_final_validate' );
    	$form['#action'] = '/user';
   	$form['name']['#title'] = 'Email';
+  	$form_state['lucie_error'] = false;
 }
 
 function tfk_user_profile_user_login(&$edit, $account) {
@@ -41,23 +47,23 @@ function tfk_user_login_final_validate($form, &$form_state) {
 	  		flood_register_event('failed_login_attempt_user', variable_get('user_failed_login_user_window', 21600), $form_state['flood_control_user_identifier']);
 		}
 		
-		if (isset($form_state['lucie_error'])) {
-			if ($form_state['lucie_error'] == 'user_locked') {
+		if (isset($form_state['lucie_error']) && !empty($form_state['lucie_error'])) {			
+			if ($form_state['lucie_error'] == 'sub_expired') {
+				form_set_error('name', t('Your subscription to TIME For Kids has expired.  Please visit <a href="@url">timeforkids.com/customerservice</a> to renew your subscription.'), array('@url' => url('customerservice')));
+				watchdog('user', 'Subcscription expired: Login attempt failed for %user.', array('%user' => $form_state['values']['name']));
+			} else {
 				form_set_error('name', t('Your account has been locked.  A new temporary password has been sent to your email.'));
 				watchdog('user', 'Account Locked: Login attempt failed for %user.', array('%user' => $form_state['values']['name']));
-			} else {
-				form_set_error('name', t('Your subscription to TIME For Kids has expired.  Please visit ***URL*** to renew your subscription.'));
-				watchdog('user', 'Subcscription expired: Login attempt failed for %user.', array('%user' => $form_state['values']['name']));
 			}
 		} elseif (isset($form_state['flood_control_triggered'])) {
 			if ($form_state['flood_control_triggered'] == 'user') {
-				form_set_error('name', format_plural(variable_get('user_failed_login_user_limit', 5), 'Sorry, there has been more than one failed login attempt for this account. It is temporarily blocked. Try again later or <a href="@url">request a new password</a>.', 'Sorry, there have been more than @count failed login attempts for this account. It is temporarily blocked. Try again later or <a href="@url">request a new password</a>.', array('@url' => url('user/password'))));
+				form_set_error('name', format_plural(variable_get('user_failed_login_user_limit', 5), 'Sorry, there has been more than one failed login attempt for this account. It is temporarily blocked. Try again later or <a href="@url">request a new password</a>.', 'Sorry, there have been more than @count failed login attempts for this account. It is temporarily blocked. Try again later or <a href="@url">request a new password</a>.', array('@url' => url('customerservice'))));
 	  		} else {
 				// We did not find a uid, so the limit is IP-based.
-				form_set_error('name', t('Sorry, too many failed login attempts from your IP address. This IP address is temporarily blocked. Try again later or <a href="@url">request a new password</a>.', array('@url' => url('user/password'))));
+				form_set_error('name', t('Sorry, too many failed login attempts from your IP address. This IP address is temporarily blocked. Try again later or <a href="@url">request a new password</a>.', array('@url' => url('customerservice'))));
 	  		}
 		} else {
-	  		form_set_error('name', t('Sorry, unrecognized username or password. <a href="@password">Have you forgotten your password?</a>', array('@password' => url('user/password'))));
+	  		form_set_error('name', t('Sorry, unrecognized username or password. <a href="@password">Have you forgotten your password?</a>', array('@password' => url('customerservice'))));
 	  		watchdog('user', 'Login attempt failed for %user.', array('%user' => $form_state['values']['name']));
 		}
 	} elseif (isset($form_state['flood_control_user_identifier'])) {
@@ -202,19 +208,20 @@ function tfk_lucie_check_user($email, &$form_state){
               ));
   // Decode the JSON data and pass to the call to get the user information
   $dataResponse = drupal_json_decode($response->data);
-	
+  
   // process the LUCIE login response.
   // some actions are based on the $response code, others $response_code + json parameter
+  $form_state['lucie_error'] = false;
   switch ($response->code) {
   	case 201:
   		if (tfk_lucie_user_entitlements($dataResponse['token'])) {
-			return tfk_lucie_get_user_info($email, $dataResponse['token']);
+  			return tfk_lucie_get_user_info($email, $dataResponse['token']);
 		} else {
 			$form_state['lucie_error'] = 'sub_expired';
   		}
   		break;
   	case 404:
-  		if ($dataResponse['userLockedOut']) {
+  		if (is_array($dataResponse) && $dataResponse['userLockedOut']) {
   			$form_state['lucie_error'] = 'user_locked';
   		}
   		break;
