@@ -217,7 +217,8 @@ function tfk_preprocess_poll_results(&$variables) {
   print_R($chart);
 
 
-  $variables['results'] = chart_render($chart); //render graph
+ //#variables['results'] = chart_render($chart); //render graph
+  $variables['results'] = theme('chart', array('chart' => $chart));
 }
 
 
