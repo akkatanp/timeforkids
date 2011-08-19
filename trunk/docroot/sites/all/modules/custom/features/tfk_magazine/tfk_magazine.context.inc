@@ -57,6 +57,15 @@ function tfk_magazine_context_default_contexts() {
         'tfk-magazine' => 'tfk-magazine',
       ),
     ),
+    'user' => array(
+      'values' => array(
+        'Board Member' => 'Board Member',
+        'administrator' => 'administrator',
+        'authenticated user' => 'authenticated user',
+        'editor' => 'editor',
+        'teacher' => 'teacher',
+      ),
+    ),
   );
   $context->reactions = array(
     'block' => array(
@@ -82,7 +91,7 @@ function tfk_magazine_context_default_contexts() {
       ),
     ),
   );
-  $context->condition_mode = 0;
+  $context->condition_mode = 1;
 
   // Translatables
   // Included for use with string extractors like potx.
