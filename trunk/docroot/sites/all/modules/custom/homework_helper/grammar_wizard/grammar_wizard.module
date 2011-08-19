@@ -298,7 +298,7 @@ function grammar_wizard_check_answer($form, &$form_state) {
           '#markup' => t('Example') . ':',
         ),
         'body' => array(
-          '#prefix' => '<div>',
+          '#prefix' => '<div class="grammar-wizard-example-body">',
           '#suffix' => '</div>',
           '#markup' => $form[$current_step]['#rule_example'],
         ),

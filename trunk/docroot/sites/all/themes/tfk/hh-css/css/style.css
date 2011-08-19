@@ -1503,6 +1503,9 @@ span.grammar-wizard-incorrect {
 .node-type-grammar-practice .grammar-wizard-example h3 {
   margin: 0;
 }
+.node-type-grammar-practice .grammar-wizard-example .grammar-wizard-example-body {
+  font-style: italic;
+}
 .node-type-grammar-practice .node-grammar-practice-question {
   display: inline;
   float: left;
