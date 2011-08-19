@@ -95,6 +95,15 @@ if(!isset($content['group_additional_content']['field_mini_lessons'])&& !isset($
   unset($content['group_additional_content']);
   $visible=0;
  }
+ 
+if(count(arg()) == 4) {
+ $magazine = menu_get_object('node', 3);
+ if($magazine && $magazine->type == 'magazine_issue') {
+   $magazine_article = TRUE;
+ } else {
+   $magazine_article = FALSE;
+ }
+}
 
 
 
@@ -108,7 +117,7 @@ if(!isset($content['group_additional_content']['field_mini_lessons'])&& !isset($
   <?php print $user_picture; ?>
 
   <?php print render($title_prefix); ?>
-  <?php if (!$page && $title): ?>
+  <?php if (!$page && !$magazine_article && $title): ?>
     <h2<?php print $title_attributes; ?>><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h2>
   <?php endif; ?>
   <?php print render($title_suffix); ?>
