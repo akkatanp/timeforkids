@@ -10,6 +10,124 @@
 function tfk_magazine_field_default_fields() {
   $fields = array();
 
+  // Exported field: 'node-magazine_issue-field_articles'
+  $fields['node-magazine_issue-field_articles'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '-1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_articles',
+      'foreign keys' => array(
+        'nid' => array(
+          'columns' => array(
+            'nid' => 'nid',
+          ),
+          'table' => 'node',
+        ),
+      ),
+      'indexes' => array(
+        'nid' => array(
+          0 => 'nid',
+        ),
+      ),
+      'module' => 'node_reference',
+      'settings' => array(
+        'referenceable_types' => array(
+          'a_paper' => 0,
+          'article' => 'article',
+          'atw_day_in_life' => 0,
+          'atw_destination' => 0,
+          'atw_homepage_nodeblock' => 0,
+          'atw_native_lingo' => 0,
+          'atw_sightseeing' => 0,
+          'atw_timeline' => 0,
+          'board_member' => 0,
+          'book' => 0,
+          'flashcard' => 0,
+          'global_right_sidebar_promo' => 0,
+          'grammar_practice' => 0,
+          'grammar_practice_question' => 0,
+          'grammar_practice_reward_image' => 0,
+          'grammar_practice_rule' => 0,
+          'homepage_news_for_teachers' => 0,
+          'image' => 0,
+          'kid_reporter' => 0,
+          'kid_reporter_bottom_nodeblock' => 0,
+          'kid_reporter_listing_nodeblock' => 0,
+          'magazine_issue' => 0,
+          'mini_lesson' => 0,
+          'mini_site_home' => 0,
+          'minisite' => 0,
+          'news_channel_nodeblock' => 0,
+          'page' => 0,
+          'paper_step' => 0,
+          'pdf_quiz' => 0,
+          'slideshow' => 0,
+          'store' => 0,
+          'teacher_board_nodeblock' => 0,
+          'teacher_community_question' => 0,
+          'tfk_extra' => 0,
+          'tfk_extras_bottom_nodeblock' => 0,
+          'tfk_extras_top_nodeblock' => 0,
+          'tfk_notification' => 0,
+          'tfk_staff' => 0,
+          'video' => 0,
+          'webform' => 0,
+          'webform_generic' => 0,
+          'worksheet' => 0,
+          'writing_tips' => 0,
+        ),
+        'view' => array(
+          'args' => array(),
+          'display_name' => '',
+          'view_name' => '',
+        ),
+      ),
+      'translatable' => '1',
+      'type' => 'node_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'magazine_issue',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'node_reference',
+          'settings' => array(),
+          'type' => 'node_reference_default',
+          'weight' => 29,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_articles',
+      'label' => 'Section: Cover Story',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'node_reference',
+        'settings' => array(
+          'autocomplete_match' => 'contains',
+          'autocomplete_path' => 'node_reference/autocomplete',
+          'size' => '60',
+        ),
+        'type' => 'node_reference_autocomplete',
+        'weight' => '5',
+      ),
+    ),
+  );
+
   // Exported field: 'node-magazine_issue-field_cover'
   $fields['node-magazine_issue-field_cover'] = array(
     'field_config' => array(
@@ -87,83 +205,6 @@ function tfk_magazine_field_default_fields() {
         ),
         'type' => 'node_reference_autocomplete',
         'weight' => '3',
-      ),
-    ),
-  );
-
-  // Exported field: 'node-magazine_issue-field_cover_story'
-  $fields['node-magazine_issue-field_cover_story'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '-1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_cover_story',
-      'foreign keys' => array(),
-      'indexes' => array(),
-      'module' => 'link',
-      'settings' => array(
-        'attributes' => array(
-          'class' => '',
-          'rel' => '',
-          'target' => 'default',
-        ),
-        'display' => array(
-          'url_cutoff' => 80,
-        ),
-        'enable_tokens' => 1,
-        'title' => 'optional',
-        'title_value' => '',
-        'url' => 0,
-      ),
-      'translatable' => '1',
-      'type' => 'link_field',
-    ),
-    'field_instance' => array(
-      'bundle' => 'magazine_issue',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'link',
-          'settings' => array(),
-          'type' => 'default',
-          'weight' => 13,
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_cover_story',
-      'label' => 'Section: Cover Story',
-      'required' => 0,
-      'settings' => array(
-        'attributes' => array(
-          'class' => '',
-          'rel' => '',
-          'target' => 'default',
-        ),
-        'display' => array(
-          'url_cutoff' => '80',
-        ),
-        'enable_tokens' => 1,
-        'title' => 'optional',
-        'title_value' => '',
-        'url' => 0,
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 0,
-        'module' => 'link',
-        'settings' => array(),
-        'type' => 'link_field',
-        'weight' => '5',
       ),
     ),
   );
