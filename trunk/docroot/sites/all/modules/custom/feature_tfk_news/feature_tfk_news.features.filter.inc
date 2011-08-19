@@ -16,7 +16,7 @@ function feature_tfk_news_filter_default_formats() {
     'name' => 'Full HTML',
     'cache' => '1',
     'status' => '1',
-    'weight' => '1',
+    'weight' => '-10',
     'filters' => array(
       'media_filter' => array(
         'weight' => '-50',
@@ -37,7 +37,7 @@ function feature_tfk_news_filter_default_formats() {
     'name' => 'Plain text',
     'cache' => '1',
     'status' => '1',
-    'weight' => '10',
+    'weight' => '-9',
     'filters' => array(
       'filter_html_escape' => array(
         'weight' => '0',
@@ -48,11 +48,16 @@ function feature_tfk_news_filter_default_formats() {
         'weight' => '1',
         'status' => '1',
         'settings' => array(
-          'filter_url_length' => 72,
+          'filter_url_length' => '72',
         ),
       ),
       'filter_autop' => array(
         'weight' => '2',
+        'status' => '1',
+        'settings' => array(),
+      ),
+      'wordfilter' => array(
+        'weight' => '10',
         'status' => '1',
         'settings' => array(),
       ),
