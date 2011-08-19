@@ -197,14 +197,14 @@ function tfk_preprocess_poll_results(&$variables) {
   //theme the poll results block
 
   $html = $variables['results'];
-  print_R($html);
+  $pattern = "@class=\"text\"\>(.*)\</div\>@";
+  preg_match_all($pattern, $html, $choices); //extract choices
+  print_R($choices);
+  
+  $pattern = "@style=\"width: (.*)%;\"@";
+  preg_match_all($pattern, $html, $votes); //extract percentages
+  print_R($votes);
 
-
-//  $html = $variables['results'];
-//  $pattern = "@class=\"text\"\>(.*)\</div\>@";
-//  preg_match_all($pattern, $html, $choices); //extract choices
-//  $pattern = "@style=\"width: (.*)%;\"@";
-//  preg_match_all($pattern, $html, $votes); //extract percentages
 //
 //  $chart = array(
 //    '#chart_id' => 'poll_chart',
