@@ -442,6 +442,7 @@ function tfk_search_apachesolr_update_index(&$document, $node, $namespace) {
   // Index date field.
   
   // Add article fields to the index.
+  /*
   if($node->type == 'article'){
     $tmp_body =  field_get_items('node', $node, 'field_body');
     // To avoid modifying the schema.xml, we're stuffing into the content field the body and deck fields.
@@ -511,6 +512,7 @@ function tfk_search_apachesolr_update_index(&$document, $node, $namespace) {
       }
     }
   }
+  */
 }
 
 /**
