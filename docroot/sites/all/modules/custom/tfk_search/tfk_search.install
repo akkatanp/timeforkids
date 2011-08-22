@@ -56,3 +56,16 @@ function tfk_search_schema() {
   );
   return $schema;
 }
+
+/**
+ * Modify apachesolr_operator variable.
+ */
+function tfk_search_update_7000() {
+  /**
+   * @see apachesolr_get_facet_definitions
+   */
+  
+  $operator_settings = variable_get('apachesolr_operator', array());
+  $operator_settings['tfk_search']['subqueries'] = 'OR';
+  variable_set('apachesolr_operator', $operator_settings);
+}
