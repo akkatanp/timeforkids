@@ -416,33 +416,14 @@ define('TFK_SEARCH_HOST', 'ss_server_host');
  * @see ApacheSolrDocument::setField
  */
 function tfk_search_apachesolr_update_index(&$document, $node, $namespace) {
-
-  // Index server.
-  //
-  // IMPORTANT!! ATTENTION!! ACHTUNG!!
-  // The HTTP_HOST server variable is only available in web based crons.
-  // In drush based crons, the host is the operating system, not apache.
-  // So we're using the database host to identify different servers.
-  //
-  global $_SERVER;
-  if(!empty($_SERVER) && array_key_exists('HTTP_HOST', $_SERVER)) {
-    // TFK_SEARCH_HOST
-    #$document->addField(TFK_SEARCH_HOST, $deck[0]['value']);
-  }
   
-  print_r($_SERVER);
-  
-  module_load_include('module', 'database', 'database.inc');
-  $options = Database::getConnection();
-  $options = $options->getConnectionOptions();
-  
-  print_r($options);
-  
+  // Use the database host to identify different servers.
+  $server_id = tfk_search_get_unique_host_id();
+  $document->addField(TFK_SEARCH_HOST, $server_id);
   
   // Index date field.
   
   // Add article fields to the index.
-  /*
   if($node->type == 'article'){
     $tmp_body =  field_get_items('node', $node, 'field_body');
     // To avoid modifying the schema.xml, we're stuffing into the content field the body and deck fields.
@@ -512,7 +493,6 @@ function tfk_search_apachesolr_update_index(&$document, $node, $namespace) {
       }
     }
   }
-  */
 }
 
 /**
@@ -1445,10 +1425,42 @@ function tfk_search_preprocess_pager_top(&$vars) {
   
 }
 
+function tfk_search_get_unique_host_id() {
+  // Get current database connection details.
+  module_load_include('module', 'database', 'database.inc');
+  $connection = Database::getConnection();
+  $options = $connection->getConnectionOptions();
+    
+  if(!empty($options) && array_key_exists('host', $options)) {
+    $hosts = array('127.0.0.1' => 'local', 'staging-820' => 'dev', 'staging-35' => 'qa',
+      'ded-847' => 'prod', // Primary production host.
+      'ded-848' => 'prod', // Failover production host.
+    );
+    
+    // We alias the actual host for security.
+    $server_id = (array_key_exists($options['host'], $hosts)) ? $hosts[$options['host']]: 'default';
+    
+    // The db host is not a unique enough identifier on servers that have
+    // two databases and one Solr index; Adding the database name to the
+    // server id creates an unique identifier.
+    $server_id .= '.'. sha1($options['database']);
+    
+    return $server_id;
+  } else {
+    return '__';
+  }
+}
+
 /**
  * Implementation of hook_apachesolr_modify_query().
  */
 function tfk_search_apachesolr_modify_query($query, $caller) {
+  
+  // Filter documents by host.
+  $host_subquery = apachesolr_drupal_query();
+  $host_subquery->add_filter(TFK_SEARCH_HOST, tfk_search_get_unique_host_id());
+  $query->add_subquery($host_subquery, 'OR');
+
   // Limit the search results to image and video content type.
   // Only apply these filters when we are in the photos and video page.
   if($query->get_base_path() === TFK_SEARCH_PHOTOSVIDEO_PATH) {
