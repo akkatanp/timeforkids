@@ -100,7 +100,7 @@ DirectoryIndex index.php index.html index.htm
   # (http://prod.example.com/... will be redirected to http://www.example.com/...)
   # uncomment the following:
   RewriteCond %{HTTP_HOST} ^prod\.(.+)$ [NC]
-  RewriteRule ^ http://www\.%1%{REQUEST_URI} [L,R=301]
+  RewriteRule ^ http://www.%1%{REQUEST_URI} [L,R=301]
 
   # Modify the RewriteBase if you are using Drupal in a subdirectory or in a
   # VirtualDocumentRoot and the rewrite rules are not working properly.
