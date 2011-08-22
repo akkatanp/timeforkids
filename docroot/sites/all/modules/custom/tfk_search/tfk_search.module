@@ -1456,18 +1456,29 @@ function tfk_search_get_unique_host_id() {
  */
 function tfk_search_apachesolr_modify_query($query, $caller) {
   
-  // Filter documents by host.
-  $host_subquery = apachesolr_drupal_query();
-  $host_subquery->add_filter(TFK_SEARCH_HOST, tfk_search_get_unique_host_id());
-  $query->add_subquery($host_subquery, 'OR');
-
+  $superquery = apachesolr_drupal_query();
+  
+  $content_types = array(
+    TFK_SEARCH_PHOTOSVIDEO_PATH => array('video', 'slideshow'),
+    TFK_SEARCH_WORKSHEETS_PATH => array('worksheet'),
+    TFK_SEARCH_MAGAZINE_PATH => array('magazine_issue'),
+  );
+  
+  if(array_key_exists($query->get_base_path(), $content_types)) {
+    
+    // Filter documents by content type.
+    $ct_subquery = apachesolr_drupal_query();
+    $path = $query->get_base_path();
+    foreach($content_types[$path] as $bundle) {
+      $ct_subquery->add_filter('bundle', $bundle);
+    }
+    $superquery->add_subquery($ct_subquery, 'OR');
+    
+  }
+  
   // Limit the search results to image and video content type.
   // Only apply these filters when we are in the photos and video page.
   if($query->get_base_path() === TFK_SEARCH_PHOTOSVIDEO_PATH) {
-    $subquery = apachesolr_drupal_query();
-    $subquery->add_filter('bundle', 'video');
-    $subquery->add_filter('bundle', 'slideshow');
-    $query->add_subquery($subquery, 'OR');
     
     // Retrieve related content fields.
     $query->params['fl'] .= ','. implode(',', array(TFK_SEARCH_RELATED_TITLE, TFK_SEARCH_RELATED_PATH, TFK_SEARCH_RELATED_TYPE));
@@ -1477,22 +1488,13 @@ function tfk_search_apachesolr_modify_query($query, $caller) {
   }
 
   if($query->get_base_path() === TFK_SEARCH_WORKSHEETS_PATH) {
-    $subquery = apachesolr_drupal_query();
-    $subquery->add_filter('bundle', 'worksheet');
-    $query->add_subquery($subquery, 'OR');
-    
     // Limit the number of rows per page to 8 per spec.
     $query->params['rows'] = 8;
   }
 
   if($query->get_base_path() === TFK_SEARCH_MAGAZINE_PATH) {
-    $subquery = apachesolr_drupal_query();
-    $subquery->add_filter('bundle', 'magazine_issue');
-    $query->add_subquery($subquery, 'OR');
-    
     // Retrieve additional content fields.
     $query->params['fl'] .= ','. implode(',', array(TFK_SEARCH_WORKSHEET_PDF_LINK, TFK_SEARCH_WORKSHEET_PDF_TITLE));
-    
 
     // Limit the number of rows per page to 8 per spec.
     $query->params['rows'] = 8;
@@ -1501,12 +1503,18 @@ function tfk_search_apachesolr_modify_query($query, $caller) {
   // Site-wide search.
   $args = arg();
   if($query->get_base_path() === 'search/site' || ($args[0] == 'search' && $args[1] == 'site')) {
-    $subquery = apachesolr_drupal_query();
+    // Retrieve additional content fields.
+    // Body and deck field for articles.
+    // Not indexing TFK_SEARCH_ARTICLE_BODY, for now.
+    $query->params['fl'] .= ','.TFK_SEARCH_ARTICLE_DECK;
+
+    // Limit the number of rows per page.
+    $query->params['rows'] = 8;
 
     global $user;
     $rls = $user->roles;
         
-    // ANONYMOUS SEARCH CONTENT TYPES
+    // Anonymous content types.
     if(count($rls) == 1 && $rls[1] == 'anonymous user') {
       $content_types = array('slideshow', 'video', 'atw_destination', 'minisite','tfk_extra','a_paper','grammar_practice','writing_tips');
       
@@ -1516,31 +1524,33 @@ function tfk_search_apachesolr_modify_query($query, $caller) {
       $article_subquery = apachesolr_drupal_query();
       $article_subquery->add_filter('bundle', 'article');
       $article_subquery->add_filter(TFK_SEARCH_COVER_STORY, 0);
+      $article_subquery->add_filter(TFK_SEARCH_HOST, tfk_search_get_unique_host_id());
       $query->add_subquery($article_subquery, 'AND');
       
-    // LOGGED IN SEARCH CONTENT TYPES
+    // Logged in content types.
     } else {
       // Teachers can see cover stories.
       $content_types = array('article', 'slideshow', 'video', 'atw_destination', 'minisite', 'tfk_extra', 'worksheet', 'mini_lesson','a_paper','grammar_practice','writing_tips');
     }
     
+    $ct_subquery = apachesolr_drupal_query();
     foreach($content_types as $content_type) {
-      $subquery->add_filter('bundle', $content_type);
+      $ct_subquery->add_filter('bundle', $content_type);
     }
-    $query->add_subquery($subquery, 'OR');
     
-    // Retrieve additional content fields.
-    // Body and deck field for articles.
-    // Not indexing TFK_SEARCH_ARTICLE_BODY, for now.
-    $query->params['fl'] .= ','.TFK_SEARCH_ARTICLE_DECK;
-
-    // Limit the number of rows per page.
-    $query->params['rows'] = 8;
+    $superquery->add_subquery($ct_subquery, 'OR');
     
     // Highlight custom fields.
     //$query->params['hl.fl'][] = TFK_SEARCH_ARTICLE_DECK;
     //$query->params['hl.fl'][] = TFK_SEARCH_ARTICLE_BODY;
   }
+  
+  // Filter documents by host.
+  $host_subquery = apachesolr_drupal_query();
+  $host_subquery->add_filter(TFK_SEARCH_HOST, tfk_search_get_unique_host_id());
+  $superquery->add_subquery($host_subquery);
+  
+  $query->add_subquery($superquery, 'AND');
 }
 
 /**
