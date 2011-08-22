@@ -26,6 +26,10 @@ Disallow: /modules/
 Disallow: /profiles/
 Disallow: /scripts/
 Disallow: /themes/
+Disallow: /TFK/
+Disallow: /tfk-magazine/
+Disallow: /worksheets/
+Disallow: /teacher-community/
 # Files
 Disallow: /CHANGELOG.txt
 Disallow: /cron.php
