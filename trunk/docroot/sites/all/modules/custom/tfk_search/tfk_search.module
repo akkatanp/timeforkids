@@ -388,6 +388,16 @@ define('TFK_SEARCH_ARTICLE_DECK', 'ss_field_deck');
  */
 define('TFK_SEARCH_COVER_STORY', 'is_flag_cover_story');
 
+/**
+ * Apache Solr search field, used to identify the server hosting the document.
+ *
+ * This fields allows us to have 3 servers indexing to Solr, but each server
+ * only shows the documents that it sent to the index.
+ *
+ * @var string
+ */
+define('TFK_SEARCH_HOST', 'ss_server_host');
+
 
 /**
  * Implementation of hook_apachesolr_update_index.
@@ -406,6 +416,29 @@ define('TFK_SEARCH_COVER_STORY', 'is_flag_cover_story');
  * @see ApacheSolrDocument::setField
  */
 function tfk_search_apachesolr_update_index(&$document, $node, $namespace) {
+
+  // Index server.
+  //
+  // IMPORTANT!! ATTENTION!! ACHTUNG!!
+  // The HTTP_HOST server variable is only available in web based crons.
+  // In drush based crons, the host is the operating system, not apache.
+  // So we're using the database host to identify different servers.
+  //
+  global $_SERVER;
+  if(!empty($_SERVER) && array_key_exists('HTTP_HOST', $_SERVER)) {
+    // TFK_SEARCH_HOST
+    #$document->addField(TFK_SEARCH_HOST, $deck[0]['value']);
+  }
+  
+  print_r($_SERVER);
+  
+  module_load_include('module', 'database', 'database.inc');
+  $options = Database::getConnection();
+  $options = $options->getConnectionOptions();
+  
+  print_r($options);
+  
+  
   // Index date field.
   
   // Add article fields to the index.
