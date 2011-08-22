@@ -1519,8 +1519,6 @@ function tfk_search_apachesolr_modify_query($query, $caller) {
       $content_types = array('slideshow', 'video', 'atw_destination', 'minisite','tfk_extra','a_paper','grammar_practice','writing_tips');
       
       // If document type is article, make sure it is **NOT** a cover story.
-      // Example of how the query will look:
-      // ... (bundle:article AND is_flag_cover_story:0) OR (bundle:slideshow OR bundle:video OR bundle:atw_destination ...
       $article_subquery = apachesolr_drupal_query();
       $article_subquery->add_filter('bundle', 'article');
       $article_subquery->add_filter(TFK_SEARCH_COVER_STORY, 0);
