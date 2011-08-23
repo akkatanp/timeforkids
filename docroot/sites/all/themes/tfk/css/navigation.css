@@ -1003,8 +1003,8 @@
 #block-tfk-news-tfk-news-minisite-articles {
 	border: solod 1px #cecece;
 	background : #dedede;
-	padding: 10px;
 	margin-top: 10px;
+	padding: 10px 0 10px 7px;
 }
 
 /* right sidebar */
