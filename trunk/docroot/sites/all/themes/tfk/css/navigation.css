@@ -118,14 +118,14 @@
 
 #block-views-homepage-username-block {
 	float: left;
-	width: 208px;
+	width: 196px;
 	height: 32px;
 }
 
 #teacher-nav-container .inner #block-block-3 ,
 #teacher-nav-container .inner #block-block-11 {
 	float: left;
-	width: 120px;
+	width: 132px;
 	height: 32px;
 }
 
@@ -137,13 +137,13 @@
 	padding: 8px 0 6px 0;
 	font: bold 12px arial;
 	font-style: italic;
-	color: #555;
+	color: #333;
 }
 
 #teacher-nav-container .inner .content p a {
 	font: bold 12px arial, san-serif;
 	height: 16px;
-	padding: 2px 0;
+	padding: 2px;
 	color: #d71700;
 	text-decoration: none;
 }
