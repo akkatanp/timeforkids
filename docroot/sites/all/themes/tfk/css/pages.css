@@ -1003,8 +1003,8 @@ ul.links li {
 	color: white;
 	text-transform: uppercase;
 	text-decoration: none;
-	font: normal 12px "arial black", arial, sans-serif;
 	font-weight: normal;
+	font: normal 12px "arial black", arial, sans-serif;
 }
 
 .view-homepage-news-block table td .views-field-field-lrg-rect-image,
