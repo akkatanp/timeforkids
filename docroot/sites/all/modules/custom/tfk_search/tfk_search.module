@@ -1547,11 +1547,11 @@ function tfk_search_apachesolr_modify_query($query, $caller) {
   }
   
   // Filter documents by host.
-  $host_subquery = apachesolr_drupal_query();
+  /*$host_subquery = apachesolr_drupal_query();
   $host_subquery->add_filter(TFK_SEARCH_HOST, tfk_search_get_unique_host_id());
   $superquery->add_subquery($host_subquery);
   
-  $query->add_subquery($superquery, 'AND');
+  $query->add_subquery($superquery, 'AND'); */
 }
 
 /**
