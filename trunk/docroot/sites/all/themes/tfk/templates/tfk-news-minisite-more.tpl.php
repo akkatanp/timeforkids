@@ -1,16 +1,27 @@
-Edit me in : tfk-news-minisite-more.tpl.php
+
 <?php if(!empty($minisites)):?>
+
+	<div class="view-header"><p>MORE TFK MINI-SITES</p></div>
+	
+	<div class="view-content">
     <?php foreach($minisites as $minisite):?>
-        <div>
-            <?php if(isset($minisite['thumb_path']) && !empty($minisite['thumb_path'])):?>
-                <div>
-                   <img src="<?php echo $minisite['thumb_path'];?>"/>
-                </div>
-            <?php endif;?>
-            <?php echo l($minisite['title'],'node/'.$minisite['nid']);?>
-            
+	
+		<div class="views-row">
+		
+			<?php if(isset($minisite['thumb_path']) && !empty($minisite['thumb_path'])):?>
+			<div class="views-field-field-minisite-thumbnail-image">
+				<img src="<?php echo $minisite['thumb_path'];?>"/>
+			</div>
+			<?php endif;?>
+				
+			<div class="views-field-title">
+				<?php echo l($minisite['title'],'node/'.$minisite['nid']);?>
+			</div>
+		
         </div>
+	
     <?php endforeach;?>
-<br />
-<a href="/mini-sites">See More Mini-Sites</a>
+	</div>
+	
+	<div class="view-footer"><p><a href="/mini-sites">See More Mini-Sites</a></p></div>
 <?php endif; ?>
