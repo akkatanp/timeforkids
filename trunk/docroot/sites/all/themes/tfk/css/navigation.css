@@ -687,7 +687,7 @@
 	border: solid 1px #cecece;
 }
 
-#block-views-minisite-articles-block-6 .view-footer,
+.more-mini-sites .view-footer,
 #block-views-random-kid-reporters-block .view-footer,
 .node-type-kid-reporter .region-sidebar-first .view-footer,
 .section-tfk-kid-reporters .region-sidebar-first .view-footer,
@@ -695,7 +695,7 @@
 	height: 42px;
 }
 
-#block-views-minisite-articles-block-6 .view-footer p,
+.more-mini-sites .view-footer p,
 #block-views-random-kid-reporters-block .view-footer p,
 .node-type-kid-reporter .region-sidebar-first .view-footer p,
 .section-tfk-kid-reporters .region-sidebar-first .view-footer p,
@@ -704,7 +704,7 @@
 }
 
 .favgobackbtn a,
-#block-views-minisite-articles-block-6 .view-footer a,
+.more-mini-sites .view-footer a,
 #block-views-random-kid-reporters-block .view-footer a,
 .node-type-kid-reporter .region-sidebar-first .view-footer a,
 .section-tfk-kid-reporters  .region-sidebar-first .view-footer a,
@@ -733,7 +733,7 @@
 }
 
 .favgobackbtn a:hover,
-#block-views-minisite-articles-block-6 .view-footer a:hover,
+.more-mini-sites  .view-footer a:hover,
 #block-views-random-kid-reporters-block .view-footer a:hover,
 .node-type-kid-reporter .region-sidebar-first .view-footer a:hover,
 .section-tfk-kid-reporters  .region-sidebar-first .view-footer a:hover,
