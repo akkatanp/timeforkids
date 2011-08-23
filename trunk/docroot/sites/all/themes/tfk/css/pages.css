@@ -1515,7 +1515,8 @@ ul.links li {
 	background: url(../images/atw-list-icon.png) no-repeat 0px 0px;
 }
 
-#block-tfk-atw-atw-page-list-map-switch a.list-view:hover {
+#block-tfk-atw-atw-page-list-map-switch a.list-view:hover,
+#block-tfk-atw-atw-page-list-map-switch a.list-view.active  {
 	background: url(../images/atw-list-icon.png) no-repeat 0px -22px;
 }
 
@@ -1528,7 +1529,8 @@ ul.links li {
 	background: url(../images/atw-globe-icon.png) no-repeat 0px 0px;
 }
 
-#block-tfk-atw-atw-page-list-map-switch a.map-view:hover {
+#block-tfk-atw-atw-page-list-map-switch a.map-view:hover,
+#block-tfk-atw-atw-page-list-map-switch a.map-view.active {
 	background: url(../images/atw-globe-icon.png) no-repeat 0px -22px;
 }
 
