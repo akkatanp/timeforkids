@@ -463,12 +463,14 @@
 }
 
 #block-tfk-extras-tfk-extras-taxonomy-links ul.menu li a:hover,
-#block-tfk-news-tfk-news-taxonomy-links ul.menu li a:hover {
+#block-tfk-news-tfk-news-taxonomy-links ul.menu li a:hover,
+#block-tfk-news-tfk-news-minisite-articles ul.menu li a:hover {
 	text-decoration: underline;
 }
 
 #block-tfk-extras-tfk-extras-taxonomy-links ul.menu li a.active,
-#block-tfk-news-tfk-news-taxonomy-links ul.menu li a.active {
+#block-tfk-news-tfk-news-taxonomy-links ul.menu li a.active,
+#block-tfk-news-tfk-news-minisite-articles ul.menu li a.active {
 	color: #555;
 	background: none;
 }
