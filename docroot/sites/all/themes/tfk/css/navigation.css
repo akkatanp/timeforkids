@@ -432,8 +432,9 @@
 	color: #fff;
 	background: #999;
 	padding: 10px;
-	text-decoration: none;
 	margin-right: 7px;
+	text-decoration: none;
+	text-transform: uppercase;
 }
 
 #block-tfk-news-tfk-news-latest-news-link a:hover,
@@ -460,6 +461,7 @@
 	font: bold 12px arial, san-serif;
 	color: #d71700;
 	padding: 0px;
+	text-transform: none;
 }
 
 #block-tfk-extras-tfk-extras-taxonomy-links ul.menu li a:hover,
@@ -956,14 +958,19 @@
 	margin-bottom: 10px;
 }
 
-#block-views-minisite-articles-block-6 {
+#block-tfk-news-tfk-news-minisite-articles,
+.more-mini-sites {
 	border: solid 1px #cecece;
 	padding: 10px;
 	position: relative;
 	margin-top: 10px;
 }
 
-#block-views-minisite-articles-block-6 .view-header p {
+#block-tfk-news-tfk-news-minisite-articles {
+	background: #dedede;
+}
+
+.more-mini-sites .view-header p {
 	text-transform: uppercase;
 	font: normal 12px "arial black", arial, san-serif;
 	padding-bottom: 10px;
@@ -971,40 +978,19 @@
 	margin-bottom: 10px;
 }
 
-#block-views-minisite-articles-block-6 .view-content .views-row {
+.more-mini-sites.view-content .views-row {
 	padding: 0 0 10px 0;
 	margin: 0 0 10px 0;
 	border-bottom: dotted 1px #cecece;
 }
 
-#block-views-minisite-articles-block-6 .view-content .views-row {
+.more-mini-sites .view-content .views-row {
 	min-height: 62px;
 }
 
-#block-views-minisite-articles-block-6 .view-content .views-row .views-field-field-minisite-tout-image {
-	float: left;
-	width: 62px;
-	height: 62px;
-	margin: 0 10px 10px 0;
-}
-
-#block-views-minisite-articles-block-6 .view-content .views-row .views-field-field-minisite-tout-image img {
-	width: 60px;
-	height: 60px;
-	border: solid 1px #cecece;
-}
-
-#block-views-minisite-articles-block-6 .view-content .views-row .field-content a {
+.more-mini-sites .view-content .views-row .field-content a {
 	font: bold 20px arial, san-serif;
 	line-height: 20px;
-}
-
-/* mini-site article sidebar */
-#block-tfk-news-tfk-news-minisite-articles {
-	border: solod 1px #cecece;
-	background : #dedede;
-	margin-top: 10px;
-	padding: 10px 0 10px 7px;
 }
 
 /* right sidebar */
