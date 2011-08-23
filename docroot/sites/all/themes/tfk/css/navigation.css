@@ -931,7 +931,6 @@
 	padding: 0;
 }
 
-
 #block-views-minisite-articles-block-4  {
 	border: solid 1px #cecece;
 	background: #dedede;
@@ -988,6 +987,14 @@
 #block-views-minisite-articles-block-6 .view-content .views-row .field-content a {
 	font: bold 20px arial, san-serif;
 	line-height: 20px;
+}
+
+/* mini-site article sidebar */
+#block-tfk-news-tfk-news-minisite-articles {
+	border: solod 1px #cecece;
+	background : #dedede;
+	padding: 10px;
+	margin-top: 10px;
 }
 
 /* right sidebar */
