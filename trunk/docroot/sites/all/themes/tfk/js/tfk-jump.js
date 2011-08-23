@@ -98,6 +98,7 @@ if (typeof TFKADS == 'undefined' || !TFKADS) {window.TFKADS = {};}
 //External domains that we don't want to go through the jump page for. timeforkids.com is included just in case our own domain shows up in an ad
 TFKADS.domainExceptions = new Array("timeforkidsdigital.com","timeinc.com","timeinc.net", "timeforkids.com","acquia-sites.com","customersvc.com");
 
+(function($) {
 $(document).ready(function() {
   // Creating custom :external selector
   // To save performance we are not checking against domain array here, we lazy attach and check later
@@ -279,4 +280,4 @@ function tfkAdCSSHelper(adUnit, width, height) {
           $(TFKADS.adElementName).bind("mousedown", {element: TFKADS.tfkAdLocations[TFKADS.adElementName]}, tfkJumpPageHandler);
     }
   }
-});//End doc ready
+})(jQuery);//End doc ready
