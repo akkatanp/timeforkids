@@ -53,7 +53,7 @@
 				if (i == 0) {
 					dot.addClass('active');
 					$('.title-container').children().eq(0).show();
-                                        $('.foot-credit').children().eq(0).show();
+					$('.foot-credit').children().eq(0).show();
 				}
 				
 			}
@@ -77,6 +77,8 @@
 		var numSlides = inner.children().length; 
 		var slideNum = Drupal.settings.tfk_featured_slideshow.slide_number ? Drupal.settings.tfk_featured_slideshow.slide_number : 0;
 		var imgWidth = 488;
+		
+		slideNum = 3;
 		
 		var nextSlide = function() {
 			var nextSlideNum = slideNum + 1;
@@ -117,7 +119,11 @@
 		if (numSlides) {
 			inner.css('width', numSlides * imgWidth + 'px');
 			prev.click(prevSlide);
-			next.click(nextSlide);
+			next.click(nextSlide);			
+			
+			if (slideNum) {
+				nextSlide();
+			}
 		}
 	};
 })(jQuery);
