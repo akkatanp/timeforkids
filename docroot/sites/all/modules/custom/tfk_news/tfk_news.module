@@ -641,6 +641,13 @@ function tfk_preprocess_html(&$variables) {
         $variables['classes_array'][] = 'with-kid-reporter';
       }
     }
+    
+    $result = db_query('SELECT DISTINCT entity_id from field_data_field_articles fa where fa.entity_type = :type and fa.bundle = :bundle and fa.field_articles_nid = :nid',array('type'=> 'node','bundle'=>'minisite','nid'=>$node->nid));
+    $record = $result->fetch();
+    if($record){
+      $variables['classes_array'][] = 'from-mini-site';
+    }
+
   }
 } 
 
