@@ -971,6 +971,10 @@
 	background: #dedede;
 }
 
+#block-tfk-news-tfk-news-minisite-articles  a {
+	background: #d71700;
+}
+
 .more-mini-sites .view-header p {
 	text-transform: uppercase;
 	font: normal 12px "arial black", arial, san-serif;
