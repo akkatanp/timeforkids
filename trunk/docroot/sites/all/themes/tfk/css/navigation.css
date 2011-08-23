@@ -141,7 +141,7 @@
 }
 
 #teacher-nav-container .inner .content p a {
-	font: normal 12px arial, san-serif;
+	font: bold 12px arial, san-serif;
 	height: 16px;
 	padding: 2px 0;
 	color: #d71700;
@@ -958,6 +958,7 @@
 	margin-bottom: 10px;
 }
 
+/* more mini-sites adn mini-sites articles */
 #block-tfk-news-tfk-news-minisite-articles,
 .more-mini-sites {
 	border: solid 1px #cecece;
@@ -988,7 +989,14 @@
 	min-height: 62px;
 }
 
-.more-mini-sites .view-content .views-row .field-content a {
+.more-mini-sites .views-field-field-minisite-thumbnail-image {
+	float: left;
+	margin-right: 10px;
+	width: 62px;
+	height: 62px;
+}
+
+.more-mini-sites .views-field-title a {
 	font: bold 20px arial, san-serif;
 	line-height: 20px;
 }
