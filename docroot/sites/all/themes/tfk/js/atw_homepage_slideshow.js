@@ -78,8 +78,6 @@
 		var slideNum = Drupal.settings.tfk_featured_slideshow.slide_number ? Drupal.settings.tfk_featured_slideshow.slide_number : 0;
 		var imgWidth = 488;
 		
-		slideNum = 3;
-		
 		var nextSlide = function() {
 			var nextSlideNum = slideNum + 1;
 			
