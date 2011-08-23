@@ -277,7 +277,7 @@ function _tfk_news_current_filters(){
   if(arg(0) == 'news-archive'){
     $str = '<div class="currfilters"><div class="newsarc">News Archive</div><div class="newsarcsmall">';
     if(count(arg()) == 1){
-      $str .= 'Viewing: All News; All Dates;';
+      $str .= 'Viewing: All News; All Dates';
     }else{
       $arg = arg(1);
       if(!is_numeric(arg(1))){
@@ -292,6 +292,12 @@ function _tfk_news_current_filters(){
         $str .= 'Year: '.ucfirst(arg(1));
       }
     }
+
+    $rest = substr($str, -1);
+    if($rest == ';'){
+      $str = substr_replace($str,"",-1);
+    }
+
     return $str.'</div></div>';
   }else{
     return '';
