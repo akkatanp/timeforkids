@@ -1,43 +1,40 @@
 /* Global JS file */
-var $ = jQuery;
-
-$(document).ready(function() {
-	//lightbox
-	$('#login-link').loginBox();
-        if ($('.field-type-video').length > 0) {
-            //Need to hide video if there is one present. This solution is preferable over wmode=transparent since changing wmode causes issues with the playback controls on quicktime videos
-            $('#login-link').click(function(){
-                $('.field-type-video').css('visibility','hidden');//Video doesn't come back if you hit close-button instead of logging in but that's acceptable
-            });
-        }
-	//hide notification if it is there
-	$('#hide-notification').click(function(){
-		$.ajax({
-			url: $(this).attr('rel'),
-			success: function(data) {
-				if (data == 'success') {
-					$('.notification').slideUp('fast');
-				}
-			}
-		});
-	});
-
-        $('#yearsubmit').takeUserTo();
-});
-
-
 (function($) {
-
-        $.fn.takeUserTo = function(){
-          $(this).click(function(e) {
-			e.preventDefault();
-                        var yr = $('#yeardropdown').val();
-                        location.href= '/news-archive/' + yr;
+	$(document).ready(function() {
+		//lightbox
+		$('#login-link').loginBox();
+			if ($('.field-type-video').length > 0) {
+				//Need to hide video if there is one present. This solution is preferable over wmode=transparent since changing wmode causes issues with the playback controls on quicktime videos
+				$('#login-link').click(function(){
+					$('.field-type-video').css('visibility','hidden');//Video doesn't come back if you hit close-button instead of logging in but that's acceptable
+				});
+			}
+		//hide notification if it is there
+		$('#hide-notification').click(function(){
+			$.ajax({
+				url: $(this).attr('rel'),
+				success: function(data) {
+					if (data == 'success') {
+						$('.notification').slideUp('fast');
+					}
+				}
+			});
 		});
-        }
-
-
-        $.fn.loginBox = function() {
+		
+		$('#yearsubmit').takeUserTo();
+	});
+	
+	
+	$.fn.takeUserTo = function() {
+		$(this).click(function(e) {
+			e.preventDefault();
+			var yr = $('#yeardropdown').val();
+			location.href= '/news-archive/' + yr;
+		});
+	};
+	
+	
+	$.fn.loginBox = function() {
 		$(this).click(function(e) {
 			e.preventDefault();
 			createLightBox();
@@ -72,6 +69,6 @@ $(document).ready(function() {
 			$('#lightbox').remove();
 			$('#mask').remove();
 			$('body').css('overflow', 'auto');
-		}
+		};
 	}
-})($);
+})(jQuery);

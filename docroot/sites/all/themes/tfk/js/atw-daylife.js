@@ -1,10 +1,8 @@
-var $ = jQuery;
-
-$(document).ready(function() {
-	$('#daylife-container').daylife();
-});
-
 (function($) {
+	$(document).ready(function() {
+		$('#daylife-container').daylife();
+	});
+	
 	$.fn.daylife = function() {
 		var daylifebar = $('#daylife-bar');
 		var inner = daylifebar.find('#inner');
@@ -110,4 +108,4 @@ $(document).ready(function() {
 			next.click(nextEvent);
 		}
 	};
-})($);
+})(jQuery);

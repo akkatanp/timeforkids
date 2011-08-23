@@ -1,50 +1,47 @@
-var $ = jQuery;
-
-$(document).ready(function() {
-	if ($('#slideshow-container').hasClass('regular')) {
-		$('#slideshow-container').regularSlideshow();
-	} else {
-		$('#slideshow-container #slideshow').slideshow();
-	}
-});
-
-var nextSlideImg = function() {
-	var curImg = $('#clicks .active');
-	var nextImgNum = parseInt(curImg.attr('id').split('-')[1]) + 1;
-	var nextImg = $('#img-' + nextImgNum).length > 0 ? $('#img-' + nextImgNum) : $('#img-0');
-	nextImgNum = parseInt(nextImg.attr('id').split('-')[1]);
-	
-	$('#clicks').children().each(function(i, img) {
-		$(img).removeClass('active');
-		$('.title-container').children().eq(i).hide();
-                $('.foot-credit').children().eq(i).hide();
+(function($) {
+	$(document).ready(function() {
+		if ($('#slideshow-container').hasClass('regular')) {
+			$('#slideshow-container').regularSlideshow();
+		} else {
+			$('#slideshow-container #slideshow').slideshow();
+		}
 	});
 	
-	$('#slideshow-container #slideshow .inner').animate({'left': (-1 * (nextImgNum * 488)) + 'px'}, 500);
-	nextImg.addClass('active');
-	$('.title-container').children().eq(nextImgNum).show();
-        $('.foot-credit').children().eq(nextImgNum).show();
-        
-};
-
-(function($) {
+	var nextSlideImg = function() {
+		var curImg = $('#clicks .active');
+		var nextImgNum = parseInt(curImg.attr('id').split('-')[1]) + 1;
+		var nextImg = $('#img-' + nextImgNum).length > 0 ? $('#img-' + nextImgNum) : $('#img-0');
+		nextImgNum = parseInt(nextImg.attr('id').split('-')[1]);
+		
+		$('#clicks').children().each(function(i, img) {
+			$(img).removeClass('active');
+			$('.title-container').children().eq(i).hide();
+			$('.foot-credit').children().eq(i).hide();
+		});
+		
+		$('#slideshow-container #slideshow .inner').animate({'left': (-1 * (nextImgNum * 488)) + 'px'}, 500);
+		nextImg.addClass('active');
+		$('.title-container').children().eq(nextImgNum).show();
+		$('.foot-credit').children().eq(nextImgNum).show();
+	};
+	
 	$.fn.slideshow = function() {
 		var inner = this.find('.inner');
 		var footer = this.find('.footer');
 		var numImgs = inner.children().length;
 		var imgWidth = 488;
-
+		
 		var slideImg = function() {
 			imgs.each(function(i, img) {
 				$(img).removeClass('active');
 				$('.title-container').children().eq(i).hide();
-                                $('.foot-credit').children().eq(i).hide();
+				$('.foot-credit').children().eq(i).hide();
 			});
 			var imgNum = parseInt(this.id.split('-')[1]);
 			inner.animate({'left': (-1 * (imgNum * imgWidth)) + 'px'}, 500);
 			$(this).addClass('active');
 			$('.title-container').children().eq(imgNum).show();
-                        $('.foot-credit').children().eq(imgNum).show();
+			$('.foot-credit').children().eq(imgNum).show();
 		};
 		
 		if (numImgs) {
@@ -78,7 +75,7 @@ var nextSlideImg = function() {
 		var next = $('#slideshow-controls #next-slide');
 		var slideInfo = $('#slideshow-info').children();
 		var numSlides = inner.children().length; 
-		var slideNum = 0;
+		var slideNum = Drupal.settings.tfk_featured_slideshow.slide_number ? Drupal.settings.tfk_featured_slideshow.slide_number : 0;
 		var imgWidth = 488;
 		
 		var nextSlide = function() {
@@ -123,4 +120,4 @@ var nextSlideImg = function() {
 			next.click(nextSlide);
 		}
 	};
-})($);
+})(jQuery);
