@@ -264,7 +264,7 @@ TFKADS.domainExceptions = new Array("timeforkidsdigital.com","timeinc.com","time
 			if (TFKADS.adTargetLocation.length > 0) {
 				//These object manipulations are needed to keep click from propagating downward into the flash. For IE, we have a CSS trick
 				$(tfkAdEmbedName + " param[name=wmode]").attr('value','transparent');
-			   );$(TFKADS.adElementName + " embed").attr('wmode','transparent');
+			   $(TFKADS.adElementName + " embed").attr('wmode','transparent');
 				 if ($.browser.msie) {
 					 tfkAdCSSHelper(TFKADS.adUnits[i], TFKADS.adwidth[i], TFKADS.adheight[i]);
 				 } 
@@ -281,4 +281,4 @@ TFKADS.domainExceptions = new Array("timeforkidsdigital.com","timeinc.com","time
 		}
 	  }
 	});//End doc ready
-})(jQuery);// make sure the $ is jQuery
+})(jQuery); // make sure the $ is jQuery
