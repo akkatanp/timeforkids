@@ -375,10 +375,9 @@
 	padding: 10px 0px 10px 7px;
 }
 
-.page-404page .region-sidebar-first .section{
+.page-404page .region-sidebar-first .section {
   border : none !important;
 }
-
 
 .region-sidebar-first .section ol.search-results,
 .region-sidebar-bottom .section ol.search-results,
@@ -434,7 +433,6 @@
 	background: #999;
 	padding: 10px;
 	text-decoration: none;
-	text-transform: uppercase;
 	margin-right: 7px;
 }
 
@@ -444,7 +442,7 @@
 #block-tfk-news-tfk-news-minisite-articles a:hover,
 #block-tfk-news-tfk-news-latest-news-link a.active,
 #block-tfk-extras-tfk-extras-taxonomy-links a.active,
-#block-tfk-news-tfk-news-taxonomy-links a.active
+#block-tfk-news-tfk-news-taxonomy-links a.active,
 #block-tfk-news-tfk-news-minisite-articles a.active {
 	background: #d71700;
 }
