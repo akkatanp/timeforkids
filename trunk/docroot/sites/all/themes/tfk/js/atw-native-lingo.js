@@ -1,15 +1,13 @@
-var $ = jQuery;
-
-$(document).ready(function() {
-	$("#audio-player").jPlayer({
-		swfPath: '/sites/all/themes/tfk/js/jplayer',
-		ready: function() {
-			$('#native-lingo-container').nativeLingo();
-		}
-	});
-});
-
 (function($) {
+	$(document).ready(function() {
+		$("#audio-player").jPlayer({
+			swfPath: '/sites/all/themes/tfk/js/jplayer',
+			ready: function() {
+				$('#native-lingo-container').nativeLingo();
+			}
+		});
+	});
+	
 	$.fn.nativeLingo = function() {
 		var basics = $(this).find('#basics .phrase a.audio-link');
 		var nextLevel = $(this).find('#next-level .phrase a.audio-link');
@@ -43,4 +41,4 @@ $(document).ready(function() {
 			});
 		}
 	};
-})($);
+})(jQuery);
