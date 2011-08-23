@@ -594,7 +594,16 @@ function tfk_news_preprocess_page(&$vars) {
       if(isset($node->field_kid_reporter['und'][0])){
         $vars['section_title'] = 'Kid Reporters';
         $vars['custclass'] = 'withkidrep';
+      }
 
+      $result = db_query('SELECT DISTINCT entity_id from field_data_field_articles fa where fa.entity_type = :type and fa.bundle = :bundle and fa.field_articles_nid = :nid',array('type'=> 'node','bundle'=>'minisite','nid'=>$node->nid));
+      $record = $result->fetch();
+      if($record){
+        $parent_minisite_nid = $record->entity_id;
+        $minisite_node = node_load($parent_minisite_nid);
+        $minisitetitle = $minisite_node->title;
+        $vars['section_title'] = $minisitetitle;
+        
       }
     }
 
