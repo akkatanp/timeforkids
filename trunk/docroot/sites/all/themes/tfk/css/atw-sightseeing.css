@@ -52,6 +52,8 @@
 	color: white;
 	font: bold 30xp arial;
 	margin-bottom: 10px;
+	word-wrap: normal;
+	text-transform: capitalize;
 }
 
 #location-container p {

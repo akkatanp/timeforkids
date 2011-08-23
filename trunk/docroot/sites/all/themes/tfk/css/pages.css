@@ -2213,6 +2213,7 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 	font: bold 30px arial, sans-serif;
 	margin-bottom: 10px;
 	word-wrap: normal;
+	text-transform: capitalize;
 }
 
 #location-container p {
