@@ -979,13 +979,10 @@
 	margin-bottom: 10px;
 }
 
-.more-mini-sites.view-content .views-row {
+.more-mini-sites .view-content .views-row {
 	padding: 0 0 10px 0;
 	margin: 0 0 10px 0;
 	border-bottom: dotted 1px #cecece;
-}
-
-.more-mini-sites .view-content .views-row {
 	min-height: 62px;
 }
 
@@ -994,6 +991,10 @@
 	margin-right: 10px;
 	width: 62px;
 	height: 62px;
+}
+
+.more-mini-sites .views-field-field-minisite-thumbnail-image img {
+	border: solid 1px #cecece;
 }
 
 .more-mini-sites .views-field-title a {
