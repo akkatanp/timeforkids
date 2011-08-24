@@ -769,9 +769,14 @@ function _tfk_search_back_btn(){
   $uri = explode('/', $_SERVER['REQUEST_URI']);
   print_R($uri);
   
-  if($args[0] == 'search' && $args[1] == 'site' && !empty($args[2])){
-    $dest = url('search/site/'.$args[2]);
+  if($uri[1] == 'search' && $args[2] == 'site' && !empty($args[3])){
+
+    $term_tmp = explode('?',$args[3]);
+    $term = $term_tmp[0];
+
+    $dest = url('search/site/'.$term);
     $link_copy = 'Back To Search';
+    echo $dest;
   }
 
   return '.';
