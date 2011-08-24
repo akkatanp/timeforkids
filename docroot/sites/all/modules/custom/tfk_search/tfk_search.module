@@ -1525,7 +1525,6 @@ function tfk_search_apachesolr_modify_query($query, $caller) {
       $article_subquery = apachesolr_drupal_query();
       $article_subquery->add_filter('bundle', 'article');
       $article_subquery->add_filter(TFK_SEARCH_COVER_STORY, 0);
-      //$article_subquery->add_filter(TFK_SEARCH_HOST, tfk_search_get_unique_host_id());
       $query->add_subquery($article_subquery, 'AND');
       
     // Logged in content types.
