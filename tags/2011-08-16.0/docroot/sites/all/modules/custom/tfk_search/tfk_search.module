@@ -2033,7 +2033,8 @@ function tfk_search_preprocess_search_result(&$vars) {
         if(!empty($items)) {
           $lists[$name] = array();
           foreach($items as $item) {
-            if($field != 'field_articles') {
+          	 $lists[$name][] = l($item['title'], $item['url']);
+            /*if($field != 'field_articles') {
               $lists[$name][] = l($item['title'], $item['url']);
             } else {
               $cover_story = node_load($item['nid']);
@@ -2046,7 +2047,7 @@ function tfk_search_preprocess_search_result(&$vars) {
                 $link = url('node/'. $cover_story->nid);
                 $lists[$name][] = l($cover_story->title, ltrim($link, '/'). '/'. $magazine->nid, array('alias' => TRUE));
               }
-            }
+            }*/
           }
         }
       }
