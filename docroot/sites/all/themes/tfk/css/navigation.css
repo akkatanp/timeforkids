@@ -959,6 +959,10 @@
 }
 
 /* more mini-sites and mini-sites articles */
+.from-mini-site .region-sidebar-first .section {
+	display: none;
+}
+
 #block-tfk-news-tfk-news-minisite-articles,
 .more-mini-sites {
 	border: solid 1px #cecece;
