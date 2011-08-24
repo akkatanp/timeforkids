@@ -1525,7 +1525,7 @@ function tfk_search_apachesolr_modify_query($query, $caller) {
       $article_subquery = apachesolr_drupal_query();
       $article_subquery->add_filter('bundle', 'article');
       $article_subquery->add_filter(TFK_SEARCH_COVER_STORY, 0);
-      $query->add_subquery($article_subquery, 'AND');
+ 	  $superquery->add_subquery($article_subquery, 'AND');
       
     // Logged in content types.
     } else {
