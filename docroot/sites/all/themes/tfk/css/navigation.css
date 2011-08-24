@@ -649,9 +649,17 @@
 	text-decoration: none;
 	text-transform: uppercase;
 	background: #d71700 url(../images/white-back-arrow.png) no-repeat 10px 10px;
+        margin-right:10px;
 }
 
 
+.photobackbtn a{
+  
+}
+
+.photobackbtn a{
+
+}
 
 #block-views-random-kid-reporters-block,
 .node-type-kid-reporter .region-sidebar-first .block-views,
