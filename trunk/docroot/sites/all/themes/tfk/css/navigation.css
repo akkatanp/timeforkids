@@ -653,13 +653,17 @@
 }
 
 
-.photobackbtn a{
-  
+.photobackbtn a,.workshtsbackbtn a{
+  display: block;
+	font: normal 14px "arial black", arial, san-serif;
+	line-height: 15px;
+	color: #fff;
+	padding: 10px 10px 10px 30px;
+	text-decoration: none;
+	text-transform: uppercase;
+	background: #d71700 url(../images/white-back-arrow.png) no-repeat 10px 20px;
 }
 
-.photobackbtn a{
-
-}
 
 #block-views-random-kid-reporters-block,
 .node-type-kid-reporter .region-sidebar-first .block-views,
