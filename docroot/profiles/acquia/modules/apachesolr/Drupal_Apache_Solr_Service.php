@@ -735,7 +735,7 @@ class DrupalApacheSolrService {
 
     if ($method == 'GET') {
       $searchUrl = $this->_constructUrl(self::SEARCH_SERVLET, array(), $queryString);
-      // print_r(urldecode($searchUrl));
+      print_r(urldecode($searchUrl));
       return $this->_sendRawGet($searchUrl);
     }
     else if ($method == 'POST') {
