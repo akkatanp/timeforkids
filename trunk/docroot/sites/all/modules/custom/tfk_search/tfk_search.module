@@ -144,13 +144,22 @@ function tfk_search_magazine_article_view($article, $magazine = null) {
  *
  * @see node_view.inc
  */
-function tfk_search_slideshow_image_view($slideshow_node, $slide_number = 0) {
+function tfk_search_slideshow_image_view($slideshow_node, $slide_number = NULL) {
   
   // Send to JavaScript the slide number the user wishes to see.
-  #drupal_add_js(array('tfk_featured_slideshow' => array('slide_number' => $slide_number)), 'setting');
+  if(empty($slide_number)) {
+    if((arg(4) !== 0)) {
+      $_slide_number = arg(4);
+    } else {
+      $_slide_number = 0;
+    }
+  } else {
+    $_slide_number = $slide_number;
+  }
+  drupal_add_js(array('tfk_featured_slideshow' => array('slide_number' => $_slide_number)), 'setting');
   
   // Set the active router item to 'node/%'.
-  $path = 'node/'. $slideshow_node->nid;
+  $path = 'node/'. ((is_object($slideshow_node)) ? $slideshow_node->nid: $slideshow_node);
   menu_set_active_item($path);
   menu_execute_active_handler($path);
   
