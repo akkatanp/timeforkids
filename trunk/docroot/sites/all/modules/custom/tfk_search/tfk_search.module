@@ -769,7 +769,7 @@ function _tfk_search_back_btn(){
   $uri = explode('/', $_SERVER['REQUEST_URI']);
   print_R($uri);
   
-  if($uri[1] == 'search' && $args[2] == 'site' && !empty($args[3])){
+  if($uri[1] == 'search' && $uri[2] == 'site' && !empty($uri[3])){
 
     $term_tmp = explode('?',$args[3]);
     $term = $term_tmp[0];
