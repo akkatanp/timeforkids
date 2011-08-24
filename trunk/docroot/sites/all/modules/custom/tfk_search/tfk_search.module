@@ -596,6 +596,10 @@ function tfk_search_block_info() {
     'info' => t('TFK Magazine Issue Block'),
   );
 
+  $blocks['tfk-search-back-btn'] = array(
+    'info' => t('Block with back button for various searches.')
+  );
+
   return $blocks;
 }
 
@@ -677,7 +681,11 @@ function tfk_search_block_view($delta='') {
     case 'tfk_magazine_back_btn':
       $block['content'] = '<h2>'. l(t("BACK TO TFK MAGAZINE"), 'tfk-magazine'). '</h2>';
     break;
-    
+
+    case 'tfk-search-back-btn':
+      $block['content'] = _tfk_search_back_btn();
+    break;
+
     // Site-wide search filter search.
     case 'tfk_search_sidebar_filter':
       $output = '<h2>'. t("SEARCH TERM:"). '</h2>';
@@ -751,6 +759,12 @@ function tfk_search_block_view($delta='') {
   
   return $block;
 }
+
+
+function _tfk_search_back_btn(){
+  return '.';
+}
+
 
 /**
  * Creates content for "Save This Search" block.
