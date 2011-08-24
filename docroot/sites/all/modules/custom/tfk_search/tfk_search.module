@@ -776,7 +776,7 @@ function _tfk_search_back_btn(){
   $link_copy = '';
   $show = 0;
   $args = arg();
-  
+  $class ="";
   $uri = explode('/', $_SERVER['REQUEST_URI']);
   
   if($uri[1] == 'search' && $uri[2] == 'site' && !empty($uri[3])){
@@ -785,18 +785,21 @@ function _tfk_search_back_btn(){
     $dest = url('search/site/'.$term);
     $link_copy = 'Back To Search';
     $show = 1;
+    $class="srchbackbtn";
   }
 
   if($uri[1] == 'photos-video' && !empty($uri[2])){
     $dest = url('photos-video');
     $link_copy = 'Back To Photos & Videos';
     $show = 1;
+    $class="photobackbtn";
   }
 
   if($uri[1] == 'worksheets' && !empty($uri[2])){
     $dest = url('worksheets');
     $link_copy = 'Back To Printables';
     $show = 1;
+    $class="workshtsbackbtn";
   }
 
 
@@ -804,6 +807,7 @@ function _tfk_search_back_btn(){
   $list['dest'] = $dest;
   $list['copy'] = $link_copy;
   $list['show'] = $show;
+  $list['class'] = $class;
   
   return theme('tfk_search_back_btn',$list);
 }
