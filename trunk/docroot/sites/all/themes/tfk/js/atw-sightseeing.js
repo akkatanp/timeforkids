@@ -22,7 +22,8 @@
 				var locationTable = $(locationBody).find('table');
 				
 				var locationImg = $('<img/>').attr('src', locationTable.find('img').eq(0).attr('src'));
-				if (locationImg.width() < locationImg.height()) {
+				console.log(locationImg.width + ' ' + locationImg.height);
+				if (locationImg.width < locationImg.height) {
 					locationImg.css('float', 'left');
 				}
 				
