@@ -965,7 +965,6 @@ function theme_tfk_featured_block(&$variables) {
   $output = '<div id="tfk-search-photos-video-featured">';
   $output .= '<div class="top-story-right-square">&nbsp</div>';
   $url = ltrim(url('node/'. $tfkSearchFeaturedItem->nid), '/');
-  print_r($url);
   
   $output .= '<div class="g1'. ' content-type-'. $tfkSearchFeaturedItem->type. '">';
   $link_options = array('html' => TRUE, 'attributes' => array('class' => array('featured-item'), 'title' => $tfkSearchFeaturedItem->title));
