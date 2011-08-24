@@ -22,11 +22,9 @@
 				var locationTable = $(locationBody).find('table');
 				
 				var locationImg = $('<img/>').attr('src', locationTable.find('img').eq(0).attr('src'));
-				locationImg.bind('load', function() {
-					if (this.width < this.height) {
-						locationImg.css('float', 'left');
-					}
-				});
+				if (locationImg.width() < locationImg.height()) {
+					locationImg.css('float', 'left');
+				}
 				
 				var locationName = $('<h1></h1>').text(locationTable.find('.boldBlack20 font').text().toLowerCase());
 				var locationText = $('<p></p>').text(locationTable.find('.storyText').eq(1).text());
