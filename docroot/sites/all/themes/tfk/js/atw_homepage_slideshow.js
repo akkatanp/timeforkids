@@ -73,7 +73,8 @@
 		var next = $('#slideshow-controls #next-slide');
 		var slideInfo = $('#slideshow-info').children();
 		var numSlides = inner.children().length; 
-		var slideNum = Drupal.settings.tfk_featured_slideshow.slide_number ? Drupal.settings.tfk_featured_slideshow.slide_number : 0;
+		var slideNum = parseInt(Drupal.settings.tfk_featured_slideshow.slide_number) ? parseInt(Drupal.settings.tfk_featured_slideshow.slide_number) : 0;
+		console.log(slideNum);
 		var imgWidth = 488;
 		
 		var nextSlide = function() {
