@@ -629,7 +629,8 @@
 }
 
 #block-menu-menu-kid-reporter-articles-link ul.menu li a,
-#block-menu-menu-kid-reporter-listings-link ul.menu li a {
+#block-menu-menu-kid-reporter-listings-link ul.menu li a,
+.srchbackbtn a{
 	display: block;
 	font: normal 14px "arial black", arial, san-serif;
 	line-height: 15px;
