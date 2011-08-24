@@ -762,6 +762,12 @@ function tfk_search_block_view($delta='') {
 
 
 function _tfk_search_back_btn(){
+  $dest = '';
+  $link_copy = '';
+  $args = arg();
+  print_r($args);
+
+
   return '.';
 }
 
