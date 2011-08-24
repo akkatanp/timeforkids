@@ -307,3 +307,61 @@ function tfk_helper_update_7009($ret) {
   // Revert Feature.
   tfk_helper_features_revert(array('tfk_photos_video'));
 }
+
+/**
+ * Worksheets filesystem update.
+ */
+/*function tfk_helper_update_7010($ret) {
+  $test = null;
+  
+
+  // This is what we are going to do:
+  // Read in all the records into memory.
+    // node_load each worksheet
+    // resolve the address to the actual file
+    // store the address in an array
+
+  // Drop instance and field
+  // Create new field and instance (with the same name).
+  
+  // Iterate through all the worksheets
+    // Move the existing file from the public to the private dir.
+    // Enter the new worksheet path into the new field.
+    // Save the node.
+    
+  // --
+  // Read in all the records into memory.
+    // node_load each worksheet
+    $result = db_query("SELECT nid FROM {node} WHERE status = 1 AND type = 'worksheet'");
+    
+    if($result && $result->rowCount() > 0) {
+      $current_paths = array();
+      
+      foreach ($result as $k => $nid) {
+        $worksheet_node = node_load($nid);
+        $field_worksheet_pdf = field_get_items('node', $worksheet_node, 'field_worksheet_pdf');
+        if($field_worksheet_pdf) {
+          $current_paths[$worksheet_node->nid] = drupal_realpath($field_worksheet_pdf->uri);
+        }
+      }
+    }
+  
+    // resolve the address to the actual file
+    // store the address in an array
+
+  // Drop instance and field
+  // Create new field and instance (with the same name).
+  
+  // Iterate through all the worksheets
+    // Move the existing file from the public to the private dir.
+    // Enter the new worksheet path into the new field.
+    // Save the node.
+  
+  
+  // Delete field_worksheet_pdf field instance.
+  $worksheet = field_read_instance('node', 'field_worksheet_pdf', 'worksheet');
+  if($worksheet) {
+    #field_delete_instance($worksheet);
+  }
+}*/
+ 
