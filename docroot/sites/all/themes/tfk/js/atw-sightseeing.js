@@ -21,10 +21,10 @@
 				var locationBody = $(this).contents().find('body');
 				var locationTable = $(locationBody).find('table');
 				
-				var locationImg = new Image();
+				var locationImg = $('<img/>');
 				locationImg.load(function() {
-					if (locationImg.width < locationImg.height) {
-						$(locationImg).css('float', 'left');
+					if (this.width < this.height) {
+						locationImg.css('float', 'left');
 					}
 				});
 				locationImg.src = locationTable.find('img').eq(0).attr('src');
