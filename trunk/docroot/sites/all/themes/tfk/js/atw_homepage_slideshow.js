@@ -117,7 +117,7 @@
 			prev.click(prevSlide);
 			next.click(nextSlide);			
 			
-			if (slideNum) {
+			if (slideNum && !(slideNum < 0)) {
 				slideNum--;
 				nextSlide();
 			}
