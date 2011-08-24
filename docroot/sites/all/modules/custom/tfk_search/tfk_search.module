@@ -788,21 +788,25 @@ function _tfk_search_back_btn(){
     $class="srchbackbtn";
   }
 
-  print_r($uri);
-
-
-  if($uri[1] == 'photos-video' && !empty($uri[2])){
-    $dest = url('photos-video');
-    $link_copy = 'Back To Photos & Videos';
-    $show = 1;
-    $class="photobackbtn";
+  if(strstr($uri[1],'photos-video')){
+    $term_tmp = explode('?',$uri[1]);
+    if(count($term_tmp)>1){
+      $dest = url('photos-video');
+      $link_copy = 'Back To Photos & Videos';
+      $show = 1;
+      $class="photobackbtn";
+    }
   }
 
-  if($uri[1] == 'worksheets' && !empty($uri[2])){
-    $dest = url('worksheets');
-    $link_copy = 'Back To Printables';
-    $show = 1;
-    $class="workshtsbackbtn";
+
+  if(strstr($uri[1],'worksheets')){
+    $term_tmp = explode('?',$uri[1]);
+    if(count($term_tmp)>1){
+      $dest = url('worksheets');
+      $link_copy = 'Back To Printables';
+      $show = 1;
+      $class="workshtsbackbtn";
+    }
   }
 
 
