@@ -287,7 +287,161 @@ function tfk_magazine_field_default_fields() {
           'year_range' => '-3:+3',
         ),
         'type' => 'date_popup',
-        'weight' => '15',
+        'weight' => '18',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-magazine_issue-field_debate'
+  $fields['node-magazine_issue-field_debate'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '-1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_debate',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'module' => 'link',
+      'settings' => array(
+        'attributes' => array(
+          'class' => '',
+          'rel' => '',
+          'target' => 'default',
+        ),
+        'display' => array(
+          'url_cutoff' => 80,
+        ),
+        'enable_tokens' => 1,
+        'title' => 'optional',
+        'title_value' => '',
+        'url' => 0,
+      ),
+      'translatable' => '1',
+      'type' => 'link_field',
+    ),
+    'field_instance' => array(
+      'bundle' => 'magazine_issue',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'link',
+          'settings' => array(),
+          'type' => 'default',
+          'weight' => 31,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_debate',
+      'label' => 'Section: Debate',
+      'required' => 0,
+      'settings' => array(
+        'attributes' => array(
+          'class' => '',
+          'rel' => '',
+          'target' => 'default',
+        ),
+        'display' => array(
+          'url_cutoff' => '80',
+        ),
+        'enable_tokens' => 1,
+        'title' => 'optional',
+        'title_value' => '',
+        'url' => 0,
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'link',
+        'settings' => array(),
+        'type' => 'link_field',
+        'weight' => '10',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-magazine_issue-field_got_skills'
+  $fields['node-magazine_issue-field_got_skills'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '-1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_got_skills',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'module' => 'link',
+      'settings' => array(
+        'attributes' => array(
+          'class' => '',
+          'rel' => '',
+          'target' => 'default',
+        ),
+        'display' => array(
+          'url_cutoff' => 80,
+        ),
+        'enable_tokens' => 1,
+        'title' => 'optional',
+        'title_value' => '',
+        'url' => 0,
+      ),
+      'translatable' => '1',
+      'type' => 'link_field',
+    ),
+    'field_instance' => array(
+      'bundle' => 'magazine_issue',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'link',
+          'settings' => array(),
+          'type' => 'default',
+          'weight' => 32,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_got_skills',
+      'label' => 'Section: You\'ve Got Skills',
+      'required' => 0,
+      'settings' => array(
+        'attributes' => array(
+          'class' => '',
+          'rel' => '',
+          'target' => 'default',
+        ),
+        'display' => array(
+          'url_cutoff' => '80',
+        ),
+        'enable_tokens' => 1,
+        'title' => 'optional',
+        'title_value' => '',
+        'url' => 0,
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'link',
+        'settings' => array(),
+        'type' => 'link_field',
+        'weight' => '11',
       ),
     ),
   );
@@ -412,7 +566,7 @@ function tfk_magazine_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_in_the_news',
-      'label' => 'Section : In the News',
+      'label' => 'Section : News Now',
       'required' => 0,
       'settings' => array(
         'attributes' => array(
@@ -512,6 +666,83 @@ function tfk_magazine_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-magazine_issue-field_kid_central'
+  $fields['node-magazine_issue-field_kid_central'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '-1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_kid_central',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'module' => 'link',
+      'settings' => array(
+        'attributes' => array(
+          'class' => '',
+          'rel' => '',
+          'target' => 'default',
+        ),
+        'display' => array(
+          'url_cutoff' => 80,
+        ),
+        'enable_tokens' => 1,
+        'title' => 'optional',
+        'title_value' => '',
+        'url' => 0,
+      ),
+      'translatable' => '1',
+      'type' => 'link_field',
+    ),
+    'field_instance' => array(
+      'bundle' => 'magazine_issue',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'link',
+          'settings' => array(),
+          'type' => 'default',
+          'weight' => 30,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_kid_central',
+      'label' => 'Section: Kid Central',
+      'required' => 0,
+      'settings' => array(
+        'attributes' => array(
+          'class' => '',
+          'rel' => '',
+          'target' => 'default',
+        ),
+        'display' => array(
+          'url_cutoff' => '80',
+        ),
+        'enable_tokens' => 1,
+        'title' => 'optional',
+        'title_value' => '',
+        'url' => 0,
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'link',
+        'settings' => array(),
+        'type' => 'link_field',
+        'weight' => '9',
+      ),
+    ),
+  );
+
   // Exported field: 'node-magazine_issue-field_materials'
   $fields['node-magazine_issue-field_materials'] = array(
     'field_config' => array(
@@ -603,7 +834,7 @@ function tfk_magazine_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'node_reference_autocomplete',
-        'weight' => '16',
+        'weight' => '19',
       ),
     ),
   );
@@ -658,7 +889,7 @@ function tfk_magazine_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_more_news',
-      'label' => 'Section: More News',
+      'label' => 'Section: Features',
       'required' => 0,
       'settings' => array(
         'attributes' => array(
@@ -680,7 +911,7 @@ function tfk_magazine_field_default_fields() {
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_field',
-        'weight' => '9',
+        'weight' => '8',
       ),
     ),
   );
@@ -757,7 +988,7 @@ function tfk_magazine_field_default_fields() {
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_field',
-        'weight' => '14',
+        'weight' => '17',
       ),
     ),
   );
@@ -853,7 +1084,7 @@ function tfk_magazine_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'node_reference_autocomplete',
-        'weight' => '17',
+        'weight' => '20',
       ),
     ),
   );
@@ -930,7 +1161,7 @@ function tfk_magazine_field_default_fields() {
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_field',
-        'weight' => '10',
+        'weight' => '13',
       ),
     ),
   );
@@ -1007,7 +1238,7 @@ function tfk_magazine_field_default_fields() {
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_field',
-        'weight' => '11',
+        'weight' => '14',
       ),
     ),
   );
@@ -1084,7 +1315,7 @@ function tfk_magazine_field_default_fields() {
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_field',
-        'weight' => '12',
+        'weight' => '15',
       ),
     ),
   );
@@ -1161,7 +1392,7 @@ function tfk_magazine_field_default_fields() {
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_field',
-        'weight' => '13',
+        'weight' => '16',
       ),
     ),
   );
@@ -1366,7 +1597,7 @@ function tfk_magazine_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_whos_news',
-      'label' => 'Section: Who\'s News',
+      'label' => 'Section: Newsmakers',
       'required' => 0,
       'settings' => array(
         'attributes' => array(
@@ -1388,7 +1619,7 @@ function tfk_magazine_field_default_fields() {
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_field',
-        'weight' => '8',
+        'weight' => '12',
       ),
     ),
   );
@@ -1443,7 +1674,7 @@ function tfk_magazine_field_default_fields() {
         'module' => 'metatags_quick',
         'settings' => array(),
         'type' => 'metatags_quick_textarea',
-        'weight' => '19',
+        'weight' => '22',
       ),
     ),
   );
@@ -1498,7 +1729,7 @@ function tfk_magazine_field_default_fields() {
         'module' => 'metatags_quick',
         'settings' => array(),
         'type' => 'metatags_quick_textfield',
-        'weight' => '18',
+        'weight' => '21',
       ),
     ),
   );
@@ -1514,11 +1745,14 @@ function tfk_magazine_field_default_fields() {
   t('News');
   t('Publish Date');
   t('Related Resources');
-  t('Section : In the News');
+  t('Section : News Now');
   t('Section : Top 5');
   t('Section: Cover Story');
-  t('Section: More News');
-  t('Section: Who\'s News');
+  t('Section: Debate');
+  t('Section: Features');
+  t('Section: Kid Central');
+  t('Section: Newsmakers');
+  t('Section: You\'ve Got Skills');
   t('Theme 1');
   t('Theme 2');
   t('Theme 3');
