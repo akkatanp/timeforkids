@@ -74,7 +74,6 @@
 		var slideInfo = $('#slideshow-info').children();
 		var numSlides = inner.children().length; 
 		var slideNum = parseInt(Drupal.settings.tfk_featured_slideshow.slide_number) ? parseInt(Drupal.settings.tfk_featured_slideshow.slide_number) : 0;
-		console.log(slideNum);
 		var imgWidth = 488;
 		
 		var nextSlide = function() {
@@ -119,6 +118,7 @@
 			next.click(nextSlide);			
 			
 			if (slideNum) {
+				slideNum--;
 				nextSlide();
 			}
 		}
