@@ -788,6 +788,9 @@ function _tfk_search_back_btn(){
     $class="srchbackbtn";
   }
 
+  print_r($uri);
+
+
   if($uri[1] == 'photos-video' && !empty($uri[2])){
     $dest = url('photos-video');
     $link_copy = 'Back To Photos & Videos';
