@@ -23,11 +23,11 @@
 				
 				var locationImg = $('<img/>');
 				locationImg.load(function() {
-					if (this.width < this.height) {
+					if (locationImg.width() < locationImg.height()) {
 						locationImg.css('float', 'left');
 					}
 				});
-				locationImg.src = locationTable.find('img').eq(0).attr('src');
+				locationImg.attr('src',locationTable.find('img').eq(0).attr('src'));
 				
 				var locationName = $('<h1></h1>').text(locationTable.find('.boldBlack20 font').text().toLowerCase());
 				var locationText = $('<p></p>').text(locationTable.find('.storyText').eq(1).text());
