@@ -346,7 +346,8 @@ input[type=submit]:hover,
 }
 
 .node-type-teacher-community-question .form-submit,
-#teacher-community-question-node-form .form-submit {
+#teacher-community-question-node-form .form-submit,
+.page-comment-edit #edit-submit {
 	padding: 0;
 	border-radius: 0;
 	-moz-border-radius: 0;
