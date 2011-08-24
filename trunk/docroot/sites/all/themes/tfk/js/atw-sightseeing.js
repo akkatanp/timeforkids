@@ -21,10 +21,9 @@
 				var locationBody = $(this).contents().find('body');
 				var locationTable = $(locationBody).find('table');
 				
-				var locationImg = $('<img/>').attr('src', locationTable.find('img').eq(0).attr('src'));
-				console.log(locationImg.width() + ' ' + locationImg.height());
+				var locationImg = new Image(locationTable.find('img').eq(0).attr('src'));
 				if (locationImg.width < locationImg.height) {
-					locationImg.css('float', 'left');
+					$(locationImg).css('float', 'left');
 				}
 				
 				var locationName = $('<h1></h1>').text(locationTable.find('.boldBlack20 font').text().toLowerCase());
