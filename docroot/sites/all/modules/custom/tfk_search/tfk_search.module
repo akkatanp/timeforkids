@@ -821,6 +821,8 @@ function _tfk_search_back_btn(){
     $filter_str = $term_tmp[1];
     $filter_str = str_replace('filters=','',$filter_str);
     
+    echo $filter_str.'<br/>?<br/>';
+    
     if(strstr('&solrsort=ds_created%20desc',$filter_str)){
         $filter_str = str_replace('&solrsort=ds_created%20desc','',$filter_str);
     }elseif(strstr('solrsort=ds_created%20desc',$filter_str)){
