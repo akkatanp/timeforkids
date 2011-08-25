@@ -842,7 +842,7 @@ function _tfk_search_back_btn(){
     $term_tmp = explode('?',$uri[2]);
     
     
-    if(count($term_tmp)>1 && ($filter_str != $filterstring) ){
+    if(count($term_tmp)>1 && ($filter_str != $grade_str) ){
       $dest = url('worksheets');
       $link_copy = 'Back To Printables';
       $show = 1;
