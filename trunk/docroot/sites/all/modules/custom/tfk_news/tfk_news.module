@@ -589,7 +589,8 @@ function tfk_news_preprocess_block(&$variables){
             if($variables['block']->delta == 'tfk-news-latest-news-link' || 
                     $variables['block']->delta == 'tfk-news-year-filter' || 
                     $variables['block']->delta == 'tfk-news-taxonomy-links'){
-              unset($variables['content']);
+                $variables['content'] = '';
+              //unset($variables['content']);
             }
         }
     }
