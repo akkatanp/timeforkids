@@ -818,6 +818,12 @@ function _tfk_search_back_btn(){
       
     $term_tmp = explode('?',$uri[2]);
     
+    
+    //filters=im_28_field_grade_level%3A19 im_36_field_themes%3A47&solrsort=ds_created desc
+    
+    print_R($term_tmp[1]);
+    
+    
     if(count($term_tmp)>1){
       $dest = url('worksheets');
       $link_copy = 'Back To Printables';
