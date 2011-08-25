@@ -126,6 +126,7 @@ function tfk_news_block_view($delta='') {
     case 'tfk-news-minisite-articles':
       $block['subject'] = t('Block with minisite related articles');
       $block['content'] = _tfk_news_minisite_related_articles();
+      
       break;
   
     case 'tfk-news-minisite-more':
@@ -142,7 +143,7 @@ function tfk_news_block_view($delta='') {
 function _tfk_news_minisite_more(){
     $rgs = arg();
     
-    print_r($rgs);
+    
     
     
     if($rgs[0] == 'node' && is_numeric($rgs[1])){
@@ -189,7 +190,9 @@ function _tfk_news_minisite_more(){
 
 function _tfk_news_minisite_related_articles(){
     $rgs = arg();
-    print_R($rgs);
+    
+    //print_r($rgs);
+    
     
     if($rgs[0] == 'node' && is_numeric($rgs[1])){
         $node = node_load($rgs[1]);
@@ -200,9 +203,6 @@ function _tfk_news_minisite_related_articles(){
             $record = $result->fetch();
             if($record){
                 $parent_minisite_nid = $record->entity_id;
-                
-                
-                echo $parent_minisite_nid;
                 
                 
                 //now lets get all other articles under that minisite
@@ -222,7 +222,7 @@ function _tfk_news_minisite_related_articles(){
                     $articles[$i]['minisite_title']= $record->node_title;
                 }
                 
-                print_r($articles);
+                
                 
                 
                 if(!empty($articles)){
@@ -399,6 +399,7 @@ function tfk_news_field_formatter_view($entity_type, $entity, $field, $instance,
 
 
 function tfk_news_theme() {
+    
   return array(
     'tfk_news_taxonomy_links' => array(
       'template' => 'tfk-news-taxonomy-links',
@@ -597,7 +598,7 @@ function tfk_news_preprocess_block(&$variables){
             if($variables['block']->delta == 'tfk-news-latest-news-link' || 
                     $variables['block']->delta == 'tfk-news-year-filter' || 
                     $variables['block']->delta == 'tfk-news-taxonomy-links'){
-                $variables['content'] = '';
+                $variables['content'] = '**';
               //unset($variables['content']);
             }
         }

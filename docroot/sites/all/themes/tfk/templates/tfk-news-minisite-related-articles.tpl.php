@@ -1,4 +1,3 @@
-
 <?php if(!empty($articles)):?>
 	<div class="content">
 

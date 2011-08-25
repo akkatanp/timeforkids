@@ -1,4 +1,3 @@
-
 <?php if(!empty($minisites)):?>
 
 	<div class="view-header"><p>MORE TFK MINI-SITES</p></div>
