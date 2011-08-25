@@ -141,7 +141,7 @@ function tfk_news_block_view($delta='') {
 
 function _tfk_news_minisite_more(){
     $rgs = arg();
-    if(count($rgs) == 2 && ($rgs[0] == 'node') && is_numeric($rgs[1])){
+    if($rgs[0] == 'node' && is_numeric($rgs[1])){
         $node = node_load($rgs[1]);
         if($node->type == 'article'){
             //lets get the parent minisite  
@@ -186,7 +186,7 @@ function _tfk_news_minisite_more(){
 function _tfk_news_minisite_related_articles(){
     $rgs = arg();
 
-    if(count($rgs) == 2 && ($rgs[0] == 'node') && is_numeric($rgs[1])){
+    if($rgs[0] == 'node' && is_numeric($rgs[1])){
         $node = node_load($rgs[1]);
         if($node->type == 'article'){
 
