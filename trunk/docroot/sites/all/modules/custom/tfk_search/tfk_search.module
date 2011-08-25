@@ -2158,7 +2158,7 @@ function tfk_search_preprocess_search_result(&$vars) {
       // Old field: field_cover_story
       // New field: field_articles
       // Currently on Prod we still have the old field. Change to new field after deployment.
-      $list_fields = array('Cover Story' =>'field_cover_story', 'News Now' => 'field_in_the_news', 'Top 5' => 'field_top_5',
+      $list_fields = array('Cover Story' =>'field_articles', 'News Now' => 'field_in_the_news', 'Top 5' => 'field_top_5',
       'Features' => 'field_more_news', 'Kid Central' => 'field_kid_central', 'Debate' => 'field_debate', 'You\'ve Got Skills' => 'field_got_skills', 'Newsmakers' => 'field_whos_news',
       'Theme 1' => 'field_theme_1', 'Theme 2' => 'field_theme_2', 'Theme 3' => 'field_theme_3', 'Theme 4' => 'field_theme_4',
       'News' => 'field_news');
