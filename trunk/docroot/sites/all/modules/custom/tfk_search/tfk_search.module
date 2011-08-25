@@ -840,11 +840,6 @@ function _tfk_search_back_btn(){
     $filter_str = str_replace('&solrsort=ds_created%20desc','',$filter_str);
     $filter_str = str_replace('solrsort=ds_created%20desc','',$filter_str);
     
-    echo $filter_str.'<br/>!<br/>';
-    echo $grade_str;
-    
-    //&solrsort=ds_created%20desc
-    
     
     if(count($term_tmp)>1 && (  ($filter_str != $grade_str) && $filter_str != '' ) ){
       $dest = url('worksheets');
