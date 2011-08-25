@@ -802,16 +802,17 @@ function _tfk_search_back_btn(){
   
   
   if(strstr($uri[1],'photos-video')){
-    
       
-    print_R($uri);  
       
     $term_tmp = explode('?',$uri[2]);
     
-    print_R($term_temp);
+    $filter_str = trim($term_temp[2]);
+    $filter_str = str_replace('?solrsort=ds_created%20desc', '', $filter_str);
+    $filter_str = str_replace('solrsort=ds_created%20desc', '', $filter_str);
     
     
-    if(count($term_tmp)>1){
+    
+    if(count($term_tmp)>1 && $filter_str != ''){
       $dest = url('photos-video');
       $link_copy = 'Back To Photos & Videos';
       $show = 1;
