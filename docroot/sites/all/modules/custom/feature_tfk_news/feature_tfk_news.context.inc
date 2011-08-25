@@ -194,18 +194,10 @@ function feature_tfk_news_context_default_contexts() {
   $context = new stdClass;
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
-  $context->name = 'news_article_node_view';
-  $context->description = 'News Article Node View';
+  $context->name = 'magazine_news_article';
+  $context->description = 'Magazine Article Node View. This Context is activated by links coming from the Magazines SERP.';
   $context->tag = 'tfk news';
   $context->conditions = array(
-    'node' => array(
-      'values' => array(
-        'article' => 'article',
-      ),
-      'options' => array(
-        'node_form' => '1',
-      ),
-    ),
     'path' => array(
       'values' => array(
         'news/*/*/*' => 'news/*/*/*',
@@ -245,17 +237,71 @@ function feature_tfk_news_context_default_contexts() {
           'region' => 'sidebar_first',
           'weight' => '-80',
         ),
-        'tfk_news-tfk-news-minisite-articles' => array(
-          'module' => 'tfk_news',
-          'delta' => 'tfk-news-minisite-articles',
-          'region' => 'sidebar_first',
-          'weight' => '-7',
+        'views-random_kid_reporters-block' => array(
+          'module' => 'views',
+          'delta' => 'random_kid_reporters-block',
+          'region' => 'sidebar_bottom',
+          'weight' => '-10',
         ),
-        'tfk_news-tfk-news-minisite-more' => array(
+      ),
+    ),
+    'theme_html' => array(
+      'class' => 'node-type-article',
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Magazine Article Node View. This Context is activated by links coming from the Magazines SERP.');
+  t('tfk news');
+  $export['magazine_news_article'] = $context;
+
+  $context = new stdClass;
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'news_article_node_view';
+  $context->description = 'News Article Node View';
+  $context->tag = 'tfk news';
+  $context->conditions = array(
+    'path' => array(
+      'values' => array(
+        'news/*/*/*' => 'news/*/*/*',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'tfk_search-tfk_magazine_back_btn' => array(
+          'module' => 'tfk_search',
+          'delta' => 'tfk_magazine_back_btn',
+          'region' => 'sidebar_top',
+          'weight' => '-10',
+        ),
+        'tfk_search-tfk_magazine_issue_block' => array(
+          'module' => 'tfk_search',
+          'delta' => 'tfk_magazine_issue_block',
+          'region' => 'sidebar_top',
+          'weight' => '-9',
+        ),
+        'tfk_news-tfk-news-latest-news-link' => array(
           'module' => 'tfk_news',
-          'delta' => 'tfk-news-minisite-more',
+          'delta' => 'tfk-news-latest-news-link',
           'region' => 'sidebar_first',
-          'weight' => '-6',
+          'weight' => '-82',
+        ),
+        'tfk_news-tfk-news-taxonomy-links' => array(
+          'module' => 'tfk_news',
+          'delta' => 'tfk-news-taxonomy-links',
+          'region' => 'sidebar_first',
+          'weight' => '-81',
+        ),
+        'tfk_news-tfk-news-year-filter' => array(
+          'module' => 'tfk_news',
+          'delta' => 'tfk-news-year-filter',
+          'region' => 'sidebar_first',
+          'weight' => '-80',
         ),
         'views-random_kid_reporters-block' => array(
           'module' => 'views',
