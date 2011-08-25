@@ -379,7 +379,8 @@ a:active {
 	color: #333;
 }
 
-a.active {
+a.active,
+a.highlighted {
 	color: #333;
 }
 
