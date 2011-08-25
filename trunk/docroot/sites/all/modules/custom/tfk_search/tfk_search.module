@@ -804,13 +804,7 @@ function _tfk_search_back_btn(){
   
   if(strstr($uri[1],'photos-video')){
       
-      
-    print_R($uri);
-      
-      
-      
-      
-    
+  
     if($uri[2]){
       $filter_str = trim($uri[2]);
       $filter_str = str_replace('?solrsort=ds_created%20desc', '', $filter_str);
