@@ -1241,6 +1241,14 @@ function tfk_search_preprocess_page(&$variables) {
     
     drupal_set_title('Worksheets');
     $variables->title == 'Woksheets';
+    
+    global $user;
+    $rls = $user->roles;
+    if(count($rls) == 1 && $rls[1] == 'anonymous user'){  // ANONYMOUS USER
+        $variables['section_title'] = t('ACCESS DENIED');
+    }
+    
+    
   }
   if(arg(0) == TFK_SEARCH_SITESEARCH_PATH) {
     // Force the removal of the default search box displayed by Drupal.
