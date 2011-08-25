@@ -820,11 +820,6 @@ function _tfk_search_back_btn(){
     
     $filter_str = $term_tmp[1];
     $filter_str = str_replace('filters=','',$filter_str);
-    
-    echo $filter_str.'<br/>?<br/>';
-    
-    
-    
     $filter_str = trim($filter_str);
     
     //gotta get user grade level
