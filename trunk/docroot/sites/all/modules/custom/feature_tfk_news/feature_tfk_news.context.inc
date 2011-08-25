@@ -273,15 +273,15 @@ function feature_tfk_news_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'tfk_search-tfk_magazine_back_btn' => array(
-          'module' => 'tfk_search',
-          'delta' => 'tfk_magazine_back_btn',
+        'tfk_news-tfk-news-minisite-more' => array(
+          'module' => 'tfk_news',
+          'delta' => 'tfk-news-minisite-more',
           'region' => 'sidebar_top',
           'weight' => '-10',
         ),
-        'tfk_search-tfk_magazine_issue_block' => array(
-          'module' => 'tfk_search',
-          'delta' => 'tfk_magazine_issue_block',
+        'tfk_news-tfk-news-minisite-articles' => array(
+          'module' => 'tfk_news',
+          'delta' => 'tfk-news-minisite-articles',
           'region' => 'sidebar_top',
           'weight' => '-9',
         ),
@@ -310,9 +310,6 @@ function feature_tfk_news_context_default_contexts() {
           'weight' => '-10',
         ),
       ),
-    ),
-    'theme_html' => array(
-      'class' => 'node-type-article',
     ),
   );
   $context->condition_mode = 0;
