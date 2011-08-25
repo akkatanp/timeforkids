@@ -2158,7 +2158,7 @@ function tfk_search_preprocess_search_result(&$vars) {
         if(!empty($items)) {
           $lists[$name] = array();
           foreach($items as $item) {
-            if($field != 'field_cover_story') {
+            if($field != 'field_articles') {
               $lists[$name][] = l($item['title'], $item['url']);
             } else {
               $cover_story = node_load($item['nid']);
