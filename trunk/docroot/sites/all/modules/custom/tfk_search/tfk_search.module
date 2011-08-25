@@ -802,6 +802,9 @@ function _tfk_search_back_btn(){
   
   
   if(strstr($uri[1],'photos-video')){
+    
+      
+    print_R($uri);  
       
     $term_tmp = explode('?',$uri[2]);
     
