@@ -264,9 +264,12 @@ function feature_tfk_news_context_default_contexts() {
   $context->description = 'News Article Node View';
   $context->tag = 'tfk news';
   $context->conditions = array(
-    'path' => array(
+    'node' => array(
       'values' => array(
-        'news/*/*/*' => 'news/*/*/*',
+        'article' => 'article',
+      ),
+      'options' => array(
+        'node_form' => '1',
       ),
     ),
   );
