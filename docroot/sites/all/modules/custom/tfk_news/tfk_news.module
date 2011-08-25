@@ -305,22 +305,34 @@ function _tfk_news_current_filters(){
 }
 
 function _tfk_news_taxonomy_navigation(){
+  
+  $nid = arg(1);
+  $node = node_load($nid);
 
-  $term = arg(1);
-
+  
+  $tmp_cat =  field_get_items('node', $node, 'field_article_category');
+  $art_category = $tmp_cat[0]['tid'];
+  
+  
+  
   $vid = 3; //vocabulary id for article categories
   //now we have to get all taxonomy terms from this vocabulary that have articles
   $result = db_query('select distinct ti.tid,td.name from taxonomy_index ti left join taxonomy_term_data td on ti.tid = td.tid left join node n on n.nid = ti.nid where n.type = :type and td.vid = :vid',array('type'=>'article','vid'=>$vid));
   $terms = array();
   
   foreach ($result as $i=> $record) {
+      
     $terms[$i]['term_name']= $record->name;
     $terms[$i]['class']= '';
-    if($term == strtolower($record->name)){
+    
+    if($art_category == $record->tid){
       $terms[$i]['class']= 'highlighted';
     }
   }
-
+  
+  
+  
+  
   $list = array('terms_with_articles' => $terms);
   return theme('tfk_news_taxonomy_links',$list);
 }
