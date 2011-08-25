@@ -791,14 +791,22 @@ function _tfk_search_back_btn(){
   if($uri[1] == 'search' && $uri[2] == 'site' && !empty($uri[3])){
     $term_tmp = explode('?',$uri[3]);
     $term = $term_tmp[0];
-    $dest = url('search/site/'.$term);
-    $link_copy = 'Back To Search';
-    $show = 1;
-    $class="srchbackbtn";
+    
+    if(!empty($term_tmp[1])){
+        $dest = url('search/site/'.$term);
+        $link_copy = 'Back To Search';
+        $show = 1;
+        $class="srchbackbtn";
+    }
   }
-
+  
+  
+  print_r($uri);
+  
   if(strstr($uri[1],'photos-video')){
+      
     $term_tmp = explode('?',$uri[1]);
+    
     if(count($term_tmp)>1){
       $dest = url('photos-video');
       $link_copy = 'Back To Photos & Videos';
@@ -809,7 +817,9 @@ function _tfk_search_back_btn(){
 
 
   if(strstr($uri[1],'worksheets')){
+      
     $term_tmp = explode('?',$uri[1]);
+    
     if(count($term_tmp)>1){
       $dest = url('worksheets');
       $link_copy = 'Back To Printables';
