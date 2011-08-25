@@ -809,14 +809,18 @@ function _tfk_search_back_btn(){
       
       
       
-      $term_tmp = explode('?',$uri[2]);
+      
     
+    if($uri[2]){
+      $filter_str = trim($uri[2]);
+      $filter_str = str_replace('?solrsort=ds_created%20desc', '', $filter_str);
+      $filter_str = str_replace('&solrsort=ds_created%20desc', '', $filter_str);
+      $filter_str = str_replace('solrsort=ds_created%20desc', '', $filter_str);
+    }else{
+        $filter_str = '';
+    }
     
-    $filter_str = trim($term_temp[1]);
-    $filter_str = str_replace('?solrsort=ds_created%20desc', '', $filter_str);
-    $filter_str = str_replace('solrsort=ds_created%20desc', '', $filter_str);
-    
-    if(count($term_tmp)>1 && $filter_str != ''){
+    if(count($uri)>1 && $filter_str != ''){
       $dest = url('photos-video');
       $link_copy = 'Back To Photos & Videos';
       $show = 1;
