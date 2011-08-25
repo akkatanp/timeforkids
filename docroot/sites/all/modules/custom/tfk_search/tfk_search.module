@@ -82,6 +82,7 @@ function tfk_search_menu(){
   // Custom path for articles.
   // The format is news/[node title]/[article nid]/[magazine nid].
   // The magazine nid is needed for the left sidebar magazine issue block.
+  #http://dev.timeforkids.com/news/modern-fairy-tale/6686/5396
   $items['news/%/%node/%node'] = array(
     'title callback' => 'tfk_search_set_magazine_article_title',
     'page callback' => 'tfk_search_magazine_article_view',
@@ -171,7 +172,7 @@ function tfk_search_slideshow_image_view($slideshow_node, $slide_number = NULL) 
  */
 function tfk_search_init() {
   
-  dpm(menu_get_item(implode('/', arg())));
+  #dpm(menu_get_item(implode('/', arg())));
   
   $node = menu_get_object('node', 1);
   if($node && $node->type == 'slideshow') {
