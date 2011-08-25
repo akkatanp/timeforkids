@@ -805,6 +805,9 @@ function _tfk_search_back_btn(){
       
     $term_tmp = explode('?',$uri[2]);
     
+    print_R($term_temp);
+    
+    
     if(count($term_tmp)>1){
       $dest = url('photos-video');
       $link_copy = 'Back To Photos & Videos';
