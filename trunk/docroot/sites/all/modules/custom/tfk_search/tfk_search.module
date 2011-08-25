@@ -171,7 +171,7 @@ function tfk_search_slideshow_image_view($slideshow_node, $slide_number = NULL) 
  */
 function tfk_search_init() {
   
-  //dpm(menu_get_item(implode('/', arg())));
+  dpm(menu_get_item(implode('/', arg())));
   
   $node = menu_get_object('node', 1);
   if($node && $node->type == 'slideshow') {
