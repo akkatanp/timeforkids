@@ -811,6 +811,10 @@ function _tfk_search_back_btn(){
     $filter_str = str_replace('solrsort=ds_created%20desc', '', $filter_str);
     
     
+    print_r($term_tmp);
+    echo $filter_str;
+    
+    
     
     if(count($term_tmp)>1 && $filter_str != ''){
       $dest = url('photos-video');
