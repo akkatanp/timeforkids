@@ -190,6 +190,7 @@ function _tfk_news_minisite_more(){
 function _tfk_news_minisite_related_articles(){
     $rgs = arg();
     print_R($rgs);
+    
     if($rgs[0] == 'node' && is_numeric($rgs[1])){
         $node = node_load($rgs[1]);
         if($node->type == 'article'){
@@ -199,6 +200,10 @@ function _tfk_news_minisite_related_articles(){
             $record = $result->fetch();
             if($record){
                 $parent_minisite_nid = $record->entity_id;
+                
+                
+                echo $parent_minisite_nid;
+                
                 
                 //now lets get all other articles under that minisite
                 $art_res = db_query('SELECT DISTINCT node.title AS node_title, node_field_data_field_articles.title AS node_field_data_field_articles_title, node_field_data_field_articles.nid AS node_field_data_field_articles_nid, node.created AS node_created, node.nid AS nid
@@ -216,6 +221,9 @@ function _tfk_news_minisite_related_articles(){
                     $articles[$i]['minisite_nid'] = $record->nid;
                     $articles[$i]['minisite_title']= $record->node_title;
                 }
+                
+                print_r($articles);
+                
                 
                 if(!empty($articles)){
                     $list = array();
