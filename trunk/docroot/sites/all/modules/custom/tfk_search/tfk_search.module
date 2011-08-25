@@ -820,8 +820,11 @@ function _tfk_search_back_btn(){
     
     
     //filters=im_28_field_grade_level%3A19 im_36_field_themes%3A47&solrsort=ds_created desc
+    $filter_str = $term_tmp[1];
+    $filter_str = str_replave('filters=','');
+    $filter_exp = explode('%3A',$filter_str);
     
-    print_R($term_tmp[1]);
+    print_R($filter_exp);
     
     
     if(count($term_tmp)>1){
