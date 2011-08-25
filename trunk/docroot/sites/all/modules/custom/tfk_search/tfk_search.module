@@ -816,7 +816,7 @@ function _tfk_search_back_btn(){
 
   if(strstr($uri[1],'worksheets')){
       
-    
+    $term_tmp = explode('?',$uri[2]);
     
     $filter_str = $term_tmp[1];
     $filter_str = str_replace('filters=','',$filter_str);
@@ -841,7 +841,7 @@ function _tfk_search_back_btn(){
     }
     
     
-    $term_tmp = explode('?',$uri[2]);
+    
     
     echo $filter_str.'<br/>!<br/>';
     echo $grade_str;
