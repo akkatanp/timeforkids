@@ -331,8 +331,6 @@ function _tfk_news_taxonomy_navigation(){
   }
   
   
-  
-  
   $list = array('terms_with_articles' => $terms);
   return theme('tfk_news_taxonomy_links',$list);
 }
