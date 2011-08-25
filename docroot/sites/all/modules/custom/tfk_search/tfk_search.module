@@ -801,11 +801,9 @@ function _tfk_search_back_btn(){
   }
   
   
-  print_r($uri);
-  
   if(strstr($uri[1],'photos-video')){
       
-    $term_tmp = explode('?',$uri[1]);
+    $term_tmp = explode('?',$uri[2]);
     
     if(count($term_tmp)>1){
       $dest = url('photos-video');
@@ -818,7 +816,7 @@ function _tfk_search_back_btn(){
 
   if(strstr($uri[1],'worksheets')){
       
-    $term_tmp = explode('?',$uri[1]);
+    $term_tmp = explode('?',$uri[2]);
     
     if(count($term_tmp)>1){
       $dest = url('worksheets');
