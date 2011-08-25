@@ -640,7 +640,7 @@
 	background: #d71700 url(../images/white-back-arrow.png) no-repeat 10px 20px;
 }
 
-.srchbackbtn a,.workshtsbackbtn a{
+.srchbackbtn a{
 	display: block;
 	font: normal 14px "arial black", arial, san-serif;
 	line-height: 15px;
@@ -649,7 +649,21 @@
 	text-decoration: none;
 	text-transform: uppercase;
 	background: #d71700 url(../images/white-back-arrow.png) no-repeat 10px 10px;
-        margin-right:10px;
+        /* margin-right:10px; */
+        margin-bottom: 10px;
+}
+
+
+.workshtsbackbtn a{
+    display: block;
+    font: normal 14px "arial black", arial, san-serif;
+    line-height: 15px;
+    color: #fff;
+    padding: 10px 10px 10px 30px;
+    text-decoration: none;
+    text-transform: uppercase;
+    background: #d71700 url(../images/white-back-arrow.png) no-repeat 10px 10px;
+    margin-right:10px;
 }
 
 
