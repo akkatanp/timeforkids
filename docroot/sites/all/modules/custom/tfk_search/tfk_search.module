@@ -816,37 +816,33 @@ function _tfk_search_back_btn(){
 
   if(strstr($uri[1],'worksheets')){
       
-    $term_tmp = explode('?',$uri[2]);
     
     
-    //filters=im_28_field_grade_level%3A19 im_36_field_themes%3A47&solrsort=ds_created desc
     $filter_str = $term_tmp[1];
     $filter_str = str_replace('filters=','',$filter_str);
-    $filter_str = str_replace('&solrsort=ds_created%20desc','',$filter_str);
+    
+    if(strstr('&solrsort=ds_created%20desc',$filter_str)){
+        $filter_str = str_replace('&solrsort=ds_created%20desc','',$filter_str);
+    }elseif(strstr('solrsort=ds_created%20desc',$filter_str)){
+        $filter_str = str_replace('solrsort=ds_created%20desc','',$filter_str);
+    }
+    
     $filter_str = trim($filter_str);
-    
-    
     
     //gotta get user grade level
     global $user;
     $user = user_load($user->uid);
     if($user && isset($user->grade_level)) {
-      $filterstring = 'im_28_field_grade_level%3A'. $user->grade_level->tid;
+      $grade_str = 'im_28_field_grade_level%3A'. $user->grade_level->tid;
     } else {
-      $filterstring = '';
+      $grade_str = '';
     }
     
     
+    $term_tmp = explode('?',$uri[2]);
     
     
-    echo $filter_str.'<br/>';
-    echo $filterstring.'<br/>1';
-    //$filter_exp = explode('%3A',$filter_str);
-    
-    //print_R($filter_exp);
-    
-    
-    if(count($term_tmp)>1){
+    if(count($term_tmp)>1 && ($filter_str != $filterstring) ){
       $dest = url('worksheets');
       $link_copy = 'Back To Printables';
       $show = 1;
