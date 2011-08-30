@@ -29,7 +29,7 @@
 					if (locationImg.width() < locationImg.height()) {
 						locationImg.css('float', 'left');
                                                 locationTextContainer.css('float', 'right');
-                                                locationTextContainer.css('width','253px');
+                                                /*locationTextContainer.css('width','253px');*/
 					}
 				});
 				var locationName = $('<h1></h1>').text(locationTable.find('.boldBlack20 font').text().toLowerCase());
