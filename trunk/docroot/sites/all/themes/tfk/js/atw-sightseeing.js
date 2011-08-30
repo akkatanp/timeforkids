@@ -28,7 +28,8 @@
 						locationImg.css('float', 'left');
                                                 
                                                 locationTextContainer.css('float', 'right');
-                                                locationTextContainer.css('width','255px');
+                                                locationTextContainer.css('width','253px');
+                                                locationTextContainer.css('border','1px solid red');
 					}
 				});
 				var locationName = $('<h1></h1>').text(locationTable.find('.boldBlack20 font').text().toLowerCase());
