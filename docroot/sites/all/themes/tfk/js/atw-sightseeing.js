@@ -23,10 +23,10 @@
 				var locationTextContainer = $('<div class="location-text-container"></div>');
                                 locationTextContainer.css('display', 'inline-block');
 				var locationImg = $('<img/>');
+                                locationImg.attr({src: src + '?random=' + (new Date()).getTime()}); /*Needed for IE load event to work*/
 				locationImg.load(function() {
 					if (locationImg.width() < locationImg.height()) {
 						locationImg.css('float', 'left');
-                                                
                                                 locationTextContainer.css('float', 'right');
                                                 locationTextContainer.css('width','253px');
                                                 locationTextContainer.css('border','1px solid red');
