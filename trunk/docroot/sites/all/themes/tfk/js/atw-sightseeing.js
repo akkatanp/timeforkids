@@ -23,6 +23,7 @@
 				var locationTextContainer = $('<div class="location-text-container"></div>');
                                 locationTextContainer.css('display', 'inline-block');
 				var locationImg = $('<img/>');
+				locationImg.attr('src',locationTable.find('img').eq(0).attr('src'));
                                 locationImg.attr({src: src + '?random=' + (new Date()).getTime()}); /*Needed for IE load event to work*/
 				locationImg.load(function() {
 					if (locationImg.width() < locationImg.height()) {
@@ -34,7 +35,6 @@
 				});
 				var locationName = $('<h1></h1>').text(locationTable.find('.boldBlack20 font').text().toLowerCase());
 				var locationText = $('<p></p>').text(locationTable.find('.storyText').eq(1).text());
-				locationImg.attr('src',locationTable.find('img').eq(0).attr('src'));
                                 locationTextContainer.append(locationName).append(locationText);
 				/*var locationDiv = $('<div></div>').attr('id', 'location-container').append(locationImg).append(locationName).append(locationText);*/
 				var locationDiv = $('<div></div>').attr('id', 'location-container').append(locationImg).append(locationTextContainer);
