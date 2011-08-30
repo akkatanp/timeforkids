@@ -20,16 +20,15 @@
 			}).appendTo(document.body).load(function() {
 				var locationBody = $(this).contents().find('body');
 				var locationTable = $(locationBody).find('table');
-				var locationTextContainer = "";
+				var locationTextContainer = $('<div class="location-text-container"></div>');
+                                locationTextContainer.css('display', 'inline');
 				var locationImg = $('<img/>');
 				locationImg.load(function() {
 					if (locationImg.width() < locationImg.height()) {
 						locationImg.css('float', 'left');
-                                                locationTextContainer = $('<div class="location-text-container"></div>');
+                                                
                                                 locationTextContainer.css('float', 'right', 'width','255px');
-					} else {
-                                                locationTextContainer = $('<span></span>');
-                                        }
+					}
 				});
 				var locationName = $('<h1></h1>').text(locationTable.find('.boldBlack20 font').text().toLowerCase());
 				var locationText = $('<p></p>').text(locationTable.find('.storyText').eq(1).text());
