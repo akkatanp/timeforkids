@@ -71,6 +71,6 @@
 	background: url("../images/atw-sightseeing-close.png") no-repeat;
 }
 
-#location-text-container {
+.location-text-container {
     float:right;
 }
