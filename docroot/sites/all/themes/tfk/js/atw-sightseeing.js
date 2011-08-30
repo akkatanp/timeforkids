@@ -29,13 +29,15 @@
 					if (locationImg.width() < locationImg.height()) {
 						locationImg.css('float', 'left');
                                                 locationTextContainer.css('float', 'right');
+                                                locationTextContainer.css({
+                                                    'width': $('#map-container img').width() - 20 - locationImg.width() - 13 + 'px'
+                                                });
                                                 /*locationTextContainer.css('width','253px');*/
 					}
 				});
 				var locationName = $('<h1></h1>').text(locationTable.find('.boldBlack20 font').text().toLowerCase());
 				var locationText = $('<p></p>').text(locationTable.find('.storyText').eq(1).text());
                                 locationTextContainer.append(locationName).append(locationText);
-				/*var locationDiv = $('<div></div>').attr('id', 'location-container').append(locationImg).append(locationName).append(locationText);*/
 				var locationDiv = $('<div></div>').attr('id', 'location-container').append(locationImg).append(locationTextContainer);
                                 locationDiv.css({
 					'top': $('#map-container img').position().top + 'px',
