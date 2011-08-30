@@ -34,7 +34,7 @@
 				var locationTextContainer = $('<div class="location-text-container"></div>');
                                 locationTextContainer.append(locationName).append(locationText);
 				/*var locationDiv = $('<div></div>').attr('id', 'location-container').append(locationImg).append(locationName).append(locationText);*/
-				var locationDiv = $('<div></div>').attr('id', 'location-container').append(locationImg).append(localocationTextContainer);
+				var locationDiv = $('<div></div>').attr('id', 'location-container').append(locationImg).append(locationTextContainer);
                                 locationDiv.css({
 					'top': $('#map-container img').position().top + 'px',
 					'left': '0px',
