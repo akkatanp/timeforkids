@@ -20,12 +20,12 @@
 			}).appendTo(document.body).load(function() {
 				var locationBody = $(this).contents().find('body');
 				var locationTable = $(locationBody).find('table');
-				var locationTextContainer = "<span></span>";
+				var locationTextContainer = $('<span></span>');
 				var locationImg = $('<img/>');
 				locationImg.load(function() {
 					if (locationImg.width() < locationImg.height()) {
 						locationImg.css('float', 'left');
-                                                var locationTextContainer = $('<div class="location-text-container"></div>');
+                                                locationTextContainer = $('<div class="location-text-container"></div>');
                                                 locationTextContainer.css('float', 'right', 'width','255px');
 					}
 				});
