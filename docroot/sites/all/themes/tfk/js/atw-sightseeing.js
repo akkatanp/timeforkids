@@ -20,19 +20,18 @@
 			}).appendTo(document.body).load(function() {
 				var locationBody = $(this).contents().find('body');
 				var locationTable = $(locationBody).find('table');
-				
+				var locationTextContainer = "<span></span>";
 				var locationImg = $('<img/>');
 				locationImg.load(function() {
 					if (locationImg.width() < locationImg.height()) {
 						locationImg.css('float', 'left');
+                                                var locationTextContainer = $('<div class="location-text-container"></div>');
+                                                locationTextContainer.css('float', 'right', 'width','255px');
 					}
 				});
-				locationImg.attr('src',locationTable.find('img').eq(0).attr('src'));
-				
 				var locationName = $('<h1></h1>').text(locationTable.find('.boldBlack20 font').text().toLowerCase());
 				var locationText = $('<p></p>').text(locationTable.find('.storyText').eq(1).text());
-				var locationTextContainer = $('<div class="location-text-container"></div>');
-                                locationTextContainer.css('float', 'right');
+				locationImg.attr('src',locationTable.find('img').eq(0).attr('src'));
                                 locationTextContainer.append(locationName).append(locationText);
 				/*var locationDiv = $('<div></div>').attr('id', 'location-container').append(locationImg).append(locationName).append(locationText);*/
 				var locationDiv = $('<div></div>').attr('id', 'location-container').append(locationImg).append(locationTextContainer);
