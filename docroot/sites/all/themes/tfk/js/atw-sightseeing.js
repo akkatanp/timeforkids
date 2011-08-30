@@ -23,9 +23,9 @@
 				
 				var locationImg = $('<img/>');
 				locationImg.load(function() {
-					if (locationImg.width() < locationImg.height()) {
+					/*if (locationImg.width() < locationImg.height()) {
 						locationImg.css('float', 'left');
-					}
+					}*/
 				});
 				locationImg.attr('src',locationTable.find('img').eq(0).attr('src'));
 				
