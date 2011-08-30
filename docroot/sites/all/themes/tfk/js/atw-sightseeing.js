@@ -9,7 +9,7 @@
 			if ($('#location-iframe')) {
 				$('#location-iframe').remove();
 			}
-			
+			 
 			var locationFrame = $('<iframe></iframe>').attr({
 				'id' : 'location-iframe',
 				'framborder': '0',
@@ -28,10 +28,12 @@
 					}
 				});
 				locationImg.attr('src',locationTable.find('img').eq(0).attr('src'));
+				
 				var locationName = $('<h1></h1>').text(locationTable.find('.boldBlack20 font').text().toLowerCase());
 				var locationText = $('<p></p>').text(locationTable.find('.storyText').eq(1).text());
-                                var locationDiv = $('<div></div>').attr('id', 'location-container').append(locationImg).append(locationName).append(locationText);
-                                locationDiv.css({
+				
+				var locationDiv = $('<div></div>').attr('id', 'location-container').append(locationImg).append(locationName).append(locationText);
+				locationDiv.css({
 					'top': $('#map-container img').position().top + 'px',
 					'left': '0px',
 					'height': $('#map-container img').height() - 20 + 'px',
