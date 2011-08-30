@@ -23,8 +23,9 @@
 				var locationTextContainer = $('<div class="location-text-container"></div>');
                                 locationTextContainer.css('display', 'inline-block');
 				var locationImg = $('<img/>');
-				locationImg.attr('src',locationTable.find('img').eq(0).attr('src'));
-                                locationImg.attr({src: src + '?random=' + (new Date()).getTime()}); /*Needed for IE load event to work*/
+				/*locationImg.attr('src',locationTable.find('img').eq(0).attr('src'));*/
+                                locationImg.attr('src',locationTable.find('img').eq(0).attr('src') + '?random=' + (new Date()).getTime());
+                               /* locationImg.attr({src: src + '?random=' + (new Date()).getTime()});*/ /*Needed for IE load event to work*/
 				locationImg.load(function() {
 					if (locationImg.width() < locationImg.height()) {
 						locationImg.css('float', 'left');
