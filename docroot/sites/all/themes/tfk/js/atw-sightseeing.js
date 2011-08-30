@@ -21,7 +21,7 @@
 				var locationBody = $(this).contents().find('body');
 				var locationTable = $(locationBody).find('table');
 				var locationTextContainer = $('<div class="location-text-container"></div>');
-                                locationTextContainer.css('display', 'inline');
+                                locationTextContainer.css('display', 'inline-block');
 				var locationImg = $('<img/>');
 				locationImg.load(function() {
 					if (locationImg.width() < locationImg.height()) {
