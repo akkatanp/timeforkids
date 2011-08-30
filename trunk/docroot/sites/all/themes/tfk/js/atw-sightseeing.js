@@ -29,9 +29,7 @@
 					if (locationImg.width() < locationImg.height()) {
 						locationImg.css('float', 'left');
                                                 locationTextContainer.css('float', 'right');
-                                                locationTextContainer.css({
-                                                    'width': $('#map-container img').width() - 20 - locationImg.width() - 13 + 'px'
-                                                });
+                                                locationTextContainer.css('width', $('#map-container img').width() - 20 - locationImg.width() - 13 + 'px');
                                                 /*locationTextContainer.css('width','253px');*/
 					}
 				});
