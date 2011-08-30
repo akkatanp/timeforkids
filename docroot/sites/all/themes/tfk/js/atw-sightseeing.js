@@ -9,7 +9,7 @@
 			if ($('#location-iframe')) {
 				$('#location-iframe').remove();
 			}
-			 
+			
 			var locationFrame = $('<iframe></iframe>').attr({
 				'id' : 'location-iframe',
 				'framborder': '0',
