@@ -25,7 +25,7 @@
 				locationImg.load(function() {
 					if (locationImg.width() < locationImg.height()) {
 						locationImg.css('float', 'left');
-                                                locationTextContainer.html('<div class="location-text-container"></div>');
+                                                locationTextContainer = $('<div class="location-text-container"></div>');
                                                 locationTextContainer.css('float', 'right', 'width','255px');
 					}
 				});
