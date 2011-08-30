@@ -30,10 +30,7 @@
 				locationImg.attr('src',locationTable.find('img').eq(0).attr('src'));
 				var locationName = $('<h1></h1>').text(locationTable.find('.boldBlack20 font').text().toLowerCase());
 				var locationText = $('<p></p>').text(locationTable.find('.storyText').eq(1).text());
-				var locationTextContainer = $('<div class="location-text-container"></div>');
-                                locationTextContainer.append(locationName).append(locationText);
-				/*var locationDiv = $('<div></div>').attr('id', 'location-container').append(locationImg).append(locationName).append(locationText);*/
-				var locationDiv = $('<div></div>').attr('id', 'location-container').append(locationImg).append(locationTextContainer);
+                                var locationDiv = $('<div></div>').attr('id', 'location-container').append(locationImg).append(locationName).append(locationText);
                                 locationDiv.css({
 					'top': $('#map-container img').position().top + 'px',
 					'left': '0px',
