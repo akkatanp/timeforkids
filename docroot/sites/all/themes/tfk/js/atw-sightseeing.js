@@ -22,21 +22,18 @@
 				var locationTable = $(locationBody).find('table');
 				
 				var locationImg = $('<img/>');
-                                var locationName = $('<h1></h1>').text(locationTable.find('.boldBlack20 font').text().toLowerCase());
-				var locationText = $('<p></p>').text(locationTable.find('.storyText').eq(1).text());
 				locationImg.load(function() {
 					if (locationImg.width() < locationImg.height()) {
 						locationImg.css('float', 'left');
-                                                locationName.css('float', 'right');
-                                                locationText.css('float', 'right');
 					}
 				});
 				locationImg.attr('src',locationTable.find('img').eq(0).attr('src'));
-				
-
-				
-				var locationDiv = $('<div></div>').attr('id', 'location-container').append(locationImg).append(locationName).append(locationText);
-				locationDiv.css({
+				var locationName = $('<h1></h1>').text(locationTable.find('.boldBlack20 font').text().toLowerCase());
+				var locationText = $('<p></p>').text(locationTable.find('.storyText').eq(1).text());
+				var locationTextContainer = $('<div class="location-text-container"></div>').html(locationName+locationText);
+				/*var locationDiv = $('<div></div>').attr('id', 'location-container').append(locationImg).append(locationName).append(locationText);*/
+				var locationDiv = $('<div></div>').attr('id', 'location-container').append(locationImg).append(locationTextContainer);
+                                locationDiv.css({
 					'top': $('#map-container img').position().top + 'px',
 					'left': '0px',
 					'height': $('#map-container img').height() - 20 + 'px',
