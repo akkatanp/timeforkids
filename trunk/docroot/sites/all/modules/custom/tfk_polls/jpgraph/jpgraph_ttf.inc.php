@@ -500,7 +500,8 @@ class TTF {
             if ($family >= FF_MINCHO && $family <= FF_PGOTHIC) {
                 $font_file = MBTTF_DIR.$font_file;
             } else {
-                $font_file = TTF_DIR.$font_file;
+                //$font_file = TTF_DIR.$font_file;
+                $font_file = 'fonts/'.$font_file;
             }
             if (file_exists($font_file) === true && is_readable($font_file) === true) { 
                 break;
