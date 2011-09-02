@@ -201,7 +201,8 @@ if (!defined('TTF_DIR')) {
             define('TTF_DIR', $sroot.'/fonts/');
         }
     } else {
-        define('TTF_DIR','/users/svoitenko8440adm/library/fonts/');
+        //define('TTF_DIR','/users/svoitenko8440adm/library/fonts/');
+        define('TTF_DIR','/sites/all/modules/custom/tfk_polls/jpgraph/fonts/');
     }
 }
 
