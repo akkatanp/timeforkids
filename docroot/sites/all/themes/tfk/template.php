@@ -79,6 +79,9 @@ function tfk_theme($existing, $type, $theme, $path) {
     );
   	return $hooks;
 }
+
+
+
 /**
  *	Customized TFK Pager
  */
@@ -193,36 +196,36 @@ function tfk_pager($variables) {
 }
 
 
-function tfk_preprocess_poll_results(&$variables) {
-  //theme the poll results block
-
-  $html = $variables['results'];
-  $pattern = "@class=\"text\"\>(.*)\</div\>@";
-  preg_match_all($pattern, $html, $choices); //extract choices
-  
-  $pattern = "@style=\"width: (.*)%;\"@";
-  preg_match_all($pattern, $html, $votes); //extract percentages
-
-  $chart = array(
-    '#chart_id' => 'poll_chart',
-    '#type' => CHART_TYPE_PIE_3D,
-  );
-  
-// NEED TO FILL IN DATA TO MAKE CHART
-  for ($c=0; $c < count($choices[1]); $c++) { //make labels and values
-     $chart['#data'][$choices[1][$c]] = $votes[1][$c]; //number of votes
-     $chart['#legends'][] = $choices[1][$c] . " (" . $votes[1][$c] . "%)"; // labels
-  }
-  $chart['#data_colors'][] = '00ff00';
-  $chart['#data_colors'][] = 'ff0000';
-  $chart['#data_colors'][] = '0000ff';
-
-  //print_R($chart);
-
-
- //#variables['results'] = chart_render($chart); //render graph
-  $variables['results'] = theme('chart', array('chart' => $chart));
-}
+//function tfk_preprocess_poll_results(&$variables) {
+//  //theme the poll results block
+//
+//  $html = $variables['results'];
+//  $pattern = "@class=\"text\"\>(.*)\</div\>@";
+//  preg_match_all($pattern, $html, $choices); //extract choices
+//  
+//  $pattern = "@style=\"width: (.*)%;\"@";
+//  preg_match_all($pattern, $html, $votes); //extract percentages
+//
+//  $chart = array(
+//    '#chart_id' => 'poll_chart',
+//    '#type' => CHART_TYPE_PIE_3D,
+//  );
+//  
+//// NEED TO FILL IN DATA TO MAKE CHART
+//  for ($c=0; $c < count($choices[1]); $c++) { //make labels and values
+//     $chart['#data'][$choices[1][$c]] = $votes[1][$c]; //number of votes
+//     $chart['#legends'][] = $choices[1][$c] . " (" . $votes[1][$c] . "%)"; // labels
+//  }
+//  $chart['#data_colors'][] = '00ff00';
+//  $chart['#data_colors'][] = 'ff0000';
+//  $chart['#data_colors'][] = '0000ff';
+//
+//  //print_R($chart);
+//
+//
+// //#variables['results'] = chart_render($chart); //render graph
+//  $variables['results'] = theme('chart', array('chart' => $chart));
+//}
 
 
 /**
@@ -236,6 +239,8 @@ function tfk_preprocess_poll_results(&$variables) {
 function tfk_preprocess_page(&$variables, $hook) {
   /* add encrypt js to all pages */
  
+    
+    
   if(array_key_exists('node', $variables)) {
     $variables['theme_hook_suggestions'][] = 'page__'. $variables['node']->type;
     if ($variables['node']->type == "board_member") {

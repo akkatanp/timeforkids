@@ -80,81 +80,23 @@
  * @see zen_preprocess_node()
  * @see template_process()
  */
-
-
-if($is_anon == 1){
-  unset($content['group_additional_content']);
-}else{
-  $addit_content = $content['group_additional_content'];
-  $content['group_additional_content']['#prefix'] = '<b>Additional Content:</b><br/>'.$content['group_additional_content']['#prefix'];
-}
-
-$visible=1;
-if(!isset($content['group_additional_content']['field_mini_lessons'])&& !isset($content['group_additional_content']['field_related_articles']))
-{
-  unset($content['group_additional_content']);
-  $visible=0;
- }
- 
-if(count(arg()) == 4) {
- $magazine = menu_get_object('node', 3);
- if($magazine && $magazine->type == 'magazine_issue') {
-   $magazine_article = TRUE;
- } else {
-   $magazine_article = FALSE;
- }
-}
-
-
-
 ?>
-<?php if($is_kid_reporter_article == 1){
-            //unset($content['group_date_and_author']['field_article_byline']);
-          }?>
+<div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
+    <div class="content"<?php print $content_attributes; ?>>
 
-<div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?>  <?php if($is_kid_reporter_article == 1){echo 'is-kid-reporter-article';}?> clearfix"<?php print $attributes; ?>>
-
-  <?php print $user_picture; ?>
-
-  <?php print render($title_prefix); ?>
-  <?php if (!$page && !$magazine_article && $title): ?>
-    <h2<?php print $title_attributes; ?>><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h2>
-  <?php endif; ?>
-  <?php print render($title_suffix); ?>
-
-  <?php if ($unpublished): ?>
-    <div class="unpublished"><?php print t('Unpublished'); ?></div>
-  <?php endif; ?>
-
-  <?php if ($display_submitted): ?>
-    <div class="submitted">
-      <?php print $submitted; ?>
+        <div class="tfkpoll">
+            <div class="tfkpollheading"><?php print $customheading;?></div>
+            <div class="tfkpolltitle"><?php print $title;?></div>
+            <div class="tfkpollimage">
+      <?php
+        print render($content);
+      ?>
+      </div>
+                
+                </div>
     </div>
-  <?php endif; ?>
-
-  <div class="content"<?php print $content_attributes; ?>>
-    <?php
-      // We hide the comments and links now so that we can render them later.
-      hide($content['comments']);
-      hide($content['links']);
-	print render($content['field_article_category']);?>
-
-	  <h1><?php print $title; ?></h1>
-      <?php print render($content);?><br/>
-
-          <?php if($is_anon == 0 && $visible == 1  ):?>
-            <b>Additional Content:</b><br/>
-            <?php  print render($addit_content); ?>
-          <?php endif;?>
-            
-            <?php if($rendered_poll):?>
-                 <?php print $rendered_poll; ?>
-            <?php endif;?>
-            
-  </div>
-
-  <?php print render($content['links']); ?>
-
-  <?php print render($content['comments']); ?>
-
 </div><!-- /.node -->
+
+
+               
+
