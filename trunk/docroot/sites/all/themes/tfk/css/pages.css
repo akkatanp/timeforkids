@@ -2895,3 +2895,47 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 body.page-404page #first-column .region-sidebar-first .section{
   border : none !important;
 }
+
+
+
+/* TFK POLLS */
+
+.tfkpoll{
+    margin-top:30px;
+}
+
+.tfkpoll img{
+    display:block;
+    margin:0 auto;
+
+}
+
+.tfkpollheading{
+    background-color: #D71700;
+    width:100%;
+    color: #FFFFFF;
+    font: 11px "arial black",arial;
+    margin: 0 8px 13px 0;
+    padding: 3px 0;
+    text-align: center;
+}
+
+
+.tfkpolltitle{
+    font: bold 14px arial,sans-serif;
+    text-align: center;
+}
+
+
+.tfkpoll #edit-actions{
+    margin:0 auto; 
+    display:block; 
+    width:115px;
+}
+
+
+.poll #edit-actions{
+    margin:0 auto; 
+    display:block; 
+    width:150px;
+}
