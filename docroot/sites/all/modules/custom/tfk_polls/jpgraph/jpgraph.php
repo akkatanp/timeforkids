@@ -202,7 +202,7 @@ if (!defined('TTF_DIR')) {
         }
     } else {
         //define('TTF_DIR','/users/svoitenko8440adm/library/fonts/');
-        define('TTF_DIR','fonts/');
+        define('TTF_DIR','/usr/share/fonts/');
     }
 }
 
