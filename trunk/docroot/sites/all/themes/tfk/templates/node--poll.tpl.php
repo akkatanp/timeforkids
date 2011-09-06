@@ -84,9 +84,9 @@
 <div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
     <div class="content"<?php print $content_attributes; ?>>
 
-        <div class="tfkpoll">
+        <!--<div class="tfkpoll">
             <div class="tfkpollheading"><?php print $customheading;?></div>
-            <div class="tfkpolltitle"><?php print $title;?></div>
+            <div class="tfkpolltitle"><?php print $title;?></div>-->
             <div class="tfkpollimage">
       <?php
         print render($content);
@@ -95,7 +95,10 @@
                 
                 </div>
     </div>
-</div><!-- /.node -->
+<!--</div>-->
+
+
+<!-- /.node -->
 
 
                
