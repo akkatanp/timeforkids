@@ -2939,3 +2939,11 @@ body.page-404page #first-column .region-sidebar-first .section{
     display:block; 
     width:150px;
 }
+
+
+
+.tfkpoll .option{
+    display:block;
+    position:relative;
+    top:3px;
+}
