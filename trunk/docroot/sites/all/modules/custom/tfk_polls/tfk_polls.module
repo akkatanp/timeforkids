@@ -108,39 +108,17 @@ function _poll_generate($poll_nid){
         
         
         
-        
-        if(count($choices_data) == 10 || count($choices_data) == 9){
-            $graph = new PieGraph(440,460,"auto");
+        if(count($choices_data) == 10){
+            $graph = new PieGraph(440,510,"auto");
             $graph->ClearTheme();
             $graph->legend->SetLayout(LEGEND_VER);
             $graph->legend->SetPos(0.5,0.94,'center','bottom');
             $p1 = new PiePlot($votes_data);
             $p1->SetSize(110);
-            $p1->SetCenter(0.5,0.26);
+            $p1->SetCenter(0.5,0.28);
         
-        }elseif(count($choices_data) == 8){
-            
-            $graph = new PieGraph(440,420,"auto");
-            $graph->ClearTheme();
-            $graph->legend->SetLayout(LEGEND_VER);
-            $graph->legend->SetPos(0.5,0.94,'center','bottom');
-            $p1 = new PiePlot($votes_data);
-            $p1->SetSize(110);
-            $p1->SetCenter(0.5,0.27);
-        
-        }elseif(count($choices_data) == 7){
-            
-            $graph = new PieGraph(440,410,"auto");
-            $graph->ClearTheme();
-            $graph->legend->SetLayout(LEGEND_VER);
-            $graph->legend->SetPos(0.5,0.94,'center','bottom');
-            $p1 = new PiePlot($votes_data);
-            $p1->SetSize(110);
-            $p1->SetCenter(0.5,0.29);
-        
-        }elseif(count($choices_data) == 6){
-            
-            $graph = new PieGraph(440,390,"auto");
+        }elseif(count($choices_data) == 9){
+            $graph = new PieGraph(440,500,"auto");
             $graph->ClearTheme();
             $graph->legend->SetLayout(LEGEND_VER);
             $graph->legend->SetPos(0.5,0.94,'center','bottom');
@@ -148,29 +126,39 @@ function _poll_generate($poll_nid){
             $p1->SetSize(110);
             $p1->SetCenter(0.5,0.30);
         
+        }elseif(count($choices_data) == 8){
+            
+            $graph = new PieGraph(440,450,"auto");
+            $graph->ClearTheme();
+            $graph->legend->SetLayout(LEGEND_VER);
+            $graph->legend->SetPos(0.5,0.94,'center','bottom');
+            $p1 = new PiePlot($votes_data);
+            $p1->SetSize(110);
+            $p1->SetCenter(0.5,0.3);
+        
+        }elseif(count($choices_data) == 7){
+            
+            $graph = new PieGraph(440,430,"auto");
+            $graph->ClearTheme();
+            $graph->legend->SetLayout(LEGEND_VER);
+            $graph->legend->SetPos(0.5,0.94,'center','bottom');
+            $p1 = new PiePlot($votes_data);
+            $p1->SetSize(110);
+            $p1->SetCenter(0.5,0.3);
+        
+        }elseif(count($choices_data) == 6){
+            
+            $graph = new PieGraph(440,415,"auto");
+            $graph->ClearTheme();
+            $graph->legend->SetLayout(LEGEND_VER);
+            $graph->legend->SetPos(0.5,0.94,'center','bottom');
+            $p1 = new PiePlot($votes_data);
+            $p1->SetSize(110);
+            $p1->SetCenter(0.5,0.32);
+        
         }elseif(count($choices_data) == 5){
             
-            $graph = new PieGraph(440,370,"auto");
-            $graph->ClearTheme();
-            $graph->legend->SetLayout(LEGEND_VER);
-            $graph->legend->SetPos(0.5,0.94,'center','bottom');
-            $p1 = new PiePlot($votes_data);
-            $p1->SetSize(110);
-            $p1->SetCenter(0.5,0.31);
-        
-        }elseif(count($choices_data) == 4){
-            
-            $graph = new PieGraph(440,350,"auto");
-            $graph->ClearTheme();
-            $graph->legend->SetLayout(LEGEND_VER);
-            $graph->legend->SetPos(0.5,0.94,'center','bottom');
-            $p1 = new PiePlot($votes_data);
-            $p1->SetSize(110);
-            $p1->SetCenter(0.5,0.33);
-        
-        }elseif(count($choices_data) == 3){
-            
-            $graph = new PieGraph(440,330,"auto");
+            $graph = new PieGraph(440,400,"auto");
             $graph->ClearTheme();
             $graph->legend->SetLayout(LEGEND_VER);
             $graph->legend->SetPos(0.5,0.94,'center','bottom');
@@ -178,14 +166,34 @@ function _poll_generate($poll_nid){
             $p1->SetSize(110);
             $p1->SetCenter(0.5,0.35);
         
-        }else{
-            $graph = new PieGraph(440,310,"auto");
+        }elseif(count($choices_data) == 4){
+            
+            $graph = new PieGraph(440,390,"auto");
             $graph->ClearTheme();
             $graph->legend->SetLayout(LEGEND_VER);
             $graph->legend->SetPos(0.5,0.94,'center','bottom');
             $p1 = new PiePlot($votes_data);
             $p1->SetSize(110);
             $p1->SetCenter(0.5,0.37);
+        
+        }elseif(count($choices_data) == 3){
+            
+            $graph = new PieGraph(440,340,"auto");
+            $graph->ClearTheme();
+            $graph->legend->SetLayout(LEGEND_VER);
+            $graph->legend->SetPos(0.5,0.94,'center','bottom');
+            $p1 = new PiePlot($votes_data);
+            $p1->SetSize(110);
+            $p1->SetCenter(0.5,0.39);
+        
+        }else{
+            $graph = new PieGraph(440,330,"auto");
+            $graph->ClearTheme();
+            $graph->legend->SetLayout(LEGEND_VER);
+            $graph->legend->SetPos(0.5,0.92,'center','bottom');
+            $p1 = new PiePlot($votes_data);
+            $p1->SetSize(110);
+            $p1->SetCenter(0.5,0.4);
         }
         
         
@@ -215,8 +223,9 @@ function _poll_generate($poll_nid){
         }
         
         
-        $labels = array('','','');
-        $p1->SetLabels($emptyarr);
+        $labels = array('dd','ds','');
+        
+        //$p1->SetLabels($labels);
         $p1->SetSliceColors($colors_data);
         
         
@@ -260,18 +269,18 @@ function _poll_generate($poll_nid){
         
         
         if(count($choices_data) == 10 ){
-            $graph = new Graph(400,430,"auto");
+            $graph = new Graph(400,400,"auto");
             $graph->ClearTheme();
             $graph->SetFrame(false);
             $graph->SetScale("textlin");
-            $graph->SetMargin(30,30,20,260);
+            $graph->SetMargin(40,30,20,260);
             $graph->legend->SetPos(0.5,0.5,'center','top');
         }elseif(count($choices_data) == 9){
             $graph = new Graph(400,400,"auto");
             $graph->ClearTheme();
             $graph->SetFrame(false);
             $graph->SetScale("textlin");
-            $graph->SetMargin(30,30,20,230);
+            $graph->SetMargin(40,30,20,230);
             $graph->legend->SetPos(0.5,0.5,'center','top');
         }
         elseif(count($choices_data) == 8){
@@ -279,7 +288,7 @@ function _poll_generate($poll_nid){
             $graph->ClearTheme();
             $graph->SetFrame(false);
             $graph->SetScale("textlin");
-            $graph->SetMargin(30,30,20,200);
+            $graph->SetMargin(40,30,20,200);
             $graph->legend->SetPos(0.5,0.5,'center','top');
         }
         elseif(count($choices_data) == 7){
@@ -287,7 +296,7 @@ function _poll_generate($poll_nid){
             $graph->ClearTheme();
             $graph->SetFrame(false);
             $graph->SetScale("textlin");
-            $graph->SetMargin(30,30,20,190);
+            $graph->SetMargin(40,30,20,190);
             $graph->legend->SetPos(0.5,0.55,'center','top');
         }
         elseif(count($choices_data) == 6){
@@ -295,7 +304,7 @@ function _poll_generate($poll_nid){
             $graph->ClearTheme();
             $graph->SetFrame(false);
             $graph->SetScale("textlin");
-            $graph->SetMargin(30,30,20,170);
+            $graph->SetMargin(40,30,20,170);
             $graph->legend->SetPos(0.5,0.6,'center','top');
         }
         elseif(count($choices_data) == 5){
@@ -303,7 +312,7 @@ function _poll_generate($poll_nid){
             $graph->ClearTheme();
             $graph->SetFrame(false);
             $graph->SetScale("textlin");
-            $graph->SetMargin(30,30,20,160);
+            $graph->SetMargin(40,30,20,160);
             $graph->legend->SetPos(0.5,0.6,'center','top');
         }
         elseif(count($choices_data) == 4){
@@ -311,7 +320,7 @@ function _poll_generate($poll_nid){
             $graph->ClearTheme();
             $graph->SetFrame(false);
             $graph->SetScale("textlin");
-            $graph->SetMargin(30,30,20,150);
+            $graph->SetMargin(40,30,20,150);
             $graph->legend->SetPos(0.5,0.63,'center','top');
         }
         elseif(count($choices_data) == 3){
@@ -319,18 +328,18 @@ function _poll_generate($poll_nid){
             $graph->ClearTheme();
             $graph->SetFrame(false);
             $graph->SetScale("textlin");
-            $graph->SetMargin(30,30,20,110);
+            $graph->SetMargin(40,30,20,110);
             $graph->legend->SetPos(0.5,0.68,'center','top');
         }else{
             $graph = new Graph(400,240,"auto");
             $graph->ClearTheme();
             $graph->SetFrame(false);
             $graph->SetScale("textlin");
-            $graph->SetMargin(30,30,20,90);
+            $graph->SetMargin(40,30,20,90);
             $graph->legend->SetPos(0.5,0.7,'center','top');
         }
         
-        
+        $graph->SetClipping(false);
         
         
         
@@ -345,9 +354,13 @@ function _poll_generate($poll_nid){
 
         $graph->ygrid->SetFill(false);
        // $graph->xaxis->SetTickLabels(array('A','B','C','D'));
-        $graph->xaxis->SetTickLabels($emptyarr);
+        //$graph->xaxis->SetTickLabels($emptyarr);
+        
+        
+        $graph->xaxis->HideTicks(true,true);
         $graph->yaxis->HideLine(false);
-        $graph->yaxis->HideTicks(false,false);
+        $graph->yaxis->HideTicks(true,true);
+        $graph->yaxis->SetTitle('Percentage of Votes','center');
         // Setup month as labels on the X-axis
         
         
@@ -357,13 +370,17 @@ function _poll_generate($poll_nid){
         $objects = array();
         
         foreach($votes_data as $k=>$vote){
-            
             $tmpplot = new BarPlot($votes_arrays[$k]);
             $tmpplot->SetColor($colors_data[$k]);
             $tmpplot->SetFillColor($colors_data[$k]);
             
             $tmpplot->SetLegend($choices_data[$k]);
-            $tmpplot->SetWidth(30);
+            $tmpplot->SetWidth(20);
+            $tmpplot->SetAbsWidth(15); 
+            
+            
+            $tmpplot->SetAlign("center"); 
+            
             $objects[] = $tmpplot;
         }
         
