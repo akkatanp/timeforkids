@@ -23,7 +23,7 @@
     <div class="tfkpolltitle"><?php print $title;?></div>
     <div class="poll">
       <?php print $results; ?>
-      <div class="total" style="margin-right:30px;">
+      <div class="total" style="margin-right:30px;margin-bottom:10px;">
         <?php print t('Total votes: @votes', array('@votes' => $votes)); ?>
       </div>
       <?php if (!empty($cancel_form)): ?>
