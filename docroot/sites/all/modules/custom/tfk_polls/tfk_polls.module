@@ -419,6 +419,23 @@ function tfk_polls_preprocess_node(&$vars, $hook) {
 }
 
 
+function tfk_polls_preprocess_poll_vote(&$variables) {
+    $poll_nid = $variables['nid'];
+  
+  
+  $poll_node = node_load($poll_nid);
+  
+  
+  $copy_tmp = field_get_items('node', $poll_node, 'field_poll_heading_copy');
+  
+  if(isset($copy_tmp[0]['value'])){
+    $variables['customheading'] = $copy_tmp[0]['value'];
+  }else{
+    $variables['customheading'] = 'Poll Question';
+  }
+}
+
+
 function tfk_polls_preprocess_poll_results(&$variables) {
 //  $html = $variables['results'];
 //  
@@ -432,11 +449,25 @@ function tfk_polls_preprocess_poll_results(&$variables) {
   $poll_nid = $variables['nid'];
   
   
+  $poll_node = node_load($poll_nid);
+  
+  
+  $copy_tmp = field_get_items('node', $poll_node, 'field_poll_heading_copy');
+  
+  
+  if(isset($copy_tmp[0]['value'])){
+    $variables['customheading'] = $copy_tmp[0]['value'];
+  }else{
+    $variables['customheading'] = 'Poll Question';
+  }
+  
+  
   global $base_url;
   
   $img_src = $base_url.'/pollgenerate/'.$poll_nid;
   
   $variables['results'] = '<img src="'.$img_src.'"/>';
+  
   
     
 } 
@@ -456,4 +487,7 @@ function tfk_polls_theme($existing, $type, $theme, $path) {
 function tfk_polls_theme_registry_alter(&$theme_registry) {
     $theme_registry['poll_results']['preprocess functions'][] = 'tfk_polls_preprocess_poll_results';
     $theme_registry['poll_results']['path'] = 'sites/all/modules/custom/tfk_polls';
+    $theme_registry['poll_vote']['preprocess functions'][] = 'tfk_polls_preprocess_poll_vote';
+    $theme_registry['poll_vote']['path'] = 'sites/all/modules/custom/tfk_polls';
+    
 }
