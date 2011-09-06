@@ -18,15 +18,19 @@
  * @see template_preprocess_poll_results()
  */
 ?>
-<div class="poll">
-  <?php print $results; ?>
-  <div class="total">
-    <?php print t('Total votes: @votes', array('@votes' => $votes)); ?>
-  </div>
-  <?php if (!empty($cancel_form)): ?>
-    <?php print $cancel_form; ?>
-  <?php endif; ?>
-</div>
+<div class="tfkpoll">
+    <div class="tfkpollheading"><?php print $customheading;?></div>
+    <div class="tfkpolltitle"><?php print $title;?></div>
+    <div class="poll">
+      <?php print $results; ?>
+      <div class="total" style="margin-right:30px;">
+        <?php print t('Total votes: @votes', array('@votes' => $votes)); ?>
+      </div>
+      <?php if (!empty($cancel_form)): ?>
+        <?php print $cancel_form; ?>
+      <?php endif; ?>
+    </div>
+</div> 
 
 
 
