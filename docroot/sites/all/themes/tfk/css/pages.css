@@ -30,6 +30,39 @@
 	background: url(../images/tfk-head-logo.png) no-repeat;
 }
 
+
+.page-news-archive-polls .view-news-archive .views-field-title span{
+    float:left; 
+}
+
+.views-field-title-2{
+    display:none;
+}
+
+.page-news-archive-polls .view-news-archive .mytitleart{
+    float:left;
+}
+
+
+
+.pollimg{
+    background: url(../images/bar-chart-icon.png) no-repeat;
+    width:30px;
+    height:30px;
+    float:left;
+    margin-left:10px;
+    
+}
+
+.view-news-archive .views-field-field-date{
+    clear:both;
+}
+
+
+
+
+
+
 #logo img {
   display: none;
 }
@@ -2918,12 +2951,15 @@ body.page-404page #first-column .region-sidebar-first .section{
     margin: 0 8px 13px 0;
     padding: 3px 0;
     text-align: center;
+    position:Relative;bottom:10px;
 }
 
 
 .tfkpolltitle{
     font: bold 14px arial,sans-serif;
     text-align: center;
+    display:block;
+    margin-top:10px;
 }
 
 
