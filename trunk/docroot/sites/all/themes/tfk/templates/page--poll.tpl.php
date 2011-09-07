@@ -71,7 +71,7 @@
 
 
 
-<div id="page-wrapper"><div id="page">
+<div id="page-wrapperemptypoll"><div id="page">
 
 
   <div id="main-wrapper">
