@@ -309,59 +309,146 @@ function tfk_helper_update_7009($ret) {
 }
 
 /**
- * Worksheets filesystem update.
+ * Create new private worksheets PDF field.
  */
-/*function tfk_helper_update_7010($ret) {
-  $test = null;
-  
+function tfk_helper_update_7010($ret) {
 
-  // This is what we are going to do:
-  // Read in all the records into memory.
-    // node_load each worksheet
-    // resolve the address to the actual file
-    // store the address in an array
+  // Revert Feature so the new field is imported from the Feature into the database.
+  tfk_helper_features_revert(array('tfk_worksheets'));
+}
 
-  // Drop instance and field
-  // Create new field and instance (with the same name).
-  
-  // Iterate through all the worksheets
-    // Move the existing file from the public to the private dir.
-    // Enter the new worksheet path into the new field.
-    // Save the node.
-    
-  // --
-  // Read in all the records into memory.
-    // node_load each worksheet
-    $result = db_query("SELECT nid FROM {node} WHERE status = 1 AND type = 'worksheet'");
-    
-    if($result && $result->rowCount() > 0) {
-      $current_paths = array();
-      
-      foreach ($result as $k => $nid) {
-        $worksheet_node = node_load($nid);
-        $field_worksheet_pdf = field_get_items('node', $worksheet_node, 'field_worksheet_pdf');
-        if($field_worksheet_pdf) {
-          $current_paths[$worksheet_node->nid] = drupal_realpath($field_worksheet_pdf->uri);
-        }
-      }
-    }
-  
-    // resolve the address to the actual file
-    // store the address in an array
+/**
+ * Move worksheet files into private directory.
+ */
+function tfk_helper_update_7011($ret) {
 
-  // Drop instance and field
-  // Create new field and instance (with the same name).
+  $new_field_name = 'field_worksheet_pdf_private';
+  $private_field = field_read_instance('node', $new_field_name, 'worksheet');
   
-  // Iterate through all the worksheets
-    // Move the existing file from the public to the private dir.
-    // Enter the new worksheet path into the new field.
-    // Save the node.
-  
-  
-  // Delete field_worksheet_pdf field instance.
-  $worksheet = field_read_instance('node', 'field_worksheet_pdf', 'worksheet');
-  if($worksheet) {
-    #field_delete_instance($worksheet);
+  if(!$private_field) {
+    drupal_set_message(t('Could not load field "'. $new_field_name. '".'), 'error');
+    watchdog('file', 'Could not load field %field_name.', array('%field_name' => $new_field_name,));
+    return;
   }
-}*/
+  
+  // Create worksheets private directory.
+  // drupal_mkdir($uri, $mode = NULL, $recursive = FALSE, $context = NULL)
+  
+  // Prepare the destination directory.
+  $destination = 'private://'. $private_field['settings']['file_directory'];
+  if(!file_prepare_directory($destination)) {
+    $destination_is_valid = drupal_mkdir($destination);
+    if($destination_is_valid) {
+      drupal_set_message(t('Successfully created directory "'. $destination. '".'), 'status');
+      watchdog('file', 'Successfully created directory %file (%realpath).', array('%file' => $destination, '%realpath' => drupal_realpath($destination)));
+    } else {
+      drupal_set_message(t('TFK Helper: Attempt to create "'. $destination. '" directory failed, field update aborted.'), 'error');
+      watchdog('file', 'Attempt to create %file (%realpath) directory failed.', array('%file' => $destination, '%realpath' => drupal_realpath($destination)));
+      return FALSE;
+    }
+  }
+  
+  $result = db_query("SELECT nid FROM {node} WHERE status = 1 AND type = 'worksheet'");
+  
+  if($result && $result->rowCount() > 0) {
+    $current_paths = array();
+    
+    foreach($result as $nid) {
+      $worksheet_node = node_load($nid->nid);
+      $field_worksheet_pdf = field_get_items('node', $worksheet_node, 'field_worksheet_pdf');
+      if($field_worksheet_pdf) {
+        $old_file = (object) $field_worksheet_pdf[0];
+        
+        // Don't copy again if we did already.
+        if(file_exists(drupal_realpath($destination. '/'. $field_worksheet_pdf[0]['filename']))) {
+          //drupal_set_message(t("Skipped ". $field_worksheet_pdf[0]['filename']. "."), 'status');
+          continue;
+        }
+        
+        // Move file (Also updates existing file record).
+        $new_file = file_move($old_file, $destination. '/'. $field_worksheet_pdf[0]['filename'], FILE_EXISTS_REPLACE);
+        
+        // Report invalid file references.
+        if(!$new_file) {
+          drupal_set_message(t("File {$field_worksheet_pdf[0]['filename']} is associated to nid {$worksheet_node->nid} ({$worksheet_node->title}). Please verify this node's $new_field_name field."), 'error');
+          watchdog('file', 'File %file is associated to nid %nid (%title). Please verify this node\'s %new_field_name field.',
+            array('%file' => $field_worksheet_pdf[0]['filename'],
+            '%nid' => $worksheet_node->nid,
+            '%title' => $worksheet_node->title,
+            '%new_field_name' => $new_field_name
+            )
+          );
+          // Don't update database for this record.
+          continue;
+        }
+        
+        // Insert the private file record into the new PDF field.
+        /* Old field table definition:
+          Table field_data_field_worksheet_pdf_private
+          ============================================
+          entity_type, bundle, deleted, entity_id, revision_id, language, delta, field_worksheet_pdf_private_fid, field_worksheet_pdf_private_display, field_worksheet_pdf_private_description
+          --------------------------------------------
+          entity_type      varchar(128) PK
+          bundle           varchar(128)
+          deleted          tinyint(4) PK
+          entity_id        int(10) unsigned PK
+          revision_id      int(10) unsigned
+          language         varchar(32) PK
+          delta            int(10) unsigned PK
+          field_worksheet_pdf_private_fid int(10) unsigned
+          field_worksheet_pdf_private_display tinyint(3) unsigned
+          field_worksheet_pdf_private_description
+         */
+        $query_args = array(
+        	':nid' => $worksheet_node->nid,
+          ':rid' => $worksheet_node->vid,
+          ':lang' => $worksheet_node->language,
+          ':fid' => $field_worksheet_pdf[0]['fid']
+        );
+        $fields = array(
+          'entity_type' => 'node',
+        	'bundle' => 'worksheet',
+         	'deleted' => 0,
+        	'entity_id' => $worksheet_node->nid,
+          'revision_id' => $worksheet_node->vid,
+          'language' => $worksheet_node->language,
+          'delta' => 0,
+          'field_worksheet_pdf_private_fid' => $field_worksheet_pdf[0]['fid'],
+          'field_worksheet_pdf_private_display' => 1,
+        );
+        
+        $query_result = db_insert('field_data_field_worksheet_pdf_private')->fields($fields)->execute();
+        
+        $insert_query = 'INSERT INTO {field_data_field_worksheet_pdf_private}
+            (entity_type, bundle, deleted, entity_id, revision_id, language, delta, field_worksheet_pdf_private_fid, field_worksheet_pdf_private_display)
+        	VALUES
+            entity_type="node",
+            bundle ="worksheet",
+            deleted = 0,
+            entity_id = :nid,
+            revision_id = :rid,
+            language = :lang,
+            delta = 0,
+            field_worksheet_pdf_private_fid = :fid,
+            field_worksheet_pdf_private_display = 1';
+        //$query_result = db_query($insert_query, $query_args);
+        
+        
+        
+        if($query_result && $query_result->rowCount() > 0) {
+          drupal_set_message(t("Node {$worksheet_node->nid} ({$worksheet_node->title}) updated."), 'status');
+          watchdog('file', 'Node %nid (%title) updated.', array('%nid' => $worksheet_node->nid, '%title' => $worksheet_node->title));
+        }
+        
+      }
+
+    }
+    
+  }
+  // Delete field_worksheet_pdf field instance.
+  //$worksheet = field_read_instance('node', 'field_worksheet_pdf', 'worksheet');
+  //if($worksheet) {
+    #field_delete_instance($worksheet);
+  //}
+}
  
