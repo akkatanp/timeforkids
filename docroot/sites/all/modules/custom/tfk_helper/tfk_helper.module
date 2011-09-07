@@ -84,15 +84,18 @@ function theme_suggestion_box($options = array()) {
 }
 
 /**
- * Implementation of hook_file_download() 
+ * Implementation of hook_file_download()
  *
- * Here we restrict who can download a pdf file and ensure that they are 
+ * Here we restrict who can download a pdf file by role.
  */
- function tfk_helper_file_download($uri) {
+function tfk_helper_file_download($uri) {
   global $user;
-  if (strpos($uri,'pdf') >=0) {
-  	if (!array_intersect(array('administrator','editor','teacher'), array_values($user->roles))) {
-    	return −1;
+  if (strpos($uri, 'pdf') >= 0) {
+    $allowed = array_intersect(array('administrator', 'editor', 'teacher'), array_values($user->roles));
+  	if (empty($allowed)) {
+    	return -1;
+   	} else {
+   	  return array();
    	}
   }
 }
