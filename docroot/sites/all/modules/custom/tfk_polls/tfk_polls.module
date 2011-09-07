@@ -277,50 +277,50 @@ function _poll_generate($poll_nid){
         
         
         if(count($choices_data) == 10 ){
-            $graph = new Graph(400,400,"auto");
+            $graph = new Graph(400,390,"auto");
             $graph->ClearTheme();
             $graph->SetFrame(false);
             $graph->SetScale("textlin");
             $graph->SetMargin(40,30,20,260);
-            $graph->legend->SetPos(0.5,0.5,'center','top');
+            $graph->legend->SetPos(0.5,0.43,'center','top');
         }elseif(count($choices_data) == 9){
-            $graph = new Graph(400,400,"auto");
+            $graph = new Graph(400,370,"auto");
+            $graph->ClearTheme();
+            $graph->SetFrame(false);
+            $graph->SetScale("textlin");
+            $graph->SetMargin(40,30,20,240);
+            $graph->legend->SetPos(0.5,0.44,'center','top');
+        }
+        elseif(count($choices_data) == 8){
+            $graph = new Graph(400,360,"auto");
             $graph->ClearTheme();
             $graph->SetFrame(false);
             $graph->SetScale("textlin");
             $graph->SetMargin(40,30,20,230);
-            $graph->legend->SetPos(0.5,0.5,'center','top');
-        }
-        elseif(count($choices_data) == 8){
-            $graph = new Graph(400,370,"auto");
-            $graph->ClearTheme();
-            $graph->SetFrame(false);
-            $graph->SetScale("textlin");
-            $graph->SetMargin(40,30,20,200);
-            $graph->legend->SetPos(0.5,0.5,'center','top');
+            $graph->legend->SetPos(0.5,0.46,'center','top');
         }
         elseif(count($choices_data) == 7){
-            $graph = new Graph(400,370,"auto");
-            $graph->ClearTheme();
-            $graph->SetFrame(false);
-            $graph->SetScale("textlin");
-            $graph->SetMargin(40,30,20,190);
-            $graph->legend->SetPos(0.5,0.55,'center','top');
-        }
-        elseif(count($choices_data) == 6){
             $graph = new Graph(400,340,"auto");
             $graph->ClearTheme();
             $graph->SetFrame(false);
             $graph->SetScale("textlin");
-            $graph->SetMargin(40,30,20,170);
-            $graph->legend->SetPos(0.5,0.6,'center','top');
+            $graph->SetMargin(40,30,20,210);
+            $graph->legend->SetPos(0.5,0.49,'center','top');
+        }
+        elseif(count($choices_data) == 6){
+            $graph = new Graph(400,330,"auto");
+            $graph->ClearTheme();
+            $graph->SetFrame(false);
+            $graph->SetScale("textlin");
+            $graph->SetMargin(40,30,20,190);
+            $graph->legend->SetPos(0.5,0.53,'center','top');
         }
         elseif(count($choices_data) == 5){
             $graph = new Graph(400,320,"auto");
             $graph->ClearTheme();
             $graph->SetFrame(false);
             $graph->SetScale("textlin");
-            $graph->SetMargin(40,30,20,160);
+            $graph->SetMargin(40,30,20,170);
             $graph->legend->SetPos(0.5,0.6,'center','top');
         }
         elseif(count($choices_data) == 4){
@@ -344,7 +344,7 @@ function _poll_generate($poll_nid){
             $graph->SetFrame(false);
             $graph->SetScale("textlin");
             $graph->SetMargin(40,30,20,90);
-            $graph->legend->SetPos(0.5,0.7,'center','top');
+            $graph->legend->SetPos(0.5,0.73,'center','top');
         }
         
         $graph->SetClipping(false);
