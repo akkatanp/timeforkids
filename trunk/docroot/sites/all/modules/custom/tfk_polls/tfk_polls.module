@@ -211,6 +211,11 @@ function _poll_generate($poll_nid){
         
         
         
+        $graph->title->SetColor('black');
+        $graph->subtitle->SetColor('black');
+        $graph->subsubtitle->SetColor('black');
+        
+        
         //$p1 = new PiePlot($votes_data);
         //$p1->SetSize(0.23);
         $p1->SetLegends($choices_data);
@@ -223,10 +228,13 @@ function _poll_generate($poll_nid){
         }
         
         
-        $labels = array('dd','ds','');
+        //$labels = array('dd','ds','');
         
         //$p1->SetLabels($labels);
         $p1->SetSliceColors($colors_data);
+        $p1->SetColor('black');
+        $p1->value->SetColor("black");
+         //$graph->label->SetColor('black','white');
         
         
         $graph->Add($p1);
@@ -392,7 +400,7 @@ function _poll_generate($poll_nid){
         $graph->legend->SetFrameWeight(0);
         $graph->legend->SetColumns(1);
         $graph->legend->SetColor('black','white');
-        
+       
         
         //$graph->title->Set($poll_node->title);
         
