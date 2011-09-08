@@ -89,6 +89,7 @@ function theme_suggestion_box($options = array()) {
  * Here we restrict who can download a pdf file by role.
  */
 function tfk_helper_file_download($uri) {
+  die('rallen is testing this for 5 seconds');
   global $user;
   if (strpos($uri, 'pdf') >= 0) {
     $allowed = array_intersect(array('administrator', 'editor', 'teacher'), array_values($user->roles));
