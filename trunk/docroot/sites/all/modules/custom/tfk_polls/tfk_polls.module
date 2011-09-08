@@ -31,6 +31,9 @@ function _poll_generate($poll_nid){
     $poll_legend_format = field_get_items('node',$poll_node,'field_legend_format');
     $poll_legend_format = $poll_legend_format[0]['value'];
     
+    $poll_slice_values = field_get_items('node',$poll_node,'field_piechart_values');
+    $poll_slice_values = $poll_slice_values[0]['value'];
+    
     
 
     
@@ -228,9 +231,16 @@ function _poll_generate($poll_nid){
         }
         
         
+        if($poll_slice_values == 'no'){
+            $p1->SetLabels($emptyarr);
+        }
+        
+        
         //$labels = array('dd','ds','');
         
         //$p1->SetLabels($labels);
+        
+        
         $p1->SetSliceColors($colors_data);
         $p1->SetColor('black');
         $p1->value->SetColor("black");
