@@ -79,7 +79,7 @@
       
 
       
-      <div id="content" class="column">
+      <div id="content" class="">
       
         <?php if(isset($page_pre_section)):?>
         	<div id='page_pre_section'><?php print $page_pre_section; ?></div>
