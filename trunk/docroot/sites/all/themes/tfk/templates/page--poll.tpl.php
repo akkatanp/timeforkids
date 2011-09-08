@@ -74,7 +74,7 @@
 <div id="page-wrapperemptypoll"><div id="page">
 
 
-  <div id="main-wrapper">
+  <!--<div id="main-wrapper">-->
     <div id="main" class="clearfix<?php if ($main_menu || $page['navigation']) { print ' with-navigation'; } ?>">
       
 
@@ -108,7 +108,7 @@
     </div><!-- /#main -->
 
   
-  </div><!-- /#main-wrapper -->
+  <!-- </div>/#main-wrapper -->
 
 </div></div><!-- /#page, /#page-wrapper -->
 
