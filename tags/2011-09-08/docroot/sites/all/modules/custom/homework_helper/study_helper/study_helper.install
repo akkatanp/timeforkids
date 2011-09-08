@@ -1,0 +1,11 @@
+<?php
+
+/**
+ * Give editors and admins new flashcard perm.
+ */
+function study_helper_update_7000() {
+  $perms = array('create public flashcards');
+  user_role_grant_permissions(3, $perms);
+  user_role_grant_permissions(4, $perms);
+  return t('Gave editors and admins new flashcard permission');
+}
