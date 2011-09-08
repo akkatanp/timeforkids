@@ -30,7 +30,6 @@
 	background: url(../images/tfk-head-logo.png) no-repeat;
 }
 
-
 .page-news-archive-polls .view-news-archive .views-field-title span{
     float:left; 
 }
@@ -43,27 +42,9 @@
     float:left;
 }
 
-
-
-.pollimg{
-    background: url(../images/bar-chart-icon.png) no-repeat;
-    width:30px;
-    height:30px;
-    float:left;
-    margin-left:10px;
-    position:relative;
-    bottom:3px;
-    
-}
-
 .view-news-archive .views-field-field-date{
     clear:both;
 }
-
-
-
-
-
 
 #logo img {
   display: none;
@@ -2935,11 +2916,22 @@ body.page-404page #first-column .region-sidebar-first .section{
 
 /* TFK POLLS */
 
-.tfkpoll{
+.pollimg{
+    background: url(../images/bar-chart-icon.png) no-repeat;
+    width:30px;
+    height:30px;
+    float:left;
+    margin-left:10px;
+    position:relative;
+    bottom:3px;
+    
+}
+
+.tfkpoll {
     margin-top:30px;
 }
 
-.tfkpoll img{
+.tfkpoll img {
     display:block;
     margin:0 auto;
 
@@ -2949,13 +2941,13 @@ body.page-404page #first-column .region-sidebar-first .section{
     background-color: #D71700;
     width:100%;
     color: #FFFFFF;
-    font: 11px "arial black",arial;
+    font: 11px "arial black",arial, sans-serif;
     margin: 0 8px 13px 0;
     padding: 3px 0;
     text-align: center;
-    position:Relative;bottom:10px;
+    position:relative;
+    bottom:10px;
 }
-
 
 .tfkpolltitle{
     font: bold 14px arial,sans-serif;
@@ -2964,13 +2956,11 @@ body.page-404page #first-column .region-sidebar-first .section{
     margin-top:10px;
 }
 
-
 .tfkpoll #edit-actions{
     margin:0 auto; 
     display:block; 
     width:115px;
 }
-
 
 .poll #edit-actions{
     margin:0 auto; 
@@ -2979,15 +2969,22 @@ body.page-404page #first-column .region-sidebar-first .section{
 }
 
 
-
 .tfkpoll .option{
     display:block;
     position:relative;
     top:3px;
 }
 
-
 #page-wrapperemptypoll{
     width:530px;
     float:left;
+}
+.tfkpoll .vote-form {/*poll button container*/
+    
+}
+.tfkpoll .edit-actions {/*poll button container*/
+    
+}
+.tfkpoll button {/*poll button*/
+    
 }
