@@ -13,6 +13,58 @@ function tfk_polls_menu(){
 }
 
 
+function tfk_polls_preprocess_page(&$variables){
+    
+    $variables['total_votes'] = 0;
+    $variables['show_votes'] = 0;
+    $args = arg();
+    
+    if($args[0] == 'node' && $args[2] == 'votes'){
+        $variables['show_votes'] = 1;
+        
+        $poll_node = $args[1];
+        
+        
+        $choices_arr = $variables['node']->choice;
+        
+        foreach($choices_arr as $choice){
+            $variables['total_votes'] += $choice['chvotes'];
+        }
+        
+    }
+    
+    global $user;
+    if ( $user->uid == 0 && $variables['node']->type == "mini_lesson" ){
+     $variables['section_title'] = 'ACCESS DENIED';
+       
+    }
+    
+   
+    
+    //echo $variables['total_votes'];
+    //exit;
+    
+    
+}
+
+
+function tfk_polls_node_view($node, $view_mode = 'full', $langcode = NULL){
+    global $user;
+    if ( $user->uid == 0 && $node->type == "mini_lesson" ){
+      $node->content =  drupal_access_denied();
+       
+    }
+    
+    
+    if($user->uid == 0){
+        if($node->nid == 8091 || $node->nid == 7631 || $node->nid == 7636 || $node->nid == 8116){
+            $node->content =  drupal_access_denied();
+        }
+    }
+    
+}
+
+
 function _poll_generate($poll_nid){
     
     $default_height = 300;
