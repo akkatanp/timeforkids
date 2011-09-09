@@ -799,7 +799,7 @@ function poll_vote($form, &$form_state) {
   }
 
   
-  drupal_set_message(t('Your vote was recorded.'));
+  //drupal_set_message(t('Your vote was recorded.'));
 
   // Return the user to whatever page they voted from.
 }
@@ -988,7 +988,7 @@ function poll_cancel($form, &$form_state) {
 
   unset($_SESSION['poll_vote'][$node->nid]);
 
-  drupal_set_message(t('Your vote was cancelled.'));
+  //drupal_set_message(t('Your vote was cancelled.'));
 }
 
 /**
