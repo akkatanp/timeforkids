@@ -2336,7 +2336,7 @@ function tfk_search_preprocess_search_result(&$vars) {
       }
       
       // Download this [worksheet type] link.
-      if(isset($node->field_worksheet_pdf)){
+      if(isset($node->field_worksheet_pdf_private)){
         $vars['tfk_worksheet_pdf_url'] = '';
         $tmp_pdf = field_get_items('node', $node, 'field_worksheet_pdf_private');
         $pdf_tmp_uri = $tmp_pdf[0]['uri'];
