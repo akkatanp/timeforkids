@@ -2204,119 +2204,70 @@ function tfk_search_preprocess_search_result(&$vars) {
         }
       }
 
-       ///////////GETTING ADDITIONAL CONTENT////////
-       // Materials.
-      /*
-      $materials = field_get_items('node', $node, 'field_materials');
-       if($materials) {
-         foreach($materials as $key => $material_nid) {
-           $material = node_load($material_nid['nid']);
-           if($material) {
-             $worksheet_file = field_get_items('node', $material, 'field_worksheet_pdf');
-             if($worksheet_file) {
-               $worksheet_file = $worksheet_file[0];
-               
-               $vars['magazine_materials'][$key] = l($vars['result']['fields'][TFK_SEARCH_WORKSHEET_PDF_TITLE][$key], file_create_url($worksheet_file['uri']));
-             }
-           }
-         }
-       }*/
-              
-              
-       if(array_key_exists(TFK_SEARCH_WORKSHEET_PDF_LINK, $vars['result']['fields']) && !empty($vars['result']['fields'][TFK_SEARCH_WORKSHEET_PDF_LINK])) {
-         foreach($vars['result']['fields'][TFK_SEARCH_WORKSHEET_PDF_LINK] as $key => $pdf_link) {
-           $vars['magazine_materials'][$key] = l($vars['result']['fields'][TFK_SEARCH_WORKSHEET_PDF_TITLE][$key], $pdf_link);
-         }
-       }
+      ///////////GETTING ADDITIONAL CONTENT////////
+      // Materials.
+            
+      if(array_key_exists(TFK_SEARCH_WORKSHEET_PDF_LINK, $vars['result']['fields']) && !empty($vars['result']['fields'][TFK_SEARCH_WORKSHEET_PDF_LINK])) {
+        foreach($vars['result']['fields'][TFK_SEARCH_WORKSHEET_PDF_LINK] as $key => $pdf_link) {
+         $vars['magazine_materials'][$key] = l($vars['result']['fields'][TFK_SEARCH_WORKSHEET_PDF_TITLE][$key], $pdf_link);
+        }
+      }
 
-
-       //adding PDF Quiz to materials - per tfks 399
-       $mats = array();
-       $materials = field_get_items('node',$node,'field_materials');
-       if($materials) {
-         foreach($materials as $key => $material_nid) {
-           $material = node_load($material_nid['nid']);
-           if($material->type == 'pdf_quiz') {
-             $worksheet_file = field_get_items('node', $material, 'field_pdf_file_private');
-             if($worksheet_file) {
-               $worksheet_file = $worksheet_file[0];
-               $vars['magazine_materials'][] = l($material->title, file_create_url($worksheet_file['uri']));
-               $mats[] = l($material->title, file_create_url($worksheet_file['uri']));
-             }
+      //adding PDF Quiz to materials - per tfks 399
+      $mats = array();
+      $materials = field_get_items('node',$node,'field_materials');
+      if($materials) {
+       foreach($materials as $key => $material_nid) {
+         $material = node_load($material_nid['nid']);
+         if($material->type == 'pdf_quiz') {
+           $worksheet_file = field_get_items('node', $material, 'field_pdf_file_private');
+           if($worksheet_file) {
+             $worksheet_file = $worksheet_file[0];
+             $vars['magazine_materials'][] = l($material->title, file_create_url($worksheet_file['uri']));
+             $mats[] = l($material->title, file_create_url($worksheet_file['uri']));
            }
          }
        }
+      }
 
-       //$vars['magazine_materials'] = (array)$vars['magazine_materials'] + (array)$mats;
-       
-       /*
-       $materials = field_get_items('node', $node, 'field_materials');
-       if($materials) {
-         foreach($materials as $key => $material_nid) {
-           $material = node_load($material_nid['nid']);
-           if($material) {
-             $worksheet_file = field_get_items('node', $material, 'field_worksheet_pdf');
-             if($worksheet_file) {
-               $worksheet_file = $worksheet_file[0];
-               
-               $vars['magazine_materials'][$key] = l($vars['result']['fields'][TFK_SEARCH_WORKSHEET_PDF_TITLE][$key], file_create_url($worksheet_file['uri']));
-             }
-           }
-         }
-       }*/
-
-       ////////////////////Related Resources////////////////
-       $related_resources = field_get_items('node', $magazine, 'field_related_resources');
-       if($related_resources) {
-         foreach($related_resources as $k => $rr_nid) {
-           $resource = node_load($rr_nid['nid']);
-           if($resource && $resource->type == 'worksheet') {
-             $worksheet_file = field_get_items('node', $resource, 'field_worksheet_pdf_private');
-             if($worksheet_file) {
-               $worksheet_file = $worksheet_file[0];
-               $vars['magazine_related'][$k]['title'] = $resource->title;
-               $vars['magazine_related'][$k]['url'] = file_create_url($worksheet_file['uri']);
-             }
-           } elseif($resource->type == 'pdf_quiz') {
-             // @todo follow sergei's wish someday, save a kitten. Do the same we are doing for the materials.
-             // a kitten dies everytime you node_load.
-             // sergei: i want to get the title without doing an extra node_load
-             #$sql = 'SELECT title FROM {node} WHERE nid = :nid';
-             #$result = db_query($sql,array('nid'=>$rr_nid['nid']));
-             #$link_title = $result->fetch();
-             #if($link_title) {
-
-
-               $vars['magazine_related'][$k]['title'] = $resource->title;
-               $vars['magazine_related'][$k]['nid'] = $resource->nid;
-
-               $worksheet_file = field_get_items('node', $resource, 'field_pdf_file_private');
-               if($worksheet_file) {
-                 $worksheet_file = $worksheet_file[0];
-                 $vars['magazine_related'][$k]['url'] = file_create_url($worksheet_file['uri']);
-               }else{
-                 $vars['magazine_related'][$k]['url'] = drupal_lookup_path('alias', 'node/'. $resource->nid);
-               }
-             #}
-           }else{
+      ////////////////////Related Resources////////////////
+      $related_resources = field_get_items('node', $magazine, 'field_related_resources');
+      if($related_resources) {
+        foreach($related_resources as $k => $rr_nid) {
+          $resource = node_load($rr_nid['nid']);
+          if($resource && $resource->type == 'worksheet') {
+            $worksheet_file = field_get_items('node', $resource, 'field_worksheet_pdf_private');
+            if($worksheet_file) {
+             $worksheet_file = $worksheet_file[0];
              $vars['magazine_related'][$k]['title'] = $resource->title;
-             $vars['magazine_related'][$k]['nid'] = $resource->nid;
-             $vars['magazine_related'][$k]['url'] = drupal_lookup_path('alias', 'node/'. $resource->nid);
-           }
-
-         }
-         
-         // Supress additional resources box if empty.
-         if((!empty($vars['magazine_materials'])) || (!empty($vars['magazine_related']))) {
-           $vars['show_related_resources'] = TRUE;
-         } else {
-           $vars['show_related_resources'] = FALSE;
-         }
-       }
-
-
+             $vars['magazine_related'][$k]['url'] = file_create_url($worksheet_file['uri']);
+            }
+          } elseif($resource->type == 'pdf_quiz') {
+            $vars['magazine_related'][$k]['title'] = $resource->title;
+            $vars['magazine_related'][$k]['nid'] = $resource->nid;
+            
+            $worksheet_file = field_get_items('node', $resource, 'field_pdf_file_private');
+            if($worksheet_file) {
+              $worksheet_file = $worksheet_file[0];
+              $vars['magazine_related'][$k]['url'] = file_create_url($worksheet_file['uri']);
+            } else {
+              $vars['magazine_related'][$k]['url'] = drupal_lookup_path('alias', 'node/'. $resource->nid);
+            }
+          } else {
+            $vars['magazine_related'][$k]['title'] = $resource->title;
+            $vars['magazine_related'][$k]['nid'] = $resource->nid;
+            $vars['magazine_related'][$k]['url'] = drupal_lookup_path('alias', 'node/'. $resource->nid);
+          }
+        }
+       
+        // Supress additional resources box if empty.
+        if((!empty($vars['magazine_materials'])) || (!empty($vars['magazine_related']))) {
+         $vars['show_related_resources'] = TRUE;
+        } else {
+         $vars['show_related_resources'] = FALSE;
+        }
+      }
       break;
-
 
     case 'worksheet':
       $worksheet_nid = $nid;
