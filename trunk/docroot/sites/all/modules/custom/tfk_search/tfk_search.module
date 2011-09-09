@@ -500,8 +500,8 @@ function tfk_search_apachesolr_update_index(&$document, $node, $namespace) {
       $material_node = node_load($material['nid']);
       if($material_node) {
        
-          if(isset($material_node->field_worksheet_pdf) && !empty($material_node->field_worksheet_pdf)) {
-            $pdfs = field_get_items('node', $material_node, 'field_worksheet_pdf');
+          if(isset($material_node->field_worksheet_pdf_private) && !empty($material_node->field_worksheet_pdf_private)) {
+            $pdfs = field_get_items('node', $material_node, 'field_worksheet_pdf_private');
             if($pdfs) {
               foreach($pdfs as $pdf) {
                 // Download link.
