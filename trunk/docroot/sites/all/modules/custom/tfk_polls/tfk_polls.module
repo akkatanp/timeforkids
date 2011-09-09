@@ -39,6 +39,13 @@ function tfk_polls_preprocess_page(&$variables){
        
     }
     
+    
+    if($user->uid == 0){
+        if($variables['node']>nid == 8091 || $variables['node']->nid == 7631 || $variables['node']->nid == 7636 || $variables['node']->nid == 8116){
+          $variables['section_title'] = 'ACCESS DENIED';
+        }
+    }
+    
    
     
     //echo $variables['total_votes'];
@@ -58,9 +65,6 @@ function tfk_polls_node_view($node, $view_mode = 'full', $langcode = NULL){
     
     if($user->uid == 0){
         if($node->nid == 8091 || $node->nid == 7631 || $node->nid == 7636 || $node->nid == 8116){
-            
-            echo 'aaaa';
-            
             $node->content =  drupal_access_denied();
         }
     }
