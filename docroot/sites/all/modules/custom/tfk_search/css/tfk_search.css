@@ -694,3 +694,38 @@ body.page-search-site .region-sidebar-first .block .content > .item-list {
 	margin: 0 0 0 2px;
 }
 
+
+/* My Favorites page overrides */
+
+.page-my-favorites li.search-result .flag-wrapper.flag-favorites {
+  text-align: right;
+	display: block;
+}
+
+.page-my-favorites ol#tfk-search-results-photos-video li h3.title a:link, 
+.page-my-favorites ol#tfk-search-results-photos-video li h3.title a:visited {
+  color: #D71700;
+  font: bold 20px arial;
+}
+
+.page-my-favorites ol#tfk-search-results-photos-video li h3.title {
+	margin: 0;
+}
+
+.page-my-favorites #tfk-search-results-photos-video .col1 {
+	min-height: 136px;
+}
+
+.page-my-favorites #tfk-search-results-photos-video .col2 {
+  display: block;
+  width: inherit;
+  margin: 0 0 10px 0;
+}
+
+.page-my-favorites .search-result div.search-snippet-body {
+	margin-top: 0;
+}
+
+.page-my-favorites  .views-field-ops {
+  padding: 20px 0;
+}
