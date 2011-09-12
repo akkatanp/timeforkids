@@ -170,7 +170,7 @@ function tfk_teachers_community_preprocess_page(&$variables, $hook) {
   }
   
   // Node add/edit page, Spec 17F.
-  if($arg[0] == 'node' && arg(1) == 'add' && $arg[2] == 'teacher-community-question') {
+  if($arg[0] == 'node' && arg(1) == 'add' && $arg[2] == 'teacher-community-question' && tfk_helper_user_has_role()) {
     $community_question = TRUE;
 
     //$page['before_content'] = t('<h2>Submit to the Teachers Community</h2>');
