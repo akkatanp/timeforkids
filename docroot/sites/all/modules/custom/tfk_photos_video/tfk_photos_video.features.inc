@@ -193,6 +193,14 @@ function tfk_photos_video_image_default_styles() {
  */
 function tfk_photos_video_node_info() {
   $items = array(
+    'image' => array(
+      'name' => t('Image'),
+      'base' => 'node_content',
+      'description' => t('Image content type that appears in other content types as a reference.'),
+      'has_title' => '1',
+      'title_label' => t('Title'),
+      'help' => '',
+    ),
     'slideshow' => array(
       'name' => t('Slideshow'),
       'base' => 'node_content',
