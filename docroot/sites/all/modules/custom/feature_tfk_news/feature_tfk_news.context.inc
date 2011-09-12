@@ -203,6 +203,11 @@ function feature_tfk_news_context_default_contexts() {
         'news/*/*/*' => 'news/*/*/*',
       ),
     ),
+    'user' => array(
+      'values' => array(
+        'authenticated user' => 'authenticated user',
+      ),
+    ),
   );
   $context->reactions = array(
     'block' => array(
@@ -249,7 +254,7 @@ function feature_tfk_news_context_default_contexts() {
       'class' => 'node-type-article',
     ),
   );
-  $context->condition_mode = 0;
+  $context->condition_mode = 1;
 
   // Translatables
   // Included for use with string extractors like potx.
@@ -280,37 +285,25 @@ function feature_tfk_news_context_default_contexts() {
           'module' => 'tfk_news',
           'delta' => 'tfk-news-latest-news-link',
           'region' => 'sidebar_first',
-          'weight' => '-82',
+          'weight' => '-79',
         ),
         'tfk_news-tfk-news-taxonomy-links' => array(
           'module' => 'tfk_news',
           'delta' => 'tfk-news-taxonomy-links',
           'region' => 'sidebar_first',
-          'weight' => '-81',
+          'weight' => '-78',
         ),
         'tfk_news-tfk-news-year-filter' => array(
           'module' => 'tfk_news',
           'delta' => 'tfk-news-year-filter',
           'region' => 'sidebar_first',
-          'weight' => '-80',
-        ),
-        'tfk_news-tfk-news-minisite-articles' => array(
-          'module' => 'tfk_news',
-          'delta' => 'tfk-news-minisite-articles',
-          'region' => 'sidebar_bottom',
-          'weight' => '-10',
-        ),
-        'tfk_news-tfk-news-minisite-more' => array(
-          'module' => 'tfk_news',
-          'delta' => 'tfk-news-minisite-more',
-          'region' => 'sidebar_bottom',
-          'weight' => '-9',
+          'weight' => '-77',
         ),
         'views-random_kid_reporters-block' => array(
           'module' => 'views',
           'delta' => 'random_kid_reporters-block',
           'region' => 'sidebar_bottom',
-          'weight' => '-8',
+          'weight' => '-10',
         ),
       ),
     ),
