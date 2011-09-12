@@ -169,7 +169,7 @@ function tfk_favorites_feature_views_default_views() {
   $handler->display->display_options['fields']['body']['alter']['replace_spaces'] = 0;
   $handler->display->display_options['fields']['body']['alter']['trim_whitespace'] = 0;
   $handler->display->display_options['fields']['body']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['body']['alter']['max_length'] = '200';
+  $handler->display->display_options['fields']['body']['alter']['max_length'] = '115';
   $handler->display->display_options['fields']['body']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['body']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['body']['alter']['strip_tags'] = 0;
@@ -181,34 +181,6 @@ function tfk_favorites_feature_views_default_views() {
   $handler->display->display_options['fields']['body']['empty_zero'] = 0;
   $handler->display->display_options['fields']['body']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['body']['field_api_classes'] = 0;
-  /* Field: Content: Worksheet PDF */
-  $handler->display->display_options['fields']['field_worksheet_pdf']['id'] = 'field_worksheet_pdf';
-  $handler->display->display_options['fields']['field_worksheet_pdf']['table'] = 'field_data_field_worksheet_pdf';
-  $handler->display->display_options['fields']['field_worksheet_pdf']['field'] = 'field_worksheet_pdf';
-  $handler->display->display_options['fields']['field_worksheet_pdf']['label'] = '';
-  $handler->display->display_options['fields']['field_worksheet_pdf']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_worksheet_pdf']['alter']['alter_text'] = 1;
-  $handler->display->display_options['fields']['field_worksheet_pdf']['alter']['text'] = 'Download this [field_skills]';
-  $handler->display->display_options['fields']['field_worksheet_pdf']['alter']['make_link'] = 1;
-  $handler->display->display_options['fields']['field_worksheet_pdf']['alter']['path'] = '[field_worksheet_pdf]';
-  $handler->display->display_options['fields']['field_worksheet_pdf']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['field_worksheet_pdf']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['field_worksheet_pdf']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_worksheet_pdf']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['field_worksheet_pdf']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['field_worksheet_pdf']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['field_worksheet_pdf']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['field_worksheet_pdf']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_worksheet_pdf']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['field_worksheet_pdf']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['field_worksheet_pdf']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_worksheet_pdf']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['field_worksheet_pdf']['hide_empty'] = 1;
-  $handler->display->display_options['fields']['field_worksheet_pdf']['empty_zero'] = 1;
-  $handler->display->display_options['fields']['field_worksheet_pdf']['hide_alter_empty'] = 1;
-  $handler->display->display_options['fields']['field_worksheet_pdf']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_worksheet_pdf']['type'] = 'file_url_plain';
-  $handler->display->display_options['fields']['field_worksheet_pdf']['field_api_classes'] = 0;
   /* Field: Content: Path */
   $handler->display->display_options['fields']['path']['id'] = 'path';
   $handler->display->display_options['fields']['path']['table'] = 'node';
@@ -369,6 +341,29 @@ function tfk_favorites_feature_views_default_views() {
     'image_link' => '',
   );
   $handler->display->display_options['fields']['field_image']['field_api_classes'] = 0;
+  /* Field: Flags: Flag link */
+  $handler->display->display_options['fields']['ops']['id'] = 'ops';
+  $handler->display->display_options['fields']['ops']['table'] = 'flag_content';
+  $handler->display->display_options['fields']['ops']['field'] = 'ops';
+  $handler->display->display_options['fields']['ops']['relationship'] = 'flag_content_rel';
+  $handler->display->display_options['fields']['ops']['label'] = '';
+  $handler->display->display_options['fields']['ops']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['ops']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['ops']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['ops']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['ops']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['ops']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['ops']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['ops']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['ops']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['ops']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['ops']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['ops']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['ops']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['ops']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['ops']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['ops']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['ops']['hide_alter_empty'] = 0;
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
@@ -390,11 +385,6 @@ function tfk_favorites_feature_views_default_views() {
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
-  $handler->display->display_options['defaults']['access'] = FALSE;
-  $handler->display->display_options['access']['type'] = 'role';
-  $handler->display->display_options['access']['role'] = array(
-    2 => '2',
-  );
   $handler->display->display_options['path'] = 'my-favorites';
   $export['user_favorites'] = $view;
 
