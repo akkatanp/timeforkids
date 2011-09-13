@@ -1046,7 +1046,7 @@ function poll_cancel($form, &$form_state) {
   db_delete('poll_vote')
     ->condition('nid', $node->nid)
     //->condition($user->uid ? 'uid' : 'hostname', $user->uid ? $user->uid : ip_address())
-      ->condition($user->uid ? 'uid' : 'hostname', $user->uid ? $user->uid : $vote_host)
+      ->condition($user->uid ? 'uid' : 'hostname', $user->uid ? $user->uid : $vote_hostname)
     ->execute();
 
   // Subtract from the votes.
