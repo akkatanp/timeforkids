@@ -523,7 +523,7 @@ function tfk_polls_preprocess_node(&$vars, $hook) {
         if(isset($vars['field_poll_heading_copy']['und'][0]['value'])){
             $vars['customheading'] = $vars['field_poll_heading_copy']['und'][0]['value'];
         }else{
-            $vars['customheading'] = 'Poll Question1';
+            $vars['customheading'] = 'Poll Question';
         }
 
     }
@@ -531,18 +531,16 @@ function tfk_polls_preprocess_node(&$vars, $hook) {
 
 
 function tfk_polls_preprocess_poll_vote(&$variables) {
-    $poll_nid = $variables['nid'];
-  
-  
+  $poll_nid = $variables['nid'];
   $poll_node = node_load($poll_nid);
-  
-  
   $copy_tmp = field_get_items('node', $poll_node, 'field_poll_heading_copy');
+
+  print_r($copy_tmp);
   
   if(isset($copy_tmp[0]['value'])){
     $variables['customheading'] = $copy_tmp[0]['value'];
   }else{
-    $variables['customheading'] = 'Poll Question2';
+    $variables['customheading'] = 'Poll Question';
   }
 }
 
@@ -569,7 +567,7 @@ function tfk_polls_preprocess_poll_results(&$variables) {
   if(isset($copy_tmp[0]['value'])){
     $variables['customheading'] = $copy_tmp[0]['value'];
   }else{
-    $variables['customheading'] = 'Poll Question3';
+    $variables['customheading'] = 'Poll Question';
   }
   
   
