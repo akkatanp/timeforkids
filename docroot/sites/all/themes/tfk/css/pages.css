@@ -2962,7 +2962,7 @@ body.page-404page #first-column .region-sidebar-first .section{
     width:115px;
 }
 
-.poll #edit-actions{
+.poll #edit-actions, .poll #edit-actions--2 {/*When you refresh it has a different class than after voting*/
     margin:0 auto; 
     display:block; 
     width:150px;
@@ -2980,9 +2980,6 @@ body.page-404page #first-column .region-sidebar-first .section{
     float:left;
 }
 .tfkpoll .vote-form {/*poll button container*/
-    
-}
-.tfkpoll .edit-actions {/*poll button container*/
     
 }
 .tfkpoll button {/*poll button*/
