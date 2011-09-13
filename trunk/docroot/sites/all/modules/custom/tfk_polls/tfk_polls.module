@@ -72,29 +72,6 @@ function tfk_polls_node_view($node, $view_mode = 'full', $langcode = NULL){
 }
 
 
-function _getthemecolors($num = 30) { 
-        $result_list = array();
-
-        $count = 0;
-  
-        $i = 0;
-        while (true) {
-            for ($j = 0; $j < count($this->GetColorList()); $j++) {
-                if (++$count > $num) {
-                    break 2;
-                }
-                $result_list[] = $this->GetNextColor();
-            }
-            $i++;
-        }
-
-        $this->color_index = $old_index;
-        
-        return $result_list;
-    }
-
-
-
 function _poll_generate($poll_nid){
     
     $default_height = 300;
@@ -527,18 +504,6 @@ function _poll_generate($poll_nid){
 
 function tfk_polls_preprocess_node(&$vars, $hook) {
     
-    
-    if($vars['type'] == 'poll'){
-        if(isset($vars['field_poll_heading_copy']['und'][0]['value'])){
-            $vars['customheading'] = $vars['field_poll_heading_copy']['und'][0]['value'];
-        }else{
-            $vars['customheading'] = 'Poll Question';
-        }
-        
-    }
-    
-    
-    
     if($vars['type'] == 'article' && !empty($vars['field_article_poll'])){
         
         
@@ -552,6 +517,15 @@ function tfk_polls_preprocess_node(&$vars, $hook) {
         cache_clear_all();
         
         $vars['rendered_poll'] = $poll_rendered;
+    }
+    
+    if($vars['type'] == 'poll'){
+        if(isset($vars['field_poll_heading_copy']['und'][0]['value'])){
+            $vars['customheading'] = $vars['field_poll_heading_copy']['und'][0]['value'];
+        }else{
+            $vars['customheading'] = 'Poll Question1';
+        }
+
     }
 }
 
@@ -568,7 +542,7 @@ function tfk_polls_preprocess_poll_vote(&$variables) {
   if(isset($copy_tmp[0]['value'])){
     $variables['customheading'] = $copy_tmp[0]['value'];
   }else{
-    $variables['customheading'] = 'Poll Question';
+    $variables['customheading'] = 'Poll Question2';
   }
 }
 
@@ -595,7 +569,7 @@ function tfk_polls_preprocess_poll_results(&$variables) {
   if(isset($copy_tmp[0]['value'])){
     $variables['customheading'] = $copy_tmp[0]['value'];
   }else{
-    $variables['customheading'] = 'Poll Question';
+    $variables['customheading'] = 'Poll Question3';
   }
   
   
