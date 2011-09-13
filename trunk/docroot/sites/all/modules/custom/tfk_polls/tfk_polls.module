@@ -72,6 +72,29 @@ function tfk_polls_node_view($node, $view_mode = 'full', $langcode = NULL){
 }
 
 
+function _getthemecolors($num = 30) { 
+        $result_list = array();
+
+        $count = 0;
+  
+        $i = 0;
+        while (true) {
+            for ($j = 0; $j < count($this->GetColorList()); $j++) {
+                if (++$count > $num) {
+                    break 2;
+                }
+                $result_list[] = $this->GetNextColor();
+            }
+            $i++;
+        }
+
+        $this->color_index = $old_index;
+        
+        return $result_list;
+    }
+
+
+
 function _poll_generate($poll_nid){
     
     $default_height = 300;
@@ -232,11 +255,15 @@ function _poll_generate($poll_nid){
             
             $graph = new PieGraph(440,390);
             $graph->ClearTheme();
+            
             $graph->legend->SetLayout(LEGEND_VER);
             $graph->legend->SetPos(0.5,0.94,'center','bottom');
             $p1 = new PiePlot($votes_data);
+            
+            $p1->SetTheme('earth');
             $p1->SetSize(110);
             $p1->SetCenter(0.5,0.37);
+            
         
         }elseif(count($choices_data) == 3){
             
@@ -267,6 +294,7 @@ function _poll_generate($poll_nid){
         
         
         $graph->title->SetFont(FF_ARIAL,FS_NORMAL);
+        $graph->legend->SetFont(FF_ARIAL,FS_NORMAL);
         $graph->legend->SetFrameWeight(0);
         $graph->SetFrame(false); // set a border around image
         $graph->legend->SetFillColor('white');
@@ -285,6 +313,7 @@ function _poll_generate($poll_nid){
         
         
         $emptyarr = array();
+        $labelsarr = array();
         foreach($votes_data as $k => $vote_data){
             $emptyarr[] = '';
         }
@@ -292,12 +321,22 @@ function _poll_generate($poll_nid){
         
         if($poll_slice_values == 'no'){
             $p1->SetLabels($emptyarr);
+        }else{
+            foreach($votes_data as $k=> $votes_cnt){
+                if($votes_cnt == 0 || !isset($votes_cnt)){
+                    $labelsarr[$k] = '';
+                }else{
+                    $labelsarr[$k] = '%.1f%%';
+                }
+            }
+            
+            $p1->SetLabels($labelsarr,1);
         }
         
         
         //$labels = array('dd','ds','');
         
-        //$p1->SetLabels($labels);
+        //$p1->SetLabels('lol1','lol2');
         
         
         $p1->SetSliceColors($colors_data);
@@ -305,6 +344,8 @@ function _poll_generate($poll_nid){
         $p1->value->SetColor("black");
          //$graph->label->SetColor('black','white');
         
+        
+        //$graph->SetTheme('water');
         
         $graph->Add($p1);
         $graph->Stroke();
