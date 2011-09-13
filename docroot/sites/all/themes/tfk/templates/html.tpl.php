@@ -65,7 +65,7 @@
 
 <head profile="<?php print $grddl_profile; ?>">
   <?php print $head; ?>
-  <title><?php print $head_title; ?></title>
+  <title><?php if($is_front){echo 'Time For Kids';}else{print $head_title;}?><?php //print $head_title; ?></title>
   <?php print $styles; ?>
   <?php print $scripts; ?>
 </head>
