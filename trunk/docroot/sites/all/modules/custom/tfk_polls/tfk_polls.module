@@ -536,6 +536,7 @@ function tfk_polls_preprocess_poll_vote(&$variables) {
   $copy_tmp = field_get_items('node', $poll_node, 'field_poll_heading_copy');
 
   print_r($copy_tmp);
+  print_r($variables);
   
   if(isset($copy_tmp[0]['value'])){
     $variables['customheading'] = $copy_tmp[0]['value'];
