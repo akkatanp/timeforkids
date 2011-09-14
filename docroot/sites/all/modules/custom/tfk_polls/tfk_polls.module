@@ -56,19 +56,25 @@ function tfk_polls_preprocess_page(&$variables){
 
 
 function tfk_polls_node_view($node, $view_mode = 'full', $langcode = NULL){
+    // Deny access to anonymous user to mini-lesson.
     global $user;
     if ( $user->uid == 0 && $node->type == "mini_lesson" ){
-      $node->content =  drupal_access_denied();
-       
+      // Don't throw access denied on cron runs (they run as user 0 - "anon").
+      $args = arg();
+      if(!(array_key_exists(3, $args) && $args[3] == 'run-cron')) {
+        $node->content =  drupal_access_denied();
+      }
     }
-    
-    
+
     if($user->uid == 0){
         if($node->nid == 8091 || $node->nid == 7631 || $node->nid == 7636 || $node->nid == 8116){
-            $node->content =  drupal_access_denied();
+            // Don't throw access denied on cron runs (they run as user 0 - "anon").
+            $args = arg();
+            if(!(array_key_exists(3, $args) && $args[3] == 'run-cron')) {
+              $node->content =  drupal_access_denied();
+            }
         }
     }
-    
 }
 
 
@@ -471,10 +477,10 @@ function _poll_generate($poll_nid){
             
             $tmpplot->SetLegend($choices_data[$k]);
             $tmpplot->SetWidth(20);
-            $tmpplot->SetAbsWidth(15); 
+            $tmpplot->SetAbsWidth(15);
             
             
-            $tmpplot->SetAlign("center"); 
+            $tmpplot->SetAlign("center");
             
             $objects[] = $tmpplot;
         }
@@ -545,10 +551,10 @@ function tfk_polls_preprocess_poll_vote(&$variables) {
 
 function tfk_polls_preprocess_poll_results(&$variables) {
 //  $html = $variables['results'];
-//  
+//
 //  $pattern = "@class=\"text\"\>(.*)\</div\>@";
 //  preg_match_all($pattern, $html, $choices); //extract choices
-//  
+//
 //  $pattern = "@style=\"width: (.*)%;\"@";
 //  preg_match_all($pattern, $html, $votes); //extract percentages
     
@@ -575,7 +581,7 @@ function tfk_polls_preprocess_poll_results(&$variables) {
   
   $variables['results'] = '<div><img src="'.$img_src.'?.'.time().'"/></div>';
     
-} 
+}
 
 function tfk_polls_theme($existing, $type, $theme, $path) {
   return array(
