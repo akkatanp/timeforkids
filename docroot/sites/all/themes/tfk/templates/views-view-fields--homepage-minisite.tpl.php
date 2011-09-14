@@ -41,7 +41,7 @@
 
 
 
-<?php if(strlen($fields['field_related_articles_1']->content) != 0):?>
+<?php if(array_key_exists('field_related_articles_1', $fields) && strlen($fields['field_related_articles_1']->content) != 0):?>
     <div class="related-content-wrap">
       <div class="addit-content">Additional Content</div>
         <?php if($fields['field_related_articles_1']): ?>
