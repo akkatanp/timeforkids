@@ -41,9 +41,11 @@ function tfk_polls_preprocess_page(&$variables){
     
     
     if($user->uid == 0){
+      if(array_key_exists('node', $variables)) {
         if($variables['node']->nid == 8091 || $variables['node']->nid == 7631 || $variables['node']->nid == 7636 || $variables['node']->nid == 8116){
           $variables['section_title'] = 'ACCESS DENIED';
         }
+      }
     }
     
    
