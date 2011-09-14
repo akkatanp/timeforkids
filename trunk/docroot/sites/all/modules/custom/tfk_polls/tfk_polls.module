@@ -34,7 +34,7 @@ function tfk_polls_preprocess_page(&$variables){
     }
     
     global $user;
-    if ( $user->uid == 0 && $variables['node']->type == "mini_lesson" ){
+    if ( $user->uid == 0 && array_key_exists('node', $variables) && $variables['node']->type == "mini_lesson" ){
      $variables['section_title'] = 'ACCESS DENIED';
        
     }
