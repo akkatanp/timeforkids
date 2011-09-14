@@ -343,7 +343,26 @@ function _tfk_news_taxonomy_navigation(){
   }
   
   
+  
+  //lets check if we should display POLLS link()
+    
+  
   $list = array('terms_with_articles' => $terms);
+  
+  $sql = "select n.nid from node n LEFT JOIN field_data_field_article_poll pa on n.nid = pa.entity_id where n.status = 1 and pa.field_article_poll_nid IS NOT NULL limit 0,1";
+  $query = db_query($sql,array());
+  
+  $res = $query->fetch();
+  
+  
+  if(isset($res->nid)){
+      $list['display_poll_link'] = 1;
+  }else{
+      $list['display_poll_link'] = 0;
+  }  
+  
+  
+  
   return theme('tfk_news_taxonomy_links',$list);
 }
 

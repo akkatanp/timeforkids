@@ -5,5 +5,8 @@
 <?php foreach($terms_with_articles as $term): ?>
   <li><?php echo l($term['term_name'],'news-archive/'.strtolower($term['term_name']),array('attributes' => array('class'=>array($term['class']))));?></li>
 <?php endforeach; ?>
-  <li><?php echo l('Polls','news-archive/polls',array('attributes' => array('class'=>'')));?>
+  
+  <?php if($display_poll_link == 1):?>
+    <li><?php echo l('Polls','news-archive/polls',array('attributes' => array('class'=>'')));?>
+  <?php endif; ?>
 </ul>
