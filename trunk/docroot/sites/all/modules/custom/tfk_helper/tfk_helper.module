@@ -183,7 +183,8 @@ function tfk_helper_block_view($delta='') {
     
      // TFK Helper Login.
     case 'tfk_helper_login':
-   		$block['content'] = render(drupal_get_form('user_login'));
+      $login_form = drupal_get_form('user_login');
+   		$block['content'] = render($login_form);
     break;
     
   }
