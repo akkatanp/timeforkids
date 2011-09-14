@@ -80,11 +80,14 @@
  * @see zen_preprocess_node()
  * @see template_process()
  */
-if (isset($content['field_grade_level'][0]['#title']) && preg_match("/-/",$content['field_grade_level'][0]['#title'])) {
-    $grade_text = "Grades ".$content['field_grade_level'][0]['#title'];
-} else {
-    $grade_text = "Grade ".$content['field_grade_level'][0]['#title'];
+if(array_key_exists('field_grade_level', $content)) {
+  if (isset($content['field_grade_level'][0]['#title']) && preg_match("/-/",$content['field_grade_level'][0]['#title'])) {
+      $grade_text = "Grades ".$content['field_grade_level'][0]['#title'];
+  } else {
+      $grade_text = "Grade ".$content['field_grade_level'][0]['#title'];
+  }
 }
+
 ?>
 <div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
   
