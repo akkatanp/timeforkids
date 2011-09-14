@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the TFK Site-Wide Search feature.
+ */
+
+include_once('tfk_site_wide_search.features.inc');
