@@ -202,7 +202,7 @@ function tfk_pager($variables) {
 //  $html = $variables['results'];
 //  $pattern = "@class=\"text\"\>(.*)\</div\>@";
 //  preg_match_all($pattern, $html, $choices); //extract choices
-//  
+//
 //  $pattern = "@style=\"width: (.*)%;\"@";
 //  preg_match_all($pattern, $html, $votes); //extract percentages
 //
@@ -210,7 +210,7 @@ function tfk_pager($variables) {
 //    '#chart_id' => 'poll_chart',
 //    '#type' => CHART_TYPE_PIE_3D,
 //  );
-//  
+//
 //// NEED TO FILL IN DATA TO MAKE CHART
 //  for ($c=0; $c < count($choices[1]); $c++) { //make labels and values
 //     $chart['#data'][$choices[1][$c]] = $votes[1][$c]; //number of votes
@@ -266,7 +266,7 @@ function tfk_preprocess_page(&$variables, $hook) {
   if (isset($variables['page']['content']['system_main']['#theme']) && $variables['page']['content']['system_main']['#theme'][0] == "user_login") {
         $variables['tabs'] = "";/*Hide tabs per infosec*/
   }
-  if ($variables['section_title'] == t('Homework Helper')) {
+  if (array_key_exists('section_title', $variables) && $variables['section_title'] == t('Homework Helper')) {
     $variables['tfk_header_tag'] = tfk_header_tag($variables['node']->type);
     $variables['theme_hook_suggestions'][] = 'page__homework_helper';
   }
@@ -276,10 +276,10 @@ function tfk_preprocess_page(&$variables, $hook) {
     if ($view->name == 'grammar_practice') {
       if ($view->current_display == 'page') {
         $variables['grammar_practice_header'] = ' ';
-      }  
+      }
       else {
         $variables['grammar_practice_header'] = l('Try Another', 'homework-helper/grammar-wizard/punctuation-practice', array('attributes' => array('class' => array('try-another'))));
-      }  
+      }
 
 
     }
