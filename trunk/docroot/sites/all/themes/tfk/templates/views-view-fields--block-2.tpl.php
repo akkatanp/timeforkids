@@ -38,13 +38,14 @@
 <?php endforeach; ?>
 
 
+<?php if(isset($fields['field_related_articles'])):?>
+    <?php if(strlen($fields['field_related_articles']->content) != 0):?>
+        <div class="related-content-wrap">
+            <div class="addit-content">Additional Content</div>
+            <?php if($fields['field_related_articles']): ?>
+               <div class="addit-mini-lessons"><?php print $fields['field_related_articles']->content;?></div>
+            <?php endif; ?>
 
-<?php if(array_key_exists('field_related_articles', $fields) && strlen($fields['field_related_articles']->content) != 0):?>
-    <div class="related-content-wrap">
-        <div class="addit-content">Additional Content</div>
-        <?php if($fields['field_related_articles']): ?>
-           <div class="addit-mini-lessons"><?php print $fields['field_related_articles']->content;?></div>
-        <?php endif; ?>
-
-    </div>
+        </div>
+    <?php endif;?>
 <?php endif;?>
