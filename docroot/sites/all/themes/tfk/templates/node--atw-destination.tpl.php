@@ -82,57 +82,61 @@
  */
 
 //print_r($content['group_destination_images']['field_country_code']);
-$link_to_img = url(drupal_get_path('theme', 'tfk').'/images/flags/flag_'.strtolower($content['group_destination_images']['field_country_code']['#items'][0]['value']).'.png');
-$content['group_destination_images']['field_country_code'][0]['#markup'] = '<img src="'.$link_to_img.'"/>';
+if(isset($link_to_img) && array_key_exists('group_destination_images', $link_to_img)) {
+  $link_to_img = url(drupal_get_path('theme', 'tfk').'/images/flags/flag_'.strtolower($content['group_destination_images']['field_country_code']['#items'][0]['value']).'.png');
+  $content['group_destination_images']['field_country_code'][0]['#markup'] = '<img src="'.$link_to_img.'"/>';
+}
 ?>
-<link rel="stylesheet" href="/sites/all/themes/tfk/css/atw_homepage_slideshow.css" />
-<script type="text/javascript" src="/sites/all/themes/tfk/js/atw_homepage_slideshow.js"></script>
-<div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
-
-  <?php print $user_picture; ?>
-
-  <?php print render($title_prefix); ?>
-  <?php if (!$page && $title): ?>
-    <h2<?php print $title_attributes; ?>><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h2>
-  <?php endif; ?>
-  <?php print render($title_suffix); ?>
-
-  <?php if ($unpublished): ?>
-    <div class="unpublished"><?php print t('Unpublished'); ?></div>
-  <?php endif; ?>
-
-  <?php if ($display_submitted): ?>
-    <div class="submitted">
-      <?php print $submitted; ?>
+<?php if(isset($link_to_img)): ?>
+  <link rel="stylesheet" href="/sites/all/themes/tfk/css/atw_homepage_slideshow.css" />
+  <script type="text/javascript" src="/sites/all/themes/tfk/js/atw_homepage_slideshow.js"></script>
+  <div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
+  
+    <?php print $user_picture; ?>
+  
+    <?php print render($title_prefix); ?>
+    <?php if (!$page && $title): ?>
+      <h2<?php print $title_attributes; ?>><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h2>
+    <?php endif; ?>
+    <?php print render($title_suffix); ?>
+  
+    <?php if ($unpublished): ?>
+      <div class="unpublished"><?php print t('Unpublished'); ?></div>
+    <?php endif; ?>
+  
+    <?php if ($display_submitted): ?>
+      <div class="submitted">
+        <?php print $submitted; ?>
+      </div>
+    <?php endif; ?>
+  
+  
+  
+    <div class="content"<?php print $content_attributes; ?>>
+      <?php
+        // We hide the comments and links now so that we can render them later.
+        hide($content['comments']);
+        hide($content['links']);
+  	?>
+  	<div id="slideshow-container" class="destination">
+  
+  	<?php
+        //logic that shows the destination slideshow
+        $slide_block = module_invoke('tfk_atw', 'block_view','atw-destination-slideshow');
+  	  print render($slide_block['content']);
+            unset($content['field_country_slideshow']);
+  	?>
+  	<h1><?php print $title; ?></h1>
+  	<?php print render($content['field_description']);?>
+  	</div>
+  
+  
+      <?php print render($content);?>
     </div>
-  <?php endif; ?>
-
-
-
-  <div class="content"<?php print $content_attributes; ?>>
-    <?php
-      // We hide the comments and links now so that we can render them later.
-      hide($content['comments']);
-      hide($content['links']);
-	?>
-	<div id="slideshow-container" class="destination">
-
-	<?php
-      //logic that shows the destination slideshow
-      $slide_block = module_invoke('tfk_atw', 'block_view','atw-destination-slideshow');
-	  print render($slide_block['content']);
-          unset($content['field_country_slideshow']);
-	?>
-	<h1><?php print $title; ?></h1>
-	<?php print render($content['field_description']);?>
-	</div>
-
-
-    <?php print render($content);?>
-  </div>
-
-  <?php print render($content['links']); ?>
-
-  <?php print render($content['comments']); ?>
-
-</div><!-- /.node -->
+  
+    <?php print render($content['links']); ?>
+  
+    <?php print render($content['comments']); ?>
+  
+  </div><!-- /.node -->
+<?php endif; ?>
