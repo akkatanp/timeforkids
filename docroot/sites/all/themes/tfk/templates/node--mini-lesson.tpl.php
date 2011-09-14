@@ -86,6 +86,8 @@ if(array_key_exists('field_grade_level', $content)) {
   } else {
       $grade_text = "Grade ".$content['field_grade_level'][0]['#title'];
   }
+} else {
+  $grade_text = '';
 }
 
 ?>
