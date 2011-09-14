@@ -107,7 +107,7 @@ if(array_key_exists('field_grade_level', $content)) {
         <div class="lesson-deck"><?php echo render($content['field_mini_deck']); ?></div>
         <div class="lesson-body"><?php echo render($content['body']); ?></div>
 
-      	<?php if($content['field_mini_related']): ?>
+      	<?php if(array_key_exists('field_mini_related', $content) && $content['field_mini_related']): ?>
       		<?php echo l("See Related Article",$content['field_mini_related'][0]['#href']); ?>
       	<?php endif; ?>
 
