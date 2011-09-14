@@ -132,7 +132,7 @@ function tfk_news_block_view($delta='') {
     case 'tfk-news-minisite-more':
       $block['subject'] = t('Block with more minisites for article node view');
       $block['content'] = _tfk_news_minisite_more();
-      break; 
+      break;
     
   }
   
@@ -149,7 +149,7 @@ function _tfk_news_minisite_more(){
     if($rgs[0] == 'node' && is_numeric($rgs[1])){
         $node = node_load($rgs[1]);
         if($node->type == 'article'){
-            //lets get the parent minisite  
+            //lets get the parent minisite
             $result = db_query('SELECT DISTINCT entity_id from field_data_field_articles fa where fa.entity_type = :type and fa.bundle = :bundle and fa.field_articles_nid = :nid',array('type'=> 'node','bundle'=>'minisite','nid'=>$node->nid));
             $record = $result->fetch();
             if($record){
@@ -157,7 +157,7 @@ function _tfk_news_minisite_more(){
                 
                 $min_res = db_query('SELECT DISTINCT node.nid AS nid, node.title AS node_title, :image_entity_type AS field_data_field_minisite_thumbnail_image_node_entity_type, RAND() AS random_field,
                                     ti.field_minisite_thumbnail_image_fid, fm.filename
-                                    FROM 
+                                    FROM
                                     {node} node
                                     left join field_data_field_minisite_thumbnail_image ti on node.nid = ti.entity_id
                                     left join file_managed fm on ti.field_minisite_thumbnail_image_fid = fm.fid
@@ -198,7 +198,7 @@ function _tfk_news_minisite_related_articles(){
         $node = node_load($rgs[1]);
         if($node->type == 'article'){
 
-            //lets get the parent minisite  
+            //lets get the parent minisite
             $result = db_query('SELECT DISTINCT entity_id from field_data_field_articles fa where fa.entity_type = :type and fa.bundle = :bundle and fa.field_articles_nid = :nid',array('type'=> 'node','bundle'=>'minisite','nid'=>$node->nid));
             $record = $result->fetch();
             if($record){
@@ -207,7 +207,7 @@ function _tfk_news_minisite_related_articles(){
                 
                 //now lets get all other articles under that minisite
                 $art_res = db_query('SELECT DISTINCT node.title AS node_title, node_field_data_field_articles.title AS node_field_data_field_articles_title, node_field_data_field_articles.nid AS node_field_data_field_articles_nid, node.created AS node_created, node.nid AS nid
-                FROM 
+                FROM
                 {node} node
                 LEFT JOIN {field_data_field_articles} field_data_field_articles ON node.nid = field_data_field_articles.entity_id AND (field_data_field_articles.entity_type = :entity_type AND field_data_field_articles.deleted = :deleted)
                 INNER JOIN {node} node_field_data_field_articles ON field_data_field_articles.field_articles_nid = node_field_data_field_articles.nid
@@ -264,23 +264,25 @@ function _tfk_news_homepage_mini_lessons(){
   $node = node_load($art_nid);
 
   $tmp_lessons =  field_get_items('node', $node,'field_mini_lessons');
-
-  $i = 1;
-  foreach($tmp_lessons as $ind => $lesson){
-    $lesson_nid = $lesson['nid'];
-    $sql = db_query('select td.name from taxonomy_term_data td
-      left join taxonomy_index ti on td.tid = ti.tid where td.vid = :vid and ti.nid = :nid',array('vid' => 6,'nid' => $lesson_nid));
-    $res_record = $sql->fetch();
-
-    $lessons .= l('Grade '.$res_record->name,'node/'.$lesson_nid);
-    if($i != count($tmp_lessons)){
-      $lessons .= ' | ';
+  if($tmp_lessons) {
+    $i = 1;
+    foreach($tmp_lessons as $ind => $lesson){
+      $lesson_nid = $lesson['nid'];
+      $sql = db_query('select td.name from taxonomy_term_data td
+        left join taxonomy_index ti on td.tid = ti.tid where td.vid = :vid and ti.nid = :nid',array('vid' => 6,'nid' => $lesson_nid));
+      $res_record = $sql->fetch();
+  
+      $lessons .= l('Grade '.$res_record->name,'node/'.$lesson_nid);
+      if($i != count($tmp_lessons)){
+        $lessons .= ' | ';
+      }
+      $i++;
     }
-    $i++;
+    return $lessons;
+  } else {
+    return '';
   }
 
-
-  return $lessons;
 }
 
 
@@ -359,7 +361,7 @@ function _tfk_news_taxonomy_navigation(){
       $list['display_poll_link'] = 1;
   }else{
       $list['display_poll_link'] = 0;
-  }  
+  }
   
   
   
@@ -614,8 +616,8 @@ function tfk_news_preprocess_block(&$variables){
         $result = db_query('SELECT DISTINCT entity_id from field_data_field_articles fa where fa.entity_type = :type and fa.bundle = :bundle and fa.field_articles_nid = :nid',array('type'=> 'node','bundle'=>'minisite','nid'=>$node->nid));
         $record = $result->fetch();
         if($record){
-            if($variables['block']->delta == 'tfk-news-latest-news-link' || 
-                    $variables['block']->delta == 'tfk-news-year-filter' || 
+            if($variables['block']->delta == 'tfk-news-latest-news-link' ||
+                    $variables['block']->delta == 'tfk-news-year-filter' ||
                     $variables['block']->delta == 'tfk-news-taxonomy-links'){
                 $variables['content'] = '';
               unset($variables['content']);
@@ -701,7 +703,7 @@ function tfk_preprocess_html(&$variables) {
     }
 
   }
-} 
+}
 
 
 function tfk_news_preprocess_node(&$variables){
