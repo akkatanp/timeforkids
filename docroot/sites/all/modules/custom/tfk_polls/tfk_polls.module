@@ -247,7 +247,7 @@ function _poll_generate($poll_nid){
         
         }elseif(count($choices_data) == 3){
             
-            $graph = new PieGraph(440,340);
+            $graph = new PieGraph(440,360);
             $graph->ClearTheme();
             $graph->legend->SetLayout(LEGEND_VER);
             $graph->legend->SetPos(0.5,0.94,'center','bottom');
