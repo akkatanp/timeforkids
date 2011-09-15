@@ -75,7 +75,7 @@
           }
         });
         
-        if(selected) {
+        if(!selected) {
           alert("Choose a search to delete");
         } else {
           var confirmation = confirm("Are you sure you want to delete this search?");
