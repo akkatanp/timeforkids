@@ -117,7 +117,7 @@ if(isset($link_to_img) && array_key_exists('group_destination_images', $link_to_
         // We hide the comments and links now so that we can render them later.
         hide($content['comments']);
         hide($content['links']);
-  	?>
+  	?>************
   	<div id="slideshow-container" class="destination">
   
   	<?php
@@ -127,7 +127,7 @@ if(isset($link_to_img) && array_key_exists('group_destination_images', $link_to_
         print_r($slide_block);
         
   	  print render($slide_block['content']);
-            unset($content['field_country_slideshow']);
+          unset($content['field_country_slideshow']);
   	?>
   	<h1><?php print $title; ?></h1>
   	<?php print render($content['field_description']);?>
