@@ -357,8 +357,6 @@ function _get_atw_destination_slideshow_images(){
   }
   $list = array('images_data' => $images);
   
-  print_R($list);
-  
   
   return $list;
 }
