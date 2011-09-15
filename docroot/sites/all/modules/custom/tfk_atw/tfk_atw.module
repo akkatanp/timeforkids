@@ -326,7 +326,7 @@ function _get_atw_timeline_slideshow_images(){
     if($record->type == 'atw_destination'){
       $country_alias = $tmp_url[1].'/'.$tmp_url[2];
     }else{
-      $country_alias = $tmp_url[0].'/'.$tmp_url[1];
+          $country_alias = $tmp_url[0].'/'.$tmp_url[1];
     }
 
     $return_path = $country_alias.'/history-timeline';
@@ -337,12 +337,17 @@ function _get_atw_timeline_slideshow_images(){
 
 function _get_atw_destination_slideshow_images(){
   
+    
+  $tmp_imgs = array();  
+    
   $nid = arg(1);
   $node = node_load($nid);
   $tmp_slide_nid =  field_get_items('node', $node, 'field_country_slideshow');
   $slideshow_node = $tmp_slide_nid[0]['node'];
   $tmp_imgs = field_get_items('node', $slideshow_node, 'field_slideshow_images');
   $images = array();
+  
+  
   if(count($tmp_imgs)>0){
     foreach($tmp_imgs as $k => $image){
       $img_data = $image['node'];
