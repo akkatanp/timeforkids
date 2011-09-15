@@ -62,13 +62,30 @@
       });
       
       // Delete this search.
-      $('#deleteThisSearch', context).click(function(event){
-        var confirmation = confirm("Are you sure you want to delete this search?");
-        if(!confirmation) {
-          event.preventDefault();
+      $('#deleteThisSearch', context).click(function(event) {
+        
+        var selected = false;
+        $('.savedsrch-checkbox', context).each(function(index, Element) {
+          //console.log(index + ': ' + $(this).text());
+          //console.log(Element.val());
+          //console.log($(this).val());
+          
+          if(this.firstChild.value == "on") {
+            selected = true;
+          }
+        });
+        
+        if(selected) {
+          alert("Choose a search to delete");
         } else {
-          // Let it run it's course.
+          var confirmation = confirm("Are you sure you want to delete this search?");
+          if(!confirmation) {
+            event.preventDefault();
+          } else {
+            // Let it run it's course.
+          }
         }
+
       });  
 
     }
