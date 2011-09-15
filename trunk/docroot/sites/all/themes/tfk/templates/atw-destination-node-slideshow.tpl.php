@@ -1,5 +1,4 @@
 
-
 	<div id="slideshow">
 		<div class="header"></div>
 
