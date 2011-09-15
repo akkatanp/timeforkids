@@ -256,7 +256,7 @@ function tfk_preprocess_page(&$variables, $hook) {
   }
   
   if (isset($variables['page']['content']['system_main']['#theme']) && $variables['page']['content']['system_main']['#theme'] == "user_profile") {
-    if ($variables['page']['content']['system_main']['field_is_board_member']['#items'][0]['value'] == "yes") {
+    if (isset($variables['page']['content']['system_main']['field_is_board_member']) && $variables['page']['content']['system_main']['field_is_board_member']['#items'][0]['value'] == "yes") {
       $variables['title'] = "Teacher Community";
     } else {
       $variables['title'] = "My Account";
