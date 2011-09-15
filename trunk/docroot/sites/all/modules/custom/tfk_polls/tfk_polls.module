@@ -70,7 +70,7 @@ function tfk_polls_node_view($node, $view_mode = 'full', $langcode = NULL){
     // Deny access to anonymous user to mini-lesson, and other nodes.
     global $user;
     $router_node = menu_get_object('node', 1);
-    dvm($router_node);
+    kpr($router_node);
     if(is_object($router_node) && $user->uid == 0) {
       if($node->type == "mini_lesson") {
         $node->content = drupal_access_denied();
