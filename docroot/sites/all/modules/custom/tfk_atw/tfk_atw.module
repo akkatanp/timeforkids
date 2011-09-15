@@ -145,6 +145,7 @@ function _tfk_atw_timeline_slideshow(){
 }
 
 function _tfk_atw_destination_slideshow(){
+    echo '1';
   return theme('atw_destination_node_slideshow',_get_atw_destination_slideshow_images());
 }
 
@@ -355,6 +356,10 @@ function _get_atw_destination_slideshow_images(){
     }
   }
   $list = array('images_data' => $images);
+  
+  print_R($list);
+  
+  
   return $list;
 }
 
