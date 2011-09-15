@@ -82,10 +82,10 @@
  */
 
 //print_r($content['group_destination_images']['field_country_code']);
-if(isset($link_to_img) && array_key_exists('group_destination_images', $link_to_img)) {
+//if(isset($link_to_img) && array_key_exists('group_destination_images', $link_to_img)) {
   $link_to_img = url(drupal_get_path('theme', 'tfk').'/images/flags/flag_'.strtolower($content['group_destination_images']['field_country_code']['#items'][0]['value']).'.png');
   $content['group_destination_images']['field_country_code'][0]['#markup'] = '<img src="'.$link_to_img.'"/>';
-}
+//}
 ?>
 
 <?php //if(isset($link_to_img)): ?>
