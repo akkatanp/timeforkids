@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Feature Around The World feature.
+ */
+
+include_once('tfk_atw_feature.features.inc');
