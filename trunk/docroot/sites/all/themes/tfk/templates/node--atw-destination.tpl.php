@@ -123,6 +123,9 @@ if(isset($link_to_img) && array_key_exists('group_destination_images', $link_to_
   	<?php
         //logic that shows the destination slideshow
         $slide_block = module_invoke('tfk_atw', 'block_view','atw-destination-slideshow');
+        
+        print_r($slide_block);
+        
   	  print render($slide_block['content']);
             unset($content['field_country_slideshow']);
   	?>
