@@ -64,20 +64,21 @@ function tfk_polls_node_view($node, $view_mode = 'full', $langcode = NULL){
     if(array_key_exists(3, $args) && $args[3] == 'run-cron') {
       return;
     }
-  
-    // Test removing the access denied.
-    // return;
-  
-    // Deny access to anonymous user to mini-lesson.
-    global $user;
-    if ( $user->uid == 0 && $node->type == "mini_lesson" ){
-        $node->content =  drupal_access_denied();
-    }
     
-    if($user->uid == 0){
-        if($node->nid == 8091 || $node->nid == 7631 || $node->nid == 7636 || $node->nid == 8116){
-            $node->content =  drupal_access_denied();
-        }
+    return;
+  
+    // Deny access to anonymous user to mini-lesson, and other nodes.
+    global $user;
+    $router_node = menu_get_object('node', 1);
+    dpm($router_node);
+    if(is_object($router_node) && $user->uid == 0) {
+      if($node->type == "mini_lesson") {
+        $node->content = drupal_access_denied();
+      }
+      
+      if($node->nid == 8091 || $node->nid == 7631 || $node->nid == 7636 || $node->nid == 8116){
+        $node->content = drupal_access_denied();
+      }
     }
     
 }
