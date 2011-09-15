@@ -87,9 +87,8 @@ if(isset($link_to_img) && array_key_exists('group_destination_images', $link_to_
   $content['group_destination_images']['field_country_code'][0]['#markup'] = '<img src="'.$link_to_img.'"/>';
 }
 ?>
-X1
-<?php if(isset($link_to_img)): ?>
-X2
+
+<?php //if(isset($link_to_img)): ?>
   <link rel="stylesheet" href="/sites/all/themes/tfk/css/atw_homepage_slideshow.css" />
   <script type="text/javascript" src="/sites/all/themes/tfk/js/atw_homepage_slideshow.js"></script>
   <div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
@@ -144,4 +143,4 @@ X2
     <?php print render($content['comments']); ?>
   
   </div><!-- /.node -->
-<?php endif; ?>
+<?php //endif; ?>
