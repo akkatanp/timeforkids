@@ -1,4 +1,5 @@
 //Ctype specific omniture. Loaded as needed.
+(function($) { // make sure the $ is jQuery
 $(document).ready(function() {
         //Omniture for slideshow clicks
         if ($('body.page-node.node-type-slideshow').length) {
@@ -50,4 +51,5 @@ $(document).ready(function() {
                 omniTrack('remove from favorite');
             });
         }
-});
+}); //End doc ready
+})(jQuery); // make sure the $ is jQuery
