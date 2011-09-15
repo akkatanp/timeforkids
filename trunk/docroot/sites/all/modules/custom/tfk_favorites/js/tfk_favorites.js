@@ -70,7 +70,7 @@
           //console.log(Element.val());
           //console.log($(this).val());
           
-          if(this.firstChild.value == "on") {
+          if($(Element.firstChild).attr('checked')) {
             selected = true;
           }
         });
