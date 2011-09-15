@@ -111,8 +111,6 @@ if(isset($link_to_img) && array_key_exists('group_destination_images', $link_to_
       </div>
     <?php endif; ?>
   
-   WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
-  
     <div class="content"<?php print $content_attributes; ?>>
       <?php
         // We hide the comments and links now so that we can render them later.
