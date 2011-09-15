@@ -336,7 +336,7 @@ function _get_atw_timeline_slideshow_images(){
 }
 
 function _get_atw_destination_slideshow_images(){
-  die();
+  
   $nid = arg(1);
   $node = node_load($nid);
   $tmp_slide_nid =  field_get_items('node', $node, 'field_country_slideshow');
