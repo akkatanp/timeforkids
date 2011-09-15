@@ -80,14 +80,16 @@
  * @see zen_preprocess_node()
  * @see template_process()
  */
-echo 'aaaaa';exit;
+
 //print_r($content['group_destination_images']['field_country_code']);
 if(isset($link_to_img) && array_key_exists('group_destination_images', $link_to_img)) {
   $link_to_img = url(drupal_get_path('theme', 'tfk').'/images/flags/flag_'.strtolower($content['group_destination_images']['field_country_code']['#items'][0]['value']).'.png');
   $content['group_destination_images']['field_country_code'][0]['#markup'] = '<img src="'.$link_to_img.'"/>';
 }
 ?>
+X1
 <?php if(isset($link_to_img)): ?>
+X2
   <link rel="stylesheet" href="/sites/all/themes/tfk/css/atw_homepage_slideshow.css" />
   <script type="text/javascript" src="/sites/all/themes/tfk/js/atw_homepage_slideshow.js"></script>
   <div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
