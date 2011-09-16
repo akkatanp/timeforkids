@@ -397,7 +397,16 @@ function tfk_html_head_alter(&$head_elements){
         $node = node_load($args[1]);
         if(isset($node->type) && $node->type == 'atw_destination' && isset($node->field_description['und'][0]['safe_value'])){
             $desc = $node->field_description['und'][0]['safe_value'];
-            $head_elements['metatags_quick_description']['#attributes']['content'] = $desc;
+            $element = array(
+            '#type' =>'html_tag',  
+            '#tag' => 'meta', // The #tag is the html tag - <link />
+            '#attributes' => array( // Set up an array of attributes inside the tag
+            'name' => 'description',
+            'content' => $desc
+              ),
+            );
+        
+        $head_elements[] =$element;
         }
         
     }
