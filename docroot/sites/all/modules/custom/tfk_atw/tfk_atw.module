@@ -366,6 +366,8 @@ function _get_atw_destination_slideshow_images(){
   
   
   return $list;
+  }else{
+      return array();
   }
 }
 
