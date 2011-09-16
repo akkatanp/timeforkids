@@ -1,7 +1,6 @@
-
+<?php if(isset($images_data)):?>
 	<div id="slideshow">
 		<div class="header"></div>
-
 		<div class="outer">
 			<div class="inner">
 			<?php foreach($images_data as $image_k => $image_obj): ?>
@@ -9,7 +8,6 @@
 			<?php endforeach;?>
 			</div>
 		</div>
-
 		<div class="footer">
 			<div class="title-container">
 			<?php foreach($images_data as $image_k => $image_obj): ?>
@@ -23,5 +21,4 @@
                    <div class="creditval" style="display: none;"><?php echo $image_obj['image_credit']; ?></div>
                  <?php endforeach;?>
                 </div>
-
-
+<?php endif;?>
