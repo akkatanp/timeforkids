@@ -395,8 +395,9 @@ function tfk_html_head_alter(&$head_elements){
     
     if($args[0] == 'node' && is_numeric($args[1])){
         $node = node_load($args[1]);
-        if(isset($node->type) && $node->type == 'atw_destination'){
-            print_r($node);
+        if(isset($node->type) && $node->type == 'atw_destination' && isset($node->field_description['und'][0]['safe_value'])){
+            $desc = $node->field_description['und'][0]['safe_value'];
+            $head_elements['metatags_quick_description']['#attributes']['content'] = $desc;
         }
         
     }
