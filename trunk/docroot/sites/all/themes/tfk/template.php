@@ -370,6 +370,34 @@ function tfk_preprocess_flashcard_cycle(&$variables) {
 
 
 
+function tfk_html_head_alter(&$head_elements){
+    
+    $args = arg();
+    
+    
+    if(count($args) == 1 && ( $args[0] == 'node')){
+    
+        $element = array(
+            '#type' =>'html_tag',  
+            '#tag' => 'meta', // The #tag is the html tag - <link />
+            '#attributes' => array( // Set up an array of attributes inside the tag
+            'name' => 'description',
+            'content' => 'TIME FOR KIDS is a news magazine geared toward students in grades K-6. Timeforkids.com offers age-appropriate news stories and features about children’s books, movies, the environment, science, world cultures and other high-interest topics. Students can find easy-to-use homework help, grammar and punctuation practice, writing tips and a flash-card maker. Educators and parents can view teaching resources, printables, interactive classroom materials and a teacher community board where they can connect with each other.'
+              ),
+            );
+        
+        $head_elements[] =$element;
+    }
+    
+    if($args[0] == 'photos-video' || $args[0] == 'store'){
+        $head_elements['metatags_quick_description']['#attributes']['content'] = 'TIME FOR KIDS is a news magazine geared toward students in grades K-6. Timeforkids.com offers age-appropriate news stories and features about children’s books, movies, the environment, science, world cultures and other high-interest topics. Students can find easy-to-use homework help, grammar and punctuation practice, writing tips and a flash-card maker. Educators and parents can view teaching resources, printables, interactive classroom materials and a teacher community board where they can connect with each other.';
+    }
+    
+    
+}
+
+
+
 /**
 * Temporary substitute for Meta Tags module.
 *
@@ -382,18 +410,19 @@ function manualMetaTags($path) {
   switch ($path) {
      
     case 'node':
+        
         $description = "TIME FOR KIDS is a news magazine geared toward students in grades K-6. Timeforkids.com offers age-appropriate news stories and features about children’s books, movies, the environment, science, world cultures and other high-interest topics. Students can find easy-to-use homework help, grammar and punctuation practice, writing tips and a flash-card maker. Educators and parents can view teaching resources, printables, interactive classroom materials and a teacher community board where they can connect with each other.";
-        print "<meta name='description' content='".$description."' />\n";
+       // print "<meta name='description' content='".$description."' />\n";
     break;
 
     case 'photos-video':
       $description = "TIME FOR KIDS is a news magazine geared toward students in grades K-6. Timeforkids.com offers age-appropriate news stories and features about children’s books, movies, the environment, science, world cultures and other high-interest topics. Students can find easy-to-use homework help, grammar and punctuation practice, writing tips and a flash-card maker. Educators and parents can view teaching resources, printables, interactive classroom materials and a teacher community board where they can connect with each other.";
-      print "<meta name='description' content='".$description."' />\n";
+     // print "<meta name='description' content='".$description."' />\n";
     break;
 
     case 'store':
       $description = "TIME FOR KIDS is a news magazine geared toward students in grades K-6. Timeforkids.com offers age-appropriate news stories and features about children’s books, movies, the environment, science, world cultures and other high-interest topics. Students can find easy-to-use homework help, grammar and punctuation practice, writing tips and a flash-card maker. Educators and parents can view teaching resources, printables, interactive classroom materials and a teacher community board where they can connect with each other.";
-      print "<meta name='description' content='".$description."' />\n";
+     // print "<meta name='description' content='".$description."' />\n";
     break;
 
    
