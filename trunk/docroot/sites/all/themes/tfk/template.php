@@ -368,3 +368,40 @@ function tfk_preprocess_flashcard_cycle(&$variables) {
   $variables['help'] = l(t('Help'), '#', array('attributes' => array('class' => array('flashcard-help'))));
 }
 
+
+
+/**
+* Temporary substitute for Meta Tags module.
+*
+* @param $path
+*   The path of the page, passed from html.tpl.php
+*/
+function manualMetaTags($path) {
+    
+  // determine the path of the page
+  switch ($path) {
+     
+    case 'node':
+        $description = "TIME FOR KIDS is a news magazine geared toward students in grades K-6. Timeforkids.com offers age-appropriate news stories and features about children’s books, movies, the environment, science, world cultures and other high-interest topics. Students can find easy-to-use homework help, grammar and punctuation practice, writing tips and a flash-card maker. Educators and parents can view teaching resources, printables, interactive classroom materials and a teacher community board where they can connect with each other.";
+        print "<meta name='description' content='".$description."' />\n";
+    break;
+
+    case 'photos-video':
+      $description = "TIME FOR KIDS is a news magazine geared toward students in grades K-6. Timeforkids.com offers age-appropriate news stories and features about children’s books, movies, the environment, science, world cultures and other high-interest topics. Students can find easy-to-use homework help, grammar and punctuation practice, writing tips and a flash-card maker. Educators and parents can view teaching resources, printables, interactive classroom materials and a teacher community board where they can connect with each other.";
+      print "<meta name='description' content='".$description."' />\n";
+    break;
+
+    case 'store':
+      $description = "TIME FOR KIDS is a news magazine geared toward students in grades K-6. Timeforkids.com offers age-appropriate news stories and features about children’s books, movies, the environment, science, world cultures and other high-interest topics. Students can find easy-to-use homework help, grammar and punctuation practice, writing tips and a flash-card maker. Educators and parents can view teaching resources, printables, interactive classroom materials and a teacher community board where they can connect with each other.";
+      print "<meta name='description' content='".$description."' />\n";
+    break;
+
+   
+
+  }
+  
+  
+  
+ 
+ 
+}

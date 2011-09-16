@@ -87,7 +87,7 @@ if(drupal_is_front_page()) {
     <?php endif; ?>
     </div>
   </div>
-
+	
   <div id="navigation" class="clearfix">
 
   <div class="section clearfix">
@@ -117,7 +117,8 @@ if(drupal_is_front_page()) {
       //$form = drupal_get_form('search_form');
       //$form['basic']['keys']['#title'] = 'lolopk';
       //print_r($form);
-        print render(drupal_get_form('search_form'));
+        $form = drupal_get_form('search_form');
+        print render($form);
       ?>
     </div>
 
@@ -147,38 +148,39 @@ if(drupal_is_front_page()) {
         </h1>
       <?php endif;?>
 
-      <div id="first-column"><!--
+      <div id="first-column">
         <?php if(array_key_exists('sidebar_top', $page)): ?>
           <?php print render($page['sidebar_top']); ?>
         <?php endif; ?>
-
-        <?php print render($page['sidebar_first']); ?>
-
+ 
+    		<?php if($title !== "Page Not Found"): ?>
+    			<?php print render($page['sidebar_first']); ?>
+    		<?php endif; ?>
+        
         <?php if(array_key_exists('sidebar_bottom', $page)): ?>
           <?php print render($page['sidebar_bottom']); ?>
         <?php endif; ?>
-                             -->
       </div>
-
+      
       <?php if(array_key_exists('editor_menu', $page)): ?>
         <?php print render($page['editor_menu']); ?>
       <?php endif; ?>
       <?php if(array_key_exists('before_content', $page)): ?>
         <?php print render($page['before_content']); ?>
       <?php endif; ?>
-
+      
       <div id="content" class="column">
-
+      
         <?php if(isset($page_pre_section)):?>
         	<div id='page_pre_section'><?php print $page_pre_section; ?></div>
         <?php endif; ?>
-
+      
       	<div class="section">
-
+      	
           <?php if(isset($page_suggestion_box)): ?>
             <?php print $page_suggestion_box; ?>
           <?php endif;?>
-
+      
           <?php print render($page['highlighted']); ?>
           <?php print $breadcrumb; ?>
           <a id="main-content"></a>
@@ -187,11 +189,11 @@ if(drupal_is_front_page()) {
             <!-- <h1 class="title" id="page-title"><?php print $title; ?></h1>-->
           <?php endif; ?>
           <?php print render($title_suffix); ?>
-
+          
           <?php if(!empty($messages)): ?>
             <?php print $messages; ?>
           <?php endif; ?>
-
+          
           <?php if ($tabs = render($tabs)): ?>
             <div class="tabs"><?php print $tabs; ?></div>
           <?php endif; ?>
@@ -199,16 +201,17 @@ if(drupal_is_front_page()) {
           <?php if ($action_links): ?>
             <ul class="action-links"><?php print render($action_links); ?></ul>
           <?php endif; ?>
-
+            
           <?php if(isset($top_suggestion_msg)): ?>
             <div id='top-suggestion-box' class="suggestion-box">
               <div class='msg'><?php print $top_suggestion_msg; ?></div>
               <div class='link'><?php print $top_suggestion_link; ?></div>
             </div>
           <?php endif; ?>
-
-          <?php print render($page['content']); ?>
-
+      
+          <?php //print render($page['content']); ?>
+            THIS IS DENIED PAGE TEXT PLACEHOLDER
+  
       	</div>
       </div><!-- /.section, /#content -->
 

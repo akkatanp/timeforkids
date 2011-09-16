@@ -63,8 +63,31 @@ function tfk_page_paths_menu(){
 	return $items;
 }
 
+
+function tfk_page_paths_preprocess_page(&$variables){
+    $args = arg();
+    if($args[0] == 'deniedpage'){
+        $variables['section_title'] = 'ACCESS DENIED';
+    }
+    
+    if(isset($variables['page']['content']['system_main']['admin']['nodes'])){
+
+        foreach($variables['page']['content']['system_main']['admin']['nodes']['#options'] as $nid_id =>$node_item){
+            $variables['page']['content']['system_main']['admin']['nodes']['#options'][$nid_id]['title']['data']['#title'] = $variables['page']['content']['system_main']['admin']['nodes']['#options'][$nid_id]['title']['data']['#title'].' (id:'.$nid_id.')';
+        }
+    
+    }
+    
+    
+}
+
+
 function tfk_not_found_page(){
   return theme('tfk_not_found_page');
+}
+
+function tfk_denied_page(){
+    return theme('tfk_denied_page');
 }
 
 function tfk_page_paths_theme() {
@@ -104,4 +127,3 @@ function tfk_store_callback(){
 function tfk_pv_page_callback() {
 	return '';
 }
-
