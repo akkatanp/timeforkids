@@ -114,7 +114,7 @@
       hide($content['links']);
 
      // print_r($node);exit;?>
-    
+            
 	 <?php print render($content['field_profile_image']); ?>
 	 <h1><?php	print $title; ?></h1>
      <?php print render($content);?>
