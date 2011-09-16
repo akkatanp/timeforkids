@@ -158,6 +158,74 @@ function tfk_photos_video_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-image-field_caption'
+  $fields['node-image-field_caption'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_caption',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '255',
+      ),
+      'translatable' => '1',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'image',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => '3',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_caption',
+      'label' => 'Caption',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '60',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '2',
+      ),
+    ),
+  );
+
   // Exported field: 'node-image-field_credit'
   $fields['node-image-field_credit'] = array(
     'field_config' => array(
@@ -408,8 +476,8 @@ function tfk_photos_video_field_default_fields() {
       'indexes' => array(),
       'module' => 'metatags_quick',
       'settings' => array(
-        'meta_name' => 'description',
         0 => 'meta_name',
+        'meta_name' => 'description',
       ),
       'translatable' => '0',
       'type' => 'metatags_quick',
@@ -463,8 +531,8 @@ function tfk_photos_video_field_default_fields() {
       'indexes' => array(),
       'module' => 'metatags_quick',
       'settings' => array(
-        'meta_name' => 'keywords',
         0 => 'meta_name',
+        'meta_name' => 'keywords',
       ),
       'translatable' => '0',
       'type' => 'metatags_quick',
@@ -1068,7 +1136,7 @@ function tfk_photos_video_field_default_fields() {
           'summary_rows' => 5,
         ),
         'type' => 'text_textarea_with_summary',
-        'weight' => '6',
+        'weight' => '7',
       ),
       'widget_type' => 'text_textarea_with_summary',
     ),
@@ -1177,7 +1245,7 @@ function tfk_photos_video_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'node_reference_autocomplete',
-        'weight' => '13',
+        'weight' => '14',
       ),
     ),
   );
@@ -1246,7 +1314,7 @@ function tfk_photos_video_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '7',
+        'weight' => '8',
       ),
     ),
   );
@@ -1470,6 +1538,78 @@ function tfk_photos_video_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-video-field_deck'
+  $fields['node-video-field_deck'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_deck',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '',
+        'maxlength_field_deck_js' => 0,
+        'maxlength_field_deck_text' => 'Content limited to !limit characters, remaining: <strong>!remaining</strong> (<strong>!count</strong> characters used.)<br/>
+Limit for Featured tout on Homepage: 111 characters.<br/>
+Limit for News Block: 65 characters.',
+      ),
+      'translatable' => '1',
+      'type' => 'text_long',
+    ),
+    'field_instance' => array(
+      'bundle' => 'video',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'Appears on /photos-video "featured" block and search results.',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 15,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_deck',
+      'label' => 'Deck',
+      'required' => 1,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'rows' => '5',
+        ),
+        'type' => 'text_textarea',
+        'weight' => '6',
+      ),
+    ),
+  );
+
   // Exported field: 'node-video-field_related_photos_video'
   $fields['node-video-field_related_photos_video'] = array(
     'field_config' => array(
@@ -1563,7 +1703,7 @@ function tfk_photos_video_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'node_reference_autocomplete',
-        'weight' => '12',
+        'weight' => '13',
       ),
     ),
   );
@@ -1632,7 +1772,7 @@ function tfk_photos_video_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '8',
+        'weight' => '9',
       ),
     ),
   );
@@ -1699,7 +1839,7 @@ function tfk_photos_video_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '9',
+        'weight' => '10',
       ),
     ),
   );
@@ -1881,8 +2021,8 @@ function tfk_photos_video_field_default_fields() {
       'indexes' => array(),
       'module' => 'metatags_quick',
       'settings' => array(
-        'meta_name' => 'description',
         0 => 'meta_name',
+        'meta_name' => 'description',
       ),
       'translatable' => '0',
       'type' => 'metatags_quick',
@@ -1918,7 +2058,7 @@ function tfk_photos_video_field_default_fields() {
         'module' => 'metatags_quick',
         'settings' => array(),
         'type' => 'metatags_quick_textarea',
-        'weight' => '11',
+        'weight' => '12',
       ),
     ),
   );
@@ -1935,8 +2075,8 @@ function tfk_photos_video_field_default_fields() {
       'indexes' => array(),
       'module' => 'metatags_quick',
       'settings' => array(
-        'meta_name' => 'keywords',
         0 => 'meta_name',
+        'meta_name' => 'keywords',
       ),
       'translatable' => '0',
       'type' => 'metatags_quick',
@@ -1972,7 +2112,7 @@ function tfk_photos_video_field_default_fields() {
         'module' => 'metatags_quick',
         'settings' => array(),
         'type' => 'metatags_quick_textfield',
-        'weight' => '10',
+        'weight' => '11',
       ),
     ),
   );
@@ -1981,10 +2121,12 @@ function tfk_photos_video_field_default_fields() {
   // Included for use with string extractors like potx.
   t('Additional Content');
   t('Additional content');
+  t('Appears on /photos-video "featured" block and search results.');
   t('Caption');
   t('Category');
   t('Credit');
   t('Date');
+  t('Deck');
   t('Description');
   t('Duration');
   t('Image');
