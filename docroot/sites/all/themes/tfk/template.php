@@ -393,7 +393,13 @@ function tfk_html_head_alter(&$head_elements){
         $head_elements['metatags_quick_description']['#attributes']['content'] = 'TIME FOR KIDS is a news magazine geared toward students in grades K-6. Timeforkids.com offers age-appropriate news stories and features about children’s books, movies, the environment, science, world cultures and other high-interest topics. Students can find easy-to-use homework help, grammar and punctuation practice, writing tips and a flash-card maker. Educators and parents can view teaching resources, printables, interactive classroom materials and a teacher community board where they can connect with each other.';
     }
     
-    
+    if($args[0] == 'node' && is_numeric($args[1])){
+        $node = node_load($args[1]);
+        if(isset($node->type) && $node->type == 'atw_destination'){
+            print_r($node);
+        }
+        
+    }
 }
 
 
