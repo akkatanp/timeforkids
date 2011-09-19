@@ -491,8 +491,8 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 							editor.insertElement( this.wrapperElement );
 							this.wrapperElement.append( this.linkElement, false );
 							this.wrapperElement.append( this.imageElement, false );
-							this.wrapperElement.append( this.creditElement, false );
-							this.wrapperElement.append( this.captionElement, false );
+							if (this.creditElement) {this.wrapperElement.append( this.creditElement, false );}
+							if (this.captionElement) {this.wrapperElement.append( this.captionElement, false );}
 						}
 						else	 //Link already exists, image not.
 							editor.insertElement( this.wrapperElement );
@@ -501,8 +501,8 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 					else
 						editor.insertElement( this.wrapperElement );
 						this.wrapperElement.append( this.imageElement, false );
-						this.wrapperElement.append( this.creditElement, false );
-						this.wrapperElement.append( this.captionElement, false );
+						if (this.creditElement) {this.wrapperElement.append( this.creditElement, false );}
+						if (this.captionElement) {this.wrapperElement.append( this.captionElement, false );}
 				}
 				else		// Image already exists.
 				{
@@ -690,9 +690,6 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 								{
 									element.removeAttribute( 'alt' );
 									this.captionText = this.getValue();
-                                                                        if (!this.captionText) {
-                                                                            this.captionText = " ";
-                                                                        }
 								}
 							}
 						},
