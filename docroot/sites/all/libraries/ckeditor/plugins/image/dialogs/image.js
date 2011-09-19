@@ -464,14 +464,17 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 				this.commitContent( LINK, this.linkElement );
 				
 				// Set the span for the credit
-				this.creditElement = editor.document.createElement( 'div' );
-				this.creditElement.setAttribute( 'class', 'credit' );
-				this.creditElement.appendText( this.imageElement.getAttribute( 'rel' ) );
+                                if (this.imageElement.getAttribute( 'rel' ).length > 0) {
+                                    this.creditElement = editor.document.createElement( 'div' );
+                                    this.creditElement.setAttribute( 'class', 'credit' );
+                                    this.creditElement.appendText( this.imageElement.getAttribute( 'rel' ) );
+                                }
 				// Set the span for the caption
-				this.captionElement = editor.document.createElement( 'div' );
-				this.captionElement.setAttribute( 'class', 'caption' );
-				this.captionElement.appendText( this.imageElement.getAttribute( 'alt' ) );
-								
+                                if (this.imageElement.getAttribute( 'alt' ).length > 0) {
+                                    this.captionElement = editor.document.createElement( 'div' );
+                                    this.captionElement.setAttribute( 'class', 'caption' );
+                                    this.captionElement.appendText( this.imageElement.getAttribute( 'alt' ) );
+                                }		
                                         
 				// Remove empty style attribute.
 				if ( !this.imageElement.getAttribute( 'style' ) )
