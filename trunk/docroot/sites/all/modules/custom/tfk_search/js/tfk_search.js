@@ -29,18 +29,18 @@
       // JQuery UI accordion for facet blocks.
       if(settings.tfk_search.facet_accordion == true) {
         $(".region-sidebar-first .block h2", context).click(function() {
-          
-          target = $(this);
-
-          if(!target.hasClass('closed')) { 
-            target.css('background', 'url("/'+ settings.tfk_search.arrow_closed +'") no-repeat scroll 0 0 transparent');
-		  } else {
-            target.css('background', 'url("/'+ settings.tfk_search.arrow_open +'") no-repeat scroll 0 0 transparent');
-		  }
-          
-          // Close facet block.
-          target.toggleClass('closed');
-		  target.parent().children('.content').slideToggle('fast');
+        
+        target = $(this);
+        
+        if(!target.hasClass('closed')) {
+          target.css('background', 'url("/'+ settings.tfk_search.arrow_closed +'") no-repeat scroll 0 0 transparent');
+        } else {
+          target.css('background', 'url("/'+ settings.tfk_search.arrow_open +'") no-repeat scroll 0 0 transparent');
+        }
+        
+        // Close facet block.
+        target.toggleClass('closed');
+        target.parent().children('.content').slideToggle('fast');
 
         });
       }
