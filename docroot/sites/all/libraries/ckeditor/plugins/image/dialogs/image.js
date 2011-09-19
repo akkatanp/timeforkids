@@ -468,12 +468,16 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
                                     this.creditElement = editor.document.createElement( 'div' );
                                     this.creditElement.setAttribute( 'class', 'credit' );
                                     this.creditElement.appendText( this.imageElement.getAttribute( 'rel' ) );
+                                } else {
+                                    this.creditElement = "";
                                 }
 				// Set the span for the caption
                                 if (this.imageElement.getAttribute( 'alt' )) {
                                     this.captionElement = editor.document.createElement( 'div' );
                                     this.captionElement.setAttribute( 'class', 'caption' );
                                     this.captionElement.appendText( this.imageElement.getAttribute( 'alt' ) );
+                                } else {
+                                    this.captionElement = "";
                                 }		
                                         
 				// Remove empty style attribute.
