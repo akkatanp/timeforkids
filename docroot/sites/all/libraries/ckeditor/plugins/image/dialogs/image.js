@@ -469,7 +469,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
                                     this.creditElement.setAttribute( 'class', 'credit' );
                                     this.creditElement.appendText( this.imageElement.getAttribute( 'rel' ) );
                                 } else {
-                                    this.creditElement = "";
+                                    this.imageElement.setAttribute( 'rel', '' );
                                 }
 				// Set the span for the caption
                                 if (this.imageElement.getAttribute( 'alt' )) {
@@ -477,7 +477,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
                                     this.captionElement.setAttribute( 'class', 'caption' );
                                     this.captionElement.appendText( this.imageElement.getAttribute( 'alt' ) );
                                 } else {
-                                    this.captionElement = "";
+                                    this.imageElement.setAttribute( 'alt', '' );
                                 }		
                                         
 				// Remove empty style attribute.
@@ -517,8 +517,8 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 						editor.insertElement( this.wrapperElement );
 						this.linkElement.appendTo( this.wrapperElement );
 						this.imageElement.appendTo( this.linkElement );
-						this.creditElement.appendTo( this.wrapperElement );
-						this.captionElement.appendTo( this.wrapperElement );
+						if (this.creditElement) {this.creditElement.appendTo( this.wrapperElement );}
+						if (this.captionElement) {this.captionElement.appendTo( this.wrapperElement );}
 					}
 					//Remove Link, Image exists.
 					else if ( this.linkEditMode && !this.addLink )
@@ -526,8 +526,8 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 						editor.getSelection().selectElement( this.wrapperElement );
 						editor.insertElement( this.wrapperElement );
 						this.imageElement.appendTo( this.wrapperElement );
-						this.creditElement.appendTo( this.wrapperElement );
-						this.captionElement.appendTo( this.wrapperElement );
+						if (this.creditElement) {this.creditElement.appendTo( this.wrapperElement );}
+						if (this.captionElement) {this.captionElement.appendTo( this.wrapperElement );}
 					}
 				}
                                 
