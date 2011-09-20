@@ -153,8 +153,11 @@ function tfk_update_lucie_login($lucieData, $existingUser) {
  */
 function tfk_user_profile_login_validate( $form, &$form_state ){
 	$username = $form_state['values']['name'];
-    $response = tfk_lucie_check_user($username, &$form_state);
-    if (!empty($response))
+    $response = tfk_lucie_check_user($username, $form_state['values']['pass']);
+    // set the Lucie Error returned by the call.  By default this is set to false.
+    $form_state['lucie_error'] = $response['error'];
+    
+    if (!empty($response['data']))
     {
     	// check to see if a record exists in the lucie mapping table
  		$existingUser = tfk_check_lucie_user($response);
@@ -210,9 +213,10 @@ function tfk_lucie_user_entitlements($token){
  * This function will authenticate a user in the LUCIE system.
  * A token is returned which must be used in any additional calls to LUCIE.
  */
-function tfk_lucie_check_user($email, &$form_state){
+function tfk_lucie_check_user($email, $pwd){
+	
   $url = 'http://cgi.timeinc.com/webservices/customers/'.check_plain($email).'/TK/auth_token';
-  $pass_arr = array('password'=>$form_state['values']['pass'], 'CGI-App-Id' => 'com.timeinc.tk.web', 'deviceid' => 'TK.WEB', 'deviceip' => ip_address());
+  $pass_arr = array('password'=>$pwd, 'CGI-App-Id' => 'com.timeinc.tk.web', 'deviceid' => 'TK.WEB', 'deviceip' => ip_address());
   $pass = drupal_json_encode($pass_arr);
   
   $response = drupal_http_request($url,
@@ -226,22 +230,25 @@ function tfk_lucie_check_user($email, &$form_state){
   
   // process the LUCIE login response.
   // some actions are based on the $response code, others $response_code + json parameter
-  $form_state['lucie_error'] = false;
+  $_lucieUser = array(
+  	'error'	=>	false,
+  	'data'	=>	false,
+  );
   switch ($response->code) {
   	case 201:
   		if (tfk_lucie_user_entitlements($dataResponse['token'])) {
-  			return tfk_lucie_get_user_info($email, $dataResponse['token']);
-		} else {
-			$form_state['lucie_error'] = 'sub_expired';
+  			$_lucieUser['data'] = tfk_lucie_get_user_info($email, $dataResponse['token']);
+  		} else {
+			$_lucieUser['error'] = 'sub_expired';
   		}
   		break;
   	case 404:
   		if (is_array($dataResponse) && $dataResponse['userLockedOut']) {
-  			$form_state['lucie_error'] = 'user_locked';
+  			$_lucieUser['error'] = 'user_locked';
   		}
   		break;
   }
-  return false;
+  return $_lucieUser;
 }
 //Removes the tabbed menu for teachers and board members
 function tfk_user_profile_menu_alter(&$items) {
