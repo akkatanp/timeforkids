@@ -2986,3 +2986,8 @@ body.page-404page #first-column .region-sidebar-first .section{
 .tfkpoll button {/*poll button*/
     
 }
+
+
+.form-radios{
+    padding-left:5px !important;
+}
