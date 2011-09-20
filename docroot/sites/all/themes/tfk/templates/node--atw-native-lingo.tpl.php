@@ -163,7 +163,7 @@ $speaker_photo = file_create_url(image_style_path('tfk_rect_large',$speaker_phot
 		
 		<?php if(count($lingo_phrases['next_level']) > 0):?>
 		<div id="next-level" class="phrase-list">
-			<h2>The Next Level</h2>
+			<h2>Advanced</h2>
 			<?php $i = 0; ?>
 			<?php foreach($lingo_phrases['next_level'] as $phrase):?>
 			<div class="phrase<?=($i++%2==1) ? ' odd' : ' even' ?>">
