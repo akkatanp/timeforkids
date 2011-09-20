@@ -2989,5 +2989,9 @@ body.page-404page #first-column .region-sidebar-first .section{
 
 
 .form-radios{
-    padding-left:5px !important;
+    padding-left:2px !important;
+}
+
+.formitemcont{
+    padding-left:5px;
 }
