@@ -29,7 +29,7 @@
   $n = 1;
   foreach($form['submitted'] as $key => $component) {
     if(isset($component['question']['#title'])) {
-      $form['submitted'][$key]['question']['#title'] = $n. '. '. $form['submitted'][$key]['question']['#title'];
+      $form['submitted'][$key]['question']['#title'] = '<span class="formitemnumb">'.$n. '.</span><span class="formitemcont">'. $form['submitted'][$key]['question']['#title'].'</span>';
       $n++;
     }
   }
