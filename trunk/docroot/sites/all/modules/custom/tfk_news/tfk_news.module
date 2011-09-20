@@ -224,7 +224,6 @@ function _tfk_news_minisite_related_articles(){
                 
                 
                 
-                
                 if(!empty($articles)){
                     $list = array();
                     $list['articles'] = $articles;
@@ -290,7 +289,7 @@ function _tfk_news_current_filters(){
   if(arg(0) == 'news-archive'){
     $str = '<div class="currfilters"><div class="newsarc">News Archive</div><div class="newsarcsmall">';
     if(count(arg()) == 1){
-      $str .= 'Viewing: All News; All Dates';
+      $str .= 'Viewing: All News';
     }else{
       $arg = arg(1);
       if(!is_numeric(arg(1))){
@@ -420,7 +419,6 @@ function tfk_news_field_formatter_view($entity_type, $entity, $field, $instance,
 
 
 function tfk_news_theme() {
-    
   return array(
     'tfk_news_taxonomy_links' => array(
       'template' => 'tfk-news-taxonomy-links',
@@ -602,25 +600,27 @@ function tfk_news_node_view($node, $view_mode, $langcode) {
 
 
 
-function tfk_news_preprocess_block(&$variables){
+function tfk_news_preprocess_blpock(&$variables){
   if(is_numeric(arg(1))){
     $node = node_load(arg(1));
     if(!isset($node->field_kid_reporter['und'][0])){
       if($variables['block']->delta == 'random_kid_reporters-block'){
           $variables['content'] = '';
-        //unset($variables['content']);
+        unset($variables['content']);
       }
     }
     
     if($node->type == 'article'){
         $result = db_query('SELECT DISTINCT entity_id from field_data_field_articles fa where fa.entity_type = :type and fa.bundle = :bundle and fa.field_articles_nid = :nid',array('type'=> 'node','bundle'=>'minisite','nid'=>$node->nid));
         $record = $result->fetch();
+        
+        
         if($record){
             if($variables['block']->delta == 'tfk-news-latest-news-link' ||
                     $variables['block']->delta == 'tfk-news-year-filter' ||
                     $variables['block']->delta == 'tfk-news-taxonomy-links'){
-                $variables['content'] = '';
-              unset($variables['content']);
+                //$variables['content'] = '';
+              //unset($variables['content']);
             }
         }
     }
