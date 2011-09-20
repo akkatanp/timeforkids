@@ -1029,9 +1029,15 @@ function theme_tfk_featured_block(&$variables) {
   $output .= "</div>";
   
   // Body/description field.
+  $skip_processing = FALSE;
   if($tfkSearchFeaturedItem->type == 'slideshow') {
     $dirty_body = field_get_items('node', $tfkSearchFeaturedItem, 'field_slideshow_description');
     $dirty_body = $dirty_body[0]['safe_value'];
+  } else if($tfkSearchFeaturedItem->type == 'video') {
+    // Deck fields don't need processing.
+    $clean_body = field_get_items('node', $tfkSearchFeaturedItem, 'field_deck');
+    $body = $clean_body[0]['safe_value'];
+    $skip_processing = TRUE;
   } else {
     if(!is_array($tfkSearchFeaturedItem->body)) {
       $dirty_body = $tfkSearchFeaturedItem->body;
@@ -1041,7 +1047,8 @@ function theme_tfk_featured_block(&$variables) {
     }
   }
   
-  if(!empty($dirty_body)) {
+  // Body text processing.
+  if(!empty($dirty_body) && !$skip_processing) {
     // The pattern "<p>&nbsp;</p>" causes a bug in truncate_utf8. Strip it out.
     $clean_body = preg_replace("/\<p\>.?&nbsp;.?\<\/p\>/", '', $dirty_body);
     
@@ -1049,8 +1056,8 @@ function theme_tfk_featured_block(&$variables) {
     $first_paragraph = array();
     $matched = preg_match("/\<p\>.*?\<\/p\>/", $clean_body, $first_paragraph);
     $body = ($matched) ? $first_paragraph[0] : truncate_utf8($clean_body, '160', TRUE, TRUE, 10);
-  } else {
-    // Print a helpful (but hidden) "error" message if there is no teaser. Use Firebug inspect element to see it.
+  } else if (!$skip_processing) {
+    // Print a helpful (but hidden) "hint" message if there is no teaser. Use Firebug inspect element to see it.
     $body = '<!-- body not found or empty -->';
   }
   
@@ -1992,6 +1999,9 @@ function tfk_search_preprocess_search_result(&$vars) {
   $base_path = arg(0);
   $style = '115x115';
   
+  // Whether to extract the first paragraph of whatever field is used as teaser.
+  $skip_processing = FALSE;
+  
   // Determines whether to print favorite links on search results or not.
   $favorite_links = TRUE;
   
@@ -2121,9 +2131,10 @@ function tfk_search_preprocess_search_result(&$vars) {
         tfk_search_get_flag_link($vars, $nid, 'favorites');
       }
       
-      $body = field_get_items('node', $node, 'body');
-      if(!empty($body[0]['value'])) {
-        $teaser = $body[0]['value'];
+      $body = field_get_items('node', $node, 'field_deck');
+      if(!empty($body[0]['safe_value'])) {
+        $teaser = $body[0]['safe_value'];
+        $skip_processing = TRUE;
       }
       
       $vars['tfk_search_result_link_1'] = l('View the Video', 'node/'. $nid);
@@ -2449,6 +2460,7 @@ function tfk_search_preprocess_search_result(&$vars) {
       $body = field_get_items('node', $node, 'field_deck');
       if(!empty($body[0]['safe_value'])) {
         $teaser = $body[0]['safe_value'];
+        $skip_processing = TRUE;
       }
       //$teaser = TFK_SEARCH_ARTICLE_DECK;
       //$teaser = $vars['result']['fields'][TFK_SEARCH_ARTICLE_DECK];
@@ -2460,7 +2472,9 @@ function tfk_search_preprocess_search_result(&$vars) {
   }
   
   // All search interfaces.
-  if(isset($teaser)) {
+  if(isset($teaser) && $skip_processing) {
+    $vars['snippet'] = $teaser;
+  } else if (isset($teaser)) {
     // The pattern "<p>&nbsp;</p>" causes a bug in truncate_utf8. Strip it out.
     $clean_teaser = preg_replace("/\<p\>.?&nbsp;.?\<\/p\>/", '', $teaser);
 
