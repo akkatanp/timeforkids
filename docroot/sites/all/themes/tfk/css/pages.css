@@ -394,7 +394,7 @@ ul.links li {
     line-height:15px;
 }
 .node-board-member .field-type-text-with-summary {
-    margin-top:25px;
+    margin-top:15px;
     line-height:15px;
 }
 .view-board-members .view-content .views-field-field-grade-level, .view-board-members .view-content .views-field-field-location, #block-views-board-members-block-1 .views-field-field-grade-level, #block-views-board-members-block-1 .views-field-field-location, #block-views-board-members-block-2 .views-row .views-field-field-grade-level,#block-views-board-members-block-2 .views-row .views-field-field-location, .node-board-member .field-name-field-location, .node-board-member .field-name-field-grade-level, .node-board-member .board-member-grade {
@@ -405,9 +405,10 @@ ul.links li {
     margin-bottom:10px;
 }
 .teacher-community-profile-board-member-name {
-    font-size:2.0em;
+    font-size: 30px;
     color:black;
     font-weight:bold;
+    line-height: 30px;
 }
 #block-menu-menu-link-to-board-members h2 {
 	display: none;
