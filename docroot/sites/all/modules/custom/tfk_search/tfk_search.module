@@ -494,7 +494,7 @@ function tfk_search_apachesolr_update_index(&$document, $node, $namespace) {
   
   // Index PDF link for Magazines->Additional Content->Materials to avoid doing
   // additional node loads on the tfk-magazine page.
-  if(isset($node->field_materials) && !empty($node->field_materials)) {
+  /*if(isset($node->field_materials) && !empty($node->field_materials)) {
     $materials = field_get_items('node', $node, 'field_materials');
     foreach($materials as $material) {
       $material_node = node_load($material['nid']);
@@ -514,7 +514,7 @@ function tfk_search_apachesolr_update_index(&$document, $node, $namespace) {
         
       }
     }
-  }
+  }*/
 }
 
 /**
@@ -2218,13 +2218,44 @@ function tfk_search_preprocess_search_result(&$vars) {
       ///////////GETTING ADDITIONAL CONTENT////////
       // Materials.
             
-      if(array_key_exists(TFK_SEARCH_WORKSHEET_PDF_LINK, $vars['result']['fields']) && !empty($vars['result']['fields'][TFK_SEARCH_WORKSHEET_PDF_LINK])) {
+      /*if(array_key_exists(TFK_SEARCH_WORKSHEET_PDF_LINK, $vars['result']['fields']) && !empty($vars['result']['fields'][TFK_SEARCH_WORKSHEET_PDF_LINK])) {
         foreach($vars['result']['fields'][TFK_SEARCH_WORKSHEET_PDF_LINK] as $key => $pdf_link) {
           $vars['magazine_materials'][$key] = l($vars['result']['fields'][TFK_SEARCH_WORKSHEET_PDF_TITLE][$key], $pdf_link);
+        }
+      }*/
+      
+      // Materials: Worksheet and PDF Quiz.
+      if(isset($node->field_materials) && !empty($node->field_materials)) {
+        $materials = field_get_items('node', $node, 'field_materials');
+        foreach($materials as $material) {
+          $material_node = node_load($material['nid']);
+          if($material_node) {
+              
+            // Worksheet.
+            if(isset($material_node->field_worksheet_pdf_private) && !empty($material_node->field_worksheet_pdf_private)) {
+              $pdfs = field_get_items('node', $material_node, 'field_worksheet_pdf_private');
+              if($pdfs) {
+                foreach($pdfs as $pdf) {
+                  $vars['magazine_materials'][] = l($material_node->title, file_create_url($pdf['uri']));
+                }
+              }
+            }
+            
+            // Quiz.
+            if($material_node->type == 'pdf_quiz') {
+               $quiz_pdf = field_get_items('node', $material_node, 'field_pdf_file_private');
+               if($quiz_pdf) {
+                 $quiz_pdf = $quiz_pdf[0];
+                 $vars['magazine_materials'][] = l($material_node->title, file_create_url($quiz_pdf['uri']));
+               }
+            }
+            
+          }
         }
       }
 
       //adding PDF Quiz to materials - per tfks 399
+      /*
       $mats = array();
       $materials = field_get_items('node',$node,'field_materials');
       if($materials) {
@@ -2239,7 +2270,7 @@ function tfk_search_preprocess_search_result(&$vars) {
            }
          }
        }
-      }
+      } */
 
       ////////////////////Related Resources////////////////
       $related_resources = field_get_items('node', $magazine, 'field_related_resources');
