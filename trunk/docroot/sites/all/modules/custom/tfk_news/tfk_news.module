@@ -296,7 +296,7 @@ function _tfk_news_current_filters(){
       if(!is_numeric(arg(1))){
         
         if(ucfirst(arg(1)) == 'All'){
-          $str .= 'Viewing: '.ucfirst(arg(1)) .' Years;';
+          $str .= 'Viewing: All News; All Dates';
         }else{
           $str .= 'Viewing: '.ucfirst(arg(1));
         }
