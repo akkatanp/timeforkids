@@ -95,8 +95,8 @@
   <?php endif; ?>
   <div class="content"<?php print $content_attributes; ?>>
   <?php
-    print "<span class=\"teacher-community-profile-board-member-name\">".render($node->title)."</span>";
     print render($content['field_member_photo']);
+    print "<span class=\"teacher-community-profile-board-member-name\">".render($node->title)."</span>";
     print "<div class=\"board-member-grade\">Grade ".$content['field_grade_level'][0]['#markup']."</div>";
     print render($content['field_location']);
     print render($content['body']);
