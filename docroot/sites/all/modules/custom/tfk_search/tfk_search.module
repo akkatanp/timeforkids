@@ -1280,14 +1280,14 @@ function tfk_search_preprocess_page(&$variables) {
   $nodetype = (array_key_exists('node', $variables) && isset($variables['node']->type)) ? $variables['node']->type: FALSE;
   if(arg(0) == TFK_SEARCH_PHOTOSVIDEO_PATH || $nodetype == 'slideshow' || $nodetype == 'video') {
     drupal_set_title('Photos & Videos');
-    $variables->title = 'Photos & Videos';
+    $variables['title'] = 'Photos & Videos';
     $variables['section_title'] = 'PHOTOS & VIDEOS';
   }
   if(arg(0) == TFK_SEARCH_WORKSHEETS_PATH) {
     $variables['section_title'] = 'PRINTABLES';
     
     drupal_set_title('Worksheets');
-    $variables->title = 'Woksheets';
+    $variables['title'] = 'Woksheets';
     
     global $user;
     $rls = $user->roles;
