@@ -142,7 +142,7 @@
           
       </div>
       
-      <?php if($related_content):?>
+      <?php if(isset($related_content)):?>
         <?php print $related_content; ?>
       <?php endif;?>
     </div>
