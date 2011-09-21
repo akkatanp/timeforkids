@@ -37,7 +37,7 @@
     
   <?php else: ?>
     
-    <ol id="<?php print ($ordered_list_id) ? $ordered_list_id: 'search-results'; ?>" class="search-results">
+    <ol id="<?php print (isset($ordered_list_id)) ? $ordered_list_id: 'search-results'; ?>" class="search-results">
       <?php print $search_results; ?>
     </ol>
     
