@@ -802,13 +802,16 @@ function tfk_atw_preprocess_page(&$vars, $hook) {
     $nid = $arg[1];
     $result = db_query('select n.type from node n where n.nid = :nid',array(':nid'=>$nid));
     $record = $result->fetch();
-
-    $type = $record->type;
     
-    //comparing to 'webform' as well since this is a challenge form
-    if (substr($type, 0, 3) === 'atw' || $type =='webform'){
-      $vars['section_title'] = "Around The World";
+    if(isset($record->type)){
+        $type = $record->type;
+
+        //comparing to 'webform' as well since this is a challenge form
+        if (substr($type, 0, 3) === 'atw' || $type =='webform'){
+          $vars['section_title'] = "Around The World";
+        }
     }
+    
 
   }
 }
