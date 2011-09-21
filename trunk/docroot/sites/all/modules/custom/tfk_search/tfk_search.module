@@ -331,7 +331,7 @@ function theme_tfk_search_facet_link($vars) {
 function theme_tfk_search_related_content($variables) {
   $related_content = $variables['related_content'];
   
-  $output .= '<div id="featured-related-content-title" class="addit-content">'. t('Additional Content'). '</div>';
+  $output = '<div id="featured-related-content-title" class="addit-content">'. t('Additional Content'). '</div>';
   $output .= '<div id="featured-related-content" class="related-content-wrap">';
   
   // Related content.
