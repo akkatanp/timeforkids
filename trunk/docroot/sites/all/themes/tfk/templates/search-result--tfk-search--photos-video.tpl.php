@@ -66,26 +66,26 @@
  */
 ?>
 <?php if($render): ?>
-<li class="<?php print $classes; ?>"<?php print $attributes; ?>>
-  <?php if($tfk_search_cont_type):?>
+<li class="<?php if(isset($classes)): ?><?php print $classes; ?><? endif; ?>"<?php if(isset($attributes)): ?><?php print $attributes; ?><? endif; ?>>
+  <?php if(isset($tfk_search_cont_type)):?>
     <div class="content-type"><?php print $tfk_search_cont_type;?></div>
   <?php endif;?>
   
   <div class='row2'>
     
-    <?php if($thumbnail):?>
+    <?php if(isset($thumbnail)):?>
     	<div class='col1'>
       	<?php print $thumbnail; ?>
     	</div>
     <?php endif;?>
    
   	<div class='col2'>
-      <?php if($tfk_search_res_grade_level):?>
+      <?php if(isset($tfk_search_res_grade_level)):?>
         Grade Level:<?php print $tfk_search_res_grade_level;?>
       <?php endif;?>
     
       <?php print render($title_prefix); ?>
-      <h3 class="title"<?php print $title_attributes; ?>>
+      <h3 class="title" <?php if(isset($title_attributes)): ?><?php print $title_attributes; ?><? endif; ?>>
         <a href="<?php print $url; ?>"><?php print $title; ?></a>
       </h3>
       
@@ -96,17 +96,17 @@
       <?php print render($title_suffix); ?>
       <div class="search-snippet-info">
         <?php if ($snippet) : ?>
-          <p class="search-snippet"<?php print $content_attributes; ?>><?php print $snippet; ?></p>
+          <p class="search-snippet" <?php if(isset($content_attributes)): ?><?php print $content_attributes; ?><? endif; ?>><?php print $snippet; ?></p>
         <?php endif; ?>
       </div>
       
       <div class="search-result-links">
-        <?php if($favorites_flag_link): ?>
+        <?php if(isset($favorites_flag_link)): ?>
         	<?php print $favorites_flag_link; ?>
         <?php endif; ?>
       </div>
       
-      <?php if($related_content):?>
+      <?php if(isset($related_content)):?>
         <?php print $related_content; ?>
       <?php endif;?>
     </div>
