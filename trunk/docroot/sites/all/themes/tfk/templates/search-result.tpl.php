@@ -66,15 +66,15 @@
  */
 ?>
 <?php if($render): ?>
-<li class="<?php print $classes; ?>"<?php print $attributes; ?>>
+<li class="<?php if(isset($classes)): ?><?php print $classes; ?><? endif; ?>"<?php if(isset($attributes)): ?><?php print $attributes; ?><? endif; ?>>
 
-  <?php if($tfk_search_res_skills):?>
+  <?php if(isset($tfk_search_res_skills)):?>
     <!-- SKills Vocab Term : <?php print $tfk_search_res_skills;?> --><br/>
   <?php endif;?>
   
-  <?php if($tfk_search_cont_type):?>
+  <?php if(isset($tfk_search_cont_type)):?>
     <div class="content-type">
-    	<?php if($tfk_search_cont_type_suffix): ?>
+    	<?php if(isset($tfk_search_cont_type_suffix)): ?>
     		<span class="ctype-suffix"><?php print $tfk_search_cont_type_suffix; ?></span>
     		<span class="ctype"><?php print $tfk_search_cont_type; ?></span>
     	<?php else: ?>
@@ -85,14 +85,14 @@
   
   <div class='row2'>
   
-    <?php if($thumbnail):?>
+    <?php if(isset($thumbnail)):?>
     	<div class='col1'>
     	  <?php print $thumbnail; ?>
     	</div>
     <?php endif;?>
    
   	<div class='col2'>
-      <?php if($tfk_search_res_grade_level):?>
+      <?php if(isset($tfk_search_res_grade_level)):?>
         Grade Level:<?php print $tfk_search_res_grade_level;?>
       <?php endif;?>
     
@@ -117,25 +117,25 @@
       <?php print render($title_suffix); ?>
       <div class="search-snippet-info">
         <div class="search-snippet-body">
-          <?php if ($snippet) : ?>
-            <p class="search-snippet"<?php print $content_attributes; ?>><?php print $snippet; ?></p>
+          <?php if (isset($snippet)) : ?>
+            <p class="search-snippet"<?php if(isset($content_attributes)): ?><?php print $content_attributes; ?><? endif; ?>><?php print $snippet; ?></p>
           <?php endif; ?>
         </div>
         
         <div class="search-result-links">
-          <?php if($tfk_search_result_link_1): ?>
-          	<span class="search-result-link-1 <?php print $cont_type_class; ?>"><?php print $tfk_search_result_link_1; ?></span>
+          <?php if(isset($tfk_search_result_link_1)): ?>
+          	<span class="search-result-link-1 <?php if(isset($cont_type_class)): ?><?php print $cont_type_class; ?><? endif; ?>"><?php print $tfk_search_result_link_1; ?></span>
           <?php endif; ?>
           
-          <?php if($tfk_search_result_link_2): ?>
-          	<span class="search-result-link-2 <?php print $cont_type_class; ?>"><?php print $tfk_search_result_link_2; ?></span>
+          <?php if(isset($tfk_search_result_link_2)): ?>
+          	<span class="search-result-link-2 <?php if(isset($cont_type_class)): ?><?php print $cont_type_class; ?><? endif; ?>"><?php print $tfk_search_result_link_2; ?></span>
           <?php endif; ?>
           
-          <?php if($tfk_worksheet_pdf_link): ?>
-          	<span class="search-result-download-link <?php print $cont_type_class; ?>"><?php print $tfk_worksheet_pdf_link; ?></span>
+          <?php if(isset($tfk_worksheet_pdf_link)): ?>
+          	<span class="search-result-download-link <?php if(isset($cont_type_class)): ?><?php print $cont_type_class; ?><? endif; ?>"><?php print $tfk_worksheet_pdf_link; ?></span>
           <?php endif; ?>
           
-          <?php if($favorites_flag_link): ?>
+          <?php if(isset($favorites_flag_link)): ?>
           	<?php print $favorites_flag_link; ?>
           <?php endif; ?>
         </div>
