@@ -1204,9 +1204,9 @@ function tfk_search_get_featured_block() {
 			AND f.name = 'photos_videos_featured'
   	ORDER BY fn.created DESC
   	LIMIT 1";
-	
-  $result = array('tfkSearchFeaturedItem' => array_shift(db_query($fn_query, array(), array('fetch' => 'tfkSearchFeaturedItem',))->fetchAll()));
-  if(empty($result['tfkSearchFeaturedItem'])) {
+	$result = db_query($fn_query, array(), array('fetch' => 'tfkSearchFeaturedItem',))->fetchAll();
+  $result = ($result) ? array('tfkSearchFeaturedItem' => array_shift($result)) : FALSE;
+  if($result == FALSE) {
     watchdog('TFK Search', 'Could not find data to populate the Featured item block.', array(), WATCHDOG_ERROR);
     return FALSE;
   } else {
