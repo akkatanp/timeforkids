@@ -1170,7 +1170,8 @@ class tfkSearchFeaturedItem {
     // Additional content.
     $additional_contents = field_get_items('node', $this, 'field_additional_content');
     if($additional_contents != FALSE) {
-      $nid = array_shift(array_shift($additional_contents));
+      $nid = array_shift($additional_contents);
+      $nid = array_shift($nid);
       $related_node = node_load($nid);
       if($related_node != FALSE) {
         // related_content's format must conform to what theme_tfk_search_related_content() expects.
