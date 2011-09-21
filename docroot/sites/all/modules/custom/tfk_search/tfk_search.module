@@ -2580,7 +2580,8 @@ function tfk_search_preprocess_search_result(&$vars) {
     } else {
       $items = field_get_items('node', $node, 'field_related_photos_video');
       if(!empty($items)) {
-        $related_nid = array_shift(array_shift($items));
+        $items = array_shift($items);
+        $related_nid = array_shift($items);
         $related_node = node_load($related_nid);
         
         // Add related content item.
