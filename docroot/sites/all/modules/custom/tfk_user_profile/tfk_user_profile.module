@@ -270,9 +270,7 @@ function tfk_user_profile_form($form, &$form_state, $user_profile) {
                 '#type' => 'value',
                 '#value' => $user_profile['elements']['#account']->uid
              );
-            $current_grade_level =	isset($user_profile['elements']['#account']->field_grade_level['und']['0']['tid']) 
-            						? $user_profile['elements']['#account']->field_grade_level['und']['0']['tid']
-            						: "";
+            $current_grade_level = $user_profile['elements']['#account']->field_grade_level['und']['0']['tid'];
         }
 
 	$form['nickname'] = array(
@@ -375,7 +373,7 @@ function tfk_user_profile_form_submit($form, &$form_state) {
 function tfk_user_profile (&$user_profile) {
     global $user;
     if (isset($user_profile['elements']['#account']->field_is_board_member)) {
-        if (isset($user_profile['elements']['#account']->field_is_board_member['und']['0']['value']) && $user_profile['elements']['#account']->field_is_board_member['und']['0']['value'] == "yes") {
+        if ($user_profile['elements']['#account']->field_is_board_member['und']['0']['value'] == "yes") {
             //Show board member page.
            drupal_set_title('Teacher Community');
            $output = t("<h2 class=\"tfk-user-profile-title\">Teacher Board Member &#8212; ".$user_profile['elements']['#account']->name."</h2><div id=\"tfk-user-profile-board-member-wrapper\">");
