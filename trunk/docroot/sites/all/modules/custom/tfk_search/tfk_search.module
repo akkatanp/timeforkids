@@ -1134,7 +1134,8 @@ class tfkSearchFeaturedItem {
       $this->slideshow_images = array();
       $images = field_get_items('node', $this, 'field_slideshow_images');
       
-    	$this->featured_item = node_load(array_shift(array_shift($images)));
+      $this->featured_item = array_shift($images);
+      $this->featured_item = node_load(array_shift($this->featured_item));
     	$featured_image = field_get_items('node', $this->featured_item, 'field_image');
     	
       if($images != FALSE && count($images)) {
