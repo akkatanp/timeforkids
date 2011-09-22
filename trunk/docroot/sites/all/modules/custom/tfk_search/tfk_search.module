@@ -238,10 +238,20 @@ function tfk_search_init() {
  * Implementation of hook_theme_registry_alter.
  *
  * @see theme_apachesolr_facet_link()
+ * @see apachesolr_theme()
  */
 function tfk_search_theme_registry_alter(&$theme_registry) {
+  
+  // Override some of the facet functions defined in apachesolr_theme with our own,
+  // since cannot theme facets the way we want with the contributed functions.
+
+  // Returns a link for a facet term, with the number (count) of results for that term.
   $theme_registry['apachesolr_facet_link']['function'] = 'theme_tfk_search_facet_link';
   $theme_registry['apachesolr_facet_link']['theme path'] = drupal_get_path('module', 'tfk_search');
+
+  // Returns a link to remove a facet filter from the current search.
+  $theme_registry['apachesolr_unclick_link']['function'] = 'theme_tfk_search_unclick_link';
+  $theme_registry['apachesolr_unclick_link']['theme path'] = drupal_get_path('module', 'tfk_search');
 }
 
 /**
@@ -287,13 +297,11 @@ function tfk_search_theme($existing, $type, $theme, $path) {
 }
 
 /**
- * Custom version of theme_apachesolr_facet_link() for generating facet links.
+ * Override theme_apachesolr_facet_link() in apachesolr.module.
  *
- * Apachesolr facet links are coded in theme_apachesolr_facet_link() in a
- * way that we cannot modify the HTML of the link (e.g., we want to insert a
- * span that contain the parenthesis with the count).
- *
- * @param array $vars
+ * - Append word "Grade" to grade level facets.
+ * - Wrap facets around custom HTML.
+ * - Suppress facet result count for certain SERPs per Spec.
  *
  * @see theme_apachesolr_facet_link()
  */
@@ -329,6 +337,35 @@ function theme_tfk_search_facet_link($vars) {
     return apachesolr_l($vars['facet_text'] . "<span class='solr-facet-link-count'> ({$vars['count']})</span>",  $vars['path'], $vars['options']);
   }
   
+}
+
+/**
+ * Override theme_apachesolr_unclick_link() in apachesolr.module.
+ *
+ * @see theme_apachesolr_unclick_link()
+ */
+function theme_tfk_search_unclick_link($vars) {
+ 
+  apachesolr_js();
+  if (empty($vars['options']['html'])) {
+    $vars['facet_text'] = check_plain(html_entity_decode($vars['facet_text']));
+    
+    // Prepend the word "Grade" to Grade Level facets.
+    if(preg_match('/im_([0-9]+)_field_grade_level/', $vars['options']['delta'])) {
+      if(preg_match('/[0-9]-[0-9]/', $vars['facet_text'])) {
+        $vars['facet_text'] = 'Grades '. $vars['facet_text'];
+      } else {
+        $vars['facet_text'] = 'Grade '. $vars['facet_text'];
+      }
+    }
+    
+  }
+  else {
+    // Don't pass this option as TRUE into apachesolr_l().
+    unset($vars['options']['html']);
+  }
+  $vars['options']['attributes']['class'] = 'apachesolr-unclick';
+  return apachesolr_l("(-)", $vars['path'], $vars['options']) . ' ' . $vars['facet_text'];
 }
 
 /**
