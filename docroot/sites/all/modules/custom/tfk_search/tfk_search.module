@@ -287,12 +287,6 @@ function tfk_search_theme($existing, $type, $theme, $path) {
       'variables' => array('list' => array()),
       'template' => 'tfk-search-back-btn',
     ),
-
-
-
-      
-
-
   );
 }
 
