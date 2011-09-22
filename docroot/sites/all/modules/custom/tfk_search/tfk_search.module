@@ -308,6 +308,11 @@ function theme_tfk_search_facet_link($vars) {
   //Different search interfaces have different specifications for the facet count.
   $interface = arg(0);
   
+  // Prepend the word "Grade" to Grade Level facets.
+  if(preg_match('/im_([0-9]+)_field_grade_level/', $vars['options']['delta'])) {
+    $vars['facet_text'] = 'Grade '. $vars['facet_text'];
+  }
+  
   // Supress facet count.
   if($interface == TFK_SEARCH_WORKSHEETS_PATH || $interface == TFK_SEARCH_PHOTOSVIDEO_PATH || $interface == TFK_SEARCH_MAGAZINE_PATH) {
     return apachesolr_l($vars['facet_text'],  $vars['path'], $vars['options']);
