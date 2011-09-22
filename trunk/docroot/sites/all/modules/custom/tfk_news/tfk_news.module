@@ -520,9 +520,13 @@ function tfk_news_views_query_alter(&$view, &$query) {
           'table' => 'node',
           'base' => 'node'
       );
+    }else{
+        $query->orderby[0]['field'] = "DATE_FORMAT(FROM_UNIXTIME(field_data_field_date.field_date_value),'%Y %m %d')";
     }
   }
 }
+
+
 
 
 function tfk_news_node_view($node, $view_mode, $langcode) {
