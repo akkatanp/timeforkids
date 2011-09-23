@@ -22,12 +22,14 @@
 	<?php endif; ?>
 </div>
 <div class="more-news div">
-	<?php if(!empty($more_news)): ?>
-		<h3>MORE NEWS:</h3>
-    <ul class="cover-story-list">
-  	  <?php foreach($more_news as $news_item): ?>
-    		<li><?php print $news_item; ?></li>
-    	<?php endforeach; ?>
-  	</ul>
+	<?php if(isset($additional_fields)): ?>
+  	<?php foreach($additional_fields as $field_name => $field_items): ?>
+  		<h3><?php print $field_name; ?></h3>
+      <ul class="cover-story-list">
+    	  <?php foreach($field_items as $field_item): ?>
+      		<li><?php print $field_item; ?></li>
+      	<?php endforeach; ?>
+    	</ul>
+  	<?php endforeach; ?>
 	<?php endif; ?>
 </div>
