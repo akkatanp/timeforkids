@@ -19,6 +19,51 @@ function tfk_magazine_ctools_plugin_api() {
 }
 
 /**
+ * Implementation of hook_flag_default_flags().
+ */
+function tfk_magazine_flag_default_flags() {
+  $flags = array();
+  // Exported flag: "Magazine".
+  $flags['magazine'] = array(
+    'content_type' => 'node',
+    'title' => 'Magazine',
+    'global' => '1',
+    'types' => array(
+      0 => 'article',
+    ),
+    'flag_short' => 'Magazine',
+    'flag_long' => 'Flag this node as part of a magazine issue.',
+    'flag_message' => '',
+    'unflag_short' => 'Magazine',
+    'unflag_long' => '',
+    'unflag_message' => '',
+    'unflag_denied_text' => '',
+    'link_type' => 'toggle',
+    'roles' => array(
+      'flag' => array(
+        0 => '3',
+        1 => '4',
+      ),
+      'unflag' => array(
+        0 => '3',
+        1 => '4',
+      ),
+    ),
+    'show_on_page' => 0,
+    'show_on_teaser' => 0,
+    'show_on_form' => 1,
+    'access_author' => '',
+    'i18n' => 0,
+    'api_version' => 2,
+    'module' => 'tfk_magazine',
+    'locked' => array(
+      0 => 'name',
+    ),
+  );
+  return $flags;
+}
+
+/**
  * Implementation of hook_image_default_styles().
  */
 function tfk_magazine_image_default_styles() {
