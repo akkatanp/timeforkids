@@ -27,7 +27,11 @@ function tfk_magazine_context_default_contexts() {
     ),
     'user' => array(
       'values' => array(
+        'Board Member' => 'Board Member',
+        'administrator' => 'administrator',
         'authenticated user' => 'authenticated user',
+        'editor' => 'editor',
+        'teacher' => 'teacher',
       ),
     ),
   );
