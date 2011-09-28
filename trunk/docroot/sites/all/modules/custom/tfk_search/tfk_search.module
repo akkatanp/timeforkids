@@ -515,11 +515,11 @@ function tfk_search_apachesolr_update_index(&$document, $node, $namespace) {
     $document->addField('sm_editorial_date_tfk', date('Y', $node->created));
   }
   
-  // Index related articles node reference field.
+  // Related content.
   if(isset($node->field_additional_content) && !empty($node->field_additional_content)) {
     
     $anonymous_user = user_load(0);
-    $additional_content =  field_get_items('node', $node, 'field_additional_content');
+    $additional_content = field_get_items('node', $node, 'field_additional_content');
     
     foreach($additional_content as $node) {
       // We verify that the related content is publicly accessible.
@@ -2585,8 +2585,8 @@ function tfk_search_preprocess_search_result(&$vars) {
       $vars['classes_array'][] = 'with-image';
     }
     
-    // View Full Article, on Photos and Video only do for videos.
-    if($node->type == 'video') {
+    // "View Full Article" link, on Photos and Video only do for videos. DEPRECATED.
+    /*if($node->type == 'video') {
       $additional_contents = field_get_items('node', $node, 'field_additional_content');
       if($additional_contents != FALSE) {
         // @todo We should be indexing this data instead of node_loading it.
@@ -2603,9 +2603,9 @@ function tfk_search_preprocess_search_result(&$vars) {
           array('attributes' => array('title' => $additional_node->title))
         );
       }
-    }
+    } */
       
-    // Related content.
+    // Related content. Currently using field_additional_content.
     $related_content = array();
 
     if(array_key_exists(TFK_SEARCH_RELATED_TITLE, $vars['result']['fields'])
@@ -2631,9 +2631,9 @@ function tfk_search_preprocess_search_result(&$vars) {
           'type' => $content_type
         );
       }
-    // Videos.
+    // Backup - if there is nothing in the index for field_additional_content.
     } else {
-      $items = field_get_items('node', $node, 'field_related_photos_video');
+      $items = field_get_items('node', $node, 'field_additional_content');
       if(!empty($items)) {
         $items = array_shift($items);
         $related_nid = array_shift($items);
