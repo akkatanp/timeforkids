@@ -95,7 +95,7 @@
       </div>
     <?php endif; ?>
     
-    <?php if ($print_title && $title): ?>
+    <?php if (isset($print_title) && $title): ?>
       <h2<?php print $title_attributes; ?>><?php print $title; ?></h2>
     <?php endif; ?>
     <?php print render($title_suffix); ?>
@@ -116,7 +116,7 @@
       <h2<?php print $title_attributes; ?>><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h2>
     <?php endif; ?>
     
-    <?php if ($print_title && $title): ?>
+    <?php if (isset($print_title) && $title): ?>
       <h2<?php print $title_attributes; ?>>
       <?php if($title_prefix): ?>
       	<?php print (is_array($title_prefix) ? render($title_prefix): $title_prefix); ?>
