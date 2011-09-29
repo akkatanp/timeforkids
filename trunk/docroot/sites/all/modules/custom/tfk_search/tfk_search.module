@@ -1601,9 +1601,9 @@ function tfk_search_preprocess_pager_top(&$vars) {
 		  // Prepend the word "Grade" to Grade Level facets.
 		  if(preg_match('/im_([0-9]+)_field_grade_level/', $filter['#name'])) {
 		    if(preg_match('/([0-9]+|[a-zA-Z]?)-[0-9]+/', $term_value)) {
-		      $vars['facet_text'] = 'Grades '. $term_value;
+		      $default_filters[$page_type][$filter['#name']]['filters'][] = 'Grades '. $term_value;
 		    } else {
-		      $vars['facet_text'] = 'Grade '. $term_value;
+		      $default_filters[$page_type][$filter['#name']]['filters'][] = 'Grade '. $term_value;
 		    }
 		    
 		  // Non grade-level facets.
