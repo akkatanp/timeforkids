@@ -2995,3 +2995,8 @@ body.page-404page #first-column .region-sidebar-first .section{
 .formitemcont{
     padding-left:5px;
 }
+
+
+.view-id-teacher_board_nodeblock_view .views-field-title strong{
+    font-size:30px;
+}
