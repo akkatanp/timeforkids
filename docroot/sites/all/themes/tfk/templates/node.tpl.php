@@ -145,7 +145,7 @@
       ?>
       <?php if($type == 'video'): ?>
       	
-      	<?php if(tfk_helper_user_has_role() && $variables['related_content']): ?>
+      	<?php if(tfk_helper_user_has_role() && isset($variables['related_content'])): ?>
       		<?php print $variables['related_content']; ?>
       	<?php endif; ?>
       	
