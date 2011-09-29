@@ -41,11 +41,11 @@ $slide_block = module_invoke('tfk_news', 'block_view','tfk-news-homepage-mini-le
 <?php if(strlen($fields['field_mini_lessons']->content) != 0 || strlen($fields['field_related_articles']->content) != 0):?>
     <div class="related-content-wrap">
         <div class="addit-content">Additional Content</div>
-        <?php if($fields['field_mini_lessons']): ?>
+        <?php if(isset($fields['field_mini_lessons'])): ?>
            <div class="addit-mini-lessons"><?php print $fields['field_mini_lessons']->label;?> : <?php print $fields['field_mini_lessons']->content;//print render($slide_block['content']);?></div>
         <?php endif; ?>
 
-        <?php if($fields['field_related_articles']): ?>
+        <?php if(isset($fields['field_related_articles'])): ?>
            <div class="addit-related-articles"><?php print $fields['field_related_articles']->label;?> : <?php print $fields['field_related_articles']->content;?></div>
         <?php endif; ?>
     </div>
