@@ -15,7 +15,7 @@
 		<?php foreach($images_data as $image):?>
 		
 		<div class="event <?php print $image['image_shape'] ?>" id="event-<?php print $i ?>" style="visibility: hidden;">
-		
+                    <?php if(isset($image['image_path'])):?>
 			<div class="event-image">
 				<?php $imgStr = substr($image['image_path'], -6); ?>
 				<?php if ($imgStr != 'public' && $image['image_attached'] == 1 ): ?>
@@ -23,6 +23,7 @@
 				<?php if(isset($image['image_credit'])):?><div class="event-credit"><?php print $image['image_credit'];?></div><?php endif;?>
 				<?php endif; ?>
 			</div>
+                    <?php endif;?>
 
 			
 			<div class="event-text">

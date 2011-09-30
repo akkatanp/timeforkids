@@ -314,16 +314,18 @@ function _get_atw_timeline_slideshow_images(){
 
     $additional_content = array();
     $addit_content = field_get_items('node', $node, 'field_additional_content');
-    foreach($addit_content as $i => $add_cont){
-        $additional_content[$i]['nid'] = $add_cont['nid'];
-        $additional_content[$i]['title'] = $add_cont['node']->title;
+    
+    if(is_array($addit_content) && !empty($addit_content)){
+        foreach($addit_content as $i => $add_cont){
+            $additional_content[$i]['nid'] = $add_cont['nid'];
+            $additional_content[$i]['title'] = $add_cont['node']->title;
+        }
     }
-
 
     $tmp_url = explode('/',request_uri());
     $tmp_url = array_slice($tmp_url, -3, 3, true);
     $tmp_url = array_merge(array(),$tmp_url);
-    if($record->type == 'atw_destination'){
+    if(isset($record->type) && $record->type == 'atw_destination'){
       $country_alias = $tmp_url[1].'/'.$tmp_url[2];
     }else{
           $country_alias = $tmp_url[0].'/'.$tmp_url[1];
