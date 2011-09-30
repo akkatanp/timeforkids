@@ -311,7 +311,7 @@ function theme_tfk_search_facet_link($vars) {
   $interface = arg(0);
   
   // Prepend the word "Grade" to Grade Level facets.
-  if(preg_match('/im_([0-9]+)_field_grade_level/', $vars['options']['delta'])) {
+  if(isset($vars['options']['delta']) && preg_match('/im_([0-9]+)_field_grade_level/', $vars['options']['delta'])) {
     if(preg_match('/([0-9]+|[a-zA-Z]?)-[0-9]+/', $vars['facet_text'])) {
       $vars['facet_text'] = 'Grades '. $vars['facet_text'];
     } else {
