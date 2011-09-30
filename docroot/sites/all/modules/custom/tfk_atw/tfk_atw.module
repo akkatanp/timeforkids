@@ -397,7 +397,11 @@ function _tfk_atw_destination_related_data(){
 
         $sql = db_query('select field_resources_label_value as resources_label from {field_data_field_resources_label} where entity_id = :nid',array(':nid' => $nid));
         $record = $sql->fetch();
-        $vars['resources_label'] = $record->resources_label;
+        if(isset($record->resources_label)){
+            $vars['resources_label'] = $record->resources_label;
+        }else{
+            $vars['resources_label'] = '';
+        }
         $vars['worksheets'] = _get_worksheets_by_nid($nid);
         $vars['related_articles'] = _get_related_articles_by_nid($nid);
 
