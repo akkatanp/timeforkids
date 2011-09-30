@@ -248,7 +248,16 @@ function tfk_teachers_community_preprocess_page(&$variables, $hook) {
     drupal_add_js($module_path. '/js/tfk_teachers_community.js', 'file');
     
     // We dynamically pass to the animation script the CSS selector.
-    drupal_add_js(array('tfk_teachers_community' => array('btn_id' => $btn_id, 'btn_img' => '/'. $module_path. $btn_img)), 'setting');
+    $btn_attr = array();
+    if(isset($btn_id)) {
+      $btn_attr['btn_id'] = $btn_id;
+    }
+    if(isset($btn_img)) {
+      $btn_attr['btn_img'] = '/'. $module_path. $btn_img;
+    }
+    if(isset($btn_id) && isset($btn_img)) {
+      drupal_add_js(array('tfk_teachers_community' => $btn_attr), 'setting');
+    }
     
     // Unset Editor's Menu.
     $page = & $variables['page'];
