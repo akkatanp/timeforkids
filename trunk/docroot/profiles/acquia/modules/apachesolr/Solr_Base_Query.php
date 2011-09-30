@@ -209,14 +209,14 @@ class SolrBaseQuery implements DrupalSolrQueryInterface {
   protected function unset_filter(&$fields, $name, $value) {
     if (!isset($value)) {
       foreach ($fields as $pos => $values) {
-        if ($values['#name'] == $name) {
+        if (array_key_exists('#name', $values) && $values['#name'] == $name) {
           unset($fields[$pos]);
         }
       }
     }
     else {
       foreach ($fields as $pos => $values) {
-        if ($values['#name'] == $name && $values['#value'] == $value) {
+        if (array_key_exists('#name', $values) && $values['#name'] == $name && $values['#value'] == $value) {
           unset($fields[$pos]);
         }
       }
