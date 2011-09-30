@@ -3,10 +3,10 @@ $form = array_shift($variables);
 ?>
 <div class="logincontent" id="login-container" >
 	<div id="login-header">Log in, Register or subscribe</div><div id="login-form-container">
-		<?php 
-			if(isset($form['form_build_id'])) { 
+		<?php
+			if(isset($form['form_build_id'])) {
 				print render($form['form_build_id']);
-			}	 
+			}
 		?>
 		<input name="form_id" value="user_login" type="hidden">
 		<h2>Already Registered for subscriber-only teacher content? Log in now!</h2>
@@ -23,5 +23,5 @@ $form = array_shift($variables);
 				<li>If you are not a subscriber, click "Want to subscribe?"</li>
 			</ul>
 		</div>
-	<div class="clearfix" id="login-footer"><a href="https://secure.customersvc.com/servlet/Show?WESPAGE=am/tablet/tk/tk_web_login.jsp&MSDDMOFF=AONF&MSDTRACK=TKSO">Not yet registered?</a> <a href="https://subscription.timeforkids.com/storefront/subscribe-to-time-for-kids/site/tk-digital0711.html?link=1005016">Want to subscribe?</a></div>
+	<div class="clearfix" id="login-footer"><a href="https://secure.customersvc.com/servlet/Show?WESPAGE=am/tablet/tk/tk_web_login.jsp&MSDDMOFF=AONF&MSDTRACK=TKSO">Not yet registered?</a> <a href="https://subscription.timeinc.com/storefront/subscribe-to-time-for-kids/site/tk-digital0711.html#panel_op2">Want to subscribe?</a></div>
 </div>
