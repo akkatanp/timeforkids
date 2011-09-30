@@ -68,7 +68,7 @@
 <?php if($render): ?>
 <li class="<?php print $classes; ?>"<?php print $attributes; ?>>
 
-  <?php if($tfk_search_res_skills):?>
+  <?php if(isset($tfk_search_res_skills)): ?>
     <!-- SKills Vocab Term : <?php print $tfk_search_res_skills;?> --><br/>
   <?php endif;?>
   
@@ -92,7 +92,7 @@
     </div>
    
   	<div class='col2'>
-      <?php if($tfk_search_res_grade_level):?>
+      <?php if(isset($tfk_search_res_grade_level)):?>
         Grade Level:<?php print $tfk_search_res_grade_level;?>
       <?php endif;?>
     
@@ -114,13 +114,13 @@
       <div class="search-snippet-info">
         <div class="search-snippet-body">
           <?php if ($snippet) : ?>
-            <p class="search-snippet"<?php print $content_attributes; ?>><?php print $snippet; ?></p>
+            <p class="search-snippet" <?php if(isset($content_attributes)): ?><?php print $content_attributes; ?><?php endif; ?>><?php print $snippet; ?></p>
           <?php endif; ?>
         </div>
         
         <div class="search-result-links">
           <?php if($tfk_worksheet_pdf_link): ?>
-          	<span class="search-result-download-link <?php print $cont_type_class; ?>"><?php print $tfk_worksheet_pdf_link; ?></span>
+          	<span class="search-result-download-link <?php if(isset($cont_type_class)): ?><?php print $cont_type_class; ?><?php endif; ?>"><?php print $tfk_worksheet_pdf_link; ?></span>
           <?php endif; ?>
           
           <?php if($favorites_flag_link): ?>
@@ -130,7 +130,7 @@
           
       </div>
       
-      <?php if($related_content):?>
+      <?php if(isset($related_content)):?>
         <?php print $related_content; ?>
       <?php endif;?>
     </div>
