@@ -76,7 +76,7 @@
         });
         
         if(!selected) {
-          alert("Choose a search to delete");
+          alert("Choose a saved search item to delete.");
           event.preventDefault();
         } else {
           var confirmation = confirm("Are you sure you want to delete this search?");
