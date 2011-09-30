@@ -68,9 +68,12 @@ function theme_featured_block_sidebar($args) {
  * Returns a themed suggestion box.
  */
 function theme_suggestion_box($options = array()) {
-  $output = "<div class='suggestion-box-wrapper ". implode(' ', $options['wrapper-class']). "'>";
+
+  $wrapper_class = (array_key_exists('wrapper-class', $options)) ? implode(' ', $options['wrapper-class']): '';
+  $class = (array_key_exists('class', $options)) ? implode(' ', $options['class']): '';
   
-  $output .= "<div id='{$options['id']}' class='". implode(' ', $options['class']). "'>";
+  $output = "<div class='suggestion-box-wrapper ". $wrapper_class. "'>";
+  $output .= "<div id='{$options['id']}' class='". $class. "'>";
   
   $message = t($options['message']);
   $link = l(t($options['link_title']), $options['link_dest']);
