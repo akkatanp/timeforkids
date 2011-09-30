@@ -68,8 +68,11 @@ function _tfk_favorites_links_block_content() {
 
   // The Favorites behavior causes havoc with Views, only add it on the search pages.
   if($path == TFK_SEARCH_PHOTOSVIDEO_PATH || $path == TFK_SEARCH_WORKSHEETS_PATH || $path == 'my-favorites') {
-    if(tfk_helper_user_has_role()) {
-      // We add the CSS here so the block can be added to multiple pages with ease.
+    
+  	// Supressed role check here. This is only used in Worksheets, whose menu item should be already restricted.
+  	//if(tfk_helper_user_has_role()) {
+      
+  	  // We add the CSS here so the block can be added to multiple pages with ease.
       drupal_add_css(drupal_get_path('module', 'tfk_favorites'). '/css/tfk_my_favorites_block.css');
   
       $favorites_module_path = drupal_get_path('module', 'tfk_favorites');
@@ -95,7 +98,7 @@ function _tfk_favorites_links_block_content() {
       // Theme output.
       $variables = array('ref' => $path, 'view_all' => $view_all, 'clear_all' => $clear_all);
       return theme('tfk_favorites_links', $variables);
-    }
+    //}
   }
   
 }
