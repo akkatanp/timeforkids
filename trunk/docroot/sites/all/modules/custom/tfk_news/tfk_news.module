@@ -319,29 +319,37 @@ function _tfk_news_current_filters(){
 
 function _tfk_news_taxonomy_navigation(){
   
-  $nid = arg(1);
-  $node = node_load($nid);
+  $terms = array();
+  $args= arg();
+  
+    
+    if(isset($args[1]) && is_numeric($args[1]) && $args[0] == 'node'){
+      $nid = $args[1];
+      $node = node_load($nid);
 
-  
-  $tmp_cat =  field_get_items('node', $node, 'field_article_category');
-  $art_category = $tmp_cat[0]['tid'];
-  
-  
-  
+
+      $tmp_cat =  field_get_items('node', $node, 'field_article_category');
+      $art_category = $tmp_cat[0]['tid'];
+
+    }else{
+        $art_category = 0;
+    }
+
   $vid = 3; //vocabulary id for article categories
   //now we have to get all taxonomy terms from this vocabulary that have articles
   $result = db_query('select distinct ti.tid,td.name from taxonomy_index ti left join taxonomy_term_data td on ti.tid = td.tid left join node n on n.nid = ti.nid where n.type = :type and td.vid = :vid',array('type'=>'article','vid'=>$vid));
-  $terms = array();
-  
+
+
   foreach ($result as $i=> $record) {
-      
+
     $terms[$i]['term_name']= $record->name;
     $terms[$i]['class']= '';
-    
+
     if($art_category == $record->tid){
       $terms[$i]['class']= 'highlighted';
     }
   }
+  
   
   
   
@@ -351,10 +359,19 @@ function _tfk_news_taxonomy_navigation(){
   $list = array('terms_with_articles' => $terms);
   
   $sql = "select n.nid from node n LEFT JOIN field_data_field_article_poll pa on n.nid = pa.entity_id where n.status = 1 and pa.field_article_poll_nid IS NOT NULL limit 0,1";
+  
+  global $user;
+  
+  if($user->uid == 0){
+      
+      $sql = 'select n.nid, flag_content_node.fid from node n LEFT JOIN field_data_field_article_poll pa on n.nid = pa.entity_id 
+        LEFT JOIN flag_content flag_content_node ON n.nid = flag_content_node.content_id AND flag_content_node.fid = 32  
+        where n.status = 1 and pa.field_article_poll_nid IS NOT NULL and flag_content_node.fid IS NULL limit 0,1 ';
+  }
+  
   $query = db_query($sql,array());
-  
   $res = $query->fetch();
-  
+
   
   if(isset($res->nid)){
       $list['display_poll_link'] = 1;
@@ -584,18 +601,23 @@ function tfk_news_node_view($node, $view_mode, $langcode) {
     array_splice($matches[2],$half_index,0,$badge);
     $body = '';
     foreach($matches[2] as $k => $paragraph){
-      $body .= '<p '.$matches[1][$k].'>'.$paragraph.'</p>';
+        
+        if(isset($matches[1][$k])){
+            $body .= '<p '.$matches[1][$k].'>'.$paragraph.'</p>';
+        }
     }
    $node->content['field_body'][0]['#markup'] = $body;
 
   }
 
   if($node->type == 'article'){
-     $count = count($node->content['field_mini_lessons']['#object']->content['field_mini_lessons']['#items']);
+      if(isset($node->content['field_mini_lessons'])){
+         $count = count($node->content['field_mini_lessons']['#object']->content['field_mini_lessons']['#items']);
 
-     for($i = 0; $i < $count - 1; $i++ ){
-      $node->content['field_mini_lessons']['#object']->content['field_mini_lessons'][$i]['#markup'] .= '&nbsp;&nbsp;|';
-     }
+         for($i = 0; $i < $count - 1; $i++ ){
+          $node->content['field_mini_lessons']['#object']->content['field_mini_lessons'][$i]['#markup'] .= '&nbsp;&nbsp;|';
+         }
+      }
 
   }
 
@@ -607,6 +629,7 @@ function tfk_news_node_view($node, $view_mode, $langcode) {
 function tfk_news_preprocess_blpock(&$variables){
   if(is_numeric(arg(1))){
     $node = node_load(arg(1));
+    
     if(!isset($node->field_kid_reporter['und'][0])){
       if($variables['block']->delta == 'random_kid_reporters-block'){
           $variables['content'] = '';

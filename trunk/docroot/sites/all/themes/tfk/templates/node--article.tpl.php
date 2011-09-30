@@ -85,8 +85,10 @@
 if($is_anon == 1){
   unset($content['group_additional_content']);
 }else{
-  $addit_content = $content['group_additional_content'];
-  $content['group_additional_content']['#prefix'] = '<b>Additional Content:</b><br/>'.$content['group_additional_content']['#prefix'];
+    if(isset($content['group_additional_content'])){
+        $addit_content = $content['group_additional_content'];
+        $content['group_additional_content']['#prefix'] = '<b>Additional Content:</b><br/>'.$content['group_additional_content']['#prefix'];
+    }
 }
 
 $visible=1;
@@ -147,7 +149,7 @@ if(count(arg()) == 4) {
             <?php  print render($addit_content); ?>
           <?php endif;?>
             
-            <?php if($rendered_poll):?>
+            <?php if(isset($rendered_poll)):?>
                  <?php print $rendered_poll; ?>
             <?php endif;?>
             
