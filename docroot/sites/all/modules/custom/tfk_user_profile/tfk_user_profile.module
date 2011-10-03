@@ -387,7 +387,8 @@ function tfk_user_profile (&$user_profile) {
             //Only the user can edit it's his data.
             //Show user settings page
             drupal_set_title('My Account');
-            $output = t("<h2 class=\"tfk-user-user-profile-title\">Account Settings</h2>".drupal_render(drupal_get_form('tfk_user_profile_form', $user_profile)));
+            $tfk_user_profile_form = drupal_get_form('tfk_user_profile_form', $user_profile);
+            $output = t("<h2 class=\"tfk-user-user-profile-title\">Account Settings</h2>".drupal_render($tfk_user_profile_form));
         } else {
             //Default behavior
         }
