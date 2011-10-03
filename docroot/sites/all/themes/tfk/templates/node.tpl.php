@@ -86,7 +86,7 @@
   <?php if ($type == 'teacher_community_question'): ?>
     
     <?php if (!$page && $title): ?>
-      <h2<?php print $title_attributes; ?>><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h2>
+      <h2 <?php if(isset($title_attributes)): ?><?php print $title_attributes; ?><?php endif; ?>><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h2>
     <?php endif; ?>
     
     <?php if ($type == 'teacher_community_question'): ?>
@@ -96,15 +96,15 @@
     <?php endif; ?>
     
     <?php if (isset($print_title) && $title): ?>
-      <h2<?php print $title_attributes; ?>><?php print $title; ?></h2>
+      <h2 <?php if(isset($title_attributes)): ?><?php print $title_attributes; ?><?php endif; ?>><?php print $title; ?></h2>
     <?php endif; ?>
     <?php print render($title_suffix); ?>
   
-    <?php if ($unpublished): ?>
+    <?php if (isset($unpublished) && $unpublished): ?>
       <div class="unpublished"><?php print t('Unpublished'); ?></div>
     <?php endif; ?>
   
-    <div class="content"<?php print $content_attributes; ?>>
+    <div class="content" <?php if(isset($content_attributes)): ?><?php print $content_attributes; ?><?php endif; ?>>
       <?php print render($content); ?>
     </div>
 
