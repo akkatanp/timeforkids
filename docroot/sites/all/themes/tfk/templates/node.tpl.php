@@ -125,17 +125,17 @@
     <?php endif; ?>
     <?php print render($title_suffix); ?>
   
-    <?php if ($unpublished): ?>
+    <?php if (isset($unpublished) && $unpublished): ?>
       <div class="unpublished"><?php print t('Unpublished'); ?></div>
     <?php endif; ?>
   
-    <?php if ($submitted): ?>
+    <?php if (isset($submitted) && $submitted): ?>
       <div class="submitted">
         <?php print $submitted; ?>
       </div>
     <?php endif; ?>
   
-    <div class="content"<?php print $content_attributes; ?>>
+    <div class="content" <?php if(isset($content_attributes)): ?><?php print $content_attributes; ?><?php endif; ?>>
       <?php
         // We hide the comments and links now so that we can render them later.
         hide($content['comments']);
