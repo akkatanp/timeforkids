@@ -37,9 +37,7 @@
     <?php endif; ?>
 <?php endforeach; ?>
 
-
-
-<?php if(strlen($fields['field_related_articles']->content) != 0):?>
+<?php if(isset($fields['field_related_articles']) && !empty($fields['field_related_articles']->content)):?>
     <div class="related-content-wrap">
         <!--<div class="addit-content"><?php print $fields['field_related_articles']->content;?></div>-->
       <div class="addit-content">Additional Content</div>
