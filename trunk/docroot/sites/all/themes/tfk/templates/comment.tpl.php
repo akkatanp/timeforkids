@@ -79,9 +79,11 @@
           <?php print $submitted; ?>
         </div>
         
-        <div class="author-profile-link">
-          <?php print $author_profile_link; ?>
-        </div>
+        <?php if(isset($author_profile_link)): ?>
+          <div class="author-profile-link">
+            <?php print $author_profile_link; ?>
+          </div>
+        <?php endif; ?>
         
     	</div>
   	</div>
