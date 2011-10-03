@@ -143,7 +143,8 @@ function tfk_ads_omni_get_config_vars(&$variables){
      } else {
         $path_array = explode("/", str_replace(base_path(), '', drupal_get_path_alias(request_uri(), 1)));
      }
-     $path_array[(count($path_array) - 1)] = array_shift(explode("?", $path_array[(count($path_array) - 1)]));
+     $path_array2 = explode("?", $path_array[(count($path_array) - 1)]);
+     $path_array[(count($path_array) - 1)] = array_shift($path_array2);
      if (strlen($path_array[0]) < 1 || $path_array[0] == "node") {
          $channel_array['channel'] = "homepage";
          $channel_array['is_channel'] = 1;
