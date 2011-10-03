@@ -13,7 +13,7 @@
 
   <div id="navigation" class="clearfix">
     <div class="section clearfix">
-      <?php if ($site_name || $site_slogan): ?>
+      <?php if (isset($site_name) || isset($site_slogan)): ?>
         <div id="name-and-slogan">
           <?php if ($site_name): ?>
             <?php if ($title): ?>
@@ -27,7 +27,7 @@
             <?php endif; ?>
           <?php endif; ?>
 
-          <?php if ($site_slogan): ?>
+          <?php if (isset($site_slogan)): ?>
             <div id="site-slogan"><?php print $site_slogan; ?></div>
           <?php endif; ?>
         </div><!-- /#name-and-slogan -->
@@ -56,38 +56,40 @@
       <?php print render($page['sidebar_second']); ?>
       <h1 class="title" id="page-title"><?php print $section_title; ?></h1>
 
-      <?php print render($page['sidebar_first']); ?>
+      <?php if(isset($page['sidebar_first'])): ?><?php print render($page['sidebar_first']); ?><?php endif; ?>
 
       <div id="content" class="column"><div class="section">
-        <?php print render($page['highlighted']); ?>
+        <?php if(isset($page['highlighted'])): ?><?php print render($page['highlighted']); ?><?php endif; ?>
         <?php print $breadcrumb; ?>
         <a id="main-content"></a>
         <?php print $messages; ?>
         <?php if ($tabs = render($tabs)): ?>
           <div class="tabs"><?php print $tabs; ?></div>
         <?php endif; ?>
-        <?php print render($page['help']); ?>
-        <?php if ($action_links): ?>
+        <?php if (isset($page['help'])): ?>
+          <?php print render($page['help']); ?>
+        <?php endif; ?>
+        <?php if (isset($action_links)): ?>
           <ul class="action-links"><?php print render($action_links); ?></ul>
         <?php endif; ?>
 
         <div class="homework-helper-content">
-          <?php if ($tfk_header_tag): ?>
+          <?php if (isset($tfk_header_tag)): ?>
             <div class="tfk-header-tag"><?php print $tfk_header_tag; ?></div>
           <?php endif; ?>
-          <?php if ($grammar_practice_header): ?>
+          <?php if (isset($grammar_practice_header)): ?>
             <div id="grammar_practice_header"><?php print $grammar_practice_header; ?></div>
           <?php endif; ?>
-          <?php if ($flashcards_return): ?>
+          <?php if (isset($flashcards_return)): ?>
             <div class="flashcards-return"><?php print $flashcards_return; ?></div>
           <?php endif; ?>
-          <?php if ($node && $title && (arg(2) != 'edit')): ?>
+          <?php if ($node && isset($title) && (arg(2) != 'edit')): ?>
             <div class="homework-helper-title"><?php print $title; ?></div>
           <?php endif; ?>
           <?php print render($page['content']); ?>
         </div>
 
-        <?php print $feed_icons; ?>
+        <?php if(isset($feed_icons)): ?><?php print $feed_icons; ?><?php endif; ?>
       </div></div><!-- /.section, /#content -->
 
     </div>
