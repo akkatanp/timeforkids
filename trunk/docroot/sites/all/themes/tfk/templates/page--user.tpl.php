@@ -139,15 +139,15 @@ t('Home'); ?>" rel="home"><span><?php print $site_name; ?></span></a>
                 ?>
 	</div>
 	
-	<?php if($page['header']['menu_menu-tfk-teachers-menu']): ?>
-	<div id="teacher-nav-container">
-		<div class="inner">
-			<?php print render($page['header']['views_homepage_username-block']); ?>
-			<?php print render($page['header']['block_3']); ?>
-			<?php print render($page['header']['block_11']); ?>
-			<?php print render($page['header']['menu_menu-tfk-teachers-menu']); ?>
-		</div>
-	</div>
+	<?php if(isset($page['header']['menu_menu-tfk-teachers-menu'])): ?>
+  	<div id="teacher-nav-container">
+  		<div class="inner">
+  			<?php print render($page['header']['views_homepage_username-block']); ?>
+  			<?php print render($page['header']['block_3']); ?>
+  			<?php print render($page['header']['block_11']); ?>
+  			<?php print render($page['header']['menu_menu-tfk-teachers-menu']); ?>
+  		</div>
+  	</div>
 	<?php endif; ?>
 	
 	</div></div><!-- /.section, /#header -->
