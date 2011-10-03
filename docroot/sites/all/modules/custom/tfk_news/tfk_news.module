@@ -493,7 +493,7 @@ function theme_tfk_news_formatter_tfk_news_grade_title($element) {
 
 
 function tfk_news_views_query_alter(&$view, &$query) {
-  if($view->name == 'news_archive'){
+ /* if($view->name == 'news_archive'){
     if(strlen(arg(1)) == 4 && is_numeric(arg(1))){
 
       unset($query->where[0]['conditions'][2]);
@@ -541,6 +541,7 @@ function tfk_news_views_query_alter(&$view, &$query) {
         $query->orderby[0]['field'] = "DATE_FORMAT(FROM_UNIXTIME(field_data_field_date.field_date_value),'%Y %m %d')";
     }
   }
+  */
 }
 
 
@@ -765,7 +766,7 @@ function tfk_news_preprocess_node(&$variables){
             left join taxonomy_index ti on td.tid = ti.tid where td.vid = :vid and ti.nid = :nid',array('vid' => 6,'nid' => $lesson_nid));
           $res_record = $sql->fetch();
 
-          $lessons .= l('Grade '.$res_record->name,'node/'.$lesson_nid);
+          $lessons = l('Grade '.$res_record->name,'node/'.$lesson_nid);
           if($i != count($tmp_lessons)){
             $lessons .= ' | ';
           }
