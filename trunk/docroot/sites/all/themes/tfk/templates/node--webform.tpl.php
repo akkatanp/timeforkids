@@ -93,7 +93,7 @@
   <?php if (!$page && $title): ?>
     <!--<h2<?php //print $title_attributes; ?>><a href="<?php //print $node_url; ?>"><?php //print $title; ?></a></h2>-->
   <?php endif; ?>
-  <?php print render(isset($title_suffix)); ?>
+  <?php if(isset($title_suffix)): ?><?php print render($title_suffix); ?><?php endif; ?>
 
   <?php if (isset($unpublished)): ?>
     <div class="unpublished"><?php print t('Unpublished'); ?></div>
