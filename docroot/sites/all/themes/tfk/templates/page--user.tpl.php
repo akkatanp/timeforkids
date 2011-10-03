@@ -134,7 +134,8 @@ t('Home'); ?>" rel="home"><span><?php print $site_name; ?></span></a>
                 //$form = drupal_get_form('search_form');
                 //$form['basic']['keys']['#title'] = 'lolopk';
                 //print_r($form);
-                  print render(drupal_get_form('search_form'));
+                $search_form = drupal_get_form('search_form');
+                print render($search_form);
                 ?>
 	</div>
 	
