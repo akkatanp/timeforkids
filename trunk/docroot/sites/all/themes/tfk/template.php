@@ -266,7 +266,7 @@ function tfk_preprocess_page(&$variables, $hook) {
   if (isset($variables['page']['content']['system_main']['#theme']) && $variables['page']['content']['system_main']['#theme'][0] == "user_login") {
         $variables['tabs'] = "";/*Hide tabs per infosec*/
   }
-  if (array_key_exists('section_title', $variables) && $variables['section_title'] == t('Homework Helper')) {
+  if (isset($variables['node']->type) && array_key_exists('section_title', $variables) && $variables['section_title'] == t('Homework Helper')) {
     $variables['tfk_header_tag'] = tfk_header_tag($variables['node']->type);
     $variables['theme_hook_suggestions'][] = 'page__homework_helper';
   }

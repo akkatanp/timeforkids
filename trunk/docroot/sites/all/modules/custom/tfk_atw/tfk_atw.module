@@ -712,7 +712,7 @@ function tfk_atw_form_alter(&$form,&$form_state,$form_id) {
 	if(substr($form_id,0, 19) == 'webform_client_form') {
 	  $node = menu_get_object();
           
-	  if ($node->type == 'webform') {
+	  if (isset($node->type) && $node->type == 'webform') {
 	           $dest_slug = arg(1);
               //$form['#action'] = url('destination/'.$dest_slug.'/challenge');
                    $form['actions']['submit']['#value'] = 'How did I do?';

@@ -84,7 +84,7 @@
   
   <?php print render($title_suffix); ?>
   
-  <?php if($tfk_search_res_image):?>
+  <?php if(isset($tfk_search_res_image)):?>
     <img src="<?php print $tfk_search_res_image;?>">
   <?php endif;?>
 
@@ -97,7 +97,7 @@
     </div>
 	<?php endif; ?>
   
-  <?php if($show_related_resources): ?>
+  <?php if(isset($show_related_resources)): ?>
     <div class="related-content-wrap">
       <?php if(!empty($magazine_materials) || !empty($magazine_related)):?>
          <h2 class="addit-content">Additional Content:</h2>
