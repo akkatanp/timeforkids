@@ -383,17 +383,18 @@ function tfk_user_profile (&$user_profile) {
            $output .= t("<p class=\"tfk-user-profile-board-member-taught\">".$user_profile['elements']['#account']->field_teacher_grade_taught['und']['0']['value']."</p>");
            $output .= t("<p class=\"tfk-user-profile-board-member-location\">".$user_profile['elements']['#account']->field_teacher_location['und']['0']['value']."</p>");
            $output .= t("<p class=\"tfk-user-profile-board-member-copy\">".$user_profile['elements']['#account']->field_profile_copy['und']['0']['value']."</p></div>");
+           return $output;
         } elseif ($user->uid == $user_profile['elements']['#account']->uid) {
             //Only the user can edit it's his data.
             //Show user settings page
             drupal_set_title('My Account');
             $tfk_user_profile_form = drupal_get_form('tfk_user_profile_form', $user_profile);
             $output = t("<h2 class=\"tfk-user-user-profile-title\">Account Settings</h2>".drupal_render($tfk_user_profile_form));
+            return $output;
         } else {
             //Default behavior
         }
     }
-    return $output;
 }
 
 
