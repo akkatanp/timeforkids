@@ -93,7 +93,7 @@ function theme_video_thumbnail($variables) {
 // return if no file path found for the video thumbnails and add log message
   if (empty($thumbnail['filepath'])) {
     watchdog('video', 'Unable to find the video thumbnail for the %node.', array('%node' => $variables['entity']->title), WATCHDOG_ERROR);
-    return '<!-- File not found: ' . $thumbnail['filepath'] . ' -->';
+    return "<!-- File not found for nid {$variables['entity']->nid} ({$variables['entity']->title}) -->";
   }
   $image = array(
     'path' => $thumbnail['filepath'],
