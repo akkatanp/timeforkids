@@ -84,28 +84,28 @@
 <div class="challengeheader"></div>
 <div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
   
-  <?php print $user_picture; ?>
+  <?php if(isset($user_picture)): ?><?php print $user_picture; ?><?php endif; ?>
 
-  <?php print render($title_prefix); ?>
+  <?php if(isset($title_prefix)): ?><?php print render($title_prefix); ?><?php endif; ?>
 
-  <h2><?php print $title; ?></h2>
+  <?php if(isset($title)): ?></h2><?php print $title ?></h2><?php endif; ?>
 
   <?php if (!$page && $title): ?>
-    <!--<h2<?php print $title_attributes; ?>><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h2>-->
+    <!--<h2<?php //print $title_attributes; ?>><a href="<?php //print $node_url; ?>"><?php //print $title; ?></a></h2>-->
   <?php endif; ?>
-  <?php print render($title_suffix); ?>
+  <?php print render(isset($title_suffix)); ?>
 
-  <?php if ($unpublished): ?>
+  <?php if (isset($unpublished)): ?>
     <div class="unpublished"><?php print t('Unpublished'); ?></div>
   <?php endif; ?>
 
-  <?php if ($display_submitted): ?>
+  <?php if (isset($display_submitted)): ?>
     <div class="submitted">
       <?php print $submitted; ?>
     </div>
   <?php endif; ?>
 
-  <div class="content"<?php print $content_attributes; ?>>
+  <div class="content" <?php if(isset($content_attributes)): ?><?php print $content_attributes; ?><?php endif; ?>>
     <?php
       // We hide the comments and links now so that we can render them later.
       hide($content['comments']);
