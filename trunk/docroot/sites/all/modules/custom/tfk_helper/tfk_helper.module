@@ -316,11 +316,11 @@ function tfk_helper_get_slideshow_data($nid) {
       $date = tfk_helper_render_field('node', $node, 'field_date');
       
       // Description.
-      $body = array_shift(field_get_items('node', $image['node'], 'body'));
-      if(!empty($body['safe_summary'])) {
-        $description = $body['safe_summary'];
+      $field_body = field_get_items('node', $image['node'], 'body');
+      if($field_body && !empty($field_body[0]['safe_summary'])) {
+        $description = $field_body[0]['safe_summary'];
       } else {
-        $description = $body['safe_value'];
+        $description = $field_body[0]['safe_value'];
       }
       
       $derivative_path = tfk_search_get_thumbnail($image_field['fid'], 'tfk_rect_large');
