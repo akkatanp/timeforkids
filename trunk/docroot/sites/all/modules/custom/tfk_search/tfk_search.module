@@ -1596,7 +1596,7 @@ function tfk_search_preprocess_pager_top(&$vars) {
       if(array_key_exists($filter['#name'], $default_filters[$page_type])) {
         $default_filters[$page_type][$filter['#name']]['active'] = TRUE;
         if($filter['#name'] != 'sm_editorial_date_tfk') {
-          $term_value = taxonomy_term_title(taxonomy_term_load($filter['#value'])); 	
+          $term_value = taxonomy_term_title(taxonomy_term_load($filter['#value']));
           
 		  // Prepend the word "Grade" to Grade Level facets.
 		  if(preg_match('/im_([0-9]+)_field_grade_level/', $filter['#name'])) {
@@ -1609,7 +1609,7 @@ function tfk_search_preprocess_pager_top(&$vars) {
 		  // Non grade-level facets.
 		  } else {
 		  	$default_filters[$page_type][$filter['#name']]['filters'][] = $term_value;
-		  }     
+		  }
           
           
         } else {
@@ -1672,18 +1672,20 @@ function tfk_search_apachesolr_modify_query($query, $caller) {
   
   $superquery = apachesolr_drupal_query();
   
-  $content_types = array(
+  // URL Path -to- Content Type Map.
+  // Depending on the URL, are the content types we show.
+  $content_type_map = array(
     TFK_SEARCH_PHOTOSVIDEO_PATH => array('video', 'slideshow'),
-    TFK_SEARCH_WORKSHEETS_PATH => array('worksheet'),
+    TFK_SEARCH_WORKSHEETS_PATH => array('worksheet', 'pdf_quiz'),
     TFK_SEARCH_MAGAZINE_PATH => array('magazine_issue'),
   );
   
-  if(array_key_exists($query->get_base_path(), $content_types)) {
+  $path = $query->get_base_path();
+  if(array_key_exists($path, $content_type_map)) {
     
     // Filter documents by content type.
     $ct_subquery = apachesolr_drupal_query();
-    $path = $query->get_base_path();
-    foreach($content_types[$path] as $bundle) {
+    foreach($content_type_map[$path] as $bundle) {
       $ct_subquery->add_filter('bundle', $bundle);
     }
     $superquery->add_subquery($ct_subquery, 'OR');
@@ -1752,7 +1754,7 @@ function tfk_search_apachesolr_modify_query($query, $caller) {
     // Logged in content types.
     } else {
       // Teachers can see cover stories.
-      $content_types = array('article', 'slideshow', 'video', 'atw_destination', 'minisite', 'tfk_extra', 'worksheet', 'mini_lesson','a_paper','grammar_practice','writing_tips');
+      $content_types = array('article', 'slideshow', 'video', 'atw_destination', 'minisite', 'tfk_extra', 'worksheet', 'mini_lesson', 'a_paper', 'grammar_practice', 'writing_tips', 'pdf_quiz');
       
       $ct_subquery = apachesolr_drupal_query();
       foreach($content_types as $content_type) {
@@ -2380,6 +2382,25 @@ function tfk_search_preprocess_search_result(&$vars) {
         } else {
           $vars['show_related_resources'] = FALSE;
         }
+      }
+      break;
+      
+    case 'pdf_quiz':
+      $vars['title'] = $title;
+      
+      if(isset($node->field_grade_level)) {
+        $tmp_tid = field_get_items('node', $node, 'field_grade_level');
+        $tid = $tmp_tid[0]['tid'];
+        $name_res =  db_query('select name from taxonomy_term_data where tid = :tid',array('tid' => $tid ));
+        $name = $name_res->fetch();
+        $name = $name->name;
+        $vars['tfk_search_cont_type_suffix'] = 'GRADE '. $name;
+      }
+      
+      $body = field_get_items('node', $node, 'field_deck');
+      if(!empty($body[0]['safe_value'])) {
+        $teaser = $body[0]['safe_value'];
+        $skip_processing = TRUE;
       }
       break;
 
