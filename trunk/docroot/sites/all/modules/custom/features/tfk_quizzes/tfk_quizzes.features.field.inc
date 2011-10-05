@@ -10,6 +10,78 @@
 function tfk_quizzes_field_default_fields() {
   $fields = array();
 
+  // Exported field: 'node-pdf_quiz-field_deck'
+  $fields['node-pdf_quiz-field_deck'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_deck',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '',
+        'maxlength_field_deck_js' => 0,
+        'maxlength_field_deck_text' => 'Content limited to !limit characters, remaining: <strong>!remaining</strong> (<strong>!count</strong> characters used.)<br/>
+Limit for Featured tout on Homepage: 111 characters.<br/>
+Limit for News Block: 65 characters.',
+      ),
+      'translatable' => '1',
+      'type' => 'text_long',
+    ),
+    'field_instance' => array(
+      'bundle' => 'pdf_quiz',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 3,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_deck',
+      'label' => 'Deck',
+      'required' => 1,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'rows' => '5',
+        ),
+        'type' => 'text_textarea',
+        'weight' => '1',
+      ),
+    ),
+  );
+
   // Exported field: 'node-pdf_quiz-field_grade_level'
   $fields['node-pdf_quiz-field_grade_level'] = array(
     'field_config' => array(
@@ -79,87 +151,6 @@ function tfk_quizzes_field_default_fields() {
         ),
         'type' => 'options_select',
         'weight' => '3',
-      ),
-    ),
-  );
-
-  // Exported field: 'node-pdf_quiz-field_pdf_file'
-  $fields['node-pdf_quiz-field_pdf_file'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_pdf_file',
-      'foreign keys' => array(
-        'fid' => array(
-          'columns' => array(
-            'fid' => 'fid',
-          ),
-          'table' => 'file_managed',
-        ),
-      ),
-      'indexes' => array(
-        'fid' => array(
-          0 => 'fid',
-        ),
-      ),
-      'module' => 'file',
-      'settings' => array(
-        'display_default' => 0,
-        'display_field' => 0,
-        'uri_scheme' => 'public',
-      ),
-      'translatable' => '1',
-      'type' => 'file',
-    ),
-    'field_instance' => array(
-      'bundle' => 'pdf_quiz',
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'file',
-          'settings' => array(),
-          'type' => 'file_default',
-          'weight' => 0,
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_pdf_file',
-      'label' => 'PDF file',
-      'required' => 1,
-      'settings' => array(
-        'description_field' => 0,
-        'file_directory' => '',
-        'file_extensions' => 'pdf',
-        'max_filesize' => '',
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'file',
-        'settings' => array(
-          'insert' => 0,
-          'insert_class' => '',
-          'insert_default' => array(
-            0 => 'auto',
-          ),
-          'insert_styles' => array(
-            0 => 'auto',
-          ),
-          'insert_width' => '',
-          'progress_indicator' => 'throbber',
-        ),
-        'type' => 'file_generic',
-        'weight' => '1',
       ),
     ),
   );
@@ -263,8 +254,8 @@ function tfk_quizzes_field_default_fields() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Deck');
   t('Grade Level');
-  t('PDF file');
   t('PDF file private');
 
   return $fields;
