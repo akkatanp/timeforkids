@@ -1131,7 +1131,7 @@ function theme_tfk_featured_block(&$variables) {
     for($i = 0; $i < 3 && $i < $count; $i++) {
       $image = $tfkSearchFeaturedItem->slideshow_images[$i];
       $output .= '<span class="featured-thumbnails">';
-      $output .= l(theme('image', array('path' => $image->abspath, 'title' => $tfkSearchFeaturedItem->title, 'alt' => $tfkSearchFeaturedItem->title )), $url. '/'. $i, $link_options);
+      $output .= l(theme('image', array('path' => $image->abspath, 'title' => $tfkSearchFeaturedItem->title, 'alt' => $tfkSearchFeaturedItem->title )), $url. '/'. ($i+1), $link_options);
       $output .= '</span>';
     }
     $output .= '</div>';
