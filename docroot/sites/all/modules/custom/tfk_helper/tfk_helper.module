@@ -221,7 +221,6 @@ function tfk_helper_get_slideshow($images, $options) {
       $variables['related_content'] = theme('tfk_search_related_content', $additional_content);
     }
   }
-  print_r($images);exit;
   $variables['images_data'] = $images['images_data'];
   $output = theme('regular_slideshow', $variables);
   
