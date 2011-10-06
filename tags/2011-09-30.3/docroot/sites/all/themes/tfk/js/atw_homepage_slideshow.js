@@ -72,14 +72,9 @@
 		var prev = $('#slideshow-controls #prev-slide');
 		var next = $('#slideshow-controls #next-slide');
 		var slideInfo = $('#slideshow-info').children();
-		var numSlides = inner.children().length;
-    var imgWidth = 488;
-    
-    if(Drupal.settings.hasOwnProperty('tfk_featured_slideshow') && Drupal.settings.tfk_featured_slideshow.hasOwnProperty('slide_number')) {
-      var slideNum = parseInt(Drupal.settings.tfk_featured_slideshow.slide_number) + 1;
-    } else {
-      var slideNum = 0;
-    }
+		var numSlides = inner.children().length; 
+		var slideNum = parseInt(Drupal.settings.tfk_featured_slideshow.slide_number) ? parseInt(Drupal.settings.tfk_featured_slideshow.slide_number) : 0;
+		var imgWidth = 488;
 		
 		var nextSlide = function() {
 			var nextSlideNum = slideNum + 1;
