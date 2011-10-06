@@ -1131,7 +1131,7 @@ function theme_tfk_featured_block(&$variables) {
     for($i = 0; $i < 3 && $i < $count; $i++) {
       $image = $tfkSearchFeaturedItem->slideshow_images[$i];
       $output .= '<span class="featured-thumbnails">';
-      $output .= l(theme('image', array('path' => $image->abspath, 'title' => $tfkSearchFeaturedItem->title, 'alt' => $tfkSearchFeaturedItem->title )), $url. '/'. $i, $link_options);
+      $output .= l(theme('image', array('path' => $image->abspath, 'title' => $tfkSearchFeaturedItem->title, 'alt' => $tfkSearchFeaturedItem->title )), $url. '/'. ($i+1), $link_options);
       $output .= '</span>';
     }
     $output .= '</div>';
@@ -1596,7 +1596,7 @@ function tfk_search_preprocess_pager_top(&$vars) {
       if(array_key_exists($filter['#name'], $default_filters[$page_type])) {
         $default_filters[$page_type][$filter['#name']]['active'] = TRUE;
         if($filter['#name'] != 'sm_editorial_date_tfk') {
-          $term_value = taxonomy_term_title(taxonomy_term_load($filter['#value'])); 	
+          $term_value = taxonomy_term_title(taxonomy_term_load($filter['#value']));
           
 		  // Prepend the word "Grade" to Grade Level facets.
 		  if(preg_match('/im_([0-9]+)_field_grade_level/', $filter['#name'])) {
@@ -1609,7 +1609,7 @@ function tfk_search_preprocess_pager_top(&$vars) {
 		  // Non grade-level facets.
 		  } else {
 		  	$default_filters[$page_type][$filter['#name']]['filters'][] = $term_value;
-		  }     
+		  }
           
           
         } else {
