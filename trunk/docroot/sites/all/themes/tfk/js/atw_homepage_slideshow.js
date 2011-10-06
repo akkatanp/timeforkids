@@ -82,7 +82,6 @@
     }
 		
 		var nextSlide = function() {
-                    alert(slideNum);
 			var nextSlideNum = slideNum + 1;
 			
 			if (nextSlideNum == numSlides) {
