@@ -12,7 +12,7 @@
 		var footer = this.find('.footer');
 		var numImgs = inner.children().length;
 		var imgWidth = 488;
-		
+		$('#slideshow-container').css('left','0px');/*Unhide*/
 		var slideImg = function() {
 			imgs.each(function(i, img) {
 				$(img).removeClass('active');
@@ -75,15 +75,26 @@
 		var numSlides = inner.children().length; 
 		var slideNum = parseInt(Drupal.settings.tfk_featured_slideshow.slide_number) ? parseInt(Drupal.settings.tfk_featured_slideshow.slide_number) : 0;
 		var imgWidth = 488;
-		
+                var initialLoad = 0;
+		if (slideNum && !(slideNum < 0)) {
+                    //We clicked on a thumbnail from landing page. Transisition is not desired on init load
+                    initialLoad = 1;
+                } else {
+                    $('#slideshow-container').css('left','0px');
+                }
 		var nextSlide = function() {
 			var nextSlideNum = slideNum + 1;
-			
 			if (nextSlideNum == numSlides) {
 				slideNum = 1;
 				prevSlide();
 			} else {
-				inner.animate({'left': (-1 * (nextSlideNum * imgWidth)) + 'px'}, 500);
+                            	if (initialLoad) {
+                                    inner.css('left', (-1 * (nextSlideNum * imgWidth)) + 'px');
+                                    initialLoad = 0;
+                                    $('#slideshow-container').css('left','0px');
+                                } else {
+                                    inner.animate({'left': (-1 * (nextSlideNum * imgWidth)) + 'px'}, 500);
+                                }
 				slideInfo.each(function(i, slide) {
 					$(slide).hide();
 				});
