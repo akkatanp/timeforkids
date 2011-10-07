@@ -60,6 +60,10 @@ h2.block-title {
 	width: 488px;
 	height: 360px;
 }
+div#slideshow-container{
+        position:relative;
+        left:-10000px;/*Hide until we are done loading*/
+}
 
 #slideshow-container.regular #slideshow {
 	position: relative;
