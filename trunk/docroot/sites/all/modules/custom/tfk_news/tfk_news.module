@@ -592,6 +592,9 @@ function tfk_news_node_view($node, $view_mode, $langcode) {
     
     
     $tmp_kid = field_get_items('node',$node,'field_kid_reporter');
+    
+    
+    print_r($tmp_kid);
     $kid_nid = $tmp_kid[0]['nid'];
       
     
