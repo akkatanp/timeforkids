@@ -127,7 +127,7 @@ function features_misc_menu_default_menu_links() {
     'menu_name' => 'menu-tfk-footer-primary',
     'link_path' => 'photos-video',
     'router_path' => 'photos-video',
-    'link_title' => 'Photos & Video',
+    'link_title' => 'Photos & Videos',
     'options' => array(
       'attributes' => array(
         'class' => array(
@@ -375,7 +375,7 @@ function features_misc_menu_default_menu_links() {
     'menu_name' => 'menu-tfk-global-navigation',
     'link_path' => 'photos-video',
     'router_path' => 'photos-video',
-    'link_title' => 'Photos & Video',
+    'link_title' => 'Photos & Videos',
     'options' => array(
       'attributes' => array(
         'class' => array(
@@ -522,7 +522,7 @@ function features_misc_menu_default_menu_links() {
   t('Homework Helper');
   t('Kid Reporters');
   t('News');
-  t('Photos & Video');
+  t('Photos & Videos');
   t('Printables');
   t('Privacy Policy');
   t('Store');

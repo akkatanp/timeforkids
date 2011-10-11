@@ -27,53 +27,53 @@ function features_misc_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
+        'search-form' => array(
+          'module' => 'search',
+          'delta' => 'form',
+          'region' => 'sidebar_second',
+          'weight' => '-85',
+        ),
         'views-global_right_sidebar-block' => array(
           'module' => 'views',
           'delta' => 'global_right_sidebar-block',
           'region' => 'sidebar_second',
-          'weight' => '-10',
-        ),
-        'views-6b3cdbf51f6a41d742e65dbcf2d85234' => array(
-          'module' => 'views',
-          'delta' => '6b3cdbf51f6a41d742e65dbcf2d85234',
-          'region' => 'sidebar_second',
-          'weight' => '-9',
+          'weight' => '-84',
         ),
         'block-19' => array(
           'module' => 'block',
           'delta' => 19,
           'region' => 'sidebar_second',
-          'weight' => '-8',
+          'weight' => '-83',
         ),
         'views-global_right_sidebar-block_1' => array(
           'module' => 'views',
           'delta' => 'global_right_sidebar-block_1',
           'region' => 'sidebar_second',
-          'weight' => '-7',
-        ),
-        'views-global_right_sidebar-block_3' => array(
-          'module' => 'views',
-          'delta' => 'global_right_sidebar-block_3',
-          'region' => 'sidebar_second',
-          'weight' => '-6',
+          'weight' => '-82',
         ),
         'views-global_right_sidebar-block_2' => array(
           'module' => 'views',
           'delta' => 'global_right_sidebar-block_2',
           'region' => 'sidebar_second',
-          'weight' => '-5',
+          'weight' => '-81',
         ),
         'block-18' => array(
           'module' => 'block',
           'delta' => 18,
           'region' => 'sidebar_second',
-          'weight' => '-4',
+          'weight' => '-80',
+        ),
+        'views-6b3cdbf51f6a41d742e65dbcf2d85234' => array(
+          'module' => 'views',
+          'delta' => '6b3cdbf51f6a41d742e65dbcf2d85234',
+          'region' => 'sidebar_second',
+          'weight' => '-79',
         ),
         'block-1' => array(
           'module' => 'block',
           'delta' => 1,
           'region' => 'sidebar_second',
-          'weight' => '-3',
+          'weight' => '-78',
         ),
         'menu-menu-tfk-global-navigation' => array(
           'module' => 'menu',
@@ -143,17 +143,23 @@ function features_misc_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
+        'search-form' => array(
+          'module' => 'search',
+          'delta' => 'form',
+          'region' => 'sidebar_second',
+          'weight' => '-10',
+        ),
         'views-e1fd7ec0792e427785c60f04deef22cf' => array(
           'module' => 'views',
           'delta' => 'e1fd7ec0792e427785c60f04deef22cf',
           'region' => 'sidebar_second',
-          'weight' => '-10',
+          'weight' => '-9',
         ),
         'block-1' => array(
           'module' => 'block',
           'delta' => 1,
           'region' => 'sidebar_second',
-          'weight' => '-9',
+          'weight' => '-8',
         ),
         'menu-menu-tfk-global-navigation' => array(
           'module' => 'menu',
@@ -215,49 +221,43 @@ function features_misc_context_default_contexts() {
           'module' => 'views',
           'delta' => 'global_right_sidebar-block',
           'region' => 'sidebar_second',
-          'weight' => '-10',
-        ),
-        'views-e1fd7ec0792e427785c60f04deef22cf' => array(
-          'module' => 'views',
-          'delta' => 'e1fd7ec0792e427785c60f04deef22cf',
-          'region' => 'sidebar_second',
-          'weight' => '-9',
+          'weight' => '-85',
         ),
         'block-19' => array(
           'module' => 'block',
           'delta' => 19,
           'region' => 'sidebar_second',
-          'weight' => '-8',
+          'weight' => '-84',
         ),
         'views-global_right_sidebar-block_1' => array(
           'module' => 'views',
           'delta' => 'global_right_sidebar-block_1',
           'region' => 'sidebar_second',
-          'weight' => '-7',
-        ),
-        'views-global_right_sidebar-block_3' => array(
-          'module' => 'views',
-          'delta' => 'global_right_sidebar-block_3',
-          'region' => 'sidebar_second',
-          'weight' => '-6',
+          'weight' => '-83',
         ),
         'views-global_right_sidebar-block_2' => array(
           'module' => 'views',
           'delta' => 'global_right_sidebar-block_2',
           'region' => 'sidebar_second',
-          'weight' => '-5',
+          'weight' => '-82',
         ),
         'block-18' => array(
           'module' => 'block',
           'delta' => 18,
           'region' => 'sidebar_second',
-          'weight' => '-4',
+          'weight' => '-81',
+        ),
+        'views-e1fd7ec0792e427785c60f04deef22cf' => array(
+          'module' => 'views',
+          'delta' => 'e1fd7ec0792e427785c60f04deef22cf',
+          'region' => 'sidebar_second',
+          'weight' => '-80',
         ),
         'block-1' => array(
           'module' => 'block',
           'delta' => 1,
           'region' => 'sidebar_second',
-          'weight' => '-3',
+          'weight' => '-79',
         ),
         'menu-menu-tfk-global-navigation' => array(
           'module' => 'menu',
