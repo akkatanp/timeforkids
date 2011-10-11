@@ -606,6 +606,10 @@ function tfk_news_node_view($node, $view_mode, $langcode) {
     //$tmp_title =  field_get_items('node', $node,'field_kid_reporter');
     $reporter_name = $tmp_kid[0]['node']->title;
     
+    
+    echo $reporter_name.'!';
+    
+    
     $reporter_alias = drupal_lookup_path('alias','node/'.$kid_nid);
 
     
