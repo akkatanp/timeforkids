@@ -53,6 +53,7 @@ Disallow: /user/password/
 Disallow: /user/login/
 Disallow: /user/logout/
 Disallow: /taxonomy/
+Disallow: /taxonomy/term/
 # Paths (no clean URLs)
 Disallow: /?q=admin/
 Disallow: /?q=comment/reply/
