@@ -319,6 +319,11 @@ function theme_tfk_search_facet_link($vars) {
     }
   }
   
+  // Change facet text from "PDF Quiz" to "Quiz".
+  if(isset($vars['options']['delta']) && $vars['options']['delta'] == 'bundle' && $vars['options']['query']['filters'] == 'bundle:pdf_quiz') {
+    $vars['facet_text'] = 'Quiz';
+  }
+  
   // Supress facet count.
   if($interface == TFK_SEARCH_WORKSHEETS_PATH || $interface == TFK_SEARCH_PHOTOSVIDEO_PATH || $interface == TFK_SEARCH_MAGAZINE_PATH) {
     return apachesolr_l($vars['facet_text'],  $vars['path'], $vars['options']);
