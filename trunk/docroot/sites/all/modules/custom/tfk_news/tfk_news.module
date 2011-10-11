@@ -14,9 +14,32 @@ function tfk_news_menu(){
 		'access callback' => 'user_access',
 		'access arguments' => array('access content')
 	);
+  
+  $items['show-img-thumb/%'] = array(
+		'title' => 'image thumb',
+		'page callback' => '_show_img_thumb',
+                'page arguments' => array(1),
+		'access callback' => 'user_access',
+		'access arguments' => array('access content')
+	);
+  
+  
   return $items;
 }
 
+
+function _show_img_thumb($nid){
+    $img = node_load($nid);
+    
+    
+    $tmp_img = field_get_items('node', $img, 'field_image');
+    $img_fid = $tmp_img[0]['filename'];
+    
+    $test = image_style_url('tfk_square_small', file_build_uri(basename($img_fid)));
+    
+    echo '<img src="'.$test.'"/>';
+    exit;
+}
 
 function _test_issues_callback(){
 
@@ -551,7 +574,6 @@ function tfk_news_node_view($node, $view_mode, $langcode) {
 
   $tmp_body =  field_get_items('node', $node, 'field_body');
   
-
   if($node->type == 'article' && isset($node->field_kid_reporter['und'][0]) && $view_mode == 'full'){
 
     $tmp_body =  field_get_items('node', $node, 'field_body');
@@ -568,6 +590,8 @@ function tfk_news_node_view($node, $view_mode, $langcode) {
 
 
     $reporter = $node->field_kid_reporter;
+    
+    
     //lets get thumb_image for the reporter
     $result = db_query('select fm.filename,f.field_thumbnail_image_fid as thumb_fid from {field_data_field_thumbnail_image} f
     left join file_managed fm on f.field_thumbnail_image_fid = fm.fid
@@ -708,7 +732,8 @@ function tfk_news_preprocess_page(&$vars) {
 }
 
 function tfk_preprocess_html(&$variables) {
-  $rgs = arg();
+  
+    $rgs = arg();
 
   global $user;
   $roles = $user->roles;
@@ -718,6 +743,24 @@ function tfk_preprocess_html(&$variables) {
   }
   if(count($rgs) == 2 && ($rgs[0] == 'node') && is_numeric($rgs[1])){
     $node = node_load($rgs[1]);
+    
+    
+    if($node->type == 'minisite'){
+        $sql = db_query("SELECt fa.field_articles_nid,n.nid,n.title, n.type 
+            FROM {field_data_field_articles} fa
+            LEFT JOIN {node} n ON n.nid = fa.field_articles_nid
+            WHERE fa.entity_type = :entity_type and fa.bundle = :bundle 
+            and fa.entity_id = :nid limit 0,1",array('entity_type'=>'node','bundle'=>'minisite','nid'=>$node->nid));
+        $record = $sql->fetch();
+        
+        if($record->type == 'slideshow'){
+            $variables['classes_array'][] = 'minisite-slideshow';
+        }else{
+            $variables['classes_array'][] = 'minisite-noslideshow';
+        }
+    }
+    
+    
     if($node->type == 'article'){
       if(isset($node->field_kid_reporter['und'][0])){
         $variables['classes_array'][] = 'with-kid-reporter';
