@@ -1789,13 +1789,20 @@ function tfk_search_apachesolr_modify_query($query, $caller) {
  * Modify header search form.
  */
 function tfk_search_form_alter(&$form, &$form_state, $form_id) {
-
-  if($form_id == 'search_form'){
+  
+  // Deprecated navigation bar search form. Built with FAPI in page template.
+  if($form_id == 'search_form'){ #  search_form
     $form['basic']['keys']['#title'] = '';
     $form['basic']['submit'] = array(
       '#type' => 'submit',
       '#value' => t('Go'),
     );
+  }
+  
+  // Sidebar search form. Uses default search block provided by Drupal.
+  if($form_id == 'search_block_form') {
+    $form['actions']['submit']['#value'] = t('Go');
+    $form['#attributes']['class'] = array('search-form');
   }
 }
 
