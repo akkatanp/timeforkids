@@ -2408,6 +2408,10 @@ function tfk_search_preprocess_search_result(&$vars) {
         $teaser = $body[0]['safe_value'];
         $skip_processing = TRUE;
       }
+      
+      if($favorite_links) {
+        tfk_search_get_flag_link($vars, $nid, 'favorites');
+      }
       break;
 
     case 'worksheet':
