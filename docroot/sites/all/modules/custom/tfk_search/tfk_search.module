@@ -2392,6 +2392,7 @@ function tfk_search_preprocess_search_result(&$vars) {
       
     case 'pdf_quiz':
       $vars['title'] = $title;
+      $vars['tfk_search_cont_type'] = 'QUIZ';
       
       if(isset($node->field_grade_level)) {
         $tmp_tid = field_get_items('node', $node, 'field_grade_level');
