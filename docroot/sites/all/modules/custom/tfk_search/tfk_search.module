@@ -1893,13 +1893,13 @@ function tfk_search_worksheets() {
     
     // If the user is coming from the second sidebar link, add his grade. Example:
     // http://dev.timeforkids.com/worksheets?filters=bundle:pdf_quiz&solrsort=ds_created desc&add_grade=1
-    if(isset(array_key_exists('add_grade', $_GET)) && $_GET['add_grade'] === '1') {
+    /*if(isset(array_key_exists('add_grade', $_GET)) && $_GET['add_grade'] === '1') {
       global $user;
       $user = user_load($user->uid);
       if($user && isset($user->grade_level)) {
         $filterstring .= ' im_28_field_grade_level:'. $user->grade_level->tid;
       }
-    }
+    }*/
     
   } else {
     // If user is logged in, add grade level. This affects initial search only.
