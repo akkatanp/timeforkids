@@ -35,7 +35,6 @@
 
       <div id="global-nav-container">
         <?php print render($page['header']['menu_menu-tfk-global-navigation']); ?>
-        <?php print render(drupal_get_form('search_form')); ?>
       </div>
 
       <div id="teacher-nav-container">
