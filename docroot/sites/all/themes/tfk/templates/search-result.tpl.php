@@ -135,6 +135,10 @@
           	<span class="search-result-download-link <?php if(isset($cont_type_class)): ?><?php print $cont_type_class; ?><? endif; ?>"><?php print $tfk_worksheet_pdf_link; ?></span>
           <?php endif; ?>
           
+          <?php if(isset($tfk_pdf_link)): ?>
+          	<span class="search-result-download-link <?php if(isset($cont_type_class)): ?><?php print $cont_type_class; ?><? endif; ?>"><?php print $tfk_pdf_link; ?></span>
+          <?php endif; ?>
+          
           <?php if(isset($favorites_flag_link)): ?>
           	<?php print $favorites_flag_link; ?>
           <?php endif; ?>
