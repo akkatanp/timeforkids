@@ -574,9 +574,8 @@ function tfk_news_node_view($node, $view_mode, $langcode) {
 
   $tmp_body =  field_get_items('node', $node, 'field_body');
   
+  
   if($node->type == 'article' && isset($node->field_kid_reporter['und'][0]) && $view_mode == 'full'){
-
-    $tmp_body =  field_get_items('node', $node, 'field_body');
 
 
     $body = $tmp_body[0]['value'];
@@ -590,20 +589,24 @@ function tfk_news_node_view($node, $view_mode, $langcode) {
 
 
     $reporter = $node->field_kid_reporter;
-    print_R($reporter);
+    
+    
+    $tmp_kid = field_get_items('node',$node,'field_kid_reporter');
+    $kid_nid = $tmp_kid[0]['nid'];
+      
     
     //lets get thumb_image for the reporter
     $result = db_query('select fm.filename,f.field_thumbnail_image_fid as thumb_fid from {field_data_field_thumbnail_image} f
     left join file_managed fm on f.field_thumbnail_image_fid = fm.fid
-    where f.entity_type = :entity_type and f.bundle = :bundle and f.entity_id = :entity_id',array('entity_type'=>'node','bundle'=>'kid_reporter','entity_id' => $reporter['und'][0]['nid']));
+    where f.entity_type = :entity_type and f.bundle = :bundle and f.entity_id = :entity_id',array('entity_type'=>'node','bundle'=>'kid_reporter','entity_id' => $kid_nid));
     $record = $result->fetch();
 
     $thumb_path = file_create_url(file_build_uri(basename($record->filename)));
 
-    $tmp_title =  field_get_items('node', $node,'field_kid_reporter');
-    $reporter_name = $tmp_title[0]['node']->title;
-
-    $reporter_alias = drupal_lookup_path('alias','node/'.$tmp_title[0]['nid']);
+    //$tmp_title =  field_get_items('node', $node,'field_kid_reporter');
+    $reporter_name = $tmp_kid[0]['node']->title;
+    
+    $reporter_alias = drupal_lookup_path('alias','node/'.$kid_nid);
 
     
     $badge = '<div class="reporter-badge"><div id="badge-header">Kid Reporter</div><div id="badge-badge"></div>
