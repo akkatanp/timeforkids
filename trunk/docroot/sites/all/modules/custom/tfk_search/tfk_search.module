@@ -2451,10 +2451,8 @@ function tfk_search_preprocess_search_result(&$vars) {
         $name = $name_res->fetch();
         $name = ($name) ? $name->name: FALSE;
 
-        // Worksheets don't show the skills in lieu of the content type anymore, space is left blank (per Sally).
-        if($base_path == 'worksheets') {
-          $vars['tfk_search_cont_type'] = '&nbsp;'; //rtrim($name, 's');
-        }
+        // Per 460, we're adding the content type label back, since we are showing PDF Quiz in Printables.
+        $vars['tfk_search_cont_type'] = 'WORKSHEET';
         
         // Body, trimmed to three lines of text.
         $body = field_get_items('node', $node, 'body');
