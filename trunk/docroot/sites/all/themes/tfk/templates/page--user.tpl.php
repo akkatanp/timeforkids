@@ -130,13 +130,6 @@ t('Home'); ?>" rel="home"><span><?php print $site_name; ?></span></a>
 	
     <div id="global-nav-container">
 		<?php print render($page['header']['menu_menu-tfk-global-navigation']); ?>
-      <?php
-                //$form = drupal_get_form('search_form');
-                //$form['basic']['keys']['#title'] = 'lolopk';
-                //print_r($form);
-                $search_form = drupal_get_form('search_form');
-                print render($search_form);
-                ?>
 	</div>
 	
 	<?php if(isset($page['header']['menu_menu-tfk-teachers-menu'])): ?>

@@ -113,13 +113,6 @@ if(drupal_is_front_page()) {
 
     <div id="global-nav-container">
       <?php print render($page['header']['menu_menu-tfk-global-navigation']); ?>
-      <?php
-      //$form = drupal_get_form('search_form');
-      //$form['basic']['keys']['#title'] = 'lolopk';
-      //print_r($form);
-        $form = drupal_get_form('search_form');
-        print render($form);
-      ?>
     </div>
 
     <div id="teacher-nav-container">
