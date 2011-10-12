@@ -265,6 +265,67 @@ function feature_tfk_news_context_default_contexts() {
   $context = new stdClass;
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
+  $context->name = 'news_archive';
+  $context->description = '';
+  $context->tag = 'tfk news';
+  $context->conditions = array(
+    'path' => array(
+      'values' => array(
+        'news-archive' => 'news-archive',
+        'news-archive/*' => 'news-archive/*',
+        '~news-archive/polls' => '~news-archive/polls',
+      ),
+    ),
+    'user' => array(
+      'values' => array(
+        'Board Member' => 'Board Member',
+        'administrator' => 'administrator',
+        'authenticated user' => 'authenticated user',
+        'editor' => 'editor',
+        'teacher' => 'teacher',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'tfk_news-tfk-news-latest-news-link' => array(
+          'module' => 'tfk_news',
+          'delta' => 'tfk-news-latest-news-link',
+          'region' => 'sidebar_first',
+          'weight' => '-10',
+        ),
+        'tfk_news-tfk-news-taxonomy-links' => array(
+          'module' => 'tfk_news',
+          'delta' => 'tfk-news-taxonomy-links',
+          'region' => 'sidebar_first',
+          'weight' => '-9',
+        ),
+        'tfk_news-tfk-news-year-filter' => array(
+          'module' => 'tfk_news',
+          'delta' => 'tfk-news-year-filter',
+          'region' => 'sidebar_first',
+          'weight' => '-8',
+        ),
+        'views-news_archive-block_1' => array(
+          'module' => 'views',
+          'delta' => 'news_archive-block_1',
+          'region' => 'content',
+          'weight' => '-9',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 1;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('tfk news');
+  $export['news_archive'] = $context;
+
+  $context = new stdClass;
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
   $context->name = 'news_archive_anon';
   $context->description = '';
   $context->tag = 'tfk news';
