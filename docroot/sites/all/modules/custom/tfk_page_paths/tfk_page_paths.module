@@ -41,7 +41,19 @@ function tfk_page_paths_menu(){
 		'page callback' => 'tfk_pv_page_callback',
 		'access callback' => 'user_access',
 		'access arguments' => array('access content')
-	);        
+	);   
+        $items['news-archive'] = array(
+		'title' => 'News Archive',
+		'page callback' => '_tfk_news_archive_callback',
+		'access callback' => 'user_access',
+		'access arguments' => array('access content')
+	); 
+        $items['news-archive/%'] = array(
+		'title' => 'News Archive',
+		'page callback' => '_tfk_news_archive_callback',
+		'access callback' => 'user_access',
+		'access arguments' => array('access content')
+	);  
         $items['info'] = array(
 		'title' => 'Info',
 		'page callback' => 'tfk_pv_page_callback',
@@ -61,6 +73,11 @@ function tfk_page_paths_menu(){
 		'access arguments' => array('access content')
 	);
 	return $items;
+}
+
+
+function _tfk_news_archive_callback(){
+    return '';
 }
 
 
@@ -127,3 +144,14 @@ function tfk_store_callback(){
 function tfk_pv_page_callback() {
 	return '';
 }
+
+
+
+//$args = arg();
+//if(isset($args[1]) && !is_numeric($args[1])){
+//return $args[1];
+//}elseif(isset($args[1]) && is_numeric($args[1])){
+//    return $args[1];
+//}else{
+//    return 'all';
+//}
