@@ -198,10 +198,10 @@ function tfk_search_init() {
     
     
     if($node->type == 'minisite'){
-        $sql = db_query("SELECt fa.field_articles_nid,n.nid,n.title, n.type 
+        $sql = db_query("SELECT fa.field_articles_nid,n.nid,n.title, n.type
             FROM {field_data_field_articles} fa
             LEFT JOIN {node} n ON n.nid = fa.field_articles_nid
-            WHERE fa.entity_type = :entity_type and fa.bundle = :bundle 
+            WHERE fa.entity_type = :entity_type and fa.bundle = :bundle
             and fa.entity_id = :nid limit 0,1",array('entity_type'=>'node','bundle'=>'minisite','nid'=>$node->nid));
         $record = $sql->fetch();
         
@@ -387,6 +387,14 @@ function theme_tfk_search_unclick_link($vars) {
       } else {
         $vars['facet_text'] = 'Grade '. $vars['facet_text'];
       }
+    }
+    
+    // Change facet text from "PDF Quiz" to "Quiz".
+    if(isset($vars['options']['delta']) && $vars['options']['delta'] == 'bundle' && $vars['options']['query']['filters'] == 'bundle:pdf_quiz') {
+      $vars['facet_text'] = 'Quiz';
+    }
+    if(isset($vars['options']['delta']) && $vars['options']['delta'] == 'bundle' && $vars['facet_text'] == 'PDF Quiz') {
+      $vars['facet_text'] = 'Quiz';
     }
     
   }
@@ -1462,7 +1470,7 @@ function tfk_search_get_featured_block() {
 function tfk_search_get_minisite_featured_slideshow($minisite_nid){
    
     $sql = 'SELECT fa.field_articles_nid as nid
-        from field_data_field_articles fa 
+        from field_data_field_articles fa
         where fa.bundle = :bundle and fa.entity_type = :entity_type and entity_id = :entity_id limit 0,1';
     
     $query_args = array('bundle'=>'minisite','entity_type' => 'node','entity_id' => $minisite_nid);
