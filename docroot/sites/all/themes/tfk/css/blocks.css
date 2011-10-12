@@ -154,7 +154,7 @@ h2.block-title /* Block title */ {
 
 
 
-#search-block-form {
+#block-search-form form.search-form {
   display: block;
   /*float: left;*/
   /*width: 190px;*/
@@ -162,11 +162,11 @@ h2.block-title /* Block title */ {
   margin: 0;
 }
 
-#search-block-form .form-item {
+#block-search-form .form-item {
   margin: 0;
 }
 
-#search-block-form .form-text {
+#block-search-form .form-text {
   display: block;
   width: 95px;
   height: 11px;
@@ -186,11 +186,9 @@ h2.block-title /* Block title */ {
   -webkit-border-radius: 12px;
 }
 
-#search-block-form .form-submit {
+#block-search-form .form-submit {
   display: block;
   float: left;
   width: 44px;
   margin: 4px 0;
 }
-
-
