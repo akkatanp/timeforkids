@@ -516,10 +516,16 @@ function theme_tfk_news_formatter_tfk_news_grade_title($element) {
 
 
 function tfk_news_views_query_alter(&$view, &$query) {
- /* if($view->name == 'news_archive'){
+  if($view->name == 'news_archive'){
     if(strlen(arg(1)) == 4 && is_numeric(arg(1))){
-
-      unset($query->where[0]['conditions'][2]);
+        
+      global $user;
+      
+      if($user->uid == 0){
+        unset($query->where[0]['conditions'][3]);
+      }else{
+        unset($query->where[0]['conditions'][2]);
+      }
 
       $jan = mktime(0, 0, 0, '12', '31', arg(1)-1);
       $dec = mktime(0, 0, 0, '01', '01', arg(1)+1);
@@ -564,7 +570,7 @@ function tfk_news_views_query_alter(&$view, &$query) {
         $query->orderby[0]['field'] = "DATE_FORMAT(FROM_UNIXTIME(field_data_field_date.field_date_value),'%Y %m %d')";
     }
   }
-  */
+  
 }
 
 
