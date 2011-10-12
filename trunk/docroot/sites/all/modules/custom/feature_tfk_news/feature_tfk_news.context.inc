@@ -513,17 +513,41 @@ function feature_tfk_news_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
+        'tfk_news-tfk-news-latest-news-link' => array(
+          'module' => 'tfk_news',
+          'delta' => 'tfk-news-latest-news-link',
+          'region' => 'sidebar_first',
+          'weight' => '-88',
+        ),
+        'tfk_news-tfk-news-taxonomy-links' => array(
+          'module' => 'tfk_news',
+          'delta' => 'tfk-news-taxonomy-links',
+          'region' => 'sidebar_first',
+          'weight' => '-87',
+        ),
+        'tfk_news-tfk-news-year-filter' => array(
+          'module' => 'tfk_news',
+          'delta' => 'tfk-news-year-filter',
+          'region' => 'sidebar_first',
+          'weight' => '-86',
+        ),
         'tfk_news-tfk-news-minisite-articles' => array(
           'module' => 'tfk_news',
           'delta' => 'tfk-news-minisite-articles',
-          'region' => 'sidebar_first',
+          'region' => 'sidebar_bottom',
           'weight' => '-10',
+        ),
+        'tfk_news-tfk-news-minisite-more' => array(
+          'module' => 'tfk_news',
+          'delta' => 'tfk-news-minisite-more',
+          'region' => 'sidebar_bottom',
+          'weight' => '-9',
         ),
         'views-random_kid_reporters-block' => array(
           'module' => 'views',
           'delta' => 'random_kid_reporters-block',
           'region' => 'sidebar_bottom',
-          'weight' => '-10',
+          'weight' => '-8',
         ),
       ),
     ),
