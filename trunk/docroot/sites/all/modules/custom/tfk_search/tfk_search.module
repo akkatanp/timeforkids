@@ -189,6 +189,30 @@ function tfk_search_init() {
   
   $path = drupal_get_path('module', 'tfk_search');
   
+  
+  
+  $rgs = arg();
+  
+  if(count($rgs) == 2 && ($rgs[0] == 'node') && is_numeric($rgs[1])){
+    $node = node_load($rgs[1]);
+    
+    
+    if($node->type == 'minisite'){
+        $sql = db_query("SELECt fa.field_articles_nid,n.nid,n.title, n.type 
+            FROM {field_data_field_articles} fa
+            LEFT JOIN {node} n ON n.nid = fa.field_articles_nid
+            WHERE fa.entity_type = :entity_type and fa.bundle = :bundle 
+            and fa.entity_id = :nid limit 0,1",array('entity_type'=>'node','bundle'=>'minisite','nid'=>$node->nid));
+        $record = $sql->fetch();
+        
+        if($record->type == 'slideshow'){
+            drupal_add_css($path. '/css/tfk_search.css', 'file');
+        }
+    }
+  }
+  
+  
+  
   // Provide styling for Photos & Video section.
   if(arg(0) == TFK_SEARCH_PHOTOSVIDEO_PATH) {
     // Styles for search results and first sidebar.
@@ -267,6 +291,10 @@ function tfk_search_theme($existing, $type, $theme, $path) {
       
     // Featured block for photos-video section.
     'tfk_featured_block' => array(
+      'variables' => array('tfkSearchFeaturedItem' => NULL),
+    ),
+      
+    'tfk_featured_minisite_slideshow'=> array(
       'variables' => array('tfkSearchFeaturedItem' => NULL),
     ),
     // Worksheets.
@@ -621,6 +649,16 @@ function tfk_search_block_info() {
     'cache' => DRUPAL_CACHE_GLOBAL,
   );
   
+  
+  // Photos and Video Slideshow For Minisites.
+  $blocks['tfk_minisite_slideshow_featured'] = array(
+    'info' => t('TFK Search Featured Minisite Slideshow'),
+    'visibility' => BLOCK_VISIBILITY_LISTED,
+    'cache' => DRUPAL_CACHE_GLOBAL,
+  );
+  
+  
+  
   // Worksheet first sidebar top title.
   $blocks['tfk_search_ws_leftbar_title'] = array(
     'info' => t('TFK Worksheets First Sidebar Top Title'),
@@ -712,6 +750,9 @@ function tfk_search_block_view($delta='') {
     // Photos and Video Featured block.
     case 'tfk_search_photos_video_featured':
       $featured_item = tfk_search_get_featured_block();
+        
+        
+        
       if($featured_item != FALSE) {
         $block['content'] = theme('tfk_featured_block', $featured_item);
       } else {
@@ -719,6 +760,27 @@ function tfk_search_block_view($delta='') {
         $block['content'] = '';
       }
     break;
+    
+    
+    // Featured Minisite Slideshow
+    case 'tfk_minisite_slideshow_featured':
+      $args = arg();
+      if(isset($args[0]) && $args[0] == 'node' && isset($args[1]) && is_numeric($args[1])){
+        $minisite_nid = $args[1];
+      }
+        
+      if(isset($minisite_nid)) {
+          $featured_item = tfk_search_get_minisite_featured_slideshow($minisite_nid);
+          $block['content'] = theme('tfk_featured_minisite_slideshow', $featured_item);
+          //$block['content'] = theme('tfk_featured_block', $featured_item);
+          
+      } else {
+        // Suppress the block.
+        $block['content'] = '';
+      }
+    break;
+    
+    
    
    // My saved searches.
    case 'tfk_search_worksheet_saved':
@@ -1164,6 +1226,124 @@ function theme_tfk_featured_block(&$variables) {
   return $output;
 }
 
+
+
+function theme_tfk_featured_minisite_slideshow(&$variables) {
+    
+  $tfkSearchFeaturedItem = $variables['tfkSearchFeaturedItem'];
+  $output = '<div id="tfk-search-photos-video-featured">';
+  $output .= '<div class="top-story-right-square">&nbsp</div>';
+  $url = ltrim(url('node/'. $tfkSearchFeaturedItem->nid), '/');
+  
+  $output .= '<div class="g1'. ' content-type-'. $tfkSearchFeaturedItem->type. '">';
+  $link_options = array('html' => TRUE, 'attributes' => array('class' => array('featured-item'), 'title' => $tfkSearchFeaturedItem->title));
+  $icon = '<div class="icon"></div>';
+  $output .= l(theme('image', array('path' => $tfkSearchFeaturedItem->featured_item->abspath, 'title' => $tfkSearchFeaturedItem->title, 'alt' => $tfkSearchFeaturedItem->title)). $icon, $url, $link_options);
+  
+  // Caption and credit. @todo It's not O.K. to have field_get_item(s) on the theme layer.
+  $caption = field_get_items('node', $tfkSearchFeaturedItem, 'field_caption');
+  if($caption && !empty($caption[0])) {
+    $caption = $caption[0]['safe_value'];
+  } else {
+    $caption = '';
+  }
+  $credit = field_get_items('node', $tfkSearchFeaturedItem, 'field_credit');
+  if($credit && !empty($credit[0])) {
+    $credit = $credit[0]['safe_value'];
+  } else {
+    $credit = '';
+  }
+  if((!empty($caption)) || (!empty($credit))) {
+    $output .= "<div id='ftr-cap-credit'>". $caption;
+    $output .= ((!empty($credit)) && (!empty($caption))) ? ' / ': '';
+    $output .= $credit. "</div>";
+  }
+  $output .= "</div>";
+  
+  // Body/description field.
+  $skip_processing = FALSE;
+  if($tfkSearchFeaturedItem->type == 'slideshow') {
+    $dirty_body = field_get_items('node', $tfkSearchFeaturedItem, 'field_slideshow_description');
+    $dirty_body = $dirty_body[0]['safe_value'];
+  } else if($tfkSearchFeaturedItem->type == 'video') {
+    // Deck fields don't need processing.
+    $clean_body = field_get_items('node', $tfkSearchFeaturedItem, 'field_deck');
+    $body = $clean_body[0]['safe_value'];
+    $skip_processing = TRUE;
+  } else {
+    if(!is_array($tfkSearchFeaturedItem->body)) {
+      $dirty_body = $tfkSearchFeaturedItem->body;
+    } else {
+      $dirty_body = field_get_items('node', $tfkSearchFeaturedItem, 'body');
+      $dirty_body = $dirty_body[0]['safe_value'];
+    }
+  }
+  
+  // Body text processing.
+  if(!empty($dirty_body) && !$skip_processing) {
+    // The pattern "<p>&nbsp;</p>" causes a bug in truncate_utf8. Strip it out.
+    $clean_body = preg_replace("/\<p\>.?&nbsp;.?\<\/p\>/", '', $dirty_body);
+    
+    // Get the first paragraph, and fall back to a character count if there is no paragraph.
+    $first_paragraph = array();
+    $matched = preg_match("/\<p\>.*?\<\/p\>/", $clean_body, $first_paragraph);
+    $body = ($matched) ? $first_paragraph[0] : truncate_utf8($clean_body, '160', TRUE, TRUE, 10);
+  } else if (!$skip_processing) {
+    // Print a helpful (but hidden) "hint" message if there is no teaser. Use Firebug inspect element to see it.
+    $body = '<!-- body not found or empty -->';
+  }
+  
+  $output .= '<div class="g2">';
+  $output .= '<div class="featured-label">FEATURED</div>';
+  $output .= l('<h2 class="featured-title">'. $tfkSearchFeaturedItem->title. '</h2>', $url, array('html' => TRUE));
+  $output .= "<div class='featured-date'>". date('F j, Y', $tfkSearchFeaturedItem->created). "</div>";
+  $output .= "<div class='featured-dek'>{$body}</div>";
+  $output .= '<div class="featured-link">'. l('View '. ($tfkSearchFeaturedItem->type == 'slideshow'? 'Photo Slide-Show': 'Video'), $url). '</div>';
+  
+  // Thumbnails. Only for slideshows.
+  if($tfkSearchFeaturedItem->type == 'slideshow') {
+    $output .= '<div class="featured-thumbnails">';
+    $link_options['attributes']['class'] = array('featured-thumbnail');
+    $count = count($tfkSearchFeaturedItem->slideshow_images);
+    for($i = 0; $i < 3 && $i < $count; $i++) {
+      $image = $tfkSearchFeaturedItem->slideshow_images[$i];
+      $output .= '<span class="featured-thumbnails">';
+      $output .= l(theme('image', array('path' => $image->abspath, 'title' => $tfkSearchFeaturedItem->title, 'alt' => $tfkSearchFeaturedItem->title )), $url. '/'. $i, $link_options);
+      $output .= '</span>';
+    }
+    $output .= '</div>';
+  }
+  
+  // Favorites link.
+  $flag = flag_get_flag('favorites');
+  if($flag != FALSE) {
+    $flag_link = flag_create_link('favorites', $tfkSearchFeaturedItem->nid);
+    $output .= '<div class="featured-flag-link">';
+    $output .= $flag_link;
+    $output .= '</div>';
+  }
+  
+  $output .= '</div><!--./g2-->';
+  
+  // Related content.
+  if(tfk_helper_user_has_role() && $tfkSearchFeaturedItem->related_content) {
+    $output .= '<div class="featured-item-related-item">';
+    $output .= theme('tfk_search_related_content', array('related_content' => $tfkSearchFeaturedItem->related_content));
+    $output .= '</div>';
+  }
+  
+  $output .= '</div>';// ./tfk-search-photos-video-featured
+  return $output;
+}
+
+
+
+
+
+
+
+
+
 /**
  * Preprocessor for theme_tfk_featured_block().
  *
@@ -1274,6 +1454,28 @@ function tfk_search_get_featured_block() {
     return $result;
   }
 }
+
+
+function tfk_search_get_minisite_featured_slideshow($minisite_nid){
+   
+    $sql = 'SELECT fa.field_articles_nid as nid
+        from field_data_field_articles fa 
+        where fa.bundle = :bundle and fa.entity_type = :entity_type and entity_id = :entity_id limit 0,1';
+    
+    $query_args = array('bundle'=>'minisite','entity_type' => 'node','entity_id' => $minisite_nid);
+    
+    $result = db_query($sql,$query_args,array('fetch' => 'tfkSearchFeaturedItem',))->fetchAll();
+    $result = ($result) ? array('tfkSearchFeaturedItem' => array_shift($result)) : FALSE;
+  if($result == FALSE) {
+    watchdog('TFK Minisite', 'Could not find data to populate the Featured item block.', array(), WATCHDOG_ERROR);
+    return FALSE;
+  } else {
+    return $result;
+  }
+    
+}
+
+
 
 /**
  * Return the URL for an image derivative given a style and image path.
@@ -1728,7 +1930,7 @@ function tfk_search_apachesolr_modify_query($query, $caller) {
     // Body and deck field for articles.
     // Not indexing TFK_SEARCH_ARTICLE_BODY, for now.
     $query->params['fl'] .= ','.TFK_SEARCH_ARTICLE_DECK;
-
+    
     // Limit the number of rows per page.
     $query->params['rows'] = 8;
 
@@ -2738,3 +2940,17 @@ function tfk_search_preprocess_search_result(&$vars) {
   }
 
 }
+
+
+function tfk_search_link_alter(&$link) {
+//    print_R($link);
+}
+
+
+
+function tfk_search_preprocess_views_view(&$vars) {
+    if($vars['view']->name == 'minisite_articles'){
+    //    $vars['lolok'] = 'lolok';
+    }
+}
+
