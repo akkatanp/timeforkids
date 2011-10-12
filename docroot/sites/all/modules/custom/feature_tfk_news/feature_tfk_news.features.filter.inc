@@ -39,25 +39,23 @@ function feature_tfk_news_filter_default_formats() {
     'status' => '1',
     'weight' => '-9',
     'filters' => array(
-      'filter_html_escape' => array(
-        'weight' => '0',
+      'wordfilter' => array(
+        'weight' => '-50',
         'status' => '1',
         'settings' => array(),
       ),
-      'filter_url' => array(
-        'weight' => '1',
+      'filter_html_escape' => array(
+        'weight' => '-49',
         'status' => '1',
-        'settings' => array(
-          'filter_url_length' => '72',
-        ),
+        'settings' => array(),
       ),
       'filter_autop' => array(
-        'weight' => '2',
+        'weight' => '-47',
         'status' => '1',
         'settings' => array(),
       ),
-      'wordfilter' => array(
-        'weight' => '10',
+      'filter_htmlcorrector' => array(
+        'weight' => '-45',
         'status' => '1',
         'settings' => array(),
       ),
