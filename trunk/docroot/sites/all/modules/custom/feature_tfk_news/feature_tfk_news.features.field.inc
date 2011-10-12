@@ -177,6 +177,136 @@ function feature_tfk_news_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-article-field_article_poll'
+  $fields['node-article-field_article_poll'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_article_poll',
+      'foreign keys' => array(
+        'nid' => array(
+          'columns' => array(
+            'nid' => 'nid',
+          ),
+          'table' => 'node',
+        ),
+      ),
+      'indexes' => array(
+        'nid' => array(
+          0 => 'nid',
+        ),
+      ),
+      'module' => 'node_reference',
+      'settings' => array(
+        'referenceable_types' => array(
+          'a_paper' => 0,
+          'article' => 0,
+          'atw_day_in_life' => 0,
+          'atw_destination' => 0,
+          'atw_homepage_nodeblock' => 0,
+          'atw_native_lingo' => 0,
+          'atw_sightseeing' => 0,
+          'atw_timeline' => 0,
+          'board_member' => 0,
+          'book' => 0,
+          'flashcard' => 0,
+          'global_right_sidebar_promo' => 0,
+          'grammar_practice' => 0,
+          'grammar_practice_question' => 0,
+          'grammar_practice_reward_image' => 0,
+          'grammar_practice_rule' => 0,
+          'homepage_news_for_teachers' => 0,
+          'image' => 0,
+          'kid_reporter' => 0,
+          'kid_reporter_bottom_nodeblock' => 0,
+          'kid_reporter_listing_nodeblock' => 0,
+          'magazine_issue' => 0,
+          'mini_lesson' => 0,
+          'mini_site_home' => 0,
+          'minisite' => 0,
+          'news_channel_nodeblock' => 0,
+          'page' => 0,
+          'paper_step' => 0,
+          'pdf_quiz' => 0,
+          'poll' => 'poll',
+          'slideshow' => 0,
+          'store' => 0,
+          'teacher_board_nodeblock' => 0,
+          'teacher_community_question' => 0,
+          'tfk_extra' => 0,
+          'tfk_extras_bottom_nodeblock' => 0,
+          'tfk_extras_top_nodeblock' => 0,
+          'tfk_notification' => 0,
+          'tfk_staff' => 0,
+          'video' => 0,
+          'webform' => 0,
+          'webform_generic' => 0,
+          'worksheet' => 0,
+          'writing_tips' => 0,
+        ),
+        'view' => array(
+          'args' => array(),
+          'display_name' => '',
+          'view_name' => '',
+        ),
+      ),
+      'translatable' => '1',
+      'type' => 'node_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'article',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '12',
+        ),
+        'search_index' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'search_result' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_article_poll',
+      'label' => 'Poll',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'node_reference',
+        'settings' => array(
+          'autocomplete_match' => 'contains',
+          'autocomplete_path' => 'node_reference/autocomplete',
+          'size' => '60',
+        ),
+        'type' => 'node_reference_autocomplete',
+        'weight' => '31',
+      ),
+    ),
+  );
+
   // Exported field: 'node-article-field_body'
   $fields['node-article-field_body'] = array(
     'field_config' => array(
@@ -419,14 +549,14 @@ Limit for News Block: 65 characters.',
       'label' => 'Deck',
       'required' => 1,
       'settings' => array(
-        'text_processing' => '0',
+        'text_processing' => '1',
         'user_register_form' => FALSE,
       ),
       'widget' => array(
         'active' => 1,
         'module' => 'text',
         'settings' => array(
-          'rows' => '5',
+          'rows' => '3',
         ),
         'type' => 'text_textarea',
         'weight' => '1',
@@ -1014,7 +1144,7 @@ Limit for News Block: 65 characters.',
   $fields['node-article-field_related_articles'] = array(
     'field_config' => array(
       'active' => '1',
-      'cardinality' => '1',
+      'cardinality' => '-1',
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_related_articles',
@@ -1286,6 +1416,7 @@ Limit for News Block: 65 characters.',
   t('Meta Description');
   t('Meta Keywords');
   t('Mini-Lessons');
+  t('Poll');
   t('Related Article');
   t('Story Copy');
 
