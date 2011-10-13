@@ -1082,6 +1082,16 @@
 	padding: 4px;
 }
 
+#block-views-global-right-sidebar-block-4 {
+	margin-bottom: 0px;
+}
+
+#block-views-global-right-sidebar-block-4 .content a {
+  background: url("../images/related-article-icon.png") no-repeat scroll 0 0 transparent;
+  height: 16px;
+  padding-left: 20px;
+}
+
 #block-block-18 .content {
 	border-bottom:  solid 2px #acdbfc;
 	text-align: center;
