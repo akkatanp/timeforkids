@@ -488,6 +488,19 @@ function features_misc_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'pdf_quiz' => 'pdf_quiz',
   );
+  /* Filter criterion: Fields: Grade Level (field_grade_level) */
+  $handler->display->display_options['filters']['field_grade_level_tid']['id'] = 'field_grade_level_tid';
+  $handler->display->display_options['filters']['field_grade_level_tid']['table'] = 'field_data_field_grade_level';
+  $handler->display->display_options['filters']['field_grade_level_tid']['field'] = 'field_grade_level_tid';
+  $handler->display->display_options['filters']['field_grade_level_tid']['relationship'] = 'nid';
+  $handler->display->display_options['filters']['field_grade_level_tid']['value'] = array(
+    19 => '19',
+    20 => '20',
+    22 => '22',
+  );
+  $handler->display->display_options['filters']['field_grade_level_tid']['reduce_duplicates'] = 0;
+  $handler->display->display_options['filters']['field_grade_level_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_grade_level_tid']['vocabulary'] = 'grade_levels';
 
   /* Display: Teacher Resources Worksheets */
   $handler = $view->new_display('block', 'Teacher Resources Worksheets', 'block_2');
@@ -604,6 +617,99 @@ function features_misc_views_default_views() {
     'worksheet' => 'worksheet',
   );
   $handler->display->display_options['filters']['type']['group'] = 0;
+
+  /* Display: Teacher Resources Quizzes 3-4 */
+  $handler = $view->new_display('block', 'Teacher Resources Quizzes 3-4', 'block_4');
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '2';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Fields: Grade Level (field_grade_level) */
+  $handler->display->display_options['relationships']['field_grade_level_tid']['id'] = 'field_grade_level_tid';
+  $handler->display->display_options['relationships']['field_grade_level_tid']['table'] = 'field_data_field_grade_level';
+  $handler->display->display_options['relationships']['field_grade_level_tid']['field'] = 'field_grade_level_tid';
+  $handler->display->display_options['relationships']['field_grade_level_tid']['required'] = 1;
+  /* Relationship: Taxonomy term: Content with term */
+  $handler->display->display_options['relationships']['nid']['id'] = 'nid';
+  $handler->display->display_options['relationships']['nid']['table'] = 'taxonomy_index';
+  $handler->display->display_options['relationships']['nid']['field'] = 'nid';
+  $handler->display->display_options['relationships']['nid']['relationship'] = 'field_grade_level_tid';
+  $handler->display->display_options['relationships']['nid']['required'] = 1;
+  /* Relationship: File Usage: File */
+  $handler->display->display_options['relationships']['node_to_file']['id'] = 'node_to_file';
+  $handler->display->display_options['relationships']['node_to_file']['table'] = 'file_usage';
+  $handler->display->display_options['relationships']['node_to_file']['field'] = 'node_to_file';
+  $handler->display->display_options['relationships']['node_to_file']['relationship'] = 'nid';
+  $handler->display->display_options['relationships']['node_to_file']['required'] = 0;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: PDF file private */
+  $handler->display->display_options['fields']['field_pdf_file_private']['id'] = 'field_pdf_file_private';
+  $handler->display->display_options['fields']['field_pdf_file_private']['table'] = 'field_data_field_pdf_file_private';
+  $handler->display->display_options['fields']['field_pdf_file_private']['field'] = 'field_pdf_file_private';
+  $handler->display->display_options['fields']['field_pdf_file_private']['relationship'] = 'nid';
+  $handler->display->display_options['fields']['field_pdf_file_private']['label'] = '';
+  $handler->display->display_options['fields']['field_pdf_file_private']['alter']['alter_text'] = 1;
+  $handler->display->display_options['fields']['field_pdf_file_private']['alter']['text'] = '<a href="[field_pdf_file_private]">Current Quiz</a>';
+  $handler->display->display_options['fields']['field_pdf_file_private']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_pdf_file_private']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_pdf_file_private']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_pdf_file_private']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_pdf_file_private']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_pdf_file_private']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_pdf_file_private']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_pdf_file_private']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_pdf_file_private']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_pdf_file_private']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_pdf_file_private']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_pdf_file_private']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_pdf_file_private']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_pdf_file_private']['hide_empty'] = 1;
+  $handler->display->display_options['fields']['field_pdf_file_private']['empty_zero'] = 1;
+  $handler->display->display_options['fields']['field_pdf_file_private']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['field_pdf_file_private']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_pdf_file_private']['type'] = 'file_url_plain';
+  $handler->display->display_options['fields']['field_pdf_file_private']['field_api_classes'] = 0;
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Content: Post date */
+  $handler->display->display_options['sorts']['created']['id'] = 'created';
+  $handler->display->display_options['sorts']['created']['table'] = 'node';
+  $handler->display->display_options['sorts']['created']['field'] = 'created';
+  $handler->display->display_options['sorts']['created']['relationship'] = 'nid';
+  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status_1']['id'] = 'status_1';
+  $handler->display->display_options['filters']['status_1']['table'] = 'node';
+  $handler->display->display_options['filters']['status_1']['field'] = 'status';
+  $handler->display->display_options['filters']['status_1']['relationship'] = 'nid';
+  $handler->display->display_options['filters']['status_1']['value'] = '1';
+  $handler->display->display_options['filters']['status_1']['group'] = 0;
+  /* Filter criterion: User: Active */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'users';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = '1';
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['relationship'] = 'nid';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'pdf_quiz' => 'pdf_quiz',
+  );
+  /* Filter criterion: Fields: Grade Level (field_grade_level) */
+  $handler->display->display_options['filters']['field_grade_level_tid']['id'] = 'field_grade_level_tid';
+  $handler->display->display_options['filters']['field_grade_level_tid']['table'] = 'field_data_field_grade_level';
+  $handler->display->display_options['filters']['field_grade_level_tid']['field'] = 'field_grade_level_tid';
+  $handler->display->display_options['filters']['field_grade_level_tid']['relationship'] = 'nid';
+  $handler->display->display_options['filters']['field_grade_level_tid']['value'] = array(
+    21 => '21',
+  );
+  $handler->display->display_options['filters']['field_grade_level_tid']['reduce_duplicates'] = 0;
+  $handler->display->display_options['filters']['field_grade_level_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_grade_level_tid']['vocabulary'] = 'grade_levels';
   $export['global_right_sidebar'] = $view;
 
   $view = new view;
