@@ -1092,6 +1092,10 @@
   padding-left: 20px;
 }
 
+#block-views-global-right-sidebar-block-4 .views-row-first .content .field-content {
+	padding-bottom: 8px
+}
+
 #block-block-18 .content {
 	border-bottom:  solid 2px #acdbfc;
 	text-align: center;
