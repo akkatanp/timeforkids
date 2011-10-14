@@ -427,14 +427,16 @@
       //mdcTop = $(document.documentElement).scrollTop();
     }
     
-    mdcTop = $(document.documentElement).scrollTop() - 500;
+    $(document.documentElement).scrollTop(mdcTop);
+    
+    //mdcTop = $(document.documentElement).scrollTop();
     
     //alert('window scroll:'+ wt+ ', docHeight:'+ docHeight+ ', winHeight:'+ winHeight+ ', mdcTop:'+ mdcTop);
     
     
     //modalContent.css({top: mdcTop + 'px', left: mdcLeft + 'px'}).hide()[animation](speed);
     
-    modalContent.css({top: 1000 + 'px', left: mdcLeft + 'px'}).hide();
+    modalContent.css({top: mdcTop + 'px', left: mdcLeft + 'px'}).hide();
 
     // Bind a click for closing the modalContent
     modalContentClose = function(){close(); return false;};
