@@ -427,7 +427,7 @@
     alert('window scroll:'+ wt+ ', docHeight:'+ docHeight+ ', winHeight:'+ winHeight+ ', mdcTop:'+ mdcTop);
     
     
-    modalContent.css({top: mdcTop + 'px', left: mdcLeft + 'px'}).hide()[animation](speed);
+    modalContent.css({top: 4000 + 'px', left: mdcLeft + 'px'}).hide()[animation](speed);
 
     // Bind a click for closing the modalContent
     modalContentClose = function(){close(); return false;};
