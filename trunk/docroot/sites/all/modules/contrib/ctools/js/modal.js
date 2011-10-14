@@ -366,8 +366,6 @@
     } else if (document.body) { // all other Explorers
       var wt = document.body.scrollTop;
     }
-    
-    alert('window scroll:'+ wt);
 
     // Get our dimensions
 
@@ -377,6 +375,8 @@
     var winHeight = $(window).height();
     var winWidth = $(window).width();
     if( docHeight < winHeight ) docHeight = winHeight;
+    
+    alert('window scroll:'+ wt+ ', docHeight:'+ docHeight+ ', winHeight:'+ winHeight);    
 
     // Create our divs
     $('body').append('<div id="modalBackdrop" style="z-index: 1000; display: none;"></div><div id="modalContent" style="z-index: 1001; position: absolute;">' + $(content).html() + '</div>');
