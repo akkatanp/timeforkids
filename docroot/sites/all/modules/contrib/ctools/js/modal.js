@@ -360,7 +360,7 @@
 
     // position code lifted from http://www.quirksmode.org/viewport/compatibility.html
     if (self.pageYOffset) { // all except Explorer
-      var wt = self.pageYOffset;
+    var wt = self.pageYOffset;
     } else if (document.documentElement && document.documentElement.scrollTop) { // Explorer 6 Strict
       var wt = document.documentElement.scrollTop;
     } else if (document.body) { // all other Explorers
@@ -375,8 +375,6 @@
     var winHeight = $(window).height();
     var winWidth = $(window).width();
     if( docHeight < winHeight ) docHeight = winHeight;
-    
-    //alert('window scroll:'+ wt+ ', docHeight:'+ docHeight+ ', winHeight:'+ winHeight);    
 
     // Create our divs
     $('body').append('<div id="modalBackdrop" style="z-index: 1000; display: none;"></div><div id="modalContent" style="z-index: 1001; position: absolute;">' + $(content).html() + '</div>');
@@ -412,31 +410,8 @@
     var modalContent = $('#modalContent').css('top','-1000px');
     var mdcTop = wt + ( winHeight / 2 ) - (  modalContent.outerHeight() / 2);
     var mdcLeft = ( winWidth / 2 ) - ( modalContent.outerWidth() / 2);
-    
-    
-    
     $('#modalBackdrop').css(css).css('top', 0).css('height', docHeight + 'px').css('width', docWidth + 'px').show();
-    
-    alert('window scroll:'+ wt+ ', docHeight:'+ docHeight+ ', winHeight:'+ winHeight+ ', mdcTop:'+ mdcTop+
-        '' //  ', scrollTop():' + $(document.documentElement).scrollTop() 
-     );
-    
-    // Internet Explorer strict mode (IE8, Windows XP).
-    if(wt == document.documentElement.scrollTop) {
-      
-      //mdcTop = $(document.documentElement).scrollTop();
-    }
-    
-    $(document.documentElement).scrollTop(mdcTop);
-    
-    //mdcTop = $(document.documentElement).scrollTop();
-    
-    //alert('window scroll:'+ wt+ ', docHeight:'+ docHeight+ ', winHeight:'+ winHeight+ ', mdcTop:'+ mdcTop);
-    
-    
-    //modalContent.css({top: mdcTop + 'px', left: mdcLeft + 'px'}).hide()[animation](speed);
-    
-    modalContent.css({top: mdcTop + 'px', left: mdcLeft + 'px'}).hide();
+    modalContent.css({top: mdcTop + 'px', left: mdcLeft + 'px'}).hide()[animation](speed);
 
     // Bind a click for closing the modalContent
     modalContentClose = function(){close(); return false;};
@@ -477,7 +452,11 @@
       var modalContent = $('#modalContent');
       var mdcTop = ( winHeight / 2 ) - (  modalContent.outerHeight() / 2);
       var mdcLeft = ( winWidth / 2 ) - ( modalContent.outerWidth() / 2);
-
+      
+      
+      $(document.documentElement).scrollTop(mdcTop);
+      
+      
       // Apply the changes
       $('#modalBackdrop').css('height', docHeight + 'px').css('width', docWidth + 'px').show();
       modalContent.css('top', mdcTop + 'px').css('left', mdcLeft + 'px').show();
