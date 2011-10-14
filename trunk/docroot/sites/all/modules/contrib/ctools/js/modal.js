@@ -416,6 +416,11 @@
     alert('window scroll:'+ wt+ ', docHeight:'+ docHeight+ ', winHeight:'+ winHeight+ ', mdcTop:'+ mdcTop);
     
     $('#modalBackdrop').css(css).css('top', 0).css('height', docHeight + 'px').css('width', docWidth + 'px').show();
+    
+    // Internet Explorer strict mode (IE8, Windows XP).
+    if(wt == document.body.scrollTop) {
+      mdcTop = mdcTop - 1000;
+    }
     modalContent.css({top: mdcTop + 'px', left: mdcLeft + 'px'}).hide()[animation](speed);
 
     // Bind a click for closing the modalContent
