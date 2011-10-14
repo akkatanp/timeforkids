@@ -360,12 +360,14 @@
 
     // position code lifted from http://www.quirksmode.org/viewport/compatibility.html
     if (self.pageYOffset) { // all except Explorer
-    var wt = self.pageYOffset;
+      var wt = self.pageYOffset;
     } else if (document.documentElement && document.documentElement.scrollTop) { // Explorer 6 Strict
       var wt = document.documentElement.scrollTop;
     } else if (document.body) { // all other Explorers
       var wt = document.body.scrollTop;
     }
+    
+    alert('window scroll:'+ wt);
 
     // Get our dimensions
 
