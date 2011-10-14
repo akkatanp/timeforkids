@@ -432,7 +432,9 @@
     //alert('window scroll:'+ wt+ ', docHeight:'+ docHeight+ ', winHeight:'+ winHeight+ ', mdcTop:'+ mdcTop);
     
     
-    modalContent.css({top: mdcTop + 'px', left: mdcLeft + 'px'}).hide()[animation](speed);
+    //modalContent.css({top: mdcTop + 'px', left: mdcLeft + 'px'}).hide()[animation](speed);
+    
+    modalContent.css({top: 1000 + 'px', left: mdcLeft + 'px'}).hide();
 
     // Bind a click for closing the modalContent
     modalContentClose = function(){close(); return false;};
