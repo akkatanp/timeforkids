@@ -413,12 +413,14 @@
     $('#modalBackdrop').css(css).css('top', 0).css('height', docHeight + 'px').css('width', docWidth + 'px').show();
     //modalContent.css({top: mdcTop + 'px', left: mdcLeft + 'px'}).hide()[animation](speed);
 
-    modalContent.css({top: mdcTop + 'px', left: mdcLeft + 'px'}).hide();
+    modalContent.css({top: mdcTop + 'px', left: mdcLeft + 'px'});
 
     
 
     
-    $(document.documentElement).scrollTop(mdcTop);    
+    //$(document.documentElement).scrollTop(mdcTop);    
+    
+    $(document.body).scrollTop(mdcTop);
     
    // alert('boxmodel: '+ jQuery.support.boxModel);
     
