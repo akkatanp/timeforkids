@@ -413,6 +413,16 @@
     $('#modalBackdrop').css(css).css('top', 0).css('height', docHeight + 'px').css('width', docWidth + 'px').show();
     modalContent.css({top: mdcTop + 'px', left: mdcLeft + 'px'}).hide()[animation](speed);
 
+    
+
+    
+    alert('boxmodel: '+ jQuery.support.boxModel);
+    
+    $(document.documentElement).scrollTop(mdcTop);    
+    
+    
+    
+    
     // Bind a click for closing the modalContent
     modalContentClose = function(){close(); return false;};
     $('.close').bind('click', modalContentClose);
@@ -454,12 +464,13 @@
       var mdcLeft = ( winWidth / 2 ) - ( modalContent.outerWidth() / 2);
       
       
-      $(document.documentElement).scrollTop(mdcTop);
-      
+
       
       // Apply the changes
       $('#modalBackdrop').css('height', docHeight + 'px').css('width', docWidth + 'px').show();
       modalContent.css('top', mdcTop + 'px').css('left', mdcLeft + 'px').show();
+      
+
     };
     $(window).bind('resize', modalContentResize);
 
