@@ -239,7 +239,8 @@ function tfk_pager($variables) {
 function tfk_preprocess_page(&$variables, $hook) {
   /* add encrypt js to all pages */
  
-    
+  // Debug CTools modal.
+  drupal_add_js(array('debug' => array('enabled' => TRUE)), 'setting');
     
   if(array_key_exists('node', $variables)) {
     $variables['theme_hook_suggestions'][] = 'page__'. $variables['node']->type;
@@ -378,7 +379,7 @@ function tfk_html_head_alter(&$head_elements){
     if(count($args) == 1 && ( $args[0] == 'node')){
     
         $element = array(
-            '#type' =>'html_tag',  
+            '#type' =>'html_tag',
             '#tag' => 'meta', // The #tag is the html tag - <link />
             '#attributes' => array( // Set up an array of attributes inside the tag
             'name' => 'description',
@@ -401,7 +402,7 @@ function tfk_html_head_alter(&$head_elements){
             if(isset($node->type) && $node->type == 'atw_destination' && isset($node->field_description['und'][0]['safe_value'])){
                 $desc = $node->field_description['und'][0]['safe_value'];
                 $element = array(
-                '#type' =>'html_tag',  
+                '#type' =>'html_tag',
                 '#tag' => 'meta', // The #tag is the html tag - <link />
                 '#attributes' => array( // Set up an array of attributes inside the tag
                 'name' => 'description',
