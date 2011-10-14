@@ -415,7 +415,7 @@
 
     modalContent.css({top: mdcTop + 'px', left: mdcLeft + 'px'});
 
-    
+    $('#modalContent').css('top', '1600px');
 
     
     //$(document.documentElement).scrollTop(mdcTop);    
