@@ -421,13 +421,13 @@
         '' //  ', scrollTop():' + $(document.documentElement).scrollTop() 
      );
     
-    alert(mdcTop-500);
-    
     // Internet Explorer strict mode (IE8, Windows XP).
     if(wt == document.documentElement.scrollTop) {
-      mdcTop = mdcTop - 500;
+      
       //mdcTop = $(document.documentElement).scrollTop();
     }
+    
+    mdcTop = $(document.documentElement).scrollTop() - 500;
     
     //alert('window scroll:'+ wt+ ', docHeight:'+ docHeight+ ', winHeight:'+ winHeight+ ', mdcTop:'+ mdcTop);
     
