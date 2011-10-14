@@ -411,16 +411,16 @@
     var mdcTop = wt + ( winHeight / 2 ) - (  modalContent.outerHeight() / 2);
     var mdcLeft = ( winWidth / 2 ) - ( modalContent.outerWidth() / 2);
     $('#modalBackdrop').css(css).css('top', 0).css('height', docHeight + 'px').css('width', docWidth + 'px').show();
-    modalContent.css({top: mdcTop + 'px', left: mdcLeft + 'px'}).hide()[animation](speed);
+    //modalContent.css({top: mdcTop + 'px', left: mdcLeft + 'px'}).hide()[animation](speed);
+
+    modalContent.css({top: mdcTop + 'px', left: mdcLeft + 'px'}).hide();
 
     
 
-    
-    alert('boxmodel: '+ jQuery.support.boxModel);
     
     $(document.documentElement).scrollTop(mdcTop);    
     
-    
+   // alert('boxmodel: '+ jQuery.support.boxModel);
     
     
     // Bind a click for closing the modalContent
