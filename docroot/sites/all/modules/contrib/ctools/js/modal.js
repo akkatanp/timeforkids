@@ -425,8 +425,8 @@
     
     // Internet Explorer strict mode (IE8, Windows XP).
     if(wt == document.documentElement.scrollTop) {
-      //mdcTop = mdcTop - 1500;
-      mdcTop = $(document.documentElement).scrollTop();
+      mdcTop = mdcTop - 500;
+      //mdcTop = $(document.documentElement).scrollTop();
     }
     
     //alert('window scroll:'+ wt+ ', docHeight:'+ docHeight+ ', winHeight:'+ winHeight+ ', mdcTop:'+ mdcTop);
