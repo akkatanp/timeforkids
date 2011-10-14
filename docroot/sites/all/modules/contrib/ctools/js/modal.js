@@ -413,7 +413,7 @@
     $('#modalBackdrop').css(css).css('top', 0).css('height', docHeight + 'px').css('width', docWidth + 'px').show();
     //modalContent.css({top: mdcTop + 'px', left: mdcLeft + 'px'}).hide()[animation](speed);
 
-    modalContent.css({top: mdcTop + 'px', left: mdcLeft + 'px'});
+    modalContent.css({left: mdcLeft + 'px'});
 
     $('#modalContent').css('top', '1600px');
 
