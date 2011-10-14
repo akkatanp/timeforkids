@@ -421,6 +421,8 @@
         '' //  ', scrollTop():' + $(document.documentElement).scrollTop() 
      );
     
+    alert(mdcTop-500);
+    
     // Internet Explorer strict mode (IE8, Windows XP).
     if(wt == document.documentElement.scrollTop) {
       //mdcTop = mdcTop - 1500;
