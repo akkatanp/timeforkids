@@ -417,14 +417,17 @@
     
     $('#modalBackdrop').css(css).css('top', 0).css('height', docHeight + 'px').css('width', docWidth + 'px').show();
     
-    alert('window scroll:'+ wt+ ', docHeight:'+ docHeight+ ', winHeight:'+ winHeight+ ', mdcTop:'+ mdcTop);
+    alert('window scroll:'+ wt+ ', docHeight:'+ docHeight+ ', winHeight:'+ winHeight+ ', mdcTop:'+ mdcTop+
+        '' //  ', scrollTop():' + $(document.documentElement).scrollTop() 
+     );
     
     // Internet Explorer strict mode (IE8, Windows XP).
     if(wt == document.documentElement.scrollTop) {
-      mdcTop = mdcTop - 1500;
+      //mdcTop = mdcTop - 1500;
+      mdcTop = $(document.documentElement).scrollTop();
     }
     
-    alert('window scroll:'+ wt+ ', docHeight:'+ docHeight+ ', winHeight:'+ winHeight+ ', mdcTop:'+ mdcTop);
+    //alert('window scroll:'+ wt+ ', docHeight:'+ docHeight+ ', winHeight:'+ winHeight+ ', mdcTop:'+ mdcTop);
     
     
     modalContent.css({top: mdcTop + 'px', left: mdcLeft + 'px'}).hide()[animation](speed);
