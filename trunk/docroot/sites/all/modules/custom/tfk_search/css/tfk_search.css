@@ -729,3 +729,13 @@ body.page-search-site .region-sidebar-first .block .content > .item-list {
 .page-my-favorites  .views-field-ops {
   padding: 20px 0;
 }
+
+/**
+ * Quiz CSS.
+ */
+li.search-result.pdf_quiz .search-result-download-link {
+  display: inline-block;
+  background: url("/sites/all/themes/tfk/images/related-article-icon.png") no-repeat;
+  padding-left: 18px;
+  height: 20px;
+}
