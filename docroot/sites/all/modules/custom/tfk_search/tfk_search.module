@@ -2647,6 +2647,13 @@ function tfk_search_preprocess_search_result(&$vars) {
         $skip_processing = TRUE;
       }
       
+      // Default graphic for Quiz.
+      static $graphic_path = NULL;
+      if($graphic_path == NULL) {
+        $graphic_path = drupal_get_path('module', 'tfk_search'). '/images/quiz_graphic.gif';
+      }
+      $vars['thumbnail'] = theme('image', array('path' => $graphic_path, 'attributes' => $thumb_attr));
+      
       if($favorite_links) {
         tfk_search_get_flag_link($vars, $nid, 'favorites');
       }
