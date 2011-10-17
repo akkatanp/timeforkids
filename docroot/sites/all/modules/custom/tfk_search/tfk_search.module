@@ -2127,6 +2127,9 @@ function tfk_search_worksheets() {
     }
   }
   
+  // Remove flag to allow users to unselect grade.
+  unset($_GET['add_grade']);
+  
   module_load_include('module', 'search');
   $solrsort = isset($_GET['solrsort']) ? $_GET['solrsort'] : 'ds_created desc';
   $page = isset($_GET['page']) ? $_GET['page'] : 0;
