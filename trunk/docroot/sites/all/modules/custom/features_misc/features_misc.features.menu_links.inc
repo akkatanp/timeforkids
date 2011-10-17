@@ -308,7 +308,7 @@ function features_misc_menu_default_menu_links() {
     'external' => '0',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '-45',
+    'weight' => '-44',
   );
   // Exported menu link: menu-tfk-global-navigation:kid-reporters
   $menu_links['menu-tfk-global-navigation:kid-reporters'] = array(
@@ -329,6 +329,26 @@ function features_misc_menu_default_menu_links() {
     'has_children' => '0',
     'expanded' => '0',
     'weight' => '-49',
+  );
+  // Exported menu link: menu-tfk-global-navigation:mini-sites
+  $menu_links['menu-tfk-global-navigation:mini-sites'] = array(
+    'menu_name' => 'menu-tfk-global-navigation',
+    'link_path' => 'mini-sites',
+    'router_path' => 'mini-sites',
+    'link_title' => 'Mini-Sites',
+    'options' => array(
+      'attributes' => array(
+        'class' => array(
+          0 => 'mini-sites',
+        ),
+      ),
+    ),
+    'module' => 'menu',
+    'hidden' => '0',
+    'external' => '0',
+    'has_children' => '0',
+    'expanded' => '0',
+    'weight' => '-45',
   );
   // Exported menu link: menu-tfk-global-navigation:news
   $menu_links['menu-tfk-global-navigation:news'] = array(
@@ -408,7 +428,7 @@ function features_misc_menu_default_menu_links() {
     'external' => '0',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '-44',
+    'weight' => '-43',
   );
   // Exported menu link: menu-tfk-teachers-menu:http://www.timeforkidsdigital.com
   $menu_links['menu-tfk-teachers-menu:http://www.timeforkidsdigital.com'] = array(
@@ -521,6 +541,7 @@ function features_misc_menu_default_menu_links() {
   t('FAQ');
   t('Homework Helper');
   t('Kid Reporters');
+  t('Mini-Sites');
   t('News');
   t('Photos & Videos');
   t('Printables');
