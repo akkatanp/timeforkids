@@ -412,6 +412,12 @@
     var mdcLeft = ( winWidth / 2 ) - ( modalContent.outerWidth() / 2);
     $('#modalBackdrop').css(css).css('top', 0).css('height', docHeight + 'px').css('width', docWidth + 'px').show();
     modalContent.css({top: mdcTop + 'px', left: mdcLeft + 'px'}).hide()[animation](speed);
+    
+    modalContent.change({target: modalContent}, function(eventObject) {
+      //alert('Handler for .change() called.');
+      console.log(modalContent);
+      console.log(eventObject);
+    });    
 
     // Bind a click for closing the modalContent
     modalContentClose = function(){close(); return false;};
