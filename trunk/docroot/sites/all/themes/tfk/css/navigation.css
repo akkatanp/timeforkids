@@ -106,7 +106,7 @@
 
 #global-nav-container #block-menu-menu-tfk-global-navigation {
 	float: left;
-	width: 760px;
+	width: 860px;
 	height: 32px;
 }
 
@@ -173,19 +173,19 @@
 .node-type-article.with-kid-reporter #global-nav-container ul.menu a.news,
 #global-nav-container ul.menu a.news {
 	width: 50px;
-	background: url(../images/main-nav-sprite.png) no-repeat 0px 0px;
+	background: url(../images/main-nav-sprite2.png) no-repeat 0px 0px;
 }
 
 .section-news-archive #global-nav-container ul.menu a.news,
 .section-news #global-nav-container ul.menu a.news,
 #global-nav-container ul.menu a.news.active,
 #global-nav-container ul.menu a.news:hover {
-	background: url(../images/main-nav-sprite.png) no-repeat 0px -32px;
+	background: url(../images/main-nav-sprite2.png) no-repeat 0px -32px;
 }
 
 #global-nav-container ul.menu a.kid-reporter {
 	width: 114px;
-	background: url(../images/main-nav-sprite.png) no-repeat -50px 0px;
+	background: url(../images/main-nav-sprite2.png) no-repeat -50px 0px;
 }
 
 .node-type-kid-reporter  #global-nav-container ul.menu a.kid-reporter,
@@ -193,60 +193,71 @@
 .node-type-article.with-kid-reporter #global-nav-container ul.menu a.kid-reporter,
 #global-nav-container ul.menu a.kid-reporter.active,
 #global-nav-container ul.menu a.kid-reporter:hover {
-	background: url(../images/main-nav-sprite.png) no-repeat -50px -32px;
+	background: url(../images/main-nav-sprite2.png) no-repeat -50px -32px;
 }
 
 #global-nav-container ul.menu a.atw {
 	width: 158px;
-	background: url(../images/main-nav-sprite.png) no-repeat -164px 0px;
+	background: url(../images/main-nav-sprite2.png) no-repeat -164px 0px;
 }
 
 #global-nav-container ul.menu a.atw.active,
 #global-nav-container ul.menu a.atw:hover {
-	background: url(../images/main-nav-sprite.png) no-repeat -164px -32px;
+	background: url(../images/main-nav-sprite2.png) no-repeat -164px -32px;
 }
 
 #global-nav-container ul.menu a.homework-helper {
 	width: 152px;
-	background: url(../images/main-nav-sprite.png) no-repeat -322px 0px;
+	background: url(../images/main-nav-sprite2.png) no-repeat -322px 0px;
 }
 
 #global-nav-container ul.menu a.homework-helper.active,
 #global-nav-container ul.menu a.homework-helper:hover {
-	background: url(../images/main-nav-sprite.png) no-repeat -322px -32px;
+	background: url(../images/main-nav-sprite2.png) no-repeat -322px -32px;
 }
 
 #global-nav-container ul.menu a.photos-video {
 	width: 132px;
-	background: url(../images/main-nav-sprite.png) no-repeat -474px 0px;
+	background: url(../images/main-nav-sprite2.png) no-repeat -474px 0px;
 }
 
 .section-photos-video #global-nav-container ul.menu a.photos-video,
 #global-nav-container ul.menu li.active a.photos-video,
 #global-nav-container ul.menu a.photos-video.active,
 #global-nav-container ul.menu a.photos-video:hover {
-	background: url(../images/main-nav-sprite.png) no-repeat -474px -32px;
+	background: url(../images/main-nav-sprite2.png) no-repeat -474px -32px;
+}
+
+#global-nav-container ul.menu a.mini-sites {
+  width: 94px;
+  background: url(../images/main-nav-sprite2.png) no-repeat -607px 0px;
+}
+
+.section-extras #global-nav-container ul.menu a.mini-sites,
+#global-nav-container ul.menu a.mini-sites.active,
+#global-nav-container ul.menu a.mini-sites:hover {
+  background: url(../images/main-nav-sprite2.png) no-repeat -607px -32px;
 }
 
 #global-nav-container ul.menu a.tfk-extras {
 	width: 94px;
-	background: url(../images/main-nav-sprite.png) no-repeat -606px 0px;
+	background: url(../images/main-nav-sprite2.png) no-repeat -702px 0px;
 }
 
 .section-extras #global-nav-container ul.menu a.tfk-extras,
 #global-nav-container ul.menu a.tfk-extras.active,
 #global-nav-container ul.menu a.tfk-extras:hover {
-	background: url(../images/main-nav-sprite.png) no-repeat -606px -32px;
+	background: url(../images/main-nav-sprite2.png) no-repeat -702px -32px;
 }
 
 #global-nav-container ul.menu a.store {
 	width: 60px;
-	background: url(../images/main-nav-sprite.png) no-repeat -700px 0px;
+	background: url(../images/main-nav-sprite2.png) no-repeat -798px 0px;
 }
 
 #global-nav-container ul.menu a.store.active,
 #global-nav-container ul.menu a.store:hover {
-	background: url(../images/main-nav-sprite.png) no-repeat -700px -32px;
+	background: url(../images/main-nav-sprite2.png) no-repeat -797px -32px;
 }
 
 #teacher-nav-container ul.menu {
