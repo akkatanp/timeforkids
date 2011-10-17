@@ -413,10 +413,11 @@
     $('#modalBackdrop').css(css).css('top', 0).css('height', docHeight + 'px').css('width', docWidth + 'px').show();
     modalContent.css({top: mdcTop + 'px', left: mdcLeft + 'px'}).hide()[animation](speed);
     
-    modalContent.change({target: modalContent}, function(eventObject) {
-      //alert('Handler for .change() called.');
-      console.log(modalContent);
-      console.log(eventObject);
+    modalContent.change({target: modalContent, topValue: mdcTop}, function(eventObject) {
+      alert('Handler for .change() called.');
+      //target.css({top: topValue + 'px'});
+      //console.log(modalContent);
+      //console.log(eventObject);
     });    
 
     // Bind a click for closing the modalContent
@@ -460,9 +461,9 @@
       var mdcLeft = ( winWidth / 2 ) - ( modalContent.outerWidth() / 2);
 
       // Apply the changes
-      //$('#modalBackdrop').css('height', docHeight + 'px').css('width', docWidth + 'px').show();
-      //modalContent.css('top', mdcTop + 'px').css('left', mdcLeft + 'px').show();
-      alert('called!');
+      $('#modalBackdrop').css('height', docHeight + 'px').css('width', docWidth + 'px').show();
+      modalContent.css('top', mdcTop + 'px').css('left', mdcLeft + 'px').show();
+      //alert('called!');
       
     };
     $(window).bind('resize', modalContentResize);
