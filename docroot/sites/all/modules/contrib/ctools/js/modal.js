@@ -411,14 +411,7 @@
     var mdcTop = wt + ( winHeight / 2 ) - (  modalContent.outerHeight() / 2);
     var mdcLeft = ( winWidth / 2 ) - ( modalContent.outerWidth() / 2);
     $('#modalBackdrop').css(css).css('top', 0).css('height', docHeight + 'px').css('width', docWidth + 'px').show();
-    modalContent.css({top: mdcTop + 'px', left: mdcLeft + 'px'}).hide()[animation](speed);
-    
-    modalContent.change({target: modalContent, topValue: mdcTop}, function(eventObject) {
-      alert('Handler for .change() called.');
-      //target.css({top: topValue + 'px'});
-      //console.log(modalContent);
-      //console.log(eventObject);
-    });    
+    modalContent.css({top: mdcTop + 'px', left: mdcLeft + 'px'}).hide()[animation](speed);     
 
     // Bind a click for closing the modalContent
     modalContentClose = function(){close(); return false;};
@@ -461,9 +454,14 @@
       var mdcLeft = ( winWidth / 2 ) - ( modalContent.outerWidth() / 2);
 
       // Apply the changes
-      $('#modalBackdrop').css('height', docHeight + 'px').css('width', docWidth + 'px').show();
-      modalContent.css('top', mdcTop + 'px').css('left', mdcLeft + 'px').show();
-      //alert('called!');
+      
+      // richard.allen, 2011-Oct-17. Commented these two lines below, they were
+      // causing a bug in IE8. This function was getting called twice for no
+      // reason in IE, and misplacing the worksheets "Save this search" modal form.
+      // See defect #464.
+      
+      //$('#modalBackdrop').css('height', docHeight + 'px').css('width', docWidth + 'px').show();
+      //modalContent.css('top', mdcTop + 'px').css('left', mdcLeft + 'px').show();
       
     };
     $(window).bind('resize', modalContentResize);
