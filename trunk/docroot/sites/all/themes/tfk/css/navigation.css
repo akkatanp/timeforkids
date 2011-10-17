@@ -1119,6 +1119,10 @@
 	background: url("../images/related-article-icon.png") no-repeat;
 }
 
+#block-views-global-right-sidebar-block-4 .content a.quiz-archive {
+	margin: 9px 0 0 0;
+}
+
 #block-block-18  .content p {
 	height: 20px;
 	margin: 4px 0;
