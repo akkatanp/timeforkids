@@ -214,12 +214,9 @@ function _tfk_news_minisite_more(){
 function _tfk_news_minisite_related_articles(){
     $rgs = arg();
     
-    //print_r($rgs);
-    
-    
     if($rgs[0] == 'node' && is_numeric($rgs[1])){
         $node = node_load($rgs[1]);
-        if($node->type == 'article'){
+        if($node->type == 'article' || $node->type == 'slideshow'){
 
             //lets get the parent minisite
             $result = db_query('SELECT DISTINCT entity_id from field_data_field_articles fa where fa.entity_type = :type and fa.bundle = :bundle and fa.field_articles_nid = :nid',array('type'=> 'node','bundle'=>'minisite','nid'=>$node->nid));
