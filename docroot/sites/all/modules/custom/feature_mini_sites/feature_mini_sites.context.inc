@@ -246,5 +246,63 @@ function feature_mini_sites_context_default_contexts() {
   t('minisite');
   $export['minisite_node_view_for_teachers'] = $context;
 
+  $context = new stdClass;
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'tfk_slideshow_node_view';
+  $context->description = 'Slideshow block for regular slideshow pages, Featured sidebar and back to all link.';
+  $context->tag = 'TFK Photos and Video';
+  $context->conditions = array(
+    'path' => array(
+      'values' => array(
+        'photos-video/slideshow' => 'photos-video/slideshow',
+        'photos-video/slideshow/*' => 'photos-video/slideshow/*',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'tfk_search-tfk_search_photos_video_back' => array(
+          'module' => 'tfk_search',
+          'delta' => 'tfk_search_photos_video_back',
+          'region' => 'sidebar_first',
+          'weight' => '-10',
+        ),
+        'tfk_helper-featured_block_sidebar_slideshow' => array(
+          'module' => 'tfk_helper',
+          'delta' => 'featured_block_sidebar_slideshow',
+          'region' => 'sidebar_first',
+          'weight' => '-9',
+        ),
+        'tfk_news-tfk-news-minisite-articles' => array(
+          'module' => 'tfk_news',
+          'delta' => 'tfk-news-minisite-articles',
+          'region' => 'sidebar_bottom',
+          'weight' => '-10',
+        ),
+        'tfk_helper-tfk_helper_slideshow' => array(
+          'module' => 'tfk_helper',
+          'delta' => 'tfk_helper_slideshow',
+          'region' => 'content',
+          'weight' => '-48',
+        ),
+        'tfk_helper-more_items_block' => array(
+          'module' => 'tfk_helper',
+          'delta' => 'more_items_block',
+          'region' => 'content',
+          'weight' => '-46',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Slideshow block for regular slideshow pages, Featured sidebar and back to all link.');
+  t('TFK Photos and Video');
+  $export['tfk_slideshow_node_view'] = $context;
+
   return $export;
 }
