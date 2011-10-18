@@ -739,3 +739,22 @@ li.search-result.pdf_quiz .search-result-download-link {
   padding-left: 18px;
   height: 20px;
 }
+
+/**
+ * Rules needed by both tfk_worksheets and tfk_search.
+ */
+li.search-result.worksheet .search-result-download-link {
+  display: inline-block;
+  background: url("/sites/all/modules/custom/tfk_search/images/worksheet-icon.png") no-repeat;
+  padding-left: 18px;
+  height: 20px;
+}
+
+li.search-result.worksheet.quiz .search-result-download-link {
+  background: url("/sites/all/modules/custom/tfk_search/images/quiz-icon.png") no-repeat;
+}
+
+li.search-result.worksheet.chart .search-result-download-link,
+li.search-result.worksheet.graph .search-result-download-link {
+  background: url("/sites/all/modules/custom/tfk_search/images/organizer.png") no-repeat;
+}
