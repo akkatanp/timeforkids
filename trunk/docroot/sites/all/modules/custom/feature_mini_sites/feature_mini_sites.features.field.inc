@@ -144,7 +144,7 @@ function feature_mini_sites_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'body',
-      'label' => 'Description',
+      'label' => 'Deck',
       'required' => 1,
       'settings' => array(
         'display_summary' => 1,
@@ -209,6 +209,7 @@ function feature_mini_sites_field_default_fields() {
           'image' => 0,
           'kid_reporter' => 0,
           'kid_reporter_bottom_nodeblock' => 0,
+          'kid_reporter_listing_nodeblock' => 0,
           'magazine_issue' => 0,
           'mini_lesson' => 0,
           'mini_site_home' => 0,
@@ -217,16 +218,19 @@ function feature_mini_sites_field_default_fields() {
           'page' => 0,
           'paper_step' => 0,
           'pdf_quiz' => 0,
+          'poll' => 0,
           'slideshow' => 'slideshow',
           'store' => 0,
+          'teacher_board_nodeblock' => 0,
           'teacher_community_question' => 0,
-          'teachers_board_introduction' => 0,
           'tfk_extra' => 0,
           'tfk_extras_bottom_nodeblock' => 0,
           'tfk_extras_top_nodeblock' => 0,
           'tfk_notification' => 0,
+          'tfk_staff' => 0,
           'video' => 0,
           'webform' => 0,
+          'webform_generic' => 0,
           'worksheet' => 0,
           'writing_tips' => 0,
         ),
@@ -328,7 +332,7 @@ function feature_mini_sites_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_header_image',
-      'label' => 'Header Image',
+      'label' => 'Banner Image',
       'required' => 1,
       'settings' => array(
         'alt_field' => 0,
@@ -346,11 +350,27 @@ function feature_mini_sites_field_default_fields() {
         'settings' => array(
           'insert' => 0,
           'insert_class' => '',
-          'insert_default' => array(
-            0 => 'auto',
-          ),
+          'insert_default' => 'auto',
           'insert_styles' => array(
-            0 => 'auto',
+            'auto' => 'auto',
+            'image' => 0,
+            'image_115x115' => 0,
+            'image_large' => 0,
+            'image_medium' => 0,
+            'image_square_thumbnail' => 0,
+            'image_tfk_140x187' => 0,
+            'image_tfk_270x270' => 0,
+            'image_tfk_50px_50px' => 0,
+            'image_tfk_60x60' => 0,
+            'image_tfk_71x95' => 0,
+            'image_tfk_rect_large' => 0,
+            'image_tfk_rect_medium' => 0,
+            'image_tfk_rect_small' => 0,
+            'image_tfk_square_large' => 0,
+            'image_tfk_square_medium' => 0,
+            'image_tfk_square_small' => 0,
+            'image_thumbnail' => 0,
+            'link' => 0,
           ),
           'insert_width' => '',
           'preview_image_style' => 'thumbnail',
@@ -873,8 +893,9 @@ function feature_mini_sites_field_default_fields() {
   // Included for use with string extractors like potx.
   t('Additional Content');
   t('Articles');
+  t('Banner Image');
+  t('Deck');
   t('Description');
-  t('Header Image');
   t('Resources');
   t('Resources Label');
   t('Thumbnail Image');
