@@ -28,6 +28,10 @@ function tfk_user_profile_form_user_login_alter( &$form, &$form_state){
    	$form['#action'] = '/user';
   	$form['name']['#title'] = 'Email';
   	$form_state['lucie_error'] = false;
+  	
+	if($form_state['redirect'] == 'user/0') {
+     $form_state['redirect'] = 'user';
+	}
 }
 
 function tfk_user_profile_user_login(&$edit, $account) {
