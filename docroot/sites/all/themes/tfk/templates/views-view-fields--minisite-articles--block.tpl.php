@@ -22,10 +22,13 @@
  *
  * @ingroup views_templates
  */
+
+global $base_url;
+
 ?>
 
 <?php foreach ($fields as $id => $field): ?>
-  <?php if($id != 'field_related_articles_1' && $id != 'field_related_articles'):?>
+  <?php if($id != 'field_related_articles_1' && $id != 'field_related_articles' && $id != 'field_slideshow_images'):?>
     <?php if (!empty($field->separator)): ?>
       <?php print $field->separator; ?>
     <?php endif; ?>
@@ -34,6 +37,23 @@
       <?php print $field->content; ?>
     <?php print $field->wrapper_suffix; ?>
   <?php endif; ?>
+
+<?php if($id == 'field_slideshow_images' && isset($field->content)):?>
+
+<?php 
+
+
+$img = node_load($field->content);
+    
+    $tmp_img = field_get_items('node', $img, 'field_image');
+    $img_fid = $tmp_img[0]['filename'];
+    $test = image_style_url('tfk_square_small', file_build_uri(basename($img_fid)));
+    
+?>
+
+    <img class="minisite-slideshow-slide"src="<?php print $test;?>"/>
+<?php endif; ?>
+
 <?php endforeach; ?>
 
 <?php if(isset($fields['field_related_articles_1']) && !empty($fields['field_related_articles_1']->content) || !empty($fields['field_related_articles']->content)):?>
