@@ -921,7 +921,12 @@ ul.links li {
 	margin: 0 10px 10px 0;
 }
 
-
+.minisite-slideshow-slide{
+    float: left !important;
+    width: 62px !important;
+    height: 62px !important;
+    margin: 0 10px 10px 0 !important;
+}
 
 
 
