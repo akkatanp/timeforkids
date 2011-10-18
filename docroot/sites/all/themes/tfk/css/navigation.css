@@ -1105,9 +1105,12 @@
 	padding-bottom: 5px;
 }
 
-#block-views-global-right-sidebar-block-4 .content .field-content {
-  padding-bottom: 8px;
+#block-views-global-right-sidebar-block-4 .view-footer .a {
   background: url("../images/related-article-icon.png") no-repeat scroll 0 0 transparent;
+}
+
+#block-views-global-right-sidebar-block-4 .content .field-content {
+  background: url("../images/related-article-icon.png") no-repeat scroll 0 4px transparent;
   padding-left: 20px;
 }
 
