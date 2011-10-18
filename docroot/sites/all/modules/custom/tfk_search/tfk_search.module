@@ -2660,6 +2660,7 @@ function tfk_search_preprocess_search_result(&$vars) {
       if($favorite_links) {
         tfk_search_get_flag_link($vars, $nid, 'favorites');
       }
+      $vars['classes_array'][] = 'pdf_quiz';
       break;
 
     case 'worksheet':
