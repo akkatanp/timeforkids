@@ -1098,13 +1098,17 @@
 }
 
 #block-views-global-right-sidebar-block-4 .content a {
-  background: url("../images/related-article-icon.png") no-repeat scroll 0 0 transparent;
   height: 16px;
-  padding-left: 20px;
 }
 
 #block-views-global-right-sidebar-block-4 .content .views-row-first .field-content {
-	padding-bottom: 8px
+	padding-bottom: 5px;
+}
+
+#block-views-global-right-sidebar-block-4 .content .field-content {
+  padding-bottom: 8px;
+  background: url("../images/related-article-icon.png") no-repeat scroll 0 0 transparent;
+  padding-left: 20px;
 }
 
 #block-block-18 .content {
