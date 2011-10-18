@@ -390,9 +390,6 @@ function theme_tfk_search_unclick_link($vars) {
     }
     
     // Change facet text from "PDF Quiz" to "Quiz".
-    if(isset($vars['options']['delta']) && $vars['options']['delta'] == 'bundle' && $vars['options']['query']['filters'] == 'bundle:pdf_quiz') {
-      $vars['facet_text'] = 'Quiz';
-    }
     if(isset($vars['options']['delta']) && $vars['options']['delta'] == 'bundle' && $vars['facet_text'] == 'PDF Quiz') {
       $vars['facet_text'] = 'Quiz';
     }
