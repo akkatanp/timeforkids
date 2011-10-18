@@ -157,7 +157,7 @@ function tfk_user_profile_login_validate( $form, &$form_state ){
     // set the Lucie Error returned by the call.  By default this is set to false.
     $form_state['lucie_error'] = $response['error'];
     
-    if (!empty($response['data']))
+    if (!empty($response['data']) && empty($response['error']))
     {
     	// check to see if a record exists in the lucie mapping table
  		$existingUser = tfk_check_lucie_user($response['data']);
