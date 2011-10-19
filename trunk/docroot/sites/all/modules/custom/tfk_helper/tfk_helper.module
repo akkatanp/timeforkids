@@ -277,6 +277,10 @@ function tfk_helper_translate_content_type($content_type) {
     case 'atw_destination':
       $translation = 'destination';
     break;
+
+    case 'slideshow':
+      $translation = 'slide show';
+    break;
     
     default:
       $translation = $content_type;
