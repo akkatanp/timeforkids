@@ -64,7 +64,10 @@ function tfk_user_login_final_validate($form, &$form_state) {
 		
 		if (isset($form_state['lucie_error']) && !empty($form_state['lucie_error'])) {			
 			if ($form_state['lucie_error'] == 'sub_expired') {
-				form_set_error('name', t('Your subscription to TIME For Kids has expired.  Please visit <a href="@url">timeforkids.com/customerservice</a> to renew your subscription.'), array('@url' => url('forgotpassword')));
+				form_set_error('name', 
+					t('Your subscription to TIME For Kids has expired.  Please visit <a href="@url">timeforkids.com/customerservice</a> to renew your subscription.', 
+					array('@url' => url('forgotpassword'))
+				);
 				watchdog('user', 'Subcscription expired: Login attempt failed for %user.', array('%user' => $form_state['values']['name']));
 			} else {
 				form_set_error('name', t('Your account has been locked.  A new temporary password has been sent to your email.'));
