@@ -434,7 +434,7 @@ function theme_tfk_search_related_content($variables) {
       }
       
       
-      $output .= '<div class="addit-related-articles-label">'. strtoupper(t($related. '@type:', array('@type' => $related_type))). '</div>';
+      $output .= '<div class="addit-related-articles-label">1'. strtoupper(t($related. '@type:', array('@type' => $related_type))). '2</div>';
       $output .= '<div class="addit-related-articles-title">'. $link. '</div>';
  		$output .= '</div>';
   }
