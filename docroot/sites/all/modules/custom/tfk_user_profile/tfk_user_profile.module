@@ -12,7 +12,7 @@ function tfk_user_profile_preprocess_page(&$variables) {
 	global $user;
 	$_variables = & $variables;
     // Unset some blocks for anon users.
-  	if(!user_access('access protected content', $user)) {	
+  	if(!user_access('access protected content', $user)) {
 		if(arg(0) == TFK_USER_PROFILE_USER_PATH) {
 			unset($_variables['page']['bottom']['tfk_helper_tfk_helper_login']);
 			drupal_add_js(array('encrypt_submissions' => array('encryptForms' => array('user_login' => 'user-login'))), 'setting');
@@ -24,10 +24,21 @@ function tfk_user_profile_preprocess_page(&$variables) {
  * Implementation of form_alter().
  */
 function tfk_user_profile_form_user_login_alter( &$form, &$form_state){
-	$form['#validate'] = array(  'user_login_name_validate','user_login_authenticate_validate', 'tfk_user_profile_login_validate', 'tfk_user_login_final_validate' );
-   	$form['#action'] = '/user';
-  	$form['name']['#title'] = 'Email';
-  	$form_state['lucie_error'] = false;
+  $form['#validate'] = array('user_login_name_validate','user_login_authenticate_validate', 'tfk_user_profile_login_validate', 'tfk_user_login_final_validate');
+ 	$form['#action'] = '/user';
+	$form['name']['#title'] = 'Email';
+	//$form_state['lucie_error'] = false;
+  	
+  $form['#submit'][] = 'tfk_user_profile_form_user_login_submit';
+  
+ # $form['#validate'][] = 'tfk_user_profile_login_validate';
+ # $form['#validate'][] = 'tfk_user_login_final_validate';
+}
+
+function tfk_user_profile_form_user_login_submit(&$form, &$form_state) {
+  if($form_state['submitted'] == TRUE && $form_state['redirect'] == 'user/0') {
+    $form_state['redirect'] = null;
+  }
 }
 
 function tfk_user_profile_user_login(&$edit, $account) {
@@ -62,11 +73,14 @@ function tfk_user_login_final_validate($form, &$form_state) {
 	  		flood_register_event('failed_login_attempt_user', variable_get('user_failed_login_user_window', 21600), $form_state['flood_control_user_identifier']);
 		}
 		
-		if (isset($form_state['lucie_error']) && !empty($form_state['lucie_error'])) {			
+		if (isset($form_state['lucie_error']) && !empty($form_state['lucie_error'])) {
 			if ($form_state['lucie_error'] == 'sub_expired') {
-				form_set_error('name', 
-					t('Your subscription to TIME For Kids has expired.  Please visit <a href="@url">timeforkids.com/customerservice</a> to renew your subscription.', 
-					array('@url' => url('forgotpassword'))
+				form_set_error(
+  				'name',
+  				t(
+  					'Your subscription to TIME For Kids has expired.  Please visit <a href="@url">timeforkids.com/customerservice</a> to renew your subscription.',
+  				  array('@url' => url('forgotpassword'))
+  				)
 				);
 				watchdog('user', 'Subcscription expired: Login attempt failed for %user.', array('%user' => $form_state['values']['name']));
 			} else {
@@ -160,7 +174,7 @@ function tfk_user_profile_login_validate( $form, &$form_state ){
     // set the Lucie Error returned by the call.  By default this is set to false.
     $form_state['lucie_error'] = $response['error'];
     
-    if (!empty($response['data']))
+    if (!empty($response['data']) && empty($response['error']))
     {
     	// check to see if a record exists in the lucie mapping table
  		$existingUser = tfk_check_lucie_user($response['data']);
@@ -376,7 +390,8 @@ function tfk_user_profile_form_submit($form, &$form_state) {
 function tfk_user_profile (&$user_profile) {
     global $user;
     if (isset($user_profile['elements']['#account']->field_is_board_member)) {
-        if ($user_profile['elements']['#account']->field_is_board_member['und']['0']['value'] == "yes") {
+        $field_is_board_member = field_get_items('user', $user_profile['elements']['#account'], 'field_is_board_member');
+        if ($field_is_board_member) {
             //Show board member page.
            drupal_set_title('Teacher Community');
            $output = t("<h2 class=\"tfk-user-profile-title\">Teacher Board Member &#8212; ".$user_profile['elements']['#account']->name."</h2><div id=\"tfk-user-profile-board-member-wrapper\">");
@@ -385,16 +400,18 @@ function tfk_user_profile (&$user_profile) {
            $output .= t("<p class=\"tfk-user-profile-board-member-taught\">".$user_profile['elements']['#account']->field_teacher_grade_taught['und']['0']['value']."</p>");
            $output .= t("<p class=\"tfk-user-profile-board-member-location\">".$user_profile['elements']['#account']->field_teacher_location['und']['0']['value']."</p>");
            $output .= t("<p class=\"tfk-user-profile-board-member-copy\">".$user_profile['elements']['#account']->field_profile_copy['und']['0']['value']."</p></div>");
+           return $output;
         } elseif ($user->uid == $user_profile['elements']['#account']->uid) {
             //Only the user can edit it's his data.
             //Show user settings page
             drupal_set_title('My Account');
-            $output = t("<h2 class=\"tfk-user-user-profile-title\">Account Settings</h2>".drupal_render(drupal_get_form('tfk_user_profile_form', $user_profile)));
+            $tfk_user_profile_form = drupal_get_form('tfk_user_profile_form', $user_profile);
+            $output = t("<h2 class=\"tfk-user-user-profile-title\">Account Settings</h2>".drupal_render($tfk_user_profile_form));
+            return $output;
         } else {
             //Default behavior
         }
     }
-    return $output;
 }
 
 
