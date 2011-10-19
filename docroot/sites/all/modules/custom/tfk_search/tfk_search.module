@@ -1201,7 +1201,7 @@ function theme_tfk_featured_block(&$variables) {
   $output .= l('<h2 class="featured-title">'. $tfkSearchFeaturedItem->title. '</h2>', $url, array('html' => TRUE));
   $output .= "<div class='featured-date'>". date('F j, Y', $tfkSearchFeaturedItem->created). "</div>";
   $output .= "<div class='featured-dek'>{$body}</div>";
-  $output .= '<div class="featured-link">'. l('View '. ($tfkSearchFeaturedItem->type == 'slideshow'? 'Photo Slide-Show': 'Video'), $url). '</div>';
+  $output .= '<div class="featured-link">'. l('View '. ($tfkSearchFeaturedItem->type == 'slideshow'? 'Photo Slide Show': 'Video'), $url). '</div>';
   
   // Thumbnails. Only for slideshows.
   if($tfkSearchFeaturedItem->type == 'slideshow') {
@@ -1311,7 +1311,7 @@ function theme_tfk_featured_minisite_slideshow(&$variables) {
   $output .= l('<h2 class="featured-title">'. $tfkSearchFeaturedItem->title. '</h2>', $url, array('html' => TRUE));
   $output .= "<div class='featured-date'>". date('F j, Y', $tfkSearchFeaturedItem->created). "</div>";
   $output .= "<div class='featured-dek'>{$body}</div>";
-  $output .= '<div class="featured-link">'. l('View '. ($tfkSearchFeaturedItem->type == 'slideshow'? 'Photo Slide-Show': 'Video'), $url). '</div>';
+  $output .= '<div class="featured-link">'. l('View '. ($tfkSearchFeaturedItem->type == 'slideshow'? 'Photo Slide Show': 'Video'), $url). '</div>';
   
   // Thumbnails. Only for slideshows.
   if($tfkSearchFeaturedItem->type == 'slideshow') {
