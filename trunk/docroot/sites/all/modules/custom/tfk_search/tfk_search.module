@@ -364,6 +364,11 @@ function theme_tfk_search_facet_link($vars) {
     // Allow HTML.
     $vars['options']['html'] = TRUE;
     
+    
+    if(strtolower($vars['facet_text']) == 'slideshow'){
+        $vars['facet_text'] = 'Slide Show';
+    }
+    
     return apachesolr_l($vars['facet_text'] . "<span class='solr-facet-link-count'> ({$vars['count']})</span>",  $vars['path'], $vars['options']);
   }
   
