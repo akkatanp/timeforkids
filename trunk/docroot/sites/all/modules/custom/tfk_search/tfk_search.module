@@ -2302,6 +2302,9 @@ function tfk_search_get_flag_link(&$vars, $nid, $flag_name = 'favorites') {
  */
 function tfk_search_preprocess_search_result(&$vars) {
   $vars['tfk_search_cont_type'] = strtoupper($vars['result']['fields']['bundle_name']);
+  if($vars['tfk_search_cont_type'] == 'SLIDESHOW'){
+      $vars['tfk_search_cont_type'] = 'SLIDE SHOW';
+  }
  
   // Add specific template suggestions for invividual results on photos and video.
   // Shuffle the order of the suggestions to prioritize the use of our template on top of the default.
