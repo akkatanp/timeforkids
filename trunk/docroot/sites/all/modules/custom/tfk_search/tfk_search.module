@@ -430,7 +430,7 @@ function theme_tfk_search_related_content($variables) {
       $related_type = $related_content[$key]['type'];
       
       if($related_type == 'slideshow'){
-         $related_type == 'Slide Show';
+         $related_type = 'Slide Show';
       }
       
       
