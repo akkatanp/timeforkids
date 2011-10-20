@@ -79,7 +79,7 @@ function tfk_user_login_final_validate($form, &$form_state) {
   				'name',
   				t(
   					'Your subscription to TIME For Kids has expired.  Please visit <a href="@url">timeforkids.com/customerservice</a> to renew your subscription.',
-  				  array('@url' => url('forgotpassword'))
+  				  array('@url' => url('customerservice'))
   				)
 				);
 				watchdog('user', 'Subcscription expired: Login attempt failed for %user.', array('%user' => $form_state['values']['name']));
