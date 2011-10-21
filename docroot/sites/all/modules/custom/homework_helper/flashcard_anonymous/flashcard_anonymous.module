@@ -123,32 +123,39 @@ function flashcard_anonymous_uuid_info() {
  */
 function flashcard_anonymous_generate_uuid() {
     
+    
+    $tables = array('node',
+                    'node_revisions',
+                    'comments',
+                    'term_data',
+                    'users',
+                    'vocabulary'
+    );
+    
+    
     while($tmp_uuid = sprintf('%04x%04x', mt_rand(0, 65535), mt_rand(0, 65535))){
         
-        $sql = db_query('select uuid from {node} where uuid = :uuid',array('uuid'=>$uuid));
-        $record = $sql->fetch();
-        if(!isset($record->uuid)){
+        $unique = 1;
+        
+        foreach($tables as $table){
+            $sql = db_query('select uuid from :table where uuid = :uuid',array('uuid'=>$uuid,'table'=>$table));
+            $record = $sql->fetch();
+            if(isset($record->uuid)){
+                $unique = 0;
+            }
+        }
+        
+        if($unique == 0){
             return $tmp_uuid;
         }
+        
+        
     }
     
-    
-  //return sprintf('%04x%04x', mt_rand(0, 65535), mt_rand(0, 65535));
 }
 
 
 
 //function flashcard_anonymous_generate_uuid() {
-//    
-//    while($tmp_uuid = sprintf('%04x%04x', mt_rand(0, 65535), mt_rand(0, 65535))){
-//        
-//        $sql = db_query('select uuid from {node} where uuid = :uuid',array('uuid'=>$uuid));
-//        $record = $sql->fetch();
-//        if(!isset($record->uuid)){
-//            return $tmp_uuid;
-//        }
-//    }
-//    
-//    
 //  //return sprintf('%04x%04x', mt_rand(0, 65535), mt_rand(0, 65535));
 //}
