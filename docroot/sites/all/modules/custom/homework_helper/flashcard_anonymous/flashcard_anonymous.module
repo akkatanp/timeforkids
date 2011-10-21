@@ -137,7 +137,7 @@ function flashcard_anonymous_generate_uuid() {
         $unique = 1;
         
         foreach($tables as $table){
-            $sql = db_query('select uuid from :table where uuid = :uuid',array('uuid'=>$uuid,'table'=>$table));
+            $sql = db_query('select uuid from :table where uuid = :uuid',array('uuid'=>$tmp_uuid,'table'=>$table));
             $record = $sql->fetch();
             if(isset($record->uuid)){
                 $unique = 0;
