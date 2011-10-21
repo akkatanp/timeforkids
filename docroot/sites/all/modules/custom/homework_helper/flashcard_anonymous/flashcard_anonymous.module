@@ -124,21 +124,12 @@ function flashcard_anonymous_uuid_info() {
 function flashcard_anonymous_generate_uuid() {
     
     while($tmp_uuid = sprintf('%04x%04x', mt_rand(0, 65535), mt_rand(0, 65535))){
-        
-        $unique = 1;
-        
-        foreach($tables as $table){
             
-            $sql = db_query('select uuid from {node} where uuid = :uuid',array('uuid'=>$tmp_uuid,'table'=>$table));
+            $sql = db_query('select uuid from {node} where uuid = :uuid',array('uuid'=>$tmp_uuid));
             $record = $sql->fetch();
-            if(isset($record->uuid)){
-                $unique = 0;
+            if(!isset($record->uuid)){
+                return $tmp_uuid;
             }
-        }
-        
-        if($unique == 1){
-            return $tmp_uuid;
-        }
         
     }
     
