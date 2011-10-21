@@ -123,7 +123,6 @@ function flashcard_anonymous_uuid_info() {
  */
 function flashcard_anonymous_generate_uuid() {
     
-    echo 'a';exit;
     $tables = array('node',
                     'node_revisions',
                     'comments',
