@@ -145,7 +145,7 @@ function flashcard_anonymous_generate_uuid() {
             }
         }
         
-        if($unique == 0){
+        if($unique == 1){
             return $tmp_uuid;
         }
         
