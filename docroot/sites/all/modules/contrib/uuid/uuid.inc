@@ -103,6 +103,11 @@ function uuid_sync($table, $id_column, $uuid_column = 'uuid') {
  *   TRUE if the string is well formed.
  */
 function uuid_is_well_formed($uuid) {
+    
+  $exists = db_query('SELECT 1 FROM {node} WHERE uuid = :uuid', array('uuid'=>$uuid));
+  $record = $exists->fetch();   
+  print_R($record);exit;
+    
   return preg_match("/^[0-9a-f]{8}-([0-9a-f]{4}-){3}[0-9a-f]{12}$/", $uuid);
 }
 
