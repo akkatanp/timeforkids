@@ -200,8 +200,7 @@ function tfk_user_profile_login_validate( $form, &$form_state ){
  * Information returned inclues, first & last name, account id, and email address.
  */
 function tfk_lucie_get_user_info($email, $token){
- //$url = 'http://cgi.timeinc.com/webservices/customers/'.check_plain($email).'/TK';
- $url = 'http://qa-lucie.timeinc.com/webservices/customers/'.check_plain($email).'/TK';
+ $url = 'http://cgi.timeinc.com/webservices/customers/'.check_plain($email).'/TK';
  $response = drupal_http_request($url, array('headers' => array('Content-Type'=>'application/json', 'CGI-token' => $token),
 	'method'=> 'GET'
    ));
