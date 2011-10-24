@@ -12,7 +12,7 @@ function study_helper_update_7000() {
 
 function study_helper_update_7001() {
   
-    $sql = db_query('SELECT uuid, COUNT( * ) c FROM node n WHERE n.type <> :flashcard GROUP BY uuid HAVING c >1',array('flashcard'=>'flashcard'));
+    $sql = db_query('SELECT uuid, COUNT( * ) c FROM node n GROUP BY uuid HAVING c >1',array('flashcard'=>'flashcard'));
     $results = $sql->fetchAll();
     
     foreach($results as $result){
@@ -20,3 +20,8 @@ function study_helper_update_7001() {
     }
     return t('Removed duplicate uuids from non flashcard nodes');
 }
+
+
+//select nid,title,uuid,type from node where uuid in (select uuid from node where type = 'flashcard' group by uuid having count(*) > 1) order by uuid
+
+
