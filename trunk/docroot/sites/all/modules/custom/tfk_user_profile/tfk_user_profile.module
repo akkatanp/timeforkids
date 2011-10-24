@@ -255,6 +255,7 @@ function tfk_lucie_check_user($email, $pwd){
   	case 201:
   		if (tfk_lucie_user_entitlements($dataResponse['token'])) {
   			$_lucieUser['data'] = tfk_lucie_get_user_info($email, $dataResponse['token']);
+  			die(print_r($_lucieUser['data']));
   		} else {
 			$_lucieUser['error'] = 'sub_expired';
   		}
