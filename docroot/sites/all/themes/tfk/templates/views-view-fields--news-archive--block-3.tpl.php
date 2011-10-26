@@ -31,6 +31,7 @@ if(count($user_roles) == 1 && in_array('anonymous user',$user_roles)){
 }
 ?>
 
+
 <?php foreach ($fields as $id => $field): ?>
 
     <?php if($id == 'field_lrg_rect_image'):?>
@@ -79,4 +80,4 @@ if(count($user_roles) == 1 && in_array('anonymous user',$user_roles)){
       <?php endif;?>
     <?php endif;?>
     <?php endif;?>
-</div>xxv
+</div>
