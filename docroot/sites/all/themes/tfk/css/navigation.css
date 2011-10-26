@@ -1133,6 +1133,7 @@
 #block-views-global-right-sidebar-block-2 .content .field-content {
   background: url("../images/worksheet-icon.png") no-repeat scroll 0 4px transparent;
   padding-left: 20px;
+  display: block;
 }
 
 #block-views-global-right-sidebar-block-3 .content a {
