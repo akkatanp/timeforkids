@@ -30,7 +30,6 @@ if(count($user_roles) == 1 && in_array('anonymous user',$user_roles)){
   $is_anon = 1;
 }
 ?>
-xxx
 
 <?php foreach ($fields as $id => $field): ?>
 
