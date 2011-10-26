@@ -1128,8 +1128,11 @@
 
 #block-views-global-right-sidebar-block-2 .content a {
 	height: 16px;
-	padding-left: 20px;
-	background: url("../images/worksheet-icon.png") no-repeat;
+}
+
+#block-views-global-right-sidebar-block-2 .content .field-content {
+  background: url("../images/worksheet-icon.png") no-repeat scroll 0 4px transparent;
+  padding-left: 20px;
 }
 
 #block-views-global-right-sidebar-block-3 .content a {
@@ -1138,6 +1141,7 @@
 	background: url("../images/related-article-icon.png") no-repeat;
 }
 
+#block-views-global-right-sidebar-block-3 .content .view-footer,
 #block-views-global-right-sidebar-block-4 .content .view-footer {
 	margin: 9px 0 0 0;
 }
