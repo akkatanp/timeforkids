@@ -1,0 +1,4 @@
+name = TFK Ads and Omniture
+description = Handles ad and omniture code for TFK
+core = 7.x
+package = "TFK"
