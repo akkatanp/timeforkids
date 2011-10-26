@@ -1,0 +1,27 @@
+<?php
+
+/**
+ * Give editors and admins new flashcard perm.
+ */
+function study_helper_update_7000() {
+  $perms = array('create public flashcards');
+  user_role_grant_permissions(3, $perms);
+  user_role_grant_permissions(4, $perms);
+  return t('Gave editors and admins new flashcard permission');
+}
+
+function study_helper_update_7001() {
+  
+    $sql = db_query('SELECT uuid, COUNT( * ) c FROM node n GROUP BY uuid HAVING c >1',array('flashcard'=>'flashcard'));
+    $results = $sql->fetchAll();
+    
+    foreach($results as $result){
+       $sql = db_query('UPDATE node set uuid = :empty where type <> :flashcard and uuid = :uuid',array('empty'=>'','flashcard'=>'flashcard','uuid'=>$result->uuid));
+    }
+    return t('Removed duplicate uuids from non flashcard nodes');
+}
+
+
+//select nid,title,uuid,type from node where uuid in (select uuid from node where type = 'flashcard' group by uuid having count(*) > 1) order by uuid
+
+
