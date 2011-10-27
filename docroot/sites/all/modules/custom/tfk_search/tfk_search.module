@@ -2665,7 +2665,13 @@ function tfk_search_preprocess_search_result(&$vars) {
         $name_res =  db_query('select name from taxonomy_term_data where tid = :tid',array('tid' => $tid ));
         $name = $name_res->fetch();
         $name = $name->name;
-        $vars['tfk_search_cont_type_suffix'] = 'GRADE '. $name;
+        
+        
+        if($name == 2){
+            $vars['tfk_search_cont_type_suffix'] = 'GRADE '. $name;
+        }else{
+            $vars['tfk_search_cont_type_suffix'] = 'GRADES '. $name;
+        }
       }
       
       $private_file = field_get_items('node', $node, 'field_pdf_file_private');
@@ -2715,7 +2721,14 @@ function tfk_search_preprocess_search_result(&$vars) {
         $name_res =  db_query('select name from taxonomy_term_data where tid = :tid',array('tid' => $tid ));
         $name = $name_res->fetch();
         $name = $name->name;
-        $vars['tfk_search_cont_type_suffix'] = 'GRADE '. $name;
+        
+        
+        if($name == 2){
+            $vars['tfk_search_cont_type_suffix'] = 'GRADE '. $name;
+        }else{
+            $vars['tfk_search_cont_type_suffix'] = 'GRADES '. $name;
+        }
+        
       }
       if(isset($node->field_skills)){
         $tmp_tid = field_get_items('node', $node, 'field_skills');
