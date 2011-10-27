@@ -877,6 +877,8 @@ function tfk_news_views_post_render(&$view, &$output, &$cache){
    
    if($view->name == 'user_favorites'){
        $output = str_replace('GRADE 3-4', 'GRADES 3-4', $output);
+       $output = str_replace('GRADE K-1', 'GRADES K-1', $output);
+       $output = str_replace('GRADE 5-6', 'GRADES 5-6', $output);
    }
     
     
