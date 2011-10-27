@@ -879,7 +879,15 @@ function tfk_search_block_view($delta='') {
         $grade_level = field_get_items('node', $magazine, 'field_grade_level');
         if($grade_level) {
           $term = taxonomy_term_load($grade_level[0]['tid']);
-          $block_info['grade_level'] = 'GRADE '. $term->name;
+          
+          
+          if($term->name != 2){
+              $block_info['grade_level'] = 'GRADES '. $term->name;
+          }else{
+              $block_info['grade_level'] = 'GRADE '. $term->name;
+          }
+          
+          
         }
         
         // Get cover stories, highlight current.
