@@ -2491,6 +2491,9 @@ function tfk_search_preprocess_search_result(&$vars) {
       $name_res =  db_query('select name from taxonomy_term_data where tid = :tid',array('tid' => $tid ));
       $name = $name_res->fetch();
       $name = $name->name;
+      
+      echo $name;
+      
       $vars['magazine_issue_grade_level'] = $name;
 
       //////////////COVER IMAGE///////////////////
