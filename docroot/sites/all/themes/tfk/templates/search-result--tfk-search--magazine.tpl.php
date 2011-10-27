@@ -76,7 +76,13 @@
   <h3 class="title"<?php print $title_attributes; ?>>
     <span style="text-align:right;float:right;color:white;">
       <?php if($magazine_issue_grade_level):?>
-    		Grade <?php print $magazine_issue_grade_level;?>
+        
+           <?php if($magazine_issue_grade_level == 2){?>
+                Grade <?php print $magazine_issue_grade_level;?>
+            <?php }else{ ?>
+                Grades <?php print $magazine_issue_grade_level;?>
+            <?php } ?>
+            
       <?php endif;?>
     </span>
     <?php print $title; ?>
