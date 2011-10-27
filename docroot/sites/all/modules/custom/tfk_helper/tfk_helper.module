@@ -45,6 +45,38 @@ function tfk_helper_theme() {
 }
 
 /**
+ * Implementation of hook_node_access.
+ *
+ * Deny access for anonymous users to restricted content types.
+ */
+function tfk_helper_node_access($node, $op, $account) {
+
+  // Deny access to anonymous user to mini-lesson, and other nodes.
+  if($account->uid == 0) {
+    if($node->type == "mini_lesson") {
+      return NODE_ACCESS_DENY;
+    }
+    
+    if($node->nid == 8091 || $node->nid == 7631 || $node->nid == 7636 || $node->nid == 8116){
+      return NODE_ACCESS_DENY;
+    }
+  }
+  
+}
+
+/**
+ * Implementation of hook_preprocess_page.
+ */
+function tfk_helper_preprocess_page(&$variables) {
+  $args = arg();
+  if($args[0] == 'node' && isset($args[1]) && is_numeric($args[1])) {
+    if(!node_access('view', node_load($args[1]), $variables['user'])) {
+      $variables['section_title'] = 'ACCESS DENIED';
+    }
+  }
+}
+
+/**
  * Theme sidebar Featured block.
  *
  * @param unknown_type $args
@@ -310,10 +342,18 @@ function tfk_helper_get_slideshow_data($nid) {
       //$caption = array_pop(array_shift(field_get_items('node', $image['node'], 'field_caption')));
       
       // Credit.
-      $credit = array_pop(array_shift(field_get_items('node', $image['node'], 'field_credit')));
+      #$credit = array_pop(array_shift(field_get_items('node', $image['node'], 'field_credit')));
+      
+      $credit = field_get_items('node', $image['node'], 'field_credit');
+      if($credit) {
+        $credit = array_pop($credit[0]);
+      }
       
       // Images.
-      $image_field = array_shift(field_get_items('node', $image['node'], 'field_image'));
+      $image_field = field_get_items('node', $image['node'], 'field_image');
+      if($image_field) {
+        $image_field = array_shift($image_field);
+      }
       
       // Date.
       $date = tfk_helper_render_field('node', $node, 'field_date');
