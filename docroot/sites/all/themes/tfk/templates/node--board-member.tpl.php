@@ -97,7 +97,15 @@
   <?php
     print render($content['field_member_photo']);
     print "<span class=\"teacher-community-profile-board-member-name\">".render($node->title)."</span>";
-    print "<div class=\"board-member-grade\">Grade ".$content['field_grade_level'][0]['#markup']."</div>";
+    
+    
+    if($content['field_grade_level'][0]['#markup'] == 2){
+        print "<div class=\"board-member-grade\">Grade ".$content['field_grade_level'][0]['#markup']."</div>";
+    }else{
+        print "<div class=\"board-member-grade\">Grades ".$content['field_grade_level'][0]['#markup']."</div>";
+    }
+    
+    
     print render($content['field_location']);
     print render($content['body']);
   ?>
