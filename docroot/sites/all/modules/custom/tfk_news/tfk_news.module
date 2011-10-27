@@ -871,7 +871,7 @@ function tfk_news_views_post_render(&$view, &$output, &$cache){
     
     
     
-   if($view->name == 'global_right_sidebar' || $view->name == 'user_favorites'){
+   if($view->name == 'global_right_sidebar'){
        $output = str_replace('Grades 2', 'Grade 2', $output);
    }
     
