@@ -604,7 +604,7 @@ class tfkHelperFeaturedItem {
     
     $tmp_type = '';
     if($featured_node->type == 'slideshow'){
-        $tmp_type = 'slide show';
+        $tmp_type = 'slide Show';
     }else{
         $tmp_type = $featured_node->type;
     }
