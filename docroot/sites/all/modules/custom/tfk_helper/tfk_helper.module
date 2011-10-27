@@ -600,8 +600,17 @@ class tfkHelperFeaturedItem {
     }
     
     //$this->body = check_markup(truncate_utf8($body[0]['safe_value'], self::$body_trim, TRUE, TRUE, 10), self::$snippet_format, '', TRUE);
-
-    $this->link = l('See '. ucfirst($featured_node->type), $url);
+    
+    
+    $tmp_type = '';
+    if($featured_node->type == 'slideshow'){
+        $tmp_type = 'slide show';
+    }else{
+        $tmp_type = $featured_node->type;
+    }
+    
+    
+    $this->link = l('See '. ucfirst($tmp_type), $url);
     
     if($featured_node->type == 'slideshow') {
       $image_node = node_load(array_shift(field_get_items('node', $featured_node, 'field_slideshow_images')));
