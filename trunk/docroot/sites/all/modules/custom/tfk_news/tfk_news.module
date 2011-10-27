@@ -702,36 +702,40 @@ function tfk_news_preprocess_blpock(&$variables){
 
 function tfk_news_preprocess_page(&$vars) {
   $rgs = arg();
-  
+    
   if(count($rgs) == 2 && ($rgs[0] == 'node') && is_numeric($rgs[1])){
-    $node = node_load($rgs[1]);
-    if($node->type == 'article'){
-      $vars['section_title'] = 'News';
-      if(isset($node->field_kid_reporter['und'][0])){
+    // Do not do any additional processing if we are going to present the
+    // user with an access denied page.
+    if(node_access('view', node_load($rgs[1]), $vars['user'])) {
+    
+      $node = node_load($rgs[1]);
+      if($node->type == 'article'){
+        $vars['section_title'] = 'News';
+        if(isset($node->field_kid_reporter['und'][0])){
+          $vars['section_title'] = 'Kid Reporters';
+          $vars['custclass'] = 'withkidrep';
+        }
+  
+        $result = db_query('SELECT DISTINCT entity_id from field_data_field_articles fa where fa.entity_type = :type and fa.bundle = :bundle and fa.field_articles_nid = :nid',array('type'=> 'node','bundle'=>'minisite','nid'=>$node->nid));
+        $record = $result->fetch();
+        if($record){
+          $parent_minisite_nid = $record->entity_id;
+          $minisite_node = node_load($parent_minisite_nid);
+          $minisitetitle = $minisite_node->title;
+          $vars['section_title'] = $minisitetitle;
+          
+        }
+      }
+  
+      if($node->type == 'kid_reporter'){
         $vars['section_title'] = 'Kid Reporters';
-        $vars['custclass'] = 'withkidrep';
       }
-
-      $result = db_query('SELECT DISTINCT entity_id from field_data_field_articles fa where fa.entity_type = :type and fa.bundle = :bundle and fa.field_articles_nid = :nid',array('type'=> 'node','bundle'=>'minisite','nid'=>$node->nid));
-      $record = $result->fetch();
-      if($record){
-        $parent_minisite_nid = $record->entity_id;
-        $minisite_node = node_load($parent_minisite_nid);
-        $minisitetitle = $minisite_node->title;
-        $vars['section_title'] = $minisitetitle;
-        
+  
+      if($node->type == 'mini_lesson'){
+        $vars['section_title'] = 'News';
       }
+          
     }
-
-    if($node->type == 'kid_reporter'){
-      $vars['section_title'] = 'Kid Reporters';
-    }
-
-    if($node->type == 'mini_lesson'){
-      $vars['section_title'] = 'News';
-    }
-
-
   }
 
   if($rgs[0] == 'news-archive'){
