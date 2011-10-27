@@ -850,9 +850,7 @@ function tfk_news_preprocess_node(&$variables){
 
 
 function tfk_news_views_post_render(&$view, &$output, &$cache){
-    
     if($view->name == 'news_archive'){
-    
         foreach($view->result as $news_result){
             $flags = flag_get_counts('node', $news_result->nid);
             if(array_key_exists('magazine_cover_story', $flags) && $flags['magazine_cover_story'] == '1') {
@@ -869,6 +867,13 @@ function tfk_news_views_post_render(&$view, &$output, &$cache){
 
             }
         }
-    
     }
+    
+    
+    
+   if($view->name == 'global_right_sidebar'){
+       $output = str_replace('Grades 2', 'Grade 2', $output);
+   }
+    
+    
 }
