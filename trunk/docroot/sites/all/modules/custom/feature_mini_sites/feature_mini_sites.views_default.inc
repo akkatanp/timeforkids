@@ -441,8 +441,8 @@ function feature_mini_sites_views_default_views() {
   $handler->display->display_options['fields']['field_additional_content']['alter']['html'] = 0;
   $handler->display->display_options['fields']['field_additional_content']['element_label_colon'] = 1;
   $handler->display->display_options['fields']['field_additional_content']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['field_additional_content']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['field_additional_content']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_additional_content']['hide_empty'] = 1;
+  $handler->display->display_options['fields']['field_additional_content']['empty_zero'] = 1;
   $handler->display->display_options['fields']['field_additional_content']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['field_additional_content']['group_rows'] = 1;
   $handler->display->display_options['fields']['field_additional_content']['delta_offset'] = '0';
