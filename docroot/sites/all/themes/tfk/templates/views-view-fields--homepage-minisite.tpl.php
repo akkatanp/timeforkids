@@ -27,7 +27,7 @@
 
 <?php foreach ($fields as $id => $field): ?>
 
-    <?php if($id != 'field_related_articles_1'):?>
+    <?php if($id != 'field_related_articles_1' && $id != 'field_additional_content'):?>
       <?php if (!empty($field->separator)): ?>
         <?php print $field->separator; ?>
       <?php endif; ?>
@@ -46,6 +46,16 @@
       <div class="addit-content">Additional Content</div>
         <?php if($fields['field_related_articles_1']): ?>
            <div class="addit-mini-lessons"><?php print $fields['field_related_articles_1']->content;?></div>
+        <?php endif; ?>
+       
+    </div>
+<?php endif;?>
+
+<?php if(array_key_exists('field_additional_content', $fields) && strlen($fields['field_additional_content']->content) != 0):?>
+    <div class="related-content-wrap">
+      <div class="addit-content">Additional Content</div>
+        <?php if($fields['field_additional_content']): ?>
+           <div class="addit-mini-lessons">ARTICLE : <?php print $fields['field_additional_content']->content;?></div>
         <?php endif; ?>
        
     </div>
