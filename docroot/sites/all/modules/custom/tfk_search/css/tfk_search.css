@@ -212,6 +212,15 @@ li.expanded-facet li.expanded-facet a {
 	font-weight: normal;
 }
 
+ul.expanded-facet > li.expanded-facet input.facet-checkbox + a {
+	line-height: 100%; 
+}
+
+body.page-search-site .region-sidebar-first .block-apachesolr-search .item-list 
+ul.expanded-facet > li.expanded-facet {
+  margin: 0 0 0 11px;
+}
+
 
 /* Generic search rules */
 ol.search-results {
@@ -622,6 +631,7 @@ body.page-search-site .region-sidebar-first .block-tfk-search h2  {
 	font-weight: 12px;
 	color: #333;
 	margin: 10px 0;
+	line-height: 100%;
 }
 
 body.page-search-site .region-sidebar-first .block-apachesolr-search .item-list ul li {
@@ -705,13 +715,19 @@ body.page-photos-video .region-sidebar-first .block h2 {
   line-height: 100%;
   padding-left: 25px;
 }
+
 /* Only facet blocks with accordions should apply this rule */
 .region-sidebar-first .block .content > .item-list {
 	margin: 0 0 0 23px;
 }
+
 body.page-tfk-magazine .region-sidebar-first .block .content > .item-list,
 body.page-search-site .region-sidebar-first .block .content > .item-list {
 	margin: 0 0 0 2px;
+}
+
+#block-tfk-search-sm-editorial-date-tfk .content > .item-list {
+	margin: 0;
 }
 
 
