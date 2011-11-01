@@ -580,6 +580,10 @@ body.section-my-favorites .content-type-video .icon {
 #search-block-form {
 	padding-bottom: 14px;
 }
+body.section-worksheets #search-block-form,
+body.section-tfk-magazine #search-block-form {
+	padding-bottom: 0;
+}
 
 #search-block-form .element-invisible {
 	display: none;
