@@ -48,7 +48,7 @@ function features_misc_menu_default_menu_links() {
     'external' => '0',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '-45',
+    'weight' => '-44',
   );
   // Exported menu link: menu-tfk-footer-primary:https://subscription.timeforkids.com/storefront/subscribe-to-time-for-kids/link/1005025.html
   $menu_links['menu-tfk-footer-primary:https://subscription.timeforkids.com/storefront/subscribe-to-time-for-kids/link/1005025.html'] = array(
@@ -60,11 +60,11 @@ function features_misc_menu_default_menu_links() {
       'attributes' => array(),
     ),
     'module' => 'menu',
-    'hidden' => '0',
+    'hidden' => '1',
     'external' => '1',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '0',
+    'weight' => '-41',
   );
   // Exported menu link: menu-tfk-footer-primary:kid-reporters
   $menu_links['menu-tfk-footer-primary:kid-reporters'] = array(
@@ -156,7 +156,7 @@ function features_misc_menu_default_menu_links() {
     'external' => '0',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '-44',
+    'weight' => '-43',
   );
   // Exported menu link: menu-tfk-footer-secondary:http://www.timeforkids.com/customerservice
   $menu_links['menu-tfk-footer-secondary:http://www.timeforkids.com/customerservice'] = array(
@@ -172,7 +172,7 @@ function features_misc_menu_default_menu_links() {
     'external' => '1',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '-49',
+    'weight' => '-48',
   );
   // Exported menu link: menu-tfk-footer-secondary:http://www.timeinc.net/subs/privacy/tk/policy.html
   $menu_links['menu-tfk-footer-secondary:http://www.timeinc.net/subs/privacy/tk/policy.html'] = array(
@@ -200,7 +200,7 @@ function features_misc_menu_default_menu_links() {
       'attributes' => array(),
     ),
     'module' => 'menu',
-    'hidden' => '0',
+    'hidden' => '1',
     'external' => '1',
     'has_children' => '0',
     'expanded' => '0',
