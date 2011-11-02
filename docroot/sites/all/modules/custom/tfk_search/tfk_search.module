@@ -815,7 +815,7 @@ function tfk_search_block_view($delta='') {
     // Languages block on /tfk-magazine.
     case 'tfk_magazine_spanish':
       // $block['content'] = l('Search Spanish Translations', '/search/site/?filters=bundle:article ss_spanish_version:1', array('query' => array('filters' = 'bundle:article ss_spanish_version:1')));
-      $block['content'] = l('Search Spanish Translations', 'search/site/', array('query' => array('filters' => 'bundle:article ss_spanish_version:1')));
+      $block['content'] = l('Search Spanish Translations', 'search/site/', array('query' => array('filters' => 'bundle:article bundle:worksheet ss_spanish_version:1')));
     break;
     
     // Photos and Video title block.
