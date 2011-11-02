@@ -34,7 +34,11 @@ function feature_board_members_field_default_fields() {
         ),
       ),
       'module' => 'text',
-      'settings' => array(),
+      'settings' => array(
+        'max_length' => '',
+        'maxlength_body_js' => 0,
+        'maxlength_body_text' => 'Content limited to !limit characters, remaining: <strong>!remaining</strong>',
+      ),
       'translatable' => '1',
       'type' => 'text_with_summary',
     ),
@@ -63,7 +67,7 @@ function feature_board_members_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'body',
-      'label' => 'Body',
+      'label' => 'Profile of Board Member',
       'required' => 1,
       'settings' => array(
         'display_summary' => 1,
@@ -149,7 +153,7 @@ function feature_board_members_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_board_member_reference',
-      'label' => 'Board Member Profile',
+      'label' => 'User Name of Board Member',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -338,7 +342,7 @@ function feature_board_members_field_default_fields() {
     'field_instance' => array(
       'bundle' => 'board_member',
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Photo size = 275x275',
       'display' => array(
         'default' => array(
           'label' => 'hidden',
@@ -375,6 +379,31 @@ function feature_board_members_field_default_fields() {
         'active' => 1,
         'module' => 'image',
         'settings' => array(
+          'insert' => 0,
+          'insert_class' => '',
+          'insert_default' => 'auto',
+          'insert_styles' => array(
+            'auto' => 'auto',
+            'image' => 0,
+            'image_115x115' => 0,
+            'image_large' => 0,
+            'image_medium' => 0,
+            'image_square_thumbnail' => 0,
+            'image_tfk_140x187' => 0,
+            'image_tfk_270x270' => 0,
+            'image_tfk_50px_50px' => 0,
+            'image_tfk_60x60' => 0,
+            'image_tfk_71x95' => 0,
+            'image_tfk_rect_large' => 0,
+            'image_tfk_rect_medium' => 0,
+            'image_tfk_rect_small' => 0,
+            'image_tfk_square_large' => 0,
+            'image_tfk_square_medium' => 0,
+            'image_tfk_square_small' => 0,
+            'image_thumbnail' => 0,
+            'link' => 0,
+          ),
+          'insert_width' => '',
           'preview_image_style' => 'thumbnail',
           'progress_indicator' => 'throbber',
         ),
@@ -387,10 +416,11 @@ function feature_board_members_field_default_fields() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Board Member Photo');
-  t('Board Member Profile');
-  t('Body');
   t('Grade Level');
   t('Location');
+  t('Photo size = 275x275');
+  t('Profile of Board Member');
+  t('User Name of Board Member');
 
   return $fields;
 }
