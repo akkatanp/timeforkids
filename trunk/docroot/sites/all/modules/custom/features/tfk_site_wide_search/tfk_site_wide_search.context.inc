@@ -13,7 +13,7 @@ function tfk_site_wide_search_context_default_contexts() {
   $context = new stdClass;
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
-  $context->name = 'search page';
+  $context->name = 'search_page';
   $context->description = 'Handles the site-wide search page (Spec 11A).';
   $context->tag = 'search';
   $context->conditions = array(
@@ -26,11 +26,17 @@ function tfk_site_wide_search_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
+        'tfk_search-tfk-search-back-btn' => array(
+          'module' => 'tfk_search',
+          'delta' => 'tfk-search-back-btn',
+          'region' => 'sidebar_top',
+          'weight' => '-10',
+        ),
         'tfk_search-tfk_search_sidebar_filter' => array(
           'module' => 'tfk_search',
           'delta' => 'tfk_search_sidebar_filter',
           'region' => 'sidebar_top',
-          'weight' => '-10',
+          'weight' => '-9',
         ),
         'apachesolr_search-im_28_field_grade_level' => array(
           'module' => 'apachesolr_search',
@@ -83,7 +89,7 @@ function tfk_site_wide_search_context_default_contexts() {
   // Included for use with string extractors like potx.
   t('Handles the site-wide search page (Spec 11A).');
   t('search');
-  $export['search page'] = $context;
+  $export['search_page'] = $context;
 
   return $export;
 }
