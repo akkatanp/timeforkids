@@ -468,7 +468,12 @@ ul.links li {
 	border: solid 1px #cecece;
 }
 
-.not-logged-in .view-homepage-minisite {
+
+
+
+
+.not-logged-in .view-homepage-minisite,
+.logged-in.homepage-top-part-empty .view-homepage-minisite{
 	position: relative;
 	width: 244px;
 	height: 295px;
@@ -551,7 +556,8 @@ ul.links li {
 	border: solid 1px #cecece;
 }
 
-.not-logged-in .view-homepage-destination {
+.not-logged-in .view-homepage-destination,
+.logged-in.homepage-bottom-part-empty .view-homepage-destination{
 	width: 230px;
 	height: 258px;
 	padding: 20px 9px;
@@ -672,11 +678,15 @@ ul.links li {
 	margin-bottom: 10px;
 }
 
+
 .not-logged-in.minisite-noslideshow #block-views-minisite-articles-block-2,
 .not-logged-in.minisite-noslideshow #block-views-minisite-articles-block-3,
 .not-logged-in .view-teacher-news-top-story,
 .not-logged-in .view-kid-reporters-channel-top-story,
-.not-logged-in .view-homepage-top-story {
+.not-logged-in .view-homepage-top-story,
+.logged-in.homepage-top-part-empty .view-homepage-top-story,
+.logged-in.news-top-part-empty .view-teacher-news-top-story,
+.logged-in.kidreps-top-part-empty .view-kid-reporters-channel-top-story{
 	position: relative;
 	width: 478px;
 	height: 270px;
@@ -1010,7 +1020,10 @@ ul.links li {
 
 .not-logged-in .view-homepage-news-block table td,
 .not-logged-in .view-teacher-news-news-block table td,
-.not-logged-in .view-kid-reporters-channel-news-block table td {
+.not-logged-in .view-kid-reporters-channel-news-block table td,
+.logged-in.homepage-bottom-part-empty .view-homepage-news-block table td,
+.logged-in.news-bottom-part-empty .view-teacher-news-news-block table td,
+.logged-in.kidreps-bottom-part-empty .view-kid-reporters-channel-news-block table td{
 	position: relative;
 	display: block;
 	float: left;
@@ -3031,4 +3044,20 @@ body.page-404page #first-column .region-sidebar-first .section{
     font-size:30px;
     padding-bottom:15px;
     display:block;
+}
+
+
+
+.page-news.loggedteacher .region-footer,
+.not-logged-in.page-news .region-footer{
+    position:relative;
+    top:-222px;
+    
+}
+
+
+.not-logged-in.node-type-atw-sightseeing .region-footer,
+.node-type-atw-sightseeing.loggedteacher .region-footer{
+    position:relative;
+    top:-192px;
 }
