@@ -355,6 +355,11 @@ function theme_tfk_search_facet_link($vars) {
     $vars['facet_text'] = 'Quiz';
   }
   
+  // Spanish translation.
+  if($vars['options']['delta'] == TFK_SEARCH_SPANISH_VERSION) {
+    $vars['facet_text'] = 'Spanish';
+  }
+  
   // Supress facet count.
   if($interface == TFK_SEARCH_WORKSHEETS_PATH || $interface == TFK_SEARCH_PHOTOSVIDEO_PATH || $interface == TFK_SEARCH_MAGAZINE_PATH) {
     return apachesolr_l($vars['facet_text'],  $vars['path'], $vars['options']);
@@ -406,9 +411,13 @@ function theme_tfk_search_unclick_link($vars) {
   }
   
   if(strtolower($vars['facet_text']) == 'slideshow'){
-        $vars['facet_text'] = 'Slide Show';
-    }
+    $vars['facet_text'] = 'Slide Show';
+  }
   
+  // Spanish translation.
+  if($vars['options']['delta'] == TFK_SEARCH_SPANISH_VERSION) {
+    $vars['facet_text'] = 'Spanish';
+  }
   
   $vars['options']['attributes']['class'] = 'apachesolr-unclick';
   return apachesolr_l("(-)", $vars['path'], $vars['options']) . ' ' . $vars['facet_text'];
@@ -512,6 +521,13 @@ define('TFK_SEARCH_ARTICLE_DECK', 'ss_field_deck');
 define('TFK_SEARCH_COVER_STORY', 'is_flag_cover_story');
 
 /**
+ * Apache Solr search field, indicates the state of the spanish version flag.
+ *
+ * @var string
+ */
+define('TFK_SEARCH_SPANISH_VERSION', 'ss_spanish_version');
+
+/**
  * Apache Solr search field, used to identify the server hosting the document.
  *
  * This fields allows us to have 3 servers indexing to Solr, but each server
@@ -564,6 +580,13 @@ function tfk_search_apachesolr_update_index(&$document, $node, $namespace) {
       $document->setField(TFK_SEARCH_COVER_STORY, 1);
     } else {
       $document->setField(TFK_SEARCH_COVER_STORY, 0);
+    }
+    
+    // Index spanish version flag.
+    if(array_key_exists('spanish', $flags) && $flags['spanish'] == '1') {
+      $document->setField(TFK_SEARCH_SPANISH_VERSION, 1);
+    } else {
+      $document->setField(TFK_SEARCH_SPANISH_VERSION, 0);
     }
   }
 
@@ -625,6 +648,11 @@ function tfk_search_apachesolr_facets() {
   $facets['sm_editorial_date_tfk'] = array(
     'info' => t('Year of the Node'),
     'facet_field' => 'sm_editorial_date_tfk',
+  );
+  
+  $facets[TFK_SEARCH_SPANISH_VERSION] = array(
+    'info' => t('Language'),
+    'facet_field' => TFK_SEARCH_SPANISH_VERSION,
   );
   //$facets['is_magazine_article_bool'] = array(
   //  'info' => t('Magazine article'),
@@ -748,6 +776,23 @@ function tfk_search_block_view($delta='') {
     // Year of the node filter.
     case 'sm_editorial_date_tfk':
       $block['subject'] = t('Select a Date Range');
+
+      if (apachesolr_has_searched()) {
+        $response = apachesolr_static_response_cache();
+  
+        if (empty($response)) {
+          return;
+        }
+        $query = apachesolr_current_query();
+        $block['content'] = apachesolr_facet_block($response, $query, 'tfk_search', $delta, $delta);
+      }else{
+        $block['content'] = '';
+      }
+    break;
+    
+    // Spanish translation filter.
+    case TFK_SEARCH_SPANISH_VERSION:
+      $block['subject'] = t('Languages');
 
       if (apachesolr_has_searched()) {
         $response = apachesolr_static_response_cache();
@@ -1950,11 +1995,13 @@ function tfk_search_apachesolr_modify_query($query, $caller) {
   if($query->get_base_path() === TFK_SEARCH_WORKSHEETS_PATH) {
     // Limit the number of rows per page to 8 per spec.
     $query->params['rows'] = 8;
+    
+    $query->params['fl'] .= ','. TFK_SEARCH_SPANISH_VERSION;
   }
 
   if($query->get_base_path() === TFK_SEARCH_MAGAZINE_PATH) {
     // Retrieve additional content fields.
-    $query->params['fl'] .= ','. implode(',', array(TFK_SEARCH_WORKSHEET_PDF_LINK, TFK_SEARCH_WORKSHEET_PDF_TITLE));
+    $query->params['fl'] .= ','. implode(',', array(TFK_SEARCH_SPANISH_VERSION, TFK_SEARCH_WORKSHEET_PDF_LINK, TFK_SEARCH_WORKSHEET_PDF_TITLE));
 
     // Limit the number of rows per page to 8 per spec.
     $query->params['rows'] = 8;
@@ -1965,8 +2012,8 @@ function tfk_search_apachesolr_modify_query($query, $caller) {
   if($query->get_base_path() === 'search/site' || ($args[0] == 'search' && $args[1] == 'site')) {
     // Retrieve additional content fields.
     // Body and deck field for articles.
-    // Not indexing TFK_SEARCH_ARTICLE_BODY, for now.
-    $query->params['fl'] .= ','.TFK_SEARCH_ARTICLE_DECK;
+    // Not returning TFK_SEARCH_ARTICLE_BODY, for now.
+    $query->params['fl'] .= ','. implode(',', array(TFK_SEARCH_SPANISH_VERSION, TFK_SEARCH_ARTICLE_DECK));
     
     // Limit the number of rows per page.
     $query->params['rows'] = 8;
