@@ -756,6 +756,11 @@ function tfk_search_block_info() {
   $blocks['tfk_magazine_issue_block'] = array(
     'info' => t('TFK Magazine Issue Block'),
   );
+  
+  // Languages block on /tfk-magazine.
+  $blocks['tfk_magazine_spanish'] = array(
+    'info' => t('TFK Magazine Languages'),
+  );
 
   $blocks['tfk-search-back-btn'] = array(
     'info' => t('Block with back button for various searches.')
@@ -805,6 +810,12 @@ function tfk_search_block_view($delta='') {
       }else{
         $block['content'] = '';
       }
+    break;
+    
+    // Languages block on /tfk-magazine.
+    case 'tfk_magazine_spanish':
+      // $block['content'] = l('Search Spanish Translations', '/search/site/?filters=bundle:article ss_spanish_version:1', array('query' => array('filters' = 'bundle:article ss_spanish_version:1')));
+      $block['content'] = l('Search Spanish Translations', 'search/site/', array('query' => array('filters' => 'bundle:article ss_spanish_version:1')));
     break;
     
     // Photos and Video title block.

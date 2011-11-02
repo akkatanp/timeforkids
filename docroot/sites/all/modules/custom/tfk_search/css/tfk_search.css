@@ -798,3 +798,22 @@ li.search-result.worksheet.chart .search-result-download-link,
 li.search-result.worksheet.graph .search-result-download-link {
   background: url("/sites/all/modules/custom/tfk_search/images/organizer.png") no-repeat;
 }
+
+/**
+ * Spanish translation link block.
+ */
+#block-tfk-search-tfk-magazine-spanish .content > .item-list {
+  margin: 0 0 0 10px;
+}
+#block-tfk-search-tfk-magazine-spanish .content {
+  background: none repeat scroll 0% 0% #D71700;
+  margin: 11px 0pt;
+  padding: 11px 0pt 10px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+#block-tfk-search-tfk-magazine-spanish .content a {
+  color: #FFFFFF;
+  font: 11px "arial black",arial;
+}
