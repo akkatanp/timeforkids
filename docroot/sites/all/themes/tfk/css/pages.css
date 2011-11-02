@@ -3061,3 +3061,11 @@ body.page-404page #first-column .region-sidebar-first .section{
     position:relative;
     top:-192px;
 }
+
+
+
+.not-logged-in.node-type-atw-day-in-life .region-footer,
+.node-type-atw-day-in-life.loggedteacher .region-footer{
+    position:relative;
+    top:-192px;
+}
