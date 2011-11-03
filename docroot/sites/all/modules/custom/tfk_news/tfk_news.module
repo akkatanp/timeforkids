@@ -764,6 +764,10 @@ function tfk_preprocess_html(&$variables) {
   if(count($roles) == 2 && in_array('teacher', $roles)){
     $variables['classes_array'][] = 'loggedteacher';
   }
+  
+  print_r($roles);
+  
+  
   if(count($rgs) == 2 && ($rgs[0] == 'node') && is_numeric($rgs[1])){
     $node = node_load($rgs[1]);
     
@@ -797,6 +801,163 @@ function tfk_preprocess_html(&$variables) {
     }
 
   }
+  
+  //HOMEPAGE
+  if(count($rgs) == 1 && $rgs[0] == 'node'){  
+      
+      
+      //we start with homepage story tout, because if it has smth attached , we dont have to continue and add a class to the body
+      $top_story_tout_query = db_query('SELECT n.nid,n.title,n.changed,ra.field_related_articles_nid, ml.field_mini_lessons_nid 
+          FROM {node} n INNER JOIN {flag_content} fc ON n.nid = fc.content_id 
+          LEFT JOIN {field_data_field_related_articles} ra ON n.nid = ra.entity_id
+          LEFT JOIN {field_data_field_mini_lessons} ml ON n.nid = ml.entity_id
+          WHERE fc.fid = 2 AND n.status = 1 AND n.type = :article
+          ORDER BY n.changed DESC LIMIT 0,1',array('article'=>'article'));
+      $top_story_res = $top_story_tout_query->fetchAll();
+      
+      if(empty($top_story_res[0]->field_related_articles_nid) && empty($top_story_res[0]->field_mini_lessons_nid)){
+          
+          //this means that top story tout does not have any related articles on minilessons attached to it
+          //Here we can check the featured minisite tout for attached content;
+          
+          $top_minisite_query = db_query('select n.nid,n.title, fc.timestamp, fa.field_articles_nid, ac.field_additional_content_nid, ra.field_related_articles_nid 
+              FROM {node} n INNER JOIN flag_content fc ON n.nid = fc.content_id AND fc.fid = 20
+              LEFT JOIN {field_data_field_articles} fa ON n.nid = fa.entity_id AND (fa.entity_type = :node AND fa.deleted = 0) 
+              LEFT JOIN {field_data_field_additional_content} ac ON fa.field_articles_nid = ac.entity_id
+              LEFT JOIN {field_data_field_related_articles} ra ON fa.field_articles_nid = ra.entity_id
+              ORDER BY fc.timestamp DESC LIMIT 0,1',array('node'=>'node'));
+          
+          $top_minisite_res = $top_minisite_query->fetchAll();
+          
+          if(empty($top_minisite_res[0]->field_additional_content_nid) && empty($top_minisite_res[0]->field_related_articles_nid)){
+              $variables['classes_array'][] = 'homepage-top-part-empty';
+          }
+          
+          
+         
+      }
+      
+      
+      //Bottom part of homepage is here (2 views)
+      $bottom_left_query = db_query('SELECT n.nid,n.title,n.changed,ra.field_related_articles_nid, ml.field_mini_lessons_nid 
+          FROM {node} n INNER JOIN {flag_content} fc ON n.nid = fc.content_id 
+          LEFT JOIN {field_data_field_related_articles} ra ON n.nid = ra.entity_id
+          LEFT JOIN {field_data_field_mini_lessons} ml ON n.nid = ml.entity_id
+          WHERE fc.fid = 18 AND n.status = 1 AND n.type = :article
+          ORDER BY n.changed DESC LIMIT 0,2',array('article'=>'article'));
+      
+      $bottom_left_res = $bottom_left_query->fetchAll();
+      
+      if(empty($bottom_left_res[0]->field_related_articles_nid) && 
+//         empty($bottom_left_res[0]->field_mini_lessons_nid) &&
+//         empty($bottom_left_res[1]->field_mini_lessons_nid) &&
+         empty($bottom_left_res[1]->field_related_articles_nid)
+         ){
+          
+          //here we can check for the right bottom part, since the left one is empty
+          $bottom_right_query = db_query('SELECT n.nid,n.title,n.changed,ra.field_related_articles_nid, ml.field_mini_lessons_nid 
+          FROM {node} n INNER JOIN {flag_content} fc ON n.nid = fc.content_id 
+          LEFT JOIN {field_data_field_related_articles} ra ON n.nid = ra.entity_id
+          LEFT JOIN {field_data_field_mini_lessons} ml ON n.nid = ml.entity_id
+          WHERE fc.fid = 19 AND n.status = 1 AND n.type = :article
+          ORDER BY n.changed DESC LIMIT 0,1',array('article'=>'atw_destination'));
+          
+          $bottom_right_res = $bottom_right_query->fetchAll();
+          
+          if(empty($bottom_right_res[0]->field_related_articles_nid)&&
+             empty($bottom_right_res[0]->field_mini_lessons_nid)){
+              $variables['classes_array'][] = 'homepage-bottom-part-empty';
+          }
+          
+      }
+      
+      
+  }
+  
+  
+  //NEWS CHANNEL
+  if(count($rgs) == 1 && $rgs[0] == 'news'){
+      
+      //query for the top tout
+      $top_query = db_query('SELECT n.nid,n.title,n.changed,fc.weight as flag_weight,ra.field_related_articles_nid, ml.field_mini_lessons_nid 
+          FROM {node} n INNER JOIN {flag_content} fc ON n.nid = fc.content_id 
+          LEFT JOIN {field_data_field_related_articles} ra ON n.nid = ra.entity_id
+          LEFT JOIN {field_data_field_mini_lessons} ml ON n.nid = ml.entity_id
+          WHERE fc.fid = 6 AND n.status = 1 AND n.type = :article
+          ORDER BY n.changed DESC LIMIT 0,1',array('article'=>'article'));
+      
+      $top_res = $top_query->fetchAll();
+      
+      if(empty($top_res[0]->field_related_articles_nid)&&
+         empty($top_res[0]->field_mini_lessons_nid)){
+          
+          $variables['classes_array'][] = 'news-top-part-empty';
+          
+      }
+      //query for the 2 bottom touts
+      $bottom_query = db_query('SELECT n.nid,n.title,n.changed,fc.weight as flag_weight, ra.field_related_articles_nid, ml.field_mini_lessons_nid 
+          FROM {node} n INNER JOIN {flag_content} fc ON n.nid = fc.content_id 
+          LEFT JOIN {field_data_field_related_articles} ra ON n.nid = ra.entity_id
+          LEFT JOIN {field_data_field_mini_lessons} ml ON n.nid = ml.entity_id
+          WHERE fc.fid = 7 AND n.status = 1 AND n.type = :article
+          ORDER BY flag_weight ASC LIMIT 0,2',array('article'=>'article'));
+      
+      $bottom_res = $bottom_query->fetchAll();
+      
+      
+      if(empty($bottom_res[0]->field_related_articles_nid) && 
+//         empty($bottom_res[0]->field_mini_lessons_nid) &&
+//         empty($bottom_res[1]->field_mini_lessons_nid) &&
+         empty($bottom_res[1]->field_related_articles_nid)
+         ){
+          $variables['classes_array'][] = 'news-bottom-part-empty';
+      }
+      
+      
+  }
+  
+  
+  //KID REPORTERS CHANNEL
+  if(count($rgs) == 1 && $rgs[0] == 'kid-reporters'){
+      //query for the top tout
+      $top_query = db_query('SELECT n.nid,n.title,n.changed,fc.weight as flag_weight,ra.field_related_articles_nid, ml.field_mini_lessons_nid 
+          FROM {node} n INNER JOIN {flag_content} fc ON n.nid = fc.content_id 
+          LEFT JOIN {field_data_field_related_articles} ra ON n.nid = ra.entity_id
+          LEFT JOIN {field_data_field_mini_lessons} ml ON n.nid = ml.entity_id
+          WHERE fc.fid = 8 AND n.status = 1 AND n.type = :article
+          ORDER BY n.changed DESC LIMIT 0,1',array('article'=>'article'));
+      
+      $top_res = $top_query->fetchAll();
+      if(empty($top_res[0]->field_related_articles_nid)&&
+         empty($top_res[0]->field_mini_lessons_nid)){
+          
+          $variables['classes_array'][] = 'kidreps-top-part-empty';
+      }
+      
+      
+      //query for the 2 bottom touts
+      $bottom_query = db_query('SELECT n.nid,n.title,n.changed,fc.weight as flag_weight, ra.field_related_articles_nid, ml.field_mini_lessons_nid 
+          FROM {node} n INNER JOIN {flag_content} fc ON n.nid = fc.content_id 
+          LEFT JOIN {field_data_field_related_articles} ra ON n.nid = ra.entity_id
+          LEFT JOIN {field_data_field_mini_lessons} ml ON n.nid = ml.entity_id
+          WHERE fc.fid = 9 AND n.status = 1 AND n.type = :article
+          ORDER BY flag_weight ASC LIMIT 0,2',array('article'=>'article'));
+      
+      $bottom_res = $bottom_query->fetchAll();
+      
+      if(empty($bottom_res[0]->field_related_articles_nid) && 
+//         empty($bottom_res[0]->field_mini_lessons_nid) &&
+//         empty($bottom_res[1]->field_mini_lessons_nid) &&
+         empty($bottom_res[1]->field_related_articles_nid)
+         ){
+          $variables['classes_array'][] = 'kidreps-bottom-part-empty';
+      }
+      
+      
+      
+  }
+  
+  
 }
 
 
