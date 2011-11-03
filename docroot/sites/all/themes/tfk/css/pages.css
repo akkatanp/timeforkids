@@ -3076,3 +3076,9 @@ body.page-404page #first-column .region-sidebar-first .section{
     position:relative;
     top:-192px;
 }
+
+
+.page-teacher-community-topic-list.loggedteacher .region-footer{
+    position:relative;
+    top:-192px;
+}
