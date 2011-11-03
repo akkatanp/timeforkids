@@ -3072,7 +3072,7 @@ body.page-404page #first-column .region-sidebar-first .section{
 
 
 .not-logged-in.page-mini-sites .region-footer,
-.page-news.loggedteacher .region-footer{
+.page-mini-sites.loggedteacher .region-footer{
     position:relative;
     top:-192px;
 }
