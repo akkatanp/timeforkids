@@ -765,7 +765,9 @@ function tfk_preprocess_html(&$variables) {
     $variables['classes_array'][] = 'loggedteacher';
   }
   
-  print_r($roles);
+  if(count($roles) == 3 && in_array('teacher', $roles) && in_array('Board Member', $roles)){
+    $variables['classes_array'][] = 'loggedteacher';
+  }
   
   
   if(count($rgs) == 2 && ($rgs[0] == 'node') && is_numeric($rgs[1])){
