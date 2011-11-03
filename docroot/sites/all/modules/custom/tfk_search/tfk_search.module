@@ -575,6 +575,7 @@ function tfk_search_apachesolr_update_index(&$document, $node, $namespace) {
     }
     
     // Using the TFK_SEARCH_COVER_STORY Solr field, index whether this article is flagged as a cover story or not.
+    // This field is used as a bit field, not as a facet, so we use 1s and 0s.
     $flags = flag_get_counts('node', $node->nid);
     if(array_key_exists('magazine_cover_story', $flags) && $flags['magazine_cover_story'] == '1') {
       $document->setField(TFK_SEARCH_COVER_STORY, 1);
@@ -583,10 +584,10 @@ function tfk_search_apachesolr_update_index(&$document, $node, $namespace) {
     }
     
     // Index spanish version flag.
+    // This field is used for facets, so we only index 1s (indexing 0s would
+    // cause a second facet to appear representing 0s).
     if(array_key_exists('spanish', $flags) && $flags['spanish'] == '1') {
       $document->setField(TFK_SEARCH_SPANISH_VERSION, 1);
-    } else {
-      $document->setField(TFK_SEARCH_SPANISH_VERSION, 0);
     }
   }
 
