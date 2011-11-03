@@ -3069,3 +3069,9 @@ body.page-404page #first-column .region-sidebar-first .section{
     position:relative;
     top:-192px;
 }
+
+
+.not-logged-in.page-mini-sites .region-footer{
+    position:relative;
+    top:-192px;
+}
