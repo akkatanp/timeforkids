@@ -273,3 +273,10 @@ ini_set('session.cookie_lifetime', 2000000);
 $conf["acquia_identifier"] = "GHRY-22798";
 $conf["acquia_key"] = "afd80ec55187436a7d83345415cffdd7";
 $conf["apachesolr_path"] = "/solr/GHRY-22798";
+
+/**
+ * Filesystem settings
+ */
+$conf["file_public_path"] = "files";
+$conf["file_temporary_path"] = "mnt/tmp/timedev";
+$conf["file_private_path"] = "/mnt/files/timedev/files-private";
