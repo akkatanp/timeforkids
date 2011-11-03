@@ -272,4 +272,12 @@ ini_set('session.cookie_lifetime', 2000000);
  */
 $conf["acquia_identifier"] = "BCDE-22799";
 $conf["acquia_key"] = "8499f05ab66439dc7432a3533bbc5c33";
-$conf["apachesolr_path"] = "/solr/BCDE-22799"; 
+$conf["apachesolr_path"] = "/solr/BCDE-22799";
+
+/**
+ * Filesystem settings
+ */
+$conf["file_public_path"] = "files";
+$conf["file_temporary_path"] = "/mnt/tmp/timedev2";
+$conf["file_private_path"] = "/mnt/files/timedev2/files-private";
+
