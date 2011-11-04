@@ -106,7 +106,7 @@
           <?php endif; ?>
       </h3>
       
-      <?php if($tfk_search_cont_type == 'pdf_quiz' && isset($date)):?>
+      <?php if(isset($result['bundle']) && $result['bundle'] == 'pdf_quiz' && isset($date)):?>
         <div class="result-date"><?php print $date; ?></div>
       <?php endif;?>
       
