@@ -70,6 +70,33 @@ function tfk_favorites_feature_views_default_views() {
   $handler->display->display_options['relationships']['field_slideshow_images_nid']['field'] = 'field_slideshow_images_nid';
   $handler->display->display_options['relationships']['field_slideshow_images_nid']['required'] = 0;
   $handler->display->display_options['relationships']['field_slideshow_images_nid']['delta'] = '0';
+  /* Field: Content: Worksheet PDF */
+  $handler->display->display_options['fields']['field_worksheet_pdf_private']['id'] = 'field_worksheet_pdf_private';
+  $handler->display->display_options['fields']['field_worksheet_pdf_private']['table'] = 'field_data_field_worksheet_pdf_private';
+  $handler->display->display_options['fields']['field_worksheet_pdf_private']['field'] = 'field_worksheet_pdf_private';
+  $handler->display->display_options['fields']['field_worksheet_pdf_private']['label'] = '';
+  $handler->display->display_options['fields']['field_worksheet_pdf_private']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_worksheet_pdf_private']['alter']['alter_text'] = 1;
+  $handler->display->display_options['fields']['field_worksheet_pdf_private']['alter']['text'] = '<a href="[field_worksheet_pdf_private]">Download this Worksheet</a>';
+  $handler->display->display_options['fields']['field_worksheet_pdf_private']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_worksheet_pdf_private']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_worksheet_pdf_private']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_worksheet_pdf_private']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_worksheet_pdf_private']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_worksheet_pdf_private']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_worksheet_pdf_private']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_worksheet_pdf_private']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_worksheet_pdf_private']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_worksheet_pdf_private']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_worksheet_pdf_private']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_worksheet_pdf_private']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_worksheet_pdf_private']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_worksheet_pdf_private']['hide_empty'] = 1;
+  $handler->display->display_options['fields']['field_worksheet_pdf_private']['empty_zero'] = 1;
+  $handler->display->display_options['fields']['field_worksheet_pdf_private']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['field_worksheet_pdf_private']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_worksheet_pdf_private']['type'] = 'file_url_plain';
+  $handler->display->display_options['fields']['field_worksheet_pdf_private']['field_api_classes'] = 0;
   /* Field: Content: Skills */
   $handler->display->display_options['fields']['field_skills']['id'] = 'field_skills';
   $handler->display->display_options['fields']['field_skills']['table'] = 'field_data_field_skills';
@@ -230,7 +257,7 @@ function tfk_favorites_feature_views_default_views() {
    </div>
 
    <div class="search-result-links">
-      <span class="search-result-download-link "> [field_worksheet_pdf] </span>
+      <span class="search-result-download-link "> [field_worksheet_pdf_private] </span>
    </div>
   </div>
 
@@ -254,7 +281,7 @@ function tfk_favorites_feature_views_default_views() {
   $handler->display->display_options['fields']['title']['empty_zero'] = 0;
   $handler->display->display_options['fields']['title']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['title']['link_to_node'] = 0;
-  /* Field: Content: Additional Content */
+  /* Field: Content: View full article */
   $handler->display->display_options['fields']['field_additional_content']['id'] = 'field_additional_content';
   $handler->display->display_options['fields']['field_additional_content']['table'] = 'field_data_field_additional_content';
   $handler->display->display_options['fields']['field_additional_content']['field'] = 'field_additional_content';
@@ -341,29 +368,6 @@ function tfk_favorites_feature_views_default_views() {
     'image_link' => '',
   );
   $handler->display->display_options['fields']['field_image']['field_api_classes'] = 0;
-  /* Field: Flags: Flag link */
-  $handler->display->display_options['fields']['ops']['id'] = 'ops';
-  $handler->display->display_options['fields']['ops']['table'] = 'flag_content';
-  $handler->display->display_options['fields']['ops']['field'] = 'ops';
-  $handler->display->display_options['fields']['ops']['relationship'] = 'flag_content_rel';
-  $handler->display->display_options['fields']['ops']['label'] = '';
-  $handler->display->display_options['fields']['ops']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['ops']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['ops']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['ops']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['ops']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['ops']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['ops']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['ops']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['ops']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['ops']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['ops']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['ops']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['ops']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['ops']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['ops']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['ops']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['ops']['hide_alter_empty'] = 0;
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
