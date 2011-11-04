@@ -262,7 +262,8 @@ li.search-result {
 	margin: 0px;
 }
 
-body.page-search-site .search-results .result-date {
+body.page-search-site .search-results .result-date,
+body.page-worksheets .search-results .result-date {
 	font-size: 10px;
 	color: #666;
 	line-height: 15px;
