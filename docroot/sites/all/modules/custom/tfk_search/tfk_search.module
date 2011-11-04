@@ -2718,6 +2718,25 @@ function tfk_search_preprocess_search_result(&$vars) {
       $vars['title'] = $title;
       $vars['tfk_search_cont_type'] = 'QUIZ';
       
+      // Find out if this Quiz is associated with a magazine issue.
+      // Should work as along as the quiz is associated with only one issue.
+      $query = 'SELECT entity_id FROM {field_data_field_related_resources}
+				WHERE field_related_resources_nid = :quiz_nid';
+      $results = db_query($query, array('quiz_nid' => $node->nid));
+      if($results) {
+        $magazine_issue = $results->fetch();
+        $magazine_issue = $magazine_issue->entity_id;
+        
+        // Use the custom date field of the parent magazine issue.
+        $magazine_issue = node_load($magazine_issue);
+        if($magazine_issue) {
+          $field_date = field_get_items('node', $magazine_issue, 'field_date');
+          if($field_date) {
+            $vars['date'] = date('F j, Y', $field_date[0]['value']);
+          }
+        }
+      }
+      
       if(isset($node->field_grade_level)) {
         $tmp_tid = field_get_items('node', $node, 'field_grade_level');
         $tid = $tmp_tid[0]['tid'];
