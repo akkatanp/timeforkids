@@ -2744,7 +2744,6 @@ function tfk_search_preprocess_search_result(&$vars) {
         $name = $name_res->fetch();
         $name = $name->name;
         
-        
         if($name == 2){
             $vars['tfk_search_cont_type_suffix'] = 'GRADE '. $name;
         }else{
@@ -3083,17 +3082,3 @@ function tfk_search_preprocess_search_result(&$vars) {
   }
 
 }
-
-
-function tfk_search_link_alter(&$link) {
-//    print_R($link);
-}
-
-
-
-function tfk_search_preprocess_views_view(&$vars) {
-    if($vars['view']->name == 'minisite_articles'){
-    //    $vars['lolok'] = 'lolok';
-    }
-}
-
