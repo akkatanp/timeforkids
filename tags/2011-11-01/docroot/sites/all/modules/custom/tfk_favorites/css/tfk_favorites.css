@@ -21,7 +21,7 @@ body.page-my-favorites .region-sidebar-first .section {
 
 /* On my favs this is the first block, so we need to get rid of the top margin */
 body.page-my-favorites #block-tfk-search-tfk-search-worksheet-saved.block {
-	margin-top: 0;
+  margin-top: 0;
 }
 
 /* Content block */
@@ -34,7 +34,6 @@ body.page-my-favorites li.search-result div.col2 {
   display: block;
   margin: 0 0 0 10px;
   width: inherit;
-	padding-right: 10px;
 }
 
 li.search-result .content-type .ctype-suffix {
