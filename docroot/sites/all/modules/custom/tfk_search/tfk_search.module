@@ -975,7 +975,18 @@ function tfk_search_block_view($delta='') {
           $_additional_field = field_get_items('node', $magazine, $additional_field);
           if($_additional_field) {
             foreach($_additional_field as $_field) {
-              $block_info['additional_fields'][$field_key][] = l($_field['title'], $_field['url'], array('absolute' => TRUE));
+              // Intercept links to internal nodes.
+              $match = array();
+              if(preg_match('/http:\/\/'. $_SERVER['HTTP_HOST']. '\/.*\/([0-9]+)/', $_field['url'], $match)) {
+                // And add magazine issue nid to those who link to articles.
+                $node = node_load($match[1]);
+                if($node && $node->type == 'article') {
+                  $block_info['additional_fields'][$field_key][] = l($node->title, ltrim(url('node/'. $node->nid). '/'. $magazine->nid, '/'), array('alias' => TRUE));
+                }
+              } else {
+                $block_info['additional_fields'][$field_key][] = l($_field['title'], $_field['url'], array('absolute' => TRUE));
+              }
+              //$block_info['additional_fields'][$field_key][] = l($_field['title'], $_field['url'], array('absolute' => TRUE));
             }
           }
         }
@@ -2596,7 +2607,20 @@ function tfk_search_preprocess_search_result(&$vars) {
           $lists[$name] = array();
           foreach($items as $item) {
             if($field != 'field_articles') {
-              $lists[$name][] = l($item['title'], $item['url']);
+              //$lists[$name][] = l($item['title'], $item['url']);
+              
+              // Intercept links to internal nodes.
+              $match = array();
+              if(preg_match('/http:\/\/'. $_SERVER['HTTP_HOST']. '\/.*\/([0-9]+)/', $item['url'], $match)) {
+                // And add magazine issue nid to those who link to articles.
+                $item_node = node_load($match[1]);
+                if($item_node && $item_node->type == 'article') {
+                  $lists[$name][] = l($item['title'], ltrim(url('node/'. $item_node->nid). '/'. $magazine->nid, '/'), array('alias' => TRUE));
+                }
+              } else {
+                $lists[$name][] = l($item['title'], $item['url']);
+              }
+              
             } else {
               $cover_story = node_load($item['nid']);
               if($cover_story) {
