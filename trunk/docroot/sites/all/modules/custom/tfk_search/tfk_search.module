@@ -2198,7 +2198,8 @@ function tfk_search_worksheets() {
         $filterstring .= ' im_28_field_grade_level:'. $user->grade_level->tid;
       }
     }
-    
+    // Without this pagination links drop the grade filter.
+    $_GET['filters'] = $filterstring;
   } else {
     // If user is logged in, add grade level. This affects initial search only.
     if(!isset($_GET['solrsort'])) {
@@ -2206,6 +2207,7 @@ function tfk_search_worksheets() {
       $user = user_load($user->uid);
       if($user && isset($user->grade_level)) {
         $filterstring = 'im_28_field_grade_level:'. $user->grade_level->tid;
+        $_GET['filters'] = $filterstring;
       } else {
         $filterstring = '';
       }
