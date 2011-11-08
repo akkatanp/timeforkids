@@ -617,12 +617,23 @@ function tfk_news_node_view($node, $view_mode, $langcode) {
     $reporter_name = $kid_title;
     
     $reporter_alias = drupal_lookup_path('alias','node/'.$kid_nid);
-
     
-    $badge = '<div class="reporter-badge"><div id="badge-header">Kid Reporter</div><div id="badge-badge"></div>
+    
+    $badge = '';
+    
+    if($tmp_kid[0]['node']->status == 0){
+        $badge = '<div class="reporter-badge"><div id="badge-header">Kid Reporter</div><div id="badge-badge"></div>
+      <img class="reporter-badge-photo" src="'.$thumb_path.'"/>'.$reporter_name.'
+        </div>';
+
+    }else{
+        $badge = '<div class="reporter-badge"><div id="badge-header">Kid Reporter</div><div id="badge-badge"></div>
       <img class="reporter-badge-photo" src="'.$thumb_path.'"/>'.l($reporter_name,$reporter_alias,array('attributes' => array('class' => array('reporter-link-a')))).'
         </div>';
 
+    }
+    
+    
     $body = preg_replace('/[\r\n]+/', '', $body);
     $reg = preg_match_all('/\<p(.*?)\>(.*?)\<\/p\>/i', $body, $matches);
     
