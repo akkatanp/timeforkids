@@ -112,7 +112,7 @@ function tfk_photos_video_context_default_contexts() {
   $context->api_version = 3;
   $context->name = 'tfk_photos_video';
   $context->description = 'Context for Photos and Video main landing page.';
-  $context->tag = 'TFK Photos and Video';
+  $context->tag = 'search';
   $context->conditions = array(
     'path' => array(
       'values' => array(
@@ -127,13 +127,19 @@ function tfk_photos_video_context_default_contexts() {
           'module' => 'tfk_search',
           'delta' => 'tfk_search_photos_video_title',
           'region' => 'sidebar_first',
-          'weight' => '-10',
+          'weight' => '-87',
         ),
         'apachesolr_search-im_10_field_article_category' => array(
           'module' => 'apachesolr_search',
           'delta' => 'im_10_field_article_category',
           'region' => 'sidebar_first',
-          'weight' => '-8',
+          'weight' => '-86',
+        ),
+        'apachesolr_search-bundle' => array(
+          'module' => 'apachesolr_search',
+          'delta' => 'bundle',
+          'region' => 'sidebar_first',
+          'weight' => '-85',
         ),
         'tfk_favorites-tfk_favorites_links' => array(
           'module' => 'tfk_favorites',
@@ -155,7 +161,7 @@ function tfk_photos_video_context_default_contexts() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Context for Photos and Video main landing page.');
-  t('TFK Photos and Video');
+  t('search');
   $export['tfk_photos_video'] = $context;
 
   return $export;
