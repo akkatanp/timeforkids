@@ -924,7 +924,8 @@ ul.links li {
 
 #block-views-minisite-articles-block-1 .views-field-field-lrg-sq-image,
 #block-views-minisite-articles-block .views-field-field-lrg-sq-image,
-#block-views-minisite-articles-block .minisite-slideshow-slide{
+#block-views-minisite-articles-block .minisite-slideshow-slide,
+#block-views-minisite-articles-block .views-field-field-video-thumbnail{
 	float: left;
 	width: 62px;
 	height: 62px;
@@ -1528,7 +1529,8 @@ ul.links li {
 	background: url(../images/kid-reporter-badge.png) no-repeat;
 }
 
-.node-type-article .reporter-badge .reporter-link-a {
+.node-type-article .reporter-badge .reporter-link-a, 
+.node-type-article .reporter-name{
 	display: block;
 	vertical-align: bottom;
 	font: bold 11px arial, sans-serif;
