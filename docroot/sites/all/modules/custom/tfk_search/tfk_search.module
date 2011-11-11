@@ -3097,17 +3097,53 @@ function tfk_search_preprocess_search_result(&$vars) {
         $vars['related_content'] = theme('tfk_search_related_content', array('related_content' => $related_content));
       }
     }
-
     
     // Minor stuff.
     strtoupper($vars['tfk_search_cont_type']);
     
-    // @todo Add a dek field to the slideshow, or trim snippet.
-    
-    // @todo Load additional content / related article.
-
     // Unset stuff that we are not going to use.
     unset($vars['info']);
   }
 
+}
+
+/**
+ * Implementation of hook_flag.
+ *
+ * @TODO Check that this works with node inserts.
+ *
+ * When an article is flagged with the "spanish" flag, check if a magazine
+ * issue is referencing it, then enable the "magazine_issue_spanish" flag on
+ * the referencing magazine issue. The magazine_issue_spanish flag is then
+ * used by SOLR to tell which magazine issues contain spanish articles.
+ */
+function tfk_search_flag($action, $flag, $content_id, $account, $fcid) {
+  // Use our custom code only with the "spanish" flag.
+  if($flag->name == 'spanish') {
+    $node = node_load($content_id);
+    if($node->type == 'article') {
+      
+      // Load the magazine issue flag.
+      $magazine_flag = flag_get_flag('magazine_issue_spanish');
+      if($magazine_flag) {
+        
+        // See if there is a magazine issue referencing this article.
+        $query = "SELECT magazine.entity_id nid FROM field_data_field_articles magazine
+          WHERE magazine.field_articles_nid = :article_nid";
+        $results = db_query($query, array(':article_nid' => $node->nid));
+        if($results->rowCount() > 0) {
+  
+          // Flag each magazine referencing this article.
+          $magazines = $results->fetchAll();
+          foreach($magazines as $magazine) {
+            // Verify counts w/ this.
+            //$flagged = flag_get_counts('node', $magazine->nid);
+  
+            // Perform $action on the referencing magazine issue's "magazine_issue_spanish" flag.
+            $magazine_flag->flag($action, $magazine->nid, NULL, TRUE);
+          }
+        }
+      }
+    }
+  }
 }
