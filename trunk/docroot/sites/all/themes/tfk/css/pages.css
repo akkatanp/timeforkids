@@ -1198,6 +1198,9 @@ ul.links li {
 	padding: 10px 12px 10px 9px;
 	margin: 2px 0;
 	line-height: 15px;
+        height:115px;
+        height:auto !important;
+        min-height:115px;
 }
 
 .view-mini-site-home .view-content table td.empty {
