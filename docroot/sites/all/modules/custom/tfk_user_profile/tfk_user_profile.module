@@ -200,7 +200,7 @@ function tfk_user_profile_login_validate( $form, &$form_state ){
  * Information returned inclues, first & last name, account id, and email address.
  */
 function tfk_lucie_get_user_info($email, $token){
- $url = 'http://cgi.timeinc.com/webservices/customers/'.check_plain($email).'/TK';
+ $url = 'https://lucie.timeinc.com/webservices/customers/'.check_plain($email).'/TK';
  $response = drupal_http_request($url, array('headers' => array('Content-Type'=>'application/json', 'CGI-token' => $token),
 	'method'=> 'GET'
    ));
@@ -215,7 +215,7 @@ function tfk_lucie_get_user_info($email, $token){
  * and should have access to the content/site.
 */
 function tfk_lucie_user_entitlements($token){
-  $url = 'http://cgi.timeinc.com/webservices/entitlements?CGI-App-Id=com.timeinc.tk.web';
+  $url = 'https://lucie.timeinc.com/webservices/entitlements?CGI-App-Id=com.timeinc.tk.web';
   $response = drupal_http_request($url, array('headers' => array('Content-Type'=>'application/json', 'CGI-token' => $token),
 	'method'=> 'GET'
   ));
@@ -232,7 +232,7 @@ function tfk_lucie_user_entitlements($token){
  */
 function tfk_lucie_check_user($email, $pwd){
 	
-  $url = 'http://cgi.timeinc.com/webservices/customers/'.check_plain($email).'/TK/auth_token';
+  $url = 'https://lucie.timeinc.com/webservices/customers/'.check_plain($email).'/TK/auth_token';
   $pass_arr = array('password'=>$pwd, 'CGI-App-Id' => 'com.timeinc.tk.web', 'deviceid' => 'TK.WEB', 'deviceip' => ip_address());
   $pass = drupal_json_encode($pass_arr);
   
