@@ -3312,7 +3312,7 @@ function tfk_search_flag($action, $flag, $content_id, $account, $fcid) {
   // Use our custom code only with the "spanish" flag.
   if($flag->name == 'spanish') {
     $node = node_load($content_id);
-    if($node->type == 'article') {
+    if(array_search($node->type, array('article', 'worksheet', 'pdf_quiz')) !== FALSE) {
       
       // Load the magazine issue flag.
       $magazine_flag = flag_get_flag('magazine_issue_spanish');
