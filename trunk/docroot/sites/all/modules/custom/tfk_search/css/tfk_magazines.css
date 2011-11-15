@@ -1,6 +1,10 @@
 /**
  * Left sidebar.
  */
+.page-tfk-magazine .region-sidebar-first .section {
+	padding: 10px 7px;
+}
+
 .search-sidebar-title,
 #block-menu-menu-publishing-calendar-menu h2.block-title {
 	background-color: #D71700;
@@ -10,7 +14,7 @@
   text-align: center;
   color: #FFF;
   text-transform: uppercase;
-  margin: 0 8px 13px 0;
+  margin: 0 0 13px 0;
 }
 
 .block-apachesolr-search {
@@ -104,6 +108,25 @@
   margin-bottom: 4px;
 }
 
+.page-tfk-magazine #block-tfk-search-sm-editorial-date-tfk .item-list ul li {
+	margin: 0;
+}
+
+.page-tfk-magazine #block-tfk-search-sm-editorial-date-tfk .content > .item-list {
+  margin: 0 0 0 2px;
+}
+
+.page-tfk-magazine .block-tfk-search {
+  border-bottom: 1px dotted #CECECE;
+  margin-bottom: 10px;
+  padding-bottom: 9px;
+}
+
+.page-tfk-magazine .block-tfk-search.last {
+  border-bottom: 0;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
 
 /* End left sidebar */
 
