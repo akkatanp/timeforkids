@@ -60,6 +60,41 @@ function tfk_magazine_flag_default_flags() {
     ),
     'api_version' => 2,
   );
+  // Exported flag: "Magazine Issue Spanish".
+  $flags['magazine_issue_spanish'] = array(
+    'content_type' => 'node',
+    'title' => 'Magazine Issue Spanish',
+    'global' => '1',
+    'types' => array(
+      0 => 'magazine_issue',
+    ),
+    'flag_short' => 'Magazine Issue Spanish',
+    'flag_long' => '',
+    'flag_message' => '',
+    'unflag_short' => 'Magazine Issue Spanish',
+    'unflag_long' => '',
+    'unflag_message' => '',
+    'unflag_denied_text' => '',
+    'link_type' => 'toggle',
+    'roles' => array(
+      'flag' => array(
+        0 => '3',
+      ),
+      'unflag' => array(
+        0 => '3',
+      ),
+    ),
+    'show_on_page' => 0,
+    'show_on_teaser' => 0,
+    'show_on_form' => 0,
+    'access_author' => '',
+    'i18n' => 0,
+    'api_version' => 2,
+    'module' => 'tfk_magazine',
+    'locked' => array(
+      0 => 'name',
+    ),
+  );
   return $flags;
 }
 
