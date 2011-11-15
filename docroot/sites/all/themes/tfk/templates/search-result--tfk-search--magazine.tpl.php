@@ -103,7 +103,7 @@
     </div>
 	<?php endif; ?>
   
-  <?php if(isset($show_related_resources)): ?>
+  <?php if(isset($show_related_resources) && $show_related_resources == TRUE): ?>
     <div class="related-content-wrap">
       <?php if(!empty($magazine_materials) || !empty($magazine_related)):?>
          <h2 class="addit-content">Additional Content:</h2>
