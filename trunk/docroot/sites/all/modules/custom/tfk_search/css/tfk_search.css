@@ -4,11 +4,12 @@
 
 /* Featured item */
 
-div#block-tfk-search-tfk-search-photos-video-featured {
+div#block-tfk-search-tfk-search-photos-video-featured,
+.minisite-video div#tfk-search-photos-video-featured{
   border: 6px solid #D71700;
   padding: 0 0 0 0;
   position: relative;
-	background-color: #FFF;
+  background-color: #FFF;
 }
 
 
@@ -16,6 +17,10 @@ div#block-tfk-search-tfk-search-photos-video-featured {
     border: 6px solid #D71700;
 }
 
+
+.minisite-video div#tfk-search-photos-video-featured{
+    padding-top:10px;
+}
 
 .top-story-right-square {
   background: url("sites/all/themes/tfk/images/top-story-corner.png") no-repeat scroll 0 0 white;
@@ -34,7 +39,8 @@ div#tfk-search-photos-video-featured {
 }
 
 
-.minisite-slideshow div#tfk-search-photos-video-featured {
+.minisite-slideshow div#tfk-search-photos-video-featured,
+.minisite-video div#tfk-search-photos-video-featured{
  margin-bottom:10px;   
 }
 
@@ -525,7 +531,8 @@ li.search-result .flag-favorites a {
 }
 
 /* photos and vide content type */
-body.section-photos-video div#tfk-search-photos-video-featured .icon {
+body.section-photos-video div#tfk-search-photos-video-featured .icon,
+.minisite-video div#tfk-search-photos-video-featured .icon{
   height: 24px;
   margin: -34px 0 0 225px;
   position: relative;
@@ -534,7 +541,7 @@ body.section-photos-video div#tfk-search-photos-video-featured .icon {
 }
 
 body.section-photos-video ol#tfk-search-results-photos-video .icon,
-body.section-my-favorites ol#tfk-search-results-photos-video .icon {
+body.section-my-favorites ol#tfk-search-results-photos-video .icon{
   height: 24px;
   margin: -34px 0 0 75px;
   position: relative;
@@ -543,12 +550,14 @@ body.section-my-favorites ol#tfk-search-results-photos-video .icon {
 }
 
 body.section-photos-video .content-type-slideshow .icon,
-body.section-my-favorites .content-type-slideshow .icon {
+body.section-my-favorites .content-type-slideshow .icon,
+.minisite-video div#tfk-search-photos-video-featured .icon{
   background: url(../images/photo-camera-icon.png) no-repeat;
 }
 
 body.section-photos-video .content-type-video .icon, 
-body.section-my-favorites .content-type-video .icon {
+body.section-my-favorites .content-type-video .icon,
+.minisite-video div#tfk-search-photos-video-featured .icon{
   background: url(../images/video-camera-icon.png) no-repeat;
 }
 
