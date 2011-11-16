@@ -219,8 +219,12 @@ function _tfk_news_minisite_related_articles(){
         if($node->type == 'article' || $node->type == 'slideshow' || $node->type == 'video'){
             
             //lets get the parent minisite
-            $result = db_query('SELECT DISTINCT entity_id from field_data_field_articles fa where fa.entity_type = :type and fa.bundle = :bundle and fa.field_articles_nid = :nid',array('type'=> 'node','bundle'=>'minisite','nid'=>$node->nid));
+            //$result = db_query('SELECT DISTINCT entity_id from field_data_field_articles fa where fa.entity_type = :type and fa.bundle = :bundle and fa.field_articles_nid = :nid',array('type'=> 'node','bundle'=>'minisite','nid'=>$node->nid));
+            $result = db_query('SELECT DISTINCT fa.entity_id,n.created from {field_data_field_articles} fa left join {node} n on fa.entity_id = n.nid where fa.entity_type = :type and fa.bundle = :bundle and fa.field_articles_nid = :nid order by n.nid DESC limit 0,1',array('type'=> 'node','bundle'=>'minisite','nid'=>$node->nid));
             $record = $result->fetch();
+            
+
+            
             
             if($record){
                 $parent_minisite_nid = $record->entity_id;
@@ -728,8 +732,7 @@ function tfk_news_preprocess_page(&$vars) {
           $vars['custclass'] = 'withkidrep';
         }
   
-        $result = db_query('SELECT DISTINCT entity_id from field_data_field_articles fa where fa.entity_type = :type and fa.bundle = :bundle and fa.field_articles_nid = :nid',array('type'=> 'node','bundle'=>'minisite','nid'=>$node->nid));
-        $record = $result->fetch();
+        $result = db_query('SELECT DISTINCT fa.entity_id,n.created from {field_data_field_articles} fa left join {node} n on fa.entity_id = n.nid where fa.entity_type = :type and fa.bundle = :bundle and fa.field_articles_nid = :nid order by n.nid DESC limit 0,1',array('type'=> 'node','bundle'=>'minisite','nid'=>$node->nid));          $record = $result->fetch();
         if($record){
           $parent_minisite_nid = $record->entity_id;
           $minisite_node = node_load($parent_minisite_nid);
