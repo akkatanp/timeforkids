@@ -279,7 +279,13 @@ function feature_mini_sites_context_default_contexts() {
           'module' => 'tfk_news',
           'delta' => 'tfk-news-minisite-articles',
           'region' => 'sidebar_bottom',
-          'weight' => '-10',
+          'weight' => '-90',
+        ),
+        'tfk_news-tfk-news-minisite-more' => array(
+          'module' => 'tfk_news',
+          'delta' => 'tfk-news-minisite-more',
+          'region' => 'sidebar_bottom',
+          'weight' => '-89',
         ),
         'tfk_helper-tfk_helper_slideshow' => array(
           'module' => 'tfk_helper',
