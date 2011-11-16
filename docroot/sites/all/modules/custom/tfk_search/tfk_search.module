@@ -205,7 +205,7 @@ function tfk_search_init() {
             and fa.entity_id = :nid limit 0,1",array('entity_type'=>'node','bundle'=>'minisite','nid'=>$node->nid));
         $record = $sql->fetch();
         
-        if($record->type == 'slideshow'){
+        if($record->type == 'slideshow' || $record->type == 'video'){
             drupal_add_css($path. '/css/tfk_search.css', 'file');
         }
     }
@@ -746,6 +746,11 @@ function tfk_search_block_info() {
     'cache' => DRUPAL_CACHE_GLOBAL,
   );
   
+  $blocks['tfk_minisite_video_featured'] = array(
+    'info' => t('TFK Search Featured Minisite Video'),
+    'visibility' => BLOCK_VISIBILITY_LISTED,
+    'cache' => DRUPAL_CACHE_GLOBAL,
+  );
   
   
   // Worksheet first sidebar top title.
@@ -905,8 +910,7 @@ function tfk_search_block_view($delta='') {
         
       if(isset($minisite_nid)) {
           $featured_item = tfk_search_get_minisite_featured_slideshow($minisite_nid);
-          $block['content'] = theme('tfk_featured_minisite_slideshow', $featured_item);
-          //$block['content'] = theme('tfk_featured_block', $featured_item);
+          $block['content'] = theme('tfk_featured_block', $featured_item);
           
       } else {
         // Suppress the block.
@@ -914,6 +918,26 @@ function tfk_search_block_view($delta='') {
       }
     break;
     
+    
+    //Featured Minisite Video
+    
+    case 'tfk_minisite_video_featured':
+      $args = arg();
+      if(isset($args[0]) && $args[0] == 'node' && isset($args[1]) && is_numeric($args[1])){
+        $minisite_nid = $args[1];
+      }
+     
+      
+      if(isset($minisite_nid)) {
+          $featured_item = tfk_search_get_minisite_featured_video($minisite_nid);
+          $block['content'] = theme('tfk_featured_minisite_slideshow', $featured_item);
+      }else {
+        // Suppress the block.
+        $block['content'] = '';
+      }
+      
+      
+    break;
     
    
    // My saved searches.
@@ -1629,6 +1653,24 @@ function tfk_search_get_minisite_featured_slideshow($minisite_nid){
 }
 
 
+function tfk_search_get_minisite_featured_video($minisite_nid){
+    $sql = 'SELECT fa.field_articles_nid as nid
+        from field_data_field_articles fa
+        where fa.bundle = :bundle and fa.entity_type = :entity_type and entity_id = :entity_id limit 0,1';
+    
+    $query_args = array('bundle'=>'minisite','entity_type' => 'node','entity_id' => $minisite_nid);
+    
+    $result = db_query($sql,$query_args,array('fetch' => 'tfkSearchFeaturedItem',))->fetchAll();
+    $result = ($result) ? array('tfkSearchFeaturedItem' => array_shift($result)) : FALSE;
+    
+    if($result == FALSE) {
+      watchdog('TFK Minisite', 'Could not find data to populate the Featured item block.', array(), WATCHDOG_ERROR);
+      return FALSE;
+    } else {
+      return $result;
+    }
+    
+}
 
 /**
  * Return the URL for an image derivative given a style and image path.
