@@ -228,7 +228,7 @@ function feature_mini_sites_field_default_fields() {
           'tfk_extras_top_nodeblock' => 0,
           'tfk_notification' => 0,
           'tfk_staff' => 0,
-          'video' => 0,
+          'video' => 'video',
           'webform' => 0,
           'webform_generic' => 0,
           'worksheet' => 0,
