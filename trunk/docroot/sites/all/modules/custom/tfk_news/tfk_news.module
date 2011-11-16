@@ -215,13 +215,16 @@ function _tfk_news_minisite_related_articles(){
     $rgs = arg();
     if($rgs[0] == 'node' && is_numeric($rgs[1])){
         $node = node_load($rgs[1]);
+        
         if($node->type == 'article' || $node->type == 'slideshow' || $node->type == 'video'){
-
+            
             //lets get the parent minisite
             $result = db_query('SELECT DISTINCT entity_id from field_data_field_articles fa where fa.entity_type = :type and fa.bundle = :bundle and fa.field_articles_nid = :nid',array('type'=> 'node','bundle'=>'minisite','nid'=>$node->nid));
             $record = $result->fetch();
+            
             if($record){
                 $parent_minisite_nid = $record->entity_id;
+
                 
                 
                 //now lets get all other articles under that minisite
@@ -231,7 +234,9 @@ function _tfk_news_minisite_related_articles(){
                 LEFT JOIN {field_data_field_articles} field_data_field_articles ON node.nid = field_data_field_articles.entity_id AND (field_data_field_articles.entity_type = :entity_type AND field_data_field_articles.deleted = :deleted)
                 INNER JOIN {node} node_field_data_field_articles ON field_data_field_articles.field_articles_nid = node_field_data_field_articles.nid
                 WHERE (( (node.status = :status) AND (node.type IN  (:type)) AND (node.nid = :nid ) ))
-                ORDER BY node_created DESC',array('entity_type'=>'node','deleted'=>0,'status'=>1,'type'=>'minisite','nid'=>$parent_minisite_nid));
+                ORDER BY node_created DESC',array(':entity_type'=>'node',':deleted'=>0,':status'=>1,':type'=>'minisite',':nid'=>$parent_minisite_nid));
+                
+                
                 
                 $articles = array();
                 foreach ($art_res as $i=> $record) {
