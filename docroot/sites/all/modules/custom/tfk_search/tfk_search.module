@@ -2803,8 +2803,15 @@ function tfk_search_preprocess_search_result(&$vars) {
               //$lists[$name][] = l($item['title'], $item['url']);
               
               // Intercept links to internal nodes.
+              // The regex returns the article nid in these scenarios:
+              // http://tfk.local/news/bats-brink/16661
+              // http://tfk.local/news/bats-brink/16661/
+              // http://tfk.local/news/celebrating-hispanic-heritage-rallen-test/13261/16696
               $match = array();
-              if(preg_match('/http:\/\/'. $_SERVER['HTTP_HOST']. '\/.*\/([0-9]+)/', $item['url'], $match)) {
+              if(preg_match('/http:\/\/'. $_SERVER['HTTP_HOST']. '\/(?:[\d\w-]*\/)(?:[\d\w-]*\/)([0-9]*)\/?(?:[0-9]*)/', $item['url'], $match)) {
+                # '/http:\/\/'. $_SERVER['HTTP_HOST']. '\/.*\/([0-9]+)/'
+                # http:\/\/tfk.local\/(?:[\d\w-]*\/)(?:[\d\w-]*\/)([0-9]*).*^
+                # http:\/\/'. $_SERVER['HTTP_HOST']. '\/(?:[\d\w-]*\/)(?:[\d\w-]*\/)([0-9]*).*^
                 // And add magazine issue nid to those who link to articles.
                 $item_node = node_load($match[1]);
                 if($item_node && $item_node->type == 'article') {
