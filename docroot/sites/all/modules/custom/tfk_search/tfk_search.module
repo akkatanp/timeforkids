@@ -3356,7 +3356,7 @@ function tfk_search_flag($action, $flag, $content_id, $account, $fcid) {
     $node = node_load($content_id);
     
     $field_map = array(
-      'article' => array('field_articles'),
+      'article' => 'field_articles',
       'worksheet' => array('field_materials', 'field_related_resources'),
       'pdf_quiz' => array('field_materials', 'field_related_resources'),
     );
