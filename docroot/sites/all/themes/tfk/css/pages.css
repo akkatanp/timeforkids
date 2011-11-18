@@ -1508,6 +1508,7 @@ ul.links li {
 	padding: 5px;
 	border: solid 1px #cecece;
 	background: #dedede;
+        clear:both;
 }
 
 .node-type-article .reporter-badge #badge-header{
