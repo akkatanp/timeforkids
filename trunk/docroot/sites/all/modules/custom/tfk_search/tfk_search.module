@@ -3350,77 +3350,163 @@ function tfk_search_preprocess_search_result(&$vars) {
 }
 
 /**
- * Implementation of hook_flag.
+ * Check for the presence of a flag in a node.
  *
- * When an article is flagged with the "spanish" flag, check if a magazine
- * issue is referencing it, then enable the "magazine_issue_spanish" flag on
- * the referencing magazine issue. The magazine_issue_spanish flag is then
- * used by SOLR to tell which magazine issues contain spanish articles.
+ * @param node $node
+ * 	 Standard Drupal node object.
+ * @param string $flag
+ *   Name of the flag.
  */
-function tfk_search_flag($action, $flag, $content_id, $account, $fcid) {
-  // Use our custom code only with the "spanish" flag.
-  if($flag->name == 'spanish') {
-    $node = node_load($content_id);
-    
-    $field_map = array(
-      'article' => 'field_articles',
-      'worksheet' => array('field_materials', 'field_related_resources'),
-      'pdf_quiz' => array('field_materials', 'field_related_resources'),
-    );
-    
-    if(array_key_exists($node->type, $field_map)) {
-      
-      // Load the magazine issue flag.
-      $magazine_flag = flag_get_flag('magazine_issue_spanish');
-      if($magazine_flag) {
-        
-        // See if there is a magazine issue referencing this article.
-        /*$query = 'SELECT n.nid {node} n
-        	INNER JOIN {:table} magazine ON n.nid = magazine.entity_id
-          WHERE :field = :article_nid
-          AND n.type = "magazine"';*/
-        $query = 'SELECT n.nid
-        					FROM {node} n
-                	INNER JOIN {%s} magazine ON n.nid = magazine.entity_id
-                  WHERE %s=?
-                  AND n.type=?';
-        $results_arr = array();
-        if(count($field_map[$node->type]) == 1) {
-          $results_arr[] = db_query(
-            str_replace(PHP_EOL, " ", sprintf($query, 'field_data_'. $field_map[$node->type], 'magazine.'. $field_map[$node->type]. '_nid'))
-            , array($node->nid, 'magazine_issue')
-          );
-        } else {
-          foreach($field_map[$node->type] as $field_name) {
-            $results_arr[] = db_query(
-              str_replace(PHP_EOL, " ", sprintf($query, 'field_data_'. $field_name, 'magazine.'. $field_name. '_nid'))
-              , array($node->nid, 'magazine_issue')
-            );
+function tfk_search_node_has_flag($node, $flag = "spanish") {
+  $flags = flag_get_counts('node', $node->nid);
+  if(!empty($flags) && array_key_exists($flag, $flags)) {
+    return TRUE;
+  } else {
+    return FALSE;
+  }
+}
+
+/**
+ * Check if a magazine field references a node flagged as "spanish".
+ *
+ * We need only one item in the magazine node to be flagged, so this function
+ * returns TRUE on the first "spanish" item that it returns.
+ *
+ * @param node $magazine
+ *   Node object of type "magazine_issue".
+ *
+ * @return TRUE if a flagged node is found, FALSE otherwise.
+ */
+function tfk_search_magazine_has_spanish_item($magazine) {
+  
+  // Materials: Worksheet and PDF Quiz.
+  $mag_field_names = array('field_related_resources', 'field_materials');
+  foreach($mag_field_names as $mag_field_name) {
+    if(!empty($magazine->$mag_field_name)) {
+      $mag_field_items = field_get_items('node', $magazine, $mag_field_name);
+      if(!empty($mag_field_items)) {
+        foreach($mag_field_items as $mag_field_item) {
+          $mag_field_item_node = node_load($mag_field_item['nid']);
+          if($mag_field_item_node && tfk_search_node_has_flag($mag_field_item_node)) {
+            return TRUE;
+          } else {
+            // Continue searching.
+            continue;
           }
         }
-        
-        foreach($results_arr as $results) {
-          if($results->rowCount() > 0) {
-    
-            // Flag each magazine referencing this article.
-            $magazines = $results->fetchAll();
-            foreach($magazines as $magazine) {
-              // Verify counts w/ this.
-              //$flagged = flag_get_counts('node', $magazine->nid);
-              
-              $magazine_node = node_load($magazine->nid);
-              if($magazine_node) {
-                // Perform $action on the referencing magazine issue's "magazine_issue_spanish" flag.
-                $magazine_flag->flag($action, $magazine->nid, NULL, TRUE);
-                
-                // Save the magazine issue node so it can be indexed by Solr on the next cron run.
-                node_save($magazine_node);
-              }
-            }
-          }
-        }
-        
       }
     }
+  }
+  
+  // The rest of the magazine fields. Check for the article nodereference field first.
+  $list_fields = array('Cover Story' =>'field_articles', 'News Now' => 'field_in_the_news', 'Top 5' => 'field_top_5',
+  'Features' => 'field_more_news', 'Kid Central' => 'field_kid_central', 'Debate' => 'field_debate', 'You\'ve Got Skills' => 'field_got_skills', 'Newsmakers' => 'field_whos_news',
+  'Theme 1' => 'field_theme_1', 'Theme 2' => 'field_theme_2', 'Theme 3' => 'field_theme_3', 'Theme 4' => 'field_theme_4',
+  'News' => 'field_news');
+  $lists = array();
+  foreach($list_fields as $name => $field) {
+    $items = field_get_items('node', $magazine, $field);
+    if(!empty($items)) {
+      foreach($items as $item) {
+       
+        // Nodereference field.
+        if($field == 'field_articles') {
+          $cover_story = node_load($item['nid']);
+          if($cover_story) {
+            if(tfk_search_node_has_flag($cover_story)) {
+              return TRUE;
+            } else {
+              // Continue searching.
+              continue;
+            }
+          }
+        // All the plain-text URL fields.
+        } else {
+          
+          // Intercept links to internal nodes.
+          // The regex returns the article nid in these scenarios:
+          // http://tfk.local/news/bats-brink/16661
+          // http://tfk.local/news/bats-brink/16661/
+          // http://tfk.local/news/celebrating-hispanic-heritage-rallen-test/13261/16696
+          $match = array();
+          if(preg_match('/http:\/\/'. $_SERVER['HTTP_HOST']. '\/(?:[\d\w-]*\/)(?:[\d\w-]*\/)([0-9]*)\/?(?:[0-9]*)/', $item['url'], $match)) {
+            // And add magazine issue nid to those who link to articles.
+            $item_node = node_load($match[1]);
+            if($item_node && $item_node->type == 'article') {
+              
+              if(tfk_search_node_has_flag($item_node)) {
+                return TRUE;
+              }
+              
+            }
+          // External links.
+          } else {
+            // External links cannot count towards flagging a magazine as "spanish".
+            continue;
+          }
+        }
+      }
+    }
+  }
+  
+  // Did not find anything flagged as "spanish" in this magazine.
+  return FALSE;
+}
+
+/**
+ * Automatically flag this magazine if it has a spanish flag.
+ *
+ * @param node $magazine
+ *   Standard Drupal node of type "magazine_issue".
+ * @param string $flag_name
+ * 	 Name of the flag corresponding to the magazine issue.
+ */
+function tfk_search_magazine_spanish_flag($magazine, $flag_name = 'magazine_issue_spanish') {
+  $has_flag = tfk_search_node_has_flag($magazine, $flag_name);
+  $has_spanish_item = tfk_search_magazine_has_spanish_item($magazine);
+  
+  // If magazine not have a "spanish" item, and is not flagged, no action is required.
+  if(!$has_spanish_item && !$has_flag) {
+    return;
+  }
+  
+  // If magazine has a "spanish" item, and is already flagged, no action is required.
+  if($has_spanish_item && $has_flag) {
+    return;
+  }
+  
+  $magazine_flag = flag_get_flag($flag_name);
+  // If magazine has a "spanish" item, but has not been flagged yet, flag it.
+  if($has_spanish_item && !$has_flag && $magazine_flag) {
+    $magazine_flag->flag('flag', $magazine->nid, NULL, TRUE);
+  // If the magazine has the flag, but no "spanish" items, unflag it.
+  } elseif($has_flag && !$has_spanish_item && $magazine_flag) {
+    $magazine_flag->flag('unflag', $magazine->nid, NULL, TRUE);
+  }
+}
+
+/**
+ * Implementation of hook_node_insert.
+ *
+ * If one of the magazine items is flagged with "spanish", flag the
+ * magazine issue to indicate it has a "spanish" item and so it can be
+ * exposed in Solr search when the spanish filter is active.
+ */
+function tfk_search_node_insert($node) {
+  if($node->type == 'magazine_issue') {
+    tfk_search_magazine_spanish_flag($node);
+  }
+}
+
+/**
+ * Implementation of hook_node_update.
+ *
+ * If one of the magazine items is flagged with "spanish", flag the
+ * magazine issue to indicate it has a "spanish" item and so it can be
+ * exposed in Solr search when the spanish filter is active.
+ */
+function tfk_search_node_update($node) {
+  if($node->type == 'magazine_issue') {
+    tfk_search_magazine_spanish_flag($node);
   }
 }
