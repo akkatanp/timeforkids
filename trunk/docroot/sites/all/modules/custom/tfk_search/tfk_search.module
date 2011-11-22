@@ -3465,7 +3465,7 @@ function tfk_search_magazine_spanish_flag($magazine, $flag_name = 'magazine_issu
   $has_flag = tfk_search_node_has_flag($magazine, $flag_name);
   $has_spanish_item = tfk_search_magazine_has_spanish_item($magazine);
   
-  // If magazine not have a "spanish" item, and is not flagged, no action is required.
+  // If magazine does not have a "spanish" item, and is not flagged, no action is required.
   if(!$has_spanish_item && !$has_flag) {
     return;
   }
@@ -3483,6 +3483,9 @@ function tfk_search_magazine_spanish_flag($magazine, $flag_name = 'magazine_issu
   } elseif($has_flag && !$has_spanish_item && $magazine_flag) {
     $magazine_flag->flag('unflag', $magazine->nid, NULL, TRUE);
   }
+  
+  // An update occurred, force a Solr index.
+  apachesolr_index_nodes(array($magazine), 'apachesolr_search');
 }
 
 /**
