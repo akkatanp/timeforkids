@@ -3542,10 +3542,6 @@ function tfk_search_flag($action, $flag, $content_id, $account, $fcid) {
       if($magazine_flag) {
         
         // See if there is a magazine issue referencing this article.
-        /*$query = 'SELECT n.nid {node} n
-        	INNER JOIN {:table} magazine ON n.nid = magazine.entity_id
-          WHERE :field = :article_nid
-          AND n.type = "magazine"';*/
         $query = 'SELECT n.nid
         					FROM {node} n
                 	INNER JOIN {%s} magazine ON n.nid = magazine.entity_id
