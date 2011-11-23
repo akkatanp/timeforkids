@@ -3515,3 +3515,79 @@ function tfk_search_node_update($node) {
     tfk_search_magazine_spanish_flag($node);
   }
 }
+
+/**
+ * Implementation of hook_flag.
+ *
+ * When an article is flagged with the "spanish" flag, check if a magazine
+ * issue is referencing it, then enable the "magazine_issue_spanish" flag on
+ * the referencing magazine issue. The magazine_issue_spanish flag is then
+ * used by SOLR to tell which magazine issues contain spanish articles.
+ */
+function tfk_search_flag($action, $flag, $content_id, $account, $fcid) {
+  // Use our custom code only with the "spanish" flag.
+  if($flag->name == 'spanish') {
+    $node = node_load($content_id);
+    
+    $field_map = array(
+      'article' => 'field_articles',
+      'worksheet' => array('field_materials', 'field_related_resources'),
+      'pdf_quiz' => array('field_materials', 'field_related_resources'),
+    );
+    
+    if(array_key_exists($node->type, $field_map)) {
+      
+      // Load the magazine issue flag.
+      $magazine_flag = flag_get_flag('magazine_issue_spanish');
+      if($magazine_flag) {
+        
+        // See if there is a magazine issue referencing this article.
+        /*$query = 'SELECT n.nid {node} n
+        	INNER JOIN {:table} magazine ON n.nid = magazine.entity_id
+          WHERE :field = :article_nid
+          AND n.type = "magazine"';*/
+        $query = 'SELECT n.nid
+        					FROM {node} n
+                	INNER JOIN {%s} magazine ON n.nid = magazine.entity_id
+                  WHERE %s=?
+                  AND n.type=?';
+        $results_arr = array();
+        if(count($field_map[$node->type]) == 1) {
+          $results_arr[] = db_query(
+            str_replace(PHP_EOL, " ", sprintf($query, 'field_data_'. $field_map[$node->type], 'magazine.'. $field_map[$node->type]. '_nid'))
+            , array($node->nid, 'magazine_issue')
+          );
+        } else {
+          foreach($field_map[$node->type] as $field_name) {
+            $results_arr[] = db_query(
+              str_replace(PHP_EOL, " ", sprintf($query, 'field_data_'. $field_name, 'magazine.'. $field_name. '_nid'))
+              , array($node->nid, 'magazine_issue')
+            );
+          }
+        }
+        
+        foreach($results_arr as $results) {
+          if($results->rowCount() > 0) {
+    
+            // Flag each magazine referencing this article.
+            $magazines = $results->fetchAll();
+            foreach($magazines as $magazine) {
+              // Verify counts w/ this.
+              //$flagged = flag_get_counts('node', $magazine->nid);
+              
+              $magazine_node = node_load($magazine->nid);
+              if($magazine_node) {
+                // Perform $action on the referencing magazine issue's "magazine_issue_spanish" flag.
+                $magazine_flag->flag($action, $magazine->nid, NULL, TRUE);
+                
+                // Save the magazine issue node so it can be indexed by Solr on the next cron run.
+                node_save($magazine_node);
+              }
+            }
+          }
+        }
+        
+      }
+    }
+  }
+}
