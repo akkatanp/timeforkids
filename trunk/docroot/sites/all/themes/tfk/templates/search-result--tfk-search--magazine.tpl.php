@@ -74,13 +74,13 @@
   <?php print render($title_prefix); ?>
   <h3 class="title"<?php print $title_attributes; ?>>
     <span style="text-align:right;float:right;color:white;">
-      <?php if($magazine_issue_grade_level):?>
+      <?php if(isset($magazine_issue_grade_level)):?>
         
-           <?php if($magazine_issue_grade_level == 2){?>
-                Grade <?php print $magazine_issue_grade_level;?>
-            <?php }else{ ?>
-                Grades <?php print $magazine_issue_grade_level;?>
-            <?php } ?>
+         <?php if($magazine_issue_grade_level == 2): ?>
+              Grade <?php print $magazine_issue_grade_level;?>
+          <?php else: ?>
+              Grades <?php print $magazine_issue_grade_level;?>
+          <?php endif; ?>
             
       <?php endif;?>
     </span>
@@ -93,7 +93,7 @@
     <img src="<?php print $tfk_search_res_image;?>">
   <?php endif;?>
 
-	<?php if($magazine_lists):?>
+	<?php if(isset($magazine_lists)):?>
     <div class="in-this-issue">
       <?php foreach($magazine_lists as $name => $list):?>
         <h3><?php print $name; ?>:</h3>

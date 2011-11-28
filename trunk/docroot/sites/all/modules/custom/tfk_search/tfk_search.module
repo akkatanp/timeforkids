@@ -2649,10 +2649,6 @@ function tfk_search_preprocess_search_result(&$vars) {
   $thumb_attr = $attributes;
   $link_attr = array('html' => TRUE, 'attributes' => $attributes);
   
-  // Build contextual links.
-  $vars['classes_array'][] = 'contextual-links-region';
-  $vars['admin_links'] = tfk_search_contextual_links($vars['result']['node']->entity_id);
-  
   // Avoid further preprocessing if this node doesn't exist on this server.
   $nid = $vars['result']['fields']['entity_id'];
   $node = node_load($nid);
@@ -2663,6 +2659,14 @@ function tfk_search_preprocess_search_result(&$vars) {
     //$vars['render'] = FALSE;
     //return;
   //}
+  
+  if($node) {
+    // Build contextual links.
+    $vars['classes_array'][] = 'contextual-links-region';
+    $vars['admin_links'] = tfk_search_contextual_links($vars['result']['node']->entity_id);
+  } else {
+    $vars['admin_links'] = FALSE;
+  }
   
   
   $vars['date'] = date('F j, Y', $vars['result']['date']);
@@ -2752,238 +2756,240 @@ function tfk_search_preprocess_search_result(&$vars) {
 
 
     case 'magazine_issue':
-      $magazine = $node;
-      
-      // If the spanish filter is active, surface translated magazine items only.
-      TFKMagLangFilter::setRequestLanguage(TFK_SEARCH_SPANISH_ISSUE, 'spanish');
-      
-      //lets populate array of additional data for this node type search result
-      ////////////ISSUE DATE///////////////////////
-      $tmp_date =  field_get_items('node', $magazine, 'field_date');
-      $vars['magazine_issue_date_linux'] = $tmp_date[0]['value'];
-
-      ////////////GRADE LEVEL///////////////////////
-      $tmp_tid = field_get_items('node', $magazine, 'field_grade_level');
-      $tid = $tmp_tid[0]['tid'];
-      $name_res =  db_query('select name from taxonomy_term_data where tid = :tid',array('tid' => $tid ));
-      $name = $name_res->fetch();
-      $name = $name->name;
-      
-      $vars['magazine_issue_grade_level'] = $name;
-
-      //////////////COVER IMAGE///////////////////
-      $tmp_img_nid =  field_get_items('node', $magazine, 'field_cover');
-      $img_nid = $tmp_img_nid[0]['nid'];
-      $result = db_query('select fi.field_image_fid,fm.filename from {field_data_field_image} fi
-        left join {file_managed} fm on fi.field_image_fid = fm.fid
-        where fi.entity_type = :bundle_type and fi.entity_id = :img_nid',array('bundle_type'=>'node','img_nid'=>$img_nid));
-      $record = $result->fetch();
-      if($record) {
-        $file = file_load($record->field_image_fid);
-        if(!empty($file->uri) && file_exists(drupal_realpath($file->uri))) {
-          $newpath = image_style_path($style, $file->uri);
-          $abspath = file_create_url($newpath);
-          $thumbnail = theme('image', array('path' => $abspath, 'alt' => $magazine->title, 'title' => $magazine->title, 'attributes' => $thumb_attr));
-          $vars['thumbnail'] = l($thumbnail, 'node/'. $vars['result']['fields']['entity_id'], $link_attr);
-          //For temporarily supporting the separate template. Delete this variable if we merge templates.
-          if(isset($file->uri)) {
-            $vars['tfk_search_res_image'] = image_style_url($style, $file->uri);
+      if($node) {
+        $magazine = $node;
+        
+        // If the spanish filter is active, surface translated magazine items only.
+        TFKMagLangFilter::setRequestLanguage(TFK_SEARCH_SPANISH_ISSUE, 'spanish');
+        
+        //lets populate array of additional data for this node type search result
+        ////////////ISSUE DATE///////////////////////
+        $tmp_date =  field_get_items('node', $magazine, 'field_date');
+        $vars['magazine_issue_date_linux'] = $tmp_date[0]['value'];
+  
+        ////////////GRADE LEVEL///////////////////////
+        $tmp_tid = field_get_items('node', $magazine, 'field_grade_level');
+        $tid = $tmp_tid[0]['tid'];
+        $name_res =  db_query('select name from taxonomy_term_data where tid = :tid',array('tid' => $tid ));
+        $name = $name_res->fetch();
+        $name = $name->name;
+        
+        $vars['magazine_issue_grade_level'] = $name;
+  
+        //////////////COVER IMAGE///////////////////
+        $tmp_img_nid =  field_get_items('node', $magazine, 'field_cover');
+        $img_nid = $tmp_img_nid[0]['nid'];
+        $result = db_query('select fi.field_image_fid,fm.filename from {field_data_field_image} fi
+          left join {file_managed} fm on fi.field_image_fid = fm.fid
+          where fi.entity_type = :bundle_type and fi.entity_id = :img_nid',array('bundle_type'=>'node','img_nid'=>$img_nid));
+        $record = $result->fetch();
+        if($record) {
+          $file = file_load($record->field_image_fid);
+          if(!empty($file->uri) && file_exists(drupal_realpath($file->uri))) {
+            $newpath = image_style_path($style, $file->uri);
+            $abspath = file_create_url($newpath);
+            $thumbnail = theme('image', array('path' => $abspath, 'alt' => $magazine->title, 'title' => $magazine->title, 'attributes' => $thumb_attr));
+            $vars['thumbnail'] = l($thumbnail, 'node/'. $vars['result']['fields']['entity_id'], $link_attr);
+            //For temporarily supporting the separate template. Delete this variable if we merge templates.
+            if(isset($file->uri)) {
+              $vars['tfk_search_res_image'] = image_style_url($style, $file->uri);
+            }
           }
         }
-      }
-
-      // Old field: field_cover_story
-      // New field: field_articles
-      // Currently on Prod we still have the old field. Change to new field after deployment.
-      $list_fields = array('Cover Story' =>'field_articles', 'News Now' => 'field_in_the_news', 'Top 5' => 'field_top_5',
-      'Features' => 'field_more_news', 'Kid Central' => 'field_kid_central', 'Debate' => 'field_debate', 'You\'ve Got Skills' => 'field_got_skills', 'Newsmakers' => 'field_whos_news',
-      'Theme 1' => 'field_theme_1', 'Theme 2' => 'field_theme_2', 'Theme 3' => 'field_theme_3', 'Theme 4' => 'field_theme_4',
-      'News' => 'field_news');
-      $lists = array();
-      foreach($list_fields as $name => $field) {
-        $items = field_get_items('node', $magazine, $field);
-        if(!empty($items)) {
-          //$lists[$name] = array();
-          foreach($items as $item) {
-            if($field != 'field_articles') {
-              //$lists[$name][] = l($item['title'], $item['url']);
-              
-              // Intercept links to internal nodes.
-              // The regex returns the article nid in these scenarios:
-              // http://tfk.local/news/bats-brink/16661
-              // http://tfk.local/news/bats-brink/16661/
-              // http://tfk.local/news/celebrating-hispanic-heritage-rallen-test/13261/16696
-              $match = array();
-              if(preg_match('/http:\/\/'. $_SERVER['HTTP_HOST']. '\/(?:[\d\w-]*\/)(?:[\d\w-]*\/)([0-9]*)\/?(?:[0-9]*)/', $item['url'], $match)) {
-                # '/http:\/\/'. $_SERVER['HTTP_HOST']. '\/.*\/([0-9]+)/'
-                # http:\/\/tfk.local\/(?:[\d\w-]*\/)(?:[\d\w-]*\/)([0-9]*).*^
-                # http:\/\/'. $_SERVER['HTTP_HOST']. '\/(?:[\d\w-]*\/)(?:[\d\w-]*\/)([0-9]*).*^
-                // And add magazine issue nid to those who link to articles.
-                $item_node = node_load($match[1]);
-                if($item_node && $item_node->type == 'article') {
-                  // Only show items in spanish when spanish filter is active.
-                  if(TFKMagLangFilter::hasFlag($item_node)) {
-                    $lists[$name][] = l($item['title'], ltrim(url('node/'. $item_node->nid). '/'. $magazine->nid, '/'), array('alias' => TRUE));
-                  } else if(!TFKMagLangFilter::isActive()) {
-                    $lists[$name][] = l($item['title'], ltrim(url('node/'. $item_node->nid). '/'. $magazine->nid, '/'), array('alias' => TRUE));
+  
+        // Old field: field_cover_story
+        // New field: field_articles
+        // Currently on Prod we still have the old field. Change to new field after deployment.
+        $list_fields = array('Cover Story' =>'field_articles', 'News Now' => 'field_in_the_news', 'Top 5' => 'field_top_5',
+        'Features' => 'field_more_news', 'Kid Central' => 'field_kid_central', 'Debate' => 'field_debate', 'You\'ve Got Skills' => 'field_got_skills', 'Newsmakers' => 'field_whos_news',
+        'Theme 1' => 'field_theme_1', 'Theme 2' => 'field_theme_2', 'Theme 3' => 'field_theme_3', 'Theme 4' => 'field_theme_4',
+        'News' => 'field_news');
+        $lists = array();
+        foreach($list_fields as $name => $field) {
+          $items = field_get_items('node', $magazine, $field);
+          if(!empty($items)) {
+            //$lists[$name] = array();
+            foreach($items as $item) {
+              if($field != 'field_articles') {
+                //$lists[$name][] = l($item['title'], $item['url']);
+                
+                // Intercept links to internal nodes.
+                // The regex returns the article nid in these scenarios:
+                // http://tfk.local/news/bats-brink/16661
+                // http://tfk.local/news/bats-brink/16661/
+                // http://tfk.local/news/celebrating-hispanic-heritage-rallen-test/13261/16696
+                $match = array();
+                if(preg_match('/http:\/\/'. $_SERVER['HTTP_HOST']. '\/(?:[\d\w-]*\/)(?:[\d\w-]*\/)([0-9]*)\/?(?:[0-9]*)/', $item['url'], $match)) {
+                  # '/http:\/\/'. $_SERVER['HTTP_HOST']. '\/.*\/([0-9]+)/'
+                  # http:\/\/tfk.local\/(?:[\d\w-]*\/)(?:[\d\w-]*\/)([0-9]*).*^
+                  # http:\/\/'. $_SERVER['HTTP_HOST']. '\/(?:[\d\w-]*\/)(?:[\d\w-]*\/)([0-9]*).*^
+                  // And add magazine issue nid to those who link to articles.
+                  $item_node = node_load($match[1]);
+                  if($item_node && $item_node->type == 'article') {
+                    // Only show items in spanish when spanish filter is active.
+                    if(TFKMagLangFilter::hasFlag($item_node)) {
+                      $lists[$name][] = l($item['title'], ltrim(url('node/'. $item_node->nid). '/'. $magazine->nid, '/'), array('alias' => TRUE));
+                    } else if(!TFKMagLangFilter::isActive()) {
+                      $lists[$name][] = l($item['title'], ltrim(url('node/'. $item_node->nid). '/'. $magazine->nid, '/'), array('alias' => TRUE));
+                    }
+                  }
+                // External links.
+                } else {
+                  // Suppress external links when the Spanish filter is active.
+                  if(!TFKMagLangFilter::isActive()) {
+                    $lists[$name][] = l($item['title'], $item['url']);
                   }
                 }
-              // External links.
-              } else {
-                // Suppress external links when the Spanish filter is active.
-                if(!TFKMagLangFilter::isActive()) {
-                  $lists[$name][] = l($item['title'], $item['url']);
-                }
-              }
-              
-            } else {
-              $cover_story = node_load($item['nid']);
-              if($cover_story) {
-                // Auto-alias version.
-                // $lists[$name][] = l($cover_story->title, 'node/'. $cover_story->nid);
                 
-                if(TFKMagLangFilter::isActive()) {
-                  if(TFKMagLangFilter::hasFlag($cover_story)) {
+              } else {
+                $cover_story = node_load($item['nid']);
+                if($cover_story) {
+                  // Auto-alias version.
+                  // $lists[$name][] = l($cover_story->title, 'node/'. $cover_story->nid);
+                  
+                  if(TFKMagLangFilter::isActive()) {
+                    if(TFKMagLangFilter::hasFlag($cover_story)) {
+                      $link = url('node/'. $cover_story->nid);
+                      $lists[$name][] = l($cover_story->title, ltrim($link, '/'). '/'. $magazine->nid, array('alias' => TRUE));
+                    }
+                  } else {
+                    // Magazine alias version (http://tfk.local/news/modern-fairy-tale/6686/7586):
+                    // article nid followed by magaizine nid.
                     $link = url('node/'. $cover_story->nid);
                     $lists[$name][] = l($cover_story->title, ltrim($link, '/'). '/'. $magazine->nid, array('alias' => TRUE));
                   }
-                } else {
-                  // Magazine alias version (http://tfk.local/news/modern-fairy-tale/6686/7586):
-                  // article nid followed by magaizine nid.
-                  $link = url('node/'. $cover_story->nid);
-                  $lists[$name][] = l($cover_story->title, ltrim($link, '/'). '/'. $magazine->nid, array('alias' => TRUE));
                 }
               }
             }
           }
         }
-      }
-
-      $vars['magazine_lists'] = array();
-      if(!empty($lists)) {
-        foreach($lists as $name => $list) {
-          $vars['magazine_lists'][$name] = theme('item_list', array('type' => 'ul', 'items' => $list));
+  
+        $vars['magazine_lists'] = array();
+        if(!empty($lists)) {
+          foreach($lists as $name => $list) {
+            $vars['magazine_lists'][$name] = theme('item_list', array('type' => 'ul', 'items' => $list));
+          }
         }
-      }
-
-      ///////////GETTING ADDITIONAL CONTENT////////
-      // Materials.
-            
-      /*if(array_key_exists(TFK_SEARCH_WORKSHEET_PDF_LINK, $vars['result']['fields']) && !empty($vars['result']['fields'][TFK_SEARCH_WORKSHEET_PDF_LINK])) {
-        foreach($vars['result']['fields'][TFK_SEARCH_WORKSHEET_PDF_LINK] as $key => $pdf_link) {
-          $vars['magazine_materials'][$key] = l($vars['result']['fields'][TFK_SEARCH_WORKSHEET_PDF_TITLE][$key], $pdf_link);
-        }
-      }*/
-      
-      // Materials: Worksheet and PDF Quiz.
-      if(isset($node->field_materials) && !empty($node->field_materials)) {
-        $materials = field_get_items('node', $node, 'field_materials');
-        foreach($materials as $material) {
-          $material_node = node_load($material['nid']);
-          if($material_node) {
+  
+        ///////////GETTING ADDITIONAL CONTENT////////
+        // Materials.
               
-            // Worksheet.
-            if(isset($material_node->field_worksheet_pdf_private) && !empty($material_node->field_worksheet_pdf_private)) {
-              $pdfs = field_get_items('node', $material_node, 'field_worksheet_pdf_private');
-              if($pdfs) {
-                if(TFKMagLangFilter::isActive()) {
-                  if(TFKMagLangFilter::hasFlag($material_node)) {
+        /*if(array_key_exists(TFK_SEARCH_WORKSHEET_PDF_LINK, $vars['result']['fields']) && !empty($vars['result']['fields'][TFK_SEARCH_WORKSHEET_PDF_LINK])) {
+          foreach($vars['result']['fields'][TFK_SEARCH_WORKSHEET_PDF_LINK] as $key => $pdf_link) {
+            $vars['magazine_materials'][$key] = l($vars['result']['fields'][TFK_SEARCH_WORKSHEET_PDF_TITLE][$key], $pdf_link);
+          }
+        }*/
+        
+        // Materials: Worksheet and PDF Quiz.
+        if(isset($node->field_materials) && !empty($node->field_materials)) {
+          $materials = field_get_items('node', $node, 'field_materials');
+          foreach($materials as $material) {
+            $material_node = node_load($material['nid']);
+            if($material_node) {
+                
+              // Worksheet.
+              if(isset($material_node->field_worksheet_pdf_private) && !empty($material_node->field_worksheet_pdf_private)) {
+                $pdfs = field_get_items('node', $material_node, 'field_worksheet_pdf_private');
+                if($pdfs) {
+                  if(TFKMagLangFilter::isActive()) {
+                    if(TFKMagLangFilter::hasFlag($material_node)) {
+                      foreach($pdfs as $pdf) {
+                        $vars['magazine_materials'][] = l($material_node->title, file_create_url($pdf['uri']));
+                      }
+                    }
+                  } else {
                     foreach($pdfs as $pdf) {
                       $vars['magazine_materials'][] = l($material_node->title, file_create_url($pdf['uri']));
                     }
                   }
-                } else {
-                  foreach($pdfs as $pdf) {
-                    $vars['magazine_materials'][] = l($material_node->title, file_create_url($pdf['uri']));
-                  }
                 }
               }
-            }
-            
-            // Quiz.
-            if($material_node->type == 'pdf_quiz') {
-              $quiz_pdf = field_get_items('node', $material_node, 'field_pdf_file_private');
-              if($quiz_pdf) {
-               
-                if(TFKMagLangFilter::isActive()) {
-                  if(TFKMagLangFilter::hasFlag($material_node)) {
-                    $quiz_pdf = $quiz_pdf[0];
-                    $vars['magazine_materials'][] = l($material_node->title, file_create_url($quiz_pdf['uri']));
-                  }
-                } else {
-                   $quiz_pdf = $quiz_pdf[0];
-                   $vars['magazine_materials'][] = l($material_node->title, file_create_url($quiz_pdf['uri']));
-                }
+              
+              // Quiz.
+              if($material_node->type == 'pdf_quiz') {
+                $quiz_pdf = field_get_items('node', $material_node, 'field_pdf_file_private');
+                if($quiz_pdf) {
                  
+                  if(TFKMagLangFilter::isActive()) {
+                    if(TFKMagLangFilter::hasFlag($material_node)) {
+                      $quiz_pdf = $quiz_pdf[0];
+                      $vars['magazine_materials'][] = l($material_node->title, file_create_url($quiz_pdf['uri']));
+                    }
+                  } else {
+                     $quiz_pdf = $quiz_pdf[0];
+                     $vars['magazine_materials'][] = l($material_node->title, file_create_url($quiz_pdf['uri']));
+                  }
+                   
+                }
               }
             }
           }
         }
-      }
-
-      //adding PDF Quiz to materials - per tfks 399
-      /*
-      $mats = array();
-      $materials = field_get_items('node',$node,'field_materials');
-      if($materials) {
-       foreach($materials as $key => $material_nid) {
-         $material = node_load($material_nid['nid']);
-         if($material->type == 'pdf_quiz') {
-           $worksheet_file = field_get_items('node', $material, 'field_pdf_file_private');
-           if($worksheet_file) {
-             $worksheet_file = $worksheet_file[0];
-             $vars['magazine_materials'][] = l($material->title, file_create_url($worksheet_file['uri']));
-             $mats[] = l($material->title, file_create_url($worksheet_file['uri']));
+  
+        //adding PDF Quiz to materials - per tfks 399
+        /*
+        $mats = array();
+        $materials = field_get_items('node',$node,'field_materials');
+        if($materials) {
+         foreach($materials as $key => $material_nid) {
+           $material = node_load($material_nid['nid']);
+           if($material->type == 'pdf_quiz') {
+             $worksheet_file = field_get_items('node', $material, 'field_pdf_file_private');
+             if($worksheet_file) {
+               $worksheet_file = $worksheet_file[0];
+               $vars['magazine_materials'][] = l($material->title, file_create_url($worksheet_file['uri']));
+               $mats[] = l($material->title, file_create_url($worksheet_file['uri']));
+             }
            }
          }
-       }
-      } */
-
-      ////////////////////Related Resources////////////////
-      $related_resources = field_get_items('node', $magazine, 'field_related_resources');
-      if($related_resources) {
-        
-        foreach($related_resources as $k => $rr_nid) {
-          $resource = node_load($rr_nid['nid']);
+        } */
+  
+        ////////////////////Related Resources////////////////
+        $related_resources = field_get_items('node', $magazine, 'field_related_resources');
+        if($related_resources) {
           
-          if(TFKMagLangFilter::isActive()) {
-            if(!TFKMagLangFilter::hasFlag($resource)) {
-              // Skip the resource if it doesn't have the target flag.
-              continue;
-            }
-          }
-          
-          if($resource && $resource->type == 'worksheet') {
-            $worksheet_file = field_get_items('node', $resource, 'field_worksheet_pdf_private');
-            if($worksheet_file) {
-              $worksheet_file = $worksheet_file[0];
-              $vars['magazine_related'][$k]['title'] = $resource->title;
-              $vars['magazine_related'][$k]['url'] = file_create_url($worksheet_file['uri']);
-            }
-          } elseif($resource->type == 'pdf_quiz') {
-            $vars['magazine_related'][$k]['title'] = $resource->title;
-            $vars['magazine_related'][$k]['nid'] = $resource->nid;
+          foreach($related_resources as $k => $rr_nid) {
+            $resource = node_load($rr_nid['nid']);
             
-            $worksheet_file = field_get_items('node', $resource, 'field_pdf_file_private');
-            if($worksheet_file) {
-              $worksheet_file = $worksheet_file[0];
-              $vars['magazine_related'][$k]['url'] = file_create_url($worksheet_file['uri']);
+            if(TFKMagLangFilter::isActive()) {
+              if(!TFKMagLangFilter::hasFlag($resource)) {
+                // Skip the resource if it doesn't have the target flag.
+                continue;
+              }
+            }
+            
+            if($resource && $resource->type == 'worksheet') {
+              $worksheet_file = field_get_items('node', $resource, 'field_worksheet_pdf_private');
+              if($worksheet_file) {
+                $worksheet_file = $worksheet_file[0];
+                $vars['magazine_related'][$k]['title'] = $resource->title;
+                $vars['magazine_related'][$k]['url'] = file_create_url($worksheet_file['uri']);
+              }
+            } elseif($resource->type == 'pdf_quiz') {
+              $vars['magazine_related'][$k]['title'] = $resource->title;
+              $vars['magazine_related'][$k]['nid'] = $resource->nid;
+              
+              $worksheet_file = field_get_items('node', $resource, 'field_pdf_file_private');
+              if($worksheet_file) {
+                $worksheet_file = $worksheet_file[0];
+                $vars['magazine_related'][$k]['url'] = file_create_url($worksheet_file['uri']);
+              } else {
+                $vars['magazine_related'][$k]['url'] = drupal_lookup_path('alias', 'node/'. $resource->nid);
+              }
             } else {
+              $vars['magazine_related'][$k]['title'] = $resource->title;
+              $vars['magazine_related'][$k]['nid'] = $resource->nid;
               $vars['magazine_related'][$k]['url'] = drupal_lookup_path('alias', 'node/'. $resource->nid);
             }
-          } else {
-            $vars['magazine_related'][$k]['title'] = $resource->title;
-            $vars['magazine_related'][$k]['nid'] = $resource->nid;
-            $vars['magazine_related'][$k]['url'] = drupal_lookup_path('alias', 'node/'. $resource->nid);
+            
           }
-          
-        }
-       
-        // Supress additional resources box if empty.
-        if((!empty($vars['magazine_materials'])) || (!empty($vars['magazine_related']))) {
-          $vars['show_related_resources'] = TRUE;
-        } else {
-          $vars['show_related_resources'] = FALSE;
+         
+          // Supress additional resources box if empty.
+          if((!empty($vars['magazine_materials'])) || (!empty($vars['magazine_related']))) {
+            $vars['show_related_resources'] = TRUE;
+          } else {
+            $vars['show_related_resources'] = FALSE;
+          }
         }
       }
       break;
