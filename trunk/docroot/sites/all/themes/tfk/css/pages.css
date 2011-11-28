@@ -684,6 +684,8 @@ ul.links li {
 .not-logged-in .view-teacher-news-top-story,
 .not-logged-in .view-kid-reporters-channel-top-story,
 .not-logged-in .view-homepage-top-story,
+.logged-in.minisite-nocontent #block-views-minisite-articles-block-2,
+.logged-in.minisite-nocontent #block-views-minisite-articles-block-3,
 .logged-in.homepage-top-part-empty .view-homepage-top-story,
 .logged-in.news-top-part-empty .view-teacher-news-top-story,
 .logged-in.kidreps-top-part-empty .view-kid-reporters-channel-top-story{
@@ -693,6 +695,7 @@ ul.links li {
 	border: solid 6px #d71700;
 	padding: 20px 10px 10px 10px;
 	margin-bottom: 10px;
+        
 }
 
 
