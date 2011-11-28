@@ -3592,6 +3592,13 @@ function tfk_search_flag($action, $flag, $content_id, $account, $fcid) {
   }
 }
 
+/**
+ * Build contextual links.
+ *
+ * Implementation taken from template_preprocess_panels_pane(), panels.module.
+ *
+ * @return A rendered string of contextual links if successfull, FALSE otherwise.
+ */
 function tfk_search_contextual_links($nid) {
   // Build contextual links.
   if (user_access('access contextual links')) {
