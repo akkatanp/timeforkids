@@ -338,30 +338,32 @@ function theme_tfk_search_facet_link($vars) {
   //Different search interfaces have different specifications for the facet count.
   $interface = arg(0);
   
-  // Prepend the word "Grade" to Grade Level facets.
-  if(isset($vars['options']['delta']) && preg_match('/im_([0-9]+)_field_grade_level/', $vars['options']['delta'])) {
-    if(preg_match('/([0-9]+|[a-zA-Z]?)-[0-9]+/', $vars['facet_text'])) {
-      $vars['facet_text'] = 'Grades '. $vars['facet_text'];
-    } else {
-      $vars['facet_text'] = 'Grade '. $vars['facet_text'];
+  if(isset($vars['options']['delta'])) {
+    // Prepend the word "Grade" to Grade Level facets.
+    if(preg_match('/im_([0-9]+)_field_grade_level/', $vars['options']['delta'])) {
+      if(preg_match('/([0-9]+|[a-zA-Z]?)-[0-9]+/', $vars['facet_text'])) {
+        $vars['facet_text'] = 'Grades '. $vars['facet_text'];
+      } else {
+        $vars['facet_text'] = 'Grade '. $vars['facet_text'];
+      }
     }
-  }
-  
-  // Change facet text from "PDF Quiz" to "Quiz".
-  if(isset($vars['options']['delta']) && $vars['options']['delta'] == 'bundle' && $vars['options']['query']['filters'] == 'bundle:pdf_quiz') {
-    $vars['facet_text'] = 'Quiz';
-  }
-  if(isset($vars['options']['delta']) && $vars['options']['delta'] == 'bundle' && $vars['facet_text'] == 'PDF Quiz') {
-    $vars['facet_text'] = 'Quiz';
-  }
-  
-  // Spanish translation.
-  if($vars['options']['delta'] == TFK_SEARCH_SPANISH_VERSION) {
-    $vars['facet_text'] = 'Spanish';
-  }
-  
-  if($vars['options']['delta'] == TFK_SEARCH_SPANISH_ISSUE) {
-    $vars['facet_text'] = 'Spanish';
+    
+    // Change facet text from "PDF Quiz" to "Quiz".
+    if($vars['options']['delta'] == 'bundle' && $vars['options']['query']['filters'] == 'bundle:pdf_quiz') {
+      $vars['facet_text'] = 'Quiz';
+    }
+    if($vars['options']['delta'] == 'bundle' && $vars['facet_text'] == 'PDF Quiz') {
+      $vars['facet_text'] = 'Quiz';
+    }
+    
+    // Spanish translation.
+    if($vars['options']['delta'] == TFK_SEARCH_SPANISH_VERSION) {
+      $vars['facet_text'] = 'Spanish';
+    }
+    
+    if($vars['options']['delta'] == TFK_SEARCH_SPANISH_ISSUE) {
+      $vars['facet_text'] = 'Spanish';
+    }
   }
   
   if(strtolower($vars['facet_text']) == 'slideshow'){
@@ -2647,6 +2649,9 @@ function tfk_search_preprocess_search_result(&$vars) {
   $thumb_attr = $attributes;
   $link_attr = array('html' => TRUE, 'attributes' => $attributes);
   
+  // Build contextual links.
+  $vars['classes_array'][] = 'contextual-links-region';
+  $vars['admin_links'] = tfk_search_contextual_links($vars['result']['node']->entity_id);
   
   // Avoid further preprocessing if this node doesn't exist on this server.
   $nid = $vars['result']['fields']['entity_id'];
@@ -3585,4 +3590,36 @@ function tfk_search_flag($action, $flag, $content_id, $account, $fcid) {
       }
     }
   }
+}
+
+function tfk_search_contextual_links($nid) {
+  // Build contextual links.
+  if (user_access('access contextual links')) {
+    $element = array(
+      '#contextual_links' => array(
+        'node' => array('node', array($nid)),
+      )
+    );
+    
+    $links = array();
+    $element = contextual_pre_render_links($element);
+    $links += $element['#links'];
+
+    if ($links) {
+      $build = array(
+        '#prefix' => '<div class="contextual-links-wrapper">',
+        '#suffix' => '</div>',
+        '#theme' => 'links__contextual',
+        '#links' => $links,
+        '#attributes' => array('class' => array('contextual-links')),
+        '#attached' => array(
+          'library' => array(array('contextual', 'contextual-links')),
+        ),
+      );
+      //$vars['classes_array'][] = 'contextual-links-region';
+      //$vars['admin_links'] = drupal_render($build);
+      return drupal_render($build);
+    }
+  }
+  return FALSE;
 }

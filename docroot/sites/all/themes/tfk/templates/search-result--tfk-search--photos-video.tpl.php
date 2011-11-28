@@ -67,6 +67,10 @@
 ?>
 <?php if($render): ?>
 <li class="<?php if(isset($classes)): ?><?php print $classes; ?><? endif; ?>"<?php if(isset($attributes)): ?><?php print $attributes; ?><? endif; ?>>
+  <?php if($admin_links):?>
+    <?php print $admin_links;?>
+  <?php endif;?>
+
   <?php if(isset($tfk_search_cont_type)):?>
     <div class="content-type"><?php print $tfk_search_cont_type;?></div>
   <?php endif;?>

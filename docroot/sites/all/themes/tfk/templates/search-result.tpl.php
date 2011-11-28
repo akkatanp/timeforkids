@@ -67,6 +67,9 @@
 ?>
 <?php if($render): ?>
 <li class="<?php if(isset($classes)): ?><?php print $classes; ?><? endif; ?>"<?php if(isset($attributes)): ?><?php print $attributes; ?><? endif; ?>>
+  <?php if($admin_links):?>
+    <?php print $admin_links;?>
+  <?php endif;?>
 
   <?php if(isset($tfk_search_res_skills)):?>
     <!-- SKills Vocab Term : <?php print $tfk_search_res_skills;?> --><br/>
