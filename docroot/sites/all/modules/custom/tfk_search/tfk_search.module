@@ -599,15 +599,15 @@ function tfk_search_apachesolr_update_index(&$document, $node, $namespace) {
     } else {
       $document->setField(TFK_SEARCH_COVER_STORY, 0);
     }
-    
-    // Index spanish version flag.
-    // This field is used for facets, so we only index 1s (indexing 0s would
-    // cause a second facet to appear representing 0s).
-    if(array_key_exists('spanish', $flags) && $flags['spanish'] == '1') {
-      $document->setField(TFK_SEARCH_SPANISH_VERSION, 1);
-    }
   }
   
+  // Index spanish version flag.
+  // This field is used for facets, so we only index 1s (indexing 0s would
+  // cause a second facet to appear representing 0s).
+  if(array_key_exists('spanish', $flags) && $flags['spanish'] == '1') {
+    $document->setField(TFK_SEARCH_SPANISH_VERSION, 1);
+  }
+    
   if($node->type == 'magazine_issue') {
     // Make Solr aware of magazine issues that contain spanish articles.
     //$magazine_flag = flag_get_flag('magazine_issue_spanish');
