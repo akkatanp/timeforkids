@@ -808,9 +808,17 @@ function tfk_preprocess_html(&$variables) {
         
         //here we check if there is additional content for minisite , to reduce height even for logged in users
         //if there is nothing to display there
-        if(field_get_items('node',$node,'field_minisite_related_content')){
-            $variables['classes_array'][] = 'minisite-nocontent';
+        //the way to check it is to get the 1st article and see if it has related articles.
+        
+        if($record->type == 'article'){
+            $art_node = node_load($record->field_articles_nid);
+            
+            if(!field_get_items('node',$art_node,'field_related_articles')){
+                $variables['classes_array'][] = 'minisite-nocontent';
+            }
         }
+        
+        
         
         
         
