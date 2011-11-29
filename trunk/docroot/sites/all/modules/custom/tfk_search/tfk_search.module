@@ -836,7 +836,7 @@ function tfk_search_block_view($delta='') {
     
     // Spanish translation filter. Used on /search/site.
     case TFK_SEARCH_SPANISH_VERSION:
-      $block['subject'] = t('Languages');
+      $block['subject'] = t('Language');
 
       if (apachesolr_has_searched()) {
         $response = apachesolr_static_response_cache();
