@@ -1,0 +1,6 @@
+core = "7.x"
+dependencies[] = "flag"
+description = "Stores flags that are used in multiple content types. Could avoid declaring the same flag as dependency in multiple Features."
+features[flag][] = "spanish"
+name = "TFK Flags"
+package = "Features"

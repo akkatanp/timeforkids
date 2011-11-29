@@ -1,0 +1,27 @@
+div {
+  position: static !important;
+  visibility: hidden;
+}
+
+#aplus-final-step {
+  font-size: 2em;
+  left: 0;
+  line-height: 2em;
+  margin: 0 !important;
+  padding: 0 !important;
+  position: absolute !important;
+  top: 0;
+  width: 100% !important;
+}
+
+#aplus-final-step div {
+  visibility: visible;
+}
+
+#aplus-final-step .paper-title {
+  margin-top: 0;
+}
+
+#aplus-final-step .paper-textarea {
+  width: 100% !important;
+}
