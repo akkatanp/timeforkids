@@ -913,6 +913,9 @@ ul.links li {
 	width: 230px;
 	padding: 10px 9px;
 	margin-bottom: 8px;
+        height:115px;
+        height:auto !important;
+        min-height:115px;
 }
 
 #block-views-mini-site-home-block .views-row-first,
@@ -1127,7 +1130,7 @@ ul.links li {
 
 /* kid reporter */
 .node-type-kid-reporter h2 {
-	fnnt: bold 20px arial, sans-serif;
+	font: bold 20px arial, sans-serif;
 	margin: 0 0 10px 0;
 }
 
