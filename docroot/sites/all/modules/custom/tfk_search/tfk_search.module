@@ -642,30 +642,6 @@ function tfk_search_apachesolr_update_index(&$document, $node, $namespace) {
       }
     }
   }
-  
-  // Index PDF link for Magazines->Additional Content->Materials to avoid doing
-  // additional node loads on the tfk-magazine page.
-  /*if(isset($node->field_materials) && !empty($node->field_materials)) {
-    $materials = field_get_items('node', $node, 'field_materials');
-    foreach($materials as $material) {
-      $material_node = node_load($material['nid']);
-      if($material_node) {
-       
-          if(isset($material_node->field_worksheet_pdf_private) && !empty($material_node->field_worksheet_pdf_private)) {
-            $pdfs = field_get_items('node', $material_node, 'field_worksheet_pdf_private');
-            if($pdfs) {
-              foreach($pdfs as $pdf) {
-                // Download link.
-                $document->addField(TFK_SEARCH_WORKSHEET_PDF_LINK, file_create_url($pdf['uri']));
-                // Worksheet title.
-                $document->addField(TFK_SEARCH_WORKSHEET_PDF_TITLE, $material['node']->title);
-              }
-            }
-          }
-        
-      }
-    }
-  }*/
 }
 
 /**
@@ -688,10 +664,6 @@ function tfk_search_apachesolr_facets() {
     'facet_field' => TFK_SEARCH_SPANISH_ISSUE,
   );
   
-  //$facets['is_magazine_article_bool'] = array(
-  //  'info' => t('Magazine article'),
-  //  'facet_field' => 'is_magazine_article_bool',
-  //);
   /**
    * The subquery key is not used for a real facet, it is used to affect
    * how Solr subqueries created by tfk_search.module are joined. The default
@@ -1018,7 +990,6 @@ function tfk_search_block_view($delta='') {
               $block_info['grade_level'] = 'GRADE '. $term->name;
           }
           
-          
         }
         
         // Get cover stories, highlight current.
@@ -1064,14 +1035,6 @@ function tfk_search_block_view($delta='') {
             }
           }
         }
-        
-        /*
-        $more_news = field_get_items('node', $magazine, 'field_more_news');
-        if($more_news) {
-          foreach($more_news as $news_item) {
-            $block_info['more_news'][] = l($news_item['title'], $news_item['url'], array('absolute' => TRUE));
-          }
-        }*/
         
         $block['content'] = theme('tfk_search_magazine_issue_block', $block_info);
       }
@@ -1513,14 +1476,6 @@ function theme_tfk_featured_minisite_slideshow(&$variables) {
   $output .= '</div>';// ./tfk-search-photos-video-featured
   return $output;
 }
-
-
-
-
-
-
-
-
 
 /**
  * Preprocessor for theme_tfk_featured_block().
@@ -2872,14 +2827,7 @@ function tfk_search_preprocess_search_result(&$vars) {
         }
   
         ///////////GETTING ADDITIONAL CONTENT////////
-        // Materials.
-              
-        /*if(array_key_exists(TFK_SEARCH_WORKSHEET_PDF_LINK, $vars['result']['fields']) && !empty($vars['result']['fields'][TFK_SEARCH_WORKSHEET_PDF_LINK])) {
-          foreach($vars['result']['fields'][TFK_SEARCH_WORKSHEET_PDF_LINK] as $key => $pdf_link) {
-            $vars['magazine_materials'][$key] = l($vars['result']['fields'][TFK_SEARCH_WORKSHEET_PDF_TITLE][$key], $pdf_link);
-          }
-        }*/
-        
+             
         // Materials: Worksheet and PDF Quiz.
         if(isset($node->field_materials) && !empty($node->field_materials)) {
           $materials = field_get_items('node', $node, 'field_materials');
@@ -2925,24 +2873,6 @@ function tfk_search_preprocess_search_result(&$vars) {
             }
           }
         }
-  
-        //adding PDF Quiz to materials - per tfks 399
-        /*
-        $mats = array();
-        $materials = field_get_items('node',$node,'field_materials');
-        if($materials) {
-         foreach($materials as $key => $material_nid) {
-           $material = node_load($material_nid['nid']);
-           if($material->type == 'pdf_quiz') {
-             $worksheet_file = field_get_items('node', $material, 'field_pdf_file_private');
-             if($worksheet_file) {
-               $worksheet_file = $worksheet_file[0];
-               $vars['magazine_materials'][] = l($material->title, file_create_url($worksheet_file['uri']));
-               $mats[] = l($material->title, file_create_url($worksheet_file['uri']));
-             }
-           }
-         }
-        } */
   
         ////////////////////Related Resources////////////////
         $related_resources = field_get_items('node', $magazine, 'field_related_resources');
@@ -3280,26 +3210,6 @@ function tfk_search_preprocess_search_result(&$vars) {
     if(array_key_exists('tfk_search_res_image', $vars)) {
       $vars['classes_array'][] = 'with-image';
     }
-    
-    // "View Full Article" link, on Photos and Video only do for videos. DEPRECATED.
-    /*if($node->type == 'video') {
-      $additional_contents = field_get_items('node', $node, 'field_additional_content');
-      if($additional_contents != FALSE) {
-        // @todo We should be indexing this data instead of node_loading it.
-        // Too much node loads may eliminate the speed advantage provided by Solr.
-        // Only doing this because we have a presentation today.
-        foreach($additional_contents as $additional_content) {
-          $additional_node = node_load($additional_content['nid']);
-          if($additional_node && $additional_node->type == 'article') {
-            // Break on the first article we find.
-            break;
-          }
-        }
-        $vars['node_link'] = l('View Full Article', 'node/'. $additional_node->nid,
-          array('attributes' => array('title' => $additional_node->title))
-        );
-      }
-    } */
       
     // Related content. Currently using field_additional_content.
     $related_content = array();
