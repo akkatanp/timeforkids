@@ -100,8 +100,8 @@ function tfk_search_menu(){
     #'title callback' => 'tfk_search_set_magazine_article_title',
     'page callback' => 'tfk_search_slideshow_image_view',
     'page arguments' => array(3,4),
-  	'access callback' => 'user_access',
-  	'access arguments' => array('access content'),
+    'access callback' => 'user_access',
+    'access arguments' => array('access content'),
     // Needed for calling the page_manager_node_view_page() function.
     'file' => 'node_view.inc',
     'file path' => drupal_get_path('module', 'page_manager'). '/plugins/tasks',
@@ -1569,16 +1569,16 @@ function tfk_search_get_featured_block() {
   // Get the featured node.
   $fn_query = "
     SELECT
-  		fn.nid AS nid
-  	FROM
-  	  node fn
-  	  INNER JOIN flag_content fc ON fn.nid = fc.content_id
+      fn.nid AS nid
+    FROM
+      node fn
+      INNER JOIN flag_content fc ON fn.nid = fc.content_id
       INNER JOIN flags f ON fc.fid = f.fid
-  	  WHERE fn.type IN ('slideshow', 'video')
-			AND f.name = 'photos_videos_featured'
-  	ORDER BY fn.created DESC
-  	LIMIT 1";
-	$result = db_query($fn_query, array(), array('fetch' => 'tfkSearchFeaturedItem',))->fetchAll();
+    WHERE fn.type IN ('slideshow', 'video')
+      AND f.name = 'photos_videos_featured'
+    ORDER BY fn.created DESC
+    LIMIT 1";
+  $result = db_query($fn_query, array(), array('fetch' => 'tfkSearchFeaturedItem',))->fetchAll();
   $result = ($result) ? array('tfkSearchFeaturedItem' => array_shift($result)) : FALSE;
   if($result == FALSE) {
     watchdog('TFK Search', 'Could not find data to populate the Featured item block.', array(), WATCHDOG_ERROR);
@@ -1961,19 +1961,19 @@ function tfk_search_preprocess_pager_top(&$vars) {
           // Taxonomy facets.
           $term_value = taxonomy_term_title(taxonomy_term_load($filter['#value']));
           
-    		  // Prepend the word "Grade" to Grade Level taxonomy facets.
-    		  if(preg_match('/im_([0-9]+)_field_grade_level/', $filter['#name'])) {
-    		    if(preg_match('/([0-9]+|[a-zA-Z]?)-[0-9]+/', $term_value)) {
-    		      $default_filters[$page_type][$filter['#name']]['filters'][] = 'Grades '. $term_value;
-    		    } else {
-    		      $default_filters[$page_type][$filter['#name']]['filters'][] = 'Grade '. $term_value;
-    		    }
-    		    
-    		  // Non grade-level taxonomy facets.
-    		  } else {
-    		  	$default_filters[$page_type][$filter['#name']]['filters'][] = $term_value;
-    		  }
-    		  
+          // Prepend the word "Grade" to Grade Level taxonomy facets.
+          if(preg_match('/im_([0-9]+)_field_grade_level/', $filter['#name'])) {
+            if(preg_match('/([0-9]+|[a-zA-Z]?)-[0-9]+/', $term_value)) {
+              $default_filters[$page_type][$filter['#name']]['filters'][] = 'Grades '. $term_value;
+            } else {
+              $default_filters[$page_type][$filter['#name']]['filters'][] = 'Grade '. $term_value;
+            }
+            
+          // Non grade-level taxonomy facets.
+          } else {
+          	$default_filters[$page_type][$filter['#name']]['filters'][] = $term_value;
+          }
+          
         // Non-taxonomy facets.
         } else {
           if($filter['#name'] == TFK_SEARCH_SPANISH_ISSUE) {
