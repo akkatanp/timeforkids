@@ -14,11 +14,7 @@
         // reduce expensive calls to $.
         sFields[index] = $(Element, context);
         
-        sFields[index].val('Search').blur(function() {
-          if($.trim(sFields[index].val()) == '') {
-            sFields[index].val('Search');
-          }
-        }).focus(function() {   
+        sFields[index].val('Search').focus(function() {   
           if(sFields[index].val() == 'Search') {
             sFields[index].val('');
           }
