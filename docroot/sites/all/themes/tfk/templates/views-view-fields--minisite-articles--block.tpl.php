@@ -47,7 +47,7 @@ $img = node_load($field->content);
     
     $tmp_img = field_get_items('node', $img, 'field_image');
     $img_fid = $tmp_img[0]['filename'];
-    $test = image_style_url('tfk_square_small', file_build_uri(basename($img_fid)));
+    $test = image_style_url('slideshow_small_square', file_build_uri(basename($img_fid)));
     
 ?>
 
