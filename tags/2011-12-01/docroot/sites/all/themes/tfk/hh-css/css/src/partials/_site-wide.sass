@@ -1,0 +1,79 @@
+.homework-helper
+  a.button
+    +tfk-submit-button
+    margin-top: 10px
+  button,
+  input[type="reset"],
+  input[type="submit"],
+  input[type="button"]
+    +tfk-submit-button
+    padding: 3px 10px 4px
+    margin-right: 10px
+  #main-wrapper
+    .region-sidebar-first .section
+      margin-bottom: 10px
+  #content
+    font-family: $font-sans
+    font-weight: normal
+    font-size: $ms-1
+    line-height: $ms1
+    width: 768px
+    a
+      &:hover
+        color: lighten($tfk-red, 40.0)
+      &:active
+        color: $black
+  .paper-textarea
+    width: 480px
+  #block-menu-menu-homework-help
+    border: 1px solid #cecece
+    background: #ddd
+    margin-bottom: 10px
+    .content
+      .menu
+        padding: 10px
+      & > .menu
+        +clearfix
+        & > li
+          +float-left
+          margin-right: 15px 
+          padding-right: 15px
+          border-right: 1px solid #CECECE
+      li.last
+        margin-right: 0
+        border-right: none
+    #menu-writing-center,
+    #menu-study-helper
+      color: $white
+      padding: 10px
+      text-transform: uppercase
+      display: block
+    #menu-writing-center
+      background: $tfk-red
+      margin-right: 10px
+    #menu-study-helper
+      background: #999
+  .node-title
+    margin-bottom: 10px
+
+// WRITING CENTER LANDING PAGE
+.page-node-98,
+.page-node-99
+  .node
+    .row
+      +clearfix
+      border-top: 1px solid #cecece
+      padding: 2em 1em
+      h2
+        font-size: $ms4
+        line-height: 1.2
+        margin: 0
+      .img
+        +float-left
+        margin-right: 10px
+    .field-item
+      & > p
+        padding-bottom: 20px
+
+img
+  vertical-align: middle
