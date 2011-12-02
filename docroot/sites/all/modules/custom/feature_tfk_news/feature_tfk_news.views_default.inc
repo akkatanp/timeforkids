@@ -22,7 +22,6 @@ function feature_tfk_news_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'News Archive';
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
@@ -490,6 +489,7 @@ function feature_tfk_news_views_default_views() {
 
   /* Display: News Archive Logged In */
   $handler = $view->new_display('block', 'News Archive Logged In', 'block_1');
+  $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Taxonomy term: Name */
   $handler->display->display_options['arguments']['name']['id'] = 'name';
@@ -531,9 +531,11 @@ return $args[1];
   $handler->display->display_options['filters']['type']['value'] = array(
     'article' => 'article',
   );
+  $handler->display->display_options['block_description'] = 'News Archive Logged In Display';
 
   /* Display: News Archive Polls Logged In */
   $handler = $view->new_display('block', 'News Archive Polls Logged In', 'block_2');
+  $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Large Rectangle Image */
   $handler->display->display_options['fields']['field_lrg_rect_image']['id'] = 'field_lrg_rect_image';
@@ -733,9 +735,11 @@ return $args[1];
   $handler->display->display_options['filters']['field_article_poll_nid']['table'] = 'field_data_field_article_poll';
   $handler->display->display_options['filters']['field_article_poll_nid']['field'] = 'field_article_poll_nid';
   $handler->display->display_options['filters']['field_article_poll_nid']['operator'] = 'not empty';
+  $handler->display->display_options['block_description'] = 'News Archive Polls Logged In';
 
   /* Display: News Archive Logged Out */
   $handler = $view->new_display('block', 'News Archive Logged Out', 'block_3');
+  $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   /* Relationship: Content: Tout Image (field_tout_image) */
   $handler->display->display_options['relationships']['field_tout_image_nid']['id'] = 'field_tout_image_nid';
