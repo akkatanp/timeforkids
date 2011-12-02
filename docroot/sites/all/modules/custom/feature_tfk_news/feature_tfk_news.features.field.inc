@@ -556,7 +556,7 @@ Limit for News Block: 65 characters.',
         'active' => 1,
         'module' => 'text',
         'settings' => array(
-          'rows' => '3',
+          'rows' => '5',
         ),
         'type' => 'text_textarea',
         'weight' => '1',
@@ -1144,7 +1144,7 @@ Limit for News Block: 65 characters.',
   $fields['node-article-field_related_articles'] = array(
     'field_config' => array(
       'active' => '1',
-      'cardinality' => '-1',
+      'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_related_articles',
