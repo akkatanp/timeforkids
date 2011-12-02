@@ -269,9 +269,20 @@ function feature_tfk_news_context_default_contexts() {
   $context->description = '';
   $context->tag = 'tfk news';
   $context->conditions = array(
-    'views' => array(
+    'path' => array(
       'values' => array(
-        'news_archive' => 'news_archive',
+        'news-archive' => 'news-archive',
+        'news-archive/*' => 'news-archive/*',
+        '~news-archive/polls' => '~news-archive/polls',
+      ),
+    ),
+    'user' => array(
+      'values' => array(
+        'Board Member' => 'Board Member',
+        'administrator' => 'administrator',
+        'authenticated user' => 'authenticated user',
+        'editor' => 'editor',
+        'teacher' => 'teacher',
       ),
     ),
   );
@@ -296,10 +307,16 @@ function feature_tfk_news_context_default_contexts() {
           'region' => 'sidebar_first',
           'weight' => '-8',
         ),
+        'views-news_archive-block_1' => array(
+          'module' => 'views',
+          'delta' => 'news_archive-block_1',
+          'region' => 'content',
+          'weight' => '-9',
+        ),
       ),
     ),
   );
-  $context->condition_mode = 0;
+  $context->condition_mode = 1;
 
   // Translatables
   // Included for use with string extractors like potx.
@@ -500,19 +517,19 @@ function feature_tfk_news_context_default_contexts() {
           'module' => 'tfk_news',
           'delta' => 'tfk-news-latest-news-link',
           'region' => 'sidebar_first',
-          'weight' => '-79',
+          'weight' => '-88',
         ),
         'tfk_news-tfk-news-taxonomy-links' => array(
           'module' => 'tfk_news',
           'delta' => 'tfk-news-taxonomy-links',
           'region' => 'sidebar_first',
-          'weight' => '-78',
+          'weight' => '-87',
         ),
         'tfk_news-tfk-news-year-filter' => array(
           'module' => 'tfk_news',
           'delta' => 'tfk-news-year-filter',
           'region' => 'sidebar_first',
-          'weight' => '-77',
+          'weight' => '-86',
         ),
         'tfk_news-tfk-news-minisite-articles' => array(
           'module' => 'tfk_news',
