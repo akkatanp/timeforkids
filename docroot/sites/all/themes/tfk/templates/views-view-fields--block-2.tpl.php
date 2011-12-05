@@ -30,30 +30,27 @@
   <?php $slide_block = module_invoke('tfk_search', 'block_view','tfk_minisite_video_featured'); ?>
   <?php print render($slide_block['content']); ?>
 <?php else:?>
-    <?php foreach ($fields as $id => $field): ?>
+  <?php foreach ($fields as $id => $field): ?>
+    <?php if($id != 'field_related_articles' && $id != 'field_related_articles_1'):?>
+      <?php if (!empty($field->separator)): ?>
+        <?php print $field->separator; ?>
+      <?php endif; ?>
 
-        <?php if($id != 'field_related_articles' && $id != 'field_related_articles_1'):?>
-          <?php if (!empty($field->separator)): ?>
-            <?php print $field->separator; ?>
-          <?php endif; ?>
+      <?php print $field->wrapper_prefix; ?>
+        <?php print $field->label_html; ?>
+        <?php print $field->content; ?>
+      <?php print $field->wrapper_suffix; ?>
+    <?php endif; ?>
+  <?php endforeach; ?>
 
-          <?php print $field->wrapper_prefix; ?>
-            <?php print $field->label_html; ?>
-            <?php print $field->content; ?>
-          <?php print $field->wrapper_suffix; ?>
+  <?php if(isset($fields['field_related_articles'])):?>
+    <?php if(strlen($fields['field_related_articles']->content) != 0):?>
+      <div class="related-content-wrap">
+        <div class="addit-content">Additional Content</div>
+        <?php if($fields['field_related_articles']): ?>
+           <div class="addit-mini-lessons"><?php print $fields['field_related_articles']->content;?></div>
         <?php endif; ?>
-    <?php endforeach; ?>
-
-
-    <?php if(isset($fields['field_related_articles'])):?>
-        <?php if(strlen($fields['field_related_articles']->content) != 0):?>
-            <div class="related-content-wrap">
-                <div class="addit-content">Additional Content</div>
-                <?php if($fields['field_related_articles']): ?>
-                   <div class="addit-mini-lessons"><?php print $fields['field_related_articles']->content;?></div>
-                <?php endif; ?>
-
-            </div>
-        <?php endif;?>
+      </div>
     <?php endif;?>
+  <?php endif;?>
 <?php endif; ?>
