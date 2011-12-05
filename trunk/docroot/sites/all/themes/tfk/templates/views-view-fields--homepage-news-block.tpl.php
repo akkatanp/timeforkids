@@ -40,7 +40,7 @@
 <?php if(isset($fields['field_mini_lessons']) && isset($fields['field_related_articles']) && !empty($fields['field_mini_lessons']->content) || !empty($fields['field_related_articles']->content)):?>
   <div class="related-content-wrap">
     <div class="addit-content">Additional Content</div>
-    <?php if($fields['field_mini_lessons']): ?>
+    <?php if(isset($fields['field_mini_lessons'])): ?>
        <div class="addit-mini-lessons"><?php print $fields['field_mini_lessons']->label;?><?php print $fields['field_mini_lessons']->content;?></div>
     <?php endif; ?>
 
