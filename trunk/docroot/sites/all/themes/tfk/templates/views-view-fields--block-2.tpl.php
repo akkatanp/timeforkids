@@ -24,11 +24,11 @@
  */
 
 
-if($row->node_field_data_field_articles_type == 'slideshow'){
+if(isset($row->node_field_data_field_articles_type) && $row->node_field_data_field_articles_type == 'slideshow'){
     $slide_block = module_invoke('tfk_search', 'block_view','tfk_minisite_slideshow_featured');
     print render($slide_block['content']);
     
-}elseif($row->node_field_data_field_articles_type == 'video'){
+}elseif(isset($row->node_field_data_field_articles_type) && $row->node_field_data_field_articles_type == 'video'){
     $slide_block = module_invoke('tfk_search', 'block_view','tfk_minisite_video_featured');
     print render($slide_block['content']);
     
