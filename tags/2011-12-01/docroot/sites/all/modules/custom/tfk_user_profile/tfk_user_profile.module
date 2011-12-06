@@ -169,7 +169,7 @@ function tfk_update_lucie_login($lucieData, $existingUser) {
  * If this is an update, the email address for the account will be sync across the necessary tables.
  */
 function tfk_user_profile_login_validate( $form, &$form_state ){
-	$username = $form_state['values']['name'];
+    $username = preg_replace('/\s/', '', $form_state['values']['name']);
     $response = tfk_lucie_check_user($username, $form_state['values']['pass']);
     // set the Lucie Error returned by the call.  By default this is set to false.
     $form_state['lucie_error'] = $response['error'];
