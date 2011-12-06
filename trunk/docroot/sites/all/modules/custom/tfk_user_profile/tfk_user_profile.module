@@ -235,6 +235,18 @@ function tfk_lucie_check_user($email, $pwd){
   $url = 'https://lucie.timeinc.com/webservices/customers/'.check_plain($email).'/TK/auth_token';
   $pass_arr = array('password'=>$pwd, 'CGI-App-Id' => 'com.timeinc.tk.web', 'deviceid' => 'TK.WEB', 'deviceip' => ip_address());
   $pass = drupal_json_encode($pass_arr);
+ 
+  // process the LUCIE login response.
+  // some actions are based on the $response code, others $response_code + json parameter
+  $_lucieUser = array(
+  	'error'	=>	false,
+  	'data'	=>	false,
+  );
+ 
+  // ensure its a valid email address before querying LUCIE
+  if (eregi("^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$", $email) == false) {
+  	return $_lucieUser;
+  }
   
   $response = drupal_http_request($url,
           array('headers' => array('Content-Type'=>'application/json'),
@@ -245,12 +257,6 @@ function tfk_lucie_check_user($email, $pwd){
   // Decode the JSON data and pass to the call to get the user information
   $dataResponse = drupal_json_decode($response->data);
   
-  // process the LUCIE login response.
-  // some actions are based on the $response code, others $response_code + json parameter
-  $_lucieUser = array(
-  	'error'	=>	false,
-  	'data'	=>	false,
-  );
   switch ($response->code) {
   	case 201:
   		if (tfk_lucie_user_entitlements($dataResponse['token'])) {
