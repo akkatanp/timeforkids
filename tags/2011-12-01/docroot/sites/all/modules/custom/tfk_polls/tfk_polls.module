@@ -59,7 +59,7 @@ function _poll_generate($poll_nid){
     
 
     
-    $colors_data = array('#df1f38','#fece00','#72c5ef','#3d58a7','#8bcf68','#fa9636','#a14f8d','#d9ccb9','#f8ed33','#339d6c');
+    $colors_data = array('#df1f38','#fece00','#72c5ef','#3d58a7','#8bcf68','#fa9636','#a14f8d','#d9ccb9','#f8ed33','#339d6c','#66cc99','#663333');
     $votes_data = array();
     $choices_data = array();
     
@@ -131,10 +131,26 @@ function _poll_generate($poll_nid){
        // }
         
         
+        if(count($choices_data) == 12){
+            $graph = new PieGraph(440,580);
+            $graph->ClearTheme();
+            $graph->legend->SetLayout(LEGEND_VER);
+            $graph->legend->SetPos(0.5,0.94,'center','bottom');
+            $p1 = new PiePlot($votes_data);
+            $p1->SetSize(110);
+            $p1->SetCenter(0.5,0.25);
         
+        }elseif(count($choices_data) == 11){
+            $graph = new PieGraph(440,560);
+            $graph->ClearTheme();
+            $graph->legend->SetLayout(LEGEND_VER);
+            $graph->legend->SetPos(0.5,0.94,'center','bottom');
+            $p1 = new PiePlot($votes_data);
+            $p1->SetSize(110);
+            $p1->SetCenter(0.5,0.27);
         
-        if(count($choices_data) == 10){
-            $graph = new PieGraph(440,510);
+        }elseif(count($choices_data) == 10){
+            $graph = new PieGraph(440,525);
             $graph->ClearTheme();
             $graph->legend->SetLayout(LEGEND_VER);
             $graph->legend->SetPos(0.5,0.94,'center','bottom');
@@ -302,6 +318,14 @@ function _poll_generate($poll_nid){
         
         $temp = array();
         $emptyarr = array();
+        
+        /////////////////////////////
+        if(count($votes_data) == 12){
+            $votes_data[] = 0;
+        }
+        /////////////////////////////
+        
+        
         foreach($votes_data as $k => $vote_data){
           
           $tmp = array();
@@ -325,8 +349,21 @@ function _poll_generate($poll_nid){
             $graph = new Graph($default_width,$default_height,"auto");
         }
         
-        
-        if(count($choices_data) == 10 ){
+        if(count($choices_data) == 12 ){
+            $graph = new Graph(430,420);
+            $graph->ClearTheme();
+            $graph->SetFrame(false);
+            $graph->SetScale("textlin");
+            $graph->SetMargin(40,30,20,270);
+            $graph->legend->SetPos(0.5,0.43,'center','top');
+        }elseif(count($choices_data) == 11 ){
+            $graph = new Graph(400,390);
+            $graph->ClearTheme();
+            $graph->SetFrame(false);
+            $graph->SetScale("textlin");
+            $graph->SetMargin(40,30,20,260);
+            $graph->legend->SetPos(0.5,0.43,'center','top');
+        }elseif(count($choices_data) == 10 ){
             $graph = new Graph(400,390);
             $graph->ClearTheme();
             $graph->SetFrame(false);
@@ -397,7 +434,7 @@ function _poll_generate($poll_nid){
             $graph->legend->SetPos(0.5,0.73,'center','top');
         }
         
-        $graph->SetClipping(false);
+        $graph->SetClipping(FALSE);
         
         
         
@@ -411,7 +448,7 @@ function _poll_generate($poll_nid){
         $graph->SetBox(false);
 
         $graph->ygrid->SetFill(false);
-       // $graph->xaxis->SetTickLabels(array('A','B','C','D'));
+        //$graph->xaxis->SetTickLabels(array('A','B','C','D'));
         //$graph->xaxis->SetTickLabels($emptyarr);
         
         
@@ -419,7 +456,7 @@ function _poll_generate($poll_nid){
         $graph->yaxis->HideLine(false);
         $graph->yaxis->HideTicks(true,true);
         $graph->yaxis->SetTitle('Percentage of Votes','center');
-        // Setup month as labels on the X-axis
+        //Setup month as labels on the X-axis
         
         
         $choices_data = array_values($choices_data);
@@ -427,13 +464,26 @@ function _poll_generate($poll_nid){
         $votes_arrays = $temp;
         $objects = array();
         
+        
+        
+        /////////////////////////////
+        if(count($votes_data) == 13){
+            $colors_data[] = 'black';
+            $choices_data[] = '';
+        }
+        /////////////////////////////
+        
+        
+        
         foreach($votes_data as $k=>$vote){
             $tmpplot = new BarPlot($votes_arrays[$k]);
             $tmpplot->SetColor($colors_data[$k]);
             $tmpplot->SetFillColor($colors_data[$k]);
             
             $tmpplot->SetLegend($choices_data[$k]);
-            $tmpplot->SetWidth(20);
+            
+            
+            $tmpplot->SetWidth(10);
             $tmpplot->SetAbsWidth(15);
             
             
@@ -441,6 +491,9 @@ function _poll_generate($poll_nid){
             
             $objects[] = $tmpplot;
         }
+        
+        //print_r($objects);exit;
+        
         
         
         $gbplot = new GroupBarPlot($objects);
@@ -456,7 +509,6 @@ function _poll_generate($poll_nid){
         
         $graph->Stroke();
         
-        exit;
             
     }
     
