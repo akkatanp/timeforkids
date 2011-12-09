@@ -48,7 +48,7 @@ function tfk_teachers_community_flag_default_flags() {
     'unflag_long' => 'Flag this content as non-offensive.',
     'unflag_message' => '',
     'unflag_denied_text' => 'Flagged for abuse',
-    'link_type' => 'toggle',
+    'link_type' => 'normal',
     'roles' => array(
       'flag' => array(
         0 => '2',
@@ -59,7 +59,7 @@ function tfk_teachers_community_flag_default_flags() {
       ),
       'unflag' => array(),
     ),
-    'access_author' => '',
+    'access_author' => 'comment_others',
     'show_on_comment' => 1,
     'module' => 'tfk_teachers_community',
     'locked' => array(
