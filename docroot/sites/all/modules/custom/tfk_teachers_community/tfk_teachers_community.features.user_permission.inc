@@ -15,6 +15,7 @@ function tfk_teachers_community_user_default_permissions() {
     'name' => 'edit question description',
     'roles' => array(
       0 => 'administrator',
+      1 => 'editor',
     ),
     'module' => 'tfk_teachers_community',
   );
