@@ -308,7 +308,7 @@ function features_misc_menu_default_menu_links() {
     'external' => '0',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '-45',
+    'weight' => '-44',
   );
   // Exported menu link: menu-tfk-global-navigation:kid-reporters
   $menu_links['menu-tfk-global-navigation:kid-reporters'] = array(
@@ -408,7 +408,7 @@ function features_misc_menu_default_menu_links() {
     'external' => '0',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '-44',
+    'weight' => '-43',
   );
   // Exported menu link: menu-tfk-teachers-menu:http://www.timeforkidsdigital.com
   $menu_links['menu-tfk-teachers-menu:http://www.timeforkidsdigital.com'] = array(
