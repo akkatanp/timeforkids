@@ -34,7 +34,11 @@ function feature_kid_reporters_updated_field_default_fields() {
         ),
       ),
       'module' => 'text',
-      'settings' => array(),
+      'settings' => array(
+        'max_length' => '',
+        'maxlength_body_js' => 0,
+        'maxlength_body_text' => 'Content limited to !limit characters, remaining: <strong>!remaining</strong>',
+      ),
       'translatable' => '1',
       'type' => 'text_with_summary',
     ),
@@ -49,7 +53,7 @@ function feature_kid_reporters_updated_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '2',
+          'weight' => '4',
         ),
         'teaser' => array(
           'label' => 'hidden',
@@ -63,7 +67,7 @@ function feature_kid_reporters_updated_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'body',
-      'label' => 'Profile Copy',
+      'label' => 'Profile of Kid Reporter',
       'required' => 1,
       'settings' => array(
         'display_summary' => 1,
@@ -118,10 +122,9 @@ function feature_kid_reporters_updated_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'hidden',
-          'module' => 'text',
           'settings' => array(),
-          'type' => 'text_default',
-          'weight' => '4',
+          'type' => 'hidden',
+          'weight' => '3',
         ),
         'full' => array(
           'label' => 'hidden',
@@ -268,7 +271,7 @@ function feature_kid_reporters_updated_field_default_fields() {
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => '0',
+          'weight' => '1',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -333,7 +336,7 @@ function feature_kid_reporters_updated_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '1',
+          'weight' => '2',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -404,7 +407,7 @@ function feature_kid_reporters_updated_field_default_fields() {
             'image_style' => '',
           ),
           'type' => 'image',
-          'weight' => '3',
+          'weight' => '0',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -431,6 +434,15 @@ function feature_kid_reporters_updated_field_default_fields() {
         'active' => 1,
         'module' => 'image',
         'settings' => array(
+          'insert' => 0,
+          'insert_class' => '',
+          'insert_default' => array(
+            0 => 'auto',
+          ),
+          'insert_styles' => array(
+            0 => 'auto',
+          ),
+          'insert_width' => '',
           'preview_image_style' => 'thumbnail',
           'progress_indicator' => 'throbber',
         ),
@@ -505,6 +517,15 @@ function feature_kid_reporters_updated_field_default_fields() {
         'active' => 1,
         'module' => 'image',
         'settings' => array(
+          'insert' => 0,
+          'insert_class' => '',
+          'insert_default' => array(
+            0 => 'auto',
+          ),
+          'insert_styles' => array(
+            0 => 'auto',
+          ),
+          'insert_width' => '',
           'preview_image_style' => 'thumbnail',
           'progress_indicator' => 'throbber',
         ),
@@ -520,8 +541,8 @@ function feature_kid_reporters_updated_field_default_fields() {
   t('Featured Deck');
   t('Grade Level');
   t('Location');
-  t('Profile Copy');
   t('Profile Image');
+  t('Profile of Kid Reporter');
   t('Thumbnail Image');
 
   return $fields;

@@ -24,7 +24,9 @@ function feature_kid_reporters_updated_views_default_views() {
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Kid Reporters';
   $handler->display->display_options['access']['type'] = 'perm';
-  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['cache']['type'] = 'time';
+  $handler->display->display_options['cache']['results_lifespan'] = '1800';
+  $handler->display->display_options['cache']['output_lifespan'] = '1800';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['query_comment'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
@@ -37,14 +39,13 @@ function feature_kid_reporters_updated_views_default_views() {
   $handler->display->display_options['style_options']['columns'] = '2';
   $handler->display->display_options['style_options']['fill_single_line'] = 1;
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Header: Global: Text area */
-  $handler->display->display_options['header']['area']['id'] = 'area';
-  $handler->display->display_options['header']['area']['table'] = 'views';
-  $handler->display->display_options['header']['area']['field'] = 'area';
-  $handler->display->display_options['header']['area']['label'] = 'TFK Kid Reporters';
-  $handler->display->display_options['header']['area']['empty'] = FALSE;
-  $handler->display->display_options['header']['area']['content'] = '<p><strong>TFK Kid Reporters</strong></p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque convallis rhoncus sapien, eget elementum nunc adipiscing quis. Donec non tellus enim. Maecenas pharetra lectus et eros placerat dictum. Cras nec imperdiet diam. Pellentesque nec libero a tellus rutrum aliquam sit amet eget nisl. Nunc nulla metus, ultricies non egestas id, ornare imperdiet sapien. Donec at malesuada nisi. Ut adipiscing tincidunt magna id aliquam.</p>';
-  $handler->display->display_options['header']['area']['format'] = 'full_html';
+  /* Header: Global: View area */
+  $handler->display->display_options['header']['view']['id'] = 'view';
+  $handler->display->display_options['header']['view']['table'] = 'views';
+  $handler->display->display_options['header']['view']['field'] = 'view';
+  $handler->display->display_options['header']['view']['empty'] = FALSE;
+  $handler->display->display_options['header']['view']['view_to_insert'] = 'kid_rep_listing_nodeblock:default';
+  $handler->display->display_options['header']['view']['inherit_arguments'] = 0;
   /* Relationship: Content: Taxonomy terms on node */
   $handler->display->display_options['relationships']['term_node_tid']['id'] = 'term_node_tid';
   $handler->display->display_options['relationships']['term_node_tid']['table'] = 'node';
@@ -59,21 +60,19 @@ function feature_kid_reporters_updated_views_default_views() {
   $handler->display->display_options['fields']['field_thumbnail_image']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_thumbnail_image']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_thumbnail_image']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_thumbnail_image']['alter']['trim_whitespace'] = 0;
   $handler->display->display_options['fields']['field_thumbnail_image']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_thumbnail_image']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_thumbnail_image']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_thumbnail_image']['alter']['strip_tags'] = 0;
   $handler->display->display_options['fields']['field_thumbnail_image']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_thumbnail_image']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['field_thumbnail_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_thumbnail_image']['element_label_colon'] = 0;
   $handler->display->display_options['fields']['field_thumbnail_image']['element_default_classes'] = 1;
   $handler->display->display_options['fields']['field_thumbnail_image']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_thumbnail_image']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['field_thumbnail_image']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['field_thumbnail_image']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_thumbnail_image']['settings'] = array(
-    'image_style' => 'tfk_50px_50px',
+    'image_style' => 'tfk_square_small',
     'image_link' => 'content',
   );
   $handler->display->display_options['fields']['field_thumbnail_image']['field_api_classes'] = 0;
@@ -93,6 +92,31 @@ function feature_kid_reporters_updated_views_default_views() {
   $handler->display->display_options['fields']['title']['hide_empty'] = 0;
   $handler->display->display_options['fields']['title']['empty_zero'] = 0;
   $handler->display->display_options['fields']['title']['link_to_node'] = 1;
+  /* Field: Taxonomy term: Name */
+  $handler->display->display_options['fields']['name']['id'] = 'name';
+  $handler->display->display_options['fields']['name']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['relationship'] = 'term_node_tid';
+  $handler->display->display_options['fields']['name']['label'] = 'Grade';
+  $handler->display->display_options['fields']['name']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['name']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['name']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['name']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['name']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['name']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['name']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['name']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['name']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['name']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['name']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['name']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['name']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['name']['element_label_colon'] = 1;
+  $handler->display->display_options['fields']['name']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['name']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['name']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['name']['hide_alter_empty'] = 0;
+  $handler->display->display_options['fields']['name']['link_to_taxonomy'] = 0;
   /* Field: Content: Age */
   $handler->display->display_options['fields']['field_kid_reporter_age']['id'] = 'field_kid_reporter_age';
   $handler->display->display_options['fields']['field_kid_reporter_age']['table'] = 'field_data_field_kid_reporter_age';
@@ -113,9 +137,9 @@ function feature_kid_reporters_updated_views_default_views() {
   $handler->display->display_options['fields']['field_kid_reporter_age']['alter']['html'] = 0;
   $handler->display->display_options['fields']['field_kid_reporter_age']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_kid_reporter_age']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['field_kid_reporter_age']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_kid_reporter_age']['hide_empty'] = 1;
   $handler->display->display_options['fields']['field_kid_reporter_age']['empty_zero'] = 1;
-  $handler->display->display_options['fields']['field_kid_reporter_age']['hide_alter_empty'] = 0;
+  $handler->display->display_options['fields']['field_kid_reporter_age']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['field_kid_reporter_age']['field_api_classes'] = 0;
   /* Field: Content: Location */
   $handler->display->display_options['fields']['field_location']['id'] = 'field_location';
@@ -144,21 +168,23 @@ function feature_kid_reporters_updated_views_default_views() {
   $handler->display->display_options['fields']['title_1']['field'] = 'title';
   $handler->display->display_options['fields']['title_1']['label'] = '';
   $handler->display->display_options['fields']['title_1']['alter']['alter_text'] = 1;
-  $handler->display->display_options['fields']['title_1']['alter']['text'] = 'Learn More about [title]';
+  $handler->display->display_options['fields']['title_1']['alter']['text'] = 'See Bio';
   $handler->display->display_options['fields']['title_1']['alter']['make_link'] = 0;
   $handler->display->display_options['fields']['title_1']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['title_1']['alter']['external'] = 0;
   $handler->display->display_options['fields']['title_1']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['title_1']['alter']['trim_whitespace'] = 0;
   $handler->display->display_options['fields']['title_1']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['title_1']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['title_1']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['title_1']['alter']['strip_tags'] = 0;
   $handler->display->display_options['fields']['title_1']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['title_1']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['title_1']['element_label_colon'] = 0;
+  $handler->display->display_options['fields']['title_1']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title_1']['element_default_classes'] = 1;
   $handler->display->display_options['fields']['title_1']['hide_empty'] = 0;
   $handler->display->display_options['fields']['title_1']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['title_1']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['title_1']['link_to_node'] = 1;
   /* Sort criterion: Content: Title */
   $handler->display->display_options['sorts']['title']['id'] = 'title';
@@ -291,9 +317,9 @@ function feature_kid_reporters_updated_views_default_views() {
   $handler->display->display_options['fields']['field_kid_reporter_age']['alter']['html'] = 0;
   $handler->display->display_options['fields']['field_kid_reporter_age']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_kid_reporter_age']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['field_kid_reporter_age']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['field_kid_reporter_age']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['field_kid_reporter_age']['hide_alter_empty'] = 0;
+  $handler->display->display_options['fields']['field_kid_reporter_age']['hide_empty'] = 1;
+  $handler->display->display_options['fields']['field_kid_reporter_age']['empty_zero'] = 1;
+  $handler->display->display_options['fields']['field_kid_reporter_age']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['field_kid_reporter_age']['field_api_classes'] = 0;
   /* Field: Content: Location */
   $handler->display->display_options['fields']['field_location_1']['id'] = 'field_location_1';
@@ -316,6 +342,31 @@ function feature_kid_reporters_updated_views_default_views() {
   $handler->display->display_options['fields']['field_location_1']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_location_1']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_location_1']['field_api_classes'] = 0;
+  /* Field: Taxonomy term: Name */
+  $handler->display->display_options['fields']['name']['id'] = 'name';
+  $handler->display->display_options['fields']['name']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['relationship'] = 'term_node_tid';
+  $handler->display->display_options['fields']['name']['label'] = 'Grade Level';
+  $handler->display->display_options['fields']['name']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['name']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['name']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['name']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['name']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['name']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['name']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['name']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['name']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['name']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['name']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['name']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['name']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['name']['element_label_colon'] = 1;
+  $handler->display->display_options['fields']['name']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['name']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['name']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['name']['hide_alter_empty'] = 0;
+  $handler->display->display_options['fields']['name']['link_to_taxonomy'] = 0;
   /* Field: Content: Featured Deck */
   $handler->display->display_options['fields']['field_featured_deck']['id'] = 'field_featured_deck';
   $handler->display->display_options['fields']['field_featured_deck']['table'] = 'field_data_field_featured_deck';
@@ -346,21 +397,23 @@ function feature_kid_reporters_updated_views_default_views() {
   $handler->display->display_options['fields']['title_1']['field'] = 'title';
   $handler->display->display_options['fields']['title_1']['label'] = '';
   $handler->display->display_options['fields']['title_1']['alter']['alter_text'] = 1;
-  $handler->display->display_options['fields']['title_1']['alter']['text'] = 'Learn More about [title]';
+  $handler->display->display_options['fields']['title_1']['alter']['text'] = 'See Bio';
   $handler->display->display_options['fields']['title_1']['alter']['make_link'] = 0;
   $handler->display->display_options['fields']['title_1']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['title_1']['alter']['external'] = 0;
   $handler->display->display_options['fields']['title_1']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['title_1']['alter']['trim_whitespace'] = 0;
   $handler->display->display_options['fields']['title_1']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['title_1']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['title_1']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['title_1']['alter']['strip_tags'] = 0;
   $handler->display->display_options['fields']['title_1']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['title_1']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['title_1']['element_label_colon'] = 0;
+  $handler->display->display_options['fields']['title_1']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title_1']['element_default_classes'] = 1;
   $handler->display->display_options['fields']['title_1']['hide_empty'] = 0;
   $handler->display->display_options['fields']['title_1']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['title_1']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['title_1']['link_to_node'] = 1;
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
@@ -385,6 +438,7 @@ function feature_kid_reporters_updated_views_default_views() {
   /* Display: Featured Kid Reporter Block */
   $handler = $view->new_display('block', 'Featured Kid Reporter Block', 'block');
   $handler->display->display_options['block_description'] = 'Featured Kid Reporter Block';
+  $handler->display->display_options['block_caching'] = '-1';
   $export['featured_kid_reporter'] = $view;
 
   $view = new view;
@@ -401,7 +455,9 @@ function feature_kid_reporters_updated_views_default_views() {
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Random Kid Reporters';
   $handler->display->display_options['access']['type'] = 'perm';
-  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['cache']['type'] = 'time';
+  $handler->display->display_options['cache']['results_lifespan'] = '300';
+  $handler->display->display_options['cache']['output_lifespan'] = '300';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['query_comment'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
@@ -415,8 +471,9 @@ function feature_kid_reporters_updated_views_default_views() {
   $handler->display->display_options['footer']['area']['table'] = 'views';
   $handler->display->display_options['footer']['area']['field'] = 'area';
   $handler->display->display_options['footer']['area']['empty'] = FALSE;
-  $handler->display->display_options['footer']['area']['content'] = '<a href="/tfk-kid-reporters">View All Kid Reporters</a>';
+  $handler->display->display_options['footer']['area']['content'] = '<p><a href="/tfk-kid-reporters">View All TFK Kid Reporters</a></p>';
   $handler->display->display_options['footer']['area']['format'] = 'full_html';
+  $handler->display->display_options['footer']['area']['tokenize'] = 0;
   /* Relationship: Content: Taxonomy terms on node */
   $handler->display->display_options['relationships']['term_node_tid']['id'] = 'term_node_tid';
   $handler->display->display_options['relationships']['term_node_tid']['table'] = 'node';
@@ -431,21 +488,19 @@ function feature_kid_reporters_updated_views_default_views() {
   $handler->display->display_options['fields']['field_thumbnail_image']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_thumbnail_image']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_thumbnail_image']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_thumbnail_image']['alter']['trim_whitespace'] = 0;
   $handler->display->display_options['fields']['field_thumbnail_image']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_thumbnail_image']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_thumbnail_image']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_thumbnail_image']['alter']['strip_tags'] = 0;
   $handler->display->display_options['fields']['field_thumbnail_image']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_thumbnail_image']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['field_thumbnail_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_thumbnail_image']['element_label_colon'] = 0;
   $handler->display->display_options['fields']['field_thumbnail_image']['element_default_classes'] = 1;
   $handler->display->display_options['fields']['field_thumbnail_image']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_thumbnail_image']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['field_thumbnail_image']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['field_thumbnail_image']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_thumbnail_image']['settings'] = array(
-    'image_style' => 'tfk_50px_50px',
+    'image_style' => 'tfk_square_small',
     'image_link' => 'content',
   );
   $handler->display->display_options['fields']['field_thumbnail_image']['field_api_classes'] = 0;
@@ -471,7 +526,7 @@ function feature_kid_reporters_updated_views_default_views() {
   $handler->display->display_options['fields']['field_kid_reporter_age']['field'] = 'field_kid_reporter_age';
   $handler->display->display_options['fields']['field_kid_reporter_age']['label'] = '';
   $handler->display->display_options['fields']['field_kid_reporter_age']['alter']['alter_text'] = 1;
-  $handler->display->display_options['fields']['field_kid_reporter_age']['alter']['text'] = 'Age [field_kid_reporter_age] ';
+  $handler->display->display_options['fields']['field_kid_reporter_age']['alter']['text'] = 'Age [field_kid_reporter_age]';
   $handler->display->display_options['fields']['field_kid_reporter_age']['alter']['make_link'] = 0;
   $handler->display->display_options['fields']['field_kid_reporter_age']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_kid_reporter_age']['alter']['external'] = 0;
@@ -485,10 +540,35 @@ function feature_kid_reporters_updated_views_default_views() {
   $handler->display->display_options['fields']['field_kid_reporter_age']['alter']['html'] = 0;
   $handler->display->display_options['fields']['field_kid_reporter_age']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_kid_reporter_age']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['field_kid_reporter_age']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['field_kid_reporter_age']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['field_kid_reporter_age']['hide_alter_empty'] = 0;
+  $handler->display->display_options['fields']['field_kid_reporter_age']['hide_empty'] = 1;
+  $handler->display->display_options['fields']['field_kid_reporter_age']['empty_zero'] = 1;
+  $handler->display->display_options['fields']['field_kid_reporter_age']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['field_kid_reporter_age']['field_api_classes'] = 0;
+  /* Field: Taxonomy term: Name */
+  $handler->display->display_options['fields']['name']['id'] = 'name';
+  $handler->display->display_options['fields']['name']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['relationship'] = 'term_node_tid';
+  $handler->display->display_options['fields']['name']['label'] = 'Grade Level';
+  $handler->display->display_options['fields']['name']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['name']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['name']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['name']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['name']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['name']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['name']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['name']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['name']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['name']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['name']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['name']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['name']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['name']['element_label_colon'] = 1;
+  $handler->display->display_options['fields']['name']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['name']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['name']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['name']['hide_alter_empty'] = 0;
+  $handler->display->display_options['fields']['name']['link_to_taxonomy'] = 0;
   /* Field: Content: Location */
   $handler->display->display_options['fields']['field_location']['id'] = 'field_location';
   $handler->display->display_options['fields']['field_location']['table'] = 'field_data_field_location';
@@ -518,7 +598,7 @@ function feature_kid_reporters_updated_views_default_views() {
   $handler->display->display_options['fields']['title_1']['field'] = 'title';
   $handler->display->display_options['fields']['title_1']['label'] = '';
   $handler->display->display_options['fields']['title_1']['alter']['alter_text'] = 1;
-  $handler->display->display_options['fields']['title_1']['alter']['text'] = 'View Bio';
+  $handler->display->display_options['fields']['title_1']['alter']['text'] = 'See Bio';
   $handler->display->display_options['fields']['title_1']['alter']['make_link'] = 0;
   $handler->display->display_options['fields']['title_1']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['title_1']['alter']['external'] = 0;
@@ -578,6 +658,7 @@ function feature_kid_reporters_updated_views_default_views() {
 
   /* Display: Random Kid Reporters Excluding Viewed */
   $handler = $view->new_display('block', 'Random Kid Reporters Excluding Viewed', 'block');
+  $handler->display->display_options['block_caching'] = '1';
   $export['filtered_random_kid_reporters'] = $view;
 
   $view = new view;
@@ -986,7 +1067,7 @@ function feature_kid_reporters_updated_views_default_views() {
   $handler->display->display_options['fields']['field_deck']['alter']['replace_spaces'] = 0;
   $handler->display->display_options['fields']['field_deck']['alter']['trim_whitespace'] = 0;
   $handler->display->display_options['fields']['field_deck']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['field_deck']['alter']['max_length'] = '62';
+  $handler->display->display_options['fields']['field_deck']['alter']['max_length'] = '85';
   $handler->display->display_options['fields']['field_deck']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_deck']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_deck']['alter']['strip_tags'] = 0;
@@ -1006,7 +1087,7 @@ function feature_kid_reporters_updated_views_default_views() {
   $handler->display->display_options['fields']['field_related_articles']['id'] = 'field_related_articles';
   $handler->display->display_options['fields']['field_related_articles']['table'] = 'field_data_field_related_articles';
   $handler->display->display_options['fields']['field_related_articles']['field'] = 'field_related_articles';
-  $handler->display->display_options['fields']['field_related_articles']['label'] = '';
+  $handler->display->display_options['fields']['field_related_articles']['label'] = 'ARTICLE';
   $handler->display->display_options['fields']['field_related_articles']['alter']['alter_text'] = 0;
   $handler->display->display_options['fields']['field_related_articles']['alter']['make_link'] = 0;
   $handler->display->display_options['fields']['field_related_articles']['alter']['absolute'] = 0;
@@ -1019,12 +1100,12 @@ function feature_kid_reporters_updated_views_default_views() {
   $handler->display->display_options['fields']['field_related_articles']['alter']['strip_tags'] = 0;
   $handler->display->display_options['fields']['field_related_articles']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_related_articles']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['field_related_articles']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_related_articles']['element_label_colon'] = 0;
   $handler->display->display_options['fields']['field_related_articles']['element_default_classes'] = 1;
   $handler->display->display_options['fields']['field_related_articles']['hide_empty'] = 1;
   $handler->display->display_options['fields']['field_related_articles']['empty_zero'] = 1;
   $handler->display->display_options['fields']['field_related_articles']['hide_alter_empty'] = 0;
-  $handler->display->display_options['fields']['field_related_articles']['group_rows'] = 0;
+  $handler->display->display_options['fields']['field_related_articles']['group_rows'] = 1;
   $handler->display->display_options['fields']['field_related_articles']['delta_limit'] = '1';
   $handler->display->display_options['fields']['field_related_articles']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_related_articles']['delta_reversed'] = 0;
@@ -1197,21 +1278,48 @@ function feature_kid_reporters_updated_views_default_views() {
   $handler->display->display_options['fields']['field_deck']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_deck']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_deck']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_deck']['alter']['trim_whitespace'] = 0;
   $handler->display->display_options['fields']['field_deck']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_deck']['alter']['max_length'] = '85';
   $handler->display->display_options['fields']['field_deck']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_deck']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_deck']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_deck']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_deck']['alter']['trim'] = 1;
   $handler->display->display_options['fields']['field_deck']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['field_deck']['element_label_colon'] = 0;
+  $handler->display->display_options['fields']['field_deck']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_deck']['element_default_classes'] = 1;
   $handler->display->display_options['fields']['field_deck']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_deck']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_deck']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['field_deck']['type'] = 'text_trimmed';
   $handler->display->display_options['fields']['field_deck']['settings'] = array(
     'trim_length' => '200',
   );
   $handler->display->display_options['fields']['field_deck']['field_api_classes'] = 0;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title_1']['id'] = 'title_1';
+  $handler->display->display_options['fields']['title_1']['table'] = 'node';
+  $handler->display->display_options['fields']['title_1']['field'] = 'title';
+  $handler->display->display_options['fields']['title_1']['label'] = '';
+  $handler->display->display_options['fields']['title_1']['alter']['alter_text'] = 1;
+  $handler->display->display_options['fields']['title_1']['alter']['text'] = 'View Full Article';
+  $handler->display->display_options['fields']['title_1']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['title_1']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['title_1']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['title_1']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['title_1']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['title_1']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['title_1']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['title_1']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['title_1']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['title_1']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['title_1']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['title_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title_1']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['title_1']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['title_1']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['title_1']['hide_alter_empty'] = 0;
+  $handler->display->display_options['fields']['title_1']['link_to_node'] = 1;
   $export['kid_reporters_channel_news_block'] = $view;
 
   $view = new view;
@@ -1226,7 +1334,6 @@ function feature_kid_reporters_updated_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Kid Reporters Channel Top story';
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
@@ -1482,9 +1589,9 @@ function feature_kid_reporters_updated_views_default_views() {
   $handler->display->display_options['fields']['field_related_articles']['element_label_colon'] = 1;
   $handler->display->display_options['fields']['field_related_articles']['element_default_classes'] = 1;
   $handler->display->display_options['fields']['field_related_articles']['hide_empty'] = 1;
-  $handler->display->display_options['fields']['field_related_articles']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_related_articles']['empty_zero'] = 1;
   $handler->display->display_options['fields']['field_related_articles']['hide_alter_empty'] = 0;
-  $handler->display->display_options['fields']['field_related_articles']['group_rows'] = 0;
+  $handler->display->display_options['fields']['field_related_articles']['group_rows'] = 1;
   $handler->display->display_options['fields']['field_related_articles']['delta_limit'] = '1';
   $handler->display->display_options['fields']['field_related_articles']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_related_articles']['delta_reversed'] = 0;
@@ -1736,9 +1843,7 @@ function feature_kid_reporters_updated_views_default_views() {
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
   $handler->display->display_options['header']['area']['empty'] = FALSE;
-  $handler->display->display_options['header']['area']['content'] = '<div class="more-reporters-class">
-MORE TFK KID REPORTERS
-</div>';
+  $handler->display->display_options['header']['area']['content'] = '<div class="more-reporters-class">MORE TFK KID REPORTERS</div>';
   $handler->display->display_options['header']['area']['format'] = 'full_html';
   $handler->display->display_options['header']['area']['tokenize'] = 0;
   /* Footer: Global: Text area */
@@ -1763,21 +1868,19 @@ MORE TFK KID REPORTERS
   $handler->display->display_options['fields']['field_thumbnail_image']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_thumbnail_image']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_thumbnail_image']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_thumbnail_image']['alter']['trim_whitespace'] = 0;
   $handler->display->display_options['fields']['field_thumbnail_image']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_thumbnail_image']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_thumbnail_image']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_thumbnail_image']['alter']['strip_tags'] = 0;
   $handler->display->display_options['fields']['field_thumbnail_image']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_thumbnail_image']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['field_thumbnail_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_thumbnail_image']['element_label_colon'] = 0;
   $handler->display->display_options['fields']['field_thumbnail_image']['element_default_classes'] = 1;
   $handler->display->display_options['fields']['field_thumbnail_image']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_thumbnail_image']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['field_thumbnail_image']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['field_thumbnail_image']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_thumbnail_image']['settings'] = array(
-    'image_style' => 'tfk_50px_50px',
+    'image_style' => 'tfk_square_small',
     'image_link' => 'content',
   );
   $handler->display->display_options['fields']['field_thumbnail_image']['field_api_classes'] = 0;
@@ -1824,8 +1927,33 @@ MORE TFK KID REPORTERS
   $handler->display->display_options['fields']['field_kid_reporter_age']['element_default_classes'] = 1;
   $handler->display->display_options['fields']['field_kid_reporter_age']['hide_empty'] = 1;
   $handler->display->display_options['fields']['field_kid_reporter_age']['empty_zero'] = 1;
-  $handler->display->display_options['fields']['field_kid_reporter_age']['hide_alter_empty'] = 0;
+  $handler->display->display_options['fields']['field_kid_reporter_age']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['field_kid_reporter_age']['field_api_classes'] = 0;
+  /* Field: Taxonomy term: Name */
+  $handler->display->display_options['fields']['name']['id'] = 'name';
+  $handler->display->display_options['fields']['name']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['relationship'] = 'term_node_tid';
+  $handler->display->display_options['fields']['name']['label'] = 'Grade';
+  $handler->display->display_options['fields']['name']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['name']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['name']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['name']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['name']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['name']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['name']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['name']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['name']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['name']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['name']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['name']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['name']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['name']['element_label_colon'] = 1;
+  $handler->display->display_options['fields']['name']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['name']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['name']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['name']['hide_alter_empty'] = 0;
+  $handler->display->display_options['fields']['name']['link_to_taxonomy'] = 0;
   /* Field: Content: Location */
   $handler->display->display_options['fields']['field_location']['id'] = 'field_location';
   $handler->display->display_options['fields']['field_location']['table'] = 'field_data_field_location';
