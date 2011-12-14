@@ -532,7 +532,8 @@ li.search-result .flag-favorites a {
 
 /* photos and vide content type */
 body.section-photos-video div#tfk-search-photos-video-featured .icon,
-.minisite-video div#tfk-search-photos-video-featured .icon{
+.minisite-video div#tfk-search-photos-video-featured .icon, 
+.view-id-minisite_articles div#tfk-search-photos-video-featured .icon {
   height: 24px;
   margin: -34px 0 0 225px;
   position: relative;
@@ -542,7 +543,8 @@ body.section-photos-video div#tfk-search-photos-video-featured .icon,
 
 /* Dustin Brewer's Safari Hack */
 @media screen and (-webkit-min-device-pixel-ratio:0){
-body.section-photos-video div#tfk-search-photos-video-featured .icon {
+body.section-photos-video div#tfk-search-photos-video-featured .icon,
+.view-id-minisite_articles div#tfk-search-photos-video-featured .icon{
   position: absolute;
 }
 }
@@ -565,13 +567,13 @@ body.section-my-favorites ol#tfk-search-results-photos-video .icon  {
 
 body.section-photos-video .content-type-slideshow .icon,
 body.section-my-favorites .content-type-slideshow .icon,
-.minisite-video div#tfk-search-photos-video-featured .icon{
+view-id-minisite_articles div#tfk-search-photos-video-featured .content-type-slideshow .icon {
   background: url(../images/photo-camera-icon.png) no-repeat;
 }
 
 body.section-photos-video .content-type-video .icon, 
 body.section-my-favorites .content-type-video .icon,
-.minisite-video div#tfk-search-photos-video-featured .icon{
+.view-id-minisite_articles div#tfk-search-photos-video-featured .content-type-video .icon {
   background: url(../images/video-camera-icon.png) no-repeat;
 }
 
