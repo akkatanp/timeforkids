@@ -23,5 +23,5 @@ $form = array_shift($variables);
 				<li>If you are not a subscriber, click "Want to subscribe?"</li>
 			</ul>
 		</div>
-	<div class="clearfix" id="login-footer"><a href="https://secure.customersvc.com/servlet/Show?WESPAGE=am/tablet/tk/tk_web_login.jsp&MSDDMOFF=AONF&MSDTRACK=TKSO">Not yet registered?</a> <a href="https://subscription.timeinc.com/storefront/subscribe-to-time-for-kids/site/tk-digital0711.html#panel_op2">Want to subscribe?</a></div>
+	<div class="clearfix" id="login-footer"><a href="https://secure.customersvc.com/servlet/Show?WESPAGE=am/tablet/tk/tk_web_login.jsp&MSDDMOFF=AONF&MSDTRACK=TKSO">Not yet registered?</a> <a href="https://subscription.timeforkids.com/storefront/subscribe-to-time-for-kids/link/1005016.html">Want to subscribe?</a></div>
 </div>
