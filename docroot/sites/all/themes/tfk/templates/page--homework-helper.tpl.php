@@ -82,7 +82,7 @@
           <?php if (isset($flashcards_return)): ?>
             <div class="flashcards-return"><?php print $flashcards_return; ?></div>
           <?php endif; ?>
-          <?php if (isset($node) && isset($title) && (arg(2) != 'edit')): ?>
+          <?php if (isset($node) && isset($title) && (arg(2) != 'edit') && $show_title): ?>
             <div class="homework-helper-title"><?php print $title; ?></div>
           <?php endif; ?>
           <?php print render($page['content']); ?>

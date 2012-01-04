@@ -240,7 +240,7 @@ function tfk_preprocess_page(&$variables, $hook) {
   /* add encrypt js to all pages */
  
   // Debug CTools modal.
-  drupal_add_js(array('debug' => array('enabled' => TRUE)), 'setting');
+  //drupal_add_js(array('debug' => array('enabled' => TRUE)), 'setting');
     
   if(array_key_exists('node', $variables)) {
     $variables['theme_hook_suggestions'][] = 'page__'. $variables['node']->type;
@@ -270,6 +270,12 @@ function tfk_preprocess_page(&$variables, $hook) {
   if (isset($variables['node']->type) && array_key_exists('section_title', $variables) && $variables['section_title'] == t('Homework Helper')) {
     $variables['tfk_header_tag'] = tfk_header_tag($variables['node']->type);
     $variables['theme_hook_suggestions'][] = 'page__homework_helper';
+    
+    // Avoid duplicate header tag and title. Supress title on all 'page' nodes.
+    $variables['show_title'] = TRUE;
+    if($variables['node']->type == 'page') { //&& $variables['node']->nid == 98
+      $variables['show_title'] = FALSE;
+    }
   }
   
   $view = views_get_page_view();
@@ -281,8 +287,6 @@ function tfk_preprocess_page(&$variables, $hook) {
       else {
         $variables['grammar_practice_header'] = l('Try Another', 'homework-helper/grammar-wizard/punctuation-practice', array('attributes' => array('class' => array('try-another'))));
       }
-
-
     }
   }
 }
@@ -352,7 +356,7 @@ function tfk_header_tag($type) {
     case 'grammar_practice':
       $output = t('Punctuation Practice');
       break;
-    case '':
+    default:
       $output = drupal_get_title();
   }
   return $output;
