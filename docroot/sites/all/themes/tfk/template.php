@@ -278,12 +278,14 @@ function tfk_preprocess_page(&$variables, $hook) {
     if($variables['node']->type == 'page') { //&& $variables['node']->nid == 98
       $variables['show_title'] = FALSE;
     }
-  }
+    
   // Red title bar, no node var.
-  $args = arg();
-  if($args[0] == 'homework-helper' && array_key_exists(1, $args)) {
-    if(array_search($args[1], array('a-plus-papers', 'flashcards', 'writing-tips', 'grammar-wizard', 'punctuation-practice')) !== FALSE) {
-      $variables['tfk_header_tag'] = drupal_get_title();
+  } else {
+    $args = arg();
+    if($args[0] == 'homework-helper' && array_key_exists(1, $args)) {
+      if(array_search($args[1], array('a-plus-papers', 'flashcards', 'writing-tips', 'grammar-wizard', 'punctuation-practice')) !== FALSE) {
+        $variables['tfk_header_tag'] = drupal_get_title();
+      }
     }
   }
   
