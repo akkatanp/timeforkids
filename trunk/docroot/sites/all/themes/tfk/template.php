@@ -267,6 +267,8 @@ function tfk_preprocess_page(&$variables, $hook) {
   if (isset($variables['page']['content']['system_main']['#theme']) && $variables['page']['content']['system_main']['#theme'][0] == "user_login") {
         $variables['tabs'] = "";/*Hide tabs per infosec*/
   }
+  
+  // Red title Bar.
   if (isset($variables['node']->type) && array_key_exists('section_title', $variables) && $variables['section_title'] == t('Homework Helper')) {
     $variables['tfk_header_tag'] = tfk_header_tag($variables['node']->type);
     $variables['theme_hook_suggestions'][] = 'page__homework_helper';
@@ -275,6 +277,13 @@ function tfk_preprocess_page(&$variables, $hook) {
     $variables['show_title'] = TRUE;
     if($variables['node']->type == 'page') { //&& $variables['node']->nid == 98
       $variables['show_title'] = FALSE;
+    }
+  }
+  // Red title bar, no node var.
+  $args = arg();
+  if($args[0] == 'homework-helper' && array_key_exists(1, $args)) {
+    if(array_search($args[1], array('a-plus-papers', 'flashcards', 'writing-tips')) !== FALSE) {
+      $variables['tfk_header_tag'] = drupal_get_title();
     }
   }
   
