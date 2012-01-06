@@ -1046,6 +1046,22 @@ function tfk_search_block_view($delta='') {
 }
 
 
+/**
+ * Prepend our submit our submit handler to the search form.
+ */
+function tfk_search_form_search_block_form_alter(&$form, &$form_state, $form_id) {
+  array_unshift($form['#submit'], 'tfk_search_search_box_submit');
+}
+
+/**
+ * Allow user to perform an empty search.
+ */
+function tfk_search_search_box_submit($form, &$form_state) {
+  if($form_state['values']['search_block_form'] == 'Search') {
+    $form_state['values']['search_block_form'] = '';
+  }
+}
+
 function _tfk_search_back_btn(){
   $dest = '';
   $link_copy = '';
@@ -1269,7 +1285,7 @@ function theme_tfk_featured_block(&$variables) {
   $output .= '<div class="g1'. ' content-type-'. $tfkSearchFeaturedItem->type. '">';
   $link_options = array('html' => TRUE, 'attributes' => array('class' => array('featured-item'), 'title' => $tfkSearchFeaturedItem->title));
   $icon = '<div class="icon"></div>';
-  $output .= l(theme('image', array('path' => $tfkSearchFeaturedItem->featured_item->abspath, 'title' => $tfkSearchFeaturedItem->title, 'alt' => $tfkSearchFeaturedItem->title)). $icon, $url, $link_options);
+  $output .= l(theme('image', array('path' => $tfkSearchFeaturedItem->featured_item->abspath, 'title' => $tfkSearchFeaturedItem->title, 'alt' => $tfkSearchFeaturedItem->title)).$icon, $url, $link_options);
   
   // Caption and credit. @todo It's not O.K. to have field_get_item(s) on the theme layer.
   $caption = field_get_items('node', $tfkSearchFeaturedItem, 'field_caption');
