@@ -111,10 +111,12 @@ function tfk_helper_preprocess_views_view_fields(&$variables, $hook) {
     
     if($content_type == 'slideshow') {
       $link = l('View Photo Slide Show', 'node/'. $variables['row']->nid);
+      $variables['fields']['title_2'] = new stdClass();
       $variables['fields']['title_2']->content = '<span class="field-content">'. $link. '</span>';
     }
     if($content_type == 'video') {
       $link = l('View Full Video', 'node/'. $variables['row']->nid);
+      $variables['fields']['title_2'] = new stdClass();
       $variables['fields']['title_2']->content = '<span class="field-content">'. $link. '</span>';
     }
   }
