@@ -25,27 +25,37 @@
 
 ?>
 <?php foreach ($fields as $id => $field): ?>
-  <?php if($id != 'field_mini_lessons' && $id != 'field_related_articles'):?>
+  <?php if($id != 'field_mini_lessons' && $id != 'field_related_articles' && $id != 'field_additional_content'):?>
     <?php if (!empty($field->separator)): ?>
       <?php print $field->separator; ?>
     <?php endif; ?>
 
-    <?php print $field->wrapper_prefix; ?>
-      <?php print $field->label_html; ?>
+      <?php if(isset($field->wrapper_prefix)): ?>
+      	<?php print $field->wrapper_prefix; ?>
+      <?php endif; ?>
+     	
+      <?php if(isset($field->label_html)): ?>
+      	<?php print $field->label_html; ?>
+      <?php endif; ?>
+     	
       <?php print $field->content; ?>
-    <?php print $field->wrapper_suffix; ?>
+      
+      <?php if(isset($field->wrapper_suffix)): ?>
+      	<?php print $field->wrapper_suffix; ?>
+      <?php endif; ?>
+      
     <?php endif; ?>
 <?php endforeach; ?>
 
-<?php if(isset($fields['field_mini_lessons']) && isset($fields['field_related_articles']) && !empty($fields['field_mini_lessons']->content) || !empty($fields['field_related_articles']->content)):?>
+<?php if(isset($fields['field_mini_lessons']) && isset($fields['field_related_articles']) && !empty($fields['field_mini_lessons']->content) || !empty($fields['field_related_articles']->content) || !empty($fields['field_additional_content']->content)):?>
   <div class="related-content-wrap">
     <div class="addit-content">Additional Content</div>
     <?php if(isset($fields['field_mini_lessons'])): ?>
-       <div class="addit-mini-lessons"><?php print $fields['field_mini_lessons']->label;?><?php print $fields['field_mini_lessons']->content;?></div>
-    <?php endif; ?>
-
-    <?php if($fields['field_related_articles']): ?>
-       <div class="addit-related-articles"><?php print $fields['field_related_articles']->label;?><?php print $fields['field_related_articles']->content;?></div>
+      <div class="addit-mini-lessons"><?php print $fields['field_mini_lessons']->label;?><?php print $fields['field_mini_lessons']->content;?></div>
+    <?php elseif(isset($fields['field_related_articles'])): ?>
+			<div class="addit-related-articles"><?php print $fields['field_related_articles']->label;?><?php print $fields['field_related_articles']->content;?></div>
+    <?php elseif(isset($fields['field_additional_content'])): ?>
+       <div class="addit-related-articles"><?php print $fields['field_additional_content']->content;?></div>
     <?php endif; ?>
   </div>
 <?php endif;?>
