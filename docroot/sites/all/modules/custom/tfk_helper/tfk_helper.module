@@ -52,7 +52,8 @@ function tfk_helper_theme() {
 function tfk_helper_node_access($node, $op, $account) {
 
   // Deny access to anonymous user to mini-lesson, and other nodes.
-  if($account->uid == 0) {
+  // Check for $node type, sometimes it evaluates to a "global_right_sidebar_promo" string, "create" op.
+  if($account->uid == 0 && is_object($node)) {
     if($node->type == "mini_lesson") {
       return NODE_ACCESS_DENY;
     }
@@ -74,6 +75,50 @@ function tfk_helper_preprocess_page(&$variables) {
       $variables['section_title'] = 'ACCESS DENIED';
     }
   }
+}
+
+/**
+ * Preprocessing for multiple Views.
+ *
+ * Implementation of hook_preprocess_view_view_fields.
+ *
+ * @param array $variables
+ *   Stuff comming from views.
+ */
+function tfk_helper_preprocess_views_view_fields(&$variables, $hook) {
+  $view = $variables['view'];
+  if($view->name == 'homepage_top_story' && $view->current_display == 'block_1') {
+    $content_type = $variables['row']->_field_data['nid']['entity']->type;
+    
+    if($content_type == 'slideshow') {
+      $link = l('View Photo Slide Show', 'node/'. $variables['row']->nid);
+      $variables['fields']['title_2']->content = '<span class="field-content">'. $link. '</span>';
+    }
+    if($content_type == 'video') {
+      $link = l('View Full Video', 'node/'. $variables['row']->nid);
+      $variables['fields']['title_2']->content = '<span class="field-content">'. $link. '</span>';
+    }
+  }
+  
+  if($view->name == 'homepage_top_story' && $view->current_display == 'attachment_1') {
+    $variables['fields']['field_image']->content = l($variables['fields']['field_image']->content, ltrim($variables['view']->field['path']->original_value, '/'). '/'. ($variables['view']->row_index + 1), array('html' => TRUE, 'attributes' => array('class' => array('featured-thumbnail'))));
+  }
+  
+  // Secondary Tout blocks.
+  if($view->name == 'homepage_news_block' && $view->current_display == 'block_1') {
+    //return;
+    $content_type = $variables['row']->_field_data['nid']['entity']->type;
+    
+    if($content_type == 'slideshow') {
+      $link = l('View Photo Slide Show', 'node/'. $variables['row']->nid);
+      $variables['fields']['title_2']->content = '<span class="field-content">'. $link. '</span>';
+    }
+    if($content_type == 'video') {
+      $link = l('View Full Video', 'node/'. $variables['row']->nid);
+      $variables['fields']['title_2']->content = '<span class="field-content">'. $link. '</span>';
+    }
+  }
+  
 }
 
 /**
