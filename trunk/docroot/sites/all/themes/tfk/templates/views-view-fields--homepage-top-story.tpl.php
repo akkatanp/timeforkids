@@ -22,12 +22,7 @@
  *
  * @ingroup views_templates
  */
-
-$slide_block = module_invoke('tfk_news', 'block_view','tfk-news-homepage-mini-lessons');
 ?>
-
-
-
 
 <?php foreach ($fields as $id => $field): ?>
 
@@ -36,10 +31,14 @@ $slide_block = module_invoke('tfk_news', 'block_view','tfk-news-homepage-mini-le
         <?php print $field->separator; ?>
       <?php endif; ?>
 
-      <?php print $field->wrapper_prefix; ?>
+      <?php if(isset($field->wrapper_prefix)): ?>
+      	<?php print $field->wrapper_prefix; ?>
+      <?php endif; ?>
         <?php print $field->label_html; ?>
         <?php print $field->content; ?>
-      <?php print $field->wrapper_suffix; ?>
+      <?php if(isset($field->wrapper_suffix)): ?>
+      	<?php print $field->wrapper_suffix; ?>
+      <?php endif; ?>
     <?php endif; ?>
 <?php endforeach; ?>
 
