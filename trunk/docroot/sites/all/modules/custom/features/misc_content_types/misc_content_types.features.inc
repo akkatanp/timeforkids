@@ -19,54 +19,6 @@ function misc_content_types_ctools_plugin_api() {
  */
 function misc_content_types_node_info() {
   $items = array(
-    'atw_day_in_life' => array(
-      'name' => t('ATW Day In Life'),
-      'base' => 'node_content',
-      'description' => '',
-      'has_title' => '1',
-      'title_label' => t('Title'),
-      'help' => '',
-    ),
-    'atw_destination' => array(
-      'name' => t('ATW Destination'),
-      'base' => 'node_content',
-      'description' => '',
-      'has_title' => '1',
-      'title_label' => t('Name'),
-      'help' => '',
-    ),
-    'atw_homepage_nodeblock' => array(
-      'name' => t('ATW Homepage Nodeblock'),
-      'base' => 'node_content',
-      'description' => t('A static text that is available for editing and appears on the homepage for Around The World Section.'),
-      'has_title' => '1',
-      'title_label' => t('Title'),
-      'help' => '',
-    ),
-    'atw_native_lingo' => array(
-      'name' => t('ATW Native Lingo'),
-      'base' => 'node_content',
-      'description' => '',
-      'has_title' => '1',
-      'title_label' => t('Title'),
-      'help' => '',
-    ),
-    'atw_sightseeing' => array(
-      'name' => t('ATW Sightseeing'),
-      'base' => 'node_content',
-      'description' => '',
-      'has_title' => '1',
-      'title_label' => t('Title'),
-      'help' => '',
-    ),
-    'atw_timeline' => array(
-      'name' => t('ATW Timeline'),
-      'base' => 'node_content',
-      'description' => '',
-      'has_title' => '1',
-      'title_label' => t('Title'),
-      'help' => '',
-    ),
     'book' => array(
       'name' => t('Book'),
       'base' => 'node_content',
@@ -177,14 +129,6 @@ function misc_content_types_node_info() {
       'description' => '',
       'has_title' => '1',
       'title_label' => t('Name'),
-      'help' => '',
-    ),
-    'webform' => array(
-      'name' => t('ATW Challenge'),
-      'base' => 'node_content',
-      'description' => t('Create a new form or questionnaire accessible to users. Submission results and statistics are recorded and accessible to privileged users.'),
-      'has_title' => '1',
-      'title_label' => t('Title'),
       'help' => '',
     ),
     'webform_generic' => array(
