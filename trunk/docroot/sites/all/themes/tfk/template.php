@@ -287,7 +287,7 @@ function tfk_preprocess_page(&$variables, $hook) {
       }
     }
     // Add flashcard path.
-    if($args[0] == 'node' && $args[1] == 'add' && $args[2] == 'flashcard') {
+    if($args[0] == 'node' && array_key_exists(1, $args) && $args[1] == 'add' && $args[2] == 'flashcard') {
       $variables['tfk_header_tag'] = drupal_get_title();
       $variables['theme_hook_suggestions'][] = 'page__homework_helper';
     }
