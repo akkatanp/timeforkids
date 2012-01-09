@@ -1970,110 +1970,6 @@ Limit for News Block: 65 characters.',
     ),
   );
 
-  // Exported field: 'node-video-field_lrg_sq_image'
-  $fields['node-video-field_lrg_sq_image'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_lrg_sq_image',
-      'foreign keys' => array(
-        'fid' => array(
-          'columns' => array(
-            'fid' => 'fid',
-          ),
-          'table' => 'file_managed',
-        ),
-      ),
-      'indexes' => array(
-        'fid' => array(
-          0 => 'fid',
-        ),
-      ),
-      'module' => 'image',
-      'settings' => array(
-        'default_image' => 0,
-        'uri_scheme' => 'public',
-      ),
-      'translatable' => '1',
-      'type' => 'image',
-    ),
-    'field_instance' => array(
-      'bundle' => 'video',
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'image',
-          'settings' => array(
-            'image_link' => '',
-            'image_style' => '',
-          ),
-          'type' => 'image',
-          'weight' => 17,
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_lrg_sq_image',
-      'label' => 'Large Square Image',
-      'required' => 0,
-      'settings' => array(
-        'alt_field' => 0,
-        'file_directory' => '',
-        'file_extensions' => 'png gif jpg jpeg',
-        'max_filesize' => '',
-        'max_resolution' => '',
-        'min_resolution' => '',
-        'title_field' => 0,
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'image',
-        'settings' => array(
-          'insert' => 0,
-          'insert_class' => '',
-          'insert_default' => 'auto',
-          'insert_styles' => array(
-            'auto' => 'auto',
-            'image' => 0,
-            'image_115x115' => 0,
-            'image_large' => 0,
-            'image_medium' => 0,
-            'image_slideshow_small_square' => 0,
-            'image_square_thumbnail' => 0,
-            'image_tfk_140x187' => 0,
-            'image_tfk_270x270' => 0,
-            'image_tfk_50px_50px' => 0,
-            'image_tfk_60x60' => 0,
-            'image_tfk_71x95' => 0,
-            'image_tfk_rect_large' => 0,
-            'image_tfk_rect_medium' => 0,
-            'image_tfk_rect_small' => 0,
-            'image_tfk_square_large' => 0,
-            'image_tfk_square_medium' => 0,
-            'image_tfk_square_small' => 0,
-            'image_thumbnail' => 0,
-            'link' => 0,
-          ),
-          'insert_width' => '',
-          'preview_image_style' => 'thumbnail',
-          'progress_indicator' => 'throbber',
-        ),
-        'type' => 'image_image',
-        'weight' => '3',
-      ),
-    ),
-  );
-
   // Exported field: 'node-video-field_related_photos_video'
   $fields['node-video-field_related_photos_video'] = array(
     'field_config' => array(
@@ -2377,8 +2273,8 @@ Limit for News Block: 65 characters.',
       ),
       'entity_type' => 'node',
       'field_name' => 'field_video_thumbnail',
-      'label' => 'Thumbnail',
-      'required' => FALSE,
+      'label' => 'Large Square Image',
+      'required' => 0,
       'settings' => array(
         'alt_field' => 0,
         'file_directory' => '',
@@ -2390,15 +2286,33 @@ Limit for News Block: 65 characters.',
         'user_register_form' => FALSE,
       ),
       'widget' => array(
+        'active' => 1,
         'module' => 'image',
         'settings' => array(
           'insert' => 0,
           'insert_class' => '',
-          'insert_default' => array(
-            0 => 'auto',
-          ),
+          'insert_default' => 'auto',
           'insert_styles' => array(
-            0 => 'auto',
+            'auto' => 'auto',
+            'image' => 0,
+            'image_115x115' => 0,
+            'image_large' => 0,
+            'image_medium' => 0,
+            'image_slideshow_small_square' => 0,
+            'image_square_thumbnail' => 0,
+            'image_tfk_140x187' => 0,
+            'image_tfk_270x270' => 0,
+            'image_tfk_50px_50px' => 0,
+            'image_tfk_60x60' => 0,
+            'image_tfk_71x95' => 0,
+            'image_tfk_rect_large' => 0,
+            'image_tfk_rect_medium' => 0,
+            'image_tfk_rect_small' => 0,
+            'image_tfk_square_large' => 0,
+            'image_tfk_square_medium' => 0,
+            'image_tfk_square_small' => 0,
+            'image_thumbnail' => 0,
+            'link' => 0,
           ),
           'insert_width' => '',
           'preview_image_style' => 'thumbnail',
@@ -2621,7 +2535,6 @@ Limit for News Block: 65 characters.',
   t('Meta Keywords');
   t('Related Photos and Video');
   t('Themes');
-  t('Thumbnail');
   t('Video Upload');
 
   return $fields;
