@@ -131,14 +131,6 @@ function misc_content_types_node_info() {
       'title_label' => t('Name'),
       'help' => '',
     ),
-    'webform_generic' => array(
-      'name' => t('Webform'),
-      'base' => 'node_content',
-      'description' => t('A generic webform.'),
-      'has_title' => '1',
-      'title_label' => t('Title'),
-      'help' => '',
-    ),
   );
   return $items;
 }
