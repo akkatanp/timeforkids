@@ -1369,10 +1369,11 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['relationships']['field_slideshow_images_nid']['ui_name'] = 'Slideshow big image';
   $handler->display->display_options['relationships']['field_slideshow_images_nid']['required'] = 0;
   $handler->display->display_options['relationships']['field_slideshow_images_nid']['delta'] = '0';
-  /* Field: Content: Large Square Image */
+  /* Field: Content: Large Square Image (Article and Slideshow) */
   $handler->display->display_options['fields']['field_lrg_sq_image']['id'] = 'field_lrg_sq_image';
   $handler->display->display_options['fields']['field_lrg_sq_image']['table'] = 'field_data_field_lrg_sq_image';
   $handler->display->display_options['fields']['field_lrg_sq_image']['field'] = 'field_lrg_sq_image';
+  $handler->display->display_options['fields']['field_lrg_sq_image']['ui_name'] = 'Content: Large Square Image (Article and Slideshow)';
   $handler->display->display_options['fields']['field_lrg_sq_image']['label'] = '';
   $handler->display->display_options['fields']['field_lrg_sq_image']['alter']['alter_text'] = 0;
   $handler->display->display_options['fields']['field_lrg_sq_image']['alter']['make_link'] = 0;
@@ -1397,10 +1398,11 @@ function tfk_homepage_views_default_views() {
     'image_link' => '',
   );
   $handler->display->display_options['fields']['field_lrg_sq_image']['field_api_classes'] = 0;
-  /* Field: Content: Thumbnail */
+  /* Field: Content: Large Square Image (Video Thumbnail) */
   $handler->display->display_options['fields']['field_video_thumbnail']['id'] = 'field_video_thumbnail';
   $handler->display->display_options['fields']['field_video_thumbnail']['table'] = 'field_data_field_video_thumbnail';
   $handler->display->display_options['fields']['field_video_thumbnail']['field'] = 'field_video_thumbnail';
+  $handler->display->display_options['fields']['field_video_thumbnail']['ui_name'] = 'Content: Large Square Image (Video Thumbnail)';
   $handler->display->display_options['fields']['field_video_thumbnail']['label'] = '';
   $handler->display->display_options['fields']['field_video_thumbnail']['alter']['alter_text'] = 0;
   $handler->display->display_options['fields']['field_video_thumbnail']['alter']['make_link'] = 0;
@@ -1421,7 +1423,7 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['fields']['field_video_thumbnail']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['field_video_thumbnail']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_video_thumbnail']['settings'] = array(
-    'image_style' => 'tfk_270x270',
+    'image_style' => 'tfk_square_large',
     'image_link' => '',
   );
   $handler->display->display_options['fields']['field_video_thumbnail']['field_api_classes'] = 0;
