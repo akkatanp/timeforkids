@@ -1032,7 +1032,7 @@ img {
 .homework-helper-content .flashcards-return {
   display: inline;
   float: right;
-  margin: 12px 25px 12px 0;
+  margin: 40px 25px 0 0;
 }
 .homework-helper-content .flashcards-return a {
   background: url(images/tfk-red-arrow.png) no-repeat scroll 2px 0 transparent;
