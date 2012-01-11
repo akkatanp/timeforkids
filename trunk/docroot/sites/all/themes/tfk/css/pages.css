@@ -3119,3 +3119,10 @@ body.page-404page #first-column .region-sidebar-first .section{
     position:relative;
     top:-22px;
 }
+
+/**
+ * Non-SASS homework helper stuff.
+ */
+body.page-homework-helper-a-plus-papers #block-system-main > .content {
+  border-top: 1px solid #CECECE;
+}
