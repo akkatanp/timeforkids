@@ -5,21 +5,21 @@
  */
 
 /**
- * Implementation of hook_ctools_plugin_api().
+ * Implements hook_ctools_plugin_api().
  */
 function tfk_magazine_ctools_plugin_api() {
   list($module, $api) = func_get_args();
   if ($module == "context" && $api == "context") {
-    return array("version" => 3);
+    return array("version" => "3");
   }
   list($module, $api) = func_get_args();
   if ($module == "strongarm" && $api == "strongarm") {
-    return array("version" => 1);
+    return array("version" => "1");
   }
 }
 
 /**
- * Implementation of hook_flag_default_flags().
+ * Implements hook_flag_default_flags().
  */
 function tfk_magazine_flag_default_flags() {
   $flags = array();
@@ -99,7 +99,7 @@ function tfk_magazine_flag_default_flags() {
 }
 
 /**
- * Implementation of hook_image_default_styles().
+ * Implements hook_image_default_styles().
  */
 function tfk_magazine_image_default_styles() {
   $styles = array();
@@ -129,7 +129,7 @@ function tfk_magazine_image_default_styles() {
 }
 
 /**
- * Implementation of hook_node_info().
+ * Implements hook_node_info().
  */
 function tfk_magazine_node_info() {
   $items = array(
