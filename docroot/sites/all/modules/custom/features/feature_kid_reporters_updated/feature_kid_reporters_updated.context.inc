@@ -5,7 +5,7 @@
  */
 
 /**
- * Implementation of hook_context_default_contexts().
+ * Implements hook_context_default_contexts().
  */
 function feature_kid_reporters_updated_context_default_contexts() {
   $export = array();
@@ -140,17 +140,23 @@ function feature_kid_reporters_updated_context_default_contexts() {
           'region' => 'content',
           'weight' => '-10',
         ),
-        'views-7e7b23739b93998aa7e5cea0d0f85ad4' => array(
+        'views-homepage_top_story-block_6' => array(
           'module' => 'views',
-          'delta' => '7e7b23739b93998aa7e5cea0d0f85ad4',
+          'delta' => 'homepage_top_story-block_6',
           'region' => 'content',
           'weight' => '-9',
+        ),
+        'views-homepage_news_block-block_6' => array(
+          'module' => 'views',
+          'delta' => 'homepage_news_block-block_6',
+          'region' => 'content',
+          'weight' => '-8',
         ),
         'views-45303de8e748961eb19c97aa1f83db8d' => array(
           'module' => 'views',
           'delta' => '45303de8e748961eb19c97aa1f83db8d',
           'region' => 'content',
-          'weight' => '-8',
+          'weight' => '-7',
         ),
       ),
     ),
@@ -215,15 +221,15 @@ function feature_kid_reporters_updated_context_default_contexts() {
           'region' => 'content',
           'weight' => '-10',
         ),
-        'views-93aaed0cb7d273a3164529c1d6e4ac19' => array(
+        'views-homepage_top_story-block_5' => array(
           'module' => 'views',
-          'delta' => '93aaed0cb7d273a3164529c1d6e4ac19',
+          'delta' => 'homepage_top_story-block_5',
           'region' => 'content',
           'weight' => '-9',
         ),
-        'views-c7f4c467ded05a2923be9f39deeb3aa8' => array(
+        'views-homepage_news_block-block_5' => array(
           'module' => 'views',
-          'delta' => 'c7f4c467ded05a2923be9f39deeb3aa8',
+          'delta' => 'homepage_news_block-block_5',
           'region' => 'content',
           'weight' => '-8',
         ),
@@ -231,7 +237,7 @@ function feature_kid_reporters_updated_context_default_contexts() {
           'module' => 'views',
           'delta' => 'd44bb19984e92f5f326b85c84e58955a',
           'region' => 'content',
-          'weight' => '-7',
+          'weight' => '-6',
         ),
       ),
     ),
@@ -294,15 +300,15 @@ function feature_kid_reporters_updated_context_default_contexts() {
           'region' => 'content',
           'weight' => '-10',
         ),
-        'views-93aaed0cb7d273a3164529c1d6e4ac19' => array(
+        'views-homepage_top_story-block_5' => array(
           'module' => 'views',
-          'delta' => '93aaed0cb7d273a3164529c1d6e4ac19',
+          'delta' => 'homepage_top_story-block_5',
           'region' => 'content',
           'weight' => '-9',
         ),
-        'views-c7f4c467ded05a2923be9f39deeb3aa8' => array(
+        'views-homepage_news_block-block_5' => array(
           'module' => 'views',
-          'delta' => 'c7f4c467ded05a2923be9f39deeb3aa8',
+          'delta' => 'homepage_news_block-block_5',
           'region' => 'content',
           'weight' => '-8',
         ),
