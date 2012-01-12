@@ -2661,7 +2661,7 @@ return $args[1];
   $handler->display->display_options['fields']['title_1']['empty_zero'] = 0;
   $handler->display->display_options['fields']['title_1']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['title_1']['link_to_node'] = 1;
-  $handler->display->display_options['block_description'] = 'Teacher News Top Story Anon';
+  $handler->display->display_options['block_description'] = 'Teacher News Top Story Block';
   $export['teacher_news_top_story'] = $view;
 
   return $export;
