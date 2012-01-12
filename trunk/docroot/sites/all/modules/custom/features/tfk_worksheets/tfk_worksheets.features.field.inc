@@ -5,7 +5,7 @@
  */
 
 /**
- * Implementation of hook_field_default_fields().
+ * Implements hook_field_default_fields().
  */
 function tfk_worksheets_field_default_fields() {
   $fields = array();
@@ -202,7 +202,6 @@ function tfk_worksheets_field_default_fields() {
           'image' => 0,
           'kid_reporter' => 0,
           'kid_reporter_bottom_nodeblock' => 0,
-          'kid_reporter_listing_nodeblock' => 0,
           'magazine_issue' => 0,
           'mini_lesson' => 0,
           'mini_site_home' => 0,
@@ -211,26 +210,22 @@ function tfk_worksheets_field_default_fields() {
           'page' => 0,
           'paper_step' => 0,
           'pdf_quiz' => 0,
-          'poll' => 0,
           'slideshow' => 0,
           'store' => 0,
-          'teacher_board_nodeblock' => 0,
           'teacher_community_question' => 0,
           'tfk_extra' => 0,
           'tfk_extras_bottom_nodeblock' => 0,
           'tfk_extras_top_nodeblock' => 0,
           'tfk_notification' => 0,
-          'tfk_staff' => 0,
           'video' => 0,
           'webform' => 0,
-          'webform_generic' => 0,
           'worksheet' => 0,
           'writing_tips' => 0,
         ),
         'view' => array(
           'args' => array(),
-          'display_name' => 'references_1',
-          'view_name' => 'reference_articles',
+          'display_name' => '',
+          'view_name' => '',
         ),
       ),
       'translatable' => '1',
@@ -613,8 +608,8 @@ function tfk_worksheets_field_default_fields() {
       'indexes' => array(),
       'module' => 'metatags_quick',
       'settings' => array(
-        0 => 'meta_name',
         'meta_name' => 'description',
+        0 => 'meta_name',
       ),
       'translatable' => '0',
       'type' => 'metatags_quick',
@@ -668,8 +663,8 @@ function tfk_worksheets_field_default_fields() {
       'indexes' => array(),
       'module' => 'metatags_quick',
       'settings' => array(
-        0 => 'meta_name',
         'meta_name' => 'keywords',
+        0 => 'meta_name',
       ),
       'translatable' => '0',
       'type' => 'metatags_quick',

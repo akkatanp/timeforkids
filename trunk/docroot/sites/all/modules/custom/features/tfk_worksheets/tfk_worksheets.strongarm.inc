@@ -5,7 +5,7 @@
  */
 
 /**
- * Implementation of hook_strongarm().
+ * Implements hook_strongarm().
  */
 function tfk_worksheets_strongarm() {
   $export = array();
