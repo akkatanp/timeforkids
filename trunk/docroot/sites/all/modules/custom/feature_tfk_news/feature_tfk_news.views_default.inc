@@ -5,7 +5,7 @@
  */
 
 /**
- * Implementation of hook_views_default_views().
+ * Implements hook_views_default_views().
  */
 function feature_tfk_news_views_default_views() {
   $export = array();
@@ -2661,7 +2661,7 @@ return $args[1];
   $handler->display->display_options['fields']['title_1']['empty_zero'] = 0;
   $handler->display->display_options['fields']['title_1']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['title_1']['link_to_node'] = 1;
-  $handler->display->display_options['block_description'] = 'Teacher News Top Story Block';
+  $handler->display->display_options['block_description'] = 'Teacher News Top Story Anon';
   $export['teacher_news_top_story'] = $view;
 
   return $export;
