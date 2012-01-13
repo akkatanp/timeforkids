@@ -94,6 +94,8 @@ function tfk_flags_flag_default_flags() {
     'global' => '1',
     'types' => array(
       0 => 'article',
+      1 => 'slideshow',
+      2 => 'video',
     ),
     'flag_short' => 'Secondary Touts in Kid Reporter',
     'flag_long' => '',
@@ -129,6 +131,8 @@ function tfk_flags_flag_default_flags() {
     'global' => '1',
     'types' => array(
       0 => 'article',
+      1 => 'slideshow',
+      2 => 'video',
     ),
     'flag_short' => 'Top Story in Kid Reporters',
     'flag_long' => '',
@@ -164,6 +168,8 @@ function tfk_flags_flag_default_flags() {
     'global' => '1',
     'types' => array(
       0 => 'article',
+      1 => 'slideshow',
+      2 => 'video',
     ),
     'flag_short' => 'Secondary Touts under News',
     'flag_long' => '',
@@ -201,6 +207,8 @@ function tfk_flags_flag_default_flags() {
     'global' => '1',
     'types' => array(
       0 => 'article',
+      1 => 'slideshow',
+      2 => 'video',
     ),
     'flag_short' => 'News Main Tout',
     'flag_long' => '',
