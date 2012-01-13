@@ -5,7 +5,7 @@
  */
 
 /**
- * Implementation of hook_views_default_views().
+ * Implements hook_views_default_views().
  */
 function feature_mini_sites_views_default_views() {
   $export = array();
@@ -1481,7 +1481,7 @@ function feature_mini_sites_views_default_views() {
   $handler->display->display_options['relationships']['field_related_articles_nid']['required'] = 0;
   $handler->display->display_options['relationships']['field_related_articles_nid']['delta'] = '-1';
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Content: Thumbnail */
+  /* Field: Content: Large Square Image */
   $handler->display->display_options['fields']['field_video_thumbnail']['id'] = 'field_video_thumbnail';
   $handler->display->display_options['fields']['field_video_thumbnail']['table'] = 'field_data_field_video_thumbnail';
   $handler->display->display_options['fields']['field_video_thumbnail']['field'] = 'field_video_thumbnail';
@@ -1809,7 +1809,7 @@ function feature_mini_sites_views_default_views() {
   $handler->display->display_options['relationships']['field_tout_image_nid']['required'] = 0;
   $handler->display->display_options['relationships']['field_tout_image_nid']['delta'] = '-1';
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Content: Thumbnail */
+  /* Field: Content: Large Square Image */
   $handler->display->display_options['fields']['field_video_thumbnail']['id'] = 'field_video_thumbnail';
   $handler->display->display_options['fields']['field_video_thumbnail']['table'] = 'field_data_field_video_thumbnail';
   $handler->display->display_options['fields']['field_video_thumbnail']['field'] = 'field_video_thumbnail';
