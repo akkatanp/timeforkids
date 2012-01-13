@@ -5,7 +5,7 @@
  */
 
 /**
- * Implementation of hook_context_default_contexts().
+ * Implements hook_context_default_contexts().
  */
 function tfk_atw_feature_context_default_contexts() {
   $export = array();
@@ -123,86 +123,6 @@ function tfk_atw_feature_context_default_contexts() {
   t('Around The World Channel Main Page with MAP');
   t('atw');
   $export['Around The World Channel Main Page with MAP'] = $context;
-
-  $context = new stdClass;
-  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
-  $context->api_version = 3;
-  $context->name = 'anonymous_destination_navigation';
-  $context->description = '';
-  $context->tag = 'atw';
-  $context->conditions = array(
-    'path' => array(
-      'values' => array(
-        'around-the-world/*' => 'around-the-world/*',
-      ),
-    ),
-    'user' => array(
-      'values' => array(
-        'anonymous user' => 'anonymous user',
-      ),
-    ),
-  );
-  $context->reactions = array(
-    'block' => array(
-      'blocks' => array(
-        'tfk_atw-atw-destination-navigation' => array(
-          'module' => 'tfk_atw',
-          'delta' => 'atw-destination-navigation',
-          'region' => 'sidebar_first',
-          'weight' => '-46',
-        ),
-      ),
-    ),
-  );
-  $context->condition_mode = 1;
-
-  // Translatables
-  // Included for use with string extractors like potx.
-  t('atw');
-  $export['anonymous_destination_navigation'] = $context;
-
-  $context = new stdClass;
-  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
-  $context->api_version = 3;
-  $context->name = 'destination_navigation';
-  $context->description = '';
-  $context->tag = 'atw';
-  $context->conditions = array(
-    'path' => array(
-      'values' => array(
-        'around-the-world/*' => 'around-the-world/*',
-      ),
-    ),
-    'user' => array(
-      'values' => array(
-        'authenticated user' => 'authenticated user',
-      ),
-    ),
-  );
-  $context->reactions = array(
-    'block' => array(
-      'blocks' => array(
-        'tfk_atw-atw-destination-navigation' => array(
-          'module' => 'tfk_atw',
-          'delta' => 'atw-destination-navigation',
-          'region' => 'sidebar_first',
-          'weight' => '-46',
-        ),
-        'tfk_atw-atw-destination-related' => array(
-          'module' => 'tfk_atw',
-          'delta' => 'atw-destination-related',
-          'region' => 'sidebar_first',
-          'weight' => '-10',
-        ),
-      ),
-    ),
-  );
-  $context->condition_mode = 1;
-
-  // Translatables
-  // Included for use with string extractors like potx.
-  t('atw');
-  $export['destination_navigation'] = $context;
 
   return $export;
 }
