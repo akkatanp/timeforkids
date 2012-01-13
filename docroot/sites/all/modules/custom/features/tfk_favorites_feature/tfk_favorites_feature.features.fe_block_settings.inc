@@ -5,7 +5,7 @@
  */
 
 /**
- * Implementation of hook_default_fe_block_settings().
+ * Implements hook_default_fe_block_settings().
  */
 function tfk_favorites_feature_default_fe_block_settings() {
   $export = array();
