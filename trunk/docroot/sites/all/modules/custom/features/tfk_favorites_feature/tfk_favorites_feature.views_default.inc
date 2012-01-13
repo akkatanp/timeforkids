@@ -5,7 +5,7 @@
  */
 
 /**
- * Implementation of hook_views_default_views().
+ * Implements hook_views_default_views().
  */
 function tfk_favorites_feature_views_default_views() {
   $export = array();
@@ -416,7 +416,7 @@ function tfk_favorites_feature_views_default_views() {
   $handler->display->display_options['fields']['field_additional_content']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_additional_content']['delta_reversed'] = 0;
   $handler->display->display_options['fields']['field_additional_content']['field_api_classes'] = 0;
-  /* Field: Content: Thumbnail */
+  /* Field: Content: Large Square Image */
   $handler->display->display_options['fields']['field_video_thumbnail']['id'] = 'field_video_thumbnail';
   $handler->display->display_options['fields']['field_video_thumbnail']['table'] = 'field_data_field_video_thumbnail';
   $handler->display->display_options['fields']['field_video_thumbnail']['field'] = 'field_video_thumbnail';
