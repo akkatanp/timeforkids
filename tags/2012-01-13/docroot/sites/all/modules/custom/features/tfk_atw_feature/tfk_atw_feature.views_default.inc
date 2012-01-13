@@ -5,7 +5,7 @@
  */
 
 /**
- * Implementation of hook_views_default_views().
+ * Implements hook_views_default_views().
  */
 function tfk_atw_feature_views_default_views() {
   $export = array();
@@ -100,7 +100,9 @@ function tfk_atw_feature_views_default_views() {
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['access']['type'] = 'perm';
-  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['cache']['type'] = 'time';
+  $handler->display->display_options['cache']['results_lifespan'] = '1800';
+  $handler->display->display_options['cache']['output_lifespan'] = '1800';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['query_comment'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
@@ -177,6 +179,7 @@ function tfk_atw_feature_views_default_views() {
 
   /* Display: Block */
   $handler = $view->new_display('block', 'Block', 'atw_nodeblock');
+  $handler->display->display_options['block_caching'] = '1';
   $export['atw_homepage_nodeblock'] = $view;
 
   $view = new view;
@@ -192,7 +195,9 @@ function tfk_atw_feature_views_default_views() {
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['access']['type'] = 'perm';
-  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['cache']['type'] = 'time';
+  $handler->display->display_options['cache']['results_lifespan'] = '300';
+  $handler->display->display_options['cache']['output_lifespan'] = '300';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['query_comment'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
@@ -242,29 +247,6 @@ function tfk_atw_feature_views_default_views() {
     'image_link' => '',
   );
   $handler->display->display_options['fields']['field_image']['field_api_classes'] = 0;
-  /* Field: Content: Tout Image Credit */
-  $handler->display->display_options['fields']['field_atw_tout_credit']['id'] = 'field_atw_tout_credit';
-  $handler->display->display_options['fields']['field_atw_tout_credit']['table'] = 'field_data_field_atw_tout_credit';
-  $handler->display->display_options['fields']['field_atw_tout_credit']['field'] = 'field_atw_tout_credit';
-  $handler->display->display_options['fields']['field_atw_tout_credit']['label'] = '';
-  $handler->display->display_options['fields']['field_atw_tout_credit']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['field_atw_tout_credit']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['field_atw_tout_credit']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['field_atw_tout_credit']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['field_atw_tout_credit']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_atw_tout_credit']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['field_atw_tout_credit']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['field_atw_tout_credit']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['field_atw_tout_credit']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['field_atw_tout_credit']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_atw_tout_credit']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['field_atw_tout_credit']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['field_atw_tout_credit']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_atw_tout_credit']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['field_atw_tout_credit']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['field_atw_tout_credit']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['field_atw_tout_credit']['hide_alter_empty'] = 0;
-  $handler->display->display_options['fields']['field_atw_tout_credit']['field_api_classes'] = 0;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -281,7 +263,7 @@ function tfk_atw_feature_views_default_views() {
   $handler->display->display_options['fields']['title']['hide_empty'] = 0;
   $handler->display->display_options['fields']['title']['empty_zero'] = 0;
   $handler->display->display_options['fields']['title']['link_to_node'] = 1;
-  /* Field: Content: Description */
+  /* Field: Content: Deck */
   $handler->display->display_options['fields']['field_description']['id'] = 'field_description';
   $handler->display->display_options['fields']['field_description']['table'] = 'field_data_field_description';
   $handler->display->display_options['fields']['field_description']['field'] = 'field_description';
@@ -354,6 +336,7 @@ function tfk_atw_feature_views_default_views() {
 
   /* Display: ATW Page Destination Block */
   $handler = $view->new_display('block', 'ATW Page Destination Block', 'block_1');
+  $handler->display->display_options['block_caching'] = '1';
   $export['atw_page_featured_destination'] = $view;
 
   $view = new view;
@@ -405,21 +388,54 @@ function tfk_atw_feature_views_default_views() {
     'themes' => 0,
     'worksheet_types' => 0,
   );
+  /* Field: Content: Official Flag */
+  $handler->display->display_options['fields']['field_country_code']['id'] = 'field_country_code';
+  $handler->display->display_options['fields']['field_country_code']['table'] = 'field_data_field_country_code';
+  $handler->display->display_options['fields']['field_country_code']['field'] = 'field_country_code';
+  $handler->display->display_options['fields']['field_country_code']['label'] = '';
+  $handler->display->display_options['fields']['field_country_code']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_country_code']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_country_code']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_country_code']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_country_code']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_country_code']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_country_code']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_country_code']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_country_code']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_country_code']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_country_code']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_country_code']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_country_code']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_country_code']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_country_code']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_country_code']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_country_code']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_country_code']['hide_alter_empty'] = 0;
+  $handler->display->display_options['fields']['field_country_code']['type'] = 'list_key';
+  $handler->display->display_options['fields']['field_country_code']['field_api_classes'] = 0;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
-  $handler->display->display_options['fields']['title']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['alter_text'] = 1;
+  $handler->display->display_options['fields']['title']['alter']['text'] = '<img src="/sites/all/themes/tfk/images/flags-small/flag_[field_country_code].png"/>&nbsp;[title]';
   $handler->display->display_options['fields']['title']['alter']['make_link'] = 0;
   $handler->display->display_options['fields']['title']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = 0;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = 0;
   $handler->display->display_options['fields']['title']['alter']['strip_tags'] = 0;
   $handler->display->display_options['fields']['title']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['title']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_default_classes'] = 1;
   $handler->display->display_options['fields']['title']['hide_empty'] = 0;
   $handler->display->display_options['fields']['title']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['title']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['title']['link_to_node'] = 1;
   /* Field: Taxonomy term: Name */
   $handler->display->display_options['fields']['name']['id'] = 'name';
@@ -472,6 +488,7 @@ function tfk_atw_feature_views_default_views() {
 
   /* Display: Block */
   $handler = $view->new_display('block', 'Block', 'block');
+  $handler->display->display_options['block_caching'] = '8';
   $export['atw_page_list_of_destinations'] = $view;
 
   $view = new view;
@@ -488,7 +505,9 @@ function tfk_atw_feature_views_default_views() {
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Destination Navigation Links';
   $handler->display->display_options['access']['type'] = 'perm';
-  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['cache']['type'] = 'time';
+  $handler->display->display_options['cache']['results_lifespan'] = '300';
+  $handler->display->display_options['cache']['output_lifespan'] = '300';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['query_comment'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
@@ -534,6 +553,7 @@ function tfk_atw_feature_views_default_views() {
 
   /* Display: Block */
   $handler = $view->new_display('block', 'Block', 'block');
+  $handler->display->display_options['block_caching'] = '1';
   $export['destination_navigation_links'] = $view;
 
   return $export;
