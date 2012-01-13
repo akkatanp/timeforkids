@@ -88,7 +88,7 @@
 
   <?php if(isset($title_prefix)): ?><?php print render($title_prefix); ?><?php endif; ?>
 
-  <?php if(isset($title)): ?></h2><?php print $title ?></h2><?php endif; ?>
+  <h2<?php print $title_attributes; ?>><?php print $title; ?></h2>
 
   <?php if (!$page && $title): ?>
     <!--<h2<?php //print $title_attributes; ?>><a href="<?php //print $node_url; ?>"><?php //print $title; ?></a></h2>-->
