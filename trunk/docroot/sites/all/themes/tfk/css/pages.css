@@ -752,7 +752,12 @@ ul.links li {
 /*	height: 270px; */
 }
 
-#block-views-homepage-top-story-block-1 .attachment .view-homepage-top-story {
+#block-views-homepage-top-story-block-1 .attachment .view-homepage-top-story,
+#block-views-homepage-top-story-block-2 .attachment .view-homepage-top-story,
+#block-views-homepage-top-story-block-3 .attachment .view-homepage-top-story,
+#block-views-homepage-top-story-block-4 .attachment .view-homepage-top-story,
+#block-views-homepage-top-story-block-5 .attachment .view-homepage-top-story,
+#block-views-homepage-top-story-block-6 .attachment .view-homepage-top-story {
 	border: 0 none;
 	height: inherit;
 	left: 287px;
