@@ -95,7 +95,7 @@
   <?php endif; ?>
   <?php if(isset($title_suffix)): ?><?php print render($title_suffix); ?><?php endif; ?>
 
-  <?php if (isset($unpublished)): ?>
+  <?php if (isset($unpublished) && $unpublished): ?>
     <div class="unpublished"><?php print t('Unpublished'); ?></div>
   <?php endif; ?>
 
