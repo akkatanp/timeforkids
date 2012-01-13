@@ -42,11 +42,11 @@ function tfk_flags_flag_default_flags() {
     'show_on_form' => 1,
     'access_author' => '',
     'i18n' => 0,
-    'api_version' => 2,
     'module' => 'tfk_flags',
     'locked' => array(
       0 => 'name',
     ),
+    'api_version' => 2,
   );
   // Exported flag: "Homepage Main Tout".
   $flags['homepage_top_story'] = array(
@@ -81,11 +81,11 @@ function tfk_flags_flag_default_flags() {
     'show_on_form' => 1,
     'access_author' => '',
     'i18n' => 0,
-    'api_version' => 2,
     'module' => 'tfk_flags',
     'locked' => array(
       0 => 'name',
     ),
+    'api_version' => 2,
   );
   // Exported flag: "Secondary Touts in Kid Reporter".
   $flags['kid_reporter_news_block'] = array(
@@ -116,11 +116,11 @@ function tfk_flags_flag_default_flags() {
     'show_on_form' => 1,
     'access_author' => '',
     'i18n' => 0,
-    'api_version' => 2,
     'module' => 'tfk_flags',
     'locked' => array(
       0 => 'name',
     ),
+    'api_version' => 2,
   );
   // Exported flag: "Top Story in Kid Reporters".
   $flags['kid_reporter_top_story'] = array(
@@ -151,11 +151,11 @@ function tfk_flags_flag_default_flags() {
     'show_on_form' => 1,
     'access_author' => '',
     'i18n' => 0,
-    'api_version' => 2,
     'module' => 'tfk_flags',
     'locked' => array(
       0 => 'name',
     ),
+    'api_version' => 2,
   );
   // Exported flag: "Secondary Touts under News".
   $flags['news_news_block'] = array(
@@ -188,11 +188,11 @@ function tfk_flags_flag_default_flags() {
     'show_on_form' => 1,
     'access_author' => '',
     'i18n' => 0,
-    'api_version' => 2,
     'module' => 'tfk_flags',
     'locked' => array(
       0 => 'name',
     ),
+    'api_version' => 2,
   );
   // Exported flag: "News Main Tout".
   $flags['news_top_story'] = array(
@@ -225,11 +225,11 @@ function tfk_flags_flag_default_flags() {
     'show_on_form' => 1,
     'access_author' => '',
     'i18n' => 0,
-    'api_version' => 2,
     'module' => 'tfk_flags',
     'locked' => array(
       0 => 'name',
     ),
+    'api_version' => 2,
   );
   // Exported flag: "Spanish translation".
   $flags['spanish'] = array(
