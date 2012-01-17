@@ -77,20 +77,10 @@ function tfk_helper_preprocess_page(&$variables) {
   }
 }
 
-/**
- * Called at the very beginning of views processing, before anything is done.
- */
-/*function tfk_helper_views_pre_view(&$view, &$display_id, &$args) {
-  // Share variables amongst various Views hooks.
-  $shared_vars = &drupal_static('views_common');
-  if(is_null($shared_vars)) {
-    $shared_vars = array();
-  }
-}*/
-
 // For future reference...
 // function tfk_helper_views_pre_execute(&$view) {}
 // function tfk_helper_views_pre_build(&$view) {}
+// tfk_helper_views_pre_view(&$view, &$display_id, &$args)
 
 /**
  * This hook is called right before the render process.
@@ -99,11 +89,9 @@ function tfk_helper_preprocess_page(&$variables) {
  * for handlers, so all data should be available.
  */
 function tfk_helper_views_pre_render(&$view) {
-  // After block_1 has executed, get the content type of result, if == slideshow,
-  // create new thumbnails attachment from scratch and attach it.
   if($view->name == 'homepage_top_story') {
-    if(isset($view->result[0]) && $view->current_display != 'attachment_1' && $view->result[0]->_field_data['nid']['entity']->type == 'slideshow') {
-      $view->attachment_after = views_embed_view('homepage_top_story', 'attachment_1', $view->result[0]->nid);
+    if(isset($view->result[0]) && !$view->is_attachment && $view->result[0]->_field_data['nid']['entity']->type != 'slideshow') {
+      $view->attachment_after = FALSE;
     }
   }
 }
