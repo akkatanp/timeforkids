@@ -470,33 +470,3 @@ function manualMetaTags($path) {
 
   }
 }
-
-/**
- * Preprocess homepage_top_story View.
- *
- * Supress the slideshow thumbnail attachment display when main tout is not a
- * slideshow.
- */
-function tfk_preprocess_views_view(&$variables, $hook) {
-  // Attachment.
-  if($variables['name'] == 'homepage_top_story' && $variables['display_id'] == 'attachment_1') {
-    $vars = &drupal_static(__FUNCTION__);
-    // Not a Slideshow.
-    if($variables['rows'] == 0) {
-      if(!isset($vars)) {
-        $vars = array();
-        $vars['supress_attachment'] = TRUE;
-      }
-    // Slideshow, show attachment.
-    } else {
-      $vars['supress_attachment'] = FALSE;
-    }
-  }
-  // Anonymous block display.
-  if($variables['name'] == 'homepage_top_story' && $variables['display_id'] == 'block_2') {
-    $vars = &drupal_static(__FUNCTION__);
-    if($vars['supress_attachment']) {
-      $variables['attachment_after'] = FALSE;
-    }
-  }
-}
