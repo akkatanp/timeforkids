@@ -47,7 +47,7 @@
     <?php endif; ?>
 <?php endforeach; ?>
 
-<?php if(isset($fields['field_mini_lessons']) && isset($fields['field_related_articles']) && !empty($fields['field_mini_lessons']->content) || !empty($fields['field_related_articles']->content) || !empty($fields['field_additional_content']->content)):?>
+<?php if(array_key_exists($view->composite_key, $local_svars) && $local_svars[$view->composite_key]['show_additional_content']): ?>
   <div class="related-content-wrap">
     <div class="addit-content">Additional Content</div>
     <?php if(isset($fields['field_mini_lessons'])): ?>

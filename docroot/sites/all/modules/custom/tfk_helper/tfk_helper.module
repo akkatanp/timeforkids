@@ -1,7 +1,30 @@
 <?php
 
+/**
+ * Key that holds variables for html preprocessor hook.
+ * @var string
+ */
+define('TFK_PREPROCESS_HTML', 'hook_preprocess_html');
+
+/**
+ * Name of the primary tout View.
+ * @var string
+ */
+define('TFK_PRIMARY_TOUT', 'homepage_top_story');
+
+/**
+ * Name of the secondary tout View.
+ * @var string
+ */
+define('TFK_SECONDARY_TOUT', 'homepage_news_block');
+
+
 function tfk_helper_init() {
-  
+  // Initialize static shared variables.
+  $shared_vars = &drupal_static(TFK_PREPROCESS_HTML);
+  if(is_null($shared_vars)) {
+    $shared_vars = array();
+  }
 }
 
 function tfk_helper_node_view() {
@@ -94,6 +117,86 @@ function tfk_helper_views_pre_render(&$view) {
       $view->attachment_after = FALSE;
     }
   }
+  
+  // Init local static vars for views_view_fields.
+  $local_svars = &drupal_static('views_view_fields');
+  if(is_null($local_svars)) {
+    $local_svars = array();
+  }
+  
+  // Global composite key.
+  $view->composite_key = $view->name. '_'. $view->current_display;
+}
+
+function tfk_helper_preprocess_html(&$variables, $hook) {
+  $shared_vars = &drupal_static(TFK_PREPROCESS_HTML);
+  
+  // Path.
+  $menu_item = menu_get_item();
+  $path = $menu_item['path'];
+  
+  // Since the class names aren't very dynamic.
+  $class_map = array(
+    'node' => array(
+      1 => 'homepage-top-part-empty',
+      2 => 'homepage-bottom-part-empty',
+    ),
+    'news' => array(
+     # 1 => 'news-top-part-empty',
+     # 2 => 'news-bottom-part-empty',
+      1 => 'homepage-top-part-empty',
+      2 => 'homepage-bottom-part-empty',
+    ),
+    'kid-reporters' => array(
+     # 1 => 'kidreps-top-part-empty',
+     # 2 => 'kidreps-bottom-part-empty',
+      1 => 'homepage-top-part-empty',
+      2 => 'homepage-bottom-part-empty',
+    ),
+  );
+  
+  // Row-view mapping.
+  $block_rows = array(
+    'node' => array(
+      1 => array('homepage_top_story', 'homepage_minisite'),
+      2 => array('homepage_news_block', 'homepage_destination'),
+    ),
+    'default' => array(
+      1 => array('homepage_top_story',),
+      2 => array('homepage_news_block',),
+    ),
+  );
+  
+  // Additional content.
+  $additional_content = array();
+  
+  $path_key = (!array_key_exists($path, $block_rows)) ? 'default': $path;
+  
+  // Check each row.
+  foreach($block_rows[$path_key] as $row_key => $block_row) {
+    // Check each block.
+    foreach($block_row as $block) {
+      // If Views marked this block as having additional content, mark the
+      // whole row as having additional content and break the inner loop.
+      if(array_key_exists($block, $shared_vars) && $shared_vars[$block]['has_additional_content']) {
+        $additional_content[$row_key] = TRUE; // Has additonal content.
+        break;
+      } else {
+        // Assume that row does not have additional content.
+        $additional_content[$row_key] = FALSE;
+      }
+    }
+  }
+  
+  // Mark in the body tag which rows don't have additional content.
+  foreach($additional_content as $_row_key => $_block_row) {
+    // If this row DOES NOT have additional content...
+    if(!$_block_row) {
+      // Add class to the body tag.
+      $variables['classes_array'][] = $class_map[$path][$_row_key];
+    }
+  }
+  
 }
 
 /**
@@ -106,7 +209,13 @@ function tfk_helper_views_pre_render(&$view) {
  */
 function tfk_helper_preprocess_views_view_fields(&$variables, $hook) {
   $view = $variables['view'];
-  if($view->name == 'homepage_top_story' && $view->current_display == 'block_1') {
+  $shared_vars = &drupal_static(TFK_PREPROCESS_HTML);
+  
+  // Load local static vars;
+  $local_svars = &drupal_static($hook);
+  
+  // Primary Tout block.
+  if($view->name == 'homepage_top_story' && !$view->is_attachment) {
     $content_type = $variables['row']->_field_data['nid']['entity']->type;
     
     if($content_type == 'slideshow') {
@@ -116,6 +225,10 @@ function tfk_helper_preprocess_views_view_fields(&$variables, $hook) {
     if($content_type == 'video') {
       $link = l('View Full Video', 'node/'. $variables['row']->nid);
       $variables['fields']['title_2']->content = '<span class="field-content">'. $link. '</span>';
+    }
+    
+    if(array_key_exists('field_additional_content', $variables['fields']) || array_key_exists('field_related_articles', $variables['fields'])) {
+     # $shared_vars[$view->name]['additional_content'] = TRUE;
     }
   }
   
@@ -138,6 +251,33 @@ function tfk_helper_preprocess_views_view_fields(&$variables, $hook) {
       $variables['fields']['title_2']->content = '<span class="field-content">'. $link. '</span>';
     }
   }
+  
+  // Additional content Views.
+  $ac_views = array('homepage_top_story', 'homepage_news_block');
+  if(array_search($view->name, $ac_views) !== FALSE && !$view->is_attachment) {
+    
+    // Don't show additional content for this View until told otherwise.
+    // (using composite key)
+    #$composite_key = $view->name.$view->current_display;
+    if(is_null($local_svars[$view->composite_key])) {
+       $local_svars[$view->composite_key]['show_additional_content'] = FALSE;
+    }
+    
+    // Detect additional content. Generic conditional applies to multiple Views.
+    if(array_key_exists('field_additional_content', $variables['fields']) || array_key_exists('field_related_articles', $variables['fields'])) {
+      // Global static var, used for adding classes to body.
+      $shared_vars[$view->name]['has_additional_content'] = TRUE;
+      // Used for this hook/template only.
+      $local_svars[$view->composite_key]['show_additional_content'] = TRUE;
+      
+      // And give the template a reference (not a copy).
+      if(is_null($variables['local_svars'])) {
+        $variables['local_svars'] = &$local_svars;
+      }
+    }
+  }
+  
+  // if(isset($fields['field_mini_lessons']) && isset($fields['field_related_articles']) && !empty($fields['field_mini_lessons']->content) || !empty($fields['field_related_articles']->content) || !empty($fields['field_additional_content']->content))
   
 }
 
