@@ -1,0 +1,71 @@
+<?php
+
+/**
+ * Implementation of hook_install.
+ *
+ * @see TimeIncSolrBaseQuery.inc
+ */
+function tfk_search_enable() {
+  // We tell Solr to use our extended class.
+  variable_set('apachesolr_query_class', 'TimeIncSolrBaseQuery');
+  drupal_set_message('apachesolr_query_class variable was set to TimeIncSolrBaseQuery');
+}
+
+function tfk_search_disable() {
+  // Reset the base class to it's default.
+  variable_set('apachesolr_query_class', 'SolrBaseQuery');
+  drupal_set_message('apachesolr_query_class variable was set to the default SolrBaseQuery');
+}
+
+function tfk_search_install(){
+  drupal_install_schema('tfk_search_saved_searches');
+}
+
+
+/**
+ * Implementation of hook_schema().
+ */
+function tfk_search_schema() {
+  $schema = array();
+  $schema['tfk_search_saved_searches'] = array(
+    'description' => 'TODO: please describe this table!',
+    'fields' => array(
+      'saved_search_id' => array(
+        'description' => 'TODO: please describe this field!',
+        'type' => 'serial',
+        'not null' => TRUE,
+      ),
+      'search_name' => array(
+        'description' => 'TODO: please describe this field!',
+        'type' => 'varchar',
+        'length' => '255',
+        'not null' => TRUE,
+      ),
+      'search_filters' => array(
+        'description' => 'TODO: please describe this field!',
+        'type' => 'text',
+        'not null' => TRUE,
+      ),
+      'saved_by_uid' => array(
+        'description' => 'TODO: please describe this field!',
+        'type' => 'int',
+        'not null' => TRUE,
+      ),
+    ),
+    'primary key' => array('saved_search_id'),
+  );
+  return $schema;
+}
+
+/**
+ * Modify apachesolr_operator variable.
+ */
+function tfk_search_update_7000() {
+  /**
+   * @see apachesolr_get_facet_definitions
+   */
+  
+  $operator_settings = variable_get('apachesolr_operator', array());
+  $operator_settings['tfk_search']['subqueries'] = 'OR';
+  variable_set('apachesolr_operator', $operator_settings);
+}
