@@ -833,12 +833,12 @@ function tfk_homepage_views_default_views() {
   /* Display: Homepage Secondary Touts */
   $handler = $view->new_display('block', 'Homepage Secondary Touts', 'block_1');
   $handler->display->display_options['defaults']['relationships'] = FALSE;
-  /* Relationship: Flags: news_news_block */
+  /* Relationship: Flags: homepage_news_block */
   $handler->display->display_options['relationships']['flag_content_rel']['id'] = 'flag_content_rel';
   $handler->display->display_options['relationships']['flag_content_rel']['table'] = 'node';
   $handler->display->display_options['relationships']['flag_content_rel']['field'] = 'flag_content_rel';
   $handler->display->display_options['relationships']['flag_content_rel']['label'] = 'homepage_newsblock';
-  $handler->display->display_options['relationships']['flag_content_rel']['flag'] = 'news_news_block';
+  $handler->display->display_options['relationships']['flag_content_rel']['flag'] = 'homepage_news_block';
   $handler->display->display_options['relationships']['flag_content_rel']['user_scope'] = 'any';
   /* Relationship: Content: Related Article (field_related_articles) */
   $handler->display->display_options['relationships']['field_related_articles_nid']['id'] = 'field_related_articles_nid';
@@ -925,12 +925,12 @@ function tfk_homepage_views_default_views() {
   /* Display: Homepage Secondary Touts Anon */
   $handler = $view->new_display('block', 'Homepage Secondary Touts Anon', 'block_2');
   $handler->display->display_options['defaults']['relationships'] = FALSE;
-  /* Relationship: Flags: news_news_block */
+  /* Relationship: Flags: homepage_news_block */
   $handler->display->display_options['relationships']['flag_content_rel']['id'] = 'flag_content_rel';
   $handler->display->display_options['relationships']['flag_content_rel']['table'] = 'node';
   $handler->display->display_options['relationships']['flag_content_rel']['field'] = 'flag_content_rel';
   $handler->display->display_options['relationships']['flag_content_rel']['label'] = 'homepage_newsblock';
-  $handler->display->display_options['relationships']['flag_content_rel']['flag'] = 'news_news_block';
+  $handler->display->display_options['relationships']['flag_content_rel']['flag'] = 'homepage_news_block';
   $handler->display->display_options['relationships']['flag_content_rel']['user_scope'] = 'any';
   /* Relationship: Content: Related Article (field_related_articles) */
   $handler->display->display_options['relationships']['field_related_articles_nid']['id'] = 'field_related_articles_nid';
