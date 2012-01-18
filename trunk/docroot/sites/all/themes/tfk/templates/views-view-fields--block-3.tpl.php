@@ -37,7 +37,7 @@ if($row->node_field_data_field_articles_type == 'slideshow'){
 
     <?php foreach ($fields as $id => $field): ?>
 
-        <?php if($id != 'field_related_articles' && $id != 'field_related_articles_1'):?>
+        <?php if($id != 'field_related_articles' && $id != 'field_related_articles_1' && $id != 'field_additional_content'):?>
           <?php if (!empty($field->separator)): ?>
             <?php print $field->separator; ?>
           <?php endif; ?>
@@ -49,16 +49,23 @@ if($row->node_field_data_field_articles_type == 'slideshow'){
         <?php endif; ?>
     <?php endforeach; ?>
 
-
-    <?php if(isset($fields['field_related_articles'])):?>
-        <?php if(strlen($fields['field_related_articles']->content) != 0):?>
-            <div class="related-content-wrap">
-                <div class="addit-content">Additional Content</div>
-                <?php if($fields['field_related_articles']): ?>
-                   <div class="addit-mini-lessons"><?php print $fields['field_related_articles']->content;?></div>
-                <?php endif; ?>
-
-            </div>
+	  <?php if(array_key_exists($view->composite_key, $local_svars) && $local_svars[$view->composite_key]['show_additional_content']): ?>
+        <?php if(isset($fields['field_related_articles'])): ?>
+  	      <?php if(strlen($fields['field_related_articles']->content) != 0):?>
+              <div class="related-content-wrap">
+                  <div class="addit-content">Additional Content</div>
+                  <?php if($fields['field_related_articles']): ?>
+                     <div class="addit-mini-lessons"><?php print $fields['field_related_articles']->content; ?></div>
+                  <?php endif; ?>
+              </div>
+          <?php endif;?>
+        <?php elseif(isset($fields['field_additional_content'])): ?>
+              <div class="related-content-wrap">
+                  <div class="addit-content">Additional Content</div>
+                  <?php if($fields['field_additional_content']): ?>
+                     <div class="addit-mini-lessons"><?php print $fields['field_additional_content']->content; ?></div>
+                  <?php endif; ?>
+              </div>
         <?php endif;?>
     <?php endif;?>
 
