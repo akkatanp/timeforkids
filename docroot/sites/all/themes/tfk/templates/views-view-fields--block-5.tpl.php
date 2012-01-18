@@ -23,15 +23,37 @@
  * @ingroup views_templates
  */
 ?>
-<?php //if(strlen($fields['field_worksheet_pdf']->content) > 0 || strlen($fields['title']->content) > 0):?>
-<?php foreach ($fields as $id => $field): ?>
-  <?php if (!empty($field->separator)): ?>
-    <?php print $field->separator; ?>
-  <?php endif; ?>
+    <?php foreach ($fields as $id => $field): ?>
 
-  <?php print $field->wrapper_prefix; ?>
-    <?php print $field->label_html; ?>
-    <?php print $field->content; ?>
-  <?php print $field->wrapper_suffix; ?>
-<?php endforeach; ?>
-<?php //endif; ?>
+        <?php if($id != 'field_related_articles' && $id != 'field_related_articles_1' && $id != 'field_additional_content'):?>
+          <?php if (!empty($field->separator)): ?>
+            <?php print $field->separator; ?>
+          <?php endif; ?>
+
+          <?php print $field->wrapper_prefix; ?>
+            <?php print $field->label_html; ?>
+            <?php print $field->content; ?>
+          <?php print $field->wrapper_suffix; ?>
+        <?php endif; ?>
+    <?php endforeach; ?>
+
+	  <?php if(array_key_exists($view->composite_key, $local_svars) && $local_svars[$view->composite_key]['show_additional_content']): ?>
+        <?php if(isset($fields['field_related_articles'])): ?>
+  	      <?php if(strlen($fields['field_related_articles']->content) != 0):?>
+              <div class="related-content-wrap">
+                  <div class="addit-content">Additional Content</div>
+                  <?php if($fields['field_related_articles']): ?>
+                     <div class="addit-mini-lessons"><?php print $fields['field_related_articles']->content; ?></div>
+                  <?php endif; ?>
+              </div>
+          <?php endif;?>
+        <?php elseif(isset($fields['field_additional_content'])): ?>
+              <div class="related-content-wrap">
+                  <div class="addit-content">Additional Content</div>
+                  <?php if($fields['field_additional_content']): ?>
+                     <div class="addit-mini-lessons"><?php print $fields['field_additional_content']->content; ?></div>
+                  <?php endif; ?>
+              </div>
+        <?php endif;?>
+    <?php endif;?>
+    
