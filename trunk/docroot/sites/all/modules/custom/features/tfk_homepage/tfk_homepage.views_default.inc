@@ -478,6 +478,31 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['relationships']['field_slideshow_images_nid']['ui_name'] = 'Slideshow image';
   $handler->display->display_options['relationships']['field_slideshow_images_nid']['required'] = 0;
   $handler->display->display_options['relationships']['field_slideshow_images_nid']['delta'] = '0';
+  /* Field: Content: Type */
+  $handler->display->display_options['fields']['type']['id'] = 'type';
+  $handler->display->display_options['fields']['type']['table'] = 'node';
+  $handler->display->display_options['fields']['type']['field'] = 'type';
+  $handler->display->display_options['fields']['type']['label'] = '';
+  $handler->display->display_options['fields']['type']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['type']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['type']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['type']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['type']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['type']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['type']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['type']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['type']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['type']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['type']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['type']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['type']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['type']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['type']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['type']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['type']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['type']['hide_alter_empty'] = 0;
+  $handler->display->display_options['fields']['type']['link_to_node'] = 0;
+  $handler->display->display_options['fields']['type']['machine_name'] = 0;
   /* Field: Taxonomy term: Name */
   $handler->display->display_options['fields']['name']['id'] = 'name';
   $handler->display->display_options['fields']['name']['table'] = 'taxonomy_term_data';
@@ -508,7 +533,9 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['fields']['field_lrg_rect_image']['table'] = 'field_data_field_lrg_rect_image';
   $handler->display->display_options['fields']['field_lrg_rect_image']['field'] = 'field_lrg_rect_image';
   $handler->display->display_options['fields']['field_lrg_rect_image']['label'] = '';
-  $handler->display->display_options['fields']['field_lrg_rect_image']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_lrg_rect_image']['alter']['alter_text'] = 1;
+  $handler->display->display_options['fields']['field_lrg_rect_image']['alter']['text'] = '[field_lrg_rect_image]
+<div class="icon"></div>';
   $handler->display->display_options['fields']['field_lrg_rect_image']['alter']['make_link'] = 0;
   $handler->display->display_options['fields']['field_lrg_rect_image']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_lrg_rect_image']['alter']['external'] = 0;
@@ -520,6 +547,7 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['fields']['field_lrg_rect_image']['alter']['strip_tags'] = 0;
   $handler->display->display_options['fields']['field_lrg_rect_image']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_lrg_rect_image']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_lrg_rect_image']['element_class'] = '[type]';
   $handler->display->display_options['fields']['field_lrg_rect_image']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_lrg_rect_image']['element_default_classes'] = 1;
   $handler->display->display_options['fields']['field_lrg_rect_image']['hide_empty'] = 0;
