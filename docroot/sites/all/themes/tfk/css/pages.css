@@ -3126,12 +3126,17 @@ body.page-404page #first-column .region-sidebar-first .section{
 /*
  * Channel touts.
  */
-.view-homepage-top-story .icon {
+.view-homepage-top-story .icon,
+.view-homepage-news-block .icon {
   height: 24px;
   margin: -34px 0 0 225px;
   position: relative;
   width: 32px;
   z-index: 2;
+}
+
+.view-homepage-news-block .icon {
+  margin: -34px 0 0 190px;
 }
 
 /* Dustin Brewer's Safari Hack */
@@ -3142,11 +3147,13 @@ body.section-photos-video div#tfk-search-photos-video-featured .icon,
 }
 }
 
-.view-homepage-top-story .Slideshow .icon {
+.view-homepage-top-story .Slideshow .icon,
+.view-homepage-news-block .Slideshow .icon {
   background: url(../images/photo-camera-icon.png) no-repeat;
 }
 
-.view-homepage-top-story .Video .icon {
+.view-homepage-top-story .Video .icon,
+.view-homepage-news-block .Video .icon {
   background: url(../images/video-camera-icon.png) no-repeat;
 }
 
