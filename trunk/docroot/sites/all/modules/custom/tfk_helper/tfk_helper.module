@@ -243,6 +243,9 @@ function tfk_helper_preprocess_views_view_fields(&$variables, $hook) {
   if($view->name == 'homepage_news_block' && !$view->is_attachment) {
     $content_type = $variables['row']->_field_data['nid']['entity']->type;
     
+    // Use only one template for all Secondary Tout displays (all channels, anon + non-anon).
+    $variables['theme_hook_suggestion'] = 'views_view_fields__secondary_tout';
+    
     if($content_type == 'slideshow') {
       $link = l('View Photo Slide Show', 'node/'. $variables['row']->nid);
       $variables['fields']['title_2'] = new stdClass();
