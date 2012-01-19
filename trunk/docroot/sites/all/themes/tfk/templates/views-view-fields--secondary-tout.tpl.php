@@ -23,6 +23,13 @@
  * @ingroup views_templates
  */
 ?>
+<?php if($row->node_field_data_field_articles_type == 'slideshow'): ?>
+    <?php $slide_block = module_invoke('tfk_search', 'block_view','tfk_minisite_slideshow_featured'); ?>
+    <?php print render($slide_block['content']); ?>
+<?php elseif($row->node_field_data_field_articles_type == 'slideshow'): ?>
+    <?php  $slide_block = module_invoke('tfk_search', 'block_view','tfk_minisite_video_featured'); ?>
+    <?php print render($slide_block['content']); ?>
+<?php else: ?>
 
 <?php foreach ($fields as $id => $field): ?>
     <?php if(array_search($id, $add_cont_fields) === FALSE):?>
@@ -61,3 +68,4 @@
               </div>
         <?php endif;?>
 <?php endif;?>
+<?php endif; ?>
