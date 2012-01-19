@@ -19,13 +19,13 @@
  *   - $field->label_html: The full HTML of the label to use including
  *     configured element type.
  * - $row: The raw result object from the query, with all data it fetched.
- *
+ * HOMEPAGE SECONDARY TOUTS
  * @ingroup views_templates
  */
 
 ?>
 <?php foreach ($fields as $id => $field): ?>
-  <?php if($id != 'field_mini_lessons' && $id != 'field_related_articles' && $id != 'field_additional_content'):?>
+  <?php if(array_search($id, $add_cont_fields) === FALSE):?>
     <?php if (!empty($field->separator)): ?>
       <?php print $field->separator; ?>
     <?php endif; ?>
@@ -47,7 +47,7 @@
     <?php endif; ?>
 <?php endforeach; ?>
 
-<?php if(array_key_exists($view->composite_key, $local_svars) && $local_svars[$view->composite_key]['show_additional_content']): ?>
+<?php if($show_additional_content): ?>
   <div class="related-content-wrap">
     <div class="addit-content">Additional Content</div>
     <?php if(isset($fields['field_mini_lessons'])): ?>

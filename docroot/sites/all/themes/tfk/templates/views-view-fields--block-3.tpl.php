@@ -19,7 +19,7 @@
  *   - $field->label_html: The full HTML of the label to use including
  *     configured element type.
  * - $row: The raw result object from the query, with all data it fetched.
- *
+ * NEWS PRIMARY TOUT, SECONDARY TOUTS
  * @ingroup views_templates
  */
 
