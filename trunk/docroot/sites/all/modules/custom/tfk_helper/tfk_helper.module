@@ -115,6 +115,8 @@ function tfk_helper_views_pre_render(&$view) {
   if($view->name == 'homepage_top_story') {
     if(isset($view->result[0]) && !$view->is_attachment && $view->result[0]->_field_data['nid']['entity']->type != 'slideshow') {
       $view->attachment_after = FALSE;
+    } elseif(isset($view->result[0]) && !$view->is_attachment && $view->result[0]->_field_data['nid']['entity']->type == 'slideshow') {
+      #$view->attachment_after = views_embed_view('homepage_top_story', 'attachment_1', $view->result[0]->nid);
     }
   }
   
@@ -210,6 +212,8 @@ function tfk_helper_preprocess_html(&$variables, $hook) {
 function tfk_helper_preprocess_views_view_fields(&$variables, $hook) {
   $view = $variables['view'];
   $shared_vars = &drupal_static(TFK_PREPROCESS_HTML);
+  $variables['add_cont_fields'] = array();
+  $variables['show_additional_content'] = FALSE; // Don't show additional content for this View until told otherwise.
   
   // Load local static vars;
   $local_svars = &drupal_static($hook);
@@ -225,10 +229,6 @@ function tfk_helper_preprocess_views_view_fields(&$variables, $hook) {
     if($content_type == 'video') {
       $link = l('View Full Video', 'node/'. $variables['row']->nid);
       $variables['fields']['title_2']->content = '<span class="field-content">'. $link. '</span>';
-    }
-    
-    if(array_key_exists('field_additional_content', $variables['fields']) || array_key_exists('field_related_articles', $variables['fields'])) {
-     # $shared_vars[$view->name]['additional_content'] = TRUE;
     }
   }
   
@@ -256,29 +256,18 @@ function tfk_helper_preprocess_views_view_fields(&$variables, $hook) {
   $ac_views = array('homepage_top_story', 'homepage_news_block');
   if(array_search($view->name, $ac_views) !== FALSE && !$view->is_attachment) {
     
-    // Don't show additional content for this View until told otherwise.
-    // (using composite key)
-    #$composite_key = $view->name.$view->current_display;
-    if(is_null($local_svars[$view->composite_key])) {
-       $local_svars[$view->composite_key]['show_additional_content'] = FALSE;
-    }
-    
     // Detect additional content. Generic conditional applies to multiple Views.
-    if(array_key_exists('field_additional_content', $variables['fields']) || array_key_exists('field_related_articles', $variables['fields'])) {
+    $ac_keys = array('field_additional_content', 'field_related_articles');
+    $field_keys = array_keys($variables['fields']);
+    $match = array_intersect($ac_keys, $field_keys);
+    if(!empty($match)) {
       // Global static var, used for adding classes to body.
       $shared_vars[$view->name]['has_additional_content'] = TRUE;
-      // Used for this hook/template only.
-      $local_svars[$view->composite_key]['show_additional_content'] = TRUE;
-      
-      // And give the template a reference (not a copy).
-      if(is_null($variables['local_svars'])) {
-        $variables['local_svars'] = &$local_svars;
-      }
+      $variables['show_additional_content'] = TRUE;
+      // Simplifies conditionals on the .tpl
+      $variables['add_cont_fields'] = $ac_keys;
     }
   }
-  
-  // if(isset($fields['field_mini_lessons']) && isset($fields['field_related_articles']) && !empty($fields['field_mini_lessons']->content) || !empty($fields['field_related_articles']->content) || !empty($fields['field_additional_content']->content))
-  
 }
 
 /**
