@@ -220,6 +220,9 @@ function tfk_helper_preprocess_views_view_fields(&$variables, $hook) {
   
   // Primary Tout block.
   if($view->name == 'homepage_top_story' && !$view->is_attachment) {
+    // Use only one template for all Primary Tout displays (all channels, anon + non-anon).
+    $variables['theme_hook_suggestion'] = 'views_view_fields__primary_tout';
+    
     $content_type = $variables['row']->_field_data['nid']['entity']->type;
     
     if($content_type == 'slideshow') {
