@@ -176,21 +176,24 @@ body.front .region-footer {
  * Markup free clearing.
  *
  * @see http://perishablepress.com/press/2009/12/06/new-clearfix-hack
+ *
+ * Try out Nicolas Gallagher's hack instead.
  */
+
+/* For modern browsers */
+.clearfix:before,
 .clearfix:after {
-  content: ".";
-  display: block;
-  height: 0;
-  clear: both;
-  visibility: hidden;
+    content:"";
+    display:table;
 }
-/* IE6 */
-* html .clearfix {
-  height: 1%;
+
+.clearfix:after {
+    clear:both;
 }
-/* IE7 */
-*:first-child + html .clearfix {
-  min-height: 1%;
+
+/* For IE 6/7 (trigger hasLayout) */
+.clearfix {
+    zoom:1;
 }
 
 /*
