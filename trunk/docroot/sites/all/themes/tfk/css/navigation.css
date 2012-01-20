@@ -1171,17 +1171,6 @@
 }
 
 /* Footer Nav */
-.front.not-logged-in .region-footer,
-.front.loggedteacher .region-footer {
-    position:relative;
-    top:-222px;
-}
-/*
-.section-news.not-logged-in .region-footer {
-    position:relative;
-    top:-200px;
-}
-*/
 .region-footer #block-block-6 {
 	text-align: center;
 }
