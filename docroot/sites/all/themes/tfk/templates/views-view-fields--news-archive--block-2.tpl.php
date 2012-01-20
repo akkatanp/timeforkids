@@ -20,6 +20,9 @@
  *     configured element type.
  * - $row: The raw result object from the query, with all data it fetched.
  *
+ * Used at news-archive/polls. Consolidated into news-archive tpl.
+ * Marked for deletion.
+ *
  * @ingroup views_templates
  */
 
