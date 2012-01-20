@@ -193,3 +193,9 @@ body {
   overflow-y: hidden;
 }
 */
+
+/* Overriden #main.clearfix container allows for a more fluid footer position. */
+#main.clearfix::after {
+  clear: left;
+}
+
