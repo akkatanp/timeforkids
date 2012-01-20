@@ -146,7 +146,7 @@ if(drupal_is_front_page()) {
           <?php print render($page['sidebar_top']); ?>
         <?php endif; ?>
  
-    		<?php if($title !== "Page Not Found"): ?>
+    		<?php if($title !== "Page Not Found" && !empty($page['sidebar_first'])): ?>
     			<?php print render($page['sidebar_first']); ?>
     		<?php endif; ?>
         
@@ -168,7 +168,7 @@ if(drupal_is_front_page()) {
         	<div id='page_pre_section'><?php print $page_pre_section; ?></div>
         <?php endif; ?>
       
-      	<div class="section">
+      	<div class="section clearfix">
       	
           <?php if(isset($page_suggestion_box)): ?>
             <?php print $page_suggestion_box; ?>
@@ -205,11 +205,24 @@ if(drupal_is_front_page()) {
           <?php print render($page['content']); ?>
   
       	</div>
+      	
+      	<?php if(empty($page['sidebar_first']) && empty($page['sidebar_bottom'])): // Two columns layouts (front). ?>
+        	<div id="footer" class="section">
+          	<?php print render($page['footer']); ?>
+          </div>
+      	<?php endif; ?>
+
       </div><!-- /.section, /#content -->
-
+			
+			<?php if(!empty($page['sidebar_first']) || !empty($page['sidebar_bottom'])): // Three column layouts. ?>
+  			<div id="footer" class="section clearfix">
+    			<?php print render($page['footer']); ?>
+  			</div>
+			<?php endif; ?>
+			
     </div><!-- /#main -->
+	
 
-  <?php print render($page['footer']); ?>
   </div><!-- /#main-wrapper -->
 
 </div></div><!-- /#page, /#page-wrapper -->

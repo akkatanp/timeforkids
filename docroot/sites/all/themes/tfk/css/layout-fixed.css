@@ -137,6 +137,18 @@ body {
 	width: 768px;
 }
 
+#footer .region-footer {
+	top: inherit;
+}
+
+/* When footer is below /.section, /#content and there are three columns. */
+body.two-sidebars .region-footer,
+body.page-teacher-community-topic-list .region-footer, 
+body.node-type-teacher-community-question .region-footer,
+body.front .region-footer {
+	float: left;
+}
+
 /*
  * Page bottom
  */
@@ -193,9 +205,4 @@ body {
   overflow-y: hidden;
 }
 */
-
-/* Overriden #main.clearfix container allows for a more fluid footer position. */
-#main.clearfix::after {
-  clear: left;
-}
 
