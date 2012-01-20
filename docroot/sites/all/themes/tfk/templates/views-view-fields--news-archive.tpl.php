@@ -20,6 +20,8 @@
  *     configured element type.
  * - $row: The raw result object from the query, with all data it fetched.
  *
+ * Used by all news-archive Views (/news-archive, /news-archive/polls).
+ *
  * @ingroup views_templates
  */
 
