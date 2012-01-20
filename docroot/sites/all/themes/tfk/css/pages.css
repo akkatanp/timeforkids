@@ -3088,41 +3088,6 @@ body.page-404page #first-column .region-sidebar-first .section{
     display:block;
 }
 
-
-/*
-.page-news.loggedteacher .region-footer,
-.not-logged-in.page-news .region-footer{
-    position:relative;
-    top:-222px;
-}*/
-
-/*
-.not-logged-in.node-type-atw-sightseeing .region-footer,
-.node-type-atw-sightseeing.loggedteacher .region-footer{
-    position:relative;
-    top:-192px;
-}*/
-
-/*
-.not-logged-in.node-type-atw-day-in-life .region-footer,
-.node-type-atw-day-in-life.loggedteacher .region-footer{
-    position:relative;
-    top:-192px;
-}*/
-
-/*
-.not-logged-in.page-mini-sites .region-footer,
-.page-mini-sites.loggedteacher .region-footer{
-    position:relative;
-    top:-192px;
-}*/
-
-/*
-.page-teacher-community-topic-list.loggedteacher .region-footer{
-    position:relative;
-    top:-22px;
-}*/
-
 /*
  * Channel touts.
  */
