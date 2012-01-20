@@ -174,9 +174,12 @@ body.front .region-footer {
 /**
  * Markup free clearing.
  *
- * @see http://perishablepress.com/press/2009/12/06/new-clearfix-hack
+ * Switched from Perishable Press New Clearfix to Nicolas Gallagher's Micro
+ * Clearfix. Solves major inconsistency issues in IE7 and IE8 and other minor
+ * issues in other browsers.
  *
- * Try out Nicolas Gallagher's hack instead.
+ * @see http://nicolasgallagher.com/micro-clearfix-hack
+ * @see http://drupal.org/node/961876
  */
 
 /* For modern browsers */
