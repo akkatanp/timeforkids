@@ -141,7 +141,6 @@ body {
 	top: inherit;
 }
 
-/* When footer is below /.section, /#content and there are three columns. */
 body.two-sidebars .region-footer,
 body.page-teacher-community-topic-list .region-footer, 
 body.node-type-teacher-community-question .region-footer,
