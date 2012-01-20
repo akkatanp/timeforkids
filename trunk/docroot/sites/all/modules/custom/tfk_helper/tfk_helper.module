@@ -218,6 +218,17 @@ function tfk_helper_preprocess_views_view_fields(&$variables, $hook) {
   // Load local static vars;
   $local_svars = &drupal_static($hook);
   
+  // News Archive
+  /*
+   * block_1 = news_archive
+   * block_2 = polls
+   * block_3 = news archive anon
+   * block_4 = polls anon
+   */
+  if($view->name == 'news_archive') {
+    $variables['theme_hook_suggestion'] = 'views_view_fields__news_archive';
+  }
+  
   // Primary Tout block.
   if($view->name == 'homepage_top_story' && !$view->is_attachment) {
     // Use only one template for all Primary Tout displays (all channels, anon + non-anon).
