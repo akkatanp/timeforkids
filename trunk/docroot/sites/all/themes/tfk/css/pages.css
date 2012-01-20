@@ -2069,7 +2069,7 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
         color:#666666;
 }
 
-.page-store #featured-books .featured-book:last-child {
+.page-store #featured-books .featured-book.last {
 	border-bottom: none;
 	margin-bottom: 0;
 }
