@@ -511,6 +511,8 @@ img {
   border-bottom: 1px solid #cecece;
   padding: 20px 10px 24px 135px;
   float: left;
+  width: 580px;
+  overflow: hidden;
 }
 .page-homework-helper-a-plus-papers .view-a-papers .views-row-last {
   border-bottom: 0;
@@ -525,6 +527,7 @@ img {
 }
 .page-homework-helper-a-plus-papers .view-a-papers .views-field-nothing {
   margin-top: 10px;
+  width: 580px;
 }
 .page-homework-helper-a-plus-papers .view-a-papers .views-field-nothing .related-pdfs {
   background: #ddeeff url(images/pdf-image.png) 0 0.5em no-repeat;
