@@ -139,6 +139,7 @@ body {
 
 #footer .region-footer {
 	top: inherit;
+	float: left;
 }
 
 body.two-sidebars .region-footer,
