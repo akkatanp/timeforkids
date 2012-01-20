@@ -20,6 +20,10 @@
  *     configured element type.
  * - $row: The raw result object from the query, with all data it fetched.
  * NEWS PRIMARY TOUT, SECONDARY TOUTS
+ *
+ * Used also by /news-archive, logged out.
+ * Consolidated into views-view-fields--news-archive, and marked for deletion.
+ *
  * @ingroup views_templates
  */
 
