@@ -204,6 +204,11 @@ body.page-search .region-footer {
     zoom:1;
 }
 
+/* IE7 */
+*:first-child + html .clearfix {
+  min-height: 1%;
+}
+
 /*
  * If a div.clearfix doesn't have any content after it and its bottom edge
  * touches the bottom of the viewport, Firefox and Safari will mistakenly
