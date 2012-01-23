@@ -204,6 +204,12 @@ body.page-search .region-footer {
     zoom:1;
 }
 
+/* On IE7, compensate for second-sidebar's lack of height when user is anon. */
+*:first-child + html body.not-logged-in.node-type-webform .region-sidebar-second,
+*:first-child + html body.not-logged-in.node-type-atw-timeline .region-sidebar-second {
+  padding-bottom: 130px;
+}
+
 /*
  * If a div.clearfix doesn't have any content after it and its bottom edge
  * touches the bottom of the viewport, Firefox and Safari will mistakenly
