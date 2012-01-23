@@ -149,7 +149,8 @@ body.page-node-7631 .region-footer,
 body.page-node-8091 .region-footer,
 body.page-node-7636 .region-footer,
 body.page-node-8116 .region-footer,
-body.page-store .region-footer {
+body.page-store .region-footer,
+body.page-search .region-footer {
 	float: left;
 }
 
