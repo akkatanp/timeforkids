@@ -724,6 +724,10 @@ ul.links li {
 }
 
 
+.view-homepage-top-story .featured-thumbnail img {
+  border: 1px solid #CECECE;
+}
+
 .minisite-noslideshow #block-views-minisite-articles-block-2 .views-field-field-lrg-sq-image,
 .minisite-noslideshow #block-views-minisite-articles-block-3 .views-field-field-lrg-sq-image,
 .view-homepage-top-story .views-field-field-lrg-sq-image,
