@@ -246,7 +246,8 @@ function tfk_helper_preprocess_views_view_fields(&$variables, $hook) {
     }
   }
   
-  if($view->name == 'homepage_top_story' && $view->current_display == 'attachment_1') {
+  // Slideshow thumbnails attachment links.
+  if($view->name == 'homepage_top_story' && preg_match('/attachment_([0-9])+/', $view->current_display)) {
     $variables['fields']['field_image']->content = l($variables['fields']['field_image']->content, ltrim($variables['view']->field['path']->original_value, '/'). '/'. ($variables['view']->row_index + 1), array('html' => TRUE, 'attributes' => array('class' => array('featured-thumbnail'))));
   }
   
