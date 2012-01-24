@@ -201,5 +201,19 @@ function tfk_photos_video_strongarm() {
   $strongarm->value = array();
   $export['node_options_video'] = $strongarm;
 
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'video_autobuffering';
+  $strongarm->value = 1;
+  $export['video_autobuffering'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'video_autoplay';
+  $strongarm->value = 0;
+  $export['video_autoplay'] = $strongarm;
+
   return $export;
 }
