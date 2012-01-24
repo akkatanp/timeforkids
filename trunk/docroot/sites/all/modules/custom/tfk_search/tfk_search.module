@@ -3458,6 +3458,16 @@ function tfk_search_node_update($node) {
  * used by SOLR to tell which magazine issues contain spanish articles.
  */
 function tfk_search_flag($action, $flag, $content_id, $account, $fcid) {
+  
+  // Force a node_save() when flagging nodes on /admin/content.
+  // By default the "update" button does not invoke node_save().
+  $path = arg();
+  if(count($path) >= 2 && $path[0] == 'admin' && $path[1] == 'content') {
+    $node = node_load($content_id);
+    node_save($node);
+  }
+  
+  
   // Use our custom code only with the "spanish" flag.
   if($flag->name == 'spanish') {
     $node = node_load($content_id);
