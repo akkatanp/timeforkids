@@ -10,6 +10,663 @@
 function tfk_atw_feature_field_default_fields() {
   $fields = array();
 
+  // Exported field: 'field_collection_item-field_day_in_life_time-field_day_in_life_time_activity'
+  $fields['field_collection_item-field_day_in_life_time-field_day_in_life_time_activity'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_day_in_life_time_activity',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'module' => 'text',
+      'settings' => array(),
+      'translatable' => '1',
+      'type' => 'text_long',
+    ),
+    'field_instance' => array(
+      'bundle' => 'field_day_in_life_time',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 1,
+        ),
+      ),
+      'entity_type' => 'field_collection_item',
+      'field_name' => 'field_day_in_life_time_activity',
+      'label' => 'Time Activity',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'rows' => '5',
+        ),
+        'type' => 'text_textarea',
+        'weight' => '2',
+      ),
+    ),
+  );
+
+  // Exported field: 'field_collection_item-field_day_in_life_time-field_day_in_life_time_item'
+  $fields['field_collection_item-field_day_in_life_time-field_day_in_life_time_item'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_day_in_life_time_item',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '255',
+      ),
+      'translatable' => '1',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'field_day_in_life_time',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'field_collection_item',
+      'field_name' => 'field_day_in_life_time_item',
+      'label' => 'Time',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '60',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '1',
+      ),
+    ),
+  );
+
+  // Exported field: 'field_collection_item-field_native_lingo_phrase-field_lingo_phrase_audio'
+  $fields['field_collection_item-field_native_lingo_phrase-field_lingo_phrase_audio'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_lingo_phrase_audio',
+      'foreign keys' => array(
+        'fid' => array(
+          'columns' => array(
+            'fid' => 'fid',
+          ),
+          'table' => 'file_managed',
+        ),
+      ),
+      'indexes' => array(
+        'fid' => array(
+          0 => 'fid',
+        ),
+      ),
+      'module' => 'file',
+      'settings' => array(
+        'display_default' => 0,
+        'display_field' => 0,
+        'uri_scheme' => 'public',
+      ),
+      'translatable' => '1',
+      'type' => 'file',
+    ),
+    'field_instance' => array(
+      'bundle' => 'field_native_lingo_phrase',
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'file',
+          'settings' => array(),
+          'type' => 'file_default',
+          'weight' => 3,
+        ),
+      ),
+      'entity_type' => 'field_collection_item',
+      'field_name' => 'field_lingo_phrase_audio',
+      'label' => 'Audio',
+      'required' => 0,
+      'settings' => array(
+        'description_field' => 0,
+        'file_directory' => '',
+        'file_extensions' => 'mp3 mp4',
+        'max_filesize' => '',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'file',
+        'settings' => array(
+          'insert' => 0,
+          'insert_class' => '',
+          'insert_default' => array(
+            0 => 'auto',
+          ),
+          'insert_styles' => array(
+            0 => 'auto',
+          ),
+          'insert_width' => '',
+          'progress_indicator' => 'throbber',
+        ),
+        'type' => 'file_generic',
+        'weight' => '4',
+      ),
+    ),
+  );
+
+  // Exported field: 'field_collection_item-field_native_lingo_phrase-field_lingo_phrase_next_level'
+  $fields['field_collection_item-field_native_lingo_phrase-field_lingo_phrase_next_level'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '2',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_lingo_phrase_next_level',
+      'foreign keys' => array(),
+      'indexes' => array(
+        'value' => array(
+          0 => 'value',
+        ),
+      ),
+      'module' => 'list',
+      'settings' => array(
+        'allowed_values' => array(
+          'yes' => 'Next Level',
+        ),
+        'allowed_values_function' => '',
+      ),
+      'translatable' => '1',
+      'type' => 'list_text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'field_native_lingo_phrase',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'list',
+          'settings' => array(),
+          'type' => 'list_default',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'field_collection_item',
+      'field_name' => 'field_lingo_phrase_next_level',
+      'label' => 'Next Level ',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(),
+        'type' => 'options_buttons',
+        'weight' => '1',
+      ),
+    ),
+  );
+
+  // Exported field: 'field_collection_item-field_native_lingo_phrase-field_lingo_phrase_text'
+  $fields['field_collection_item-field_native_lingo_phrase-field_lingo_phrase_text'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_lingo_phrase_text',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '255',
+      ),
+      'translatable' => '1',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'field_native_lingo_phrase',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 1,
+        ),
+      ),
+      'entity_type' => 'field_collection_item',
+      'field_name' => 'field_lingo_phrase_text',
+      'label' => 'Text',
+      'required' => 1,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '60',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '2',
+      ),
+    ),
+  );
+
+  // Exported field: 'field_collection_item-field_native_lingo_phrase-field_lingo_phrase_translation'
+  $fields['field_collection_item-field_native_lingo_phrase-field_lingo_phrase_translation'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_lingo_phrase_translation',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '255',
+      ),
+      'translatable' => '1',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'field_native_lingo_phrase',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 2,
+        ),
+      ),
+      'entity_type' => 'field_collection_item',
+      'field_name' => 'field_lingo_phrase_translation',
+      'label' => 'Translation',
+      'required' => 1,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '60',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '3',
+      ),
+    ),
+  );
+
+  // Exported field: 'field_collection_item-field_timeline_event-field_photo_credit'
+  $fields['field_collection_item-field_timeline_event-field_photo_credit'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_photo_credit',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '255',
+      ),
+      'translatable' => '1',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'field_timeline_event',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'hidden',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => '3',
+        ),
+      ),
+      'entity_type' => 'field_collection_item',
+      'field_name' => 'field_photo_credit',
+      'label' => 'Photo Credit',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '60',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '4',
+      ),
+    ),
+  );
+
+  // Exported field: 'field_collection_item-field_timeline_event-field_timeline_event_copy'
+  $fields['field_collection_item-field_timeline_event-field_timeline_event_copy'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_timeline_event_copy',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'module' => 'text',
+      'settings' => array(),
+      'translatable' => '1',
+      'type' => 'text_long',
+    ),
+    'field_instance' => array(
+      'bundle' => 'field_timeline_event',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'hidden',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => '1',
+        ),
+      ),
+      'entity_type' => 'field_collection_item',
+      'field_name' => 'field_timeline_event_copy',
+      'label' => 'Timeline Event',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'rows' => '5',
+        ),
+        'type' => 'text_textarea',
+        'weight' => '2',
+      ),
+    ),
+  );
+
+  // Exported field: 'field_collection_item-field_timeline_event-field_timeline_event_photo'
+  $fields['field_collection_item-field_timeline_event-field_timeline_event_photo'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_timeline_event_photo',
+      'foreign keys' => array(
+        'fid' => array(
+          'columns' => array(
+            'fid' => 'fid',
+          ),
+          'table' => 'file_managed',
+        ),
+      ),
+      'indexes' => array(
+        'fid' => array(
+          0 => 'fid',
+        ),
+      ),
+      'module' => 'image',
+      'settings' => array(
+        'default_image' => 0,
+        'uri_scheme' => 'public',
+      ),
+      'translatable' => '1',
+      'type' => 'image',
+    ),
+    'field_instance' => array(
+      'bundle' => 'field_timeline_event',
+      'deleted' => '0',
+      'description' => '<b>Max height: 240 & Max width: 240</b>',
+      'display' => array(
+        'default' => array(
+          'label' => 'hidden',
+          'module' => 'image',
+          'settings' => array(
+            'image_link' => '',
+            'image_style' => '',
+          ),
+          'type' => 'image',
+          'weight' => '2',
+        ),
+      ),
+      'entity_type' => 'field_collection_item',
+      'field_name' => 'field_timeline_event_photo',
+      'label' => 'Photo',
+      'required' => 0,
+      'settings' => array(
+        'alt_field' => 0,
+        'file_directory' => '',
+        'file_extensions' => 'png gif jpg jpeg',
+        'max_filesize' => '',
+        'max_resolution' => '',
+        'min_resolution' => '',
+        'title_field' => 0,
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'image',
+        'settings' => array(
+          'insert' => 0,
+          'insert_class' => '',
+          'insert_default' => 'auto',
+          'insert_styles' => array(
+            'auto' => 'auto',
+            'image' => 0,
+            'image_115x115' => 0,
+            'image_large' => 0,
+            'image_medium' => 0,
+            'image_square_thumbnail' => 0,
+            'image_tfk_140x187' => 0,
+            'image_tfk_270x270' => 0,
+            'image_tfk_50px_50px' => 0,
+            'image_tfk_60x60' => 0,
+            'image_tfk_71x95' => 0,
+            'image_tfk_rect_large' => 0,
+            'image_tfk_rect_medium' => 0,
+            'image_tfk_rect_small' => 0,
+            'image_tfk_square_large' => 0,
+            'image_tfk_square_medium' => 0,
+            'image_tfk_square_small' => 0,
+            'image_thumbnail' => 0,
+            'link' => 0,
+          ),
+          'insert_width' => '',
+          'preview_image_style' => 'thumbnail',
+          'progress_indicator' => 'throbber',
+        ),
+        'type' => 'image_image',
+        'weight' => '3',
+      ),
+    ),
+  );
+
+  // Exported field: 'field_collection_item-field_timeline_event-field_timeline_event_text'
+  $fields['field_collection_item-field_timeline_event-field_timeline_event_text'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_timeline_event_text',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '255',
+      ),
+      'translatable' => '1',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'field_timeline_event',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'hidden',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => '0',
+        ),
+      ),
+      'entity_type' => 'field_collection_item',
+      'field_name' => 'field_timeline_event_text',
+      'label' => 'Date',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '60',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '1',
+      ),
+    ),
+  );
+
   // Exported field: 'node-atw_day_in_life-body'
   $fields['node-atw_day_in_life-body'] = array(
     'field_config' => array(
@@ -85,6 +742,59 @@ function tfk_atw_feature_field_default_fields() {
         'weight' => '1',
       ),
       'widget_type' => 'text_textarea_with_summary',
+    ),
+  );
+
+  // Exported field: 'node-atw_day_in_life-field_day_in_life_time'
+  $fields['node-atw_day_in_life-field_day_in_life_time'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '-1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_day_in_life_time',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'module' => 'field_collection',
+      'settings' => array(
+        'path' => '',
+      ),
+      'translatable' => '1',
+      'type' => 'field_collection',
+    ),
+    'field_instance' => array(
+      'bundle' => 'atw_day_in_life',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '5',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_day_in_life_time',
+      'label' => 'Time',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'field_collection',
+        'settings' => array(),
+        'type' => 'field_collection_subform',
+        'weight' => '6',
+      ),
     ),
   );
 
@@ -960,19 +1670,55 @@ function tfk_atw_feature_field_default_fields() {
       'module' => 'node_reference',
       'settings' => array(
         'referenceable_types' => array(
+          'a_paper' => 0,
           'article' => 0,
+          'atw_day_in_life' => 0,
           'atw_destination' => 0,
+          'atw_homepage_nodeblock' => 0,
+          'atw_native_lingo' => 0,
+          'atw_sightseeing' => 0,
+          'atw_timeline' => 0,
+          'board_member' => 0,
+          'book' => 0,
+          'flashcard' => 0,
+          'global_right_sidebar_promo' => 0,
+          'grammar_practice' => 0,
+          'grammar_practice_question' => 0,
+          'grammar_practice_reward_image' => 0,
+          'grammar_practice_rule' => 0,
+          'homepage_news_for_teachers' => 0,
           'image' => 0,
+          'kid_reporter' => 0,
+          'kid_reporter_bottom_nodeblock' => 0,
+          'kid_reporter_listing_nodeblock' => 0,
           'magazine_issue' => 0,
+          'mini_lesson' => 0,
+          'mini_site_home' => 0,
+          'minisite' => 0,
+          'news_channel_nodeblock' => 0,
           'page' => 0,
+          'paper_step' => 0,
+          'pdf_quiz' => 0,
+          'poll' => 0,
           'slideshow' => 'slideshow',
+          'store' => 0,
+          'teacher_board_nodeblock' => 0,
+          'teacher_community_question' => 0,
+          'tfk_extra' => 0,
+          'tfk_extras_bottom_nodeblock' => 0,
+          'tfk_extras_top_nodeblock' => 0,
+          'tfk_notification' => 0,
+          'tfk_staff' => 0,
           'video' => 0,
+          'webform' => 0,
+          'webform_generic' => 0,
           'worksheet' => 0,
+          'writing_tips' => 0,
         ),
         'view' => array(
           'args' => array(),
-          'display_name' => '',
-          'view_name' => '',
+          'display_name' => 'references_1',
+          'view_name' => 'reference_slideshows',
         ),
       ),
       'translatable' => '1',
@@ -1074,6 +1820,7 @@ function tfk_atw_feature_field_default_fields() {
           'page' => 0,
           'paper_step' => 0,
           'pdf_quiz' => 0,
+          'poll' => 0,
           'slideshow' => 0,
           'store' => 0,
           'teacher_board_nodeblock' => 0,
@@ -1091,8 +1838,8 @@ function tfk_atw_feature_field_default_fields() {
         ),
         'view' => array(
           'args' => array(),
-          'display_name' => '',
-          'view_name' => '',
+          'display_name' => 'references_1',
+          'view_name' => 'reference_daysinlife',
         ),
       ),
       'translatable' => '1',
@@ -1228,6 +1975,7 @@ function tfk_atw_feature_field_default_fields() {
       'module' => 'node_reference',
       'settings' => array(
         'referenceable_types' => array(
+          'a_paper' => 0,
           'article' => 0,
           'atw_day_in_life' => 0,
           'atw_destination' => 0,
@@ -1235,25 +1983,47 @@ function tfk_atw_feature_field_default_fields() {
           'atw_native_lingo' => 0,
           'atw_sightseeing' => 0,
           'atw_timeline' => 0,
+          'board_member' => 0,
           'book' => 0,
+          'flashcard' => 0,
           'global_right_sidebar_promo' => 0,
+          'grammar_practice' => 0,
+          'grammar_practice_question' => 0,
+          'grammar_practice_reward_image' => 0,
+          'grammar_practice_rule' => 0,
+          'homepage_news_for_teachers' => 0,
           'image' => 0,
           'kid_reporter' => 0,
+          'kid_reporter_bottom_nodeblock' => 0,
+          'kid_reporter_listing_nodeblock' => 0,
           'magazine_issue' => 0,
           'mini_lesson' => 0,
+          'mini_site_home' => 0,
           'minisite' => 0,
-          'notification_homepage' => 0,
+          'news_channel_nodeblock' => 0,
           'page' => 0,
+          'paper_step' => 0,
+          'pdf_quiz' => 0,
+          'poll' => 0,
           'slideshow' => 0,
+          'store' => 0,
+          'teacher_board_nodeblock' => 0,
+          'teacher_community_question' => 0,
           'tfk_extra' => 0,
+          'tfk_extras_bottom_nodeblock' => 0,
+          'tfk_extras_top_nodeblock' => 0,
+          'tfk_notification' => 0,
+          'tfk_staff' => 0,
           'video' => 0,
           'webform' => 'webform',
+          'webform_generic' => 0,
           'worksheet' => 0,
+          'writing_tips' => 0,
         ),
         'view' => array(
           'args' => array(),
-          'display_name' => '',
-          'view_name' => '',
+          'display_name' => 'references_1',
+          'view_name' => 'reference_challenges',
         ),
       ),
       'translatable' => '1',
@@ -1323,23 +2093,55 @@ function tfk_atw_feature_field_default_fields() {
       'module' => 'node_reference',
       'settings' => array(
         'referenceable_types' => array(
+          'a_paper' => 0,
           'article' => 0,
           'atw_day_in_life' => 0,
           'atw_destination' => 0,
+          'atw_homepage_nodeblock' => 0,
           'atw_native_lingo' => 'atw_native_lingo',
           'atw_sightseeing' => 0,
           'atw_timeline' => 0,
+          'board_member' => 0,
+          'book' => 0,
+          'flashcard' => 0,
+          'global_right_sidebar_promo' => 0,
+          'grammar_practice' => 0,
+          'grammar_practice_question' => 0,
+          'grammar_practice_reward_image' => 0,
+          'grammar_practice_rule' => 0,
+          'homepage_news_for_teachers' => 0,
           'image' => 0,
+          'kid_reporter' => 0,
+          'kid_reporter_bottom_nodeblock' => 0,
+          'kid_reporter_listing_nodeblock' => 0,
           'magazine_issue' => 0,
+          'mini_lesson' => 0,
+          'mini_site_home' => 0,
+          'minisite' => 0,
+          'news_channel_nodeblock' => 0,
           'page' => 0,
+          'paper_step' => 0,
+          'pdf_quiz' => 0,
+          'poll' => 0,
           'slideshow' => 0,
+          'store' => 0,
+          'teacher_board_nodeblock' => 0,
+          'teacher_community_question' => 0,
+          'tfk_extra' => 0,
+          'tfk_extras_bottom_nodeblock' => 0,
+          'tfk_extras_top_nodeblock' => 0,
+          'tfk_notification' => 0,
+          'tfk_staff' => 0,
           'video' => 0,
+          'webform' => 0,
+          'webform_generic' => 0,
           'worksheet' => 0,
+          'writing_tips' => 0,
         ),
         'view' => array(
           'args' => array(),
-          'display_name' => '',
-          'view_name' => '',
+          'display_name' => 'references_1',
+          'view_name' => 'reference_atwlingos',
         ),
       ),
       'translatable' => '1',
@@ -1594,19 +2396,55 @@ function tfk_atw_feature_field_default_fields() {
       'module' => 'node_reference',
       'settings' => array(
         'referenceable_types' => array(
+          'a_paper' => 0,
           'article' => 0,
+          'atw_day_in_life' => 0,
           'atw_destination' => 0,
+          'atw_homepage_nodeblock' => 0,
+          'atw_native_lingo' => 0,
+          'atw_sightseeing' => 0,
+          'atw_timeline' => 0,
+          'board_member' => 0,
+          'book' => 0,
+          'flashcard' => 0,
+          'global_right_sidebar_promo' => 0,
+          'grammar_practice' => 0,
+          'grammar_practice_question' => 0,
+          'grammar_practice_reward_image' => 0,
+          'grammar_practice_rule' => 0,
+          'homepage_news_for_teachers' => 0,
           'image' => 0,
+          'kid_reporter' => 0,
+          'kid_reporter_bottom_nodeblock' => 0,
+          'kid_reporter_listing_nodeblock' => 0,
           'magazine_issue' => 0,
+          'mini_lesson' => 0,
+          'mini_site_home' => 0,
+          'minisite' => 0,
+          'news_channel_nodeblock' => 0,
           'page' => 0,
+          'paper_step' => 0,
+          'pdf_quiz' => 0,
+          'poll' => 0,
           'slideshow' => 0,
+          'store' => 0,
+          'teacher_board_nodeblock' => 0,
+          'teacher_community_question' => 0,
+          'tfk_extra' => 0,
+          'tfk_extras_bottom_nodeblock' => 0,
+          'tfk_extras_top_nodeblock' => 0,
+          'tfk_notification' => 0,
+          'tfk_staff' => 0,
           'video' => 0,
+          'webform' => 0,
+          'webform_generic' => 0,
           'worksheet' => 'worksheet',
+          'writing_tips' => 0,
         ),
         'view' => array(
           'args' => array(),
-          'display_name' => '',
-          'view_name' => '',
+          'display_name' => 'references_1',
+          'view_name' => 'reference_worksheets',
         ),
       ),
       'translatable' => '1',
@@ -1688,25 +2526,43 @@ function tfk_atw_feature_field_default_fields() {
           'book' => 0,
           'flashcard' => 0,
           'global_right_sidebar_promo' => 0,
+          'grammar_practice' => 0,
+          'grammar_practice_question' => 0,
+          'grammar_practice_reward_image' => 0,
+          'grammar_practice_rule' => 0,
+          'homepage_news_for_teachers' => 0,
           'image' => 0,
           'kid_reporter' => 0,
+          'kid_reporter_bottom_nodeblock' => 0,
+          'kid_reporter_listing_nodeblock' => 0,
           'magazine_issue' => 0,
           'mini_lesson' => 0,
+          'mini_site_home' => 0,
           'minisite' => 0,
-          'notification_homepage' => 0,
+          'news_channel_nodeblock' => 0,
           'page' => 0,
           'paper_step' => 0,
           'pdf_quiz' => 0,
+          'poll' => 0,
           'slideshow' => 0,
+          'store' => 0,
+          'teacher_board_nodeblock' => 0,
+          'teacher_community_question' => 0,
           'tfk_extra' => 0,
+          'tfk_extras_bottom_nodeblock' => 0,
+          'tfk_extras_top_nodeblock' => 0,
+          'tfk_notification' => 0,
+          'tfk_staff' => 0,
           'video' => 0,
           'webform' => 0,
+          'webform_generic' => 0,
           'worksheet' => 0,
+          'writing_tips' => 0,
         ),
         'view' => array(
           'args' => array(),
-          'display_name' => '',
-          'view_name' => '',
+          'display_name' => 'references_1',
+          'view_name' => 'reference_atwsightseeings',
         ),
       ),
       'translatable' => '1',
@@ -1776,20 +2632,55 @@ function tfk_atw_feature_field_default_fields() {
       'module' => 'node_reference',
       'settings' => array(
         'referenceable_types' => array(
+          'a_paper' => 0,
           'article' => 0,
+          'atw_day_in_life' => 0,
           'atw_destination' => 0,
+          'atw_homepage_nodeblock' => 0,
+          'atw_native_lingo' => 0,
+          'atw_sightseeing' => 0,
           'atw_timeline' => 'atw_timeline',
+          'board_member' => 0,
+          'book' => 0,
+          'flashcard' => 0,
+          'global_right_sidebar_promo' => 0,
+          'grammar_practice' => 0,
+          'grammar_practice_question' => 0,
+          'grammar_practice_reward_image' => 0,
+          'grammar_practice_rule' => 0,
+          'homepage_news_for_teachers' => 0,
           'image' => 0,
+          'kid_reporter' => 0,
+          'kid_reporter_bottom_nodeblock' => 0,
+          'kid_reporter_listing_nodeblock' => 0,
           'magazine_issue' => 0,
+          'mini_lesson' => 0,
+          'mini_site_home' => 0,
+          'minisite' => 0,
+          'news_channel_nodeblock' => 0,
           'page' => 0,
+          'paper_step' => 0,
+          'pdf_quiz' => 0,
+          'poll' => 0,
           'slideshow' => 0,
+          'store' => 0,
+          'teacher_board_nodeblock' => 0,
+          'teacher_community_question' => 0,
+          'tfk_extra' => 0,
+          'tfk_extras_bottom_nodeblock' => 0,
+          'tfk_extras_top_nodeblock' => 0,
+          'tfk_notification' => 0,
+          'tfk_staff' => 0,
           'video' => 0,
+          'webform' => 0,
+          'webform_generic' => 0,
           'worksheet' => 0,
+          'writing_tips' => 0,
         ),
         'view' => array(
           'args' => array(),
-          'display_name' => '',
-          'view_name' => '',
+          'display_name' => 'references_1',
+          'view_name' => 'reference_atwtimelines',
         ),
       ),
       'translatable' => '1',
@@ -1879,6 +2770,7 @@ function tfk_atw_feature_field_default_fields() {
           'image' => 'image',
           'kid_reporter' => 0,
           'kid_reporter_bottom_nodeblock' => 0,
+          'kid_reporter_listing_nodeblock' => 0,
           'magazine_issue' => 0,
           'mini_lesson' => 0,
           'mini_site_home' => 0,
@@ -1887,8 +2779,10 @@ function tfk_atw_feature_field_default_fields() {
           'page' => 0,
           'paper_step' => 0,
           'pdf_quiz' => 0,
+          'poll' => 0,
           'slideshow' => 0,
           'store' => 0,
+          'teacher_board_nodeblock' => 0,
           'teacher_community_question' => 0,
           'tfk_extra' => 0,
           'tfk_extras_bottom_nodeblock' => 0,
@@ -1903,8 +2797,8 @@ function tfk_atw_feature_field_default_fields() {
         ),
         'view' => array(
           'args' => array(),
-          'display_name' => '',
-          'view_name' => '',
+          'display_name' => 'references_1',
+          'view_name' => 'reference_images',
         ),
       ),
       'translatable' => '1',
@@ -2102,6 +2996,65 @@ function tfk_atw_feature_field_default_fields() {
         'weight' => '1',
       ),
       'widget_type' => 'text_textarea_with_summary',
+    ),
+  );
+
+  // Exported field: 'node-atw_native_lingo-field_native_lingo_phrase'
+  $fields['node-atw_native_lingo-field_native_lingo_phrase'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '-1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_native_lingo_phrase',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'module' => 'field_collection',
+      'settings' => array(
+        'path' => '',
+      ),
+      'translatable' => '1',
+      'type' => 'field_collection',
+    ),
+    'field_instance' => array(
+      'bundle' => 'atw_native_lingo',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'field_collection',
+          'settings' => array(
+            'add' => 'Add',
+            'delete' => 'Delete',
+            'description' => TRUE,
+            'edit' => 'Edit',
+          ),
+          'type' => 'field_collection_list',
+          'weight' => '1',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_native_lingo_phrase',
+      'label' => 'Phrase',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'field_collection',
+        'settings' => array(),
+        'type' => 'field_collection_subform',
+        'weight' => '4',
+      ),
     ),
   );
 
@@ -2602,6 +3555,59 @@ function tfk_atw_feature_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-atw_timeline-field_timeline_event'
+  $fields['node-atw_timeline-field_timeline_event'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '-1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_timeline_event',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'module' => 'field_collection',
+      'settings' => array(
+        'path' => '',
+      ),
+      'translatable' => '1',
+      'type' => 'field_collection',
+    ),
+    'field_instance' => array(
+      'bundle' => 'atw_timeline',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_timeline_event',
+      'label' => 'Date',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'field_collection',
+        'settings' => array(),
+        'type' => 'field_collection_subform',
+        'weight' => '2',
+      ),
+    ),
+  );
+
   // Exported field: 'node-webform-body'
   $fields['node-webform-body'] = array(
     'field_config' => array(
@@ -2682,9 +3688,12 @@ function tfk_atw_feature_field_default_fields() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('<b>Max height: 240 & Max width: 240</b>');
   t('Additional Content');
+  t('Audio');
   t('Body');
   t('Challenge');
+  t('Date');
   t('Day in the Life');
   t('Deck');
   t('Deck and Image Map');
@@ -2692,11 +3701,15 @@ function tfk_atw_feature_field_default_fields() {
   t('Location Name');
   t('Map Icon');
   t('Native Lingo');
+  t('Next Level ');
   t('Official Flag');
   t('Person Intro');
   t('Person Name');
   t('Person Photo');
   t('Person Photo Credit');
+  t('Photo');
+  t('Photo Credit');
+  t('Phrase');
   t('Region');
   t('Related Articles');
   t('Resources Label');
@@ -2705,8 +3718,13 @@ function tfk_atw_feature_field_default_fields() {
   t('Slideshow');
   t('Speaker Photo');
   t('Speaker Photo Credit');
+  t('Text');
+  t('Time');
+  t('Time Activity');
   t('Timeline');
+  t('Timeline Event');
   t('Tout Image');
+  t('Translation');
   t('photo size = 180x240');
   t('photo size = 488x268');
 
