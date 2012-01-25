@@ -156,6 +156,10 @@ body.page-search .region-footer {
 	float: left;
 }
 
+body .region-footer {
+	float: left;
+}
+
 /*
  * Page bottom.
  * See also the #page-wrapper declaration above that this div shares.
