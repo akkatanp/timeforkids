@@ -5,7 +5,7 @@
  */
 
 /**
- * Implementation of hook_field_default_fields().
+ * Implements hook_field_default_fields().
  */
 function misc_content_types_field_default_fields() {
   $fields = array();
@@ -462,8 +462,8 @@ function misc_content_types_field_default_fields() {
       'settings' => array(
         'allowed_values' => array(
           0 => array(
-            'parent' => '0',
             'vocabulary' => 'tfk_extra_pdf',
+            'parent' => '0',
           ),
         ),
       ),
@@ -1379,6 +1379,7 @@ function misc_content_types_field_default_fields() {
           'page' => 0,
           'paper_step' => 0,
           'pdf_quiz' => 0,
+          'poll' => 0,
           'slideshow' => 0,
           'store' => 0,
           'teacher_board_nodeblock' => 0,
@@ -1396,8 +1397,8 @@ function misc_content_types_field_default_fields() {
         ),
         'view' => array(
           'args' => array(),
-          'display_name' => '',
-          'view_name' => '',
+          'display_name' => 'references_1',
+          'view_name' => 'reference_articles',
         ),
       ),
       'translatable' => '1',
@@ -1706,8 +1707,8 @@ function misc_content_types_field_default_fields() {
       'indexes' => array(),
       'module' => 'metatags_quick',
       'settings' => array(
-        'meta_name' => 'description',
         0 => 'meta_name',
+        'meta_name' => 'description',
       ),
       'translatable' => '0',
       'type' => 'metatags_quick',
@@ -1761,8 +1762,8 @@ function misc_content_types_field_default_fields() {
       'indexes' => array(),
       'module' => 'metatags_quick',
       'settings' => array(
-        'meta_name' => 'keywords',
         0 => 'meta_name',
+        'meta_name' => 'keywords',
       ),
       'translatable' => '0',
       'type' => 'metatags_quick',
@@ -2046,8 +2047,8 @@ function misc_content_types_field_default_fields() {
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
-          'Kid Store' => 'Kid Store',
           'Teacher Store' => 'Teacher Store',
+          'Kid Store' => 'Kid Store',
         ),
         'allowed_values_function' => '',
       ),
@@ -2275,8 +2276,8 @@ function misc_content_types_field_default_fields() {
       'settings' => array(
         'allowed_values' => array(
           0 => array(
-            'parent' => '0',
             'vocabulary' => 'tfk_extra_category',
+            'parent' => '0',
           ),
         ),
       ),
