@@ -227,6 +227,16 @@ function tfk_pager($variables) {
 //  $variables['results'] = theme('chart', array('chart' => $chart));
 //}
 
+/**
+ * Preprocess html template.
+ */
+function tfk_preprocess_html(&$variables, $hook) {
+  $test = null;
+  // Extras root main column IE7 CSS.
+  if(array_key_exists('menu_item', $variables) && $variables['menu_item']['path'] == 'extras') {
+    $variables['classes_array'][] = 'extras-root';
+  }
+}
 
 /**
  * Override or insert variables into the page templates.
