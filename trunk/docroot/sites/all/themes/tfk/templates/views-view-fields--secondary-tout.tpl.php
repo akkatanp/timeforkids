@@ -50,22 +50,19 @@
 
 
 <?php if($show_additional_content): ?>
-        <?php if(isset($fields['field_related_articles'])): ?>
-  	      <?php if(strlen($fields['field_related_articles']->content) != 0):?>
-              <div class="related-content-wrap">
-                  <div class="addit-content">Additional Content</div>
-                  <?php if($fields['field_related_articles']): ?>
-                     <div class="addit-mini-lessons"><?php print $fields['field_related_articles']->content; ?></div>
-                  <?php endif; ?>
-              </div>
-          <?php endif;?>
-        <?php elseif(isset($fields['field_additional_content'])): ?>
-              <div class="related-content-wrap">
-                  <div class="addit-content">Additional Content</div>
-                  <?php if($fields['field_additional_content']): ?>
-                     <div class="addit-mini-lessons"><?php print $fields['field_additional_content']->content; ?></div>
-                  <?php endif; ?>
-              </div>
-        <?php endif;?>
+    <div class="related-content-wrap">
+        <div class="addit-content">Additional Content</div>
+        <?php if(array_key_exists('field_mini_lessons', $fields)): ?>
+           <div class="addit-mini-lessons"><?php print $fields['field_mini_lessons']->label;?> : <?php print $fields['field_mini_lessons']->content; ?></div>
+        <?php endif; ?>
+
+        <?php if(array_key_exists('field_related_articles', $fields)): ?>
+           <div class="addit-related-articles"><?php print $fields['field_related_articles']->label;?> : <?php print $fields['field_related_articles']->content; ?></div>
+        <?php endif; ?>
+        
+        <?php if(array_key_exists('field_additional_content', $fields)): ?>
+           <div class="addit-related-articles"><?php print $fields['field_additional_content']->label;?> : <?php print $fields['field_additional_content']->content; ?></div>
+        <?php endif; ?>
+    </div>
 <?php endif;?>
 <?php endif; ?>
