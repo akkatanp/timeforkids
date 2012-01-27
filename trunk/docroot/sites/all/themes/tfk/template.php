@@ -314,6 +314,19 @@ function tfk_preprocess_page(&$variables, $hook) {
       }
     }
   }
+  
+  // Footer layout vars, initialize to FALSE.
+  $variables['footer_classes'] = array('clearfix');
+  
+  // IE7 CSS exception for kid-reporters landing page (anon only).
+  if(!$variables['logged_in']) {
+    $menu_item = menu_get_item();
+    if($menu_item && $menu_item['path'] == 'kid-reporters') {
+      $variables['footer_classes'] = array('no-clearfix');
+    }
+  }
+  
+  $variables['footer_classes'] = implode(' ', $variables['footer_classes']);
 }
 
 /**
