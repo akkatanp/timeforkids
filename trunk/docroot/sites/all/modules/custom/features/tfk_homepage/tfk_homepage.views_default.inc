@@ -770,7 +770,7 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['fields']['field_additional_content']['table'] = 'field_data_field_additional_content';
   $handler->display->display_options['fields']['field_additional_content']['field'] = 'field_additional_content';
   $handler->display->display_options['fields']['field_additional_content']['ui_name'] = 'Content: Additional Content (Slideshow and Video)';
-  $handler->display->display_options['fields']['field_additional_content']['label'] = '';
+  $handler->display->display_options['fields']['field_additional_content']['label'] = 'LABEL';
   $handler->display->display_options['fields']['field_additional_content']['alter']['alter_text'] = 0;
   $handler->display->display_options['fields']['field_additional_content']['alter']['make_link'] = 0;
   $handler->display->display_options['fields']['field_additional_content']['alter']['absolute'] = 0;
@@ -783,7 +783,7 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['fields']['field_additional_content']['alter']['strip_tags'] = 0;
   $handler->display->display_options['fields']['field_additional_content']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_additional_content']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['field_additional_content']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_additional_content']['element_label_colon'] = 0;
   $handler->display->display_options['fields']['field_additional_content']['element_default_classes'] = 1;
   $handler->display->display_options['fields']['field_additional_content']['hide_empty'] = 1;
   $handler->display->display_options['fields']['field_additional_content']['empty_zero'] = 1;
