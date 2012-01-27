@@ -720,7 +720,6 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['fields']['title_1']['field'] = 'title';
   $handler->display->display_options['fields']['title_1']['ui_name'] = 'View Full Article';
   $handler->display->display_options['fields']['title_1']['label'] = '';
-  $handler->display->display_options['fields']['title_1']['exclude'] = TRUE;
   $handler->display->display_options['fields']['title_1']['alter']['alter_text'] = 1;
   $handler->display->display_options['fields']['title_1']['alter']['text'] = 'View Full Article';
   $handler->display->display_options['fields']['title_1']['alter']['make_link'] = 0;
