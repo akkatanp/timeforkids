@@ -53,15 +53,15 @@
     <div class="related-content-wrap">
         <div class="addit-content">Additional Content</div>
         <?php if(array_key_exists('field_mini_lessons', $fields)): ?>
-           <div class="addit-mini-lessons"><?php print $fields['field_mini_lessons']->label;?> : <?php print $fields['field_mini_lessons']->content; ?></div>
+           <div class="addit-mini-lessons"><?php print $fields['field_mini_lessons']->label;?>: <?php print $fields['field_mini_lessons']->content; ?></div>
         <?php endif; ?>
 
         <?php if(array_key_exists('field_related_articles', $fields)): ?>
-           <div class="addit-related-articles"><?php print $fields['field_related_articles']->label;?> : <?php print $fields['field_related_articles']->content; ?></div>
+           <div class="addit-related-articles"><?php print $fields['field_related_articles']->label;?>: <?php print $fields['field_related_articles']->content; ?></div>
         <?php endif; ?>
         
         <?php if(array_key_exists('field_additional_content', $fields)): ?>
-           <div class="addit-related-articles"><?php print $fields['field_additional_content']->label;?> : <?php print $fields['field_additional_content']->content; ?></div>
+           <div class="addit-related-articles"><?php print $fields['field_additional_content']->label;?>: <?php print $fields['field_additional_content']->content; ?></div>
         <?php endif; ?>
     </div>
 <?php endif;?>
