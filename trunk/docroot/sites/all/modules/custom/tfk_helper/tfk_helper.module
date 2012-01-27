@@ -296,6 +296,11 @@ function tfk_helper_preprocess_views_view_fields(&$variables, $hook) {
       $variables['show_additional_content'] = TRUE;
       // Simplifies conditionals on the .tpl
       $variables['add_cont_fields'] = $ac_keys;
+      
+      // Tweak content type names for field field_additional_content.
+      if(array_key_exists('field_additional_content', $variables['fields'])) {
+        $variables['fields']['field_additional_content']->label = ucfirst($variables['row']->node_type);
+      }
     }
   }
 }
