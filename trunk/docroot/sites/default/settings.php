@@ -443,12 +443,6 @@ ini_set('session.cookie_lifetime', 2000000);
  */
 # $conf['allow_authorize_operations'] = FALSE;
 
-/**
- * Acquia Config file
- *
- * This file is required to connect to an Acquia server and manages the DB connection.
- */
-require('/var/www/site-php/time/time-settings.inc');
 
 /**
  * Memcached Config Settings
@@ -457,6 +451,16 @@ require('/var/www/site-php/time/time-settings.inc');
  *
  */
  
- $conf['cache_inc'] = './sites/all/modules/contrib/memcache/memcache.inc';
- //$conf['session_inc'] = './sites/all/modules/contrib/memcache/memcache-session.inc';
+$conf['cache_inc'] = './sites/all/modules/contrib/memcache/memcache.inc';
+//$conf['session_inc'] = './sites/all/modules/contrib/memcache/memcache-session.inc';
 
+include_once('./includes/cache.inc');
+include_once('./sites/all/modules/memcache/memcache.inc');
+$conf['cache_default_class'] = 'MemCacheDrupal'; 
+
+/**
+ * Acquia Config file
+ *
+ * This file is required to connect to an Acquia server and manages the DB connection.
+ */
+require('/var/www/site-php/time/time-settings.inc');
