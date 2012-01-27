@@ -216,6 +216,23 @@ body .region-footer {
   padding-bottom: 130px;
 }
 
+*:first-child + html body.not-logged-in.page-photos-video .region-sidebar-second,
+*:first-child + html body.not-logged-in.page-news-archive .region-sidebar-second {
+  margin-bottom: 350px;
+}
+
+*:first-child + html body.not-logged-in.page-store .region-sidebar-second {
+  margin-bottom: 800px;
+}
+
+*:first-child + html body.not-logged-in.page-around-the-world .region-sidebar-second {
+	margin-bottom: 900px;
+}
+
+*:first-child + html body.not-logged-in.extras-root .region-sidebar-second {
+  margin-bottom: 1500px;
+}
+
 /*
  * If a div.clearfix doesn't have any content after it and its bottom edge
  * touches the bottom of the viewport, Firefox and Safari will mistakenly
