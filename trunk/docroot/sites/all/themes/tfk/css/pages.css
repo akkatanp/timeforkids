@@ -1713,6 +1713,10 @@ ul.links li {
 	border: solid 1px #cecece;
 }
 
+*:first-child + html body.node-type-atw-destination .group-destination-images {
+  float: none;
+}
+
 .node-type-atw-destination .group-destination-images .field-label-above .field-label {
 	font: normal 12px "arial black", arial, sans-serif;
 	text-transform: uppercase;
