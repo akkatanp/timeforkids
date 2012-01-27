@@ -1,0 +1,43 @@
+#block-tfk-search-tfk-magazine-issue-block {
+	margin-bottom: 10px;
+	background-color: #D9EFFE;
+	border: 1px solid #CECECE;
+}
+
+#block-tfk-search-tfk-magazine-issue-block div.content > div {
+	border-bottom: 1px dotted #CECECE;
+	padding: 10px 0;
+	margin: 0 10px;
+}
+
+#block-tfk-search-tfk-magazine-issue-block h2,
+#block-tfk-search-tfk-magazine-issue-block h3,
+#block-tfk-search-tfk-magazine-issue-block .head.div > div,
+#block-tfk-search-tfk-magazine-back-btn h2 a {
+	font-size: 12px;
+	font-family: "arial black", arial, sans-serif;
+	font-weight: normal;
+	line-height: 14px;
+}
+
+#block-tfk-search-tfk-magazine-issue-block .cover-story.div h3,
+#block-tfk-search-tfk-magazine-issue-block .more-news.div h3,
+#block-tfk-search-tfk-magazine-issue-block li {
+  line-height: 20px;
+}
+
+#block-tfk-search-tfk-magazine-issue-block li {
+	padding-left: 10px;
+}
+
+#block-tfk-search-tfk-magazine-back-btn {
+	background-color: #D71700;
+	padding: 16px 10px 20px 16px;
+	margin-bottom: 10px;
+}
+
+#block-tfk-search-tfk-magazine-back-btn h2 a {
+	color: #FFF;
+	background: url("/sites/all/modules/custom/tfk_photos_video/images/back-to-all-photos-and-video-button.png") no-repeat 0 2px;
+	padding-left: 16px;
+}
