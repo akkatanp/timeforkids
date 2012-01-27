@@ -41,9 +41,8 @@
     <div class="related-content-wrap">
         <!--<div class="addit-content"><?php print $fields['field_related_articles']->content;?></div>-->
       <div class="addit-content">Additional Content</div>
-        <?php if($fields['field_related_articles']): ?>
-           <div class="addit-mini-lessons"><?php print $fields['field_related_articles']->content;?></div>
+        <?php if(array_key_exists('field_related_articles', $fields)): ?>
+           <div class="addit-related-articles"><?php print $fields['field_related_articles']->label;?>: <?php print $fields['field_related_articles']->content; ?></div>
         <?php endif; ?>
-
     </div>
 <?php endif;?>
