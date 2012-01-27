@@ -1707,7 +1707,7 @@ ul.links li {
 }
 
 .node-type-atw-destination .group-destination-images {
-	float: left;
+	/*float: left; */
 	width: 130px;
 	padding: 10px;
 	border: solid 1px #cecece;
