@@ -214,10 +214,12 @@ if(drupal_is_front_page()) {
 
       </div><!-- /.section, /#content -->
 			
-			<?php if(!empty($page['sidebar_first']) || !empty($page['sidebar_bottom'])): // Three column layouts. ?>
-  			<div id="footer" class="section clearfix">
-    			<?php print render($page['footer']); ?>
-  			</div>
+			<?php if(!array_key_exists('#printed', $page['footer'])):?>
+  			<?php if(!empty($page['sidebar_first']) || !empty($page['sidebar_bottom'])): // Three column layouts. ?>
+    			<div id="footer" class="section <?php print $footer_classes; ?>">
+      			<?php print render($page['footer']); ?>
+    			</div>
+  			<?php endif; ?>
 			<?php endif; ?>
 			
     </div><!-- /#main -->
