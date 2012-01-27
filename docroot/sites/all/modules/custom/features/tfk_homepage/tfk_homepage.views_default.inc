@@ -627,10 +627,9 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['fields']['field_credit_1']['alter']['html'] = 0;
   $handler->display->display_options['fields']['field_credit_1']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_credit_1']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['field_credit_1']['empty'] = '&nbsp;';
-  $handler->display->display_options['fields']['field_credit_1']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_credit_1']['hide_empty'] = 1;
   $handler->display->display_options['fields']['field_credit_1']['empty_zero'] = 1;
-  $handler->display->display_options['fields']['field_credit_1']['hide_alter_empty'] = 0;
+  $handler->display->display_options['fields']['field_credit_1']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['field_credit_1']['field_api_classes'] = 0;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
@@ -1191,7 +1190,6 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['fields']['title_1']['field'] = 'title';
   $handler->display->display_options['fields']['title_1']['ui_name'] = 'View Full Article';
   $handler->display->display_options['fields']['title_1']['label'] = '';
-  $handler->display->display_options['fields']['title_1']['exclude'] = TRUE;
   $handler->display->display_options['fields']['title_1']['alter']['alter_text'] = 1;
   $handler->display->display_options['fields']['title_1']['alter']['text'] = 'View Full Article';
   $handler->display->display_options['fields']['title_1']['alter']['make_link'] = 0;
@@ -1483,7 +1481,6 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['fields']['title_1']['field'] = 'title';
   $handler->display->display_options['fields']['title_1']['ui_name'] = 'View Full Article';
   $handler->display->display_options['fields']['title_1']['label'] = '';
-  $handler->display->display_options['fields']['title_1']['exclude'] = TRUE;
   $handler->display->display_options['fields']['title_1']['alter']['alter_text'] = 1;
   $handler->display->display_options['fields']['title_1']['alter']['text'] = 'View Full Article';
   $handler->display->display_options['fields']['title_1']['alter']['make_link'] = 0;
@@ -1775,7 +1772,6 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['fields']['title_1']['field'] = 'title';
   $handler->display->display_options['fields']['title_1']['ui_name'] = 'View Full Article';
   $handler->display->display_options['fields']['title_1']['label'] = '';
-  $handler->display->display_options['fields']['title_1']['exclude'] = TRUE;
   $handler->display->display_options['fields']['title_1']['alter']['alter_text'] = 1;
   $handler->display->display_options['fields']['title_1']['alter']['text'] = 'View Full Article';
   $handler->display->display_options['fields']['title_1']['alter']['make_link'] = 0;
