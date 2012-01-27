@@ -55,7 +55,7 @@
     <div class="related-content-wrap">
       <div class="addit-content">Additional Content</div>
         <?php if($fields['field_additional_content']): ?>
-           <div class="addit-mini-lessons">ARTICLE : <?php print $fields['field_additional_content']->content;?></div>
+           <div class="addit-mini-lessons">ARTICLE: <?php print $fields['field_additional_content']->content;?></div>
         <?php endif; ?>
        
     </div>
