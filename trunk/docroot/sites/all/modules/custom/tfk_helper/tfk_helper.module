@@ -283,7 +283,7 @@ function tfk_helper_preprocess_views_view_fields(&$variables, $hook) {
   }
   
   // Additional content Views.
-  $ac_views = array('homepage_top_story', 'homepage_news_block');
+  $ac_views = array('homepage_top_story', 'homepage_news_block', 'homepage_minisite');
   if(array_search($view->name, $ac_views) !== FALSE && !$view->is_attachment) {
     
     // Detect additional content. Generic conditional applies to multiple Views.
