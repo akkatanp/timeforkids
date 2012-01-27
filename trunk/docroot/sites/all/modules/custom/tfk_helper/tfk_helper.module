@@ -195,7 +195,9 @@ function tfk_helper_preprocess_html(&$variables, $hook) {
     // If this row DOES NOT have additional content...
     if(!$_block_row) {
       // Add class to the body tag.
-      $variables['classes_array'][] = $class_map[$path][$_row_key];
+      if(array_key_exists($path, $class_map)) {
+        $variables['classes_array'][] = $class_map[$path][$_row_key];
+      }
     }
   }
   
