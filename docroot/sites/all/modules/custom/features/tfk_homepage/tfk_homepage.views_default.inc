@@ -220,9 +220,9 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['fields']['field_related_articles']['id'] = 'field_related_articles';
   $handler->display->display_options['fields']['field_related_articles']['table'] = 'field_data_field_related_articles';
   $handler->display->display_options['fields']['field_related_articles']['field'] = 'field_related_articles';
-  $handler->display->display_options['fields']['field_related_articles']['label'] = '';
-  $handler->display->display_options['fields']['field_related_articles']['alter']['alter_text'] = 1;
-  $handler->display->display_options['fields']['field_related_articles']['alter']['text'] = '[type] : [field_related_articles] ';
+  $handler->display->display_options['fields']['field_related_articles']['label'] = 'ARTICLE';
+  $handler->display->display_options['fields']['field_related_articles']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_related_articles']['alter']['text'] = '[field_related_articles] ';
   $handler->display->display_options['fields']['field_related_articles']['alter']['make_link'] = 0;
   $handler->display->display_options['fields']['field_related_articles']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_related_articles']['alter']['external'] = 0;
@@ -234,7 +234,7 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['fields']['field_related_articles']['alter']['strip_tags'] = 0;
   $handler->display->display_options['fields']['field_related_articles']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_related_articles']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['field_related_articles']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_related_articles']['element_label_colon'] = 0;
   $handler->display->display_options['fields']['field_related_articles']['element_default_classes'] = 1;
   $handler->display->display_options['fields']['field_related_articles']['hide_empty'] = 1;
   $handler->display->display_options['fields']['field_related_articles']['empty_zero'] = 1;
