@@ -116,7 +116,7 @@ $speaker_photo = file_create_url(image_style_path('tfk_rect_large',$speaker_phot
 	
 	<div class="atw-graphic-header"></div>
 	
-	<div id="native-lingo-container clearfix">
+	<div id="native-lingo-container" class="clearfix">
 		<!--<h1><?php echo $title; ?>: Native Lingo</h1>-->
         <h1><?php echo $src_country_title; ?>: Native Lingo</h1>
 
