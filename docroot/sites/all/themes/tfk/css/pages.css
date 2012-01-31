@@ -1223,7 +1223,7 @@ ul.links li {
 .view-mini-site-home .view-content table,
 .view-all-kid-reporters .view-content table {
 	margin: 0;
-	border-collapse: collapse;
+	border-collapse: separate;
 }
 
 .view-mini-site-home .view-content table td,
