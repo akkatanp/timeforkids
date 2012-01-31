@@ -1065,7 +1065,6 @@ function tfk_search_search_box_submit($form, &$form_state) {
  */
 function tfk_search_preprocess_form_element(&$variables, $hook) {
   if($variables['element']['#name'] == 'search_block_form') {
-    print_r('bar');
     $variables['element']['#type'] = '';
   }
 }
