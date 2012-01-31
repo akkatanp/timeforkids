@@ -1056,6 +1056,19 @@ function tfk_search_search_box_submit($form, &$form_state) {
   }
 }
 
+/**
+ * Preprocess form_element.
+ *
+ * Cause theme_form_element() to drop the "form-type-textfield" class.
+ *
+ * @see theme_form_element
+ */
+function tfk_search_preprocess_form_element(&$variables, $hook) {
+  if($variables['element']['#name'] == 'search_block_form') {
+    $variables['element']['#type'] = '';
+  }
+}
+
 function _tfk_search_back_btn(){
   $dest = '';
   $link_copy = '';
