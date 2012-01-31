@@ -1064,10 +1064,10 @@ function tfk_search_search_box_submit($form, &$form_state) {
  * @see theme_form_element
  */
 function tfk_search_preprocess_form_element(&$variables, $hook) {
-  if($variables['element']['#name'] == 'search_block_form') {
+  /*if($variables['element']['#name'] == 'search_block_form') {
     print_r('bar');
     $variables['element']['#type'] = '';
-  }
+  }*/
 }
 
 function _tfk_search_back_btn(){
