@@ -56,6 +56,7 @@ tr.odd td {
 }
 .view-homepage-destination {
     margin-top:2px;
+    padding-bottom: 27px;
 }
 /*homepage main image*/
 #block-views-minisite-articles-block-2 .views-field-field-lrg-sq-image, #block-views-minisite-articles-block-3 .views-field-field-lrg-sq-image, .view-homepage-top-story .views-field-field-lrg-sq-image, .view-teacher-news-top-story .views-field-field-lrg-sq-image, .view-kid-reporters-channel-top-story .views-field-field-lrg-sq-image {
