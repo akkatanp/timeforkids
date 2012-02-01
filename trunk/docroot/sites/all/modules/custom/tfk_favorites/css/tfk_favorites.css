@@ -61,7 +61,3 @@ body.page-my-favorites .search-result-download-link {
   height: 20px;
   padding-left: 18px;
 }
-
-body.section-my-favorites div#featured-related-content {
-  *margin-left: 0; /* IE7 and below */
-}
