@@ -406,13 +406,13 @@ div#tfk-search-pager-top div.sp-top {
 }
 
 div#tfk-search-pager-top h2 {
-  display: inline;
+  float: left;
   font-size: 1.5em;
   margin: 0px;
 }
 
 div#tfk-search-pager-top .sp-bottom {
-  margin: 3px 0 0 0;
+  margin: 30px 0 0 0;
 	font-family: "georgia", serif;
 }
 
@@ -429,8 +429,7 @@ div#tfk-search-pager-top ul.pager {
 }
 
 div#tfk-search-pager-top .sp-top-list {
-	display: inline;
-  float: right;
+  float: left;
   padding-right: 5px;
 	margin-top: 3px;
 }
