@@ -284,8 +284,8 @@ ul.links li {
     float: left;
     margin: 4px 0;
     padding: 4px;
-    width: 230px;
-    padding: 10px 10px 10px 10px;
+    width: 228px;
+    padding: 10px;
     height:100px;
     line-height:15px;
 }
@@ -293,10 +293,10 @@ ul.links li {
 	display: none;
 }
 .view-board-members .view-content table {
-    border-collapse: collapse;
+    border-collapse: separate;
 }
 .view-board-members .view-content table td.col-1 {
-    margin-right: 5px;
+    margin-right: 6px;
 }
 .view-board-members .view-content .views-field-title {
     font-size:14px;
@@ -933,6 +933,10 @@ ul.links li {
 	line-height: 15px;
 }
 
+#block-views-minisite-articles-block-1 table {
+  border-collapse: separate;
+}
+
 #block-views-minisite-articles-block-1 table td,
 #block-views-minisite-articles-block table td {
 	display: block;
@@ -1037,7 +1041,7 @@ ul.links li {
 .view-teacher-news-news-block table,
 .view-kid-reporters-channel-news-block table {
 	margin: 0;
-	border-collapse: collapse;
+	border-collapse: separate;
 	border: 0;
 }
 
@@ -1231,14 +1235,14 @@ ul.links li {
 	display: block;
 	position: relative;
 	float: left;
-	width: 230px;
+	width: 228px;
 	border: solid 1px #cecece;
 	padding: 10px 12px 10px 9px;
 	margin: 2px 0;
 	line-height: 15px;
-        height:115px;
-        height:auto !important;
-        min-height:115px;
+  height:115px;
+  height:auto !important;
+  min-height:115px;
 }
 
 .view-mini-site-home .view-content table td.empty {
@@ -1657,7 +1661,7 @@ ul.links li {
 	float: left;
 	width: 510px;
 	margin: 0 0 10px 0;
-	border-collapse: collapse;
+	border-collapse: separate;
 	border-top: none;
 	border-bottom: solid 1px #cecece;
 	border-left: solid 1px #cecece;
