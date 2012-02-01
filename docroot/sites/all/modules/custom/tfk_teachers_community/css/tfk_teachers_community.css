@@ -6,15 +6,16 @@
   margin-bottom: 15px;
   padding: 2px 4px;
   position: relative;
+  height: 16px;
 }
 .suggestion-box .msg {
-  display: inline-block;
+  float: left;
   font-size: 11px;
   font-weight: bold;
 }
 .suggestion-box .link {
   border-left: 1px solid #666666;
-  display: inline-block;
+  float: left;         
   font-size: 11px;
   font-weight: bold;
   margin-left: 3px;
@@ -33,9 +34,9 @@
 }
 
 .suggestion-box .link a {
-  background: url('/sites/all/modules/custom/tfk_teachers_community/images/right-arrow.png') 101% 50% no-repeat;
+  background: url('/sites/all/modules/custom/tfk_teachers_community/images/right-arrow.png') 215px 50% no-repeat;
   display: block;
-  width: 107%;  
+  width: 230px;  
 }
 
 .suggestion-box.bottom .link a {
