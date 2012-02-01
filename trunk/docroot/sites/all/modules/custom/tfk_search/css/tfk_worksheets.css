@@ -203,14 +203,15 @@ div#tfk-search-pager-top h2 {
 #block-tfk-search-tfk-search-worksheet-saved.block .savedsrch {
   border-bottom: 1px dotted #A7CAE4;
   padding: 3px 0 7px 0;
+  height: 20px;
 }
 
 #block-tfk-search-tfk-search-worksheet-saved.block .savedsrch .savedsrch-label {
-  display: inline-block;
+  float: left;
+  padding-top: 2px;
 }
 
 #block-tfk-search-tfk-search-worksheet-saved.block .savedsrch .savedsrch-checkbox {
-  display: inline-block;
   float: right;
 }
 
