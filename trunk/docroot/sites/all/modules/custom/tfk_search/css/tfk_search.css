@@ -428,6 +428,18 @@ div#tfk-search-pager-top ul.pager {
   width: 275px;
 }
 
+body.page-tfk-magazine div#tfk-search-pager-top .sp-top-list, 
+body.page-tfk-magazine div#tfk-search-pager-top div.item-list, 
+body.page-tfk-magazine div#tfk-search-pager-top ul.pager {
+  width: 328px;
+}
+
+body.page-worksheets div#tfk-search-pager-top .sp-top-list, 
+body.page-worksheets div#tfk-search-pager-top div.item-list, 
+body.page-worksheets div#tfk-search-pager-top ul.pager {
+  width: 315px;
+}
+
 div#tfk-search-pager-top .sp-top-list {
   float: left;
   padding-right: 5px;
