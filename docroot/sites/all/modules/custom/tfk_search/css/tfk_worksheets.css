@@ -40,7 +40,7 @@ body.section-worksheets li.worksheet .col2 {
 }
 
 li.search-result .flag-favorites {
-  display: inline-block;
+  display: inline;
   background: url("/sites/all/modules/custom/tfk_search/images/star-favorite-icon.png") no-repeat;
   padding-left: 18px;
   height: 20px;
