@@ -477,6 +477,10 @@ div#featured-related-content-title {
 	margin: 0 0 3px 0;
 }
 
+body.page-my-favorites div#featured-related-content-title {
+  margin: 55px 0 3px 0;
+}
+
 .minisite-slideshow div#featured-related-content-title{
     margin: 0 0 40px 0;
 }
