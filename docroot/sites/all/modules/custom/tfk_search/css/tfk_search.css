@@ -422,18 +422,14 @@ div#tfk-search-pager-top div.item-list ul.pager {
   text-align: right;
 }
 
-div#tfk-search-pager-top h2,
-div#tfk-search-pager-top span.sp-top-list {
-	
-}
-
-div#tfk-search-pager-top span.sp-top-list, 
+div#tfk-search-pager-top .sp-top-list, 
 div#tfk-search-pager-top div.item-list, 
 div#tfk-search-pager-top ul.pager {
   width: 275px;
 }
 
-div#tfk-search-pager-top span.sp-top-list {
+div#tfk-search-pager-top .sp-top-list {
+	display: inline;
   float: right;
   padding-right: 5px;
 	margin-top: 3px;
