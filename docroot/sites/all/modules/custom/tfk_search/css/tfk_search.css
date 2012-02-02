@@ -293,7 +293,7 @@ body.page-my-favorites .col1 {
 }
 
 .col2 {
-  display: inline-block;
+  float: left;
   width: 360px;
   margin-left: 10px;
   clear: right;
