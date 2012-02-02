@@ -1489,6 +1489,7 @@ ul.links li {
 .view-kid-reporters-channel-news-block table td .related-content-wrap {
 	position: absolute;
 	bottom: 10px;
+	right: 10px;
 	width: 216px;
 }
 
