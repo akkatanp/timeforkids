@@ -1183,8 +1183,21 @@
 	height: 14px;
 }
 
+#block-block-6 {
+	margin-top: 10px;
+}
+
+#block-menu-menu-tfk-footer-secondary {
+	padding-bottom: 10px;
+	height: 14px;
+	padding-top: 10px;
+}
+
 #block-menu-menu-tfk-footer-secondary ul.menu {
 	border-top: solid 1px white;
+	padding-top: 10px;
+	display: block;
+	height: 30px;
 }
 
 .region-footer ul.menu {
