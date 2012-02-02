@@ -905,8 +905,8 @@
         padding-bottom:9px;
 }
 
-#block-views-mini-site-home-block-1 {
-	background: url(../images/featured-mini-site.png) no-repeat 2px 0px;
+#block-views-mini-site-home-block-1 .view-mini-site-home {
+	background: url(../images/featured-mini-site.png) no-repeat scroll left top transparent;
 	padding-top: 20px;
 }
 
