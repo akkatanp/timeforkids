@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the TFK Quizzes feature.
- */
-
-include_once('tfk_quizzes.features.inc');
