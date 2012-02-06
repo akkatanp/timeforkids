@@ -1,5 +1,5 @@
 name = "TFK Worksheets"
-description = "Worksheet content type, Worksheets context."
+description = "Printables feature. Manages printables contexts and worksheet, pdf_quiz, and common core standards content types."
 core = "7.x"
 package = "Features"
 php = "5.2.4"
