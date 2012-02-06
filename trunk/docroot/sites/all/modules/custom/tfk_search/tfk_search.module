@@ -2975,9 +2975,12 @@ function tfk_search_preprocess_search_result(&$vars) {
       }
       break;
       
+    case 'common_core_standards':
     case 'pdf_quiz':
       $vars['title'] = $title;
-      $vars['tfk_search_cont_type'] = 'QUIZ';
+      $_cont_type = ($vars['result']['fields']['bundle_name'] == 'pdf_quiz') ? 'quiz': 'common core standards';
+      
+      $vars['tfk_search_cont_type'] = strtoupper($_cont_type);
       
       // Find out if this Quiz is associated with a magazine issue.
       // Should work as along as the quiz is associated with only one issue.
@@ -3015,7 +3018,7 @@ function tfk_search_preprocess_search_result(&$vars) {
       $private_file = field_get_items('node', $node, 'field_pdf_file_private');
       if($private_file) {
         $private_file = $private_file[0];
-        $vars['tfk_pdf_link'] = l('Download this Quiz', file_create_url($private_file['uri']));
+        $vars['tfk_pdf_link'] = l('Download this '. (($vars['result']['fields']['bundle_name'] == 'pdf_quiz') ? 'Quiz': 'Printable'), file_create_url($private_file['uri']));
       }
       
       $body = field_get_items('node', $node, 'field_deck');
@@ -3036,7 +3039,7 @@ function tfk_search_preprocess_search_result(&$vars) {
       }
       $vars['classes_array'][] = 'pdf_quiz';
       break;
-
+      
     case 'worksheet':
       $worksheet_nid = $nid;
       

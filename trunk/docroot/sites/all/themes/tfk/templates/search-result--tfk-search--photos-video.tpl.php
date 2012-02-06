@@ -75,7 +75,7 @@
     <div class="content-type"><?php print $tfk_search_cont_type;?></div>
   <?php endif;?>
   
-  <div class='row2'>
+  <div class='row2 clearfix'>
     
     <?php if(isset($thumbnail)):?>
     	<div class='col1'>

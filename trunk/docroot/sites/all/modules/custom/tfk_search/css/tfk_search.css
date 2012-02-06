@@ -778,6 +778,10 @@ body.page-search-site .region-sidebar-first .block .content > .item-list {
 	display: block;
 }
 
+.page-my-favorites ol#tfk-search-results-photos-video li {
+	padding-bottom: 0px;
+}
+
 .page-my-favorites ol#tfk-search-results-photos-video li h3.title a:link, 
 .page-my-favorites ol#tfk-search-results-photos-video li h3.title a:visited {
   color: #D71700;
@@ -796,6 +800,7 @@ body.page-search-site .region-sidebar-first .block .content > .item-list {
   display: block;
   width: inherit;
   margin: 0 0 10px 0;
+  float: none;
 }
 
 .page-my-favorites .search-result div.search-snippet-body {
