@@ -37,8 +37,9 @@ function tfk_favorites_feature_flag_default_flags() {
     'types' => array(
       0 => 'slideshow',
       1 => 'video',
-      2 => 'pdf_quiz',
-      3 => 'worksheet',
+      2 => 'common_core_standards',
+      3 => 'pdf_quiz',
+      4 => 'worksheet',
     ),
     'flag_short' => 'Click to add to Favorites',
     'flag_long' => '',
