@@ -1048,6 +1048,31 @@ function tfk_search_form_search_block_form_alter(&$form, &$form_state, $form_id)
 }
 
 /**
+ * Implementation of hook_form_FORM_ID_alter
+ *
+ * Alter apachesolr_enabled_facets_form(), add an additional submit handler
+ * that helps us export enabled facet settings via Features.
+ */
+function tfk_search_form_apachesolr_enabled_facets_form_alter(&$form, &$form_state, $form_id) {
+  $form['#submit'][] = 'tfk_search_enabled_facets_form_submit';
+}
+
+/**
+ * An additional submit handler for the active facets form.
+ *
+ * @see apachesolr_enabled_facets_form
+ */
+function tfk_search_enabled_facets_form_submit($form, &$form_state) {
+  $enabled = array();
+  foreach ($form_state['values']['apachesolr_enabled_facets'] as $module => $facets) {
+    $enabled[$module] = array_filter($facets);
+  }
+  
+  // @see apachesolr_default_server()
+  apachesolr_save_enabled_facets('solr', $enabled);
+}
+
+/**
  * Allow user to perform an empty search.
  */
 function tfk_search_search_box_submit($form, &$form_state) {
@@ -2066,7 +2091,7 @@ function tfk_search_apachesolr_modify_query($query, $caller) {
   // Depending on the URL, are the content types we show.
   $content_type_map = array(
     TFK_SEARCH_PHOTOSVIDEO_PATH => array('video', 'slideshow'),
-    TFK_SEARCH_WORKSHEETS_PATH => array('worksheet', 'pdf_quiz'),
+    TFK_SEARCH_WORKSHEETS_PATH => array('worksheet', 'pdf_quiz', 'common_core_standards'),
     TFK_SEARCH_MAGAZINE_PATH => array('magazine_issue'),
   );
   
@@ -2146,7 +2171,7 @@ function tfk_search_apachesolr_modify_query($query, $caller) {
     // Logged in content types.
     } else {
       // Teachers can see cover stories.
-      $content_types = array('article', 'slideshow', 'video', 'atw_destination', 'minisite', 'tfk_extra', 'worksheet', 'mini_lesson', 'a_paper', 'grammar_practice', 'writing_tips', 'pdf_quiz');
+      $content_types = array('article', 'slideshow', 'video', 'atw_destination', 'minisite', 'tfk_extra', 'worksheet', 'mini_lesson', 'a_paper', 'grammar_practice', 'writing_tips', 'pdf_quiz', 'common_core_standards');
       
       $ct_subquery = apachesolr_drupal_query();
       foreach($content_types as $content_type) {
