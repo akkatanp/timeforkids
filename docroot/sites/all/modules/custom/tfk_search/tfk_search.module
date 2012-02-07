@@ -3028,11 +3028,23 @@ function tfk_search_preprocess_search_result(&$vars) {
       }
       
       // Default graphic for Quiz.
-      static $graphic_path = NULL;
-      if($graphic_path == NULL) {
-        $graphic_path = drupal_get_path('module', 'tfk_search'). '/images/quiz_graphic.gif';
+      if($_cont_type == 'quiz') {
+        static $graphic_path = NULL;
+        if($graphic_path == NULL) {
+          $graphic_path = drupal_get_path('module', 'tfk_search'). '/images/quiz_graphic.gif';
+        }
+        $vars['thumbnail'] = theme('image', array('path' => $graphic_path, 'attributes' => $thumb_attr));
+      } else {
+      
+        $tmp_img_nid =  field_get_items('node', $node, 'field_common_core_thumbnail');
+        $uri = $tmp_img_nid[0]['uri'];
+        if(!empty($uri) && file_exists(drupal_realpath($uri))) {
+          $newpath = image_style_path($style, $uri);
+          $abspath = file_create_url($newpath);
+          // Worksheets don't link to the node page.
+          $vars['thumbnail'] = theme('image', array('path' => $abspath, 'alt' => $title, 'title' => $title, 'attributes' => $thumb_attr));
+        }
       }
-      $vars['thumbnail'] = theme('image', array('path' => $graphic_path, 'attributes' => $thumb_attr));
       
       if($favorite_links) {
         tfk_search_get_flag_link($vars, $nid, 'favorites');
