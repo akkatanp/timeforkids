@@ -204,6 +204,50 @@ function tfk_helper_preprocess_html(&$variables, $hook) {
 }
 
 /**
+ * Preprocess Views field.
+ *
+ * re #527, Add links to all homepage and site channel images.
+ */
+function tfk_helper_preprocess_views_view_field(&$variables, $hook) {
+  
+  switch ($variables['view']->name) {
+    // Main tout.
+    case 'homepage_top_story':
+      if(($variables['field']->field == 'field_lrg_sq_image' || $variables['field']->field == 'field_video_thumbnail') && !empty($variables['output'])) {
+        $variables['output'] = l($variables['output'], 'node/'. $variables['row']->nid, array('html' => TRUE));
+      }
+      break;
+    // Secondary tout.
+    case 'homepage_news_block':
+      if($variables['field']->field == 'field_lrg_rect_image' && !empty($variables['output'])) {
+        $variables['output'] = l($variables['output'], 'node/'. $variables['row']->nid, array('html' => TRUE));
+      }
+      break;
+    // Homepage destination.
+    case 'homepage_destination':
+      if($variables['field']->field == 'field_image' && !empty($variables['output'])) {
+        $variables['output'] = l($variables['output'], 'node/'. $variables['row']->nid, array('html' => TRUE));
+      }
+      break;
+    // Homepage mini-site.
+    case 'homepage_minisite':
+      if($variables['field']->field == 'field_minisite_tout_image' && !empty($variables['output'])) {
+        $variables['output'] = l($variables['output'], 'node/'. $variables['row']->nid, array('html' => TRUE));
+      }
+      break;
+    // Mini-site home
+    case 'mini_site_home':
+      if($variables['field']->field == 'field_minisite_tout_image' && !empty($variables['output'])) {
+        $variables['output'] = l($variables['output'], 'node/'. $variables['row']->nid, array('html' => TRUE));
+      }
+      if($variables['field']->field == 'field_minisite_thumbnail_image' && !empty($variables['output'])) {
+        $variables['output'] = l($variables['output'], 'node/'. $variables['row']->nid, array('html' => TRUE));
+      }
+      break;
+  }
+}
+
+/**
  * Preprocessing for multiple Views.
  *
  * Implementation of hook_preprocess_view_view_fields.
