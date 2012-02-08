@@ -153,15 +153,16 @@ form table .item-list ul {
 
 #login-form-container {
 	float: left;
-	width: 325px;
+	width: 300px;
 	height: 250px;
-	margin: 0 10px;
+	margin: 0 24px 0 5px;
+	border-right: dotted 1px #999;
 }
 
 #login-container #message-box {
 	float: left;
-	width: 285px;
-	height: 190px;
+	width: 300px;
+	height: 106px;
 	padding: 20px;
 	margin: 0 10px 20px 0;
 	background: #dedede;
@@ -181,7 +182,7 @@ form table .item-list ul {
 }
 
 #login-container #message-box  ul#message-list li {
-	margin-bottom: 20px;
+	line-height: 24px;
 }
 
 #login-container  #login-footer {
@@ -213,9 +214,13 @@ form table .item-list ul {
 	width: 270px;
 }
 
-#login-footer a {
+#login-container .bold {
 	font: bold 20px arial;
 	line-height: 20px;
+}
+
+#login-footer a {
+  text-decoration: underline;
 }
 
 #login-footer a:first-child {
