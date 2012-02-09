@@ -89,6 +89,18 @@ function tfk_helper_node_access($node, $op, $account) {
 }
 
 /**
+ * Implementation of hook_form_FORM_ID_alter().
+ *
+ * Modify exposed filters on Views admin/content2 page.
+ */
+function tfk_helper_form_views_exposed_form_alter(&$form, &$form_state, $form_id) {
+  if($form['#id'] == 'views-exposed-form-admin-content-page') {
+    // Alpha-sort content type filter.
+    ksort($form['type']['#options']);
+  }
+}
+
+/**
  * Implementation of hook_preprocess_page.
  */
 function tfk_helper_preprocess_page(&$variables) {
@@ -626,6 +638,8 @@ function tfk_helper_get_slideshow_data($nid) {
       $image_field = field_get_items('node', $image['node'], 'field_image');
       if($image_field) {
         $image_field = array_shift($image_field);
+        
+        list($width, $height, $type, $attr) = getimagesize($image_field['uri']);
       }
       
       // Date.
@@ -639,11 +653,19 @@ function tfk_helper_get_slideshow_data($nid) {
         $description = $field_body[0]['safe_value'];
       }
       
-      $derivative_path = tfk_search_get_thumbnail($image_field['fid'], 'tfk_rect_large');
+      //$derivative_path = tfk_search_get_thumbnail($image_field['fid'], 'tfk_rect_large');
       
-      if($derivative_path != FALSE) {
+      // $destination = image_style_path('default', $image_field['uri']);
+      $image_path = url(file_stream_wrapper_get_instance_by_scheme(file_uri_scheme($image_field['uri']))->getDirectoryPath() . '/' . file_uri_target($image_field['uri']), array('absolute' => TRUE));
+            
+      $file = file_load($image_field['fid']);
+      if(empty($file->uri)) {
+        return FALSE;
+      }
+      
+      //if($derivative_path != FALSE) {
         $list['images_data'][] = array(
-          'image_path'  => $derivative_path,
+          'image_path'  => $image_path,
           'image_title' => $image['node']->title,
           'title'       => $title,
           //'caption'     => $caption,
@@ -651,7 +673,7 @@ function tfk_helper_get_slideshow_data($nid) {
           'description' => $description,
           'date' 				=> $date,
         );
-      }
+      //}
       
     }
   }
