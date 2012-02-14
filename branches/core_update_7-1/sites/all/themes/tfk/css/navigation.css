@@ -110,10 +110,16 @@
 	height: 32px;
 }
 
-#global-nav-container ul.menu,
-#teacher-nav-container ul.menu {
+#global-nav-container ul.menu li.leaf,
+#teacher-nav-container ul.menu li.leaf {
 	list-style-type: none;
+	list-style-image: none;
 	height: 32px;
+}
+
+#global-nav-container ul.menu li.leaf, 
+#teacher-nav-container ul.menu li.leaf {
+	margin: 0;
 }
 
 #block-views-homepage-username-block {
