@@ -1,4 +1,4 @@
-; $Id: openid.info,v 1.9 2010/12/20 19:59:42 webchick Exp $
+; $Id$
 name = OpenID
 description = "Allows users to log into your site using OpenID."
 version = VERSION
@@ -6,12 +6,8 @@ package = Core
 core = 7.x
 files[] = openid.test
 
-; Information added by drupal.org packaging script on 2011-01-05
-version = "7.0"
+; Information added by drupal.org packaging script on 2011-05-25
+version = "7.1"
 project = "drupal"
-datestamp = "1294208756"
-
-
-; Information added by Acquia.com packaging script
-acquia = "1"
+datestamp = "1306354915"
 

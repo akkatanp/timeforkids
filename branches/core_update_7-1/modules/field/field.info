@@ -1,4 +1,4 @@
-; $Id: field.info,v 1.10 2010/12/20 19:59:41 webchick Exp $
+; $Id$
 name = Field
 description = Field API to add fields to entities like nodes and users.
 package = Core
@@ -11,12 +11,8 @@ dependencies[] = field_sql_storage
 required = TRUE
 stylesheets[all][] = theme/field.css
 
-; Information added by drupal.org packaging script on 2011-01-05
-version = "7.0"
+; Information added by drupal.org packaging script on 2011-05-25
+version = "7.1"
 project = "drupal"
-datestamp = "1294208756"
-
-
-; Information added by Acquia.com packaging script
-acquia = "1"
+datestamp = "1306354915"
 

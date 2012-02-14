@@ -1,5 +1,5 @@
 <?php
-// $Id: file.field.inc,v 1.42 2010/12/24 15:25:28 webchick Exp $
+// $Id$
 
 /**
  * @file

@@ -1,5 +1,5 @@
 <?php
-// $Id: block.tpl.php,v 1.10 2010/04/26 14:10:40 dries Exp $
+// $Id$
 
 /**
  * @file
