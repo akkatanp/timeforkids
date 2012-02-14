@@ -89,7 +89,7 @@
   
   <div class='row2'>
     <div class='col1'>
-      <?php if($thumbnail):?>
+      <?php if(isset($thumbnail) && $thumbnail):?>
       	<?php print $thumbnail; ?>
       <?php endif;?>
     </div>
