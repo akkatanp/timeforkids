@@ -1,5 +1,5 @@
 <?php
-// $Id: ssh.inc,v 1.8 2011/01/03 02:32:27 webchick Exp $
+// $Id$
 
 /**
  * The SSH connection class for the update module.

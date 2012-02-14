@@ -1,5 +1,5 @@
 <?php
-// $Id: drupal-6.locale.database.php,v 1.1 2010/10/05 20:04:19 webchick Exp $
+// $Id$
 
 /**
  * Database additions for locale tests.

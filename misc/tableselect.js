@@ -1,4 +1,4 @@
-// $Id: tableselect.js,v 1.13 2009/08/31 05:51:08 dries Exp $
+// $Id$
 (function ($) {
 
 Drupal.behaviors.tableSelect = {

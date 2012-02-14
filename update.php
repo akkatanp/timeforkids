@@ -1,5 +1,5 @@
 <?php
-// $Id: update.php,v 1.328 2011/01/04 05:57:26 webchick Exp $
+// $Id$
 
 /**
  * Root directory of Drupal installation.

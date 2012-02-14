@@ -1,4 +1,4 @@
-# $Id: robots.txt,v 1.15 2010/12/29 04:05:07 webchick Exp $
+# $Id$
 #
 # robots.txt
 #
@@ -26,11 +26,6 @@ Disallow: /modules/
 Disallow: /profiles/
 Disallow: /scripts/
 Disallow: /themes/
-Disallow: /TFK/
-Disallow: /tfk-magazine/
-Disallow: /worksheets/
-Disallow: /teacher-community/
-Disallow: /system/
 # Files
 Disallow: /CHANGELOG.txt
 Disallow: /cron.php
@@ -52,8 +47,6 @@ Disallow: /user/register/
 Disallow: /user/password/
 Disallow: /user/login/
 Disallow: /user/logout/
-Disallow: /taxonomy/
-Disallow: /taxonomy/term/
 # Paths (no clean URLs)
 Disallow: /?q=admin/
 Disallow: /?q=comment/reply/

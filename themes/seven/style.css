@@ -1,4 +1,4 @@
-/* $Id: style.css,v 1.86 2011/01/03 07:04:48 webchick Exp $ */
+/* $Id$ */
 
 /**
  * Generic elements.
@@ -994,21 +994,4 @@ div.add-or-remove-shortcuts {
   -moz-border-radius: 8px;
   -webkit-border-radius: 8px;
   border-radius: 8px;
-}
-
-/* Custom webform changes */
-#webform-component-edit-form .form-item-extra-description .description{
-  display:none;
-}
-
-#webform-component-edit-form .form-item-extra-correct-text .description{
-  display:none;
-}
-
-#webform-component-edit-form #edit-validation{
-  display:none;
-}
-
-#webform-component-edit-form #edit-display{
-  display:none;
 }

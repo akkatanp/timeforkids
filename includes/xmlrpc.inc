@@ -1,5 +1,5 @@
 <?php
-// $Id: xmlrpc.inc,v 1.69 2010/08/14 03:15:01 dries Exp $
+// $Id$
 
 /**
  * @file

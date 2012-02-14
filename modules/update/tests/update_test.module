@@ -1,5 +1,5 @@
 <?php
-// $Id: update_test.module,v 1.7 2011/01/03 02:41:33 webchick Exp $
+// $Id$
 
 /**
  * Implements hook_menu().

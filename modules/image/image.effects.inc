@@ -1,5 +1,5 @@
 <?php
-// $Id: image.effects.inc,v 1.5 2010/05/06 05:59:31 webchick Exp $
+// $Id$
 
 /**
  * @file

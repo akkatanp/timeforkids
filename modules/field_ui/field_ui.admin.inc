@@ -1,5 +1,5 @@
 <?php
-// $Id: field_ui.admin.inc,v 1.88 2010/12/15 04:13:48 webchick Exp $
+// $Id$
 
 /**
  * @file

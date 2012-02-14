@@ -1,5 +1,5 @@
 <?php
-// $Id: comment.tpl.php,v 1.21 2010/12/01 00:18:15 webchick Exp $
+// $Id$
 ?>
 <div class="<?php print $classes . ' ' . $zebra; ?>"<?php print $attributes; ?>>
 

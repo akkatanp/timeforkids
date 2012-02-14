@@ -1,5 +1,5 @@
 <?php
-// $Id: mail.inc,v 1.34 2010/07/28 02:19:56 dries Exp $
+// $Id$
 
 /**
  * @file
