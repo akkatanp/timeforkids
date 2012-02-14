@@ -509,6 +509,11 @@ function features_misc_views_default_views() {
   $handler->display->display_options['filters']['uid']['expose']['multiple'] = FALSE;
   $handler->display->display_options['filters']['uid']['expose']['reduce'] = 0;
   $handler->display->display_options['path'] = 'admin/content2';
+  $handler->display->display_options['menu']['type'] = 'normal';
+  $handler->display->display_options['menu']['title'] = 'Administer Content';
+  $handler->display->display_options['menu']['description'] = 'Administer Content';
+  $handler->display->display_options['menu']['weight'] = '-100';
+  $handler->display->display_options['menu']['name'] = 'management';
   $export['admin_content'] = $view;
 
   $view = new view;
