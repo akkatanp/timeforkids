@@ -4,7 +4,7 @@
 
  
 $databases['default']['default'] = array(
-    'database' => 'qa',
+    'database' => 'timeteam',
     'username' => 'root',
     'password' => 'root',
     'host' => '127.0.0.1',
