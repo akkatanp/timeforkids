@@ -1,4 +1,0 @@
-name = TFK User Profile
-description = Manage users that log in using the LUCIE system.
-core = 7.x
-package = "TFK"
