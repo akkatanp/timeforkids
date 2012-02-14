@@ -185,8 +185,8 @@ function feature_kid_reporters_updated_field_default_fields() {
       'settings' => array(
         'allowed_values' => array(
           0 => array(
-            'parent' => '0',
             'vocabulary' => 'grade_levels',
+            'parent' => '0',
           ),
         ),
       ),
