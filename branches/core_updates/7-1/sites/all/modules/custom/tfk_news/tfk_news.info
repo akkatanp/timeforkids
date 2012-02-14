@@ -1,4 +1,0 @@
-name = TFK News
-description = TFK News functionality
-core = 7.x
-package = "TFK"

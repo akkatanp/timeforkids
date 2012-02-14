@@ -1,4 +1,0 @@
-name = TFK Page Paths
-description = Paths for special pages
-core = 7.x
-package = "TFK"

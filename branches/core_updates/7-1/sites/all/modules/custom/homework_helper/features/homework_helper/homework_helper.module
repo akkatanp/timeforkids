@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the Homework Helper feature.
- */
-
-include_once('homework_helper.features.inc');
