@@ -23,12 +23,14 @@
  * @ingroup views_templates
  */
 ?>
-<?php if($row->node_field_data_field_articles_type == 'slideshow'): ?>
-    <?php $slide_block = module_invoke('tfk_search', 'block_view','tfk_minisite_slideshow_featured'); ?>
-    <?php print render($slide_block['content']); ?>
-<?php elseif($row->node_field_data_field_articles_type == 'slideshow'): ?>
-    <?php  $slide_block = module_invoke('tfk_search', 'block_view','tfk_minisite_video_featured'); ?>
-    <?php print render($slide_block['content']); ?>
+<?php if(isset($row->node_field_data_field_articles_type)): ?>
+  <?php if($row->node_field_data_field_articles_type == 'slideshow'): ?>
+      <?php $slide_block = module_invoke('tfk_search', 'block_view','tfk_minisite_slideshow_featured'); ?>
+      <?php print render($slide_block['content']); ?>
+  <?php elseif($row->node_field_data_field_articles_type == 'video'): ?>
+      <?php  $slide_block = module_invoke('tfk_search', 'block_view','tfk_minisite_video_featured'); ?>
+      <?php print render($slide_block['content']); ?>
+  <?php endif; ?>
 <?php else: ?>
 
 <?php foreach ($fields as $id => $field): ?>
@@ -40,7 +42,7 @@
       <?php if(isset($field->wrapper_prefix)): ?>
       	<?php print $field->wrapper_prefix; ?>
       <?php endif; ?>
-        <?php print $field->label_html; ?>
+        <?php if(isset($field->label_html)): ?><?php print $field->label_html; ?><?php endif; ?>
         <?php print $field->content; ?>
       <?php if(isset($field->wrapper_suffix)): ?>
       	<?php print $field->wrapper_suffix; ?>
