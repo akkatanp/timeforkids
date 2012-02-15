@@ -275,7 +275,8 @@ body.page-worksheets .search-results .result-date {
 	line-height: 15px;
 }
 
-body.page-search-site .search-results .search-snippet-info {
+body.page-search-site .search-results .search-snippet-info,
+#main-wrapper .search-snippet-info {
   padding: 0 0 0 0;
 }
 
