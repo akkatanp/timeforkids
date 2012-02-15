@@ -27,6 +27,6 @@ $form = array_shift($variables);
 				<li>Interactive Teacher Community</li>
 			</ul>
 		</div>
-	<div class="clearfix" id="login-footer"><span class="bold">Not Yet A Subscriber?</span> <a href="https://subscription.timeforkids.com/storefront/subscribe-to-time-for-kids/link/1005016.html">Click here to subscribe</a> </div>
+	<div class="clearfix" id="login-footer"><span class="bold">Not Yet A Subscriber?</span> <a href="https://subscription.timeforkids.com/storefront/subscribe-to-time-for-kids/link/1005016.html">Click here to subscribe</a> </div><div style="float: right; font-size: 9px;">Website Login Page</div>
 
 </div>

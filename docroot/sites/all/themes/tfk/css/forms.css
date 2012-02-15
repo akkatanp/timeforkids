@@ -100,7 +100,7 @@ html.js #user-login-form li.openid-link,
 }
 
 #user-login ul {
-  margin: 1.5em 0;
+  margin: 1.5em 0 0 0;
 }
 
 
@@ -162,7 +162,6 @@ form table .item-list ul {
 #login-container #message-box {
 	float: left;
 	width: 300px;
-	height: 106px;
 	padding: 20px;
 	margin: 0 10px 20px 0;
 	background: #dedede;
