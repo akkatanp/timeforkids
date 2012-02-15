@@ -373,6 +373,7 @@ ol#tfk-search-results-photos-video li.with-image {
 ol#tfk-search-results-photos-video li.search-result {
   min-height: 150px;
 	padding-bottom: 16px;
+	*padding-bottom: 0;
 }
 
 #tfk-search-results-photos-video img.thumbnail {
