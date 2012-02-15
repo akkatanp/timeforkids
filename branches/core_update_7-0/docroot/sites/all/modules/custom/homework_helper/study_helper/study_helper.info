@@ -1,5 +1,0 @@
-name = Study Helper
-core = 7.x
-description = Custom functionality for Study Helper (Flash Cards)
-package = Homework Helper
-dependencies[] = flashcard

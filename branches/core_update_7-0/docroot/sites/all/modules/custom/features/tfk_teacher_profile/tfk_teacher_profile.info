@@ -1,8 +1,0 @@
-core = "7.x"
-dependencies[] = "context"
-dependencies[] = "tfk_user_profile"
-description = "tfk_teacher_profile"
-features[context][] = "teacher_profile_settings"
-features[ctools][] = "context:context:3"
-name = "tfk_teacher_profile"
-package = "Features"

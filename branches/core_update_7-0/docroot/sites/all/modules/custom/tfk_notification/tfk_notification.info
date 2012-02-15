@@ -1,4 +1,0 @@
-name = TFK Notification
-description = TFK Notification functionality
-core = 7.x
-package = "TFK"
