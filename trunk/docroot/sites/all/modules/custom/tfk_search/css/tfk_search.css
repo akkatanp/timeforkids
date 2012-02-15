@@ -264,7 +264,7 @@ ol.search-results li.search-result {
 li.search-result {
   border: 1px solid #CECECE;
 	border-top: none;	
-  padding: 10px;
+  padding: 10px 10px 0 10px;
 	margin: 0px;
 }
 
@@ -293,7 +293,7 @@ body.page-my-favorites .col1 {
 }
 
 .col2 {
-  float: left;
+  *float: left;
   width: 360px;
   margin-left: 10px;
   clear: right;
