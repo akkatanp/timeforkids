@@ -101,6 +101,7 @@ html.js #user-login-form li.openid-link,
 
 #user-login ul {
   margin: 1.5em 0 0 0;
+  *margin: 1.5em 0; /* IE7 and below */
 }
 
 
