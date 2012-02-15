@@ -1,4 +1,3 @@
-# $Id: robots.txt,v 1.15 2010/12/29 04:05:07 webchick Exp $
 #
 # robots.txt
 #
@@ -26,16 +25,12 @@ Disallow: /modules/
 Disallow: /profiles/
 Disallow: /scripts/
 Disallow: /themes/
-Disallow: /TFK/
-Disallow: /tfk-magazine/
-Disallow: /worksheets/
-Disallow: /teacher-community/
-Disallow: /system/
 # Files
 Disallow: /CHANGELOG.txt
 Disallow: /cron.php
 Disallow: /INSTALL.mysql.txt
 Disallow: /INSTALL.pgsql.txt
+Disallow: /INSTALL.sqlite.txt
 Disallow: /install.php
 Disallow: /INSTALL.txt
 Disallow: /LICENSE.txt
@@ -46,17 +41,17 @@ Disallow: /xmlrpc.php
 # Paths (clean URLs)
 Disallow: /admin/
 Disallow: /comment/reply/
+Disallow: /filter/tips/
 Disallow: /node/add/
 Disallow: /search/
 Disallow: /user/register/
 Disallow: /user/password/
 Disallow: /user/login/
 Disallow: /user/logout/
-Disallow: /taxonomy/
-Disallow: /taxonomy/term/
 # Paths (no clean URLs)
 Disallow: /?q=admin/
 Disallow: /?q=comment/reply/
+Disallow: /?q=filter/tips/
 Disallow: /?q=node/add/
 Disallow: /?q=search/
 Disallow: /?q=user/password/

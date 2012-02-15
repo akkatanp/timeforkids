@@ -1,5 +1,4 @@
 <?php
-// $Id: utility.inc,v 1.2 2010/07/24 17:28:25 dries Exp $
 
 /**
  * @file
@@ -12,7 +11,7 @@
  * @param $var
  *   The variable to export.
  * @param $prefix
- *   A prefix that will be added at the begining of every lines of the output.
+ *   A prefix that will be added at the beginning of every lines of the output.
  * @return
  *   The variable exported in a way compatible to Drupal's coding standards.
  */
