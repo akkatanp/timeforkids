@@ -89,7 +89,7 @@
   
   <div class='row2'>
     <div class='col1'>
-      <?php if($thumbnail):?>
+      <?php if(isset($thumbnail) && $thumbnail):?>
       	<?php print $thumbnail; ?>
       <?php endif;?>
     </div>
@@ -126,7 +126,7 @@
         </div>
         
         <div class="search-result-links">
-          <?php if($tfk_worksheet_pdf_link): ?>
+          <?php if(isset($tfk_worksheet_pdf_link)): ?>
           	<span class="search-result-download-link <?php if(isset($cont_type_class)): ?><?php print $cont_type_class; ?><?php endif; ?>"><?php print $tfk_worksheet_pdf_link; ?></span>
           <?php endif; ?>
           

@@ -20,7 +20,3 @@ core = "7.x"
 project = "acquia_connector"
 datestamp = "1301952114"
 
-
-; Information added by Acquia.com packaging script
-acquia = "1"
-
