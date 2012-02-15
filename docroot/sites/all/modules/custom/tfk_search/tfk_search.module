@@ -2978,7 +2978,7 @@ function tfk_search_preprocess_search_result(&$vars) {
     case 'common_core_standards':
     case 'pdf_quiz':
       $vars['title'] = $title;
-      $_cont_type = ($vars['result']['fields']['bundle_name'] == 'pdf_quiz') ? 'quiz': 'common core standards';
+      $_cont_type = ($vars['result']['bundle'] == 'pdf_quiz') ? 'quiz': 'common core standards';
       
       $vars['tfk_search_cont_type'] = strtoupper($_cont_type);
       
