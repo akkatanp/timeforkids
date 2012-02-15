@@ -10,7 +10,7 @@ $databases['default']['default'] = array(
     'host' => '127.0.0.1',
     'port' => '3306',
     'driver' => 'mysql',
-    'prefix' => '',	
+    'prefix' => '',
 );
 
 /**
@@ -280,6 +280,7 @@ ini_set('session.cookie_lifetime', 2000000);
 
 error_reporting(E_ALL | E_STRICT);
 ini_set('error_reporting', -1);
+ini_set('memory_limit', '512M'); // Useful when doing "drush fra -y"
 
 /**
  * Acquia Network/Acquia Search settings
