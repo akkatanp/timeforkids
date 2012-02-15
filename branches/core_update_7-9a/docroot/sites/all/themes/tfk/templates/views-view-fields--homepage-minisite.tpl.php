@@ -26,8 +26,7 @@
 ?>
 
 <?php foreach ($fields as $id => $field): ?>
-
-    <?php if($id != 'field_related_articles_1' && $id != 'field_additional_content'):?>
+    <?php if($id != 'field_related_articles' && $id != 'field_related_articles_1' && $id != 'field_additional_content'):?>
       <?php if (!empty($field->separator)): ?>
         <?php print $field->separator; ?>
       <?php endif; ?>
