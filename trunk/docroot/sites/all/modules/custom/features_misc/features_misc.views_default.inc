@@ -31,20 +31,28 @@ function features_misc_views_default_views() {
   $handler->display->display_options['query']['options']['query_comment'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'full';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '20';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '40';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['pager']['options']['id'] = '0';
+  $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all'] = 0;
   $handler->display->display_options['style_plugin'] = 'table';
   $handler->display->display_options['style_options']['columns'] = array(
-    'views_bulk_operations' => 'views_bulk_operations',
+    'nid' => 'nid',
     'title' => 'title',
-    'timestamp' => 'title',
     'type' => 'type',
-    'name' => 'name',
     'status' => 'status',
+    'created' => 'created',
+    'changed' => 'changed',
+    'field_date' => 'field_date',
+    'name' => 'name',
     'edit_node' => 'edit_node',
+    'delete_node' => 'delete_node',
   );
   $handler->display->display_options['style_options']['default'] = '-1';
   $handler->display->display_options['style_options']['info'] = array(
-    'views_bulk_operations' => array(
+    'nid' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
       'align' => '',
       'separator' => '',
     ),
@@ -54,11 +62,31 @@ function features_misc_views_default_views() {
       'align' => '',
       'separator' => '',
     ),
-    'timestamp' => array(
+    'type' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
       'align' => '',
       'separator' => '',
     ),
-    'type' => array(
+    'status' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+    ),
+    'created' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+    ),
+    'changed' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+    ),
+    'field_date' => array(
       'sortable' => 1,
       'default_sort_order' => 'asc',
       'align' => '',
@@ -70,13 +98,11 @@ function features_misc_views_default_views() {
       'align' => '',
       'separator' => '',
     ),
-    'status' => array(
-      'sortable' => 0,
-      'default_sort_order' => 'asc',
+    'edit_node' => array(
       'align' => '',
       'separator' => '',
     ),
-    'edit_node' => array(
+    'delete_node' => array(
       'align' => '',
       'separator' => '',
     ),
@@ -84,6 +110,19 @@ function features_misc_views_default_views() {
   $handler->display->display_options['style_options']['override'] = 1;
   $handler->display->display_options['style_options']['sticky'] = 0;
   $handler->display->display_options['style_options']['empty_table'] = 1;
+  /* Header: Action links */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['ui_name'] = 'Action links';
+  $handler->display->display_options['header']['area']['empty'] = TRUE;
+  $handler->display->display_options['header']['area']['content'] = '<ul class="action-links">
+<li>
+<a href="/node/add">Add content</a>
+</li>
+</ul>';
+  $handler->display->display_options['header']['area']['format'] = 'full_html';
+  $handler->display->display_options['header']['area']['tokenize'] = 0;
   /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
