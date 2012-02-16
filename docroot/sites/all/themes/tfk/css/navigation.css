@@ -239,7 +239,6 @@
   background: url(../images/main-nav-sprite2.png) no-repeat -607px 0px;
 }
 
-.section-extras #global-nav-container ul.menu a.mini-sites,
 #global-nav-container ul.menu a.mini-sites.active,
 #global-nav-container ul.menu a.mini-sites:hover {
   background: url(../images/main-nav-sprite2.png) no-repeat -607px -32px;
