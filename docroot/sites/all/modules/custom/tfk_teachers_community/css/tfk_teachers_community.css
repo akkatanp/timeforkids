@@ -6,7 +6,6 @@
   margin-bottom: 15px;
   padding: 2px 4px;
   position: relative;
-  height: 16px;
 }
 .suggestion-box .msg {
   float: left;
@@ -23,7 +22,6 @@
 }
 
 #bottom-suggestion-box {
-  height: inherit;
   padding: 6px 6px 4px 6px;
 }
 
