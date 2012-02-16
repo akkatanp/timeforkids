@@ -96,7 +96,7 @@ function tfk_helper_node_access($node, $op, $account) {
 function tfk_helper_form_views_exposed_form_alter(&$form, &$form_state, $form_id) {
   if($form['#id'] == 'views-exposed-form-admin-content2-page') {
     // Alpha-sort content type filter.
-    ksort($form['type']['#options']);
+    asort($form['type']['#options'], SORT_STRING);
     
     $form['nid']['#size'] = '10';
     $form['field_grade_level_tid']['#size'] = '15';
