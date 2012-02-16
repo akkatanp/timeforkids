@@ -21,6 +21,11 @@
   padding-left: 5px;
 }
 
+#top.suggestion-box .link {
+  margin-left: 2px;
+  padding-left: 2px;
+}
+
 #bottom-suggestion-box {
   padding: 6px 6px 4px 6px;
 }
