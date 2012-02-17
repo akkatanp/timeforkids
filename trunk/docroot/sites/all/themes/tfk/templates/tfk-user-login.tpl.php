@@ -3,11 +3,9 @@ $form = array_shift($variables);
 ?>
 <div class="logincontent" id="login-container" >
 	<div id="login-header">Current subscribers log in/register for timeforkids.com</div><div id="login-form-container">
-		<?php
-			if(isset($form['form_build_id'])) {
-				print render($form['form_build_id']);
-			}
-		?>
+		<?php if(isset($form['form_build_id'])): ?>
+			 <?php print render($form['form_build_id']); ?>
+		<?php endif; ?>
 		<input name="form_id" value="user_login" type="hidden">
 		<h2>Registered Users Log In</h2>
 		<div class="form-item form-type-textfield form-item-name"><label for="edit-name">Email:</label>&nbsp;<input class="form-text required" id="edit-name" maxlength="60" name="name" value="" type="text"></div>
@@ -17,7 +15,7 @@ $form = array_shift($variables);
 	</div>
 	<div>
 	<div class="bold">Register Now for FREE<br />Subscriber Benefits</div>
-	<div class="form-actions form-wrapper"><a href="https://secure.customersvc.com/servlet/Show?WESPAGE=am/tablet/tk/tk_web_login.jsp&MSDDMOFF=AONF&MSDTRACK=TKSO"><button class="form-submit" value="Register Now!" type="button">Register Now!</button></a></div>
+	<div class="form-actions form-wrapper"><a class="form-submit" href="https://secure.customersvc.com/servlet/Show?WESPAGE=am/tablet/tk/tk_web_login.jsp&MSDDMOFF=AONF&MSDTRACK=TKSO">Register Now!</a></div>
 	</div>
 	<div id="message-box">
 		<div id="message-header">Do it now to get all this:</div>
