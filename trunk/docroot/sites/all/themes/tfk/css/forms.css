@@ -183,6 +183,7 @@ form table .item-list ul {
 
 #login-container #message-box  ul#message-list li {
 	line-height: 24px;
+	font-size: 11px;
 }
 
 #login-container  #login-footer {
