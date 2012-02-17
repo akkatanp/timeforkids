@@ -60,15 +60,16 @@
 			
 			$("#user_login").jCryption();
 			
+	    var closeLightBox = function(e) {
+	      e.preventDefault();
+	      $('#lightbox').remove();
+	      $('#mask').remove();
+	      $('body').css('overflow', 'auto');
+	    };			
+			
 			var loginHeader = $('#lightbox #login-header');
-			var closeButton = $('<a></a>').addClass('close-button').click(closeLightBox).appendTo(loginHeader);
+			$('#lightbox a#close-button').click(closeLightBox);
 		};
 		
-		var closeLightBox = function(e) {
-			e.preventDefault();
-			$('#lightbox').remove();
-			$('#mask').remove();
-			$('body').css('overflow', 'auto');
-		};
-	};
+	};	
 })(jQuery);
