@@ -60,8 +60,7 @@
 			
 			$("#user_login").jCryption();
 			
-			var loginHeader = $('#lightbox #login-header');
-			$('#close-button').click(function(e) {
+			var closeButton = $('#close-button').click(function(e) {
         e.preventDefault();
         $('#lightbox').remove();
         $('#mask').remove();
