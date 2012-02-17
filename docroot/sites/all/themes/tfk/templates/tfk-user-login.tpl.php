@@ -2,7 +2,7 @@
 $form = array_shift($variables);
 ?>
 <div class="logincontent" id="login-container" >
-	<div id="login-header">Current subscribers log in/register for timeforkids.com</div><div id="login-form-container">
+	<div id="login-header">Current subscribers log in/register for timeforkids.com<a type="button" id="close-button" class="close-button">&nbsp;</a></div><div id="login-form-container">
 		<?php if(isset($form['form_build_id'])): ?>
 			 <?php print render($form['form_build_id']); ?>
 		<?php endif; ?>
