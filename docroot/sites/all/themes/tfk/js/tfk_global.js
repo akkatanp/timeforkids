@@ -4,13 +4,12 @@
   Drupal.behaviors.loginBox = {
     attach: function(context, settings) {
       
-      
       var closeButton = $('#close-button', context).live("click", function(e) {
         e.preventDefault();
         $('#lightbox', context).remove();
         $('#mask', context).remove();
         $('body', context).css('overflow', 'auto');
-      });         
+      });
       
       //lightbox
       $('#login-link', context).loginBox(context);
@@ -37,21 +36,19 @@
     }
   };
   
-	
-	
-	$.fn.takeUserTo = function(context) {
-		$(this, context).click(function(e) {
-			e.preventDefault();
-			var yr = $('#yeardropdown').val();
-			location.href= '/news-archive/' + yr;
-		});
-	};
-	
-	
-	$.fn.loginBox = function(context) {
-	  
-	  // Create lightbox when user clicks link.
-	  $(this, context).click(function(e) {
+  $.fn.takeUserTo = function(context) {
+    $(this, context).click(function(e) {
+      e.preventDefault();
+      var yr = $('#yeardropdown').val();
+      location.href= '/news-archive/' + yr;
+    });
+  };
+
+
+  $.fn.loginBox = function(context) {
+  
+    // Create lightbox when user clicks link.
+    $(this, context).click(function(e) {
       e.preventDefault();
 
       $('body', context).css('overflow', 'hidden');
@@ -73,8 +70,7 @@
       
       $("#user_login", context).jCryption();
       
-	  });	  
-		
-		
-	};	
+    });
+
+  };
 })(jQuery);
