@@ -43,6 +43,10 @@
   float: none;
 }
 
+#bottom-suggestion-box .msg {
+	float: none;
+}
+
 .suggestion-box .link a {
   background: url('/sites/all/modules/custom/tfk_teachers_community/images/right-arrow.png') 215px 50% no-repeat;
   display: block;
