@@ -60,15 +60,14 @@
 			
 			$("#user_login").jCryption();
 			
-	    var closeLightBox = function(e) {
-	      e.preventDefault();
-	      $('#lightbox').remove();
-	      $('#mask').remove();
-	      $('body').css('overflow', 'auto');
-	    };			
-			
 			var loginHeader = $('#lightbox #login-header');
-			$('#lightbox a#close-button').click(closeLightBox);
+			$('#lightbox a#close-button').click(function(e) {
+        e.preventDefault();
+        $('#lightbox').remove();
+        $('#mask').remove();
+        $('body').css('overflow', 'auto');
+      });
+			
 		};
 		
 	};	
