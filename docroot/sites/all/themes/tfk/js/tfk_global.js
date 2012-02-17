@@ -70,5 +70,5 @@
 			$('#mask').remove();
 			$('body').css('overflow', 'auto');
 		};
-	}
+	};
 })(jQuery);
