@@ -227,6 +227,16 @@ form table .item-list ul {
 #login-footer a:first-child {
 	margin-right: 150px;
 }
+
+#login-container .form-actions a.form-submit:link,
+#login-container .form-actions a.form-submit:visited {
+	color: #FFF;
+}
+
+#login-container .form-actions a.form-submit:hover {
+	text-decoration: none;
+}
+
 /*Version of the lightbox login form on /user */
 .not-logged-in.page-user #login-container {
     height:400px;
