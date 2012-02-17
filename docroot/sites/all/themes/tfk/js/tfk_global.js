@@ -4,6 +4,14 @@
   Drupal.behaviors.loginBox = {
     attach: function(context, settings) {
       
+      
+      var closeButton = $('#close-button', context).live("click", function(e) {
+        e.preventDefault();
+        $('#lightbox', context).remove();
+        $('#mask', context).remove();
+        $('body', context).css('overflow', 'auto');
+      });         
+      
       //lightbox
       $('#login-link', context).loginBox(context);
       if ($('.field-type-video', context).length > 0) {
@@ -25,8 +33,7 @@
         });
       });
       
-      $('#yearsubmit', context).takeUserTo(context);      
-      
+      $('#yearsubmit', context).takeUserTo(context);
     }
   };
   
@@ -65,13 +72,6 @@
       loginForm.appendTo(lightBox);
       
       $("#user_login", context).jCryption();
-      
-      var closeButton = $('#close-button', context).click(function(e) {
-        e.preventDefault();
-        $('#lightbox', context).remove();
-        $('#mask', context).remove();
-        $('body', context).css('overflow', 'auto');
-      });
       
 	  });	  
 		
