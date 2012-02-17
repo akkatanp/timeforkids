@@ -196,7 +196,7 @@ if(drupal_is_front_page()) {
           <?php endif; ?>
             
           <?php if(isset($top_suggestion_msg)): ?>
-            <div id='top-suggestion-box' class="suggestion-box">
+            <div id='top-suggestion-box' class="suggestion-box clearfix">
               <div class='msg'><?php print $top_suggestion_msg; ?></div>
               <div class='link'><?php print $top_suggestion_link; ?></div>
             </div>
