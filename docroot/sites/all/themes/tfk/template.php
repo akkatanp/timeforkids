@@ -67,6 +67,7 @@
  * @param $hook
  *   The name of the template being rendered ("html" in this case.)
  */
+
 /**
  * Implementation of hook_theme().
  * This is for a custom login form that will be used by both the "user" page and the lightbox
@@ -80,7 +81,10 @@ function tfk_theme($existing, $type, $theme, $path) {
   	return $hooks;
 }
 
-
+function tfk_preprocess_user_login(&$variables) {
+  #die('die!');
+  $variables['close_button'] = (arg(0) !== 'user') ? TRUE: FALSE;
+}
 
 /**
  *	Customized TFK Pager
@@ -96,7 +100,7 @@ function tfk_pager($variables) {
   // Middle is used to "center" pages around the current page.
   $pager_middle = ceil($quantity / 2);
   // current is the page we are currently paged to
-  $pager_current = $pager_page_array[$element] + 1;
+  $pager_current = (array_key_exists($element, $pager_page_array)) ? $pager_page_array[$element] + 1: 0;
   // first is the first page listed by this pager piece (re quantity)
   $pager_first = $pager_current - $pager_middle + 1;
   // last is the last page listed by this pager piece (re quantity)
