@@ -1042,7 +1042,7 @@ ul.links li {
 .view-teacher-news-news-block table,
 .view-kid-reporters-channel-news-block table {
 	margin: 0;
-	border-collapse: separate;
+	border-collapse: collapse;
 	border: 0;
 }
 
