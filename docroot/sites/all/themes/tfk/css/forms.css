@@ -132,92 +132,92 @@ form table .item-list ul {
 
 /* lightbox login form */
 #login-container #login-header {
-	font: normal 14px "arial black", arial, sans-serif;
-	color: white;
-	background: #d71700;
-	padding: 10px;
-	border: solid 1px #933;
-	text-transform: uppercase;
-	position: relative;
-	margin-bottom: 20px;
+  font: normal 14px "arial black", arial, sans-serif;
+  color: white;
+  background: #d71700;
+  padding: 10px;
+  border: solid 1px #933;
+  text-transform: uppercase;
+  position: relative;
+  margin-bottom: 20px;
 }
 
 #login-header .close-button {
-	position: absolute;
-	top: 10px;
-	right: 10px;
-	width: 12px;
-	height: 12px;
-	cursor: pointer;
-	background: url("../images/atw-sightseeing-close.png") no-repeat;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 12px;
+  height: 12px;
+  cursor: pointer;
+  background: url("../images/atw-sightseeing-close.png") no-repeat;
 }
 
 #login-form-container {
-	float: left;
-	width: 295px;
-	height: 250px;
-	margin: 0 24px 0 5px;
-	border-right: dotted 1px #999;
+  float: left;
+  width: 295px;
+  height: 250px;
+  margin: 0 24px 0 5px;
+  border-right: dotted 1px #999;
 }
 
 #login-container #message-box {
-	float: left;
-	width: 300px;
-	padding: 20px;
-	margin: 0 10px 20px 0;
-	background: #dedede;
-	clear: right;
+  float: left;
+  width: 300px;
+  padding: 20px;
+  margin: 0 10px 20px 0;
+  background: #dedede;
+  clear: right;
 }
 
 #login-container #message-box #message-header {
-	font-weight: bold;
-	padding-bottom: 10px;
-	border-bottom: dotted 1px #999;
-	margin-bottom: 10px;
+  font-weight: bold;
+  padding-bottom: 10px;
+  border-bottom: dotted 1px #999;
+  margin-bottom: 10px;
 }
 
 #login-container #message-box  ul#message-list {
-	list-style-type: disc;
-	margin-left: 20px;
+  list-style-type: disc;
+  margin-left: 20px;
 }
 
 #login-container #message-box  ul#message-list li {
-	line-height: 24px;
-	font-size: 11px;
+  line-height: 24px;
+  font-size: 11px;
 }
 
 #login-container  #login-footer {
-	border-top: dotted 1px #cecece;
-	padding: 20px 10px 0 10px;
-	clear: both;
+  border-top: dotted 1px #cecece;
+  padding: 20px 10px 0 10px;
+  clear: both;
 }
 
 #login-form-container h2 {
-	font: bold 20px arial;
-	line-height: 20px;
-	margin: 0 0 10px 0;
+  font: bold 20px arial;
+  line-height: 20px;
+  margin: 0 0 10px 0;
 }
 
 #login-form-container p br {
-	display: none;
+  display: none;
 }
 
 #login-form-container a {
-	font-weight: normal;
+  font-weight: normal;
 }
 
 #login-form-container .form-item {
-	margin: 0 0 10px 0;
+  margin: 0 0 10px 0;
 }
 
 #login-form-container .form-text {
-	border: solid 1px #cfcfcf;
-	width: 270px;
+  border: solid 1px #cfcfcf;
+  width: 270px;
 }
 
 #login-container .bold {
-	font: bold 20px arial;
-	line-height: 20px;
+  font: bold 20px arial;
+  line-height: 20px;
 }
 
 #login-footer a {
@@ -225,20 +225,20 @@ form table .item-list ul {
 }
 
 #login-footer a:first-child {
-	margin-right: 150px;
+  margin-right: 150px;
 }
 
 #login-container .form-actions a.form-submit:link,
 #login-container .form-actions a.form-submit:visited {
-	color: #FFF;
+  color: #FFF;
 }
 
 #login-container .form-actions a.form-submit:hover {
-	text-decoration: none;
+  text-decoration: none;
 }
 
 /*Version of the lightbox login form on /user */
 .not-logged-in.page-user #login-container {
-    height:400px;
-    width:680px;
+  height:400px;
+  width:680px;
 }
