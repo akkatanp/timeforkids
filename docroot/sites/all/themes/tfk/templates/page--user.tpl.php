@@ -168,14 +168,15 @@ t('Home'); ?>" rel="home"><span><?php print $site_name; ?></span></a>
 	  <?php endif;?>
 
       <?php print $feed_icons; ?>
-    </div></div><!-- /.section, /#content -->
-  </div> <!-- user wrapper -->
+      
+        <div id="footer" class="section <?php print $footer_classes; ?>">
+          <?php print render($page['footer']); ?>
+        </div>
+      
+        </div></div><!-- /.section, /#content -->
+      </div> <!-- user wrapper -->
+    </div>
 
-
-
-  </div>
-
-  <?php print render($page['footer']); ?>
   </div><!-- /#main, /#main-wrapper -->
 
 </div></div><!-- /#page, /#page-wrapper -->
