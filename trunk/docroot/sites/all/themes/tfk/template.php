@@ -82,7 +82,6 @@ function tfk_theme($existing, $type, $theme, $path) {
 }
 
 function tfk_preprocess_user_login(&$variables) {
-  #die('die!');
   $variables['close_button'] = (arg(0) !== 'user') ? TRUE: FALSE;
 }
 
