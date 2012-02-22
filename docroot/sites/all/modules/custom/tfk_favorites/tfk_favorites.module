@@ -176,6 +176,8 @@ function tfk_favorites_preprocess_views_view_fields(&$variables, $hook) {
   $view = $variables['view'];
   if($view->name == 'user_favorites' && $view->current_display == 'page') {
     $content_type = $variables['row']->_field_data['nid']['entity']->type;
+    $hr_ct = ($content_type == 'pdf_quiz') ? 'quiz' : preg_replace('/_/', ' ', $content_type);
+    $dl_ct = ($content_type == 'common_core_standards') ? 'Printable': (ucwords($hr_ct));
     
     // Flag link.
     $flag_link = flag_create_link('favorites', $variables['row']->nid);
@@ -199,7 +201,7 @@ function tfk_favorites_preprocess_views_view_fields(&$variables, $hook) {
       
       
       $variables['fields']['field_grade_level']->content = '
-      <div class="field-content content-type"><span class="ctype">WORKSHEET</span>
+      <div class="field-content content-type"><span class="ctype">'. strtoupper($hr_ct). '</span>
       <span class="ctype-suffix">GRADE '. $grade. '</span></div>';
       
       // Remove related article.
@@ -207,7 +209,7 @@ function tfk_favorites_preprocess_views_view_fields(&$variables, $hook) {
     }
     
     // Quiz.
-    if($content_type == 'pdf_quiz') {
+    if($content_type == 'pdf_quiz'  || $content_type == 'common_core_standards') {
       if(isset($variables['row']->field_field_grade_level[0])) {
         $grade = $variables['row']->field_field_grade_level[0];
         $grade = render($grade['rendered']);
@@ -216,12 +218,18 @@ function tfk_favorites_preprocess_views_view_fields(&$variables, $hook) {
       }
 
       $variables['fields']['field_grade_level']->content = '
-      <div class="field-content content-type"><span class="ctype">QUIZ</span>
+      <div class="field-content content-type"><span class="ctype">'. strtoupper($hr_ct). '</span>
       <span class="ctype-suffix">GRADE '. $grade. '</span></div>';
       
       
-      // Thumbnail
-      $thumbnail = theme('image', array('path' => drupal_get_path('module', 'tfk_search'). '/images/quiz_graphic.gif'));
+      // Deck & Thumbnail
+     if($content_type == 'pdf_quiz') {
+       $thumbnail = theme('image', array('path' => drupal_get_path('module', 'tfk_search'). '/images/quiz_graphic.gif'));
+       $body = '';
+     } else {
+       $thumbnail = render($variables['row']->field_field_common_core_thumbnail[0]['rendered']);
+     }
+     
       
       // Override output.
       $variables['fields']['title']->content = '
@@ -232,10 +240,10 @@ function tfk_favorites_preprocess_views_view_fields(&$variables, $hook) {
               '. $variables['row']->node_title. '
             </h3>
             <div class="search-snippet-info">
-             <div class="search-snippet-body"></div>
+             <div class="search-snippet-body">'. $body. '</div>
             <div class="search-result-links">
               <span class="search-result-download-link">
-                <a href="'. $variables['row']->field_field_pdf_file_private[0]['rendered']['#markup']. '">Download this Quiz</a>
+                <a href="'. $variables['row']->field_field_pdf_file_private[0]['rendered']['#markup']. '">Download this '. $dl_ct. '</a>
               </span>
               '. $flag_link. '
             </div>
