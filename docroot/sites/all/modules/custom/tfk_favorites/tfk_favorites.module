@@ -115,7 +115,7 @@ function tfk_favorites_count_usrf() {
     return FALSE;
   } else {
     $view->execute();
-  	if(!empty($view->result)) {
+  	if($view->total_rows > 0) {
   	  return TRUE;
   	} else {
   	  return FALSE;
