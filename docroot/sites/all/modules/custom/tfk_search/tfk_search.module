@@ -2980,15 +2980,16 @@ function tfk_search_preprocess_search_result(&$vars) {
 				WHERE field_related_resources_nid = :quiz_nid';
       $results = db_query($query, array('quiz_nid' => $node->nid));
       if($results) {
-        $magazine_issue = $results->fetch();
-        $magazine_issue = $magazine_issue->entity_id;
-        
-        // Use the custom date field of the parent magazine issue.
-        $magazine_issue = node_load($magazine_issue);
-        if($magazine_issue) {
-          $field_date = field_get_items('node', $magazine_issue, 'field_date');
-          if($field_date) {
-            $vars['date'] = date('F j, Y', $field_date[0]['value']);
+        $result = $results->fetch();
+        if($result) {
+          $magazine_issue = $result->entity_id;
+          // Use the custom date field of the parent magazine issue.
+          $magazine_issue = node_load($magazine_issue);
+          if($magazine_issue) {
+            $field_date = field_get_items('node', $magazine_issue, 'field_date');
+            if($field_date) {
+              $vars['date'] = date('F j, Y', $field_date[0]['value']);
+            }
           }
         }
       }
