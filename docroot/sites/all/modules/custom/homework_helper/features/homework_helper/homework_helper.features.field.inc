@@ -2318,7 +2318,11 @@ Ex. <em>I wrote a paragraph that summarizes my viewpoint.</em>',
     ),
     'field_instance' => array(
       'bundle' => 'paper_step',
-      'default_value' => NULL,
+      'default_value' => array(
+        0 => array(
+          'value' => '0',
+        ),
+      ),
       'deleted' => '0',
       'description' => '',
       'display' => array(
@@ -2338,7 +2342,7 @@ Ex. <em>I wrote a paragraph that summarizes my viewpoint.</em>',
       'entity_type' => 'node',
       'field_name' => 'field_step_weight',
       'label' => 'Weight',
-      'required' => FALSE,
+      'required' => 1,
       'settings' => array(
         'max' => '',
         'min' => '',
@@ -2347,6 +2351,7 @@ Ex. <em>I wrote a paragraph that summarizes my viewpoint.</em>',
         'user_register_form' => FALSE,
       ),
       'widget' => array(
+        'active' => 0,
         'module' => 'number',
         'settings' => array(),
         'type' => 'number',
