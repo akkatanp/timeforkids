@@ -1,7 +1,5 @@
 <?php
 // $Id$
-require('/var/www/site-php/time/time-settings.inc');
-
 /**
  * Access control for update.php script.
  *
@@ -284,3 +282,23 @@ $conf["file_private_path"] = "/mnt/files/timedev2/files-private";
 // Drupal 7 does not cache pages when we invoke hooks during bootstrap. This needs
 // to be disabled.
 $conf['page_cache_invoke_hooks'] = FALSE;
+
+/**
+ * Memcached Config Settings
+ *
+ * Add the following line of code to your settings.php file to cache anything normally stored in a cache* table in the Drupal database in Memcached.
+ *
+ */
+$conf['cache_inc'] = './sites/all/modules/contrib/memcache/memcache.inc';
+//$conf['session_inc'] = './sites/all/modules/contrib/memcache/memcache-session.inc';
+
+include_once('./includes/cache.inc');
+include_once('./sites/all/modules/contrib/memcache/memcache.inc');
+$conf['cache_default_class'] = 'MemCacheDrupal';
+
+/**
+ * Acquia Config file
+ *
+ * This file is required to connect to an Acquia server and manages the DB connection.
+ */
+require('/var/www/site-php/time/time-settings.inc');
