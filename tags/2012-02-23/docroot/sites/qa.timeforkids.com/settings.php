@@ -279,10 +279,6 @@ $conf["file_public_path"] = "files";
 $conf["file_temporary_path"] = "/mnt/tmp/timedev";
 $conf["file_private_path"] = "/mnt/files/timedev/files-private";
 
-// Drupal 7 does not cache pages when we invoke hooks during bootstrap. This needs
-// to be disabled.
-$conf['page_cache_invoke_hooks'] = FALSE;
-
 /**
  * Memcached Config Settings
  *
@@ -302,3 +298,7 @@ $conf['cache_default_class'] = 'MemCacheDrupal';
  * This file is required to connect to an Acquia server and manages the DB connection.
  */
 require('/var/www/site-php/time/time-settings.inc');
+
+// Drupal 7 does not cache pages when we invoke hooks during bootstrap. This needs
+// to be disabled.
+$conf['page_cache_invoke_hooks'] = FALSE;
