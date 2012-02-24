@@ -281,9 +281,6 @@ $conf["file_public_path"] = "files";
 $conf["file_temporary_path"] = "/mnt/tmp/timedev2";
 $conf["file_private_path"] = "/mnt/files/timedev2/files-private";
 
-// Add Varnish as the page cache handler.
-$conf['cache_backends'] = array('sites/all/modules/contrib/varnish/varnish.cache.inc');
-$conf['cache_class_cache_page'] = 'VarnishCache';
 // Drupal 7 does not cache pages when we invoke hooks during bootstrap. This needs
 // to be disabled.
-$conf['page_cache_invoke_hooks'] = FALSE;
+//$conf['page_cache_invoke_hooks'] = FALSE;
