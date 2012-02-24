@@ -283,4 +283,4 @@ $conf["file_private_path"] = "/mnt/files/timedev2/files-private";
 
 // Drupal 7 does not cache pages when we invoke hooks during bootstrap. This needs
 // to be disabled.
-//$conf['page_cache_invoke_hooks'] = FALSE;
+$conf['page_cache_invoke_hooks'] = FALSE;
