@@ -263,7 +263,7 @@ ini_set('session.cookie_lifetime', 2000000);
  *
  * Remove the leading hash signs to disable.
  */
-$conf['allow_authorize_operations'] = FALSE;
+//$conf['allow_authorize_operations'] = FALSE;
 
 /**
  * Acquia Network/Acquia Search settings
@@ -281,7 +281,7 @@ $conf["file_private_path"] = "/mnt/files/timedev/files-private";
 
 // Drupal 7 does not cache pages when we invoke hooks during bootstrap. This needs
 // to be disabled.
-//$conf['page_cache_invoke_hooks'] = FALSE;
+$conf['page_cache_invoke_hooks'] = FALSE;
 
 /**
  * Memcached Config Settings
