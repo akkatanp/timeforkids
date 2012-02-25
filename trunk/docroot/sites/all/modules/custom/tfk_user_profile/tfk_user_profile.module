@@ -10,7 +10,7 @@ define('TFK_USER_PROFILE_USER_PATH', 'user');
  */
 function tfk_user_profile_init(&$variables) {
   
-  // Determine the cacheability of the current page.
+  // re #557 #556 - Determine the cacheability of the current page.
   // We need to disable the encrypt-submissions callback from being cached,
   // otherwise stale encryption keys will be served. This is a requirement for
   // the "encrypt-submissions" module to work with Page Caching for anonymous
@@ -227,7 +227,7 @@ function tfk_lucie_get_user_info($email, $token){
 }
 /**
  * This function will set a LUCIE user's cookie with the value of
- * the auth token.  This can then be used to log into the digital 
+ * the auth token.  This can then be used to log into the digital
  * product's website without re-entering login/pwd
 */
 function tfk_lucie_user_set_cookie($token){
