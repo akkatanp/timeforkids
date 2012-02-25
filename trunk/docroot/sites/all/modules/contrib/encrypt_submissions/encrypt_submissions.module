@@ -303,7 +303,7 @@ function encrypt_submissions_add_form_css_js($form_element, &$form_state) {
 }
 
 
-function encrypt_submissions_init() {
+function encrypt_submissions_init() {  // Determine the cacheability of the current page.  $item = menu_get_item();  if(arg(0) == 'encrypt-submissions') {    drupal_page_is_cacheable(FALSE);  }
   
   // Has the current logged in user been given the permission
   // to even use this module?  If not, harmlessly return.  
