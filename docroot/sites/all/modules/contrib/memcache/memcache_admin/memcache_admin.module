@@ -235,6 +235,8 @@ function memcache_admin_bin_mapping($bin = 'cache') {
 function memcache_admin_stats($bin = 'cache') {
   $bin = memcache_admin_bin_mapping($bin);
 
+  module_load_include('inc', 'memcache', 'dmemcache');
+
   $stats = dmemcache_stats($bin, 'default', TRUE);
 
   $memcache_servers = variable_get('memcache_servers', array('127.0.0.1:11211' => 'default'));
@@ -433,7 +435,7 @@ function memcache_admin_stats_types($bin) {
     return array();
   }
 }
- 
+
 function theme_memcache_admin_stats_raw_table($variables) {
   $cluster = $variables['cluster'];
   $server = $variables['server'];
