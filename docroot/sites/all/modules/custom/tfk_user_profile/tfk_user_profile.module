@@ -6,21 +6,6 @@
 define('TFK_USER_PROFILE_USER_PATH', 'user');
 
 /**
- * Implementation of hook_init.
- */
-function tfk_user_profile_init(&$variables) {
-  
-  // re #557 #556 - Determine the cacheability of the current page.
-  // We need to disable the encrypt-submissions callback from being cached,
-  // otherwise stale encryption keys will be served. This is a requirement for
-  // the "encrypt-submissions" module to work with Page Caching for anonymous
-  // users enabled.
-  if(arg(0) == 'encrypt-submissions') {
-    drupal_page_is_cacheable(FALSE);
-  }
-}
-
-/**
  *  Implementation of Preprocess Page to get the encryption on the "user" page
  */
 function tfk_user_profile_preprocess_page(&$variables) {
@@ -195,7 +180,7 @@ function tfk_user_profile_login_validate( $form, &$form_state ){
  		$existingUser = tfk_check_lucie_user($response['data']);
  		
  		if (empty($existingUser)) {
- 			user_external_login_register( $username, 'project_authentication' );
+        	user_external_login_register( $username, 'project_authentication' );
         	$account = user_external_load($username);
         	// insert a record into the mapping table
         	tfk_insert_lucie_user($response['data'], $account->uid, $username);
@@ -206,7 +191,7 @@ function tfk_user_profile_login_validate( $form, &$form_state ){
 		 	user_external_login_register( $response['data']['userId'], 'project_authentication' );
         	$account = user_external_load($response['data']['userId']);
         	tfk_insert_teacher_role($account->uid);
-        	$form_state['uid'] = $account->uid;
+			$form_state['uid'] = $account->uid;
 		}
     }
 }
@@ -221,17 +206,8 @@ function tfk_lucie_get_user_info($email, $token){
    ));
    if($response->code == 200){
    		$dataUser = drupal_json_decode($response->data);
-   		tfk_lucie_user_set_cookie($token);
    		return $dataUser;
    }
-}
-/**
- * This function will set a LUCIE user's cookie with the value of
- * the auth token.  This can then be used to log into the digital
- * product's website without re-entering login/pwd
-*/
-function tfk_lucie_user_set_cookie($token){
-	setcookie('CGI-token', $token, 0);
 }
 /**
  * This function will get the entitlements context for a user in LUCIE.
@@ -275,6 +251,7 @@ function tfk_lucie_check_user($email, $pwd){
               ));
   // Decode the JSON data and pass to the call to get the user information
   $dataResponse = drupal_json_decode($response->data);
+  
   switch ($response->code) {
   	case 201:
   		if (tfk_lucie_user_entitlements($dataResponse['token'])) {

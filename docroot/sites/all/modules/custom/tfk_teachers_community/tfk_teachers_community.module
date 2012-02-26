@@ -213,8 +213,7 @@ function tfk_teachers_community_preprocess_page(&$variables, $hook) {
     	'id' => 'top',
       'message' => 'GOT A QUESTION? GOT A LESSON PLAN IDEA?',
       'link_title' => 'Submit to the TFK Teacher Community',
-      'link_dest' => 'node/add/teacher-community-question',
-      'class' => array('suggestion-box', 'clearfix')
+      'link_dest' => 'node/add/teacher-community-question'
     );
 
     global $user;

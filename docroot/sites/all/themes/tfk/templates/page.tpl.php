@@ -80,14 +80,14 @@ if(drupal_is_front_page()) {
   <div id="header">
     <div class="section clearfix">
     <?php if ($logo): ?>
-      <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo"><img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" /></a>
+    	<a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo"><img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" /></a>
     <?php endif; ?>
     <?php if(isset($ad) && array_key_exists('banner_728x90', $ad)): ?>
-      <?php print $ad['banner_728x90']; ?>
+    	<?php print $ad['banner_728x90']; ?>
     <?php endif; ?>
     </div>
   </div>
-  
+	
   <div id="navigation" class="clearfix">
 
   <div class="section clearfix">
@@ -136,7 +136,7 @@ if(drupal_is_front_page()) {
           <?php if(isset($section_title)):?>
             <?php print $section_title; ?>
           <?php else: ?>
-            <?php print $title; ?>
+          	<?php print $title; ?>
           <?php endif; ?>
         </h1>
       <?php endif;?>
@@ -146,9 +146,9 @@ if(drupal_is_front_page()) {
           <?php print render($page['sidebar_top']); ?>
         <?php endif; ?>
  
-        <?php if($title !== "Page Not Found" && !empty($page['sidebar_first'])): ?>
-          <?php print render($page['sidebar_first']); ?>
-        <?php endif; ?>
+    		<?php if($title !== "Page Not Found" && !empty($page['sidebar_first'])): ?>
+    			<?php print render($page['sidebar_first']); ?>
+    		<?php endif; ?>
         
         <?php if(array_key_exists('sidebar_bottom', $page)): ?>
           <?php print render($page['sidebar_bottom']); ?>
@@ -165,11 +165,11 @@ if(drupal_is_front_page()) {
       <div id="content" class="column">
       
         <?php if(isset($page_pre_section)):?>
-          <div id='page_pre_section'><?php print $page_pre_section; ?></div>
+        	<div id='page_pre_section'><?php print $page_pre_section; ?></div>
         <?php endif; ?>
       
-        <div class="section clearfix">
-        
+      	<div class="section clearfix">
+      	
           <?php if(isset($page_suggestion_box)): ?>
             <?php print $page_suggestion_box; ?>
           <?php endif;?>
@@ -196,7 +196,7 @@ if(drupal_is_front_page()) {
           <?php endif; ?>
             
           <?php if(isset($top_suggestion_msg)): ?>
-            <div id='top-suggestion-box' class="suggestion-box clearfix">
+            <div id='top-suggestion-box' class="suggestion-box">
               <div class='msg'><?php print $top_suggestion_msg; ?></div>
               <div class='link'><?php print $top_suggestion_link; ?></div>
             </div>
@@ -204,26 +204,26 @@ if(drupal_is_front_page()) {
       
           <?php print render($page['content']); ?>
   
-        </div>
-        
-        <?php if(empty($page['sidebar_first']) && empty($page['sidebar_bottom'])): // Two columns layouts (front). ?>
-          <div id="footer" class="section">
-            <?php print render($page['footer']); ?>
+      	</div>
+      	
+      	<?php if(empty($page['sidebar_first']) && empty($page['sidebar_bottom'])): // Two columns layouts (front). ?>
+        	<div id="footer" class="section">
+          	<?php print render($page['footer']); ?>
           </div>
-        <?php endif; ?>
+      	<?php endif; ?>
 
       </div><!-- /.section, /#content -->
-      
-      <?php if(!array_key_exists('#printed', $page['footer'])):?>
-        <?php if(!empty($page['sidebar_first']) || !empty($page['sidebar_bottom'])): // Three column layouts. ?>
-          <div id="footer" class="section <?php print $footer_classes; ?>">
-            <?php print render($page['footer']); ?>
-          </div>
-        <?php endif; ?>
-      <?php endif; ?>
-      
+			
+			<?php if(!array_key_exists('#printed', $page['footer'])):?>
+  			<?php if(!empty($page['sidebar_first']) || !empty($page['sidebar_bottom'])): // Three column layouts. ?>
+    			<div id="footer" class="section <?php print $footer_classes; ?>">
+      			<?php print render($page['footer']); ?>
+    			</div>
+  			<?php endif; ?>
+			<?php endif; ?>
+			
     </div><!-- /#main -->
-  
+	
 
   </div><!-- /#main-wrapper -->
 

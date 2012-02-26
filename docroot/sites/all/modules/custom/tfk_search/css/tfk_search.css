@@ -264,8 +264,7 @@ ol.search-results li.search-result {
 li.search-result {
   border: 1px solid #CECECE;
 	border-top: none;	
-	padding: 10px;
-  *padding: 10px 10px 0 10px;
+  padding: 10px;
 	margin: 0px;
 }
 
@@ -276,8 +275,7 @@ body.page-worksheets .search-results .result-date {
 	line-height: 15px;
 }
 
-body.page-search-site .search-results .search-snippet-info,
-#main-wrapper .search-snippet-info {
+body.page-search-site .search-results .search-snippet-info {
   padding: 0 0 0 0;
 }
 
@@ -295,11 +293,10 @@ body.page-my-favorites .col1 {
 }
 
 .col2 {
-  *float: left;
+  float: left;
   width: 360px;
   margin-left: 10px;
   clear: right;
-  display: inline-block;
 }
 
 #tfk-search-results-photos-video .col1 {
@@ -333,7 +330,6 @@ body.page-my-favorites .col1 {
 li.search-result .search-snippet-body {
 	margin-bottom: 25px;
 	min-height: 43.2px;
-	*min-height: 0;
 }
 
 body.page-photos-video .view-full-article + .search-snippet-info {
@@ -377,7 +373,6 @@ ol#tfk-search-results-photos-video li.with-image {
 ol#tfk-search-results-photos-video li.search-result {
   min-height: 150px;
 	padding-bottom: 16px;
-	*padding-bottom: 0;
 }
 
 #tfk-search-results-photos-video img.thumbnail {

@@ -109,7 +109,25 @@ t('Home'); ?>" rel="home"><span><?php print $site_name; ?></span></a>
         <?php endif; ?>
       </div><!-- /#name-and-slogan -->
     <?php endif; ?>
-    
+
+
+    <?php
+    /***
+    print theme('links__system_secondary_menu', array(
+      'links' => $secondary_menu,
+      'attributes' => array(
+        'id' => 'secondary-menu',
+        'class' => array('links', 'inline', 'clearfix'),
+      ),
+      'heading' => array(
+        'text' => $secondary_menu_heading,
+        'level' => 'h2',
+        'class' => array('element-invisible'),
+      ),
+    ));
+    ***/
+    ?>
+	
     <div id="global-nav-container">
 		<?php print render($page['header']['menu_menu-tfk-global-navigation']); ?>
 	</div>
@@ -168,15 +186,14 @@ t('Home'); ?>" rel="home"><span><?php print $site_name; ?></span></a>
 	  <?php endif;?>
 
       <?php print $feed_icons; ?>
-      
-        <div id="footer" class="section <?php print $footer_classes; ?>">
-          <?php print render($page['footer']); ?>
-        </div>
-      
-        </div></div><!-- /.section, /#content -->
-      </div> <!-- user wrapper -->
-    </div>
+    </div></div><!-- /.section, /#content -->
+  </div> <!-- user wrapper -->
 
+
+
+  </div>
+
+  <?php print render($page['footer']); ?>
   </div><!-- /#main, /#main-wrapper -->
 
 </div></div><!-- /#page, /#page-wrapper -->

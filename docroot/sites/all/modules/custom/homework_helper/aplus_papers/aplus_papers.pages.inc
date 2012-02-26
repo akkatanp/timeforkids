@@ -86,10 +86,7 @@ function aplus_papers_prepare_step($node) {
 }
 
 function aplus_papers_sort_steps($a, $b) {
-  $a_weight = (array_key_exists($a->language, $a->field_step_weight)) ? $a->field_step_weight[$a->language][0]['value']: 0;
-  $b_weight = (array_key_exists($a->language, $b->field_step_weight)) ? $b->field_step_weight[$a->language][0]['value']: 0;
-  
-  return ($a_weight > $b_weight);
+  return ($a->field_step_weight[$a->language][0]['value'] > $b->field_step_weight[$a->language][0]['value']);
 }
 
 /**

@@ -1089,7 +1089,7 @@ function tfk_search_search_box_submit($form, &$form_state) {
  * @see theme_form_element
  */
 function tfk_search_preprocess_form_element(&$variables, $hook) {
-  if(isset($variables['element']['#name']) && $variables['element']['#name'] == 'search_block_form') {
+  if($variables['element']['#name'] == 'search_block_form') {
     $variables['element']['#type'] = '';
   }
 }
@@ -1566,6 +1566,11 @@ class tfkSearchFeaturedItem {
             $_image = array_shift($_image);
             $filesystem_path = drupal_realpath($_image['uri']);
             
+            // Degrade gracefully, skip this image if it doesn't exist.
+            if(!file_exists($filesystem_path)) {
+              continue;
+            }
+            
             $_image['abspath'] = tfk_search_get_thumbnail($_image['fid'], 'tfk_60x60');
             $this->slideshow_images[] = (object) $_image;
           }
@@ -1580,7 +1585,6 @@ class tfkSearchFeaturedItem {
     // Featured item.
   	if($featured_image != FALSE) {
   	  $featured_image = array_shift($featured_image);
-  	  $this->featured_item = new stdClass();
   	  $this->featured_item->abspath = tfk_search_get_thumbnail($featured_image['fid'], 'tfk_270x270');
   	}
     
@@ -1692,6 +1696,14 @@ function tfk_search_get_thumbnail($fid, $style) {
     return FALSE;
   }
   $file->newpath = image_style_path($style, $file->uri);
+  
+  // Generate the image style derivative if it doesn't exist.
+  if(!file_exists($file->newpath)) {
+    if(!image_style_create_derivative(image_style_load($style), $file->uri, $file->newpath)) {
+      watchdog('tfk_search_get_thumbnail', 'Failed to create image derivative for fid: @fid', array('@fid' => $file->fid), WATCHDOG_WARNING);
+      return FALSE;
+    }
+  }
   
   return image_style_url($style, $file->uri);
 }
@@ -2303,7 +2315,6 @@ function tfk_search_worksheets() {
     // Without this pagination links drop the grade filter.
     $_GET['filters'] = $filterstring;
   } else {
-    $filterstring = '';
     // If user is logged in, add grade level. This affects initial search only.
     if(!isset($_GET['solrsort'])) {
       global $user;
@@ -2311,6 +2322,8 @@ function tfk_search_worksheets() {
       if($user && isset($user->grade_level)) {
         $filterstring = 'im_28_field_grade_level:'. $user->grade_level->tid;
         $_GET['filters'] = $filterstring;
+      } else {
+        $filterstring = '';
       }
     }
   }
@@ -2642,12 +2655,13 @@ function tfk_search_preprocess_search_result(&$vars) {
   // Avoid further preprocessing if this node doesn't exist on this server.
   $nid = $vars['result']['fields']['entity_id'];
   $node = node_load($nid);
-  if(!$node) {
-    // Don't preprocess, this nid exists in the index but not in the database.
-    return;
-  }
-  
   $vars['render'] = TRUE;
+  //if($node === FALSE) {
+    // "Hijack" the rendering process by using a custom variable that causes
+    // the search-result[--suggestion].tpl.php template to return an empty string.
+    //$vars['render'] = FALSE;
+    //return;
+  //}
   
   if($node) {
     // Build contextual links.
@@ -2667,7 +2681,7 @@ function tfk_search_preprocess_search_result(&$vars) {
         $tmp_img_nid =  field_get_items('node', $node, 'field_minisite_tout_image');
         $uri = $tmp_img_nid[0]['uri'];
         $filesystem_path = drupal_realpath($uri);
-        if(!empty($uri)) {
+        if(!empty($uri) && file_exists($filesystem_path)) {
           $newpath = image_style_path($style, $uri);
           $abspath = file_create_url($newpath);
           $thumbnail = theme('image', array('path' => $abspath, 'alt' => $title, 'title' => $title, 'attributes' => $thumb_attr));
@@ -2697,7 +2711,7 @@ function tfk_search_preprocess_search_result(&$vars) {
         
         if($record) {
           $uri = file_build_uri(basename($record->filename));
-          if(!empty($uri)) {
+          if(!empty($uri) && file_exists(drupal_realpath($uri))) {
             $newpath = image_style_path($style, $uri);
             $abspath = file_create_url($newpath);
             $thumbnail = theme('image', array('path' => $abspath, 'alt' => $title, 'title' => $title, 'attributes' => $thumb_attr));
@@ -2719,7 +2733,7 @@ function tfk_search_preprocess_search_result(&$vars) {
       if(isset($node->field_video_thumbnail)){
         $tmp_img_nid =  field_get_items('node', $node, 'field_video_thumbnail');
         $uri = $tmp_img_nid[0]['uri'];
-        if(!empty($uri)) {
+        if(!empty($uri) && file_exists(drupal_realpath($uri))) {
           $icon = '<div class="icon"></div>';
           $newpath = image_style_path($style, $uri);
           $abspath = file_create_url($newpath);
@@ -2774,7 +2788,7 @@ function tfk_search_preprocess_search_result(&$vars) {
         $record = $result->fetch();
         if($record) {
           $file = file_load($record->field_image_fid);
-          if(!empty($file->uri)) {
+          if(!empty($file->uri) && file_exists(drupal_realpath($file->uri))) {
             $newpath = image_style_path($style, $file->uri);
             $abspath = file_create_url($newpath);
             $thumbnail = theme('image', array('path' => $abspath, 'alt' => $magazine->title, 'title' => $magazine->title, 'attributes' => $thumb_attr));
@@ -2964,7 +2978,7 @@ function tfk_search_preprocess_search_result(&$vars) {
     case 'common_core_standards':
     case 'pdf_quiz':
       $vars['title'] = $title;
-      $_cont_type = ($vars['result']['bundle'] == 'pdf_quiz') ? 'quiz': 'common core standards';
+      $_cont_type = ($vars['result']['fields']['bundle_name'] == 'pdf_quiz') ? 'quiz': 'common core standards';
       
       $vars['tfk_search_cont_type'] = strtoupper($_cont_type);
       
@@ -2974,16 +2988,15 @@ function tfk_search_preprocess_search_result(&$vars) {
 				WHERE field_related_resources_nid = :quiz_nid';
       $results = db_query($query, array('quiz_nid' => $node->nid));
       if($results) {
-        $result = $results->fetch();
-        if($result) {
-          $magazine_issue = $result->entity_id;
-          // Use the custom date field of the parent magazine issue.
-          $magazine_issue = node_load($magazine_issue);
-          if($magazine_issue) {
-            $field_date = field_get_items('node', $magazine_issue, 'field_date');
-            if($field_date) {
-              $vars['date'] = date('F j, Y', $field_date[0]['value']);
-            }
+        $magazine_issue = $results->fetch();
+        $magazine_issue = $magazine_issue->entity_id;
+        
+        // Use the custom date field of the parent magazine issue.
+        $magazine_issue = node_load($magazine_issue);
+        if($magazine_issue) {
+          $field_date = field_get_items('node', $magazine_issue, 'field_date');
+          if($field_date) {
+            $vars['date'] = date('F j, Y', $field_date[0]['value']);
           }
         }
       }
@@ -3025,7 +3038,7 @@ function tfk_search_preprocess_search_result(&$vars) {
       
         $tmp_img_nid =  field_get_items('node', $node, 'field_common_core_thumbnail');
         $uri = $tmp_img_nid[0]['uri'];
-        if(!empty($uri)) {
+        if(!empty($uri) && file_exists(drupal_realpath($uri))) {
           $newpath = image_style_path($style, $uri);
           $abspath = file_create_url($newpath);
           // Worksheets don't link to the node page.
@@ -3048,7 +3061,7 @@ function tfk_search_preprocess_search_result(&$vars) {
       if(isset($node->field_worksheet_thumbnail_image)){
         $tmp_img_nid =  field_get_items('node', $node, 'field_worksheet_thumbnail_image');
         $uri = $tmp_img_nid[0]['uri'];
-        if(!empty($uri)) {
+        if(!empty($uri) && file_exists(drupal_realpath($uri))) {
           $newpath = image_style_path($style, $uri);
           $abspath = file_create_url($newpath);
           // Worksheets don't link to the node page.
@@ -3140,7 +3153,7 @@ function tfk_search_preprocess_search_result(&$vars) {
           where fi.entity_type = :bundle_type and fi.entity_id = :img_nid',array('bundle_type'=>'node','img_nid'=>$img_nid));
         $record = $result->fetch();
         $file = file_load($record->field_image_fid);
-        if(!empty($file->uri)) {
+        if(!empty($file->uri) && file_exists(drupal_realpath($file->uri))) {
           $file->newpath = image_style_path($style, $file->uri);
           $abspath = image_style_url($style, $file->uri);
           $icon = '<div class="icon"></div>';

@@ -94,16 +94,9 @@ function tfk_helper_node_access($node, $op, $account) {
  * Modify exposed filters on Views admin/content2 page.
  */
 function tfk_helper_form_views_exposed_form_alter(&$form, &$form_state, $form_id) {
-  if($form['#id'] == 'views-exposed-form-admin-content2-page') {
+  if($form['#id'] == 'views-exposed-form-admin-content-page') {
     // Alpha-sort content type filter.
-    asort($form['type']['#options'], SORT_STRING);
-    
-    // Emulate core theming.
-    $form['#prefix'] = '<fieldset class="form-wrapper"><div class="fieldset-wrapper">';
-    $form['#suffix'] = '</div></fieldset>';
-    $form['nid']['#size'] = '10';
-    $form['field_grade_level_tid']['#size'] = '15';
-    
+    ksort($form['type']['#options']);
   }
 }
 

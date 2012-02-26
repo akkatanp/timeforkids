@@ -42,11 +42,6 @@ tr.odd td {
 	position: absolute;
         left:10px;
 }
-
-#block-views-minisite-articles-block-1 table {
-  border-collapse: separate;
-}
-
 /* Homespace secondary tout spacing*/
 .view-homepage-news-block table td.col-1, .view-teacher-news-news-block table td.col-1, .view-kid-reporters-channel-news-block table td.col-1 {
     position:relative;
@@ -145,11 +140,4 @@ div#tfk-search-photos-video-featured div.featured-label {
   margin-top: -350px;
   margin-left: 20px;
   width: 100%;
-}
-
-/* Teacher community */
-/* The node view page has a different selector */
-body.page-node #page .suggestion-box .link a {
-  background: url('/sites/all/modules/custom/tfk_teachers_community/images/right-arrow.png') 205px 50% no-repeat;
-  width: 230px;
 }
