@@ -146,3 +146,10 @@ div#tfk-search-photos-video-featured div.featured-label {
   margin-left: 20px;
   width: 100%;
 }
+
+/* Teacher community */
+/* The node view page has a different selector */
+body.page-node #page #top-suggestion-box .link a {
+  background: url('/sites/all/modules/custom/tfk_teachers_community/images/right-arrow.png') 205px 50% no-repeat;
+  width: 230px;
+}
