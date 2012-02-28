@@ -136,7 +136,11 @@ body.section-worksheets .region-sidebar-first .section {
 }
 
 .region-sidebar-first .block {
-	border-bottom: 1px dotted #4E565B;
+	border-top: 1px dotted #4E565B;
+}
+
+#block-tfk-search-tfk-search-ws-leftbar-title + .block {
+  border-top: 0 none;
 }
 
 .region-sidebar-first .block .content > .item-list {
@@ -145,6 +149,10 @@ body.section-worksheets .region-sidebar-first .section {
 
 #block-apachesolr-search-im-35-field-skills {
   border-bottom: 0;
+}
+
+#block-apachesolr-search-bundle + #block-tfk-search-tfk-search-worksheet-user-save {
+	border-bottom: 0 none;
 }
 
 
