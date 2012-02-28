@@ -81,7 +81,6 @@ body.page-node #bottom-suggestion-box .link a {
   width: 250px;
   padding-right:10px;
   background: url("/sites/all/modules/custom/tfk_teachers_community/images/right-arrow.png") no-repeat scroll 100% 50% transparent;
-	*background: url("/sites/all/modules/custom/tfk_teachers_community/images/right-arrow.png") no-repeat scroll 95% 50% transparent;
 }
 
 /* 17C Suggestion Box pager */
