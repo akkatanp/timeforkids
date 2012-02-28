@@ -71,61 +71,60 @@ the footer.
 ?>
 <div id="page-wrapper"><div id="page">
 
-	<div id="header">
-		<div class="section clearfix">
-		<?php if ($logo): ?>
-			<a href="<?php print $front_page; ?>" title="<?php print t('Home');
+  <div id="header">
+    <div class="section clearfix">
+    <?php if ($logo): ?>
+      <a href="<?php print $front_page; ?>" title="<?php print t('Home');
 ?>" rel="home" id="logo"><img src="<?php print $logo; ?>" alt="<?php
 print t('Home'); ?>" /></a>
-		<?php endif; ?>
+    <?php endif; ?>
                 <?php if(isset($ad) &&
 array_key_exists('banner_728x90', $ad)): ?>
                     <?php print $ad['banner_728x90']; ?>
                 <?php endif; ?>
-		</div>
-	</div>
-	
-	<div id="navigation">
-	
-<div class="section clearfix">
-    <?php if ($site_name || $site_slogan): ?>
-      <div id="name-and-slogan">
-        <?php if ($site_name): ?>
-          <?php if ($title): ?>
-            <div id="site-name"><strong>
-              <a href="<?php print $front_page; ?>" title="<?php print
-t('Home'); ?>" rel="home"><span><?php print $site_name; ?></span></a>
-            </strong></div>
-          <?php else: /* Use h1 when the content title is empty */ ?>
-            <h1 id="site-name">
-              <a href="<?php print $front_page; ?>" title="<?php print
-t('Home'); ?>" rel="home"><span><?php print $site_name; ?></span></a>
-            </h1>
+    </div>
+  </div>
+  
+  <div id="navigation">
+    <div class="section clearfix">
+      <?php if ($site_name || $site_slogan): ?>
+        <div id="name-and-slogan">
+          <?php if ($site_name): ?>
+            <?php if ($title): ?>
+              <div id="site-name"><strong>
+                <a href="<?php print $front_page; ?>" title="<?php print
+  t('Home'); ?>" rel="home"><span><?php print $site_name; ?></span></a>
+              </strong></div>
+            <?php else: /* Use h1 when the content title is empty */ ?>
+              <h1 id="site-name">
+                <a href="<?php print $front_page; ?>" title="<?php print
+  t('Home'); ?>" rel="home"><span><?php print $site_name; ?></span></a>
+              </h1>
+            <?php endif; ?>
           <?php endif; ?>
-        <?php endif; ?>
 
-        <?php if ($site_slogan): ?>
-          <div id="site-slogan"><?php print $site_slogan; ?></div>
-        <?php endif; ?>
-      </div><!-- /#name-and-slogan -->
-    <?php endif; ?>
-    
-    <div id="global-nav-container">
-		<?php print render($page['header']['menu_menu-tfk-global-navigation']); ?>
-	</div>
-	
-	<?php if(isset($page['header']['menu_menu-tfk-teachers-menu'])): ?>
-  	<div id="teacher-nav-container">
-  		<div class="inner">
-  			<?php print render($page['header']['views_homepage_username-block']); ?>
-  			<?php print render($page['header']['block_3']); ?>
-  			<?php print render($page['header']['block_11']); ?>
-  			<?php print render($page['header']['menu_menu-tfk-teachers-menu']); ?>
-  		</div>
-  	</div>
-	<?php endif; ?>
-	
-	</div></div><!-- /.section, /#header -->
+          <?php if ($site_slogan): ?>
+            <div id="site-slogan"><?php print $site_slogan; ?></div>
+          <?php endif; ?>
+        </div><!-- /#name-and-slogan -->
+      <?php endif; ?>
+      
+      <div id="global-nav-container">
+        <?php print render($page['header']['menu_menu-tfk-global-navigation']); ?>
+      </div>
+
+      <?php if(isset($page['header']['menu_menu-tfk-teachers-menu'])): ?>
+        <div id="teacher-nav-container">
+          <div class="inner">
+            <?php print render($page['header']['views_homepage_username-block']); ?>
+            <?php print render($page['header']['block_3']); ?>
+            <?php print render($page['header']['block_11']); ?>
+            <?php print render($page['header']['menu_menu-tfk-teachers-menu']); ?>
+          </div>
+        </div>
+      <?php endif; ?>
+    </div>
+  </div><!-- /.section, /#navigation -->
 
   <div id="main-wrapper"><div id="main" class="clearfix<?php if
 ($main_menu || $page['navigation']) { print ' with-navigation'; } ?>">
@@ -165,17 +164,19 @@ t('Home'); ?>" rel="home"><span><?php print $site_name; ?></span></a>
         <?php if(!$logged_in):?>
         <?php print render($page['content']); ?>
       <!--login end -->
-	  <?php endif;?>
+    <?php endif;?>
 
       <?php print $feed_icons; ?>
       
-        <div id="footer" class="section <?php print $footer_classes; ?>">
-          <?php print render($page['footer']); ?>
-        </div>
+        <?php if(empty($page['sidebar_first']) && empty($page['sidebar_bottom'])): // Two columns layouts (front). ?>
+          <div id="footer" class="section">
+            <?php print render($page['footer']); ?>
+          </div>
+        <?php endif; ?>
       
         </div></div><!-- /.section, /#content -->
-      </div> <!-- user wrapper -->
-    </div>
+      </div>
+    </div><!-- user wrapper -->
 
   </div><!-- /#main, /#main-wrapper -->
 
