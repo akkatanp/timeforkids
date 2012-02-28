@@ -73,32 +73,31 @@ the footer.
 
   <div id="header">
     <div class="section clearfix">
-    <?php if ($logo): ?>
-      <a href="<?php print $front_page; ?>" title="<?php print t('Home');
-?>" rel="home" id="logo"><img src="<?php print $logo; ?>" alt="<?php
-print t('Home'); ?>" /></a>
-    <?php endif; ?>
-                <?php if(isset($ad) &&
-array_key_exists('banner_728x90', $ad)): ?>
-                    <?php print $ad['banner_728x90']; ?>
-                <?php endif; ?>
+      <?php if ($logo): ?>
+        <a href="<?php print $front_page; ?>" title="<?php print t('Home');?>" rel="home" id="logo">
+          <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" />
+        </a>
+      <?php endif; ?>
+      
+      <?php if(isset($ad) && array_key_exists('banner_728x90', $ad)): ?>
+        <?php print $ad['banner_728x90']; ?>
+      <?php endif; ?>
     </div>
   </div>
   
   <div id="navigation">
     <div class="section clearfix">
+      
       <?php if ($site_name || $site_slogan): ?>
         <div id="name-and-slogan">
           <?php if ($site_name): ?>
             <?php if ($title): ?>
               <div id="site-name"><strong>
-                <a href="<?php print $front_page; ?>" title="<?php print
-  t('Home'); ?>" rel="home"><span><?php print $site_name; ?></span></a>
+                <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home"><span><?php print $site_name; ?></span></a>
               </strong></div>
             <?php else: /* Use h1 when the content title is empty */ ?>
               <h1 id="site-name">
-                <a href="<?php print $front_page; ?>" title="<?php print
-  t('Home'); ?>" rel="home"><span><?php print $site_name; ?></span></a>
+                <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home"><span><?php print $site_name; ?></span></a>
               </h1>
             <?php endif; ?>
           <?php endif; ?>
@@ -126,57 +125,55 @@ array_key_exists('banner_728x90', $ad)): ?>
     </div>
   </div><!-- /.section, /#navigation -->
 
-  <div id="main-wrapper"><div id="main" class="clearfix<?php if
-($main_menu || $page['navigation']) { print ' with-navigation'; } ?>">
+  <div id="main-wrapper"><div id="main" class="clearfix<?php if($main_menu || $page['navigation']):?> with-navigation<?php endif;?>">
 
     <?php print render($page['sidebar_second']); ?>
     <div id="tfk-user-profile-wrapper">
-        <?php if ($title): ?>
-            <h1 class="title" id="user-title"><?php print $title; ?></h1>
-        <?php endif; ?>
+      <?php if ($title): ?><h1 class="title" id="user-title"><?php print $title; ?></h1><?php endif; ?>
+      <?php print render($page['sidebar_first']); ?>
 
-    <?php print render($page['sidebar_first']); ?>
-
-            <?php if(!$logged_in):?>
-               <div id="content" class="column" style="width:700px;">
-            <?php endif;?>
-            <?php if($logged_in):?>
-                <div id="content" class="column">
-            <?php endif;?>
-
+      <div id="content" class="column" <?php if(!$logged_in):?>style="width:700px;"<?php endif;?>>
         <div class="section">
-      <?php print render($page['highlighted']); ?>
-      <?php print $breadcrumb; ?>
-      <a id="main-content"></a>
-      <?php print $messages; ?>
-      <?php if ($tabs = render($tabs)): ?>
-        <div class="tabs"><?php print $tabs; ?></div>
-      <?php endif; ?>
-      <?php print render($page['help']); ?>
-      <?php if ($action_links): ?>
-        <ul class="action-links"><?php print render($action_links); ?></ul>
-      <?php endif; ?>
+          <?php print render($page['highlighted']); ?>
+          <?php print $breadcrumb; ?>
+          <a id="main-content"></a>
+          <?php print $messages; ?>
+          <?php if ($tabs = render($tabs)): ?>
+            <div class="tabs"><?php print $tabs; ?></div>
+          <?php endif; ?>
+          <?php print render($page['help']); ?>
+          <?php if ($action_links): ?>
+            <ul class="action-links"><?php print render($action_links); ?></ul>
+          <?php endif; ?>
 
-        <?php if($logged_in):?>
-          <?php print render($page['content']); ?>
-        <?php endif;?>
-        <!--login start -->
-        <?php if(!$logged_in):?>
-        <?php print render($page['content']); ?>
-      <!--login end -->
-    <?php endif;?>
+          <?php if($logged_in):?>
+            <?php print render($page['content']); ?>
+          <?php endif;?>
+          
+          <!--login start -->
+          <?php if(!$logged_in):?>
+            <?php print render($page['content']); ?>
+            <!--login end -->
+          <?php endif;?>
 
-      <?php print $feed_icons; ?>
-      
-        <?php if(empty($page['sidebar_first']) && empty($page['sidebar_bottom'])): // Two columns layouts (front). ?>
-          <div id="footer" class="section">
-            <?php print render($page['footer']); ?>
-          </div>
-        <?php endif; ?>
-      
-        </div></div><!-- /.section, /#content -->
-      </div>
+          <?php print $feed_icons; ?>
+    
+          <?php if(empty($page['sidebar_first']) && empty($page['sidebar_bottom'])): // Two columns layouts (front). ?>
+            <div id="footer" class="section">
+              <?php print render($page['footer']); ?>
+            </div>
+          <?php endif; ?>
+        </div><!-- /.section -->
+      </div><!-- /#content -->
     </div><!-- user wrapper -->
+    
+    <?php if(!array_key_exists('#printed', $page['footer'])):?>
+      <?php if(!empty($page['sidebar_first']) || !empty($page['sidebar_bottom'])): // Three column layouts. ?>
+        <div id="footer" class="section <?php print $footer_classes; ?>">
+          <?php print render($page['footer']); ?>
+        </div>
+      <?php endif; ?>
+    <?php endif; ?>
 
   </div><!-- /#main, /#main-wrapper -->
 
