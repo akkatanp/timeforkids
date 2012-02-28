@@ -148,12 +148,12 @@ body.section-worksheets .region-sidebar-first .section {
 }
 
 #block-apachesolr-search-im-35-field-skills {
-  border-bottom: 0;
+  border-bottom: 0 none;
 }
 
 /* When bundle is the last facet block, no border at the bottom */
 #block-tfk-search-tfk-search-ws-leftbar-title + #block-apachesolr-search-bundle {
-	border-bottom: 0;
+	border-bottom: 0 none;
 }
 
 
