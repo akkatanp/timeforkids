@@ -151,15 +151,15 @@ body.section-worksheets .region-sidebar-first .section {
   border-bottom: 0;
 }
 
-#block-apachesolr-search-bundle + #block-tfk-search-tfk-search-worksheet-user-save {
-	border-bottom: 0 none;
+/* When bundle is the last facet block, no border at the bottom */
+#block-tfk-search-tfk-search-ws-leftbar-title + #block-apachesolr-search-bundle {
+	border-bottom: 0;
 }
 
 
 /**
  * Overrides
  */
-
 body.page-worksheets #tfk-search-pager-top {
 	background-color: #d9effe;
 }
