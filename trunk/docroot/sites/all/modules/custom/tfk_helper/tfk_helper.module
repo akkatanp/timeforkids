@@ -99,7 +99,7 @@ function tfk_helper_form_views_exposed_form_alter(&$form, &$form_state, $form_id
     asort($form['type']['#options'], SORT_STRING);
     
     // Format label.
-    $form['created']['value']['#description'] = 'Format: CCYY-MM-DD HH:MM:SS';
+    $form['created']['value']['#description'] = 'YYYY-MM-DD HH:MM:SS';
     
     // Emulate core theming.
     $form['#prefix'] = '<fieldset class="form-wrapper"><div class="fieldset-wrapper">';
