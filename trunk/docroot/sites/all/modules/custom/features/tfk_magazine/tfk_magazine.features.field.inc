@@ -816,6 +816,7 @@ function tfk_magazine_field_default_fields() {
           'atw_timeline' => 0,
           'board_member' => 0,
           'book' => 0,
+          'common_core_standards' => 'common_core_standards',
           'flashcard' => 0,
           'global_right_sidebar_promo' => 0,
           'grammar_practice' => 0,
@@ -1721,8 +1722,8 @@ function tfk_magazine_field_default_fields() {
       'indexes' => array(),
       'module' => 'metatags_quick',
       'settings' => array(
-        0 => 'meta_name',
         'meta_name' => 'description',
+        0 => 'meta_name',
       ),
       'translatable' => '0',
       'type' => 'metatags_quick',
@@ -1776,8 +1777,8 @@ function tfk_magazine_field_default_fields() {
       'indexes' => array(),
       'module' => 'metatags_quick',
       'settings' => array(
-        0 => 'meta_name',
         'meta_name' => 'keywords',
+        0 => 'meta_name',
       ),
       'translatable' => '0',
       'type' => 'metatags_quick',
