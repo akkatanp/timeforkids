@@ -47,18 +47,18 @@
  * @see zen_process_block()
  */
 ?>
-<?php if($content):?>
-<div id="<?php print $block_html_id; ?>" class="<?php print $classes; ?> <?php if(isset($block_classes)): ?><?php print $block_classes; ?><?php endif; ?>"<?php print $attributes; ?>>
-
-  <?php print render($title_prefix); ?>
-  <?php if ($title): ?>
-    <h2<?php print $title_attributes; ?>><?php print $title; ?></h2>
-  <?php endif; ?>
-  <?php print render($title_suffix); ?>
-
-  <div class="content"<?php print $content_attributes; ?>>
-    <?php print $content; ?>
+<?php if(!empty($content)):?>
+  <div id="<?php print $block_html_id; ?>" class="<?php print $classes; ?> <?php if(isset($block_classes)): ?><?php print $block_classes; ?><?php endif; ?>"<?php print $attributes; ?>>
+  
+    <?php print render($title_prefix); ?>
+    <?php if ($title): ?>
+      <h2<?php print $title_attributes; ?>><?php print $title; ?></h2>
+    <?php endif; ?>
+    <?php print render($title_suffix); ?>
+  
+    <div class="content"<?php print $content_attributes; ?>>
+      <?php print $content; ?>
+    </div>
+  
   </div>
-
-</div><!-- /.block -->
 <?php endif; ?>
