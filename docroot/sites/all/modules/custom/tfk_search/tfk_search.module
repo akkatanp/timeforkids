@@ -2891,7 +2891,7 @@ function tfk_search_preprocess_search_result(&$vars) {
               }
               
               // Quiz.
-              if($material_node->type == 'pdf_quiz') {
+              if($material_node->type == 'pdf_quiz' || $material_node->type == 'common_core_standards') {
                 $quiz_pdf = field_get_items('node', $material_node, 'field_pdf_file_private');
                 if($quiz_pdf) {
                  
