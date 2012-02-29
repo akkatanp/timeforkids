@@ -1766,6 +1766,7 @@ function referenced_views_views_default_views() {
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
+    'common_core_standards' => 'common_core_standards',
     'pdf_quiz' => 'pdf_quiz',
     'worksheet' => 'worksheet',
   );
