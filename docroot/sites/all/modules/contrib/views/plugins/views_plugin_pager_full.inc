@@ -217,7 +217,12 @@ class views_plugin_pager_full extends views_plugin_pager {
     // based upon
     global $pager_page_array;
     // Extract the ['page'] info.
-    $pager_page_array = isset($_GET['page']) ? explode(',', $_GET['page']) : array(0);
+    if(isset($_GET['page']))
+      $pager_page_array = explode(',', $_GET['page']);
+      else {
+      $pager_page_array[0]=0;
+      $pager_page_array[$this->options['id']]=0;
+    }
 
     $this->current_page = 0;
     if (!empty($pager_page_array[$this->options['id']])) {
