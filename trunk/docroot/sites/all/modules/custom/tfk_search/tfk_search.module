@@ -3474,6 +3474,11 @@ function tfk_search_node_insert($node) {
   if($node->type == 'magazine_issue') {
     tfk_search_magazine_spanish_flag($node);
   }
+  
+
+  
+  
+    
 }
 
 /**
@@ -3487,6 +3492,59 @@ function tfk_search_node_update($node) {
   if($node->type == 'magazine_issue') {
     tfk_search_magazine_spanish_flag($node);
   }
+  
+  // If thumbnail field is empty, generate thumbnail automatically.
+  if(array_search($node->type, array('worksheet', 'pdf_quiz', 'common_core_standards')) !== FALSE) {
+    $thumbnail = field_get_items('node', $node, 'field_worksheet_thumbnail_image');
+    if(empty($thumbnail)) {
+      $fileref = field_get_items('node', $node, 'field_worksheet_pdf_private');
+      if(!empty($fileref)) {
+        $pdf = file_load($fileref[0]['fid']);
+        #drupal_realpath($_image['uri']);
+        
+        
+        $pdf_field_desc = field_read_instance('node', 'field_worksheet_pdf_private', 'worksheet');
+        $pdf_field_desc['settings']['file_directory'];
+        
+        #private://
+        #$filesystem_path = drupal_realpath($_image['uri']);
+        #$_image['abspath'] = tfk_search_get_thumbnail($_image['fid'], 'tfk_60x60');
+        
+        #file_exists
+        # $test = new Imagick();
+        
+        $im = new Imagick($pdf['uri']. '[0]');
+        $im->setImageFormat("jpg");
+        #$tempname = drupal_tempnam(file_directory_temp(), '.jpg');
+        $tempname = "autothumb_node_{$node->nid}.jpg";
+        $new_uri = 'public://'. $tempname;
+        $im->writeImage($new_uri);
+        
+        
+        // Create file record.
+        #$file = file_save_upload($tempname, $validators, 'public://');
+        
+        // Begin building file object.
+        $file = new stdClass();
+        $file->uid      = $user->uid;
+        $file->status   = 0;
+        $file->filename = $tempname;
+        $file->uri      = $new_uri;
+        $file->filemime = file_get_mimetype($tempname);
+        $file->filesize = filesize($tempname);
+
+        
+        $file = file_save($file);
+        
+        
+        $node->field_worksheet_thumbnail_image[$node->language][0] = $file;
+        
+        field_attach_update('node', $node);
+        
+      }
+    }
+  }
+  
 }
 
 /**
