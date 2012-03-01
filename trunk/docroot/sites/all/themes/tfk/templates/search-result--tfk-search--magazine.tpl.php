@@ -65,7 +65,7 @@
  * @see template_process()
  */
 ?>
-<?php if($render): ?>
+<?php if(isset($render) && $render): ?>
 <li class="<?php print $classes; ?>"<?php print $attributes; ?>>
   <?php if($admin_links):?>
     <?php print $admin_links;?>
