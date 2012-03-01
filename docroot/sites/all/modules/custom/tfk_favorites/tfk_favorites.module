@@ -386,10 +386,12 @@ function tfk_favorites_preprocess_node(&$variables){
       $items_tmp = field_get_items('node', $variables['node'], 'field_store_items');
       foreach($items_tmp as $item){
         $item_tmp = entity_load('field_collection_item', array($item['value']));
-        $link_url = $item_tmp[$item['value']]->field_store_item_link_url['und'][0]['safe_value'];
+        if(!empty($item_tmp[$item['value']]->field_store_item_link_url)) {
+          $link_url = $item_tmp[$item['value']]->field_store_item_link_url[$variables['language']][0]['safe_value'];
+        }
 
         if(strlen($link_url) > 0 && $link_url != 'http://'){
-          $image = $item_tmp[$item['value']]->field_store_item_image['und'][0]['uri'];
+          $image = $item_tmp[$item['value']]->field_store_item_image[$variables['language']][0]['uri'];
           $image_url = file_create_url($image);
           $store_items[$item['value']]['link_url'] = $link_url;
           $store_items[$item['value']]['image_url'] = $image_url;
@@ -432,9 +434,9 @@ function tfk_favorites_preprocess_node(&$variables){
       foreach($items_tmp as $item){
 
         $item_tmp = entity_load('field_collection_item', array($item['value']));
-        $link_url = $item_tmp[$item['value']]->field_item_url['und'][0]['safe_value'];
+        $link_url = $item_tmp[$item['value']]->field_item_url[$variables['language']][0]['safe_value'];
         if(strlen($link_url) > 0 && $link_url != 'http://'){
-          $image = $item_tmp[$item['value']]->field_item_image['und'][0]['uri'];
+          $image = $item_tmp[$item['value']]->field_item_image[$variables['language']][0]['uri'];
           $image_url = file_create_url($image);
 
           $store_items_bottom[$item['value']]['link_url'] = $link_url;
