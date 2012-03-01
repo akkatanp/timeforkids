@@ -76,7 +76,7 @@ function tfk_theme($existing, $type, $theme, $path) {
 	$hooks = zen_theme($existing, $type, $theme, $path);
  	$hooks['user_login'] = array(
         'template' => 'templates/tfk-user-login',
-        'arguments' => array('form' => NULL)
+        'variables' => array('form' => NULL)
     );
   	return $hooks;
 }
