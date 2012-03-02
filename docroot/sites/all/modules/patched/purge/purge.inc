@@ -117,8 +117,11 @@ function purge_issue_requests_curl($purges) {
     curl_setopt($curl_purge[$current_curl_purge], CURLOPT_HTTPHEADER, $purge['headers']);
     curl_setopt($curl_purge[$current_curl_purge], CURLOPT_RETURNTRANSFER, 0);
     
-    curl_setopt($curl_purge[$current_curl_purge], CURLOPT_VERBOSE, 1);
-    curl_setopt($curl_purge[$current_curl_purge], CURLOPT_STDERR, '/mnt/files/timedev2/sites/dev.timeforkids.com/varnish_purge.log');
+    // @TODO REMOVE THIS FOR PRODUCTION DEPLOYMENT !!
+    curl_setopt($curl_purge[$current_curl_purge], CURLOPT_VERBOSE, TRUE);
+    //$wrapper = fopen('php://temp', 'r+');
+    $purge_log = fopen('public://varnish_purge.log', 'r+');
+    curl_setopt($curl_purge[$current_curl_purge], CURLOPT_STDERR, $purge_log);
     
     
     curl_multi_add_handle($curl_purges, $curl_purge[$current_curl_purge]);
