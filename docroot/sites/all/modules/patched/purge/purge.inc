@@ -24,7 +24,7 @@ function purge_urls($purge_urls) {
   foreach ($purge_urls as $purge_url) {
     $purge_url_parts = parse_url($purge_url);
     // Determine the host
-    $purge_url_host = $purge_url_parts['host'];
+    @$purge_url_host = $purge_url_parts['host'];
     // Add portnames to the host if any are set
     if (array_key_exists('port', $purge_url_parts)) {
       $purge_url_host = $purge_url_host . ":" . $purge_url_parts['port'];
