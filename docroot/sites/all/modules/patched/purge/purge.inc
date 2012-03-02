@@ -116,6 +116,11 @@ function purge_issue_requests_curl($purges) {
     curl_setopt($curl_purge[$current_curl_purge], CURLOPT_HEADER, 1);
     curl_setopt($curl_purge[$current_curl_purge], CURLOPT_HTTPHEADER, $purge['headers']);
     curl_setopt($curl_purge[$current_curl_purge], CURLOPT_RETURNTRANSFER, 0);
+    
+    curl_setopt($curl_purge[$current_curl_purge], CURLOPT_VERBOSE, 1);
+    curl_setopt($curl_purge[$current_curl_purge], CURLOPT_STDERR, '/mnt/files/timedev2/sites/dev.timeforkids.com/varnish_purge.log');
+    
+    
     curl_multi_add_handle($curl_purges, $curl_purge[$current_curl_purge]);
     $current_curl_purge++;
   }
