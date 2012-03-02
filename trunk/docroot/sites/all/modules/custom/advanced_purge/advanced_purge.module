@@ -1,0 +1,94 @@
+<?php
+
+/**
+ * @file
+ * Provides the cache purging logic needed for TFK's flag-driven channels.
+ */
+
+function advanced_purge_init() {
+
+}
+
+
+function advanced_purge_node_insert($node) {
+  
+}
+
+function advanced_purge_node_update($node) {
+  
+  $test = null;
+  
+  $flags = flag_get_counts('node', $node->nid);
+  
+  
+}
+
+function advanced_purge_node_delete($node) {
+
+}
+
+/* Implementation of hook_flag.
+ */
+function advanced_purge_flag($action, $flag, $content_id, $account, $fcid) {
+
+  // Force a node_save() when flagging nodes on /admin/content.
+  // By default the "update" button does not invoke node_save().
+  //$path = arg();
+  #$menu_item = menu_get_item();
+  #$node = menu_get_object();
+ 
+  
+  // Reverse index k/v map where key: flag_name, value: channel/path.
+  $flag_channel_map = array('homepage_top_story' => 'node',
+    'homepage_news_block' => 'node',
+    'news_top_story' => 'news',
+    'news_news_block' => 'news',
+    'kid_reporter_top_story' => 'kid-reporters',
+    'kid_reporter_news_block' => 'kid-reporters'
+  );
+  
+  /*
+  $channel_map = array(
+    'front' => array('homepage_top_story', 'homepage_news_block',),
+    'news' => array('news_top_story', 'news_news_block',),
+    'kid_rep' => array('kid_reporter_top_story', 'kid_reporter_news_block'),
+  );*/
+  
+  if(array_key_exists($flag->name, $flag_channel_map)) {
+    global $base_path;
+    $path = $flag_channel_map[$flag->name];
+    $expire = array();
+    
+    // Special handling for front-page.
+    $site_frontpage = variable_get('site_frontpage', 'node');
+    if($path == $site_frontpage) {
+      $expire[] = '';
+      $expire[] = 'rss.xml';
+      $expire[] = $site_frontpage;
+    } else {
+      $expire[] = $path;
+    }
+    
+    // Path alias
+    $path_alias = url($path, array('absolute' => FALSE));
+    // Remove the base path
+    $expire[] = substr($path_alias, strlen($base_path));
+    
+    // Allow other modules to modify the list prior to expiring
+    drupal_alter('expire_cache', $expire, $node, $paths);
+    
+    $expire = array_unique($expire);
+    
+    // Clear Varnish (anonymous users).
+    module_load_include('module', 'expire'); // Required for expire_print_r() in purge.inc line 203.
+    module_load_include('inc', 'purge');
+    $results = purge_urls($expire);
+    purge_logging($results);
+    
+    // Clear Memcached (Views).
+  }
+  
+
+}
+
+
