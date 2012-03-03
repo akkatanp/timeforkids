@@ -142,6 +142,10 @@ function purge_issue_requests_curl($purges) {
   $current_curl_purge = 0;
   foreach ($purges as $purge) {
     $info = curl_getinfo($curl_purge[$current_curl_purge]);
+    
+    // @TODO REMOVE THIS FOR PRODUCTION DEPLOYMENT !!
+    error_log($info);
+    
     $purges[$current_curl_purge]['http_code'] = $info['http_code'];
     curl_multi_remove_handle($curl_purges, $curl_purge[$current_curl_purge]);
     $current_curl_purge++;
