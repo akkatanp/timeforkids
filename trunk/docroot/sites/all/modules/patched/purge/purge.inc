@@ -109,13 +109,6 @@ function purge_issue_requests_curl($purges) {
   // Initialise a curl_multi object
   $curl_purges = curl_multi_init();
   $current_curl_purge = 0;
-  
-  //@TODO REMOVE ME
-  $public_path = realpath(file_directory_path());
-  error_log($public_path);
-  $purge_log = fopen($public_path. '/varnish_purge.log', 'a+');
-  // END REMOVE ME
-  
   foreach ($purges as $purge) {
     $curl_purge[$current_curl_purge] = curl_init();
     curl_setopt($curl_purge[$current_curl_purge], CURLOPT_CUSTOMREQUEST, $purge['request_method']);
@@ -127,8 +120,9 @@ function purge_issue_requests_curl($purges) {
     // @TODO REMOVE THIS FOR PRODUCTION DEPLOYMENT !!
     curl_setopt($curl_purge[$current_curl_purge], CURLOPT_VERBOSE, TRUE);
     //$wrapper = fopen('php://temp', 'r+');
+    $purge_log = fopen('public://varnish_purge.log', 'a+');
     curl_setopt($curl_purge[$current_curl_purge], CURLOPT_STDERR, $purge_log);
-    // END REMOVE ME
+    
     
     curl_multi_add_handle($curl_purges, $curl_purge[$current_curl_purge]);
     $current_curl_purge++;
