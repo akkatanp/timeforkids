@@ -109,6 +109,10 @@ function purge_issue_requests_curl($purges) {
   // Initialise a curl_multi object
   $curl_purges = curl_multi_init();
   $current_curl_purge = 0;
+  
+  // @TODO REMOVE THIS FOR PRODUCTION DEPLOYMENT !!
+  $purge_log = fopen('public://varnish_purge.log', 'a+');
+  
   foreach ($purges as $purge) {
     $curl_purge[$current_curl_purge] = curl_init();
     curl_setopt($curl_purge[$current_curl_purge], CURLOPT_CUSTOMREQUEST, $purge['request_method']);
@@ -120,7 +124,7 @@ function purge_issue_requests_curl($purges) {
     // @TODO REMOVE THIS FOR PRODUCTION DEPLOYMENT !!
     curl_setopt($curl_purge[$current_curl_purge], CURLOPT_VERBOSE, TRUE);
     //$wrapper = fopen('php://temp', 'r+');
-    $purge_log = fopen('public://varnish_purge.log', 'a+');
+    
     curl_setopt($curl_purge[$current_curl_purge], CURLOPT_STDERR, $purge_log);
     
     
