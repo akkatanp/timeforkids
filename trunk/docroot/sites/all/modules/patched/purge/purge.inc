@@ -112,7 +112,7 @@ function purge_issue_requests_curl($purges) {
   
   //@TODO REMOVE ME
   $public_path = realpath(file_directory_path());
-  dpm($public_path);
+  error_log($public_path);
   $purge_log = fopen($public_path. '/varnish_purge.log', 'a+');
   // END REMOVE ME
   
