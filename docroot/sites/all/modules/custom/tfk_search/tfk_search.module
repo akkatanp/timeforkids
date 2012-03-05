@@ -2066,12 +2066,12 @@ function tfk_search_get_unique_host_id() {
 }
 
 /**
- * Implementation of hook_apachesolr_modify_query().
+ * Implementation of hook_apachesolr_query_alter().
  *
  * To debug the Solr query string, inspect the $searchUrl variable in
  * DrupalSolrApacheSolrService->search();
  */
-function tfk_search_apachesolr_modify_query($query, $caller) {
+function tfk_search_apachesolr_query_alter($query, $caller) {
   
   $superquery = apachesolr_drupal_query();
   
