@@ -73,6 +73,11 @@ function advanced_purge_flag($action, $flag, $content_id, $account, $fcid) {
   $display_cache['kid_reporter_news_block']['cache_views_data'] = array('homepage_news_block:block_5', 'homepage_news_block:block_6');
   //$display_cache['kid_reporter_news_block']['path'] = 'kid-reporters';
   
+  // Homepage mini-site.
+  $display_cache['homepage_minisite'] = array();
+  $display_cache['homepage_minisite']['cache_block'] = array('views:homepage_minisite-block_1', 'views:homepage_minisite-block_2');
+  $display_cache['homepage_minisite']['cache_views_data'] = array('homepage_minisite:block_1', 'homepage_minisite:block_2');
+  
   // Clear Memcached (Views).
   if(array_key_exists($flag->name, $display_cache)) {
     $results = array();
