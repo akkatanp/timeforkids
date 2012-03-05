@@ -2083,7 +2083,7 @@ function tfk_search_apachesolr_query_alter($query, $caller) {
     TFK_SEARCH_MAGAZINE_PATH => array('magazine_issue'),
   );
   
-  $path = $query->get_base_path();
+  $path = rtrim($query->getPath(''), '/');
   if(array_key_exists($path, $content_type_map)) {
     
     // Filter documents by content type.
@@ -2097,7 +2097,7 @@ function tfk_search_apachesolr_query_alter($query, $caller) {
   
   // Limit the search results to image and video content type.
   // Only apply these filters when we are in the photos and video page.
-  if($query->get_base_path() === TFK_SEARCH_PHOTOSVIDEO_PATH) {
+  if($path === TFK_SEARCH_PHOTOSVIDEO_PATH) {
     
     // Retrieve related content fields.
     $query->params['fl'] .= ','. implode(',', array(TFK_SEARCH_RELATED_TITLE, TFK_SEARCH_RELATED_PATH, TFK_SEARCH_RELATED_TYPE));
@@ -2106,14 +2106,14 @@ function tfk_search_apachesolr_query_alter($query, $caller) {
     $query->params['rows'] = 4;
   }
 
-  if($query->get_base_path() === TFK_SEARCH_WORKSHEETS_PATH) {
+  if($path === TFK_SEARCH_WORKSHEETS_PATH) {
     // Limit the number of rows per page to 8 per spec.
     $query->params['rows'] = 8;
     
     $query->params['fl'] .= ','. TFK_SEARCH_SPANISH_VERSION;
   }
 
-  if($query->get_base_path() === TFK_SEARCH_MAGAZINE_PATH) {
+  if($path === TFK_SEARCH_MAGAZINE_PATH) {
     // Retrieve additional content fields.
     $query->params['fl'] .= ','. implode(',', array(TFK_SEARCH_SPANISH_ISSUE, TFK_SEARCH_SPANISH_VERSION, TFK_SEARCH_WORKSHEET_PDF_LINK, TFK_SEARCH_WORKSHEET_PDF_TITLE));
 
@@ -2123,7 +2123,7 @@ function tfk_search_apachesolr_query_alter($query, $caller) {
   
   // Site-wide search.
   $args = arg();
-  if($query->get_base_path() === 'search/site' || ($args[0] == 'search' && $args[1] == 'site')) {
+  if($path === 'search/site' || ($args[0] == 'search' && $args[1] == 'site')) {
     // Retrieve additional content fields.
     // Body and deck field for articles.
     // Not returning TFK_SEARCH_ARTICLE_BODY, for now.
