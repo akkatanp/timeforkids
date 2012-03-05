@@ -37,6 +37,8 @@ function advanced_purge_flag($action, $flag, $content_id, $account, $fcid) {
   #$menu_item = menu_get_item();
   #$node = menu_get_object();
   
+  // Temporarily disable this function on DEV.
+  return;
   
   // Flag name to Views bin/cid and Varnish path mapping.
   $display_cache = array();
