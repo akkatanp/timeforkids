@@ -30,16 +30,10 @@ function advanced_purge_node_delete($node) {
 /* Implementation of hook_flag.
  */
 function advanced_purge_flag($action, $flag, $content_id, $account, $fcid) {
-
-  // Force a node_save() when flagging nodes on /admin/content.
-  // By default the "update" button does not invoke node_save().
   //$path = arg();
   #$menu_item = menu_get_item();
   #$node = menu_get_object();
-  
-  // Temporarily disable this function on DEV.
-  return;
-  
+
   // Flag name to Views bin/cid and Varnish path mapping.
   $display_cache = array();
   
@@ -79,28 +73,21 @@ function advanced_purge_flag($action, $flag, $content_id, $account, $fcid) {
   $display_cache['kid_reporter_news_block']['cache_views_data'] = array('homepage_news_block:block_5', 'homepage_news_block:block_6');
   //$display_cache['kid_reporter_news_block']['path'] = 'kid-reporters';
   
-  
+  // Clear Memcached (Views).
   if(array_key_exists($flag->name, $display_cache)) {
-    
-    
-    // Clear Memcached (Views).
-    #cache_get($cid, $bin);
-    # cache_get($cid, 'cache_views');
     $results = array();
-    foreach($display_cache[$flag->name] as $flag_name => $bin) {
-      foreach($bin as $cid) {
-        $results["\$flag_name: $flag_name, \$bin: $bin, \$cid: $cid"] = cache_clear_all($cid, $bin, TRUE);
+    foreach($display_cache[$flag->name] as $bin => $cids) {
+      if(!cache_is_empty($bin)) {
+        foreach($cids as $cid) {
+          $results["flag_name: $flag->name, \$bin: $bin, \$cid: $cid"] = cache_clear_all($cid, $bin, TRUE);
+        }
       }
     }
     
-    error_log(print_r($results, TRUE));
-    // TODO watchdog results.
-    #drupal_set_message('The fo');
-    
-    
-    #cache_set($cid, $data, 'cache_views');
-    # cache_set($cid, $data, $bin, $expire);
-    
+    $node = node_load($content_id);
+    drupal_set_message("{$node->title}, nid:{$node->nid} has been ". (($action == 'flag') ? 'added to': 'removed from'). " the {$flag->title} channel.");
+    watchdog('advanced_purge', 'The following cache items have been purged from persistent cache: @results', array('@results' => print_r($results, TRUE)), WATCHDOG_INFO);
+
     
     // Varnish purge/expire code.
     /*
