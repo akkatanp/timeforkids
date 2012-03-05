@@ -2196,13 +2196,6 @@ function tfk_search_apachesolr_query_alter($query, $caller) {
     //$query->params['hl.fl'][] = TFK_SEARCH_SPANISH_ISSUE;
   }
   
-  // Filter documents by host.
-  $do_filter = variable_get('tfk_search_enable_host_filter', FALSE);
-  if($do_filter) {
-    $host_subquery = apachesolr_drupal_query();
-    $host_subquery->add_filter(TFK_SEARCH_HOST, tfk_search_get_unique_host_id());
-    $superquery->add_subquery($host_subquery);
-  }
   $qparams1 = $query->getParam('fq'); #REM
   
   $query->operator = 'AND';
