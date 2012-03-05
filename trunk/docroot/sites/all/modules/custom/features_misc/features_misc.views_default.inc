@@ -663,6 +663,10 @@ function features_misc_views_default_views() {
 
   /* Display: Current Issue */
   $handler = $view->new_display('block', 'Current Issue', 'block');
+  $handler->display->display_options['defaults']['cache'] = FALSE;
+  $handler->display->display_options['cache']['type'] = 'time';
+  $handler->display->display_options['cache']['results_lifespan'] = '21600';
+  $handler->display->display_options['cache']['output_lifespan'] = '21600';
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   /* Relationship: Fields: Grade Level (field_grade_level) */
   $handler->display->display_options['relationships']['field_grade_level_tid']['id'] = 'field_grade_level_tid';
