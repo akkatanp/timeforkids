@@ -787,7 +787,7 @@ function tfk_search_block_view($delta='') {
     case 'sm_editorial_date_tfk':
       $block['subject'] = t('Select a Date Range');
 
-      if (apachesolr_has_searched()) {
+      if (apachesolr_has_searched('apachesolr')) {
         $response = apachesolr_static_response_cache();
   
         if (empty($response)) {
@@ -804,7 +804,7 @@ function tfk_search_block_view($delta='') {
     case TFK_SEARCH_SPANISH_VERSION:
       $block['subject'] = t('Language');
 
-      if (apachesolr_has_searched()) {
+      if (apachesolr_has_searched('apachesolr')) {
         $response = apachesolr_static_response_cache();
   
         if (empty($response)) {
@@ -2073,7 +2073,7 @@ function tfk_search_get_unique_host_id() {
  */
 function tfk_search_apachesolr_query_alter($query, $caller) {
   
-  $superquery = apachesolr_drupal_query();
+  $superquery = apachesolr_drupal_query('apachesolr');
   
   // URL Path -to- Content Type Map.
   // Depending on the URL, are the content types we show.
@@ -2127,10 +2127,14 @@ function tfk_search_apachesolr_query_alter($query, $caller) {
     // Retrieve additional content fields.
     // Body and deck field for articles.
     // Not returning TFK_SEARCH_ARTICLE_BODY, for now.
-    $query->params['fl'] .= ','. implode(',', array(TFK_SEARCH_SPANISH_VERSION, TFK_SEARCH_ARTICLE_DECK));
+    $fl = $query->getParam('fl');
+    $fl[] = TFK_SEARCH_SPANISH_VERSION;
+    $fl[] = TFK_SEARCH_ARTICLE_DECK;
+    $query->replaceParam('fl', $fl);
     
     // Limit the number of rows per page.
-    $query->params['rows'] = 8;
+    //$query->params['rows'] = 8;
+    $query->replaceParam('rows', 8);  
 
     global $user;
     $rls = $user->roles;
@@ -2158,15 +2162,33 @@ function tfk_search_apachesolr_query_alter($query, $caller) {
       $superquery->add_subquery($ct_superquery, 'OR');
     // Logged in content types.
     } else {
+      
+      #private function _apachesolr_drupal_query($name, $params = array(), $solrsort = '', $base_path = '', $solr = 'DrupalApacheSolrService') {
+        #return new SolrBaseQuery($name, $solr, $params, $solrsort, $base_path);
+      #}      
+      
+      
       // Teachers can see cover stories.
       $content_types = array('article', 'slideshow', 'video', 'atw_destination', 'minisite', 'tfk_extra', 'worksheet', 'mini_lesson', 'a_paper', 'grammar_practice', 'writing_tips', 'pdf_quiz', 'common_core_standards');
       
-      $ct_subquery = apachesolr_drupal_query();
+      #$ct_subquery = new SolrBaseQuery('apachesolr'); #TEST, warnings
+      $ct_subquery = apachesolr_drupal_query('apachesolr');
+      $ct_subquery->operator = 'OR';
+      
+      //$ct_subquery = apachesolr_drupal_query();
       foreach($content_types as $content_type) {
-        $ct_subquery->add_filter('bundle', $content_type);
+        $ct_subquery->addFilter('bundle', $content_type); // Solves PHP Fatal error:  Call to undefined method SolrBaseQuery::add_filter().
       }
-            
-      $superquery->add_subquery($ct_subquery, 'OR');
+      
+      $ctparams = $ct_subquery->getParam('fq'); #REMOVEME
+      $supqparams1 = $superquery->getParam('fq'); #REMOVEME
+      
+      
+     # $superquery->operator = 'OR';
+      $superquery->addFilterSubQuery($ct_subquery);
+      //$superquery->addFilter($ct_subquery, 'OR');
+      $supqparams2 = $superquery->getParam('fq'); #REMOVEME
+      
     }
 
     // Highlight custom fields.
@@ -2181,8 +2203,13 @@ function tfk_search_apachesolr_query_alter($query, $caller) {
     $host_subquery->add_filter(TFK_SEARCH_HOST, tfk_search_get_unique_host_id());
     $superquery->add_subquery($host_subquery);
   }
-
-  $query->add_subquery($superquery, 'AND');
+  $qparams1 = $query->getParam('fq'); #REM
+  
+  $query->operator = 'AND';
+  $query->addFilterSubQuery($superquery);
+  //$query->addFilter($superquery, 'AND');
+  
+  $qparams2 = $superquery->getParam('fq'); #REM
 }
 
 /**
