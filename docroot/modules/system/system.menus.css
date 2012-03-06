@@ -33,6 +33,7 @@ li.leaf {
   padding: 0.2em 0.5em 0 0; /* LTR */
   margin: 0;
 }
+li.active a,
 li a.active {
   color: #000;
 }
