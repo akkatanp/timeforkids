@@ -665,8 +665,8 @@ function features_misc_views_default_views() {
   $handler = $view->new_display('block', 'Current Issue', 'block');
   $handler->display->display_options['defaults']['cache'] = FALSE;
   $handler->display->display_options['cache']['type'] = 'time';
-  $handler->display->display_options['cache']['results_lifespan'] = '21600';
-  $handler->display->display_options['cache']['output_lifespan'] = '21600';
+  $handler->display->display_options['cache']['results_lifespan'] = '300';
+  $handler->display->display_options['cache']['output_lifespan'] = '300';
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   /* Relationship: Fields: Grade Level (field_grade_level) */
   $handler->display->display_options['relationships']['field_grade_level_tid']['id'] = 'field_grade_level_tid';
@@ -789,6 +789,7 @@ function features_misc_views_default_views() {
   $handler->display->display_options['fields']['title_1']['empty_zero'] = 0;
   $handler->display->display_options['fields']['title_1']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['title_1']['link_to_node'] = 0;
+  $handler->display->display_options['block_caching'] = '-1';
 
   /* Display: Teacher Resources Mini Lesson */
   $handler = $view->new_display('block', 'Teacher Resources Mini Lesson', 'block_1');
