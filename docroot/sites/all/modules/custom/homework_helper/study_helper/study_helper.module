@@ -239,7 +239,7 @@ function study_helper_block_view($delta = '') {
  */
 function study_helper_my_flashcards() {
   global $user;
-  // The page showing link to 'my flashcards' relies on anonymous sessions. 
+  // The page showing link to 'my flashcards' relies on anonymous sessions.
   // Therefore it must not be cached.
   $GLOBALS['conf']['cache'] = FALSE;
 
@@ -341,4 +341,15 @@ function study_helper_process_search_result(&$vars) {
 function study_helper_form_webform_client_form_306_alter(&$form, &$form_state, $form_id) {
   drupal_add_js(libraries_get_path('jquery.scrollTo') . '/jquery.scrollTo-1.4.2-min.js', 'file');
   drupal_add_js(drupal_get_path('module', 'study_helper') . '/js/writing_tips.js', 'file');
+}
+
+/**
+ * Implements hook_preprocess_block().
+ *
+ * Add a .clearfix class to the "Ask a Question" button.
+ */
+function study_helper_preprocess_block(&$variables) {
+  if($variables['block']->delta == 'client-block-306') {
+    $variables['classes_array'][] = 'clearfix';
+  }
 }

@@ -3141,3 +3141,7 @@ body.section-photos-video div#tfk-search-photos-video-featured .icon,
 body.page-homework-helper-a-plus-papers #block-system-main > .content {
   border-top: 1px solid #CECECE;
 }
+
+body.page-homework-helper-writing-tips .homework-helper-content .last.block-webform {
+	margin-bottom: 15px;
+}
