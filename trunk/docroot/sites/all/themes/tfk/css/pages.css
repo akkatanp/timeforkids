@@ -1250,6 +1250,7 @@ ul.links li {
 .view-mini-site-home .view-content table td.col-1,
 .view-all-kid-reporters .view-content table td.col-1 {
 	margin-right: 4px;
+	*margin-right: 3px;
 }
 .view-all-kid-reporters .views-field-title {
     font-size:14px;
