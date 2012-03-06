@@ -146,3 +146,7 @@ div#tfk-search-photos-video-featured div.featured-label {
   margin-left: 20px;
   width: 100%;
 }
+
+#block-views-minisite-articles-block table {
+	border-collapse: separate;
+}
