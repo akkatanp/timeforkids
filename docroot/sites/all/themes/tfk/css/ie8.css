@@ -21,3 +21,8 @@
 	display: inline;
 	margin-left:5px;
 }
+
+/* Mini-sites main page*/
+.view-all-kid-reporters .view-content table td.col-1 {
+  margin-right: 3px;
+}
