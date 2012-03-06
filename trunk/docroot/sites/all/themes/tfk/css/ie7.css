@@ -147,6 +147,7 @@ div#tfk-search-photos-video-featured div.featured-label {
   width: 100%;
 }
 
-#block-views-minisite-articles-block table {
+#block-views-minisite-articles-block table,
+#block-views-minisite-articles-block-1 table {
 	border-collapse: separate;
 }

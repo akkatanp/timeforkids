@@ -8,7 +8,8 @@
  */
 
 /* Mini-sites main page */
-#block-views-mini-site-home-block .view-mini-site-home td.col-1 {
+#block-views-mini-site-home-block .view-mini-site-home td.col-1,
+#block-views-mini-site-home-block-1 .view-mini-site-home td.col-1  {
   margin-right: 3px;
 }
 
