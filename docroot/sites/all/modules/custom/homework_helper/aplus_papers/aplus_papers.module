@@ -97,7 +97,7 @@ function aplus_papers_multistep_form($form, &$form_state, $steps) {
   $step = empty($form_state['storage']['step']) ? 0 : $form_state['storage']['step'];
   $form_state['storage']['step'] = $step;
 
-  $last_step = count($steps) - 1; 
+  $last_step = count($steps) - 1;
 
   $form['checklist'] = aplus_papers_checklist($steps, $step);
 
@@ -362,7 +362,7 @@ function aplus_papers_save_content($form_state) {
  * We expect only p, em, strong, and u tags.
  */
 function aplus_html_to_rtf($data) {
-  // We should really be using this additional Rtf library for more, 
+  // We should really be using this additional Rtf library for more,
   // but we're only relying on it to fix unicode entities such as apostrophes.
   require_once(drupal_get_path('module', 'aplus_papers') .'/rtf/Rtf.php');
   $output = check_markup($data['value'], $data['format']);
@@ -379,4 +379,16 @@ function aplus_html_to_rtf($data) {
   $output = str_replace('</u>', "\n\ulnone ", $output);
 
   return $output;
+}
+
+/**
+ * Implements hook_preprocess_menu_link().
+ */
+function aplus_papers_preprocess_menu_link(&$variables) {
+  if($variables['element']['#theme'] == 'menu_link__menu_homework_help' && $variables['element']['#href'] == 'homework-helper/a-plus-papers') {
+    $node = menu_get_object();
+    if($node && array_search($node->nid, array('3046', '3081', '3131', '3166', '3266', '3231', '3196', '3426')) !== FALSE) {
+      $variables['element']['#attributes']['class'][] = 'active';
+    }
+  }
 }
