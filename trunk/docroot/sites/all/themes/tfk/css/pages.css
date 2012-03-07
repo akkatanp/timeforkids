@@ -3145,3 +3145,12 @@ body.page-homework-helper-a-plus-papers #block-system-main > .content {
 body.page-homework-helper-writing-tips .homework-helper-content .last.block-webform {
 	margin-bottom: 15px;
 }
+
+/* Hide devel performance output when benchmarking as anonymous user. */
+body.non-admin .dev-query {
+	display: none;
+}
+
+body.non-admin .devel-querylog {
+	display: none;
+}
