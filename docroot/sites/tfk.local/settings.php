@@ -295,3 +295,8 @@ $conf["apachesolr_path"] = "http://localhost:8983/solr";
 $conf["file_public_path"] = "sites/default/files";
 $conf["file_temporary_path"] = "/Users/rallen8440/tmp";
 $conf["file_private_path"] = "/Users/rallen8440/Sites/tfk/private";
+
+// Drupal 7 does not cache pages when we invoke hooks during bootstrap. This needs
+// to be disabled.
+$conf['page_cache_invoke_hooks'] = FALSE;
+
