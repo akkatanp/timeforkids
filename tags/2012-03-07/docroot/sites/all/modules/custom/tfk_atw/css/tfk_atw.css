@@ -1,0 +1,82 @@
+.challengeheader {
+  width: 488px;
+  height: 100px;
+  background: url(../images/atw-head.png) no-repeat;
+  margin-bottom: 10px;
+}
+
+.node-webform div.field-name-body + h1 {
+	margin-top: 15px;
+}
+
+form.webform-client-form div {
+}
+
+form.webform-client-form div > div.form-item {
+}
+
+div#block-system-main > div.content {
+	border: 1px solid #CECECE;
+	padding: 10px;
+}
+
+form.webform-client-form div > div.form-type-item label {
+	color: #333;
+}
+
+div.field-name-body {
+	font: normal 14px arial;
+	line-height: 15px;
+	border-bottom: 1px dotted #cecece;
+	padding-bottom: 10px;
+}
+
+.node-type-webform.section-destination .content .node-webform.view-mode-full a {
+  font: bold 11px arial;
+  background: #d71700;
+  color: #fff;
+  padding: 4px 8px;
+  margin-top: 10px;
+  cursor: pointer;
+  text-decoration: none;
+  border-radius: 12px;
+  -moz-border-radius: 12px;
+  -webkit-border-radius: 12px;
+  box-shadow: 2px 2px 2px #999;
+  -moz-box-shadow: 2px 2px 2px #999;
+  -webkit-box-shadow: 2px 2px 2px #999;
+}
+
+.node-type-webform.section-destination .content .node-webform.view-mode-full a:hover {
+	background: #900;
+}
+
+body.node-type-webform.section-destination .content div.node-webform.view-mode-full > h2 {
+	font: bold 30px arial;
+	line-height: 30px;
+	margin: 0 0 10px 0;
+}
+
+.region-sidebar-first #block-tfk-atw-atw-destination-related h3 {
+  background: -moz-linear-gradient(100% 100% 90deg, #5EA1D3, #7BC3F5) repeat scroll 0 0 transparent;
+  color: #000000;
+  font: 12px "arial black";
+  margin: 10px 0 0;
+  padding: 6px 0 6px 6px;
+  text-transform: uppercase;
+}
+
+.section-destination .region-sidebar-first ul.related {
+	-moz-border-bottom-colors: none;
+	-moz-border-image: none;
+	-moz-border-left-colors: none;
+	-moz-border-right-colors: none;
+	-moz-border-top-colors: none;
+	background: none repeat scroll 0 0 #D9EFFE;
+	border-color: black #ACDBFC #ACDBFC;
+	border-right: 2px solid #ACDBFC;
+	border-style: solid;
+	border-width: 1px 2px 2px;
+	margin-top: 0;
+	padding: 10px;
+}
