@@ -234,10 +234,16 @@ function tfk_pager($variables) {
  * Preprocess html template.
  */
 function tfk_preprocess_html(&$variables, $hook) {
-  $test = null;
   // Extras root main column IE7 CSS.
   if(array_key_exists('menu_item', $variables) && $variables['menu_item']['path'] == 'extras') {
     $variables['classes_array'][] = 'extras-root';
+  }
+  // Hide benchmarking information from everyone except "rallen".
+  if(array_key_exists('user', $variables) && $variables['user']->uid !== '226') {
+    // Unless the admin param is present, used for benchmarking the anon user.
+    if(!array_key_exists('admin', $_GET)) {
+      $variables['classes_array'][] = 'non-admin';
+    }
   }
 }
 

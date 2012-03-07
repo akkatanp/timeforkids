@@ -3140,3 +3140,12 @@ body.section-photos-video div#tfk-search-photos-video-featured .icon,
 body.page-homework-helper-a-plus-papers #block-system-main > .content {
   border-top: 1px solid #CECECE;
 }
+
+/* Hide devel performance output when benchmarking as anonymous user. */
+body.non-admin .dev-query {
+  display: none;
+}
+
+body.non-admin .devel-querylog {
+  display: none;
+}
