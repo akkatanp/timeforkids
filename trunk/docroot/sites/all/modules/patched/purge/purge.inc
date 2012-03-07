@@ -24,7 +24,7 @@ function purge_urls($purge_urls) {
   foreach ($purge_urls as $purge_url) {
     $purge_url_parts = parse_url($purge_url);
     // Determine the host
-    @$purge_url_host = $purge_url_parts['host'];
+    $purge_url_host = $purge_url_parts['host'];
     // Add portnames to the host if any are set
     if (array_key_exists('port', $purge_url_parts)) {
       $purge_url_host = $purge_url_host . ":" . $purge_url_parts['port'];
@@ -109,10 +109,6 @@ function purge_issue_requests_curl($purges) {
   // Initialise a curl_multi object
   $curl_purges = curl_multi_init();
   $current_curl_purge = 0;
-  
-  // @TODO REMOVE THIS FOR PRODUCTION DEPLOYMENT !!
-  $purge_log = fopen('public://varnish_purge.log', 'a+');
-  
   foreach ($purges as $purge) {
     $curl_purge[$current_curl_purge] = curl_init();
     curl_setopt($curl_purge[$current_curl_purge], CURLOPT_CUSTOMREQUEST, $purge['request_method']);
@@ -120,14 +116,6 @@ function purge_issue_requests_curl($purges) {
     curl_setopt($curl_purge[$current_curl_purge], CURLOPT_HEADER, 1);
     curl_setopt($curl_purge[$current_curl_purge], CURLOPT_HTTPHEADER, $purge['headers']);
     curl_setopt($curl_purge[$current_curl_purge], CURLOPT_RETURNTRANSFER, 0);
-    
-    // @TODO REMOVE THIS FOR PRODUCTION DEPLOYMENT !!
-    curl_setopt($curl_purge[$current_curl_purge], CURLOPT_VERBOSE, TRUE);
-    //$wrapper = fopen('php://temp', 'r+');
-    
-    curl_setopt($curl_purge[$current_curl_purge], CURLOPT_STDERR, $purge_log);
-    
-    
     curl_multi_add_handle($curl_purges, $curl_purge[$current_curl_purge]);
     $current_curl_purge++;
   }
@@ -142,10 +130,6 @@ function purge_issue_requests_curl($purges) {
   $current_curl_purge = 0;
   foreach ($purges as $purge) {
     $info = curl_getinfo($curl_purge[$current_curl_purge]);
-    
-    // @TODO REMOVE THIS FOR PRODUCTION DEPLOYMENT !!
-    error_log(print_r($info, TRUE));
-    
     $purges[$current_curl_purge]['http_code'] = $info['http_code'];
     curl_multi_remove_handle($curl_purges, $curl_purge[$current_curl_purge]);
     $current_curl_purge++;
