@@ -410,6 +410,26 @@ function features_misc_menu_default_menu_links() {
     'expanded' => '0',
     'weight' => '-43',
   );
+  // Exported menu link: menu-tfk-teachers-menu:digital
+  $menu_links['menu-tfk-teachers-menu:digital'] = array(
+    'menu_name' => 'menu-tfk-teachers-menu',
+    'link_path' => 'digital',
+    'router_path' => 'digital',
+    'link_title' => 'Digital Edition',
+    'options' => array(
+      'attributes' => array(
+        'class' => array(
+          0 => 'digital_edition',
+        ),
+      ),
+    ),
+    'module' => 'menu',
+    'hidden' => '0',
+    'external' => '0',
+    'has_children' => '0',
+    'expanded' => '0',
+    'weight' => '15',
+  );
   // Exported menu link: menu-tfk-teachers-menu:https://subscription.timeforkids.com/storefront/subscribe-to-time-for-kids/link/1005021.html
   $menu_links['menu-tfk-teachers-menu:https://subscription.timeforkids.com/storefront/subscribe-to-time-for-kids/link/1005021.html'] = array(
     'menu_name' => 'menu-tfk-teachers-menu',
@@ -497,6 +517,7 @@ function features_misc_menu_default_menu_links() {
   t('Around the World');
   t('Contact Us');
   t('Customer Service');
+  t('Digital Edition');
   t('FAQ');
   t('Homework Helper');
   t('Kid Reporters');
