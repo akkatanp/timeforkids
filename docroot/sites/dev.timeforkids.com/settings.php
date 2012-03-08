@@ -266,6 +266,12 @@ ini_set('session.cookie_lifetime', 2000000);
 # $conf['allow_authorize_operations'] = FALSE;
 
 /**
+ * Error reporting. It should always be enabled on DEV.
+ */
+error_reporting(E_ALL | E_STRICT);
+ini_set('error_reporting', -1);
+
+/**
  * Acquia Network/Acquia Search settings
  */
 $conf["acquia_identifier"] = "BCDE-22799";
