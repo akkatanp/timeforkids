@@ -288,7 +288,7 @@ $conf['page_cache_invoke_hooks'] = FALSE;
 // won't be denied. However the user asked explicitly not to use the
 // database and also in this case it's quite likely that the user relies
 // on higher performance solutions like a firewall.
-$conf['page_cache_without_database'] = TRUE;
+#$conf['page_cache_without_database'] = TRUE;
 
 /**
  * Memcached Config Settings
