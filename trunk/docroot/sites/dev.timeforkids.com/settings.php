@@ -279,9 +279,16 @@ $conf["file_public_path"] = "files";
 $conf["file_temporary_path"] = "/mnt/tmp/timedev2";
 $conf["file_private_path"] = "/mnt/files/timedev2/files-private";
 
-// Drupal 7 does not cache pages when we invoke hooks during bootstrap. This needs
-// to be disabled.
+// Drupal 7 does not cache pages when we invoke hooks during bootstrap.
+// Disable in order to serve cached pages.
 $conf['page_cache_invoke_hooks'] = FALSE;
+
+// If $conf['page_cache_without_database'] = TRUE; is set in settings.php,
+// then the database won't be loaded here so the IPs in the database
+// won't be denied. However the user asked explicitly not to use the
+// database and also in this case it's quite likely that the user relies
+// on higher performance solutions like a firewall.
+$conf['page_cache_without_database'] = TRUE;
 
 /**
  * Memcached Config Settings
