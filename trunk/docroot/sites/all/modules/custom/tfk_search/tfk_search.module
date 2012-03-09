@@ -3487,6 +3487,14 @@ function tfk_search_node_insert($node) {
  */
 function tfk_search_field_attach_presave($entity_type, &$entity) {
   
+  // On Linux you need to check that GhostScript exists.
+  // Type '/usr/bin/gs --version' in the shell to verify.
+  
+  if(!extension_loaded('imagick')) {
+    drupal_set_message(t('The imagick PHP extension could not be found and is required for automatic thumbnails generation', array()), 'error');
+    return;
+  }
+  
   // If thumbnail field is empty, generate thumbnail automatically.
   if(array_search($entity->type, array('worksheet', 'pdf_quiz', 'common_core_standards')) !== FALSE) {
     $thumbnail = field_get_items('node', $entity, 'field_worksheet_thumbnail_image');
