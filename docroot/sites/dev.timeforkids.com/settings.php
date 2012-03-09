@@ -268,7 +268,8 @@ ini_set('session.cookie_lifetime', 2000000);
 /**
  * Error reporting. It should always be enabled on DEV.
  */
-error_reporting(E_ALL | E_STRICT);
+#error_reporting(E_ALL | E_STRICT);
+error_reporting(E_ALL);
 ini_set('error_reporting', -1);
 ini_set('display_errors', '1');
 ini_set('report_memleaks', '1');
