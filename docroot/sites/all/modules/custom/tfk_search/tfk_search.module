@@ -3500,48 +3500,52 @@ function tfk_search_node_update($node) {
       $fileref = field_get_items('node', $node, 'field_worksheet_pdf_private');
       if(!empty($fileref)) {
         $pdf = file_load($fileref[0]['fid']);
-        #drupal_realpath($_image['uri']);
         
-        /*
         $pdf_field_desc = field_read_instance('node', 'field_worksheet_pdf_private', 'worksheet');
-        $pdf_field_desc['settings']['file_directory'];
+        $default_path = file_default_scheme(). '://';
+        $target_dir = $default_path. $pdf_field_desc['settings']['file_directory']. '/auto_thumbnails';
         
-        #private://
-        #$filesystem_path = drupal_realpath($_image['uri']);
-        #$_image['abspath'] = tfk_search_get_thumbnail($_image['fid'], 'tfk_60x60');
+        // If target directory doesn't exist.
+        if (!is_dir($target_dir)) {
+          // Check to see if the parent directory is writable.
+          if (!is_writable($default_path)) {
+            drupal_set_message(t('The directory %directory is not writable', array('%directory' => $default_path)));
+            return FALSE;
+          }
+          drupal_mkdir($target_dir, NULL, TRUE);
+        }
         
-        #file_exists
-        # $test = new Imagick();
-        $im1 = new Imagick();
-        
-        $im = new Imagick($pdf['uri']. '[0]');
-        $im->setImageFormat("jpg");
+        $pdf_realpath = drupal_realpath($pdf->uri);
+        $target_realpath = drupal_realpath($target_dir);
+        $im2 = new Imagick($pdf_realpath. '[0]');
+        $im2->setImageFormat("jpg");
+                
         #$tempname = drupal_tempnam(file_directory_temp(), '.jpg');
-        $tempname = "autothumb_node_{$node->nid}.jpg";
-        $new_uri = 'public://'. $tempname;
-        $im->writeImage($new_uri);
+        $tempname = "{$node->type}_{$node->nid}.jpg";
+        $success = $im2->writeImage($target_realpath. '/'. $tempname);
         
-        
-        // Create file record.
+        if(!$success) {
+          return FALSE;
+        }
         #$file = file_save_upload($tempname, $validators, 'public://');
+        // Create file record.
+        // @see file_save_upload() for reference.
+        global $user;
+        $thumb_uri = $target_dir. '/'. $tempname;
+        $_file = new stdClass();
+        $_file->uid      = $user->uid;
+        $_file->status   = 0;
+        #$_file->filename = $tempname; 27767
+        $_file->filename = trim(basename($tempname), '.');
+        $_file->uri      = $thumb_uri;
+        $_file->filemime = file_get_mimetype($_file->filename);
+        $_file->filesize = filesize($thumb_uri);
+        $file = file_save($_file);
         
-        // Begin building file object.
-        $file = new stdClass();
-        $file->uid      = $user->uid;
-        $file->status   = 0;
-        $file->filename = $tempname;
-        $file->uri      = $new_uri;
-        $file->filemime = file_get_mimetype($tempname);
-        $file->filesize = filesize($tempname);
-
-        
-        $file = file_save($file);
-        
-        
-        $node->field_worksheet_thumbnail_image[$node->language][0] = $file;
-        
-        field_attach_update('node', $node);
-       */
+        $node->field_worksheet_thumbnail_image[$node->language][0] = (array) $file;
+        #field_attach_update('node', $node);
+        $result = node_save($node);
+       
       }
     }
   }
