@@ -3474,11 +3474,90 @@ function tfk_search_node_insert($node) {
   if($node->type == 'magazine_issue') {
     tfk_search_magazine_spanish_flag($node);
   }
-  
+}
 
+/**
+ * Implementation of hook_field_attach_presave.
+ *
+ * Automatically generate a thumbnail for uploaded PDF files. Requires Imagick
+ * and Ghostscript to be properly configured for this to work.
+ * Gets called at the beginning of node_save() for both new and updated nodes.
+ *
+ * @see field_attach_presave
+ */
+function tfk_search_field_attach_presave($entity_type, &$entity) {
   
+  // If thumbnail field is empty, generate thumbnail automatically.
+  if(array_search($entity->type, array('worksheet', 'pdf_quiz', 'common_core_standards')) !== FALSE) {
+    $thumbnail = field_get_items('node', $entity, 'field_worksheet_thumbnail_image');
+    if(empty($thumbnail)) {
+      $fileref = field_get_items('node', $entity, 'field_worksheet_pdf_private');
+      if(!empty($fileref)) {
+        $pdf = file_load($fileref[0]['fid']);
   
+        $pdf_field_desc = field_read_instance('node', 'field_worksheet_pdf_private', 'worksheet');
+        $default_path = file_default_scheme(). '://';
+        $target_dir = $default_path. $pdf_field_desc['settings']['file_directory']. '/auto_thumbnails';
+  
+        // If target directory doesn't exist.
+        if (!is_dir($target_dir)) {
+          // Check to see if the parent directory is writable.
+          if (!is_writable($default_path)) {
+            drupal_set_message(t('The directory %directory is not writable', array('%directory' => $default_path)));
+            return FALSE;
+          }
+          drupal_mkdir($target_dir, NULL, TRUE);
+        }
+        
+        // Imagick doesn't work with streams and needs real filesystem paths.
+        $pdf_realpath = drupal_realpath($pdf->uri);
+        $target_realpath = drupal_realpath($target_dir);
+        
+        // Read the first page of the PDF file and set output format to jpg.
+        $im2 = new Imagick($pdf_realpath. '[0]');
+        $im2->setImageFormat("jpg");
+        
+        // Write thumbnail to filesystem.
+        $tempname = "{$entity->type}_{$entity->nid}.jpg";
+        $success = $im2->writeImage($target_realpath. '/'. $tempname);
+  
+        if(!$success) {
+          // Don't fail, most local hosts won't have the required dependencies.
+          //return FALSE;
+        }
+
+        // Create file record, @see file_save_upload() reference.
+        global $user;
+        $thumb_uri = $target_dir. '/'. $tempname;
+        $_file = new stdClass();
+        $_file->uid      = $user->uid;
+        $_file->status   = 0;
+        $_file->filename = trim(basename($tempname), '.');
+        $_file->uri      = $thumb_uri;
+        $_file->filemime = file_get_mimetype($_file->filename);
+        $_file->filesize = filesize($thumb_uri);
+        $existing_files = file_load_multiple(array(), array('uri' => $thumb_uri));
+        if (count($existing_files)) {
+          $existing = reset($existing_files);
+          $_file->fid = $existing->fid;
+          $_file->filename = $existing->filename;
+        }
+        $file = file_save($_file);
+        
+        // Build field-attach array.
+        $field_thumbnail_image = array();
+        $field_thumbnail_image['fid'] = $file->fid;
+        $field_thumbnail_image['display'] = 1;
+        $field_thumbnail_image['description'] = 'auto-generated thumbnail';
+        $field_thumbnail_image['upload_button'] = 'Upload';
+        $field_thumbnail_image['remove_button'] = 'Remove';
+        $field_thumbnail_image['upload'] = '';
     
+        $entity->field_worksheet_thumbnail_image[$entity->language][0] = $field_thumbnail_image;
+      }
+    }
+  }
+  
 }
 
 /**
@@ -3492,64 +3571,6 @@ function tfk_search_node_update($node) {
   if($node->type == 'magazine_issue') {
     tfk_search_magazine_spanish_flag($node);
   }
-  
-  // If thumbnail field is empty, generate thumbnail automatically.
-  if(array_search($node->type, array('worksheet', 'pdf_quiz', 'common_core_standards')) !== FALSE) {
-    $thumbnail = field_get_items('node', $node, 'field_worksheet_thumbnail_image');
-    if(empty($thumbnail)) {
-      $fileref = field_get_items('node', $node, 'field_worksheet_pdf_private');
-      if(!empty($fileref)) {
-        $pdf = file_load($fileref[0]['fid']);
-        
-        $pdf_field_desc = field_read_instance('node', 'field_worksheet_pdf_private', 'worksheet');
-        $default_path = file_default_scheme(). '://';
-        $target_dir = $default_path. $pdf_field_desc['settings']['file_directory']. '/auto_thumbnails';
-        
-        // If target directory doesn't exist.
-        if (!is_dir($target_dir)) {
-          // Check to see if the parent directory is writable.
-          if (!is_writable($default_path)) {
-            drupal_set_message(t('The directory %directory is not writable', array('%directory' => $default_path)));
-            return FALSE;
-          }
-          drupal_mkdir($target_dir, NULL, TRUE);
-        }
-        
-        $pdf_realpath = drupal_realpath($pdf->uri);
-        $target_realpath = drupal_realpath($target_dir);
-        $im2 = new Imagick($pdf_realpath. '[0]');
-        $im2->setImageFormat("jpg");
-                
-        #$tempname = drupal_tempnam(file_directory_temp(), '.jpg');
-        $tempname = "{$node->type}_{$node->nid}.jpg";
-        $success = $im2->writeImage($target_realpath. '/'. $tempname);
-        
-        if(!$success) {
-          return FALSE;
-        }
-        #$file = file_save_upload($tempname, $validators, 'public://');
-        // Create file record.
-        // @see file_save_upload() for reference.
-        global $user;
-        $thumb_uri = $target_dir. '/'. $tempname;
-        $_file = new stdClass();
-        $_file->uid      = $user->uid;
-        $_file->status   = 0;
-        #$_file->filename = $tempname; 27767
-        $_file->filename = trim(basename($tempname), '.');
-        $_file->uri      = $thumb_uri;
-        $_file->filemime = file_get_mimetype($_file->filename);
-        $_file->filesize = filesize($thumb_uri);
-        $file = file_save($_file);
-        
-        $node->field_worksheet_thumbnail_image[$node->language][0] = (array) $file;
-        #field_attach_update('node', $node);
-        $result = node_save($node);
-       
-      }
-    }
-  }
-  
 }
 
 /**
