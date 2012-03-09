@@ -284,12 +284,6 @@ $conf["file_private_path"] = "/mnt/files/timedev/files-private";
 $conf['page_cache_invoke_hooks'] = FALSE;
 
 /**
- * Error reporting.
- */
-error_reporting(E_ALL | E_STRICT);
-ini_set('error_reporting', -1);
-
-/**
  * Memcached Config Settings
  *
  * Add the following line of code to your settings.php file to cache anything normally stored in a cache* table in the Drupal database in Memcached.
