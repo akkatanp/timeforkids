@@ -270,6 +270,10 @@ ini_set('session.cookie_lifetime', 2000000);
  */
 error_reporting(E_ALL | E_STRICT);
 ini_set('error_reporting', -1);
+ini_set('display_errors', '1');
+ini_set('report_memleaks', '1');
+ini_set('track_errors', '1');
+
 
 /**
  * Acquia Network/Acquia Search settings
