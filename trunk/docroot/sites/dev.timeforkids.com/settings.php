@@ -275,6 +275,8 @@ ini_set('display_errors', '1');
 ini_set('report_memleaks', '1');
 ini_set('track_errors', '1');
 
+ini_set('max_execution_time', '1800'); // Up to 30 minute debugging sessions.
+
 
 /**
  * Acquia Network/Acquia Search settings
