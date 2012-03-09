@@ -3563,7 +3563,7 @@ function tfk_search_field_attach_presave($entity_type, &$entity) {
     
         $entity->field_worksheet_thumbnail_image[$entity->language][0] = $field_thumbnail_image;
         
-        drupal_set_message(t('The thumbnail %filename has been automatically created for %node', array('%filename' => $_file->filename, '%node' => $entity->title. ' (nid: '. $entity->nid. ').')), 'status');
+        drupal_set_message(t('The thumbnail image %filename has been automatically created for %node', array('%filename' => $_file->filename, '%node' => $entity->title. ' (nid: '. $entity->nid. ').')), 'status');
       }
     }
   }
