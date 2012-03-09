@@ -3491,7 +3491,7 @@ function tfk_search_field_attach_presave($entity_type, &$entity) {
   // Type '/usr/bin/gs --version' in the shell to verify.
   
   if(!extension_loaded('imagick')) {
-    drupal_set_message(t('The imagick PHP extension could not be found and is required for automatic thumbnails generation', array()), 'error');
+    drupal_set_message(t('The imagick PHP extension could not be found and it is required for automatic thumbnails generation', array()), 'error');
     return;
   }
   
@@ -3511,7 +3511,7 @@ function tfk_search_field_attach_presave($entity_type, &$entity) {
         if (!is_dir($target_dir)) {
           // Check to see if the parent directory is writable.
           if (!is_writable($default_path)) {
-            drupal_set_message(t('The directory %directory is not writable', array('%directory' => $default_path)));
+            drupal_set_message(t('The directory %directory is not writable', array('%directory' => $default_path)), 'error');
             return FALSE;
           }
           drupal_mkdir($target_dir, NULL, TRUE);
@@ -3528,12 +3528,12 @@ function tfk_search_field_attach_presave($entity_type, &$entity) {
         // Write thumbnail to filesystem.
         $tempname = "{$entity->type}_{$entity->nid}.jpg";
         $success = $im2->writeImage($target_realpath. '/'. $tempname);
-  
+        
         if(!$success) {
-          // Don't fail, most local hosts won't have the required dependencies.
-          //return FALSE;
+          // If write fails, don't create file record.
+          return;
         }
-
+        
         // Create file record, @see file_save_upload() reference.
         global $user;
         $thumb_uri = $target_dir. '/'. $tempname;
@@ -3562,6 +3562,8 @@ function tfk_search_field_attach_presave($entity_type, &$entity) {
         $field_thumbnail_image['upload'] = '';
     
         $entity->field_worksheet_thumbnail_image[$entity->language][0] = $field_thumbnail_image;
+        
+        drupal_set_message(t('The thumbnail %filename has been automatically created for %node', array('%filename' => $_file->filename, '%node' => $entity->title. ' (nid: '. $entity->nid. ').')), 'status');
       }
     }
   }
