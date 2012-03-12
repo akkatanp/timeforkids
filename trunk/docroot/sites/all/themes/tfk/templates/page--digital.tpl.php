@@ -11,7 +11,7 @@
 global $user;
 $cgiToken = ($user->uid ? $_COOKIE['CGI-token'] : '');
 ?>
-<form id="cgi-redirect" action="https://app.timeforkidsdigital.com/cgiAuth.php" method="post" target="_blank">
+<form id="cgi-redirect" action="https://app.timeforkidsdigital.com/cgiAuth.php" method="post">
 	<input type="hidden" name="CGI-Token-Exp" value="2592000000" />
 	<input type="hidden" name="CGI-Remember-Me" value="0" />
 	<input type="hidden" name="CGI-Token" value="<?php echo $cgiToken; ?>" />
