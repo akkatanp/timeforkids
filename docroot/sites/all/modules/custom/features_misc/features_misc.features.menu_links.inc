@@ -421,6 +421,7 @@ function features_misc_menu_default_menu_links() {
         'class' => array(
           0 => 'digital_edition',
         ),
+        'target' => '_blank',
       ),
     ),
     'module' => 'menu',
