@@ -445,8 +445,15 @@ ul.links li {
 #block-views-homepage-news-block-block-2 {
 	position: relative;
 	float: left;
-	width: 510px;
-	margin: 0 8px 10px 0;
+}
+
+#block-views-homepage-top-story-block-1,
+#block-views-homepage-top-story-block-2 {
+  margin: 0 8px 10px 0;
+}
+
+.secondary-touts-view tr .row {
+  margin: 0 0 10px 0;
 }
 
 #block-views-homepage-minisite-block-1,
@@ -544,10 +551,6 @@ ul.links li {
 	bottom: 30px;
 	width: 216px;
 	right: 10px;
-}
-
-.view-homepage-news-block .col-1 {
-	margin-right: 10px;
 }
 
 .logged-in .view-homepage-destination {
@@ -1073,10 +1076,9 @@ ul.links li {
 	vertical-align: top;
 }
 
-.view-homepage-news-block table td.col-1,
-.view-teacher-news-news-block table td.col-1,
-.view-kid-reporters-channel-news-block table td.col-1 {
-	margin-right: 8px;
+.secondary-touts-view td.col-1,
+body.one-sidebar .secondary-touts-view td.col-2  {
+	margin-right: 10px;
 }
 
 .view-homepage-news-block table td .views-field-name,
