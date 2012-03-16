@@ -265,13 +265,12 @@ function tfk_helper_preprocess_page(&$variables) {
  * @see secondary_touts_admin_settings
  */
 function tfk_helper_views_pre_execute(&$view) {
-  $test = null;
   if($view->name == 'homepage_news_block') {
     if(!$view->is_attachment) {
       
       // Determine the number of items to show.
       if(is_null(variable_get('tfk_helper_secondary_touts_'. $view->current_display, NULL))) {
-        $view->query->limit = variable_get('tfk_helper_secondary_touts_default', 2);
+        $view->query->limit = variable_get('tfk_helper_secondary_touts_default', drupal_is_front_page() ? 3: 2);
       } else {
         $view->query->limit = variable_get('tfk_helper_secondary_touts_'. $view->current_display, 2);
       }
