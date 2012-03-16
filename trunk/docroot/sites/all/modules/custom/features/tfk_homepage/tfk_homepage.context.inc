@@ -49,12 +49,6 @@ function tfk_homepage_context_default_contexts() {
           'region' => 'content',
           'weight' => '-7',
         ),
-        'views-homepage_destination-block_2' => array(
-          'module' => 'views',
-          'delta' => 'homepage_destination-block_2',
-          'region' => 'content',
-          'weight' => '-6',
-        ),
       ),
     ),
   );
@@ -111,12 +105,6 @@ function tfk_homepage_context_default_contexts() {
           'delta' => 'homepage_news_block-block_1',
           'region' => 'content',
           'weight' => '-76',
-        ),
-        'views-homepage_destination-block_1' => array(
-          'module' => 'views',
-          'delta' => 'homepage_destination-block_1',
-          'region' => 'content',
-          'weight' => '-75',
         ),
         'views-d9ecdac86a36421c8c519cb6d2d4b832' => array(
           'module' => 'views',
@@ -186,12 +174,6 @@ function tfk_homepage_context_default_contexts() {
           'delta' => 'homepage_news_block-block_1',
           'region' => 'content',
           'weight' => '-76',
-        ),
-        'views-homepage_destination-block_1' => array(
-          'module' => 'views',
-          'delta' => 'homepage_destination-block_1',
-          'region' => 'content',
-          'weight' => '-75',
         ),
         'views-d9ecdac86a36421c8c519cb6d2d4b832' => array(
           'module' => 'views',
