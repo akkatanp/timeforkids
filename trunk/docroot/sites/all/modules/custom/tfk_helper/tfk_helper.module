@@ -27,7 +27,138 @@ function tfk_helper_init() {
   }
 }
 
-function tfk_helper_node_view() {
+/**
+ * Impelementation of hook_menu.
+ */
+function tfk_helper_menu() {
+  $items = array();
+  $items['admin/config/user-interface/secondary-touts'] = array(
+    'type' => MENU_NORMAL_ITEM,
+    'title' => 'Secondary Touts',
+    'access arguments' => array('administer site configuration'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('secondary_touts_admin_settings'),
+    'description' => 'Configure Secondary Touts settings.',
+  );
+  return $items;
+}
+
+/**
+ * Menu callback for "Configure Secondary Touts settings".
+ *
+ * Used in tfk_helper_views_pre_execute() to determine how many items to show
+ * per View display.
+ *
+ * @see tfk_helper_views_pre_execute
+ */
+function secondary_touts_admin_settings($form, &$form_state) {
+  // Get secondary touts View and it's displays.
+  $view = views_get_view('homepage_news_block');
+  if(is_null($view)) {
+    return '';
+  }
+  
+  // Supress master display.
+  if(array_key_exists('default', $view->display)) {
+    unset($view->display['default']);
+  }
+  
+  // Default setting.
+  $form['tfk_helper_secondary_touts_default'] = array(
+    '#type' => 'textfield',
+    '#title' => 'Default setting',
+    '#default_value' => variable_get('tfk_helper_secondary_touts_default', 3),
+    '#size' => 10,
+    '#maxlength' => 3,
+    '#description' => 'Default number of items to display.',
+  );
+  
+  $form_state['temporary']['default'] = array();
+  
+  // Allow each display to have a different setting.
+  foreach($view->display as $display_machine_name => $display) {
+    $vname = 'tfk_helper_secondary_touts_'. $display_machine_name;
+    $form[$vname] = array(
+        '#type' => 'textfield',
+        '#title' => $display->display_title,
+        '#size' => 10,
+        '#maxlength' => 3,
+    );
+    
+    // Retrieve saved values.
+    $stored = variable_get($vname, NULL);
+    if(empty($stored)) {
+      // Display the default to the user, but do not save it.
+      $form_state['temporary']['default'][$vname] = FALSE;
+      $form[$vname]['#description'] = 'Default setting.';
+      $form[$vname]['#default_value'] = variable_get('tfk_helper_secondary_touts_default', 3);
+    } else {
+      $form[$vname]['#default_value'] = $stored;
+      $form[$vname]['#description'] = '<b><em>User value.</em></b>';
+    }
+    
+    // If form is being processed.
+    if(isset($form_state['input']) && !empty($form_state['input'])) {
+      // Give precedence to user input.
+      if($form[$vname]['#default_value'] !== $form_state['input'][$vname]) {
+        $form[$vname]['#default_value'] = $form_state['input'][$vname];
+        unset($form_state['temporary']['default'][$vname]);
+      }
+    }
+    
+    // Store display info in form cache.
+    $form_state['temporary']['machine_names'][$vname] = $display_machine_name;
+    $form_state['temporary']['displays'][$display_machine_name] = $display;
+  }
+  
+  // Hook up a submit handler for cache clearing (ours handler gets called first).
+  $form['#submit'][] = 'secondary_touts_admin_settings_submit';
+  return system_settings_form($form);
+}
+
+/**
+ * Additional submit handler for secondary_touts_admin_settings().
+ *
+ * Clear cache for Views displays when their settings are changed.
+ *
+ * @see secondary_touts_admin_settings
+ */
+function secondary_touts_admin_settings_submit($form, &$form_state) {
+  $purge_displays = array();
+  
+  // Highlight which items are using default values.
+  $form_state['values'] = array_merge($form_state['values'], $form_state['temporary']['default']);
+  
+  // Filter unwanted keys.
+  $input_keys = preg_grep('/tfk_helper_secondary_touts_block_.*/', array_keys($form_state['values']));
+  
+  // Handle default values, resets and updates.
+  foreach($input_keys as $input_key) {
+    if(empty($form_state['values'][$input_key])) {
+      if($form_state['values'][$input_key] === FALSE) {
+        // Prevent fields using default value from saving their own value.
+        unset($form_state['values'][$input_key]);
+      } else {
+        // Reset emptied fields back to the default.
+        variable_del($input_key);
+        // Refresh cache for this display.
+        $purge_displays[] = $form_state['temporary']['machine_names'][$input_key];
+        unset($form_state['values'][$input_key]);
+      }
+      // Refresh cache for updated displays.
+    } else {
+      $purge_displays[] = $form_state['temporary']['machine_names'][$input_key];
+    }
+  }
+  
+  foreach($purge_displays as $machine_name) {
+    cache_clear_all('views:homepage_news_block-'. $machine_name, 'cache_block', TRUE);
+    cache_clear_all('homepage_news_block:'. $machine_name, 'cache_views_data', TRUE);
+    
+    drupal_set_message(t("The block for %display_name has been purged from cache.",
+      array('%display_name' => $form_state['temporary']['displays'][$machine_name]->display_title)
+    ));
+  }
   
 }
 
@@ -123,9 +254,39 @@ function tfk_helper_preprocess_page(&$variables) {
 }
 
 // For future reference...
-// function tfk_helper_views_pre_execute(&$view) {}
 // function tfk_helper_views_pre_build(&$view) {}
 // tfk_helper_views_pre_view(&$view, &$display_id, &$args)
+
+/**
+ * Implementation of hook_views_pre_execute.
+ *
+ * Alter the number of items to show for secondary touts on a channel/flag basis.
+ *
+ * @see secondary_touts_admin_settings
+ */
+function tfk_helper_views_pre_execute(&$view) {
+  $test = null;
+  if($view->name == 'homepage_news_block') {
+    if(!$view->is_attachment) {
+      
+      // Determine the number of items to show.
+      if(is_null(variable_get('tfk_helper_secondary_touts_'. $view->current_display, NULL))) {
+        $view->query->limit = variable_get('tfk_helper_secondary_touts_default', 2);
+      } else {
+        $view->query->limit = variable_get('tfk_helper_secondary_touts_'. $view->current_display, 2);
+      }
+      
+      // Determine number of columns to use.
+      if(drupal_is_front_page()) {
+        $view->style_plugin->options['columns'] = 3;
+      } else {
+        // This is the default.
+        $view->style_plugin->options['columns'] = 2;
+      }
+    }
+  }
+  
+}
 
 /**
  * This hook is called right before the render process.
