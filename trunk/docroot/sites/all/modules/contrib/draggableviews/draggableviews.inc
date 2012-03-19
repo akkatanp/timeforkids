@@ -163,7 +163,8 @@ function _draggableviews_info($view, $info = NULL) {
 
       $info['locked'] = strcmp($options['tabledrag_lock']['lock'], 'lock') == 0 ? TRUE : FALSE;
 
-      $info['needs_pager_modifications'] = $view->use_pager() && (!empty($info['view_window_extensions']['extension_top']) || !empty($info['view_window_extensions']['extension_bottom']) || isset($info['hierarchy']));
+      //$info['needs_pager_modifications'] = $view->use_pager() && (!empty($info['view_window_extensions']['extension_top']) || !empty($info['view_window_extensions']['extension_bottom']) || isset($info['hierarchy']));
+      $info['needs_pager_modifications'] = FALSE;
     }
   }
 
