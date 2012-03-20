@@ -551,11 +551,11 @@ function feature_tfk_news_context_default_contexts() {
           'region' => 'content',
           'weight' => '-9',
         ),
-        'views-ab4d5bcf761474ee8d3ddde451e6d424' => array(
+        'views-101d4eea5dd52dd132a5d675de13b142' => array(
           'module' => 'views',
-          'delta' => 'ab4d5bcf761474ee8d3ddde451e6d424',
+          'delta' => '101d4eea5dd52dd132a5d675de13b142',
           'region' => 'content',
-          'weight' => '-7',
+          'weight' => '-10',
         ),
       ),
     ),
