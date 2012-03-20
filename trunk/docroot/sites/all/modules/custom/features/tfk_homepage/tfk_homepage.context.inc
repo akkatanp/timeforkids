@@ -112,11 +112,11 @@ function tfk_homepage_context_default_contexts() {
           'region' => 'content',
           'weight' => '-74',
         ),
-        'views-c909bfc47773a85d7de307e584c9ea89' => array(
+        'views-c961244a5f53171ccbd67c925912616e' => array(
           'module' => 'views',
-          'delta' => 'c909bfc47773a85d7de307e584c9ea89',
+          'delta' => 'c961244a5f53171ccbd67c925912616e',
           'region' => 'content',
-          'weight' => '-73',
+          'weight' => '-10',
         ),
       ),
     ),

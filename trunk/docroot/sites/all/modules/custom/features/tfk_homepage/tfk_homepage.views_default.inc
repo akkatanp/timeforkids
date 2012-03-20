@@ -802,6 +802,10 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['sorts']['weight']['table'] = 'flag_content';
   $handler->display->display_options['sorts']['weight']['field'] = 'weight';
   $handler->display->display_options['sorts']['weight']['relationship'] = 'flag_content_rel';
+  /* Sort criterion: Content: Updated date */
+  $handler->display->display_options['sorts']['changed']['id'] = 'changed';
+  $handler->display->display_options['sorts']['changed']['table'] = 'node';
+  $handler->display->display_options['sorts']['changed']['field'] = 'changed';
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -1865,8 +1869,8 @@ function tfk_homepage_views_default_views() {
   );
   $handler->display->display_options['style_options']['draggableviews_depth_limit'] = '0';
   $handler->display->display_options['style_options']['draggableviews_repair'] = array(
-    0 => 'repair',
     'repair' => 'repair',
+    0 => 'repair',
   );
   $handler->display->display_options['style_options']['tabledrag_expand'] = array(
     'expand_links' => 0,
@@ -1983,6 +1987,10 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['sorts']['weight']['table'] = 'flag_content';
   $handler->display->display_options['sorts']['weight']['field'] = 'weight';
   $handler->display->display_options['sorts']['weight']['relationship'] = 'flag_content_rel';
+  /* Sort criterion: Content: Updated date */
+  $handler->display->display_options['sorts']['changed']['id'] = 'changed';
+  $handler->display->display_options['sorts']['changed']['table'] = 'node';
+  $handler->display->display_options['sorts']['changed']['field'] = 'changed';
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
