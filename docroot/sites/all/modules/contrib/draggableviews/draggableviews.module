@@ -507,7 +507,7 @@ function draggableviews_view_draggabletable_form_submit($form, &$form_state) {
 
   // Trigger the event "A view has been sorted"
   if (module_exists('rules')) {
-    rules_invoke_event('draggableviews_rules_event_sorted', $view->name);
+    rules_invoke_event('draggableviews_rules_event_sorted', $view->name, $view->current_display);
   }
 
   // Redirect form.
