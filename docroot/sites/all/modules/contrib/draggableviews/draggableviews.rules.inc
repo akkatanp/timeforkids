@@ -14,10 +14,6 @@ function draggableviews_rules_event_info() {
         'type' => 'text',
         'label' => t('view name'),
       ),
-      'display_name' => array(
-        'type' => 'text',
-        'label' => t('view display name'),
-      ),
     ),
   );
 
