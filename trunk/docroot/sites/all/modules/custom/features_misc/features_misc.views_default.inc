@@ -1411,5 +1411,169 @@ function features_misc_views_default_views() {
   $handler = $view->new_display('block', 'Block', 'block');
   $export['homepage_username'] = $view;
 
+  $view = new view;
+  $view->name = 'secondary_touts_block_order';
+  $view->description = 'Draggableviews blocks for ordering all secondary touts.';
+  $view->tag = 'default';
+  $view->base_table = 'node';
+  $view->human_name = 'secondary_touts_block_order';
+  $view->core = 7;
+  $view->api_version = '3.0-alpha1';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'secondary touts order';
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['query']['options']['query_comment'] = FALSE;
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '10';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'draggabletable';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'title' => 'title',
+    'weight' => 'weight',
+  );
+  $handler->display->display_options['style_options']['default'] = -1;
+  $handler->display->display_options['style_options']['info'] = array(
+    'title' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+    ),
+    'weight' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+    ),
+  );
+  $handler->display->display_options['style_options']['override'] = 1;
+  $handler->display->display_options['style_options']['sticky'] = 0;
+  $handler->display->display_options['style_options']['empty_table'] = 0;
+  $handler->display->display_options['style_options']['tabledrag_order'] = array(
+    'field' => 'weight',
+    'handler' => 'flag_weights',
+  );
+  $handler->display->display_options['style_options']['tabledrag_order_visible'] = array(
+    'visible' => 0,
+  );
+  $handler->display->display_options['style_options']['tabledrag_hierarchy'] = array(
+    'field' => 'none',
+    'handler' => 'native',
+  );
+  $handler->display->display_options['style_options']['tabledrag_hierarchy_visible'] = array(
+    'visible' => 0,
+  );
+  $handler->display->display_options['style_options']['draggableviews_depth_limit'] = '0';
+  $handler->display->display_options['style_options']['tabledrag_expand'] = array(
+    'expand_links' => 0,
+    'collapsed' => 0,
+    'by_uid' => 0,
+  );
+  $handler->display->display_options['style_options']['draggableviews_extensions'] = array(
+    'extension_top' => '3',
+    'extension_bottom' => '3',
+  );
+  $handler->display->display_options['style_options']['tabledrag_lock'] = array(
+    'lock' => 0,
+  );
+  $handler->display->display_options['style_options']['draggableviews_default_on_top'] = '0';
+  $handler->display->display_options['style_options']['draggableviews_arguments'] = array(
+    'use_args' => 0,
+  );
+  /* Relationship: Flags: homepage_news_block */
+  $handler->display->display_options['relationships']['flag_content_rel']['id'] = 'flag_content_rel';
+  $handler->display->display_options['relationships']['flag_content_rel']['table'] = 'node';
+  $handler->display->display_options['relationships']['flag_content_rel']['field'] = 'flag_content_rel';
+  $handler->display->display_options['relationships']['flag_content_rel']['flag'] = 'homepage_news_block';
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['title']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['title']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['title']['link_to_node'] = 1;
+  /* Field: Flags: Weight */
+  $handler->display->display_options['fields']['weight']['id'] = 'weight';
+  $handler->display->display_options['fields']['weight']['table'] = 'flag_content';
+  $handler->display->display_options['fields']['weight']['field'] = 'weight';
+  $handler->display->display_options['fields']['weight']['relationship'] = 'flag_content_rel';
+  $handler->display->display_options['fields']['weight']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['weight']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['weight']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['weight']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['weight']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['weight']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['weight']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['weight']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['weight']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['weight']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['weight']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['weight']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['weight']['element_label_colon'] = 1;
+  $handler->display->display_options['fields']['weight']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['weight']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['weight']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['weight']['hide_alter_empty'] = 0;
+  $handler->display->display_options['fields']['weight']['format_plural'] = 0;
+  /* Sort criterion: Flags: Weight */
+  $handler->display->display_options['sorts']['weight']['id'] = 'weight';
+  $handler->display->display_options['sorts']['weight']['table'] = 'flag_content';
+  $handler->display->display_options['sorts']['weight']['field'] = 'weight';
+  $handler->display->display_options['sorts']['weight']['relationship'] = 'flag_content_rel';
+  /* Sort criterion: Content: Updated date */
+  $handler->display->display_options['sorts']['changed']['id'] = 'changed';
+  $handler->display->display_options['sorts']['changed']['table'] = 'node';
+  $handler->display->display_options['sorts']['changed']['field'] = 'changed';
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 0;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Flags: Flagged */
+  $handler->display->display_options['filters']['flagged']['id'] = 'flagged';
+  $handler->display->display_options['filters']['flagged']['table'] = 'flag_content';
+  $handler->display->display_options['filters']['flagged']['field'] = 'flagged';
+  $handler->display->display_options['filters']['flagged']['relationship'] = 'flag_content_rel';
+  $handler->display->display_options['filters']['flagged']['value'] = '1';
+
+  /* Display: homepage */
+  $handler = $view->new_display('block', 'homepage', 'homepage');
+
+  /* Display: news */
+  $handler = $view->new_display('block', 'news', 'news');
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Flags: news_news_block */
+  $handler->display->display_options['relationships']['flag_content_rel']['id'] = 'flag_content_rel';
+  $handler->display->display_options['relationships']['flag_content_rel']['table'] = 'node';
+  $handler->display->display_options['relationships']['flag_content_rel']['field'] = 'flag_content_rel';
+  $handler->display->display_options['relationships']['flag_content_rel']['flag'] = 'news_news_block';
+
+  /* Display: kids */
+  $handler = $view->new_display('block', 'kids', 'kids');
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Flags: kid_reporter_news_block */
+  $handler->display->display_options['relationships']['flag_content_rel']['id'] = 'flag_content_rel';
+  $handler->display->display_options['relationships']['flag_content_rel']['table'] = 'node';
+  $handler->display->display_options['relationships']['flag_content_rel']['field'] = 'flag_content_rel';
+  $handler->display->display_options['relationships']['flag_content_rel']['flag'] = 'kid_reporter_news_block';
+  $export['secondary_touts_block_order'] = $view;
+
   return $export;
 }
