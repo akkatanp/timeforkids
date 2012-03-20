@@ -1,5 +1,10 @@
 <?php
 
+/*
+ * @file Defines conditions and actions for used for clearing cache.
+ *
+ */
+
 /**
  * Implementation of hook_rules_condition_info().
  */
@@ -42,8 +47,8 @@ function advanced_purge_viewname($view_name, $display_name, $settings = array())
  */
 function advanced_purge_rules_action_info() {
   return array(
-    'advanced_purge_cache_clear_draggableviews' => array(
-      'label' => t('Draggableviews cache clear'),
+    'advanced_purge_cache_clear' => array(
+      'label' => t('Clear Views cache'),
       'description' => 'Clear cache for various views displays after a draggable event.',
       'group' => t('Advanced Purge'),
       'parameter' => array(
@@ -64,7 +69,7 @@ function advanced_purge_rules_action_info() {
   );
 }
 
-function advanced_purge_cache_clear_draggableviews($target_view = '', $target_displays = array(), $target_displays2 = array()) {
+function advanced_purge_cache_clear($target_view = '', $target_displays = array(), $target_displays2 = array()) {
 
   global $conf;
   
