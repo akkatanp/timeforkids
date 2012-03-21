@@ -310,8 +310,21 @@ function tfk_helper_views_pre_execute(&$view) {
   }
   
   // Dynamic number of items on the draggableviews order blocks.
+  // Duplicate the amount set on admin/config/user-interface/secondary-touts.
   if($view->name == 'secondary_touts_block_order') {
-    
+    if($view->current_display == 'homepage') {
+      // Hardcoded because of all the CSS mapped to this machine name.
+      $qty = variable_get('tfk_helper_secondary_touts_block_1', 3);
+      $view->query->limit = $qty * 2;
+    }
+    if($view->current_display == 'news') {
+      $qty = variable_get('tfk_helper_secondary_touts_block_3', 2);
+      $view->query->limit = $qty * 2;
+    }
+    if($view->current_display == 'kids') {
+      $qty = variable_get('tfk_helper_secondary_touts_block_5', 2);
+      $view->query->limit = $qty * 2;
+    }
   }
 }
 
