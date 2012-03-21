@@ -265,7 +265,7 @@ ini_set('session.gc_maxlifetime', 200000);
  * created to the cookie expires, i.e. when the browser is expected to discard
  * the cookie. The value 0 means "until the browser is closed".
  */
-ini_set('session.cookie_lifetime', 2000000);
+ini_set('session.cookie_lifetime', 0);
 
 /**
  * If you encounter a situation where users post a large amount of text, and
@@ -456,7 +456,7 @@ $conf['cache_inc'] = './sites/all/modules/contrib/memcache/memcache.inc';
 
 include_once('./includes/cache.inc');
 include_once('./sites/all/modules/contrib/memcache/memcache.inc');
-$conf['cache_default_class'] = 'MemCacheDrupal'; 
+$conf['cache_default_class'] = 'MemCacheDrupal';
 
 /**
  * Acquia Config file
