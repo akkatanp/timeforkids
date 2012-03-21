@@ -63,16 +63,6 @@ function secondary_touts_admin_settings($form, &$form_state) {
     unset($view->display['default']);
   }
   
-  // Default setting.
-  $form['tfk_helper_secondary_touts_default'] = array(
-    '#type' => 'textfield',
-    '#title' => 'Default setting',
-    '#default_value' => variable_get('tfk_helper_secondary_touts_default', 3),
-    '#size' => 10,
-    '#maxlength' => 3,
-    '#description' => 'Default number of items to display.',
-  );
-  
   $form_state['temporary']['default'] = array();
   
   // Allow each display to have a different setting.
@@ -90,8 +80,8 @@ function secondary_touts_admin_settings($form, &$form_state) {
     if(empty($stored)) {
       // Display the default to the user, but do not save it.
       $form_state['temporary']['default'][$vname] = FALSE;
+      $form[$vname]['#default_value'] = 2;
       $form[$vname]['#description'] = 'Default setting.';
-      $form[$vname]['#default_value'] = variable_get('tfk_helper_secondary_touts_default', 3);
     } else {
       $form[$vname]['#default_value'] = $stored;
       $form[$vname]['#description'] = '<b><em>User value.</em></b>';
@@ -113,6 +103,12 @@ function secondary_touts_admin_settings($form, &$form_state) {
   
   // Hook up a submit handler for cache clearing (ours handler gets called first).
   $form['#submit'][] = 'secondary_touts_admin_settings_submit';
+  
+  // Check for administrators.
+  if (user_access('administer views')) {
+    $form['#prefix'] = '<div class="description">Each option corresponds to a display in the <a href="/admin/structure/views/view/homepage_news_block/edit"><em>homepage_news_block</em></a> View.</div>';
+  }
+  
   return system_settings_form($form);
 }
 
@@ -253,6 +249,31 @@ function tfk_helper_preprocess_page(&$variables) {
   }
 }
 
+/**
+ * Implementation of hook_form_FORM_ID_alter.
+ *
+ * Add our own submit handler to draggabletable's form.
+ * Use it to clear certain cache items when the order on the secondary touts
+ * order block changes.
+ */
+function tfk_helper_form_form_draggableviews_view_draggabletable_form_alter($form, $form_state = NULL) {
+  $form['#submit'][] = 'tfk_helper_draggabletable_form_submit';
+  #error_log('bar baz');
+}
+
+function tfk_helper_form_draggableviews_view_draggabletable_form_alter($form, $form_state = NULL) {
+  #$form['#submit'][] = 'tfk_helper_draggabletable_form_submit';
+  #$form['#action'][] = '<front>';
+  #error_log('bar bat');
+}
+
+function tfk_helper_draggabletable_form_submit($form, $form_state) {
+  #die('die!');
+  #dpm('foo bar');
+  #error_log('foo bar');
+}
+
+
 // For future reference...
 // function tfk_helper_views_pre_build(&$view) {}
 // tfk_helper_views_pre_view(&$view, &$display_id, &$args)
@@ -268,9 +289,12 @@ function tfk_helper_views_pre_execute(&$view) {
   if($view->name == 'homepage_news_block') {
     if(!$view->is_attachment) {
       
-      // Determine the number of items to show.
+      // Determine the number of items to show for each channel.
       if(is_null(variable_get('tfk_helper_secondary_touts_'. $view->current_display, NULL))) {
-        $view->query->limit = variable_get('tfk_helper_secondary_touts_default', drupal_is_front_page() ? 3: 2);
+        // Use default setting. If no default is found, show 3 items for
+        // the frontpage, and three 2 items for sections.
+        //$view->query->limit = variable_get('tfk_helper_secondary_touts_default', drupal_is_front_page() ? 3: 2);
+        $view->query->limit = drupal_is_front_page() ? 3: 2;
       } else {
         $view->query->limit = variable_get('tfk_helper_secondary_touts_'. $view->current_display, 2);
       }
@@ -285,6 +309,10 @@ function tfk_helper_views_pre_execute(&$view) {
     }
   }
   
+  // Dynamic number of items on the draggableviews order blocks.
+  if($view->name == 'secondary_touts_block_order') {
+    
+  }
 }
 
 /**
