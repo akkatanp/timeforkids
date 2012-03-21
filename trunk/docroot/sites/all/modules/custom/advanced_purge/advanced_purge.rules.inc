@@ -7,6 +7,8 @@
 
 /**
  * Implementation of hook_rules_condition_info().
+ *
+ * Conditions are best written as MODULENAME_rules_condition_CONDITION.
  */
 function advanced_purge_rules_condition_info() {
   return array(
@@ -28,12 +30,11 @@ function advanced_purge_rules_condition_info() {
   );
 }
 
-/*
- * Condition: Verify that the view/display that fired this event is authorized
- * to fire the target action.
-*/
-function advanced_purge_viewname($view_name, $display_name, $settings = array()) {
-  if($view_name == $settings['view_name'] && $display_name == $settings['display_name']) {
+/**
+ * Condition: Verify that the view/display that fired this event.
+ */
+function advanced_purge_viewname($view_name = '', $display_name = '', $settings = array(), RulesState $state) {
+  if($view_name == $state->variables['view_name'] && $display_name == $state->variables['display_name']) {
     return TRUE;
   } else {
     return FALSE;
@@ -69,7 +70,15 @@ function advanced_purge_rules_action_info() {
   );
 }
 
-function advanced_purge_cache_clear($target_view = '', $target_displays = array(), $target_displays2 = array()) {
+/**
+ * Action callback.
+ *
+ * @param string $target_view
+ *   Name of the view where we are going to clear the cache.
+ * @param array $target_displays
+ *   Displays to clear on the $target_view.
+ */
+function advanced_purge_cache_clear($target_view = '', $target_displays = array()) {
 
   global $conf;
   
