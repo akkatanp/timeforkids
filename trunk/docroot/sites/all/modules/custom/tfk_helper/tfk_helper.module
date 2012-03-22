@@ -58,15 +58,11 @@ function secondary_touts_admin_settings($form, &$form_state) {
     return '';
   }
   
-  // Supress master display.
-  if(array_key_exists('default', $view->display)) {
-    unset($view->display['default']);
-  }
-  
   $form_state['temporary']['default'] = array();
   
   // Allow each display to have a different setting.
-  foreach($view->display as $display_machine_name => $display) {
+  $primary_displays = array_slice($view->display, 1, 3);
+  foreach($primary_displays as $display_machine_name => $display) {
     $vname = 'tfk_helper_secondary_touts_'. $display_machine_name;
     $form[$vname] = array(
         '#type' => 'textfield',
