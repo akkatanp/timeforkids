@@ -3102,6 +3102,14 @@ body.page-404page #first-column .region-sidebar-first .section{
     display:block;
 }
 
+/* Secondary Touts order block */
+#block-views-c961244a5f53171ccbd67c925912616e,
+#block-views-101d4eea5dd52dd132a5d675de13b142,
+#block-views-b7c4853460a70e08ede4c3810b795953 {
+	float: left;
+	margin-top: 15px;
+}
+
 /*
  * Channel touts.
  */
