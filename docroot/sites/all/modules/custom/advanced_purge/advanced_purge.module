@@ -5,52 +5,6 @@
  * Provides the cache purging logic needed for TFK's flag-driven channels.
  */
 
-function advanced_purge_init() {
-
-}
-
-
-function advanced_purge_node_insert($node) {
-  /*
-  $test = null;
-  // Update Current Issue block.
-  if($node->type == 'magazine_issue') {
-    
-  }
-  */
-}
-
-function advanced_purge_node_update($node) {
-  /*
-  $test = null;
-  // Update Current Issue block.
-  if($node->type == 'magazine_issue') {
-    // Homepage destination.
-    $display_cache = array();
-    $display_cache['cache_block'] = array('views:global_right_sidebar-block',);
-    $display_cache['cache_views_data'] = array('global_right_sidebar:block',);
-    
-    // Clear Memcached (Views).
-    $results = array();
-    foreach($display_cache as $bin => $cids) {
-      if(!cache_is_empty($bin)) {
-        foreach($cids as $cid) {
-          cache_clear_all($cid, $bin, TRUE);
-          $results[] = "\$bin: $bin, \$cid: $cid";
-        }
-      }
-    }
-    
-    drupal_set_message("{$node->title}, nid:{$node->nid} has been promoted to the current issue block.");
-    watchdog('advanced_purge', 'The following cache items have been purged from persistent cache: @results', array('@results' => print_r($results, TRUE)), WATCHDOG_INFO);
-
-  }
-  */
-}
-
-function advanced_purge_node_delete($node) {
-
-}
 
 /* Implementation of hook_flag.
  */
