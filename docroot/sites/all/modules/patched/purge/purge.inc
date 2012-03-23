@@ -76,10 +76,10 @@ function purge_urls($purge_urls) {
         if (array_key_exists('port', $proxy_url_parts)) {
           $proxy_url_base = $proxy_url_base . ":" . $proxy_url_parts['port'];
         }
-        if (array_key_exists('path', $proxy_url_parts)) {
-          $proxy_url_base = $proxy_url_base . $proxy_url_parts['path'];
-        }
-        $purge_requests[$current_purge_request]['purge_url'] = $proxy_url_base . $purge_url_parts['path'];
+        // Construct a new path retaining the url query string (#1299776 by djboddydrake)
+        $purge_path = array_key_exists('query', $purge_url_parts) ? $purge_url_parts['path']
+          . '?' . $purge_url_parts['query'] : $purge_url_parts['path'];
+        $purge_requests[$current_purge_request]['purge_url'] = $proxy_url_base . $purge_path;
         //  Set the host header to the sites hostname
         $purge_requests[$current_purge_request]['headers'] = array("Host: " . $purge_url_host);
       }
@@ -88,8 +88,10 @@ function purge_urls($purge_urls) {
       elseif ($method == 'ah') {
         // Make it a PURGE request (not GET or POST)
         $purge_requests[$current_purge_request]['request_method'] = 'PURGE';
-        // Just use the url passed by expire
-        $purge_requests[$current_purge_request]['purge_url'] = $purge_url;
+        // Construct a new path retaining the url query string (#1299776 by djboddydrake)
+        $purge_path = array_key_exists('query', $purge_url_parts) ? $purge_url_parts['path']
+          . '?' . $purge_url_parts['query'] : $purge_url_parts['path'];
+        $purge_requests[$current_purge_request]['purge_url'] = $proxy_url_base . $purge_path;
         //  Set the Acquia purge header to the Acquia Hosting site name
         $purge_requests[$current_purge_request]['headers'] = array('Accept-Encoding: gzip', 'X-Acquia-Purge:' . $_SERVER['AH_SITE_NAME']);
       }
@@ -122,8 +124,21 @@ function purge_issue_requests_curl($purges) {
   // Execute the purge requests
   ob_start();
   do {
-    $mrc = curl_multi_exec($curl_purges, $running);
-  } while ($mrc == CURLM_CALL_MULTI_PERFORM);
+    // This loop is only necessary for libcurl earlier than 7.20.0, however
+    // RHEL 5 has just that. Otherwise a simple call would do.
+    do {
+      $multi_result = curl_multi_exec($curl_purges, $active);
+    } while ($multi_result == CURLM_CALL_MULTI_PERFORM);
+    // Block until there is activity on any of the handlers. Avoids
+    // busywaiting.
+    if ($multi_result == CURLM_OK) {
+      $select_result = curl_multi_select($curl_purges);
+    }
+    if ($multi_result != CURLM_OK || $select_result == -1) {
+    // @TODO: error handling. Something truly awkward happened.
+    return FALSE;
+    }
+  } while ($select_result != -1 && $active && $multi_result == CURLM_OK);
   ob_end_clean();
 
   // Result collection. Collects the http code returned for each url purged
@@ -218,7 +233,7 @@ function purge_logging($purge_request_results) {
         watchdog(
           'purge',
           'The proxy server host %blocking_server is blocking purge requests. Please review the proxy configuration.',
-          array('%blocking_server' => $purge_blocking),
+          array('%blocking_server' => $purge_blocking_server),
           $severity = WATCHDOG_ERROR
         );
       }
