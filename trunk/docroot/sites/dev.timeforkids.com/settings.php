@@ -268,7 +268,7 @@ ini_set('session.cookie_lifetime', 0);
 /**
  * Error reporting. It should always be enabled on DEV.
  */
-error_reporting(E_ALL);
+#error_reporting(E_ALL);
 #ini_set('error_reporting', -1);
 
 ini_set('max_execution_time', '1800'); // Up to 30 minute debugging sessions.
