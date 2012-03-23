@@ -563,7 +563,7 @@ function tfk_helper_preprocess_views_view_fields(&$variables, $hook) {
     }
     
     // When there is no credit, add a dummy credit field for padding purposes.
-    if(!array_intersect_key($variables['fields'], array_flip(array('field_image_credit', 'field_credit', 'field_credit_1')))) {
+    if(!array_intersect_key($variables['fields'], array_flip(array('field_image_credit', 'field_credit', 'field_credit_1', 'field_credit_2', 'field_minisite_tout_credit')))) {
       $first_fields = array_splice($variables['fields'], 0, 2);
       $first_fields['field_credit_1'] = new stdClass();
       $first_fields['field_credit_1']->content = '<div class="views-field views-field-field-credit-1"><div class="field-content">&nbsp;</div></div>';
