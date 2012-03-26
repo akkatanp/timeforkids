@@ -546,21 +546,27 @@ function tfk_helper_preprocess_views_view_fields(&$variables, $hook) {
   
   // Secondary Tout blocks.
   if($view->name == 'homepage_news_block' && !$view->is_attachment) {
-    $content_type = $variables['row']->_field_data['nid']['entity']->type;
-    
     // Use only one template for all Secondary Tout displays (all channels, anon + non-anon).
     $variables['theme_hook_suggestion'] = 'views_view_fields__secondary_tout';
     
-    if($content_type == 'slideshow') {
-      $link = l('View Photo Slide Show', 'node/'. $variables['row']->nid);
-      $variables['fields']['title_1'] = new stdClass();
-      $variables['fields']['title_1']->content = '<span class="field-content">'. $link. '</span>';
+    // Link text.
+    $content_type = $variables['row']->_field_data['nid']['entity']->type;
+    switch ($content_type) {
+      case 'slideshow':
+        $link = 'View Photo Slide Show';
+      break;
+      case 'video':
+        $link = 'View Full Video';
+      break;
+      case 'atw_destination':
+        $link = 'View Mini-Site';
+        break;
+      default:
+        $link = 'View Full Article';
+      break;
     }
-    if($content_type == 'video') {
-      $link = l('View Full Video', 'node/'. $variables['row']->nid);
-      $variables['fields']['title_1'] = new stdClass();
-      $variables['fields']['title_1']->content = '<span class="field-content">'. $link. '</span>';
-    }
+    $variables['fields']['title_1'] = new stdClass();
+    $variables['fields']['title_1']->content = '<span class="field-content">'. l($link, 'node/'. $variables['row']->nid). '</span>';
     
     // When there is no credit, add a dummy credit field for padding purposes.
     if(!array_intersect_key($variables['fields'], array_flip(array('field_image_credit', 'field_credit', 'field_credit_1', 'field_credit_2', 'field_minisite_tout_credit')))) {
