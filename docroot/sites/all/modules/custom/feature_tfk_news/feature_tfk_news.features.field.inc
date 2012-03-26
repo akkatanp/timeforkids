@@ -120,8 +120,8 @@ function feature_tfk_news_field_default_fields() {
       'settings' => array(
         'allowed_values' => array(
           0 => array(
-            'parent' => '0',
             'vocabulary' => 'article_categories',
+            'parent' => '0',
           ),
         ),
       ),
