@@ -13,7 +13,7 @@ function referenced_views_views_default_views() {
   $view = new view;
   $view->name = 'reference_apluspaper';
   $view->description = '';
-  $view->tag = 'default';
+  $view->tag = 'nodereference';
   $view->base_table = 'node';
   $view->human_name = 'reference-apluspaper';
   $view->core = 7;
@@ -141,7 +141,7 @@ function referenced_views_views_default_views() {
   $view = new view;
   $view->name = 'reference_articles';
   $view->description = '';
-  $view->tag = 'default';
+  $view->tag = 'nodereference';
   $view->base_table = 'node';
   $view->human_name = 'reference-articles';
   $view->core = 7;
@@ -271,7 +271,7 @@ function referenced_views_views_default_views() {
   $view = new view;
   $view->name = 'reference_artslidevid';
   $view->description = '';
-  $view->tag = 'default';
+  $view->tag = 'nodereference';
   $view->base_table = 'node';
   $view->human_name = 'reference-artslidevid';
   $view->core = 7;
@@ -366,13 +366,6 @@ function referenced_views_views_default_views() {
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Filter criterion: Content: Published */
-  $handler->display->display_options['filters']['status']['id'] = 'status';
-  $handler->display->display_options['filters']['status']['table'] = 'node';
-  $handler->display->display_options['filters']['status']['field'] = 'status';
-  $handler->display->display_options['filters']['status']['value'] = 1;
-  $handler->display->display_options['filters']['status']['group'] = 0;
-  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
   /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
@@ -399,7 +392,7 @@ function referenced_views_views_default_views() {
   $view = new view;
   $view->name = 'reference_atwlingos';
   $view->description = '';
-  $view->tag = 'default';
+  $view->tag = 'nodereference';
   $view->base_table = 'node';
   $view->human_name = 'reference-atwlingos';
   $view->core = 7;
@@ -525,7 +518,7 @@ function referenced_views_views_default_views() {
   $view = new view;
   $view->name = 'reference_atwsightseeings';
   $view->description = '';
-  $view->tag = 'default';
+  $view->tag = 'nodereference';
   $view->base_table = 'node';
   $view->human_name = 'reference-atwsightseeings';
   $view->core = 7;
@@ -651,7 +644,7 @@ function referenced_views_views_default_views() {
   $view = new view;
   $view->name = 'reference_atwtimelines';
   $view->description = '';
-  $view->tag = 'default';
+  $view->tag = 'nodereference';
   $view->base_table = 'node';
   $view->human_name = 'reference-atwtimelines';
   $view->core = 7;
@@ -777,7 +770,7 @@ function referenced_views_views_default_views() {
   $view = new view;
   $view->name = 'reference_challenges';
   $view->description = '';
-  $view->tag = 'default';
+  $view->tag = 'nodereference';
   $view->base_table = 'node';
   $view->human_name = 'reference-challenges';
   $view->core = 7;
@@ -903,7 +896,7 @@ function referenced_views_views_default_views() {
   $view = new view;
   $view->name = 'reference_daysinlife';
   $view->description = '';
-  $view->tag = 'default';
+  $view->tag = 'nodereference';
   $view->base_table = 'node';
   $view->human_name = 'reference-daysinlife';
   $view->core = 7;
@@ -1029,7 +1022,7 @@ function referenced_views_views_default_views() {
   $view = new view;
   $view->name = 'reference_images';
   $view->description = '';
-  $view->tag = 'default';
+  $view->tag = 'nodereference';
   $view->base_table = 'node';
   $view->human_name = 'reference-images';
   $view->core = 7;
@@ -1155,7 +1148,7 @@ function referenced_views_views_default_views() {
   $view = new view;
   $view->name = 'reference_kidreporters';
   $view->description = '';
-  $view->tag = 'default';
+  $view->tag = 'nodereference';
   $view->base_table = 'node';
   $view->human_name = 'reference-kidreporters';
   $view->core = 7;
@@ -1281,7 +1274,7 @@ function referenced_views_views_default_views() {
   $view = new view;
   $view->name = 'reference_minilessons';
   $view->description = '';
-  $view->tag = 'default';
+  $view->tag = 'nodereference';
   $view->base_table = 'node';
   $view->human_name = 'reference-minilessons';
   $view->core = 7;
@@ -1407,7 +1400,7 @@ function referenced_views_views_default_views() {
   $view = new view;
   $view->name = 'reference_polls';
   $view->description = '';
-  $view->tag = 'default';
+  $view->tag = 'nodereference';
   $view->base_table = 'node';
   $view->human_name = 'reference-polls';
   $view->core = 7;
@@ -1533,7 +1526,7 @@ function referenced_views_views_default_views() {
   $view = new view;
   $view->name = 'reference_practrules';
   $view->description = '';
-  $view->tag = 'default';
+  $view->tag = 'nodereference';
   $view->base_table = 'node';
   $view->human_name = 'reference_practrules';
   $view->core = 7;
@@ -1659,7 +1652,7 @@ function referenced_views_views_default_views() {
   $view = new view;
   $view->name = 'reference_quizworksheets';
   $view->description = '';
-  $view->tag = 'default';
+  $view->tag = 'nodereference';
   $view->base_table = 'node';
   $view->human_name = 'reference_quizworksheets';
   $view->core = 7;
@@ -1754,13 +1747,6 @@ function referenced_views_views_default_views() {
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Filter criterion: Content: Published */
-  $handler->display->display_options['filters']['status']['id'] = 'status';
-  $handler->display->display_options['filters']['status']['table'] = 'node';
-  $handler->display->display_options['filters']['status']['field'] = 'status';
-  $handler->display->display_options['filters']['status']['value'] = 1;
-  $handler->display->display_options['filters']['status']['group'] = 0;
-  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
   /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
@@ -1787,7 +1773,7 @@ function referenced_views_views_default_views() {
   $view = new view;
   $view->name = 'reference_relatedresources';
   $view->description = '';
-  $view->tag = 'default';
+  $view->tag = 'nodereference';
   $view->base_table = 'node';
   $view->human_name = 'reference_relatedresources';
   $view->core = 7;
@@ -1882,13 +1868,6 @@ function referenced_views_views_default_views() {
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Filter criterion: Content: Published */
-  $handler->display->display_options['filters']['status']['id'] = 'status';
-  $handler->display->display_options['filters']['status']['table'] = 'node';
-  $handler->display->display_options['filters']['status']['field'] = 'status';
-  $handler->display->display_options['filters']['status']['value'] = 1;
-  $handler->display->display_options['filters']['status']['group'] = 0;
-  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
   /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
@@ -1919,7 +1898,7 @@ function referenced_views_views_default_views() {
   $view = new view;
   $view->name = 'reference_slideshows';
   $view->description = '';
-  $view->tag = 'default';
+  $view->tag = 'nodereference';
   $view->base_table = 'node';
   $view->human_name = 'reference-slideshows';
   $view->core = 7;
@@ -2046,7 +2025,7 @@ function referenced_views_views_default_views() {
   $view = new view;
   $view->name = 'reference_slidevideo';
   $view->description = '';
-  $view->tag = 'default';
+  $view->tag = 'nodereference';
   $view->base_table = 'node';
   $view->human_name = 'reference_slidevideo';
   $view->core = 7;
@@ -2173,7 +2152,7 @@ function referenced_views_views_default_views() {
   $view = new view;
   $view->name = 'reference_tfkstaff';
   $view->description = '';
-  $view->tag = 'default';
+  $view->tag = 'nodereference';
   $view->base_table = 'node';
   $view->human_name = 'reference_tfkstaff';
   $view->core = 7;
@@ -2299,7 +2278,7 @@ function referenced_views_views_default_views() {
   $view = new view;
   $view->name = 'reference_timelineaddcontent';
   $view->description = '';
-  $view->tag = 'default';
+  $view->tag = 'nodereference';
   $view->base_table = 'node';
   $view->human_name = 'reference-timelineaddcontent';
   $view->core = 7;
@@ -2429,7 +2408,7 @@ function referenced_views_views_default_views() {
   $view = new view;
   $view->name = 'reference_worksheets';
   $view->description = '';
-  $view->tag = 'default';
+  $view->tag = 'nodereference';
   $view->base_table = 'node';
   $view->human_name = 'reference-worksheets';
   $view->core = 7;
