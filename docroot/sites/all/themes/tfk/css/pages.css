@@ -1379,10 +1379,6 @@ body.one-sidebar .secondary-touts-view td.col-2  {
 	margin-bottom: 6px;
 }
 
-.node-type-article br {
-	display: none;
-}
-
 .node-type-article .field-name-field-body {
 	padding-bottom: 10px;
 	border-bottom: dotted 1px #cecece;
