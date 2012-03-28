@@ -36,20 +36,20 @@ function advanced_purge_flag($action, $flag, $content_id, $account, $fcid) {
   
   // Homepage secondary touts (news block) mapping.
   $display_cache['homepage_news_block'] = array();
-  $display_cache['homepage_news_block']['cache_block'] = array('views:homepage_news_block-block_1', 'views:homepage_news_block-block_2'); // Block cache bin/cids.
-  $display_cache['homepage_news_block']['cache_views_data'] = array('homepage_news_block:block_1', 'homepage_news_block:block_2'); // Views cache bin.
+  $display_cache['homepage_news_block']['cache_block'] = array('views:homepage_news_block-block_1', 'views:homepage_news_block-block_1_anon'); // Block cache bin/cids.
+  $display_cache['homepage_news_block']['cache_views_data'] = array('homepage_news_block:block_1', 'homepage_news_block:block_1_anon'); // Views cache bin.
   //$display_cache['homepage_news_block']['path'] = 'node';
   
   // News channel secondary touts.
   $display_cache['news_news_block'] = array();
-  $display_cache['news_news_block']['cache_block'] = array('views:homepage_news_block-block_3', 'views:homepage_news_block-block_4');
-  $display_cache['news_news_block']['cache_views_data'] = array('homepage_news_block:block_3', 'homepage_news_block:block_4');
+  $display_cache['news_news_block']['cache_block'] = array('views:homepage_news_block-block_3', 'views:homepage_news_block-block_3_anon');
+  $display_cache['news_news_block']['cache_views_data'] = array('homepage_news_block:block_3', 'homepage_news_block:block_3_anon');
   //$display_cache['news_top_story']['path'] = 'news';
   
   // Kid rep channel secondary touts.
   $display_cache['kid_reporter_news_block'] = array();
-  $display_cache['kid_reporter_news_block']['cache_block'] = array('views:homepage_news_block-block_5', 'views:homepage_news_block-block_6');
-  $display_cache['kid_reporter_news_block']['cache_views_data'] = array('homepage_news_block:block_5', 'homepage_news_block:block_6');
+  $display_cache['kid_reporter_news_block']['cache_block'] = array('views:homepage_news_block-block_5', 'views:homepage_news_block-block_5_anon');
+  $display_cache['kid_reporter_news_block']['cache_views_data'] = array('homepage_news_block:block_5', 'homepage_news_block:block_5_anon');
   //$display_cache['kid_reporter_news_block']['path'] = 'kid-reporters';
   
   // Homepage mini-site.
