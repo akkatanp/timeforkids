@@ -24,7 +24,7 @@ function features_misc_default_rules_configuration() {
       "DO" : [
         { "advanced_purge_cache_clear" : {
             "target_view" : "homepage_news_block",
-            "target_displays" : { "value" : [ "block_1\\r", "block_2" ] }
+            "target_displays" : { "value" : [ "block_1\\r", "block_1_anon" ] }
           }
         }
       ]
@@ -41,7 +41,7 @@ function features_misc_default_rules_configuration() {
       "DO" : [
         { "advanced_purge_cache_clear" : {
             "target_view" : "homepage_news_block",
-            "target_displays" : { "value" : [ "block_5\\r", "block_6" ] }
+            "target_displays" : { "value" : [ "block_5\\r", "block_5_anon" ] }
           }
         }
       ]
@@ -58,7 +58,7 @@ function features_misc_default_rules_configuration() {
       "DO" : [
         { "advanced_purge_cache_clear" : {
             "target_view" : "homepage_news_block",
-            "target_displays" : { "value" : [ "block_3\\r", "block_4" ] }
+            "target_displays" : { "value" : [ "block_3\\r", "block_3_anon" ] }
           }
         }
       ]
