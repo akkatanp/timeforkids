@@ -313,14 +313,22 @@ function tfk_helper_views_pre_execute(&$view) {
   if($view->name == 'homepage_news_block') {
     if(!$view->is_attachment) {
       
+      // Use only one setting for both logged in and anonymous users.
+      $matches = array();
+      if(preg_match('/(.*)_anon/', $view->current_display, $matches)) {
+        $current_display = $matches[1];
+      } else {
+        $current_display = $view->current_display;
+      }
+      
       // Determine the number of items to show for each channel.
-      if(is_null(variable_get('tfk_helper_secondary_touts_'. $view->current_display, NULL))) {
+      if(is_null(variable_get('tfk_helper_secondary_touts_'. $current_display, NULL))) {
         // Use default setting. If no default is found, show 3 items for
         // the frontpage, and three 2 items for sections.
         //$view->query->limit = variable_get('tfk_helper_secondary_touts_default', drupal_is_front_page() ? 3: 2);
         $view->query->limit = drupal_is_front_page() ? 3: 2;
       } else {
-        $view->query->limit = variable_get('tfk_helper_secondary_touts_'. $view->current_display, 2);
+        $view->query->limit = variable_get('tfk_helper_secondary_touts_'. $current_display, 2);
       }
       
       // Determine number of columns to use.
