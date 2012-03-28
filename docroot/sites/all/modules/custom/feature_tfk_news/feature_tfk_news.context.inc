@@ -480,13 +480,13 @@ function feature_tfk_news_context_default_contexts() {
           'module' => 'views',
           'delta' => 'homepage_top_story-block_4',
           'region' => 'content',
-          'weight' => '-10',
+          'weight' => '-93',
         ),
-        'views-homepage_news_block-block_4' => array(
+        'views-f39e9942686e10ee3031dcace6243c0d' => array(
           'module' => 'views',
-          'delta' => 'homepage_news_block-block_4',
+          'delta' => 'f39e9942686e10ee3031dcace6243c0d',
           'region' => 'content',
-          'weight' => '-9',
+          'weight' => '-92',
         ),
       ),
     ),
