@@ -26,7 +26,8 @@ function features_misc_default_rules_configuration() {
             "target_view" : "homepage_news_block",
             "target_displays" : { "value" : [ "block_1\\r", "block_1_anon" ] }
           }
-        }
+        },
+        { "advanced_purge_page_clear" : { "page" : "\\u003cfront\\u003e" } }
       ]
     }
   }');
@@ -43,7 +44,8 @@ function features_misc_default_rules_configuration() {
             "target_view" : "homepage_news_block",
             "target_displays" : { "value" : [ "block_5\\r", "block_5_anon" ] }
           }
-        }
+        },
+        { "advanced_purge_page_clear" : { "page" : "kid-reporters" } }
       ]
     }
   }');
@@ -60,7 +62,8 @@ function features_misc_default_rules_configuration() {
             "target_view" : "homepage_news_block",
             "target_displays" : { "value" : [ "block_3\\r", "block_3_anon" ] }
           }
-        }
+        },
+        { "advanced_purge_page_clear" : { "page" : "news" } }
       ]
     }
   }');
