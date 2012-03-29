@@ -47,31 +47,44 @@ function advanced_purge_viewname($view_name = '', $display_name = '', $settings 
  * Define custom action for the draggableviews_rules_event_sorted event.
  */
 function advanced_purge_rules_action_info() {
-  return array(
-    'advanced_purge_cache_clear' => array(
-      'label' => t('Clear Views cache'),
-      'description' => 'Clear cache for various views displays after a draggable event.',
-      'group' => t('Advanced Purge'),
-      'parameter' => array(
-        'target_view' => array(
-          'type' => 'text',
-          'label' => t('target view'),
-          'description' => t('Machine name of the view whose cache will be cleared.'), #homepage_news_block
-        ),
-        'target_displays' => array(
-          'type' => 'list<text>',
-          'label' => t('target displays'),
-          'description' => t('Machine name of the view displays that will be cleared when the source display is altered.'),
-          //'restriction' => 'input',
-          //'default mode' => 'input',
-        ),
+  $actions = array();
+  $actions['advanced_purge_cache_clear'] = array(
+    'label' => t('Clear Views cache'),
+    'description' => 'Clear cache for various views displays after a draggable event.',
+    'group' => t('Advanced Purge'),
+    'parameter' => array(
+      'target_view' => array(
+        'type' => 'text',
+        'label' => t('target view'),
+        'description' => t('Machine name of the view whose cache will be cleared.'), #homepage_news_block
+      ),
+      'target_displays' => array(
+        'type' => 'list<text>',
+        'label' => t('target displays'),
+        'description' => t('Machine name of the view displays that will be cleared when the source display is altered.'),
+        //'restriction' => 'input',
+        //'default mode' => 'input',
       ),
     ),
   );
+  
+  $actions['advanced_purge_page_clear'] = array(
+    'label' => t('Clear page cache'),
+    'description' => 'Clear the specified page from the default variable cache. Use <front> for the frontpage.',
+    'group' => t('Advanced Purge'),
+    'parameter' => array(
+      'page' => array(
+        'type' => 'text',
+        'label' => t('page'),
+        'description' => t('Relative path to the page to be cleared.'),
+      ),
+    ),
+  );
+  return $actions;
 }
 
 /**
- * Action callback.
+ * Callback for "Clear Views cache" action.
  *
  * @param string $target_view
  *   Name of the view where we are going to clear the cache.
@@ -102,3 +115,32 @@ function advanced_purge_cache_clear($target_view = '', $target_displays = array(
   ));
 }
 
+/**
+ * Callback for "Clear page cache" action.
+ *
+ * Clear items from the cache_page bin.
+ *
+ * @param string $page
+ *   Relative path to the page to be cleared.
+ */
+function advanced_purge_page_clear($page = '') {
+  
+  if($page === '<front>') {
+    $page = variable_get('site_frontpage') == 'node' ? '': drupal_get_path_alias(variable_get('site_frontpage', 'node'));
+  }
+  $path = url($page, array('absolute' => TRUE));
+  
+    # if (drupal_page_is_cacheable()) {
+    #$cache = cache_get($base_root . request_uri(), 'cache_page');
+    //$path = $base_root. $page;
+  $cache = cache_get($path, 'cache_page');
+  if ($cache !== FALSE) {
+    cache_clear_all($path, 'cache_page');
+    
+    drupal_set_message(t("The page \"%path\" has been purged from cache.",
+      array('%path' => $path)
+    ));
+  }
+  #}
+  
+}
