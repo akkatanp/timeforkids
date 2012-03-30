@@ -416,7 +416,7 @@ function tfk_helper_preprocess_html(&$variables, $hook) {
   $block_rows = array(
     'node' => array(
       1 => array('homepage_top_story', 'homepage_minisite'),
-      2 => array('homepage_news_block', 'homepage_destination'),
+      2 => array('homepage_news_block'),
     ),
     'default' => array(
       1 => array('homepage_top_story',),
