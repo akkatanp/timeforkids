@@ -299,8 +299,17 @@ function tfk_helper_draggabletable_form_submit($form, $form_state) {
 
 
 // For future reference...
-// function tfk_helper_views_pre_build(&$view) {}
-// tfk_helper_views_pre_view(&$view, &$display_id, &$args)
+/*
+// 1
+function tfk_helper_views_pre_view(&$view, $vars = null) {
+  if($view->name == 'homepage_news_block') { }
+}
+// 2
+function tfk_helper_views_pre_build(&$view, $vars = null) {
+  if($view->name == 'homepage_news_block') { }
+}
+*/
+
 
 /**
  * Implementation of hook_views_pre_execute.
@@ -383,6 +392,36 @@ function tfk_helper_views_pre_render(&$view) {
   
   // Global composite key.
   $view->composite_key = $view->name. '_'. $view->current_display;
+}
+
+/**
+ * Indicate which grid rows have additional content with CSS.
+ */
+function tfk_helper_preprocess_views_view_grid(&$variables) {
+  if($variables['view']->name == 'homepage_news_block') {
+    // Find which items have additional content.
+    $ac_keys = array('field_field_additional_content', 'field_field_related_articles', 'field_field_mini_lessons');
+    $rows = array_chunk($variables['view']->result, $variables['view']->style_plugin->options['columns']);
+    $class_rows = array();
+    $count = 0;
+    
+    foreach($rows as $row_key => $row) {
+      $class_rows[$row_key] = 0;
+      foreach($row as $item) {
+        // Detect additional content. Generic conditional applies to multiple Views.
+        foreach($ac_keys as $ac_key) {
+          if(!empty($item->$ac_key)) {
+            $variables['row_classes'][$row_key] .= ' row-has-addit';
+            $class_rows[$row_key] = 1;
+            break;
+          }
+        }
+        if($class_rows[$row_key]) {
+          break; // This row has an item with additional content, check the next row.
+        }
+      }
+    }
+  }
 }
 
 function tfk_helper_preprocess_html(&$variables, $hook) {
