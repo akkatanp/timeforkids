@@ -636,6 +636,11 @@ function tfk_search_apachesolr_update_index(&$document, $node, $namespace) {
       }
     }
   }
+  
+  if($node->type == 'atw_destination') {
+    // Prevent atw_destination from indexing the field_article_category field.
+    unset($document->sm_vid_Article_Categories);
+  }
 }
 
 /**
@@ -3486,17 +3491,18 @@ function tfk_search_node_insert($node) {
  * @see field_attach_presave
  */
 function tfk_search_field_attach_presave($entity_type, &$entity) {
-  
-  // On Linux you need to check that GhostScript exists.
-  // Type '/usr/bin/gs --version' in the shell to verify.
-  
-  if(!extension_loaded('imagick')) {
-    drupal_set_message(t('The imagick PHP extension could not be found and it is required for automatic thumbnails generation', array()), 'error');
-    return;
-  }
-  
+    
   // If thumbnail field is empty, generate thumbnail automatically.
   if(array_search($entity->type, array('worksheet', 'pdf_quiz', 'common_core_standards')) !== FALSE) {
+    
+    // On Linux you need to check that GhostScript exists.
+    // Type '/usr/bin/gs --version' in the shell to verify.
+    
+    if(!extension_loaded('imagick')) {
+      drupal_set_message(t('The imagick PHP extension could not be found and it is required for automatic thumbnails generation', array()), 'error');
+      return;
+    }
+    
     $thumbnail = field_get_items('node', $entity, 'field_worksheet_thumbnail_image');
     if(empty($thumbnail)) {
       $fileref = field_get_items('node', $entity, 'field_worksheet_pdf_private');
@@ -3668,7 +3674,7 @@ function tfk_search_flag($action, $flag, $content_id, $account, $fcid) {
 /**
  * Build contextual links.
  *
- * Implementation taken from template_preprocess_panels_pane(), panels.module.
+ * Example taken from template_preprocess_panels_pane(), panels.module.
  *
  * @return A rendered string of contextual links if successfull, FALSE otherwise.
  */
