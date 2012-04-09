@@ -608,6 +608,9 @@ function tfk_helper_preprocess_views_view_fields(&$variables, $hook) {
       case 'minisite':
         $link = 'View Mini-Site';
         break;
+      case 'atw_destination':
+        $link = 'View Destination';
+        break;
       default:
         $link = 'View Full Article';
       break;
