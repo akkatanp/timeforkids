@@ -1,5 +1,5 @@
 name = "TFK Magazine"
-description = "Context and settings for magazines search interface and publishing calendar."
+description = "Exports: magazine issue content type; Context and Strongarm for magazines SERP and publishing calendar."
 core = "7.x"
 package = "Features"
 php = "5.2.4"
