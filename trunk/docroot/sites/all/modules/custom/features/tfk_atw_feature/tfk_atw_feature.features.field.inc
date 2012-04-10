@@ -1174,6 +1174,80 @@ function tfk_atw_feature_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-atw_destination-field_article_category'
+  $fields['node-atw_destination-field_article_category'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_article_category',
+      'foreign keys' => array(
+        'tid' => array(
+          'columns' => array(
+            'tid' => 'tid',
+          ),
+          'table' => 'taxonomy_term_data',
+        ),
+      ),
+      'indexes' => array(
+        'tid' => array(
+          0 => 'tid',
+        ),
+      ),
+      'module' => 'taxonomy',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => array(
+            'vocabulary' => 'article_categories',
+            'parent' => '0',
+          ),
+        ),
+      ),
+      'translatable' => '1',
+      'type' => 'taxonomy_term_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'atw_destination',
+      'default_value' => array(
+        0 => array(
+          'tid' => '10',
+        ),
+      ),
+      'deleted' => '0',
+      'description' => 'This taxonomy field is present here because the article_category vocabulary is required by the secondary touts View for all other secondary tout content types except this one.',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'taxonomy',
+          'settings' => array(),
+          'type' => 'taxonomy_term_reference_link',
+          'weight' => 14,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_article_category',
+      'label' => 'Internal Use Only',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(),
+        'type' => 'options_select',
+        'weight' => '17',
+      ),
+    ),
+  );
+
   // Exported field: 'node-atw_destination-field_country_code'
   $fields['node-atw_destination-field_country_code'] = array(
     'field_config' => array(
@@ -2182,7 +2256,7 @@ function tfk_atw_feature_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'node_reference_autocomplete',
-        'weight' => '12',
+        'weight' => '11',
       ),
     ),
   );
@@ -2603,7 +2677,7 @@ function tfk_atw_feature_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'node_reference_autocomplete',
-        'weight' => '13',
+        'weight' => '12',
       ),
     ),
   );
@@ -2721,7 +2795,7 @@ function tfk_atw_feature_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'node_reference_autocomplete',
-        'weight' => '11',
+        'weight' => '10',
       ),
     ),
   );
@@ -3698,6 +3772,7 @@ function tfk_atw_feature_field_default_fields() {
   t('Deck');
   t('Deck and Image Map');
   t('Fact File');
+  t('Internal Use Only');
   t('Location Name');
   t('Map Icon');
   t('Native Lingo');
@@ -3719,6 +3794,7 @@ function tfk_atw_feature_field_default_fields() {
   t('Speaker Photo');
   t('Speaker Photo Credit');
   t('Text');
+  t('This taxonomy field is present here because the article_category vocabulary is required by the secondary touts View for all other secondary tout content types except this one.');
   t('Time');
   t('Time Activity');
   t('Timeline');
