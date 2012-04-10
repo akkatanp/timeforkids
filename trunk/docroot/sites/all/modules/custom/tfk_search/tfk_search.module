@@ -3502,14 +3502,21 @@ function tfk_search_field_attach_presave($entity_type, &$entity) {
       drupal_set_message(t('The imagick PHP extension could not be found and it is required for automatic thumbnails generation', array()), 'error');
       return;
     }
+      
+    $fields = array(
+      'worksheet' => array('thumbnail' => 'field_worksheet_thumbnail_image', 'pdf' => 'field_worksheet_pdf_private'),
+      'common_core_standards' => array('thumbnail' => 'field_common_core_thumbnail', 'pdf' => 'field_pdf_file_private'),
+    );
     
-    $thumbnail = field_get_items('node', $entity, 'field_worksheet_thumbnail_image');
+    $thumbnail = field_get_items('node', $entity, $fields[$entity->type]['thumbnail']);
     if(empty($thumbnail)) {
-      $fileref = field_get_items('node', $entity, 'field_worksheet_pdf_private');
+      $fileref = field_get_items('node', $entity, $fields[$entity->type]['pdf']);
       if(!empty($fileref)) {
         $pdf = file_load($fileref[0]['fid']);
   
-        $pdf_field_desc = field_read_instance('node', 'field_worksheet_pdf_private', 'worksheet');
+        #$pdf_field_desc = field_read_instance('node', 'field_worksheet_pdf_private', 'worksheet');
+        #$pdf_field_desc = field_read_instance('node', $fields[$entity->type]['pdf'], $entity->type);
+        $pdf_field_desc = field_read_instance('node', $fields[$entity->type]['pdf'], $entity->type);
         $default_path = file_default_scheme(). '://';
         $target_dir = $default_path. $pdf_field_desc['settings']['file_directory']. '/auto_thumbnails';
   
@@ -3537,6 +3544,7 @@ function tfk_search_field_attach_presave($entity_type, &$entity) {
         
         if(!$success) {
           // If write fails, don't create file record.
+          drupal_set_message(t('Imagick could not write the new image to %target', array('%target' => $target_realpath. '/'. $tempname)), 'error');
           return;
         }
         
@@ -3566,8 +3574,8 @@ function tfk_search_field_attach_presave($entity_type, &$entity) {
         $field_thumbnail_image['upload_button'] = 'Upload';
         $field_thumbnail_image['remove_button'] = 'Remove';
         $field_thumbnail_image['upload'] = '';
-    
-        $entity->field_worksheet_thumbnail_image[$entity->language][0] = $field_thumbnail_image;
+                
+        $entity->{$fields[$entity->type]['thumbnail']}[$entity->language][0] = $field_thumbnail_image;
         
         drupal_set_message(t('The thumbnail image %filename has been automatically created for %node', array('%filename' => $_file->filename, '%node' => $entity->title. ' (nid: '. $entity->nid. ').')), 'status');
       }
