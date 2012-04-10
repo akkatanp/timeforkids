@@ -282,19 +282,6 @@ function tfk_helper_preprocess_page(&$variables) {
  */
 function tfk_helper_form_form_draggableviews_view_draggabletable_form_alter($form, $form_state = NULL) {
   $form['#submit'][] = 'tfk_helper_draggabletable_form_submit';
-  #error_log('bar baz');
-}
-
-function tfk_helper_form_draggableviews_view_draggabletable_form_alter($form, $form_state = NULL) {
-  #$form['#submit'][] = 'tfk_helper_draggabletable_form_submit';
-  #$form['#action'][] = '<front>';
-  #error_log('bar bat');
-}
-
-function tfk_helper_draggabletable_form_submit($form, $form_state) {
-  #die('die!');
-  #dpm('foo bar');
-  #error_log('foo bar');
 }
 
 
