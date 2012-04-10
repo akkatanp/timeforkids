@@ -3497,15 +3497,17 @@ function tfk_search_field_attach_presave($entity_type, &$entity) {
     
     // On Linux you need to check that GhostScript exists.
     // Type '/usr/bin/gs --version' in the shell to verify.
-    
     if(!extension_loaded('imagick')) {
       drupal_set_message(t('The imagick PHP extension could not be found and it is required for automatic thumbnails generation', array()), 'error');
       return;
     }
-      
+    
+    // $fields contains the hardcoding, the rest should be dynamic.
     $fields = array(
       'worksheet' => array('thumbnail' => 'field_worksheet_thumbnail_image', 'pdf' => 'field_worksheet_pdf_private'),
       'common_core_standards' => array('thumbnail' => 'field_common_core_thumbnail', 'pdf' => 'field_pdf_file_private'),
+      // Currently all quizzes use the same default image, and lack a thumbnail field.
+      //'pdf_quiz' => array('thumbnail' => '', 'pdf' => 'field_pdf_file_private'),
     );
     
     $thumbnail = field_get_items('node', $entity, $fields[$entity->type]['thumbnail']);
@@ -3514,8 +3516,6 @@ function tfk_search_field_attach_presave($entity_type, &$entity) {
       if(!empty($fileref)) {
         $pdf = file_load($fileref[0]['fid']);
   
-        #$pdf_field_desc = field_read_instance('node', 'field_worksheet_pdf_private', 'worksheet');
-        #$pdf_field_desc = field_read_instance('node', $fields[$entity->type]['pdf'], $entity->type);
         $pdf_field_desc = field_read_instance('node', $fields[$entity->type]['pdf'], $entity->type);
         $default_path = file_default_scheme(). '://';
         $target_dir = $default_path. $pdf_field_desc['settings']['file_directory']. '/auto_thumbnails';
