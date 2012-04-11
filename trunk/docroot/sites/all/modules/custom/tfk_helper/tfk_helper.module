@@ -303,10 +303,11 @@ function tfk_helper_form_atw_destination_node_form_alter(&$form, $form_state = N
   }
   
   // Supress article_category taxonomy field.
-  // This field is present in atw_destination because it is required by the
-  // secondary touts View. But according to business logic, destinations do not
-  // have article categories.
+  // This field is present in atw_destination because it is required by secondary
+  // touts View filters. But according to business logic, destinations cannot
+  // have article categories, so we hardcode a value and hide the field.
   $form['field_article_category']['#access'] = FALSE;
+  $form['field_article_category'][$form['#node']->language]['#default_value'] = 10;
 }
 
 // For future reference...
