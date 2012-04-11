@@ -454,7 +454,7 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['pager']['options']['items_per_page'] = '2';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'grid';
-  $handler->display->display_options['style_options']['row_class'] = 'row';
+  $handler->display->display_options['style_options']['row_class'] = 'row %has_addit';
   $handler->display->display_options['style_options']['columns'] = '2';
   $handler->display->display_options['style_options']['fill_single_line'] = 1;
   $handler->display->display_options['row_plugin'] = 'fields';
