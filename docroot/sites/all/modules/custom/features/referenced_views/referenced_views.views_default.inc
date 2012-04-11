@@ -1875,11 +1875,12 @@ function referenced_views_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'minisite' => 'minisite',
     'article' => 'article',
+    'mini_lesson' => 'mini_lesson',
     'slideshow' => 'slideshow',
     'video' => 'video',
+    'common_core_standards' => 'common_core_standards',
     'pdf_quiz' => 'pdf_quiz',
     'worksheet' => 'worksheet',
-    'mini_lesson' => 'mini_lesson',
   );
 
   /* Display: References */
