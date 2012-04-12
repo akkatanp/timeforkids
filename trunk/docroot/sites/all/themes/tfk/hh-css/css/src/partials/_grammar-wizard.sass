@@ -115,7 +115,7 @@ span.grammar-wizard-incorrect
     input[type="submit"]
       clear: left
       +float-left
-      & + input
+      & + input:not([value|="Go"])
         clear: none
       &:not([id|="edit-check-answer"])
         +tfk-submit-button(white)
