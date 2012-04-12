@@ -1526,7 +1526,7 @@ span.grammar-wizard-incorrect {
 .node-type-grammar-practice .content .form-item .form-disabled {
   color: gray;
 }
-.node-type-grammar-practice .content input[type="submit"] {
+.node-type-grammar-practice .content input[type="submit"]:not([value!="Go"]) {
   clear: left;
   display: inline;
   float: left;
@@ -1534,7 +1534,7 @@ span.grammar-wizard-incorrect {
 .node-type-grammar-practice .content input[type="submit"] + input {
   clear: none;
 }
-.node-type-grammar-practice .content input[type="submit"]:not([id|="edit-check-answer"]) {
+.node-type-grammar-practice .content input[type="submit"]:not([id|="edit-check-answer"]):not([id!="edit-submit--2"]) {
   -webkit-appearance: none;
   -moz-border-radius: 1em;
   -webkit-border-radius: 1em;
