@@ -3539,7 +3539,7 @@ function tfk_search_field_attach_presave($entity_type, &$entity) {
         $im2->setImageFormat("jpg");
         
         // Write thumbnail to filesystem.
-        $tempname = "{$entity->type}_{$entity->nid}.jpg";
+        $tempname = "{$entity->type}_fid_{$pdf->fid}.jpg";
         $success = $im2->writeImage($target_realpath. '/'. $tempname);
         
         if(!$success) {
