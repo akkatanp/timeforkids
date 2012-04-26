@@ -608,6 +608,7 @@ function tfk_helper_preprocess_views_view_fields(&$variables, $hook) {
     // Use only one template for all Secondary Tout displays (all channels, anon + non-anon).
     $variables['theme_hook_suggestion'] = 'views_view_fields__secondary_tout';
     
+    // Remove body field for ATW destination nodes.
     // Link text.
     $content_type = $variables['row']->_field_data['nid']['entity']->type;
     switch ($content_type) {
@@ -623,6 +624,8 @@ function tfk_helper_preprocess_views_view_fields(&$variables, $hook) {
       case 'atw_destination':
         $link = 'View Destination';
         $variables['fields']['name']->content = l('AROUND THE WORLD', 'around-the-world');
+        unset($variables['row']->field_body);
+        unset($variables['fields']['body']);
         break;
       default:
         $link = 'View Full Article';
