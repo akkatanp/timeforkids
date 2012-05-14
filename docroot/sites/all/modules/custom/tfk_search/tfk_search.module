@@ -3493,7 +3493,7 @@ function tfk_search_node_insert($node) {
 function tfk_search_field_attach_presave($entity_type, &$entity) {
     
   // If thumbnail field is empty, generate thumbnail automatically.
-  if(array_search($entity->type, array('worksheet', 'common_core_standards')) !== FALSE) {
+  if($entity_type == 'node' && array_search($entity->type, array('worksheet', 'common_core_standards')) !== FALSE) {
     
     // On Linux you need to check that GhostScript exists.
     // Type '/usr/bin/gs --version' in the shell to verify.
