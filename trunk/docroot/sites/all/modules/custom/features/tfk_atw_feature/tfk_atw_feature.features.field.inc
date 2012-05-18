@@ -3650,7 +3650,7 @@ function tfk_atw_feature_field_default_fields() {
       'bundle' => 'atw_timeline',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'taewaewt',
+      'description' => '',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -3803,7 +3803,6 @@ function tfk_atw_feature_field_default_fields() {
   t('Translation');
   t('photo size = 180x240');
   t('photo size = 488x268');
-  t('taewaewt');
 
   return $fields;
 }
