@@ -56,8 +56,10 @@ DirectoryIndex index.php index.html index.htm
 <IfModule mod_rewrite.c>
   RewriteEngine on
   Redirect permanent /tfk http://www.timeforkids.com  
+  Redirect permanent /TFK http://www.timeforkids.com
   Redirect permanent /tfk http://timeforkids.com
-
+  Redirect permanent /TFK http://timeforkids.com
+  
   # Block access to "hidden" directories whose names begin with a period. This
   # includes directories used by version control systems such as Subversion or
   # Git to store control files. Files whose names begin with a period, as well
