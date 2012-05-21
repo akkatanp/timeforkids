@@ -59,14 +59,11 @@ DirectoryIndex index.php index.html index.htm
   RewriteCond %{REQUEST_URI} /TFK/news.* [NC]
   RewriteRule ^ http://%{HTTP_HOST}/news [L,R=301]
  
-  RewriteCond %{REQUEST_URI} /TFK/aroundtheworld.* [NC,OR]
-  RewriteCond %{REQUEST_URI} /aroundtheworld.* [NC,OR]
-  RewriteCond %{REQUEST_URI} /TFK/destination.* [NC,OR]
-  RewriteCond %{REQUEST_URI} /destination.* [NC]
-  RewriteRule ^ http://%{HTTP_HOST}/around-the-world [L,R=301]
+#  RewriteCond %{REQUEST_URI} /TFK/aroundtheworld.* [NC,OR]
+#  RewriteCond %{REQUEST_URI} /aroundtheworld.* [NC]
+#  RewriteRule ^ http://%{HTTP_HOST}/around-the-world [L,R=301]
  
-  RewriteCond %{REQUEST_URI} /TFK/teachers.* [NC,OR]
-  RewriteCond %{REQUEST_URI} /teachers.* [NC]
+  RewriteCond %{REQUEST_URI} /TFK/teachers.* [NC]
   RewriteRule ^ http://%{HTTP_HOST}/teacher-community/topic-list [L,R=301]
  
   RewriteCond %{REQUEST_URI} /TFK/kids.* [NC]
