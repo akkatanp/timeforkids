@@ -55,10 +55,26 @@ DirectoryIndex index.php index.html index.htm
 # Various rewrite rules.
 <IfModule mod_rewrite.c>
   RewriteEngine on
-  Redirect permanent /tfk http://www.timeforkids.com  
-  Redirect permanent /TFK http://www.timeforkids.com
-  Redirect permanent /tfk http://timeforkids.com
-  Redirect permanent /TFK http://timeforkids.com
+
+  RewriteCond %{REQUEST_URI} /TFK/news.* [NC]
+  RewriteRule ^ http://%{HTTP_HOST}/news [L,R=301]
+ 
+  RewriteCond %{REQUEST_URI} /TFK/aroundtheworld.* [NC,OR]
+  RewriteCond %{REQUEST_URI} /aroundtheworld.* [NC,OR]
+  RewriteCond %{REQUEST_URI} /TFK/destination.* [NC,OR]
+  RewriteCond %{REQUEST_URI} /destination.* [NC]
+  RewriteRule ^ http://%{HTTP_HOST}/around-the-world [L,R=301]
+ 
+  RewriteCond %{REQUEST_URI} /TFK/teachers.* [NC,OR]
+  RewriteCond %{REQUEST_URI} /teachers.* [NC]
+  RewriteRule ^ http://%{HTTP_HOST}/teacher-community/topic-list [L,R=301]
+ 
+  RewriteCond %{REQUEST_URI} /TFK/kids.* [NC]
+  RewriteRule ^ http://%{HTTP_HOST}/kid-reporters [L,R=301]
+ 
+  RewriteCond %{REQUEST_URI} /TFK/$ [NC,OR]
+  RewriteCond %{REQUEST_URI} /TFK$ [NC]
+  RewriteRule ^ http://%{HTTP_HOST} [L,R=301]
   
   # Block access to "hidden" directories whose names begin with a period. This
   # includes directories used by version control systems such as Subversion or
@@ -82,8 +98,9 @@ DirectoryIndex index.php index.html index.htm
   # To redirect all users to access the site WITH the 'www.' prefix,
   # (http://example.com/... will be redirected to http://www.example.com/...)
   # uncomment the following:
-  # RewriteCond %{HTTP_HOST} !^www\. [NC]
-  # RewriteRule ^ http://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+  
+  RewriteCond %{HTTP_HOST} ^timeforkids\.com [NC]
+  RewriteRule ^ http://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
   #
   # To redirect all users to access the site WITHOUT the 'www.' prefix,
   # (http://www.example.com/... will be redirected to http://example.com/...)
