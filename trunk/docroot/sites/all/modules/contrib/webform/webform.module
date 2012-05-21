@@ -847,6 +847,10 @@ function webform_webform_submission_actions($node, $submission) {
  * Only allow users with view webform submissions to download files.
  */
 function webform_file_download($uri) {
+  // richard.allen: avoid running the query below because 1) it takes 8 seconds to run and
+  // 2) there are no webform-managed file uploads in TFK.
+  return NULL;
+  
   global $user;
 
   // Determine whether this file was a webform upload. If it was, retrieve file
