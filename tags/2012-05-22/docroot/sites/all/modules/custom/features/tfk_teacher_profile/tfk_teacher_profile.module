@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the tfk_teacher_profile feature.
+ */
+
+include_once('tfk_teacher_profile.features.inc');
