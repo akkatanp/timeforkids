@@ -70,8 +70,7 @@ DirectoryIndex index.php index.html index.htm
   RewriteCond %{REQUEST_URI} /TFK/kids.* [NC]
   RewriteRule ^ http://%{HTTP_HOST}/kid-reporters [L,R=301]
  
-  RewriteCond %{REQUEST_URI} /TFK/$ [NC,OR]
-  RewriteCond %{REQUEST_URI} /TFK$ [NC]
+  RewriteCond %{REQUEST_URI} /TFK [NC]
   RewriteRule ^ http://%{HTTP_HOST} [L,R=301]
   
   # Block access to "hidden" directories whose names begin with a period. This
