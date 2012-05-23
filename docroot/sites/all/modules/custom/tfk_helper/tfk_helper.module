@@ -365,8 +365,12 @@ function tfk_helper_views_pre_execute(&$view) {
   }
   
   // Dynamic number of items on the draggableviews order blocks.
-  // Duplicate the amount set on admin/config/user-interface/secondary-touts.
-  if($view->name == 'secondary_touts_block_order') {
+  // Duplicate the amount set on admin/structure/touts/secondary-touts.
+  /*
+   * Temporarily comment out, may 23, 2012.
+   * Delete/refactor code if bug is confirmed here on DEV/QA.
+   *
+  if($view->name == 'secondary_touts_block_order') { #homepage_news_block
     if($view->current_display == 'homepage') {
       // Hardcoded because of all the CSS mapped to this machine name.
       $qty = variable_get('tfk_helper_secondary_touts_block_1', 3);
@@ -380,7 +384,7 @@ function tfk_helper_views_pre_execute(&$view) {
       $qty = variable_get('tfk_helper_secondary_touts_block_5', 2);
       $view->query->limit = $qty * 2;
     }
-  }
+  }*/
 }
 
 /**
