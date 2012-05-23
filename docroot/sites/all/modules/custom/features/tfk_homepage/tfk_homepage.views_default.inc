@@ -1046,6 +1046,12 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['relationships']['field_tout_image_nid']['field'] = 'field_tout_image_nid';
   $handler->display->display_options['relationships']['field_tout_image_nid']['required'] = 0;
   $handler->display->display_options['relationships']['field_tout_image_nid']['delta'] = '0';
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Flags: Weight */
+  $handler->display->display_options['sorts']['weight']['id'] = 'weight';
+  $handler->display->display_options['sorts']['weight']['table'] = 'flag_content';
+  $handler->display->display_options['sorts']['weight']['field'] = 'weight';
+  $handler->display->display_options['sorts']['weight']['relationship'] = 'flag_content_rel';
   $handler->display->display_options['block_description'] = 'Homepage Secondary Touts';
   $handler->display->display_options['block_caching'] = '1';
 
@@ -1057,7 +1063,8 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['relationships']['flag_content_rel']['id'] = 'flag_content_rel';
   $handler->display->display_options['relationships']['flag_content_rel']['table'] = 'node';
   $handler->display->display_options['relationships']['flag_content_rel']['field'] = 'flag_content_rel';
-  $handler->display->display_options['relationships']['flag_content_rel']['label'] = '';
+  $handler->display->display_options['relationships']['flag_content_rel']['ui_name'] = 'flag';
+  $handler->display->display_options['relationships']['flag_content_rel']['label'] = 'secondary_touts_news';
   $handler->display->display_options['relationships']['flag_content_rel']['flag'] = 'news_news_block';
   $handler->display->display_options['relationships']['flag_content_rel']['user_scope'] = 'any';
   /* Relationship: Content: Related Article (field_related_articles) */
@@ -1083,6 +1090,12 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['relationships']['field_tout_image_nid']['field'] = 'field_tout_image_nid';
   $handler->display->display_options['relationships']['field_tout_image_nid']['required'] = 0;
   $handler->display->display_options['relationships']['field_tout_image_nid']['delta'] = '0';
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Flags: Weight */
+  $handler->display->display_options['sorts']['weight']['id'] = 'weight';
+  $handler->display->display_options['sorts']['weight']['table'] = 'flag_content';
+  $handler->display->display_options['sorts']['weight']['field'] = 'weight';
+  $handler->display->display_options['sorts']['weight']['relationship'] = 'flag_content_rel';
   $handler->display->display_options['block_description'] = 'News Secondary Touts';
   $handler->display->display_options['block_caching'] = '1';
 
@@ -1094,7 +1107,7 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['relationships']['flag_content_rel']['id'] = 'flag_content_rel';
   $handler->display->display_options['relationships']['flag_content_rel']['table'] = 'node';
   $handler->display->display_options['relationships']['flag_content_rel']['field'] = 'flag_content_rel';
-  $handler->display->display_options['relationships']['flag_content_rel']['label'] = '';
+  $handler->display->display_options['relationships']['flag_content_rel']['label'] = 'secondary_touts_kid_reporter';
   $handler->display->display_options['relationships']['flag_content_rel']['flag'] = 'kid_reporter_news_block';
   $handler->display->display_options['relationships']['flag_content_rel']['user_scope'] = 'any';
   /* Relationship: Content: Related Article (field_related_articles) */
@@ -1120,6 +1133,12 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['relationships']['field_tout_image_nid']['field'] = 'field_tout_image_nid';
   $handler->display->display_options['relationships']['field_tout_image_nid']['required'] = 0;
   $handler->display->display_options['relationships']['field_tout_image_nid']['delta'] = '0';
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Flags: Weight */
+  $handler->display->display_options['sorts']['weight']['id'] = 'weight';
+  $handler->display->display_options['sorts']['weight']['table'] = 'flag_content';
+  $handler->display->display_options['sorts']['weight']['field'] = 'weight';
+  $handler->display->display_options['sorts']['weight']['relationship'] = 'flag_content_rel';
   $handler->display->display_options['block_description'] = 'Kid Reporter Secondary Touts';
   $handler->display->display_options['block_caching'] = '1';
 
@@ -1599,7 +1618,7 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['relationships']['flag_content_rel']['id'] = 'flag_content_rel';
   $handler->display->display_options['relationships']['flag_content_rel']['table'] = 'node';
   $handler->display->display_options['relationships']['flag_content_rel']['field'] = 'flag_content_rel';
-  $handler->display->display_options['relationships']['flag_content_rel']['label'] = '';
+  $handler->display->display_options['relationships']['flag_content_rel']['label'] = 'secondary_touts_news_2';
   $handler->display->display_options['relationships']['flag_content_rel']['flag'] = 'news_news_block';
   $handler->display->display_options['relationships']['flag_content_rel']['user_scope'] = 'any';
   /* Relationship: Content: Related Article (field_related_articles) */
@@ -2058,6 +2077,12 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['fields']['title_1']['empty_zero'] = 1;
   $handler->display->display_options['fields']['title_1']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['title_1']['link_to_node'] = 1;
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Flags: Weight */
+  $handler->display->display_options['sorts']['weight']['id'] = 'weight';
+  $handler->display->display_options['sorts']['weight']['table'] = 'flag_content';
+  $handler->display->display_options['sorts']['weight']['field'] = 'weight';
+  $handler->display->display_options['sorts']['weight']['relationship'] = 'flag_content_rel';
   $handler->display->display_options['block_description'] = 'News Secondary Touts';
   $handler->display->display_options['block_caching'] = '1';
 
@@ -2069,7 +2094,7 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['relationships']['flag_content_rel']['id'] = 'flag_content_rel';
   $handler->display->display_options['relationships']['flag_content_rel']['table'] = 'node';
   $handler->display->display_options['relationships']['flag_content_rel']['field'] = 'flag_content_rel';
-  $handler->display->display_options['relationships']['flag_content_rel']['label'] = '';
+  $handler->display->display_options['relationships']['flag_content_rel']['label'] = 'secondary_touts_kid_reporter';
   $handler->display->display_options['relationships']['flag_content_rel']['flag'] = 'kid_reporter_news_block';
   $handler->display->display_options['relationships']['flag_content_rel']['user_scope'] = 'any';
   /* Relationship: Content: Related Article (field_related_articles) */
@@ -2528,6 +2553,12 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['fields']['title_1']['empty_zero'] = 1;
   $handler->display->display_options['fields']['title_1']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['title_1']['link_to_node'] = 1;
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Flags: Weight */
+  $handler->display->display_options['sorts']['weight']['id'] = 'weight';
+  $handler->display->display_options['sorts']['weight']['table'] = 'flag_content';
+  $handler->display->display_options['sorts']['weight']['field'] = 'weight';
+  $handler->display->display_options['sorts']['weight']['relationship'] = 'flag_content_rel';
   $handler->display->display_options['block_description'] = 'Kid Reporter Secondary Touts';
   $handler->display->display_options['block_caching'] = '1';
   $export['homepage_news_block'] = $view;
