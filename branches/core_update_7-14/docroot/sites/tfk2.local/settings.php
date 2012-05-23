@@ -4,7 +4,7 @@
 
  
 $databases['default']['default'] = array(
-    'database' => 'timeteam2',
+    'database' => 'timeteam3',
     'username' => 'root',
     'password' => 'root',
     'host' => '127.0.0.1',
@@ -293,5 +293,5 @@ $conf["apachesolr_path"] = "http://localhost:8983/solr";
  * Filesystem settings
  */
 $conf["file_public_path"] = "sites/default/files";
-$conf["file_temporary_path"] = "/Users/rallen8440/tmp";
-$conf["file_private_path"] = "/Users/rallen8440/Sites/tfk/private";
+$conf["file_temporary_path"] = "/Users/jmarkel1271/tmp";
+$conf["file_private_path"] = "/Users/jmarkel1271/Sites/tfk3/private";
