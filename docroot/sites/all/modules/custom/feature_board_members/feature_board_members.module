@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the Feature Board Members feature.
- */
-
-include_once('feature_board_members.features.inc');

@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the feature_kid_reporters_updated feature.
- */
-
-include_once('feature_kid_reporters_updated.features.inc');
