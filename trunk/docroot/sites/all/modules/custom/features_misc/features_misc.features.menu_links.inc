@@ -9,6 +9,7 @@
  */
 function features_misc_menu_default_menu_links() {
   $menu_links = array();
+  $domain = variable_get('lucie_callback_domain', 'qa-subscription.timeforkids.com');
 
   // Exported menu link: menu-tfk-footer-primary:around-the-world
   $menu_links['menu-tfk-footer-primary:around-the-world'] = array(
@@ -51,9 +52,9 @@ function features_misc_menu_default_menu_links() {
     'weight' => '-44',
   );
   // Exported menu link: menu-tfk-footer-primary:https://subscription.timeforkids.com/storefront/subscribe-to-time-for-kids/link/1005025.html
-  $menu_links['menu-tfk-footer-primary:https://qa-subscription.timeforkids.com/storefront/subscribe-to-time-for-kids/link/1005025.html'] = array(
+  $menu_links['menu-tfk-footer-primary:https://subscription.timeforkids.com/storefront/subscribe-to-time-for-kids/link/1005025.html'] = array(
     'menu_name' => 'menu-tfk-footer-primary',
-    'link_path' => 'https://qa-subscription.timeforkids.com/storefront/subscribe-to-time-for-kids/link/1005025.html',
+    'link_path' => 'https://'. $domain. '/qa-subscription.timeforkids.com/storefront/subscribe-to-time-for-kids/link/1005025.html',
     'router_path' => '',
     'link_title' => 'Subscribe & Renew',
     'options' => array(
@@ -432,9 +433,9 @@ function features_misc_menu_default_menu_links() {
     'weight' => '15',
   );
   // Exported menu link: menu-tfk-teachers-menu:https://subscription.timeforkids.com/storefront/subscribe-to-time-for-kids/link/1005021.html
-  $menu_links['menu-tfk-teachers-menu:https://qa-subscription.timeforkids.com/storefront/subscribe-to-time-for-kids/link/1005021.html'] = array(
+  $menu_links['menu-tfk-teachers-menu:https://subscription.timeforkids.com/storefront/subscribe-to-time-for-kids/link/1005021.html'] = array(
     'menu_name' => 'menu-tfk-teachers-menu',
-    'link_path' => 'https://qa-subscription.timeforkids.com/storefront/subscribe-to-time-for-kids/link/1005021.html',
+    'link_path' => 'https://'. $domain. '/storefront/subscribe-to-time-for-kids/link/1005021.html',
     'router_path' => '',
     'link_title' => 'Subscribe & Renew',
     'options' => array(

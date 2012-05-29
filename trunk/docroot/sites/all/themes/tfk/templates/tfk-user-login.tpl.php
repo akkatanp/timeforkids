@@ -11,7 +11,7 @@ $form = array_shift($variables);
     <div class="form-item form-type-textfield form-item-name"><label for="edit-name">Email:</label>&nbsp;<input class="form-text required" id="edit-name" maxlength="60" name="name" value="" type="text"></div>
     <div class="form-item form-type-password form-item-pass"><label for="edit-pass">Password:</label>&nbsp;<input class="form-text required" id="edit-pass" maxlength="128" name="pass" value="" type="password"></div>
     <div class="form-actions form-wrapper" id="edit-actions"><input class="form-submit" id="edit-submit" name="op" value="Log in" type="submit"></div>
-    <a href="https://qa-subscription.timeforkids.com/storefront/universalForgotPassword.ep?magcode=TK">Forgot Password?</a>
+    <a href="https://<?php print $variables['lucie_callback_domain']; ?>/storefront/universalForgotPassword.ep?magcode=TK">Forgot Password?</a>
   </div>
   <div>
   <div class="bold">Register Now for FREE<br />Subscriber Benefits</div>
@@ -25,6 +25,6 @@ $form = array_shift($variables);
         <li>Interactive Teacher Community</li>
       </ul>
     </div>
-  <div class="clearfix" id="login-footer"><span class="bold">Not Yet A Subscriber?</span> <a href="https://qa-subscription.timeforkids.com/storefront/subscribe-to-time-for-kids/link/1005016.html">Click here to subscribe</a> </div><div style="float: right; font-size: 9px;">Website Login Page</div>
+  <div class="clearfix" id="login-footer"><span class="bold">Not Yet A Subscriber?</span> <a href="https://<?php print $variables['lucie_callback_domain']; ?>/storefront/subscribe-to-time-for-kids/link/1005016.html">Click here to subscribe</a> </div><div style="float: right; font-size: 9px;">Website Login Page</div>
 
 </div>
