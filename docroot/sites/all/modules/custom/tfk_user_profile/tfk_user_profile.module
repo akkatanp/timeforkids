@@ -64,15 +64,6 @@ function tfk_user_profile_preprocess_page(&$variables) {
 }
 
 /**
- * Pass LUCIE callback domain to tfk-user-login.tpl.php.
- *
- * @see tfk_helper_theme
- */
-function tfk_user_profile_preprocess_tfk_login(&$variables) {
-  $variables['lucie_callback_domain'] = variable_get('lucie_callback_domain', 'qa-subscription.timeforkids.com');
-}
-
-/**
  * Implementation of form_alter().
  */
 function tfk_user_profile_form_user_login_alter( &$form, &$form_state){
@@ -522,4 +513,14 @@ function tfk_user_profile_theme() {
       ),
     )
   );
+}
+
+/**
+ * Implementation of hook_theme_registry_alter.
+ *
+ * Alter core 'user_login' theming function.
+ */
+function tfk_user_profile_theme_registry_alter(&$theme_registry) {
+  $theme_registry['user_login']['variables']['lucie_callback_domain'] = variable_get('lucie_callback_domain', 'qa-subscription.timeforkids.com');
+  $theme_registry['user_login']['variables']['rendered_build_id'] = NULL;
 }
