@@ -274,7 +274,7 @@ function tfk_lucie_user_set_cookie($token){
  * and should have access to the content/site.
 */
 function tfk_lucie_user_entitlements($token){
-   $domain = variable_get('lucie_callback_domain', 'qa-subscription.timeforkids.com');
+   $domain = variable_get('lucie_callback_domain', 'qa-lucie.timeinc.com');
   $url = 'https://'. $domain. '/webservices/entitlements?CGI-App-Id=com.timeinc.tk.web';
   $response = drupal_http_request($url, array('headers' => array('Content-Type'=>'application/json', 'CGI-token' => $token),
 	'method'=> 'GET'
@@ -291,7 +291,7 @@ function tfk_lucie_user_entitlements($token){
  * A token is returned which must be used in any additional calls to LUCIE.
  */
 function tfk_lucie_check_user($email, $pwd){
-	$domain = variable_get('lucie_callback_domain', 'qa-subscription.timeforkids.com');
+	$domain = variable_get('lucie_callback_domain', 'qa-lucie.timeinc.com');
   $url = 'https://'. $domain. '/webservices/customers/'.check_plain($email).'/TK/auth_token';
   $pass_arr = array('password'=>$pwd, 'CGI-App-Id' => 'com.timeinc.tk.web', 'deviceid' => 'TK.WEB', 'deviceip' => ip_address());
   $pass = drupal_json_encode($pass_arr);
