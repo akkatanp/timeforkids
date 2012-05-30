@@ -43,7 +43,13 @@ function tfk_user_profile_lucie_variables($form, &$form_state) {
     '#type' => 'textfield',
     '#title' => 'LUCIE callback domain',
     '#description' => 'Only specify the domain here, the protocol and paths are hardcoded.',
-    '#default_value' => variable_get('lucie_callback_domain', 'qa-subscription.timeforkids.com'),
+    '#default_value' => variable_get('lucie_callback_domain', 'qa-lucie.timeinc.com'),
+  );
+  $form['subscription_service_domain'] = array(
+    '#type' => 'textfield',
+    '#title' => 'Subscription service domain',
+    '#description' => 'Only specify the domain here, the protocol and paths are hardcoded.',
+    '#default_value' => variable_get('subscription_service_domain', 'qa-subscription.timeforkids.com'),
   );
   return system_settings_form($form);
 }
@@ -243,7 +249,7 @@ function tfk_user_profile_login_validate( $form, &$form_state ){
  * Information returned inclues, first & last name, account id, and email address.
  */
 function tfk_lucie_get_user_info($email, $token) {
-  $domain = variable_get('lucie_callback_domain', 'qa-subscription.timeforkids.com');
+  $domain = variable_get('lucie_callback_domain', 'lucie.timeinc.com');
   $url = 'https://'. $domain. '/webservices/customers/'.check_plain($email).'/TK';
   $response = drupal_http_request($url, array('headers' => array('Content-Type'=>'application/json', 'CGI-token' => $token),
   'method'=> 'GET'
