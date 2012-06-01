@@ -36,7 +36,7 @@ function aplus_papers_checklist($steps, $current) {
       unset($step);
     }
     if (isset($data['#checklist'])) {
-      if ($step) {
+      if (isset($step) && $step) {
         $classes = array();
         if ($current > $step) {
           $classes[] = 'checked';
@@ -102,7 +102,7 @@ function aplus_papers_multistep_form($form, &$form_state, $steps) {
   $form['checklist'] = aplus_papers_checklist($steps, $step);
 
   $step_name = "step_$step";
-  $step_values = $form_state['values'][$step_name];
+  $step_values = (isset($form_state['values'])) ? $form_state['values'][$step_name] : NULL;
   $form[$step_name] = $steps[$step];
   if (isset($form[$step_name]['textarea'])) {
     $form[$step_name]['textarea']['#default_value'] = !empty($step_values['textarea']['value']) ? $step_values['textarea']['value'] : '';
