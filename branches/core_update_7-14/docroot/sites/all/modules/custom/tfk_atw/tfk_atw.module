@@ -376,13 +376,31 @@ function _get_atw_destination_slideshow_images(){
 
 function _tfk_atw_destination_related_data(){
     $vars = array();
-
+    if(count(arg() > 0) && arg(0) == '404page') {
+    	$vars['resources_label'] = '';
+    	$vars['worksheets'] = array();
+    	$vars['related_articles'] = array();
+    	$list = array('related_data' => $vars);
+    	return $list;
+    }
+    
     if( count(arg()) == 2 && arg(0) == 'node' && is_numeric(arg(1))){ //DESTINATION
         $nid = arg(1);
         $sql = db_query('select type,title from node where nid = :nid and status = 1',array(':nid' => $nid));
         $record = $sql->fetch();
 
         $tmp_url = explode('/',request_uri());
+        /* if request_uri is of the form '/node/nnnnn' try to get its named alias */
+        if(count($tmp_url)>2 && $tmp_url[1]=='node' && is_numeric($tmp_url[2])) {
+        	$src = $tmp_url[1].'/'.$tmp_url[2];
+        	$sql = db_query('select alias from url_alias where source = :src',array(':src' => $src));
+        	$rcrd = $sql->fetch();
+        	if($rcrd && $rcrd != false) {
+        		$tmp_url = '/'.$rcrd -> alias;
+        		$tmp_url = explode('/',$tmp_url);
+        	}
+        }
+        
         $tmp_url = array_slice($tmp_url, -3, 3, true);
         $tmp_url = array_merge(array(),$tmp_url);
         if($record->type == 'atw_destination'){
@@ -438,8 +456,27 @@ function get_destination_existing_references($node){
 
 function _tfk_atw_destination_navigation_data(){
     $vars = array();
-
+    if(count(arg() > 0) && arg(0) == '404page') {
+	    $vars['sightseeing_exists'] = 0;
+	    $vars['timeline_exists'] = 0;
+	    $vars['lingo_exists'] = 0;
+	    $vars['daylife_exists'] = 0;
+	    $vars['challenge_exists'] = 0;
+    	$list = array('navigation_data' => $vars);
+    	return $list;
+    }
+    
     $tmp_url = explode('/',request_uri());
+    /* if request_uri is of the form '/node/nnnnn' try to get its named alias */
+    if(count($tmp_url)>2 && $tmp_url[1]=='node' && is_numeric($tmp_url[2])) {
+    	$src = $tmp_url[1].'/'.$tmp_url[2];
+    	$sql = db_query('select alias from url_alias where source = :src',array(':src' => $src));
+    	$record = $sql->fetch();
+    	if($record && $record != false) {
+    		$tmp_url = '/'.$record -> alias;
+    		$tmp_url = explode('/',$tmp_url);
+    	}   		
+    }
     $tmp_url = array_slice($tmp_url, -3, 3, true);
     $tmp_url = array_merge(array(),$tmp_url);
 
@@ -725,7 +762,7 @@ function tfk_atw_form_alter(&$form,&$form_state,$form_id) {
   			$form['#build_id'] = $old_form ['#build_id'];
   			$form['#tree'] = $old_form ['#tree'];
   			$form['#parents'] = $old_form ['#parents'];
-  			// $form['#array_parents'] = $old_form ['#array_parents'];
+  			$form['#array_parents'] = isset($old_form['#array_parents'])?$old_form ['#array_parents']:NULL; // make sure #array_parents exists, one way or another
 
 
 
@@ -771,7 +808,7 @@ function tfk_atw_form_alter(&$form,&$form_state,$form_id) {
                         $tmp_url = explode('/',request_uri());
                       $tmp_url = array_slice($tmp_url, -3, 3, true);
                       $tmp_url = array_merge(array(),$tmp_url);
-                      if($record->type == 'atw_destination'){
+                      if(isset($record) && $record->type == 'atw_destination'){ // make sure $record exists before comparing to it
                         $country_alias = $tmp_url[1].'/'.$tmp_url[2];
                       }else{
                         $country_alias = $tmp_url[0].'/'.$tmp_url[1];
