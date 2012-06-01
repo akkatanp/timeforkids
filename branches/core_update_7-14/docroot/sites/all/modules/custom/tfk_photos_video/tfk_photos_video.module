@@ -86,6 +86,7 @@ function tfk_photos_video_preprocess_node(&$variables) {
     
     // Unset unused stuff.
     unset($_variables['submitted']);
+    unset($_variables['rdf_template_variable_attributes_array']['submitted']);
     unset($_variables['content']['field_caption']);
     unset($_variables['content']['field_credit']);
   }
