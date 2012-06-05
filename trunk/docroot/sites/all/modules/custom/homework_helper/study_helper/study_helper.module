@@ -51,7 +51,7 @@ function study_helper_form_node_form_alter(&$form, &$form_state, $form_id) {
     $form['field_flashcard'][$form['field_flashcard']['#language']]['add_more']['#value'] = t('More Cards');
     $form['title']['#title'] = t('Title:');
     $form['title']['#description'] = t('What are your flash cards about?');
-    if (!$node->nid) {
+    if (!isset($node->nid) || !$node->nid) { // when new node is being created, it does not yet have a nid
       $form['#prefix'] = '<div class="flashcards-return">'. l('Back to Flash-card Sets', 'homework-helper/flashcards') . '</div>';
     }
     $language = $form['field_flashcard']['#language'];
