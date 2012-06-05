@@ -570,6 +570,12 @@ function install_tasks($install_state) {
 
   // Now add any tasks defined by the installation profile.
   if (!empty($install_state['parameters']['profile'])) {
+    // Load the profile install file, because it is not always loaded when
+    // hook_install_tasks() is invoked (e.g. batch processing).
+    $profile_install_file = DRUPAL_ROOT . '/profiles/' . $install_state['parameters']['profile'] . '/' . $install_state['parameters']['profile'] . '.install';
+    if (file_exists($profile_install_file)) {
+      include_once $profile_install_file;
+    }
     $function = $install_state['parameters']['profile'] . '_install_tasks';
     if (function_exists($function)) {
       $result = $function($install_state);
@@ -595,7 +601,7 @@ function install_tasks($install_state) {
   // Allow the installation profile to modify the full list of tasks.
   if (!empty($install_state['parameters']['profile'])) {
     $profile_file = DRUPAL_ROOT . '/profiles/' . $install_state['parameters']['profile'] . '/' . $install_state['parameters']['profile'] . '.profile';
-    if (is_file($profile_file)) {
+    if (file_exists($profile_file)) {
       include_once $profile_file;
       $function = $install_state['parameters']['profile'] . '_install_tasks_alter';
       if (function_exists($function)) {
@@ -710,8 +716,10 @@ function install_display_output($output, $install_state) {
  *
  * @return
  *   A themed status report, or an exception if there are requirement errors.
- *   Otherwise, no output is returned, so that the next task can be run
- *   in the same page request.
+ *   If there are only requirement warnings, a themed status report is shown
+ *   initially, but the user is allowed to bypass it by providing 'continue=1'
+ *   in the URL. Otherwise, no output is returned, so that the next task can be
+ *   run in the same page request.
  */
 function install_verify_requirements(&$install_state) {
   // Check the installation requirements for Drupal and this profile.
@@ -723,22 +731,30 @@ function install_verify_requirements(&$install_state) {
   // Check the severity of the requirements reported.
   $severity = drupal_requirements_severity($requirements);
 
-  if ($severity == REQUIREMENT_ERROR) {
+  // If there are errors, always display them. If there are only warnings, skip
+  // them if the user has provided a URL parameter acknowledging the warnings
+  // and indicating a desire to continue anyway. See drupal_requirements_url().
+  if ($severity == REQUIREMENT_ERROR || ($severity == REQUIREMENT_WARNING && empty($install_state['parameters']['continue']))) {
     if ($install_state['interactive']) {
       drupal_set_title(st('Requirements problem'));
       $status_report = theme('status_report', array('requirements' => $requirements));
-      $status_report .= st('Check the error messages and <a href="!url">proceed with the installation</a>.', array('!url' => check_url(request_uri())));
+      $status_report .= st('Check the error messages and <a href="!url">proceed with the installation</a>.', array('!url' => check_url(drupal_requirements_url($severity))));
       return $status_report;
     }
     else {
-      // Throw an exception showing all unmet requirements.
+      // Throw an exception showing any unmet requirements.
       $failures = array();
       foreach ($requirements as $requirement) {
+        // Skip warnings altogether for non-interactive installations; these
+        // proceed in a single request so there is no good opportunity (and no
+        // good method) to warn the user anyway.
         if (isset($requirement['severity']) && $requirement['severity'] == REQUIREMENT_ERROR) {
           $failures[] = $requirement['title'] . ': ' . $requirement['value'] . "\n\n" . $requirement['description'];
         }
       }
-      throw new Exception(implode("\n\n", $failures));
+      if (!empty($failures)) {
+        throw new Exception(implode("\n\n", $failures));
+      }
     }
   }
 }
@@ -1001,19 +1017,7 @@ function install_select_profile(&$install_state) {
   $install_state['profiles'] += install_find_profiles();
   if (empty($install_state['parameters']['profile'])) {
     // Try to find a profile.
-    $profiles = $install_state['profiles'];
-    foreach ($profiles as $key => $profile) {
-      $details = install_profile_info($profile->name);
-      // Remove hidden profiles (such as the testing profile, which only exists
-      // to speed up test runs) from the list. This prevents them from being
-      // displayed in the user interface, and also means that if there is only
-      // one non-hidden profile, _install_select_profile() will choose it
-      // automatically.
-      if (!empty($details['hidden'])) {
-        unset($profiles[$key]);
-      }
-    }
-    $profile = _install_select_profile($profiles);
+    $profile = _install_select_profile($install_state['profiles']);
     if (empty($profile)) {
       // We still don't have a profile, so display a form for selecting one.
       // Only do this in the case of interactive installations, since this is
@@ -1023,7 +1027,7 @@ function install_select_profile(&$install_state) {
       if ($install_state['interactive']) {
         include_once DRUPAL_ROOT . '/includes/form.inc';
         drupal_set_title(st('Select an installation profile'));
-        $form = drupal_get_form('install_select_profile_form', $profiles);
+        $form = drupal_get_form('install_select_profile_form', $install_state['profiles']);
         return drupal_render($form);
       }
       else {
@@ -1079,8 +1083,6 @@ function install_select_profile_form($form, &$form_state, $profile_files) {
     $details = install_profile_info($profile->name);
     // Don't show hidden profiles. This is used by to hide the testing profile,
     // which only exists to speed up test runs.
-    // @todo: This duplicates logic in install_select_profile() and is here
-    //   only for backwards compatibility. Remove it in Drupal 8.
     if ($details['hidden'] === TRUE) {
       continue;
     }
@@ -1304,7 +1306,7 @@ function install_already_done_error() {
  */
 function install_load_profile(&$install_state) {
   $profile_file = DRUPAL_ROOT . '/profiles/' . $install_state['parameters']['profile'] . '/' . $install_state['parameters']['profile'] . '.profile';
-  if (is_file($profile_file)) {
+  if (file_exists($profile_file)) {
     include_once $profile_file;
     $install_state['profile_info'] = install_profile_info($install_state['parameters']['profile'], $install_state['parameters']['locale']);
   }
@@ -1422,13 +1424,6 @@ function install_import_locales(&$install_state) {
  *   The form API definition for the site configuration form.
  */
 function install_configure_form($form, &$form_state, &$install_state) {
-  if (variable_get('site_name', FALSE) || variable_get('site_mail', FALSE)) {
-    // Site already configured: This should never happen, means re-running the
-    // installer, possibly by an attacker after the 'install_task' variable got
-    // accidentally blown somewhere. Stop it now.
-    throw new Exception(install_already_done_error());
-  }
-
   drupal_set_title(st('Configure site'));
 
   // Warn about settings.php permissions risk
@@ -1830,7 +1825,7 @@ function install_configure_form_submit($form, &$form_state) {
 
   // We precreated user 1 with placeholder values. Let's save the real values.
   $account = user_load(1);
-  $merge_data = array('init' => $form_state['values']['account']['mail'], 'roles' => !empty($account->roles) ? $account->roles : array(), 'status' => 1);
+  $merge_data = array('init' => $form_state['values']['account']['mail'], 'roles' => !empty($account->roles) ? $account->roles : array(), 'status' => 1, 'timezone' => $form_state['values']['date_default_timezone']);
   user_save($account, array_merge($form_state['values']['account'], $merge_data));
   // Load global $user and perform final login tasks.
   $user = user_load(1);
