@@ -221,10 +221,21 @@ TFKADS.domainExceptions = new Array("timeforkidsdigital.com","timeinc.com","time
 			   keyValues = flashVars.split(/\?/);
 		   }
 		   for (var i in keyValues) {
-				var flashVar = keyValues[i].split(/=/);
+				var flashVar = keyValues[i].split(/=(.+)/);
 				flashVarsArray[flashVar[0]] = flashVar[1];
 		   }
-		   tfkAdFinalUrl = new String(unescape(flashVarsArray['clickTag']));
+		   /* 99.9% of the time it should be in flashVarsArray['clickTag'].
+		    * If vendor has goofed and used one of the secondary clickTag (ie, clickTag1, clickTag2) let's fallback to that
+		    */
+		   if (typeof flashVarsArray['clickTag'] === 'undefined') {
+		       if (typeof flashVarsArray['clickTag1'] !== 'undefined') {
+			   tfkAdFinalUrl = new String(unescape(flashVarsArray['clickTag1']));
+		       } else if (typeof flashVarsArray['clickTag1'] === 'undefined' && typeof flashVarsArray['clickTag2'] !== 'undefined') {
+			   tfkAdFinalUrl = new String(unescape(flashVarsArray['clickTag2']));
+		       }
+		   } else {
+			tfkAdFinalUrl = new String(unescape(flashVarsArray['clickTag']));
+		   }
 		}
 	   return tfkAdFinalUrl; 
 	}
