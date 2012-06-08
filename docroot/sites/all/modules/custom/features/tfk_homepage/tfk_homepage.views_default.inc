@@ -975,10 +975,6 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['fields']['field_additional_content']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_additional_content']['delta_reversed'] = 0;
   $handler->display->display_options['fields']['field_additional_content']['field_api_classes'] = 0;
-  /* Field: Content: Path */
-  $handler->display->display_options['fields']['path']['id'] = 'path';
-  $handler->display->display_options['fields']['path']['table'] = 'node';
-  $handler->display->display_options['fields']['path']['field'] = 'path';
   /* Sort criterion: Flags: Weight */
   $handler->display->display_options['sorts']['weight']['id'] = 'weight';
   $handler->display->display_options['sorts']['weight']['table'] = 'flag_content';
