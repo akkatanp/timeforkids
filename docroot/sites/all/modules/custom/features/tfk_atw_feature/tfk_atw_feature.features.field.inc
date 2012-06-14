@@ -1199,8 +1199,8 @@ function tfk_atw_feature_field_default_fields() {
       'settings' => array(
         'allowed_values' => array(
           0 => array(
-            'vocabulary' => 'article_categories',
             'parent' => '0',
+            'vocabulary' => 'article_categories',
           ),
         ),
       ),
@@ -1218,11 +1218,10 @@ function tfk_atw_feature_field_default_fields() {
       'description' => 'This taxonomy field is present here because the article_category vocabulary is required by the secondary touts View for all other secondary tout content types except this one.',
       'display' => array(
         'default' => array(
-          'label' => 'above',
-          'module' => 'taxonomy',
+          'label' => 'hidden',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
-          'weight' => 14,
+          'type' => 'hidden',
+          'weight' => '14',
         ),
         'teaser' => array(
           'label' => 'above',
