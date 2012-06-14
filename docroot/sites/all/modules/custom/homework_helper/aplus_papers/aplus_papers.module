@@ -1,9 +1,27 @@
 <?php
-
 /**
  * @file
  * A multistep form for interactive A+ papers.
  */
+
+/**
+ * Implements hook_node_load()
+ * 
+ * Since the form loaded in aplus_papers_node_view() is ajaxified,
+ * we only go through this function once while the user is filling
+ * the form. When we come through, note that the form is new, so we
+ * are free to blow away any cached data that may be filled in by
+ * the ajax handler trying to rebuild the form. That's done in the
+ * form processor aplus_papers_multistep_form(), below.
+ */
+function aplus_papers_node_load($nodes,$types) {
+	foreach($types as $type) {
+		if($type == 'a_paper') {
+			global $aplus_papers_form_is_new;
+			$aplus_papers_form_is_new = TRUE;
+		}
+	}
+}
 
 /**
  * Implements hook_node_view().
@@ -92,6 +110,19 @@ function aplus_papers_multistep_form($form, &$form_state, $steps) {
   $form['#suffix'] = '</div>';
   $form['#tree'] = TRUE; // We want to deal with hierarchical form values.
 
+  /*
+   * Check to see if this is the first time through here by checking $aplus_papers_form_is_new.
+   * If it's TRUE (as set in aplus_papers_node_load(), above), it's our first pass and we're 
+   * free to clear out anything lurking in the ajaxified form that might have been put there 
+   * by someone else. Once done, set the flag to false so we don't blow away our own form data.
+   */
+  global $aplus_papers_form_is_new;
+  if(isset($aplus_papers_form_is_new) && $aplus_papers_form_is_new) {
+  	$aplus_papers_form_is_new = FALSE;
+  	$step = 0;
+  	unset($form_state['storage']);
+  }
+  
   // $form_state['storage'] has no specific drupal meaning, but it is
   // traditional to keep variables for multistep forms there.
   $step = empty($form_state['storage']['step']) ? 0 : $form_state['storage']['step'];
