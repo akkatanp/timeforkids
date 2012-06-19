@@ -165,6 +165,7 @@ TFKADS.domainExceptions = new Array("timeforkidsdigital.com","timeinc.com","time
 		var targetLocation = "";
 		var finalUrl = "";
 		var isEyeBlaster ="";
+		var tfkAdFinalUrl = "";
 		var flashVarsArray = new Array();
 		if ($(objName + " object").length > 0) {
 			if ﻿($(objName + " object").attr('name').toLowerCase() == "ebreportingflash") {
@@ -210,6 +211,7 @@ TFKADS.domainExceptions = new Array("timeforkidsdigital.com","timeinc.com","time
 			adTargetLocation = new String($(objName + " noscript").text().toLowerCase().match(/href="([^"]*")/g));
 			tfkAdFinalUrl = adTargetLocation.substr(0, adTargetLocation.length - 1);tfkAdFinalUrl = tfkAdFinalUrl.substr(6, tfkAdFinalUrl.length);
 		} else {
+		   console.log(objName);
 		   if (flashVars.substr(0, 1) != "&" && flashVars != "") {  
 			   flashVars = "&" + flashVars;
 		   }
