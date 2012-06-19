@@ -1391,3 +1391,29 @@ function tfk_helper_get_content_type_label($content_type) {
     //dpm(node_type_get_name($related_node));
     //dpm(node_type_get_type($related_node));
 }
+
+/**
+ * Implement hook_node_update
+ * 
+ * @param type $node
+ * 
+ * This is called whenever a node is saved.
+ * 
+ * If a flag is set, unflag and reflag, in order to force the node back to
+ * the top of the lists (e.g. homepage_secondary_touts or featured destination)
+ * We unflag first because flagging a node that's already flagged is effectively
+ * a no-op. But if it's unflagged and then reflagged, the flag-weight is reset to
+ * force it to the top of the particular flag's list of flagged nodes.
+ * 
+ */
+function tfk_helper_node_update($node) {
+    if(isset($node->flag)) {
+        foreach($node->flag as $flag => $value) {
+            if($value) {
+                flag('unflag',$flag,$node->nid);
+                flag('flag',$flag,$node->nid);
+            }
+        }
+    }
+    return; 
+}
