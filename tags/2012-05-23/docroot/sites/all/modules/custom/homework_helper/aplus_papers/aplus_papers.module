@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * A multistep form for interactive A+ papers.
@@ -10,7 +9,9 @@
  */
 function aplus_papers_node_view($node, $view_mode) {
   if ($node->type == 'a_paper' && $view_mode == 'full') {
-    // Load potential editor.
+  	// don't let this page be cached - it could allow form data entered by one user be seen by other users
+    $GLOBALS['conf']['cache'] = FALSE; 
+  	// Load potential editor.
     foreach (filter_formats() as $format => $object) {
       if ($profile = wysiwyg_get_profile($format)) {
         wysiwyg_load_editor($profile);
