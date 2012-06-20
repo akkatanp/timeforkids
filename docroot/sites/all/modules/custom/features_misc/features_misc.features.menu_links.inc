@@ -54,7 +54,7 @@ function features_misc_menu_default_menu_links() {
   // Exported menu link: menu-tfk-footer-primary:https://subscription.timeforkids.com/storefront/subscribe-to-time-for-kids/link/1005025.html
   $menu_links['menu-tfk-footer-primary:https://subscription.timeforkids.com/storefront/subscribe-to-time-for-kids/link/1005025.html'] = array(
     'menu_name' => 'menu-tfk-footer-primary',
-    'link_path' => 'https://'. $domain. '/qa-subscription.timeforkids.com/storefront/subscribe-to-time-for-kids/link/1005025.html',
+    'link_path' => 'https://'. $domain. '/storefront/subscribe-to-time-for-kids/link/1005025.html',
     'router_path' => '',
     'link_title' => 'Subscribe & Renew',
     'options' => array(
