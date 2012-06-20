@@ -9,7 +9,7 @@
  */
 function features_misc_default_fe_block_boxes() {
   $export = array();
-  $domain = variable_get('lucie_callback_domain', 'qa-subscription.timeforkids.com');
+  $domain = variable_get('subscription_service_domain', 'subscription.timeforkids.com');
 
   $fe_block_boxes = new stdClass;
   $fe_block_boxes->info = 'Global Right Sidebar Ad';
