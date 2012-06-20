@@ -165,6 +165,7 @@ TFKADS.domainExceptions = new Array("timeforkidsdigital.com","timeinc.com","time
 		var targetLocation = "";
 		var finalUrl = "";
 		var isEyeBlaster ="";
+		var tfkAdFinalUrl = "";
 		var flashVarsArray = new Array();
 		if ($(objName + " object").length > 0) {
 			if ﻿($(objName + " object").attr('name').toLowerCase() == "ebreportingflash") {
