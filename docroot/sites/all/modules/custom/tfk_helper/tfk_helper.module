@@ -1,6 +1,5 @@
 <?php
 
-// dummy comment, remove me.
 
 /**
  * Key that holds variables for html preprocessor hook.
