@@ -55,6 +55,53 @@ function tfk_user_profile_lucie_variables($form, &$form_state) {
 }
 
 /**
+ * Implementation of hook_form_alter().
+ * 
+ * Add submit processing to update menus appropriately
+ */
+function tfk_user_profile_form_alter( &$form, &$form_state, $form_id){
+  if($form_id == 'tfk_user_profile_lucie_variables'){
+    $form['#submit'][] = 'tfk_user_profile_lucie_variables_submit';
+  }
+}
+
+/**
+ * Submit handler for Lucie Variables form
+ * 
+ * @param type $form
+ * @param type $form_state
+ */
+function tfk_user_profile_lucie_variables_submit(&$form, &$form_state) {
+  if($form_state['submitted'] == TRUE) {
+    $domain = $form['subscription_service_domain']['#value'];
+    
+    // rebuild menu item(s)
+    $clearcache = false;
+    $result = db_query("SELECT mlid FROM {menu_links} WHERE menu_name like 'menu%' and link_title='Subscribe & Renew' and hidden<>1",array(),array('fetch' => PDO::FETCH_ASSOC,));
+    foreach($result as $record) {
+        $mlid = $record['mlid'];
+        $item = menu_link_load($mlid);
+        $new_url = "https://" . $domain . "/storefront/subscribe-to-time-for-kids/link/1005015.html";
+        if($new_url != $item['link_path']) {
+            $item['link_path'] = $new_url;
+            menu_link_save($item);
+            $clearcache = true;
+        }
+    }
+    if($clearcache) {
+        /*
+         * This might be a little heavy-handed, but menus, forms, and theme
+         * registry items are all cached but all are modified when the lucie 
+         * variables change. The only way to get 'em refreshed is to clear the
+         * caches :-(
+         */
+          drupal_flush_all_caches(); // maybe a bit of overkill
+    }
+  }
+}
+
+
+/**
  *  Implementation of Preprocess Page to get the encryption on the "user" page
  */
 function tfk_user_profile_preprocess_page(&$variables) {
