@@ -1,0 +1,4 @@
+name = TFK Helper 
+description = Helper module for Time Inc. sites.
+core = 7.x
+package = TFK
