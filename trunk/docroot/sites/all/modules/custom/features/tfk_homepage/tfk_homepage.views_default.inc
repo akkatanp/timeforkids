@@ -495,7 +495,8 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['fields']['path']['label'] = '';
   $handler->display->display_options['fields']['path']['exclude'] = TRUE;
   $handler->display->display_options['fields']['path']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['path']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['path']['alter']['make_link'] = 1;
+  $handler->display->display_options['fields']['path']['alter']['path'] = '[path]';
   $handler->display->display_options['fields']['path']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['path']['alter']['external'] = 0;
   $handler->display->display_options['fields']['path']['alter']['replace_spaces'] = 0;
@@ -511,7 +512,7 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['fields']['path']['hide_empty'] = 0;
   $handler->display->display_options['fields']['path']['empty_zero'] = 0;
   $handler->display->display_options['fields']['path']['hide_alter_empty'] = 0;
-  $handler->display->display_options['fields']['path']['absolute'] = 0;
+  $handler->display->display_options['fields']['path']['absolute'] = 1;
   /* Field: Content: Type */
   $handler->display->display_options['fields']['type']['id'] = 'type';
   $handler->display->display_options['fields']['type']['table'] = 'node';
@@ -633,7 +634,7 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['fields']['field_image']['alter']['alter_text'] = 0;
   $handler->display->display_options['fields']['field_image']['alter']['make_link'] = 1;
   $handler->display->display_options['fields']['field_image']['alter']['path'] = '[path]';
-  $handler->display->display_options['fields']['field_image']['alter']['absolute'] = 1;
+  $handler->display->display_options['fields']['field_image']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_image']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_image']['alter']['replace_spaces'] = 0;
   $handler->display->display_options['fields']['field_image']['alter']['trim_whitespace'] = 0;
