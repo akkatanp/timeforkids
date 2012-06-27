@@ -1,0 +1,1061 @@
+<?php
+
+function tfk_atw_init(){
+  $js_path = drupal_get_path('theme', 'tfk') .'/js/tfk_global.js';
+  drupal_add_js($js_path,'file');
+  if(arg(0) == 'around-the-world' || arg(0) == 'destination'){
+    $js_path = drupal_get_path('theme', 'tfk') .'/js/atw_homepage_slideshow.js';
+    $css_path = drupal_get_path('theme', 'tfk') .'/css/atw_homepage_slideshow.css';
+    drupal_add_js($js_path,'file');
+    drupal_add_css($css_path,'file');
+  }
+  
+  $node = menu_get_object('node', 1);
+  if($node && $node->type == 'webform') {
+    drupal_add_css(drupal_get_path('module', 'tfk_atw'). '/css/tfk_atw.css');
+  }
+}
+
+
+function tfk_atw_menu(){
+  $items['around-the-world'] = array(
+		'title' => 'Around The World',
+		'page callback' => 'atw_page_callback',
+		'access callback' => 'user_access',
+		'access arguments' => array('access content')
+	);
+
+  $items['around-the-world/map'] = array(
+		'title' => 'Around The World',
+		'page callback' => 'atw_page_map_callback',
+		'access callback' => 'user_access',
+		'access arguments' => array('access content')
+	);
+  $items['destination/%/challenge'] = array(
+		'title' => 'Challenge quiz',
+		'page callback' => 'atw_challenge_callback',
+                'page arguments' => array(1),
+		'access callback' => 'user_access',
+		'access arguments' => array('access content')
+	);
+  return $items;
+}
+
+function atw_page_callback(){
+   drupal_set_title('Around The World');
+  return '';
+}
+
+function atw_page_map_callback(){
+  drupal_set_title('Around The World');
+  return '';
+}
+
+function atw_challenge_callback($destination_name){
+  drupal_set_title('Around The World');
+
+  $alias = 'destination/'.$destination_name;
+  $parent_path = drupal_lookup_path('source',$alias);
+  $tmp_nid = explode('/',$parent_path);
+  $parent_nid = $tmp_nid[1];
+
+  //now lets get the webform nid;
+
+  $sql = db_query('select field_destination_quiz_nid from {field_data_field_destination_quiz} where entity_id = :parent_nid and bundle = :bundle',array('parent_nid' => $parent_nid,'bundle'=> 'atw_destination'));
+  $result = $sql->fetch();
+  if(isset($result->field_destination_quiz_nid)){
+    $quiz_nid = $result->field_destination_quiz_nid;
+
+    //$form = drupal_get_form('webform_client_form_'.$quiz_nid);
+    $form = node_load($quiz_nid);
+    $form->webform['confirmation'] = 'http://msn.com';
+
+  }
+
+  return node_view($form);
+
+}
+
+function tfk_atw_block_info() {
+  $blocks['atw-page-slideshow'] = array(
+    'info' => t('Custom slideshow that appears on the ATW Page')
+  );
+  $blocks['atw-page-list-map-switch'] = array(
+    'info' => t('Switcher beetween list of destinations and a google map')
+  );
+  $blocks['atw-destination-navigation'] = array(
+    'info' => t('Destination Navigation Block')
+  );
+  $blocks['atw-destination-related'] = array(
+    'info' => t('Destination Related Teacher Resources and Related Articles')
+  );
+  $blocks['atw-destination-slideshow'] = array(
+    'info' => t('Slideshow that appears on a destination page')
+  );
+  $blocks['atw-timeline-slideshow'] = array(
+    'info' => t('Slideshow that appears on a ATW Timeline page')
+  );
+  $blocks['atw-daylife-slideshow'] = array(
+    'info' => t('Slideshow that appears on a ATW Day in Life')
+  );
+  return $blocks;
+}
+
+function tfk_atw_block_view($delta='') {
+  $block = array();
+  switch ($delta) {
+    case 'atw-page-slideshow':
+      $block['subject'] = t('Custom slideshow that appears on the ATW Page');
+      $block['content'] = _tfk_atw_block_content();
+      break;
+    case 'atw-page-list-map-switch':
+      $block['subject'] = t(''); //this is title of the block that acutally appears on the page , so we want it empty
+      $block['content'] = _tfk_atw_page_map_switcher();
+      break;
+   case 'atw-destination-navigation':
+      $block['subject'] = t('');
+      $block['content'] = _tfk_atw_destination_navigation();
+      break;
+  case 'atw-destination-related':
+      $block['subject'] = t('');
+      $block['content'] = _tfk_atw_destination_related();
+      break;
+  case 'atw-destination-slideshow':
+    $block['subject'] = t('');
+    $block['content'] = _tfk_atw_destination_slideshow();
+    break;
+  case 'atw-timeline-slideshow':
+    $block['subject'] = t('');
+    $block['content'] = _tfk_atw_timeline_slideshow();
+    break;
+  case 'atw-daylife-slideshow':
+    $block['subject'] = t('');
+    $block['content'] = _tfk_atw_daylife_slideshow();
+    break;
+  }
+  return $block;
+}
+
+function _tfk_atw_daylife_slideshow(){
+    return theme('atw_daylife_node_slideshow',_get_atw_daylife_slideshow_images());
+}
+
+function _tfk_atw_timeline_slideshow(){
+    return theme('atw_timeline_node_slideshow',_get_atw_timeline_slideshow_images());
+}
+
+function _tfk_atw_destination_slideshow(){
+  return theme('atw_destination_node_slideshow',_get_atw_destination_slideshow_images());
+}
+
+function _tfk_atw_block_content(){
+    return theme('atw_page_slideshow',_tfk_atw_block_content_data());
+}
+
+function _tfk_atw_page_map_switcher(){
+   return theme('atw_page_list_map_switch',array());
+}
+
+function _tfk_atw_destination_navigation(){
+    return theme('atw_destination_navigation',_tfk_atw_destination_navigation_data());
+}
+
+function _tfk_atw_destination_related(){
+    return theme('atw_destination_related',_tfk_atw_destination_related_data());
+}
+
+
+function tfk_atw_theme() {
+  return array(
+    'atw_page_slideshow' => array(
+      'template' => 'atw-page-slideshow',
+      'variables' => array('list' => NULL),
+    ),
+    'atw_page_list_map_switch' => array(
+      'template' => 'atw-page-list-map-switch',
+      'variables' => array('list' => NULL),
+    ),
+    'atw_destination_navigation' => array(
+      'template' => 'atw-destination-navigation',
+      'variables' => array('list' => NULL),
+    ),
+     'atw_destination_related' => array(
+      'template' => 'atw-destination-related',
+      'variables' => array('list' => NULL),
+    ),
+     'atw_destination_sightseeing' => array(
+      'template' => 'atw-destination-sightseeing',
+      'variables' => array('list' => NULL),
+    ),
+      'atw_destination_node_slideshow' => array(
+      'template' => 'atw-destination-node-slideshow',
+      'variables' => array('list' => NULL),
+    ),
+      'atw_timeline_node_slideshow' => array(
+      'template' => 'atw-timeline-node-slideshow',
+      'variables' => array('list' => NULL),
+    ),
+      'atw_daylife_node_slideshow' => array(
+      'template' => 'atw-daylife-node-slideshow',
+      'variables' => array('list' => NULL),
+    )
+  );
+}
+
+function _get_atw_daylife_slideshow_images(){
+    $daylife_data = array();
+    $node_data = array();
+    
+    $nid = arg(1);
+    $node = node_load($nid);
+    $node_data['daylife_nid'] = $node->nid;
+    $img_tmp = field_get_items('node', $node, 'field_person_photo');
+    //$node_data['daylife_speaker_photo'] = file_create_url(image_style_path('tfk_square_large',$img_tmp[0]['uri']));
+    $node_data['daylife_speaker_photo'] = file_create_url($img_tmp[0]['uri']);//Using original image per tfks318
+    $intr_tmp = field_get_items('node', $node, 'field_person_intro');
+    $node_data['daylife_speaker_intro'] = $intr_tmp[0]['value'];
+
+    $intr_tmp = field_get_items('node', $node, 'field_person_headline');
+    $node_data['daylife_speaker_headline'] = $intr_tmp[0]['value'];
+
+    $credit_tmp =  field_get_items('node', $node, 'field_person_photo_credit');
+    $node_data['daylife_speaker_credit'] = $credit_tmp[0]['value'];
+
+    $tmp_day_nid =  field_get_items('node', $node, 'field_day_in_life_time');
+
+    $result = db_query('select ti.field_day_in_life_time_item_value,ti.entity_id,
+            ta.field_day_in_life_time_activity_value
+            from {field_data_field_day_in_life_time_item} ti
+            left join {field_data_field_day_in_life_time_activity} ta on ti.entity_id = ta.entity_id
+            left join {field_data_field_day_in_life_time} lt on ti.entity_id = lt.field_day_in_life_time_value
+            where lt.entity_id = :entity_id',array('entity_id' => $node->nid));
+
+    foreach ($result as $k => $record) {
+
+        $daylife_data[$k]['time'] = $record->field_day_in_life_time_item_value;
+        $daylife_data[$k]['activity'] = $record->field_day_in_life_time_activity_value;
+        $daylife_data[$k]['time_id'] = $record->entity_id;
+    }
+
+    $is_admin_editor = 0;
+    global $user;
+    $user_roles = $user->roles;
+    if(in_array('administrator',$user_roles) || in_array('editor',$user_roles)){
+         $is_admin_editor = 1;
+    }
+
+
+    $tmp_url = explode('/',request_uri());
+    $tmp_url = array_slice($tmp_url, -3, 3, true);
+    $tmp_url = array_merge(array(),$tmp_url);
+    if(isset($record->type) && $record->type == 'atw_destination'){
+      $country_alias = $tmp_url[1].'/'.$tmp_url[2];
+    }else{
+      $country_alias = $tmp_url[0].'/'.$tmp_url[1];
+    }
+
+    $return_path = $country_alias.'/day-in-life';
+
+
+    $list = array('cust_node_title'=>$node->title,'daylife_data' => $daylife_data,'node_data' => $node_data,'is_admin_editor' => $is_admin_editor,'return_path'=>$return_path);
+    return $list;
+}
+
+function _get_atw_timeline_slideshow_images(){
+
+    $timelines_data = array();
+    $nid = arg(1);
+    $node = node_load($nid);
+
+    $tmp_time_nid =  field_get_items('node', $node, 'field_timeline_event');
+    foreach($tmp_time_nid as $k => $tmp_event_nid){
+        $event_nid = $tmp_event_nid['value'];
+        $timelines_data[$k]['event_nid'] = $event_nid;
+
+        $result = db_query('select ec.field_timeline_event_copy_value as event_copy ,ep.field_timeline_event_photo_fid,fm.uri as file_uri,et.field_timeline_event_text_value as timeline_title,fpc.field_photo_credit_value as photo_credit
+            from {field_data_field_timeline_event_copy} ec left join {field_data_field_timeline_event_photo} ep on ec.entity_id = ep.entity_id
+            left join {file_managed} fm on ep.field_timeline_event_photo_fid = fm.fid
+            left join {field_data_field_timeline_event_text} et on ec.entity_id = et.entity_id
+            left join {field_data_field_photo_credit} fpc on ec.entity_id = fpc.entity_id
+            where ec.entity_id = :event_nid',array('event_nid' => $event_nid));
+        $record = $result->fetch();
+        $timelines_data[$k]['image_shape'] = 'undefined';
+        
+        $timelines_data[$k]['event_copy'] = $record->event_copy;
+        $timelines_data[$k]['event_title'] = $record->timeline_title;
+
+        if(strlen($record->file_uri) > 0){
+            //$timelines_data[$k]['image_path'] = image_style_path('tfk_rect_large',$record->file_uri);
+            $timelines_data[$k]['image_path'] = $record->file_uri;//Using full image per tfks317
+            $timelines_data[$k]['image_path'] = file_create_url($timelines_data[$k]['image_path']);
+            $timelines_data[$k]['image_attached'] = 1;
+        }else{
+            $timelines_data[$k]['image_attached'] = 0;
+        }
+
+        $timelines_data[$k]['image_credit'] = $record->photo_credit;
+        $tst = image_get_info($record->file_uri);
+        if($tst['width'] > $tst['height']){
+          $timelines_data[$k]['image_shape'] = 'horizontal';
+        }elseif($tst['width'] < $tst['height']){
+          $timelines_data[$k]['image_shape'] = 'vertical';
+        }elseif($tst['width'] == $tst['height']){
+          $timelines_data[$k]['image_shape'] = 'square';
+        }
+
+    }
+
+    $is_admin_editor = 0;
+    global $user;
+    $user_roles = $user->roles;
+    if(in_array('administrator',$user_roles) || in_array('editor',$user_roles)){
+         $is_admin_editor = 1;
+    }
+
+    $additional_content = array();
+    $addit_content = field_get_items('node', $node, 'field_additional_content');
+    
+    if(is_array($addit_content) && !empty($addit_content)){
+        foreach($addit_content as $i => $add_cont){
+            $additional_content[$i]['nid'] = $add_cont['nid'];
+            $additional_content[$i]['title'] = $add_cont['node']->title;
+        }
+    }
+
+    $tmp_url = explode('/',request_uri());
+    $tmp_url = array_slice($tmp_url, -3, 3, true);
+    $tmp_url = array_merge(array(),$tmp_url);
+    if(isset($record->type) && $record->type == 'atw_destination'){
+      $country_alias = $tmp_url[1].'/'.$tmp_url[2];
+    }else{
+          $country_alias = $tmp_url[0].'/'.$tmp_url[1];
+    }
+
+    $return_path = $country_alias.'/history-timeline';
+
+    $list = array('cust_node_title'=>$node->title,'images_data' => $timelines_data,'is_admin_editor' => $is_admin_editor,'timeline_nid' => $nid,'related_content' => $additional_content,'return_path'=>$return_path);
+    return $list;
+}
+
+function _get_atw_destination_slideshow_images(){
+  
+    
+  $tmp_imgs = array();
+    
+  $args = arg();
+  
+  if(isset($args[1]) && is_numeric($args[1])){
+      $nid = arg(1);
+      $node = node_load($nid);
+      $tmp_slide_nid =  field_get_items('node', $node, 'field_country_slideshow');
+      $slideshow_node = $tmp_slide_nid[0]['node'];
+      $tmp_imgs = field_get_items('node', $slideshow_node, 'field_slideshow_images');
+      $images = array();
+
+
+      if(count($tmp_imgs)>0){
+        foreach($tmp_imgs as $k => $image){
+          $img_data = $image['node'];
+          $tmp_img_uri = field_get_items('node', $img_data, 'field_image');
+          $img_uri = $tmp_img_uri[0]['uri'];
+          $images[$k]['image_path'] = image_style_path('tfk_rect_large',$img_uri);
+          $images[$k]['image_path'] = file_create_url($images[$k]['image_path']);
+          $images[$k]['image_title'] = $img_data->title;
+          $images[$k]['image_credit'] = $image['node']->field_credit['und'][0]['value'];
+        }
+      }
+      $list = array('images_data' => $images);
+  
+  
+  return $list;
+  }else{
+      return array();
+  }
+}
+
+
+function _tfk_atw_destination_related_data(){
+    $vars = array();
+    if(count(arg() > 0) && arg(0) == '404page') {
+    	$vars['resources_label'] = '';
+    	$vars['worksheets'] = array();
+    	$vars['related_articles'] = array();
+    	$list = array('related_data' => $vars);
+    	return $list;
+    }
+    
+    if( count(arg()) == 2 && arg(0) == 'node' && is_numeric(arg(1))){ //DESTINATION
+        $nid = arg(1);
+        $sql = db_query('select type,title from node where nid = :nid and status = 1',array(':nid' => $nid));
+        $record = $sql->fetch();
+
+        $tmp_url = explode('/',request_uri());
+        /* if request_uri is of the form '/node/nnnnn' try to get its named alias */
+        if(count($tmp_url)>2 && $tmp_url[1]=='node' && is_numeric($tmp_url[2])) {
+        	$src = $tmp_url[1].'/'.$tmp_url[2];
+        	$sql = db_query('select alias from url_alias where source = :src',array(':src' => $src));
+        	$rcrd = $sql->fetch();
+        	if($rcrd && $rcrd != false) {
+        		$tmp_url = '/'.$rcrd -> alias;
+        		$tmp_url = explode('/',$tmp_url);
+        	}
+        }
+        
+        $tmp_url = array_slice($tmp_url, -3, 3, true);
+        $tmp_url = array_merge(array(),$tmp_url);
+        if($record->type == 'atw_destination'){
+          $country_alias = $tmp_url[1].'/'.$tmp_url[2];
+        }else{
+          $country_alias = $tmp_url[0].'/'.$tmp_url[1];
+        }
+        $sql = db_query('select source from url_alias where alias = :alias',array('alias'=>$country_alias));
+        $res = $sql->fetch();
+        $source_tmp = explode('/',$res->source);
+        $country_nid = $source_tmp[1];
+        $country = node_load($country_nid);
+        $nid = $country->nid;
+
+        $sql = db_query('select field_resources_label_value as resources_label from {field_data_field_resources_label} where entity_id = :nid',array(':nid' => $nid));
+        $record = $sql->fetch();
+        if(isset($record->resources_label)){
+            $vars['resources_label'] = $record->resources_label;
+        }else{
+            $vars['resources_label'] = '';
+        }
+        $vars['worksheets'] = _get_worksheets_by_nid($nid);
+        $vars['related_articles'] = _get_related_articles_by_nid($nid);
+
+    }
+    
+    $list = array('related_data' => $vars);
+    return $list;
+}
+
+
+function get_destination_existing_references($node){
+  $vars = array();
+  if(isset($node->field_sightseeing) && !empty($node->field_sightseeing['und'][0]['nid'])){
+    $vars['sightseeing_exists'] = 1;
+  }
+  if(isset($node->field_timeline) && !empty($node->field_timeline['und'][0]['nid'])){
+    $vars['timeline_exists'] = 1;
+  }
+  if(isset($node->field_native_lingo) && !empty($node->field_native_lingo['und'][0]['nid'])){
+    $vars['lingo_exists'] = 1;
+  }
+  if(isset($node->field_destination_quiz) && !empty($node->field_destination_quiz['und'][0]['nid'])){
+    $vars['challenge_exists'] = 1;
+  }
+  if(isset($node->field_day_in_life) && !empty($node->field_day_in_life['und'][0]['nid'])){
+    $vars['daylife_exists'] = 1;
+  }
+
+  return $vars;
+}
+
+
+function _tfk_atw_destination_navigation_data(){
+    $vars = array();
+    if(count(arg() > 0) && arg(0) == '404page') {
+	    $vars['sightseeing_exists'] = 0;
+	    $vars['timeline_exists'] = 0;
+	    $vars['lingo_exists'] = 0;
+	    $vars['daylife_exists'] = 0;
+	    $vars['challenge_exists'] = 0;
+    	$list = array('navigation_data' => $vars);
+    	return $list;
+    }
+    
+    $tmp_url = explode('/',request_uri());
+    /* if request_uri is of the form '/node/nnnnn' try to get its named alias */
+    if(count($tmp_url)>2 && $tmp_url[1]=='node' && is_numeric($tmp_url[2])) {
+    	$src = $tmp_url[1].'/'.$tmp_url[2];
+    	$sql = db_query('select alias from url_alias where source = :src',array(':src' => $src));
+    	$record = $sql->fetch();
+    	if($record && $record != false) {
+    		$tmp_url = '/'.$record -> alias;
+    		$tmp_url = explode('/',$tmp_url);
+    	}   		
+    }
+    $tmp_url = array_slice($tmp_url, -3, 3, true);
+    $tmp_url = array_merge(array(),$tmp_url);
+
+    $vars['sightseeing_exists'] = 0;
+    $vars['timeline_exists'] = 0;
+    $vars['lingo_exists'] = 0;
+    $vars['daylife_exists'] = 0;
+    $vars['challenge_exists'] = 0;
+
+
+    if( count(arg()) == 2 && arg(0) == 'node' && is_numeric(arg(1))){
+        $nid = arg(1);
+        $sql = db_query('select type,title from node where nid = :nid',array(':nid' => $nid));
+        $record = $sql->fetch();
+
+
+        if($record->type == 'atw_destination'){
+           $nid = arg(1);
+           $node = node_load($nid);
+           $sql = db_query('select nid,type,title from node where nid = :nid ',array(':nid' => $nid));
+           $record = $sql->fetch();
+           $vars['alias'] = drupal_lookup_path('alias', 'node/'.$nid);
+           $vars['navigation_block_title'] = $record->title;
+           $what_exists = get_destination_existing_references($node);
+           $vars = array_merge($vars,$what_exists);
+           
+        }
+        
+        if($record->type == 'atw_timeline' || $record->type == 'atw_native_lingo' || $record->type == 'atw_day_in_life' || $record->type == 'atw_sightseeing' || $record->type == 'webform'){
+           //here we have to extract destination from dat $tmp_url;
+           $country_alias = $tmp_url[0].'/'.$tmp_url[1];
+           $vars['alias'] = $country_alias;
+           $sql = db_query('select source from url_alias where alias = :alias',array('alias'=>$country_alias));
+           $res = $sql->fetch();
+           $source_tmp = explode('/',$res->source);
+           $country_nid = $source_tmp[1];
+           $country = node_load($country_nid);
+           $vars['navigation_block_title'] = $country->title;
+           $what_exists = get_destination_existing_references($country);
+           $vars = array_merge($vars,$what_exists);
+        }
+    }
+
+
+    if(arg(0) == 'destination' &&  arg(2) == 'challenge'){
+        //getting nid of the parente
+        $parent_alias = 'destination/'.arg(1);
+        $source_destination = drupal_lookup_path('source', $parent_alias);
+        $source_nid_tmp = explode('/',$source_destination);
+        $source_nid = $source_nid_tmp[1];
+        $sql = db_query('select type,title from node where nid = :nid and status = 1',array(':nid' => $source_nid));
+        $record = $sql->fetch();
+        $vars['alias'] = $parent_alias;
+        $vars['navigation_block_title'] = $record->title;
+    }
+
+
+
+    $vars['timeline_class'] = '';
+    $vars['lingo_class'] = '';
+    $vars['daylife_class'] = '';
+    $vars['sightseeing_class'] = '';
+    $vars['challenge_class'] = '';
+    
+    if($record->type == 'atw_timeline'){
+      $vars['timeline_class'] = 'active';
+    }
+    if($record->type == 'atw_native_lingo'){
+      $vars['lingo_class'] = 'active';
+    }
+    if($record->type == 'atw_day_in_life'){
+      $vars['daylife_class'] = 'active';
+    }
+    if($record->type == 'atw_sightseeing'){
+      $vars['sightseeing_class'] = 'active';
+    }
+    if($record->type == 'webform'){
+      $vars['challenge_class'] = 'active';
+    }
+
+    $list = array('navigation_data' => $vars);
+    return $list;
+}
+
+
+function _tfk_atw_block_content_data(){
+  $fid = 12; // FLAG ID FOR DESTINATIONS TAGGED TO APPEAR IN CAROUSEL
+
+  //Getting slideshows of destinations that got tagged to appear in ATW carousel
+  $result = db_query('select n.nid as destination_nid, n.title as destination_title,
+          cs.field_country_slideshow_nid as flagged_slideshow_nid
+          from {node} n left join {flag_content} fc on fc.content_id = n.nid
+          left join {field_data_field_country_slideshow} cs on cs.entity_id = n.nid
+          where fc.fid = :fid and n.status = 1',array(':fid' => $fid));
+
+  $slideshow_data = array();
+
+  foreach ($result as $record) {
+    $slideshow_data[$record->destination_nid]= array();
+    //now lets get the data for the first image of the slideshow
+
+    $image_result = db_query('SELECT si.field_slideshow_images_nid, n.title,dfc.field_credit_value as credit_value,  fi.field_image_fid, fm.filename
+        FROM {field_data_field_slideshow_images} AS si
+        LEFT JOIN {node} n ON n.nid = si.field_slideshow_images_nid
+        LEFT JOIN {field_data_field_credit} dfc on n.nid = dfc.entity_id
+        LEFT JOIN {field_data_field_image} fi ON fi.entity_id = si.field_slideshow_images_nid
+        LEFT JOIN {file_managed} fm ON fm.fid = fi.field_image_fid
+        WHERE si.entity_id = :eid and n.status = 1 LIMIT 0,1',array(':eid' => $record->flagged_slideshow_nid));
+    foreach($image_result as $rec){
+      $slideshow_data[$record->destination_nid]['destination_title'] = $record->destination_title;
+      $slideshow_data[$record->destination_nid]['destination_nid'] = $record->destination_nid;
+      $slideshow_data[$record->destination_nid]['destination_path'] = drupal_lookup_path('alias','node/'.$record->destination_nid);
+      $slideshow_data[$record->destination_nid]['image_title'] = $rec->title;
+      $slideshow_data[$record->destination_nid]['image_credit'] = $rec->credit_value;
+      $slideshow_data[$record->destination_nid]['image_filename'] = $rec->filename;
+
+    }
+  }
+  $list = array('destinations_data' => $slideshow_data);
+  return $list;
+}
+
+
+function _get_worksheets_by_nid($nid){
+    $vars = array();
+    //lets get attached worksheets
+    $result = db_query('select rl.field_resources_list_nid, n.title as worksheet_title, wp.field_worksheet_pdf_private_fid, fm.filename
+        from {field_data_field_resources_list} rl  left join {node} n on rl.field_resources_list_nid = n.nid
+        left join {field_data_field_worksheet_pdf_private}  wp on wp.entity_id = rl.field_resources_list_nid
+        left join {file_managed} fm on fm.fid = wp.field_worksheet_pdf_private_fid
+        where rl.entity_id = :nid and n.status = 1',array(':nid' => $nid));
+    foreach ($result as $i => $record) {
+       $vars[$i]['filepath'] = file_create_url('private://worksheets/'. $record->filename);
+       $vars[$i]['title'] = $record->worksheet_title;
+    }
+    return $vars;
+}
+
+function _get_related_articles_by_nid($nid){
+   $vars = array();
+   $result = db_query('select ra.field_related_articles_nid, n.title from
+       field_data_field_related_articles ra left join node n on n.nid = ra.field_related_articles_nid where ra.entity_id = :nid and n.status = 1',array(':nid' => $nid));
+   foreach ($result as $i => $record) {
+       $vars[$i]['alias'] = drupal_lookup_path('alias','node/'.$record->field_related_articles_nid);
+       $vars[$i]['title'] = $record->title;
+   }
+   
+   return $vars;
+}
+
+
+function tfk_atw_token_info(){
+  $info['tokens']['node']['parent_destination'] = array(
+    'name' => t('Parent Destination Refferer'),
+    'description' => t('Return the url of parent destination, eg :"destination/spain"'),
+  );
+
+  return $info;
+}
+
+function tfk_atw_tokens($type, $tokens, array $data = array(), array $options = array()){
+    $replacements = array();
+    if ($type == 'node' && !empty($data['node'])) {
+        if($data['node']->type == 'atw_timeline'){
+          $nid =  $data['node']->nid;
+          $result = db_query('select rt.entity_id,n.type from field_data_field_timeline rt left join node n on rt.entity_id = n.nid where rt.field_timeline_nid = :timeline_nid and n.type = :type and n.status = 1',array(':type'=>'atw_destination',':timeline_nid'=>$nid));
+          $record = $result->fetch();
+          $alias = str_replace('destination/','',drupal_lookup_path('alias','node/'.$record->entity_id));
+        }
+
+        if($data['node']->type == 'atw_native_lingo'){
+            $nid =  $data['node']->nid;
+            $result = db_query('select nl.entity_id,n.type from field_data_field_native_lingo nl left join node n on nl.entity_id = n.nid where nl.field_native_lingo_nid = :lingo_nid and n.type = :type and n.status = 1',array(':type'=>'atw_destination',':lingo_nid'=>$nid));
+            $record = $result->fetch();
+            $alias = str_replace('destination/','',drupal_lookup_path('alias','node/'.$record->entity_id));
+        }
+
+        if($data['node']->type == 'atw_day_in_life'){
+            $nid =  $data['node']->nid;
+            $result = db_query('select nl.entity_id,n.type from  field_data_field_day_in_life nl left join node n on nl.entity_id = n.nid where nl.field_day_in_life_nid = :day_in_life_nid and n.type = :type and n.status = 1',array(':type'=>'atw_destination',':day_in_life_nid'=>$nid));
+            $record = $result->fetch();
+            $alias = str_replace('destination/','',drupal_lookup_path('alias','node/'.$record->entity_id));
+        }
+
+
+        if($data['node']->type == 'atw_sightseeing'){
+            $nid = $data['node']->nid;
+            $result = db_query('select nl.entity_id,n.type from field_data_field_sightseeing nl left join node n on nl.entity_id = n.nid where nl.field_sightseeing_nid = :sight_nid and n.type = :type and n.status = 1',array(':type'=>'atw_destination',':sight_nid'=>$data['node']->nid));
+            $record = $result->fetch();
+            $alias = str_replace('destination/','',drupal_lookup_path('alias','node/'.$record->entity_id));
+        }
+
+
+        if($data['node']->type == 'webform'){
+          $nid = $data['node']->nid;
+            $result = db_query('select nl.entity_id,n.type from field_data_field_destination_quiz nl left join node n on nl.entity_id = n.nid where nl.field_destination_quiz_nid = :quiz_nid and n.type = :type and n.status = 1',array(':type'=>'atw_destination',':quiz_nid'=>$data['node']->nid));
+            $record = $result->fetch();
+            if(is_numeric($record->entity_id)){
+              $alias = str_replace('destination/','',drupal_lookup_path('alias','node/'.$record->entity_id));
+            }
+        }
+
+        foreach ($tokens as $name => $original) {
+          if($name == 'parent_destination'){
+              $replacements[$original] = $alias;
+          }
+       }
+       
+    }
+    return $replacements;
+}
+
+/* QUIZZ FUNCTIONALITY BEGIN*/
+function tfk_atw_webform_component_info() {
+  $components = array();
+
+  $components['question_quiz'] = array(
+      'label' => t('Quiz question'),
+      'description' => t('Basic textfield type.'),
+      'file' => 'question_quiz.inc',
+      'features' => array(
+        'email_name' => TRUE,
+        'spam_analysis' => TRUE,
+      ),
+    );
+
+  return $components;
+
+}
+
+function tfk_atw_quiz_submit(&$form, &$form_state) {
+
+        //$form_state['redirect'] = array('0' =>'destination/spain/challenge');
+        //$form_state['redirect'] = 'destination/spain/challenge';
+        //print_r($form_state);exit;
+        
+	$questions = $form['#node']->webform['components'];
+	$correct_answers = $total_answers = 0;
+
+
+	if(!empty($questions))
+	foreach($questions as $key => $question) {
+
+
+		$correct_value = $question['extra']['correct_answer_new'];
+		$user_value = $form_state['values']['submitted'][$key]['answer'];
+                //
+                
+
+                $question_answers  = explode ("\n", $questions[$key]['extra']['answers']);
+                $user_answer = $question_answers[$user_value];
+
+		if (trim($user_answer) == trim($correct_value)) {
+			$form_state['storage']['user_answers'][$key] = TRUE;
+			$correct_answers++;
+		}
+		else {
+			$form_state['storage']['user_answers'][$key] = FALSE;
+		}
+
+		$total_answers++;
+	}
+
+	$form_state['rebuild'] = TRUE;
+	$form_state['storage']['correct_answers'] = $correct_answers;
+	$form_state['storage']['total_answers'] = $total_answers;
+}
+
+function tfk_atw_form_alter(&$form,&$form_state,$form_id) {
+	if(substr($form_id,0, 19) == 'webform_client_form') {
+	  $node = menu_get_object();
+          
+	  if (isset($node->type) && $node->type == 'webform') {
+	           $dest_slug = arg(1);
+              //$form['#action'] = url('destination/'.$dest_slug.'/challenge');
+                   $form['actions']['submit']['#value'] = 'How did I do?';
+  		if (isset($form_state['storage'])) {
+
+  			$questions = $form['#node']->webform['components'];
+
+  			$old_form = $form;
+  			$form = array();
+  			$form['#build_id'] = $old_form ['#build_id'];
+  			$form['#tree'] = $old_form ['#tree'];
+  			$form['#parents'] = $old_form ['#parents'];
+  			$form['#array_parents'] = isset($old_form['#array_parents'])?$old_form ['#array_parents']:NULL; // make sure #array_parents exists, one way or another
+
+
+
+                        if($form_state['storage']['correct_answers'] >= 0 && $form_state['storage']['correct_answers'] < 3){
+                          $form['message']= array(
+                                  '#markup' => t('<h1>Try again! You got '.$form_state['storage']['correct_answers'].' correct answers of '.$form_state['storage']['total_answers'].'.</h1>')
+                          );
+                        }elseif($form_state['storage']['correct_answers'] > 2 && $form_state['storage']['correct_answers'] < 6){
+                          $form['message']= array(
+                                  '#markup' => t('<h1>Not Bad! You got '.$form_state['storage']['correct_answers'].' correct answers of '.$form_state['storage']['total_answers'].'.</h1>')
+                          );
+                        }elseif($form_state['storage']['correct_answers'] > 5 && $form_state['storage']['correct_answers'] < 9){
+                          $form['message']= array(
+                                  '#markup' => t('<h1>Nice Job! You got '.$form_state['storage']['correct_answers'].' correct answers of '.$form_state['storage']['total_answers'].'.</h1>')
+                          );
+                        }else{
+                          $form['message']= array(
+                                  '#markup' => t('<h1>Nice Job! You got '.$form_state['storage']['correct_answers'].' correct answers of '.$form_state['storage']['total_answers'].'.</h1>')
+                          );
+                        }
+
+                        $question_iterator = 1;
+  			if(!empty($questions))
+  			foreach($questions as $key => $question) {
+
+  				if ($form_state['storage']['user_answers'][$key]) {
+  					$value = t('Correct.') . ' ' . $question['extra']['correct_text'];
+  				}
+  				else {
+  					$value = t('Oops, you missed this one.');
+  				}
+
+  				$form[$question['form_key']] = array (
+  					'#type' => 'item',
+  					'#title' => $question_iterator.'. '.$question['name'],
+  					'#markup' => $value
+  				);
+                                
+                            $question_iterator++;
+  			}
+
+
+                        $tmp_url = explode('/',request_uri());
+                      $tmp_url = array_slice($tmp_url, -3, 3, true);
+                      $tmp_url = array_merge(array(),$tmp_url);
+                      if(isset($record) && $record->type == 'atw_destination'){ // make sure $record exists before comparing to it
+                        $country_alias = $tmp_url[1].'/'.$tmp_url[2];
+                      }else{
+                        $country_alias = $tmp_url[0].'/'.$tmp_url[1];
+                      }
+                        $form['retrybutton'] = array(
+  				'#markup' => '<a clas="retry" href="'.url($country_alias.'/challenge').'">Try Again</a>'
+  			);
+  		}
+  		else {
+
+
+                  //print_r($form);
+                  $form['#submit'][]='tfk_atw_quiz_submit';
+  		}
+	  }
+     
+	}
+
+        if($form_id != 'atw_destination_node_form'){
+          //print_r($form);
+        }
+        
+
+}
+/* QUIZZ FUNCTIONALITY END*/
+
+
+//PREPROCESSORS
+
+function tfk_atw_preprocess_page(&$vars, $hook) {
+
+  $arg = arg();
+  if(count($arg) == 2 && is_numeric($arg[1])){
+    $nid = $arg[1];
+    $result = db_query('select n.type from node n where n.nid = :nid',array(':nid'=>$nid));
+    $record = $result->fetch();
+    
+    if(isset($record->type)){
+        $type = $record->type;
+
+        //comparing to 'webform' as well since this is a challenge form
+        if (substr($type, 0, 3) === 'atw' || $type =='webform'){
+          $vars['section_title'] = "Around The World";
+        }
+    }
+    
+
+  }
+}
+
+
+
+function tfk_atw_preprocess_node(&$vars, $hook) {
+
+    if($vars['type'] == 'atw_native_lingo'){
+
+        $vars['lingo_phrases']['basic'] = array();
+        $vars['lingo_phrases']['next_level'] = array();
+        $vars['lingo_photo_credit'] = '';
+        foreach( $vars['field_native_lingo_phrase'] as $k => $lingo_phrase ){
+            $phrase_nid = $lingo_phrase['value'];
+            $result = db_query('select pt.field_lingo_phrase_text_value as phrase_text,
+                ptr.field_lingo_phrase_translation_value as phrase_translation,
+                nl.field_lingo_phrase_next_level_value as next_level,
+                fm.uri as audio_uri, fm.filemime
+                from {field_data_field_lingo_phrase_text} pt
+                left join {field_data_field_lingo_phrase_translation} ptr on pt.entity_id = ptr.entity_id
+                left join {field_data_field_lingo_phrase_next_level} nl on pt.entity_id = nl.entity_id
+                left join {field_data_field_lingo_phrase_audio} pa on pt.entity_id = pa.entity_id
+                left join {file_managed} fm on pa.field_lingo_phrase_audio_fid = fm.fid
+                where pt.entity_id = :entity_id',array('entity_id' => $phrase_nid));
+             $record = $result->fetch();
+
+             $phrase = array();
+             $phrase['phrase_nid'] = $phrase_nid;
+             $phrase['phrase_text'] = $record->phrase_text;
+             $phrase['phrase_translation'] = $record->phrase_translation;
+             $phrase['url_to_audio'] = file_create_url($record->audio_uri);
+             $phrase['phrase_filemime'] = $record->filemime;
+
+             if($record->next_level == 'yes'){
+                $vars['lingo_phrases']['next_level'][] = $phrase;
+             }else{
+                $vars['lingo_phrases']['basic'][] = $phrase;
+             }
+
+        }
+
+        $vars['is_admin_editor'] = 0;
+        global $user;
+        $user_roles = $user->roles;
+        if(in_array('administrator',$user_roles) || in_array('editor',$user_roles)){
+            $vars['is_admin_editor'] = 1;
+        }
+
+
+
+        $tmp_url = explode('/',request_uri());
+        $tmp_url = array_slice($tmp_url, -3, 3, true);
+        $tmp_url = array_merge(array(),$tmp_url);
+        
+        if(isset($record->type) && $record->type == 'atw_destination'){
+          $country_alias = $tmp_url[1].'/'.$tmp_url[2];
+        }else{
+          $country_alias = $tmp_url[0].'/'.$tmp_url[1];
+        }
+
+        $cntr_node = drupal_lookup_path('source',$country_alias);
+        $tmp_nd = explode('/',$cntr_node);
+        $src_country_nid = $tmp_nd[1];
+
+        $query = db_query('select title from node where nid = :nid',array('nid'=>$src_country_nid));
+        $cnt = $query->fetch();
+        $vars['src_country_title'] = $cnt->title;
+
+        $vars['return_path'] = $country_alias.'/native-lingo';
+    }
+
+    if($vars['type'] == 'atw_sightseeing'){
+
+      $tmp_url = explode('/',request_uri());
+        $tmp_url = array_slice($tmp_url, -3, 3, true);
+        $tmp_url = array_merge(array(),$tmp_url);
+        
+        
+        if(isset($record->type) && $record->type == 'atw_destination'){
+          $country_alias = $tmp_url[1].'/'.$tmp_url[2];
+        }else{
+          $country_alias = $tmp_url[0].'/'.$tmp_url[1];
+        }
+        
+        
+        
+        $sql = db_query('select source from url_alias where alias = :alias',array('alias'=>$country_alias));
+        $res = $sql->fetch();
+        $source_tmp = explode('/',$res->source);
+        $country_nid = $source_tmp[1];
+        $country = node_load($country_nid);
+        $nid = $country->nid;
+
+
+      $vars['destination_title'] = $country->title;
+      $vars['sightseeing_body'] = $vars['node']->field_place_description['und'][0]['value'];
+
+    }
+
+    if($vars['type'] == 'atw_destination'){
+      $vars['section_title'] = "Around The World";
+    }
+
+
+}
+
+
+function tfk_atw_node_update($node) {
+  
+  if($node->type == 'atw_destination'){
+    if(isset($node->field_timeline) && !empty($node->field_timeline['und'][0]['nid'])){
+      $timeline_nid = $node->field_timeline['und'][0]['nid'];
+
+      $country_alias = drupal_lookup_path('alias','node/'.$node->nid);
+      $new_timeline_alias = $country_alias.'/history-timeline';
+
+      //lets check if such alias already exists, and if yes , delete it and put with new values
+      $sql = db_query('select * from url_alias where source = :source and alias = :new_timeline_alias',array(':source'=>'node/'.$timeline_nid,'new_timeline_alias' => $new_timeline_alias));
+      $res = $sql->fetch();
+
+      if(isset($res->pid)){
+        //this means such alias mapped to this timeline exists , no need for anything to change
+      }else{
+        //lets insert a new alias for us
+        $sql = db_query('insert into url_alias(source,alias,language) values(:source,:alias,:language)',array(':source'=>'node/'.$timeline_nid, ':language' => 'und',':alias' => $new_timeline_alias));
+      }
+    }
+
+    if(isset($node->field_native_lingo) && !empty($node->field_native_lingo['und'][0]['nid'])){
+      $lingo_nid = $node->field_native_lingo['und'][0]['nid'];
+
+      $country_alias = drupal_lookup_path('alias','node/'.$node->nid);
+      $new_lingo_alias = $country_alias.'/native-lingo';
+
+      //lets check if such alias already exists, and if yes , delete it and put with new values
+      $sql = db_query('select * from url_alias where source = :source and alias = :new_lingo_alias',array(':source'=>'node/'.$lingo_nid,'new_lingo_alias' => $new_lingo_alias));
+      $res = $sql->fetch();
+
+      if(isset($res->pid)){
+        //this means such alias mapped to this timeline exists , no need for anything to change
+      }else{
+        //lets insert a new alias for us
+        $sql = db_query('insert into url_alias(source,alias,language) values(:source,:alias,:language)',array(':source'=>'node/'.$lingo_nid, ':language' => 'und',':alias' => $new_lingo_alias));
+      }
+    }
+    
+    if(isset($node->field_destination_quiz) && !empty($node->field_destination_quiz['und'][0]['nid'])){
+      $quiz_nid = $node->field_destination_quiz['und'][0]['nid'];
+
+      $country_alias = drupal_lookup_path('alias','node/'.$node->nid);
+      $new_quiz_alias = $country_alias.'/challenge';
+
+      //lets check if such alias already exists, and if yes , delete it and put with new values
+      $sql = db_query('select * from url_alias where source = :source and alias = :new_quiz_alias',array(':source'=>'node/'.$quiz_nid,'new_quiz_alias' => $new_quiz_alias));
+      $res = $sql->fetch();
+
+      if(isset($res->pid)){
+        //this means such alias mapped to this timeline exists , no need for anything to change
+      }else{
+        //lets insert a new alias for us
+        $sql = db_query('insert into url_alias(source,alias,language) values(:source,:alias,:language)',array(':source'=>'node/'.$quiz_nid, ':language' => 'und',':alias' => $new_quiz_alias));
+      }
+    }
+
+    if(isset($node->field_day_in_life) && !empty($node->field_day_in_life['und'][0]['nid'])){
+      $day_nid = $node->field_day_in_life['und'][0]['nid'];
+
+      $country_alias = drupal_lookup_path('alias','node/'.$node->nid);
+      $new_day_alias = $country_alias.'/day-in-life';
+
+      //lets check if such alias already exists, and if yes , delete it and put with new values
+      $sql = db_query('select * from url_alias where source = :source and alias = :new_quiz_alias',array(':source'=>'node/'.$day_nid,'new_quiz_alias' => $new_day_alias));
+      $res = $sql->fetch();
+
+      if(isset($res->pid)){
+        //this means such alias mapped to this timeline exists , no need for anything to change
+      }else{
+        //lets insert a new alias for us
+        $sql = db_query('insert into url_alias(source,alias,language) values(:source,:alias,:language)',array(':source'=>'node/'.$day_nid, ':language' => 'und',':alias' => $new_day_alias));
+      }
+    }
+
+    if(isset($node->field_sightseeing) && !empty($node->field_sightseeing['und'][0]['nid'])){
+      $sight_nid = $node->field_sightseeing['und'][0]['nid'];
+
+      $country_alias = drupal_lookup_path('alias','node/'.$node->nid);
+      $new_sight_alias = $country_alias.'/sightseeing';
+
+      //lets check if such alias already exists, and if yes , delete it and put with new values
+      $sql = db_query('select * from url_alias where source = :source and alias = :new_quiz_alias',array(':source'=>'node/'.$sight_nid,'new_quiz_alias' => $new_sight_alias));
+      $res = $sql->fetch();
+
+      if(isset($res->pid)){
+        //this means such alias mapped to this timeline exists , no need for anything to change
+      }else{
+        //lets insert a new alias for us
+        $sql = db_query('insert into url_alias(source,alias,language) values(:source,:alias,:language)',array(':source'=>'node/'.$sight_nid, ':language' => 'und',':alias' => $new_sight_alias));
+      }
+    }
+
+
+  }
+}
