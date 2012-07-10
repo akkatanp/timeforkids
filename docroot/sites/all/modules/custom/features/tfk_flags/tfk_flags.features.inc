@@ -312,11 +312,11 @@ function tfk_flags_flag_default_flags() {
     'show_on_form' => 1,
     'access_author' => '',
     'i18n' => 0,
-    'api_version' => 2,
     'module' => 'tfk_flags',
     'locked' => array(
       0 => 'name',
     ),
+    'api_version' => 2,
   );
   // Exported flag: "TFK Store Featured Product".
   $flags['store_featured_product'] = array(
@@ -349,11 +349,11 @@ function tfk_flags_flag_default_flags() {
     'show_on_form' => 1,
     'access_author' => '',
     'i18n' => 0,
-    'api_version' => 2,
     'module' => 'tfk_flags',
     'locked' => array(
       0 => 'name',
     ),
+    'api_version' => 2,
   );
   return $flags;
 }
