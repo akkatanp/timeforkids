@@ -13,6 +13,43 @@ function features_misc_context_default_contexts() {
   $context = new stdClass;
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
+  $context->name = 'Info Pages';
+  $context->description = '';
+  $context->tag = 'info pages';
+  $context->conditions = array(
+    'path' => array(
+      'values' => array(
+        'info/about' => 'info/about',
+        'info/customer-service' => 'info/customer-service',
+        'info/subscribe' => 'info/subscribe',
+        'info/contact' => 'info/contact',
+        'info/advertising' => 'info/advertising',
+        'info/privacy-policy' => 'info/privacy-policy',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'menu-menu-info-pages-menu' => array(
+          'module' => 'menu',
+          'delta' => 'menu-info-pages-menu',
+          'region' => 'sidebar_first',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('info pages');
+  $export['Info Pages'] = $context;
+
+  $context = new stdClass;
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
   $context->name = 'global_editor_navigation';
   $context->description = '';
   $context->tag = 'global navigation';
@@ -352,6 +389,38 @@ function features_misc_context_default_contexts() {
   // Included for use with string extractors like potx.
   t('global navigation');
   $export['global_teacher_navigation'] = $context;
+
+  $context = new stdClass;
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'what_you_get';
+  $context->description = '';
+  $context->tag = 'info pages';
+  $context->conditions = array(
+    'path' => array(
+      'values' => array(
+        'info/what-you-get' => 'info/what-you-get',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'menu-menu-info-pages-menu' => array(
+          'module' => 'menu',
+          'delta' => 'menu-info-pages-menu',
+          'region' => 'sidebar_first',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('info pages');
+  $export['what_you_get'] = $context;
 
   return $export;
 }
