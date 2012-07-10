@@ -27,7 +27,7 @@ function features_misc_default_rules_configuration() {
             "target_displays" : { "value" : [ "block_1\\r", "block_1_anon" ] }
           }
         },
-        { "advanced_purge_page_clear" : { "page" : "\\u003cfront\\u003e" } }
+        { "advanced_purge_page_clear" : { "page" : "\\u003Cfront\\u003E" } }
       ]
     }
   }');
@@ -91,18 +91,18 @@ function features_misc_default_rules_configuration() {
             "flag_name" : { "value" : [
                 "\\/\\/ Each line gets parsed into JSON independently. Comments and the example relationship are ignored out by the parser. You can validate lines separately at http:\\/\\/jsonlint.com\\/.\\r",
                 "\\/\\/ Example: If the content being updated is flagged with FLAG_NAME, then DISPLAY_1 and DISPLAY_2 will be cleared for VIEW_NAME.\\r",
-                "\\/\\/ The \\"flag\\", \\"views\\", and \\"displays\\" parameters are mandatory for each relationship.\\r",
-                "{\\"flag\\":\\"FLAG_NAME\\", \\"views\\": [{\\"view_name\\": \\"VIEW_NAME\\", \\"displays\\": [\\"DISPLAY_1\\", \\"DISPLAY_2\\"]}]}\\r",
+                "\\/\\/ The \\u0022flag\\u0022, \\u0022views\\u0022, and \\u0022displays\\u0022 parameters are mandatory for each relationship.\\r",
+                "{\\u0022flag\\u0022:\\u0022FLAG_NAME\\u0022, \\u0022views\\u0022: [{\\u0022view_name\\u0022: \\u0022VIEW_NAME\\u0022, \\u0022displays\\u0022: [\\u0022DISPLAY_1\\u0022, \\u0022DISPLAY_2\\u0022]}]}\\r",
                 "\\r",
-                "\\/\\/ Primary touts. All primary tout displays live inside the same \\"homepage_top_story\\" View.\\r",
-                "{\\"flag\\":\\"homepage_top_story\\", \\"views\\": {\\"homepage_top_story\\": [\\"block_1\\", \\"attachment_1\\", \\"block_1\\"]}}\\r",
-                "{\\"flag\\":\\"news_top_story\\", \\"views\\": {\\"homepage_top_story\\": [\\"block_3\\" , \\"block_4\\", \\"attachment_2\\"]}}\\r",
-                "{\\"flag\\":\\"kid_reporter_top_story\\", \\"views\\": {\\"homepage_top_story\\": [\\"block_5\\" , \\"block_6\\", \\"attachment_3\\"]}}\\r",
+                "\\/\\/ Primary touts. All primary tout displays live inside the same \\u0022homepage_top_story\\u0022 View.\\r",
+                "{\\u0022flag\\u0022:\\u0022homepage_top_story\\u0022, \\u0022views\\u0022: {\\u0022homepage_top_story\\u0022: [\\u0022block_1\\u0022, \\u0022attachment_1\\u0022, \\u0022block_1\\u0022]}}\\r",
+                "{\\u0022flag\\u0022:\\u0022news_top_story\\u0022, \\u0022views\\u0022: {\\u0022homepage_top_story\\u0022: [\\u0022block_3\\u0022 , \\u0022block_4\\u0022, \\u0022attachment_2\\u0022]}}\\r",
+                "{\\u0022flag\\u0022:\\u0022kid_reporter_top_story\\u0022, \\u0022views\\u0022: {\\u0022homepage_top_story\\u0022: [\\u0022block_5\\u0022 , \\u0022block_6\\u0022, \\u0022attachment_3\\u0022]}}\\r",
                 "\\r",
-                "\\/\\/ Secondary touts. All secondary tout displays live inside the same \\"homepage_news_block\\" View called.\\r",
-                "{\\"flag\\":\\"homepage_news_block\\", \\"views\\": {\\"homepage_news_block\\": [\\"block_1\\", \\"block_1_anon\\"]}}\\r",
-                "{\\"flag\\":\\"news_news_block\\", \\"views\\": {\\"homepage_news_block\\": [\\"block_3\\" , \\"block_3_anon\\"]}}\\r",
-                "{\\"flag\\":\\"kid_reporter_news_block\\", \\"views\\": {\\"homepage_news_block\\": [\\"block_5\\" , \\"block_5_anon\\"]}}"
+                "\\/\\/ Secondary touts. All secondary tout displays live inside the same \\u0022homepage_news_block\\u0022 View called.\\r",
+                "{\\u0022flag\\u0022:\\u0022homepage_news_block\\u0022, \\u0022views\\u0022: {\\u0022homepage_news_block\\u0022: [\\u0022block_1\\u0022, \\u0022block_1_anon\\u0022]}}\\r",
+                "{\\u0022flag\\u0022:\\u0022news_news_block\\u0022, \\u0022views\\u0022: {\\u0022homepage_news_block\\u0022: [\\u0022block_3\\u0022 , \\u0022block_3_anon\\u0022]}}\\r",
+                "{\\u0022flag\\u0022:\\u0022kid_reporter_news_block\\u0022, \\u0022views\\u0022: {\\u0022homepage_news_block\\u0022: [\\u0022block_5\\u0022 , \\u0022block_5_anon\\u0022]}}"
               ]
             }
           }

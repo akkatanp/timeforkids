@@ -1181,7 +1181,8 @@
 }
 
 #block-menu-menu-tfk-footer-primary ,
-#block-menu-menu-tfk-footer-secondary {
+#block-menu-menu-tfk-footer-secondary,
+#block-menu-menu-tfk-footer-tertiary {
 	text-align: center;
 	margin: 0;
 	padding: 10px;
@@ -1203,6 +1204,20 @@
 	padding-top: 10px;
 	display: block;
 	height: 30px;
+        text-align: center;
+}
+
+#block-menu-menu-tfk-footer-tertiary {
+	padding-bottom: 10px;
+	height: 14px;
+	padding-top: 0px;
+}
+
+#block-menu-menu-tfk-footer-tertiary ul.menu {
+	padding-top: 4px;
+	display: block;
+	height: 30px;
+        text-align: center;
 }
 
 .region-footer ul.menu {
@@ -1231,6 +1246,17 @@
 	color: white;
 	text-decoration: none;
 }
+
+.region-footer #block-menu-menu-tfk-footer-primary ul.menu li.leaf a {
+	font-weight: bold;
+}
+
+.region-footer #block-menu-menu-tfk-footer-secondary ul.menu li,
+.region-footer #block-menu-menu-tfk-footer-tertiary ul.menu li {
+	padding: 1px 3px 0 0;
+        margin-left: 3px;
+}
+
 /*Info pages left nav*/
 #block-menu-menu-info-pages-menu h2 {
     display:none;
@@ -1262,6 +1288,7 @@
     background-color:#D71700;
     color:#FFFFFF;
 }
+#block-menu-menu-info-pages-menu li.leaf {list-style: none;}
 /*end Info pages left nav*/
 
 
@@ -1272,3 +1299,34 @@ body.section-destination #block-menu-menu-tfk-global-navigation a.atw{
 }
 
 /*end sergei voitenko*/
+
+/*Store pages left nav*/
+#block-menu-menu-store-pages-menu h2 {
+    display:none;
+}
+#block-menu-menu-store-pages-menu ul {
+    margin:0px 0px 0px 5px;
+    padding-left:0;
+}
+#block-menu-menu-store-pages-menu li a {
+    display: block;
+    background-color:#999999;
+    font: 14px "arial black",arial,san-serif;
+    margin-right: 7px;
+    padding:10px;
+    text-decoration: none;
+    text-transform:uppercase;
+    margin-left:0;
+    color:#FFFFFF;
+    width:210px;
+}
+#block-menu-menu-store-pages-menu li a:hover {
+    text-decoration: none;
+    background-color:#D71700;
+}
+#block-menu-menu-store-pages-menu li a.active {
+    background-color:#D71700;
+    color:#FFFFFF;
+}
+#block-menu-menu-store-pages-menu li.leaf {list-style: none;}
+/*end Store pages left nav*/
