@@ -83,6 +83,14 @@ function misc_content_types_node_info() {
       'title_label' => t('Title'),
       'help' => '',
     ),
+    'store_product' => array(
+      'name' => t('Store Product'),
+      'base' => 'node_content',
+      'description' => t('Non-Book products sold in the TFK Store'),
+      'has_title' => '1',
+      'title_label' => t('Title'),
+      'help' => '',
+    ),
     'teacher_board_nodeblock' => array(
       'name' => t('Teacher Board Nodeblock'),
       'base' => 'node_content',

@@ -10,6 +10,12 @@
 function features_misc_menu_default_menu_custom() {
   $menus = array();
 
+  // Exported menu: menu-info-pages-menu
+  $menus['menu-info-pages-menu'] = array(
+    'menu_name' => 'menu-info-pages-menu',
+    'title' => 'Info Pages Menu',
+    'description' => 'Info Pages Menu',
+  );
   // Exported menu: menu-tfk-footer-primary
   $menus['menu-tfk-footer-primary'] = array(
     'menu_name' => 'menu-tfk-footer-primary',
@@ -21,6 +27,12 @@ function features_misc_menu_default_menu_custom() {
     'menu_name' => 'menu-tfk-footer-secondary',
     'title' => 'TFK Footer Secondary',
     'description' => 'Footer Navigation - Second Line',
+  );
+  // Exported menu: menu-tfk-footer-tertiary
+  $menus['menu-tfk-footer-tertiary'] = array(
+    'menu_name' => 'menu-tfk-footer-tertiary',
+    'title' => 'TFK Footer Tertiary',
+    'description' => 'Footer Navigation - Third Line',
   );
   // Exported menu: menu-tfk-global-navigation
   $menus['menu-tfk-global-navigation'] = array(
@@ -38,8 +50,11 @@ function features_misc_menu_default_menu_custom() {
   // Included for use with string extractors like potx.
   t('Footer Navigation - First Line');
   t('Footer Navigation - Second Line');
+  t('Footer Navigation - Third Line');
+  t('Info Pages Menu');
   t('TFK Footer Primary');
   t('TFK Footer Secondary');
+  t('TFK Footer Tertiary');
   t('TFK Global Navigation');
   t('TFK Teachers Menu');
   t('This is the TFK global navigation menu.');

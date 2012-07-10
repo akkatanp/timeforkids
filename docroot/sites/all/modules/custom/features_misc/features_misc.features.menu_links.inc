@@ -10,6 +10,118 @@
 function features_misc_menu_default_menu_links() {
   $menu_links = array();
 
+  // Exported menu link: menu-info-pages-menu:http://www.timeforkids.com/customerservice
+  $menu_links['menu-info-pages-menu:http://www.timeforkids.com/customerservice'] = array(
+    'menu_name' => 'menu-info-pages-menu',
+    'link_path' => 'http://www.timeforkids.com/customerservice',
+    'router_path' => '',
+    'link_title' => 'Customer Service',
+    'options' => array(
+      'attributes' => array(),
+    ),
+    'module' => 'menu',
+    'hidden' => '0',
+    'external' => '1',
+    'has_children' => '0',
+    'expanded' => '0',
+    'weight' => '-48',
+  );
+  // Exported menu link: menu-info-pages-menu:http://www.timeinc.net/subs/privacy/tk/policy.html
+  $menu_links['menu-info-pages-menu:http://www.timeinc.net/subs/privacy/tk/policy.html'] = array(
+    'menu_name' => 'menu-info-pages-menu',
+    'link_path' => 'http://www.timeinc.net/subs/privacy/tk/policy.html',
+    'router_path' => '',
+    'link_title' => 'Privacy Policy',
+    'options' => array(
+      'attributes' => array(),
+    ),
+    'module' => 'menu',
+    'hidden' => '0',
+    'external' => '1',
+    'has_children' => '0',
+    'expanded' => '0',
+    'weight' => '-44',
+  );
+  // Exported menu link: menu-info-pages-menu:https://tony_shin-subscription.timeforkids.com/storefront/subscribe-to-time-for-kids/link/1005015.html
+  $menu_links['menu-info-pages-menu:https://tony_shin-subscription.timeforkids.com/storefront/subscribe-to-time-for-kids/link/1005015.html'] = array(
+    'menu_name' => 'menu-info-pages-menu',
+    'link_path' => 'https://tony_shin-subscription.timeforkids.com/storefront/subscribe-to-time-for-kids/link/1005015.html',
+    'router_path' => '',
+    'link_title' => 'Subscribe & Renew',
+    'options' => array(
+      'attributes' => array(),
+    ),
+    'module' => 'menu',
+    'hidden' => '0',
+    'external' => '1',
+    'has_children' => '0',
+    'expanded' => '0',
+    'weight' => '-47',
+  );
+  // Exported menu link: menu-info-pages-menu:node/168
+  $menu_links['menu-info-pages-menu:node/168'] = array(
+    'menu_name' => 'menu-info-pages-menu',
+    'link_path' => 'node/168',
+    'router_path' => 'node/%',
+    'link_title' => 'About Us',
+    'options' => array(
+      'attributes' => array(),
+    ),
+    'module' => 'menu',
+    'hidden' => '0',
+    'external' => '0',
+    'has_children' => '0',
+    'expanded' => '0',
+    'weight' => '-50',
+  );
+  // Exported menu link: menu-info-pages-menu:node/171
+  $menu_links['menu-info-pages-menu:node/171'] = array(
+    'menu_name' => 'menu-info-pages-menu',
+    'link_path' => 'node/171',
+    'router_path' => 'node/%',
+    'link_title' => 'Contact Us',
+    'options' => array(
+      'attributes' => array(),
+    ),
+    'module' => 'menu',
+    'hidden' => '0',
+    'external' => '0',
+    'has_children' => '0',
+    'expanded' => '0',
+    'weight' => '-46',
+  );
+  // Exported menu link: menu-info-pages-menu:node/172
+  $menu_links['menu-info-pages-menu:node/172'] = array(
+    'menu_name' => 'menu-info-pages-menu',
+    'link_path' => 'node/172',
+    'router_path' => 'node/%',
+    'link_title' => 'Advertisement & Sponsorship',
+    'options' => array(
+      'attributes' => array(),
+    ),
+    'module' => 'menu',
+    'hidden' => '0',
+    'external' => '0',
+    'has_children' => '0',
+    'expanded' => '0',
+    'weight' => '-45',
+  );
+  // Exported menu link: menu-info-pages-menu:node/41075
+  $menu_links['menu-info-pages-menu:node/41075'] = array(
+    'menu_name' => 'menu-info-pages-menu',
+    'link_path' => 'node/41075',
+    'router_path' => 'node/%',
+    'link_title' => 'Subscription Benefits',
+    'options' => array(
+      'attributes' => array(),
+    ),
+    'module' => 'menu',
+    'hidden' => '0',
+    'external' => '0',
+    'has_children' => '0',
+    'expanded' => '0',
+    'weight' => '-49',
+  );
   // Exported menu link: menu-tfk-footer-primary:around-the-world
   $menu_links['menu-tfk-footer-primary:around-the-world'] = array(
     'menu_name' => 'menu-tfk-footer-primary',
@@ -50,22 +162,6 @@ function features_misc_menu_default_menu_links() {
     'expanded' => '0',
     'weight' => '-44',
   );
-  // Exported menu link: menu-tfk-footer-primary:https://subscription.timeforkids.com/storefront/subscribe-to-time-for-kids/link/1005025.html
-  $menu_links['menu-tfk-footer-primary:https://subscription.timeforkids.com/storefront/subscribe-to-time-for-kids/link/1005025.html'] = array(
-    'menu_name' => 'menu-tfk-footer-primary',
-    'link_path' => 'https://subscription.timeforkids.com/storefront/subscribe-to-time-for-kids/link/1005025.html',
-    'router_path' => '',
-    'link_title' => 'Subscribe & Renew',
-    'options' => array(
-      'attributes' => array(),
-    ),
-    'module' => 'menu',
-    'hidden' => '1',
-    'external' => '1',
-    'has_children' => '0',
-    'expanded' => '0',
-    'weight' => '-41',
-  );
   // Exported menu link: menu-tfk-footer-primary:kid-reporters
   $menu_links['menu-tfk-footer-primary:kid-reporters'] = array(
     'menu_name' => 'menu-tfk-footer-primary',
@@ -85,6 +181,22 @@ function features_misc_menu_default_menu_links() {
     'has_children' => '0',
     'expanded' => '0',
     'weight' => '-49',
+  );
+  // Exported menu link: menu-tfk-footer-primary:mini-sites
+  $menu_links['menu-tfk-footer-primary:mini-sites'] = array(
+    'menu_name' => 'menu-tfk-footer-primary',
+    'link_path' => 'mini-sites',
+    'router_path' => 'mini-sites',
+    'link_title' => 'Mini-sites',
+    'options' => array(
+      'attributes' => array(),
+    ),
+    'module' => 'menu',
+    'hidden' => '0',
+    'external' => '0',
+    'has_children' => '0',
+    'expanded' => '0',
+    'weight' => '-45',
   );
   // Exported menu link: menu-tfk-footer-primary:news
   $menu_links['menu-tfk-footer-primary:news'] = array(
@@ -184,11 +296,11 @@ function features_misc_menu_default_menu_links() {
       'attributes' => array(),
     ),
     'module' => 'menu',
-    'hidden' => '0',
+    'hidden' => '1',
     'external' => '1',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '-45',
+    'weight' => '-44',
   );
   // Exported menu link: menu-tfk-footer-secondary:https://secure.customersvc.com/wes/servlet/Show?WESPAGE=am/Services/faq/tkfaq.jsp&MSRSMAG=TK#Section_13
   $menu_links['menu-tfk-footer-secondary:https://secure.customersvc.com/wes/servlet/Show?WESPAGE=am/Services/faq/tkfaq.jsp&MSRSMAG=TK#Section_13'] = array(
@@ -200,11 +312,11 @@ function features_misc_menu_default_menu_links() {
       'attributes' => array(),
     ),
     'module' => 'menu',
-    'hidden' => '1',
+    'hidden' => '0',
     'external' => '1',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '-43',
+    'weight' => '-42',
   );
   // Exported menu link: menu-tfk-footer-secondary:https://subscription.timeinc.com/storefront/privacy/tfk/privacy_terms_service.html
   $menu_links['menu-tfk-footer-secondary:https://subscription.timeinc.com/storefront/privacy/tfk/privacy_terms_service.html'] = array(
@@ -216,11 +328,27 @@ function features_misc_menu_default_menu_links() {
       'attributes' => array(),
     ),
     'module' => 'menu',
+    'hidden' => '1',
+    'external' => '1',
+    'has_children' => '0',
+    'expanded' => '0',
+    'weight' => '-43',
+  );
+  // Exported menu link: menu-tfk-footer-secondary:https://tony_shin-subscription.timeforkids.com/storefront/subscribe-to-time-for-kids/link/1005015.html
+  $menu_links['menu-tfk-footer-secondary:https://tony_shin-subscription.timeforkids.com/storefront/subscribe-to-time-for-kids/link/1005015.html'] = array(
+    'menu_name' => 'menu-tfk-footer-secondary',
+    'link_path' => 'https://tony_shin-subscription.timeforkids.com/storefront/subscribe-to-time-for-kids/link/1005015.html',
+    'router_path' => '',
+    'link_title' => 'Subscribe & Renew',
+    'options' => array(
+      'attributes' => array(),
+    ),
+    'module' => 'menu',
     'hidden' => '0',
     'external' => '1',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '-44',
+    'weight' => '-47',
   );
   // Exported menu link: menu-tfk-footer-secondary:node/168
   $menu_links['menu-tfk-footer-secondary:node/168'] = array(
@@ -252,7 +380,7 @@ function features_misc_menu_default_menu_links() {
     'external' => '0',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '-47',
+    'weight' => '-46',
   );
   // Exported menu link: menu-tfk-footer-secondary:node/172
   $menu_links['menu-tfk-footer-secondary:node/172'] = array(
@@ -268,7 +396,71 @@ function features_misc_menu_default_menu_links() {
     'external' => '0',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '-46',
+    'weight' => '-45',
+  );
+  // Exported menu link: menu-tfk-footer-secondary:node/41075
+  $menu_links['menu-tfk-footer-secondary:node/41075'] = array(
+    'menu_name' => 'menu-tfk-footer-secondary',
+    'link_path' => 'node/41075',
+    'router_path' => 'node/%',
+    'link_title' => 'Subscription Benefits',
+    'options' => array(
+      'attributes' => array(),
+    ),
+    'module' => 'menu',
+    'hidden' => '0',
+    'external' => '0',
+    'has_children' => '0',
+    'expanded' => '0',
+    'weight' => '-49',
+  );
+  // Exported menu link: menu-tfk-footer-tertiary:http://www.timeinc.net/subs/privacy/tk/policy.html
+  $menu_links['menu-tfk-footer-tertiary:http://www.timeinc.net/subs/privacy/tk/policy.html'] = array(
+    'menu_name' => 'menu-tfk-footer-tertiary',
+    'link_path' => 'http://www.timeinc.net/subs/privacy/tk/policy.html',
+    'router_path' => '',
+    'link_title' => 'Privacy Policy',
+    'options' => array(
+      'attributes' => array(),
+    ),
+    'module' => 'menu',
+    'hidden' => '0',
+    'external' => '1',
+    'has_children' => '0',
+    'expanded' => '0',
+    'weight' => '-49',
+  );
+  // Exported menu link: menu-tfk-footer-tertiary:https://subscription.timeinc.com/storefront/privacy/tfk/privacy_terms_service.html
+  $menu_links['menu-tfk-footer-tertiary:https://subscription.timeinc.com/storefront/privacy/tfk/privacy_terms_service.html'] = array(
+    'menu_name' => 'menu-tfk-footer-tertiary',
+    'link_path' => 'https://subscription.timeinc.com/storefront/privacy/tfk/privacy_terms_service.html',
+    'router_path' => '',
+    'link_title' => 'Terms of Service',
+    'options' => array(
+      'attributes' => array(),
+    ),
+    'module' => 'menu',
+    'hidden' => '0',
+    'external' => '1',
+    'has_children' => '0',
+    'expanded' => '0',
+    'weight' => '-48',
+  );
+  // Exported menu link: menu-tfk-footer-tertiary:node/172
+  $menu_links['menu-tfk-footer-tertiary:node/172'] = array(
+    'menu_name' => 'menu-tfk-footer-tertiary',
+    'link_path' => 'node/172',
+    'router_path' => 'node/%',
+    'link_title' => 'Advertisement & Sponsorship',
+    'options' => array(
+      'attributes' => array(),
+    ),
+    'module' => 'menu',
+    'hidden' => '0',
+    'external' => '0',
+    'has_children' => '0',
+    'expanded' => '0',
+    'weight' => '-50',
   );
   // Exported menu link: menu-tfk-global-navigation:around-the-world
   $menu_links['menu-tfk-global-navigation:around-the-world'] = array(
@@ -350,6 +542,26 @@ function features_misc_menu_default_menu_links() {
     'expanded' => '0',
     'weight' => '-50',
   );
+  // Exported menu link: menu-tfk-global-navigation:node/41074
+  $menu_links['menu-tfk-global-navigation:node/41074'] = array(
+    'menu_name' => 'menu-tfk-global-navigation',
+    'link_path' => 'node/41074',
+    'router_path' => 'node/%',
+    'link_title' => 'Store',
+    'options' => array(
+      'attributes' => array(
+        'class' => array(
+          0 => 'store',
+        ),
+      ),
+    ),
+    'module' => 'menu',
+    'hidden' => '0',
+    'external' => '0',
+    'has_children' => '0',
+    'expanded' => '0',
+    'weight' => '-43',
+  );
   // Exported menu link: menu-tfk-global-navigation:node/98
   $menu_links['menu-tfk-global-navigation:node/98'] = array(
     'menu_name' => 'menu-tfk-global-navigation',
@@ -390,26 +602,6 @@ function features_misc_menu_default_menu_links() {
     'expanded' => '0',
     'weight' => '-46',
   );
-  // Exported menu link: menu-tfk-global-navigation:store
-  $menu_links['menu-tfk-global-navigation:store'] = array(
-    'menu_name' => 'menu-tfk-global-navigation',
-    'link_path' => 'store',
-    'router_path' => 'store',
-    'link_title' => 'Store',
-    'options' => array(
-      'attributes' => array(
-        'class' => array(
-          0 => 'store',
-        ),
-      ),
-    ),
-    'module' => 'menu',
-    'hidden' => '0',
-    'external' => '0',
-    'has_children' => '0',
-    'expanded' => '0',
-    'weight' => '-43',
-  );
   // Exported menu link: menu-tfk-teachers-menu:digital
   $menu_links['menu-tfk-teachers-menu:digital'] = array(
     'menu_name' => 'menu-tfk-teachers-menu',
@@ -430,6 +622,26 @@ function features_misc_menu_default_menu_links() {
     'has_children' => '0',
     'expanded' => '0',
     'weight' => '15',
+  );
+  // Exported menu link: menu-tfk-teachers-menu:https://tony_shin-subscription.timeforkids.com/storefront/subscribe-to-time-for-kids/link/1005015.html
+  $menu_links['menu-tfk-teachers-menu:https://tony_shin-subscription.timeforkids.com/storefront/subscribe-to-time-for-kids/link/1005015.html'] = array(
+    'menu_name' => 'menu-tfk-teachers-menu',
+    'link_path' => 'https://tony_shin-subscription.timeforkids.com/storefront/subscribe-to-time-for-kids/link/1005015.html',
+    'router_path' => '',
+    'link_title' => 'Subscribe & Renew',
+    'options' => array(
+      'attributes' => array(
+        'class' => array(
+          0 => 'subscribe-renew',
+        ),
+      ),
+    ),
+    'module' => 'menu',
+    'hidden' => '0',
+    'external' => '1',
+    'has_children' => '0',
+    'expanded' => '0',
+    'weight' => '20',
   );
   // Exported menu link: menu-tfk-teachers-menu:teacher-community/topic-list
   $menu_links['menu-tfk-teachers-menu:teacher-community/topic-list'] = array(
@@ -502,12 +714,14 @@ function features_misc_menu_default_menu_links() {
   t('FAQ');
   t('Homework Helper');
   t('Kid Reporters');
+  t('Mini-sites');
   t('News');
   t('Photos & Videos');
   t('Printables');
   t('Privacy Policy');
   t('Store');
   t('Subscribe & Renew');
+  t('Subscription Benefits');
   t('TFK Extras');
   t('TFK Magazine');
   t('Teacher Community');
