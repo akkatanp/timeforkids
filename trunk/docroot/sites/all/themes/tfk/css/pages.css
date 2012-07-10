@@ -3249,8 +3249,8 @@ div.store-featured-info .store-featured-author {margin-bottom:24px;}
 div.store-featured-info div.store-featured-description  {margin-top:0;margin-bottom:24px;}
 .views-slideshow-controls-bottom {position:relative;height:30px;background:#999;text-align:right;}
 .views-slideshow-pager-field-item .views-field-counter {float:left;padding:2px;margin-right:6px;margin-top:5px;width:18px;height:18px;color:transparent;cursor:pointer;}
-.views-slideshow-pager-field-item .views-field-counter .views-content-counter {background-image:url(/sites/default/files/grey-circle.png);background-repeat:no-repeat;width:18px;height:18px;position:relative;left:420px;}
-.views-slideshow-pager-field-item.active .views-field-counter .views-content-counter {background-image:url(/sites/default/files/red-circle.png);}
+.views-slideshow-pager-field-item .views-field-counter .views-content-counter {background-image:url(../images/grey-circle.png);background-repeat:no-repeat;width:18px;height:18px;position:relative;left:420px;}
+.views-slideshow-pager-field-item.active .views-field-counter .views-content-counter {background-image:url(../images/red-circle.png);}
 .view-display-id-block_1 td {vertical-align:top;}
 .store-all-table {border: 1px solid #cecece;clear:both;}
 .store_all_items_pager {padding:6px;background-color:#e6e6e6;border:1px solid #cecece;margin:6px 0;height:24px;}
