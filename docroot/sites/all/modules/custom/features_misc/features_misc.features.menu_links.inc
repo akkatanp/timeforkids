@@ -42,10 +42,10 @@ function features_misc_menu_default_menu_links() {
     'expanded' => '0',
     'weight' => '-44',
   );
-  // Exported menu link: menu-info-pages-menu:https://tony_shin-subscription.timeforkids.com/storefront/subscribe-to-time-for-kids/link/1005015.html
-  $menu_links['menu-info-pages-menu:https://tony_shin-subscription.timeforkids.com/storefront/subscribe-to-time-for-kids/link/1005015.html'] = array(
+  // Exported menu link: menu-info-pages-menu:https://qa-subscription.timeforkids.com/storefront/subscribe-to-time-for-kids/link/1005015.html
+  $menu_links['menu-info-pages-menu:https://qa-subscription.timeforkids.com/storefront/subscribe-to-time-for-kids/link/1005015.html'] = array(
     'menu_name' => 'menu-info-pages-menu',
-    'link_path' => 'https://tony_shin-subscription.timeforkids.com/storefront/subscribe-to-time-for-kids/link/1005015.html',
+    'link_path' => 'https://qa-subscription.timeforkids.com/storefront/subscribe-to-time-for-kids/link/1005015.html',
     'router_path' => '',
     'link_title' => 'Subscribe & Renew',
     'options' => array(
@@ -162,6 +162,86 @@ function features_misc_menu_default_menu_links() {
     'expanded' => '0',
     'weight' => '-44',
   );
+  // Exported menu link: menu-tfk-footer-primary:https://qa-lucie.timeinc.com/qa-subscription.timeforkids.com/storefront/subscribe-to-time-for-kids/link/1005025.html
+  $menu_links['menu-tfk-footer-primary:https://qa-lucie.timeinc.com/qa-subscription.timeforkids.com/storefront/subscribe-to-time-for-kids/link/1005025.html'] = array(
+    'menu_name' => 'menu-tfk-footer-primary',
+    'link_path' => 'https://qa-lucie.timeinc.com/qa-subscription.timeforkids.com/storefront/subscribe-to-time-for-kids/link/1005025.html',
+    'router_path' => '',
+    'link_title' => 'Subscribe & Renew',
+    'options' => array(
+      'attributes' => array(),
+    ),
+    'module' => 'menu',
+    'hidden' => '1',
+    'external' => '1',
+    'has_children' => '0',
+    'expanded' => '0',
+    'weight' => '-41',
+  );
+  // Exported menu link: menu-tfk-footer-primary:https://qa-subscription.timeforkids.com/qa-subscription.timeforkids.com/storefront/subscribe-to-time-for-kids/link/1005025.html
+  $menu_links['menu-tfk-footer-primary:https://qa-subscription.timeforkids.com/qa-subscription.timeforkids.com/storefront/subscribe-to-time-for-kids/link/1005025.html'] = array(
+    'menu_name' => 'menu-tfk-footer-primary',
+    'link_path' => 'https://qa-subscription.timeforkids.com/qa-subscription.timeforkids.com/storefront/subscribe-to-time-for-kids/link/1005025.html',
+    'router_path' => '',
+    'link_title' => 'Subscribe & Renew',
+    'options' => array(
+      'attributes' => array(),
+    ),
+    'module' => 'menu',
+    'hidden' => '1',
+    'external' => '1',
+    'has_children' => '0',
+    'expanded' => '0',
+    'weight' => '-41',
+  );
+  // Exported menu link: menu-tfk-footer-primary:https://qa-subscription.timeforkids.com/storefront/subscribe-to-time-for-kids/link/1005025.html
+  $menu_links['menu-tfk-footer-primary:https://qa-subscription.timeforkids.com/storefront/subscribe-to-time-for-kids/link/1005025.html'] = array(
+    'menu_name' => 'menu-tfk-footer-primary',
+    'link_path' => 'https://qa-subscription.timeforkids.com/storefront/subscribe-to-time-for-kids/link/1005025.html',
+    'router_path' => '',
+    'link_title' => 'Subscribe & Renew',
+    'options' => array(
+      'attributes' => array(),
+    ),
+    'module' => 'menu',
+    'hidden' => '1',
+    'external' => '1',
+    'has_children' => '0',
+    'expanded' => '0',
+    'weight' => '-41',
+  );
+  // Exported menu link: menu-tfk-footer-primary:https://secure.customersvc.com/wes/servlet/Show?WESPAGE=am/Services/faq/tkfaq.jsp&MSRSMAG=TK#Section_13
+  $menu_links['menu-tfk-footer-primary:https://secure.customersvc.com/wes/servlet/Show?WESPAGE=am/Services/faq/tkfaq.jsp&MSRSMAG=TK#Section_13'] = array(
+    'menu_name' => 'menu-tfk-footer-primary',
+    'link_path' => 'https://secure.customersvc.com/wes/servlet/Show?WESPAGE=am/Services/faq/tkfaq.jsp&MSRSMAG=TK#Section_13',
+    'router_path' => '',
+    'link_title' => 'FAQ',
+    'options' => array(
+      'attributes' => array(),
+    ),
+    'module' => 'menu',
+    'hidden' => '1',
+    'external' => '1',
+    'has_children' => '0',
+    'expanded' => '0',
+    'weight' => '-42',
+  );
+  // Exported menu link: menu-tfk-footer-primary:https://subscription.timeforkids.com/storefront/subscribe-to-time-for-kids/link/1005025.html
+  $menu_links['menu-tfk-footer-primary:https://subscription.timeforkids.com/storefront/subscribe-to-time-for-kids/link/1005025.html'] = array(
+    'menu_name' => 'menu-tfk-footer-primary',
+    'link_path' => 'https://subscription.timeforkids.com/storefront/subscribe-to-time-for-kids/link/1005025.html',
+    'router_path' => '',
+    'link_title' => 'Subscribe & Renew',
+    'options' => array(
+      'attributes' => array(),
+    ),
+    'module' => 'menu',
+    'hidden' => '1',
+    'external' => '1',
+    'has_children' => '0',
+    'expanded' => '0',
+    'weight' => '-41',
+  );
   // Exported menu link: menu-tfk-footer-primary:kid-reporters
   $menu_links['menu-tfk-footer-primary:kid-reporters'] = array(
     'menu_name' => 'menu-tfk-footer-primary',
@@ -214,6 +294,22 @@ function features_misc_menu_default_menu_links() {
     'expanded' => '0',
     'weight' => '-50',
   );
+  // Exported menu link: menu-tfk-footer-primary:node/41074
+  $menu_links['menu-tfk-footer-primary:node/41074'] = array(
+    'menu_name' => 'menu-tfk-footer-primary',
+    'link_path' => 'node/41074',
+    'router_path' => 'node/%',
+    'link_title' => 'Store',
+    'options' => array(
+      'attributes' => array(),
+    ),
+    'module' => 'menu',
+    'hidden' => '0',
+    'external' => '0',
+    'has_children' => '0',
+    'expanded' => '0',
+    'weight' => '-43',
+  );
   // Exported menu link: menu-tfk-footer-primary:node/98
   $menu_links['menu-tfk-footer-primary:node/98'] = array(
     'menu_name' => 'menu-tfk-footer-primary',
@@ -254,22 +350,6 @@ function features_misc_menu_default_menu_links() {
     'expanded' => '0',
     'weight' => '-46',
   );
-  // Exported menu link: menu-tfk-footer-primary:store
-  $menu_links['menu-tfk-footer-primary:store'] = array(
-    'menu_name' => 'menu-tfk-footer-primary',
-    'link_path' => 'store',
-    'router_path' => 'store',
-    'link_title' => 'Store',
-    'options' => array(
-      'attributes' => array(),
-    ),
-    'module' => 'menu',
-    'hidden' => '0',
-    'external' => '0',
-    'has_children' => '0',
-    'expanded' => '0',
-    'weight' => '-43',
-  );
   // Exported menu link: menu-tfk-footer-secondary:http://www.timeforkids.com/customerservice
   $menu_links['menu-tfk-footer-secondary:http://www.timeforkids.com/customerservice'] = array(
     'menu_name' => 'menu-tfk-footer-secondary',
@@ -302,6 +382,22 @@ function features_misc_menu_default_menu_links() {
     'expanded' => '0',
     'weight' => '-44',
   );
+  // Exported menu link: menu-tfk-footer-secondary:https://qa-subscription.timeforkids.com/storefront/subscribe-to-time-for-kids/link/1005015.html
+  $menu_links['menu-tfk-footer-secondary:https://qa-subscription.timeforkids.com/storefront/subscribe-to-time-for-kids/link/1005015.html'] = array(
+    'menu_name' => 'menu-tfk-footer-secondary',
+    'link_path' => 'https://qa-subscription.timeforkids.com/storefront/subscribe-to-time-for-kids/link/1005015.html',
+    'router_path' => '',
+    'link_title' => 'Subscribe & Renew',
+    'options' => array(
+      'attributes' => array(),
+    ),
+    'module' => 'menu',
+    'hidden' => '0',
+    'external' => '1',
+    'has_children' => '0',
+    'expanded' => '0',
+    'weight' => '-47',
+  );
   // Exported menu link: menu-tfk-footer-secondary:https://secure.customersvc.com/wes/servlet/Show?WESPAGE=am/Services/faq/tkfaq.jsp&MSRSMAG=TK#Section_13
   $menu_links['menu-tfk-footer-secondary:https://secure.customersvc.com/wes/servlet/Show?WESPAGE=am/Services/faq/tkfaq.jsp&MSRSMAG=TK#Section_13'] = array(
     'menu_name' => 'menu-tfk-footer-secondary',
@@ -333,22 +429,6 @@ function features_misc_menu_default_menu_links() {
     'has_children' => '0',
     'expanded' => '0',
     'weight' => '-43',
-  );
-  // Exported menu link: menu-tfk-footer-secondary:https://tony_shin-subscription.timeforkids.com/storefront/subscribe-to-time-for-kids/link/1005015.html
-  $menu_links['menu-tfk-footer-secondary:https://tony_shin-subscription.timeforkids.com/storefront/subscribe-to-time-for-kids/link/1005015.html'] = array(
-    'menu_name' => 'menu-tfk-footer-secondary',
-    'link_path' => 'https://tony_shin-subscription.timeforkids.com/storefront/subscribe-to-time-for-kids/link/1005015.html',
-    'router_path' => '',
-    'link_title' => 'Subscribe & Renew',
-    'options' => array(
-      'attributes' => array(),
-    ),
-    'module' => 'menu',
-    'hidden' => '0',
-    'external' => '1',
-    'has_children' => '0',
-    'expanded' => '0',
-    'weight' => '-47',
   );
   // Exported menu link: menu-tfk-footer-secondary:node/168
   $menu_links['menu-tfk-footer-secondary:node/168'] = array(
@@ -522,6 +602,26 @@ function features_misc_menu_default_menu_links() {
     'expanded' => '0',
     'weight' => '-49',
   );
+  // Exported menu link: menu-tfk-global-navigation:mini-sites
+  $menu_links['menu-tfk-global-navigation:mini-sites'] = array(
+    'menu_name' => 'menu-tfk-global-navigation',
+    'link_path' => 'mini-sites',
+    'router_path' => 'mini-sites',
+    'link_title' => 'Mini-Sites',
+    'options' => array(
+      'attributes' => array(
+        'class' => array(
+          0 => 'mini-sites',
+        ),
+      ),
+    ),
+    'module' => 'menu',
+    'hidden' => '0',
+    'external' => '0',
+    'has_children' => '0',
+    'expanded' => '0',
+    'weight' => '-45',
+  );
   // Exported menu link: menu-tfk-global-navigation:news
   $menu_links['menu-tfk-global-navigation:news'] = array(
     'menu_name' => 'menu-tfk-global-navigation',
@@ -623,10 +723,10 @@ function features_misc_menu_default_menu_links() {
     'expanded' => '0',
     'weight' => '15',
   );
-  // Exported menu link: menu-tfk-teachers-menu:https://tony_shin-subscription.timeforkids.com/storefront/subscribe-to-time-for-kids/link/1005015.html
-  $menu_links['menu-tfk-teachers-menu:https://tony_shin-subscription.timeforkids.com/storefront/subscribe-to-time-for-kids/link/1005015.html'] = array(
+  // Exported menu link: menu-tfk-teachers-menu:https://qa-subscription.timeforkids.com/storefront/subscribe-to-time-for-kids/link/1005015.html
+  $menu_links['menu-tfk-teachers-menu:https://qa-subscription.timeforkids.com/storefront/subscribe-to-time-for-kids/link/1005015.html'] = array(
     'menu_name' => 'menu-tfk-teachers-menu',
-    'link_path' => 'https://tony_shin-subscription.timeforkids.com/storefront/subscribe-to-time-for-kids/link/1005015.html',
+    'link_path' => 'https://qa-subscription.timeforkids.com/storefront/subscribe-to-time-for-kids/link/1005015.html',
     'router_path' => '',
     'link_title' => 'Subscribe & Renew',
     'options' => array(
@@ -638,6 +738,26 @@ function features_misc_menu_default_menu_links() {
     ),
     'module' => 'menu',
     'hidden' => '0',
+    'external' => '1',
+    'has_children' => '0',
+    'expanded' => '0',
+    'weight' => '20',
+  );
+  // Exported menu link: menu-tfk-teachers-menu:https://subscription.timeforkids.com/storefront/subscribe-to-time-for-kids/link/1005021.html
+  $menu_links['menu-tfk-teachers-menu:https://subscription.timeforkids.com/storefront/subscribe-to-time-for-kids/link/1005021.html'] = array(
+    'menu_name' => 'menu-tfk-teachers-menu',
+    'link_path' => 'https://subscription.timeforkids.com/storefront/subscribe-to-time-for-kids/link/1005021.html',
+    'router_path' => '',
+    'link_title' => 'Subscribe & Renew',
+    'options' => array(
+      'attributes' => array(
+        'class' => array(
+          0 => 'subscribe-renew',
+        ),
+      ),
+    ),
+    'module' => 'menu',
+    'hidden' => '1',
     'external' => '1',
     'has_children' => '0',
     'expanded' => '0',
@@ -714,6 +834,7 @@ function features_misc_menu_default_menu_links() {
   t('FAQ');
   t('Homework Helper');
   t('Kid Reporters');
+  t('Mini-Sites');
   t('Mini-sites');
   t('News');
   t('Photos & Videos');
