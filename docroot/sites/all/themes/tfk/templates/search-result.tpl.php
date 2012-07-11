@@ -65,8 +65,15 @@
  * @see template_process()
  */
 ?>
+<?php if(isset($tfk_search_cont_type) && $tfk_search_cont_type == "TFK PRODUCTS") {
+        $tfk_product = 'tfk_product';
+    }
+    else {
+        $tfk_product = '';
+    }
+?>
 <?php if($render): ?>
-<li class="<?php if(isset($classes)): ?><?php print $classes; ?><? endif; ?>"<?php if(isset($attributes)): ?><?php print $attributes; ?><? endif; ?>>
+<li class="<?php if(isset($classes)): ?><?php print "$classes $tfk_product"; ?><? endif; ?>"<?php if(isset($attributes)): ?><?php print $attributes; ?><? endif; ?>>
   <?php if($admin_links):?>
     <?php print $admin_links;?>
   <?php endif;?>
@@ -76,7 +83,11 @@
   <?php endif;?>
   
   <?php if(isset($tfk_search_cont_type)):?>
-    <div class="content-type">
+    <?php if($tfk_search_cont_type == "TFK PRODUCTS"):?>
+      <div class="content-type <?php print $tfk_product;?>">
+    <?php else:?>  
+      <div class="content-type">
+    <?php endif;?>
     	<?php if(isset($tfk_search_cont_type_suffix)): ?>
     		<span class="ctype-suffix"><?php print $tfk_search_cont_type_suffix; ?></span>
     		<span class="ctype"><?php print $tfk_search_cont_type; ?></span>
@@ -109,7 +120,7 @@
         <?php endif; ?>
       </h3>
       
-      <?php if(isset($date)):?>
+      <?php if(isset($date) && $tfk_product==''):?>
         <div class="result-date"><?php print $date; ?></div>
       <?php endif;?>
       
