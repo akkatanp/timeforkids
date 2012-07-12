@@ -180,7 +180,7 @@ function tfk_ads_omni_get_config_vars(&$variables){
                         //no subchannel
                         $channel_array['omni_pagename'] .= $channel_array['channel'];
                     } else {
-                        $channel_array['sub_channel'] = $path_array[1];//Sub-channel
+                        $channel_array['sub_channel'] = tfk_ads_omni_subchannel_override($path_array[1]);//Sub-channel
                         $channel_array['omni_pagename'] .= $channel_array['channel']."|".$channel_array['sub_channel'];
                     }
             }
@@ -246,6 +246,16 @@ function tfk_ads_omni_channel_override($channel_name) {
         case "mini site":
         case "minisite":
             $override_channel = "mini-site";
+            break;
+        default:
+            $override_channel = $channel_name;
+    }
+    return $override_channel;
+}
+function tfk_ads_omni_subchannel_override($channel_name) {
+    switch ($channel_name) {
+        case "products":
+            $override_channel = "other products";
             break;
         default:
             $override_channel = $channel_name;
