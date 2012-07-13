@@ -34,7 +34,7 @@ function feature_tfk_store_image_default_styles() {
   $styles['tfk_book'] = array(
     'name' => 'tfk_book',
     'effects' => array(
-      41 => array(
+      44 => array(
         'label' => 'Scale',
         'help' => 'Scaling will maintain the aspect-ratio of the original image. If only a single dimension is specified, the other dimension will be calculated.',
         'effect callback' => 'image_scale_effect',
@@ -46,7 +46,7 @@ function feature_tfk_store_image_default_styles() {
         'data' => array(
           'width' => '190',
           'height' => '190',
-          'upscale' => 1,
+          'upscale' => 0,
         ),
         'weight' => '2',
       ),
@@ -57,7 +57,7 @@ function feature_tfk_store_image_default_styles() {
   $styles['tfk_book_thumb'] = array(
     'name' => 'tfk_book_thumb',
     'effects' => array(
-      40 => array(
+      45 => array(
         'label' => 'Scale',
         'help' => 'Scaling will maintain the aspect-ratio of the original image. If only a single dimension is specified, the other dimension will be calculated.',
         'effect callback' => 'image_scale_effect',
@@ -69,9 +69,9 @@ function feature_tfk_store_image_default_styles() {
         'data' => array(
           'width' => '105',
           'height' => '105',
-          'upscale' => 1,
+          'upscale' => 0,
         ),
-        'weight' => '-10',
+        'weight' => '2',
       ),
     ),
   );

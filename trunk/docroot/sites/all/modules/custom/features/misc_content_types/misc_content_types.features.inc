@@ -20,7 +20,7 @@ function misc_content_types_ctools_plugin_api() {
 function misc_content_types_node_info() {
   $items = array(
     'book' => array(
-      'name' => t('Book'),
+      'name' => t('Store Book'),
       'base' => 'node_content',
       'description' => '',
       'has_title' => '1',
