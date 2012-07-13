@@ -172,6 +172,35 @@ function feature_tfk_store_views_default_views() {
   $handler->display->display_options['fields']['field_book_description']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_book_description']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['field_book_description']['field_api_classes'] = 0;
+  /* Field: Content: Thumbnail Override Image */
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['id'] = 'field_thumbnail_override_image';
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['table'] = 'field_data_field_thumbnail_override_image';
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['field'] = 'field_thumbnail_override_image';
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['label'] = '';
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['hide_alter_empty'] = 0;
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['settings'] = array(
+    'image_style' => '',
+    'image_link' => '',
+  );
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['field_api_classes'] = 0;
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
@@ -556,6 +585,35 @@ function feature_tfk_store_views_default_views() {
   $handler->display->display_options['fields']['field_book_author']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_book_author']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['field_book_author']['field_api_classes'] = 0;
+  /* Field: Content: Thumbnail Override Image */
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['id'] = 'field_thumbnail_override_image';
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['table'] = 'field_data_field_thumbnail_override_image';
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['field'] = 'field_thumbnail_override_image';
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['label'] = '';
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['hide_alter_empty'] = 0;
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['settings'] = array(
+    'image_style' => '',
+    'image_link' => '',
+  );
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['field_api_classes'] = 0;
   $export['books'] = $view;
 
   $view = new view;
@@ -696,6 +754,35 @@ function feature_tfk_store_views_default_views() {
   $handler->display->display_options['fields']['field_product_description']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_product_description']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['field_product_description']['field_api_classes'] = 0;
+  /* Field: Content: Thumbnail Override Image */
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['id'] = 'field_thumbnail_override_image';
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['table'] = 'field_data_field_thumbnail_override_image';
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['field'] = 'field_thumbnail_override_image';
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['label'] = '';
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['hide_alter_empty'] = 0;
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['settings'] = array(
+    'image_style' => '',
+    'image_link' => '',
+  );
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['field_api_classes'] = 0;
   /* Sort criterion: Content: Title */
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';
@@ -1038,6 +1125,35 @@ function feature_tfk_store_views_default_views() {
   $handler->display->display_options['fields']['title']['empty_zero'] = 0;
   $handler->display->display_options['fields']['title']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['title']['link_to_node'] = 0;
+  /* Field: Content: Thumbnail Override Image */
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['id'] = 'field_thumbnail_override_image';
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['table'] = 'field_data_field_thumbnail_override_image';
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['field'] = 'field_thumbnail_override_image';
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['label'] = '';
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['hide_alter_empty'] = 0;
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['settings'] = array(
+    'image_style' => '',
+    'image_link' => '',
+  );
+  $handler->display->display_options['fields']['field_thumbnail_override_image']['field_api_classes'] = 0;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';

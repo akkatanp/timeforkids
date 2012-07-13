@@ -5,7 +5,7 @@
  */
 
 /**
- * Implementation of hook_context_default_contexts().
+ * Implements hook_context_default_contexts().
  */
 function tfk_site_wide_search_context_default_contexts() {
   $export = array();
@@ -54,37 +54,37 @@ function tfk_site_wide_search_context_default_contexts() {
           'module' => 'apachesolr_search',
           'delta' => 'im_10_field_article_category',
           'region' => 'sidebar_first',
-          'weight' => '-8',
+          'weight' => '-7',
         ),
         'apachesolr_search-im_36_field_themes' => array(
           'module' => 'apachesolr_search',
           'delta' => 'im_36_field_themes',
           'region' => 'sidebar_first',
-          'weight' => '-7',
+          'weight' => '-6',
         ),
         'apachesolr_search-im_35_field_skills' => array(
           'module' => 'apachesolr_search',
           'delta' => 'im_35_field_skills',
           'region' => 'sidebar_first',
-          'weight' => '-6',
+          'weight' => '-5',
         ),
         'tfk_search-ss_spanish_version' => array(
           'module' => 'tfk_search',
           'delta' => 'ss_spanish_version',
           'region' => 'sidebar_first',
-          'weight' => '-5',
+          'weight' => '-4',
         ),
         'tfk_search-sm_editorial_date_tfk' => array(
           'module' => 'tfk_search',
           'delta' => 'sm_editorial_date_tfk',
           'region' => 'sidebar_first',
-          'weight' => '-4',
+          'weight' => '-3',
         ),
-        'tfk_search-tfk_search_cont_hdr' => array(
+        'tfk_search-ss_tfk_product' => array(
           'module' => 'tfk_search',
-          'delta' => 'tfk_search_cont_hdr',
-          'region' => 'highlighted',
-          'weight' => '-10',
+          'delta' => 'ss_tfk_product',
+          'region' => 'sidebar_first',
+          'weight' => '-8',
         ),
       ),
     ),
