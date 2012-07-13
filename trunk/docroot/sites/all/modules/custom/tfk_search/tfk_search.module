@@ -549,6 +549,14 @@ define('TFK_SEARCH_SPANISH_ISSUE', 'is_spanish_issue');
  */
 define('TFK_SEARCH_HOST', 'ss_server_host');
 
+/**
+ * Apache Solr search field, indicates the entity is a product in the TFK Store.
+ * This product may be either a 'book' or 'other_product' node type.
+ *
+ * @var string
+ */
+define('TFK_SEARCH_TFK_STORE_PRODUCT', 'ss_tfk_product');
+
 
 /**
  * Implementation of hook_apachesolr_update_index.
@@ -596,7 +604,8 @@ function tfk_search_apachesolr_update_index(&$document, $node, $namespace) {
     }
   }
   if($node->type == 'book' || $node->type == "store_product") {
-      $document->setField('bundle_name', "TFK Products");
+    $document->setField('bundle_name', "TFK Products");
+    $document->setField(TFK_SEARCH_TFK_STORE_PRODUCT, "TFK Products");
     if($node->type == 'book') {
       $tmp_body = field_get_items('node', $node, 'field_book_description');
     }
@@ -666,6 +675,11 @@ function tfk_search_apachesolr_facets() {
   $facets[TFK_SEARCH_SPANISH_VERSION] = array(
     'info' => t('Language'),
     'facet_field' => TFK_SEARCH_SPANISH_VERSION,
+  );
+  
+  $facets[TFK_SEARCH_TFK_STORE_PRODUCT] = array(
+    'info' => t('TFK Products'),
+    'facet_field' => TFK_SEARCH_TFK_STORE_PRODUCT,
   );
   
   // Used on /tfk-magazine.
@@ -819,6 +833,23 @@ function tfk_search_block_view($delta='') {
     // Spanish translation filter. Used on /search/site.
     case TFK_SEARCH_SPANISH_VERSION:
       $block['subject'] = t('Language');
+
+      if (apachesolr_has_searched()) {
+        $response = apachesolr_static_response_cache();
+  
+        if (empty($response)) {
+          return;
+        }
+        $query = apachesolr_current_query();
+        $block['content'] = apachesolr_facet_block($response, $query, 'tfk_search', $delta, $delta);
+      }else{
+        $block['content'] = '';
+      }
+    break;
+    
+    // TFK Store Products filter. Used on /search/site.
+    case TFK_SEARCH_TFK_STORE_PRODUCT:
+      $block['subject'] = t('TFK Products');
 
       if (apachesolr_has_searched()) {
         $response = apachesolr_static_response_cache();
@@ -2143,7 +2174,7 @@ function tfk_search_apachesolr_modify_query($query, $caller) {
     // Retrieve additional content fields.
     // Body and deck field for articles.
     // Not returning TFK_SEARCH_ARTICLE_BODY, for now.
-    $query->params['fl'] .= ','. implode(',', array(TFK_SEARCH_SPANISH_VERSION, TFK_SEARCH_ARTICLE_DECK));
+    $query->params['fl'] .= ','. implode(',', array(TFK_SEARCH_SPANISH_VERSION, TFK_SEARCH_TFK_STORE_PRODUCT, TFK_SEARCH_ARTICLE_DECK));
     
     // Limit the number of rows per page.
     $query->params['rows'] = 8;
@@ -3250,7 +3281,6 @@ function tfk_search_preprocess_search_result(&$vars) {
     break;
         
     case 'store_product':
-//      $style = "tfk_book";
       $link = '#';
       $tmp_link = field_get_items('node',$node,'field_product_link');
       if(isset($tmp_link[0]['value'])) {
@@ -3340,11 +3370,109 @@ function tfk_search_preprocess_search_result(&$vars) {
           $vars['thumbnail'] = FALSE;
         }
       }
+      $date = false;
     break;
     
     //default:
     //  ;
     //break;
+  }
+  
+  if(isset($vars['result']['fields'][TFK_SEARCH_TFK_STORE_PRODUCT])) {
+    $style='115x115';
+    if($vars['result']['fields']['bundle'] ==  'store_product') {
+      $link = '#';
+      $tmp_link = field_get_items('node',$node,'field_product_link');
+      if(isset($tmp_link[0]['value'])) {
+          $link = $tmp_link[0]['value'];
+      }
+      $vars['tfk_search_result_link_1'] = l('Buy Now!', $link);
+      $tmp_title = $vars['title'];
+      $ttl = preg_replace('/<a href=".*?">/','<a href="'.$link.'">',$tmp_title);
+      $vars['title'] = $ttl;
+      
+      $tmp_teaser = field_get_items('node',$node,'field_product_description');
+      if(isset($tmp_teaser)) {
+        $pattern1 = '/(<.*">)/';
+        $matches = preg_split($pattern1,$tmp_teaser[0]['value'],-1,PREG_SPLIT_DELIM_CAPTURE);
+        $prefix = $matches[1];
+        $rest = $matches[2];
+
+        $pattern2 = '/(<\/.*>)/';
+        $matches = preg_split($pattern2,$rest,-1,PREG_SPLIT_DELIM_CAPTURE);
+        $text = $matches[0];
+        $suf = $matches[1];
+        $tt = $prefix . preg_replace('/\s+?(\S+)?$/', '', substr($text, 0, 151)) . ' ...' . $suf;
+        if(strlen($tt)<(strlen($tmp_teaser[0]['value']))) {
+          $teaser = $tt;
+        }
+        else {
+          $teaser = $tmp_teaser[0]['value'];
+        }
+      }
+      
+      if(isset($node->field_product_image)){
+        $tmp_img = field_get_items('node',$node,'field_product_image');
+        
+        if(isset($tmp_img[0]['uri'])) {
+          $abspath = image_style_url($style, $tmp_img[0]['uri']);
+          
+          $icon = '<div class="icon"></div>';
+          $thumbnail = theme('image', array('path' => $abspath, 'alt' => $tmp_img[0]['title'], 'title' => $tmp_img[0]['title'], 'attributes' => $thumb_attr)). $icon;
+          $vars['thumbnail'] = l($thumbnail, $link, $link_attr);
+        } else {
+          $vars['thumbnail'] = FALSE;
+        }
+      }
+    }
+        
+    if($vars['result']['fields']['bundle'] ==  'book') {
+      $link = '#';
+      $tmp_link = field_get_items('node',$node,'field_book_link');
+      if(isset($tmp_link[0]['value'])) {
+          $link = $tmp_link[0]['value'];
+      }
+      $vars['tfk_search_result_link_1'] = l('Buy Now!', $link);
+      $tmp_title = $vars['title'];
+      $ttl = preg_replace('/<a href=".*?">/','<a href="'.$link.'">',$tmp_title);
+      $vars['title'] = $ttl;
+      
+      $tmp_teaser = field_get_items('node',$node,'field_book_description');
+      if(isset($tmp_teaser)) {
+        $pattern1 = '/(<.*">)/';
+        $matches = preg_split($pattern1,$tmp_teaser[0]['value'],-1,PREG_SPLIT_DELIM_CAPTURE);
+        $prefix = $matches[1];
+        $rest = $matches[2];
+
+        $pattern2 = '/(<\/.*>)/';
+        $matches = preg_split($pattern2,$rest,-1,PREG_SPLIT_DELIM_CAPTURE);
+        $text = $matches[0];
+        $suf = $matches[1];
+        $tt = $prefix . preg_replace('/\s+?(\S+)?$/', '', substr($text, 0, 151)) . ' ...' . $suf;
+        if(strlen($tt)<(strlen($tmp_teaser[0]['value']))) {
+          $teaser = $tt;
+        }
+        else {
+          $teaser = $tmp_teaser[0]['value'];
+        }
+      }
+      
+      if(isset($node->field_book_image)){
+        $tmp_img = field_get_items('node',$node,'field_book_image');
+        
+        if(isset($tmp_img[0]['uri'])) {
+          $abspath = image_style_url($style, $tmp_img[0]['uri']);
+          
+          $icon = '<div class="icon"></div>';
+          $thumbnail = theme('image', array('path' => $abspath, 'alt' => $tmp_img[0]['title'], 'title' => $tmp_img[0]['title'], 'attributes' => $thumb_attr)). $icon;
+          $vars['thumbnail'] = l($thumbnail, $link, $link_attr);
+        } else {
+          $vars['thumbnail'] = FALSE;
+        }
+      }
+      $date = false;
+    }
+      
   }
   
   // All search interfaces.
