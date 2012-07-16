@@ -20,7 +20,7 @@ function misc_content_types_ctools_plugin_api() {
 function misc_content_types_node_info() {
   $items = array(
     'book' => array(
-      'name' => t('Store Book'),
+      'name' => t('TFK Book'),
       'base' => 'node_content',
       'description' => '',
       'has_title' => '1',
@@ -84,7 +84,7 @@ function misc_content_types_node_info() {
       'help' => '',
     ),
     'store_product' => array(
-      'name' => t('Store Product'),
+      'name' => t('TFK Product'),
       'base' => 'node_content',
       'description' => t('Non-Book products sold in the TFK Store'),
       'has_title' => '1',
