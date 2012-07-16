@@ -1,0 +1,95 @@
+<?php
+function tfk_notification_menu(){
+  $items = array();
+  $items['notification/hide/%'] = array(
+        'title' => 'Hide this',
+        'page callback' => '_tfk_notification_hide',
+        'page arguments' => array(2),
+        'access callback' => TRUE,
+        'type' => MENU_CALLBACK
+    );
+
+  return $items;
+}
+
+function _tfk_notification_hide($notification_id=NULL){
+  global $user;
+  db_query('insert into tfk_notifications_table(notification_id, user_id) values(:nid,:uid)',array('nid'=>$notification_id,'uid'=>$user->uid));
+  echo 'success';exit;
+}
+
+
+
+function tfk_notification_node_insert($node) {
+  if($node->type == 'tfk_notification'){
+    db_query('delete from tfk_notifications_table');
+  }
+}
+
+function tfk_notification_block_info() {
+  $blocks['tfk-notification-message'] = array(
+    'info' => t('Message representing TFK Notification')
+  );
+  return $blocks;
+}
+
+function tfk_notification_block_view($delta='') {
+  $block = array();
+  switch ($delta) {
+    case 'tfk-notification-message':
+      $block['subject'] = t('Message representing TFK Notification');
+      $block['content'] = _tfk_notification_message();
+      break;
+  }
+
+  return $block;
+}
+
+function _tfk_notification_message(){
+
+  $record = array();
+  $res = db_query('select max(nid) as lastid from node where type = :type and status = 1',array('type'=>'tfk_notification'));
+  $record = $res->fetch();
+
+  $notification_data = array();
+
+  //check if there is at least one published
+  if(is_numeric($record->lastid)){
+    global $user;
+
+    if($user->uid != 0){
+
+      //now we have to chek whether this user already saw this notification
+      $result = db_query('select count(*) as totalsaw from {tfk_notifications_table} where notification_id = :nid and user_id = :uid',array('nid' => $record->lastid,'uid' =>$user->uid));
+      $row = $result->fetch();
+
+      //case where there is no row , means he did not close it yet
+      if(!is_numeric($row->totalsaw) || $row->totalsaw == 0 ){
+        $notification = node_load($record->lastid);
+
+        $notification_data['notification_title'] = $notification->title;
+
+        $body_tmp = field_get_items('node', $notification, 'body');
+        $notification_data['notification_body'] = $body_tmp[0]['safe_value'];
+
+        $link_tmp = field_get_items('node', $notification, 'field_external_url');
+        $notification_data['notification_link'] = $link_tmp[0]['safe_value'];
+
+        $notification_data['notification_nid'] = $record->lastid;
+
+      }
+    }
+  }
+  
+  $list = array('notification_data' => $notification_data);
+  return theme('tfk_notification_message',$list);
+}
+
+function tfk_notification_theme(){
+  return array(
+    'tfk_notification_message' => array(
+      'template' => 'tfk-notification-message',
+      'variables' => array('list' => NULL),
+    )
+  );
+}
