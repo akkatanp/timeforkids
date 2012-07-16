@@ -46,7 +46,7 @@ function feature_tfk_store_image_default_styles() {
         'data' => array(
           'width' => '190',
           'height' => '190',
-          'upscale' => 1,
+          'upscale' => 0,
         ),
         'weight' => '2',
       ),
