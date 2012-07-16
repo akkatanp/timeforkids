@@ -3261,24 +3261,7 @@ function tfk_search_preprocess_search_result(&$vars) {
       $vars['title'] = $ttl;
       
       $tmp_teaser = field_get_items('node',$node,'field_product_description');
-      if(isset($tmp_teaser)) {
-        $pattern1 = '/(<.*">)/';
-        $matches = preg_split($pattern1,$tmp_teaser[0]['value'],-1,PREG_SPLIT_DELIM_CAPTURE);
-        $prefix = $matches[1];
-        $rest = $matches[2];
-
-        $pattern2 = '/(<\/.*>)/';
-        $matches = preg_split($pattern2,$rest,-1,PREG_SPLIT_DELIM_CAPTURE);
-        $text = $matches[0];
-        $suf = $matches[1];
-        $tt = $prefix . preg_replace('/\s+?(\S+)?$/', '', substr($text, 0, 151)) . ' ...' . $suf;
-        if(strlen($tt)<(strlen($tmp_teaser[0]['value']))) {
-          $teaser = $tt;
-        }
-        else {
-          $teaser = $tmp_teaser[0]['value'];
-        }
-      }
+      $teaser = $tmp_teaser[0]['value'];
       
       if(isset($node->field_product_image)){
         $tmp_img = field_get_items('node',$node,'field_product_image');
@@ -3307,24 +3290,7 @@ function tfk_search_preprocess_search_result(&$vars) {
       $vars['title'] = $ttl;
       
       $tmp_teaser = field_get_items('node',$node,'field_book_description');
-      if(isset($tmp_teaser)) {
-        $pattern1 = '/(<.*">)/';
-        $matches = preg_split($pattern1,$tmp_teaser[0]['value'],-1,PREG_SPLIT_DELIM_CAPTURE);
-        $prefix = $matches[1];
-        $rest = $matches[2];
-
-        $pattern2 = '/(<\/.*>)/';
-        $matches = preg_split($pattern2,$rest,-1,PREG_SPLIT_DELIM_CAPTURE);
-        $text = $matches[0];
-        $suf = $matches[1];
-        $tt = $prefix . preg_replace('/\s+?(\S+)?$/', '', substr($text, 0, 151)) . ' ...' . $suf;
-        if(strlen($tt)<(strlen($tmp_teaser[0]['value']))) {
-          $teaser = $tt;
-        }
-        else {
-          $teaser = $tmp_teaser[0]['value'];
-        }
-      }
+      $teaser = $tmp_teaser[0]['value'];
       
       if(isset($node->field_book_image)){
         $tmp_img = field_get_items('node',$node,'field_book_image');
