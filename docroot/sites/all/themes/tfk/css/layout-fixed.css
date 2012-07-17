@@ -66,6 +66,8 @@ body {
 /*
  * Content
  */
+.page-store.page-store-books #content.column,
+.page-store.page-store-products #content.column,
 #content.column {
 	float: left;
 	width: 510px;
@@ -73,7 +75,7 @@ body {
 	margin-top: 0;
 }
 
-/*.page-store #content.column,*/
+.page-store #content.column,
 .front #content.column {
 	float: left;
 	width: 768px;
