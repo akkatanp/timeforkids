@@ -3236,7 +3236,20 @@ div.tfk_offering_item_image {
 .subscription-benefits-touts  > div .img + .deck + a{/*IE7->*/*margin-top:-10px;}
 .subscription-benefits-touts  > div .img{clear:left;float:left;}
 .subscription-benefits-touts  > div .img + .deck + .img{/*IE7->*/*margin-bottom:22px;}
-
+div.subscribe-now {
+	width:483px;
+	margin-left:5px;
+	padding:10px;
+	background-color:#e6e6e6;
+	font:bold 20px Arial,sans;
+	border: 1px solid #cecece;                                                                         
+	}
+div.subscribe-now span.like { color:#333; }
+div.subscribe-now a.subscribe {
+	margin-left:5px;
+	color:#d71700;
+	font-style:italic;
+	}
 .view-books td {width:25%;overflow:wrap;vertical-align:top;padding-left:10px;padding-top:20px;}
 #block-views-books-block {background-color:#e6e6e6;color:#333;border:1px solid #ccc;}
 #block-views-books-block .block-title {font-size:30px;line-height:30px;margin:15px 0 20px 20px;}
@@ -3247,7 +3260,7 @@ div.tfk_offering_item_image {
 #block-views-other-products-block .block-title {font-size:30px;line-height:30px;margin:0 0 20px 20px;padding-top:15px;}
 .views-view-grid .views-field-field-book-image, .views-view-grid .views-field-field-product-image {width:105px;height:105px;max-height:105px;min-height:105px;max-width:105px;min-width:105px;}
 div.store-featured-info {margin-right:28px;}
-div.store-featured-image {float:left;width:190px;margin-bottom:20px;margin-left:47px;margin-right:20px;}
+div.store-featured-image {float:left;width:190px;margin-bottom:20px;margin-left:47px;margin-right:20px;height:190px;}
 div.store-featured-info h3{font-size:20px;line-height:18px;margin: -2px 0 5px;}
 div.store-featured-info .store-featured-author {margin-bottom:20px;}
 div.store-featured-info div.store-featured-description  {margin-top:0;margin-bottom:20px;}
