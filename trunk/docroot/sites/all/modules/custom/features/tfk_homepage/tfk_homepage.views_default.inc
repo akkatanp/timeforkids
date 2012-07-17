@@ -3087,7 +3087,7 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['fields']['field_description']['alter']['replace_spaces'] = 0;
   $handler->display->display_options['fields']['field_description']['alter']['trim_whitespace'] = 0;
   $handler->display->display_options['fields']['field_description']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['field_description']['alter']['max_length'] = '35';
+  $handler->display->display_options['fields']['field_description']['alter']['max_length'] = '75';
   $handler->display->display_options['fields']['field_description']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_description']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_description']['alter']['strip_tags'] = 0;
@@ -3100,7 +3100,7 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['fields']['field_description']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['field_description']['type'] = 'text_trimmed';
   $handler->display->display_options['fields']['field_description']['settings'] = array(
-    'trim_length' => '35',
+    'trim_length' => '85',
   );
   $handler->display->display_options['fields']['field_description']['field_api_classes'] = 0;
   /* Field: Content: Deck (Mini-site), points to body field. */
