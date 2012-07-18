@@ -249,6 +249,7 @@ function feature_tfk_store_views_default_views() {
     'field_book_description' => 0,
     'field_book_image' => 0,
     'counter' => 0,
+    'nothing' => 0,
   );
   $handler->display->display_options['style_options']['widgets']['top']['views_slideshow_controls']['weight'] = '1';
   $handler->display->display_options['style_options']['widgets']['top']['views_slideshow_controls']['type'] = 'views_slideshow_controls_text';
@@ -263,6 +264,7 @@ function feature_tfk_store_views_default_views() {
     'field_book_author' => 0,
     'field_book_description' => 0,
     'field_book_image' => 0,
+    'nothing' => 0,
   );
   $handler->display->display_options['style_options']['widgets']['bottom']['views_slideshow_controls']['weight'] = '1';
   $handler->display->display_options['style_options']['widgets']['bottom']['views_slideshow_controls']['type'] = 'views_slideshow_controls_text';
@@ -276,6 +278,7 @@ function feature_tfk_store_views_default_views() {
   $handler->display->display_options['style_options']['views_slideshow_cycle']['wait_for_image_load_timeout'] = '3000';
   $handler->display->display_options['style_options']['views_slideshow_cycle']['cleartype'] = 0;
   $handler->display->display_options['style_options']['views_slideshow_cycle']['cleartypenobg'] = 0;
+  $handler->display->display_options['style_options']['views_slideshow_cycle']['advanced_options'] = '{"height":"220px"}';
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'fields';
@@ -394,7 +397,8 @@ function feature_tfk_store_views_default_views() {
   $handler->display->display_options['fields']['field_book_image']['table'] = 'field_data_field_book_image';
   $handler->display->display_options['fields']['field_book_image']['field'] = 'field_book_image';
   $handler->display->display_options['fields']['field_book_image']['label'] = '';
-  $handler->display->display_options['fields']['field_book_image']['alter']['alter_text'] = 1;
+  $handler->display->display_options['fields']['field_book_image']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_book_image']['alter']['alter_text'] = 0;
   $handler->display->display_options['fields']['field_book_image']['alter']['text'] = '<div class="store-featured-image">[field_book_image]</div><div class="store-featured-info"><h3>[title]</h3><p class="store-featured-author">[field_book_author]</p><div class="store-featured-description">[field_book_description]</div><p class="store-featured-buynow"><a href="[field_book_link]" target="_blank">Buy Now!</a><p></div>';
   $handler->display->display_options['fields']['field_book_image']['alter']['make_link'] = 1;
   $handler->display->display_options['fields']['field_book_image']['alter']['path'] = '[field_book_link]';
@@ -443,6 +447,28 @@ function feature_tfk_store_views_default_views() {
   $handler->display->display_options['fields']['counter']['empty_zero'] = 0;
   $handler->display->display_options['fields']['counter']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['counter']['counter_start'] = '1';
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['label'] = '';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="store-featured-image">[field_book_image]</div><div class="store-featured-info"><h3>[title]</h3><p class="store-featured-author">[field_book_author]</p><div class="store-featured-description">[field_book_description]</div><p class="store-featured-buynow"><a href="[field_book_link]" target="_blank">Buy Now!</a><p></div>';
+  $handler->display->display_options['fields']['nothing']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['nothing']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['nothing']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['nothing']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['nothing']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['nothing']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['nothing']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['nothing']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['nothing']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['nothing']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['nothing']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['nothing']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['nothing']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['nothing']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['nothing']['hide_alter_empty'] = 0;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
@@ -830,11 +856,10 @@ function feature_tfk_store_views_default_views() {
   $handler->display->display_options['style_options']['widgets']['top']['views_slideshow_pager']['weight'] = '1';
   $handler->display->display_options['style_options']['widgets']['top']['views_slideshow_pager']['type'] = 'views_slideshow_pager_fields';
   $handler->display->display_options['style_options']['widgets']['top']['views_slideshow_pager']['views_slideshow_pager_fields_fields'] = array(
-    'field_book_link' => 0,
-    'title' => 0,
-    'field_book_author' => 0,
-    'field_book_description' => 0,
-    'field_book_image' => 0,
+    'field_product_link' => 0,
+    'title_1' => 0,
+    'field_product_description' => 0,
+    'field_product_image' => 0,
     'counter' => 0,
   );
   $handler->display->display_options['style_options']['widgets']['top']['views_slideshow_controls']['weight'] = '1';
@@ -845,11 +870,10 @@ function feature_tfk_store_views_default_views() {
   $handler->display->display_options['style_options']['widgets']['bottom']['views_slideshow_pager']['type'] = 'views_slideshow_pager_fields';
   $handler->display->display_options['style_options']['widgets']['bottom']['views_slideshow_pager']['views_slideshow_pager_fields_fields'] = array(
     'counter' => 'counter',
-    'field_book_link' => 0,
-    'title' => 0,
-    'field_book_author' => 0,
-    'field_book_description' => 0,
-    'field_book_image' => 0,
+    'field_product_link' => 0,
+    'title_1' => 0,
+    'field_product_description' => 0,
+    'field_product_image' => 0,
   );
   $handler->display->display_options['style_options']['widgets']['bottom']['views_slideshow_controls']['weight'] = '1';
   $handler->display->display_options['style_options']['widgets']['bottom']['views_slideshow_controls']['type'] = 'views_slideshow_controls_text';
@@ -863,6 +887,7 @@ function feature_tfk_store_views_default_views() {
   $handler->display->display_options['style_options']['views_slideshow_cycle']['wait_for_image_load_timeout'] = '3000';
   $handler->display->display_options['style_options']['views_slideshow_cycle']['cleartype'] = 0;
   $handler->display->display_options['style_options']['views_slideshow_cycle']['cleartypenobg'] = 0;
+  $handler->display->display_options['style_options']['views_slideshow_cycle']['advanced_options'] = '{"height":"220px"}';
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'fields';
@@ -957,7 +982,8 @@ function feature_tfk_store_views_default_views() {
   $handler->display->display_options['fields']['field_product_image']['table'] = 'field_data_field_product_image';
   $handler->display->display_options['fields']['field_product_image']['field'] = 'field_product_image';
   $handler->display->display_options['fields']['field_product_image']['label'] = '';
-  $handler->display->display_options['fields']['field_product_image']['alter']['alter_text'] = 1;
+  $handler->display->display_options['fields']['field_product_image']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_product_image']['alter']['alter_text'] = 0;
   $handler->display->display_options['fields']['field_product_image']['alter']['text'] = '<div class="store-featured-image">[field_product_image]</div><div class="store-featured-info"><h3>[title_1]</h3><div class="store-featured-description">[field_product_description]</div><p class="store-featured-buynow"><a href="[field_product_link]" target="_blank">Buy Now!</a><p></div>';
   $handler->display->display_options['fields']['field_product_image']['alter']['make_link'] = 1;
   $handler->display->display_options['fields']['field_product_image']['alter']['path'] = '[field_product_link]';
@@ -1006,6 +1032,28 @@ function feature_tfk_store_views_default_views() {
   $handler->display->display_options['fields']['counter']['empty_zero'] = 0;
   $handler->display->display_options['fields']['counter']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['counter']['counter_start'] = '1';
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['label'] = '';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="store-featured-image">[field_product_image]</div><div class="store-featured-info"><h3>[title_1]</h3><div class="store-featured-description">[field_product_description]</div><p class="store-featured-buynow"><a href="[field_product_link]" target="_blank">Buy Now!</a><p></div>';
+  $handler->display->display_options['fields']['nothing']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['nothing']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['nothing']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['nothing']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['nothing']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['nothing']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['nothing']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['nothing']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['nothing']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['nothing']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['nothing']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['nothing']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['nothing']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['nothing']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['nothing']['hide_alter_empty'] = 0;
   $handler->display->display_options['defaults']['sorts'] = FALSE;
   /* Sort criterion: Content: Title */
   $handler->display->display_options['sorts']['title']['id'] = 'title';

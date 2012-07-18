@@ -3161,7 +3161,7 @@ body.non-admin .dev-query {
 body.non-admin .devel-querylog {
 	display: none;
 }
-/* Jeff - remove start */
+
 div#tfk_offerings_top {
 	margin: 0;
 	padding: 1em;
@@ -3261,9 +3261,17 @@ div.subscribe-now a.subscribe {
 .views-view-grid .views-field-field-book-image, .views-view-grid .views-field-field-product-image {width:105px;height:105px;max-height:105px;min-height:105px;max-width:105px;min-width:105px;}
 div.store-featured-info {margin-right:28px;}
 div.store-featured-image {float:left;width:190px;margin-bottom:20px;margin-left:47px;margin-right:20px;height:190px;}
-div.store-featured-info h3{font-size:20px;line-height:18px;margin: -2px 0 5px;}
+div.store-featured-info h3{font-size:20px;line-height:25px;margin: -2px 0 5px;}
+div.store-featured-info h3 a, 
+#views_slideshow_cycle_teaser_section_books-block p.store-featured-buynow,
+#views_slideshow_cycle_teaser_section_other_products-block p.store-featured-buynow{
+    background-color:#e6e6e6;
+}
 div.store-featured-info .store-featured-author {margin-bottom:20px;}
 div.store-featured-info div.store-featured-description  {margin-top:0;margin-bottom:20px;}
+
+div.views-slideshow-cycle-main-frame-row {width:508px !important;}
+div.views-slideshow-cycle-main {height:220px;min-height:220px;}
 .views-slideshow-controls-bottom {position:relative;height:30px;background:#999;text-align:right;}
 .views-slideshow-pager-field-item .views-field-counter {float:left;padding:2px;margin-right:6px;margin-top:5px;width:18px;height:18px;cursor:pointer;}
 .views-slideshow-pager-field-item .views-field-counter .views-content-counter {font-size:0px;color:transparent;background-image:url(../images/grey-circle.png);background-repeat:no-repeat;width:18px;height:18px;position:relative;left:428px;}
@@ -3273,4 +3281,4 @@ div.store-featured-info div.store-featured-description  {margin-top:0;margin-bot
 .store_all_items_pager {padding:6px;background-color:#e6e6e6;border:1px solid #ccc;margin:8px 0;height:24px;}
 .store_all_items_pager .store-pager-title {float:left;}
 .store_all_items_pager .item-list {float:right;text-align:right;}
-/* Jeff - remove end */
+
