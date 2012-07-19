@@ -596,7 +596,6 @@ function tfk_search_apachesolr_update_index(&$document, $node, $namespace) {
     }
   }
   if($node->type == 'book' || $node->type == "store_product") {
-    $document->setField('bundle_name', "TFK Products");
     if($node->type == 'book') {
       $tmp_body = field_get_items('node', $node, 'field_book_description');
     }

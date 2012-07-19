@@ -65,7 +65,7 @@
  * @see template_process()
  */
 ?>
-<?php if(isset($tfk_search_cont_type) && $tfk_search_cont_type == "TFK PRODUCTS") {
+<?php if(isset($tfk_search_cont_type) && ($tfk_search_cont_type == "TFK PRODUCT" || $tfk_search_cont_type == "TFK BOOK")) {
         $tfk_product = 'tfk_product';
     }
     else {
@@ -83,7 +83,7 @@
   <?php endif;?>
   
   <?php if(isset($tfk_search_cont_type)):?>
-    <?php if($tfk_search_cont_type == "TFK PRODUCTS"):?>
+    <?php if($tfk_search_cont_type == "TFK PRODUCT" || $tfk_search_cont_type == "TFK BOOK"):?>
       <div class="content-type <?php print $tfk_product;?>">
     <?php else:?>  
       <div class="content-type">
