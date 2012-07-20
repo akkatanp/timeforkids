@@ -3231,11 +3231,13 @@ div.tfk_offering_item_image {
 .subscription-benefits-touts  > div h2 + p, .subscription-benefits-touts > div h3 + p{margin-bottom:20px;}
 .subscription-benefits-touts  > div > a{display:block;margin:12px 0 0;}
 .subscription-benefits-touts  > div > p > a{display:block;margin:12px 0 0;clear:both;}
+.subscription-benefits-touts  > div > div.deck + p.clearfix{/*IE7->*/*clear:both;}
 .subscription-benefits-touts  > div .deck {float:left;width:358px;margin-bottom:22px;padding-left:10px;}
 .subscription-benefits-touts  > div .deck + a{clear:left;}
 .subscription-benefits-touts  > div .img + .deck + a{/*IE7->*/*margin-top:-10px;}
 .subscription-benefits-touts  > div .img{clear:left;float:left;}
 .subscription-benefits-touts  > div .img + .deck + .img{/*IE7->*/*margin-bottom:22px;}
+.subscription-benefits-touts div h3{/*IE7->*/*font-size:14px;}
 div.subscribe-now {
 	width:483px;
 	margin-left:5px;
@@ -3266,6 +3268,7 @@ div.store-featured-info h3 a,
 #views_slideshow_cycle_teaser_section_books-block p.store-featured-buynow,
 #views_slideshow_cycle_teaser_section_other_products-block p.store-featured-buynow{
     background-color:#e6e6e6;
+    display: inline;
 }
 div.store-featured-info .store-featured-author {margin-bottom:20px;}
 div.store-featured-info div.store-featured-description  {margin-top:0;margin-bottom:20px;}
