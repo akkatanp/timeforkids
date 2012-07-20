@@ -130,7 +130,7 @@ body {
 	padding: 0;
 	margin-top: 0px;
 }
-
+.region.region-sidebar-second.column.sidebar{/*IE7->*/*height:10px;
 /*
  * Footer
  */
