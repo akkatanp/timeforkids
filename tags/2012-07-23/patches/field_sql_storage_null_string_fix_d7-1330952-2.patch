@@ -1,0 +1,17 @@
+diff --git a/modules/field/modules/field_sql_storage/field_sql_storage.module b/modules/field/modules/field_sql_storage/field_sql_storage.module
+index 92d244a..9d3220c 100644
+--- a/modules/field/modules/field_sql_storage/field_sql_storage.module
++++ b/modules/field/modules/field_sql_storage/field_sql_storage.module
+@@ -430,7 +430,11 @@ function field_sql_storage_field_storage_write($entity_type, $entity, $op, $fiel
+           'language' => $langcode,
+         );
+         foreach ($field['columns'] as $column => $attributes) {
+-          $record[_field_sql_storage_columnname($field_name, $column)] = isset($item[$column]) ? $item[$column] : NULL;
++           //convert non-numeric values (such as empty strings) in integer fields to NULL
++           if ($attributes['type'] == 'int' && (!isset($attributes['not null']) || !$attributes['not null']) && !is_numeric($item[$column])) {
++             $item[$column] = NULL;
++           }
++           $record[_field_sql_storage_columnname($field_name, $column)] = isset($item[$column]) ? $item[$column] : NULL;
+         }
+         $query->values($record);
+         if (isset($vid)) {
