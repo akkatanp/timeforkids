@@ -191,7 +191,7 @@ function tfk_ads_omni_get_config_vars(&$variables){
      }
      $channel_array['zone'] = $ad_zone_prefix."/".$channel_array['channel'];
      $channel_array['omni_account'] = tfk_ads_omni_get_account();
-     $channel_array['omni_pagename'] = tfk_ads_omni_format_omniture($channel_array['omni_pagename']);
+     $channel_array['omni_pagename'] = tfk_ads_omni_pagetitle_override(tfk_ads_omni_format_omniture($channel_array['omni_pagename']));
      if ($channel_array['channel'] == "search") {
          $channel_array['omni_search_term'] = tfk_ads_omni_format_omniture(array_shift(explode("?", $path_array[2])));
      }
@@ -261,6 +261,16 @@ function tfk_ads_omni_subchannel_override($channel_name) {
             $override_channel = $channel_name;
     }
     return $override_channel;
+}
+function tfk_ads_omni_pagetitle_override($page_name) {
+    switch ($page_name) {
+        case "store|tfk store":
+            $override_name = "store|subscriptions";
+            break;
+        default:
+            $override_name= $page_name;
+    }
+    return $override_name;
 }
 //Cleans up strings for omniture
 function tfk_ads_omni_format_omniture($string) {
