@@ -159,7 +159,7 @@ function tfk_ads_omni_get_config_vars(&$variables){
          if (count($path_array) > 1) {
             if (!empty($variables['node']) ) {
                     $channel_array['node_path'] = $path_array[1];//Node
-                    $channel_array['omni_pagename'] .= $channel_array['channel']."|".tfk_ads_omni_format_omniture($variables['node']->title);
+                    $channel_array['omni_pagename'] .= $channel_array['channel']."|".tfk_ads_omni_node_title_override(tfk_ads_omni_format_omniture($variables['node']->title));
                     $grade_level = field_get_items('node', $variables['node'], 'field_grade_level');
                     if (isset($grade_level[0]['taxonomy_term']->name)) {
                         $channel_array['omni_grade_level'] = $grade_level[0]['taxonomy_term']->name;
@@ -191,7 +191,7 @@ function tfk_ads_omni_get_config_vars(&$variables){
      }
      $channel_array['zone'] = $ad_zone_prefix."/".$channel_array['channel'];
      $channel_array['omni_account'] = tfk_ads_omni_get_account();
-     $channel_array['omni_pagename'] = tfk_ads_omni_pagetitle_override(tfk_ads_omni_format_omniture($channel_array['omni_pagename']));
+     $channel_array['omni_pagename'] = tfk_ads_omni_format_omniture($channel_array['omni_pagename']);
      if ($channel_array['channel'] == "search") {
          $channel_array['omni_search_term'] = tfk_ads_omni_format_omniture(array_shift(explode("?", $path_array[2])));
      }
@@ -262,10 +262,10 @@ function tfk_ads_omni_subchannel_override($channel_name) {
     }
     return $override_channel;
 }
-function tfk_ads_omni_pagetitle_override($page_name) {
+function tfk_ads_omni_node_title_override($page_name) {
     switch ($page_name) {
-        case "store|tfk store":
-            $override_name = "store|subscriptions";
+        case "tfk store":
+            $override_name = "subscriptions";
             break;
         default:
             $override_name= $page_name;
