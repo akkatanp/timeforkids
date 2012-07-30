@@ -1244,7 +1244,7 @@ body.one-sidebar .secondary-touts-view td.col-2  {
 	line-height: 15px;
   height:115px;
   height:auto !important;
-  min-height:115px;
+/*  min-height:115px;*/
 }
 
 .view-mini-site-home .view-content table td.empty {
@@ -3215,13 +3215,13 @@ div.tfk_offering_item_image {
 	float:left;
 	}
 
-.subscriptions-container > div {margin:0 0 0 5px;overflow:auto;padding:10px;border:1px solid #cecece;border-top:none;}
-.subscriptions-container > div:first-child{border-top:1px solid #ccc;}
+.subscriptions-container > div {margin:0 0 0 5px;overflow:auto;padding:10px;padding-bottom:20px;border:1px solid #cecece;border-top:none;}
+.subscriptions-container > div:first-child{border-top:1px solid #ccc;padding-top:10px;padding-bottom:0;}
 .subscriptions-container > div:first-child p{margin-bottom:20px;}
 .subscriptions-container .deck{float:left;width:331px;padding-left:12px;}
 .subscriptions-container .deck > a{display:block;margin:12px 0 55px 0;}
-.subscriptions-container > div h2{margin-bottom:14px;}
-.subscriptions-container .deck h3{margin-bottom:10px;}
+.subscriptions-container > div h2{margin-bottom:14px;font-size:30px;line-height:30px;}
+.subscriptions-container .deck h3{margin-bottom:10px;font-size:20px;line-height:20px;}
 .subscriptions-container > div img{float:left;}
 
 .subscription-benefits-touts > div{overflow:auto;border:1px solid #ccc;margin:0 0 10px 5px;padding:10px;/*IE7->*/*overflow:hidden;}
@@ -3262,8 +3262,8 @@ div.subscribe-now a.subscribe {
 #block-views-other-products-block .block-title {font-size:30px;line-height:30px;margin:0 0 20px 20px;padding-top:15px;}
 .views-view-grid .views-field-field-book-image, .views-view-grid .views-field-field-product-image {width:105px;height:105px;max-height:105px;min-height:105px;max-width:105px;min-width:105px;}
 div.store-featured-info {margin-right:28px;}
-div.store-featured-image {float:left;width:190px;margin-bottom:20px;margin-left:47px;margin-right:20px;height:190px;}
-div.store-featured-info h3{font-size:20px;line-height:25px;margin: -2px 0 5px;}
+div.store-featured-image {float:left;width:190px;margin-bottom:20px;margin-left:47px;margin-right:20px;height:190px;text-align:center;}
+div.store-featured-info h3{font-size:20px;line-height:18px;margin: -2px 0 5px;}
 div.store-featured-info h3 a, 
 #views_slideshow_cycle_teaser_section_books-block p.store-featured-buynow,
 #views_slideshow_cycle_teaser_section_other_products-block p.store-featured-buynow{
@@ -3280,8 +3280,23 @@ div.views-slideshow-cycle-main {height:220px;min-height:220px;}
 .views-slideshow-pager-field-item .views-field-counter .views-content-counter {font-size:0px;color:transparent;background-image:url(../images/grey-circle.png);background-repeat:no-repeat;width:18px;height:18px;position:relative;left:428px;}
 .views-slideshow-pager-field-item.active .views-field-counter .views-content-counter {background-image:url(../images/red-circle.png);}
 .view-display-id-block_1 td {vertical-align:top;}
-.store-all-table {border: 1px solid #cecece;clear:both;}
-.store_all_items_pager {padding:6px;background-color:#e6e6e6;border:1px solid #ccc;margin:8px 0;height:24px;}
+.store-all-table {border: 1px solid #cecece;clear:both;line-height:14px;}
+.store_all_items_pager {padding:6px;background-color:#e6e6e6;border:1px solid #ccc;margin:20px 0 8px 0;height:24px;}
 .store_all_items_pager .store-pager-title {float:left;}
 .store_all_items_pager .item-list {float:right;text-align:right;}
 .section-store .item-list .pager li {margin:0 0 0.25em 0;}
+
+#block-tfk-kid-reporters-kid-reporter-year {
+    background-color: #DEDEDE;
+    border: 1px solid #c6c6c6;
+    clear: both;
+    padding-bottom: 0.5em;
+    padding-left: 0.5em;
+}
+#block-tfk-kid-reporters-kid-reporter-year .form-item-kidrep-year label {
+    float: left;
+    margin-right: 1em;
+}
+#block-tfk-kid-reporters-kid-reporter-year input {
+    margin-left: 150px;
+}
