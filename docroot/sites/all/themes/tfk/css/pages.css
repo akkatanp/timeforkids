@@ -3226,9 +3226,9 @@ div.tfk_offering_item_image {
 
 .subscription-benefits-touts > div{overflow:auto;border:1px solid #ccc;margin:0 0 10px 5px;padding:10px;/*IE7->*/*overflow:hidden;}
 .subscription-benefits-touts  > div p span{color:#d71700;font-weight:bold;}
-.subscription-benefits-touts  > div h2{margin-bottom:14px;}
+.subscription-benefits-touts  > div h2{margin-bottom:14px;font-size:30px;line-height:30px;}
 .subscription-benefits-touts  > div h3{margin-bottom:10px;}
-.subscription-benefits-touts  > div h2 + p, .subscription-benefits-touts > div h3 + p{margin-bottom:20px;}
+.subscription-benefits-touts  > div h2 + p, .subscription-benefits-touts > div h3 + p{margin-bottom:10px;}
 .subscription-benefits-touts  > div > a{display:block;margin:12px 0 0;}
 .subscription-benefits-touts  > div > p > a{display:block;margin:12px 0 0;clear:both;}
 .subscription-benefits-touts  > div > div.deck + p.clearfix{/*IE7->*/*clear:both;}
@@ -3237,7 +3237,7 @@ div.tfk_offering_item_image {
 .subscription-benefits-touts  > div .img + .deck + a{/*IE7->*/*margin-top:-10px;}
 .subscription-benefits-touts  > div .img{clear:left;float:left;}
 .subscription-benefits-touts  > div .img + .deck + .img{/*IE7->*/*margin-bottom:22px;}
-.subscription-benefits-touts div h3{/*IE7->*/*font-size:14px;}
+.subscription-benefits-touts div h3{font-size:20px;line-height:20px;/*IE7->*/*font-size:20px;}
 div.subscribe-now {
 	width:483px;
 	margin-left:5px;
@@ -3246,11 +3246,10 @@ div.subscribe-now {
 	font:bold 20px Arial,sans;
 	border: 1px solid #cecece;                                                                         
 	}
-div.subscribe-now span.like { color:#333; }
+div.subscribe-now span.like { color:#333;font-style:italic; }
 div.subscribe-now a.subscribe {
 	margin-left:5px;
-	color:#d71700;
-	font-style:italic;
+	color:#d71700;	
 	}
 .view-books td {width:25%;overflow:wrap;vertical-align:top;padding-left:10px;padding-top:20px;}
 #block-views-books-block {background-color:#e6e6e6;color:#333;border:1px solid #ccc;}
