@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Feature TFK Store feature.
+ */
+
+include_once('feature_tfk_store.features.inc');
