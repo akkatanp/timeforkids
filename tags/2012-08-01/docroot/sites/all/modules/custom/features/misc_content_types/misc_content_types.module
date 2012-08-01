@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the misc_content_types feature.
+ */
+
+include_once('misc_content_types.features.inc');
