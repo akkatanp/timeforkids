@@ -3259,7 +3259,7 @@ div.subscribe-now a.subscribe {
 .view-books tr.row-last td,.view-other-products tr.row-last td  {padding-bottom:20px;}
 #block-views-other-products-block {background-color:#e6e6e6;color:#333;border:1px solid #ccc;margin-bottom:20px;}
 #block-views-other-products-block .block-title {font-size:30px;line-height:30px;margin:0 0 20px 20px;padding-top:15px;}
-.views-view-grid .views-field-field-book-image, .views-view-grid .views-field-field-product-image {width:105px;height:105px;max-height:105px;min-height:105px;max-width:105px;min-width:105px;}
+.views-view-grid .views-field-field-book-image, .views-view-grid .views-field-field-product-image {width:105px;height:105px;max-height:105px;min-height:105px;max-width:105px;min-width:105px;padding-bottom: 2px;}
 div.store-featured-info {margin-right:28px;}
 div.store-featured-image {float:left;width:190px;margin-bottom:20px;margin-left:47px;margin-right:20px;height:190px;text-align:center;}
 div.store-featured-info h3{font-size:16px;line-height:19px;margin: -2px 0 5px;}
