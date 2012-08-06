@@ -281,10 +281,10 @@ function tfk_teachers_community_preprocess_item_list(&$variables, $hook) {
       
       // Override default theme function with our own.
       $variables['theme_hook_suggestions'] = array('item_list_custom');
-      
+    }
       // Add suggestion box per Spec 17C.
       $suggestion =  array(
-        'id' => 'teacher-community-topic-list',
+        'id' => 'bottom-suggestion-box',
         'message' => 'GOT A QUESTION? NEED ADVICE ON LESSON PLANS?<br /> HAVE A GREAT IDEA FOR A WORKSHEET?<br /> SHARE IT WITH THE TFK TEACHER COMMUNITY!',
         'link_title' => 'Submit Your Thoughts to the TFK Community',
         'link_dest' => 'node/add/teacher-community-question',
@@ -293,7 +293,7 @@ function tfk_teachers_community_preprocess_item_list(&$variables, $hook) {
       );
       $variables['header'] = theme('suggestion_box', $suggestion);
     }
-  }
+//  }
 }
 
 
@@ -792,4 +792,16 @@ function tfk_teachers_community_preprocess_views_view_field(&$variables, $hook) 
   
   }
   
+}
+
+function tfk_teachers_community_views_pre_render(&$view) {
+    /* remove the footer if there will be a pager - the pager adds the footer itself */
+    if($view->name == 'teacher_community_topic_list')
+    {
+       if($view->total_rows > sizeof($view->result)) {
+           if(isset($view->footer['area']->options['content'])) {
+               $view->footer['area']->options['content'] = '';
+           }
+       }
+    }
 }
