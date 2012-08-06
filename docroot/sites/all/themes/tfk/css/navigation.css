@@ -1232,6 +1232,7 @@
 	height: 11px;
 	padding: 1px 6px;
 	border-right: solid 1px #fff;
+        border-bottom: none;
 }
 
 .region-footer ul.menu li.last {
