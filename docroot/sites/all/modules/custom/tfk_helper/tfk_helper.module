@@ -1408,7 +1408,7 @@ function tfk_helper_get_content_type_label($content_type) {
 function tfk_helper_node_update($node) {
     if(isset($node->flag)) {
         foreach($node->flag as $flag => $value) {
-            if($value) {
+            if($value && $node->type != "kid_reporter_listing_nodeblock") {
                 flag('unflag',$flag,$node->nid);
                 flag('flag',$flag,$node->nid);
             }

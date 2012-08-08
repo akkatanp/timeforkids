@@ -26,17 +26,23 @@ function feature_kid_reporters_updated_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'menu-menu-kid-reporter-articles-link' => array(
-          'module' => 'menu',
-          'delta' => 'menu-kid-reporter-articles-link',
+        'tfk_kid_reporters-kid_reporter_year' => array(
+          'module' => 'tfk_kid_reporters',
+          'delta' => 'kid_reporter_year',
           'region' => 'sidebar_first',
-          'weight' => '-78',
+          'weight' => NULL,
         ),
         'views-featured_kid_reporter-block' => array(
           'module' => 'views',
           'delta' => 'featured_kid_reporter-block',
           'region' => 'sidebar_first',
-          'weight' => '-77',
+          'weight' => NULL,
+        ),
+        'menu-menu-kid-reporter-articles-link' => array(
+          'module' => 'menu',
+          'delta' => 'menu-kid-reporter-articles-link',
+          'region' => 'sidebar_first',
+          'weight' => NULL,
         ),
       ),
     ),
