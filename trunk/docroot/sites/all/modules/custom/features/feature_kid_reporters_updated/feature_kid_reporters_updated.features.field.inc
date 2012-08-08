@@ -82,7 +82,7 @@ function feature_kid_reporters_updated_field_default_fields() {
           'summary_rows' => 5,
         ),
         'type' => 'text_textarea_with_summary',
-        'weight' => '4',
+        'weight' => '5',
       ),
       'widget_type' => 'text_textarea_with_summary',
     ),
@@ -155,7 +155,7 @@ function feature_kid_reporters_updated_field_default_fields() {
           'rows' => '5',
         ),
         'type' => 'text_textarea',
-        'weight' => '7',
+        'weight' => '8',
       ),
     ),
   );
@@ -224,7 +224,7 @@ function feature_kid_reporters_updated_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '3',
+        'weight' => '4',
       ),
     ),
   );
@@ -292,7 +292,7 @@ function feature_kid_reporters_updated_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '2',
+        'weight' => '3',
       ),
     ),
   );
@@ -360,7 +360,7 @@ function feature_kid_reporters_updated_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '1',
+        'weight' => '2',
       ),
     ),
   );
@@ -422,6 +422,7 @@ function feature_kid_reporters_updated_field_default_fields() {
       'required' => 0,
       'settings' => array(
         'alt_field' => 0,
+        'default_image' => 0,
         'file_directory' => '',
         'file_extensions' => 'png gif jpg jpeg',
         'max_filesize' => '',
@@ -447,7 +448,7 @@ function feature_kid_reporters_updated_field_default_fields() {
           'progress_indicator' => 'throbber',
         ),
         'type' => 'image_image',
-        'weight' => '5',
+        'weight' => '6',
       ),
     ),
   );
@@ -505,6 +506,7 @@ function feature_kid_reporters_updated_field_default_fields() {
       'required' => 0,
       'settings' => array(
         'alt_field' => 0,
+        'default_image' => 0,
         'file_directory' => '',
         'file_extensions' => 'png gif jpg jpeg',
         'max_filesize' => '',
@@ -530,7 +532,77 @@ function feature_kid_reporters_updated_field_default_fields() {
           'progress_indicator' => 'throbber',
         ),
         'type' => 'image_image',
-        'weight' => '6',
+        'weight' => '7',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-kid_reporter-field_year'
+  $fields['node-kid_reporter-field_year'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_year',
+      'foreign keys' => array(),
+      'indexes' => array(
+        'value' => array(
+          0 => 'value',
+        ),
+      ),
+      'module' => 'list',
+      'settings' => array(
+        'allowed_values' => array(
+          '2010-2011' => '2010-2011',
+          '2011-2012' => '2011-2012',
+          '2012-2013' => '2012-2013',
+          '2013-2014' => '2013-2014',
+          '2014-2015' => '2014-2015',
+          '2015-2016' => '2015-2016',
+          '2016-2017' => '2016-2017',
+          '2017-2018' => '2017-2018',
+          '2018-2019' => '2018-2019',
+          '2019-2020' => '2019-2020',
+          '2020-2021' => '2020-2021',
+        ),
+        'allowed_values_function' => '',
+      ),
+      'translatable' => '0',
+      'type' => 'list_text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'kid_reporter',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '7',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_year',
+      'label' => 'Kid Reporter Year',
+      'required' => 1,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(),
+        'type' => 'options_select',
+        'weight' => 0,
       ),
     ),
   );
@@ -540,6 +612,7 @@ function feature_kid_reporters_updated_field_default_fields() {
   t('Age');
   t('Featured Deck');
   t('Grade Level');
+  t('Kid Reporter Year');
   t('Location');
   t('Profile Image');
   t('Profile of Kid Reporter');

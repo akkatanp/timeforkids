@@ -44,7 +44,7 @@ function misc_content_types_node_info() {
       'help' => '',
     ),
     'kid_reporter_listing_nodeblock' => array(
-      'name' => t('Kid Reporter Listing Nodeblock'),
+      'name' => t('Kid Reporter Heading'),
       'base' => 'node_content',
       'description' => '',
       'has_title' => '1',

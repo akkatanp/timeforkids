@@ -13,6 +13,13 @@ function feature_kid_reporters_updated_strongarm() {
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'active_kid_reporter_year';
+  $strongarm->value = '2011-2012';
+  $export['active_kid_reporter_year'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'comment_anonymous_kid_reporter';
   $strongarm->value = 0;
   $export['comment_anonymous_kid_reporter'] = $strongarm;

@@ -1353,7 +1353,7 @@ function misc_content_types_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'teaser' => array(
           'label' => 'hidden',
@@ -1381,9 +1381,79 @@ function misc_content_types_field_default_fields() {
           'summary_rows' => 5,
         ),
         'type' => 'text_textarea_with_summary',
-        'weight' => -4,
+        'weight' => '2',
       ),
       'widget_type' => 'text_textarea_with_summary',
+    ),
+  );
+
+  // Exported field: 'node-kid_reporter_listing_nodeblock-field_year'
+  $fields['node-kid_reporter_listing_nodeblock-field_year'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_year',
+      'foreign keys' => array(),
+      'indexes' => array(
+        'value' => array(
+          0 => 'value',
+        ),
+      ),
+      'module' => 'list',
+      'settings' => array(
+        'allowed_values' => array(
+          '2010-2011' => '2010-2011',
+          '2011-2012' => '2011-2012',
+          '2012-2013' => '2012-2013',
+          '2013-2014' => '2013-2014',
+          '2014-2015' => '2014-2015',
+          '2015-2016' => '2015-2016',
+          '2016-2017' => '2016-2017',
+          '2017-2018' => '2017-2018',
+          '2018-2019' => '2018-2019',
+          '2019-2020' => '2019-2020',
+          '2020-2021' => '2020-2021',
+        ),
+        'allowed_values_function' => '',
+      ),
+      'translatable' => '0',
+      'type' => 'list_text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'kid_reporter_listing_nodeblock',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '1',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_year',
+      'label' => 'Kid Reporter Year',
+      'required' => 1,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(),
+        'type' => 'options_select',
+        'weight' => 0,
+      ),
     ),
   );
 
@@ -3706,6 +3776,7 @@ function misc_content_types_field_default_fields() {
   t('Item Image');
   t('Item Url');
   t('Keywords');
+  t('Kid Reporter Year');
   t('Lesson Text');
   t('Link');
   t('Link url');

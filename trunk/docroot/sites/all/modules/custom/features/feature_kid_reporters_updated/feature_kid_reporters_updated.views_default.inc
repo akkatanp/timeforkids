@@ -190,6 +190,12 @@ function feature_kid_reporters_updated_views_default_views() {
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';
   $handler->display->display_options['sorts']['title']['field'] = 'title';
+  /* Contextual filter: Content: Kid Reporter Year (field_year) */
+  $handler->display->display_options['arguments']['field_year_value']['id'] = 'field_year_value';
+  $handler->display->display_options['arguments']['field_year_value']['table'] = 'field_data_field_year';
+  $handler->display->display_options['arguments']['field_year_value']['field'] = 'field_year_value';
+  $handler->display->display_options['arguments']['field_year_value']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['field_year_value']['summary']['format'] = 'default_summary';
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -420,6 +426,12 @@ function feature_kid_reporters_updated_views_default_views() {
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Contextual filter: Content: Kid Reporter Year (field_year) */
+  $handler->display->display_options['arguments']['field_year_value']['id'] = 'field_year_value';
+  $handler->display->display_options['arguments']['field_year_value']['table'] = 'field_data_field_year';
+  $handler->display->display_options['arguments']['field_year_value']['field'] = 'field_year_value';
+  $handler->display->display_options['arguments']['field_year_value']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['field_year_value']['summary']['format'] = 'default_summary';
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -943,6 +955,12 @@ function feature_kid_reporters_updated_views_default_views() {
   $handler->display->display_options['sorts']['random']['id'] = 'random';
   $handler->display->display_options['sorts']['random']['table'] = 'views';
   $handler->display->display_options['sorts']['random']['field'] = 'random';
+  /* Contextual filter: Content: Kid Reporter Year (field_year) */
+  $handler->display->display_options['arguments']['field_year_value']['id'] = 'field_year_value';
+  $handler->display->display_options['arguments']['field_year_value']['table'] = 'field_data_field_year';
+  $handler->display->display_options['arguments']['field_year_value']['field'] = 'field_year_value';
+  $handler->display->display_options['arguments']['field_year_value']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['field_year_value']['summary']['format'] = 'default_summary';
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
