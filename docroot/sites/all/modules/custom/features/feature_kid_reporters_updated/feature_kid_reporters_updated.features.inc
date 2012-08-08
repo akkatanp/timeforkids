@@ -29,6 +29,51 @@ function feature_kid_reporters_updated_views_api() {
 }
 
 /**
+ * Implements hook_flag_default_flags().
+ */
+function feature_kid_reporters_updated_flag_default_flags() {
+  $flags = array();
+  // Exported flag: "Active Kid Reporter School Year".
+  $flags['active_kidreporter_school_year'] = array(
+    'content_type' => 'node',
+    'title' => 'Active Kid Reporter School Year',
+    'global' => '1',
+    'types' => array(
+      0 => 'kid_reporter_listing_nodeblock',
+    ),
+    'flag_short' => 'Use as active school year',
+    'flag_long' => '',
+    'flag_message' => '',
+    'unflag_short' => 'Stop using as active school year',
+    'unflag_long' => '',
+    'unflag_message' => '',
+    'unflag_denied_text' => '',
+    'link_type' => 'toggle',
+    'roles' => array(
+      'flag' => array(
+        0 => '3',
+        1 => '4',
+      ),
+      'unflag' => array(
+        0 => '3',
+        1 => '4',
+      ),
+    ),
+    'show_on_page' => 0,
+    'show_on_teaser' => 0,
+    'show_on_form' => 1,
+    'access_author' => '',
+    'i18n' => 0,
+    'api_version' => 2,
+    'module' => 'feature_kid_reporters_updated',
+    'locked' => array(
+      0 => 'name',
+    ),
+  );
+  return $flags;
+}
+
+/**
  * Implements hook_node_info().
  */
 function feature_kid_reporters_updated_node_info() {
