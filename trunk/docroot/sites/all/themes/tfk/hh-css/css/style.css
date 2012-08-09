@@ -592,9 +592,13 @@ img {
 .node-flashcard-form .field-type-flashcard .field-multiple-table td {
   padding: 1em;
 }
-.node-flashcard-form .field-type-flashcard .field-multiple-table td div:last-child {
+.node-flashcard-form .field-type-flashcard .field-multiple-table td div {
   margin-left: 1em;
   padding-top: 1em;
+}
+.node-flashcard-form .field-type-flashcard .field-multiple-table td div:first-child {
+  margin-left: 0;
+  padding-top: 0;
 }
 .node-flashcard-form .field-type-flashcard .field-multiple-table td input {
   width: 80%;
