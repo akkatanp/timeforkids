@@ -602,6 +602,15 @@ function tfk_teachers_community_views_default_views() {
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page_1');
+  $handler->display->display_options['defaults']['footer'] = FALSE;
+  /* Footer: Global: Text area */
+  $handler->display->display_options['footer']['area']['id'] = 'area';
+  $handler->display->display_options['footer']['area']['table'] = 'views';
+  $handler->display->display_options['footer']['area']['field'] = 'area';
+  $handler->display->display_options['footer']['area']['empty'] = FALSE;
+  $handler->display->display_options['footer']['area']['content'] = '<div class=\'suggestion-box-wrapper bottom\'><div id=\'bottom-suggestion-box\' class=\'suggestion-box bottom\'><div class=\'msg\'>GOT A QUESTION? NEED ADVICE ON LESSON PLANS?<br /> HAVE A GREAT IDEA FOR A WORKSHEET?<br /> SHARE IT WITH THE TFK TEACHER COMMUNITY!</div><div class=\'link\'><a href="/node/add/teacher-community-question">Submit Your Thoughts to the TFK Community</a></div></div></div>';
+  $handler->display->display_options['footer']['area']['format'] = 'full_html';
+  $handler->display->display_options['footer']['area']['tokenize'] = 0;
   $handler->display->display_options['path'] = 'teacher-community/topic-list';
   $export['teacher_community_topic_list'] = $view;
 
