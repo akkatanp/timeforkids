@@ -767,7 +767,7 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['replace_spaces'] = 0;
   $handler->display->display_options['fields']['title']['alter']['trim_whitespace'] = 0;
   $handler->display->display_options['fields']['title']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['max_length'] = '25';
+  $handler->display->display_options['fields']['title']['alter']['max_length'] = '32';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['title']['alter']['strip_tags'] = 0;
@@ -792,7 +792,7 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['fields']['field_deck']['alter']['replace_spaces'] = 0;
   $handler->display->display_options['fields']['field_deck']['alter']['trim_whitespace'] = 0;
   $handler->display->display_options['fields']['field_deck']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['field_deck']['alter']['max_length'] = '85';
+  $handler->display->display_options['fields']['field_deck']['alter']['max_length'] = '110';
   $handler->display->display_options['fields']['field_deck']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_deck']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_deck']['alter']['strip_tags'] = 0;
@@ -805,7 +805,7 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['fields']['field_deck']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['field_deck']['type'] = 'text_trimmed';
   $handler->display->display_options['fields']['field_deck']['settings'] = array(
-    'trim_length' => '200',
+    'trim_length' => '120',
   );
   $handler->display->display_options['fields']['field_deck']['field_api_classes'] = 0;
   /* Field: Content: Deck (Slideshow) */
@@ -821,7 +821,7 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['fields']['field_slideshow_description']['alter']['replace_spaces'] = 0;
   $handler->display->display_options['fields']['field_slideshow_description']['alter']['trim_whitespace'] = 0;
   $handler->display->display_options['fields']['field_slideshow_description']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['field_slideshow_description']['alter']['max_length'] = '85';
+  $handler->display->display_options['fields']['field_slideshow_description']['alter']['max_length'] = '110';
   $handler->display->display_options['fields']['field_slideshow_description']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_slideshow_description']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_slideshow_description']['alter']['strip_tags'] = 0;
@@ -834,7 +834,7 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['fields']['field_slideshow_description']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['field_slideshow_description']['type'] = 'text_trimmed';
   $handler->display->display_options['fields']['field_slideshow_description']['settings'] = array(
-    'trim_length' => '200',
+    'trim_length' => '120',
   );
   $handler->display->display_options['fields']['field_slideshow_description']['field_api_classes'] = 0;
   /* Field: Content: Deck (ATW) */
@@ -850,7 +850,7 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['fields']['field_description']['alter']['replace_spaces'] = 0;
   $handler->display->display_options['fields']['field_description']['alter']['trim_whitespace'] = 0;
   $handler->display->display_options['fields']['field_description']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['field_description']['alter']['max_length'] = '75';
+  $handler->display->display_options['fields']['field_description']['alter']['max_length'] = '110';
   $handler->display->display_options['fields']['field_description']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_description']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_description']['alter']['strip_tags'] = 0;
@@ -863,7 +863,7 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['fields']['field_description']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['field_description']['type'] = 'text_trimmed';
   $handler->display->display_options['fields']['field_description']['settings'] = array(
-    'trim_length' => '85',
+    'trim_length' => '120',
   );
   $handler->display->display_options['fields']['field_description']['field_api_classes'] = 0;
   /* Field: Content: Deck (Mini-site), points to body field. */
@@ -872,6 +872,7 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['fields']['body']['field'] = 'body';
   $handler->display->display_options['fields']['body']['ui_name'] = 'Content: Deck (Mini-site), points to body field.';
   $handler->display->display_options['fields']['body']['label'] = '';
+  $handler->display->display_options['fields']['body']['exclude'] = TRUE;
   $handler->display->display_options['fields']['body']['alter']['alter_text'] = 0;
   $handler->display->display_options['fields']['body']['alter']['make_link'] = 0;
   $handler->display->display_options['fields']['body']['alter']['absolute'] = 0;
@@ -1352,7 +1353,7 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['replace_spaces'] = 0;
   $handler->display->display_options['fields']['title']['alter']['trim_whitespace'] = 0;
   $handler->display->display_options['fields']['title']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['max_length'] = '25';
+  $handler->display->display_options['fields']['title']['alter']['max_length'] = '32';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['title']['alter']['strip_tags'] = 0;
@@ -1377,7 +1378,7 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['fields']['field_deck']['alter']['replace_spaces'] = 0;
   $handler->display->display_options['fields']['field_deck']['alter']['trim_whitespace'] = 0;
   $handler->display->display_options['fields']['field_deck']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['field_deck']['alter']['max_length'] = '85';
+  $handler->display->display_options['fields']['field_deck']['alter']['max_length'] = '110';
   $handler->display->display_options['fields']['field_deck']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_deck']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_deck']['alter']['strip_tags'] = 0;
@@ -1390,7 +1391,7 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['fields']['field_deck']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['field_deck']['type'] = 'text_trimmed';
   $handler->display->display_options['fields']['field_deck']['settings'] = array(
-    'trim_length' => '200',
+    'trim_length' => '120',
   );
   $handler->display->display_options['fields']['field_deck']['field_api_classes'] = 0;
   /* Field: Content: Deck (Slideshow) */
@@ -1406,7 +1407,7 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['fields']['field_slideshow_description']['alter']['replace_spaces'] = 0;
   $handler->display->display_options['fields']['field_slideshow_description']['alter']['trim_whitespace'] = 0;
   $handler->display->display_options['fields']['field_slideshow_description']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['field_slideshow_description']['alter']['max_length'] = '85';
+  $handler->display->display_options['fields']['field_slideshow_description']['alter']['max_length'] = '110';
   $handler->display->display_options['fields']['field_slideshow_description']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_slideshow_description']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_slideshow_description']['alter']['strip_tags'] = 0;
@@ -1419,7 +1420,7 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['fields']['field_slideshow_description']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['field_slideshow_description']['type'] = 'text_trimmed';
   $handler->display->display_options['fields']['field_slideshow_description']['settings'] = array(
-    'trim_length' => '200',
+    'trim_length' => '120',
   );
   $handler->display->display_options['fields']['field_slideshow_description']['field_api_classes'] = 0;
   /* Field: Content: Deck (ATW) */
@@ -1435,7 +1436,7 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['fields']['field_description']['alter']['replace_spaces'] = 0;
   $handler->display->display_options['fields']['field_description']['alter']['trim_whitespace'] = 0;
   $handler->display->display_options['fields']['field_description']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['field_description']['alter']['max_length'] = '75';
+  $handler->display->display_options['fields']['field_description']['alter']['max_length'] = '110';
   $handler->display->display_options['fields']['field_description']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_description']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_description']['alter']['strip_tags'] = 0;
@@ -1448,7 +1449,7 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['fields']['field_description']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['field_description']['type'] = 'text_trimmed';
   $handler->display->display_options['fields']['field_description']['settings'] = array(
-    'trim_length' => '85',
+    'trim_length' => '120',
   );
   $handler->display->display_options['fields']['field_description']['field_api_classes'] = 0;
   /* Field: Content: Deck (Mini-site), points to body field. */
@@ -1457,6 +1458,7 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['fields']['body']['field'] = 'body';
   $handler->display->display_options['fields']['body']['ui_name'] = 'Content: Deck (Mini-site), points to body field.';
   $handler->display->display_options['fields']['body']['label'] = '';
+  $handler->display->display_options['fields']['body']['exclude'] = TRUE;
   $handler->display->display_options['fields']['body']['alter']['alter_text'] = 0;
   $handler->display->display_options['fields']['body']['alter']['make_link'] = 0;
   $handler->display->display_options['fields']['body']['alter']['absolute'] = 0;
@@ -1903,7 +1905,7 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['replace_spaces'] = 0;
   $handler->display->display_options['fields']['title']['alter']['trim_whitespace'] = 0;
   $handler->display->display_options['fields']['title']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['max_length'] = '25';
+  $handler->display->display_options['fields']['title']['alter']['max_length'] = '32';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['title']['alter']['strip_tags'] = 0;
@@ -1928,7 +1930,7 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['fields']['field_deck']['alter']['replace_spaces'] = 0;
   $handler->display->display_options['fields']['field_deck']['alter']['trim_whitespace'] = 0;
   $handler->display->display_options['fields']['field_deck']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['field_deck']['alter']['max_length'] = '85';
+  $handler->display->display_options['fields']['field_deck']['alter']['max_length'] = '110';
   $handler->display->display_options['fields']['field_deck']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_deck']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_deck']['alter']['strip_tags'] = 0;
@@ -1941,7 +1943,7 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['fields']['field_deck']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['field_deck']['type'] = 'text_trimmed';
   $handler->display->display_options['fields']['field_deck']['settings'] = array(
-    'trim_length' => '200',
+    'trim_length' => '120',
   );
   $handler->display->display_options['fields']['field_deck']['field_api_classes'] = 0;
   /* Field: Content: Deck (Slideshow) */
@@ -1957,7 +1959,7 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['fields']['field_slideshow_description']['alter']['replace_spaces'] = 0;
   $handler->display->display_options['fields']['field_slideshow_description']['alter']['trim_whitespace'] = 0;
   $handler->display->display_options['fields']['field_slideshow_description']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['field_slideshow_description']['alter']['max_length'] = '85';
+  $handler->display->display_options['fields']['field_slideshow_description']['alter']['max_length'] = '110';
   $handler->display->display_options['fields']['field_slideshow_description']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_slideshow_description']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_slideshow_description']['alter']['strip_tags'] = 0;
@@ -1970,7 +1972,7 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['fields']['field_slideshow_description']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['field_slideshow_description']['type'] = 'text_trimmed';
   $handler->display->display_options['fields']['field_slideshow_description']['settings'] = array(
-    'trim_length' => '200',
+    'trim_length' => '120',
   );
   $handler->display->display_options['fields']['field_slideshow_description']['field_api_classes'] = 0;
   /* Field: Content: Deck (ATW) */
@@ -1986,7 +1988,7 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['fields']['field_description']['alter']['replace_spaces'] = 0;
   $handler->display->display_options['fields']['field_description']['alter']['trim_whitespace'] = 0;
   $handler->display->display_options['fields']['field_description']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['field_description']['alter']['max_length'] = '75';
+  $handler->display->display_options['fields']['field_description']['alter']['max_length'] = '110';
   $handler->display->display_options['fields']['field_description']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_description']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_description']['alter']['strip_tags'] = 0;
@@ -1999,7 +2001,7 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['fields']['field_description']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['field_description']['type'] = 'text_trimmed';
   $handler->display->display_options['fields']['field_description']['settings'] = array(
-    'trim_length' => '85',
+    'trim_length' => '120',
   );
   $handler->display->display_options['fields']['field_description']['field_api_classes'] = 0;
   /* Field: Content: Deck (Mini-site), points to body field. */
@@ -2008,6 +2010,7 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['fields']['body']['field'] = 'body';
   $handler->display->display_options['fields']['body']['ui_name'] = 'Content: Deck (Mini-site), points to body field.';
   $handler->display->display_options['fields']['body']['label'] = '';
+  $handler->display->display_options['fields']['body']['exclude'] = TRUE;
   $handler->display->display_options['fields']['body']['alter']['alter_text'] = 0;
   $handler->display->display_options['fields']['body']['alter']['make_link'] = 0;
   $handler->display->display_options['fields']['body']['alter']['absolute'] = 0;
@@ -2454,7 +2457,7 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['replace_spaces'] = 0;
   $handler->display->display_options['fields']['title']['alter']['trim_whitespace'] = 0;
   $handler->display->display_options['fields']['title']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['max_length'] = '25';
+  $handler->display->display_options['fields']['title']['alter']['max_length'] = '32';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['title']['alter']['strip_tags'] = 0;
@@ -2479,7 +2482,7 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['fields']['field_deck']['alter']['replace_spaces'] = 0;
   $handler->display->display_options['fields']['field_deck']['alter']['trim_whitespace'] = 0;
   $handler->display->display_options['fields']['field_deck']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['field_deck']['alter']['max_length'] = '85';
+  $handler->display->display_options['fields']['field_deck']['alter']['max_length'] = '110';
   $handler->display->display_options['fields']['field_deck']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_deck']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_deck']['alter']['strip_tags'] = 0;
@@ -2492,7 +2495,7 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['fields']['field_deck']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['field_deck']['type'] = 'text_trimmed';
   $handler->display->display_options['fields']['field_deck']['settings'] = array(
-    'trim_length' => '200',
+    'trim_length' => '120',
   );
   $handler->display->display_options['fields']['field_deck']['field_api_classes'] = 0;
   /* Field: Content: Deck (Slideshow) */
@@ -2508,7 +2511,7 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['fields']['field_slideshow_description']['alter']['replace_spaces'] = 0;
   $handler->display->display_options['fields']['field_slideshow_description']['alter']['trim_whitespace'] = 0;
   $handler->display->display_options['fields']['field_slideshow_description']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['field_slideshow_description']['alter']['max_length'] = '85';
+  $handler->display->display_options['fields']['field_slideshow_description']['alter']['max_length'] = '110';
   $handler->display->display_options['fields']['field_slideshow_description']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_slideshow_description']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_slideshow_description']['alter']['strip_tags'] = 0;
@@ -2521,7 +2524,7 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['fields']['field_slideshow_description']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['field_slideshow_description']['type'] = 'text_trimmed';
   $handler->display->display_options['fields']['field_slideshow_description']['settings'] = array(
-    'trim_length' => '200',
+    'trim_length' => '120',
   );
   $handler->display->display_options['fields']['field_slideshow_description']['field_api_classes'] = 0;
   /* Field: Content: Deck (ATW) */
@@ -2537,7 +2540,7 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['fields']['field_description']['alter']['replace_spaces'] = 0;
   $handler->display->display_options['fields']['field_description']['alter']['trim_whitespace'] = 0;
   $handler->display->display_options['fields']['field_description']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['field_description']['alter']['max_length'] = '75';
+  $handler->display->display_options['fields']['field_description']['alter']['max_length'] = '110';
   $handler->display->display_options['fields']['field_description']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_description']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_description']['alter']['strip_tags'] = 0;
@@ -2550,7 +2553,7 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['fields']['field_description']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['field_description']['type'] = 'text_trimmed';
   $handler->display->display_options['fields']['field_description']['settings'] = array(
-    'trim_length' => '85',
+    'trim_length' => '120',
   );
   $handler->display->display_options['fields']['field_description']['field_api_classes'] = 0;
   /* Field: Content: Deck (Mini-site), points to body field. */
@@ -2559,6 +2562,7 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['fields']['body']['field'] = 'body';
   $handler->display->display_options['fields']['body']['ui_name'] = 'Content: Deck (Mini-site), points to body field.';
   $handler->display->display_options['fields']['body']['label'] = '';
+  $handler->display->display_options['fields']['body']['exclude'] = TRUE;
   $handler->display->display_options['fields']['body']['alter']['alter_text'] = 0;
   $handler->display->display_options['fields']['body']['alter']['make_link'] = 0;
   $handler->display->display_options['fields']['body']['alter']['absolute'] = 0;
@@ -3004,7 +3008,7 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['replace_spaces'] = 0;
   $handler->display->display_options['fields']['title']['alter']['trim_whitespace'] = 0;
   $handler->display->display_options['fields']['title']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['max_length'] = '25';
+  $handler->display->display_options['fields']['title']['alter']['max_length'] = '32';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['title']['alter']['strip_tags'] = 0;
@@ -3029,7 +3033,7 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['fields']['field_deck']['alter']['replace_spaces'] = 0;
   $handler->display->display_options['fields']['field_deck']['alter']['trim_whitespace'] = 0;
   $handler->display->display_options['fields']['field_deck']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['field_deck']['alter']['max_length'] = '85';
+  $handler->display->display_options['fields']['field_deck']['alter']['max_length'] = '110';
   $handler->display->display_options['fields']['field_deck']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_deck']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_deck']['alter']['strip_tags'] = 0;
@@ -3042,7 +3046,7 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['fields']['field_deck']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['field_deck']['type'] = 'text_trimmed';
   $handler->display->display_options['fields']['field_deck']['settings'] = array(
-    'trim_length' => '200',
+    'trim_length' => '120',
   );
   $handler->display->display_options['fields']['field_deck']['field_api_classes'] = 0;
   /* Field: Content: Deck (Slideshow) */
@@ -3058,7 +3062,7 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['fields']['field_slideshow_description']['alter']['replace_spaces'] = 0;
   $handler->display->display_options['fields']['field_slideshow_description']['alter']['trim_whitespace'] = 0;
   $handler->display->display_options['fields']['field_slideshow_description']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['field_slideshow_description']['alter']['max_length'] = '85';
+  $handler->display->display_options['fields']['field_slideshow_description']['alter']['max_length'] = '110';
   $handler->display->display_options['fields']['field_slideshow_description']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_slideshow_description']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_slideshow_description']['alter']['strip_tags'] = 0;
@@ -3071,7 +3075,7 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['fields']['field_slideshow_description']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['field_slideshow_description']['type'] = 'text_trimmed';
   $handler->display->display_options['fields']['field_slideshow_description']['settings'] = array(
-    'trim_length' => '200',
+    'trim_length' => '120',
   );
   $handler->display->display_options['fields']['field_slideshow_description']['field_api_classes'] = 0;
   /* Field: Content: Deck (ATW) */
@@ -3087,7 +3091,7 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['fields']['field_description']['alter']['replace_spaces'] = 0;
   $handler->display->display_options['fields']['field_description']['alter']['trim_whitespace'] = 0;
   $handler->display->display_options['fields']['field_description']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['field_description']['alter']['max_length'] = '75';
+  $handler->display->display_options['fields']['field_description']['alter']['max_length'] = '110';
   $handler->display->display_options['fields']['field_description']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_description']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_description']['alter']['strip_tags'] = 0;
@@ -3100,7 +3104,7 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['fields']['field_description']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['field_description']['type'] = 'text_trimmed';
   $handler->display->display_options['fields']['field_description']['settings'] = array(
-    'trim_length' => '85',
+    'trim_length' => '120',
   );
   $handler->display->display_options['fields']['field_description']['field_api_classes'] = 0;
   /* Field: Content: Deck (Mini-site), points to body field. */
@@ -3109,6 +3113,7 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['fields']['body']['field'] = 'body';
   $handler->display->display_options['fields']['body']['ui_name'] = 'Content: Deck (Mini-site), points to body field.';
   $handler->display->display_options['fields']['body']['label'] = '';
+  $handler->display->display_options['fields']['body']['exclude'] = TRUE;
   $handler->display->display_options['fields']['body']['alter']['alter_text'] = 0;
   $handler->display->display_options['fields']['body']['alter']['make_link'] = 0;
   $handler->display->display_options['fields']['body']['alter']['absolute'] = 0;
@@ -3499,7 +3504,7 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['replace_spaces'] = 0;
   $handler->display->display_options['fields']['title']['alter']['trim_whitespace'] = 0;
   $handler->display->display_options['fields']['title']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['max_length'] = '25';
+  $handler->display->display_options['fields']['title']['alter']['max_length'] = '32';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['title']['alter']['strip_tags'] = 0;
@@ -3524,7 +3529,7 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['fields']['field_deck']['alter']['replace_spaces'] = 0;
   $handler->display->display_options['fields']['field_deck']['alter']['trim_whitespace'] = 0;
   $handler->display->display_options['fields']['field_deck']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['field_deck']['alter']['max_length'] = '85';
+  $handler->display->display_options['fields']['field_deck']['alter']['max_length'] = '110';
   $handler->display->display_options['fields']['field_deck']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_deck']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_deck']['alter']['strip_tags'] = 0;
@@ -3537,7 +3542,7 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['fields']['field_deck']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['field_deck']['type'] = 'text_trimmed';
   $handler->display->display_options['fields']['field_deck']['settings'] = array(
-    'trim_length' => '200',
+    'trim_length' => '120',
   );
   $handler->display->display_options['fields']['field_deck']['field_api_classes'] = 0;
   /* Field: Content: Deck (Slideshow) */
@@ -3553,7 +3558,7 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['fields']['field_slideshow_description']['alter']['replace_spaces'] = 0;
   $handler->display->display_options['fields']['field_slideshow_description']['alter']['trim_whitespace'] = 0;
   $handler->display->display_options['fields']['field_slideshow_description']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['field_slideshow_description']['alter']['max_length'] = '85';
+  $handler->display->display_options['fields']['field_slideshow_description']['alter']['max_length'] = '110';
   $handler->display->display_options['fields']['field_slideshow_description']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_slideshow_description']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_slideshow_description']['alter']['strip_tags'] = 0;
@@ -3566,7 +3571,7 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['fields']['field_slideshow_description']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['field_slideshow_description']['type'] = 'text_trimmed';
   $handler->display->display_options['fields']['field_slideshow_description']['settings'] = array(
-    'trim_length' => '200',
+    'trim_length' => '120',
   );
   $handler->display->display_options['fields']['field_slideshow_description']['field_api_classes'] = 0;
   /* Field: Content: Deck (ATW) */
@@ -3582,7 +3587,7 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['fields']['field_description']['alter']['replace_spaces'] = 0;
   $handler->display->display_options['fields']['field_description']['alter']['trim_whitespace'] = 0;
   $handler->display->display_options['fields']['field_description']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['field_description']['alter']['max_length'] = '35';
+  $handler->display->display_options['fields']['field_description']['alter']['max_length'] = '110';
   $handler->display->display_options['fields']['field_description']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_description']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_description']['alter']['strip_tags'] = 0;
@@ -3595,7 +3600,7 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['fields']['field_description']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['field_description']['type'] = 'text_trimmed';
   $handler->display->display_options['fields']['field_description']['settings'] = array(
-    'trim_length' => '35',
+    'trim_length' => '120',
   );
   $handler->display->display_options['fields']['field_description']['field_api_classes'] = 0;
   /* Field: Content: Deck (Mini-site), points to body field. */
@@ -3604,6 +3609,7 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['fields']['body']['field'] = 'body';
   $handler->display->display_options['fields']['body']['ui_name'] = 'Content: Deck (Mini-site), points to body field.';
   $handler->display->display_options['fields']['body']['label'] = '';
+  $handler->display->display_options['fields']['body']['exclude'] = TRUE;
   $handler->display->display_options['fields']['body']['alter']['alter_text'] = 0;
   $handler->display->display_options['fields']['body']['alter']['make_link'] = 0;
   $handler->display->display_options['fields']['body']['alter']['absolute'] = 0;
@@ -3995,7 +4001,7 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['replace_spaces'] = 0;
   $handler->display->display_options['fields']['title']['alter']['trim_whitespace'] = 0;
   $handler->display->display_options['fields']['title']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['max_length'] = '25';
+  $handler->display->display_options['fields']['title']['alter']['max_length'] = '32';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['title']['alter']['strip_tags'] = 0;
@@ -4020,7 +4026,7 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['fields']['field_deck']['alter']['replace_spaces'] = 0;
   $handler->display->display_options['fields']['field_deck']['alter']['trim_whitespace'] = 0;
   $handler->display->display_options['fields']['field_deck']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['field_deck']['alter']['max_length'] = '85';
+  $handler->display->display_options['fields']['field_deck']['alter']['max_length'] = '110';
   $handler->display->display_options['fields']['field_deck']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_deck']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_deck']['alter']['strip_tags'] = 0;
@@ -4033,7 +4039,7 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['fields']['field_deck']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['field_deck']['type'] = 'text_trimmed';
   $handler->display->display_options['fields']['field_deck']['settings'] = array(
-    'trim_length' => '200',
+    'trim_length' => '120',
   );
   $handler->display->display_options['fields']['field_deck']['field_api_classes'] = 0;
   /* Field: Content: Deck (Slideshow) */
@@ -4049,7 +4055,7 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['fields']['field_slideshow_description']['alter']['replace_spaces'] = 0;
   $handler->display->display_options['fields']['field_slideshow_description']['alter']['trim_whitespace'] = 0;
   $handler->display->display_options['fields']['field_slideshow_description']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['field_slideshow_description']['alter']['max_length'] = '85';
+  $handler->display->display_options['fields']['field_slideshow_description']['alter']['max_length'] = '110';
   $handler->display->display_options['fields']['field_slideshow_description']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_slideshow_description']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_slideshow_description']['alter']['strip_tags'] = 0;
@@ -4062,7 +4068,7 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['fields']['field_slideshow_description']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['field_slideshow_description']['type'] = 'text_trimmed';
   $handler->display->display_options['fields']['field_slideshow_description']['settings'] = array(
-    'trim_length' => '200',
+    'trim_length' => '120',
   );
   $handler->display->display_options['fields']['field_slideshow_description']['field_api_classes'] = 0;
   /* Field: Content: Deck (ATW) */
@@ -4078,7 +4084,7 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['fields']['field_description']['alter']['replace_spaces'] = 0;
   $handler->display->display_options['fields']['field_description']['alter']['trim_whitespace'] = 0;
   $handler->display->display_options['fields']['field_description']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['field_description']['alter']['max_length'] = '35';
+  $handler->display->display_options['fields']['field_description']['alter']['max_length'] = '110';
   $handler->display->display_options['fields']['field_description']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_description']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_description']['alter']['strip_tags'] = 0;
@@ -4091,7 +4097,7 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['fields']['field_description']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['field_description']['type'] = 'text_trimmed';
   $handler->display->display_options['fields']['field_description']['settings'] = array(
-    'trim_length' => '35',
+    'trim_length' => '120',
   );
   $handler->display->display_options['fields']['field_description']['field_api_classes'] = 0;
   /* Field: Content: Deck (Mini-site), points to body field. */
@@ -4100,6 +4106,7 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['fields']['body']['field'] = 'body';
   $handler->display->display_options['fields']['body']['ui_name'] = 'Content: Deck (Mini-site), points to body field.';
   $handler->display->display_options['fields']['body']['label'] = '';
+  $handler->display->display_options['fields']['body']['exclude'] = TRUE;
   $handler->display->display_options['fields']['body']['alter']['alter_text'] = 0;
   $handler->display->display_options['fields']['body']['alter']['make_link'] = 0;
   $handler->display->display_options['fields']['body']['alter']['absolute'] = 0;
