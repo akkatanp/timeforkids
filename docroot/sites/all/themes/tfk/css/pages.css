@@ -3297,4 +3297,5 @@ div.views-slideshow-cycle-main {height:220px;min-height:220px;}
 }
 #block-tfk-kid-reporters-kid-reporter-year input {
     margin-left: 150px;
+    /*IE7*/*padding: 4px 0;
 }
