@@ -62,7 +62,9 @@
 /* The node view page has a different selector */
 body.page-node .suggestion-box .link a {
 	background: url('/sites/all/modules/custom/tfk_teachers_community/images/right-arrow.png') 100% 50% no-repeat;
+	/*IE7*/*background: url('/sites/all/modules/custom/tfk_teachers_community/images/right-arrow.png') 215px 50% no-repeat;
 	width: 106%;
+	/*IE7*/*width: 230px;
 }
 
 #bottom-suggestion-box .link {
@@ -82,7 +84,7 @@ body.page-node #bottom-suggestion-box .link a {
   width: 250px;
   padding-right:10px;
   background: url("/sites/all/modules/custom/tfk_teachers_community/images/right-arrow.png") no-repeat scroll 100% 50% transparent;
-	*background: url("/sites/all/modules/custom/tfk_teachers_community/images/right-arrow.png") no-repeat scroll 95% 50% transparent;
+/*	*background: url("/sites/all/modules/custom/tfk_teachers_community/images/right-arrow.png") no-repeat scroll 95% 50% transparent;*/
 }
 body.page-views #bottom-suggestion-box .link a {
     margin-left: 42%;
@@ -304,6 +306,7 @@ div.comment.even {
   text-align: right;
   margin-top: 21px;
   line-height: 100%;
+  /*IE7*/*line-height: 110%;
 }
 
 body.page-node-add-teacher-community-question #page_pre_section { 
