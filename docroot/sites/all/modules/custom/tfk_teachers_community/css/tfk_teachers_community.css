@@ -64,7 +64,7 @@ body.page-node .suggestion-box .link a {
 	background: url('/sites/all/modules/custom/tfk_teachers_community/images/right-arrow.png') 100% 50% no-repeat;
 	/*IE7*/*background: url('/sites/all/modules/custom/tfk_teachers_community/images/right-arrow.png') 215px 50% no-repeat;
 	width: 106%;
-	/*IE7*/*width: 230px;
+	/*IE7*/*width: 230px; 
 }
 
 #bottom-suggestion-box .link {
