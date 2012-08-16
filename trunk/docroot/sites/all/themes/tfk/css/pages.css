@@ -1859,8 +1859,9 @@ body.node-type-atw-destination .group-destination-images {
 }
 
 .section-news-archive .item-list .pager-current {
-	color: black;
-	font-weight: normal;
+	color: #d71700;
+	font-weight: bold;
+        font-size: 12px;
 }
 
 .section-news-archive  .item-list li a.active {
