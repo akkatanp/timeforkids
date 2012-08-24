@@ -580,6 +580,7 @@ function tfk_news_node_view($node, $view_mode, $langcode) {
    
   if($node->type == 'article' && isset($node->field_kid_reporter['und'][0]) && $view_mode == 'full'){
     $body = $tmp_body[0]['value'];
+    $body = preg_replace('/[\r\n]+/', '', $body);
     $body = preg_replace('/(\<div class="inline-img" .*?\>.*?<\/div\>(?=<p>))/i', '<p>$1</p>', $body);
 
     $reporter = $node->field_kid_reporter;
