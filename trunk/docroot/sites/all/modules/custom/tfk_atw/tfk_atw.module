@@ -1059,3 +1059,13 @@ function tfk_atw_node_update($node) {
 
   }
 }
+
+function tfk_atw_views_pre_render(&$view) {
+  if($view->name == "homepage_news_block") {
+    foreach($view->result as $item) {
+        if($item->node_type == "atw_destination" && isset($item->field_field_description[0]['rendered']) && (!isset($item->field_field_destination_deck[0]['rendered'])) ) {
+            $item->field_field_destination_deck[0] = $item->field_field_description[0];
+        }
+    }
+  }
+}

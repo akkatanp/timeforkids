@@ -559,6 +559,7 @@ function tfk_atw_feature_field_default_fields() {
       'required' => 0,
       'settings' => array(
         'alt_field' => 0,
+        'default_image' => 0,
         'file_directory' => '',
         'file_extensions' => 'png gif jpg jpeg',
         'max_filesize' => '',
@@ -983,6 +984,7 @@ function tfk_atw_feature_field_default_fields() {
       'required' => 1,
       'settings' => array(
         'alt_field' => 0,
+        'default_image' => 0,
         'file_directory' => '',
         'file_extensions' => 'png gif jpg jpeg',
         'max_filesize' => '',
@@ -1168,7 +1170,7 @@ function tfk_atw_feature_field_default_fields() {
           'summary_rows' => 5,
         ),
         'type' => 'text_textarea_with_summary',
-        'weight' => '5',
+        'weight' => '6',
       ),
       'widget_type' => 'text_textarea_with_summary',
     ),
@@ -1221,7 +1223,7 @@ function tfk_atw_feature_field_default_fields() {
           'label' => 'hidden',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '14',
+          'weight' => '15',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1242,7 +1244,7 @@ function tfk_atw_feature_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '17',
+        'weight' => '16',
       ),
     ),
   );
@@ -1542,7 +1544,7 @@ function tfk_atw_feature_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '2',
+        'weight' => '3',
       ),
     ),
   );
@@ -1604,6 +1606,7 @@ function tfk_atw_feature_field_default_fields() {
       'required' => 1,
       'settings' => array(
         'alt_field' => 0,
+        'default_image' => 0,
         'file_directory' => '',
         'file_extensions' => 'png gif jpg jpeg',
         'max_filesize' => '',
@@ -1645,7 +1648,7 @@ function tfk_atw_feature_field_default_fields() {
           'progress_indicator' => 'throbber',
         ),
         'type' => 'image_image',
-        'weight' => '3',
+        'weight' => '4',
       ),
     ),
   );
@@ -1693,7 +1696,7 @@ function tfk_atw_feature_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '5',
+          'weight' => '6',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1714,7 +1717,7 @@ function tfk_atw_feature_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '6',
+        'weight' => '7',
       ),
     ),
   );
@@ -1835,7 +1838,7 @@ function tfk_atw_feature_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'node_reference_autocomplete',
-        'weight' => '4',
+        'weight' => '5',
       ),
     ),
   );
@@ -1928,7 +1931,7 @@ function tfk_atw_feature_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '10',
+          'weight' => '11',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1953,7 +1956,7 @@ function tfk_atw_feature_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'node_reference_autocomplete',
-        'weight' => '14',
+        'weight' => '15',
       ),
     ),
   );
@@ -2006,8 +2009,73 @@ function tfk_atw_feature_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_description',
-      'label' => 'Deck',
+      'label' => 'Introduction',
       'required' => 1,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'rows' => '5',
+        ),
+        'type' => 'text_textarea',
+        'weight' => '2',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-atw_destination-field_destination_deck'
+  $fields['node-atw_destination-field_destination_deck'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_destination_deck',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'module' => 'text',
+      'settings' => array(),
+      'translatable' => '0',
+      'type' => 'text_long',
+    ),
+    'field_instance' => array(
+      'bundle' => 'atw_destination',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '4',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_destination_deck',
+      'label' => 'Deck',
+      'required' => 0,
       'settings' => array(
         'text_processing' => '0',
         'user_register_form' => FALSE,
@@ -2112,7 +2180,7 @@ function tfk_atw_feature_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '12',
+          'weight' => '13',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2137,7 +2205,7 @@ function tfk_atw_feature_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'node_reference_autocomplete',
-        'weight' => '13',
+        'weight' => '14',
       ),
     ),
   );
@@ -2230,7 +2298,7 @@ function tfk_atw_feature_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '9',
+          'weight' => '10',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2255,7 +2323,7 @@ function tfk_atw_feature_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'node_reference_autocomplete',
-        'weight' => '11',
+        'weight' => '12',
       ),
     ),
   );
@@ -2348,7 +2416,7 @@ function tfk_atw_feature_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '11',
+          'weight' => '12',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2373,7 +2441,7 @@ function tfk_atw_feature_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'node_reference_autocomplete',
-        'weight' => '8',
+        'weight' => '9',
       ),
     ),
   );
@@ -2416,7 +2484,7 @@ function tfk_atw_feature_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '6',
+          'weight' => '7',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2533,7 +2601,7 @@ function tfk_atw_feature_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '7',
+          'weight' => '8',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2651,7 +2719,7 @@ function tfk_atw_feature_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '13',
+          'weight' => '14',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2676,7 +2744,7 @@ function tfk_atw_feature_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'node_reference_autocomplete',
-        'weight' => '12',
+        'weight' => '13',
       ),
     ),
   );
@@ -2769,7 +2837,7 @@ function tfk_atw_feature_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '8',
+          'weight' => '9',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2794,7 +2862,7 @@ function tfk_atw_feature_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'node_reference_autocomplete',
-        'weight' => '10',
+        'weight' => '11',
       ),
     ),
   );
@@ -2887,7 +2955,7 @@ function tfk_atw_feature_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '4',
+          'weight' => '5',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2912,7 +2980,7 @@ function tfk_atw_feature_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'node_reference_autocomplete',
-        'weight' => '9',
+        'weight' => '10',
       ),
     ),
   );
@@ -3252,6 +3320,7 @@ function tfk_atw_feature_field_default_fields() {
       'required' => 1,
       'settings' => array(
         'alt_field' => 0,
+        'default_image' => 0,
         'file_directory' => '',
         'file_extensions' => 'png gif jpg jpeg',
         'max_filesize' => '',
@@ -3772,6 +3841,7 @@ function tfk_atw_feature_field_default_fields() {
   t('Deck and Image Map');
   t('Fact File');
   t('Internal Use Only');
+  t('Introduction');
   t('Location Name');
   t('Map Icon');
   t('Native Lingo');
