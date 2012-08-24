@@ -1534,7 +1534,8 @@ body.one-sidebar .secondary-touts-view td.col-2  {
 	text-transform: uppercase;
 }
 
-.node-type-article .field-name-field-image-caption {
+.node-type-article .field-name-field-image-caption,
+.node-type-article .field-name-field-wysiwyg-image-caption  {
 	font: normal 10px arial, sans-serif;
 	color: #666;
 	margin-bottom: 10px;
@@ -1545,12 +1546,13 @@ body.one-sidebar .secondary-touts-view td.col-2  {
 	float: right;
 	margin-left: 10px;
 	margin-bottom: 10px;
+	-webkit-margin-before: 12px;
 	width: 130px;
 	height: 125px;
 	padding: 5px;
 	border: solid 1px #cecece;
 	background: #dedede;
-        clear:both;
+  clear:both;
 }
 
 .node-type-article .reporter-badge #badge-header{
