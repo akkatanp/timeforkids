@@ -389,6 +389,22 @@ function tfk_helper_views_pre_execute(&$view) {
  * for handlers, so all data should be available.
  */
 function tfk_helper_views_pre_render(&$view) {
+    
+  if($view->name == 'homepage_news_block') {
+    foreach($view->result as $item) {
+      /* This is kind of a kludge ... Because the Minisite content type uses the "body" field as its "deck" 
+       * and the "body" is used for different purposes in other content types that are also used in the 
+       * 'homepage_news_block' view, we cant's directly display that field - but we also need to display it
+       * when the content type the view is rendering is a minisite. So here we're re-purposing the 'field_deck'
+       * from a couple of the other content types, copying the data from the body field intop the deck field,
+       * for the minisite content type only.
+       */
+       if($item->node_type == 'minisite') {
+           $item->field_field_deck = $item->field_body;
+       } 
+    }
+  }
+  
   if($view->name == 'homepage_top_story') {
     if(isset($view->result[0]) && !$view->is_attachment && $view->result[0]->_field_data['nid']['entity']->type != 'slideshow') {
       $view->attachment_after = FALSE;
