@@ -427,9 +427,9 @@ function tfk_helper_views_pre_render(&$view) {
  * Indicate which grid rows have additional content with CSS.
  */
 function tfk_helper_preprocess_views_view_grid(&$variables) {
-  if($variables['view']->name == 'homepage_news_block') {
+  if(array_search($variables['view']->name, array('homepage_news_block','minisite_articles'))) {
     // Find which items have additional content.
-    $ac_keys = array('field_field_additional_content', 'field_field_related_articles', 'field_field_mini_lessons');
+    $ac_keys = array('field_field_additional_content', 'field_field_related_articles', 'field_field_mini_lessons','field_field_minisite_related_content');
     $rows = array_chunk($variables['view']->result, $variables['view']->style_plugin->options['columns']);
     $class_rows = array();
     $count = 0;
@@ -663,11 +663,11 @@ function tfk_helper_preprocess_views_view_fields(&$variables, $hook) {
   }
   
   // Additional content Views.
-  $ac_views = array('homepage_top_story', 'homepage_news_block', 'homepage_minisite');
+  $ac_views = array('homepage_top_story', 'homepage_news_block', 'homepage_minisite','minisite_articles');
   if(array_search($view->name, $ac_views) !== FALSE && !$view->is_attachment) {
     
     // Detect additional content. Generic conditional applies to multiple Views.
-    $ac_keys = array('field_additional_content', 'field_related_articles', 'field_mini_lessons');
+    $ac_keys = array('field_additional_content', 'field_related_articles', 'field_mini_lessons','field_minisite_related_content');
     $field_keys = array_keys($variables['fields']);
     $match = array_intersect($ac_keys, $field_keys);
     if(!empty($match)) {
@@ -680,6 +680,9 @@ function tfk_helper_preprocess_views_view_fields(&$variables, $hook) {
       // Tweak content type names for field field_additional_content.
       if(array_key_exists('field_additional_content', $variables['fields'])) {
           $variables['fields']['field_additional_content']->label = ucfirst($variables['row']->field_field_additional_content[0]['raw']['node']->type);
+      }
+      if(array_key_exists('field_minisite_related_content', $variables['fields'])) {
+          $variables['fields']['field_minisite_related_content']->label = ucfirst($variables['row']->field_field_minisite_related_content[0]['raw']['node']->type);
       }
     }
   }
@@ -1464,4 +1467,45 @@ function tfk_helper_node_view_alter(&$build) {
         }
         unset($build['field_image_caption']);
     }
+}
+
+/**
+ * Implementation of hook_form_BASE_FORM_ID_alter()
+ * 
+ * Adds a new button "Save and Create New" to the Node Add form for all
+ * content types handled by the node module. The button appears only for 
+ * new nodes, not ones being edited/updated.
+ * 
+ * @param type $form
+ * @param type $form_state
+ * @param type $form_id
+ */
+function tfk_helper_form_node_form_alter(&$form, &$form_state, $form_id) {
+  if(!isset($form_state['node']->nid) && $form_state['node']->type != 'flashcard') {
+      $form['actions']['save_and_new'] = array(
+        '#type' => 'submit',
+        '#value' => t('Save and Create New'),
+        '#weight' => 4,
+        '#submit' => array('tfk_helper_node_form_submit'),
+      );
+  }
+
+}
+
+/**
+ * Form submit handler for the "Save and Create New" button on node forms 
+ * (see tfk_helper_form_node_form_alter(), above). After calling the default 
+ * system node_form_submit() function and verifying that the node was 
+ * actually saved, it calls drupal_goto() to open a new, blank "Add Content" form 
+ * for the same content type that had just been saved.
+ * 
+ * @param type $form
+ * @param type $form_state
+ */
+function tfk_helper_node_form_submit($form, &$form_state) {
+  // first call standard submit, then do the new form...
+  node_form_submit($form, &$form_state);
+  if($form_state['node']->nid) { // node successfully saved
+    drupal_goto('node/add/'.$form_state['node']->type);
+  }
 }
