@@ -967,6 +967,7 @@ function features_misc_views_default_views() {
   $handler->display->display_options['filters']['field_grade_level_tid']['value'] = array(
     19 => '19',
     20 => '20',
+    21 => '21',
     22 => '22',
   );
   $handler->display->display_options['filters']['field_grade_level_tid']['reduce_duplicates'] = 0;
@@ -1091,6 +1092,7 @@ function features_misc_views_default_views() {
 
   /* Display: Teacher Resources Quizzes 3-4 */
   $handler = $view->new_display('block', 'Teacher Resources Quizzes 3-4', 'block_4');
+  $handler->display->display_options['enabled'] = FALSE;
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'some';
   $handler->display->display_options['pager']['options']['items_per_page'] = '2';
