@@ -1,0 +1,807 @@
+<?php
+/**
+ * @file
+ * Code for the Teachers Community feature.
+ */
+
+include_once('tfk_teachers_community.features.inc');
+
+/**
+ * Implementation of hook_permission.
+ */
+function tfk_teachers_community_permission() {
+  $perms = array(
+    'edit question description' => array(
+      'title' => t('Edit Teacher Community Question description'),
+      'description' => t('Per Spec 17F.3 only the editorial team should add a description to the question.'),
+      'restrict access' => TRUE,
+    ),
+    // Custom permission for comment avatars.
+    'upload comment avatar' => array(
+      'title' => t('Upload comment avatar'),
+      'description' => t('This permission is given to users who can upload comment Avatars, e.g., Administrators, Editors.'),
+    ),
+    // Editable teacher community blocks.
+    'administer teacher community blocks' => array(
+      'title' => t('Administer Teacher Community blocks'),
+    ),
+  );
+  return $perms;
+}
+
+/**
+ * Implementation of hook_theme.
+ */
+function tfk_teachers_community_theme($existing, $type, $theme, $path) {
+  return array(
+    // Custom pager.
+    'item_list_custom' => array(
+      'variables' => array('variables' => array()),
+    ),
+  );
+}
+
+/**
+ * Implementation of hook_custom_theme.
+ */
+function tfk_teachers_community_custom_theme() {
+  // Switch from the admin theme to tfk when adding a question.
+  if(arg(0) == 'node' && arg(1) == 'add' && arg(2) == 'teacher-community-question') {
+    return 'tfk';
+  }
+}
+
+/**
+ * Implementation of hook_block_info.
+ */
+function tfk_teachers_community_block_info() {
+  $blocks = array();
+  
+  // TFK Photos and Video Node Featured Block (Sidebar).
+  $blocks['tfk_teachers_comm_more_topics'] = array(
+    'info' => t('TFK Teachers Community More Topics Block'),
+    'visibility' => BLOCK_VISIBILITY_LISTED,
+    'cache' => DRUPAL_CACHE_GLOBAL,
+  );
+  
+  // Teacher Community Topic List editable text area under "Got a Question? Need Advice on Lesson Plans?"
+  $blocks['tfk_teachers_topic_textarea'] = array(
+    'info' => t('TFK Teachers Community More Topics Textarea'),
+    'visibility' => BLOCK_VISIBILITY_LISTED,
+    'cache' => DRUPAL_CACHE_GLOBAL,
+  );
+  
+  return $blocks;
+}
+
+/**
+ * Implementation of hook_block_view.
+ */
+function tfk_teachers_community_block_view($delta='') {
+  $block = array();
+  
+  switch ($delta) {
+    
+    // TFK Photos and Video Node Featured Block (Sidebar).
+    case 'tfk_teachers_comm_more_topics':
+      $topics = tfk_teachers_community_get_teacher_topics();
+      $topics['type'] = 'ul';
+      $topics['title'] = 'MORE TOPICS FROM TEACHERS';
+      $topics['caller'] = 'tfk_teachers_comm_more_topics';
+      if($topics != FALSE) {
+        $title = t('View All the Topics from Teachers');
+        $link_options = array('html' => TRUE, 'attributes' => array('title' => $title));
+        $button = theme('image', array('path'=> drupal_get_path('module', 'tfk_teachers_community'). '/images/view-all-topics-from-teachers.png', 'title' => $title, 'alt' => $title));
+        $block['content'] = theme('item_list', $topics);
+        $block['content'] .= '<div class="btn_link">'. l($button, 'teacher-community/topic-list', $link_options). '</div>';
+      }
+    break;
+    
+    // Teacher Community Topic List editable text area under "Got a Question? Need Advice on Lesson Plans?"
+    case 'tfk_teachers_topic_textarea':
+      $textarea = variable_get('tfk_teachers_topic_textarea', '');
+      if($textarea != '') {
+        $block['content'] = $textarea;
+      }
+    break;
+    
+  }
+  
+  return $block;
+}
+
+/**
+ * @see block_custom_block_form
+ */
+function tfk_teachers_community_block_configure($delta='') {
+  $form = array();
+  
+  switch ($delta) {
+    
+    // Teacher Community Topic List editable text area under "Got a Question? Need Advice on Lesson Plans?"
+    case 'tfk_teachers_topic_textarea':
+      $form['tfk_teachers_topic_textarea'] = array(
+        '#type' => 'textarea',
+        '#title' => 'Editable textarea',
+        '#default_value' => variable_get('tfk_teachers_topic_textarea', ''),
+      );
+      return $form;
+    break;
+    
+  }
+  
+  return $form;
+}
+
+function tfk_teachers_community_block_save($delta='', $edit = array()) {
+  if ($delta == 'tfk_teachers_topic_textarea') {
+    variable_set('tfk_teachers_topic_textarea', $edit['tfk_teachers_topic_textarea']);
+  }
+}
+
+/**
+ * Modify the default admin interface for some of our custom blocks.
+ */
+function tfk_teachers_community_form_block_admin_configure_alter(&$form, &$form_state, $form_id) {
+ if($form['delta']['#value'] == 'tfk_teachers_topic_textarea') {
+   // Hide stuff we don't want users to see.
+   $form['settings']['title']['#type'] = 'hidden';
+   $form['regions']['#access'] = FALSE;
+   $form['visibility']['#access'] = FALSE;
+   $form['visibility_title']['#access'] = FALSE;
+ }
+}
+
+/**
+ * Override or insert variables into the page templates.
+ *
+ * @param $variables
+ *   An array of variables to pass to the theme template.
+ * @param $hook
+ *   The name of the template being rendered ("page" in this case.)
+ */
+function tfk_teachers_community_preprocess_page(&$variables, $hook) {
+  $community_question = FALSE;
+  
+  $arg = arg();
+  
+  if($arg[0] == 'comment' && $arg[2] == 'edit') {
+    $community_question = TRUE;
+  }
+  
+  // Node add/edit page, Spec 17F.
+  if($arg[0] == 'node' && arg(1) == 'add' && $arg[2] == 'teacher-community-question' && tfk_helper_user_has_role()) {
+    $community_question = TRUE;
+
+    //$page['before_content'] = t('<h2>Submit to the Teachers Community</h2>');
+    drupal_set_title(t('Submit to the Teachers Community'));
+    
+    $textarea = variable_get('tfk_teachers_topic_textarea', '');
+    if(user_access('administer teacher community blocks')) {
+      $module = 'tfk_teachers_community';
+      $delta = 'tfk_teachers_topic_textarea';
+      $textarea .= '<div class="admin-link">'. l(t('Edit block'), "admin/structure/block/manage/$module/$delta/configure", array('query' => drupal_get_destination())). '</div>';
+    }
+
+    // Hardcode help message. The one coming from the Drupal interface contains bad markup (>.<)!
+    $variables['page']['help']['system_help']['#markup'] = t("
+			<h2>Got a Question? Need Advice on Lesson Plans?</h2>
+    "). $textarea;
+    
+    $btn_id = "form#teacher-community-question-node-form div#edit-actions input#edit-submit";
+    $btn_img = "/images/submit-your-question-active.png";
+    
+    // Page title.
+    $variables['page_pre_section'] = 'Submit to the Teachers Community';
+  }
+  
+  // Node view page, Spec 17B.
+  if(array_key_exists('node', $variables) && $variables['node']->type == 'teacher_community_question') {
+    $community_question = TRUE;
+    
+    $variables['top_suggestion_msg'] = t('GOT A QUESTION? GOT A LESSON PLAN IDEA?');
+    $variables['top_suggestion_link'] = l(t('Submit to the TFK Teacher Community'), 'node/add/teacher-community-question');
+    
+    $btn_id = "div.node-teacher-community-question.view-mode-full form#comment-form div#edit-actions input#edit-submit";
+    $btn_img = "/images/submit-your-response-active.png";
+  }
+  
+  // Topic List page, Spec 17C.
+  if(arg(0) == 'teacher-community' && arg(1) == 'topic-list') {
+    $community_question = TRUE;
+    $suggestion =  array(
+    	'id' => 'top',
+      'message' => 'GOT A QUESTION? GOT A LESSON PLAN IDEA?',
+      'link_title' => 'Submit to the TFK Teacher Community',
+      'link_dest' => 'node/add/teacher-community-question',
+      'class' => array('suggestion-box', 'clearfix')
+    );
+
+    global $user;
+    $roles_arr = $user->roles;
+    if(count($roles_arr) != 1){
+      $variables['page_suggestion_box'] = theme('suggestion_box', $suggestion);
+    }
+    
+    # drupal_add_html_head($data = NULL, $key = NULL)
+    # drupal_get_html_head();
+  }
+  
+  // Common actions.
+  if($community_question) {
+    // Section title.
+    global $user;
+    $rls = $user->roles;
+    if(count($rls) == 1 && $rls[1] == 'anonymous user'){  // ANONYMOUS USER
+        $variables['section_title'] = t('ACCESS DENIED');
+    }else{
+        $variables['section_title'] = t('TEACHER COMMUNITY');
+    }
+    
+    
+
+    $module_path = drupal_get_path('module', 'tfk_teachers_community');
+    
+    // Add CSS.
+    drupal_add_css($module_path. '/css/tfk_teachers_community.css', 'file');
+    
+    // Animate buttons with Safari support.
+    drupal_add_js($module_path. '/js/tfk_teachers_community.js', 'file');
+    
+    // We dynamically pass to the animation script the CSS selector.
+    $btn_attr = array();
+    if(isset($btn_id)) {
+      $btn_attr['btn_id'] = $btn_id;
+    }
+    if(isset($btn_img)) {
+      $btn_attr['btn_img'] = '/'. $module_path. $btn_img;
+    }
+    if(isset($btn_id) && isset($btn_img)) {
+      drupal_add_js(array('tfk_teachers_community' => $btn_attr), 'setting');
+    }
+    
+    // Unset Editor's Menu.
+    $page = & $variables['page'];
+    unset($page['editor_menu']);
+  }
+}
+
+/**
+ * Intercept the Views pager and inject a suggestion box. Avoids having to create
+ * a separate page template. We also overrode the existing theming funciton
+ * with our own.
+ *
+ * @param array $variables
+ *
+ * @see theme_item_list_custom
+ */
+function tfk_teachers_community_preprocess_item_list(&$variables, $hook) {
+  if(arg(0) == 'teacher-community' && arg(1) == 'topic-list') {
+    if(!array_key_exists('caller', $variables)) {
+      
+      // Override default theme function with our own.
+      $variables['theme_hook_suggestions'] = array('item_list_custom');
+    }
+      // Add suggestion box per Spec 17C.
+      $suggestion =  array(
+        'id' => 'bottom-suggestion-box',
+        'message' => 'GOT A QUESTION? NEED ADVICE ON LESSON PLANS?<br /> HAVE A GREAT IDEA FOR A WORKSHEET?<br /> SHARE IT WITH THE TFK TEACHER COMMUNITY!',
+        'link_title' => 'Submit Your Thoughts to the TFK Community',
+        'link_dest' => 'node/add/teacher-community-question',
+        'class' => array('suggestion-box', 'bottom'),
+        'wrapper-class' => array('bottom'),
+      );
+      $variables['header'] = theme('suggestion_box', $suggestion);
+    }
+//  }
+}
+
+
+/**
+ * Preprocess node.
+ */
+function tfk_teachers_community_preprocess_node(&$variables, $hook) {
+
+  // Node view page, Spec 17B.
+  if(array_key_exists('node', $variables) && $variables['node']->type == 'teacher_community_question') {
+    $_variables = & $variables;
+    
+    $variables['print_title'] = TRUE;
+    
+    $variables['question_date'] = date('F j, Y');
+    
+    unset($_variables['content']['links']);
+  }
+  
+}
+
+/**
+ * Preprocess comment wrapper.
+ */
+function tfk_teachers_community_preprocess_comment_wrapper(&$variables, $hook) {
+  if(arg(0) == 'node' && $variables['node']->type == 'teacher_community_question') {
+    $variables['comments_header_title'] = t('TEACHERS RESPONSES');
+    $variables['new_comment_label'] = t('ADD YOUR RESPONSE TO THE DISCUSSION');
+    $variables['bottom_suggestion_msg'] = t('GOT A QUESTION? NEED ADVICE ON LESSON PLANS?<br /> HAVE A GREAT IDEA FOR A WORKSHEET?<br /> SHARE IT WITH THE TFK TEACHER COMMUNITY!');
+    $variables['bottom_suggestion_link'] = l(t('Submit Your Thoughts to the TFK Community'), 'node/add/teacher-community-question');
+  }
+}
+
+
+/**
+ * Implementation of hook_entity_load.
+ *
+ * When loading comments from Board Members, load their profile image URL.
+ */
+function tfk_teachers_community_entity_load($entities, $type) {
+  if($type == 'comment') {
+    // Statically cache avatars to reduce database overhead.
+    static $avatars = array();
+    
+    foreach ($entities as $comment) {
+      
+      // For now limit this logic to teacher_community_question nodes.
+      if($comment->node_type == 'comment_node_teacher_community_question') {
+        
+        // Only go through this if there isn't an image already.
+        if(empty($comment->picture)) {
+          
+          // Check static cache. The user id serves as a good unique key.
+          if(array_key_exists($comment->uid, $avatars)) {
+            $comment->picture = $avatars[$comment->uid];
+          } else {
+            
+            // Custom comment avatar permission. @see tfk_teachers_community_permission().
+            $user = user_load($comment->uid);
+            if(user_access('upload comment avatar', $user)) {
+              
+              // For now we do this only for Board Members. Most likely other users upload their avatars directly to their profiles.
+              if(array_search('Board Member', $user->roles) !== FALSE) {
+                
+                // Load Board Member node.
+                $bm_query = "
+                  SELECT board_member.nid AS nid
+                  	FROM
+                  {node} board_member
+                  	LEFT JOIN {field_data_field_board_member_reference} bmr ON board_member.nid = bmr.entity_id
+                  WHERE bmr.field_board_member_reference_uid = :u_uid";
+                $bm_id = db_query($bm_query, array(':u_uid' => $comment->uid))->fetchField();
+                
+                // If there is an associated Board Member node.
+                if($bm_id) {
+                  $board_member = node_load($bm_id);
+                  $field_items = field_get_items('node', $board_member, 'field_member_photo');
+                  if(!empty($field_items)) {
+                    $photo =  array_shift($field_items);
+                    // Generate profile image derivative.
+                    if(!empty($photo)) {
+                      $derivative = tfk_search_get_thumbnail($photo['fid'], 'tfk_60x60');
+                      if($derivative != FALSE) {
+                        $comment->picture = tfk_search_get_thumbnail($photo['fid'], 'tfk_60x60');
+                        // @todo I'd be nice to save the derivative back to the comment to avoid additional queries.
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Preprocess comment.
+ */
+function tfk_teachers_community_preprocess_comment(&$variables, $hook) {
+  if($variables['node']->type == 'teacher_community_question' && arg(0) == 'node') {
+    $_variables = & $variables;
+    
+    // Comments have no title in Spec 17B.
+    unset($_variables['title']);
+    
+    // Add CSS classes.
+    $variables['classes'][] = 'teacher_community_question';
+    
+    // Link to comment author's profile, only if it is a board member (with a profile).
+    $profile_nid = tfk_teacher_community_board_member_profile_nid($variables['comment']->uid);
+    if($profile_nid != FALSE) {
+      $profile = 'node/'. $profile_nid;
+      $variables['author_profile_link'] = l('See Bio', $profile);
+      $variables['author'] = l($variables['comment']->name, $profile);
+      
+      // User profile pictures, only for board members.
+      if(isset($variables['comment']->picture)) {
+        $title = $variables['comment']->name;
+        
+        // If Drupal is populating the picture variable with the board member profile image.
+        if(is_string($variables['comment']->picture) && !empty($variables['comment']->picture)) {
+          $pic = $variables['comment']->picture;
+
+        // If Drupal is populating the picture variable with the default user profile image (i.e., from user/182/edit).
+        } elseif(is_object($variables['comment']->picture)) {
+          
+          $board_member = node_load($profile_nid);
+          $photo_field = field_get_items('node', $board_member, 'field_member_photo');
+          $pic = ($photo_field && isset($photo_field[0]['uri'])) ? image_style_url('tfk_square_small', $photo_field[0]['uri']) : FALSE;
+
+        } else {
+          $pic = FALSE;
+        }
+        
+        if($pic !== FALSE) {
+          $image = theme('image', array('path' => $pic, 'title' => $title, 'alt' => $title));
+          $link_options = array('html' => TRUE, 'attributes' => array('title' => $title));
+          $variables['picture'] = l($image, $profile, $link_options);
+        } else {
+          unset($_variables['picture']);
+        }
+
+      } else {
+        // Unset default profile picture for board member users that DO NOT have a board member node picture.
+        unset($_variables['picture']);
+      }
+    // Else, this is a non-board member user, or a board member without a profile.
+    } else {
+      $profile = $variables['author'] = $variables['comment']->name;
+      unset($_variables['picture']);
+    }
+    
+    // Change submitted date format.
+    $variables['submitted'] = date('n/j/Y', $variables['comment']->changed);
+    
+    // Disable reply ability, it breaks the design.
+    unset($_variables['content']['links']['comment']['#links']['comment-reply']);
+      
+    // Unset variables we are not going to use.
+    unset($_variables['permalink']);
+    unset($_variables['status']);
+  }
+}
+
+/**
+ * Returns the nid to a board member user profile.
+ *
+ * @param int $uid
+ * 	User id.
+ */
+function tfk_teacher_community_board_member_profile_nid($uid) {
+  // Local static cache for performance.
+  static $static_users = array();
+  if(!array_key_exists($uid, $static_users)) {
+    $static_users[$uid] = user_load($uid);
+  }
+  
+  // Shortcut to static cache.
+  $user = & $static_users[$uid];
+  
+  if(isset($user->profile)) {
+    // Link to profile, and save some db queries.
+    return $user->profile;
+  } else {
+    // Users without the board member role.
+    if(array_search('Board Member', $user->roles, TRUE) === FALSE) {
+      return FALSE;
+    } else {
+      // Search to see if this board member has a profile.
+      $result = db_query("SELECT entity_id FROM {field_data_field_board_member_reference} WHERE :uid = field_board_member_reference_uid", array(':uid' => $user->uid));
+      if($result) {
+        $profile_nid = $result->fetchColumn();
+        if($profile_nid != FALSE) {
+          // If found, link to profile and cache results.
+          $user->profile = $profile_nid;
+          return $user->profile;
+        }
+      }
+      
+      // Else, users with the board member role that are lacking a profile.
+      return FALSE;
+    }
+  }
+}
+
+/**
+ * Implementation of hook_form_FORM_ID_alter.
+ *
+ * Core form for adding Teacher Community Question nodes.
+ *
+ * @param array $form
+ *   Nested array of form elements that comprise the form.
+ * @param array $form_state
+ *   A keyed array containing the current state of the form.
+ * @param string $form_id
+ *   A keyed array containing the current state of the form.
+ */
+function tfk_teachers_community_form_teacher_community_question_node_form_alter(&$form, &$form_state, $form_id) {
+  
+  // Cleanup extraneous fields.
+  $form['menu']['#access'] = FALSE;
+  $form['locations']['#access'] = FALSE;
+  $form['revision_information']['#access'] = FALSE;
+  $form['path']['#access'] = FALSE;
+  $form['comment_settings']['#access'] = FALSE;
+  $form['author']['#access'] = FALSE;
+  $form['options']['#access'] = TRUE;
+  
+  // tks283: Hide the published options for non-editorial users.
+  // Only editors can edit their own questions.
+  if(!user_access('Teacher Community Question: Edit own content')) {
+    $form['options']['#access'] = FALSE;
+  }
+  
+  // Change the default Core title textfield to a texarea.
+  $form['title']['#type'] = 'textarea';
+  $form['title']['#maxlength'] = 500;
+  $form['title']['#rows'] = 9;
+  $form['title']['#resizable'] = FALSE;
+  $form['title']['#description'] = 'The maximum number of characters allowed is 500.';
+  
+  // Hide description (body) field if user does not have the permissions to edit it.
+  if(!user_access('edit question description')) {
+    $form['body']['#access'] = FALSE;
+  }
+  
+  $actions = & $form['actions'];
+  unset($actions['preview']);
+  
+  // Using regular input element.
+  // $form['actions']['submit']['#value'] = '';
+  
+  // Using image input element for Safari support.
+  // Only alter submit button when adding a new node.
+  if(arg(2) != 'edit') {
+    unset($actions['submit']['#value']);
+    $form['actions']['submit']['#type'] = 'image_button';
+    $path = drupal_get_path('module', 'tfk_teachers_community');
+    $form['actions']['submit']['#src'] = $path. '/images/submit-your-question.png';
+  }
+  
+  // Supress promote and sticky options.
+  $form['options']['promote']['#access'] = FALSE;
+  $form['options']['sticky']['#access'] = FALSE;
+  
+  // tkfs127: After the teacher submits the question a pop up window should appear with the following message:
+  //Thank you for your question or comment. TFK editors will review it. Please check back!
+  $form['actions']['submit']['#submit'][] = 'tfk_teachers_community_form_submit_handler';
+}
+
+/**
+ * Custom form submit handler for new teacher community questions.
+ *
+ * @see tfk_teachers_community_form_teacher_community_question_node_form_alter
+ */
+function tfk_teachers_community_form_submit_handler($variables, $form_state) {
+  // Remove status message set by the default form submit handler.
+  $_SESSION['messages']['status'] = array();
+  
+  // And override with our own status message.
+  drupal_set_message('Thank you for your question or comment. TFK editors will review it. Please check back!');
+  
+  // Then redirect the user back to the topic list, since the question is going to be unpublished by default.
+  drupal_goto('teacher-community/topic-list');
+}
+
+/**
+ * Implementation of hook_form_FORM_ID_alter.
+ *
+ * Core form for adding Teacher Community Question comments.
+ * The form id is "comment_node_teacher_community_question_form".
+ *
+ * @param array $form
+ * @param array $form_state
+ * @param string $form_id
+ */
+function tfk_teachers_community_form_comment_node_teacher_community_question_form_alter(&$form, &$form_state, $form_id) {
+
+  $_form = & $form;
+  
+  // We need the author for the admin interface, so we leave that in.
+  $form['author']['#access'] = FALSE;
+  
+  // But we don't need the subject, so we can get rid of it.
+  unset($_form['subject']);
+  
+  // Unset other stuff.
+  unset($_form['actions']['preview']);
+  unset($_form['comment_body']['und'][0]['#title']);
+  
+  // Using regular input element.
+  // $form['actions']['submit']['#value'] = t('Submit Your Response');
+  
+  // Using image input element for Safari support.
+  unset($_form['actions']['submit']['#value']);
+  $form['actions']['submit']['#type'] = 'image_button';
+  $path = drupal_get_path('module', 'tfk_teachers_community');
+  $form['actions']['submit']['#src'] = $path. '/images/submit-your-response.png';
+  
+  // Call our custom validation function after already existing ones.
+  $form['#validate'][] = 'tfk_teachers_community_validate_comments';
+}
+
+/**
+ * Custom validation function for comments.
+ *
+ * Avoids redirecting users to another page when a blank comment is submitted,
+ * which is Core's behavior. This is called after comment_form_validate().
+ *
+ * @see tfk_teachers_community_form_comment_node_teacher_community_question_form_alter()
+ */
+function tfk_teachers_community_validate_comments(&$form, &$form_state) {
+  $comment_copy = $form_state['values']['comment_body'];
+  $comment_body = array_shift(array_shift($comment_copy));
+  if(empty($comment_body['value'])) {
+    form_set_error('comment_body', 'The comment field cannot be empty.');
+    $form_state['redirect'] = 'node/'. $form_state['build_info']['args'][0]->nid;
+    drupal_redirect_form($form_state);
+  }
+}
+
+
+// *** CUSTOM CODE *** ///
+
+/**
+ * Retrieves a list of more Teacher Community topics using Views.
+ *
+ * @see tfk_teachers_community_block_view()
+ */
+function tfk_teachers_community_get_teacher_topics() {
+  $items = array('items');
+  
+  $view = views_get_view('teacher_community_more_topics');
+  if(is_null($view)) {
+    return FALSE;
+  } else {
+
+    $current_node = menu_get_object('node', 1);
+    if($current_node) {
+	    $view->set_arguments(array($current_node->nid));
+    }
+
+    $view->execute();
+    if(!empty($view->result)) {
+	  foreach($view->result as $result) {
+		  $items['items'][] = l($result->node_title, 'node/'. $result->nid);
+	  }
+	  return $items;
+    } else {
+      return FALSE;
+    }
+  }
+}
+
+
+/**
+ * Returns HTML for a list or nested list of items.
+ *
+ * Clone of theme_item_list() used for overriding the default Views bottom pager.
+ * Here we can modify the HTML structure to our taste, e.g., adding things like
+ * a pager header or footer.
+ *
+ * @param $variables
+ *   An associative array containing:
+ *   - items: An array of items to be displayed in the list. If an item is a
+ *     string, then it is used as is. If an item is an array, then the "data"
+ *     element of the array is used as the contents of the list item. If an item
+ *     is an array with a "children" element, those children are displayed in a
+ *     nested list. All other elements are treated as attributes of the list
+ *     item element.
+ *   - title: The title of the list.
+ *   - type: The type of list to return (e.g. "ul", "ol").
+ *   - attributes: The attributes applied to the list element.
+ *
+ * @see theme_item_list
+ */
+function theme_item_list_custom($variables) {
+  $items = $variables['items'];
+  $type = $variables['type'];
+  $attributes = $variables['attributes'];
+
+  $output = '<div class="item-list">';
+  if (array_key_exists('header', $variables)) {
+    $output .= $variables['header'];
+  }
+
+  if (!empty($items)) {
+    $output .= "<$type" . drupal_attributes($attributes) . '>';
+    $num_items = count($items);
+    foreach ($items as $i => $item) {
+      $attributes = array();
+      $children = array();
+      if (is_array($item)) {
+        foreach ($item as $key => $value) {
+          if ($key == 'data') {
+            $data = $value;
+          }
+          elseif ($key == 'children') {
+            $children = $value;
+          }
+          else {
+            $attributes[$key] = $value;
+          }
+        }
+      }
+      else {
+        $data = $item;
+      }
+      if (count($children) > 0) {
+        // Render nested list.
+        $data .= theme_item_list(array('items' => $children, 'title' => NULL, 'type' => $type, 'attributes' => $attributes));
+      }
+      if ($i == 0) {
+        $attributes['class'][] = 'first';
+      }
+      if ($i == $num_items - 1) {
+        $attributes['class'][] = 'last';
+      }
+      $output .= '<li' . drupal_attributes($attributes) . '>' . $data . "</li>\n";
+    }
+    $output .= "</$type>";
+  }
+  
+  if(array_key_exists('footer', $variables)) {
+    $output .= $variables['footer'];
+  }
+  
+  $output .= '</div>';
+  return $output;
+}
+
+/**
+ * Preprocess Views views-view-field.tpl.php template.
+ */
+function tfk_teachers_community_preprocess_views_view_field(&$variables, $hook) {
+  
+  // Modify users_name field output.
+  if($variables['view']->name == 'teacher_community_topic_list' && $variables['field']->field_alias == 'users_name') {
+    //Optionally, filter by display: && $variables[view]->current_display == 'page_1'
+    
+    // Local static cache for performance.
+    static $static_users = array();
+    if(!array_key_exists($variables['row']->users_uid, $static_users)) {
+      $static_users[$variables['row']->users_uid] = user_load($variables['row']->users_uid);
+    }
+    
+    // Shortcut to static cache.
+    $user = & $static_users[$variables['row']->users_uid];
+    if(isset($user->profile)) {
+      // Link to profile, and save some db queries.
+      $variables['output'] = $user->profile;
+      return;
+    } else {
+      // Unlink users without the board member role.
+      if(array_search('Board Member', $user->roles, TRUE) === FALSE) {
+        $variables['output'] = $user->name;
+      } else {
+        // Search to see if this board member has a profile.
+        $result = db_query("SELECT entity_id FROM {field_data_field_board_member_reference} WHERE :uid = field_board_member_reference_uid", array(':uid' => $user->uid));
+        if($result) {
+          $profile_nid = $result->fetchColumn();
+          if($profile_nid != FALSE) {
+            // If found, link to profile and cache results.
+            $user->profile = $variables['output'] = l($user->name, 'node/'. $profile_nid);
+            return;
+          }
+        }
+        
+        // Else unlink users with the board member role lacking a profile.
+        $variables['output'] = $variables['row']->users_name;
+      }
+    }
+  
+  }
+  
+}
+
+function tfk_teachers_community_views_pre_render(&$view) {
+    /* remove the footer if there will be a pager - the pager adds the footer itself */
+    if($view->name == 'teacher_community_topic_list')
+    {
+       if($view->total_rows > sizeof($view->result)) {
+           if(isset($view->footer['area']->options['content'])) {
+               $view->footer['area']->options['content'] = '';
+           }
+       }
+    }
+}
