@@ -190,8 +190,8 @@ function feature_mini_sites_field_default_fields() {
       'settings' => array(
         'allowed_values' => array(
           0 => array(
-            'parent' => '0',
             'vocabulary' => 'article_categories',
+            'parent' => '0',
           ),
         ),
       ),
@@ -200,7 +200,11 @@ function feature_mini_sites_field_default_fields() {
     ),
     'field_instance' => array(
       'bundle' => 'minisite',
-      'default_value' => NULL,
+      'default_value' => array(
+        0 => array(
+          'tid' => '1321', // This is the prod tid for mini-site. DON'T REVERT THIS!!!
+        ),
+      ),
       'deleted' => '0',
       'description' => 'This taxonomy field is present here because the article_category vocabulary is required by the secondary touts View for all other secondary tout content types except this one.',
       'display' => array(
@@ -220,7 +224,7 @@ function feature_mini_sites_field_default_fields() {
       'entity_type' => 'node',
       'field_name' => 'field_article_category',
       'label' => 'Internal Use Only',
-      'required' => 0,
+      'required' => 1,
       'settings' => array(
         'user_register_form' => FALSE,
       ),
