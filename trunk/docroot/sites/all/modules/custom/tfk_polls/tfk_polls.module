@@ -596,10 +596,10 @@ function tfk_polls_preprocess_poll_results(&$variables) {
 
 
   // Force the cancel form - it fails.
-  if(!isset($variables['cancel_form'])) {
+  /*if(!isset($variables['cancel_form'])) {
   	$elements = drupal_get_form('poll_cancel_form', $variables['nid']);
   	$variables['cancel_form'] = drupal_render($elements);
-  }
+  }*/
 
   global $base_url;
   $img_src = $base_url.'/pollgenerate/'.$poll_nid;
