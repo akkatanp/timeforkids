@@ -333,7 +333,7 @@ ini_set('session.cookie_lifetime', 0);
  * about this setting, do not have a reverse proxy, or Drupal operates in
  * a shared hosting environment, this setting should remain commented out.
  */
-# $conf['reverse_proxy'] = TRUE;
+$conf['reverse_proxy'] = TRUE;
 
 /**
  * Set this value if your proxy server sends the client IP in a header other
@@ -354,7 +354,7 @@ ini_set('session.cookie_lifetime', 0);
  * reverse proxies. Otherwise, the client could directly connect to
  * your web server spoofing the X-Forwarded-For headers.
  */
-# $conf['reverse_proxy_addresses'] = array('a.b.c.d', ...);
+$conf['reverse_proxy_addresses'] = array('184.72.228.250');
 
 /**
  * Page caching:
@@ -450,7 +450,7 @@ ini_set('session.cookie_lifetime', 0);
  * Add the following line of code to your settings.php file to cache anything normally stored in a cache* table in the Drupal database in Memcached.
  *
  */
- 
+
 $conf['cache_inc'] = './sites/all/modules/contrib/memcache/memcache.inc';
 //$conf['session_inc'] = './sites/all/modules/contrib/memcache/memcache-session.inc';
 
