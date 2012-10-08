@@ -335,6 +335,7 @@ ini_set('session.cookie_lifetime', 0);
  */
 $conf['reverse_proxy'] = TRUE;
 
+
 /**
  * Set this value if your proxy server sends the client IP in a header other
  * than X-Forwarded-For.
