@@ -535,29 +535,32 @@ function _poll_generate($poll_nid){
 
 function tfk_polls_preprocess_node(&$vars, $hook) {
 
-    if($vars['type'] == 'article' && !empty($vars['field_article_poll'])){
+  if($vars['type'] == 'article' && !empty($vars['field_article_poll'])){
+    $poll_id = $vars['field_article_poll']['und'][0]['nid'];
+    $poll_node = node_load($poll_id);
 
-
-        $poll_id = $vars['field_article_poll']['und'][0]['nid'];
-
-        $poll_node = node_load($poll_id);
-
-        $poll_rendered = node_view($poll_node);
-        $poll_rendered = drupal_render($poll_rendered);
-
-        cache_clear_all();
-
-        $vars['rendered_poll'] = $poll_rendered;
+    // If this is a polldaddy poll.
+    if($poll_node->type == 'tfk_polldaddy') {
+      $external_poll_field = field_get_items('node', $poll_node, 'field_external_poll_id');
+      $poll_rendered = theme('tfk_external_poll', array('poll-id' => $external_poll_field[0]['value'], 'title' => $poll_node->title));
+    } else {
+      // This is a regular core poll.
+      $poll_rendered = node_view($poll_node);
+      $poll_rendered = drupal_render($poll_rendered);
     }
+        //cache_clear_all();
 
-    if($vars['type'] == 'poll'){
-        if(isset($vars['field_poll_heading_copy']['und'][0]['value'])){
-            $vars['customheading'] = $vars['field_poll_heading_copy']['und'][0]['value'];
-        }else{
-            $vars['customheading'] = 'Poll Question';
-        }
+    $vars['rendered_poll'] = $poll_rendered;
+  }
 
-    }
+  if($vars['type'] == 'poll'){
+      if(isset($vars['field_poll_heading_copy']['und'][0]['value'])){
+          $vars['customheading'] = $vars['field_poll_heading_copy']['und'][0]['value'];
+      }else{
+          $vars['customheading'] = 'Poll Question';
+      }
+
+  }
 }
 
 
@@ -595,12 +598,6 @@ function tfk_polls_preprocess_poll_results(&$variables) {
   }
 
 
-  // Force the cancel form - it fails.
-  /*if(!isset($variables['cancel_form'])) {
-  	$elements = drupal_get_form('poll_cancel_form', $variables['nid']);
-  	$variables['cancel_form'] = drupal_render($elements);
-  }*/
-
   global $base_url;
   $img_src = $base_url.'/pollgenerate/'.$poll_nid;
   $variables['results'] = '<div><img src="'.$img_src.'?.'.time().'"/></div>';
@@ -613,15 +610,19 @@ function tfk_polls_theme($existing, $type, $theme, $path) {
       'template' => 'poll-results',
       'variables' => array('list' => NULL)
     ),
-
+    // Poll daddy.
+    'tfk_external_poll' => array(
+      'template' => 'external-poll',
+      'variables' => array('poll-id' => NULL),
+    )
   );
 }
 
 
 function tfk_polls_theme_registry_alter(&$theme_registry) {
-    $theme_registry['poll_results']['preprocess functions'][] = 'tfk_polls_preprocess_poll_results';
-    $theme_registry['poll_results']['path'] = 'sites/all/modules/custom/tfk_polls';
-    $theme_registry['poll_vote']['preprocess functions'][] = 'tfk_polls_preprocess_poll_vote';
-    $theme_registry['poll_vote']['path'] = 'sites/all/modules/custom/tfk_polls';
+  $theme_registry['poll_results']['preprocess functions'][] = 'tfk_polls_preprocess_poll_results';
+  $theme_registry['poll_results']['path'] = 'sites/all/modules/custom/tfk_polls';
+  $theme_registry['poll_vote']['preprocess functions'][] = 'tfk_polls_preprocess_poll_vote';
+  $theme_registry['poll_vote']['path'] = 'sites/all/modules/custom/tfk_polls';
 
 }
