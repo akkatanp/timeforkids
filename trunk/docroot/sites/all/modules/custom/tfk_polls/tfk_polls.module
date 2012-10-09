@@ -17,7 +17,15 @@ function tfk_polls_init() {
 }
 
 function tfk_polls_menu(){
-    $items = array();
+  $items = array();
+  $items['polldaddy/%'] = array(
+    'page callback' => 'tfk_polls_polldaddy_render',
+    'page arguments' => array(1),
+    'access callback' => 'user_access',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK
+  );
+
     $items['pollgenerate/%'] = array(
 		'title' => '',
 		'page callback' => '_poll_generate',
@@ -26,6 +34,36 @@ function tfk_polls_menu(){
 		'access arguments' => array('access content')
 	);
     return $items;
+}
+
+function tfk_polls_theme($existing, $type, $theme, $path) {
+  return array(
+    // Worksheets.
+    'tfk_polls_polls' => array(
+      'template' => 'poll-results',
+      'variables' => array('list' => NULL)
+    ),
+    // Poll daddy.
+    'tfk_external_poll' => array(
+      'template' => 'external-poll',
+      'variables' => array('poll-id' => NULL, 'standalone' => FALSE),
+    )
+  );
+}
+
+
+function tfk_polls_theme_registry_alter(&$theme_registry) {
+  $theme_registry['poll_results']['preprocess functions'][] = 'tfk_polls_preprocess_poll_results';
+  $theme_registry['poll_results']['path'] = 'sites/all/modules/custom/tfk_polls';
+  $theme_registry['poll_vote']['preprocess functions'][] = 'tfk_polls_preprocess_poll_vote';
+  $theme_registry['poll_vote']['path'] = 'sites/all/modules/custom/tfk_polls';
+
+}
+
+function tfk_polls_polldaddy_render($id) {
+  print theme('tfk_external_poll', array('poll-id' => $id, 'standalone' => TRUE));
+  exit;
+
 }
 
 
@@ -542,7 +580,7 @@ function tfk_polls_preprocess_node(&$vars, $hook) {
     // If this is a polldaddy poll.
     if($poll_node->type == 'tfk_polldaddy') {
       $external_poll_field = field_get_items('node', $poll_node, 'field_external_poll_id');
-      $poll_rendered = theme('tfk_external_poll', array('poll-id' => $external_poll_field[0]['value'], 'title' => $poll_node->title));
+      $poll_rendered = theme('tfk_external_poll', array('standalone' => FALSE, 'poll-id' => $external_poll_field[0]['value'], 'title' => $poll_node->title));
     } else {
       // This is a regular core poll.
       $poll_rendered = node_view($poll_node);
@@ -601,28 +639,4 @@ function tfk_polls_preprocess_poll_results(&$variables) {
   global $base_url;
   $img_src = $base_url.'/pollgenerate/'.$poll_nid;
   $variables['results'] = '<div><img src="'.$img_src.'?.'.time().'"/></div>';
-}
-
-function tfk_polls_theme($existing, $type, $theme, $path) {
-  return array(
-    // Worksheets.
-    'tfk_polls_polls' => array(
-      'template' => 'poll-results',
-      'variables' => array('list' => NULL)
-    ),
-    // Poll daddy.
-    'tfk_external_poll' => array(
-      'template' => 'external-poll',
-      'variables' => array('poll-id' => NULL),
-    )
-  );
-}
-
-
-function tfk_polls_theme_registry_alter(&$theme_registry) {
-  $theme_registry['poll_results']['preprocess functions'][] = 'tfk_polls_preprocess_poll_results';
-  $theme_registry['poll_results']['path'] = 'sites/all/modules/custom/tfk_polls';
-  $theme_registry['poll_vote']['preprocess functions'][] = 'tfk_polls_preprocess_poll_vote';
-  $theme_registry['poll_vote']['path'] = 'sites/all/modules/custom/tfk_polls';
-
 }
