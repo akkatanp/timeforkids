@@ -55,7 +55,6 @@ the proxy server, and not the client's. The actual header name can be
 configured by the reverse_proxy_header variable.
  */
   print theme('admin_utils_ip_info');
-  exit;
 }
 
 /**
@@ -64,11 +63,18 @@ configured by the reverse_proxy_header variable.
  */
 function admin_utils_poll_votes($ip = '') {
 
-  print '<h3>poll votes utility</h3>'. PHP_EOL;
+  print '<h1>poll votes utility</h1>'. PHP_EOL;
 
   if(empty($ip)) {
     $ip = ip_address();
   }
+
+  print '<h4>Your current IP addres, <i>as seen by Drupal</i> is</h4>'. PHP_EOL;
+  print $ip. PHP_EOL;
+
+  print '<h4>How many times has this IP voted?</h4>
+      <p>A simplified version of the following query is conducted by Drupal core polls to<br />
+      determine if you are eligible to vote or not.</p>'. PHP_EOL;
 
   $query = "
 SELECT
@@ -97,7 +103,6 @@ INNER JOIN node an ON poll_field.entity_id = an.nid
 
     $rows = array();
     while($row = $results->fetch()) {
-      //$rows[] = $row;
       $_row = array();
       foreach($row as $col => $value) {
         $_row[] = $value;
@@ -106,11 +111,18 @@ INNER JOIN node an ON poll_field.entity_id = an.nid
     }
 
     print '<br /><br />';
+    print '<h4>Results</h4>';
+    print theme('table', array('header' => $header, 'rows' => $rows)). PHP_EOL;
 
-    print theme('table', array('header' => $header, 'rows' => $rows));
+    $count = db_query('select count(nid) from node where type=:type', array('type' => 'poll'))->fetchField();
+
+    printf('<p>IP address %s has voted in %d out of %d polls.</p>', $ip, count($rows), $count);
+
+  } else {
+    print '<h4>Results</h4>';
+    print 'The current IP address has not voted';
   }
 
-  ///exit;
 }
 
 function admin_utils_headers() {
