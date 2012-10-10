@@ -355,7 +355,7 @@ $conf['reverse_proxy'] = TRUE;
  * reverse proxies. Otherwise, the client could directly connect to
  * your web server spoofing the X-Forwarded-For headers.
  */
-$conf['reverse_proxy_addresses'] = array('184.72.228.250');
+$conf['reverse_proxy_addresses'] = array('184.72.228.250', '23.32.12.220');
 
 /**
  * Page caching:
