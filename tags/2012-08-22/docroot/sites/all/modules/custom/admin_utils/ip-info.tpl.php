@@ -32,3 +32,4 @@
 // <code>$reverse_proxy_addresses = variable_get('reverse_proxy_addresses', array());</code>
 <?php print_r(variable_get('reverse_proxy_addresses', array())); ?>
 </p>
+<p>For more information IP addresses in Drupal, look at the <a href="http://api.drupal.org/api/drupal/includes!bootstrap.inc/function/ip_address/7"><code>ip_address()</code></a> function.</p>
