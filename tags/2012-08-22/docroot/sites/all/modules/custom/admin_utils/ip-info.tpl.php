@@ -1,8 +1,3 @@
-<?php
-  print ip_address();
-  exit;
-
-?>
 
 // The server remote IP ($_SERVER[\'REMOTE_ADDR\']) is:
 <?php $_SERVER['REMOTE_ADDR']; ?>
