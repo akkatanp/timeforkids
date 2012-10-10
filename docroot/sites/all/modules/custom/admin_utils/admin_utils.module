@@ -28,7 +28,7 @@ function admin_utils_menu() {
     'page callback' => 'admin_utils_poll_votes',
     'page arguments' => array(2),
     'access callback' => 'user_access',
-    'access arguments' => array('access content'),
+    'access arguments' => array('access site reports'),
   );
   return $items;
 }
