@@ -33,7 +33,7 @@
 <p>
 // If an array of known reverse proxy IPs is provided, then trust<br />
 // the XFF header if request really comes from one of them.<br />
-// <code>$reverse_proxy_addresses = variable_get('reverse_proxy_addresses', array());</code>
+// <code>$reverse_proxy_addresses = variable_get('reverse_proxy_addresses', array());</code><br />
 <?php $reverse_proxy_addresses = variable_get('reverse_proxy_addresses', array()); ?>
 <?php print_r($reverse_proxy_addresses); ?>
 </p>
@@ -49,19 +49,22 @@
 <p>
 // Tack direct client IP onto end of forwarded array.<br />
 <code>$xff_headers[] = $_SERVER['REMOTE_ADDR'];</code><br />
-<?php $xff_headers[] = $_SERVER['REMOTE_ADDR']; ?>
+<?php $xff_headers[] = $_SERVER['REMOTE_ADDR']; ?><br />
+// Added <?php $_SERVER['REMOTE_ADDR']; ?> to the $xff_headers[] array.
 </p>
 
 <p>
 // Eliminate all trusted IPs.<br />
 <code>$untrusted = array_diff($xff_headers, $reverse_proxy_addresses);</code><br />
 <?php $untrusted = array_diff($xff_headers, $reverse_proxy_addresses); ?>
+<?php print_r($untrusted); ?>
 </p>
 
 <p>
 // The right-most IP is the most specific we can trust.<br />
 // <code>$ip_address = array_pop($untrusted);</code><br />
 <?php $ip_address = array_pop($untrusted); ?>
+<?php print_r($ip_address); ?>
 </p>
 
 
