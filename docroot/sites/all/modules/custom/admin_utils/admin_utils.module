@@ -1,0 +1,46 @@
+<?php
+
+/**
+ * Impelementation of hook_menu.
+ */
+function admin_utils_menu() {
+  $items = array();
+  $items['admin_utils/my_ip'] = array(
+    'type' => MENU_CALLBACK,
+    'page callback' => 'admin_utils_ip_address'
+  );
+  $items['admin_utils/headers'] = array(
+    'type' => MENU_CALLBACK,
+    'page callback' => 'admin_utils_headers'
+  );
+  return $items;
+}
+
+function admin_utils_theme($existing, $type, $theme, $path) {
+  return array(
+    // Poll daddy.
+    'admin_utils_ip_info' => array(
+      'template' => 'ip-info',
+    )
+  );
+}
+
+function admin_utils_preprocess_admin_utils_ip_info(&$variables) {
+  $test = null;
+}
+
+function admin_utils_ip_address() {
+
+/* Returns the IP address of the client machine.
+If Drupal is behind a reverse proxy, we use the X-Forwarded-For header
+instead of $_SERVER['REMOTE_ADDR'], which would be the IP address of
+the proxy server, and not the client's. The actual header name can be
+configured by the reverse_proxy_header variable.
+ */
+  print theme('admin_utils_ip_info');
+  exit;
+}
+
+function admin_utils_headers() {
+
+}
