@@ -7,11 +7,15 @@ function admin_utils_menu() {
   $items = array();
   $items['admin_utils/my_ip'] = array(
     'type' => MENU_CALLBACK,
-    'page callback' => 'admin_utils_ip_address'
+    'page callback' => 'admin_utils_ip_address',
+    'access callback' => 'user_access',
+    'access arguments' => array('access content'),
   );
   $items['admin_utils/headers'] = array(
     'type' => MENU_CALLBACK,
-    'page callback' => 'admin_utils_headers'
+    'page callback' => 'admin_utils_headers',
+    'access callback' => 'user_access',
+    'access arguments' => array('access content'),
   );
   return $items;
 }
