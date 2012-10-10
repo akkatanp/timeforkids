@@ -9,19 +9,13 @@ function admin_utils_menu() {
     'type' => MENU_CALLBACK,
     'page callback' => 'admin_utils_ip_address',
     'access callback' => 'user_access',
-    'access arguments' => array('access content'),
-  );
-  $items['admin_utils/headers'] = array(
-    'type' => MENU_CALLBACK,
-    'page callback' => 'admin_utils_headers',
-    'access callback' => 'user_access',
-    'access arguments' => array('access content'),
+    'access arguments' => array('access site reports'),
   );
   $items['admin_utils/poll_votes'] = array(
     'type' => MENU_CALLBACK,
     'page callback' => 'admin_utils_poll_votes',
     'access callback' => 'user_access',
-    'access arguments' => array('access content'),
+    'access arguments' => array('access site reports'),
   );
   $items['admin_utils/poll_votes/%'] = array(
     'type' => MENU_CALLBACK,
@@ -123,9 +117,5 @@ INNER JOIN node an ON poll_field.entity_id = an.nid
     print '<h4>Results</h4>';
     print 'The current IP address has not voted';
   }
-
-}
-
-function admin_utils_headers() {
 
 }

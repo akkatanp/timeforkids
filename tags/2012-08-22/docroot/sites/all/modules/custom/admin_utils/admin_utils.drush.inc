@@ -27,7 +27,10 @@ function drush_admin_utils_poll_statbyip() {
   drush_print('POLL VOTES UTILITY'. PHP_EOL);
 
   $ip = drush_get_option('ip', ip_address());
-  $uid = (int) drush_get_option('uid', 0);
+  $uid = drush_get_option('uid', NULL);
+  if(is_null($uid)) {
+    $uid = '%';
+  }
 
   drush_print(dt('Poll voting stats for IP address !ip'. PHP_EOL, array('!ip' => $ip)));
   $query = "SELECT
@@ -43,18 +46,12 @@ FROM poll_vote pv
 INNER JOIN node pn ON pv.nid = pn.nid
 INNER JOIN field_data_field_article_poll poll_field ON pv.nid = poll_field.field_article_poll_nid
 INNER JOIN node an ON poll_field.entity_id = an.nid
-	WHERE pv.hostname=:ip
+	WHERE pv.hostname LIKE :ip AND pv.uid LIKE :uid
 	ORDER BY pv.timestamp desc";
 
-  $query_uservotecount = "SELECT
-	count(pv.nid)
-FROM poll_vote pv
-WHERE pv.hostname=:ip and pv.uid = :uid";
+  drush_print(dt('// Query string: '. PHP_EOL. '!query'. PHP_EOL, array('!query' => preg_replace(array('/:ip/', '/:uid/'), array("'%$ip%'", "'$uid'"), $query))));
 
-  drush_print(dt('// Query string: '. PHP_EOL. '!query'. PHP_EOL, array('!query' => preg_replace('/:ip/', "'$ip'", $query))));
-
-  $results = db_query($query, array('ip' => $ip));
-  //$uservotecount = db_query($query_uservotecount, array('ip' => $ip, 'uid' => $uid))->fetchField();
+  $results = db_query($query, array('ip' => '%'. $ip. '%', 'uid' => $uid));
 
   if(!$results) {
     print '<h4>Results</h4>';
@@ -78,8 +75,6 @@ WHERE pv.hostname=:ip and pv.uid = :uid";
 
     //$count = db_query('select count(nid) from node where type=:type', array('type' => 'poll'))->fetchField();
 
-    //drush_print(dt('IP address !ip has voted !rows times.', array('!ip' => $ip, '!rows' => count($rows), '!count' => $count)));
-    //drush_print(dt('!uvc out of !total total polls were submitted as an anonymous user with that IP.', array('!uvc' => $uservotecount, '!total' => $count)));
-
+    drush_print(dt('IP address !ip has voted !rows times with uid !uid.', array('!ip' => $ip, '!rows' => count($rows) - 1, '!uid' => $uid)));
   }
 }
