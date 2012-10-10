@@ -75,6 +75,6 @@ INNER JOIN node an ON poll_field.entity_id = an.nid
 
     //$count = db_query('select count(nid) from node where type=:type', array('type' => 'poll'))->fetchField();
 
-    drush_print(dt('IP address !ip has voted !rows times wiht uid !uid.', array('!ip' => $ip, '!rows' => count($rows) - 1, '!uid' => $uid)));
+    drush_print(dt('IP address !ip has voted !rows times with uid !uid.', array('!ip' => $ip, '!rows' => count($rows) - 1, '!uid' => $uid)));
   }
 }
