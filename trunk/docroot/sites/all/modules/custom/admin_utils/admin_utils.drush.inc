@@ -12,7 +12,9 @@ function admin_utils_drush_command() {
     'drupal dependencies' => array('poll'),
     'options' => array(
       '--ip' => 'IP address',
+      '--uid' => 'User ID',
     ),
+    'aliases' => array('psi', 'pollstatip'),
   );
 
   return $items;
@@ -22,10 +24,10 @@ function admin_utils_drush_command() {
  * Callback function
  */
 function drush_admin_utils_poll_statbyip() {
-  print '\033[1mPOLL VOTES UTILITY\033[0m';
-  drush_print('\033[1mPOLL VOTES UTILITY\033[0m'. PHP_EOL);
+  drush_print('POLL VOTES UTILITY'. PHP_EOL);
 
   $ip = drush_get_option('ip', ip_address());
+  $uid = (int) drush_get_option('uid', 0);
 
   drush_print(dt('Poll voting stats for IP address !ip'. PHP_EOL, array('!ip' => $ip)));
   $query = "SELECT
@@ -44,9 +46,15 @@ INNER JOIN node an ON poll_field.entity_id = an.nid
 	WHERE pv.hostname=:ip
 	ORDER BY pv.timestamp desc";
 
-  drush_print(dt('// Query string: '. PHP_EOL. '!query'. PHP_EOL, array('!query' => $query)));
+  $query_uservotecount = "SELECT
+	count(pv.nid)
+FROM poll_vote pv
+WHERE pv.hostname=:ip and pv.uid = :uid";
+
+  drush_print(dt('// Query string: '. PHP_EOL. '!query'. PHP_EOL, array('!query' => preg_replace('/:ip/', "'$ip'", $query))));
 
   $results = db_query($query, array('ip' => $ip));
+  //$uservotecount = db_query($query_uservotecount, array('ip' => $ip, 'uid' => $uid))->fetchField();
 
   if(!$results) {
     print '<h4>Results</h4>';
@@ -68,8 +76,10 @@ INNER JOIN node an ON poll_field.entity_id = an.nid
     $handle = NULL;
     drush_print_table($rows, $header, $widths, $handle);
 
-    $count = db_query('select count(nid) from node where type=:type', array('type' => 'poll'))->fetchField();
+    //$count = db_query('select count(nid) from node where type=:type', array('type' => 'poll'))->fetchField();
 
-    drush_print(dt('IP address !ip has voted in !rows out of !count polls.', array('!ip' => $ip, '!rows' => count($rows), '!count' => $count)));
+    //drush_print(dt('IP address !ip has voted !rows times.', array('!ip' => $ip, '!rows' => count($rows), '!count' => $count)));
+    //drush_print(dt('!uvc out of !total total polls were submitted as an anonymous user with that IP.', array('!uvc' => $uservotecount, '!total' => $count)));
+
   }
 }
