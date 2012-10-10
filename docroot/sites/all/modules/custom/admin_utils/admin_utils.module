@@ -17,6 +17,13 @@ function admin_utils_menu() {
     'access callback' => 'user_access',
     'access arguments' => array('access content'),
   );
+  $items['admin_utils/poll_votes/%'] = array(
+    'type' => MENU_CALLBACK,
+    'page callback' => 'admin_utils_poll_votes',
+    'page arguments' => array(1),
+    'access callback' => 'user_access',
+    'access arguments' => array('access content'),
+  );
   return $items;
 }
 
@@ -42,6 +49,52 @@ the proxy server, and not the client's. The actual header name can be
 configured by the reverse_proxy_header variable.
  */
   print theme('admin_utils_ip_info');
+  exit;
+}
+
+/**
+ * Returns how many polls have been voted a specific IP address.
+ * By default returns the results for the current IP.
+ */
+function admin_utils_poll_votes($ip = '') {
+
+  if(empty($ip)) {
+    $ip = ip_address();
+  }
+
+  $query = "
+SELECT
+	pv.nid as poll_nid,
+	pv.hostname,
+	pv.uid,
+	pv.timestamp,
+	FROM_UNIXTIME(pv.timestamp - 14400, GET_FORMAT(DATETIME,'USA')) as voted_on,
+	SUBSTRING(pn.title, 1, 25) as poll_title,
+	an.title as article_title,
+	an.nid as article_nid
+from poll_vote pv
+inner join node pn on pv.nid = pn.nid
+inner join field_data_field_article_poll poll_field on pv.nid = poll_field.field_article_poll_nid
+inner join node an on poll_field.entity_id = an.nid
+	WHERE pv.hostname=%ip
+	ORDER BY pv.timestamp desc";
+
+  $results = db_query($query, array('ip' => $ip));
+
+  if($results) {
+    print '// Query string: '. PHP_EOL;
+    print $results->getQueryString(). PHP_EOL;
+
+    $header = array('poll_nid', 'pv.hostname', 'pv.uid', 'pv.timestamp', 'voted_on', 'poll_title', 'article_title', 'article_nid');
+
+    $rows = array();
+    while($row = $results->fetch()) {
+      $rows[] = $row;
+    }
+
+    print theme('table',$header,$rows);
+  }
+
   exit;
 }
 
