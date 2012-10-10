@@ -15,15 +15,16 @@
  */
  </p>
 <p>
- // Is Drupal configured to recognize reverse proxies?
- // Note that this must return a positive value in order for Drupal to use
- // the HTTP_X_FORWARDED_FOR header in ip_address().
- variable_get('reverse_proxy', 0) = <?php variable_get('reverse_proxy', 0); ?>
+// Is Drupal configured to recognize reverse proxies?
+// Note that this must return a positive value in order for Drupal to use
+// the HTTP_X_FORWARDED_FOR header in ip_address().
+//  variable_get('reverse_proxy', 0) =
+<?php print_r(variable_get('reverse_proxy', 0)); ?>
 </p>
 <p>
 // What HTTP_X_FORWARDED_FOR header is Drupal configured to recognize?
 // reverse_proxy_header = variable_get('reverse_proxy_header', 'HTTP_X_FORWARDED_FOR');
-<?php variable_get('reverse_proxy_header', 'HTTP_X_FORWARDED_FOR'); ?>
+<?php print_r(variable_get('reverse_proxy_header', 'HTTP_X_FORWARDED_FOR')); ?>
 </p>
 <p>
 // If an array of known reverse proxy IPs is provided, then trust
