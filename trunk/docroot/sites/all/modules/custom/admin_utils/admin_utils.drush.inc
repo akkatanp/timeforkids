@@ -78,7 +78,7 @@ WHERE pv.hostname=:ip and pv.uid = :uid";
 
     //$count = db_query('select count(nid) from node where type=:type', array('type' => 'poll'))->fetchField();
 
-    //drush_print(dt('IP address !ip has voted !rows times.', array('!ip' => $ip, '!rows' => count($rows), '!count' => $count)));
+    drush_print(dt('IP address !ip has voted !rows times.', array('!ip' => $ip, '!rows' => count($rows) - 1)));
     //drush_print(dt('!uvc out of !total total polls were submitted as an anonymous user with that IP.', array('!uvc' => $uservotecount, '!total' => $count)));
 
   }
