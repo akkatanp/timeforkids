@@ -343,7 +343,8 @@ $conf['reverse_proxy'] = TRUE;
  * The "X-Forwarded-For" header is a comma+space separated list of IP addresses,
  * only the last one (the left-most) will be used.
  */
-# $conf['reverse_proxy_header'] = 'HTTP_X_CLUSTER_CLIENT_IP';
+// $conf['reverse_proxy_header'] = 'HTTP_X_CLUSTER_CLIENT_IP'; // This is the default recommendation.
+$conf['reverse_proxy_header'] = 'True-Client-IP';
 
 /**
  * reverse_proxy accepts an array of IP addresses.
