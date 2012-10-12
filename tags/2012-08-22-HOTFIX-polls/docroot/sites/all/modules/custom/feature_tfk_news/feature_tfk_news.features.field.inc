@@ -120,8 +120,8 @@ function feature_tfk_news_field_default_fields() {
       'settings' => array(
         'allowed_values' => array(
           0 => array(
-            'vocabulary' => 'article_categories',
             'parent' => '0',
+            'vocabulary' => 'article_categories',
           ),
         ),
       ),
@@ -172,7 +172,7 @@ function feature_tfk_news_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '6',
+        'weight' => '7',
       ),
     ),
   );
@@ -211,6 +211,7 @@ function feature_tfk_news_field_default_fields() {
           'atw_timeline' => 0,
           'board_member' => 0,
           'book' => 0,
+          'common_core_standards' => 0,
           'flashcard' => 0,
           'global_right_sidebar_promo' => 0,
           'grammar_practice' => 0,
@@ -233,12 +234,14 @@ function feature_tfk_news_field_default_fields() {
           'poll' => 'poll',
           'slideshow' => 0,
           'store' => 0,
+          'store_product' => 0,
           'teacher_board_nodeblock' => 0,
           'teacher_community_question' => 0,
           'tfk_extra' => 0,
           'tfk_extras_bottom_nodeblock' => 0,
           'tfk_extras_top_nodeblock' => 0,
           'tfk_notification' => 0,
+          'tfk_polldaddy' => 'tfk_polldaddy',
           'tfk_staff' => 0,
           'video' => 0,
           'webform' => 0,
@@ -265,7 +268,7 @@ function feature_tfk_news_field_default_fields() {
           'label' => 'hidden',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '12',
+          'weight' => '13',
         ),
         'search_index' => array(
           'label' => 'above',
@@ -302,7 +305,7 @@ function feature_tfk_news_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'node_reference_autocomplete',
-        'weight' => '31',
+        'weight' => '18',
       ),
     ),
   );
@@ -344,7 +347,7 @@ function feature_tfk_news_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '7',
+          'weight' => '8',
         ),
         'search_index' => array(
           'label' => 'above',
@@ -380,7 +383,7 @@ function feature_tfk_news_field_default_fields() {
           'rows' => '5',
         ),
         'type' => 'text_textarea',
-        'weight' => '5',
+        'weight' => '6',
       ),
     ),
   );
@@ -596,7 +599,7 @@ Limit for News Block: 65 characters.',
       'bundle' => 'article',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'This field has been deprecated. Please use WYSIWYG Image Caption, immediately below.',
       'display' => array(
         'default' => array(
           'label' => 'hidden',
@@ -719,7 +722,7 @@ Limit for News Block: 65 characters.',
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '11',
+        'weight' => '12',
       ),
     ),
   );
@@ -812,7 +815,7 @@ Limit for News Block: 65 characters.',
           'label' => 'hidden',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '8',
+          'weight' => '11',
         ),
         'search_index' => array(
           'label' => 'above',
@@ -849,7 +852,7 @@ Limit for News Block: 65 characters.',
           'size' => '60',
         ),
         'type' => 'node_reference_autocomplete',
-        'weight' => '13',
+        'weight' => '14',
       ),
     ),
   );
@@ -923,6 +926,7 @@ Limit for News Block: 65 characters.',
       'required' => 0,
       'settings' => array(
         'alt_field' => 0,
+        'default_image' => 0,
         'file_directory' => '',
         'file_extensions' => 'png gif jpg jpeg',
         'max_filesize' => '',
@@ -948,7 +952,7 @@ Limit for News Block: 65 characters.',
           'progress_indicator' => 'bar',
         ),
         'type' => 'image_image',
-        'weight' => '8',
+        'weight' => '9',
       ),
     ),
   );
@@ -991,7 +995,7 @@ Limit for News Block: 65 characters.',
           'label' => 'hidden',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '11',
+          'weight' => '12',
         ),
         'search_index' => array(
           'label' => 'above',
@@ -1018,6 +1022,7 @@ Limit for News Block: 65 characters.',
       'required' => 0,
       'settings' => array(
         'alt_field' => 0,
+        'default_image' => 0,
         'file_directory' => '',
         'file_extensions' => 'png gif jpg jpeg',
         'max_filesize' => '',
@@ -1043,7 +1048,7 @@ Limit for News Block: 65 characters.',
           'progress_indicator' => 'bar',
         ),
         'type' => 'image_image',
-        'weight' => '10',
+        'weight' => '11',
       ),
     ),
   );
@@ -1174,7 +1179,7 @@ Limit for News Block: 65 characters.',
           'size' => '60',
         ),
         'type' => 'node_reference_autocomplete',
-        'weight' => '14',
+        'weight' => '15',
       ),
     ),
   );
@@ -1305,7 +1310,85 @@ Limit for News Block: 65 characters.',
           'size' => '60',
         ),
         'type' => 'node_reference_autocomplete',
-        'weight' => '12',
+        'weight' => '13',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-article-field_wysiwyg_image_caption'
+  $fields['node-article-field_wysiwyg_image_caption'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_wysiwyg_image_caption',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'module' => 'text',
+      'settings' => array(),
+      'translatable' => '0',
+      'type' => 'text_long',
+    ),
+    'field_instance' => array(
+      'bundle' => 'article',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'hidden',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => '7',
+        ),
+        'search_index' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'search_result' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_wysiwyg_image_caption',
+      'label' => 'Wysiwyg Image Caption',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '1',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'rows' => '2',
+        ),
+        'type' => 'text_textarea',
+        'weight' => '5',
       ),
     ),
   );
@@ -1322,8 +1405,8 @@ Limit for News Block: 65 characters.',
       'indexes' => array(),
       'module' => 'metatags_quick',
       'settings' => array(
-        'meta_name' => 'description',
         0 => 'meta_name',
+        'meta_name' => 'description',
       ),
       'translatable' => '0',
       'type' => 'metatags_quick',
@@ -1373,7 +1456,7 @@ Limit for News Block: 65 characters.',
         'module' => 'metatags_quick',
         'settings' => array(),
         'type' => 'metatags_quick_textarea',
-        'weight' => '9',
+        'weight' => '10',
       ),
     ),
   );
@@ -1390,8 +1473,8 @@ Limit for News Block: 65 characters.',
       'indexes' => array(),
       'module' => 'metatags_quick',
       'settings' => array(
-        'meta_name' => 'keywords',
         0 => 'meta_name',
+        'meta_name' => 'keywords',
       ),
       'translatable' => '0',
       'type' => 'metatags_quick',
@@ -1441,7 +1524,75 @@ Limit for News Block: 65 characters.',
         'module' => 'metatags_quick',
         'settings' => array(),
         'type' => 'metatags_quick_textfield',
-        'weight' => '7',
+        'weight' => '8',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-tfk_polldaddy-field_external_poll_id'
+  $fields['node-tfk_polldaddy-field_external_poll_id'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_external_poll_id',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '255',
+      ),
+      'translatable' => '0',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'tfk_polldaddy',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 1,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_external_poll_id',
+      'label' => 'External Poll Id',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '60',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '4',
       ),
     ),
   );
@@ -1452,6 +1603,7 @@ Limit for News Block: 65 characters.',
   t('Category');
   t('Date');
   t('Deck');
+  t('External Poll Id');
   t('Image Caption');
   t('Image Credit');
   t('Kid Reporter');
@@ -1463,6 +1615,8 @@ Limit for News Block: 65 characters.',
   t('Poll');
   t('Related Article');
   t('Story Copy');
+  t('This field has been deprecated. Please use WYSIWYG Image Caption, immediately below.');
+  t('Wysiwyg Image Caption');
 
   return $fields;
 }
