@@ -16,8 +16,119 @@ function admin_utils_drush_command() {
     ),
     'aliases' => array('psi', 'pollstatip'),
   );
+  $items['util-status-check'] = array(
+    'description' => 'Drupal status check',
+    'callback' => 'drush_admin_utils_status_check',
+    'drupal dependencies' => array('poll'),
+    'options' => array(
+      '--ip' => 'IP address',
+      '--uid' => 'User ID',
+    ),
+    'aliases' => array('usc'),
+    'bootstrap' => DRUSH_BOOTSTRAP_MAX,
+  );
 
   return $items;
+}
+
+function drush_admin_utils_status_check() {
+  $test = null;
+
+
+  #$callback = drush_get_context('DRUSH_LOG_CALLBACK', '_drush_print_log');
+  drush_set_context('DRUSH_LOG_CALLBACK_ORIGINAL', drush_get_context('DRUSH_LOG_CALLBACK', '_drush_print_log'));
+  drush_set_context('DRUSH_LOG_CALLBACK', '_admin_utils_log');
+
+  $error_exists = drush_get_error();
+
+  drush_errors_off();
+
+  //$test = drush_core_status();
+  //drush_op_system($exec);
+  //$test=drush_sql_connect()
+  //Database::getConnection();
+
+  // Check if database socket exists.
+  // drush_bootstrap_error($code)
+  $phases = _drush_bootstrap_phases(TRUE);
+
+  //_drush_bootstrap_drupal_database();
+  //!drush_get_error();
+
+
+  // DRUSH_BOOTSTRAP_DRUPAL_DATABASE = 5
+
+  $context = drush_get_context('DRUSH_BOOTSTRAP_PHASE');
+
+  #$valid = drush_bootstrap_validate(DRUSH_BOOTSTRAP_DRUPAL_FULL);
+  # drush_set_context('DRUSH_BOOTSTRAP_VALIDATION_PHASE', $phase_index);
+
+  $error_exists = drush_get_error();
+
+  #$result = drush_bootstrap_to_phase(DRUSH_BOOTSTRAP_DRUPAL_DATABASE); DRUSH_BOOTSTRAP_DRUPAL_FULL
+
+  $result = drush_bootstrap(DRUSH_BOOTSTRAP_DRUPAL_FULL);
+
+  if(!drush_get_error()) {
+    // Re-activate the original log callback, unless you want to manually compose a $entry array and pass it to _drush_print_log.
+    drush_set_context('DRUSH_LOG_CALLBACK', '_drush_print_log');
+    drush_log('Ahoy mates! All Hands On Deck!!!', 'success');
+  } else {
+    $errors = drush_get_error_log();
+    foreach ($errors as $code => $message) {
+      // Do something fancy, but don't call drush_set_error() or drush_log() (the former calls the later, which calls our callback and creates and endless loop).
+      // You can use _drush_print_log
+      #  drush_set_error($code, $message);
+    }
+  }
+
+
+  $test = null;
+
+  #drush_print();
+}
+
+/**
+ * Custom callback for drush_log(), substitutes _drush_print_log().
+ *
+ * Use for customizing each time drush logs a message.
+ * If there is an error, drush prints the error and suppresses all the other
+ * messages.
+ *
+ * @param array $entry
+ * @return boolean
+ */
+function _admin_utils_log($entry) {
+  if($entry['type'] == 'error') {
+
+
+
+    // Do nothing, or call some special ICS function.
+    /*  $entry = array(
+     'type' => $type,
+     'message' => $message,
+     'timestamp' => microtime(TRUE),
+     'memory' => memory_get_usage(),
+   );
+  $entry['error'] = $error;*/
+
+    // Return FALSE for errors.
+    #drush_log('caught error', 'notice');
+    // DRUSH_DRUPAL_DB_ERROR
+
+    drush_print('caught error');
+
+    if($entry['error'] == DRUSH_DRUPAL_DB_ERROR) {
+      //drush_print('Ahoi matey, the db is down arrrrr!!!'); // Simple print, no fancy stuff.
+      $entry['message'] = 'Man the gallows...the db is down arrrrr!!!';
+      _drush_print_log($entry);
+    }
+
+    return TRUE;
+  } else {
+    $callback = drush_get_context('DRUSH_LOG_CALLBACK_ORIGINAL', '_drush_print_log');
+    return $callback($entry);
+  }
 }
 
 /**
