@@ -36,10 +36,6 @@ function admin_utils_theme($existing, $type, $theme, $path) {
   );
 }
 
-function admin_utils_preprocess_admin_utils_ip_info(&$variables) {
-  $test = null;
-}
-
 function admin_utils_ip_address() {
 
 /* Returns the IP address of the client machine.

@@ -67,5 +67,8 @@
 <?php print_r($ip_address); ?>
 </p>
 
+<h3>Environment Variables</h3>
+<?php print phpinfo(); ?>
+
 
 
