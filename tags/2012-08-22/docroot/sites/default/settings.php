@@ -344,7 +344,7 @@ $conf['reverse_proxy'] = TRUE;
  * only the last one (the left-most) will be used.
  */
 // $conf['reverse_proxy_header'] = 'HTTP_X_CLUSTER_CLIENT_IP'; // This is the default recommendation.
-$conf['reverse_proxy_header'] = 'True-Client-IP';
+$conf['reverse_proxy_header'] = 'HTTP_TRUE_CLIENT_IP';
 
 /**
  * reverse_proxy accepts an array of IP addresses.
