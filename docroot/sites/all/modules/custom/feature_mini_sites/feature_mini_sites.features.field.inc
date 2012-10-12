@@ -165,79 +165,6 @@ function feature_mini_sites_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-minisite-field_article_category'
-  $fields['node-minisite-field_article_category'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_article_category',
-      'foreign keys' => array(
-        'tid' => array(
-          'columns' => array(
-            'tid' => 'tid',
-          ),
-          'table' => 'taxonomy_term_data',
-        ),
-      ),
-      'indexes' => array(
-        'tid' => array(
-          0 => 'tid',
-        ),
-      ),
-      'module' => 'taxonomy',
-      'settings' => array(
-        'allowed_values' => array(
-          0 => array(
-            'vocabulary' => 'article_categories',
-            'parent' => '0',
-          ),
-        ),
-      ),
-      'translatable' => '1',
-      'type' => 'taxonomy_term_reference',
-    ),
-    'field_instance' => array(
-      'bundle' => 'minisite',
-      'default_value' => array(
-        0 => array(
-          'tid' => '1321', // This is the prod tid for mini-site. DON'T REVERT THIS!!!
-        ),
-      ),
-      'deleted' => '0',
-      'description' => 'This taxonomy field is present here because the article_category vocabulary is required by the secondary touts View for all other secondary tout content types except this one.',
-      'display' => array(
-        'default' => array(
-          'label' => 'hidden',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '8',
-        ),
-        'teaser' => array(
-          'label' => 'hidden',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '0',
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_article_category',
-      'label' => 'Internal Use Only',
-      'required' => 1,
-      'settings' => array(
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'options',
-        'settings' => array(),
-        'type' => 'options_select',
-        'weight' => '10',
-      ),
-    ),
-  );
-
   // Exported field: 'node-minisite-field_articles'
   $fields['node-minisite-field_articles'] = array(
     'field_config' => array(
@@ -409,7 +336,6 @@ function feature_mini_sites_field_default_fields() {
       'required' => 1,
       'settings' => array(
         'alt_field' => 0,
-        'default_image' => 0,
         'file_directory' => '',
         'file_extensions' => 'png gif jpg jpeg',
         'max_filesize' => '',
@@ -816,7 +742,6 @@ function feature_mini_sites_field_default_fields() {
       'required' => 1,
       'settings' => array(
         'alt_field' => 0,
-        'default_image' => 0,
         'file_directory' => '',
         'file_extensions' => 'png gif jpg jpeg',
         'max_filesize' => '',
@@ -969,7 +894,6 @@ function feature_mini_sites_field_default_fields() {
       'required' => 1,
       'settings' => array(
         'alt_field' => 0,
-        'default_image' => 0,
         'file_directory' => '',
         'file_extensions' => 'png gif jpg jpeg',
         'max_filesize' => '',
@@ -1007,10 +931,8 @@ function feature_mini_sites_field_default_fields() {
   t('Banner Image');
   t('Deck');
   t('Description');
-  t('Internal Use Only');
   t('Resources');
   t('Resources Label');
-  t('This taxonomy field is present here because the article_category vocabulary is required by the secondary touts View for all other secondary tout content types except this one.');
   t('Thumbnail Image');
   t('Tout Image');
   t('Tout Image Credit');

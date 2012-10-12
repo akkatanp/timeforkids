@@ -1508,7 +1508,6 @@ function referenced_views_views_default_views() {
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'poll' => 'poll',
-    'tfk_polldaddy' => 'tfk_polldaddy',
   );
 
   /* Display: References */

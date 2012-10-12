@@ -434,7 +434,6 @@ function tfk_photos_video_field_default_fields() {
       'required' => 1,
       'settings' => array(
         'alt_field' => 0,
-        'default_image' => 0,
         'file_directory' => '',
         'file_extensions' => 'png gif jpg jpeg',
         'max_filesize' => '',
@@ -477,8 +476,8 @@ function tfk_photos_video_field_default_fields() {
       'indexes' => array(),
       'module' => 'metatags_quick',
       'settings' => array(
-        'meta_name' => 'description',
         0 => 'meta_name',
+        'meta_name' => 'description',
       ),
       'translatable' => '0',
       'type' => 'metatags_quick',
@@ -532,8 +531,8 @@ function tfk_photos_video_field_default_fields() {
       'indexes' => array(),
       'module' => 'metatags_quick',
       'settings' => array(
-        'meta_name' => 'keywords',
         0 => 'meta_name',
+        'meta_name' => 'keywords',
       ),
       'translatable' => '0',
       'type' => 'metatags_quick',
@@ -900,7 +899,6 @@ function tfk_photos_video_field_default_fields() {
       'required' => 0,
       'settings' => array(
         'alt_field' => 0,
-        'default_image' => 0,
         'file_directory' => '',
         'file_extensions' => 'png gif jpg jpeg',
         'max_filesize' => '',
@@ -1001,7 +999,6 @@ function tfk_photos_video_field_default_fields() {
       'required' => 0,
       'settings' => array(
         'alt_field' => 0,
-        'default_image' => 0,
         'file_directory' => '',
         'file_extensions' => 'png gif jpg jpeg',
         'max_filesize' => '',
@@ -1261,8 +1258,8 @@ function tfk_photos_video_field_default_fields() {
       'settings' => array(
         'allowed_values' => array(
           0 => array(
-            'vocabulary' => 'themes',
             'parent' => '0',
+            'vocabulary' => 'themes',
           ),
         ),
       ),
@@ -1846,7 +1843,7 @@ Limit for News Block: 65 characters.',
       'label' => 'Deck',
       'required' => 1,
       'settings' => array(
-        'text_processing' => '1',
+        'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -1914,7 +1911,6 @@ Limit for News Block: 65 characters.',
       'required' => 0,
       'settings' => array(
         'alt_field' => 0,
-        'default_image' => 0,
         'file_directory' => '',
         'file_extensions' => 'png gif jpg jpeg',
         'max_filesize' => '',
@@ -2105,8 +2101,8 @@ Limit for News Block: 65 characters.',
       'settings' => array(
         'allowed_values' => array(
           0 => array(
-            'vocabulary' => 'themes',
             'parent' => '0',
+            'vocabulary' => 'themes',
           ),
         ),
       ),
@@ -2269,7 +2265,6 @@ Limit for News Block: 65 characters.',
       'required' => 0,
       'settings' => array(
         'alt_field' => 0,
-        'default_image' => 0,
         'file_directory' => '',
         'file_extensions' => 'png gif jpg jpeg',
         'max_filesize' => '',
@@ -2412,8 +2407,8 @@ Limit for News Block: 65 characters.',
       'indexes' => array(),
       'module' => 'metatags_quick',
       'settings' => array(
-        'meta_name' => 'description',
         0 => 'meta_name',
+        'meta_name' => 'description',
       ),
       'translatable' => '0',
       'type' => 'metatags_quick',
@@ -2466,8 +2461,8 @@ Limit for News Block: 65 characters.',
       'indexes' => array(),
       'module' => 'metatags_quick',
       'settings' => array(
-        'meta_name' => 'keywords',
         0 => 'meta_name',
+        'meta_name' => 'keywords',
       ),
       'translatable' => '0',
       'type' => 'metatags_quick',

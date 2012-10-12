@@ -41,14 +41,6 @@ function feature_tfk_news_node_info() {
       'title_label' => t('Headline'),
       'help' => '',
     ),
-    'tfk_polldaddy' => array(
-      'name' => t('TFK Polldaddy'),
-      'base' => 'node_content',
-      'description' => t('Content type for polldaddy polls. Referenced by articles.'),
-      'has_title' => '1',
-      'title_label' => t('Title'),
-      'help' => '',
-    ),
   );
   return $items;
 }

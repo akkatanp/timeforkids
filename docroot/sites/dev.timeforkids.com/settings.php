@@ -273,9 +273,6 @@ ini_set('session.cookie_lifetime', 200000);
 
 ini_set('max_execution_time', '1800'); // Up to 30 minute debugging sessions.
 
-// Increase memory limit for admin pages.
-//if (isset($_GET['q']) && strpos($_GET['q'], 'admin') === 0) { ini_set('memory_limit', '512M'); }
-
 
 /**
  * Acquia Network/Acquia Search settings

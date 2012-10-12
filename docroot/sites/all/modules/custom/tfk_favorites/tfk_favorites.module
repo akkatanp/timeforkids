@@ -401,7 +401,6 @@ function tfk_favorites_preprocess_node(&$variables){
       $books_tmp = field_get_items('node', $variables['node'], 'field_store_books');
       $num_items = count($books_tmp);
       foreach($books_tmp as $book_id => $book){
-        if(!isset($book['node'])) { continue; }
         $book_cover_tmp = field_get_items('node',$book['node'],'field_book_image');
         $book_cover = file_create_url($book_cover_tmp[0]['uri']);
 
