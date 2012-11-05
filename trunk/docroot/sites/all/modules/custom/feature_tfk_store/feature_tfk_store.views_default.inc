@@ -201,6 +201,11 @@ function feature_tfk_store_views_default_views() {
     'image_link' => '',
   );
   $handler->display->display_options['fields']['field_thumbnail_override_image']['field_api_classes'] = 0;
+  /* Sort criterion: Content: Store Order (field_store_order) */
+  $handler->display->display_options['sorts']['field_store_order_value']['id'] = 'field_store_order_value';
+  $handler->display->display_options['sorts']['field_store_order_value']['table'] = 'field_data_field_store_order';
+  $handler->display->display_options['sorts']['field_store_order_value']['field'] = 'field_store_order_value';
+  $handler->display->display_options['sorts']['field_store_order_value']['order'] = 'DESC';
   /* Sort criterion: Content: Publication Date (field_publication_date) */
   $handler->display->display_options['sorts']['field_publication_date_value']['id'] = 'field_publication_date_value';
   $handler->display->display_options['sorts']['field_publication_date_value']['table'] = 'field_data_field_publication_date';
@@ -816,6 +821,11 @@ function feature_tfk_store_views_default_views() {
     'image_link' => '',
   );
   $handler->display->display_options['fields']['field_thumbnail_override_image']['field_api_classes'] = 0;
+  /* Sort criterion: Content: Store Order (field_store_order) */
+  $handler->display->display_options['sorts']['field_store_order_value']['id'] = 'field_store_order_value';
+  $handler->display->display_options['sorts']['field_store_order_value']['table'] = 'field_data_field_store_order';
+  $handler->display->display_options['sorts']['field_store_order_value']['field'] = 'field_store_order_value';
+  $handler->display->display_options['sorts']['field_store_order_value']['order'] = 'DESC';
   /* Sort criterion: Content: Title */
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';

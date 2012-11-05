@@ -893,6 +893,80 @@ function misc_content_types_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-book-field_store_order'
+  $fields['node-book-field_store_order'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_store_order',
+      'foreign keys' => array(),
+      'indexes' => array(
+        'value' => array(
+          0 => 'value',
+        ),
+      ),
+      'module' => 'list',
+      'settings' => array(
+        'allowed_values' => array(
+          10 => '1',
+          9 => '2',
+          8 => '3',
+          7 => '4',
+          6 => '5',
+          5 => '6',
+          4 => '7',
+          3 => '8',
+          2 => '9',
+          1 => '10',
+        ),
+        'allowed_values_function' => '',
+      ),
+      'translatable' => '0',
+      'type' => 'list_integer',
+    ),
+    'field_instance' => array(
+      'bundle' => 'book',
+      'default_value' => array(
+        0 => array(
+          'value' => '10',
+        ),
+      ),
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'list',
+          'settings' => array(),
+          'type' => 'list_default',
+          'weight' => 7,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_store_order',
+      'label' => 'Store Order',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(),
+        'type' => 'options_select',
+        'weight' => '32',
+      ),
+    ),
+  );
+
   // Exported field: 'node-book-field_thumbnail_override_image'
   $fields['node-book-field_thumbnail_override_image'] = array(
     'field_config' => array(
@@ -2684,6 +2758,80 @@ function misc_content_types_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-store_product-field_store_order'
+  $fields['node-store_product-field_store_order'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_store_order',
+      'foreign keys' => array(),
+      'indexes' => array(
+        'value' => array(
+          0 => 'value',
+        ),
+      ),
+      'module' => 'list',
+      'settings' => array(
+        'allowed_values' => array(
+          10 => '1',
+          9 => '2',
+          8 => '3',
+          7 => '4',
+          6 => '5',
+          5 => '6',
+          4 => '7',
+          3 => '8',
+          2 => '9',
+          1 => '10',
+        ),
+        'allowed_values_function' => '',
+      ),
+      'translatable' => '0',
+      'type' => 'list_integer',
+    ),
+    'field_instance' => array(
+      'bundle' => 'store_product',
+      'default_value' => array(
+        0 => array(
+          'value' => '10',
+        ),
+      ),
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'list',
+          'settings' => array(),
+          'type' => 'list_default',
+          'weight' => 4,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_store_order',
+      'label' => 'Store Order',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(),
+        'type' => 'options_select',
+        'weight' => '31',
+      ),
+    ),
+  );
+
   // Exported field: 'node-store_product-field_thumbnail_override_image'
   $fields['node-store_product-field_thumbnail_override_image'] = array(
     'field_config' => array(
@@ -3788,6 +3936,7 @@ function misc_content_types_field_default_fields() {
   t('Short Bio');
   t('Store Items');
   t('Store Items Bottom');
+  t('Store Order');
   t('Store Type');
   t('Thumbnail Override Image');
   t('Time Article Url');
