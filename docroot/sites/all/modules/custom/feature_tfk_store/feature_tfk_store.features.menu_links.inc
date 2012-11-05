@@ -10,22 +10,6 @@
 function feature_tfk_store_menu_default_menu_links() {
   $menu_links = array();
 
-  // Exported menu link: menu-store-pages-menu:node/41074
-  $menu_links['menu-store-pages-menu:node/41074'] = array(
-    'menu_name' => 'menu-store-pages-menu',
-    'link_path' => 'node/41074',
-    'router_path' => 'node/%',
-    'link_title' => 'Subscriptions',
-    'options' => array(
-      'attributes' => array(),
-    ),
-    'module' => 'menu',
-    'hidden' => '0',
-    'external' => '0',
-    'has_children' => '0',
-    'expanded' => '0',
-    'weight' => '-50',
-  );
   // Exported menu link: menu-store-pages-menu:store/books
   $menu_links['menu-store-pages-menu:store/books'] = array(
     'menu_name' => 'menu-store-pages-menu',
@@ -62,7 +46,6 @@ function feature_tfk_store_menu_default_menu_links() {
   // Included for use with string extractors like potx.
   t('Books');
   t('Other Products');
-  t('Subscriptions');
 
 
   return $menu_links;
