@@ -203,10 +203,44 @@ function feature_mini_sites_field_default_fields() {
       'default_value' => array(
         0 => array(
           'tid' => '1321', // This is the prod tid for mini-site. DON'T REVERT THIS!!!
+          'vid' => '3',
+          'name' => 'Mini-Site',
+          'description' => '',
+          'format' => 'full_html',
+          'weight' => '0',
+          'vocabulary_machine_name' => 'article_categories',
+          'rdf_mapping' => array(
+            'description' => array(
+              'predicates' => array(
+                0 => 'skos:definition',
+              ),
+            ),
+            'name' => array(
+              'predicates' => array(
+                0 => 'rdfs:label',
+                1 => 'skos:prefLabel',
+              ),
+            ),
+            'parent' => array(
+              'predicates' => array(
+                0 => 'skos:broader',
+              ),
+              'type' => 'rel',
+            ),
+            'rdftype' => array(
+              0 => 'skos:Concept',
+            ),
+            'vid' => array(
+              'predicates' => array(
+                0 => 'skos:inScheme',
+              ),
+              'type' => 'rel',
+            ),
+          ),
         ),
       ),
       'deleted' => '0',
-      'description' => 'This taxonomy field is present here because the article_category vocabulary is required by the secondary touts View for all other secondary tout content types except this one.',
+      'description' => 'Field required in order to promote mini-site to primary and secondary tout positions.',
       'display' => array(
         'default' => array(
           'label' => 'hidden',
@@ -218,7 +252,7 @@ function feature_mini_sites_field_default_fields() {
           'label' => 'hidden',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
       ),
       'entity_type' => 'node',
@@ -229,11 +263,14 @@ function feature_mini_sites_field_default_fields() {
         'user_register_form' => FALSE,
       ),
       'widget' => array(
-        'active' => 1,
-        'module' => 'options',
-        'settings' => array(),
-        'type' => 'options_select',
-        'weight' => '10',
+        'active' => 0,
+        'module' => 'taxonomy',
+        'settings' => array(
+          'autocomplete_path' => 'taxonomy/autocomplete',
+          'size' => 60,
+        ),
+        'type' => 'taxonomy_autocomplete',
+        'weight' => '32',
       ),
     ),
   );
@@ -1007,10 +1044,10 @@ function feature_mini_sites_field_default_fields() {
   t('Banner Image');
   t('Deck');
   t('Description');
+  t('Field required in order to promote mini-site to primary and secondary tout positions.');
   t('Internal Use Only');
   t('Resources');
   t('Resources Label');
-  t('This taxonomy field is present here because the article_category vocabulary is required by the secondary touts View for all other secondary tout content types except this one.');
   t('Thumbnail Image');
   t('Tout Image');
   t('Tout Image Credit');
