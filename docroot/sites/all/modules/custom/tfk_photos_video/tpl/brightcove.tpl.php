@@ -12,15 +12,15 @@ found at https://accounts.brightcove.com/en/terms-and-conditions/.
 
 <object id="myExperience1958986629001" class="BrightcoveExperience">
   <param name="bgcolor" value="#FFFFFF" />
-  <param name="width" value="480" />
-  <param name="height" value="270" />
-  <param name="playerID" value="<?php print $variables['player_id']; ?>" /><!-- 1873162655001 -->
+  <param name="width" value="488" />
+  <param name="height" value="274" />
+  <param name="playerID" value="<?php print $variables['player_id']; ?>" />
   <param name="playerKey" value="AQ~~,AAABs_kuylk~,vRYixSFTu-K4sztp2goZaSRYuNk4hAZU" />
   <param name="isVid" value="true" />
   <param name="isUI" value="true" />
   <param name="dynamicStreaming" value="true" />
 
-  <param name="@videoPlayer" value="<?php print $variables['video_id']; ?>" /><!--1958986629001-->
+  <param name="@videoPlayer" value="<?php print $variables['video_id']; ?>" />
 </object>
 
 <!--
