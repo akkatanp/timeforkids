@@ -136,6 +136,12 @@
     <?php endif; ?>
   
     <div class="content" <?php if(isset($content_attributes)): ?><?php print $content_attributes; ?><?php endif; ?>>
+
+      <?php if($brightcove_video):?>
+        <?php print $brightcove_video; ?>
+        <?php hide($content['field_video_upload']); ?>
+      <?php endif; ?>
+
       <?php
         // We hide the comments and links now so that we can render them later.
         hide($content['comments']);
