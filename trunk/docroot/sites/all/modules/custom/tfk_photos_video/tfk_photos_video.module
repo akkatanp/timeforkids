@@ -7,6 +7,20 @@
 include_once('tfk_photos_video.features.inc');
 
 /**
+ *  Implementation of hook_theme.
+ */
+function tfk_photos_video_theme($existing, $type, $theme, $path) {
+  return array(
+    // Template for brightcove video.
+    'fdb_brightcove_video' => array(
+      'template' => 'brightcove',
+      'variables' => array('player_id' => '', 'video_id' => ''),
+      'path' => $path. '/tpl',
+    ),
+  );
+}
+
+/**
  * Override or insert variables into the page templates.
  *
  * @param $variables
@@ -39,7 +53,16 @@ function tfk_photos_video_preprocess_page(&$variables) {
 function tfk_photos_video_preprocess_node(&$variables) {
   if($variables['type'] == 'video') {
     $_variables = & $variables;
-    
+
+    // Decide whether to use Brightcove video or native upload.
+    $bvid = field_get_items('node', $variables['node'], 'field_brightcove_video_id');
+    if(empty($bvid)) {
+      $variables['brightcove_video'] = FALSE;
+    } else {
+      $bpid = field_get_items('node', $variables['node'], 'field_brightcove_player_id');
+      $variables['brightcove_video'] = theme('fdb_brightcove_video', array('video_id' => $bvid[0]['safe_value'], 'player_id' => $bpid[0]['safe_value'], 'variables' => array('video_id' => $bvid[0]['safe_value'], 'player_id' => $bpid[0]['safe_value'])));
+    }
+
     // Add additional content variable to the node template.
     $additional_content = tfk_helper_get_additional_content();
     if($additional_content !== FALSE) {
