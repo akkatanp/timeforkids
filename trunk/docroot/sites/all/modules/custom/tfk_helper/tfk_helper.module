@@ -441,7 +441,7 @@ function tfk_helper_views_pre_render(&$view) {
  * Indicate which grid rows have additional content with CSS.
  */
 function tfk_helper_preprocess_views_view_grid(&$variables) {
-  if(array_search($variables['view']->name, array('homepage_news_block','minisite_articles'))) {
+  if(array_search($variables['view']->name, array('homepage_news_block','minisite_articles')) !== FALSE) {
     // Find which items have additional content.
     $ac_keys = array('field_field_additional_content', 'field_field_related_articles', 'field_field_mini_lessons','field_field_minisite_related_content');
     $rows = array_chunk($variables['view']->result, $variables['view']->style_plugin->options['columns']);
