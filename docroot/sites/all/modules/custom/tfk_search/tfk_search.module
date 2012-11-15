@@ -2752,6 +2752,8 @@ function tfk_search_preprocess_search_result(&$vars) {
       if(!empty($body[0]['safe_value'])) {
         $teaser = $body[0]['safe_value'];
         $skip_processing = TRUE;
+      } else {
+        $teaser = $body[0]['value'];
       }
       
       $vars['tfk_search_result_link_1'] = l('View the Video', 'node/'. $nid);
