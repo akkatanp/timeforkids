@@ -265,7 +265,7 @@ function features_misc_context_default_contexts() {
   $context = new stdClass;
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
-  $context->name = 'global_teacher_navigation';
+  $context->name = 'global_teacher_navigation3';
   $context->description = '';
   $context->tag = 'global navigation';
   $context->conditions = array(
@@ -282,55 +282,61 @@ function features_misc_context_default_contexts() {
           'module' => 'search',
           'delta' => 'form',
           'region' => 'sidebar_second',
-          'weight' => '-88',
+          'weight' => '-10',
         ),
         'views-global_right_sidebar-block' => array(
           'module' => 'views',
           'delta' => 'global_right_sidebar-block',
           'region' => 'sidebar_second',
-          'weight' => '-87',
+          'weight' => '-9',
         ),
         'block-19' => array(
           'module' => 'block',
-          'delta' => 19,
+          'delta' => '19',
           'region' => 'sidebar_second',
-          'weight' => '-86',
+          'weight' => '-8',
         ),
         'views-global_right_sidebar-block_1' => array(
           'module' => 'views',
           'delta' => 'global_right_sidebar-block_1',
           'region' => 'sidebar_second',
-          'weight' => '-85',
+          'weight' => '-7',
         ),
         'views-global_right_sidebar-block_2' => array(
           'module' => 'views',
           'delta' => 'global_right_sidebar-block_2',
           'region' => 'sidebar_second',
-          'weight' => '-84',
+          'weight' => '-6',
+        ),
+        'views-global_right_sidebar-block_4' => array(
+          'module' => 'views',
+          'delta' => 'global_right_sidebar-block_4',
+          'region' => 'sidebar_second',
+          'weight' => '-4',
         ),
         'views-global_right_sidebar-block_3' => array(
           'module' => 'views',
           'delta' => 'global_right_sidebar-block_3',
           'region' => 'sidebar_second',
-          'weight' => '-83',
+          'weight' => '-5',
         ),
         'block-18' => array(
           'module' => 'block',
-          'delta' => 18,
+          'delta' => '18',
           'region' => 'sidebar_second',
-          'weight' => '-82',
+          'weight' => '-3',
         ),
-        'views-e1fd7ec0792e427785c60f04deef22cf' => array(
+        'views-6b3cdbf51f6a41d742e65dbcf2d85234' => array(
           'module' => 'views',
-          'delta' => 'e1fd7ec0792e427785c60f04deef22cf',
+          'delta' => '6b3cdbf51f6a41d742e65dbcf2d85234',
           'region' => 'sidebar_second',
-          'weight' => '-81',
+          'weight' => '-2',
         ),
         'block-1' => array(
           'module' => 'block',
-          'delta' => 1,
+          'delta' => '1',
           'region' => 'sidebar_second',
-          'weight' => '-80',
+          'weight' => '-1',
         ),
         'menu-menu-tfk-global-navigation' => array(
           'module' => 'menu',
@@ -346,7 +352,7 @@ function features_misc_context_default_contexts() {
         ),
         'block-11' => array(
           'module' => 'block',
-          'delta' => 11,
+          'delta' => '11',
           'region' => 'header',
           'weight' => '-8',
         ),
@@ -354,7 +360,7 @@ function features_misc_context_default_contexts() {
           'module' => 'menu',
           'delta' => 'menu-tfk-teachers-menu',
           'region' => 'header',
-          'weight' => '-6',
+          'weight' => '-7',
         ),
         'menu-menu-tfk-footer-primary' => array(
           'module' => 'menu',
@@ -376,19 +382,19 @@ function features_misc_context_default_contexts() {
         ),
         'block-6' => array(
           'module' => 'block',
-          'delta' => 6,
+          'delta' => '6',
           'region' => 'footer',
           'weight' => '-7',
         ),
       ),
     ),
   );
-  $context->condition_mode = 1;
+  $context->condition_mode = 0;
 
   // Translatables
   // Included for use with string extractors like potx.
   t('global navigation');
-  $export['global_teacher_navigation'] = $context;
+  $export['global_teacher_navigation3'] = $context;
 
   $context = new stdClass;
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
