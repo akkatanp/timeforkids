@@ -1362,7 +1362,7 @@ function theme_tfk_featured_block(&$variables) {
   } else if($tfkSearchFeaturedItem->type == 'video') {
     // Deck fields don't need processing.
     $clean_body = field_get_items('node', $tfkSearchFeaturedItem, 'field_deck');
-    $body = $clean_body[0]['safe_value'];
+    $body = (array_key_exists('safe_value', $clean_body[0])? $clean_body[0]['safe_value']: $clean_body[0]['value']);
     $skip_processing = TRUE;
   } else {
     if(!is_array($tfkSearchFeaturedItem->body)) {
