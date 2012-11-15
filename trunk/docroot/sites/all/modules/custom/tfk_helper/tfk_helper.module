@@ -639,6 +639,11 @@ function tfk_helper_preprocess_views_view_fields(&$variables, $hook) {
     // Use only one template for all Secondary Tout displays (all channels, anon + non-anon).
     $variables['theme_hook_suggestion'] = 'views_view_fields__secondary_tout';
     
+    // Fix section name for mini-sites.
+    if(array_key_exists('name', $variables['fields']) && $variables['fields']['name']->raw == 'mini-site') {
+      $variables['fields']['name']->content = '<span class="field-content">'. l('mini-site', 'mini-sites') .'</span>';
+    }
+    
     // Remove body field for ATW destination nodes.
     // Link text.
     $content_type = $variables['row']->_field_data['nid']['entity']->type;
