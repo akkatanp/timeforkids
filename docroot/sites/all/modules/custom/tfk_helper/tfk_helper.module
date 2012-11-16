@@ -640,7 +640,7 @@ function tfk_helper_preprocess_views_view_fields(&$variables, $hook) {
     $variables['theme_hook_suggestion'] = 'views_view_fields__secondary_tout';
     
     // Fix section name for mini-sites.
-    if(array_key_exists('name', $variables['fields']) && $variables['fields']['name']->raw == 'mini-site') {
+    if(array_key_exists('name', $variables['fields']) && strtolower($variables['fields']['name']->raw) == 'mini-site') {
       $variables['fields']['name']->content = '<span class="field-content">'. l('mini-site', 'mini-sites') .'</span>';
     }
     
