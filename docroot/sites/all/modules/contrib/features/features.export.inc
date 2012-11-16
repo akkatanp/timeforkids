@@ -838,7 +838,7 @@ function _features_linetrim($code) {
 function _features_sanitize(&$array) {
   if (is_array($array)) {
     if (_features_is_assoc($array)) {
-      ksort($array);
+      ksort($array, SORT_STRING);
       $array = array_filter($array);
     }
     else {
