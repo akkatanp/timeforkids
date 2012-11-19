@@ -642,6 +642,25 @@ function tfk_helper_preprocess_views_view_fields(&$variables, $hook) {
     // Fix section name for mini-sites.
     if(array_key_exists('name', $variables['fields']) && strtolower($variables['fields']['name']->raw) == 'mini-site') {
       $variables['fields']['name']->content = '<span class="field-content">'. l('mini-site', 'mini-sites') .'</span>';
+      
+      // Additional content for mini-sites.
+      if(!empty($variables['row']->field_field_minisite_related_content[0]['raw']['node'])) {
+        $rel_node = node_load($variables['row']->field_field_minisite_related_content[0]['raw']['node']->nid);
+        if($rel_node) {
+          if(isset($rel_node->field_worksheet_pdf_private) && !empty($rel_node->field_worksheet_pdf_private)){
+            $vars['tfk_worksheet_pdf_url'] = '';
+            $tmp_pdf = field_get_items('node', $rel_node, 'field_worksheet_pdf_private');
+            $pdf_tmp_uri = $tmp_pdf[0]['uri'];
+            $pdf_path = file_create_url($pdf_tmp_uri);
+            if($pdf_path) {
+              $variables['fields']['field_minisite_related_content']->content = '<div class="field-content worksheet">';
+              $variables['fields']['field_minisite_related_content']->content .= l($rel_node->title, $pdf_path);
+              $variables['fields']['field_minisite_related_content']->content .= '</div>';
+            }
+          }
+        }
+      }
+      
     }
     
     // Remove body field for ATW destination nodes.
