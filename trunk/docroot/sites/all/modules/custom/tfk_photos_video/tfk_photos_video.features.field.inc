@@ -113,8 +113,8 @@ function tfk_photos_video_field_default_fields() {
       'settings' => array(
         'allowed_values' => array(
           0 => array(
-            'vocabulary' => 'article_categories',
             'parent' => '0',
+            'vocabulary' => 'article_categories',
           ),
         ),
       ),
@@ -719,8 +719,8 @@ function tfk_photos_video_field_default_fields() {
       'settings' => array(
         'allowed_values' => array(
           0 => array(
-            'vocabulary' => 'article_categories',
             'parent' => '0',
+            'vocabulary' => 'article_categories',
           ),
         ),
       ),
@@ -1527,8 +1527,8 @@ function tfk_photos_video_field_default_fields() {
       'settings' => array(
         'allowed_values' => array(
           0 => array(
-            'vocabulary' => 'article_categories',
             'parent' => '0',
+            'vocabulary' => 'article_categories',
           ),
         ),
       ),
