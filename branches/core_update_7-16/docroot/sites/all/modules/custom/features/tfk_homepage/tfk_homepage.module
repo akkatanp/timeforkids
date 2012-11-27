@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the tfk_homepage feature.
- */
-
-include_once('tfk_homepage.features.inc');

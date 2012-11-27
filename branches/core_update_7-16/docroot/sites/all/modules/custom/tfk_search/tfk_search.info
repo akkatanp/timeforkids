@@ -1,4 +1,0 @@
-name = TFK Search
-description = TFK Search functionality
-core = 7.x
-package = "TFK"
