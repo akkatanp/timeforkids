@@ -1,0 +1,98 @@
+<?php
+
+function tfk_extras_menu(){
+  $items = array();
+  $items['extras'] = array(
+		'title' => 'TFK Extras.',
+		'page callback' => '_extras_callback',
+		'access callback' => 'user_access',
+		'access arguments' => array('access content')
+	);
+  return $items;
+}
+
+function _extras_callback(){
+   drupal_set_title('TFK Extras.');
+  return '';
+}
+
+
+function tfk_extras_block_info() {
+  $blocks['tfk-extras-taxonomy-links'] = array(
+    'info' => t('Taxonomy based navigation for extras section')
+  );
+  return $blocks;
+}
+
+function tfk_extras_block_view($delta='') {
+  $block = array();
+  switch ($delta) {
+    case 'tfk-extras-taxonomy-links':
+      $block['subject'] = t('Taxonomy based navigation for extras section');
+      $block['content'] = _tfk_extras_taxonomy_navigation();
+      break;
+  }
+
+  return $block;
+}
+
+
+function _tfk_extras_taxonomy_navigation(){
+
+  $term = arg(1);
+
+  $vid = 11; //vocabulary id for tfk_extras categories
+  //now we have to get all taxonomy terms from this vocabulary that have articles
+  $result = db_query('select distinct ti.tid,td.name from taxonomy_index ti left join taxonomy_term_data td on ti.tid = td.tid left join node n on n.nid = ti.nid where n.type = :type and td.vid = :vid order by td.name ASC',array('type'=>'tfk_extra','vid'=>$vid));
+  $terms = array();
+
+  foreach ($result as $i=> $record) {
+    $terms[$i]['term_name']= $record->name;
+    $terms[$i]['class']= '';
+    if($term == strtolower($record->name)){
+      $terms[$i]['class']= 'highlighted';
+    }
+  }
+
+  $list = array('terms_with_articles' => $terms);
+  return theme('tfk_extras_taxonomy_links',$list);
+}
+
+function tfk_extras_theme() {
+  return array(
+    'tfk_extras_taxonomy_links' => array(
+      'template' => 'tfk-extras-taxonomy-links',
+      'variables' => array('list' => NULL),
+    )
+  );
+}
+
+function tfk_extras_preprocess_node(&$variables){
+  if(array_key_exists('node', $variables) && $variables['node']->type == 'tfk_extra') {
+
+    $pdfs = array();
+    $pdfs_tmp = field_get_items('node', $variables['node'], 'field_tfk_extra_pdf_collection');
+    foreach($pdfs_tmp as $z => $item){
+        $item_tmp = entity_load('field_collection_item', array($item['value']));
+        $term = taxonomy_term_load($item_tmp[$item['value']]->field_tfk_extra_pdf_taxonomy['und'][0]['tid']);
+        $pdfs[$z]['term_name'] = $term->name;
+        $pdfs[$z]['pdf_title'] = strip_tags($item_tmp[$item['value']]->field_tfk_extra_pdf_headline['und'][0]['value']);
+        $pdfs[$z]['pdf_url'] =  file_create_url($item_tmp[$item['value']]->field_tfk_extra_pdf_file['und'][0]['uri']);
+    }
+
+    $variables['pdfs'] = $pdfs;
+
+  }
+
+}
+
+/**
+ * Page preprocessor.
+ */
+function tfk_extras_preprocess_page(&$variables) {
+  
+  // Set title on Photos & Video search page.
+  if(arg(0) == 'extras') {
+    $variables['section_title'] = 'TFK Extra';
+  }
+}
