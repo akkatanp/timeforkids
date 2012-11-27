@@ -1,7 +1,5 @@
 <?php
 // $Id$
-#require('/var/www/site-php/time/time-settings.inc');
-
  
 $databases['default']['default'] = array(
     'database' => 'timeteam',
