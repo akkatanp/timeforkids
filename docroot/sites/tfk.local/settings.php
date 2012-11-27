@@ -7,7 +7,8 @@ $databases['default']['default'] = array(
     'database' => 'timeteam',
     'username' => 'root',
     'password' => 'root',
-    'host' => '127.0.0.1',
+    #'host' => '127.0.0.1',
+    'host' => '10.187.218.154',
     'port' => '3306',
     'driver' => 'mysql',
     'prefix' => '',
@@ -281,6 +282,8 @@ ini_set('session.cookie_lifetime', 2000000);
 error_reporting(E_ALL | E_STRICT);
 ini_set('error_reporting', -1);
 ini_set('memory_limit', '512M'); // Useful when doing "drush fra -y"
+ini_set('max_execution_time', 0);
+
 
 /**
  * Acquia Network/Acquia Search settings
@@ -291,10 +294,15 @@ $conf["apachesolr_path"] = "http://localhost:8983/solr";
 
 /**
  * Filesystem settings
+ * Mac OS X
  */
 $conf["file_public_path"] = "sites/default/files";
-$conf["file_temporary_path"] = "/Users/rallen8440/tmp";
-$conf["file_private_path"] = "/Users/rallen8440/Sites/tfk/private";
+#$conf["file_temporary_path"] = "/Users/rallen8440/tmp";
+#$conf["file_private_path"] = "/Users/rallen8440/Sites/tfk/private";
+
+// Virtual Machine.
+$conf["file_temporary_path"] = "~/host/tmp";
+$conf["file_private_path"] = "~/host/Sites/tfk/private";
 
 // Drupal 7 does not cache pages when we invoke hooks during bootstrap. This needs
 // to be disabled.
