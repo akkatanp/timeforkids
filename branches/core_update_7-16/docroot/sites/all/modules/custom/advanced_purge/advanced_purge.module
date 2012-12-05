@@ -84,7 +84,7 @@ function advanced_purge_flag($action, $flag, $content_id, $account, $fcid) {
     watchdog('advanced_purge', 'The following cache items have been purged from persistent cache: @results', array('@results' => print_r($results, TRUE)), WATCHDOG_INFO);
     
     // Varnish purge/expire code.
-    advanced_purge_paths($display_cache[$flag->name]['path']);
+    advanced_purge_paths(array($display_cache[$flag->name]['path']));
   }
   
 }
@@ -101,28 +101,28 @@ function advanced_purge_paths($expire) {
     module_load_include('module', 'expire');
     module_load_include('inc', 'purge');
     
-    global $base_path;
-    $expire = array();
-    
     // Special handling for front-page.
     $front_page = array_search('<front>', $expire);
     if($front_page !== FALSE) {
       $expire[$front_page] = '';
       //$expire[] = 'rss.xml';
       $expire[] = variable_get('site_frontpage', 'node');
+      $expire[$front_page] = 'http://dev.timeforkids.com';
     }
     
     // Path alias
+    global $base_path;
     foreach($expire as $path) {
       $path_alias = url($path, array('absolute' => FALSE));
       // Remove the base path
       $expire[] = substr($path_alias, strlen($base_path));
     }
+    $expire = array_unique($expire);
     
     // Allow other modules to modify the list prior to expiring
     drupal_alter('expire_cache', $expire, $node, $paths);
     
-    $expire = array_unique($expire);
+    // Purge
     $results = purge_urls($expire);
     purge_logging($results);
     
