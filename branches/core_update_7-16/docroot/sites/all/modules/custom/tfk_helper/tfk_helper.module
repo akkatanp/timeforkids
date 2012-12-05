@@ -1465,7 +1465,6 @@ function tfk_helper_get_content_type_label($content_type) {
  * We unflag first because flagging a node that's already flagged is effectively
  * a no-op. But if it's unflagged and then reflagged, the flag-weight is reset to
  * force it to the top of the particular flag's list of flagged nodes.
- *
  */
 function tfk_helper_node_update($node) {
     if(isset($node->flag)) {
@@ -1476,7 +1475,42 @@ function tfk_helper_node_update($node) {
             }
         }
     }
-    return;
+    
+    // Site wide search cache busting.
+    if(array_search($node->type, TFK_ANON_CONTENT_TYPES) !== FALSE) {
+      advanced_purge_paths(array('/search/site'));
+    }
+    
+    // Cache busting for all anonymous user sections that are not homepage, news or kid reporters.
+    // Those sections are busted by the reflagging code above.
+    switch ($node->type) {
+      case 'minisite':
+        advanced_purge_paths(array('/mini-sites'));
+      break;
+      
+      case 'book':
+        advanced_purge_cache_clear(array('store/books'));
+      break;
+      
+      case 'store_product':
+        advanced_purge_cache_clear(array('store/products'));
+      break;
+      
+      case 'tfk_extra':
+        advanced_purge_cache_clear(array('extras'));
+      break;
+      
+      case 'slideshow':
+      case 'video':
+        advanced_purge_cache_clear(array('/photos-video', '/search/site'));
+        break;
+        
+      case 'atw_destination':
+      case 'atw_homepage_nodeblock':
+        advanced_purge_cache_clear(array('/around-the-world'));
+        break;
+    }
+    
 }
 
 function tfk_helper_node_view($node, $view_mode, $langcode) {
