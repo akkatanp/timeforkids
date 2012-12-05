@@ -123,6 +123,18 @@ function advanced_purge_flag($action, $flag, $content_id, $account, $fcid) {
   
 }
 
+function advanced_purge_expire_cache_alter(&$expire, &$node, $paths) {
+  $test = null;
+  
+  $key = array_search('<front>', $expire);
+  if($key !== FALSE) {
+    global $base_root;
+    $site_frontpage = variable_get('site_frontpage', 'node');
+    
+    $expire[$key] = '';
+  }
+}
+
 /**
  * Purge an array of paths from varnish and memcached.
  * 
@@ -141,7 +153,7 @@ function advanced_purge_paths($expire) {
     foreach($expire as $path) {
       drupal_set_message(t("The path \"%path\" has been purged from Varnish.",
         array('%path' => $path)
-      ));    	
+      ));
     }
   }
   
