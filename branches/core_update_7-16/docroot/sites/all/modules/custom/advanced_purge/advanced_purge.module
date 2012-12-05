@@ -107,7 +107,7 @@ function advanced_purge_paths($expire) {
       $expire[$front_page] = '';
       //$expire[] = 'rss.xml';
       $expire[] = variable_get('site_frontpage', 'node');
-      $expire[$front_page] = 'http://dev.timeforkids.com';
+      $expire[] = 'http://dev.timeforkids.com';
     }
     
     // Path alias
