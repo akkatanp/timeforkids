@@ -75,64 +75,18 @@ function advanced_purge_flag($action, $flag, $content_id, $account, $fcid) {
       }
       if($bin == 'path') {
         module_load_include('inc', 'advanced_purge', 'advanced_purge.rules');
-        advanced_purge_page_clear($cids);
+        advanced_purge_page_clear($cids); // Memcached purge.
       }
     }
     
     $node = node_load($content_id);
     drupal_set_message("{$node->title}, nid:{$node->nid} has been ". (($action == 'flag') ? 'added to': 'removed from'). " the {$flag->title} channel.");
     watchdog('advanced_purge', 'The following cache items have been purged from persistent cache: @results', array('@results' => print_r($results, TRUE)), WATCHDOG_INFO);
-
     
     // Varnish purge/expire code.
-    if(module_exists('expire') && module_exists('purge')) {
-      
-      global $base_path;
-      $path = $display_cache[$flag->name]['path'];
-      $expire = array();
-      
-      // Special handling for front-page.
-      $site_frontpage = variable_get('site_frontpage', 'node');
-      if($path == $site_frontpage) {
-        //$expire[] = '';
-        //$expire[] = 'rss.xml';
-        $expire[] = $site_frontpage;
-      } else {
-        $expire[] = $path;
-      }
-      
-      // Path alias
-      $path_alias = url($path, array('absolute' => FALSE));
-      // Remove the base path
-      $expire[] = substr($path_alias, strlen($base_path));
-      
-      // Allow other modules to modify the list prior to expiring
-      drupal_alter('expire_cache', $expire, $node, $paths);
-      
-      $expire = array_unique($expire);
-      
-      // Clear Varnish (anonymous users).
-      module_load_include('module', 'expire'); // Required for expire_print_r() in purge.inc line 203.
-      module_load_include('inc', 'purge'); // Contains purge_urls(), has Acquia-Varnish purging logic.
-      $results = purge_urls($expire);
-      purge_logging($results);
-      
-    }
-    
+    advanced_purge_paths($display_cache[$flag->name]['path']);
   }
   
-}
-
-function advanced_purge_expire_cache_alter(&$expire, &$node, $paths) {
-  $test = null;
-  
-  $key = array_search('<front>', $expire);
-  if($key !== FALSE) {
-    global $base_root;
-    $site_frontpage = variable_get('site_frontpage', 'node');
-    
-    $expire[$key] = '';
-  }
 }
 
 /**
@@ -147,6 +101,28 @@ function advanced_purge_paths($expire) {
     module_load_include('module', 'expire');
     module_load_include('inc', 'purge');
     
+    global $base_path;
+    $expire = array();
+    
+    // Special handling for front-page.
+    $front_page = array_search('<front>', $expire);
+    if($front_page !== FALSE) {
+      $expire[$front_page] = '';
+      //$expire[] = 'rss.xml';
+      $expire[] = variable_get('site_frontpage', 'node');
+    }
+    
+    // Path alias
+    foreach($expire as $path) {
+      $path_alias = url($path, array('absolute' => FALSE));
+      // Remove the base path
+      $expire[] = substr($path_alias, strlen($base_path));
+    }
+    
+    // Allow other modules to modify the list prior to expiring
+    drupal_alter('expire_cache', $expire, $node, $paths);
+    
+    $expire = array_unique($expire);
     $results = purge_urls($expire);
     purge_logging($results);
     
