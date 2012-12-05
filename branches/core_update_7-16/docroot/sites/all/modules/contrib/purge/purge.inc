@@ -65,7 +65,7 @@ function purge_urls($purge_urls) {
           . '?' . $purge_url_parts['query'] : $purge_url_parts['path'];
         $purge_requests[$current_purge_request]['purge_url'] = $proxy_url_base . $purge_path;
         // Set the host header to the sites hostname
-        $purge_requests[$current_purge_request]['headers'] = array("Host: " . $purge_url_host);
+        $purge_requests[$current_purge_request]['headers'] = array("Host: " . $_SERVER['HTTP_HOST']);
       }
 
       // The GET method, native suport on nginx
