@@ -106,8 +106,7 @@ function advanced_purge_paths($expire) {
     if($front_page !== FALSE) {
       $expire[$front_page] = '';
       //$expire[] = 'rss.xml';
-      $expire[] = variable_get('site_frontpage', 'node');
-      $expire[] = 'http://dev.timeforkids.com';
+      $expire[] = '/'. variable_get('site_frontpage', 'node');
     }
     
     // Path alias
@@ -115,7 +114,7 @@ function advanced_purge_paths($expire) {
     foreach($expire as $path) {
       $path_alias = url($path, array('absolute' => FALSE));
       // Remove the base path
-      $expire[] = substr($path_alias, strlen($base_path));
+      //$expire[] = substr($path_alias, strlen($base_path));
     }
     $expire = array_unique($expire);
     
