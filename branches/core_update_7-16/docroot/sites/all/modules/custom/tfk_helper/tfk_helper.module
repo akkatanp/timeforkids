@@ -1467,6 +1467,12 @@ function tfk_helper_get_content_type_label($content_type) {
  * force it to the top of the particular flag's list of flagged nodes.
  */
 function tfk_helper_node_update($node) {
+  
+  // Site wide search cache busting.
+  if(array_search($node->type, array('article', 'slideshow', 'video', 'atw_destination', 'minisite','tfk_extra','a_paper','grammar_practice','writing_tips','book','store_product')) !== FALSE) {
+    advanced_purge_paths(array('/search/site'));
+  }  
+  
     if(isset($node->flag)) {
         foreach($node->flag as $flag => $value) {
             if($value && $node->type != "kid_reporter_listing_nodeblock") {
@@ -1476,40 +1482,45 @@ function tfk_helper_node_update($node) {
         }
     }
     
-    // Site wide search cache busting.
-    if(array_search($node->type, array('article', 'slideshow', 'video', 'atw_destination', 'minisite','tfk_extra','a_paper','grammar_practice','writing_tips','book','store_product')) !== FALSE) {
-      advanced_purge_paths(array('/search/site'));
-    }
-    
-    // Cache busting for all anonymous user sections that are not homepage, news or kid reporters.
-    // Those sections are busted by the reflagging code above.
-    switch ($node->type) {
-      case 'minisite':
-        advanced_purge_paths(array('/mini-sites'));
-      break;
-      
-      case 'book':
-        advanced_purge_cache_clear(array('store/books'));
-      break;
-      
-      case 'store_product':
-        advanced_purge_cache_clear(array('store/products'));
-      break;
-      
-      case 'tfk_extra':
-        advanced_purge_cache_clear(array('extras'));
-      break;
-      
-      case 'slideshow':
-      case 'video':
-        advanced_purge_cache_clear(array('/photos-video', '/search/site'));
+      // Cache busting for all anonymous user sections that are not homepage, news or kid reporters.
+      // Those sections are busted by the reflagging code above.
+      switch ($node->type) {
+        case 'minisite':
+          advanced_purge_paths(array('/mini-sites'));
+          advanced_purge_varnish(array('/mini-sites'));
         break;
         
-      case 'atw_destination':
-      case 'atw_homepage_nodeblock':
-        advanced_purge_cache_clear(array('/around-the-world'));
+        case 'book':
+          advanced_purge_paths(array('store/books'));
+          advanced_purge_varnish(array('/store/books'));
         break;
-    }
+        
+        case 'store_product':
+          advanced_purge_paths(array('store/products'));
+          advanced_purge_varnish(array('/store/products'));
+        break;
+        
+        case 'tfk_extra':
+          advanced_purge_paths(array('/extras'), TRUE);
+          advanced_purge_varnish(array('/extras'), TRUE);
+        break;
+        
+        case 'slideshow':
+        case 'video':
+          advanced_purge_paths(array('/photos-video', '/search/site'));
+          advanced_purge_varnish(array('/photos-video', '/search/site'));
+          break;
+          
+        case 'atw_destination':
+        case 'atw_homepage_nodeblock':
+          advanced_purge_paths(array('/around-the-world'), TRUE);
+          if($node->type == 'atw_destination') {
+            advanced_purge_varnish(array('/'. $node->path['alias']), TRUE);
+          }
+          break;
+      }
+    
+    
     
 }
 
