@@ -1473,52 +1473,52 @@ function tfk_helper_node_update($node) {
     advanced_purge_paths(array('/search/site'));
   }  
   
-    if(isset($node->flag)) {
-        foreach($node->flag as $flag => $value) {
-            if($value && $node->type != "kid_reporter_listing_nodeblock") {
-                flag('unflag',$flag,$node->nid);
-                flag('flag',$flag,$node->nid);
-            }
-        }
-    }
-    
-      // Cache busting for all anonymous user sections that are not homepage, news or kid reporters.
-      // Those sections are busted by the reflagging code above.
-      switch ($node->type) {
-        case 'minisite':
-          advanced_purge_paths(array('/mini-sites'));
-          advanced_purge_varnish(array('/mini-sites'));
-        break;
-        
-        case 'book':
-          advanced_purge_paths(array('store/books'));
-          advanced_purge_varnish(array('/store/books'));
-        break;
-        
-        case 'store_product':
-          advanced_purge_paths(array('store/products'));
-          advanced_purge_varnish(array('/store/products'));
-        break;
-        
-        case 'tfk_extra':
-          advanced_purge_paths(array('/extras'), TRUE);
-          advanced_purge_varnish(array('/extras'), TRUE);
-        break;
-        
-        case 'slideshow':
-        case 'video':
-          advanced_purge_paths(array('/photos-video', '/search/site'));
-          advanced_purge_varnish(array('/photos-video', '/search/site'));
-          break;
-          
-        case 'atw_destination':
-        case 'atw_homepage_nodeblock':
-          advanced_purge_paths(array('/around-the-world'), TRUE);
-          if($node->type == 'atw_destination') {
-            advanced_purge_varnish(array('/'. $node->path['alias']), TRUE);
-          }
-          break;
+  if(isset($node->flag)) {
+    foreach($node->flag as $flag => $value) {
+      if($value && $node->type != "kid_reporter_listing_nodeblock") {
+          flag('unflag',$flag,$node->nid);
+          flag('flag',$flag,$node->nid);
       }
+    }
+  }
+    
+  // Cache busting for all anonymous user sections that are not homepage, news or kid reporters.
+  // Those sections are busted by the reflagging code above.
+  switch ($node->type) {
+    case 'minisite':
+      advanced_purge_paths(array('/mini-sites'));
+      advanced_purge_varnish(array('/mini-sites'));
+    break;
+    
+    case 'book':
+      advanced_purge_paths(array('/store/books'));
+      advanced_purge_varnish(array('/store/books'));
+    break;
+    
+    case 'store_product':
+      advanced_purge_paths(array('/store/products'));
+      advanced_purge_varnish(array('/store/products'));
+    break;
+    
+    case 'tfk_extra':
+      advanced_purge_paths(array('/extras'), TRUE);
+      advanced_purge_varnish(array('/extras'), TRUE);
+    break;
+    
+    case 'slideshow':
+    case 'video':
+      advanced_purge_paths(array('/photos-video', '/search/site'));
+      advanced_purge_varnish(array('/photos-video', '/search/site'));
+      break;
+      
+    case 'atw_destination':
+    case 'atw_homepage_nodeblock':
+      advanced_purge_paths(array('/around-the-world'), TRUE);
+      if($node->type == 'atw_destination') {
+        advanced_purge_varnish(array('/'. $node->path['alias']), TRUE);
+      }
+      break;
+  }
     
     
     
