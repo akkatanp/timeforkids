@@ -84,7 +84,7 @@ function advanced_purge_flag($action, $flag, $content_id, $account, $fcid) {
     watchdog('advanced_purge', 'The following cache items have been purged from persistent cache: @results', array('@results' => print_r($results, TRUE)), WATCHDOG_INFO);
     
     // Varnish purge/expire code.
-    advanced_purge_paths(array($display_cache[$flag->name]['path']));
+    advanced_purge_varnish(array($display_cache[$flag->name]['path']));
   }
   
 }
@@ -102,16 +102,18 @@ function advanced_purge_varnish($expire, $wildcard = FALSE) {
     module_load_include('inc', 'purge');
 
     // Prevent purging the entire site (use the SSH terminal or Acquia CPanel instead).
-    // Don't search for aliases on wildcards.
+    // Don't search for aliases or frontpage on wildcards.
     if(!$wildcard) {
+      
       // Special handling for front-page.
       $front_page = array_search('<front>', $expire);
       if($front_page !== FALSE) {
         $expire[$front_page] = '';
         //$expire[] = 'rss.xml';
         $expire[] = '/'. variable_get('site_frontpage', 'node');
+      
       }
-  
+      
       // Path alias
       global $base_path;
       foreach($expire as $path) {
@@ -124,7 +126,9 @@ function advanced_purge_varnish($expire, $wildcard = FALSE) {
       // Allow other modules to modify the list prior to expiring
       drupal_alter('expire_cache', $expire, $node, $paths);
     } else {
-      // Append wildcard for each path.
+      // Append wildcard for each path. Example:
+      // http://tfk.local/destination/usa.*$
+      // curl -X BAN http://tfk.local/destination/usa.*$
       foreach($expire as $key => $path) {
         $expire[$key] .= '.*$';
       }
@@ -133,21 +137,19 @@ function advanced_purge_varnish($expire, $wildcard = FALSE) {
     // Purge
     $results = purge_urls($expire);
     purge_logging($results);
-#http://tfk.local/destination/usa.*$
-#curl -X BAN http://tfk.local/destination/usa.*$
 
-      drupal_set_message(t("Varnish cleared for %paths. ",
-        array('%paths' => implode(', ', $expire))
-      ));
+    drupal_set_message(t("Varnish cleared for %paths. ",
+      array('%paths' => implode(', ', $expire))
+    ));
    
   }
 }
 
 /**
- * Purge an array of paths from varnish and memcached.
+ * Purge an array of paths from persistent cache.
  * 
  * @param array $expire
- *   Each path must be prepended by a forward slash /. 
+ *   An array of path strings. 
  */
 function advanced_purge_paths($expire, $wildcard = FALSE) {
   
