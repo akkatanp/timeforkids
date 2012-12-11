@@ -148,8 +148,9 @@ function purge_issue_requests_curl($purges) {
 
   // Result collection. Collects the http code returned for each url purged
   $current_curl_purge = 0;
-  foreach ($purges as $purge) {
+  foreach ($purges as $purge) {    
     $info = curl_getinfo($curl_purge[$current_curl_purge]);
+    watchdog('purge', 'Purged %purge_url with status: '. var_export($info, TRUE), array('%purge_url' => $purge['purge_url']));
     $purges[$current_curl_purge]['http_code'] = $info['http_code'];
     curl_multi_remove_handle($curl_purges, $curl_purge[$current_curl_purge]);
     $current_curl_purge++;
