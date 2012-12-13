@@ -28,6 +28,10 @@ function tfk_helper_init() {
   }
 }
 
+function tfk_helper_menu_alter(&$items) {
+  $items['node']['page callback'] = 'tfk_helper_node_page_default';
+}
+
 /**
  * Impelementation of hook_menu.
  */
@@ -53,6 +57,63 @@ function tfk_helper_menu() {
     'description' => 'Configure Secondary Touts settings.',
   );
   return $items;
+}
+
+/**
+ * Main front page callback for TFK.
+ * 
+ * Ripoff of node_page_default(), node.module,
+ * PREVENTS DEFAULT FRONT PAGE NODE LOAD FOR PERFORMANCE.
+ */
+function tfk_helper_node_page_default() {
+  $build = array();
+  drupal_set_title('');
+  return $build;
+  
+  $select = db_select('node', 'n')
+  ->fields('n', array('nid', 'sticky', 'created'))
+  ->condition('promote', 1)
+  ->condition('status', 1)
+  ->orderBy('sticky', 'DESC')
+  ->orderBy('created', 'DESC')
+  ->extend('PagerDefault')
+  ->limit(variable_get('default_nodes_main', 10))
+  ->addTag('node_access');
+
+  $nids = $select->execute()->fetchCol();
+
+  if (!empty($nids)) {
+    $nodes = node_load_multiple($nids);
+    $build = node_view_multiple($nodes);
+
+    // 'rss.xml' is a path, not a file, registered in node_menu().
+    drupal_add_feed('rss.xml', variable_get('site_name', 'Drupal') . ' ' . t('RSS'));
+    $build['pager'] = array(
+        '#theme' => 'pager',
+        '#weight' => 5,
+    );
+    drupal_set_title('');
+  }
+  else {
+    drupal_set_title(t('Welcome to @site-name', array('@site-name' => variable_get('site_name', 'Drupal'))), PASS_THROUGH);
+
+    $default_message = '<p>' . t('No front page content has been created yet.') . '</p>';
+
+    $default_links = array();
+    if (_node_add_access()) {
+      $default_links[] = l(t('Add new content'), 'node/add');
+    }
+    if (!empty($default_links)) {
+      $default_message .= theme('item_list', array('items' => $default_links));
+    }
+
+    $build['default_message'] = array(
+        '#markup' => $default_message,
+        '#prefix' => '<div id="first-time">',
+        '#suffix' => '</div>',
+    );
+  }
+  return $build;
 }
 
 /**
