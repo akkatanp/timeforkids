@@ -190,6 +190,12 @@ ini_set('session.cookie_lifetime', 2000000);
  */
 # $conf['reverse_proxy_addresses'] = array('a.b.c.d', ...);
 
+// Used in purge.inc, purge_urls(), can contain multiple proxies.
+// Options for purging are ?purge_method=get, purge_method=ah, and the default (purge).
+$conf['purge_proxy_urls'] = 'http://tfk.local/';
+
+
+ 
 /**
  * Page caching:
  *

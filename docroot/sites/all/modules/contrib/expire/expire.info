@@ -13,9 +13,9 @@ files[] = expire.rules.inc
 files[] = expire.votingapi.inc
 configure = admin/config/development/performance/expire
 
-; Information added by drupal.org packaging script on 2012-03-07
-version = "7.x-1.0-alpha2"
+; Information added by drupal.org packaging script on 2012-04-20
+version = "7.x-1.0-alpha3"
 core = "7.x"
 project = "expire"
-datestamp = "1331088042"
+datestamp = "1334884584"
 
