@@ -9,10 +9,7 @@
 /* Implementation of hook_flag.
  */
 function advanced_purge_flag($action, $flag, $content_id, $account, $fcid) {
-  //$path = arg();
-  #$menu_item = menu_get_item();
-  #$node = menu_get_object();
-
+  
   // Flag name to Views bin/cid and Varnish path mapping.
   $display_cache = array();
   
@@ -75,52 +72,110 @@ function advanced_purge_flag($action, $flag, $content_id, $account, $fcid) {
       }
       if($bin == 'path') {
         module_load_include('inc', 'advanced_purge', 'advanced_purge.rules');
-        advanced_purge_page_clear($cids);
+        advanced_purge_page_clear($cids); // Memcached purge.
       }
     }
     
     $node = node_load($content_id);
     drupal_set_message("{$node->title}, nid:{$node->nid} has been ". (($action == 'flag') ? 'added to': 'removed from'). " the {$flag->title} channel.");
     watchdog('advanced_purge', 'The following cache items have been purged from persistent cache: @results', array('@results' => print_r($results, TRUE)), WATCHDOG_INFO);
-
     
     // Varnish purge/expire code.
-    /*
-    global $base_path;
-    $path = $flag_channel_map[$flag->name];
-    $expire = array();
-    
-    // Special handling for front-page.
-    $site_frontpage = variable_get('site_frontpage', 'node');
-    if($path == $site_frontpage) {
-      $expire[] = '';
-      $expire[] = 'rss.xml';
-      $expire[] = $site_frontpage;
-    } else {
-      $expire[] = $path;
-    }
-    
-    // Path alias
-    $path_alias = url($path, array('absolute' => FALSE));
-    // Remove the base path
-    $expire[] = substr($path_alias, strlen($base_path));
-    
-    // Allow other modules to modify the list prior to expiring
-    drupal_alter('expire_cache', $expire, $node, $paths);
-    
-    $expire = array_unique($expire);
-    
-    // Clear Varnish (anonymous users).
-    module_load_include('module', 'expire'); // Required for expire_print_r() in purge.inc line 203.
-    module_load_include('inc', 'purge'); // Contains purge_urls(), has Acquia-Varnish purging logic.
-    $results = purge_urls($expire);
-    purge_logging($results);
-    */
- 
-    
+    //advanced_purge_varnish(array($display_cache[$flag->name]['path']));
   }
   
+}
 
+/**
+ * Purge an array of paths from varnish and memcached.
+ *
+ * @param array $expire
+ *   Each path must be prepended by a forward slash /.
+ */
+function advanced_purge_varnish($expire, $wildcard = FALSE) {
+  // Varnish purge.
+  if(module_exists('expire') && module_exists('purge')) {
+    module_load_include('module', 'expire');
+    module_load_include('inc', 'purge');
+
+    // Prevent purging the entire site (use the SSH terminal or Acquia CPanel instead).
+    // Don't search for aliases or frontpage on wildcards.
+    if(!$wildcard) {
+      
+      // Special handling for front-page.
+      $front_page = array_search('<front>', $expire);
+      if($front_page !== FALSE) {
+        $expire[$front_page] = '';
+        //$expire[] = 'rss.xml';
+        $expire[] = '/'. variable_get('site_frontpage', 'node');
+      
+      }
+      
+      // Path alias
+      global $base_path;
+      foreach($expire as $path) {
+        $path_alias = url($path, array('absolute' => FALSE));
+        // Remove the base path
+        //$expire[] = substr($path_alias, strlen($base_path));
+      }
+      $expire = array_unique($expire);
+  
+      // Allow other modules to modify the list prior to expiring
+      drupal_alter('expire_cache', $expire, $node, $paths);
+    } else {
+      // Append wildcard for each path. Example:
+      // http://tfk.local/destination/usa.*$
+      // curl -X BAN http://tfk.local/destination/usa.*$
+      // http://dev.timeforkids.com/destination/egypt.*$
+      // curl -X PURGE -H "X-Acquia-Purge: timedev2" -H "Accept-Encoding: gzip" http://dev.timeforkids.com/destination/egypt.*$
+      foreach($expire as $key => $path) {
+        $expire[$key] .= '.*$';
+      }
+    }
+    
+    // Purge
+    $results = purge_urls($expire);
+    purge_logging($results);
+
+    drupal_set_message(t("Varnish cleared for %paths. ",
+      array('%paths' => implode(', ', $expire))
+    ));
+   
+  }
+}
+
+/**
+ * Purge an array of paths from persistent cache.
+ * 
+ * @param array $expire
+ *   An array of path strings. 
+ */
+function advanced_purge_paths($expire, $wildcard = FALSE) {
+  
+  // Front page cid: http://tfk.local/
+  
+  // $cache = cache_get($base_root . request_uri(), 'cache_page');
+  // cache_get('http://tfk.local/extras', 'cache_page');
+  // cid: http://tfk.local/destination/usa
+  
+  // Memcached purge.
+  global $base_root;
+  module_load_include('inc', 'advanced_purge', 'advanced_purge.rules');
+  foreach($expire as $path) {
+    //advanced_purge_page_clear($path);
+    $cache = cache_get($base_root. '/'. ltrim($path, '/'), 'cache_page');
+    
+    if ($cache !== FALSE) {
+      if(!$wildcard) {
+        cache_clear_all($path, 'cache_page');
+      } else {
+        cache_clear_all($path, 'cache_page', TRUE);
+      }
+      
+      drupal_set_message(t("The path \"%path\" has been purged from persistent cache.", array('%path' => $path)));
+    }
+    //cache_clear_all($base_root. $path, 'cache_page'); #$cache = cache_get($base_root . request_uri(), 'cache_page');
+  }
 }
 
 

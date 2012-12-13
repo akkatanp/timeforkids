@@ -137,7 +137,7 @@
   
     <div class="content" <?php if(isset($content_attributes)): ?><?php print $content_attributes; ?><?php endif; ?>>
 
-      <?php if($brightcove_video):?>
+      <?php if(isset($brightcove_video) && $brightcove_video):?>
         <?php print $brightcove_video; ?>
         <?php hide($content['field_video_upload']); ?>
       <?php endif; ?>
