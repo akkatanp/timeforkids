@@ -1529,6 +1529,9 @@ function tfk_helper_get_content_type_label($content_type) {
  */
 function tfk_helper_node_update($node) {
   
+  // Suppress memcache/varnish purging code for now.
+  return;
+  
   // Site wide search cache busting.
   if(array_search($node->type, array('article', 'slideshow', 'video', 'atw_destination', 'minisite','tfk_extra','a_paper','grammar_practice','writing_tips','book','store_product')) !== FALSE) {
     advanced_purge_paths(array('/search/site'));
