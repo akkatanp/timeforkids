@@ -10,7 +10,7 @@
 function tfk_homepage_context_default_contexts() {
   $export = array();
 
-  $context = new stdClass;
+  $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'homepage_blocks_anon';
@@ -60,7 +60,7 @@ function tfk_homepage_context_default_contexts() {
   t('homepage');
   $export['homepage_blocks_anon'] = $context;
 
-  $context = new stdClass;
+  $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'homepage_for_editors';
@@ -129,7 +129,7 @@ function tfk_homepage_context_default_contexts() {
   t('homepage');
   $export['homepage_for_editors'] = $context;
 
-  $context = new stdClass;
+  $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'homepage_for_teachers';
