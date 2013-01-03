@@ -10,7 +10,7 @@ found at https://accounts.brightcove.com/en/terms-and-conditions/.
 
 <script language="JavaScript" type="text/javascript" src="http://admin.brightcove.com/js/BrightcoveExperiences.js"></script>
 
-<object id="myExperience1958986629001" class="BrightcoveExperience">
+<object id="myExperience1958986629001" class="BrightcoveExperience" style="z-index: -1;">
   <param name="bgcolor" value="#FFFFFF" />
   <param name="width" value="488" />
   <param name="height" value="274" />
@@ -19,7 +19,7 @@ found at https://accounts.brightcove.com/en/terms-and-conditions/.
   <param name="isVid" value="true" />
   <param name="isUI" value="true" />
   <param name="dynamicStreaming" value="true" />
-
+  <param name="wmode" value="direct">
   <param name="@videoPlayer" value="<?php print $variables['video_id']; ?>" />
 </object>
 
