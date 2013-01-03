@@ -19,7 +19,7 @@ found at https://accounts.brightcove.com/en/terms-and-conditions/.
   <param name="isVid" value="true" />
   <param name="isUI" value="true" />
   <param name="dynamicStreaming" value="true" />
-  <param name="wmode" value="transparent">
+  <param name="wmode" value="transparent" />
   <param name="@videoPlayer" value="<?php print $variables['video_id']; ?>" />
 </object>
 
