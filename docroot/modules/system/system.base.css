@@ -27,6 +27,7 @@
   color: #000;
   cursor: default;
   white-space: pre;
+  zoom: 1; /* IE7 */
 }
 /* Animated throbber */
 html.js input.form-autocomplete {
@@ -245,27 +246,21 @@ html.js .js-hide {
 /**
  * Markup free clearing.
  *
- * Switched from Perishable Press New Clearfix to Nicolas Gallagher's Micro
- * Clearfix. Solves major inconsistency issues in IE7 and IE8 and other minor
- * issues in other browsers.
- *
- * @see http://nicolasgallagher.com/micro-clearfix-hack
- * @see http://drupal.org/node/961876
+ * @see http://perishablepress.com/press/2009/12/06/new-clearfix-hack
  */
-
-/* For modern browsers */
-.clearfix:before,
 .clearfix:after {
-  content:"";
-  display:table;
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
 }
-
-.clearfix:after {
-  clear:both;
+/* IE6 */
+* html .clearfix {
+  height: 1%;
 }
-
-/* For IE 6/7 (trigger hasLayout) */
-.clearfix {
-  zoom:1;
+/* IE7 */
+*:first-child + html .clearfix {
+  min-height: 1%;
 }
 

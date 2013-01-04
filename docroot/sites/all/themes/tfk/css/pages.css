@@ -3089,6 +3089,10 @@ body.page-404page #first-column .region-sidebar-first .section{
     
 }
 
+.pds-vote-button {
+  cursor: pointer;
+}
+
 
 .form-radios{
     padding-left:2px !important;
