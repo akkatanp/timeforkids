@@ -21,6 +21,7 @@ define('TFK_SECONDARY_TOUT', 'homepage_news_block');
 
 
 function tfk_helper_init() {
+  $path = current_path();
   
   $page_callback_result = _menu_site_is_offline() ? MENU_SITE_OFFLINE : MENU_SITE_ONLINE;
   
