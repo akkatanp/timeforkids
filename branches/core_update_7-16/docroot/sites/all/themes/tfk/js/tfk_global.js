@@ -36,6 +36,33 @@
     }
   };
   
+  // Triggers login popup if access is denied.
+  // State of access is passed to JS via tfk_helper hook_init.
+  Drupal.behaviors.promptLogin = {
+    attach: function(context, settings) {
+      if(settings.tfk_helper.access !== true) {
+        $('body', context).css('overflow', 'hidden');
+        
+        var mask = $('<div></div>', context).attr('id', 'mask').css({
+          'height': $(window).height() + 'px',
+          'top': $(window).scrollTop() + 'px'
+        }).appendTo($(document.body));
+        
+        var lightBox = $('<div></div>', context).attr('id', 'lightbox').css({
+          'top': (($(window).height() / 2) - 185) + $(window).scrollTop() + 'px',
+          'left': (($(window).width() / 2) - 350) + 'px'
+        }).appendTo($(document.body));
+        
+        var loginForm = $('#user-login', context).clone();
+        loginForm.removeAttr('id');
+        loginForm.attr('id', 'user_login');
+        loginForm.appendTo(lightBox);
+        
+        $("#user_login", context).jCryption();
+      }
+    }
+  }
+  
   $.fn.takeUserTo = function(context) {
     $(this, context).click(function(e) {
       e.preventDefault();
@@ -71,6 +98,10 @@
       $("#user_login", context).jCryption();
       
     });
-
   };
+  
+  
+
+  
+  
 })(jQuery);
