@@ -94,7 +94,6 @@ function expire_comment_unpublish($comment) {
 }
 
 /**
-/**
  * Implements hook_comment_delete().
  *
  * Acts when deleting comments.
@@ -406,9 +405,9 @@ function expire_cache_derivative($paths, &$node = NULL) {
     }
 
     // Path alias
-    $path_alias = url($path, array('absolute' => FALSE));
+    $path_alias = url($path, array('absolute' => TRUE));
     // Remove the base path
-    $expire[] = substr($path_alias, strlen($base_path));
+    $expire[] = $path_alias;
 
     // Path redirects
     if (module_exists('redirect')) {
@@ -435,7 +434,7 @@ function expire_cache_derivative($paths, &$node = NULL) {
   $urls = array();
   global $base_url;
   if (variable_get('expire_include_base_url', EXPIRE_INCLUDE_BASE_URL)) {
-    $base_urls[] = $base_url . '/';
+    $base_urls[] = $base_url;
     if (module_exists('domain')
      && module_load_include('inc', 'expire', 'expire.domain') != FALSE) {
       $base_urls = array_merge($base_urls, expire_get_base_urls($node));

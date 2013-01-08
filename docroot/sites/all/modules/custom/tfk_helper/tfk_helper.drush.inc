@@ -118,6 +118,8 @@ function _tfk_helper_clear_cache() {
     // Then delete the general cache table as well, which currently can only be done by the admin UI cache clear.
     cache_clear_all(NULL, 'cache');
     drush_log('"cache" bin was cleared', 'success');
+    
+    menu_rebuild();
   }
     
   // This is for clearing a cid within a specific bin, if you happen to know it.

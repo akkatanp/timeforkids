@@ -333,6 +333,18 @@ function tfk_photos_video_views_default_views() {
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 0;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['relationship'] = 'field_additional_content_nid';
+  $handler->display->display_options['filters']['type']['operator'] = 'not in';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'common_core_standards' => 'common_core_standards',
+    'pdf_quiz' => 'pdf_quiz',
+    'worksheet' => 'worksheet',
+    'webform_generic' => 'webform_generic',
+  );
   $export['tfk_helper_related_content'] = $view;
 
   return $export;

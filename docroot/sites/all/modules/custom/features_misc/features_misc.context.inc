@@ -10,7 +10,7 @@
 function features_misc_context_default_contexts() {
   $export = array();
 
-  $context = new stdClass;
+  $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'Info Pages';
@@ -47,7 +47,7 @@ function features_misc_context_default_contexts() {
   t('info pages');
   $export['Info Pages'] = $context;
 
-  $context = new stdClass;
+  $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'global_editor_navigation';
@@ -182,7 +182,7 @@ function features_misc_context_default_contexts() {
   t('global navigation');
   $export['global_editor_navigation'] = $context;
 
-  $context = new stdClass;
+  $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'global_public_navigation';
@@ -262,7 +262,7 @@ function features_misc_context_default_contexts() {
   t('global navigation');
   $export['global_public_navigation'] = $context;
 
-  $context = new stdClass;
+  $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'global_teacher_navigation3';
@@ -396,7 +396,7 @@ function features_misc_context_default_contexts() {
   t('global navigation');
   $export['global_teacher_navigation3'] = $context;
 
-  $context = new stdClass;
+  $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'what_you_get';
