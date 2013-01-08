@@ -1,0 +1,125 @@
+<?php
+/**
+ * @file
+ * Code for the TFK Slideshow feature.
+ */
+
+include_once('tfk_photos_video.features.inc');
+
+/**
+ *  Implementation of hook_theme.
+ */
+function tfk_photos_video_theme($existing, $type, $theme, $path) {
+  return array(
+    // Template for brightcove video.
+    'fdb_brightcove_video' => array(
+      'template' => 'brightcove',
+      'variables' => array('player_id' => '', 'video_id' => ''),
+      'path' => $path. '/tpl',
+    ),
+  );
+}
+
+/**
+ * Override or insert variables into the page templates.
+ *
+ * @param $variables
+ *   An array of variables to pass to the theme template.
+ * @param $hook
+ *   The name of the template being rendered ("page" in this case.)
+ */
+function tfk_photos_video_preprocess_page(&$variables) {
+  if(arg(0) == 'node' && array_key_exists('node', $variables)) {
+    if($variables['node']->type == 'slideshow' || $variables['node']->type == 'video') {
+      
+      // Set primary menu link to active. Doing it here bacause Context's menu reaction is not working.
+      $variables['page']['header']['menu_menu-tfk-global-navigation']['content']['984']['#attributes']['class'][] = 'active';
+      
+      // Add Slideshow page CSS.
+      drupal_add_css(drupal_get_path('module', 'tfk_photos_video'). '/css/tfk_photos_video.css', 'file');
+      
+      // Sidebar top. Make it appear only in Photos and Video.
+      $variables['rendered'] = array();
+      if(array_key_exists('sidebar_top', $variables['page']) && (!empty($variables['page']['sidebar_top']))) {
+        $variables['rendered']['sidebar_top'] = render($variables['page']['sidebar_top']);
+      }
+    }
+  }
+}
+
+/**
+ * Override or insert variables into the node templates.
+ */
+function tfk_photos_video_preprocess_node(&$variables) {
+  if($variables['type'] == 'video') {
+    $_variables = & $variables;
+
+    // Decide whether to use Brightcove video or native upload.
+    $bvid = field_get_items('node', $variables['node'], 'field_brightcove_video_id');
+    if(empty($bvid)) {
+      $variables['brightcove_video'] = FALSE;
+    } else {
+      $bpid = field_get_items('node', $variables['node'], 'field_brightcove_player_id');
+      $variables['brightcove_video'] = theme('fdb_brightcove_video', array('video_id' => $bvid[0]['safe_value'], 'player_id' => $bpid[0]['safe_value'], 'variables' => array('video_id' => $bvid[0]['safe_value'], 'player_id' => $bpid[0]['safe_value'])));
+    }
+
+    // Add additional content variable to the node template.
+    $additional_content = tfk_helper_get_additional_content();
+    if($additional_content !== FALSE) {
+      $variables['related_content'] = theme('tfk_search_related_content', $additional_content);
+    } else {
+      $variables['related_content'] = '';
+    }
+    
+    // Title
+    $variables['print_title'] = TRUE;
+    $variables['title_prefix'] = 'Video: ';
+    
+    // Add second title.
+    $content_title = array(
+      '#type' => 'html_tag',
+      '#value' => $variables['title'],
+      '#tag' => 'h1',
+    );
+    $variables['content']['node_title'] = $content_title;
+    
+    
+    // Join caption and credit.
+    $cap_credit = '';
+    if(!empty($variables['field_caption'][0]['safe_value'])) {
+      $cap_credit .= '<span class="caption">'. $variables['field_caption'][0]['safe_value']. '</span>';
+    }
+    if(!empty($variables['field_credit'][0]['safe_value'])) {
+      $cap_credit .= ' / <span class="credit">'. $variables['field_credit'][0]['safe_value']. '</span>';
+    }
+    if(!empty($cap_credit)) {
+      $variables['content']['cap_credit'] = array(
+        '#markup' => '<div class="cap-credit">'. $cap_credit. '</div>',
+      	'#weight' => 11,
+      );
+    }
+    
+    // Re-organize content render array.
+    $variables['content']['field_video_upload']['#weight'] = 9;
+    $variables['content']['node_title']['#weight'] = 12;
+    $variables['content']['field_date']['#weight'] = 13;
+    $variables['content']['body']['#weight'] = 14;
+    $variables['content']['links']['#weight'] = 15;
+    $variables['content']['comments']['#weight'] = 16;
+    
+    // Unset unused stuff.
+    unset($_variables['submitted']);
+    unset($_variables['rdf_template_variable_attributes_array']['submitted']);
+    unset($_variables['content']['field_caption']);
+    unset($_variables['content']['field_credit']);
+  }
+  if($variables['type'] == 'slideshow') {
+    $_variables = & $variables;
+    
+    // Title
+    $variables['print_title'] = TRUE;
+    $variables['title_prefix'] = 'Slide Show: ';
+    
+    unset($_variables['content']);
+  }
+}
