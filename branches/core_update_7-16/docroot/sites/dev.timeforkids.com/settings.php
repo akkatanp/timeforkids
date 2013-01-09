@@ -271,7 +271,8 @@ ini_set('session.cookie_lifetime', 200000);
 #error_reporting(E_ALL);
 #ini_set('error_reporting', -1);
 
-ini_set('max_execution_time', '1800'); // Up to 30 minute debugging sessions.
+ini_set('max_execution_time', 0); // Unlimited execution time.
+ini_set('max_input_time', 0);
 
 // Increase memory limit for admin pages.
 //if (isset($_GET['q']) && strpos($_GET['q'], 'admin') === 0) { ini_set('memory_limit', '512M'); }
@@ -321,3 +322,11 @@ $conf['cache_default_class'] = 'MemCacheDrupal';
  * This file is required to connect to an Acquia server and manages the DB connection.
  */
 require('/var/www/site-php/time/time-settings.inc');
+
+/**
+ * Other settings
+ *
+ *  Set the number default number of nodes to be loaded by the Drupal front page to zero.
+ *  Otherwise we will load 10 nodes that will never be shown
+ */
+$conf['default_nodes_main'] = 0;
