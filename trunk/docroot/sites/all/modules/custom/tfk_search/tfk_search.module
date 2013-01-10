@@ -1329,6 +1329,9 @@ function theme_tfk_featured_block(&$variables) {
   $output .= '<div class="top-story-right-square">&nbsp</div>';
   $url = ltrim(url('node/'. $tfkSearchFeaturedItem->nid), '/');
   
+  // Prevent double URL escaping by l().
+  $url = urldecode($url);
+  
   $output .= '<div class="g1'. ' content-type-'. $tfkSearchFeaturedItem->type. '">';
   $link_options = array('html' => TRUE, 'attributes' => array('class' => array('featured-item'), 'title' => $tfkSearchFeaturedItem->title));
   $icon = '<div class="icon"></div>';

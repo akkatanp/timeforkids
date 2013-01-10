@@ -464,3 +464,13 @@ $conf['cache_default_class'] = 'MemCacheDrupal';
  * This file is required to connect to an Acquia server and manages the DB connection.
  */
 require('/var/www/site-php/time/time-settings.inc');
+
+/**
+ * Other settings
+ * 
+ *  Set the number default number of nodes to be loaded by the Drupal front page to zero.
+ *  Otherwise we will load 10 nodes that will never be shown 
+ */
+$conf['default_nodes_main'] = 0;
+
+
