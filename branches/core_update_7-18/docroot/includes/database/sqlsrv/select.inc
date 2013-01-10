@@ -56,16 +56,24 @@ class SelectQuery_sqlsrv extends SelectQuery {
   }
 
   /**
-   * Override for SelectQuery::getArguments().
+   * Override for SelectQuery::compile().
    *
    * Detect when this query is prepared for use in a sub-query.
    */
-  public function getArguments(QueryPlaceholderInterface $queryPlaceholder = NULL) {
-    $this->inSubQuery = isset($queryPlaceholder) && ($queryPlaceholder != $this);
-    return parent::getArguments($queryPlaceholder);
+  public function compile(DatabaseConnection $connection, QueryPlaceholderInterface $queryPlaceholder) {
+    $this->inSubQuery = $queryPlaceholder != $this;
+    return parent::compile($connection, $queryPlaceholder);
   }
 
   public function __toString() {
+    // For convenience, we compile the query ourselves if the caller forgot
+    // to do it. This allows constructs like "(string) $query" to work. When
+    // the query will be executed, it will be recompiled using the proper
+    // placeholder generator anyway.
+    if (!$this->compiled()) {
+      $this->compile($this->connection, $this);
+    }
+  
     // Create a sanitized comment string to prepend to the query.
     $comments = $this->connection->makeComment($this->comments);
 
@@ -122,7 +130,6 @@ class SelectQuery_sqlsrv extends SelectQuery {
 
     // WHERE
     if (count($this->where)) {
-      $this->where->compile($this->connection, $this);
       // There is an implicit string cast on $this->condition.
       $query .= "\nWHERE ( " . $this->where . " )";
     }
@@ -134,7 +141,6 @@ class SelectQuery_sqlsrv extends SelectQuery {
 
     // HAVING
     if (count($this->having)) {
-      $this->having->compile($this->connection, $this);
       // There is an implicit string cast on $this->having.
       $query .= "\nHAVING " . $this->having;
     }
