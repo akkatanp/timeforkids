@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Feature Mini Sites feature.
+ */
+
+include_once('feature_mini_sites.features.inc');
