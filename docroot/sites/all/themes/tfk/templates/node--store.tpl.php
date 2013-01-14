@@ -81,6 +81,7 @@
  * @see template_process()
  */
 ?>
+<script src="/sites/all/themes/tfk/js/store.js"></script>
 <div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
 
   <?php print $user_picture; ?>
