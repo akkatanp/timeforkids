@@ -21,6 +21,7 @@ define('TFK_SECONDARY_TOUT', 'homepage_news_block');
 
 
 function tfk_helper_init() {
+    
   $path = current_path();
   
   $page_callback_result = _menu_site_is_offline() ? MENU_SITE_OFFLINE : MENU_SITE_ONLINE;
@@ -49,6 +50,13 @@ function tfk_helper_init() {
   $shared_vars = &drupal_static(TFK_PREPROCESS_HTML);
   if(is_null($shared_vars)) {
     $shared_vars = array();
+  }
+  //Add JS include based on url
+  $destination = drupal_get_destination();
+  $destination = $destination['destination'];
+  if (drupal_lookup_path('alias',$destination) == "store/subscriptions") {
+    $tfk_store_js = drupal_get_path('theme', 'tfk') .'/js/store.js';
+    drupal_add_js($tfk_store_js, 'file');
   }
 }
 
