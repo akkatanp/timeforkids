@@ -2,7 +2,7 @@
 function tfk_store_init() {
   //Add JS include based on url
   $destination = drupal_get_destination();
-  $destination = $destination['destination'];
+  $destination = preg_replace('/\?.*/', '', $destination['destination']);
   if (drupal_lookup_path('alias',$destination) == "store/subscriptions") {
     $tfk_store_js = drupal_get_path('theme', 'tfk') .'/js/store.js';
     drupal_add_js($tfk_store_js, 'file');
