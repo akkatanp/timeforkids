@@ -477,8 +477,8 @@ function tfk_photos_video_field_default_fields() {
       'indexes' => array(),
       'module' => 'metatags_quick',
       'settings' => array(
-        'meta_name' => 'description',
         0 => 'meta_name',
+        'meta_name' => 'description',
       ),
       'translatable' => '0',
       'type' => 'metatags_quick',
@@ -532,8 +532,8 @@ function tfk_photos_video_field_default_fields() {
       'indexes' => array(),
       'module' => 'metatags_quick',
       'settings' => array(
-        'meta_name' => 'keywords',
         0 => 'meta_name',
+        'meta_name' => 'keywords',
       ),
       'translatable' => '0',
       'type' => 'metatags_quick',
@@ -1607,9 +1607,13 @@ function tfk_photos_video_field_default_fields() {
     ),
     'field_instance' => array(
       'bundle' => 'video',
-      'default_value' => NULL,
+      'default_value' => array(
+        0 => array(
+          'value' => '1873162655001',
+        ),
+      ),
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Standard player ID is 1873162655001.',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -2556,8 +2560,8 @@ Limit for News Block: 65 characters.',
       'indexes' => array(),
       'module' => 'metatags_quick',
       'settings' => array(
-        'meta_name' => 'description',
         0 => 'meta_name',
+        'meta_name' => 'description',
       ),
       'translatable' => '0',
       'type' => 'metatags_quick',
@@ -2610,8 +2614,8 @@ Limit for News Block: 65 characters.',
       'indexes' => array(),
       'module' => 'metatags_quick',
       'settings' => array(
-        'meta_name' => 'keywords',
         0 => 'meta_name',
+        'meta_name' => 'keywords',
       ),
       'translatable' => '0',
       'type' => 'metatags_quick',
@@ -2673,6 +2677,7 @@ Limit for News Block: 65 characters.',
   t('Meta Description');
   t('Meta Keywords');
   t('Related Photos and Video');
+  t('Standard player ID is 1873162655001.');
   t('Themes');
   t('Video Upload');
 
