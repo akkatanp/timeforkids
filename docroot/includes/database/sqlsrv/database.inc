@@ -14,6 +14,8 @@ include_once DRUPAL_ROOT . '/includes/database/prefetch.inc';
 
 class DatabaseConnection_sqlsrv extends DatabaseConnection {
 
+  public $bypassQueryPreprocess = FALSE;
+
   /**
    * Override of DatabaseConnection::driver().
    *
@@ -56,7 +58,20 @@ class DatabaseConnection_sqlsrv extends DatabaseConnection {
 
     // Launch the connection to the server.
     parent::__construct('sqlsrv:' . implode(';', $options), $connection_options['username'], $connection_options['password'], array(
+      // We run the statements in "direct mode" because the way PDO prepares
+      // statement in non-direct mode cause temporary tables to be destroyed
+      // at the end of the statement.
       PDO::SQLSRV_ATTR_DIRECT_QUERY => TRUE,
+      // We ask PDO to perform the placeholders replacement itself because
+      // SQL Server is not able to detect duplicated placeholders in
+      // complex statements.
+      // E.g. This query is going to fail because SQL Server cannot
+      // detect that length1 and length2 are equals.
+      // SELECT SUBSTRING(title, 1, :length1)
+      // FROM node
+      // GROUP BY SUBSTRING(title, 1, :length2);
+      // This is only going to work in PDO 3 but doesn't hurt in PDO 2.
+      PDO::ATTR_EMULATE_PREPARES => TRUE,
     ));
 
     $this->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -97,7 +112,9 @@ class DatabaseConnection_sqlsrv extends DatabaseConnection {
    * PHP process.
    */
   public function PDOPrepare($query, array $options = array()) {
-    $query = $this->preprocessQuery($query);
+    if (!$this->bypassQueryPreprocess) {
+      $query = $this->preprocessQuery($query);
+    }
     return parent::prepare($query, $options);
   }
 
@@ -182,16 +199,16 @@ class DatabaseConnection_sqlsrv extends DatabaseConnection {
   public function queryTemporary($query, array $args = array(), array $options = array()) {
     // Generate a new temporary table name and protect it from prefixing.
     // SQL Server requires that temporary tables to be non-qualified.
-    $tablename = $this->generateTemporaryTableName();
+    $tablename = '#' . $this->generateTemporaryTableName();
     $prefixes = $this->prefixes;
     $prefixes[$tablename] = '';
     $this->setPrefix($prefixes);
 
     // Replace SELECT xxx FROM table by SELECT xxx INTO #table FROM table.
-    $query = preg_replace('/^SELECT(.*?)FROM/i', 'SELECT$1 INTO #' . $tablename . ' FROM', $query);
+    $query = preg_replace('/^SELECT(.*?)FROM/i', 'SELECT$1 INTO ' . $tablename . ' FROM', $query);
 
     $this->query($query, $args, $options);
-    return '#' . $tablename;
+    return $tablename;
   }
 
   /**
@@ -258,12 +275,15 @@ class DatabaseConnection_sqlsrv extends DatabaseConnection {
       '/^SAVEPOINT (.*)$/' => 'SAVE TRANSACTION $1',
       '/^ROLLBACK TO SAVEPOINT (.*)$/' => 'ROLLBACK TRANSACTION $1',
       // SQL Server doesn't need an explicit RELEASE SAVEPOINT.
-      '/^RELEASE SAVEPOINT (.*)$/' => '-- $0',
+      // Run a non-operaiton query to avoid a fatal error
+      // when no query is runned.
+      '/^RELEASE SAVEPOINT (.*)$/' => 'SELECT 1 /* $0 */',
     );
     $query = preg_replace(array_keys($replacements), $replacements, $query);
 
     // Add prefixes to Drupal-specific functions.
     $functions = array(
+      'SUBSTRING',
       'SUBSTRING_INDEX',
       'GREATEST',
       'CONCAT',

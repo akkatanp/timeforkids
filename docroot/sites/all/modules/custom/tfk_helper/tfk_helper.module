@@ -21,7 +21,6 @@ define('TFK_SECONDARY_TOUT', 'homepage_news_block');
 
 
 function tfk_helper_init() {
-    
   $path = current_path();
   
   $page_callback_result = _menu_site_is_offline() ? MENU_SITE_OFFLINE : MENU_SITE_ONLINE;
@@ -32,6 +31,12 @@ function tfk_helper_init() {
   $read_only_path = !empty($path) ? $path : $_GET['q'];
   drupal_alter('menu_site_status', $page_callback_result, $read_only_path);
   
+  // Add tfk_helper_editor.js
+  $args = arg();
+  if($args[0] == 'node' && $args[1] == 'add' && ($args[2] == 'article' || $args[2] == 'video')) {
+    $tfk_helper_path = drupal_get_path('module', 'tfk_helper');
+    drupal_add_js($tfk_helper_path. '/js/tfk_helper_editor.js', 'file');
+  }
   
   // Only continue if the site status is not set.
   if ($page_callback_result == MENU_SITE_ONLINE) {
@@ -1686,3 +1691,33 @@ function tfk_helper_node_form_submit($form, &$form_state) {
     drupal_goto('node/add/'.$form_state['node']->type);
   }
 }
+
+/**
+ * Implements hook_element_info_alter().
+ *
+ */
+function tfk_helper_element_info_alter(&$type) {
+
+  // add a pre_render callback of our own
+  if (isset($type['text_format'])) {
+    $type['text_format']['#pre_render'][] = 'tfk_helper_prerender_text_format';
+  }
+}
+
+
+/**
+ * pre render callback for MODULENAME_element_info_alter().
+ */
+function tfk_helper_prerender_text_format($element) {
+  if (isset($element['#entity_type']) && $element['#entity_type'] == 'node' && ($element['#field_name'] == 'field_deck' || $element['#field_name'] == 'field_wysiwyg_image_caption')) {
+    // override the default input format
+    $element['format']['format']['#value'] = 'text_field'; // CHANGE THIS TO DESIRED INPUT FORMAT
+    $element['#format'] = 'text_field'; // CHANGE THIS TO DESIRED INPUT FORMAT. ckeditor will use this to display the correct profile
+  }
+
+  return $element;
+   
+}
+
+
+

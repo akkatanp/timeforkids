@@ -10,7 +10,7 @@
 function feature_tfk_news_context_default_contexts() {
   $export = array();
 
-  $context = new stdClass;
+  $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'News Archive';
@@ -68,7 +68,7 @@ function feature_tfk_news_context_default_contexts() {
   t('tfk news');
   $export['News Archive'] = $context;
 
-  $context = new stdClass;
+  $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'magazine_news_article';
@@ -139,7 +139,7 @@ function feature_tfk_news_context_default_contexts() {
   t('tfk news');
   $export['magazine_news_article'] = $context;
 
-  $context = new stdClass;
+  $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'news_archive';
@@ -200,7 +200,7 @@ function feature_tfk_news_context_default_contexts() {
   t('tfk news');
   $export['news_archive'] = $context;
 
-  $context = new stdClass;
+  $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'news_archive_anon';
@@ -257,7 +257,7 @@ function feature_tfk_news_context_default_contexts() {
   t('tfk news');
   $export['news_archive_anon'] = $context;
 
-  $context = new stdClass;
+  $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'news_archive_polls';
@@ -316,7 +316,7 @@ function feature_tfk_news_context_default_contexts() {
   t('tfk news');
   $export['news_archive_polls'] = $context;
 
-  $context = new stdClass;
+  $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'news_archive_polls_anon';
@@ -371,7 +371,7 @@ function feature_tfk_news_context_default_contexts() {
   t('tfk news');
   $export['news_archive_polls_anon'] = $context;
 
-  $context = new stdClass;
+  $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'news_article_node_view';
@@ -437,7 +437,7 @@ function feature_tfk_news_context_default_contexts() {
   t('tfk news');
   $export['news_article_node_view'] = $context;
 
-  $context = new stdClass;
+  $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'news_landing_anon';
@@ -499,7 +499,7 @@ function feature_tfk_news_context_default_contexts() {
   t('news_landing_anon');
   $export['news_landing_anon'] = $context;
 
-  $context = new stdClass;
+  $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'news_landing_editor';
@@ -568,7 +568,7 @@ function feature_tfk_news_context_default_contexts() {
   t('news_landing_editor');
   $export['news_landing_editor'] = $context;
 
-  $context = new stdClass;
+  $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'news_landing_teacher';
