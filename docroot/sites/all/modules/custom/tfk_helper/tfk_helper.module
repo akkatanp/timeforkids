@@ -1686,7 +1686,7 @@ function tfk_helper_form_node_form_alter(&$form, &$form_state, $form_id) {
  */
 function tfk_helper_node_form_submit($form, &$form_state) {
   // first call standard submit, then do the new form...
-  node_form_submit($form, &$form_state);
+  node_form_submit($form, $form_state);
   if($form_state['node']->nid) { // node successfully saved
     drupal_goto('node/add/'.$form_state['node']->type);
   }
