@@ -22,35 +22,45 @@
  *
  * @ingroup views_templates
  */
+
+global $base_url;
+
 ?>
-<?php if(isset($row->node_field_data_field_articles_type) && $row->node_field_data_field_articles_type == 'slideshow'):?>
-  <?php $slide_block = module_invoke('tfk_search', 'block_view','tfk_minisite_slideshow_featured'); ?>
-  <?php print render($slide_block['content']);?>
-<?php elseif(isset($row->node_field_data_field_articles_type) && $row->node_field_data_field_articles_type == 'video'):?>
-  <?php $slide_block = module_invoke('tfk_search', 'block_view','tfk_minisite_video_featured'); ?>
-  <?php print render($slide_block['content']); ?>
-<?php else:?>
-  <?php foreach ($fields as $id => $field): ?>
-    <?php if($id != 'field_related_articles' && $id != 'field_related_articles_1'):?>
-      <?php if (!empty($field->separator)): ?>
-        <?php print $field->separator; ?>
-      <?php endif; ?>
 
-      <?php print $field->wrapper_prefix; ?>
-        <?php print $field->label_html; ?>
-        <?php print $field->content; ?>
-      <?php print $field->wrapper_suffix; ?>
+<?php foreach ($fields as $id => $field): ?>
+  <?php if($id != 'field_related_articles_1' && $id != 'field_related_articles' && $id != 'field_slideshow_images'):?>
+    <?php if (!empty($field->separator)): ?>
+      <?php print $field->separator; ?>
     <?php endif; ?>
-  <?php endforeach; ?>
+    <?php print $field->wrapper_prefix; ?>
+      <?php print $field->label_html; ?>
+      <?php print $field->content; ?>
+    <?php print $field->wrapper_suffix; ?>
+  <?php endif; ?>
 
-  <?php if(isset($fields['field_related_articles'])):?>
-    <?php if(strlen($fields['field_related_articles']->content) != 0):?>
-      <div class="related-content-wrap">
-        <div class="addit-content">Additional Content</div>
-        <?php if($fields['field_related_articles']): ?>
-           <div class="addit-mini-lessons"><?php print $fields['field_related_articles']->content;?></div>
-        <?php endif; ?>
-      </div>
-    <?php endif;?>
-  <?php endif;?>
+<?php if($id == 'field_slideshow_images' && isset($field->content)):?>
+
+<?php 
+
+
+$img = node_load($field->content);
+    
+    $tmp_img = field_get_items('node', $img, 'field_image');
+    $img_fid = $tmp_img[0]['filename'];
+    $test = image_style_url('slideshow_small_square', file_build_uri(basename($img_fid)));
+    
+?>
+
+    <img class="minisite-slideshow-slide"src="<?php print $test;?>"/>
 <?php endif; ?>
+
+<?php endforeach; ?>
+
+<?php if(isset($fields['field_related_articles_1']) && !empty($fields['field_related_articles_1']->content) || !empty($fields['field_related_articles']->content)):?>
+  <div class="related-content-wrap">
+    <div class="addit-content"><?php print $fields['field_related_articles']->content;?></div>
+    <?php if($fields['field_related_articles_1']): ?>
+       <div class="addit-related-articles"><?php //print $fields['field_related_articles']->label;?><?php print $fields['field_related_articles_1']->content;?></div>
+    <?php endif; ?>
+  </div>
+<?php endif;?>
