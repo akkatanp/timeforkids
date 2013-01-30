@@ -32,8 +32,13 @@ function tfk_helper_init() {
   drupal_alter('menu_site_status', $page_callback_result, $read_only_path);
   
   // Add tfk_helper_editor.js
-  $args = arg();
-  if($args[0] == 'node' && $args[1] == 'add' && ($args[2] == 'article' || $args[2] == 'video')) {
+  // If we are editing an article or video...
+  $menu_item = menu_get_item();
+  if($menu_item['path'] == 'node/%/edit' && ($menu_item['page_arguments'][0]->type == 'article' || $menu_item['page_arguments'][0]->type == 'video')
+    // or adding a new article or video.
+    || ($menu_item['page_callback'] == 'node_add' && 
+       ($menu_item['page_arguments'][0] == 'article' || $menu_item['page_arguments'][0] == 'video')
+  )) {
     $tfk_helper_path = drupal_get_path('module', 'tfk_helper');
     drupal_add_js($tfk_helper_path. '/js/tfk_helper_editor.js', 'file');
   }
