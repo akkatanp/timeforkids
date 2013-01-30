@@ -1,0 +1,902 @@
+<?php
+
+function tfk_news_menu(){
+  $items = array();
+  $items['news'] = array(
+		'title' => 'Teacher News',
+		'page callback' => '_teacher_news_callback',
+		'access callback' => 'user_access',
+		'access arguments' => array('access content')
+	);
+  $items['test-issues'] = array(
+		'title' => 'Issues Page',
+		'page callback' => '_test_issues_callback',
+		'access callback' => 'user_access',
+		'access arguments' => array('access content')
+	);
+  
+  $items['show-img-thumb/%'] = array(
+		'title' => 'image thumb',
+		'page callback' => '_show_img_thumb',
+                'page arguments' => array(1),
+		'access callback' => 'user_access',
+		'access arguments' => array('access content')
+	);
+  
+  
+  return $items;
+}
+
+
+function _show_img_thumb($nid){
+    $img = node_load($nid);
+    
+    
+    $tmp_img = field_get_items('node', $img, 'field_image');
+    $img_fid = $tmp_img[0]['filename'];
+    
+    $test = image_style_url('tfk_square_small', file_build_uri(basename($img_fid)));
+    
+    echo '<img src="'.$test.'"/>';
+    exit;
+}
+
+function _test_issues_callback(){
+
+  $list = array();
+
+
+  $email = 'TEST_TK_DIGITAL@TEST.COM';
+  $password= 'welcome123';
+
+  $url = 'http://qa-subscription.timeinc.com:80/webservices/customers/'.check_plain($email).'/TK/auth_token';
+  $pass_arr = array('password'=>$password, 'CGI-App-Id' => 'com.timeinc.tk.web', 'deviceid' => 'TK.WEB', 'deviceip' => ip_address());
+  $pass = drupal_json_encode($pass_arr);
+
+  $response = drupal_http_request($url,
+          array('headers' => array('Content-Type'=>'application/json'),
+              'method'=> 'POST',
+              'data' => $pass,
+              'CGI-App-Id' => 'com.timeinc.tk.web'
+              ));
+  if($response->code == 201){
+
+
+    $dataResponse = drupal_json_decode($response->data);
+
+
+    $token = $dataResponse['token'];
+
+    $url = 'http://qa-subscription.timeinc.com:80/webservices/entitlements?CGI-App-Id=com.timeinc.tk.web';
+    $entresponse = drupal_http_request($url, array('headers' => array('Content-Type'=>'application/json', 'CGI-token' => $token),
+	'method'=> 'GET'
+   ));
+
+   $entresponse =  drupal_json_decode($entresponse->data);
+//
+//   $url = 'http://qa-subscription.timeinc.com:80/webservices/issues?userid='.$email;
+//    $tmpresponse = drupal_http_request($url, array('headers' => array('Content-Type'=>'application/json', 'CGI-token' => $token),
+//	'method'=> 'GET'
+//   ));
+
+   print_r($tmpresponse);
+
+
+
+  }else{
+    echo 'ERROR GETTING TOKEN';exit;
+  }
+  
+
+  $list['testvar'] = 'TEST';
+  echo  theme('tfk_news_issues_page',$list);
+  drupal_exit();
+}
+
+function _teacher_news_callback(){
+   drupal_set_title('News');
+  return '';
+}
+
+function tfk_news_block_info() {
+  $blocks['tfk-news-taxonomy-links'] = array(
+    'info' => t('Taxonomy based navigation for news section')
+  );
+  $blocks['tfk-news-year-filter'] = array(
+    'info' => t('Dropdown with years to filter articles.')
+  );
+  $blocks['tfk-news-current-filters'] = array(
+    'info' => t('Information about current filters.')
+  );
+  $blocks['tfk-news-latest-news-link'] = array(
+    'info' => t('Block with text "Latest News".')
+  );
+  $blocks['tfk-news-homepage-mini-lessons'] = array(
+    'info' => t('Block with proper mini lessons for homepage')
+  );
+  $blocks['tfk-news-minisite-articles'] = array(
+    'info' => t('Block with minisite related articles')
+  );
+  $blocks['tfk-news-minisite-more'] = array(
+    'info' => t('Block with more minisites for article node view')
+  );
+  return $blocks;
+}
+
+function tfk_news_block_view($delta='') {
+  $block = array();
+  switch ($delta) {
+    case 'tfk-news-taxonomy-links':
+      $block['subject'] = t('Taxonomy based navigation for news section');
+      $block['content'] = _tfk_news_taxonomy_navigation();
+      break;
+    case 'tfk-news-year-filter':
+      $block['subject'] = t('Dropdown with years to filter articles.');
+      $block['content'] = _tfk_news_year_filter();
+      break;
+    case 'tfk-news-current-filters':
+      $block['subject'] = t('Information about current filters.');
+      $block['content'] = _tfk_news_current_filters();
+      break;
+    case 'tfk-news-latest-news-link':
+      $block['subject'] = t('Block with text "Latest News".');
+      $block['content'] = '<div class="link-latest-news">'.l('LATEST NEWS','news').'</div>';
+      break;
+    case 'tfk-news-homepage-mini-lessons':
+      $block['subject'] = t('Block with proper mini lessons for homepage');
+      $block['content'] = _tfk_news_homepage_mini_lessons();
+      break;
+    case 'tfk-news-minisite-articles':
+      $block['subject'] = t('Block with minisite related articles');
+      $block['content'] = _tfk_news_minisite_related_articles();
+      
+      break;
+  
+    case 'tfk-news-minisite-more':
+      $block['subject'] = t('Block with more minisites for article node view');
+      $block['content'] = _tfk_news_minisite_more();
+      break;
+    
+  }
+  
+  return $block;
+}
+
+
+function _tfk_news_minisite_more(){
+    $rgs = arg();
+    
+    
+    
+    
+    if($rgs[0] == 'node' && is_numeric($rgs[1])){
+        $node = node_load($rgs[1]);
+        if($node->type == 'article' || $node->type == 'slideshow' || $node->type == 'video'){
+            //lets get the parent minisite
+            $result = db_query('SELECT DISTINCT entity_id from field_data_field_articles fa where fa.entity_type = :type and fa.bundle = :bundle and fa.field_articles_nid = :nid',array('type'=> 'node','bundle'=>'minisite','nid'=>$node->nid));
+            $record = $result->fetch();
+            if($record){
+                $parent_minisite_nid = $record->entity_id;
+                
+                $min_res = db_query('SELECT DISTINCT node.nid AS nid, node.title AS node_title, :image_entity_type AS field_data_field_minisite_thumbnail_image_node_entity_type, RAND() AS random_field,
+                                    ti.field_minisite_thumbnail_image_fid, fm.filename
+                                    FROM
+                                    {node} node
+                                    left join field_data_field_minisite_thumbnail_image ti on node.nid = ti.entity_id
+                                    left join file_managed fm on ti.field_minisite_thumbnail_image_fid = fm.fid
+                                    WHERE (( (node.status = :status) AND (node.type IN  (:type)) AND (node.nid != :nid OR node.nid IS NULL) ))
+                                    ORDER BY random_field ASC
+                                    LIMIT 3 OFFSET 0',array('image_entity_type' =>'node','status' => 1,'type' => 'minisite','nid' => $parent_minisite_nid));
+                
+                
+                $minisites = array();
+                foreach ($min_res as $i=> $record) {
+                    $minisites[$i]['title'] = $record->node_title;
+                    $minisites[$i]['nid'] = $record->nid;
+                    if($record->filename){
+                      //$minisites[$i]['thumb_path'] = file_create_url(file_build_uri(basename($record->filename)));
+                      $minisites[$i]['thumb_path'] =  image_style_url('tfk_square_small', file_build_uri(basename($record->filename)));
+                    }
+                }
+                
+                if(!empty($minisites)){
+                    $list = array();
+                    $list['minisites'] = $minisites;
+                    return theme('tfk_news_minisite_more',$list);
+                }
+                
+            }
+        }
+    }
+}
+
+
+function _tfk_news_minisite_related_articles(){
+    $rgs = arg();
+    
+    if($rgs[0] == 'node' && is_numeric($rgs[1])){
+        $node = node_load($rgs[1]);
+        
+        if($node->type == 'article' || $node->type == 'slideshow' || $node->type == 'video'){
+            
+            //lets get the parent minisite
+            $result = db_query('SELECT DISTINCT entity_id from field_data_field_articles fa where fa.entity_type = :type and fa.bundle = :bundle and fa.field_articles_nid = :nid',array('type'=> 'node','bundle'=>'minisite','nid'=>$node->nid));
+            $record = $result->fetch();
+            if($record){
+                $parent_minisite_nid = $record->entity_id;
+                
+                
+                //now lets get all other articles under that minisite
+                $art_res = db_query('SELECT DISTINCT node.title AS node_title, node_field_data_field_articles.title AS node_field_data_field_articles_title, node_field_data_field_articles.nid AS node_field_data_field_articles_nid, node.created AS node_created, node.nid AS nid
+                FROM
+                {node} node
+                LEFT JOIN {field_data_field_articles} field_data_field_articles ON node.nid = field_data_field_articles.entity_id AND (field_data_field_articles.entity_type = :entity_type AND field_data_field_articles.deleted = :deleted)
+                INNER JOIN {node} node_field_data_field_articles ON field_data_field_articles.field_articles_nid = node_field_data_field_articles.nid
+                WHERE (( (node.status = :status) AND (node.type IN  (:type)) AND (node.nid = :nid ) ))
+                ORDER BY node_created DESC',array('entity_type'=>'node','deleted'=>0,'status'=>1,'type'=>'minisite','nid'=>$parent_minisite_nid));
+                
+                $articles = array();
+                foreach ($art_res as $i=> $record) {
+                    $articles[$i]['title'] = $record->node_field_data_field_articles_title;
+                    $articles[$i]['nid'] = $record->node_field_data_field_articles_nid;
+                    $articles[$i]['minisite_nid'] = $record->nid;
+                    $articles[$i]['minisite_title']= $record->node_title;
+                }
+                
+                
+                
+                if(!empty($articles)){
+                    $list = array();
+                    $list['articles'] = $articles;
+                    return theme('tfk_news_minisite_related_articles',$list);
+                }
+
+            }
+
+        }
+    }
+
+    //return '';
+}
+
+
+function _tfk_news_article_additional(){
+  //print_r(arg());
+}
+
+
+function _tfk_news_homepage_mini_lessons(){
+  $lessons = '';
+  if(count(arg()) == 1 && arg(0) == 'node'){
+    $flagid = 2;
+  }
+  if(count(arg()) == 1 && arg(0) == 'news'){
+    $flagid = 6;
+  }
+  if(count(arg()) == 1 && arg(0) == 'kid-reporter'){
+    $flagid = 8;
+  }
+
+
+  $result = db_query('SELECT DISTINCT node.title AS node_title, node.nid AS nid, flag_content_node.weight AS flag_content_node_weight FROM {node} node INNER JOIN {flag_content} flag_content_node ON node.nid = flag_content_node.content_id AND flag_content_node.fid = :flagid  WHERE (( (node.status = :nodestatus) AND (node.type IN (:nodetype)) AND (flag_content_node.uid IS NOT NULL ) )) ORDER BY flag_content_node_weight ASC LIMIT 1 OFFSET 0',array('flagid'=>$flagid,'nodestatus'=>1,'nodetype'=>'article'));
+  $record = $result->fetch();
+  $art_nid = $record->nid;
+  $node = node_load($art_nid);
+
+  $tmp_lessons =  field_get_items('node', $node,'field_mini_lessons');
+  if($tmp_lessons) {
+    $i = 1;
+    foreach($tmp_lessons as $ind => $lesson){
+      $lesson_nid = $lesson['nid'];
+      $sql = db_query('select td.name from taxonomy_term_data td
+        left join taxonomy_index ti on td.tid = ti.tid where td.vid = :vid and ti.nid = :nid',array('vid' => 6,'nid' => $lesson_nid));
+      $res_record = $sql->fetch();
+  
+      $lessons .= l('Grade '.$res_record->name,'node/'.$lesson_nid);
+      if($i != count($tmp_lessons)){
+        $lessons .= ' | ';
+      }
+      $i++;
+    }
+    return $lessons;
+  } else {
+    return '';
+  }
+
+}
+
+
+function _tfk_news_current_filters(){
+  if(arg(0) == 'news-archive'){
+    $str = '<div class="currfilters"><div class="newsarc">News Archive</div><div class="newsarcsmall">';
+    if(count(arg()) == 1){
+      $str .= 'Viewing: All News';
+    }else{
+      $arg = arg(1);
+      if(!is_numeric(arg(1))){
+        
+        if(ucfirst(arg(1)) == 'All'){
+          $str .= 'Viewing: All News; All Dates';
+        }else{
+          $str .= 'Viewing: '.ucfirst(arg(1));
+        }
+      }
+      if(is_numeric(arg(1))){
+        $str .= 'Year: '.ucfirst(arg(1));
+      }
+    }
+
+    $rest = substr($str, -1);
+    if($rest == ';'){
+      $str = substr_replace($str,"",-1);
+    }
+
+    return $str.'</div></div>';
+  }else{
+    return '';
+  }
+  
+}
+
+function _tfk_news_taxonomy_navigation(){
+  
+  $terms = array();
+  $args= arg();
+  
+    
+    if(isset($args[1]) && is_numeric($args[1]) && $args[0] == 'node'){
+      $nid = $args[1];
+      $node = node_load($nid);
+
+
+      $tmp_cat =  field_get_items('node', $node, 'field_article_category');
+      $art_category = $tmp_cat[0]['tid'];
+
+    }else{
+        $art_category = 0;
+    }
+
+  $vid = 3; //vocabulary id for article categories
+  //now we have to get all taxonomy terms from this vocabulary that have articles
+  $result = db_query('select distinct ti.tid,td.name from taxonomy_index ti left join taxonomy_term_data td on ti.tid = td.tid left join node n on n.nid = ti.nid where n.type = :type and td.vid = :vid',array('type'=>'article','vid'=>$vid));
+
+
+  foreach ($result as $i=> $record) {
+
+    $terms[$i]['term_name']= $record->name;
+    $terms[$i]['class']= '';
+
+    if($art_category == $record->tid){
+      $terms[$i]['class']= 'highlighted';
+    }
+  }
+  
+  
+  
+  
+  //lets check if we should display POLLS link()
+    
+  
+  $list = array('terms_with_articles' => $terms);
+  
+  $sql = "select n.nid from node n LEFT JOIN field_data_field_article_poll pa on n.nid = pa.entity_id where n.status = 1 and pa.field_article_poll_nid IS NOT NULL limit 0,1";
+  
+  global $user;
+  
+  if($user->uid == 0){
+      
+      $sql = 'select n.nid, flag_content_node.fid from node n LEFT JOIN field_data_field_article_poll pa on n.nid = pa.entity_id
+        LEFT JOIN flag_content flag_content_node ON n.nid = flag_content_node.content_id AND flag_content_node.fid = 32
+        where n.status = 1 and pa.field_article_poll_nid IS NOT NULL and flag_content_node.fid IS NULL limit 0,1 ';
+  }
+  
+  $query = db_query($sql,array());
+  $res = $query->fetch();
+
+  
+  if(isset($res->nid)){
+      $list['display_poll_link'] = 1;
+  }else{
+      $list['display_poll_link'] = 0;
+  }
+  
+  
+  
+  return theme('tfk_news_taxonomy_links',$list);
+}
+
+function _tfk_news_year_filter(){
+  //we start with getting a list of years that have articles under them, to put them later as a dropdown
+  $result = db_query('SELECT DISTINCT date_format(from_unixtime(field_date_value),:format) as pubdate FROM {field_data_field_date} where bundle = :nodetype order by pubdate desc',array('format' => '%Y','nodetype'=>'article'));
+  $years = array();
+  foreach ($result as $record) {
+    $years[]= $record->pubdate;
+  }
+
+  $list = array('list_of_years' => $years);
+  $args = arg();
+  if(count($args) == 2 && $args[0] == 'news-archive' && is_numeric($args[1])){
+    $list['selected_year'] = $args[1];
+  }
+  return theme('tfk_news_year_filter',$list);
+}
+
+
+/**
+ * Implements hook_field_formatter_info().
+ */
+function tfk_news_field_formatter_info() {
+  return array(
+    // the key must be unique, so it's best to prefix with your module's name.
+    'tfk_news_grade_title' => array(
+      // the label is is what is displayed in the select box in the UI.
+      'label' => t('Grade Title '),
+      // field types is the important bit!! List the field types your formatter is for.
+      'field types' => array('node_reference'),
+      // You can usually leave 'multiple values' as follows:
+      'multiple values' => FIELD_BEHAVIOR_DEFAULT,
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_formatter_view(). This code just passes straight
+ * through to a theme function, MYMODULE_formatter_FORMATTER
+ * (e.g. MYMODULE_formatter_MYMODULE_absolute_url).
+ */
+function tfk_news_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+  $elements = array();
+  foreach ($items as $delta => $item) {
+    $elements[$delta] = array(
+      '#markup' => theme('tfk_news_formatter_tfk_news_grade_title', array('element' => $item, 'field' => $instance)),
+    );
+  }
+  return $elements;
+}
+
+/**
+ * Implementation of hook_theme.
+ */
+function tfk_news_theme() {
+  return array(
+    'tfk_news_taxonomy_links' => array(
+      'template' => 'tfk-news-taxonomy-links',
+      'variables' => array('list' => NULL),
+    ),
+    'tfk_news_year_filter' => array(
+      'template' => 'tfk-news-year-filter',
+      'variables' => array('list' => NULL),
+    ),
+    'tfk_news_formatter_tfk_news_grade_title' => array(
+      // Don't forget that all Drupal 7 theme functions have only one argument,
+      // so you declare what variables get passed within that argument instead.
+      // See http://drupal.org/node/224333#theme_changes
+      'variables' => array('element' => NULL),
+    ),
+     'tfk_news_issues_page'=> array(
+      'template' => 'tfk-news-issues-page',
+      'variables' => array('list' => NULL),
+    ),
+    'tfk_news_minisite_related_articles'=> array(
+      'template' => 'tfk-news-minisite-related-articles',
+      'variables' => array('list' => NULL),
+    ),
+    'tfk_news_minisite_more'=> array(
+      'template' => 'tfk-news-minisite-more',
+      'variables' => array('list' => NULL),
+    ),
+  );
+}
+
+/**
+ * Theme function for tfk_news_formatter_tfk_news_grade_title.
+ * 
+ * Used to theme Related Content block items. 
+ * Called from the tfk_news_field_formatter_view() formatter.
+ * This code is specific to the Link field and is based on theme_link_formatter_plain().
+ */
+function theme_tfk_news_formatter_tfk_news_grade_title($element) {
+
+  if($element['element']['node']->type == 'mini_lesson'){
+    $nid = $element['element']['node']->nid;
+    $sql = db_query('select td.name from taxonomy_term_data td
+            left join taxonomy_index ti on td.tid = ti.tid where td.vid = :vid and ti.nid = :nid',array('vid' => 6,'nid' => $nid));
+    $res_record = $sql->fetch();
+
+    if($res_record->name == '2'){
+      return l('Grade '.$res_record->name,'node/'.$nid);
+    }else{
+      return l('Grades '.$res_record->name,'node/'.$nid);
+    }
+  } else {
+    return l($element['element']['node']->title, 'node/'. $element['element']['nid']);
+  }
+}
+
+
+
+
+function tfk_news_views_query_alter(&$view, &$query) {
+  if($view->name == 'news_archive'){
+    if(strlen(arg(1)) == 4 && is_numeric(arg(1))){
+        
+      global $user;
+      
+      if($user->uid == 0){
+        unset($query->where[0]['conditions'][3]);
+      }else{
+        unset($query->where[0]['conditions'][2]);
+      }
+
+      $jan = mktime(0, 0, 0, '12', '31', arg(1)-1);
+      $dec = mktime(0, 0, 0, '01', '01', arg(1)+1);
+
+      $query->where[0]['conditions'][] = array(
+          'field' => 'field_data_field_date.field_date_value',
+          'value' => $jan,
+          'operator' => ' > '
+      );
+      
+      $query->where[0]['conditions'][] = array(
+          'field' => 'field_data_field_date.field_date_value',
+          'value' => $dec,
+          'operator' => ' < '
+      );
+      $query->fields['field_data_field_date'] = array(
+          'field' => 'field_data_field_date.field_date_value',
+          'table' => '',
+          'alias' => 'field_data_field_date'
+      );
+      $query->table_queue['field_data_field_date'] = array(
+          'table' => 'field_data_field_date',
+          'num' => 1,
+          'alias' => 'field_data_field_date',
+          'join' => clone $query->table_queue['field_data_field_tout_image']['join']
+      );
+
+      $query->table_queue['field_data_field_date']['join']->definition['table'] = 'field_data_field_date';
+      $query->table_queue['field_data_field_date']['join']->table = 'field_data_field_date';
+
+      $query->tables['field_data_field_date'] = array(
+          'count' => 1,
+          'alias' => 'field_data_field_date'
+      );
+
+      $query->relationships['field_data_field_date'] = array(
+          'link' => 'node',
+          'table' => 'node',
+          'base' => 'node'
+      );
+    }else{
+        $query->orderby[0]['field'] = "DATE_FORMAT(FROM_UNIXTIME(field_data_field_date.field_date_value),'%Y %m %d')";
+    }
+  }
+  
+}
+
+
+
+/**
+ * Implementation of hook_node_view().
+ */
+function tfk_news_node_view($node, $view_mode, $langcode) {
+
+  $tmp_body =  field_get_items('node', $node, 'field_body');
+   
+  if($node->type == 'article' && isset($node->field_kid_reporter['und'][0]) && $view_mode == 'full'){
+    $body = $tmp_body[0]['value'];
+    $body = preg_replace('/[\r\n]+/', '', $body);
+    $body = preg_replace('/(\<div class="inline-img" .*?\>.*?<\/div\>(?=<p>))/i', '<p>$1</p>', $body);
+
+    $reporter = $node->field_kid_reporter;
+    $tmp_kid = field_get_items('node',$node,'field_kid_reporter');
+
+    $kid_nid = $tmp_kid[0]['nid'];
+    
+    $kid_node = node_load($kid_nid);
+    $kid_title = $kid_node->title;
+    
+    //lets get thumb_image for the reporter
+    $result = db_query('select fm.filename,f.field_thumbnail_image_fid as thumb_fid from {field_data_field_thumbnail_image} f
+    left join file_managed fm on f.field_thumbnail_image_fid = fm.fid
+    where f.entity_type = :entity_type and f.bundle = :bundle and f.entity_id = :entity_id',array('entity_type'=>'node','bundle'=>'kid_reporter','entity_id' => $kid_nid));
+    $record = $result->fetch();
+
+    $thumb_path = file_create_url(file_build_uri(basename($record->filename)));
+
+    //$tmp_title =  field_get_items('node', $node,'field_kid_reporter');
+    $reporter_name = $kid_title;
+    
+    $reporter_alias = drupal_lookup_path('alias','node/'.$kid_nid);
+    
+    $badge = '';
+    
+    if($tmp_kid[0]['node']->status == 0){
+        $badge = '<div class="reporter-badge"><div id="badge-header">Kid Reporter</div><div id="badge-badge"></div>
+      <img class="reporter-badge-photo" src="'.$thumb_path.'"/><div class="reporter-name">'.$reporter_name.'</div>
+        </div>';
+
+    }else{
+        $badge = '<div class="reporter-badge"><div id="badge-header">Kid Reporter</div><div id="badge-badge"></div>
+      <img class="reporter-badge-photo" src="'.$thumb_path.'"/>'.l($reporter_name,$reporter_alias,array('attributes' => array('class' => array('reporter-link-a')))).'
+        </div>';
+
+    }
+    
+    $body = preg_replace('/[\r\n]+/', '', $body);
+    $reg = preg_match_all('/(<([\w]+)*>)(.*?)(<\/\\2>)/i', $body, $matches);
+    
+    $paragraphs_count = count($matches[2]);
+    $half_index = round($paragraphs_count / 2);
+    
+    // Get a copy of the later half of the array, preserving the keys.
+    $half_slice = array_slice($matches[0], $half_index, NULL, TRUE);
+    
+    // Remove the later half from the original array.
+    array_splice($matches[0], $half_index);
+    
+    // Append the badge to the first half of the original array.
+    $matches[0][] = $badge;
+    
+    // Merge our arrays.
+    $matches[0] = array_merge($matches[0], $half_slice);
+    
+    $body = '';
+    foreach($matches[0] as $k => $content){
+      $body .= $content;
+    }
+    $node->content['field_body'][0]['#markup'] = $body;
+  }
+  
+  // Customize mini-lessons and related articles field display.
+  if($node->type == 'article'){
+    if(isset($node->content['field_mini_lessons'])){
+      $count = count($node->content['field_mini_lessons']['#object']->content['field_mini_lessons']['#items']);
+      for($i = 0; $i < $count - 1; $i++ ){
+        $node->content['field_mini_lessons']['#object']->content['field_mini_lessons'][$i]['#markup'] .= '&nbsp;&nbsp;|';
+      }
+    }
+
+    if(isset($node->content['field_related_articles'])){
+      $count = count($node->content['field_related_articles']['#object']->content['field_related_articles']['#items']);
+      for($i = 0; $i < $count - 1; $i++ ){
+        $node->content['field_related_articles']['#object']->content['field_related_articles'][$i]['#markup'] .= ',';
+      }
+    }
+  }
+  
+}
+
+
+
+function tfk_news_preprocess_block(&$variables){
+  if(array_search($variables['block']->delta, array('random_kid_reporters-block', 'tfk-news-latest-news-link', 'tfk-news-year-filter', 'tfk-news-taxonomy-links')) !== FALSE) {
+    $node = menu_get_object('node');
+    if(!is_null($node) && $node) {
+
+      if(!isset($node->field_kid_reporter['und'][0])){
+        if($variables['block']->delta == 'random_kid_reporters-block'){
+          $variables['content'] = '';
+          unset($variables['content']);
+        }
+      }
+      
+      if($node->type == 'article'){
+        $result = db_query('SELECT DISTINCT entity_id from field_data_field_articles fa where fa.entity_type = :type and fa.bundle = :bundle and fa.field_articles_nid = :nid',array('type'=> 'node','bundle'=>'minisite','nid'=>$node->nid));
+        $record = $result->fetch();
+          
+        if($record){
+          $variables['content'] = '';
+          unset($variables['content']);
+        }
+      }
+      
+    }
+  }
+}
+
+function tfk_news_preprocess_page(&$vars) {
+  $rgs = arg();
+    
+  if(count($rgs) == 2 && ($rgs[0] == 'node') && is_numeric($rgs[1])){
+    // Do not do any additional processing if we are going to present the
+    // user with an access denied page.
+    if(node_access('view', node_load($rgs[1]), $vars['user'])) {
+    
+      $node = node_load($rgs[1]);
+      if($node->type == 'article'){
+        $vars['section_title'] = 'News';
+        if(isset($node->field_kid_reporter['und'][0])){
+          $vars['section_title'] = 'Kid Reporters';
+          $vars['custclass'] = 'withkidrep';
+        }
+  
+        $result = db_query('SELECT DISTINCT fa.entity_id,n.created from {field_data_field_articles} fa left join {node} n on fa.entity_id = n.nid where fa.entity_type = :type and fa.bundle = :bundle and fa.field_articles_nid = :nid order by n.nid DESC limit 0,1',array('type'=> 'node','bundle'=>'minisite','nid'=>$node->nid));          $record = $result->fetch();
+        if($record){
+          $parent_minisite_nid = $record->entity_id;
+          $minisite_node = node_load($parent_minisite_nid);
+          $minisitetitle = $minisite_node->title;
+          $vars['section_title'] = $minisitetitle;
+          
+        }
+      }
+  
+      if($node->type == 'kid_reporter'){
+        $vars['section_title'] = 'Kid Reporters';
+      }
+  
+      if($node->type == 'mini_lesson'){
+        $vars['section_title'] = 'News';
+      }
+          
+    }
+  }
+
+  if($rgs[0] == 'news-archive'){
+    $vars['section_title'] = 'News';
+  }
+
+
+  $is_anon = 0;
+    global $user;
+    $user_roles = $user->roles;
+    if(count($user_roles) == 1 && in_array('anonymous user',$user_roles)){
+      $is_anon = 1;
+    }
+    $vars['is_anon'] = $is_anon;
+
+
+}
+
+function tfk_news_preprocess_html(&$variables) {
+  $rgs = arg();
+
+  global $user;
+  $roles = $user->roles;
+ 
+  if(count($roles) == 2 && in_array('teacher', $roles)){
+    $variables['classes_array'][] = 'loggedteacher';
+  }
+  
+  if(count($roles) == 3 && in_array('teacher', $roles) && in_array('Board Member', $roles)){
+    $variables['classes_array'][] = 'loggedteacher';
+  }
+  
+  
+  if(count($rgs) == 2 && ($rgs[0] == 'node') && is_numeric($rgs[1])){
+    $node = node_load($rgs[1]);
+    
+    
+    if($node->type == 'minisite'){
+        $sql = db_query("SELECt fa.field_articles_nid,n.nid,n.title, n.type
+            FROM {field_data_field_articles} fa
+            LEFT JOIN {node} n ON n.nid = fa.field_articles_nid
+            WHERE fa.entity_type = :entity_type and fa.bundle = :bundle
+            and fa.entity_id = :nid limit 0,1",array('entity_type'=>'node','bundle'=>'minisite','nid'=>$node->nid));
+        $record = $sql->fetch();
+        
+        if($record->type == 'slideshow' || $record->type == 'video'){
+            $variables['classes_array'][] = 'minisite-slideshow';
+        }else{
+            $variables['classes_array'][] = 'minisite-noslideshow';
+        }
+        
+        
+        //here we check if there is additional content for minisite , to reduce height even for logged in users
+        //if there is nothing to display there
+        //the way to check it is to get the 1st article and see if it has related articles.
+        
+        if($record->type == 'article'){
+            $art_node = node_load($record->field_articles_nid);
+            
+            if(!field_get_items('node',$art_node,'field_related_articles')){
+                $variables['classes_array'][] = 'minisite-nocontent';
+            }
+        }
+        
+        
+        
+        
+        
+    }
+    
+    
+    if($node->type == 'article'){
+      if(isset($node->field_kid_reporter['und'][0])){
+        $variables['classes_array'][] = 'with-kid-reporter';
+      }
+    }
+    
+    $result = db_query('SELECT DISTINCT entity_id from field_data_field_articles fa where fa.entity_type = :type and fa.bundle = :bundle and fa.field_articles_nid = :nid',array('type'=> 'node','bundle'=>'minisite','nid'=>$node->nid));
+    $record = $result->fetch();
+    if($record){
+      $variables['classes_array'][] = 'from-mini-site';
+    }
+
+  }
+}
+
+
+function tfk_news_preprocess_node(&$variables){
+
+
+  $variables['is_kid_reporter_article'] = 0;
+
+  if($variables['type'] == 'article'){
+
+
+    $is_anon = 0;
+    global $user;
+    $user_roles = $user->roles;
+    if(count($user_roles) == 1 && in_array('anonymous user',$user_roles)){
+      $is_anon = 1;
+    }
+    $variables['is_anon'] = $is_anon;
+
+
+    //print_R($variables);
+    if(isset($variables['field_kid_reporter']['und'][0]['nid'])){
+      $variables['is_kid_reporter_article'] = 1;
+    }
+    
+    if(isset($variables['field_mini_lessons']['und'])){
+        $tmp_lessons = $variables['field_mini_lessons']['und'];
+        $lsessons = '';
+        $i = 1;
+        foreach($tmp_lessons as $ind => $lesson){
+          $lesson_nid = $lesson['nid'];
+          $sql = db_query('select td.name from taxonomy_term_data td
+            left join taxonomy_index ti on td.tid = ti.tid where td.vid = :vid and ti.nid = :nid',array('vid' => 6,'nid' => $lesson_nid));
+          $res_record = $sql->fetch();
+
+          $lessons = l('Grade '.$res_record->name,'node/'.$lesson_nid);
+          if($i != count($tmp_lessons)){
+            $lessons .= ' | ';
+          }
+          $i++;
+        }
+        $variables['article_mini_lessons'] = $lessons;
+    }
+
+
+   // print_r($variables);
+
+
+  }
+}
+
+
+function tfk_news_views_post_render(&$view, &$output, &$cache){
+    if($view->name == 'news_archive'){
+        foreach($view->result as $news_result){
+            $flags = flag_get_counts('node', $news_result->nid);
+            if(array_key_exists('magazine_cover_story', $flags) && $flags['magazine_cover_story'] == '1') {
+                $query = db_query('select entity_id from field_data_field_articles
+                    where bundle = :bundle and field_articles_nid = :nodenid',array('bundle'=>'magazine_issue','nodenid'=>$news_result->nid));
+
+                $result = $query->fetch();
+                if(isset($result->entity_id)){
+                    $old_alias = drupal_lookup_path('alias','node/'.$news_result->nid);
+                    $new_alias = $old_alias.'/'.$result->entity_id;
+                    $output = str_replace($old_alias, $new_alias, $output);
+
+                }
+
+            }
+        }
+    }
+    
+    
+    
+   if($view->name == 'global_right_sidebar'){
+       $output = str_replace('Grades 2', 'Grade 2', $output);
+   }
+   
+   if($view->name == 'user_favorites'){
+       $output = str_replace('GRADE 3-4', 'GRADES 3-4', $output);
+       $output = str_replace('GRADE K-1', 'GRADES K-1', $output);
+       $output = str_replace('GRADE 5-6', 'GRADES 5-6', $output);
+   }
+    
+    
+}
