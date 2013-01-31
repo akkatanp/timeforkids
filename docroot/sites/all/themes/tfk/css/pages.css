@@ -1244,7 +1244,7 @@ body.one-sidebar .secondary-touts-view td.col-2  {
 	line-height: 15px;
   height:115px;
   height:auto !important;
-/*  min-height:115px;*/
+  min-height:115px;
 }
 
 .view-mini-site-home .view-content table td.empty {
@@ -3319,4 +3319,14 @@ div.views-slideshow-cycle-main {height:220px;min-height:220px;}
 #block-tfk-kid-reporters-kid-reporter-year form#tfk-kid-reporters-year-select {
     margin-bottom: 10px;
 }
+
+#block-views-minisite-articles-block .row-has-addit td {
+  height: 170px !important;
+}
+
+#block-views-tfk-extras-block-8 .block-title {
+	margin-bottom: 10px;
+}
+
+
 

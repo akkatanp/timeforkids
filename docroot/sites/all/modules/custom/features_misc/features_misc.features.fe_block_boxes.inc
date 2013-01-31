@@ -38,7 +38,8 @@ function features_misc_default_fe_block_boxes() {
   $fe_block_boxes->info = 'TFK Copyright';
   $fe_block_boxes->format = 'full_html';
   $fe_block_boxes->machine_name = 'tfk_copyright';
-  $fe_block_boxes->body = '<p>&copy; 2012 Time Inc. All Rights Reserved.</p>';
+  $fe_block_boxes->body = '<p>&copy; 2013 Time Inc. All Rights Reserved.</p>
+';
 
   $export['tfk_copyright'] = $fe_block_boxes;
 
