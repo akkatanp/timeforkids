@@ -29,7 +29,7 @@ $(document).ready(function() {
                     newHref = xidMap[xid];
                     $(".subscriptions-container div a:contains('Subscribe Now!')").attr("href", newHref);
                     $(".subscriptions-container div a img").parent().attr("href",newHref);
-                    if ($('.#teacher-nav-container .content #block-block-16 a').length && $('.#teacher-nav-container .content #block-block-16 a').attr("href").match(/subscription.timeforkids.com/i)) {
+                    if ($('.#teacher-nav-container .content #block-block-16 a').length && $('.#teacher-nav-container .content #block-block-16 a').attr("href").indexOf("subscription.timeforkids.com") !== -1) {
                         $(this).attr("href",newHref);
                     }
                 }
