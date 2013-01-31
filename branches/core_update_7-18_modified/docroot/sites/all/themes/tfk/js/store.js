@@ -28,6 +28,10 @@ $(document).ready(function() {
                     xid = urlQueryString['xid'];
                     newHref = xidMap[xid];
                     $(".subscriptions-container div a:contains('Subscribe Now!')").attr("href", newHref);
+                    $(".subscriptions-container div a img").parent().attr("href",newHref);
+                    if ($('.#teacher-nav-container .content #block-block-16 a').length && $('.#teacher-nav-container .content #block-block-16 a').attr("href").match(/subscription.timeforkids.com/i)) {
+                        $(this).attr("href",newHref);
+                    }
                 }
             }
         }
