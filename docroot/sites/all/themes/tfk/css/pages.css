@@ -1244,7 +1244,7 @@ body.one-sidebar .secondary-touts-view td.col-2  {
 	line-height: 15px;
   height:115px;
   height:auto !important;
-/*  min-height:115px;*/
+  min-height:115px;
 }
 
 .view-mini-site-home .view-content table td.empty {
@@ -1458,10 +1458,14 @@ body.one-sidebar .secondary-touts-view td.col-2  {
 
 .related-content-wrap .addit-mini-lessons, .node-type-article .field-name-field-mini-lessons {
 	background: url("../images/mini-lessons-icon.png") no-repeat 0px 2px;
+  min-height: 18px;
+  margin: 2px 0 0 1px;
 }
 
 .related-content-wrap .addit-related-articles, .node-type-article .field-name-field-related-articles {
   background: url("../images/related-article-icon.png") no-repeat 0px 2px;
+  min-height: 18px;
+  margin-left: 1px;
 }
 
 .Minisite ~ .related-content-wrap .addit-related-articles {
@@ -1959,6 +1963,10 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 
 .field-name-field-related-photos-video .field-label {
 	font: bold 20px arial, sans-serif;
+}
+
+body.section-photos-video #slideshow .outer {
+  height: 270px;
 }
 
 /* TFK extras */
@@ -3319,4 +3327,14 @@ div.views-slideshow-cycle-main {height:220px;min-height:220px;}
 #block-tfk-kid-reporters-kid-reporter-year form#tfk-kid-reporters-year-select {
     margin-bottom: 10px;
 }
+
+#block-views-minisite-articles-block .row-has-addit td {
+  height: 170px !important;
+}
+
+#block-views-tfk-extras-block-8 .block-title {
+	margin-bottom: 10px;
+}
+
+
 

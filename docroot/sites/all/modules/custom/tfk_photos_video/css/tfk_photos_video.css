@@ -148,3 +148,8 @@ body.section-photos-video .content-type-slideshow .icon {
 body.section-photos-video .content-type-video .icon {
   background: url(/sites/all/modules/custom/tfk_search/images/video-camera-icon.png) no-repeat;
 }
+
+body.node-type-slideshow #slideshow-container p a {
+  margin-top: 0;
+  display: inline;
+}
