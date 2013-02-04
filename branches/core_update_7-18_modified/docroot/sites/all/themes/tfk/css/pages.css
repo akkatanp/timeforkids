@@ -1458,10 +1458,14 @@ body.one-sidebar .secondary-touts-view td.col-2  {
 
 .related-content-wrap .addit-mini-lessons, .node-type-article .field-name-field-mini-lessons {
 	background: url("../images/mini-lessons-icon.png") no-repeat 0px 2px;
+  min-height: 18px;
+  margin: 2px 0 0 1px;
 }
 
 .related-content-wrap .addit-related-articles, .node-type-article .field-name-field-related-articles {
   background: url("../images/related-article-icon.png") no-repeat 0px 2px;
+  min-height: 18px;
+  margin-left: 1px;
 }
 
 .Minisite ~ .related-content-wrap .addit-related-articles {
@@ -1959,6 +1963,10 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 
 .field-name-field-related-photos-video .field-label {
 	font: bold 20px arial, sans-serif;
+}
+
+body.section-photos-video #slideshow .outer {
+  height: 270px;
 }
 
 /* TFK extras */
