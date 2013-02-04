@@ -1,0 +1,642 @@
+<?php
+
+/**
+ * Implementation of hook_init.
+ *
+ * Prevent poll pages from being cached for anonymous users.
+ */
+function tfk_polls_init() {
+
+  $node = menu_get_object('node');
+  if($node && $node->type == 'article' && !empty($node->field_article_poll)) {
+  	$poll_field = field_get_items('node', $node, 'field_article_poll');
+  	if(is_array($poll_field) && !empty($poll_field)) {
+  		drupal_page_is_cacheable(FALSE);
+  	}
+  }
+}
+
+function tfk_polls_menu(){
+  $items = array();
+  $items['polldaddy/%'] = array(
+    'page callback' => 'tfk_polls_polldaddy_render',
+    'page arguments' => array(1),
+    'access callback' => 'user_access',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK
+  );
+
+    $items['pollgenerate/%'] = array(
+		'title' => '',
+		'page callback' => '_poll_generate',
+                'page arguments' => array(1,2),
+		'access callback' => 'user_access',
+		'access arguments' => array('access content')
+	);
+    return $items;
+}
+
+function tfk_polls_theme($existing, $type, $theme, $path) {
+  return array(
+    // Worksheets.
+    'tfk_polls_polls' => array(
+      'template' => 'poll-results',
+      'variables' => array('list' => NULL)
+    ),
+    // Poll daddy.
+    'tfk_external_poll' => array(
+      'template' => 'external-poll',
+      'variables' => array('poll-id' => NULL, 'standalone' => FALSE),
+    )
+  );
+}
+
+
+function tfk_polls_theme_registry_alter(&$theme_registry) {
+  $theme_registry['poll_results']['preprocess functions'][] = 'tfk_polls_preprocess_poll_results';
+  $theme_registry['poll_results']['path'] = 'sites/all/modules/custom/tfk_polls';
+  $theme_registry['poll_vote']['preprocess functions'][] = 'tfk_polls_preprocess_poll_vote';
+  $theme_registry['poll_vote']['path'] = 'sites/all/modules/custom/tfk_polls';
+
+}
+
+function tfk_polls_polldaddy_render($id) {
+  print theme('tfk_external_poll', array('poll-id' => $id, 'standalone' => TRUE));
+  exit;
+
+}
+
+
+function tfk_polls_preprocess_page(&$variables){
+
+    $variables['total_votes'] = 0;
+    $variables['show_votes'] = 0;
+    $args = arg();
+
+    if($args[0] == 'node' && array_key_exists(2, $args) && $args[2] == 'votes'){
+        $variables['show_votes'] = 1;
+
+        $poll_node = $args[1];
+
+
+        $choices_arr = $variables['node']->choice;
+
+        foreach($choices_arr as $choice){
+            $variables['total_votes'] += $choice['chvotes'];
+        }
+
+    }
+
+}
+
+function _poll_generate($poll_nid){
+
+    $default_height = 300;
+    $default_width = 300;
+
+    $poll_node = node_load($poll_nid);
+    $poll_style = field_get_items('node', $poll_node, 'field_poll_style');
+    $poll_style = $poll_style[0]['value'];
+
+    $poll_width = field_get_items('node', $poll_node, 'field_poll_width');
+    $poll_width = $poll_width[0]['value'];
+
+    $poll_height = field_get_items('node', $poll_node, 'field_poll_height');
+    $poll_height = $poll_height[0]['value'];
+
+    $poll_legend_format = field_get_items('node',$poll_node,'field_legend_format');
+    $poll_legend_format = $poll_legend_format[0]['value'];
+
+    $poll_slice_values = field_get_items('node',$poll_node,'field_piechart_values');
+    $poll_slice_values = $poll_slice_values[0]['value'];
+
+
+
+
+    $colors_data = array('#df1f38','#fece00','#72c5ef','#3d58a7','#8bcf68','#fa9636','#a14f8d','#d9ccb9','#f8ed33','#339d6c','#66cc99','#663333');
+    $votes_data = array();
+    $choices_data = array();
+
+
+
+    $total_votes = 0;
+
+    foreach($poll_node->choice as $choice){
+        $total_votes += $choice['chvotes'];
+    }
+
+
+
+    if($poll_style == 'pie'){
+        foreach($poll_node->choice as $k => $choice){
+            $votes_data[$k] = $choice['chvotes'];
+
+            if($poll_legend_format == 'legend'){
+                $choices_data[$k] = $choice['chtext'];
+            }elseif($poll_legend_format == 'prct'){
+                $choices_data[$k] = $choice['chtext'].', %.1f%%';
+            }elseif($poll_legend_format == 'vts'){
+                $choices_data[$k] = $choice['chtext'].'('.$votes_data[$k].' votes)';
+            }elseif($poll_legend_format == 'both'){
+                $choices_data[$k] = $choice['chtext'].', %.1f%% ('.$votes_data[$k].' votes)';
+            }else{
+                $choices_data[$k] = $choice['chtext'].', %.1f%%';
+            }
+        }
+    }
+
+    if($poll_style == 'bar'){
+
+
+        foreach($poll_node->choice as $k => $choice){
+            $votes_data[$k] = $choice['chvotes'];
+
+            if($poll_legend_format == 'legend'){
+                $choices_data[$k] = $choice['chtext'];
+            }elseif($poll_legend_format == 'prct'){
+                $choices_data[$k] = $choice['chtext'].', '.round(($choice['chvotes'] / $total_votes)*100,2).'%';
+            }elseif($poll_legend_format == 'vts'){
+                $choices_data[$k] = $choice['chtext'].'('.$votes_data[$k].' votes)';
+            }elseif($poll_legend_format == 'both'){
+                $choices_data[$k] = $choice['chtext'].', '.round(($choice['chvotes'] / $total_votes)*100,2).'% ('.$votes_data[$k].' votes)';
+            }else{
+                $choices_data[$k] = $choice['chtext'].', '.round(($choice['chvotes'] / $total_votes)*100,2).'%';
+            }
+        }
+
+
+
+
+    }
+
+
+
+    $path = drupal_get_path('module','tfk_polls');
+    require_once ($path.'/jpgraph/jpgraph.php');
+
+    if($poll_style == 'pie'){
+
+        require_once ($path.'/jpgraph/jpgraph_pie.php');
+
+        //if( (isset($poll_width) && !empty($poll_width)) && (isset($poll_height) && !empty($poll_height)) ){
+        //    $graph = new PieGraph($poll_width,$poll_height,"auto");
+        //}else{
+        //    $graph = new PieGraph($default_width,$default_height,"auto");
+       // }
+
+
+        if(count($choices_data) == 12){
+            $graph = new PieGraph(440,580);
+            $graph->ClearTheme();
+            $graph->legend->SetLayout(LEGEND_VER);
+            $graph->legend->SetPos(0.5,0.94,'center','bottom');
+            $p1 = new PiePlot($votes_data);
+            $p1->SetSize(110);
+            $p1->SetCenter(0.5,0.25);
+
+        }elseif(count($choices_data) == 11){
+            $graph = new PieGraph(440,560);
+            $graph->ClearTheme();
+            $graph->legend->SetLayout(LEGEND_VER);
+            $graph->legend->SetPos(0.5,0.94,'center','bottom');
+            $p1 = new PiePlot($votes_data);
+            $p1->SetSize(110);
+            $p1->SetCenter(0.5,0.27);
+
+        }elseif(count($choices_data) == 10){
+            $graph = new PieGraph(440,525);
+            $graph->ClearTheme();
+            $graph->legend->SetLayout(LEGEND_VER);
+            $graph->legend->SetPos(0.5,0.94,'center','bottom');
+            $p1 = new PiePlot($votes_data);
+            $p1->SetSize(110);
+            $p1->SetCenter(0.5,0.28);
+
+        }elseif(count($choices_data) == 9){
+            $graph = new PieGraph(440,500);
+            $graph->ClearTheme();
+            $graph->legend->SetLayout(LEGEND_VER);
+            $graph->legend->SetPos(0.5,0.94,'center','bottom');
+            $p1 = new PiePlot($votes_data);
+            $p1->SetSize(110);
+            $p1->SetCenter(0.5,0.30);
+
+        }elseif(count($choices_data) == 8){
+
+            $graph = new PieGraph(440,450);
+            $graph->ClearTheme();
+            $graph->legend->SetLayout(LEGEND_VER);
+            $graph->legend->SetPos(0.5,0.94,'center','bottom');
+            $p1 = new PiePlot($votes_data);
+            $p1->SetSize(110);
+            $p1->SetCenter(0.5,0.3);
+
+        }elseif(count($choices_data) == 7){
+
+            $graph = new PieGraph(440,430);
+            $graph->ClearTheme();
+            $graph->legend->SetLayout(LEGEND_VER);
+            $graph->legend->SetPos(0.5,0.94,'center','bottom');
+            $p1 = new PiePlot($votes_data);
+            $p1->SetSize(110);
+            $p1->SetCenter(0.5,0.3);
+
+        }elseif(count($choices_data) == 6){
+
+            $graph = new PieGraph(440,415);
+            $graph->ClearTheme();
+            $graph->legend->SetLayout(LEGEND_VER);
+            $graph->legend->SetPos(0.5,0.94,'center','bottom');
+            $p1 = new PiePlot($votes_data);
+            $p1->SetSize(110);
+            $p1->SetCenter(0.5,0.32);
+
+        }elseif(count($choices_data) == 5){
+
+            $graph = new PieGraph(440,400);
+            $graph->ClearTheme();
+            $graph->legend->SetLayout(LEGEND_VER);
+            $graph->legend->SetPos(0.5,0.94,'center','bottom');
+            $p1 = new PiePlot($votes_data);
+            $p1->SetSize(110);
+            $p1->SetCenter(0.5,0.35);
+
+        }elseif(count($choices_data) == 4){
+
+            $graph = new PieGraph(440,390);
+            $graph->ClearTheme();
+
+            $graph->legend->SetLayout(LEGEND_VER);
+            $graph->legend->SetPos(0.5,0.94,'center','bottom');
+            $p1 = new PiePlot($votes_data);
+
+            $p1->SetTheme('earth');
+            $p1->SetSize(110);
+            $p1->SetCenter(0.5,0.37);
+
+
+        }elseif(count($choices_data) == 3){
+
+            $graph = new PieGraph(440,360);
+            $graph->ClearTheme();
+            $graph->legend->SetLayout(LEGEND_VER);
+            $graph->legend->SetPos(0.5,0.94,'center','bottom');
+            $p1 = new PiePlot($votes_data);
+            $p1->SetSize(110);
+            $p1->SetCenter(0.5,0.39);
+
+        }else{
+            $graph = new PieGraph(440,330);
+            $graph->ClearTheme();
+            $graph->legend->SetLayout(LEGEND_VER);
+            $graph->legend->SetPos(0.5,0.92,'center','bottom');
+            $p1 = new PiePlot($votes_data);
+            $p1->SetSize(110);
+            $p1->SetCenter(0.5,0.4);
+        }
+
+
+
+        //$graph->SetShadow();
+        //$graph->title->Set($poll_node->title);
+        //$graph->title->Set('');
+        //$graph->legend->SetColumns(2);
+
+
+        $graph->title->SetFont(FF_ARIAL,FS_NORMAL);
+        $graph->legend->SetFont(FF_ARIAL,FS_NORMAL);
+        $graph->legend->SetFrameWeight(0);
+        $graph->SetFrame(false); // set a border around image
+        $graph->legend->SetFillColor('white');
+
+
+
+        $graph->title->SetColor('black');
+        $graph->subtitle->SetColor('black');
+        $graph->subsubtitle->SetColor('black');
+
+
+        //$p1 = new PiePlot($votes_data);
+        //$p1->SetSize(0.23);
+        $p1->SetLegends($choices_data);
+        //$labels  = array("Loss\n(%.1f%%)","Win\n(%.1f%%)","Draw\n(%.1f%%)");
+
+
+        $emptyarr = array();
+        $labelsarr = array();
+        foreach($votes_data as $k => $vote_data){
+            $emptyarr[] = '';
+        }
+
+
+        if($poll_slice_values == 'no'){
+            $p1->SetLabels($emptyarr);
+        }else{
+            foreach($votes_data as $k=> $votes_cnt){
+                if($votes_cnt == 0 || !isset($votes_cnt)){
+                    $labelsarr[$k] = '';
+                }else{
+                    $labelsarr[$k] = '%.1f%%';
+                }
+            }
+
+            $p1->SetLabels($labelsarr,1);
+        }
+
+
+        //$labels = array('dd','ds','');
+
+        //$p1->SetLabels('lol1','lol2');
+
+
+        $p1->SetSliceColors($colors_data);
+        $p1->SetColor('black');
+        $p1->value->SetColor("black");
+         //$graph->label->SetColor('black','white');
+
+
+        //$graph->SetTheme('water');
+
+        $graph->Add($p1);
+        $graph->Stroke();
+
+
+
+
+    }elseif($poll_style == 'bar'){
+
+        require_once ($path.'/jpgraph/jpgraph_bar.php');
+
+        $votes_data = array_values($votes_data);
+        $count_cells = count($votes_data); // gives us the amount of options
+
+        $temp = array();
+        $emptyarr = array();
+
+        /////////////////////////////
+        if(count($votes_data) == 12){
+            $votes_data[] = 0;
+        }
+        /////////////////////////////
+
+
+        foreach($votes_data as $k => $vote_data){
+
+          $tmp = array();
+          for($i = 0; $i<($count_cells);$i++ ){
+              if($i == $k){
+                  $tmp[] = $vote_data;
+              }else{
+                  $tmp[] = 0;
+              }
+          }
+
+          $temp[] = $tmp;
+
+          $emptyarr[] = '';
+
+        }
+
+        if( (isset($poll_width) && !empty($poll_width)) && (isset($poll_height) && !empty($poll_height)) ){
+            $graph = new Graph($poll_width,$poll_height,"auto");
+        }else{
+            $graph = new Graph($default_width,$default_height,"auto");
+        }
+
+        if(count($choices_data) == 12 ){
+            $graph = new Graph(430,420);
+            $graph->ClearTheme();
+            $graph->SetFrame(false);
+            $graph->SetScale("textlin");
+            $graph->SetMargin(40,30,20,270);
+            $graph->legend->SetPos(0.5,0.43,'center','top');
+        }elseif(count($choices_data) == 11 ){
+            $graph = new Graph(400,390);
+            $graph->ClearTheme();
+            $graph->SetFrame(false);
+            $graph->SetScale("textlin");
+            $graph->SetMargin(40,30,20,260);
+            $graph->legend->SetPos(0.5,0.43,'center','top');
+        }elseif(count($choices_data) == 10 ){
+            $graph = new Graph(400,390);
+            $graph->ClearTheme();
+            $graph->SetFrame(false);
+            $graph->SetScale("textlin");
+            $graph->SetMargin(40,30,20,260);
+            $graph->legend->SetPos(0.5,0.43,'center','top');
+        }elseif(count($choices_data) == 9){
+            $graph = new Graph(400,370);
+            $graph->ClearTheme();
+            $graph->SetFrame(false);
+            $graph->SetScale("textlin");
+            $graph->SetMargin(40,30,20,240);
+            $graph->legend->SetPos(0.5,0.44,'center','top');
+        }
+        elseif(count($choices_data) == 8){
+            $graph = new Graph(400,360);
+            $graph->ClearTheme();
+            $graph->SetFrame(false);
+            $graph->SetScale("textlin");
+            $graph->SetMargin(40,30,20,230);
+            $graph->legend->SetPos(0.5,0.46,'center','top');
+        }
+        elseif(count($choices_data) == 7){
+            $graph = new Graph(400,340);
+            $graph->ClearTheme();
+            $graph->SetFrame(false);
+            $graph->SetScale("textlin");
+            $graph->SetMargin(40,30,20,210);
+            $graph->legend->SetPos(0.5,0.49,'center','top');
+        }
+        elseif(count($choices_data) == 6){
+            $graph = new Graph(400,330);
+            $graph->ClearTheme();
+            $graph->SetFrame(false);
+            $graph->SetScale("textlin");
+            $graph->SetMargin(40,30,20,190);
+            $graph->legend->SetPos(0.5,0.53,'center','top');
+        }
+        elseif(count($choices_data) == 5){
+            $graph = new Graph(400,320);
+            $graph->ClearTheme();
+            $graph->SetFrame(false);
+            $graph->SetScale("textlin");
+            $graph->SetMargin(40,30,20,170);
+            $graph->legend->SetPos(0.5,0.6,'center','top');
+        }
+        elseif(count($choices_data) == 4){
+            $graph = new Graph(400,310);
+            $graph->ClearTheme();
+            $graph->SetFrame(false);
+            $graph->SetScale("textlin");
+            $graph->SetMargin(40,30,20,150);
+            $graph->legend->SetPos(0.5,0.63,'center','top');
+        }
+        elseif(count($choices_data) == 3){
+            $graph = new Graph(400,270);
+            $graph->ClearTheme();
+            $graph->SetFrame(false);
+            $graph->SetScale("textlin");
+            $graph->SetMargin(40,30,20,110);
+            $graph->legend->SetPos(0.5,0.68,'center','top');
+        }else{
+            $graph = new Graph(400,240);
+            $graph->ClearTheme();
+            $graph->SetFrame(false);
+            $graph->SetScale("textlin");
+            $graph->SetMargin(40,30,20,90);
+            $graph->legend->SetPos(0.5,0.73,'center','top');
+        }
+
+        $graph->SetClipping(FALSE);
+
+
+
+        $graph->SetBox(false);
+        $graph->ygrid->SetFill(false);
+        $graph->xaxis->SetTickLabels($emptyarr);
+        $graph->yaxis->HideLine(false);
+        $graph->yaxis->HideTicks(false,false);
+
+
+        $graph->SetBox(false);
+
+        $graph->ygrid->SetFill(false);
+        //$graph->xaxis->SetTickLabels(array('A','B','C','D'));
+        //$graph->xaxis->SetTickLabels($emptyarr);
+
+
+        $graph->xaxis->HideTicks(true,true);
+        $graph->yaxis->HideLine(false);
+        $graph->yaxis->HideTicks(true,true);
+        $graph->yaxis->SetTitle('Percentage of Votes','center');
+        //Setup month as labels on the X-axis
+
+
+        $choices_data = array_values($choices_data);
+
+        $votes_arrays = $temp;
+        $objects = array();
+
+
+
+        /////////////////////////////
+        if(count($votes_data) == 13){
+            $colors_data[] = 'black';
+            $choices_data[] = '';
+        }
+        /////////////////////////////
+
+
+
+        foreach($votes_data as $k=>$vote){
+            $tmpplot = new BarPlot($votes_arrays[$k]);
+            $tmpplot->SetColor($colors_data[$k]);
+            $tmpplot->SetFillColor($colors_data[$k]);
+
+            $tmpplot->SetLegend($choices_data[$k]);
+
+
+            $tmpplot->SetWidth(10);
+            $tmpplot->SetAbsWidth(15);
+
+
+            $tmpplot->SetAlign("center");
+
+            $objects[] = $tmpplot;
+        }
+
+        //print_r($objects);exit;
+
+
+
+        $gbplot = new GroupBarPlot($objects);
+        $graph->Add($gbplot);
+
+
+        $graph->legend->SetFrameWeight(0);
+        $graph->legend->SetColumns(1);
+        $graph->legend->SetColor('black','white');
+
+
+        //$graph->title->Set($poll_node->title);
+
+        $graph->Stroke();
+
+
+    }
+
+    die();
+
+}
+
+
+function tfk_polls_preprocess_node(&$vars, $hook) {
+
+  if($vars['type'] == 'article' && !empty($vars['field_article_poll'])){
+    $poll_id = $vars['field_article_poll']['und'][0]['nid'];
+    $poll_node = node_load($poll_id);
+
+    // If this is a polldaddy poll.
+    if($poll_node->type == 'tfk_polldaddy') {
+      $external_poll_field = field_get_items('node', $poll_node, 'field_external_poll_id');
+      $poll_rendered = theme('tfk_external_poll', array('standalone' => FALSE, 'poll-id' => $external_poll_field[0]['value'], 'title' => $poll_node->title));
+    } else {
+      // This is a regular core poll.
+      $poll_rendered = node_view($poll_node);
+      $poll_rendered = drupal_render($poll_rendered);
+    }
+        //cache_clear_all();
+
+    $vars['rendered_poll'] = $poll_rendered;
+  }
+
+  if($vars['type'] == 'poll'){
+      if(isset($vars['field_poll_heading_copy']['und'][0]['value'])){
+          $vars['customheading'] = $vars['field_poll_heading_copy']['und'][0]['value'];
+      }else{
+          $vars['customheading'] = 'Poll Question';
+      }
+
+  }
+}
+
+
+function tfk_polls_preprocess_poll_vote(&$variables) {
+  $poll_nid = $variables['form']['#node']->nid;
+  $poll_node = node_load($poll_nid);
+  $copy_tmp = field_get_items('node', $poll_node, 'field_poll_heading_copy');
+
+  if(isset($copy_tmp[0]['value'])){
+    $variables['customheading'] = $copy_tmp[0]['value'];
+  }else{
+    $variables['customheading'] = 'Poll Question';
+  }
+}
+
+
+function tfk_polls_preprocess_poll_results(&$variables) {
+//  $html = $variables['results'];
+//
+//  $pattern = "@class=\"text\"\>(.*)\</div\>@";
+//  preg_match_all($pattern, $html, $choices); //extract choices
+//
+//  $pattern = "@style=\"width: (.*)%;\"@";
+//  preg_match_all($pattern, $html, $votes); //extract percentages
+
+
+  $poll_nid = $variables['nid'];
+  $poll_node = node_load($poll_nid);
+  $copy_tmp = field_get_items('node', $poll_node, 'field_poll_heading_copy');
+
+  if(isset($copy_tmp[0]['value'])){
+    $variables['customheading'] = $copy_tmp[0]['value'];
+  }else{
+    $variables['customheading'] = 'Poll Question';
+  }
+
+
+  global $base_url;
+  $img_src = $base_url.'/pollgenerate/'.$poll_nid;
+  $variables['results'] = '<div><img src="'.$img_src.'?.'.time().'"/></div>';
+}
