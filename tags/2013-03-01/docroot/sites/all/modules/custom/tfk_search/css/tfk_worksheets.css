@@ -1,0 +1,270 @@
+/**
+ * @file Worksheets CSS.
+ *   Inherits and overrides tfk_search.css.
+ *   Used only for the worksheets page. Do not apply to the Photos and Video
+ *   page, since the first sidebar column styles vary significantly in the
+ *   worksheets page. 
+ */
+
+/**
+ * Search results
+ */
+.search-result div.search-snippet-body {
+  margin-bottom: 10px;
+  min-height: 43.2px;
+}
+
+.search-result img.thumbnail {
+  margin-right: 10px;
+}
+
+.search-result div.view-full-article {
+  margin-bottom: 5px;
+}
+
+li.search-result .content-type .ctype-suffix {
+  float: right;
+  padding-right: 10px;
+}
+
+.search-results span.flag-favorites {
+  float: right;
+}
+
+div.search-result-links {
+}
+
+body.section-worksheets li.worksheet .col2 {
+  display: block;
+  width: inherit;
+  /* margin: 0 0 0 10px; */
+}
+
+li.search-result.worksheet .search-result-download-link {
+  display: inline-block;
+  background: url("/sites/all/modules/custom/tfk_search/images/worksheet-icon.png") no-repeat;
+  padding-left: 18px;
+  height: 20px;
+}
+
+li.search-result.worksheet.quiz .search-result-download-link {
+  background: url("/sites/all/modules/custom/tfk_search/images/quiz-icon.png") no-repeat;
+}
+
+li.search-result.worksheet.chart .search-result-download-link,
+li.search-result.worksheet.graph .search-result-download-link {
+  background: url("/sites/all/modules/custom/tfk_search/images/organizer.png") no-repeat;
+}
+
+li.search-result .flag-favorites {
+  display: inline-block;
+  background: url("/sites/all/modules/custom/tfk_search/images/star-favorite-icon.png") no-repeat;
+  padding-left: 18px;
+  height: 20px;
+}
+
+/**
+ * Worksheets blocks
+ *
+ * No margin allowed between left-rail facet blocks in order to make them look
+ * like a single, cohesive block. Only use padding to separate these blocks.
+ */
+body.section-worksheets .region-sidebar-first {
+
+}
+
+body.section-worksheets div.region-sidebar-first div.block,
+body.section-worksheets .region-sidebar-first .block h2,
+body.section-worksheets .region-sidebar-first .item-list ul li,
+body.section-worksheets .region-sidebar-first .item-list ul {
+  margin: 0;
+}
+
+body.section-worksheets .region-sidebar-first .block h2 {
+  /*font: normal 12px "arial black";*/
+}
+
+body.section-worksheets .region-sidebar-first .block {
+  border-left: 1px solid #CECECE;
+  border-right: 1px solid #CECECE;
+  padding: 0 10px;
+}
+
+
+body.section-worksheets .region-sidebar-first .first.block {
+  border-top: 1px solid #CECECE;
+  padding-top: 10px;
+  padding-bottom: 13px;
+}
+
+body.section-worksheets .region-sidebar-first .last.block {
+  border-bottom: 1px solid #CECECE;
+  padding-bottom: 5px;
+}
+
+.block.block-apachesolr-search h2.block-title {
+  font-size: 12px;
+  font-weight: bold;
+  padding-bottom: 5px;
+}
+
+.block.block-apachesolr-search a.apachesolr-facet {
+  color: #000;
+  font-size: 12px;
+  font-weight: normal;
+}
+
+body.section-worksheets .region-sidebar-first .block.block-apachesolr-search {
+  padding-top: 5px;
+}
+
+#block-apachesolr-search-im-28-field-grade-level.block {
+  padding-top: 0px;
+}
+
+body.section-worksheets .region-sidebar-first .block.block-apachesolr-search {
+  padding-top: 5px;
+}
+
+body.section-worksheets .region-sidebar-first .block.block-apachesolr-search li {
+  padding-bottom: 1px;
+}
+
+#block-tfk-search-tfk-search-ws-leftbar-title div.content {
+  padding: 3.35px 0 2.76px 11px;
+  color: white;
+  font-size: 1em;
+  font-weight: bold;
+  background-color: #D71700;
+}
+
+body.section-worksheets .region-sidebar-first .section {
+  background: none;
+  border: 0;
+  padding: 0; 
+}
+
+.column.sidebar .block-apachesolr-search,
+.column.sidebar .block-tfk-search,
+.column.sidebar .block-tfk-favorites {
+  background-color: #D9EFFE;
+}
+
+/**
+ * Overrides
+ */
+
+/* My Saved Searches */
+#block-tfk-search-tfk-search-worksheet-saved.block {
+  border: 1px solid #CECECE;
+  margin-top: 8px;
+  padding-top: 10px;
+  background-color: #FFF;
+}
+
+#block-tfk-search-tfk-search-worksheet-saved.block h2 {
+  padding: 3.35px 0 2.76px 11px;
+  color: white;
+  font-size: 1em;
+  font-weight: bold;
+  background-color: #D71700;
+  margin-bottom: 10px;
+}
+
+#block-tfk-search-tfk-search-worksheet-saved.block .submbtn {
+  text-align: right;
+}
+
+#block-tfk-search-tfk-search-worksheet-saved.block #savsearches {
+  padding-left: 5px;
+  margin-bottom: 10px;
+}
+
+/* Save this search */
+#block-tfk-search-tfk-search-worksheet-user-save {
+  padding-top: 9px;
+}
+
+#block-tfk-search-tfk-search-worksheet-user-save .content {
+  text-align: right;
+}
+
+#block-tfk-search-tfk-search-worksheet-saved.block .savedsrch {
+  border-bottom: 1px dotted #A7CAE4;
+  padding: 3px 0 7px 0;
+}
+
+#block-tfk-search-tfk-search-worksheet-saved.block .savedsrch .savedsrch-label {
+  display: inline-block;
+}
+
+#block-tfk-search-tfk-search-worksheet-saved.block .savedsrch .savedsrch-checkbox {
+  display: inline-block;
+  float: right;
+}
+
+/* My Favorites */
+#block-tfk-favorites-tfk-favorites-links.block {
+  margin-top: 8px;
+  padding: 0;
+  border: none;
+}
+
+#block-tfk-favorites-tfk-favorites-links.block h2 {
+  font-size: 1em;
+  font-weight: bold;  
+}
+
+#block-tfk-favorites-tfk-favorites-links.block .header {
+  height: 31px;
+}
+
+#block-tfk-favorites-tfk-favorites-links.block .content {
+  background: url("/sites/all/modules/custom/tfk_search/images/my-favs-block-bg.png") no-repeat;
+}
+
+#block-tfk-favorites-tfk-favorites-links.block .body {
+  border: 3px solid #ACDBFC;
+  border-top: none;  
+}
+
+#block-tfk-favorites-tfk-favorites-links.block .header .header-content {
+  padding-top: 10px;
+  padding-left: 11px;
+  font-size: 1em;
+  font-weight: bold;  
+}
+
+#block-tfk-favorites-tfk-favorites-links.block .body .myfavs {
+  padding: 7px 10px 6px 10px;
+  text-align: center;
+}
+
+#block-tfk-favorites-tfk-favorites-links.block .body .myfavs .view-all {
+  margin-bottom: 5px;
+}
+
+/* Modal popup - "Name saved search" */
+body.section-worksheets .popups-container {
+  padding: 9px;
+}
+
+body.section-worksheets .popups-container div.modal-header.popups-title {
+  background-color: #D71700;
+}
+
+body.section-worksheets .popups-container .svd-srch-desc {
+  padding-top: 5px;
+}
+
+body.section-worksheets .popups-container label[for=edit-savedname] {
+  padding-bottom: 9px;
+}
+
+body.section-worksheets .popups-container label[for=edit-savedname] {
+  float: none;
+}
+
+body.section-worksheets .popups-container .svd-srch-submit {
+  text-align: right;
+}

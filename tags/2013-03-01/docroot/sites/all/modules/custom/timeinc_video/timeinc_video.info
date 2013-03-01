@@ -1,0 +1,4 @@
+name = Time Inc Video
+description = Video functions
+core = 7.x
+package = "TFK"

@@ -1,0 +1,520 @@
+<?php
+
+function tfk_helper_init() {
+  
+}
+
+function tfk_helper_node_view() {
+  
+}
+
+/**
+ * Implementation of hook_theme
+ */
+function tfk_helper_theme() {
+  return array(
+    // Featured block that goes on the sidebar.
+    'featured_block_sidebar' => array(
+      'variables' => array('args' => NULL),
+    ),
+    // More Photos and Videos block.
+    'photos_video_more' => array(
+      'variables' => array('more_items' => array()),
+    ),
+    // Regular slideshow, Spec 7B.
+    'regular_slideshow' => array(
+    	'template' => 'regular-slideshow',
+    	'variables' => array('images_data' => array(), 'related_content' => ''),
+    ),
+    // Suggestion Box.
+    'suggestion_box' => array(
+      'variables' => array(
+      	'id' => 'top',
+      	'message' => 'Example suggestion message',
+      	'link_title' => 'Example link text',
+      	'link_dest' => 'node',
+        'class' => array('suggestion-box'),
+      ),
+    ),
+    //
+  );
+}
+
+/**
+ * Theme sidebar Featured block.
+ *
+ * @param unknown_type $args
+ */
+function theme_featured_block_sidebar($args) {
+  list($type, $title, $body, $link, $image) = array_values($args);
+  
+  $output = "";
+  $output .= "<div class='featured-block-sidebar-label featured-". $type. "'>&nbsp;</div>";
+  $output .= "<div class='col1'>";
+  $output .= "<div class='featured-block-sidebar-img'>$image</div>";
+  $output .= "<div class='featured-block-sidebar-title'>$title</div>";
+  $output .= "<div class='featured-block-sidebar-body'>$body</div>";
+  $output .= "<div class='featured-block-sidebar-link'>$link</div>";
+  $output .= "</div>";
+
+  return $output;
+}
+
+/**
+ * Returns a themed suggestion box.
+ */
+function theme_suggestion_box($options = array()) {
+  $output = "<div class='suggestion-box-wrapper ". implode(' ', $options['wrapper-class']). "'>";
+  
+  $output .= "<div id='{$options['id']}' class='". implode(' ', $options['class']). "'>";
+  
+  $message = t($options['message']);
+  $link = l(t($options['link_title']), $options['link_dest']);
+   
+  $output .= "<div class='msg'>$message</div>";
+  $output .= "<div class='link'>$link</div>";
+  $output .= '</div>';
+  
+  $output .= '</div>';
+  return $output;
+}
+
+/**
+ * Implementation of hook_block_info.
+ *
+ * Here we expose blocks that are usable by other modules.
+ */
+function tfk_helper_block_info() {
+  $blocks = array();
+  
+  // TFK Photos and Video Node Featured Block (Sidebar).
+  $blocks['featured_block_sidebar_slideshow'] = array(
+    'info' => t('TFK Helper Sidebar Featured Block'),
+    'visibility' => BLOCK_VISIBILITY_LISTED,
+    'cache' => DRUPAL_CACHE_GLOBAL,
+  );
+  
+  // TFK Photos and Video More Items Block.
+  $blocks['more_items_block'] = array(
+    'info' => t('TFK Helper More Items Block'),
+    'visibility' => BLOCK_VISIBILITY_LISTED,
+    'cache' => DRUPAL_CACHE_GLOBAL,
+  );
+  
+  // TFK Helper Slideshow.
+  $blocks['tfk_helper_slideshow'] = array(
+    'info' => t('TFK Helper Slideshow'),
+    'visibility' => BLOCK_VISIBILITY_LISTED,
+    'cache' => DRUPAL_CACHE_GLOBAL,
+  );
+  
+  return $blocks;
+}
+
+/**
+ * Implementation of hook_block_view.
+ */
+function tfk_helper_block_view($delta='') {
+  $block = array();
+  
+  switch ($delta) {
+    
+    // TFK Photos and Video Node Featured Block (Sidebar).
+    case 'featured_block_sidebar_slideshow':
+      drupal_add_css(drupal_get_path('module', 'tfk_helper'). '/css/tfk_helper_featured_block.css', 'file');
+      $node = menu_get_object('node', 1);
+      $image_field = ($node->type == 'video') ? 'field_video_thumbnail' : 'field_image';
+      $featured_item = tfk_helper_get_featured_block_sidebar('photos_videos_featured', $image_field);
+      if($featured_item != FALSE) {
+        $block['content'] = theme('featured_block_sidebar', $featured_item);
+      }
+    break;
+    
+    // TFK Photos and Video More Items Block. Used for More TFK Photos & Videos.
+    case 'more_items_block':
+      drupal_add_css(drupal_get_path('module', 'tfk_helper'). '/css/tfk_helper_more_items_block.css', 'file');
+      $more_items = tfk_helper_get_more_items();
+      if($more_items != FALSE) {
+        $block['content'] = theme('photos_video_more', $more_items);
+      }
+    break;
+    
+    // TFK Helper Slideshow.
+    case 'tfk_helper_slideshow':
+      drupal_add_js(drupal_get_path('theme', 'tfk'). '/js/atw_homepage_slideshow.js','file');
+      drupal_add_css(drupal_get_path('theme', 'tfk'). '/css/atw_homepage_slideshow.css', 'file');
+      $slideshow_nid = arg(1);
+      $images = tfk_helper_get_slideshow_data($slideshow_nid);
+      if($images != FALSE) {
+        $block['content'] = tfk_helper_get_slideshow($images, array('related_nid' => $slideshow_nid));
+      } else {
+        $block['content'] = '<b>No valid images found</b>';
+        drupal_set_message('The slideshow could not be rendered because there are no valid images associated to this node.', 'warning');
+      }
+    break;
+    
+  }
+  
+  return $block;
+}
+
+/**
+ * Returns a fully-themed generic slideshow.
+ *
+ * @param array $images
+ *   Associative array of images with the following keys
+ *     - 'image_path': Publicly accessible URL for the image.
+ *     - 'image_title': Image title.
+ * @param array $options
+ *   Associative array of options:
+ *     - 'related_nid': If set, a themed box will be added to the
+ *     slideshow with links to related content.
+ *
+ * @see tfk_helper_block_view()
+ * @see tfk_helper_get_additional_content()
+ * @see theme_atw_destination_node_slideshow()
+ * @see theme_tfk_search_related_content()
+ */
+function tfk_helper_get_slideshow($images, $options) {
+  $variables = array();
+  
+  if(array_key_exists('related_nid', $options) && !empty($options['related_nid'])) {
+    $additional_content = tfk_helper_get_additional_content();
+    if($additional_content !== FALSE) {
+      $variables['related_content'] = theme('tfk_search_related_content', $additional_content);
+    }
+  }
+  
+  $variables['images_data'] = $images['images_data'];
+  $output = theme('regular_slideshow', $variables);
+  
+  return $output;
+}
+
+/**
+ * Helper function used for retrieving additional content.
+ *
+ * Fetches related content for the current node using the
+ * tfk_helper_related_content View.
+ *
+ * @return
+ *   FALSE if no additional content is found. Otherwise an array of associative arrays
+ *   with the following keys: 'path': node url, 'title': node title, 'type':
+ *   content type.
+ */
+function tfk_helper_get_additional_content() {
+  // @see Views API: http://groups.drupal.org/node/10129.
+  $items = array();
+  
+  $view = views_get_view('tfk_helper_related_content');
+  if(is_null($view)) {
+    return FALSE;
+  } else {
+    $view->execute();
+  	if(!empty($view->result)) {
+  		$related_content = array('quantity_articles' => count($view->result), 'related_content');
+  	    foreach($view->result as $result) {
+  	      if(is_null($result->node_field_data_field_additional_content_nid)) {
+  	        return FALSE;
+  	      }
+  	      $related_content['related_content'][] = array(
+  	        'path'   => 'node/'. $result->node_field_data_field_additional_content_nid,
+  	        'title' => $result->node_field_data_field_additional_content_title,
+  	      	'type' => tfk_helper_translate_content_type($result->node_field_data_field_additional_content_type),
+  	      );
+  	    }
+  		return $related_content;
+  	} else {
+  	  return FALSE;
+  	}
+  }
+}
+
+/**
+ * Translate machine-readable content type names.
+ *
+ * @return string
+ *   Human-readable content type string.
+ */
+function tfk_helper_translate_content_type($content_type) {
+  switch ($content_type) {
+    case 'atw_destination':
+      $translation = 'destination';
+    break;
+    
+    default:
+      $translation = $content_type;
+    break;
+  }
+  return $translation;
+}
+
+/**
+ * Get an array of images for the slideshow template.
+ *
+ * @param int $nid Slideshow nid.
+ *
+ * @see tfk_helper_block_view
+ */
+function tfk_helper_get_slideshow_data($nid) {
+  
+  
+  $node = node_load($nid); //@todo menu get object.
+  $images =  field_get_items('node', $node, 'field_slideshow_images');
+  
+  if(!empty($images)) {
+    $list = array('images_data' => array());
+    foreach($images as $image){
+      // Title.
+      $title = $image['node']->title;
+      
+      // Caption.
+      $caption = array_pop(array_shift(field_get_items('node', $image['node'], 'field_caption')));
+      
+      // Credit.
+      $credit = array_pop(array_shift(field_get_items('node', $image['node'], 'field_credit')));
+      
+      // Images.
+      $image_field = array_shift(field_get_items('node', $image['node'], 'field_image'));
+      
+      // Description.
+      $body = array_shift(field_get_items('node', $image['node'], 'body'));
+      if(!empty($body['safe_summary'])) {
+        $description = $body['safe_summary'];
+      } else {
+        $description = $body['safe_value'];
+      }
+      
+      $derivative_path = tfk_search_get_thumbnail($image_field['fid'], 'tfk_square_large');
+      
+      if($derivative_path != FALSE) {
+        $list['images_data'][] = array(
+          'image_path'  => $derivative_path,
+          'image_title' => $image['node']->title,
+          'title'       => $title,
+          'caption'     => $caption,
+          'credit'      => $credit,
+          'description' => $description,
+        );
+      }
+      
+    }
+  }
+  
+  if(!empty($list['images_data'])) {
+    return $list;
+  } else {
+    return FALSE;
+  }
+}
+
+/**
+ * Executes photos_videos_more View to generate array of 4 Photos and Video
+ * nodes.
+ *
+ * @see theme_photos_video_more()
+ * @see tfk_helper_block_view()
+ */
+function tfk_helper_get_more_items() {
+  // @see Views API: http://groups.drupal.org/node/10129.
+  $items = array();
+  
+  $view = views_get_view('photos_videos_more');
+  if(is_null($view)) {
+    return FALSE;
+  } else {
+    $result = $view->execute_display('block_mpv');
+    // Another way of doing it.
+    //$view->set_display('block_mpv');
+    //$view->set_arguments(array(arg(1)));
+    //$view->execute();
+    $view->render();
+    
+    // Amount of items to show.
+    $qty = 4;
+    $index = 0;
+    $continue = FALSE;
+    $result_qty = count($view->result);
+    // Iterate through View results until we have 4 items with images.
+    for ($i = 0; $i < $qty; $i++) {
+      // If we have iterated through the whole result set.
+      if(($index) == $result_qty) {
+        break;
+      }
+      $result = $view->result[$index];
+      
+      // Video. @todo Theme video thumbnails once they are ready.
+      if($result->node_type == 'video') {
+        $thumbnail = drupal_render($result->field_field_video_upload[0]['raw']);
+        
+        // Don't show this Video if it does not have a thumbnail.
+        $continue = (empty($thumbnail)) ? TRUE : FALSE;
+      }
+      
+      // Slideshow thumbnails.
+      if($result->node_type == 'slideshow') {
+        // Add title and alt attributes for SEO.
+        if(empty($result->field_field_image[0]['rendered']['#item']['alt'])) {
+          $result->field_field_image[0]['rendered']['#item']['alt'] = $result->node_title;
+        }
+        if(empty($result->field_field_image[0]['rendered']['#item']['title'])) {
+          $result->field_field_image[0]['rendered']['#item']['title'] = $result->node_title;
+        }
+        $thumbnail = drupal_render($result->field_field_image[0]['rendered']);
+        
+        // Don't show this Video if it does not have a thumbnail.
+        $continue = (empty($thumbnail)) ? TRUE : FALSE;
+      }
+      
+      // Increment resultset index.
+      $index++;
+      
+      if($continue) {
+        $i--;
+        continue;
+      }
+      
+      // Remove " and ' characters to be safe.
+      $link_options = array('html' => TRUE, 'attributes' => array('class' => array('tfk-mpv-thumbnail-link', 'content-type-'. $result->node_type), 'title' => htmlentities($result->node_title, ENT_QUOTES, 'UTF-8', FALSE)));
+      $url = 'node/'. $result->nid;
+      $items[] = array(
+        'title' => l($result->node_title, $url),
+      	'image' => l($thumbnail, $url, $link_options),
+        'type' => $result->node_type,
+      );
+    }
+  }
+  return array('more_items' => $items);
+}
+
+function theme_photos_video_more($variables) {
+  $items = $variables['more_items'];
+  $output = '<div id="more-items">';
+  $output .= '<h2 class="more-items-label">More TFK Photos & Videos</h2>';
+  $output .= '<div class="more-items-content">';
+  foreach($items as $item) {
+    $output .= '<div class="more-items-col">';
+    $output .= $item['image'];
+    $output .= '<div class="more-items-item-title">'. $item['title']. '</div>';
+    $output .= '</div>';
+  }
+  $output .= '</div>'; // More items content.
+  $output .= '</div>';
+  return $output;
+}
+
+class tfkHelperFeaturedItem {
+  // We expose public static properties so developers can easily modify the
+  // style of the data loaded.
+  /**
+   * Content type of the node currently being viewed.
+   *
+   * @var string
+   */
+  static $image_style = '115x115';
+  static $body_trim = '300';
+  static $snippet_format = 'full_html';
+  static $thumbnail_class = array('featured-block-sidebar-img');
+  /**
+   * Field to load the thumbnail image from.
+   * @var string
+   */
+  static $thumbnail_field;
+  
+  function __construct($nid) {
+    $featured_node = node_load($nid);
+    $this->type = $featured_node->type;
+    
+    // Add dynamic CSS class using content type.
+    self::$thumbnail_class[] = 'content-type-'. $this->type;
+      
+    $url = 'node/'. $featured_node->nid;
+    $this->title = l($featured_node->title, $url); // Alternatively load 'safe_summary'.
+    // Trim and filter the body to ensure valid and safe markup.
+    // Cache the filtered output in the {cache_filter} table.
+    // @todo Make the trim count a setting.
+    $this->body = check_markup(truncate_utf8($featured_node->body['und'][0]['safe_value'], self::$body_trim, TRUE, TRUE, 10), self::$snippet_format, '', TRUE);
+    $this->link = l('See '. ucfirst($featured_node->type), $url);
+    
+    if($featured_node->type == 'slideshow') {
+      $image_node = node_load(array_shift(field_get_items('node', $featured_node, 'field_slideshow_images')));
+      $_thumbnail_field = field_get_items('node', $image_node, self::$thumbnail_field);
+      $this->get_thumbnail((object) $_thumbnail_field[0], $url);
+    } else {
+      $_thumbnail_field = field_get_items('node', $featured_node, self::$thumbnail_field);
+      if(!empty($_thumbnail_field)) {
+        $this->get_thumbnail((object) $_thumbnail_field[0], $url);
+      }
+    }
+    unset($this->nid);
+    $this->to_array = get_object_vars($this);
+
+  }
+  
+  /**
+   * Creates a linked image derivative.
+   *
+   * Generates the image derivative if it has not been previously built.
+   */
+  function get_thumbnail($file, $url) {
+    $thumbnail_path = image_style_url(self::$image_style, $file->uri);
+    $link_options = array('html' => TRUE, 'attributes' => array('class' => self::$thumbnail_class));
+    $this->image = l(theme('image', array('path' => $thumbnail_path)), $url, $link_options);
+  }
+}
+
+/**
+ * Loads data for sidebar Featured block.
+ *
+ * @param string $flag_name
+ *   Machine-readable name of the flag used to filter content by.
+ * @param string $thumbnail_field
+ *   Machine-readable name of the field holding the featured item image.
+ * @param boolean $dynamic
+ *   (Optional) Whether to let the function figure the content type by itself.
+ * @param string $node_type
+ *   (Optional) The content type of the node to load.
+ *
+ * @see tfk_helper_block_view()
+ */
+function tfk_helper_get_featured_block_sidebar($flag_name, $thumbnail_field, $dynamic = TRUE, $node_type = NULL) {
+  
+  if($dynamic) {
+    // Get the content type of the current node type.
+    $node = menu_get_object('node', 1);
+    $node_type = $node->type;
+  }
+  tfkHelperFeaturedItem::$thumbnail_field = $thumbnail_field;
+  
+  // We get a Featured node with the same content type as the currently loaded node.
+  $fn_query = "
+    SELECT
+  	  fn.nid AS nid
+  	FROM
+  	  node fn
+  	  INNER JOIN flag_content fc ON fn.nid = fc.content_id
+  	  WHERE fn.type = :node_type
+      AND fc.fid = (SELECT fid FROM flags f WHERE f.name = :flag_name)
+      AND fn.nid != :not_nid
+  	ORDER BY fn.created DESC";
+	
+  // Try to load the first two featured items. If there are two use the second, else fall back to the first one.
+  $featured_nodes = db_query_range($fn_query, 0, 1,
+    array(':node_type' => $node_type, ':flag_name' => $flag_name, ':not_nid' => $node->nid)
+  )->fetchAll();
+  
+  if(!empty($featured_nodes) && isset($featured_nodes[0]->nid)) {
+    // Supress the Featured block when the featured node is the same as the currently viewed one.
+    if($node->nid == $featured_nodes[0]->nid) {
+      return FALSE;
+    } else {
+      $featured_node = new tfkHelperFeaturedItem(($featured_nodes[0]->nid));
+    	if(!empty($featured_node->to_array)) {
+    	  return $featured_node->to_array;
+    	} else {
+    	  return FALSE;
+    	}
+    }
+  }
+  	
+}

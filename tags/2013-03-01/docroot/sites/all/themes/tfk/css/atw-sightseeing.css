@@ -1,0 +1,71 @@
+#sightseeing-container {
+	border: solid 1px #cecece;
+	padding: 10px;
+	position: relative;
+}
+
+#sightseeing-container h1 {
+	font: normal 30px arial;
+	margin: 4px 0;
+	line-height: 1;
+}
+
+#sightseeing-container #map-container {
+	position: relative;
+}
+
+#sightseeing-container #map-container p {
+	margin: 0;
+}
+
+#sightseeing-container #map-container p:first-child {
+	padding-bottom: 10px;
+	border-bottom: dotted 1px #cecece;
+	margin: 4px 0 10px 0;
+}
+
+#location-mask {
+	position: absolute;
+	width: 488px;
+	background: #000;
+	opacity: .75;
+	filter: alpha(opacity=75);
+	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=75)";
+	z-index: 2;
+}
+
+#location-container {
+	position: absolute;
+	width: 468px;
+	padding: 10px;
+	color: white;
+	z-index: 3;
+}
+
+#location-container img {
+	float: left;
+	margin-right: 10px;
+	margin-bottom: 10px;
+}
+
+#location-container h1 {
+	color: white;
+	font: bold 30xp arial;
+	margin-bottom: 10px;
+}
+
+#location-container p {
+	color: white;
+	margin: 0;
+}
+
+#location-container #close {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	width: 12px;
+	height: 12px;
+	cursor: pointer;
+	background: url("../images/atw-sightseeing-close.png") no-repeat;
+}
+

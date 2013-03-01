@@ -1,0 +1,55 @@
+
+
+body.page-my-favorites div.region-sidebar-first div.block,
+body.page-my-favorites .region-sidebar-first .block h2,
+body.page-my-favorites .region-sidebar-first .item-list ul li,
+body.page-my-favorites .region-sidebar-first .item-list ul {
+  margin: 0;
+}
+
+body.page-my-favorites .region-sidebar-first .block {
+  border-left: 1px solid #CECECE;
+  border-right: 1px solid #CECECE;
+  padding: 0 10px;
+}
+
+body.page-my-favorites .region-sidebar-first .section {
+  background: none;
+  border: 0;
+  padding: 0; 
+}
+
+/* On my favs this is the first block, so we need to get rid of the top margin */
+body.page-my-favorites #block-tfk-search-tfk-search-worksheet-saved.block {
+	margin-top: 0;
+}
+
+/* Content block */
+/*
+div.view.view-id-user_favorites.view-display-id-page {
+  border: 1px solid #CECECE;
+  padding: 10px;	
+}*/
+
+li.search-result div.col1 img {
+  margin-right: 10px;
+}
+
+body.page-my-favorites li.search-result div.col2 {
+  display: block;
+  margin: 0 0 0 10px;
+  max-width: inherit;
+}
+
+li.search-result .content-type .ctype-suffix {
+    float: right;
+    padding-right: 10px;
+}
+
+/* Favorites link */
+li.search-result .flag-favorites {
+  display: inline-block;
+  background: url("/sites/all/modules/custom/tfk_search/images/star-favorite-icon.png") no-repeat;
+  padding-left: 18px;
+  height: 20px;
+}
