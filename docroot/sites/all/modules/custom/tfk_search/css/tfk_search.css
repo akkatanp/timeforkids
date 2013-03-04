@@ -600,7 +600,7 @@ body.section-my-favorites ol#tfk-search-results-photos-video .icon  {
 
 body.section-photos-video .content-type-slideshow .icon,
 body.section-my-favorites .content-type-slideshow .icon,
-view-id-minisite_articles div#tfk-search-photos-video-featured .content-type-slideshow .icon {
+.view-id-minisite_articles div#tfk-search-photos-video-featured .content-type-slideshow .icon {
   background: url(../images/photo-camera-icon.png) no-repeat;
 }
 
