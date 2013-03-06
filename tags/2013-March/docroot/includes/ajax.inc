@@ -511,7 +511,7 @@ function ajax_prepare_response($page_callback_result) {
         break;
 
       case MENU_ACCESS_DENIED:
-        $commands[] = ajax_command_alert(t('You are not authorized to access this page. Ajax.inc'));
+        $commands[] = ajax_command_alert(t('You are not authorized to access this page.'));
         break;
 
       case MENU_SITE_OFFLINE:
