@@ -2139,7 +2139,7 @@ body.section-photos-video #slideshow .outer {
 	position: relative;
 	border: solid 1px #cecece;
 	background: #ffc001 url(../images/notification-exclamation.png) no-repeat 10px 10px;
-	padding: 10px 10px 10px 87px;
+	padding: 10px 10px 15px 87px;
 	-moz-box-shadow: 2px 2px 2px #999999;
 	-webkit-box-shadow: 2px 2px 2px #999999;
 	box-shadow: 2px 2px 2px #999999;
