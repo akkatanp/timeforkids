@@ -2634,7 +2634,7 @@ function drupal_deliver_html_page($page_callback_result) {
         if (empty($return) || $return == MENU_NOT_FOUND || $return == MENU_ACCESS_DENIED) {
           // Standard 403 handler.
           drupal_set_title(t('Access denied'));
-          $return = t('Sorry, but the page you are trying to reach is only available to subscribers.');
+          $return = t('Sorry, but the page you are trying to reach is only available to subscribers.<br /> <p>Subscribers: <a href="/user" id="login-link">Click here</a> to log in, and then try again.</p><br /><p>Non-Subscribers: <a href="https://subscription.timeforkids.com/storefront/subscribe-to-time-for-kids/link/1005015.html">Click here</a> to subscribe.</p>');
         }
 
         print drupal_render_page($return);
