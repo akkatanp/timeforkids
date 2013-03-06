@@ -102,7 +102,7 @@ function tfk_photos_video_preprocess_node(&$variables) {
     // Re-organize content render array.
     $variables['content']['field_video_upload']['#weight'] = 9;
     $variables['content']['node_title']['#weight'] = 12;
-    //$variables['content']['field_date']['#weight'] = 13;
+    $variables['content']['field_date']['#weight'] = 13;
     $variables['content']['body']['#weight'] = 14;
     $variables['content']['links']['#weight'] = 15;
     $variables['content']['comments']['#weight'] = 16;
@@ -118,7 +118,7 @@ function tfk_photos_video_preprocess_node(&$variables) {
     
     // Title
     $variables['print_title'] = TRUE;
-    $variables['title_prefix'] = 'Slide Show: ';
+    //$variables['title_prefix'] = 'Slide Show: ';
     
     unset($_variables['content']);
   }
