@@ -73,7 +73,7 @@ function tfk_photos_video_preprocess_node(&$variables) {
     
     // Title
     $variables['print_title'] = TRUE;
-    $variables['title_prefix'] = 'Video: ';
+    //$variables['title_prefix'] = 'Video: ';
     
     // Add second title.
     $content_title = array(
@@ -118,7 +118,7 @@ function tfk_photos_video_preprocess_node(&$variables) {
     
     // Title
     $variables['print_title'] = TRUE;
-    $variables['title_prefix'] = 'Slide Show: ';
+    //$variables['title_prefix'] = 'Slide Show: ';
     
     unset($_variables['content']);
   }
