@@ -81,9 +81,9 @@ function tfk_photos_video_preprocess_node(&$variables) {
       $video_date =  $variables['field_date'][0]['safe_value'];
     }
     if(!empty($video_date)) {
-      $variables['content']['video_date'] = array(
+      $variables['node']['video_date'] = array(
         '#markup' => '<span class="date">'. $video_date. '</span>',
-        '#weight' => 10,
+        '#weight' => 8,
       );
     }
     
