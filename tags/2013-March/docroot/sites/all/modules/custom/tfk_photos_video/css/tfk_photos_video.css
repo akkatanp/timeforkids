@@ -122,6 +122,11 @@ body.page-node.node-type-slideshow #slideshow-container #slide-count {
 	margin: 0 0 5px 0px;
 	font-size: 20px;
 	font-weight: bold;
+	float: left;
+}
+
+#block-system-main .content .image-date {
+	float: right;
 }
 
 body.page-node.node-type-slideshow #block-system-main {
