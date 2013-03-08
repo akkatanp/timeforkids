@@ -75,18 +75,6 @@ function tfk_photos_video_preprocess_node(&$variables) {
     $variables['print_title'] = TRUE;
     $variables['title_prefix'] = '';
 
-    //Add Date
-   $video_date = '';
-    if(!empty($variables['field_date'][0]['safe_value'])) {
-      $video_date =  $variables['field_date'][0]['safe_value'];
-    }
-    if(!empty($video_date)) {
-      $variables['node']['video_date'] = array(
-        '#markup' => '<span class="date">'. $video_date. '</span>',
-        '#weight' => 8,
-      );
-    }
-    
     // Add second title.
     $content_title = array(
       '#type' => 'html_tag',
