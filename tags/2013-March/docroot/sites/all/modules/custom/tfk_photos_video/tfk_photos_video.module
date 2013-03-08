@@ -76,10 +76,16 @@ function tfk_photos_video_preprocess_node(&$variables) {
     $variables['title_prefix'] = '';
 
     //Add Date
-    $node_date = array(
-      '#markup' => '<span class="date">'. $variables['field_date']. '</span>',
+   $video_date = '';
+    if(!empty($variables['field_date'][0]['safe_value'])) {
+      $video_date =  $variables['field_date'][0]['safe_value'];
+    }
+    if(!empty($video_date)) {
+      $variables['content']['video_date'] = array(
+        '#markup' => '<span class="date">'. $video_date. '</span>',
+        '#weight' => 10,
       );
-    $variables['node']['field_date'] = $node_date;
+    }
     
     // Add second title.
     $content_title = array(
