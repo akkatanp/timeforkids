@@ -157,7 +157,7 @@
       	<?php if(tfk_helper_user_has_role() && isset($variables['related_content'])): ?>
       		<?php print $variables['related_content']; ?>
       	<?php endif; ?>
-      	
+      	<span class="date">TEST2</span>
       <?php endif; ?>
     </div>
   
