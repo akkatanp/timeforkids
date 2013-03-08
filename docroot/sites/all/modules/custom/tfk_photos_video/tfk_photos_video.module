@@ -74,6 +74,12 @@ function tfk_photos_video_preprocess_node(&$variables) {
     // Title
     $variables['print_title'] = TRUE;
     $variables['title_prefix'] = '';
+
+    //Add Date
+    $node_date = array(
+      '#markup' => '<span class="date">'. $variables['field_date']. '</span>',
+      );
+    $variables['node']['field_date'] = $node_date;
     
     // Add second title.
     $content_title = array(
