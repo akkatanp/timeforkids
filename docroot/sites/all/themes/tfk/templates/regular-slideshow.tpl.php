@@ -1,5 +1,3 @@
-
-<div class="image-date"><?php echo $image_data['date']; ?></div>
 <div id="slideshow-container" class="regular">
 	
 	<div id="slideshow-controls">
@@ -31,7 +29,7 @@
 			  <?php endif; ?>
 			</div>
 			<h1 class="image-title"><?php echo $image_obj['image_title']; ?></h1>
-			<!-- <div class="image-date"><?php echo $image_obj['date']; ?></div> -->
+			<div class="image-date"><?php echo $image_obj['date']; ?></div>
 			<div class="description"><?php echo $image_obj['description']; ?></div>
 		</div>
 		<?php endforeach;?>
