@@ -124,9 +124,6 @@
       <?php print $title; ?></h2>
     <?php endif; ?>
     <?php print render($title_suffix); ?>
-    <?php if($type == 'video'): ?>
-     <span class="image-date"><?php print_r ($variables['field_date'][0]); ?> Aug 17</span>
-    <?php endif; ?>
   
     <?php if (isset($unpublished) && $unpublished): ?>
       <div class="unpublished"><?php print t('Unpublished'); ?></div>
@@ -157,7 +154,7 @@
       	<?php if(tfk_helper_user_has_role() && isset($variables['related_content'])): ?>
       		<?php print $variables['related_content']; ?>
       	<?php endif; ?>
-      	<?php hide($content['field_date']); ?>
+      	
       <?php endif; ?>
     </div>
   
