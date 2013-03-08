@@ -127,8 +127,8 @@
 
     <?php if($type == 'slideshow'): ?>
         <span class="image-date"><?php print_r ($variables['field_date']); ?></span>
-        <span class="image-date"><?php print_r ($variables['field_date'][0][value]); ?></span>
-        <span class="image-date"><?php echo date("D, j M Y", $variables['field_date']) ?></span>
+        <span class="image-date"><?php print_r ($variables['field_date'][0]['safe_value']); ?></span>
+        <span class="image-date"><?php echo date("D, j M Y", $variables['field_date'][0]['safe_value']); ?></span>
        
     <?php endif; ?>
 
