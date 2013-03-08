@@ -1,4 +1,6 @@
-
+<?php foreach($images_data as $image_k => $image_obj): ?>
+	<div class="image-date"><?php echo $image_obj['date']; ?></div>
+<?php endforeach;?>
 <div id="slideshow-container" class="regular">
 	
 	<div id="slideshow-controls">
