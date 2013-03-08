@@ -126,7 +126,7 @@
     <?php print render($title_suffix); ?>
 
     <?php if($type == 'slideshow'): ?>
-        <span class="image-date"><?php print $variables['field_date']; ?></span>
+        <span class="image-date"><?php print_r ($variables['field_date']); ?></span>
        
     <?php endif; ?>
 
