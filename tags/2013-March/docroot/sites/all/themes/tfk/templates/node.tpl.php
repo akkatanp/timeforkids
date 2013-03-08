@@ -129,6 +129,7 @@
         <span class="image-date"><?php print_r ($variables['field_date']); ?></span>
         <span class="image-date"><?php print_r ($variables['field_date'][0]['safe_value']); ?></span>
         <span class="image-date"><?php echo format_date("F d, Y", $variables['field_date'][0]['safe_value']); ?></span>
+        <span class="image-date"><?php echo date("F d, Y", 1352325300); ?></span>
        
     <?php endif; ?>
 
