@@ -124,6 +124,9 @@
       <?php print $title; ?></h2>
     <?php endif; ?>
     <?php print render($title_suffix); ?>
+    <?php if($type == 'video'): ?>
+     <?php print $video_date; ?>
+    <?php endif; ?>
   
     <?php if (isset($unpublished) && $unpublished): ?>
       <div class="unpublished"><?php print t('Unpublished'); ?></div>
