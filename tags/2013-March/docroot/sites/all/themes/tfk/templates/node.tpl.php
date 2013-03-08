@@ -125,7 +125,7 @@
     <?php endif; ?>
     <?php print render($title_suffix); ?>
     <?php if($type == 'video'): ?>
-     <span class="date"><?php print $variables['field_date']; ?></span>
+     <span class="date"><?php print $variables['field_date'][0]; ?></span>
     <?php endif; ?>
   
     <?php if (isset($unpublished) && $unpublished): ?>
