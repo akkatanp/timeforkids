@@ -100,7 +100,7 @@ function tfk_photos_video_preprocess_node(&$variables) {
     }
     
     // Re-organize content render array.
-    $variables['content']['field_date']['#weight'] = 9;
+    #$variables['content']['field_date']['#weight'] = 9;
     $variables['content']['field_video_upload']['#weight'] = 12;
     $variables['content']['node_title']['#weight'] = 13;
     
@@ -109,6 +109,7 @@ function tfk_photos_video_preprocess_node(&$variables) {
     $variables['content']['comments']['#weight'] = 16;
     
     // Unset unused stuff.
+    unset($_variables['content']['field_date']);
     unset($_variables['submitted']);
     unset($_variables['rdf_template_variable_attributes_array']['submitted']);
     unset($_variables['content']['field_caption']);

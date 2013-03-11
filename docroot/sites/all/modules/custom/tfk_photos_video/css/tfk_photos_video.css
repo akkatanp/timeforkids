@@ -129,6 +129,7 @@ body.page-node.node-type-slideshow #slideshow-container #slide-count {
 	float: right;
 }
 #block-system-main .content .date-display-single {
+  display: none;
   float: right;
 }
 
