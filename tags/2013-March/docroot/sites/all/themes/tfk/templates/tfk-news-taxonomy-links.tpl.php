@@ -1,5 +1,4 @@
 <?php
-die(print_r($term));
 if(isset($term['class'])) {
   $attributes = array('attributes' => array('class' => array($term['class'])));
 } else {
@@ -13,6 +12,13 @@ if(isset($term['class'])) {
 <ul class="menu">
   <li><?php echo l('All News','news-archive/all',array('attributes' => array('class'=>array($term['class']))));?></li>
 <?php foreach($terms_with_articles as $term): ?>
+	<?php
+if(isset($term['class'])) {
+  $attributes = array('attributes' => array('class' => array($term['class'])));
+} else {
+  $attributes = array();
+}
+?>
   <li><?php echo l($term['term_name'],'news-archive/'.strtolower($term['term_name']),array('attributes' => array('class'=>array($term['class']))));?><?php print_r (array('attributes' => array('class'=>array($term['class']))));?><?php print_r($attributes);?></li>
 <?php endforeach; ?>
   
