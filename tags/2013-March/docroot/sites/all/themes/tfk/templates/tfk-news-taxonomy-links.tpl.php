@@ -1,4 +1,5 @@
 <?php
+die(print_r($term));
 if(isset($term['class'])) {
   $attributes = array('attributes' => array('class' => array($term['class'])));
 } else {
