@@ -125,7 +125,7 @@
     <?php endif; ?>
     <?php print render($title_suffix); ?>
 
-    <?php if($type == 'slideshow'): ?>
+    <?php if($type == 'slideshow' || $type == 'video'): ?>
     <?php
         $photoDate = $variables['field_date'][0][value];
      ?>
