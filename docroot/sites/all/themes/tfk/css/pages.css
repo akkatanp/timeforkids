@@ -1946,7 +1946,7 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
 }
 
 .node-type-video .content h1 {
-	font: normal 30px arial;
+	font: bold 30px arial;
 	margin: 4px 0;
 }
 
