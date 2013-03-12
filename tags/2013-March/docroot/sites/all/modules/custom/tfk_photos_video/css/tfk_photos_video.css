@@ -133,6 +133,9 @@ body.page-node.node-type-slideshow #slideshow-container #slide-count {
   float: right;
 }
 
+#block-system-main .content .content {
+    clear: both;
+}
 body.page-node.node-type-slideshow #block-system-main {
 	margin-bottom: 0px;
 }
