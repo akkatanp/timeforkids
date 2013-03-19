@@ -2634,7 +2634,7 @@ function drupal_deliver_html_page($page_callback_result) {
         if (empty($return) || $return == MENU_NOT_FOUND || $return == MENU_ACCESS_DENIED) {
           // Standard 403 handler.
           drupal_set_title(t('Subscriber-only Content'));
-          $return = t('Sorry, but the page you are trying to reach is only available to subscribers.<br><br> <p>Subscribers: <a href="/user" id="login-link">Click here</a> to log in, and then try again.</p><br><p>Non-Subscribers: <a href="https://subscription.timeforkids.com/storefront/subscribe-to-time-for-kids/site/tk-sy1314onlineoffer0213.html?link=1015200">Click here</a> to subscribe.</p>');
+          $return = t('Sorry, but the page you are trying to reach is only available to subscribers.<br><br> <p><b>Subscribers</>: <a href="/user" id="login-link">Click here</a> to log in, and then try again.</p><br><p><b>Non-Subscribers</b>: <a href="https://subscription.timeforkids.com/storefront/subscribe-to-time-for-kids/site/tk-sy1314onlineoffer0213.html?link=1015200">Click here</a> to subscribe.</p>');
         }
 
         print drupal_render_page($return);
