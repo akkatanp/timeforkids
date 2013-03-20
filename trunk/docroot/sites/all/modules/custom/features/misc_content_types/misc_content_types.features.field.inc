@@ -3656,7 +3656,6 @@ function misc_content_types_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_external_url',
-      'label' => 'External URL',
       'required' => 1,
       'settings' => array(
         'text_processing' => '0',
