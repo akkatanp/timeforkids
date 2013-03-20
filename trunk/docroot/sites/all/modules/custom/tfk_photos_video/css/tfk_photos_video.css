@@ -15,7 +15,7 @@ body.node-type-slideshow div.region-sidebar-first div.section,
 body.node-type-video div.region-sidebar-first div.section {
   background: none;
   border: none;
-  padding: 0;	
+  padding: 0; 
 }
 
 /* And apply selectively to each block */
@@ -28,7 +28,7 @@ div#block-tfk-helper-featured-block-sidebar-slideshow {
 div#block-tfk-search-tfk-search-photos-video-back {
   background-color: #D71700;
   padding: 10px 0pt 8px 8px;
-	margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 #tfk-search-back-link div#back-btn-img {
@@ -40,13 +40,13 @@ div#block-tfk-search-tfk-search-photos-video-back {
 }
 
 div.featured-block-sidebar-link a {
-	color: #d71700;
+  color: #d71700;
 }
 
 div#block-tfk-search-tfk-search-photos-video-back a {
   color: white;
-	font: normal 12px "arial black", arial, sans-serif;
-	line-height: 118%;
+  font: normal 12px "arial black", arial, sans-serif;
+  line-height: 118%;
 }
 
 /* Video */
@@ -66,7 +66,7 @@ div#block-tfk-search-tfk-search-photos-video-back a {
 
 /* Override header element and remove ATW background image */
 div#slideshow-container div#slideshow div.header {
-	background: none;
+  background: none;
 }
 
 /* Photos and Video-specific Related Content styling */
@@ -83,12 +83,12 @@ div#slideshow-container div#slideshow div.header {
 
 .node-type-video .related-content-wrap,
 .node-type-slideshow .related-content-wrap {
-	margin-top: 3px;
+  margin-top: 3px;
 }
 
 .node-type-video #featured-related-content-title,
 .node-type-slideshow #featured-related-content-title {
-	margin-top: 20px;
+  margin-top: 20px;
   font: normal 12px "arial black", arial, sans-serif;
 }
 
@@ -98,7 +98,7 @@ div#slideshow-container div#slideshow div.header {
 body.page-node.node-type-slideshow #slideshow-info div.image-date {
   font-size: 10px;
   margin: 0;
-	line-height: 15px;
+  line-height: 15px;
 }
 
 body.page-node.node-type-slideshow #slideshow-related-content #featured-related-content-title {
@@ -115,21 +115,33 @@ body.page-node.node-type-slideshow .addit-related-articles-label,
 body.page-node.node-type-slideshow #block-tfk-helper-more-items-block h2.more-items-label,
 #block-system-main .content h2.node-title,
 body.page-node.node-type-slideshow #slideshow-container #slide-count {
-	color: #333;
+  color: #333;
 }
 
 #block-system-main .content h2.node-title {
-	margin: 0 0 5px 0px;
-	font-size: 20px;
-	font-weight: bold;
+  margin: 0 0 5px 0px;
+  font-size: 20px;
+  font-weight: bold;
+  float: left;
 }
 
+#block-system-main .content .image-date {
+  float: right;
+}
+#block-system-main .content .date-display-single {
+  display: none;
+  float: right;
+}
+
+#block-system-main .content .content {
+    clear: both;
+}
 body.page-node.node-type-slideshow #block-system-main {
-	margin-bottom: 0px;
+  margin-bottom: 0px;
 }
 
 body.node-type-video #block-tfk-helper-more-items-block {
-	margin-top: 10px; 
+  margin-top: 10px; 
 }
 
 /* Icons */
@@ -147,4 +159,9 @@ body.section-photos-video .content-type-slideshow .icon {
 
 body.section-photos-video .content-type-video .icon {
   background: url(/sites/all/modules/custom/tfk_search/images/video-camera-icon.png) no-repeat;
+}
+
+body.node-type-slideshow #slideshow-container p a {
+  margin-top: 0;
+  display: inline;
 }

@@ -73,8 +73,8 @@ function tfk_photos_video_preprocess_node(&$variables) {
     
     // Title
     $variables['print_title'] = TRUE;
-    $variables['title_prefix'] = 'Video: ';
-    
+    $variables['title_prefix'] = '';
+
     // Add second title.
     $content_title = array(
       '#type' => 'html_tag',
@@ -100,14 +100,16 @@ function tfk_photos_video_preprocess_node(&$variables) {
     }
     
     // Re-organize content render array.
-    $variables['content']['field_video_upload']['#weight'] = 9;
-    $variables['content']['node_title']['#weight'] = 12;
-    $variables['content']['field_date']['#weight'] = 13;
+    #$variables['content']['field_date']['#weight'] = 9;
+    $variables['content']['field_video_upload']['#weight'] = 12;
+    $variables['content']['node_title']['#weight'] = 13;
+    
     $variables['content']['body']['#weight'] = 14;
     $variables['content']['links']['#weight'] = 15;
     $variables['content']['comments']['#weight'] = 16;
     
     // Unset unused stuff.
+    unset($_variables['content']['field_date']);
     unset($_variables['submitted']);
     unset($_variables['rdf_template_variable_attributes_array']['submitted']);
     unset($_variables['content']['field_caption']);
@@ -118,8 +120,8 @@ function tfk_photos_video_preprocess_node(&$variables) {
     
     // Title
     $variables['print_title'] = TRUE;
-    $variables['title_prefix'] = 'Slide Show: ';
-    
+    $variables['title_prefix'] = '';
+   
     unset($_variables['content']);
   }
 }
