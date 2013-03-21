@@ -1740,7 +1740,7 @@ function tfk_search_preprocess_page(&$variables) {
       global $user;
     $rls = $user->roles;
     if(count($rls) == 1 && $rls[1] == 'anonymous user'){  // ANONYMOUS USER
-        $variables['section_title'] = t('ACCESS DENIED');
+        $variables['section_title'] = t('SUBSCRIBER-ONLY CONTENT');
     }
   }
   
@@ -1760,7 +1760,7 @@ function tfk_search_preprocess_page(&$variables) {
     global $user;
     $rls = $user->roles;
     if(count($rls) == 1 && $rls[1] == 'anonymous user'){  // ANONYMOUS USER
-        $variables['section_title'] = t('ACCESS DENIED');
+        $variables['section_title'] = t('SUBSCRIBER-ONLY CONTENT');
     }
     
     
