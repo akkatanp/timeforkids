@@ -73,7 +73,7 @@ function tfk_page_paths_menu(){
 		'access arguments' => array('access content')
 	);
         $items['deniedpage'] = array(
-		'title' => 'Access Denied',
+		'title' => 'SUBSCRIBER-ONLY CONTENT',
 		'page callback' => 'tfk_denied_page',
 		'access callback' => 'user_access',
 		'access arguments' => array('access content')
@@ -90,7 +90,7 @@ function _tfk_news_archive_callback(){
 function tfk_page_paths_preprocess_page(&$variables){
     $args = arg();
     if($args[0] == 'deniedpage'){
-        $variables['section_title'] = 'ACCESS DENIED';
+        $variables['section_title'] = 'SUBSCRIBER-ONLY CONTENT';
     }
     
     if(isset($variables['page']['content']['system_main']['admin']['nodes'])){
