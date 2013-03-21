@@ -358,7 +358,7 @@ function tfk_favorites_preprocess_page(&$variables, $hook) {
   $test = null;
   if(arg(0) == 'my-favorites') {
     //global $user;
-    //$variables['section_title'] = empty(array_intersect(array('administrator', 'editor', 'teacher'), array_values($user->roles))) ? 'ACCESS DENIED': 'MY FAVORITES';
+    //$variables['section_title'] = empty(array_intersect(array('administrator', 'editor', 'teacher'), array_values($user->roles))) ? 'SUBSCRIBER-ONLY CONTENT': 'MY FAVORITES';
     //$variables['section_title'] = 'MY FAVORITES';
 
     // Since the My Favorites page uses so many styles that are already defined in Photos and Videos, we recyle tfk_search.css.
