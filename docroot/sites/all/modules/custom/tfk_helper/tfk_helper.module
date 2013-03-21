@@ -361,7 +361,7 @@ function tfk_helper_preprocess_page(&$variables) {
   $args = arg();
   if($args[0] == 'node' && isset($args[1]) && is_numeric($args[1])) {
     if(!node_access('view', node_load($args[1]), $variables['user'])) {
-      $variables['section_title'] = 'ACCESS DENIED';
+      $variables['section_title'] = 'SUBSCRIBER-ONLY CONTENT';
     }
   }
 }
