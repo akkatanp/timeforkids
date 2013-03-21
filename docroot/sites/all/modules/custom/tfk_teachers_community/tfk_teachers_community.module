@@ -233,7 +233,7 @@ function tfk_teachers_community_preprocess_page(&$variables, $hook) {
     global $user;
     $rls = $user->roles;
     if(count($rls) == 1 && $rls[1] == 'anonymous user'){  // ANONYMOUS USER
-        $variables['section_title'] = t('ACCESS DENIED');
+        $variables['section_title'] = t('SUBSCRIBER-ONLY CONTENT');
     }else{
         $variables['section_title'] = t('TEACHER COMMUNITY');
     }
