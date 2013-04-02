@@ -410,7 +410,7 @@ Limit for News Block: 65 characters.',
       ),
       'entity_type' => 'node',
       'field_name' => 'field_skills',
-      'label' => 'Skills',
+      'label' => 'Skillssdsds',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
