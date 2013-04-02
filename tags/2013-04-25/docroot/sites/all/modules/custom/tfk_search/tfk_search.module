@@ -1879,7 +1879,7 @@ function tfk_search_preprocess_block(&$variables) {
         $variables['block']->subject = t('Themes');
         break;
       case 'im_35_field_skills':
-        $variables['block']->subject = t('Skills Test');
+        $variables['block']->subject = t('Skills');
         break;
     }
   }
