@@ -11,7 +11,7 @@ function tfk_worksheets_context_default_contexts() {
   $export = array();
 
   $context = new stdClass();
-  $context->disabled = TRUE; /* Edit this to true to make a default context disabled initially */
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'worksheets';
   $context->description = 'Worksheets';
@@ -55,17 +55,12 @@ function tfk_worksheets_context_default_contexts() {
           'region' => 'sidebar_first',
           'weight' => '-96',
         ),
-        'apachesolr_search-im_35_field_skills' => array(
-          'module' => 'apachesolr_search',
-          'delta' => 'im_35_field_skills',
-          'region' => 'sidebar_first',
-          'weight' => '-91',
-        ),
+        
         'tfk_search-tfk_search_worksheet_user_save' => array(
           'module' => 'tfk_search',
           'delta' => 'tfk_search_worksheet_user_save',
           'region' => 'sidebar_first',
-          'weight' => '-90',
+          'weight' => '-94',
         ),
         'tfk_search-tfk_search_worksheet_saved' => array(
           'module' => 'tfk_search',
