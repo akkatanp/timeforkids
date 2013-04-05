@@ -81,7 +81,7 @@ function advanced_purge_flag($action, $flag, $content_id, $account, $fcid) {
     watchdog('advanced_purge', 'The following cache items have been purged from persistent cache: @results', array('@results' => print_r($results, TRUE)), WATCHDOG_INFO);
     
     // Varnish purge/expire code.
-    advanced_purge_varnish(array($display_cache[$flag->name]['path']));
+    //advanced_purge_varnish(array($display_cache[$flag->name]['path']));
   }
   
 }
