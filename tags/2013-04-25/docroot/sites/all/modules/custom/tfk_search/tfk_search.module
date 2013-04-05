@@ -1876,7 +1876,7 @@ function tfk_search_preprocess_block(&$variables) {
         $variables['block']->subject = t('Categories');
         break;
       case 'im_36_field_themes':
-        $variables['block']->subject = t('Themes XYZ');
+        $variables['block']->subject = t('Themes');
         break;
       case 'im_35_field_skills':
         $variables['block']->subject = t('Skills');
@@ -1987,9 +1987,9 @@ function tfk_search_preprocess_pager_top(&$vars) {
     // @todo Unhardcode the vid in the filter names.
     $default_filters = array(
       TFK_SEARCH_WORKSHEETS_PATH => array(
-      	//'im_28_field_grade_level' => array('active' => FALSE, 'default_text' => 'All Grades', 'filters' => array()),
-      	//'im_36_field_themes' => array('active' => FALSE, 'default_text' => 'All Themes', 'filters' => array()),
-        //'im_35_field_skills' => array('active' => FALSE, 'default_text' => 'All Skills', 'filters' => array()),
+      	'im_28_field_grade_level' => array('active' => FALSE, 'default_text' => 'All Grades', 'filters' => array()),
+      	'im_36_field_themes' => array('active' => FALSE, 'default_text' => 'All Themes', 'filters' => array()),
+        'im_35_field_skills' => array('active' => TRUE, 'default_text' => 'All Skills', 'filters' => array()),
       ),
       TFK_SEARCH_PHOTOSVIDEO_PATH => array(
       	'im_10_field_article_category' => array('active' => FALSE, 'default_text' => 'All Categories', 'filters' => array()),
