@@ -1988,7 +1988,7 @@ function tfk_search_preprocess_pager_top(&$vars) {
     $default_filters = array(
       TFK_SEARCH_WORKSHEETS_PATH => array(
       	'im_28_field_grade_level' => array('active' => FALSE, 'default_text' => 'All Grades', 'filters' => array()),
-      	'im_36_field_themes' => array('active' => FALSE, 'default_text' => 'All Themes', 'filters' => array()),
+      	//'im_36_field_themes' => array('active' => FALSE, 'default_text' => 'All Themes', 'filters' => array()),
         'im_35_field_skills' => array('active' => FALSE, 'default_text' => 'All Skills', 'filters' => array()),
       ),
       TFK_SEARCH_PHOTOSVIDEO_PATH => array(
