@@ -59,6 +59,21 @@ function advanced_purge_rules_condition_info() {
       ),
     ),
   );
+  $conditions['advanced_purge_rules_conditions_node_save'] = array(
+    'group' => t('Advanced Purge'),
+    'label' => t('Content has flag'),
+    'arguments' => array(
+      'node' => array(
+        'type' => 'node',
+        'label' => t('updated content')
+      ),
+      'flag_name' => array(
+        'type' => 'list<text>',
+        'label' => t('flag names'),
+        'description' => t('A list of flags to check against'),
+      ),
+    ),
+  );
   return $conditions;
 }
 
