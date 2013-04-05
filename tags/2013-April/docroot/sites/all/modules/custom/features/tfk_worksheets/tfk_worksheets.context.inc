@@ -59,13 +59,13 @@ function tfk_worksheets_context_default_contexts() {
           'module' => 'apachesolr_search',
           'delta' => 'im_35_field_skills',
           'region' => 'sidebar_first',
-          'weight' => '-95',
+          'weight' => '-91',
         ),
         'tfk_search-tfk_search_worksheet_user_save' => array(
           'module' => 'tfk_search',
           'delta' => 'tfk_search_worksheet_user_save',
           'region' => 'sidebar_first',
-          'weight' => '-94',
+          'weight' => '-90',
         ),
         'tfk_search-tfk_search_worksheet_saved' => array(
           'module' => 'tfk_search',
