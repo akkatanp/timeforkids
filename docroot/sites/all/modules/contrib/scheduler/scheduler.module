@@ -340,7 +340,7 @@ function scheduler_form_alter(&$form, $form_state) {
           '#type' => 'textfield',
           '#title' => t('Publish on'),
           '#maxlength' => 25,
-          //'#required' => $publishing_required,
+          '#required' => $publishing_required,
           '#default_value' => isset($defaults->publish_on) && $defaults->publish_on ? format_date($defaults->publish_on, 'custom', $internal_date_format) : '',
           '#description' => $description_format.$description_blank,
         );
