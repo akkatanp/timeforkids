@@ -38,7 +38,7 @@ function tfk_worksheets_taxonomy_default_vocabularies() {
       'description' => '',
       'hierarchy' => '1',
       'module' => 'taxonomy',
-      'weight' => '0',
+      'weight' => '1',
       'rdf_mapping' => array(
         'rdftype' => array(
           0 => 'skos:ConceptScheme',
@@ -61,7 +61,7 @@ function tfk_worksheets_taxonomy_default_vocabularies() {
       'description' => '',
       'hierarchy' => '1',
       'module' => 'taxonomy',
-      'weight' => '0',
+      'weight' => '2',
       'rdf_mapping' => array(
         'rdftype' => array(
           0 => 'skos:ConceptScheme',
