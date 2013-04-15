@@ -10,57 +10,7 @@
 function tfk_worksheets_context_default_contexts() {
   $export = array();
 
-  $context = new stdClass;
-  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
-  $context->api_version = 3;
-  $context->name = 'publishing_calendar';
-  $context->description = '';
-  $context->tag = 'publishing_calendar';
-  $context->conditions = array(
-    'path' => array(
-      'values' => array(
-        'content/grade-k-1' => 'content/grade-k-1',
-        'content/grade-2' => 'content/grade-2',
-        'content/grade-3-4' => 'content/grade-3-4',
-        'content/grade-5-6' => 'content/grade-5-6',
-      ),
-    ),
-    'user' => array(
-      'values' => array(
-        'Board Member' => 'Board Member',
-        'administrator' => 'administrator',
-        'authenticated user' => 'authenticated user',
-        'editor' => 'editor',
-        'teacher' => 'teacher',
-      ),
-    ),
-  );
-  $context->reactions = array(
-    'block' => array(
-      'blocks' => array(
-        'tfk_search-tfk_magazine_back_btn' => array(
-          'module' => 'tfk_search',
-          'delta' => 'tfk_magazine_back_btn',
-          'region' => 'sidebar_bottom',
-          'weight' => '-10',
-        ),
-        'menu-menu-publishing-calendar-menu' => array(
-          'module' => 'menu',
-          'delta' => 'menu-publishing-calendar-menu',
-          'region' => 'sidebar_bottom',
-          'weight' => '-9',
-        ),
-      ),
-    ),
-  );
-  $context->condition_mode = 1;
-
-  // Translatables
-  // Included for use with string extractors like potx.
-  t('publishing_calendar');
-  $export['publishing_calendar'] = $context;
-
-  $context = new stdClass;
+  $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'worksheets';
@@ -74,40 +24,60 @@ function tfk_worksheets_context_default_contexts() {
     ),
     'user' => array(
       'values' => array(
-        'Board Member' => 'Board Member',
-        'administrator' => 'administrator',
         'authenticated user' => 'authenticated user',
-        'editor' => 'editor',
-        'teacher' => 'teacher',
       ),
     ),
   );
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
+        'tfk_search-tfk_search_ws_leftbar_title' => array(
+          'module' => 'tfk_search',
+          'delta' => 'tfk_search_ws_leftbar_title',
+          'region' => 'sidebar_first',
+          'weight' => '-99',
+        ),
         'apachesolr_search-im_28_field_grade_level' => array(
           'module' => 'apachesolr_search',
           'delta' => 'im_28_field_grade_level',
           'region' => 'sidebar_first',
-          'weight' => '-88',
+          'weight' => '-98',
         ),
-        'tfk_search-sm_editorial_date_tfk' => array(
-          'module' => 'tfk_search',
-          'delta' => 'sm_editorial_date_tfk',
+        'apachesolr_search-bundle' => array(
+          'module' => 'apachesolr_search',
+          'delta' => 'bundle',
           'region' => 'sidebar_first',
-          'weight' => '-87',
+          'weight' => '-97',
         ),
-        'tfk_search-is_spanish_issue' => array(
-          'module' => 'tfk_search',
-          'delta' => 'is_spanish_issue',
+        'apachesolr_search-im_36_field_themes' => array(
+          'module' => 'apachesolr_search',
+          'delta' => 'im_36_field_themes',
           'region' => 'sidebar_first',
-          'weight' => '-86',
+          'weight' => '-96',
         ),
-        'menu-menu-publishing-calendar-menu' => array(
-          'module' => 'menu',
-          'delta' => 'menu-publishing-calendar-menu',
+        'apachesolr_search-im_35_field_skills' => array(
+          'module' => 'apachesolr_search',
+          'delta' => 'im_35_field_skills',
+          'region' => 'sidebar_first',
+          'weight' => '-95',
+        ),
+        'tfk_search-tfk_search_worksheet_user_save' => array(
+          'module' => 'tfk_search',
+          'delta' => 'tfk_search_worksheet_user_save',
+          'region' => 'sidebar_first',
+          'weight' => '-94',
+        ),
+        'tfk_search-tfk_search_worksheet_saved' => array(
+          'module' => 'tfk_search',
+          'delta' => 'tfk_search_worksheet_saved',
           'region' => 'sidebar_bottom',
-          'weight' => '-86',
+          'weight' => '-9',
+        ),
+        'tfk_favorites-tfk_favorites_links' => array(
+          'module' => 'tfk_favorites',
+          'delta' => 'tfk_favorites_links',
+          'region' => 'sidebar_bottom',
+          'weight' => '-8',
         ),
       ),
     ),
@@ -116,8 +86,8 @@ function tfk_worksheets_context_default_contexts() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('search');
   t('Worksheets');
+  t('search');
   $export['worksheets'] = $context;
 
   return $export;
