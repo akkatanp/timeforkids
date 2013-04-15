@@ -35,32 +35,13 @@ function tfk_worksheets_context_default_contexts() {
           'module' => 'tfk_search',
           'delta' => 'tfk_search_ws_leftbar_title',
           'region' => 'sidebar_first',
-          'weight' => '-99',
+          'weight' => '-10',
         ),
-        'apachesolr_search-im_28_field_grade_level' => array(
-          'module' => 'apachesolr_search',
-          'delta' => 'im_28_field_grade_level',
-          'region' => 'sidebar_first',
-          'weight' => '-98',
-        ),
-        'apachesolr_search-bundle' => array(
-          'module' => 'apachesolr_search',
-          'delta' => 'bundle',
-          'region' => 'sidebar_first',
-          'weight' => '-97',
-        ),
-        'apachesolr_search-im_36_field_themes' => array(
-          'module' => 'apachesolr_search',
-          'delta' => 'im_36_field_themes',
-          'region' => 'sidebar_first',
-          'weight' => '-96',
-        ),
-            
         'tfk_search-tfk_search_worksheet_user_save' => array(
           'module' => 'tfk_search',
           'delta' => 'tfk_search_worksheet_user_save',
           'region' => 'sidebar_first',
-          'weight' => '-94',
+          'weight' => '-5',
         ),
         'tfk_search-tfk_search_worksheet_saved' => array(
           'module' => 'tfk_search',
