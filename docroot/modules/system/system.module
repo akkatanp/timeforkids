@@ -1192,7 +1192,7 @@ function system_library() {
   $libraries['jquery.form'] = array(
     'title' => 'jQuery Form Plugin',
     'website' => 'http://malsup.com/jquery/form/',
-    'version' => '2.52',
+    'version' => '3.32',
     'js' => array(
       'misc/jquery.form.js' => array(),
     ),
