@@ -32,13 +32,13 @@ function tfk_worksheets_taxonomy_default_vocabularies() {
         ),
       ),
     ),
-    'themes' => array(
+     'themes' => array(
       'name' => 'Themes',
       'machine_name' => 'themes',
       'description' => '',
       'hierarchy' => '1',
       'module' => 'taxonomy',
-      'weight' => '1',
+      'weight' => '0',
       'rdf_mapping' => array(
         'rdftype' => array(
           0 => 'skos:ConceptScheme',
@@ -61,7 +61,7 @@ function tfk_worksheets_taxonomy_default_vocabularies() {
       'description' => '',
       'hierarchy' => '1',
       'module' => 'taxonomy',
-      'weight' => '2',
+      'weight' => '0',
       'rdf_mapping' => array(
         'rdftype' => array(
           0 => 'skos:ConceptScheme',
