@@ -416,8 +416,7 @@ function tfk_header_tag($type) {
   return $output;
 }
 function tfk_js_alter(&$javascript) {
-	//We define the path of our new jquery core file
-	//assuming we are using the minified version 1.8.3
+	//Upgrade to jquery 1.5
 	$jquery_path = drupal_get_path('theme','tfk') . '/js/jquery-1.5.js';
 
 	//We duplicate the important information from the Drupal one
