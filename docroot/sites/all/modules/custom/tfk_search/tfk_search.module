@@ -44,24 +44,24 @@ function tfk_search_menu(){
   $items = array();
   
   $items[TFK_SEARCH_PHOTOSVIDEO_PATH] = array(
-  	'title' => 'Photos & Videos',
-  	'page callback' => 'tfk_search_photos_and_video',
-  	'access callback' => 'user_access',
-  	'access arguments' => array('access content'),
+    'title' => 'Photos & Videos',
+    'page callback' => 'tfk_search_photos_and_video',
+    'access callback' => 'user_access',
+    'access arguments' => array('access content'),
     'type' => MENU_CALLBACK,
   );
   $items[TFK_SEARCH_WORKSHEETS_PATH] = array(
-  	'title' => 'Worksheets',
-  	'page callback' => 'tfk_search_worksheets',
-  	'access callback' => 'user_access',
-  	'access arguments' => array('access protected content'),
+    'title' => 'Worksheets',
+    'page callback' => 'tfk_search_worksheets',
+    'access callback' => 'user_access',
+    'access arguments' => array('access protected content'),
     'type' => MENU_CALLBACK,
   );
   $items[TFK_SEARCH_MAGAZINE_PATH] = array(
-  	'title' => 'TFK Magazine',
-  	'page callback' => 'tfk_search_magazine',
-  	'access callback' => 'user_access',
-  	'access arguments' => array('access protected content'),
+    'title' => 'TFK Magazine',
+    'page callback' => 'tfk_search_magazine',
+    'access callback' => 'user_access',
+    'access arguments' => array('access protected content'),
     'type' => MENU_CALLBACK,
   );
   $items['myfr/%ctools_js/saves/%'] = array(
@@ -87,8 +87,8 @@ function tfk_search_menu(){
     'title callback' => 'tfk_search_set_magazine_article_title',
     'page callback' => 'tfk_search_magazine_article_view',
     'page arguments' => array(2,3),
-  	'access callback' => 'user_access',
-  	'access arguments' => array('access protected content'),
+    'access callback' => 'user_access',
+    'access arguments' => array('access protected content'),
     // Needed for calling the page_manager_node_view_page() function.
     'file' => 'node_view.inc',
     'file path' => drupal_get_path('module', 'page_manager'). '/plugins/tasks',
@@ -454,7 +454,7 @@ function theme_tfk_search_related_content($variables) {
       
       $output .= '<div class="addit-related-articles-label">'. strtoupper(t($related. '@type:', array('@type' => $related_type))). '</div>';
       $output .= '<div class="addit-related-articles-title">'. $link. '</div>';
- 		$output .= '</div>';
+    $output .= '</div>';
   }
 
   $output .= '</div>';
@@ -1022,8 +1022,8 @@ function tfk_search_block_view($delta='') {
         // Get more fields.
         $additional_fields = array('News Now' => 'field_in_the_news', 'Top 5' => 'field_top_5', 'Features' => 'field_more_news',
         'Kid Central' => 'field_kid_central', 'Debate' => 'field_debate', 'You\'ve Got Skills' => 'field_got_skills',
-       	'Newsmakers' => 'field_whos_news', 'Theme 1' => 'field_theme_1', 'Theme 2' => 'field_theme_2',
-       	'Theme 3' => 'field_theme_3', 'Theme 4' => 'field_theme_4', 'News' => 'field_news');
+        'Newsmakers' => 'field_whos_news', 'Theme 1' => 'field_theme_1', 'Theme 2' => 'field_theme_2',
+        'Theme 3' => 'field_theme_3', 'Theme 4' => 'field_theme_4', 'News' => 'field_news');
         
         foreach($additional_fields as $field_key => $additional_field) {
           $_additional_field = field_get_items('node', $magazine, $additional_field);
@@ -1575,8 +1575,8 @@ class tfkSearchFeaturedItem {
       
       $this->featured_item = array_shift($images);
       $this->featured_item = node_load(array_shift($this->featured_item));
-    	$featured_image = field_get_items('node', $this->featured_item, 'field_image');
-    	
+      $featured_image = field_get_items('node', $this->featured_item, 'field_image');
+      
       if($images != FALSE && count($images)) {
         foreach($images as $image) {
           $_image = field_get_items('node', node_load($image['nid']), 'field_image');
@@ -1596,11 +1596,11 @@ class tfkSearchFeaturedItem {
     }
     
     // Featured item.
-  	if($featured_image != FALSE) {
-  	  $featured_image = array_shift($featured_image);
-  	  $this->featured_item = new stdClass();
-  	  $this->featured_item->abspath = tfk_search_get_thumbnail($featured_image['fid'], 'tfk_270x270');
-  	}
+    if($featured_image != FALSE) {
+      $featured_image = array_shift($featured_image);
+      $this->featured_item = new stdClass();
+      $this->featured_item->abspath = tfk_search_get_thumbnail($featured_image['fid'], 'tfk_270x270');
+    }
     
     // Additional content.
     $additional_contents = field_get_items('node', $this, 'field_additional_content');
@@ -1986,17 +1986,17 @@ function tfk_search_preprocess_pager_top(&$vars) {
     // @todo Unhardcode the vid in the filter names.
     $default_filters = array(
       TFK_SEARCH_WORKSHEETS_PATH => array(
-      	'im_28_field_grade_level' => array('active' => FALSE, 'default_text' => 'All Grades', 'filters' => array()),
-      	'im_36_field_themes' => array('active' => FALSE, 'default_text' => 'All Themes', 'filters' => array()),
+        'im_28_field_grade_level' => array('active' => FALSE, 'default_text' => 'All Grades', 'filters' => array()),
+        'im_36_field_themes' => array('active' => FALSE, 'default_text' => 'All Themes', 'filters' => array()),
         'im_35_field_skills' => array('active' => FALSE, 'default_text' => 'All Skills', 'filters' => array()),
       ),
       TFK_SEARCH_PHOTOSVIDEO_PATH => array(
-      	'im_10_field_article_category' => array('active' => FALSE, 'default_text' => 'All Categories', 'filters' => array()),
+        'im_10_field_article_category' => array('active' => FALSE, 'default_text' => 'All Categories', 'filters' => array()),
         // Removed per tfks394.
-      	//'im_36_field_themes' => array('active' => FALSE, 'default_text' => 'All Themes', 'filters' => array()),
+        //'im_36_field_themes' => array('active' => FALSE, 'default_text' => 'All Themes', 'filters' => array()),
       ),
       TFK_SEARCH_MAGAZINE_PATH => array(
-      	'im_28_field_grade_level' => array('active' => FALSE, 'default_text' => 'All Grades', 'filters' => array()),
+        'im_28_field_grade_level' => array('active' => FALSE, 'default_text' => 'All Grades', 'filters' => array()),
         'sm_editorial_date_tfk' => array('active' => FALSE, 'default_text' => 'All Years', 'filters' => array()),
         TFK_SEARCH_SPANISH_ISSUE => array('active' => FALSE, 'default_text' => 'All Languages', 'filters' => array())
       ),
@@ -2023,7 +2023,7 @@ function tfk_search_preprocess_pager_top(&$vars) {
             
           // Non grade-level taxonomy facets.
           } else {
-          	$default_filters[$page_type][$filter['#name']]['filters'][] = $term_value;
+            $default_filters[$page_type][$filter['#name']]['filters'][] = $term_value;
           }
           
         // Non-taxonomy facets.
@@ -2387,9 +2387,9 @@ function worksheets_save_srch($form, &$form_state) {
   
   //@todo Admin interface for worksheet variables.
   $form['description'] = array(
-  	'#markup' => "<div class='svd-srch-desc'>". t(
+    '#markup' => "<div class='svd-srch-desc'>". t(
       variable_get('worksheets_modal_save_desc',
-  		'Type a name for your search in the field below.')
+      'Type a name for your search in the field below.')
     ). "</div>"
   );
   
@@ -2540,7 +2540,7 @@ class TFKMagLangFilter {
   /**
    * Validate a node against a Flag.
    * @param stdClass $node
-   * 	 Standard Drupal node object.
+   *   Standard Drupal node object.
    *
    * @return TRUE if $node has the the language flag enabled, FALSE otherwise.
    */
@@ -2564,9 +2564,9 @@ class TFKMagLangFilter {
    * TFKMagLangFilter::$checkLanguage is set to TRUE, FALSE otherwise.
    *
    * @param string $langFilter
-   * 	 Name of the Solr search query filter.
+   *   Name of the Solr search query filter.
    * @param string $langFlag
-   * 	 Will check that filtered nodes have this flag set to 1.
+   *   Will check that filtered nodes have this flag set to 1.
    */
   public static function setRequestLanguage($langFilter, $langFlag) {
     if(!isset(self::$TFKMagLangFilter)) {
@@ -2986,7 +2986,7 @@ function tfk_search_preprocess_search_result(&$vars) {
       // Find out if this Quiz is associated with a magazine issue.
       // Should work as along as the quiz is associated with only one issue.
       $query = 'SELECT entity_id FROM {field_data_field_related_resources}
-				WHERE field_related_resources_nid = :quiz_nid';
+        WHERE field_related_resources_nid = :quiz_nid';
       $results = db_query($query, array('quiz_nid' => $node->nid));
       if($results) {
         $result = $results->fetch();
@@ -3358,7 +3358,7 @@ function tfk_search_preprocess_search_result(&$vars) {
         
         // Add related content item.
         $related_content[] = array(
-        	'title' => $rc_title,
+          'title' => $rc_title,
           'path' => $vars['result']['fields'][TFK_SEARCH_RELATED_PATH][$key],
           'type' => $content_type
         );
@@ -3373,7 +3373,7 @@ function tfk_search_preprocess_search_result(&$vars) {
         
         // Add related content item.
         $related_content[] = array(
-        	'title' => $related_node->title,
+          'title' => $related_node->title,
           'path' => 'node/'. $related_nid,
           'type' => $related_node->type,
         );
@@ -3401,7 +3401,7 @@ function tfk_search_preprocess_search_result(&$vars) {
  * Check for the presence of a flag in a node.
  *
  * @param node $node
- * 	 Standard Drupal node object.
+ *   Standard Drupal node object.
  * @param string $flag
  *   Name of the flag.
  */
@@ -3507,7 +3507,7 @@ function tfk_search_magazine_has_spanish_item($magazine) {
  * @param node $magazine
  *   Standard Drupal node of type "magazine_issue".
  * @param string $flag_name
- * 	 Name of the flag corresponding to the magazine issue.
+ *   Name of the flag corresponding to the magazine issue.
  */
 function tfk_search_magazine_spanish_flag($magazine, $flag_name = 'magazine_issue_spanish') {
   $has_flag = tfk_search_node_has_flag($magazine, $flag_name);
@@ -3702,8 +3702,8 @@ function tfk_search_flag($action, $flag, $content_id, $account, $fcid) {
         
         // See if there is a magazine issue referencing this article.
         $query = 'SELECT n.nid
-        					FROM {node} n
-                	INNER JOIN {%s} magazine ON n.nid = magazine.entity_id
+                  FROM {node} n
+                  INNER JOIN {%s} magazine ON n.nid = magazine.entity_id
                   WHERE %s=?
                   AND n.type=?';
         $results_arr = array();
