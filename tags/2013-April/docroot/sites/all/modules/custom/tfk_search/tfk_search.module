@@ -1162,11 +1162,9 @@ function _tfk_search_back_btn(){
     //gotta get user grade level
     global $user;
     $user = user_load($user->uid);
-    if($user && isset($user->grade_level)) {
-      $grade_str = 'im_28_field_grade_level%3A'. $user->grade_level->tid;
-    } else {
+    
       $grade_str = '';
-    }
+  
     
     
     $filter_str = str_replace('&solrsort=ds_created%20desc','',$filter_str);
