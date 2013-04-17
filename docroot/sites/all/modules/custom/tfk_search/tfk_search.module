@@ -1962,7 +1962,6 @@ function tfk_search_preprocess_pager_top(&$vars) {
   
   $query = apachesolr_current_query();
   $active_filters = $query->get_filters();
-  print_r($active_filters);
   // If there are no active filters.
   if(!array_key_exists('filters', $_GET) && empty($active_filters)) {
      
@@ -2004,7 +2003,6 @@ function tfk_search_preprocess_pager_top(&$vars) {
     );
     
     $non_taxonomy_filters = array(NULL, 'sm_editorial_date_tfk', TFK_SEARCH_SPANISH_ISSUE);
-    print_r($default_filters);
     // Sort.
     foreach($active_filters as $filter) {
       
@@ -2037,11 +2035,11 @@ function tfk_search_preprocess_pager_top(&$vars) {
           }
         }
       }
+      print_r($term_value);
       
     }
     
     // Merge.
-    $sorted_filters = array();
     foreach($default_filters[$page_type] as $facet) {
       if(!$facet['active']) {
         $sorted_filters[] = $facet['default_text'];
@@ -2049,12 +2047,9 @@ function tfk_search_preprocess_pager_top(&$vars) {
         $sorted_filters[] = implode(', ', $facet['filters']);
       }
     }
-    print_r($sorted_filters);
     // Implode.
     $vars['pager_active_filter'] .= implode(', ', $sorted_filters);
-     print_r($vars['pager_active_filter']);       
   }
-  
 }
 
 function tfk_search_get_unique_host_id() {
