@@ -1162,9 +1162,11 @@ function _tfk_search_back_btn(){
     //gotta get user grade level
     global $user;
     $user = user_load($user->uid);
-    
+    if($user && isset($user->grade_level)) {
+      $grade_str = 'im_28_field_grade_level%3A'. $user->grade_level->tid;
+    } else {
       $grade_str = '';
-  
+    }
     
     
     $filter_str = str_replace('&solrsort=ds_created%20desc','',$filter_str);
@@ -1963,7 +1965,7 @@ function tfk_search_preprocess_pager_top(&$vars) {
   
   // If there are no active filters.
   if(!array_key_exists('filters', $_GET) && empty($active_filters)) {
-     
+     print_r($active_filters);
     if($page_type == TFK_SEARCH_WORKSHEETS_PATH) {
       $vars['pager_active_filter'] = 'Viewing: All Grades, All Themes, All Skills';
     } elseif($page_type == TFK_SEARCH_MAGAZINE_PATH) {
