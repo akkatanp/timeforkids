@@ -415,7 +415,19 @@ function tfk_header_tag($type) {
   }
   return $output;
 }
+function tfk_js_alter(&$javascript) {
+	//Upgrade to jquery 1.5
+	$jquery_path = drupal_get_path('theme','tfk') . '/js/jquery-1.5.js';
 
+	//We duplicate the important information from the Drupal one
+	$javascript[$jquery_path] = $javascript['misc/jquery.js'];
+	//..and we update the information that we care about
+	$javascript[$jquery_path]['version'] = '1.5';
+	$javascript[$jquery_path]['data'] = $jquery_path;
+
+	//Then we remove the Drupal core version
+	unset($javascript['misc/jquery.js']);
+}
 
 function tfk_preprocess_flashcard_cycle_mark(&$variables) {
   $variables['title'] = t('Mark this card for extra practice');
