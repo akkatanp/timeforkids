@@ -59,6 +59,7 @@ function advanced_purge_rules_condition_info() {
       ),
     ),
   );
+  
   return $conditions;
 }
 
