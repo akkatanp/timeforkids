@@ -1,0 +1,4 @@
+name = Grammar Wizard
+core = 7.x
+description = Provides a multistep form for interactive Grammar Wizard quizzes
+package = Homework Helper
