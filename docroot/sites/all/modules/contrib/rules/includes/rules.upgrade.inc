@@ -190,8 +190,8 @@ function rules_upgrade_convert_rule_set($name, $cfg_old) {
   $config = rules_plugin_factory('rule set');
   $config->name = $name;
   foreach (array('label', 'weight') as $key) {
-    if (isset($element[$key])) {
-      $target->$key = $element[$key];
+    if (isset($cfg_old[$key])) {
+      $config->$key = $cfg_old[$key];
     }
   }
   if (isset($cfg_old['arguments'])) {
@@ -333,7 +333,7 @@ function rules_upgrade_plugin_factory($element) {
           $element_name = $function($element);
         }
         if (!isset($element_name)) {
-          throw new RulesException("Cannot find @plugin %name. Maybe a required is missing or the module has not implemented the upgrade functionality.", array('@plugin' => $element['#type'], '%name' => $element['#name']));
+          throw new RulesIntegrityException(t("Cannot find @plugin %name. Maybe a required is missing or the module has not implemented the upgrade functionality.", array('@plugin' => $element['#type'], '%name' => $element['#name'])));
         }
         return rules_plugin_factory($element['#type'], $element_name);
       }
