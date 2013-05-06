@@ -93,3 +93,16 @@ div.video-widget-data {
 div.video-widget-data input.text-field {
   width: auto;
 }
+/**
+* Wysiwyg video browser
+*/
+div#video-browser-page-wrapper div#video-browser-page div.video-item{
+  float: left;
+  height:128px;
+  padding: 5px;
+  text-align: center;
+  border: 1px #ccc dotted;
+}
+div#video-browser-page-wrapper div#video-browser-page div.video-item:hover{
+  background-color: antiquewhite;
+}
