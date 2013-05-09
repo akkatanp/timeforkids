@@ -1,22 +1,21 @@
 <?php
-/**
- * @file
- * Contains code to support the Features module.
- */
+
+// include the preset file
+module_load_include('inc', 'video', 'modules/video_ui/video.preset');
 
 /**
- * Implements hook_features_export_options().
+ * Implementation of hook_features_export_options().
  */
 function video_features_export_options() {
   $options = array();
-  foreach (Preset::getAllPresets() as $preset) {
+  foreach (video_preset_get_presets () as $preset) {
     $options[$preset['name']] = $preset['name'];
   }
   return $options;
 }
 
 /**
- * Implements hook_features_export().
+ * Implementation of hook_features_export().
  */
 function video_features_export($data, &$export, $module_name = '') {
   foreach ($data as $preset) {
@@ -25,13 +24,13 @@ function video_features_export($data, &$export, $module_name = '') {
 }
 
 /**
- * Implements hook_features_export_render().
+ * Implementation of hook_features_export_render().
  */
 function video_features_export_render($module_name, $data) {
   $items = array();
   foreach ($data as $key) {
-    $preset = Preset::getPreset($key);
-    unset($preset['pid'], $preset['module'], $preset['overridden']);
+    $preset = video_get_preset($key);
+    unset($preset['pid']);
     $items[$key] = $preset;
   }
   $code = "  \$items = " . features_var_export($items, '  ') . ";\n";
@@ -40,12 +39,12 @@ function video_features_export_render($module_name, $data) {
 }
 
 /**
- * Implements hook_features_revert().
+ * Implementation of hook_features_revert().
  */
 function video_features_revert($module) {
   if ($default_presets = features_get_default('video', $module)) {
     foreach (array_keys($default_presets) as $default_preset) {
-      Preset::deletePreset($default_preset);
+      video_preset_delete($default_preset);
     }
   }
 }

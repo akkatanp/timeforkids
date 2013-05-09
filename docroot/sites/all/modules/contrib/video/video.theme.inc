@@ -1,8 +1,4 @@
 <?php
-/**
- * @file
- * Theme related functions for the Video module.
- */
 
 /**
  * Returns HTML for an video field widget.
@@ -13,13 +9,15 @@
  *
  * @ingroup themeable
  */
-function theme_video_widget(array $variables) {
+function theme_video_widget($variables) {
   $element = $variables['element'];
-
-  $output = '<div class="video-widget form-managed-file clearfix">';
+  $output = '';
+  $output .= '<div class="video-widget form-managed-file clearfix">';
 
   if (isset($element['preview'])) {
+    $output .= '<div class="video-preview">';
     $output .= drupal_render($element['preview']);
+    $output .= '</div>';
   }
 
   $output .= '<div class="video-widget-data">';
@@ -33,103 +31,83 @@ function theme_video_widget(array $variables) {
   return $output;
 }
 
-/**
- * Default video cck formatter.
- *
- * Makes sure the video being displayed exists, has been converted (if in
- * queue). If not or the video is processed, then it will get the default
- * player for the specific video type for output.
+/*
+ * Default video cck formatter.  Makes sure the video being displayed exists, has been converted (if in que).
+ * If not or the video is processed, then it will get the default player for the specific video type for output.
  */
-function theme_video_formatter_player(array $variables) {
-  $item = $variables['item'];
-  if (empty($item['fid'])) {
+
+function theme_video($variables) {
+  $themed_output = '';
+  if (empty($variables['item']['fid']))
     return '';
-  }
-
+  $field_settings = $variables['field']['settings'];
+  $instance_settings = $variables['instance']['settings'];
   // Only needs to be ran if they are converting videos
-  if ($item['autoconversion'] && !$item['conversioncompleted']) {
-    switch ($item['conversionstatus']) {
-      case VIDEO_RENDERING_ACTIVE:
-      case VIDEO_RENDERING_PENDING:
+  if (isset($field_settings['autoconversion']) && $field_settings['autoconversion']) {
+    module_load_include('inc', 'video', '/includes/conversion');
+    $conversion = new video_conversion;
+    if ($video = $conversion->load_job($variables['item']['fid'])) {
+      if ($video->video_status == VIDEO_RENDERING_ACTIVE || $video->video_status == VIDEO_RENDERING_PENDING) {
         return theme('video_inprogress');
-      case VIDEO_RENDERING_FAILED:
+      } else if ($video->video_status == VIDEO_RENDERING_FAILED) {
         return theme('video_conversion_failed');
+      }
     }
   }
+  // Setup our video object
+  module_load_include('inc', 'video', '/includes/video_helper');
+  $video_helper = new video_helper;
+  $video = $video_helper->video_object($variables);
+  // Lets spit out our theme based on the extension
+  $defaults = video_video_extensions();
+  $theme_function = variable_get('video_extension_' . $video->player, $defaults[$video->player]);
 
-  // override player dimensions
-  if (!empty($variables['player_dimensions'])) {
-    $player_dimensions = explode('x', $variables['player_dimensions'], 2);
-    $player_width = intval(trim($player_dimensions[0]));
-    $player_height = intval(trim($player_dimensions[1]));
-  }
-  else {
-    $player_width = 640;
-    $player_height = 360;
-  }
-
-  // Poster image style
-  if (!empty($item['thumbnailfile'])) {
-    if (empty($variables['poster_image_style'])) {
-      $item['thumbnailfile']->url = file_create_url($item['thumbnailfile']->uri);
-    }
-    else {
-      $item['thumbnailfile']->url = image_style_url($variables['poster_image_style'], $item['thumbnailfile']->uri);
-    }
-  }
-
-  // Determine theme function based on the playable files.
-  // If one of the video types is configured to use an HTML5 player then the
-  // HTML5 theme function is used.
-  // If the last or only video type is configured to use an FLV player then the
-  // FLV theme function is used.
-  // In all other cases the player configured for the last or only video type
-  // is used.
-  $defaults = video_utility::getVideoExtensions();
-  foreach ($item['playablefiles'] as $playablefile) {
-    $extension = video_utility::getExtension($playablefile->uri);
-    $theme_function = variable_get('video_extension_' . $extension, $defaults[$extension]);
-    if ($theme_function == 'video_play_html5') {
-      $theme_function = 'video_html5';
+  // Lets do some special handling for our flv files, HTML5 to accomdate multiple players.
+  switch ($theme_function) {
+    case 'video_play_flv':
+      return theme('video_flv', array('video' => $video, 'themed_output' => $themed_output));
       break;
-    }
-    elseif ($theme_function == 'video_play_flv') {
-      $theme_function = 'video_flv';
-    }
+    case 'video_play_html5':
+      return theme('video_html5', array('video' => $video, 'themed_output' => $themed_output));
+      break;
+    default:
+      return theme($theme_function, array('video' => $video, 'themed_output' => $themed_output));
+      break;
   }
-
-  return theme($theme_function, array('item' => $item, 'width' => $player_width, 'height' => $player_height, 'entity' => $variables['entity'], 'entity_type' => $variables['entity_type']));
 }
 
-/**
+/*
  * Renders the video thumbnail as a link to the node page.
  */
-function theme_video_formatter_thumbnail($variables) {
-  $item = $variables['item'];
 
-  // Inside a view $variables may contain null data. In that case, just return.
-  if (empty($item['fid']) || empty($item['thumbnailfile'])) {
-    return '';
+function theme_video_thumbnail($variables) {
+// Inside a view $variables may contain null data. In that case, just return.
+  if (empty($variables['item']['fid']))
+    return '<!-- File not found: ' . $variables['item']['fid'] . ' -->';
+
+//setup our thumbnail object
+  module_load_include('inc', 'video', '/includes/video_helper');
+  $video_helper = new video_helper;
+// @TODO : change the object to an array
+  $thumbnail = (array) $video_helper->thumbnail_object($variables);
+// return if no file path found for the video thumbnails and add log message
+  if (empty($thumbnail['filepath'])) {
+    watchdog('video', 'Unable to find the video thumbnail for the %node.', array('%node' => $variables['entity']->title), WATCHDOG_ERROR);
+    return "<!-- File not found for nid {$variables['entity']->nid} ({$variables['entity']->title}) -->";
   }
-
-  $thumbnail = $item['thumbnailfile'];
-  $title = isset($variables['entity']->title) ? $variables['entity']->title : '';
-
   $image = array(
-    'path' => $thumbnail->uri,
-    'alt' => $title,
+    'path' => $thumbnail['filepath'],
+    'alt' => $thumbnail['alt'],
   );
-
-  // Do not output an empty 'title' attribute.
-  if (!empty($title)) {
-    $image['title'] = $title;
+// Do not output an empty 'title' attribute.
+  if (drupal_strlen($thumbnail['title']) > 0) {
+    $image['title'] = $thumbnail['title'];
   }
 
-  if (!empty($variables['image_style'])) {
-    $image['style_name'] = $variables['image_style'];
+  if ($variables['video_style']) {
+    $image['style_name'] = $variables['video_style'];
     $output = theme('image_style', $image);
-  }
-  else {
+  } else {
     $output = theme('image', $image);
   }
 
@@ -188,76 +166,55 @@ function theme_video_inprogress() {
  * Display an "encoding failed" message"
  */
 function theme_video_conversion_failed() {
-  return '<div class="video-conversion-failed">' . t('The video conversion process has failed. You might want to submit a simpler video format like <em>mpeg</em> or <em>divx avi</em>.<br />If the problem persists contact your website administrator. Please check logs for further debugging.') . '</div>';
+  return '<div class="video-conversion-failed">' . t('The video conversion process has failed. You might want to submit a simpler video format like <em>mpeg</em> or <em>divx avi</em>.<br />If the problem persists please contact website administrators.') . '</div>';
 }
 
-/**
- * Theme wraper on Flash play on 3rd party
+/*
+ * Theme wraper on Flahs play on 3rd party
  */
+
 function theme_video_flv($variables) {
-  $item = $variables['item'];
-
-  $video = NULL;
-  foreach ($item['playablefiles'] as $file) {
-    if ($file->filemime == 'video/mp4' || $file->filemime == 'video/flv' || $file->filemime == 'video/x-flv') {
-      $video = $file;
+  $video = $variables['video'];
+// set the video flash player
+// Moved to last to recheck incase we changed our extension above.
+  $video->flash_player = variable_get('video_extension_' . $video->player . '_flash_player', '');
+  switch ($video->flash_player) {
+    case 'swftools':
+      $options = array(
+        'params' => array(
+          'width' => $video->player_width,
+          'height' => $video->player_height,
+        ),
+        'othervars' => array(
+          //@todo: swftools bug, can't enable this until they fix their pathing for the images.
+          'image' => $video->thumbnail->swfthumb,
+        ),
+      );
+      $themed_output = swf($video->files->{$video->player}->url, $options);
       break;
-    }
-  }
-
-  if ($video == NULL) {
-    return '';
-  }
-
-  $extension = video_utility::getExtension($video->uri);
-  $flash_player = variable_get('video_extension_' . $extension . '_flash_player', '');
-  switch ($flash_player) {
     case 'flowplayer':
       // kjh: use a playlist to display the thumbnail if not auto playing
-      if (!$variables['autoplay'] && !empty($item['thumbnailfile'])) {
+      if (isset($video->autoplay) && isset($video->thumbnail->url)) {
         $options = array(
-          'playlist' => array(
-            $item['thumbnailfile']->url,
-            array(
-              'url' => file_create_url($video->uri),
-              'autoPlay' => $variables['autoplay'],
-              'autoBuffering' => $variables['autobuffering'],
-            ),
-          ),
-        );
-      }
-      else {
+          'playlist' => array($video->thumbnail->url,
+            array('url' => urlencode($video->files->{$video->player}->url),
+              'autoPlay' => $video->autoplay,
+              'autoBuffering' => $video->autobuffering,
+            ),),);
+      } else {
         $options = array(
-          'clip' => array(
-            'url' => file_create_url($video->uri),
-            'autoPlay' => $variables['autoplay'],
-            'autoBuffering' => $variables['autobuffering'],
-          ),
-        );
+          'clip' => array('url' => urlencode($video->files->{$video->player}->url),
+            'autoPlay' => $video->autoplay,
+            'autoBuffering' => $video->autobuffering,
+          ),);
       }
-      $themed_output = theme('flowplayer', array('config' => $options, 'id' => 'flowplayer-' . $item['fid'], 'attributes' => array('style' => 'width:' . $variables['width'] . 'px;height:' . ($variables['height'] + 24) . 'px;')));
+      $themed_output = theme('flowplayer', array('config' => $options, 'id' => 'flowplayer-' . $video->formatter, 'attributes' => array('style' => 'width:' . $video->player_width . 'px;height:' . ($video->player_height + 24) . 'px;')));
       break;
-
-    case 'jwplayer':
-      $preset = variable_get('video_jwplayer_preset');
-      $options = array(
-        'width' => $variables['width'],
-        'height' => $variables['height'],
-        'autoplay' => $variables['autoplay'],
-      );
-      $config = array();
-      if (!empty($item['thumbnailfile'])) {
-        $config['image'] = $item['thumbnailfile']->url;
-      }
-      $themed_output = theme('jw_player', array('file_object' => $video, 'options' => $options, 'config' => $config, 'preset' => $preset));
-      break;
-
     default:
-      $themed_output = t('No flash player has been set up.') . ' ' . l(t('Please select a player to play Flash videos.'), 'admin/config/media/video/players');
+      $themed_output = t('No flash player has been setup. ' . l(t('Please select a player to play Flash videos.'), 'admin/settings/video/players'));
       break;
   }
-
-  return theme('video_play_flv', array('item' => $item, 'themed_output' => $themed_output));
+  return theme('video_play_flv', array('video' => $video, 'themed_output' => $themed_output));
 }
 
 /**
@@ -265,45 +222,19 @@ function theme_video_flv($variables) {
  */
 function theme_video_html5($variables) {
   $themed_output = NULL;
-  $item = $variables['item'];
-
-  $files = $item['playablefiles'];
-  $extension = video_utility::getExtension($files[0]->uri);
-
-  $html5_player = variable_get('video_extension_' . $extension . '_html5_player', 'video');
-  switch ($html5_player) {
+  $video = $variables['video'];
+  echo $video->html5_player = variable_get('video_extension_' . $video->player . '_html5_player', '');
+  switch ($video->html5_player) {
     case 'video':
-      $variables['files'] = $files;
-      return theme('video_play_html5', $variables);
-
-    case 'audio':
-      $variables['files'] = $files;
-      return theme('video_play_html5_audio', $variables);
-
+      return theme('video_play_html5', array('video' => $video, 'themed_output' => $themed_output));
+      break;
     case 'videojs':
-      $items = video_utility::objectToArray($files);
-      if (!empty($item['thumbnailfile'])) {
-        $thumbnail = video_utility::objectToArray($item['thumbnailfile']);
-        $thumbnail['uri'] = $thumbnail['url'];
-        $items[] = $thumbnail;
-      }
-
-      $attributes = array(
-        'width' => $variables['width'],
-        'height' => $variables['height'],
-      );
-      return theme('videojs', array('items' => $items, 'player_id' => 'video-' . $item['fid'], 'attributes' => $attributes, 'entity' => $variables['entity'], 'entity_type' => $variables['entity_type']));
-
-    case 'mediaelement':
-      $file = reset($files);
-
-      return theme('mediaelement_video', array('attributes' => array('src' => file_create_url($file->uri), 'height' => $variables['height'], 'width' => $variables['width']), 'settings' => array('download_link' => FALSE)));
+      $items = _video_object_to_array($video->files);
+      $items +=array('thumbnail' => (array) $video->thumbnail);
+      $attributes = array();
+      $attributes['width'] = $video->width;
+      $attributes['height'] = $video->height;
+      return theme('videojs', array('items' => $items, 'player_id' => 'video-' . $video->fid, 'attributes' => $attributes));
+      break;
   }
-}
-
-/**
- * Add messages to the page.
- */
-function template_preprocess_video_dialog_page(&$variables) {
-  $variables['messages'] = theme('status_messages');
 }
