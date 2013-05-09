@@ -1,6 +1,8 @@
+
 /**
  * @file
  * Adds some show/hide to the admin form to make the UXP easier.
+ *
  */
 (function($){
   Drupal.behaviors.video = {
@@ -10,8 +12,43 @@
         $('.jmedia').media();
       }
 	
+      video_hide_all_options();
+      $("input[name='video_convertor']").change(function() {
+        video_hide_all_options();
+      });
+
+      // change metadata options
+      video_hide_all__metadata_options();
+      $("input[name='video_metadata']").change(function() {
+        video_hide_all__metadata_options();
+      });
+
+      $('.video_select').each(function() {
+        var ext = $(this).attr('rel');
+        $('select', this).change(function() {
+          if($(this).val() == 'video_play_flv') {
+            $('#flv_player_'+ext).show();
+          } else {
+            $('#flv_player_'+ext).hide();
+          }
+          if($(this).val() == 'video_play_html5') {
+            $('#html5_player_'+ext).show();
+          } else {
+            $('#html5_player_'+ext).hide();
+          }
+        });
+        if($('select', this).val() == 'video_play_flv')
+          $('#flv_player_'+ext).show();
+        
+        if($('select', this).val() == 'video_play_html5')
+          $('#html5_player_'+ext).show();
+        else
+          $('#html5_player_'+ext).hide();
+      });
+	
       if(settings.video) {
         $.fn.media.defaults.flvPlayer = settings.video.flvplayer;
+
       }
 	
       //lets setup our colorbox videos
@@ -46,44 +83,36 @@
     }
   };
 
-  // On change of the thumbnails when edit.
-  Drupal.behaviors.videoEdit = {
-    attach : function(context, settings) {
-      function setThumbnail(widget, type) {
-        var thumbnails = widget.find('.video-thumbnails input');
-        var defaultthumbnail = widget.find('.video-use-default-video-thumb');
-        var largeimage = widget.find('.video-preview img');
 
-        var activeThumbnail = thumbnails.filter(':checked');
-        if (activeThumbnail.length > 0 && type != 'default') {
-          var smallimage = activeThumbnail.next('label.option').find('img');
-          largeimage.attr('src', smallimage.attr('src'));
-          defaultthumbnail.attr('checked', false);
-        }
-        else if(defaultthumbnail.is(':checked')) {
-          thumbnails.attr('checked', false);
-          largeimage.attr('src', defaultthumbnail.data('defaultimage'));
-        }
-        else {
-          // try to select the first thumbnail.
-          if (thumbnails.length > 0) {
-            thumbnails.first().attr('checked', 'checked');
-            setThumbnail(widget, 'thumb');
-          }
-        }
+  function video_hide_all_options() {
+    $("input[name='video_convertor']").each(function() {
+      var id = $(this).val();
+      $('#'+id).hide();
+      if ($(this).is(':checked')) {
+        $('#' + id).show();
       }
+    });
+  }
 
-      $('.video-thumbnails input', context).change(function() {
-        setThumbnail($(this).parents('.video-widget'), 'thumb');
-      });
+  function videoftp_thumbnail_change() {
+    // Add handlers for the video thumbnail radio buttons to update the large thumbnail onchange.
+    $(".video-thumbnails input").each(function() {
+      var path = $(this).val();
+      if($(this).is(':checked')) {
+        var holder = $(this).attr('rel');
+        $('.'+holder+' img').attr('src', settings.basePath + path);
+      }
+    });
 
-      $('.video-use-default-video-thumb', context).change(function() {
-        setThumbnail($(this).parents('.video-widget'), 'default');
-      });
+  }
 
-      $('.video-widget', context).each(function() {
-        setThumbnail($(this), 'both');
-      });
-    }
+  function video_hide_all__metadata_options() {
+    $("input[name='video_metadata']").each(function() {
+      var id = $(this).val();
+      $('#'+id).hide();
+      if ($(this).is(':checked')) {
+        $('#' + id).show();
+      }
+    });
   }
 })(jQuery);
