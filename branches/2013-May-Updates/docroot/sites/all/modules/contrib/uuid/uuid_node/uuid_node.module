@@ -47,8 +47,8 @@ function uuid_node_revision_find($uuid) {
  * Ensures all nodes and revisions have UUIDs.
  */
 function uuid_node_uuid_sync() {
-  uuid_sync('node', 'nid');
-  uuid_sync('node_revision', 'vid', 'vuuid');
+  uuid_uuid_sync('node', 'nid');
+  uuid_uuid_sync('node_revision', 'vid', 'vuuid');
 }
 
 
