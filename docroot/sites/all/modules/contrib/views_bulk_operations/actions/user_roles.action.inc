@@ -5,10 +5,11 @@ function views_bulk_operations_user_roles_action_info() {
     'type' => 'user',
     'label' => t('Modify user roles'),
     'configurable' => TRUE,
+    'triggers' => array('any'),
   ));
 }
 
-function views_bulk_operations_user_roles_action_form($form, &$form_state, $context) {
+function views_bulk_operations_user_roles_action_form($context) {
   $roles = user_roles(TRUE);
   unset($roles[DRUPAL_AUTHENTICATED_RID]);  // Can't edit authenticated role.
 
