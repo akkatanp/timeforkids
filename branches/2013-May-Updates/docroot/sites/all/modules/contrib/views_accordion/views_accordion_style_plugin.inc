@@ -22,10 +22,12 @@ class views_accordion_style_plugin extends views_plugin_style {
     $options['fillspace'] = array('default' => 0);
     $options['navigation'] = array('default' => 0);
     $options['clearstyle'] = array('default' => 0);
+    $options['disableifone'] = array('default' => 0);
 
     /*
      * @TODO:
      * 1. Figure out if/how to provide support for jQuery UI themes
+     *    See http://drupal.org/node/388384 perhaps
      * 2. Provide support for missing accordion options:
      *    disabled
      *    icons
@@ -156,12 +158,25 @@ class views_accordion_style_plugin extends views_plugin_style {
       '#default_value' => $this->options['clearstyle'],
       '#description' => t("If set, clears height and overflow styles after finishing animations. This enables accordions to work with dynamic content. Won't work together with autoHeight."),
     );
+    $form['disableifone'] = array(
+      '#type' => 'checkbox',
+      '#title' => t('Disable if only one result'),
+      '#default_value' => $this->options['disableifone'],
+      '#description' => t("If set, the accordion will not be shown when there are less than 2 results."),
+    );
   }
 
     /*
    * pre_render() necesary to prevent markup mayhem
    */
   function pre_render($result) {
+    drupal_add_library('system', 'ui.accordion');
+    drupal_add_js(drupal_get_path('module', 'views_accordion') .'/views-accordion.js');
+
+    // no need do anything if we are using the grouped field as the header
+    if ($this->options['use-grouping-header']){
+      return;
+    }
     // Find out about the header field options
     $fields = array_values($this->display->handler->get_option('fields'));
     $header_class = 'views-accordion-header';
@@ -193,12 +208,23 @@ class views_accordion_style_plugin extends views_plugin_style {
    * Render the display in this style.
    */
   function render() {
-    $output = parent::render();
+    $output = '';
+    // Prevent errors if users select content instead of fields as row style
+    // This forces them to use field as row style, no other way that I can think of
+    if(parent::uses_fields()){
+      $output = parent::render();
+    }
+    else {
+      drupal_set_message('Views accordion requires Fields as row style', 'error');
+    }
+
+    if ($this->options['disableifone'] == '1') {
+      if(count($this->rendered_fields) < 2) {
+        return $output;
+      }
+    }
 
     // dpm($this->display->handler->get_option('fields')); // for dev-troubleshooting
-
-    drupal_add_library('system', 'ui.accordion');
-    drupal_add_js(drupal_get_path('module', 'views_accordion') .'/views-accordion.js');
 
     // Add the appropiate effect library if necessary
     $effect = $this->options['animated'];
