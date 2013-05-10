@@ -214,6 +214,7 @@ function feature_tfk_news_views_default_views() {
   $handler->display->display_options['fields']['field_mini_lessons']['group_rows'] = 1;
   $handler->display->display_options['fields']['field_mini_lessons']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_mini_lessons']['delta_reversed'] = 0;
+  $handler->display->display_options['fields']['field_mini_lessons']['separator'] = ' | ';
   $handler->display->display_options['fields']['field_mini_lessons']['field_api_classes'] = 0;
   /* Sort criterion: Content: Date (field_date) */
   $handler->display->display_options['sorts']['field_date_value']['id'] = 'field_date_value';
@@ -713,6 +714,7 @@ return $args[1];
   $handler->display->display_options['fields']['field_mini_lessons']['group_rows'] = 1;
   $handler->display->display_options['fields']['field_mini_lessons']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_mini_lessons']['delta_reversed'] = 0;
+  $handler->display->display_options['fields']['field_mini_lessons']['separator'] = ' | ';
   $handler->display->display_options['fields']['field_mini_lessons']['field_api_classes'] = 0;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
