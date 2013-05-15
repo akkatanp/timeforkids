@@ -68,7 +68,13 @@
       loginForm.attr('id', 'user_login');
       loginForm.appendTo(lightBox);
       
-      $("#user_login", context).jCryption();
+      // disabled 5/15/2013 - nbailly
+      
+      // removed module encrypt submissions and jCryption libraries
+      // using SSL instead because of better security and compatibility
+      // as well as less delay on login form submissions
+      
+      // $("#user_login", context).jCryption();
       
     });
 
