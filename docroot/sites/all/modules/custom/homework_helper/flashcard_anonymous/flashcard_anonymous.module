@@ -76,7 +76,8 @@ function flashcard_anonymous_access($op, $node) {
  * Load flashcards by their UUID.
  */
 function flashcard_anonymous_uuid_load($uuid) {
-  return ($nid = uuid_node_find($uuid)) ? node_load($nid) : FALSE;
+  $nids = entity_get_id_by_uuid('node', array($uuid));
+  return ($nid = $nids[$uuid]) ? node_load($nid) : FALSE;
 }
 
 /**
