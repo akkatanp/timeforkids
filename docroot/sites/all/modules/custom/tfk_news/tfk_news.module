@@ -497,16 +497,17 @@ function tfk_news_theme() {
  */
 function theme_tfk_news_formatter_tfk_news_grade_title($element) {
 
-  if($element['element']['node']->type == 'mini_lesson'){
-    $nid = $element['element']['node']->nid;
+  $node = node_load($element['element']['nid']);
+  if($node->type == 'mini_lesson'){
+
     $sql = db_query('select td.name from taxonomy_term_data td
-            left join taxonomy_index ti on td.tid = ti.tid where td.vid = :vid and ti.nid = :nid',array('vid' => 6,'nid' => $nid));
+            left join taxonomy_index ti on td.tid = ti.tid where td.vid = :vid and ti.nid = :nid',array('vid' => 6,'nid' => $node->nid));
     $res_record = $sql->fetch();
 
     if($res_record->name == '2'){
-      return l('Grade '.$res_record->name,'node/'.$nid);
+      return l('Grade '.$res_record->name,'node/'.$node->nid);
     }else{
-      return l('Grades '.$res_record->name,'node/'.$nid);
+      return l('Grades '.$res_record->name,'node/'.$node->nid);
     }
   } else {
     return l($element['element']['node']->title, 'node/'. $element['element']['nid']);
