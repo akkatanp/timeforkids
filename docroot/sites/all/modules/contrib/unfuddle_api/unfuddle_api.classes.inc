@@ -316,7 +316,18 @@ class Unfuddle {
 
     $xml = new SimpleXMLElement('<ticket></ticket>');
     $xml->addChild('summary', $summary);
-    $xml->addChild('description', '<![CDATA[' . $description . ']]>');
+
+    // Unfortunatelly simpleXML doesn't support creation of CDATA
+    // nodes by default. In order to create a CDATA node we need to use
+    // a dom interface. First we need to create an empty simpleXML
+    // desciption node, then get the dom interface for it. After we
+    // have the dom node we can use its DOMDocument to create a CDATA
+    // node. This we will append to description node.
+    $xml->description = NULL;
+    $description_node = dom_import_simplexml($xml->description);
+    $description_node_owner   = $description_node->ownerDocument;
+    $description_node->appendChild($description_node_owner->createCDATASection($description));
+
     foreach ($fields as $field => $data) {
       $xml->addChild($field, $data);
     }
