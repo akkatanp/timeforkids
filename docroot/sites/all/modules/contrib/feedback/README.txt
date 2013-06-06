@@ -18,6 +18,7 @@ To submit bug reports and feature suggestions, or to track changes:
 * BrowsCap (optional, record user agents)
 * Unfuddle Feedback (optional, Unfuddle ticketing integration)
 * Mollom (optional, spam prevention)
+* Views (optional)
 
 
 -- INSTALLATION --
@@ -28,15 +29,16 @@ To submit bug reports and feature suggestions, or to track changes:
 -- CONFIGURATION --
 
 * Configure user permissions in Administration » People » Permissions »
-Feedback.
-* Configure fields at Administration » Configuration »  User interface »
-Feedback
+  Feedback.
+
+* Configure fields at Administration » Configuration » User interface »
+  Feedback.
 
 
 -- USAGE --
 
 * To view all feedback messages, go to Administration » Reports » Feedback
-messages
+  messages.
 
 
 -- CONTACT --

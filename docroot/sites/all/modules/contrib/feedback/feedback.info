@@ -4,11 +4,14 @@ package = Development
 core = 7.x
 configure = admin/config/user-interface/feedback
 files[] = feedback.controller.inc
+files[] = views/feedback_handler_field_feedback_link.inc
+files[] = views/feedback_handler_field_feedback_link_delete.inc
+files[] = views/feedback_handler_field_feedback_link_edit.inc
 files[] = tests/feedback.test
 
-; Information added by drupal.org packaging script on 2011-05-16
+; Information added by drupal.org packaging script on 2013-03-04
 version = "7.x-2.x-dev"
 core = "7.x"
 project = "feedback"
-datestamp = "1305504680"
+datestamp = "1362358407"
 

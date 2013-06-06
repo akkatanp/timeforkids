@@ -1,6 +1,13 @@
 <?php
 
 /**
+ * Implements hook_uninstall().
+ */
+function unfuddle_feedback_uninstall() {
+  variable_del('unfuddle_feedback_milestone');
+}
+
+/**
  * Unfuddle Feedback now depends on Unfuddle API module.
  */
 function unfuddle_feedback_update_6000() {

@@ -6,9 +6,9 @@ files[] = unfuddle_api.install
 files[] = unfuddle_api.classes.inc
 
 
-; Information added by drupal.org packaging script on 2011-04-19
+; Information added by drupal.org packaging script on 2013-01-23
 version = "7.x-1.x-dev"
 core = "7.x"
 project = "unfuddle_api"
-datestamp = "1303173839"
+datestamp = "1358906079"
 

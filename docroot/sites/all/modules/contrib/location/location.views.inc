@@ -59,6 +59,9 @@ function location_views_handlers() {
       'location_handler_field_location_street' => array(
         'parent' => 'views_handler_field',
       ),
+      'location_handler_field_location_additional' => array(
+        'parent' => 'views_handler_field',
+      ),
       'location_views_handler_filter_proximity' => array(
         'parent' => 'views_handler_filter',
       ),
@@ -174,6 +177,24 @@ function location_views_data() {
     'field' => array(
       'handler' => 'location_handler_field_location_street',
       'click sortable' => TRUE,
+    ),
+    'filter' => array(
+      'handler' => 'views_handler_filter_string',
+    ),
+    'sort' => array(
+      'handler' => 'views_handler_sort',
+    ),
+  );
+
+  $data['location']['additional'] = array(
+    'title' => t('Additional'),
+    'help' => t('Additional street address of the selected location.'),
+    'field' => array(
+      'click sortable' => TRUE,
+    ),
+    'argument' => array(
+      'handler' => 'views_handler_argument_string',
+      // 'empty field name' => t('Unknown'),
     ),
     'filter' => array(
       'handler' => 'views_handler_filter_string',
@@ -472,6 +493,7 @@ function location_views_proximity_get_reference_location($view, $options) {
       }
       break;
     case 'static':
+    case 'latlon_gmap':
       $coordinates['latitude'] = (float) $options['latitude'];
       $coordinates['longitude'] = (float) $options['longitude'];
       break;
@@ -522,10 +544,16 @@ function location_views_proximity_get_reference_location($view, $options) {
             $coordinates['longitude'] = (float) $tempnode->location['longitude'];
           }
           else {
-            $cck_location = $tempnode->$field_name;
-            if (isset($cck_location[0]['longitude']) && isset($cck_location[0]['latitude'])) {
-              $coordinates['latitude'] = (float) $cck_location[0]['latitude'];
-              $coordinates['longitude'] = (float) $cck_location[0]['longitude'];
+            if (isset($tempnode->$field_name)) {
+              $cck_location = $tempnode->$field_name;
+              if (isset($cck_location[LANGUAGE_NONE][0]['longitude']) && isset($cck_location[LANGUAGE_NONE][0]['latitude'])) {
+                $coordinates['latitude'] = (float) $cck_location[LANGUAGE_NONE][0]['latitude'];
+                $coordinates['longitude'] = (float) $cck_location[LANGUAGE_NONE][0]['longitude'];
+              }
+              else if (isset($cck_location[0]['longitude']) && isset($cck_location[0]['latitude'])) {
+                $coordinates['latitude'] = (float) $cck_location[0]['latitude'];
+                $coordinates['longitude'] = (float) $cck_location[0]['longitude'];
+              }
             }
           }
         }
@@ -540,6 +568,30 @@ function location_views_proximity_get_reference_location($view, $options) {
         }
       }
       break;
+    case 'distance_arg':
+      foreach ($view->argument as $argument) {
+        if ($argument->field == 'distance') {
+          list($coords, $search_distance) = explode('_', $view->args[$argument->position]);
+          list($lat, $lon) = explode(',', $coords);
+          break;
+        }
+      }
+      $coordinates['latitude'] = (float) $lat;
+      $coordinates['longitude'] = (float) $lon;
+      break;
+    case 'geoip':
+      if (module_exists('geoip')) {
+        if ($geoip_location = geoip_city()) { // intentional assignment of $geoip
+          $coordinates['latitude'] = $geoip_location->latitude;
+          $coordinates['longitude'] = $geoip_location->longitude;
+        }
+      }
+      else if ($options['latitude'] && $options['longitude']) {
+        $coordinates['latitude'] = (float) $options['latitude'];
+        $coordinates['longitude'] = (float) $options['longitude'];
+      }
+      break;
+
   }
 
   return $coordinates;
