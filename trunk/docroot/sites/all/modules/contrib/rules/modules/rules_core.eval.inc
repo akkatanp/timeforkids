@@ -23,13 +23,14 @@ function rules_element_invoke_component($arguments, RulesPlugin $element) {
     $replacements = array('%label' => $component->label(), '@plugin' => $component->plugin());
     // Handle recursion prevention.
     if ($state->isBlocked($component)) {
-      return rules_log('Not evaluating @plugin %label to prevent recursion.', $replacements, RulesLog::INFO);
+      return rules_log('Not evaluating @plugin %label to prevent recursion.', $replacements, RulesLog::INFO, $component);
     }
     $state->block($component);
-    rules_log('Evaluating @plugin %label.', $replacements, RulesLog::INFO, TRUE);
+    rules_log('Evaluating @plugin %label.', $replacements, RulesLog::INFO, $component, TRUE);
     module_invoke_all('rules_config_execute', $component);
 
     // Manually create a new evaluation state and evaluate the component.
+    $args = array_intersect_key($wrapped_args, $component->parameterInfo());
     $new_state = $component->setUpState($wrapped_args);
     $return = $component->evaluate($new_state);
 
@@ -47,11 +48,11 @@ function rules_element_invoke_component($arguments, RulesPlugin $element) {
 
     // Cleanup the state, what saves not mergable variables now.
     $new_state->cleanup();
-    rules_log('Finished evaluation of @plugin %label.', $replacements, RulesLog::INFO, FALSE);
+    rules_log('Finished evaluation of @plugin %label.', $replacements, RulesLog::INFO, $component, FALSE);
     return $return;
   }
   else {
-    throw new RulesException('Unable to get the component %name', array('%name' => $info['#config_name']), $element);
+    throw new RulesEvaluationException('Unable to get the component %name', array('%name' => $info['#config_name']), $element, RulesLog::ERROR);
   }
 }
 
@@ -105,18 +106,18 @@ class RulesURIInputEvaluator extends RulesDataInputEvaluator {
 
   public function evaluate($uri, $options, RulesState $state) {
     if (!url_is_external($uri)) {
-      // Extract the path so URL aliases are applied properly.
-      $query = '';
-      if (($pos = strpos($uri, '?')) !== FALSE) {
-        $query = substr($uri, $pos);
-        $uri = substr($uri, 0, $pos);
-      }
-      return url($uri, array('absolute' => TRUE) + $options) . $query;
+      // Extract the path and build the URL using the url() function, so URL
+      // aliases are applied and query parameters and fragments get handled.
+      $url = drupal_parse_url($uri);
+      $url_options = array('absolute' => TRUE);
+      $url_options['query'] = $url['query'];
+      $url_options['fragment'] = $url['fragment'];
+      return url($url['path'], $url_options);
     }
     elseif (valid_url($uri)) {
       return $uri;
     }
-    throw new RulesException('Input evaluation generated an invalid URI.', array(), NULL, RulesLog::WARN);
+    throw new RulesEvaluationException('Input evaluation generated an invalid URI.', array(), NULL, RulesLog::WARN);
   }
 }
 
@@ -146,9 +147,70 @@ class RulesDateOffsetProcessor extends RulesDataProcessor {
 
   public function process($value, $info, RulesState $state, RulesPlugin $element) {
     $value = isset($this->processor) ? $this->processor->process($value, $info, $state, $element) : $value;
+    return RulesDateOffsetProcessor::applyOffset($value, $this->setting['value']);
+  }
+
+  /**
+   * Intelligently applies the given date offset in seconds.
+   *
+   * Intelligently apply duration values > 1 day, i.e. convert the duration
+   * to its biggest possible unit (months, days) and apply it to the date with
+   * the given unit. That's necessary as the number of days in a month
+   * differs, as well as the number of hours for a day (on DST changes).
+   */
+  public static function applyOffset($timestamp, $offset) {
+    if (abs($offset) >= 86400) {
+
+      // Get the days out of the seconds.
+      $days = intval($offset / 86400);
+      $sec = $offset % 86400;
+      // Get the months out of the number of days.
+      $months = intval($days / 30);
+      $days = $days % 30;
+
+      // Apply the offset using the DateTime::modify and convert it back to a
+      // timestamp.
+      $date = date_create("@$timestamp");
+      $date->modify("$months months $days days $sec seconds");
+      return $date->format('U');
+    }
+    else {
+      return $timestamp + $offset;
+    }
+  }
+}
+
+/**
+ * A data processor for applying numerical offsets.
+ */
+class RulesNumericOffsetProcessor extends RulesDataProcessor {
+
+  protected static function form($settings, $var_info) {
+    $settings += array('value' => '');
+    $form = array(
+      '#type' => 'fieldset',
+      '#title' => t('Add offset'),
+      '#collapsible' => TRUE,
+      '#collapsed' => empty($settings['value']),
+      '#description' => t('Add an offset to the selected number. E.g. an offset of "1" adds 1 to the number before it is passed on as argument.'),
+    );
+    $form['value'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Offset'),
+      '#description' => t('Note that you can also specify negative numbers.'),
+      '#default_value' => $settings['value'],
+      '#element_validate' => array('rules_ui_element_integer_validate'),
+      '#weight' => 5,
+    );
+    return $form;
+  }
+
+  public function process($value, $info, RulesState $state, RulesPlugin $element) {
+    $value = isset($this->processor) ? $this->processor->process($value, $info, $state, $element) : $value;
     return $value + $this->setting['value'];
   }
 }
+
 
 /**
  * A custom wrapper class for vocabularies that is capable of loading vocabularies by machine name.
@@ -166,5 +228,15 @@ class RulesTaxonomyVocabularyWrapper extends EntityDrupalWrapper {
     else {
       parent::setEntity($data);
     }
+  }
+
+  /**
+   * Overriden to permit machine names as values.
+   */
+  public function validate($value) {
+    if (isset($value) && is_string($value)) {
+      return TRUE;
+    }
+    return parent::validate($value);
   }
 }

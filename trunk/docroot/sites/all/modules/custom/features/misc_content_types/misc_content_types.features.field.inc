@@ -2127,8 +2127,8 @@ function misc_content_types_field_default_fields() {
       'indexes' => array(),
       'module' => 'metatags_quick',
       'settings' => array(
-        'meta_name' => 'description',
         0 => 'meta_name',
+        'meta_name' => 'description',
       ),
       'translatable' => '0',
       'type' => 'metatags_quick',
@@ -2182,8 +2182,8 @@ function misc_content_types_field_default_fields() {
       'indexes' => array(),
       'module' => 'metatags_quick',
       'settings' => array(
-        'meta_name' => 'keywords',
         0 => 'meta_name',
+        'meta_name' => 'keywords',
       ),
       'translatable' => '0',
       'type' => 'metatags_quick',
@@ -3656,7 +3656,7 @@ function misc_content_types_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_external_url',
-      'required' => 1,
+      'label' => 'External URL',
       'settings' => array(
         'text_processing' => '0',
         'user_register_form' => FALSE,

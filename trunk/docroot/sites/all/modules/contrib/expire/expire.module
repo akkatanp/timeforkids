@@ -177,7 +177,7 @@ function expire_user_insert(&$edit, $account, $category = NULL) {
  *
  * Acts on user account deletion
  */
-function expire_user_delete(&$edit, $account, $category = NULL) {
+function expire_user_delete($account) {
   // Return if no user id is attached to the user object.
   if (empty($account->uid)) {
     return;
@@ -260,9 +260,13 @@ function expire_node($node) {
   // Get menu and flush related items in the menu.
   if (module_exists('menu') && variable_get('expire_flush_menu_items', EXPIRE_FLUSH_MENU_ITEMS) != 0) {
     if (!isset($node->menu['menu_name'])) {
-      menu_node_prepare($node);
+      $menu_node = clone $node;
+      menu_node_prepare($menu_node);
+      $menu = menu_tree_all_data($menu_node->menu['menu_name']);
     }
-    $menu = menu_tree_all_data($node->menu['menu_name']);
+    else {
+      $menu = menu_tree_all_data($node->menu['menu_name']);
+    }
     $tempa = NULL;
     $tempb = NULL;
     if (variable_get('expire_flush_menu_items', EXPIRE_FLUSH_MENU_ITEMS) == 1) {
@@ -344,7 +348,7 @@ function expire_get_menu_structure($menu, $found, $needle, $first, &$found_globa
         }
       }
       expire_get_menu_structure($sub_menu, $needle, $found, FALSE, $found_global, $menu_out);
-      $structure[$item['link']['link_path']][] = $sub;
+      $structure[$item['link']['link_path']][] = $sub_menu;
       if ($item['link']['page_callback'] != '' && $found_global) {
         // Get Parent of kid
         $menu_out[] = $item['link']['link_path'];
@@ -356,8 +360,13 @@ function expire_get_menu_structure($menu, $found, $needle, $first, &$found_globa
   }
 
   // Clean up
-  if (isset($structure) && is_array($structure)) {
-    $structure = array_unique($structure);
+  if (isset($structure)) {
+    if (is_array($structure)) {
+      $structure = array_unique($structure);
+    }
+  }
+  else {
+    $structure = array();
   }
   $found_global = $found;
   if ($first) {
@@ -405,9 +414,9 @@ function expire_cache_derivative($paths, &$node = NULL) {
     }
 
     // Path alias
-    $path_alias = url($path, array('absolute' => TRUE));
+    $path_alias = url($path, array('absolute' => FALSE));
     // Remove the base path
-    $expire[] = $path_alias;
+    $expire[] = substr($path_alias, strlen($base_path));
 
     // Path redirects
     if (module_exists('redirect')) {
@@ -432,16 +441,24 @@ function expire_cache_derivative($paths, &$node = NULL) {
   $expire = array_unique($expire);
   // Add on the url to these paths
   $urls = array();
-  global $base_url;
   if (variable_get('expire_include_base_url', EXPIRE_INCLUDE_BASE_URL)) {
-    $base_urls[] = $base_url;
+    $base_urls[] = url('', array('absolute' => TRUE));
     if (module_exists('domain')
      && module_load_include('inc', 'expire', 'expire.domain') != FALSE) {
       $base_urls = array_merge($base_urls, expire_get_base_urls($node));
     }
     foreach ($expire as $path) {
       foreach ($base_urls as $base) {
-        $urls[] = $base . $path;
+        // If domain access is enabled the $base_urls is an array with configured subdomains
+        if (is_array($base)) {
+          foreach ($base as $subdomain) {
+            $urls[] = $subdomain . $path;
+          }
+        }
+        else {
+          $base = rtrim($base, '/') . '/';
+          $urls[] = $base . $path;
+        }
       }
     }
   }
@@ -476,7 +493,7 @@ function expire_print_r($data) {
 function expire_normal_path_check($path) {
   $original_map = arg(NULL, $path);
   $parts = array_slice($original_map, 0, MENU_MAX_PARTS);
-  list($ancestors, $placeholders) = menu_get_ancestors($parts);
+  $ancestors = menu_get_ancestors($parts);
 
   $router_item = db_query_range('SELECT path FROM {menu_router} WHERE path IN (:ancestors) ORDER BY fit DESC', 0, 1, array(':ancestors' => $ancestors))->fetchAssoc();
   return $router_item;
@@ -508,7 +525,7 @@ function expire_votingapi_delete($votes) {
 function _expire_votingapi($votes) {
   foreach ($votes as $vote) {
     if ($vote['entity_type'] == 'comment') {
-      $nid = db_query("SELECT nid FROM {comments} WHERE cid = :cid", array(':cid' => $vote['entity_id']))->fetchField();
+      $nid = db_query("SELECT nid FROM {comment} WHERE cid = :cid", array(':cid' => $vote['entity_id']))->fetchField();
       if (is_numeric($nid)) {
         $node = node_load($nid);
         if ($node) {

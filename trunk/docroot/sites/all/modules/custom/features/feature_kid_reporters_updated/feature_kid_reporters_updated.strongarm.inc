@@ -14,7 +14,7 @@ function feature_kid_reporters_updated_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'active_kid_reporter_year';
-  $strongarm->value = '2011-2012';
+  $strongarm->value = '2012-2013';
   $export['active_kid_reporter_year'] = $strongarm;
 
   $strongarm = new stdClass;

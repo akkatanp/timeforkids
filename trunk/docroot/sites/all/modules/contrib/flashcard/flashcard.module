@@ -124,13 +124,11 @@ function flashcard_field_widget_form(&$form, &$form_state, $field, $instance, $l
     '#type' => 'textfield',
     '#title' => t('Front of card'),
     '#default_value' => isset($items[$delta]['question']) ? $items[$delta]['question'] : '',
-    '#maxlength' => 255,
   );
   $element['answer'] = array(
     '#type' => 'textfield',
     '#title' => t('Back of card'),
     '#default_value' => isset($items[$delta]['answer']) ? $items[$delta]['answer'] : '',
-    '#maxlength' => 255,
   );
   return $element;
 }

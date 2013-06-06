@@ -124,6 +124,7 @@
       <?php print $title; ?></h2>
     <?php endif; ?>
     <?php print render($title_suffix); ?>
+
     <?php if($type == 'slideshow' || $type == 'video'): ?>
     <?php
         $photoDate = $variables['field_date'][0][value];
@@ -131,6 +132,7 @@
         <span class="image-date"><?php echo date("F d, Y", $photoDate); ?></span>
        
     <?php endif; ?>
+
   
     <?php if (isset($unpublished) && $unpublished): ?>
       <div class="unpublished"><?php print t('Unpublished'); ?></div>

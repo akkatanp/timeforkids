@@ -1,4 +1,3 @@
-
 <div id="slideshow-container" class="regular">
 	
 	<div id="slideshow-controls">

@@ -28,6 +28,10 @@ function feedback_theme() {
       'template' => 'feedback-entry',
       'file' => 'feedback.admin.inc',
     ),
+    'feedback_form_display' => array(
+      'template' => 'feedback-form-display',
+      'variables' => array('title' => NULL, 'content' => NULL),
+    ),
   );
 }
 
@@ -59,11 +63,64 @@ function feedback_entity_info() {
           'label' => t('Full feedback entry'),
           'custom settings' => FALSE,
         ),
+        'teaser' => array(
+          'label' => t('Teaser'),
+          'custom settings' => FALSE,
+        ),
+        'widget' => array(
+          'label' => t('Widget'),
+          'custom settings' => FALSE,
+        ),
       ),
+      // Disable Metatags (metatag) module's entity form additions.
+      'metatags' => FALSE,
     ),
   );
 
   return $return;
+}
+
+/**
+ * Implements hook_field_extra_fields().
+ */
+function feedback_field_extra_fields() {
+  $extras['feedback']['feedback']['form']['help'] = array(
+    'label' => t('Help'),
+    'description' => t('Feedback submission guidelines'),
+    'weight' => -10,
+  );
+  $extras['feedback']['feedback']['form']['messages'] = array(
+    'label' => t('Entries'),
+    'description' => t('Existing feedback entries for the current page'),
+    'weight' => -5,
+  );
+  $extras['feedback']['feedback']['form']['message'] = array(
+    'label' => t('Message'),
+    'description' => t('Feedback message form text field'),
+    'weight' => 0,
+  );
+
+  $extras['feedback']['feedback']['display']['location'] = array(
+    'label' => t('Location'),
+    'description' => t('The URL of the page the message was submitted on'),
+    'weight' => -15,
+  );
+  $extras['feedback']['feedback']['display']['date'] = array(
+    'label' => t('Date'),
+    'description' => t('The submission date of the message'),
+    'weight' => -10,
+  );
+  $extras['feedback']['feedback']['display']['user'] = array(
+    'label' => t('User'),
+    'description' => t('The name of the user who submitted the message'),
+    'weight' => -5,
+  );
+  $extras['feedback']['feedback']['display']['message'] = array(
+    'label' => t('Message'),
+    'description' => t('The main feedback message'),
+    'weight' => 0,
+  );
+  return $extras;
 }
 
 /**
@@ -113,11 +170,25 @@ function feedback_menu() {
     'access arguments' => array('view feedback messages'),
     'file' => 'feedback.admin.inc',
   );
+  $items['admin/reports/feedback/%feedback/view'] = array(
+    'title' => 'View',
+    'type' => MENU_DEFAULT_LOCAL_TASK,
+    'weight' => -10,
+  );
+  $items['admin/reports/feedback/%feedback/edit'] = array(
+    'title' => 'Edit',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('feedback_entry_form', 3),
+    'access arguments' => array('view feedback messages'),
+    'type' => MENU_LOCAL_TASK,
+    'file' => 'feedback.admin.inc',
+  );
   $items['admin/reports/feedback/%feedback/delete'] = array(
     'title' => 'Delete feedback entry',
     'page callback' => 'drupal_get_form',
     'page arguments' => array('feedback_delete_confirm', 3),
     'access arguments' => array('view feedback messages'),
+    'type' => MENU_CALLBACK,
     'file' => 'feedback.admin.inc',
   );
   $items['admin/config/user-interface/feedback'] = array(
@@ -138,62 +209,18 @@ function feedback_menu() {
 }
 
 /**
- * Implements hook_init().
- */
-function feedback_init() {
-  if (user_access('access feedback form')) {
-    $path = drupal_get_path('module', 'feedback');
-    drupal_add_css($path . '/feedback.css');
-    drupal_add_js($path . '/feedback.js');
-  }
-}
-
-/**
- * Implements hook_block_info().
- */
-function feedback_block_info() {
-  $blocks['form'] = array(
-    'info' => t('Feedback form'),
-  );
-  return $blocks;
-}
-
-/**
- * Implements hook_block_view().
- */
-function feedback_block_view($delta = '') {
-  $block = array();
-  switch($delta) {
-    case 'form':
-      if (!user_access('access feedback form')) {
-        break;
-      }
-      $block['subject'] = '<span class="feedback-link">' . t('Feedback') . '</span>';
-      $block['content'] = drupal_get_form('feedback_form');
-      break;
-  }
-  return $block;
-}
-
-/**
  * Implements hook_page_build().
  */
 function feedback_page_build(&$page) {
   if (user_access('access feedback form') && !feedback_match_path(variable_get('feedback_excluded_paths', 'admin/reports/feedback'))) {
-    $block = (object) feedback_block_view('form');
-    $block->module = 'feedback';
-    $block->delta = 'form';
-    $block->region = 'footer';
-    $build = $block->content;
-    unset($block->content);
-    $build += array(
-      '#block' => $block,
-      '#weight' => 0,
-      '#sorted' => TRUE,
+    $page['page_bottom']['feedback'] = array(
+      '#theme' => 'feedback_form_display',
+      '#title' => t('Feedback'),
+      '#content' => drupal_get_form('feedback_form'),
     );
-    $build['#theme_wrappers'][] ='block';
-
-    $page['page_bottom']['feedback'] = $build;
+    $path = drupal_get_path('module', 'feedback');
+    $page['page_bottom']['feedback']['#attached']['css'][] = $path . '/feedback.css';
+    $page['page_bottom']['feedback']['#attached']['js'][] = $path . '/feedback.js';
   }
 }
 
@@ -233,7 +260,13 @@ function feedback_form($form, &$form_state) {
   $form['#attributes']['class'] = array('feedback-form');
 
   // Store the path on which this form is displayed.
-  $form['location'] = array('#type' => 'value', '#value' => $_GET['q']);
+  if (!isset($form_state['inline']['location'])) {
+    $form_state['inline']['location'] = $_GET['q'];
+  }
+  $form['location'] = array(
+    '#type' => 'value',
+    '#value' => $form_state['inline']['location'],
+  );
 
   $form['help'] = array(
     '#prefix' => '<div class="feedback-help">',
@@ -248,16 +281,17 @@ function feedback_form($form, &$form_state) {
       $feedbacks = feedback_load_multiple(array(), array('status' => FEEDBACK_OPEN, 'location' => $_GET['q']));
     }
     if ($feedbacks) {
+      form_load_include($form_state, 'inc', 'feedback', 'feedback.admin');
       $form['messages'] = array(
         '#prefix' => '<div class="feedback-messages">',
         '#suffix' => '</div>',
       );
       foreach ($feedbacks as $fid => $feedback) {
         $form['messages'][$fid]['#feedback'] = $feedback;
-        $form['messages'][$fid]['submitted'] = array('#markup' => t('!feedback-author !feedback-date:', array('!feedback-author' => format_username($feedback), '!feedback-date' => format_date($feedback->timestamp, 'small'))));
+        $form['messages'][$fid]['submitted'] = array('#markup' => t('@feedback-author !feedback-date:', array('@feedback-author' => format_username($feedback), '!feedback-date' => format_date($feedback->timestamp, 'small'))));
         $form['messages'][$fid]['submitted']['#prefix'] = '<div class="feedback-submitted">';
         $form['messages'][$fid]['submitted']['#suffix'] = '</div>';
-        $form['messages'][$fid]['body'] = feedback_format_message($feedback);
+        $form['messages'][$fid]['body'] = feedback_build_content($feedback, 'widget');
         $form['messages'][$fid]['body']['#prefix'] = '<div class="feedback-body">';
         $form['messages'][$fid]['body']['#suffix'] = '</div>';
       }
@@ -348,37 +382,6 @@ function feedback_form_ajax_callback($form, &$form_state) {
   $html = '<div id="feedback-status-message">' . $messages . '</div>';
   $build['#commands'][] = ajax_command_append('#block-feedback-form', $html);
   return $build;
-}
-
-/**
- * Returns HTML for a feedback entry.
- *
- * @param $entry
- *   A feedback object.
- */
-function feedback_format_message($entry) {
-  $message = check_plain($entry->message);
-  if (!empty($entry->useragent)) {
-    if (module_exists('browscap')) {
-      $browserinfo = browscap_get_browser($entry->useragent);
-      // Browscap returns useragent but not always parent info.
-      $browser = (isset($browserinfo['parent']) ? $browserinfo['parent'] . ' / ' . $browserinfo['platform'] : $browserinfo['useragent']);
-      $message .= '<div class="browserinfo">(' . check_plain($browser) . ')</div>';
-    }
-    else {
-      $message .= '<div class="browserinfo">(' . check_plain($entry->useragent) . ')</div>';
-    }
-  }
-  $uri = entity_uri('feedback', $entry);
-  if ($uri['path'] != $_GET['q']) {
-    $links['view'] = array('title' => t('view'), 'href' => $uri['path']);
-  }
-  else {
-    $links['delete'] = array('title' => t('delete'), 'href' => $uri['path'] . '/delete');
-  }
-  $elements['message'] = array('#markup' => $message);
-  $elements['links'] = array('#theme' => 'links__feedback_message', '#links' => $links);
-  return $elements;
 }
 
 /**
@@ -553,6 +556,12 @@ function feedback_mollom_form_list() {
   $forms['feedback_form'] = array(
     'title' => t('Feedback form'),
     'entity' => 'feedback',
+    'bundle' => 'feedback',
+    'entity delete multiple callback' => 'feedback_delete_multiple',
+    'delete form' => 'feedback_delete_confirm',
+    'delete form file' => array(
+      'name' => 'feedback.admin',
+    ),
     'report access' => array('view feedback messages'),
   );
   return $forms;
@@ -562,13 +571,23 @@ function feedback_mollom_form_list() {
  * Implements hook_mollom_form_info().
  */
 function feedback_mollom_form_info($form_id) {
-  if ($form_id == 'feedback_form') {
-    return array(
-      'mode' => MOLLOM_MODE_ANALYSIS,
-      'bypass access' => array('administer feedback'),
-      'elements' => array(
-        'message' => t('Message'),
-      ),
-    );
-  }
+  $form_info = array(
+    'mode' => MOLLOM_MODE_ANALYSIS,
+    'bypass access' => array('administer feedback'),
+    'elements' => array(
+      'message' => t('Message'),
+    ),
+  );
+  mollom_form_info_add_fields($form_info, 'feedback', 'feedback');
+  return $form_info;
+}
+
+/**
+ * Implements hook_views_api();
+ */
+function feedback_views_api() {
+  return array(
+    'api' => 3.0,
+    'path' => drupal_get_path('module', 'feedback') . '/views',
+  );
 }
