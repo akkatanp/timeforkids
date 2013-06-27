@@ -210,7 +210,7 @@ function _get_atw_daylife_slideshow_images(){
     $node = node_load($nid);
     $node_data['daylife_nid'] = $node->nid;
     $img_tmp = field_get_items('node', $node, 'field_person_photo');
-    //$node_data['daylife_speaker_photo'] = file_create_url(image_style_path('tfk_square_large',$img_tmp[0]['uri']));
+    //$node_data['daylife_speaker_photo'] = file_create_url(image_style_url('tfk_square_large',$img_tmp[0]['uri']));
     $node_data['daylife_speaker_photo'] = file_create_url($img_tmp[0]['uri']);//Using original image per tfks318
     $intr_tmp = field_get_items('node', $node, 'field_person_intro');
     $node_data['daylife_speaker_intro'] = $intr_tmp[0]['value'];
@@ -285,7 +285,7 @@ function _get_atw_timeline_slideshow_images(){
         $timelines_data[$k]['event_title'] = $record->timeline_title;
 
         if(strlen($record->file_uri) > 0){
-            //$timelines_data[$k]['image_path'] = image_style_path('tfk_rect_large',$record->file_uri);
+            //$timelines_data[$k]['image_path'] = image_style_url('tfk_rect_large',$record->file_uri);
             $timelines_data[$k]['image_path'] = $record->file_uri;//Using full image per tfks317
             $timelines_data[$k]['image_path'] = file_create_url($timelines_data[$k]['image_path']);
             $timelines_data[$k]['image_attached'] = 1;
@@ -358,7 +358,7 @@ function _get_atw_destination_slideshow_images(){
           $img_data = $image['node'];
           $tmp_img_uri = field_get_items('node', $img_data, 'field_image');
           $img_uri = $tmp_img_uri[0]['uri'];
-          $images[$k]['image_path'] = image_style_path('tfk_rect_large',$img_uri);
+          $images[$k]['image_path'] = image_style_url('tfk_rect_large',$img_uri);
           $images[$k]['image_path'] = file_create_url($images[$k]['image_path']);
           $images[$k]['image_title'] = $img_data->title;
           $images[$k]['image_credit'] = $image['node']->field_credit['und'][0]['value'];
