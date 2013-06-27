@@ -4,6 +4,10 @@
  */
 
 (function ($) {
+  ready: function(){
+      $('#block-webform-client-block-306 .content').show();
+      $('#block-webform-client-block-306 h2.block-title').hide();
+  }
   Drupal.behaviors.writingTips = {
     attach: function(context, settings) {
       $('#block-webform-client-block-306 .content').hide();
