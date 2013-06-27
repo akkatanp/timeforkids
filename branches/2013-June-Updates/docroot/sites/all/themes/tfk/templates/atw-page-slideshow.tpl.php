@@ -6,7 +6,7 @@
 		<div class="outer">
 			<div class="inner">
 			<?php foreach($destinations_data as $image_k => $image_obj): ?>
-				<a href="/<?php echo $image_obj['destination_path']; ?>"><img src="<?php echo file_create_url(image_style_path('tfk_rect_large',file_build_uri(basename($image_obj['image_filename'])))); ?>" /></a>
+				<a href="/<?php echo $image_obj['destination_path']; ?>"><img src="<?php echo file_create_url(image_style_url('tfk_rect_large',file_build_uri(basename($image_obj['image_filename'])))); ?>" /></a>
 			<?php endforeach;?>
 			</div>
 		</div>
