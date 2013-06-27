@@ -40,6 +40,8 @@
 
 .page-news-archive-polls .view-news-archive .mytitleart{
     float:left;
+    line-height:22px;
+    max-width:320px;
 }
 
 .view-news-archive .views-field-field-date{
@@ -3031,10 +3033,9 @@ body.page-404page #first-column .region-sidebar-first .section{
     background: url(../images/bar-chart-icon.png) no-repeat;
     width:30px;
     height:30px;
-    float:left;
+    float:right;
     margin-left:10px;
     position:relative;
-    bottom:3px;
     
 }
 
