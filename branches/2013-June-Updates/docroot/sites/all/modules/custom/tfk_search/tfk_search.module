@@ -1326,7 +1326,7 @@ function _tfk_get_saved_searches() {
 function theme_tfk_featured_block(&$variables) {
   $tfkSearchFeaturedItem = $variables['tfkSearchFeaturedItem'];
   $output = '<div id="tfk-search-photos-video-featured">';
-  $output .= '<div class="top-story-right-square">&nbsp</div>';
+  $output .= '<div class="top-story-right-square"></div>';
   $url = ltrim(url('node/'. $tfkSearchFeaturedItem->nid), '/');
   
   // Prevent double URL escaping by l().
@@ -1439,7 +1439,7 @@ function theme_tfk_featured_minisite_slideshow(&$variables) {
     
   $tfkSearchFeaturedItem = $variables['tfkSearchFeaturedItem'];
   $output = '<div id="tfk-search-photos-video-featured">';
-  $output .= '<div class="top-story-right-square">&nbsp</div>';
+  $output .= '<div class="top-story-right-square"></div>';
   $url = ltrim(url('node/'. $tfkSearchFeaturedItem->nid), '/');
   
   $output .= '<div class="g1'. ' content-type-'. $tfkSearchFeaturedItem->type. '">';
@@ -1709,7 +1709,7 @@ function tfk_search_get_thumbnail($fid, $style) {
   if(empty($file->uri)) {
     return FALSE;
   }
-  $file->newpath = image_style_path($style, $file->uri);
+  $file->newpath = image_style_url($style, $file->uri);
   
   return image_style_url($style, $file->uri);
 }
@@ -2680,7 +2680,7 @@ function tfk_search_preprocess_search_result(&$vars) {
         $uri = $tmp_img_nid[0]['uri'];
         $filesystem_path = drupal_realpath($uri);
         if(!empty($uri)) {
-          $newpath = image_style_path($style, $uri);
+          $newpath = image_style_url($style, $uri);
           $abspath = file_create_url($newpath);
           $thumbnail = theme('image', array('path' => $abspath, 'alt' => $title, 'title' => $title, 'attributes' => $thumb_attr));
           $vars['thumbnail'] = l($thumbnail, 'node/'. $vars['result']['fields']['entity_id'], $link_attr);
@@ -2710,7 +2710,7 @@ function tfk_search_preprocess_search_result(&$vars) {
         if($record) {
           $uri = file_build_uri(basename($record->filename));
           if(!empty($uri)) {
-            $newpath = image_style_path($style, $uri);
+            $newpath = image_style_url($style, $uri);
             $abspath = file_create_url($newpath);
             $thumbnail = theme('image', array('path' => $abspath, 'alt' => $title, 'title' => $title, 'attributes' => $thumb_attr));
             $vars['thumbnail'] = l($thumbnail, 'node/'. $vars['result']['fields']['entity_id'], $link_attr);
@@ -2733,7 +2733,7 @@ function tfk_search_preprocess_search_result(&$vars) {
         $uri = $tmp_img_nid[0]['uri'];
         if(!empty($uri)) {
           $icon = '<div class="icon"></div>';
-          $newpath = image_style_path($style, $uri);
+          $newpath = image_style_url($style, $uri);
           $abspath = file_create_url($newpath);
           $thumbnail = theme('image', array('path' => $abspath, 'alt' => $title, 'title' => $title, 'attributes' => $thumb_attr)). $icon;
           $vars['thumbnail'] = l($thumbnail, 'node/'. $vars['result']['fields']['entity_id'], $link_attr);
@@ -2789,7 +2789,7 @@ function tfk_search_preprocess_search_result(&$vars) {
         if($record) {
           $file = file_load($record->field_image_fid);
           if(!empty($file->uri)) {
-            $newpath = image_style_path($style, $file->uri);
+            $newpath = image_style_url($style, $file->uri);
             $abspath = file_create_url($newpath);
             $thumbnail = theme('image', array('path' => $abspath, 'alt' => $magazine->title, 'title' => $magazine->title, 'attributes' => $thumb_attr));
             $vars['thumbnail'] = l($thumbnail, 'node/'. $vars['result']['fields']['entity_id'], $link_attr);
@@ -3040,7 +3040,7 @@ function tfk_search_preprocess_search_result(&$vars) {
         $tmp_img_nid =  field_get_items('node', $node, 'field_common_core_thumbnail');
         $uri = $tmp_img_nid[0]['uri'];
         if(!empty($uri)) {
-          $newpath = image_style_path($style, $uri);
+          $newpath = image_style_url($style, $uri);
           $abspath = file_create_url($newpath);
           // Worksheets don't link to the node page.
           $vars['thumbnail'] = theme('image', array('path' => $abspath, 'alt' => $title, 'title' => $title, 'attributes' => $thumb_attr));
@@ -3063,7 +3063,7 @@ function tfk_search_preprocess_search_result(&$vars) {
         $tmp_img_nid =  field_get_items('node', $node, 'field_worksheet_thumbnail_image');
         $uri = $tmp_img_nid[0]['uri'];
         if(!empty($uri)) {
-          $newpath = image_style_path($style, $uri);
+          $newpath = image_style_url($style, $uri);
           $abspath = file_create_url($newpath);
           // Worksheets don't link to the node page.
           $vars['thumbnail'] = theme('image', array('path' => $abspath, 'alt' => $title, 'title' => $title, 'attributes' => $thumb_attr));
@@ -3155,7 +3155,7 @@ function tfk_search_preprocess_search_result(&$vars) {
         $record = $result->fetch();
         $file = file_load($record->field_image_fid);
         if(!empty($file->uri)) {
-          $file->newpath = image_style_path($style, $file->uri);
+          $file->newpath = image_style_url($style, $file->uri);
           $abspath = image_style_url($style, $file->uri);
           $icon = '<div class="icon"></div>';
           $thumbnail = theme('image', array('path' => $abspath, 'alt' => $title, 'title' => $title, 'attributes' => $thumb_attr)). $icon;
@@ -3212,7 +3212,7 @@ function tfk_search_preprocess_search_result(&$vars) {
 //        if($record) {
 //          $uri = file_build_uri(basename($record->filename));
 //          if(file_exists(drupal_realpath($uri))) {
-//            $file->newpath = image_style_path($style, $uri);
+//            $file->newpath = image_style_url($style, $uri);
 //            $abspath = image_style_url($style, $uri);
 //            $icon = '<div class="icon"></div>';
 //            $thumbnail = theme('image', array('path' => $abspath, 'alt' => $title, 'title' => $title, 'attributes' => $thumb_attr)). $icon;
