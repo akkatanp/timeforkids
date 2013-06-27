@@ -1,79 +1,92 @@
 /*Used for external site link popup*/
 .ui-dialog {
-    position: absolute;
-    width: 627px;
-    overflow: hidden;
-    background:#D71700;
-    font-family: Arial,Helvetica,"Nimbus Sans L",sans-serif;
+    position: absolute !important;
+    width: 627px !important;
+    overflow: hidden !important;
+    background:#D71700 !important;
+    font-family: Arial,Helvetica,"Nimbus Sans L",sans-serif !important;
 }
-.ui-dialog .ui-dialog-titlebar { padding: .4em 1em; position: relative;  }
+.ui-dialog .ui-dialog-titlebar { 
+    padding: .4em 1em !important; 
+    position: relative !important;  
+}
 .ui-dialog .ui-widget-header {
-    background: #D71700 url(../images/tfk-head-logo.png) 220px 14px no-repeat;
-    border:none;
-    height:0;
-    padding-top:115px;
+    background: #D71700 url(../images/tfk-head-logo.png) 220px 14px no-repeat !important;
+    border:none !important;
+    height:0 !important;
+    padding-top:115px !important;
 }
 .ui-dialog .ui-dialog-title {} 
 .ui-dialog .ui-dialog-titlebar-close {display:none;}
 .ui-dialog .ui-dialog-content {
-    position: relative; 
-    border: none;/*clear out inherited*/
-    border-left:20px solid #D71700;
-    border-right:20px solid #D71700; 
-    padding: 20px 70px 0px 70px;
-    background: #FFFFFF;
-    overflow: none;
-    zoom: 1;
-    font-size: 12px;
+    position: relative !important; 
+    border: none !important;/*clear out inherited*/
+    border-left:20px solid #D71700 !important;
+    border-right:20px solid #D71700 !important; 
+    padding: 20px 70px 0px 70px !important;
+    background: #FFFFFF !important;
+    overflow: none !important;
+    zoom: 1 !important;
+    font-size: 12px !important;
 }
 .ui-dialog .ui-dialog-buttonpane {
-    border:none;/*clear out inherited*/
-    border-left:20px solid #D71700;
-    border-right:20px solid #D71700;
-    border-bottom:20px solid #D71700;
-    padding-top:20px;
-    background: #FFFFFF;
+    border:none !important;/*clear out inherited*/
+    border-left:20px solid #D71700 !important;
+    border-right:20px solid #D71700 !important;
+    border-bottom:20px solid #D71700 !important;
+    padding-top:20px !important;
+    background: #FFFFFF !important;
 }
 .ui-dialog .ui-resizable-se { width: 14px; height: 14px; right: 3px; bottom: 3px; }
 .ui-draggable .ui-dialog-titlebar { cursor: move; }
 .tfk-jump h1 {
-    font-weight:bold;
-    font-size:30px;
-    line-height:30px;
-    color:#D71700;
-    text-align:center;
+    font-weight:bold !important;
+    font-size:30px !important;
+    line-height:30px !important;
+    color:#D71700 !important;
+    text-align:center !important;
 }
 .ui-dialog button {
-    background: url("../images/white-forward-arrow.png") no-repeat scroll 90px 9px #D71700;
-    color:#FFFFFF;
-    border:none;/*clear out inherited*/
-    -moz-border-radius: 10px;/*old versions of FF and safari*/
-    -webkit-border-radius:10px;
-    border-radius: 10px;
-    padding:7px 17px 7px 7px;
-    display:block;
-    margin-left:180px;
-    cursor: pointer; 
-    margin-bottom:25px;
-    text-transform:uppercase;
-    font-size:14px;
-    font-weight:bold;
-    font-family:Arial, sans-serif;
-    width:106px;
+    background: url("../images/white-forward-arrow.png") no-repeat scroll 90px 9px #D71700 !important;
+    color:#FFFFFF !important;
+    border:none !important;/*clear out inherited*/
+    -moz-border-radius: 10px !important;/*old versions of FF and safari*/
+    -webkit-border-radius:10px !important;
+    border-radius: 10px !important;
+    padding:7px 17px 7px 7px !important;
+    display:block !important;
+    margin-left:160px !important;
+    margin-top:0 !important;
+    cursor: pointer !important; 
+    margin-bottom:25px !important;
+    text-transform:uppercase !important;
+    font-size:14px !important;
+    font-weight:bold !important;
+    font-family:Arial, sans-serif !important;
+    width:106px !important;
+}
+.ui-dialog .ui-dialog-buttonpane {
+    margin-top:0 !important;
+}
+.ui-button-text-only .ui-button-text {
+    padding:0 !important;
+}
+.ui-dialog-titlebar-close {
+  visibility: hidden;
 }
 .tfk-jump-reminder {text-align:center;margin-top:10px;}
 div.ui-dialog-buttonset {
-    float:left;
+    float:left !important;
 }
 #tfk-jump-button-description {
-    float:right;
-    margin-right:178px;
-    font-size: 12px;
+    float:right !important;
+    margin-right:178px !important;
+    font-size: 12px !important;
 }
 #tfk-jump-continue {
-    margin-top:7px;
-    padding:0;
+    margin-top:7px !important;
+    padding:0 !important;
 }
 #tfk-jump-back {
-    margin-top:44px;
+    margin-top:44px !important;
 }
