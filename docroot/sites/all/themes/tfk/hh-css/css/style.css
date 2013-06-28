@@ -417,11 +417,10 @@ img {
 }
 
 #aplus-papers-checklist-block {
-  position: absolute;
   right: 10px;
-  top: 10px;
   width: 240px;
   zoom: 1;
+  float: right;
 }
 #aplus-papers-checklist-block .aplus-papers-checklist {
   border: 1px solid #cecece;
@@ -1085,6 +1084,7 @@ img {
 
 .view-flashcard-landing-page.view-id-flashcard_landing_page {
   float: left;
+  width: 460px;
 }
 .view-flashcard-landing-page.view-id-flashcard_landing_page h3.views-accordion-flashcard_landing_page-page_1-header {
   background: #dddddd;
@@ -1113,7 +1113,7 @@ img {
 }
 .view-flashcard-landing-page.view-id-flashcard_landing_page .ui-accordion-content, .view-flashcard-landing-page.view-id-flashcard_landing_page.view-display-id-page_2 {
   border: 0;
-  margin-top: 0;
+  margin-top: 15px;
   overflow: visible;
   width: 340px;
 }
