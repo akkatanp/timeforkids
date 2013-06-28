@@ -10,7 +10,7 @@
 function features_misc_field_default_fields() {
   $fields = array();
 
-  // Exported field: 'node-global_right_sidebar_promo-body'
+  // Exported field: 'node-global_right_sidebar_promo-body'.
   $fields['node-global_right_sidebar_promo-body'] = array(
     'field_config' => array(
       'active' => '1',
@@ -33,6 +33,7 @@ function features_misc_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '',

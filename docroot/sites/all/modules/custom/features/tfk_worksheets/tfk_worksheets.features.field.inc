@@ -10,7 +10,7 @@
 function tfk_worksheets_field_default_fields() {
   $fields = array();
 
-  // Exported field: 'node-common_core_standards-field_common_core_thumbnail'
+  // Exported field: 'node-common_core_standards-field_common_core_thumbnail'.
   $fields['node-common_core_standards-field_common_core_thumbnail'] = array(
     'field_config' => array(
       'active' => '1',
@@ -31,6 +31,7 @@ function tfk_worksheets_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'image',
       'settings' => array(
         'default_image' => 0,
@@ -81,6 +82,7 @@ function tfk_worksheets_field_default_fields() {
         'module' => 'image',
         'settings' => array(
           'insert' => 0,
+          'insert_absolute' => FALSE,
           'insert_class' => '',
           'insert_default' => 'auto',
           'insert_styles' => array(
@@ -115,7 +117,7 @@ function tfk_worksheets_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-common_core_standards-field_deck'
+  // Exported field: 'node-common_core_standards-field_deck'.
   $fields['node-common_core_standards-field_deck'] = array(
     'field_config' => array(
       'active' => '1',
@@ -136,6 +138,7 @@ function tfk_worksheets_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '',
@@ -187,7 +190,7 @@ Limit for News Block: 65 characters.',
     ),
   );
 
-  // Exported field: 'node-common_core_standards-field_grade_level'
+  // Exported field: 'node-common_core_standards-field_grade_level'.
   $fields['node-common_core_standards-field_grade_level'] = array(
     'field_config' => array(
       'active' => '1',
@@ -208,6 +211,7 @@ Limit for News Block: 65 characters.',
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -257,7 +261,7 @@ Limit for News Block: 65 characters.',
     ),
   );
 
-  // Exported field: 'node-common_core_standards-field_pdf_file_private'
+  // Exported field: 'node-common_core_standards-field_pdf_file_private'.
   $fields['node-common_core_standards-field_pdf_file_private'] = array(
     'field_config' => array(
       'active' => '1',
@@ -278,6 +282,7 @@ Limit for News Block: 65 characters.',
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'file',
       'settings' => array(
         'display_default' => 0,
@@ -322,6 +327,7 @@ Limit for News Block: 65 characters.',
         'module' => 'file',
         'settings' => array(
           'insert' => 0,
+          'insert_absolute' => FALSE,
           'insert_class' => '',
           'insert_default' => 'auto',
           'insert_styles' => array(
@@ -355,7 +361,7 @@ Limit for News Block: 65 characters.',
     ),
   );
 
-  // Exported field: 'node-common_core_standards-field_skills'
+  // Exported field: 'node-common_core_standards-field_skills'.
   $fields['node-common_core_standards-field_skills'] = array(
     'field_config' => array(
       'active' => '1',
@@ -376,6 +382,7 @@ Limit for News Block: 65 characters.',
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -425,7 +432,7 @@ Limit for News Block: 65 characters.',
     ),
   );
 
-  // Exported field: 'node-common_core_standards-field_themes'
+  // Exported field: 'node-common_core_standards-field_themes'.
   $fields['node-common_core_standards-field_themes'] = array(
     'field_config' => array(
       'active' => '1',
@@ -446,6 +453,7 @@ Limit for News Block: 65 characters.',
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -495,7 +503,7 @@ Limit for News Block: 65 characters.',
     ),
   );
 
-  // Exported field: 'node-pdf_quiz-field_deck'
+  // Exported field: 'node-pdf_quiz-field_deck'.
   $fields['node-pdf_quiz-field_deck'] = array(
     'field_config' => array(
       'active' => '1',
@@ -516,6 +524,7 @@ Limit for News Block: 65 characters.',
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '',
@@ -567,7 +576,7 @@ Limit for News Block: 65 characters.',
     ),
   );
 
-  // Exported field: 'node-pdf_quiz-field_grade_level'
+  // Exported field: 'node-pdf_quiz-field_grade_level'.
   $fields['node-pdf_quiz-field_grade_level'] = array(
     'field_config' => array(
       'active' => '1',
@@ -588,6 +597,7 @@ Limit for News Block: 65 characters.',
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -640,7 +650,7 @@ Limit for News Block: 65 characters.',
     ),
   );
 
-  // Exported field: 'node-pdf_quiz-field_pdf_file_private'
+  // Exported field: 'node-pdf_quiz-field_pdf_file_private'.
   $fields['node-pdf_quiz-field_pdf_file_private'] = array(
     'field_config' => array(
       'active' => '1',
@@ -661,6 +671,7 @@ Limit for News Block: 65 characters.',
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'file',
       'settings' => array(
         'display_default' => 0,
@@ -705,6 +716,7 @@ Limit for News Block: 65 characters.',
         'module' => 'file',
         'settings' => array(
           'insert' => 0,
+          'insert_absolute' => FALSE,
           'insert_class' => '',
           'insert_default' => 'auto',
           'insert_styles' => array(
@@ -737,7 +749,7 @@ Limit for News Block: 65 characters.',
     ),
   );
 
-  // Exported field: 'node-worksheet-body'
+  // Exported field: 'node-worksheet-body'.
   $fields['node-worksheet-body'] = array(
     'field_config' => array(
       'active' => '1',
@@ -760,6 +772,7 @@ Limit for News Block: 65 characters.',
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '',
@@ -815,7 +828,7 @@ Limit for News Block: 65 characters.',
     ),
   );
 
-  // Exported field: 'node-worksheet-field_grade_level'
+  // Exported field: 'node-worksheet-field_grade_level'.
   $fields['node-worksheet-field_grade_level'] = array(
     'field_config' => array(
       'active' => '1',
@@ -836,6 +849,7 @@ Limit for News Block: 65 characters.',
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -885,7 +899,7 @@ Limit for News Block: 65 characters.',
     ),
   );
 
-  // Exported field: 'node-worksheet-field_related_articles'
+  // Exported field: 'node-worksheet-field_related_articles'.
   $fields['node-worksheet-field_related_articles'] = array(
     'field_config' => array(
       'active' => '1',
@@ -906,6 +920,7 @@ Limit for News Block: 65 characters.',
           0 => 'nid',
         ),
       ),
+      'locked' => '0',
       'module' => 'node_reference',
       'settings' => array(
         'referenceable_types' => array(
@@ -1004,7 +1019,7 @@ Limit for News Block: 65 characters.',
     ),
   );
 
-  // Exported field: 'node-worksheet-field_skills'
+  // Exported field: 'node-worksheet-field_skills'.
   $fields['node-worksheet-field_skills'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1025,6 +1040,7 @@ Limit for News Block: 65 characters.',
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -1074,7 +1090,7 @@ Limit for News Block: 65 characters.',
     ),
   );
 
-  // Exported field: 'node-worksheet-field_themes'
+  // Exported field: 'node-worksheet-field_themes'.
   $fields['node-worksheet-field_themes'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1095,6 +1111,7 @@ Limit for News Block: 65 characters.',
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -1144,7 +1161,7 @@ Limit for News Block: 65 characters.',
     ),
   );
 
-  // Exported field: 'node-worksheet-field_worksheet_pdf_private'
+  // Exported field: 'node-worksheet-field_worksheet_pdf_private'.
   $fields['node-worksheet-field_worksheet_pdf_private'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1165,6 +1182,7 @@ Limit for News Block: 65 characters.',
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'file',
       'settings' => array(
         'display_default' => 0,
@@ -1209,6 +1227,7 @@ Limit for News Block: 65 characters.',
         'module' => 'file',
         'settings' => array(
           'insert' => 0,
+          'insert_absolute' => FALSE,
           'insert_class' => '',
           'insert_default' => 'auto',
           'insert_styles' => array(
@@ -1241,7 +1260,7 @@ Limit for News Block: 65 characters.',
     ),
   );
 
-  // Exported field: 'node-worksheet-field_worksheet_thumbnail_image'
+  // Exported field: 'node-worksheet-field_worksheet_thumbnail_image'.
   $fields['node-worksheet-field_worksheet_thumbnail_image'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1262,6 +1281,7 @@ Limit for News Block: 65 characters.',
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'image',
       'settings' => array(
         'default_image' => 0,
@@ -1312,6 +1332,7 @@ Limit for News Block: 65 characters.',
         'module' => 'image',
         'settings' => array(
           'insert' => 0,
+          'insert_absolute' => FALSE,
           'insert_class' => '',
           'insert_default' => array(
             0 => 'auto',
@@ -1329,7 +1350,7 @@ Limit for News Block: 65 characters.',
     ),
   );
 
-  // Exported field: 'node-worksheet-meta_description'
+  // Exported field: 'node-worksheet-meta_description'.
   $fields['node-worksheet-meta_description'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1339,10 +1360,11 @@ Limit for News Block: 65 characters.',
       'field_name' => 'meta_description',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'metatags_quick',
       'settings' => array(
-        0 => 'meta_name',
         'meta_name' => 'description',
+        0 => 'meta_name',
       ),
       'translatable' => '0',
       'type' => 'metatags_quick',
@@ -1384,7 +1406,7 @@ Limit for News Block: 65 characters.',
     ),
   );
 
-  // Exported field: 'node-worksheet-meta_keywords'
+  // Exported field: 'node-worksheet-meta_keywords'.
   $fields['node-worksheet-meta_keywords'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1394,10 +1416,11 @@ Limit for News Block: 65 characters.',
       'field_name' => 'meta_keywords',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'metatags_quick',
       'settings' => array(
-        0 => 'meta_name',
         'meta_name' => 'keywords',
+        0 => 'meta_name',
       ),
       'translatable' => '0',
       'type' => 'metatags_quick',

@@ -714,27 +714,6 @@ function features_misc_menu_default_menu_links() {
     'expanded' => '0',
     'weight' => '-46',
   );
-  // Exported menu link: menu-tfk-teachers-menu:digital
-  $menu_links['menu-tfk-teachers-menu:digital'] = array(
-    'menu_name' => 'menu-tfk-teachers-menu',
-    'link_path' => 'digital',
-    'router_path' => 'digital',
-    'link_title' => 'Digital Edition',
-    'options' => array(
-      'attributes' => array(
-        'class' => array(
-          0 => 'digital_edition',
-        ),
-        'target' => '_blank',
-      ),
-    ),
-    'module' => 'menu',
-    'hidden' => '0',
-    'external' => '0',
-    'has_children' => '0',
-    'expanded' => '0',
-    'weight' => '15',
-  );
   // Exported menu link: menu-tfk-teachers-menu:https://qa-subscription.timeforkids.com/storefront/subscribe-to-time-for-kids/link/1005015.html
   $menu_links['menu-tfk-teachers-menu:https://qa-subscription.timeforkids.com/storefront/subscribe-to-time-for-kids/link/1005015.html'] = array(
     'menu_name' => 'menu-tfk-teachers-menu',
@@ -753,7 +732,7 @@ function features_misc_menu_default_menu_links() {
     'external' => '1',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '20',
+    'weight' => '-44',
   );
   // Exported menu link: menu-tfk-teachers-menu:https://subscription.timeforkids.com/storefront/subscribe-to-time-for-kids/link/1005021.html
   $menu_links['menu-tfk-teachers-menu:https://subscription.timeforkids.com/storefront/subscribe-to-time-for-kids/link/1005021.html'] = array(
@@ -773,7 +752,7 @@ function features_misc_menu_default_menu_links() {
     'external' => '1',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '20',
+    'weight' => '-45',
   );
   // Exported menu link: menu-tfk-teachers-menu:teacher-community/topic-list
   $menu_links['menu-tfk-teachers-menu:teacher-community/topic-list'] = array(
@@ -793,7 +772,7 @@ function features_misc_menu_default_menu_links() {
     'external' => '0',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '10',
+    'weight' => '-48',
   );
   // Exported menu link: menu-tfk-teachers-menu:tfk-magazine
   $menu_links['menu-tfk-teachers-menu:tfk-magazine'] = array(
@@ -813,7 +792,7 @@ function features_misc_menu_default_menu_links() {
     'external' => '0',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '0',
+    'weight' => '-50',
   );
   // Exported menu link: menu-tfk-teachers-menu:worksheets
   $menu_links['menu-tfk-teachers-menu:worksheets'] = array(
@@ -833,7 +812,7 @@ function features_misc_menu_default_menu_links() {
     'external' => '0',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '5',
+    'weight' => '-49',
   );
   // Translatables
   // Included for use with string extractors like potx.
@@ -842,7 +821,6 @@ function features_misc_menu_default_menu_links() {
   t('Around the World');
   t('Contact Us');
   t('Customer Service');
-  t('Digital Edition');
   t('FAQ');
   t('Homework Helper');
   t('Kid Reporters');
