@@ -90,10 +90,10 @@
 
         <?php if(isset($feed_icons)): ?><?php print $feed_icons; ?><?php endif; ?>
       </div></div><!-- /.section, /#content -->
-
+      
+      <?php print render($page['footer']); ?>
     </div>
 
-    <?php print render($page['footer']); ?>
   </div><!-- /#main-wrapper -->
 
 </div></div><!-- /#page, /#page-wrapper -->
