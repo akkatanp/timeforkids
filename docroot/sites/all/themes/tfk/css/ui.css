@@ -25,7 +25,7 @@
     border-right:20px solid #D71700 !important; 
     padding: 20px 70px 0px 70px !important;
     background: #FFFFFF !important;
-    overflow: none !important;
+    overflow: visible !important;
     zoom: 1 !important;
     font-size: 12px !important;
 }
