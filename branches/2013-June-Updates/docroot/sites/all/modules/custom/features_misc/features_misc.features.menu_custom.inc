@@ -10,37 +10,37 @@
 function features_misc_menu_default_menu_custom() {
   $menus = array();
 
-  // Exported menu: menu-info-pages-menu
+  // Exported menu: menu-info-pages-menu.
   $menus['menu-info-pages-menu'] = array(
     'menu_name' => 'menu-info-pages-menu',
     'title' => 'Info Pages Menu',
     'description' => 'Info Pages Menu',
   );
-  // Exported menu: menu-tfk-footer-primary
+  // Exported menu: menu-tfk-footer-primary.
   $menus['menu-tfk-footer-primary'] = array(
     'menu_name' => 'menu-tfk-footer-primary',
     'title' => 'TFK Footer Primary',
     'description' => 'Footer Navigation - First Line',
   );
-  // Exported menu: menu-tfk-footer-secondary
+  // Exported menu: menu-tfk-footer-secondary.
   $menus['menu-tfk-footer-secondary'] = array(
     'menu_name' => 'menu-tfk-footer-secondary',
     'title' => 'TFK Footer Secondary',
     'description' => 'Footer Navigation - Second Line',
   );
-  // Exported menu: menu-tfk-footer-tertiary
+  // Exported menu: menu-tfk-footer-tertiary.
   $menus['menu-tfk-footer-tertiary'] = array(
     'menu_name' => 'menu-tfk-footer-tertiary',
     'title' => 'TFK Footer Tertiary',
     'description' => 'Footer Navigation - Third Line',
   );
-  // Exported menu: menu-tfk-global-navigation
+  // Exported menu: menu-tfk-global-navigation.
   $menus['menu-tfk-global-navigation'] = array(
     'menu_name' => 'menu-tfk-global-navigation',
     'title' => 'TFK Global Navigation',
     'description' => 'This is the TFK global navigation menu.',
   );
-  // Exported menu: menu-tfk-teachers-menu
+  // Exported menu: menu-tfk-teachers-menu.
   $menus['menu-tfk-teachers-menu'] = array(
     'menu_name' => 'menu-tfk-teachers-menu',
     'title' => 'TFK Teachers Menu',

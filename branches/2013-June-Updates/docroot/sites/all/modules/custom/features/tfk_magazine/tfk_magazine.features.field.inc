@@ -10,7 +10,7 @@
 function tfk_magazine_field_default_fields() {
   $fields = array();
 
-  // Exported field: 'node-magazine_issue-field_articles'
+  // Exported field: 'node-magazine_issue-field_articles'.
   $fields['node-magazine_issue-field_articles'] = array(
     'field_config' => array(
       'active' => '1',
@@ -31,6 +31,7 @@ function tfk_magazine_field_default_fields() {
           0 => 'nid',
         ),
       ),
+      'locked' => '0',
       'module' => 'node_reference',
       'settings' => array(
         'referenceable_types' => array(
@@ -129,7 +130,7 @@ function tfk_magazine_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-magazine_issue-field_cover'
+  // Exported field: 'node-magazine_issue-field_cover'.
   $fields['node-magazine_issue-field_cover'] = array(
     'field_config' => array(
       'active' => '1',
@@ -150,6 +151,7 @@ function tfk_magazine_field_default_fields() {
           0 => 'nid',
         ),
       ),
+      'locked' => '0',
       'module' => 'node_reference',
       'settings' => array(
         'referenceable_types' => array(
@@ -248,7 +250,7 @@ function tfk_magazine_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-magazine_issue-field_date'
+  // Exported field: 'node-magazine_issue-field_date'.
   $fields['node-magazine_issue-field_date'] = array(
     'field_config' => array(
       'active' => '1',
@@ -258,6 +260,7 @@ function tfk_magazine_field_default_fields() {
       'field_name' => 'field_date',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'date',
       'settings' => array(
         'granularity' => array(
@@ -317,6 +320,7 @@ function tfk_magazine_field_default_fields() {
         'active' => 1,
         'module' => 'date',
         'settings' => array(
+          'display_all_day' => 0,
           'increment' => '1',
           'input_format' => 'm/d/Y - H:i:s',
           'input_format_custom' => '',
@@ -331,7 +335,7 @@ function tfk_magazine_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-magazine_issue-field_debate'
+  // Exported field: 'node-magazine_issue-field_debate'.
   $fields['node-magazine_issue-field_debate'] = array(
     'field_config' => array(
       'active' => '1',
@@ -341,6 +345,7 @@ function tfk_magazine_field_default_fields() {
       'field_name' => 'field_debate',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'link',
       'settings' => array(
         'attributes' => array(
@@ -353,6 +358,7 @@ function tfk_magazine_field_default_fields() {
         ),
         'enable_tokens' => 1,
         'title' => 'optional',
+        'title_maxlength' => 128,
         'title_value' => '',
         'url' => 0,
       ),
@@ -369,13 +375,14 @@ function tfk_magazine_field_default_fields() {
           'label' => 'above',
           'module' => 'link',
           'settings' => array(),
-          'type' => 'default',
+          'type' => 'link_default',
           'weight' => 31,
         ),
         'teaser' => array(
           'label' => 'above',
+          'module' => 'link',
           'settings' => array(),
-          'type' => 'hidden',
+          'type' => 'link_default',
           'weight' => 0,
         ),
       ),
@@ -394,9 +401,11 @@ function tfk_magazine_field_default_fields() {
         ),
         'enable_tokens' => 1,
         'title' => 'optional',
+        'title_maxlength' => 128,
         'title_value' => '',
         'url' => 0,
         'user_register_form' => FALSE,
+        'validate_url' => 1,
       ),
       'widget' => array(
         'active' => 0,
@@ -408,7 +417,7 @@ function tfk_magazine_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-magazine_issue-field_got_skills'
+  // Exported field: 'node-magazine_issue-field_got_skills'.
   $fields['node-magazine_issue-field_got_skills'] = array(
     'field_config' => array(
       'active' => '1',
@@ -418,6 +427,7 @@ function tfk_magazine_field_default_fields() {
       'field_name' => 'field_got_skills',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'link',
       'settings' => array(
         'attributes' => array(
@@ -430,6 +440,7 @@ function tfk_magazine_field_default_fields() {
         ),
         'enable_tokens' => 1,
         'title' => 'optional',
+        'title_maxlength' => 128,
         'title_value' => '',
         'url' => 0,
       ),
@@ -446,13 +457,14 @@ function tfk_magazine_field_default_fields() {
           'label' => 'above',
           'module' => 'link',
           'settings' => array(),
-          'type' => 'default',
+          'type' => 'link_default',
           'weight' => 32,
         ),
         'teaser' => array(
           'label' => 'above',
+          'module' => 'link',
           'settings' => array(),
-          'type' => 'hidden',
+          'type' => 'link_default',
           'weight' => 0,
         ),
       ),
@@ -471,9 +483,11 @@ function tfk_magazine_field_default_fields() {
         ),
         'enable_tokens' => 1,
         'title' => 'optional',
+        'title_maxlength' => 128,
         'title_value' => '',
         'url' => 0,
         'user_register_form' => FALSE,
+        'validate_url' => 1,
       ),
       'widget' => array(
         'active' => 0,
@@ -485,7 +499,7 @@ function tfk_magazine_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-magazine_issue-field_grade_level'
+  // Exported field: 'node-magazine_issue-field_grade_level'.
   $fields['node-magazine_issue-field_grade_level'] = array(
     'field_config' => array(
       'active' => '1',
@@ -506,6 +520,7 @@ function tfk_magazine_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -555,7 +570,7 @@ function tfk_magazine_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-magazine_issue-field_in_the_news'
+  // Exported field: 'node-magazine_issue-field_in_the_news'.
   $fields['node-magazine_issue-field_in_the_news'] = array(
     'field_config' => array(
       'active' => '1',
@@ -565,6 +580,7 @@ function tfk_magazine_field_default_fields() {
       'field_name' => 'field_in_the_news',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'link',
       'settings' => array(
         'attributes' => array(
@@ -577,6 +593,7 @@ function tfk_magazine_field_default_fields() {
         ),
         'enable_tokens' => 1,
         'title' => 'optional',
+        'title_maxlength' => 128,
         'title_value' => '',
         'url' => 0,
       ),
@@ -593,13 +610,14 @@ function tfk_magazine_field_default_fields() {
           'label' => 'above',
           'module' => 'link',
           'settings' => array(),
-          'type' => 'default',
+          'type' => 'link_default',
           'weight' => 20,
         ),
         'teaser' => array(
           'label' => 'above',
+          'module' => 'link',
           'settings' => array(),
-          'type' => 'hidden',
+          'type' => 'link_default',
           'weight' => 0,
         ),
       ),
@@ -618,9 +636,11 @@ function tfk_magazine_field_default_fields() {
         ),
         'enable_tokens' => 1,
         'title' => 'optional',
+        'title_maxlength' => 128,
         'title_value' => '',
         'url' => 0,
         'user_register_form' => FALSE,
+        'validate_url' => 1,
       ),
       'widget' => array(
         'active' => 0,
@@ -632,7 +652,7 @@ function tfk_magazine_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-magazine_issue-field_issue_numb'
+  // Exported field: 'node-magazine_issue-field_issue_numb'.
   $fields['node-magazine_issue-field_issue_numb'] = array(
     'field_config' => array(
       'active' => '1',
@@ -653,6 +673,7 @@ function tfk_magazine_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -705,7 +726,7 @@ function tfk_magazine_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-magazine_issue-field_kid_central'
+  // Exported field: 'node-magazine_issue-field_kid_central'.
   $fields['node-magazine_issue-field_kid_central'] = array(
     'field_config' => array(
       'active' => '1',
@@ -715,6 +736,7 @@ function tfk_magazine_field_default_fields() {
       'field_name' => 'field_kid_central',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'link',
       'settings' => array(
         'attributes' => array(
@@ -727,6 +749,7 @@ function tfk_magazine_field_default_fields() {
         ),
         'enable_tokens' => 1,
         'title' => 'optional',
+        'title_maxlength' => 128,
         'title_value' => '',
         'url' => 0,
       ),
@@ -743,13 +766,14 @@ function tfk_magazine_field_default_fields() {
           'label' => 'above',
           'module' => 'link',
           'settings' => array(),
-          'type' => 'default',
+          'type' => 'link_default',
           'weight' => 30,
         ),
         'teaser' => array(
           'label' => 'above',
+          'module' => 'link',
           'settings' => array(),
-          'type' => 'hidden',
+          'type' => 'link_default',
           'weight' => 0,
         ),
       ),
@@ -768,9 +792,11 @@ function tfk_magazine_field_default_fields() {
         ),
         'enable_tokens' => 1,
         'title' => 'optional',
+        'title_maxlength' => 128,
         'title_value' => '',
         'url' => 0,
         'user_register_form' => FALSE,
+        'validate_url' => 1,
       ),
       'widget' => array(
         'active' => 0,
@@ -782,7 +808,7 @@ function tfk_magazine_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-magazine_issue-field_materials'
+  // Exported field: 'node-magazine_issue-field_materials'.
   $fields['node-magazine_issue-field_materials'] = array(
     'field_config' => array(
       'active' => '1',
@@ -803,6 +829,7 @@ function tfk_magazine_field_default_fields() {
           0 => 'nid',
         ),
       ),
+      'locked' => '0',
       'module' => 'node_reference',
       'settings' => array(
         'referenceable_types' => array(
@@ -902,7 +929,7 @@ function tfk_magazine_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-magazine_issue-field_more_news'
+  // Exported field: 'node-magazine_issue-field_more_news'.
   $fields['node-magazine_issue-field_more_news'] = array(
     'field_config' => array(
       'active' => '1',
@@ -912,6 +939,7 @@ function tfk_magazine_field_default_fields() {
       'field_name' => 'field_more_news',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'link',
       'settings' => array(
         'attributes' => array(
@@ -924,6 +952,7 @@ function tfk_magazine_field_default_fields() {
         ),
         'enable_tokens' => 1,
         'title' => 'optional',
+        'title_maxlength' => 128,
         'title_value' => '',
         'url' => 0,
       ),
@@ -940,13 +969,14 @@ function tfk_magazine_field_default_fields() {
           'label' => 'above',
           'module' => 'link',
           'settings' => array(),
-          'type' => 'default',
+          'type' => 'link_default',
           'weight' => 23,
         ),
         'teaser' => array(
           'label' => 'above',
+          'module' => 'link',
           'settings' => array(),
-          'type' => 'hidden',
+          'type' => 'link_default',
           'weight' => 0,
         ),
       ),
@@ -965,9 +995,11 @@ function tfk_magazine_field_default_fields() {
         ),
         'enable_tokens' => 1,
         'title' => 'optional',
+        'title_maxlength' => 128,
         'title_value' => '',
         'url' => 0,
         'user_register_form' => FALSE,
+        'validate_url' => 1,
       ),
       'widget' => array(
         'active' => 0,
@@ -979,7 +1011,7 @@ function tfk_magazine_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-magazine_issue-field_news'
+  // Exported field: 'node-magazine_issue-field_news'.
   $fields['node-magazine_issue-field_news'] = array(
     'field_config' => array(
       'active' => '1',
@@ -989,6 +1021,7 @@ function tfk_magazine_field_default_fields() {
       'field_name' => 'field_news',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'link',
       'settings' => array(
         'attributes' => array(
@@ -1001,6 +1034,7 @@ function tfk_magazine_field_default_fields() {
         ),
         'enable_tokens' => 1,
         'title' => 'optional',
+        'title_maxlength' => 128,
         'title_value' => '',
         'url' => 0,
       ),
@@ -1017,13 +1051,14 @@ function tfk_magazine_field_default_fields() {
           'label' => 'above',
           'module' => 'link',
           'settings' => array(),
-          'type' => 'default',
+          'type' => 'link_default',
           'weight' => 28,
         ),
         'teaser' => array(
           'label' => 'above',
+          'module' => 'link',
           'settings' => array(),
-          'type' => 'hidden',
+          'type' => 'link_default',
           'weight' => 0,
         ),
       ),
@@ -1042,9 +1077,11 @@ function tfk_magazine_field_default_fields() {
         ),
         'enable_tokens' => 1,
         'title' => 'optional',
+        'title_maxlength' => 128,
         'title_value' => '',
         'url' => 0,
         'user_register_form' => FALSE,
+        'validate_url' => 1,
       ),
       'widget' => array(
         'active' => 0,
@@ -1056,7 +1093,7 @@ function tfk_magazine_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-magazine_issue-field_related_resources'
+  // Exported field: 'node-magazine_issue-field_related_resources'.
   $fields['node-magazine_issue-field_related_resources'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1077,6 +1114,7 @@ function tfk_magazine_field_default_fields() {
           0 => 'nid',
         ),
       ),
+      'locked' => '0',
       'module' => 'node_reference',
       'settings' => array(
         'referenceable_types' => array(
@@ -1176,7 +1214,7 @@ function tfk_magazine_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-magazine_issue-field_theme_1'
+  // Exported field: 'node-magazine_issue-field_theme_1'.
   $fields['node-magazine_issue-field_theme_1'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1186,6 +1224,7 @@ function tfk_magazine_field_default_fields() {
       'field_name' => 'field_theme_1',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'link',
       'settings' => array(
         'attributes' => array(
@@ -1198,6 +1237,7 @@ function tfk_magazine_field_default_fields() {
         ),
         'enable_tokens' => 1,
         'title' => 'optional',
+        'title_maxlength' => 128,
         'title_value' => '',
         'url' => 0,
       ),
@@ -1214,13 +1254,14 @@ function tfk_magazine_field_default_fields() {
           'label' => 'above',
           'module' => 'link',
           'settings' => array(),
-          'type' => 'default',
+          'type' => 'link_default',
           'weight' => 24,
         ),
         'teaser' => array(
           'label' => 'above',
+          'module' => 'link',
           'settings' => array(),
-          'type' => 'hidden',
+          'type' => 'link_default',
           'weight' => 0,
         ),
       ),
@@ -1239,9 +1280,11 @@ function tfk_magazine_field_default_fields() {
         ),
         'enable_tokens' => 1,
         'title' => 'optional',
+        'title_maxlength' => 128,
         'title_value' => '',
         'url' => 0,
         'user_register_form' => FALSE,
+        'validate_url' => 1,
       ),
       'widget' => array(
         'active' => 0,
@@ -1253,7 +1296,7 @@ function tfk_magazine_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-magazine_issue-field_theme_2'
+  // Exported field: 'node-magazine_issue-field_theme_2'.
   $fields['node-magazine_issue-field_theme_2'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1263,6 +1306,7 @@ function tfk_magazine_field_default_fields() {
       'field_name' => 'field_theme_2',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'link',
       'settings' => array(
         'attributes' => array(
@@ -1275,6 +1319,7 @@ function tfk_magazine_field_default_fields() {
         ),
         'enable_tokens' => 1,
         'title' => 'optional',
+        'title_maxlength' => 128,
         'title_value' => '',
         'url' => 0,
       ),
@@ -1291,13 +1336,14 @@ function tfk_magazine_field_default_fields() {
           'label' => 'above',
           'module' => 'link',
           'settings' => array(),
-          'type' => 'default',
+          'type' => 'link_default',
           'weight' => 25,
         ),
         'teaser' => array(
           'label' => 'above',
+          'module' => 'link',
           'settings' => array(),
-          'type' => 'hidden',
+          'type' => 'link_default',
           'weight' => 0,
         ),
       ),
@@ -1316,9 +1362,11 @@ function tfk_magazine_field_default_fields() {
         ),
         'enable_tokens' => 1,
         'title' => 'optional',
+        'title_maxlength' => 128,
         'title_value' => '',
         'url' => 0,
         'user_register_form' => FALSE,
+        'validate_url' => 1,
       ),
       'widget' => array(
         'active' => 0,
@@ -1330,7 +1378,7 @@ function tfk_magazine_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-magazine_issue-field_theme_3'
+  // Exported field: 'node-magazine_issue-field_theme_3'.
   $fields['node-magazine_issue-field_theme_3'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1340,6 +1388,7 @@ function tfk_magazine_field_default_fields() {
       'field_name' => 'field_theme_3',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'link',
       'settings' => array(
         'attributes' => array(
@@ -1352,6 +1401,7 @@ function tfk_magazine_field_default_fields() {
         ),
         'enable_tokens' => 1,
         'title' => 'optional',
+        'title_maxlength' => 128,
         'title_value' => '',
         'url' => 0,
       ),
@@ -1368,13 +1418,14 @@ function tfk_magazine_field_default_fields() {
           'label' => 'above',
           'module' => 'link',
           'settings' => array(),
-          'type' => 'default',
+          'type' => 'link_default',
           'weight' => 26,
         ),
         'teaser' => array(
           'label' => 'above',
+          'module' => 'link',
           'settings' => array(),
-          'type' => 'hidden',
+          'type' => 'link_default',
           'weight' => 0,
         ),
       ),
@@ -1393,9 +1444,11 @@ function tfk_magazine_field_default_fields() {
         ),
         'enable_tokens' => 1,
         'title' => 'optional',
+        'title_maxlength' => 128,
         'title_value' => '',
         'url' => 0,
         'user_register_form' => FALSE,
+        'validate_url' => 1,
       ),
       'widget' => array(
         'active' => 0,
@@ -1407,7 +1460,7 @@ function tfk_magazine_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-magazine_issue-field_theme_4'
+  // Exported field: 'node-magazine_issue-field_theme_4'.
   $fields['node-magazine_issue-field_theme_4'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1417,6 +1470,7 @@ function tfk_magazine_field_default_fields() {
       'field_name' => 'field_theme_4',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'link',
       'settings' => array(
         'attributes' => array(
@@ -1429,6 +1483,7 @@ function tfk_magazine_field_default_fields() {
         ),
         'enable_tokens' => 1,
         'title' => 'optional',
+        'title_maxlength' => 128,
         'title_value' => '',
         'url' => 0,
       ),
@@ -1445,13 +1500,14 @@ function tfk_magazine_field_default_fields() {
           'label' => 'above',
           'module' => 'link',
           'settings' => array(),
-          'type' => 'default',
+          'type' => 'link_default',
           'weight' => 27,
         ),
         'teaser' => array(
           'label' => 'above',
+          'module' => 'link',
           'settings' => array(),
-          'type' => 'hidden',
+          'type' => 'link_default',
           'weight' => 0,
         ),
       ),
@@ -1470,9 +1526,11 @@ function tfk_magazine_field_default_fields() {
         ),
         'enable_tokens' => 1,
         'title' => 'optional',
+        'title_maxlength' => 128,
         'title_value' => '',
         'url' => 0,
         'user_register_form' => FALSE,
+        'validate_url' => 1,
       ),
       'widget' => array(
         'active' => 0,
@@ -1484,7 +1542,7 @@ function tfk_magazine_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-magazine_issue-field_top_5'
+  // Exported field: 'node-magazine_issue-field_top_5'.
   $fields['node-magazine_issue-field_top_5'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1494,6 +1552,7 @@ function tfk_magazine_field_default_fields() {
       'field_name' => 'field_top_5',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'link',
       'settings' => array(
         'attributes' => array(
@@ -1506,6 +1565,7 @@ function tfk_magazine_field_default_fields() {
         ),
         'enable_tokens' => 1,
         'title' => 'optional',
+        'title_maxlength' => 128,
         'title_value' => '',
         'url' => 0,
       ),
@@ -1522,13 +1582,14 @@ function tfk_magazine_field_default_fields() {
           'label' => 'above',
           'module' => 'link',
           'settings' => array(),
-          'type' => 'default',
+          'type' => 'link_default',
           'weight' => 21,
         ),
         'teaser' => array(
           'label' => 'above',
+          'module' => 'link',
           'settings' => array(),
-          'type' => 'hidden',
+          'type' => 'link_default',
           'weight' => 0,
         ),
       ),
@@ -1547,9 +1608,11 @@ function tfk_magazine_field_default_fields() {
         ),
         'enable_tokens' => 1,
         'title' => 'optional',
+        'title_maxlength' => 128,
         'title_value' => '',
         'url' => 0,
         'user_register_form' => FALSE,
+        'validate_url' => 1,
       ),
       'widget' => array(
         'active' => 0,
@@ -1561,7 +1624,7 @@ function tfk_magazine_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-magazine_issue-field_volume'
+  // Exported field: 'node-magazine_issue-field_volume'.
   $fields['node-magazine_issue-field_volume'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1582,6 +1645,7 @@ function tfk_magazine_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -1634,7 +1698,7 @@ function tfk_magazine_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-magazine_issue-field_whos_news'
+  // Exported field: 'node-magazine_issue-field_whos_news'.
   $fields['node-magazine_issue-field_whos_news'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1644,6 +1708,7 @@ function tfk_magazine_field_default_fields() {
       'field_name' => 'field_whos_news',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'link',
       'settings' => array(
         'attributes' => array(
@@ -1656,6 +1721,7 @@ function tfk_magazine_field_default_fields() {
         ),
         'enable_tokens' => 1,
         'title' => 'optional',
+        'title_maxlength' => 128,
         'title_value' => '',
         'url' => 0,
       ),
@@ -1672,13 +1738,14 @@ function tfk_magazine_field_default_fields() {
           'label' => 'above',
           'module' => 'link',
           'settings' => array(),
-          'type' => 'default',
+          'type' => 'link_default',
           'weight' => 22,
         ),
         'teaser' => array(
           'label' => 'above',
+          'module' => 'link',
           'settings' => array(),
-          'type' => 'hidden',
+          'type' => 'link_default',
           'weight' => 0,
         ),
       ),
@@ -1697,9 +1764,11 @@ function tfk_magazine_field_default_fields() {
         ),
         'enable_tokens' => 1,
         'title' => 'optional',
+        'title_maxlength' => 128,
         'title_value' => '',
         'url' => 0,
         'user_register_form' => FALSE,
+        'validate_url' => 1,
       ),
       'widget' => array(
         'active' => 0,
@@ -1711,7 +1780,7 @@ function tfk_magazine_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-magazine_issue-meta_description'
+  // Exported field: 'node-magazine_issue-meta_description'.
   $fields['node-magazine_issue-meta_description'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1721,10 +1790,11 @@ function tfk_magazine_field_default_fields() {
       'field_name' => 'meta_description',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'metatags_quick',
       'settings' => array(
-        0 => 'meta_name',
         'meta_name' => 'description',
+        0 => 'meta_name',
       ),
       'translatable' => '0',
       'type' => 'metatags_quick',
@@ -1766,7 +1836,7 @@ function tfk_magazine_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-magazine_issue-meta_keywords'
+  // Exported field: 'node-magazine_issue-meta_keywords'.
   $fields['node-magazine_issue-meta_keywords'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1776,10 +1846,11 @@ function tfk_magazine_field_default_fields() {
       'field_name' => 'meta_keywords',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'metatags_quick',
       'settings' => array(
-        0 => 'meta_name',
         'meta_name' => 'keywords',
+        0 => 'meta_name',
       ),
       'translatable' => '0',
       'type' => 'metatags_quick',

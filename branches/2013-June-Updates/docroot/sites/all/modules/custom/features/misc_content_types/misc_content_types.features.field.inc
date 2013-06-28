@@ -10,7 +10,7 @@
 function misc_content_types_field_default_fields() {
   $fields = array();
 
-  // Exported field: 'field_collection_item-field_store_items-field_store_item_image'
+  // Exported field: 'field_collection_item-field_store_items-field_store_item_image'.
   $fields['field_collection_item-field_store_items-field_store_item_image'] = array(
     'field_config' => array(
       'active' => '1',
@@ -31,6 +31,7 @@ function misc_content_types_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'image',
       'settings' => array(
         'default_image' => 0,
@@ -75,6 +76,7 @@ function misc_content_types_field_default_fields() {
         'module' => 'image',
         'settings' => array(
           'insert' => 0,
+          'insert_absolute' => FALSE,
           'insert_class' => '',
           'insert_default' => array(
             0 => 'auto',
@@ -92,7 +94,7 @@ function misc_content_types_field_default_fields() {
     ),
   );
 
-  // Exported field: 'field_collection_item-field_store_items-field_store_item_link_url'
+  // Exported field: 'field_collection_item-field_store_items-field_store_item_link_url'.
   $fields['field_collection_item-field_store_items-field_store_item_link_url'] = array(
     'field_config' => array(
       'active' => '1',
@@ -113,6 +115,7 @@ function misc_content_types_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -158,7 +161,7 @@ function misc_content_types_field_default_fields() {
     ),
   );
 
-  // Exported field: 'field_collection_item-field_store_items_bottom-field_item_image'
+  // Exported field: 'field_collection_item-field_store_items_bottom-field_item_image'.
   $fields['field_collection_item-field_store_items_bottom-field_item_image'] = array(
     'field_config' => array(
       'active' => '1',
@@ -179,6 +182,7 @@ function misc_content_types_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'image',
       'settings' => array(
         'default_image' => 0,
@@ -223,6 +227,7 @@ function misc_content_types_field_default_fields() {
         'module' => 'image',
         'settings' => array(
           'insert' => 0,
+          'insert_absolute' => FALSE,
           'insert_class' => '',
           'insert_default' => array(
             0 => 'auto',
@@ -240,7 +245,7 @@ function misc_content_types_field_default_fields() {
     ),
   );
 
-  // Exported field: 'field_collection_item-field_store_items_bottom-field_item_url'
+  // Exported field: 'field_collection_item-field_store_items_bottom-field_item_url'.
   $fields['field_collection_item-field_store_items_bottom-field_item_url'] = array(
     'field_config' => array(
       'active' => '1',
@@ -261,6 +266,7 @@ function misc_content_types_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -302,7 +308,7 @@ function misc_content_types_field_default_fields() {
     ),
   );
 
-  // Exported field: 'field_collection_item-field_tfk_extra_pdf_collection-field_tfk_extra_pdf_file'
+  // Exported field: 'field_collection_item-field_tfk_extra_pdf_collection-field_tfk_extra_pdf_file'.
   $fields['field_collection_item-field_tfk_extra_pdf_collection-field_tfk_extra_pdf_file'] = array(
     'field_config' => array(
       'active' => '1',
@@ -323,6 +329,7 @@ function misc_content_types_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'file',
       'settings' => array(
         'display_default' => 0,
@@ -361,6 +368,7 @@ function misc_content_types_field_default_fields() {
         'module' => 'file',
         'settings' => array(
           'insert' => 0,
+          'insert_absolute' => FALSE,
           'insert_class' => '',
           'insert_default' => array(
             0 => 'auto',
@@ -377,7 +385,7 @@ function misc_content_types_field_default_fields() {
     ),
   );
 
-  // Exported field: 'field_collection_item-field_tfk_extra_pdf_collection-field_tfk_extra_pdf_headline'
+  // Exported field: 'field_collection_item-field_tfk_extra_pdf_collection-field_tfk_extra_pdf_headline'.
   $fields['field_collection_item-field_tfk_extra_pdf_collection-field_tfk_extra_pdf_headline'] = array(
     'field_config' => array(
       'active' => '1',
@@ -398,6 +406,7 @@ function misc_content_types_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(),
       'translatable' => '1',
@@ -439,7 +448,7 @@ function misc_content_types_field_default_fields() {
     ),
   );
 
-  // Exported field: 'field_collection_item-field_tfk_extra_pdf_collection-field_tfk_extra_pdf_taxonomy'
+  // Exported field: 'field_collection_item-field_tfk_extra_pdf_collection-field_tfk_extra_pdf_taxonomy'.
   $fields['field_collection_item-field_tfk_extra_pdf_collection-field_tfk_extra_pdf_taxonomy'] = array(
     'field_config' => array(
       'active' => '1',
@@ -460,6 +469,7 @@ function misc_content_types_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -503,7 +513,7 @@ function misc_content_types_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-book-field_book_author'
+  // Exported field: 'node-book-field_book_author'.
   $fields['node-book-field_book_author'] = array(
     'field_config' => array(
       'active' => '1',
@@ -524,6 +534,7 @@ function misc_content_types_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -571,7 +582,7 @@ function misc_content_types_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-book-field_book_description'
+  // Exported field: 'node-book-field_book_description'.
   $fields['node-book-field_book_description'] = array(
     'field_config' => array(
       'active' => '1',
@@ -592,6 +603,7 @@ function misc_content_types_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(),
       'translatable' => '0',
@@ -637,7 +649,7 @@ function misc_content_types_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-book-field_book_image'
+  // Exported field: 'node-book-field_book_image'.
   $fields['node-book-field_book_image'] = array(
     'field_config' => array(
       'active' => '1',
@@ -658,6 +670,7 @@ function misc_content_types_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'image',
       'settings' => array(
         'default_image' => 0,
@@ -708,6 +721,7 @@ function misc_content_types_field_default_fields() {
         'module' => 'image',
         'settings' => array(
           'insert' => 0,
+          'insert_absolute' => FALSE,
           'insert_class' => '',
           'insert_default' => 'auto',
           'insert_styles' => array(
@@ -744,7 +758,7 @@ function misc_content_types_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-book-field_book_link'
+  // Exported field: 'node-book-field_book_link'.
   $fields['node-book-field_book_link'] = array(
     'field_config' => array(
       'active' => '1',
@@ -765,6 +779,7 @@ function misc_content_types_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -812,7 +827,7 @@ function misc_content_types_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-book-field_publication_date'
+  // Exported field: 'node-book-field_publication_date'.
   $fields['node-book-field_publication_date'] = array(
     'field_config' => array(
       'active' => '1',
@@ -822,6 +837,7 @@ function misc_content_types_field_default_fields() {
       'field_name' => 'field_publication_date',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'date',
       'settings' => array(
         'granularity' => array(
@@ -879,6 +895,7 @@ function misc_content_types_field_default_fields() {
         'active' => 1,
         'module' => 'date',
         'settings' => array(
+          'display_all_day' => 0,
           'increment' => '1',
           'input_format' => 'Y-m-d H:i:s',
           'input_format_custom' => '',
@@ -893,7 +910,7 @@ function misc_content_types_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-book-field_store_order'
+  // Exported field: 'node-book-field_store_order'.
   $fields['node-book-field_store_order'] = array(
     'field_config' => array(
       'active' => '1',
@@ -907,6 +924,7 @@ function misc_content_types_field_default_fields() {
           0 => 'value',
         ),
       ),
+      'locked' => '0',
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
@@ -967,7 +985,7 @@ function misc_content_types_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-book-field_thumbnail_override_image'
+  // Exported field: 'node-book-field_thumbnail_override_image'.
   $fields['node-book-field_thumbnail_override_image'] = array(
     'field_config' => array(
       'active' => '1',
@@ -988,6 +1006,7 @@ function misc_content_types_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'image',
       'settings' => array(
         'default_image' => 0,
@@ -1038,6 +1057,7 @@ function misc_content_types_field_default_fields() {
         'module' => 'image',
         'settings' => array(
           'insert' => 0,
+          'insert_absolute' => FALSE,
           'insert_class' => '',
           'insert_default' => 'auto',
           'insert_styles' => array(
@@ -1074,7 +1094,7 @@ function misc_content_types_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-homepage_news_for_teachers-body'
+  // Exported field: 'node-homepage_news_for_teachers-body'.
   $fields['node-homepage_news_for_teachers-body'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1097,6 +1117,7 @@ function misc_content_types_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '',
@@ -1151,7 +1172,7 @@ function misc_content_types_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-homepage_news_for_teachers-field_article_url'
+  // Exported field: 'node-homepage_news_for_teachers-field_article_url'.
   $fields['node-homepage_news_for_teachers-field_article_url'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1172,6 +1193,7 @@ function misc_content_types_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -1219,7 +1241,7 @@ function misc_content_types_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-homepage_news_for_teachers-field_image'
+  // Exported field: 'node-homepage_news_for_teachers-field_image'.
   $fields['node-homepage_news_for_teachers-field_image'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1240,6 +1262,7 @@ function misc_content_types_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'image',
       'settings' => array(
         'default_image' => 0,
@@ -1290,6 +1313,7 @@ function misc_content_types_field_default_fields() {
         'module' => 'image',
         'settings' => array(
           'insert' => 0,
+          'insert_absolute' => FALSE,
           'insert_class' => '',
           'insert_default' => array(
             0 => 'auto',
@@ -1307,7 +1331,7 @@ function misc_content_types_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-kid_reporter_bottom_nodeblock-body'
+  // Exported field: 'node-kid_reporter_bottom_nodeblock-body'.
   $fields['node-kid_reporter_bottom_nodeblock-body'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1330,6 +1354,7 @@ function misc_content_types_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '',
@@ -1384,7 +1409,7 @@ function misc_content_types_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-kid_reporter_listing_nodeblock-body'
+  // Exported field: 'node-kid_reporter_listing_nodeblock-body'.
   $fields['node-kid_reporter_listing_nodeblock-body'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1407,6 +1432,7 @@ function misc_content_types_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '',
@@ -1461,7 +1487,7 @@ function misc_content_types_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-kid_reporter_listing_nodeblock-field_year'
+  // Exported field: 'node-kid_reporter_listing_nodeblock-field_year'.
   $fields['node-kid_reporter_listing_nodeblock-field_year'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1475,6 +1501,7 @@ function misc_content_types_field_default_fields() {
           0 => 'value',
         ),
       ),
+      'locked' => '0',
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
@@ -1531,7 +1558,7 @@ function misc_content_types_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-mini_lesson-body'
+  // Exported field: 'node-mini_lesson-body'.
   $fields['node-mini_lesson-body'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1554,6 +1581,7 @@ function misc_content_types_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '',
@@ -1609,7 +1637,7 @@ function misc_content_types_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-mini_lesson-field_grade_level'
+  // Exported field: 'node-mini_lesson-field_grade_level'.
   $fields['node-mini_lesson-field_grade_level'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1630,6 +1658,7 @@ function misc_content_types_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -1679,7 +1708,7 @@ function misc_content_types_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-mini_lesson-field_mini_deck'
+  // Exported field: 'node-mini_lesson-field_mini_deck'.
   $fields['node-mini_lesson-field_mini_deck'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1700,6 +1729,7 @@ function misc_content_types_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -1747,7 +1777,7 @@ function misc_content_types_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-mini_lesson-field_mini_related'
+  // Exported field: 'node-mini_lesson-field_mini_related'.
   $fields['node-mini_lesson-field_mini_related'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1768,6 +1798,7 @@ function misc_content_types_field_default_fields() {
           0 => 'nid',
         ),
       ),
+      'locked' => '0',
       'module' => 'node_reference',
       'settings' => array(
         'referenceable_types' => array(
@@ -1866,7 +1897,7 @@ function misc_content_types_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-news_channel_nodeblock-body'
+  // Exported field: 'node-news_channel_nodeblock-body'.
   $fields['node-news_channel_nodeblock-body'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1889,6 +1920,7 @@ function misc_content_types_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '',
@@ -1943,7 +1975,7 @@ function misc_content_types_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-page-body'
+  // Exported field: 'node-page-body'.
   $fields['node-page-body'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1966,6 +1998,7 @@ function misc_content_types_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '',
@@ -2020,7 +2053,7 @@ function misc_content_types_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-page-field_page_attachment'
+  // Exported field: 'node-page-field_page_attachment'.
   $fields['node-page-field_page_attachment'] = array(
     'field_config' => array(
       'active' => '1',
@@ -2041,6 +2074,7 @@ function misc_content_types_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'file',
       'settings' => array(
         'display_default' => 0,
@@ -2084,6 +2118,7 @@ function misc_content_types_field_default_fields() {
         'module' => 'file',
         'settings' => array(
           'insert' => 1,
+          'insert_absolute' => FALSE,
           'insert_class' => '',
           'insert_default' => 'auto',
           'insert_styles' => array(
@@ -2115,7 +2150,7 @@ function misc_content_types_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-page-meta_description'
+  // Exported field: 'node-page-meta_description'.
   $fields['node-page-meta_description'] = array(
     'field_config' => array(
       'active' => '1',
@@ -2125,10 +2160,11 @@ function misc_content_types_field_default_fields() {
       'field_name' => 'meta_description',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'metatags_quick',
       'settings' => array(
-        0 => 'meta_name',
         'meta_name' => 'description',
+        0 => 'meta_name',
       ),
       'translatable' => '0',
       'type' => 'metatags_quick',
@@ -2170,7 +2206,7 @@ function misc_content_types_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-page-meta_keywords'
+  // Exported field: 'node-page-meta_keywords'.
   $fields['node-page-meta_keywords'] = array(
     'field_config' => array(
       'active' => '1',
@@ -2180,10 +2216,11 @@ function misc_content_types_field_default_fields() {
       'field_name' => 'meta_keywords',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'metatags_quick',
       'settings' => array(
-        0 => 'meta_name',
         'meta_name' => 'keywords',
+        0 => 'meta_name',
       ),
       'translatable' => '0',
       'type' => 'metatags_quick',
@@ -2225,7 +2262,7 @@ function misc_content_types_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-store-field_store_books'
+  // Exported field: 'node-store-field_store_books'.
   $fields['node-store-field_store_books'] = array(
     'field_config' => array(
       'active' => '1',
@@ -2246,6 +2283,7 @@ function misc_content_types_field_default_fields() {
           0 => 'nid',
         ),
       ),
+      'locked' => '0',
       'module' => 'node_reference',
       'settings' => array(
         'referenceable_types' => array(
@@ -2259,35 +2297,48 @@ function misc_content_types_field_default_fields() {
           'atw_timeline' => 0,
           'board_member' => 0,
           'book' => 'book',
+          'common_core_standards' => 0,
           'flashcard' => 0,
           'global_right_sidebar_promo' => 0,
           'grammar_practice' => 0,
           'grammar_practice_question' => 0,
           'grammar_practice_reward_image' => 0,
           'grammar_practice_rule' => 0,
+          'homepage_news_for_teachers' => 0,
           'image' => 0,
           'kid_reporter' => 0,
           'kid_reporter_bottom_nodeblock' => 0,
+          'kid_reporter_listing_nodeblock' => 0,
           'magazine_issue' => 0,
           'mini_lesson' => 0,
+          'mini_site_home' => 0,
           'minisite' => 0,
           'news_channel_nodeblock' => 0,
-          'notification_homepage' => 0,
           'page' => 0,
           'paper_step' => 0,
           'pdf_quiz' => 0,
+          'poll' => 0,
           'slideshow' => 0,
           'store' => 0,
+          'store_product' => 0,
+          'teacher_board_nodeblock' => 0,
+          'teacher_community_question' => 0,
           'tfk_extra' => 0,
+          'tfk_extras_bottom_nodeblock' => 0,
+          'tfk_extras_top_nodeblock' => 0,
+          'tfk_notification' => 0,
+          'tfk_polldaddy' => 0,
+          'tfk_staff' => 0,
           'video' => 0,
           'webform' => 0,
+          'webform_generic' => 0,
           'worksheet' => 0,
           'writing_tips' => 0,
         ),
         'view' => array(
           'args' => array(),
-          'display_name' => '',
-          'view_name' => '',
+          'display_name' => 'references_1',
+          'view_name' => 'reference_tfkbooks',
         ),
       ),
       'translatable' => '1',
@@ -2332,7 +2383,7 @@ function misc_content_types_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-store-field_store_items'
+  // Exported field: 'node-store-field_store_items'.
   $fields['node-store-field_store_items'] = array(
     'field_config' => array(
       'active' => '1',
@@ -2342,8 +2393,10 @@ function misc_content_types_field_default_fields() {
       'field_name' => 'field_store_items',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'field_collection',
       'settings' => array(
+        'hide_blank_items' => TRUE,
         'path' => '',
       ),
       'translatable' => '1',
@@ -2363,6 +2416,7 @@ function misc_content_types_field_default_fields() {
             'delete' => 'Delete',
             'description' => TRUE,
             'edit' => 'Edit',
+            'view_mode' => 'full',
           ),
           'type' => 'field_collection_view',
           'weight' => '0',
@@ -2385,13 +2439,13 @@ function misc_content_types_field_default_fields() {
         'active' => 0,
         'module' => 'field_collection',
         'settings' => array(),
-        'type' => 'field_collection_subform',
+        'type' => 'field_collection_hidden',
         'weight' => '1',
       ),
     ),
   );
 
-  // Exported field: 'node-store-field_store_items_bottom'
+  // Exported field: 'node-store-field_store_items_bottom'.
   $fields['node-store-field_store_items_bottom'] = array(
     'field_config' => array(
       'active' => '1',
@@ -2401,8 +2455,10 @@ function misc_content_types_field_default_fields() {
       'field_name' => 'field_store_items_bottom',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'field_collection',
       'settings' => array(
+        'hide_blank_items' => TRUE,
         'path' => '',
       ),
       'translatable' => '1',
@@ -2422,6 +2478,7 @@ function misc_content_types_field_default_fields() {
             'delete' => 'Delete',
             'description' => TRUE,
             'edit' => 'Edit',
+            'view_mode' => 'full',
           ),
           'type' => 'field_collection_view',
           'weight' => 3,
@@ -2444,13 +2501,13 @@ function misc_content_types_field_default_fields() {
         'active' => 0,
         'module' => 'field_collection',
         'settings' => array(),
-        'type' => 'field_collection_subform',
+        'type' => 'field_collection_hidden',
         'weight' => '2',
       ),
     ),
   );
 
-  // Exported field: 'node-store-field_store_type'
+  // Exported field: 'node-store-field_store_type'.
   $fields['node-store-field_store_type'] = array(
     'field_config' => array(
       'active' => '1',
@@ -2464,6 +2521,7 @@ function misc_content_types_field_default_fields() {
           0 => 'value',
         ),
       ),
+      'locked' => '0',
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
@@ -2516,7 +2574,7 @@ function misc_content_types_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-store_product-field_product_description'
+  // Exported field: 'node-store_product-field_product_description'.
   $fields['node-store_product-field_product_description'] = array(
     'field_config' => array(
       'active' => '1',
@@ -2537,6 +2595,7 @@ function misc_content_types_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(),
       'translatable' => '0',
@@ -2582,7 +2641,7 @@ function misc_content_types_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-store_product-field_product_image'
+  // Exported field: 'node-store_product-field_product_image'.
   $fields['node-store_product-field_product_image'] = array(
     'field_config' => array(
       'active' => '1',
@@ -2603,6 +2662,7 @@ function misc_content_types_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'image',
       'settings' => array(
         'default_image' => 0,
@@ -2653,6 +2713,7 @@ function misc_content_types_field_default_fields() {
         'module' => 'image',
         'settings' => array(
           'insert' => 0,
+          'insert_absolute' => FALSE,
           'insert_class' => '',
           'insert_default' => 'auto',
           'insert_styles' => array(
@@ -2689,7 +2750,7 @@ function misc_content_types_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-store_product-field_product_link'
+  // Exported field: 'node-store_product-field_product_link'.
   $fields['node-store_product-field_product_link'] = array(
     'field_config' => array(
       'active' => '1',
@@ -2710,6 +2771,7 @@ function misc_content_types_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -2757,7 +2819,7 @@ function misc_content_types_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-store_product-field_store_order'
+  // Exported field: 'node-store_product-field_store_order'.
   $fields['node-store_product-field_store_order'] = array(
     'field_config' => array(
       'active' => '1',
@@ -2771,6 +2833,7 @@ function misc_content_types_field_default_fields() {
           0 => 'value',
         ),
       ),
+      'locked' => '0',
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
@@ -2831,7 +2894,7 @@ function misc_content_types_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-store_product-field_thumbnail_override_image'
+  // Exported field: 'node-store_product-field_thumbnail_override_image'.
   $fields['node-store_product-field_thumbnail_override_image'] = array(
     'field_config' => array(
       'active' => '1',
@@ -2852,6 +2915,7 @@ function misc_content_types_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'image',
       'settings' => array(
         'default_image' => 0,
@@ -2902,6 +2966,7 @@ function misc_content_types_field_default_fields() {
         'module' => 'image',
         'settings' => array(
           'insert' => 0,
+          'insert_absolute' => FALSE,
           'insert_class' => '',
           'insert_default' => 'auto',
           'insert_styles' => array(
@@ -2938,7 +3003,7 @@ function misc_content_types_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-teacher_board_nodeblock-body'
+  // Exported field: 'node-teacher_board_nodeblock-body'.
   $fields['node-teacher_board_nodeblock-body'] = array(
     'field_config' => array(
       'active' => '1',
@@ -2961,6 +3026,7 @@ function misc_content_types_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '',
@@ -3015,7 +3081,7 @@ function misc_content_types_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-tfk_extra-body'
+  // Exported field: 'node-tfk_extra-body'.
   $fields['node-tfk_extra-body'] = array(
     'field_config' => array(
       'active' => '1',
@@ -3038,6 +3104,7 @@ function misc_content_types_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '',
@@ -3093,7 +3160,7 @@ function misc_content_types_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-tfk_extra-field_tfk_extra_category'
+  // Exported field: 'node-tfk_extra-field_tfk_extra_category'.
   $fields['node-tfk_extra-field_tfk_extra_category'] = array(
     'field_config' => array(
       'active' => '1',
@@ -3114,6 +3181,7 @@ function misc_content_types_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -3165,7 +3233,7 @@ function misc_content_types_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-tfk_extra-field_tfk_extra_deck'
+  // Exported field: 'node-tfk_extra-field_tfk_extra_deck'.
   $fields['node-tfk_extra-field_tfk_extra_deck'] = array(
     'field_config' => array(
       'active' => '1',
@@ -3186,6 +3254,7 @@ function misc_content_types_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(),
       'translatable' => '1',
@@ -3233,7 +3302,7 @@ function misc_content_types_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-tfk_extra-field_tfk_extra_image'
+  // Exported field: 'node-tfk_extra-field_tfk_extra_image'.
   $fields['node-tfk_extra-field_tfk_extra_image'] = array(
     'field_config' => array(
       'active' => '1',
@@ -3254,6 +3323,7 @@ function misc_content_types_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'image',
       'settings' => array(
         'default_image' => 0,
@@ -3304,6 +3374,7 @@ function misc_content_types_field_default_fields() {
         'module' => 'image',
         'settings' => array(
           'insert' => 0,
+          'insert_absolute' => FALSE,
           'insert_class' => '',
           'insert_default' => array(
             0 => 'auto',
@@ -3321,7 +3392,7 @@ function misc_content_types_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-tfk_extra-field_tfk_extra_pdf_collection'
+  // Exported field: 'node-tfk_extra-field_tfk_extra_pdf_collection'.
   $fields['node-tfk_extra-field_tfk_extra_pdf_collection'] = array(
     'field_config' => array(
       'active' => '1',
@@ -3331,8 +3402,10 @@ function misc_content_types_field_default_fields() {
       'field_name' => 'field_tfk_extra_pdf_collection',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'field_collection',
       'settings' => array(
+        'hide_blank_items' => TRUE,
         'path' => '',
       ),
       'translatable' => '1',
@@ -3368,13 +3441,13 @@ function misc_content_types_field_default_fields() {
         'active' => 0,
         'module' => 'field_collection',
         'settings' => array(),
-        'type' => 'field_collection_subform',
+        'type' => 'field_collection_embed',
         'weight' => '5',
       ),
     ),
   );
 
-  // Exported field: 'node-tfk_extras_bottom_nodeblock-body'
+  // Exported field: 'node-tfk_extras_bottom_nodeblock-body'.
   $fields['node-tfk_extras_bottom_nodeblock-body'] = array(
     'field_config' => array(
       'active' => '1',
@@ -3397,6 +3470,7 @@ function misc_content_types_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '',
@@ -3451,7 +3525,7 @@ function misc_content_types_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-tfk_extras_top_nodeblock-body'
+  // Exported field: 'node-tfk_extras_top_nodeblock-body'.
   $fields['node-tfk_extras_top_nodeblock-body'] = array(
     'field_config' => array(
       'active' => '1',
@@ -3474,6 +3548,7 @@ function misc_content_types_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '',
@@ -3528,7 +3603,7 @@ function misc_content_types_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-tfk_notification-body'
+  // Exported field: 'node-tfk_notification-body'.
   $fields['node-tfk_notification-body'] = array(
     'field_config' => array(
       'active' => '1',
@@ -3551,6 +3626,7 @@ function misc_content_types_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '',
@@ -3606,7 +3682,7 @@ function misc_content_types_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-tfk_notification-field_external_url'
+  // Exported field: 'node-tfk_notification-field_external_url'.
   $fields['node-tfk_notification-field_external_url'] = array(
     'field_config' => array(
       'active' => '1',
@@ -3627,6 +3703,7 @@ function misc_content_types_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -3657,6 +3734,7 @@ function misc_content_types_field_default_fields() {
       'entity_type' => 'node',
       'field_name' => 'field_external_url',
       'label' => 'External URL',
+      'required' => FALSE,
       'settings' => array(
         'text_processing' => '0',
         'user_register_form' => FALSE,
@@ -3673,7 +3751,7 @@ function misc_content_types_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-tfk_staff-field_staff_image'
+  // Exported field: 'node-tfk_staff-field_staff_image'.
   $fields['node-tfk_staff-field_staff_image'] = array(
     'field_config' => array(
       'active' => '1',
@@ -3694,6 +3772,7 @@ function misc_content_types_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'image',
       'settings' => array(
         'default_image' => 0,
@@ -3744,6 +3823,7 @@ function misc_content_types_field_default_fields() {
         'module' => 'image',
         'settings' => array(
           'insert' => 0,
+          'insert_absolute' => FALSE,
           'insert_class' => '',
           'insert_default' => array(
             0 => 'auto',
@@ -3761,7 +3841,7 @@ function misc_content_types_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-tfk_staff-field_staff_short_bio'
+  // Exported field: 'node-tfk_staff-field_staff_short_bio'.
   $fields['node-tfk_staff-field_staff_short_bio'] = array(
     'field_config' => array(
       'active' => '1',
@@ -3782,6 +3862,7 @@ function misc_content_types_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(),
       'translatable' => '1',
@@ -3827,7 +3908,7 @@ function misc_content_types_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-webform_generic-body'
+  // Exported field: 'node-webform_generic-body'.
   $fields['node-webform_generic-body'] = array(
     'field_config' => array(
       'active' => '1',
@@ -3850,6 +3931,7 @@ function misc_content_types_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '',

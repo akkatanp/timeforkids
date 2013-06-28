@@ -10,7 +10,7 @@
 function features_misc_filter_default_formats() {
   $formats = array();
 
-  // Exported format: textfield
+  // Exported format: textfield.
   $formats['text_field'] = array(
     'format' => 'text_field',
     'name' => 'textfield',

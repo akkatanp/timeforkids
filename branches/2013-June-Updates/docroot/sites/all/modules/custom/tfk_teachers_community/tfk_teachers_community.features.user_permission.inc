@@ -10,7 +10,7 @@
 function tfk_teachers_community_user_default_permissions() {
   $permissions = array();
 
-  // Exported permission: edit question description
+  // Exported permission: edit question description.
   $permissions['edit question description'] = array(
     'name' => 'edit question description',
     'roles' => array(
@@ -20,7 +20,7 @@ function tfk_teachers_community_user_default_permissions() {
     'module' => 'tfk_teachers_community',
   );
 
-  // Exported permission: upload comment avatar
+  // Exported permission: upload comment avatar.
   $permissions['upload comment avatar'] = array(
     'name' => 'upload comment avatar',
     'roles' => array(

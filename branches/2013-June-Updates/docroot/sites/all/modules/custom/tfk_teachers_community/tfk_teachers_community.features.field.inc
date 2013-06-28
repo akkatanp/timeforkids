@@ -10,7 +10,7 @@
 function tfk_teachers_community_field_default_fields() {
   $fields = array();
 
-  // Exported field: 'node-teacher_community_question-body'
+  // Exported field: 'node-teacher_community_question-body'.
   $fields['node-teacher_community_question-body'] = array(
     'field_config' => array(
       'active' => '1',
@@ -33,6 +33,7 @@ function tfk_teachers_community_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '',

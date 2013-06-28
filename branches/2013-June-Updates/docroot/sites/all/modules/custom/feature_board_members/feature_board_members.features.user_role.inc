@@ -10,7 +10,7 @@
 function feature_board_members_user_default_roles() {
   $roles = array();
 
-  // Exported role: Board Member
+  // Exported role: Board Member.
   $roles['Board Member'] = array(
     'name' => 'Board Member',
     'weight' => '5',

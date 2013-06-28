@@ -49,10 +49,12 @@ function tfk_magazine_flag_default_flags() {
         1 => '4',
       ),
     ),
-    'show_on_page' => 0,
-    'show_on_teaser' => 0,
+    'weight' => 0,
     'show_on_form' => 1,
     'access_author' => '',
+    'show_on_page' => 0,
+    'show_on_teaser' => 0,
+    'show_contextual_link' => FALSE,
     'i18n' => 0,
     'module' => 'tfk_magazine',
     'locked' => array(
@@ -84,10 +86,12 @@ function tfk_magazine_flag_default_flags() {
         0 => '3',
       ),
     ),
-    'show_on_page' => 0,
-    'show_on_teaser' => 0,
+    'weight' => 0,
     'show_on_form' => 0,
     'access_author' => '',
+    'show_on_page' => 0,
+    'show_on_teaser' => 0,
+    'show_contextual_link' => FALSE,
     'i18n' => 0,
     'module' => 'tfk_magazine',
     'locked' => array(
@@ -96,6 +100,7 @@ function tfk_magazine_flag_default_flags() {
     'api_version' => 2,
   );
   return $flags;
+
 }
 
 /**
@@ -104,7 +109,7 @@ function tfk_magazine_flag_default_flags() {
 function tfk_magazine_image_default_styles() {
   $styles = array();
 
-  // Exported image style: tfk_140x187
+  // Exported image style: tfk_140x187.
   $styles['tfk_140x187'] = array(
     'name' => 'tfk_140x187',
     'effects' => array(

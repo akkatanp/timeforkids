@@ -10,7 +10,7 @@
 function homework_helper_field_default_fields() {
   $fields = array();
 
-  // Exported field: 'node-a_paper-body'
+  // Exported field: 'node-a_paper-body'.
   $fields['node-a_paper-body'] = array(
     'field_config' => array(
       'active' => '1',
@@ -33,6 +33,7 @@ function homework_helper_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '',
@@ -86,7 +87,7 @@ function homework_helper_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-a_paper-field_checklist_file'
+  // Exported field: 'node-a_paper-field_checklist_file'.
   $fields['node-a_paper-field_checklist_file'] = array(
     'field_config' => array(
       'active' => '1',
@@ -107,6 +108,7 @@ function homework_helper_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'file',
       'settings' => array(
         'display_default' => 0,
@@ -150,6 +152,7 @@ function homework_helper_field_default_fields() {
         'module' => 'file',
         'settings' => array(
           'insert' => 0,
+          'insert_absolute' => FALSE,
           'insert_class' => '',
           'insert_default' => array(
             0 => 'auto',
@@ -166,7 +169,7 @@ function homework_helper_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-a_paper-field_graphic_organizer'
+  // Exported field: 'node-a_paper-field_graphic_organizer'.
   $fields['node-a_paper-field_graphic_organizer'] = array(
     'field_config' => array(
       'active' => '1',
@@ -187,6 +190,7 @@ function homework_helper_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'file',
       'settings' => array(
         'display_default' => 0,
@@ -230,6 +234,7 @@ function homework_helper_field_default_fields() {
         'module' => 'file',
         'settings' => array(
           'insert' => 0,
+          'insert_absolute' => FALSE,
           'insert_class' => '',
           'insert_default' => array(
             0 => 'auto',
@@ -246,7 +251,7 @@ function homework_helper_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-a_paper-field_paper_check_title'
+  // Exported field: 'node-a_paper-field_paper_check_title'.
   $fields['node-a_paper-field_paper_check_title'] = array(
     'field_config' => array(
       'active' => '1',
@@ -267,6 +272,7 @@ function homework_helper_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -313,7 +319,7 @@ function homework_helper_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-a_paper-field_paper_description'
+  // Exported field: 'node-a_paper-field_paper_description'.
   $fields['node-a_paper-field_paper_description'] = array(
     'field_config' => array(
       'active' => '1',
@@ -334,6 +340,7 @@ function homework_helper_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(),
       'translatable' => '1',
@@ -378,7 +385,7 @@ function homework_helper_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-a_paper-field_paper_image'
+  // Exported field: 'node-a_paper-field_paper_image'.
   $fields['node-a_paper-field_paper_image'] = array(
     'field_config' => array(
       'active' => '1',
@@ -399,6 +406,7 @@ function homework_helper_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'image',
       'settings' => array(
         'default_image' => 0,
@@ -444,6 +452,7 @@ function homework_helper_field_default_fields() {
         'module' => 'image',
         'settings' => array(
           'insert' => 0,
+          'insert_absolute' => FALSE,
           'insert_class' => '',
           'insert_default' => array(
             0 => 'auto',
@@ -461,7 +470,7 @@ function homework_helper_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-a_paper-field_sample_paper'
+  // Exported field: 'node-a_paper-field_sample_paper'.
   $fields['node-a_paper-field_sample_paper'] = array(
     'field_config' => array(
       'active' => '1',
@@ -482,6 +491,7 @@ function homework_helper_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'file',
       'settings' => array(
         'display_default' => 0,
@@ -525,6 +535,7 @@ function homework_helper_field_default_fields() {
         'module' => 'file',
         'settings' => array(
           'insert' => 0,
+          'insert_absolute' => FALSE,
           'insert_class' => '',
           'insert_default' => array(
             0 => 'auto',
@@ -541,7 +552,7 @@ function homework_helper_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-a_paper-field_step_instructions'
+  // Exported field: 'node-a_paper-field_step_instructions'.
   $fields['node-a_paper-field_step_instructions'] = array(
     'field_config' => array(
       'active' => '1',
@@ -562,6 +573,7 @@ function homework_helper_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'file',
       'settings' => array(
         'display_default' => 0,
@@ -605,6 +617,7 @@ function homework_helper_field_default_fields() {
         'module' => 'file',
         'settings' => array(
           'insert' => 0,
+          'insert_absolute' => FALSE,
           'insert_class' => '',
           'insert_default' => array(
             0 => 'auto',
@@ -621,7 +634,7 @@ function homework_helper_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-a_paper-field_summary'
+  // Exported field: 'node-a_paper-field_summary'.
   $fields['node-a_paper-field_summary'] = array(
     'field_config' => array(
       'active' => '1',
@@ -642,6 +655,7 @@ function homework_helper_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -688,7 +702,7 @@ function homework_helper_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-flashcard-field_flashcard'
+  // Exported field: 'node-flashcard-field_flashcard'.
   $fields['node-flashcard-field_flashcard'] = array(
     'field_config' => array(
       'active' => '1',
@@ -700,6 +714,7 @@ function homework_helper_field_default_fields() {
       'field_name' => 'field_flashcard',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'flashcard',
       'settings' => array(),
       'translatable' => '1',
@@ -741,7 +756,7 @@ function homework_helper_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-grammar_practice-body'
+  // Exported field: 'node-grammar_practice-body'.
   $fields['node-grammar_practice-body'] = array(
     'field_config' => array(
       'active' => '1',
@@ -764,6 +779,7 @@ function homework_helper_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '',
@@ -818,7 +834,7 @@ function homework_helper_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-grammar_practice-field_punctuation_instructions'
+  // Exported field: 'node-grammar_practice-field_punctuation_instructions'.
   $fields['node-grammar_practice-field_punctuation_instructions'] = array(
     'field_config' => array(
       'active' => '1',
@@ -839,6 +855,7 @@ function homework_helper_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(),
       'translatable' => '1',
@@ -883,7 +900,7 @@ function homework_helper_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-grammar_practice_question-body'
+  // Exported field: 'node-grammar_practice_question-body'.
   $fields['node-grammar_practice_question-body'] = array(
     'field_config' => array(
       'active' => '1',
@@ -906,6 +923,7 @@ function homework_helper_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '',
@@ -960,7 +978,7 @@ function homework_helper_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-grammar_practice_question-field_grammar_practice'
+  // Exported field: 'node-grammar_practice_question-field_grammar_practice'.
   $fields['node-grammar_practice_question-field_grammar_practice'] = array(
     'field_config' => array(
       'active' => '1',
@@ -981,6 +999,7 @@ function homework_helper_field_default_fields() {
           0 => 'nid',
         ),
       ),
+      'locked' => '0',
       'module' => 'node_reference',
       'settings' => array(
         'referenceable_types' => array(
@@ -994,30 +1013,48 @@ function homework_helper_field_default_fields() {
           'atw_timeline' => 0,
           'board_member' => 0,
           'book' => 0,
+          'common_core_standards' => 0,
           'flashcard' => 0,
           'global_right_sidebar_promo' => 0,
           'grammar_practice' => 'grammar_practice',
           'grammar_practice_question' => 0,
           'grammar_practice_reward_image' => 0,
           'grammar_practice_rule' => 0,
+          'homepage_news_for_teachers' => 0,
           'image' => 0,
           'kid_reporter' => 0,
+          'kid_reporter_bottom_nodeblock' => 0,
+          'kid_reporter_listing_nodeblock' => 0,
           'magazine_issue' => 0,
           'mini_lesson' => 0,
+          'mini_site_home' => 0,
           'minisite' => 0,
-          'notification_homepage' => 0,
+          'news_channel_nodeblock' => 0,
           'page' => 0,
           'paper_step' => 0,
+          'pdf_quiz' => 0,
+          'poll' => 0,
           'slideshow' => 0,
+          'store' => 0,
+          'store_product' => 0,
+          'teacher_board_nodeblock' => 0,
+          'teacher_community_question' => 0,
           'tfk_extra' => 0,
+          'tfk_extras_bottom_nodeblock' => 0,
+          'tfk_extras_top_nodeblock' => 0,
+          'tfk_notification' => 0,
+          'tfk_polldaddy' => 0,
+          'tfk_staff' => 0,
           'video' => 0,
           'webform' => 0,
+          'webform_generic' => 0,
           'worksheet' => 0,
+          'writing_tips' => 0,
         ),
         'view' => array(
           'args' => array(),
-          'display_name' => '',
-          'view_name' => '',
+          'display_name' => 'references_1',
+          'view_name' => 'reference_grammerpractice',
         ),
       ),
       'translatable' => '1',
@@ -1059,7 +1096,7 @@ function homework_helper_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-grammar_practice_question-field_grammar_practice_answer'
+  // Exported field: 'node-grammar_practice_question-field_grammar_practice_answer'.
   $fields['node-grammar_practice_question-field_grammar_practice_answer'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1080,6 +1117,7 @@ function homework_helper_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -1126,7 +1164,7 @@ function homework_helper_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-grammar_practice_question-field_grammar_practice_choices'
+  // Exported field: 'node-grammar_practice_question-field_grammar_practice_choices'.
   $fields['node-grammar_practice_question-field_grammar_practice_choices'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1147,6 +1185,7 @@ function homework_helper_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -1193,7 +1232,7 @@ function homework_helper_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-grammar_practice_question-field_grammar_practice_rule'
+  // Exported field: 'node-grammar_practice_question-field_grammar_practice_rule'.
   $fields['node-grammar_practice_question-field_grammar_practice_rule'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1214,6 +1253,7 @@ function homework_helper_field_default_fields() {
           0 => 'nid',
         ),
       ),
+      'locked' => '0',
       'module' => 'node_reference',
       'settings' => array(
         'referenceable_types' => array(
@@ -1311,7 +1351,7 @@ function homework_helper_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-grammar_practice_reward_image-field_reward_image'
+  // Exported field: 'node-grammar_practice_reward_image-field_reward_image'.
   $fields['node-grammar_practice_reward_image-field_reward_image'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1332,6 +1372,7 @@ function homework_helper_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'image',
       'settings' => array(
         'default_image' => 0,
@@ -1382,6 +1423,7 @@ function homework_helper_field_default_fields() {
         'module' => 'image',
         'settings' => array(
           'insert' => 0,
+          'insert_absolute' => FALSE,
           'insert_class' => '',
           'insert_default' => array(
             0 => 'auto',
@@ -1399,7 +1441,7 @@ function homework_helper_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-grammar_practice_rule-body'
+  // Exported field: 'node-grammar_practice_rule-body'.
   $fields['node-grammar_practice_rule-body'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1422,6 +1464,7 @@ function homework_helper_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '',
@@ -1477,7 +1520,7 @@ function homework_helper_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-grammar_practice_rule-field_grammar_example'
+  // Exported field: 'node-grammar_practice_rule-field_grammar_example'.
   $fields['node-grammar_practice_rule-field_grammar_example'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1498,6 +1541,7 @@ function homework_helper_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(),
       'translatable' => '1',
@@ -1543,7 +1587,7 @@ function homework_helper_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-grammar_practice_rule-field_grammar_practice'
+  // Exported field: 'node-grammar_practice_rule-field_grammar_practice'.
   $fields['node-grammar_practice_rule-field_grammar_practice'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1564,6 +1608,7 @@ function homework_helper_field_default_fields() {
           0 => 'nid',
         ),
       ),
+      'locked' => '0',
       'module' => 'node_reference',
       'settings' => array(
         'referenceable_types' => array(
@@ -1577,30 +1622,48 @@ function homework_helper_field_default_fields() {
           'atw_timeline' => 0,
           'board_member' => 0,
           'book' => 0,
+          'common_core_standards' => 0,
           'flashcard' => 0,
           'global_right_sidebar_promo' => 0,
           'grammar_practice' => 'grammar_practice',
           'grammar_practice_question' => 0,
           'grammar_practice_reward_image' => 0,
           'grammar_practice_rule' => 0,
+          'homepage_news_for_teachers' => 0,
           'image' => 0,
           'kid_reporter' => 0,
+          'kid_reporter_bottom_nodeblock' => 0,
+          'kid_reporter_listing_nodeblock' => 0,
           'magazine_issue' => 0,
           'mini_lesson' => 0,
+          'mini_site_home' => 0,
           'minisite' => 0,
-          'notification_homepage' => 0,
+          'news_channel_nodeblock' => 0,
           'page' => 0,
           'paper_step' => 0,
+          'pdf_quiz' => 0,
+          'poll' => 0,
           'slideshow' => 0,
+          'store' => 0,
+          'store_product' => 0,
+          'teacher_board_nodeblock' => 0,
+          'teacher_community_question' => 0,
           'tfk_extra' => 0,
+          'tfk_extras_bottom_nodeblock' => 0,
+          'tfk_extras_top_nodeblock' => 0,
+          'tfk_notification' => 0,
+          'tfk_polldaddy' => 0,
+          'tfk_staff' => 0,
           'video' => 0,
           'webform' => 0,
+          'webform_generic' => 0,
           'worksheet' => 0,
+          'writing_tips' => 0,
         ),
         'view' => array(
           'args' => array(),
-          'display_name' => '',
-          'view_name' => '',
+          'display_name' => 'references_1',
+          'view_name' => 'reference_grammerpractice',
         ),
       ),
       'translatable' => '1',
@@ -1643,7 +1706,7 @@ function homework_helper_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-grammar_practice_rule-field_step_weight'
+  // Exported field: 'node-grammar_practice_rule-field_step_weight'.
   $fields['node-grammar_practice_rule-field_step_weight'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1653,6 +1716,7 @@ function homework_helper_field_default_fields() {
       'field_name' => 'field_step_weight',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'number',
       'settings' => array(),
       'translatable' => '1',
@@ -1704,7 +1768,7 @@ function homework_helper_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-paper_step-body'
+  // Exported field: 'node-paper_step-body'.
   $fields['node-paper_step-body'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1727,6 +1791,7 @@ function homework_helper_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '',
@@ -1782,7 +1847,7 @@ function homework_helper_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-paper_step-field_step_checkbox'
+  // Exported field: 'node-paper_step-field_step_checkbox'.
   $fields['node-paper_step-field_step_checkbox'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1803,6 +1868,7 @@ function homework_helper_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -1851,7 +1917,7 @@ Ex. <em>I wrote a paragraph that summarizes my viewpoint.</em>',
     ),
   );
 
-  // Exported field: 'node-paper_step-field_step_example'
+  // Exported field: 'node-paper_step-field_step_example'.
   $fields['node-paper_step-field_step_example'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1872,6 +1938,7 @@ Ex. <em>I wrote a paragraph that summarizes my viewpoint.</em>',
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(),
       'translatable' => '1',
@@ -1917,7 +1984,7 @@ Ex. <em>I wrote a paragraph that summarizes my viewpoint.</em>',
     ),
   );
 
-  // Exported field: 'node-paper_step-field_step_name_date'
+  // Exported field: 'node-paper_step-field_step_name_date'.
   $fields['node-paper_step-field_step_name_date'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1931,6 +1998,7 @@ Ex. <em>I wrote a paragraph that summarizes my viewpoint.</em>',
           0 => 'value',
         ),
       ),
+      'locked' => '0',
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
@@ -1984,7 +2052,7 @@ Ex. <em>I wrote a paragraph that summarizes my viewpoint.</em>',
     ),
   );
 
-  // Exported field: 'node-paper_step-field_step_parent'
+  // Exported field: 'node-paper_step-field_step_parent'.
   $fields['node-paper_step-field_step_parent'] = array(
     'field_config' => array(
       'active' => '1',
@@ -2005,6 +2073,7 @@ Ex. <em>I wrote a paragraph that summarizes my viewpoint.</em>',
           0 => 'nid',
         ),
       ),
+      'locked' => '0',
       'module' => 'node_reference',
       'settings' => array(
         'referenceable_types' => array(
@@ -2102,7 +2171,7 @@ Ex. <em>I wrote a paragraph that summarizes my viewpoint.</em>',
     ),
   );
 
-  // Exported field: 'node-paper_step-field_step_text_area'
+  // Exported field: 'node-paper_step-field_step_text_area'.
   $fields['node-paper_step-field_step_text_area'] = array(
     'field_config' => array(
       'active' => '1',
@@ -2116,6 +2185,7 @@ Ex. <em>I wrote a paragraph that summarizes my viewpoint.</em>',
           0 => 'value',
         ),
       ),
+      'locked' => '0',
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
@@ -2169,7 +2239,7 @@ Ex. <em>I wrote a paragraph that summarizes my viewpoint.</em>',
     ),
   );
 
-  // Exported field: 'node-paper_step-field_step_text_label'
+  // Exported field: 'node-paper_step-field_step_text_label'.
   $fields['node-paper_step-field_step_text_label'] = array(
     'field_config' => array(
       'active' => '1',
@@ -2190,6 +2260,7 @@ Ex. <em>I wrote a paragraph that summarizes my viewpoint.</em>',
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -2236,7 +2307,7 @@ Ex. <em>I wrote a paragraph that summarizes my viewpoint.</em>',
     ),
   );
 
-  // Exported field: 'node-paper_step-field_step_title'
+  // Exported field: 'node-paper_step-field_step_title'.
   $fields['node-paper_step-field_step_title'] = array(
     'field_config' => array(
       'active' => '1',
@@ -2250,6 +2321,7 @@ Ex. <em>I wrote a paragraph that summarizes my viewpoint.</em>',
           0 => 'value',
         ),
       ),
+      'locked' => '0',
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
@@ -2303,7 +2375,7 @@ Ex. <em>I wrote a paragraph that summarizes my viewpoint.</em>',
     ),
   );
 
-  // Exported field: 'node-paper_step-field_step_weight'
+  // Exported field: 'node-paper_step-field_step_weight'.
   $fields['node-paper_step-field_step_weight'] = array(
     'field_config' => array(
       'active' => '1',
@@ -2313,6 +2385,7 @@ Ex. <em>I wrote a paragraph that summarizes my viewpoint.</em>',
       'field_name' => 'field_step_weight',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'number',
       'settings' => array(),
       'translatable' => '1',
@@ -2362,7 +2435,7 @@ Ex. <em>I wrote a paragraph that summarizes my viewpoint.</em>',
     ),
   );
 
-  // Exported field: 'node-writing_tips-body'
+  // Exported field: 'node-writing_tips-body'.
   $fields['node-writing_tips-body'] = array(
     'field_config' => array(
       'active' => '1',
@@ -2385,6 +2458,7 @@ Ex. <em>I wrote a paragraph that summarizes my viewpoint.</em>',
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '',
@@ -2440,7 +2514,7 @@ Ex. <em>I wrote a paragraph that summarizes my viewpoint.</em>',
     ),
   );
 
-  // Exported field: 'node-writing_tips-field_staff_reference'
+  // Exported field: 'node-writing_tips-field_staff_reference'.
   $fields['node-writing_tips-field_staff_reference'] = array(
     'field_config' => array(
       'active' => '1',
@@ -2461,6 +2535,7 @@ Ex. <em>I wrote a paragraph that summarizes my viewpoint.</em>',
           0 => 'nid',
         ),
       ),
+      'locked' => '0',
       'module' => 'node_reference',
       'settings' => array(
         'referenceable_types' => array(
@@ -2559,7 +2634,7 @@ Ex. <em>I wrote a paragraph that summarizes my viewpoint.</em>',
     ),
   );
 
-  // Exported field: 'node-writing_tips-field_tips_category'
+  // Exported field: 'node-writing_tips-field_tips_category'.
   $fields['node-writing_tips-field_tips_category'] = array(
     'field_config' => array(
       'active' => '1',
@@ -2580,6 +2655,7 @@ Ex. <em>I wrote a paragraph that summarizes my viewpoint.</em>',
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(

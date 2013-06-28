@@ -10,7 +10,7 @@
 function tfk_teachers_community_context_default_contexts() {
   $export = array();
 
-  $context = new stdClass;
+  $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'tfk_teacher_community';
@@ -57,7 +57,7 @@ function tfk_teachers_community_context_default_contexts() {
   t('Teacher Community');
   $export['tfk_teacher_community'] = $context;
 
-  $context = new stdClass;
+  $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'tfk_teacher_community_topics';
