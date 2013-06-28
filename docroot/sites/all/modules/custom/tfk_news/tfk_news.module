@@ -612,14 +612,14 @@ function tfk_news_node_view($node, $view_mode, $langcode) {
     
     $badge = '';
     
-    if($tmp_kid[0]['node']->status == 0){
+    if($kid_node->status == 0){
         $badge = '<div class="reporter-badge"><div id="badge-header">Kid Reporter</div><div id="badge-badge"></div>
       <img class="reporter-badge-photo" src="'.$thumb_path.'"/><div class="reporter-name">'.$reporter_name.'</div>
         </div>';
 
     }else{
         $badge = '<div class="reporter-badge"><div id="badge-header">Kid Reporter</div><div id="badge-badge"></div>
-      <img class="reporter-badge-photo" src="'.$thumb_path.'"/>'.l($reporter_name,$reporter_alias,array('attributes' => array('class' => array('reporter-link-a')))).'
+      <a href="/'.$reporter_alias.'"><img class="reporter-badge-photo" src="'.$thumb_path.'"/></a>'.l($reporter_name,$reporter_alias,array('attributes' => array('class' => array('reporter-link-a')))).'
         </div>';
 
     }
