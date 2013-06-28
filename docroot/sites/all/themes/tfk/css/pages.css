@@ -472,7 +472,7 @@ ul.links li {
 .logged-in .view-homepage-minisite {
 	position: relative;
 	width: 244px;
-	height: 363px;
+	min-height: 363px;
 	padding: 15px 0 0 6px;
 	background: #dedede;
 	border: solid 1px #cecece;
@@ -1244,7 +1244,6 @@ body.one-sidebar .secondary-touts-view td.col-2  {
 	padding: 10px 12px 10px 9px;
 	margin: 2px 0;
 	line-height: 15px;
-  height:115px;
   height:auto !important;
   min-height:115px;
 }
@@ -1568,7 +1567,8 @@ body.one-sidebar .secondary-touts-view td.col-2  {
 .node-type-article .reporter-badge #badge-header{
 	background: #d71700;
 	color: white;
-	font: normal 12px "arial black";
+	font: normal 12px "arial";
+  font-weight: bold;
 	padding: 4px;
 	margin-bottom: 4px;
 }
@@ -1577,6 +1577,7 @@ body.one-sidebar .secondary-touts-view td.col-2  {
 	width: 60px;
 	height: 60px;
 	border: solid 1px #cecece;
+  margin: 5px 0;
 }
 
 .node-type-article .reporter-badge #badge-badge {
