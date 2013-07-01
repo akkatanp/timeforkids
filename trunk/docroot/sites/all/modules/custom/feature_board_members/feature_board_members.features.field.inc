@@ -10,7 +10,7 @@
 function feature_board_members_field_default_fields() {
   $fields = array();
 
-  // Exported field: 'node-board_member-body'
+  // Exported field: 'node-board_member-body'.
   $fields['node-board_member-body'] = array(
     'field_config' => array(
       'active' => '1',
@@ -33,6 +33,7 @@ function feature_board_members_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '',
@@ -88,7 +89,7 @@ function feature_board_members_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-board_member-field_board_member_reference'
+  // Exported field: 'node-board_member-field_board_member_reference'.
   $fields['node-board_member-field_board_member_reference'] = array(
     'field_config' => array(
       'active' => '1',
@@ -109,6 +110,7 @@ function feature_board_members_field_default_fields() {
           0 => 'uid',
         ),
       ),
+      'locked' => '0',
       'module' => 'user_reference',
       'settings' => array(
         'referenceable_roles' => array(
@@ -172,7 +174,7 @@ function feature_board_members_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-board_member-field_grade_level'
+  // Exported field: 'node-board_member-field_grade_level'.
   $fields['node-board_member-field_grade_level'] = array(
     'field_config' => array(
       'active' => '1',
@@ -193,12 +195,13 @@ function feature_board_members_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
           0 => array(
-            'parent' => '0',
             'vocabulary' => 'grade_levels',
+            'parent' => '0',
           ),
         ),
       ),
@@ -242,7 +245,7 @@ function feature_board_members_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-board_member-field_location'
+  // Exported field: 'node-board_member-field_location'.
   $fields['node-board_member-field_location'] = array(
     'field_config' => array(
       'active' => '1',
@@ -263,6 +266,7 @@ function feature_board_members_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -310,7 +314,7 @@ function feature_board_members_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-board_member-field_member_photo'
+  // Exported field: 'node-board_member-field_member_photo'.
   $fields['node-board_member-field_member_photo'] = array(
     'field_config' => array(
       'active' => '1',
@@ -331,6 +335,7 @@ function feature_board_members_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'image',
       'settings' => array(
         'default_image' => 0,
@@ -367,6 +372,7 @@ function feature_board_members_field_default_fields() {
       'required' => 1,
       'settings' => array(
         'alt_field' => 0,
+        'default_image' => 0,
         'file_directory' => '',
         'file_extensions' => 'png gif jpg jpeg',
         'max_filesize' => '',
@@ -380,6 +386,7 @@ function feature_board_members_field_default_fields() {
         'module' => 'image',
         'settings' => array(
           'insert' => 0,
+          'insert_absolute' => FALSE,
           'insert_class' => '',
           'insert_default' => 'auto',
           'insert_styles' => array(

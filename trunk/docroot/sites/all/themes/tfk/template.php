@@ -260,6 +260,13 @@ function tfk_preprocess_page(&$variables, $hook) {
  
   // Debug CTools modal.
   //drupal_add_js(array('debug' => array('enabled' => TRUE)), 'setting');
+  
+  // Add JQuery-UI and plugins for Jump Page
+  
+  drupal_add_library('system', 'ui');
+  drupal_add_library('system', 'ui.button');
+  drupal_add_library('system', 'ui.position');
+  drupal_add_library('system', 'ui.dialog');
     
   if(array_key_exists('node', $variables)) {
     $variables['theme_hook_suggestions'][] = 'page__'. $variables['node']->type;
@@ -414,19 +421,6 @@ function tfk_header_tag($type) {
       $output = drupal_get_title();
   }
   return $output;
-}
-function tfk_js_alter(&$javascript) {
-	//Upgrade to jquery 1.5
-	$jquery_path = drupal_get_path('theme','tfk') . '/js/jquery-1.5.js';
-
-	//We duplicate the important information from the Drupal one
-	$javascript[$jquery_path] = $javascript['misc/jquery.js'];
-	//..and we update the information that we care about
-	$javascript[$jquery_path]['version'] = '1.5';
-	$javascript[$jquery_path]['data'] = $jquery_path;
-
-	//Then we remove the Drupal core version
-	unset($javascript['misc/jquery.js']);
 }
 
 function tfk_preprocess_flashcard_cycle_mark(&$variables) {

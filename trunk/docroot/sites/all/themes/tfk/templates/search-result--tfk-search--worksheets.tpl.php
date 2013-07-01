@@ -89,9 +89,13 @@
   
   <div class='row2'>
     <div class='col1'>
-      <?php if(isset($thumbnail) && $thumbnail):?>
-      	<?php print $thumbnail; ?>
-      <?php endif;?>
+      <?php 
+        if(isset($thumbnail) && $thumbnail):
+          $link = ($tfk_worksheet_pdf_link)?$tfk_worksheet_pdf_link:(($tfk_pdf_link)?$tfk_pdf_link:"");
+          preg_match('/<a href="(.+)">/', $link, $href);
+      	  print "<a href=\"".$href[1]."\">".$thumbnail."</a>"; 
+        endif;
+      ?>
     </div>
    
   	<div class='col2'>

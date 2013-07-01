@@ -10,7 +10,7 @@
 function feature_board_members_menu_default_menu_custom() {
   $menus = array();
 
-  // Exported menu: menu-link-to-board-members
+  // Exported menu: menu-link-to-board-members.
   $menus['menu-link-to-board-members'] = array(
     'menu_name' => 'menu-link-to-board-members',
     'title' => 'Link to board members landing page',

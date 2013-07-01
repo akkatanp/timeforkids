@@ -10,7 +10,7 @@
 function feature_board_members_context_default_contexts() {
   $export = array();
 
-  $context = new stdClass;
+  $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'tfk_board_members';
@@ -43,7 +43,7 @@ function feature_board_members_context_default_contexts() {
   t('board members');
   $export['tfk_board_members'] = $context;
 
-  $context = new stdClass;
+  $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'tfk_boardmember_node';

@@ -10,7 +10,7 @@
 function feature_tfk_news_field_default_fields() {
   $fields = array();
 
-  // Exported field: 'node-article-field_article_byline'
+  // Exported field: 'node-article-field_article_byline'.
   $fields['node-article-field_article_byline'] = array(
     'field_config' => array(
       'active' => '1',
@@ -31,6 +31,7 @@ function feature_tfk_news_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -95,7 +96,7 @@ function feature_tfk_news_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-article-field_article_category'
+  // Exported field: 'node-article-field_article_category'.
   $fields['node-article-field_article_category'] = array(
     'field_config' => array(
       'active' => '1',
@@ -116,12 +117,13 @@ function feature_tfk_news_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
           0 => array(
-            'parent' => '0',
             'vocabulary' => 'article_categories',
+            'parent' => '0',
           ),
         ),
       ),
@@ -177,7 +179,7 @@ function feature_tfk_news_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-article-field_article_poll'
+  // Exported field: 'node-article-field_article_poll'.
   $fields['node-article-field_article_poll'] = array(
     'field_config' => array(
       'active' => '1',
@@ -198,6 +200,7 @@ function feature_tfk_news_field_default_fields() {
           0 => 'nid',
         ),
       ),
+      'locked' => '0',
       'module' => 'node_reference',
       'settings' => array(
         'referenceable_types' => array(
@@ -310,7 +313,7 @@ function feature_tfk_news_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-article-field_body'
+  // Exported field: 'node-article-field_body'.
   $fields['node-article-field_body'] = array(
     'field_config' => array(
       'active' => '1',
@@ -331,6 +334,7 @@ function feature_tfk_news_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(),
       'translatable' => '1',
@@ -388,7 +392,7 @@ function feature_tfk_news_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-article-field_date'
+  // Exported field: 'node-article-field_date'.
   $fields['node-article-field_date'] = array(
     'field_config' => array(
       'active' => '1',
@@ -398,6 +402,7 @@ function feature_tfk_news_field_default_fields() {
       'field_name' => 'field_date',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'date',
       'settings' => array(
         'granularity' => array(
@@ -429,7 +434,6 @@ function feature_tfk_news_field_default_fields() {
             'multiple_from' => '',
             'multiple_number' => '',
             'multiple_to' => '',
-            'show_repeat_rule' => 'show',
           ),
           'type' => 'date_default',
           'weight' => '2',
@@ -469,6 +473,7 @@ function feature_tfk_news_field_default_fields() {
         'active' => 1,
         'module' => 'date',
         'settings' => array(
+          'display_all_day' => 0,
           'increment' => '1',
           'input_format' => 'm/d/Y - H:i:s',
           'input_format_custom' => '',
@@ -483,7 +488,7 @@ function feature_tfk_news_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-article-field_deck'
+  // Exported field: 'node-article-field_deck'.
   $fields['node-article-field_deck'] = array(
     'field_config' => array(
       'active' => '1',
@@ -504,6 +509,7 @@ function feature_tfk_news_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '',
@@ -567,7 +573,7 @@ Limit for News Block: 65 characters.',
     ),
   );
 
-  // Exported field: 'node-article-field_image_caption'
+  // Exported field: 'node-article-field_image_caption'.
   $fields['node-article-field_image_caption'] = array(
     'field_config' => array(
       'active' => '1',
@@ -588,6 +594,7 @@ Limit for News Block: 65 characters.',
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -647,7 +654,7 @@ Limit for News Block: 65 characters.',
     ),
   );
 
-  // Exported field: 'node-article-field_image_credit'
+  // Exported field: 'node-article-field_image_credit'.
   $fields['node-article-field_image_credit'] = array(
     'field_config' => array(
       'active' => '1',
@@ -668,6 +675,7 @@ Limit for News Block: 65 characters.',
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -727,7 +735,7 @@ Limit for News Block: 65 characters.',
     ),
   );
 
-  // Exported field: 'node-article-field_kid_reporter'
+  // Exported field: 'node-article-field_kid_reporter'.
   $fields['node-article-field_kid_reporter'] = array(
     'field_config' => array(
       'active' => '1',
@@ -748,6 +756,7 @@ Limit for News Block: 65 characters.',
           0 => 'nid',
         ),
       ),
+      'locked' => '0',
       'module' => 'node_reference',
       'settings' => array(
         'referenceable_types' => array(
@@ -857,7 +866,7 @@ Limit for News Block: 65 characters.',
     ),
   );
 
-  // Exported field: 'node-article-field_lrg_rect_image'
+  // Exported field: 'node-article-field_lrg_rect_image'.
   $fields['node-article-field_lrg_rect_image'] = array(
     'field_config' => array(
       'active' => '1',
@@ -878,6 +887,7 @@ Limit for News Block: 65 characters.',
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'image',
       'settings' => array(
         'default_image' => 0,
@@ -940,6 +950,7 @@ Limit for News Block: 65 characters.',
         'module' => 'image',
         'settings' => array(
           'insert' => 0,
+          'insert_absolute' => FALSE,
           'insert_class' => '',
           'insert_default' => array(
             0 => 'auto',
@@ -957,7 +968,7 @@ Limit for News Block: 65 characters.',
     ),
   );
 
-  // Exported field: 'node-article-field_lrg_sq_image'
+  // Exported field: 'node-article-field_lrg_sq_image'.
   $fields['node-article-field_lrg_sq_image'] = array(
     'field_config' => array(
       'active' => '1',
@@ -978,6 +989,7 @@ Limit for News Block: 65 characters.',
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'image',
       'settings' => array(
         'default_image' => 0,
@@ -1036,6 +1048,7 @@ Limit for News Block: 65 characters.',
         'module' => 'image',
         'settings' => array(
           'insert' => 0,
+          'insert_absolute' => FALSE,
           'insert_class' => '',
           'insert_default' => array(
             0 => 'auto',
@@ -1053,7 +1066,7 @@ Limit for News Block: 65 characters.',
     ),
   );
 
-  // Exported field: 'node-article-field_mini_lessons'
+  // Exported field: 'node-article-field_mini_lessons'.
   $fields['node-article-field_mini_lessons'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1074,6 +1087,7 @@ Limit for News Block: 65 characters.',
           0 => 'nid',
         ),
       ),
+      'locked' => '0',
       'module' => 'node_reference',
       'settings' => array(
         'referenceable_types' => array(
@@ -1184,7 +1198,7 @@ Limit for News Block: 65 characters.',
     ),
   );
 
-  // Exported field: 'node-article-field_related_articles'
+  // Exported field: 'node-article-field_related_articles'.
   $fields['node-article-field_related_articles'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1205,6 +1219,7 @@ Limit for News Block: 65 characters.',
           0 => 'nid',
         ),
       ),
+      'locked' => '0',
       'module' => 'node_reference',
       'settings' => array(
         'referenceable_types' => array(
@@ -1270,9 +1285,9 @@ Limit for News Block: 65 characters.',
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'tfk_news',
+          'module' => 'node_reference',
           'settings' => array(),
-          'type' => 'tfk_news_grade_title',
+          'type' => 'node_reference_default',
           'weight' => '4',
         ),
         'search_index' => array(
@@ -1315,7 +1330,7 @@ Limit for News Block: 65 characters.',
     ),
   );
 
-  // Exported field: 'node-article-field_wysiwyg_image_caption'
+  // Exported field: 'node-article-field_wysiwyg_image_caption'.
   $fields['node-article-field_wysiwyg_image_caption'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1336,6 +1351,7 @@ Limit for News Block: 65 characters.',
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(),
       'translatable' => '0',
@@ -1393,7 +1409,7 @@ Limit for News Block: 65 characters.',
     ),
   );
 
-  // Exported field: 'node-article-meta_description'
+  // Exported field: 'node-article-meta_description'.
   $fields['node-article-meta_description'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1403,6 +1419,7 @@ Limit for News Block: 65 characters.',
       'field_name' => 'meta_description',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'metatags_quick',
       'settings' => array(
         'meta_name' => 'description',
@@ -1461,7 +1478,7 @@ Limit for News Block: 65 characters.',
     ),
   );
 
-  // Exported field: 'node-article-meta_keywords'
+  // Exported field: 'node-article-meta_keywords'.
   $fields['node-article-meta_keywords'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1471,6 +1488,7 @@ Limit for News Block: 65 characters.',
       'field_name' => 'meta_keywords',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'metatags_quick',
       'settings' => array(
         'meta_name' => 'keywords',
@@ -1529,7 +1547,7 @@ Limit for News Block: 65 characters.',
     ),
   );
 
-  // Exported field: 'node-tfk_polldaddy-field_external_poll_id'
+  // Exported field: 'node-tfk_polldaddy-field_external_poll_id'.
   $fields['node-tfk_polldaddy-field_external_poll_id'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1550,6 +1568,7 @@ Limit for News Block: 65 characters.',
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',

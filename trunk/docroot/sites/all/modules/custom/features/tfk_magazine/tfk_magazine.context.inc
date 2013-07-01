@@ -10,7 +10,7 @@
 function tfk_magazine_context_default_contexts() {
   $export = array();
 
-  $context = new stdClass;
+  $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'publishing_calendar';
@@ -60,7 +60,7 @@ function tfk_magazine_context_default_contexts() {
   t('publishing_calendar');
   $export['publishing_calendar'] = $context;
 
-  $context = new stdClass;
+  $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'tfk_magazine';

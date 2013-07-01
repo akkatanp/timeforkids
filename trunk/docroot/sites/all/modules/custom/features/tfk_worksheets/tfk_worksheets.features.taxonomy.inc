@@ -32,9 +32,9 @@ function tfk_worksheets_taxonomy_default_vocabularies() {
         ),
       ),
     ),
-     'themes' => array(
-      'name' => 'Themes',
-      'machine_name' => 'themes',
+    'skills' => array(
+      'name' => 'Skills',
+      'machine_name' => 'skills',
       'description' => '',
       'hierarchy' => '1',
       'module' => 'taxonomy',
@@ -55,9 +55,9 @@ function tfk_worksheets_taxonomy_default_vocabularies() {
         ),
       ),
     ),
-    'skills' => array(
-      'name' => 'Skills',
-      'machine_name' => 'skills',
+    'themes' => array(
+      'name' => 'Themes',
+      'machine_name' => 'themes',
       'description' => '',
       'hierarchy' => '1',
       'module' => 'taxonomy',
