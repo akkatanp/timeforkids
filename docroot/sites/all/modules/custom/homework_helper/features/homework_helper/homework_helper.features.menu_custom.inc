@@ -10,7 +10,7 @@
 function homework_helper_menu_default_menu_custom() {
   $menus = array();
 
-  // Exported menu: menu-homework-help
+  // Exported menu: menu-homework-help.
   $menus['menu-homework-help'] = array(
     'menu_name' => 'menu-homework-help',
     'title' => 'Homework Helper',

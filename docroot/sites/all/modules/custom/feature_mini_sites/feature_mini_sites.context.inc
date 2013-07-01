@@ -10,7 +10,7 @@
 function feature_mini_sites_context_default_contexts() {
   $export = array();
 
-  $context = new stdClass;
+  $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'minisite_landing_page';
@@ -60,7 +60,7 @@ function feature_mini_sites_context_default_contexts() {
   t('minisite');
   $export['minisite_landing_page'] = $context;
 
-  $context = new stdClass;
+  $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'minisite_landing_page_for_editors';
@@ -110,7 +110,7 @@ function feature_mini_sites_context_default_contexts() {
   t('minisite');
   $export['minisite_landing_page_for_editors'] = $context;
 
-  $context = new stdClass;
+  $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'minisite_node_view';
@@ -174,7 +174,7 @@ function feature_mini_sites_context_default_contexts() {
   t('minisite');
   $export['minisite_node_view'] = $context;
 
-  $context = new stdClass;
+  $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'minisite_node_view_for_teachers';
@@ -246,7 +246,7 @@ function feature_mini_sites_context_default_contexts() {
   t('minisite');
   $export['minisite_node_view_for_teachers'] = $context;
 
-  $context = new stdClass;
+  $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'tfk_slideshow_node_view';
@@ -287,17 +287,23 @@ function feature_mini_sites_context_default_contexts() {
           'region' => 'sidebar_bottom',
           'weight' => '-89',
         ),
+        'system-main' => array(
+          'module' => 'system',
+          'delta' => 'main',
+          'region' => 'content',
+          'weight' => '-10',
+        ),
         'tfk_helper-tfk_helper_slideshow' => array(
           'module' => 'tfk_helper',
           'delta' => 'tfk_helper_slideshow',
           'region' => 'content',
-          'weight' => '-48',
+          'weight' => '-9',
         ),
         'tfk_helper-more_items_block' => array(
           'module' => 'tfk_helper',
           'delta' => 'more_items_block',
           'region' => 'content',
-          'weight' => '-46',
+          'weight' => '-8',
         ),
       ),
     ),

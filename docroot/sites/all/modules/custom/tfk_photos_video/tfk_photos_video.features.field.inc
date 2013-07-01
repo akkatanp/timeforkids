@@ -10,7 +10,7 @@
 function tfk_photos_video_field_default_fields() {
   $fields = array();
 
-  // Exported field: 'node-image-body'
+  // Exported field: 'node-image-body'.
   $fields['node-image-body'] = array(
     'field_config' => array(
       'active' => '1',
@@ -33,6 +33,7 @@ function tfk_photos_video_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '',
@@ -88,7 +89,7 @@ function tfk_photos_video_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-image-field_article_category'
+  // Exported field: 'node-image-field_article_category'.
   $fields['node-image-field_article_category'] = array(
     'field_config' => array(
       'active' => '1',
@@ -109,12 +110,13 @@ function tfk_photos_video_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
           0 => array(
-            'parent' => '0',
             'vocabulary' => 'article_categories',
+            'parent' => '0',
           ),
         ),
       ),
@@ -158,7 +160,7 @@ function tfk_photos_video_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-image-field_caption'
+  // Exported field: 'node-image-field_caption'.
   $fields['node-image-field_caption'] = array(
     'field_config' => array(
       'active' => '1',
@@ -179,6 +181,7 @@ function tfk_photos_video_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -226,7 +229,7 @@ function tfk_photos_video_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-image-field_credit'
+  // Exported field: 'node-image-field_credit'.
   $fields['node-image-field_credit'] = array(
     'field_config' => array(
       'active' => '1',
@@ -247,6 +250,7 @@ function tfk_photos_video_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -294,7 +298,7 @@ function tfk_photos_video_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-image-field_date'
+  // Exported field: 'node-image-field_date'.
   $fields['node-image-field_date'] = array(
     'field_config' => array(
       'active' => '1',
@@ -304,6 +308,7 @@ function tfk_photos_video_field_default_fields() {
       'field_name' => 'field_date',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'date',
       'settings' => array(
         'granularity' => array(
@@ -363,6 +368,7 @@ function tfk_photos_video_field_default_fields() {
         'active' => 1,
         'module' => 'date',
         'settings' => array(
+          'display_all_day' => 0,
           'increment' => '1',
           'input_format' => 'm/d/Y - H:i:s',
           'input_format_custom' => '',
@@ -377,7 +383,7 @@ function tfk_photos_video_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-image-field_image'
+  // Exported field: 'node-image-field_image'.
   $fields['node-image-field_image'] = array(
     'field_config' => array(
       'active' => '1',
@@ -398,6 +404,7 @@ function tfk_photos_video_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'image',
       'settings' => array(
         'default_image' => 0,
@@ -448,6 +455,7 @@ function tfk_photos_video_field_default_fields() {
         'module' => 'image',
         'settings' => array(
           'insert' => 0,
+          'insert_absolute' => FALSE,
           'insert_class' => '',
           'insert_default' => array(
             0 => 'auto',
@@ -465,7 +473,7 @@ function tfk_photos_video_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-image-meta_description'
+  // Exported field: 'node-image-meta_description'.
   $fields['node-image-meta_description'] = array(
     'field_config' => array(
       'active' => '1',
@@ -475,10 +483,11 @@ function tfk_photos_video_field_default_fields() {
       'field_name' => 'meta_description',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'metatags_quick',
       'settings' => array(
-        0 => 'meta_name',
         'meta_name' => 'description',
+        0 => 'meta_name',
       ),
       'translatable' => '0',
       'type' => 'metatags_quick',
@@ -520,7 +529,7 @@ function tfk_photos_video_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-image-meta_keywords'
+  // Exported field: 'node-image-meta_keywords'.
   $fields['node-image-meta_keywords'] = array(
     'field_config' => array(
       'active' => '1',
@@ -530,10 +539,11 @@ function tfk_photos_video_field_default_fields() {
       'field_name' => 'meta_keywords',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'metatags_quick',
       'settings' => array(
-        0 => 'meta_name',
         'meta_name' => 'keywords',
+        0 => 'meta_name',
       ),
       'translatable' => '0',
       'type' => 'metatags_quick',
@@ -575,7 +585,7 @@ function tfk_photos_video_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-slideshow-field_additional_content'
+  // Exported field: 'node-slideshow-field_additional_content'.
   $fields['node-slideshow-field_additional_content'] = array(
     'field_config' => array(
       'active' => '1',
@@ -596,6 +606,7 @@ function tfk_photos_video_field_default_fields() {
           0 => 'nid',
         ),
       ),
+      'locked' => '0',
       'module' => 'node_reference',
       'settings' => array(
         'referenceable_types' => array(
@@ -697,7 +708,7 @@ function tfk_photos_video_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-slideshow-field_article_category'
+  // Exported field: 'node-slideshow-field_article_category'.
   $fields['node-slideshow-field_article_category'] = array(
     'field_config' => array(
       'active' => '1',
@@ -718,12 +729,13 @@ function tfk_photos_video_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
           0 => array(
-            'parent' => '0',
             'vocabulary' => 'article_categories',
+            'parent' => '0',
           ),
         ),
       ),
@@ -767,7 +779,7 @@ function tfk_photos_video_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-slideshow-field_date'
+  // Exported field: 'node-slideshow-field_date'.
   $fields['node-slideshow-field_date'] = array(
     'field_config' => array(
       'active' => '1',
@@ -777,6 +789,7 @@ function tfk_photos_video_field_default_fields() {
       'field_name' => 'field_date',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'date',
       'settings' => array(
         'granularity' => array(
@@ -836,6 +849,7 @@ function tfk_photos_video_field_default_fields() {
         'active' => 1,
         'module' => 'date',
         'settings' => array(
+          'display_all_day' => 0,
           'increment' => '1',
           'input_format' => 'Y-m-d H:i:s',
           'input_format_custom' => '',
@@ -850,7 +864,7 @@ function tfk_photos_video_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-slideshow-field_lrg_rect_image'
+  // Exported field: 'node-slideshow-field_lrg_rect_image'.
   $fields['node-slideshow-field_lrg_rect_image'] = array(
     'field_config' => array(
       'active' => '1',
@@ -871,6 +885,7 @@ function tfk_photos_video_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'image',
       'settings' => array(
         'default_image' => 0,
@@ -917,6 +932,7 @@ function tfk_photos_video_field_default_fields() {
         'module' => 'image',
         'settings' => array(
           'insert' => 0,
+          'insert_absolute' => FALSE,
           'insert_class' => '',
           'insert_default' => 'auto',
           'insert_styles' => array(
@@ -951,7 +967,7 @@ function tfk_photos_video_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-slideshow-field_lrg_sq_image'
+  // Exported field: 'node-slideshow-field_lrg_sq_image'.
   $fields['node-slideshow-field_lrg_sq_image'] = array(
     'field_config' => array(
       'active' => '1',
@@ -972,6 +988,7 @@ function tfk_photos_video_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'image',
       'settings' => array(
         'default_image' => 0,
@@ -1018,6 +1035,7 @@ function tfk_photos_video_field_default_fields() {
         'module' => 'image',
         'settings' => array(
           'insert' => 0,
+          'insert_absolute' => FALSE,
           'insert_class' => '',
           'insert_default' => 'auto',
           'insert_styles' => array(
@@ -1052,7 +1070,7 @@ function tfk_photos_video_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-slideshow-field_slideshow_description'
+  // Exported field: 'node-slideshow-field_slideshow_description'.
   $fields['node-slideshow-field_slideshow_description'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1073,6 +1091,7 @@ function tfk_photos_video_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(),
       'translatable' => '1',
@@ -1118,7 +1137,7 @@ function tfk_photos_video_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-slideshow-field_slideshow_images'
+  // Exported field: 'node-slideshow-field_slideshow_images'.
   $fields['node-slideshow-field_slideshow_images'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1139,6 +1158,7 @@ function tfk_photos_video_field_default_fields() {
           0 => 'nid',
         ),
       ),
+      'locked' => '0',
       'module' => 'node_reference',
       'settings' => array(
         'referenceable_types' => array(
@@ -1239,7 +1259,7 @@ function tfk_photos_video_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-slideshow-field_themes'
+  // Exported field: 'node-slideshow-field_themes'.
   $fields['node-slideshow-field_themes'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1260,6 +1280,7 @@ function tfk_photos_video_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -1309,7 +1330,7 @@ function tfk_photos_video_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-video-body'
+  // Exported field: 'node-video-body'.
   $fields['node-video-body'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1332,6 +1353,7 @@ function tfk_photos_video_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '',
@@ -1387,7 +1409,7 @@ function tfk_photos_video_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-video-field_additional_content'
+  // Exported field: 'node-video-field_additional_content'.
   $fields['node-video-field_additional_content'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1408,6 +1430,7 @@ function tfk_photos_video_field_default_fields() {
           0 => 'nid',
         ),
       ),
+      'locked' => '0',
       'module' => 'node_reference',
       'settings' => array(
         'referenceable_types' => array(
@@ -1508,7 +1531,7 @@ function tfk_photos_video_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-video-field_article_category'
+  // Exported field: 'node-video-field_article_category'.
   $fields['node-video-field_article_category'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1529,12 +1552,13 @@ function tfk_photos_video_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
           0 => array(
-            'parent' => '0',
             'vocabulary' => 'article_categories',
+            'parent' => '0',
           ),
         ),
       ),
@@ -1577,7 +1601,7 @@ function tfk_photos_video_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-video-field_brightcove_player_id'
+  // Exported field: 'node-video-field_brightcove_player_id'.
   $fields['node-video-field_brightcove_player_id'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1598,6 +1622,7 @@ function tfk_photos_video_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -1648,7 +1673,7 @@ function tfk_photos_video_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-video-field_brightcove_video_id'
+  // Exported field: 'node-video-field_brightcove_video_id'.
   $fields['node-video-field_brightcove_video_id'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1669,6 +1694,7 @@ function tfk_photos_video_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -1715,7 +1741,7 @@ function tfk_photos_video_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-video-field_caption'
+  // Exported field: 'node-video-field_caption'.
   $fields['node-video-field_caption'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1736,6 +1762,7 @@ function tfk_photos_video_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -1783,7 +1810,7 @@ function tfk_photos_video_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-video-field_credit'
+  // Exported field: 'node-video-field_credit'.
   $fields['node-video-field_credit'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1804,6 +1831,7 @@ function tfk_photos_video_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -1851,7 +1879,7 @@ function tfk_photos_video_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-video-field_date'
+  // Exported field: 'node-video-field_date'.
   $fields['node-video-field_date'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1861,6 +1889,7 @@ function tfk_photos_video_field_default_fields() {
       'field_name' => 'field_date',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'date',
       'settings' => array(
         'granularity' => array(
@@ -1920,6 +1949,7 @@ function tfk_photos_video_field_default_fields() {
         'active' => 1,
         'module' => 'date',
         'settings' => array(
+          'display_all_day' => 0,
           'increment' => '1',
           'input_format' => 'm/d/Y - H:i:s',
           'input_format_custom' => '',
@@ -1934,7 +1964,7 @@ function tfk_photos_video_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-video-field_deck'
+  // Exported field: 'node-video-field_deck'.
   $fields['node-video-field_deck'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1955,6 +1985,7 @@ function tfk_photos_video_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '',
@@ -2005,7 +2036,7 @@ Limit for News Block: 65 characters.',
     ),
   );
 
-  // Exported field: 'node-video-field_lrg_rect_image'
+  // Exported field: 'node-video-field_lrg_rect_image'.
   $fields['node-video-field_lrg_rect_image'] = array(
     'field_config' => array(
       'active' => '1',
@@ -2026,6 +2057,7 @@ Limit for News Block: 65 characters.',
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'image',
       'settings' => array(
         'default_image' => 0,
@@ -2072,6 +2104,7 @@ Limit for News Block: 65 characters.',
         'module' => 'image',
         'settings' => array(
           'insert' => 0,
+          'insert_absolute' => FALSE,
           'insert_class' => '',
           'insert_default' => 'auto',
           'insert_styles' => array(
@@ -2108,7 +2141,7 @@ Limit for News Block: 65 characters.',
     ),
   );
 
-  // Exported field: 'node-video-field_related_photos_video'
+  // Exported field: 'node-video-field_related_photos_video'.
   $fields['node-video-field_related_photos_video'] = array(
     'field_config' => array(
       'active' => '1',
@@ -2129,6 +2162,7 @@ Limit for News Block: 65 characters.',
           0 => 'nid',
         ),
       ),
+      'locked' => '0',
       'module' => 'node_reference',
       'settings' => array(
         'referenceable_types' => array(
@@ -2226,7 +2260,7 @@ Limit for News Block: 65 characters.',
     ),
   );
 
-  // Exported field: 'node-video-field_themes'
+  // Exported field: 'node-video-field_themes'.
   $fields['node-video-field_themes'] = array(
     'field_config' => array(
       'active' => '1',
@@ -2247,6 +2281,7 @@ Limit for News Block: 65 characters.',
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -2295,7 +2330,7 @@ Limit for News Block: 65 characters.',
     ),
   );
 
-  // Exported field: 'node-video-field_video_duration'
+  // Exported field: 'node-video-field_video_duration'.
   $fields['node-video-field_video_duration'] = array(
     'field_config' => array(
       'active' => '1',
@@ -2316,6 +2351,7 @@ Limit for News Block: 65 characters.',
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -2362,7 +2398,7 @@ Limit for News Block: 65 characters.',
     ),
   );
 
-  // Exported field: 'node-video-field_video_thumbnail'
+  // Exported field: 'node-video-field_video_thumbnail'.
   $fields['node-video-field_video_thumbnail'] = array(
     'field_config' => array(
       'active' => '1',
@@ -2383,6 +2419,7 @@ Limit for News Block: 65 characters.',
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'image',
       'settings' => array(
         'default_image' => 0,
@@ -2429,6 +2466,7 @@ Limit for News Block: 65 characters.',
         'module' => 'image',
         'settings' => array(
           'insert' => 0,
+          'insert_absolute' => FALSE,
           'insert_class' => '',
           'insert_default' => 'auto',
           'insert_styles' => array(
@@ -2465,7 +2503,7 @@ Limit for News Block: 65 characters.',
     ),
   );
 
-  // Exported field: 'node-video-field_video_upload'
+  // Exported field: 'node-video-field_video_upload'.
   $fields['node-video-field_video_upload'] = array(
     'field_config' => array(
       'active' => '1',
@@ -2486,6 +2524,7 @@ Limit for News Block: 65 characters.',
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'video',
       'settings' => array(
         'autoconversion' => 0,
@@ -2548,7 +2587,7 @@ Limit for News Block: 65 characters.',
     ),
   );
 
-  // Exported field: 'node-video-meta_description'
+  // Exported field: 'node-video-meta_description'.
   $fields['node-video-meta_description'] = array(
     'field_config' => array(
       'active' => '1',
@@ -2558,10 +2597,11 @@ Limit for News Block: 65 characters.',
       'field_name' => 'meta_description',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'metatags_quick',
       'settings' => array(
-        0 => 'meta_name',
         'meta_name' => 'description',
+        0 => 'meta_name',
       ),
       'translatable' => '0',
       'type' => 'metatags_quick',
@@ -2602,7 +2642,7 @@ Limit for News Block: 65 characters.',
     ),
   );
 
-  // Exported field: 'node-video-meta_keywords'
+  // Exported field: 'node-video-meta_keywords'.
   $fields['node-video-meta_keywords'] = array(
     'field_config' => array(
       'active' => '1',
@@ -2612,10 +2652,11 @@ Limit for News Block: 65 characters.',
       'field_name' => 'meta_keywords',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'metatags_quick',
       'settings' => array(
-        0 => 'meta_name',
         'meta_name' => 'keywords',
+        0 => 'meta_name',
       ),
       'translatable' => '0',
       'type' => 'metatags_quick',

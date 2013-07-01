@@ -162,6 +162,7 @@ function advanced_purge_paths($expire, $wildcard = FALSE) {
   global $base_root;
   module_load_include('inc', 'advanced_purge', 'advanced_purge.rules');
   foreach($expire as $path) {
+
     //advanced_purge_page_clear($path);
     $cache = cache_get($base_root. '/'. ltrim($path, '/'), 'cache_page');
     
@@ -173,9 +174,52 @@ function advanced_purge_paths($expire, $wildcard = FALSE) {
       }
       
       drupal_set_message(t("The path \"%path\" has been purged from persistent cache.", array('%path' => $path)));
+    } else {
+
+      drupal_set_message(t("The path \"%path\" was not in the cache", array('%path' => $path)));
     }
     //cache_clear_all($base_root. $path, 'cache_page'); #$cache = cache_get($base_root . request_uri(), 'cache_page');
   }
 }
 
+/**
+ * Implementation of hook_block_info()
+ */
+function advanced_purge_block_info() {
+   $blocks['clear_cache_page'] = array(
+       'info' => t('Clear cache for a single page'),
+       'cache' => DRUPAL_NO_CACHE,
+   );
+   return $blocks;
+}
 
+/**
+ * Implementation of hook_block_view()
+ * 
+ * @param string $delta
+ * @return type
+ */
+function advanced_purge_block_view($delta='') {
+    $block = array();
+    if($delta === 'clear_cache_page') {
+        $block['subject'] = '';
+        $block['content'] = _advanced_purge_clear_page_block_content();
+    }
+    
+    return $block;
+}
+
+
+function _advanced_purge_clear_page_block_content() {
+
+  if (isset($_POST["purge"]) && $_POST["purge"]=="cache") {
+    $pos = strpos($_SERVER["REQUEST_URI"],"?");
+    $uri = substr($_SERVER["REQUEST_URI"],1,$pos-1);
+    advanced_purge_paths(array($uri));
+  }
+
+  $content = "<div style='margin:20px 0; width:100%; text-align:center;'><form action='' method='POST'><input type='hidden' name='purge' value='cache'><input type='submit' value='Purge This Page'></form></div>";
+
+  return $content;
+
+}

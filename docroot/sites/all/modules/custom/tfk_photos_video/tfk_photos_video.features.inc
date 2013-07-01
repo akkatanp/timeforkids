@@ -26,10 +26,7 @@ function tfk_photos_video_ctools_plugin_api() {
  * Implements hook_views_api().
  */
 function tfk_photos_video_views_api() {
-  list($module, $api) = func_get_args();
-  if ($module == "views" && $api == "views_default") {
-    return array("version" => "3.0");
-  }
+  return array("version" => "3.0");
 }
 
 /**
@@ -64,10 +61,12 @@ function tfk_photos_video_flag_default_flags() {
         1 => '4',
       ),
     ),
-    'show_on_page' => 0,
-    'show_on_teaser' => 0,
+    'weight' => 0,
     'show_on_form' => 1,
     'access_author' => '',
+    'show_on_page' => 0,
+    'show_on_teaser' => 0,
+    'show_contextual_link' => FALSE,
     'i18n' => 0,
     'module' => 'tfk_photos_video',
     'locked' => array(
@@ -76,6 +75,7 @@ function tfk_photos_video_flag_default_flags() {
     'api_version' => 2,
   );
   return $flags;
+
 }
 
 /**
@@ -84,25 +84,10 @@ function tfk_photos_video_flag_default_flags() {
 function tfk_photos_video_image_default_styles() {
   $styles = array();
 
-  // Exported image style: 115x115
+  // Exported image style: 115x115.
   $styles['115x115'] = array(
     'name' => '115x115',
     'effects' => array(
-      12 => array(
-        'label' => 'Scale and crop',
-        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
-        'effect callback' => 'image_scale_and_crop_effect',
-        'dimensions callback' => 'image_resize_dimensions',
-        'form callback' => 'image_resize_form',
-        'summary theme' => 'image_resize_summary',
-        'module' => 'image',
-        'name' => 'image_scale_and_crop',
-        'data' => array(
-          'width' => '115',
-          'height' => '115',
-        ),
-        'weight' => '-10',
-      ),
       11 => array(
         'label' => 'Resize',
         'help' => 'Resizing will make images an exact set of dimensions. This may cause images to be stretched or shrunk disproportionately.',
@@ -121,7 +106,7 @@ function tfk_photos_video_image_default_styles() {
     ),
   );
 
-  // Exported image style: tfk_270x270
+  // Exported image style: tfk_270x270.
   $styles['tfk_270x270'] = array(
     'name' => 'tfk_270x270',
     'effects' => array(
@@ -158,7 +143,7 @@ function tfk_photos_video_image_default_styles() {
     ),
   );
 
-  // Exported image style: tfk_60x60
+  // Exported image style: tfk_60x60.
   $styles['tfk_60x60'] = array(
     'name' => 'tfk_60x60',
     'effects' => array(

@@ -24,7 +24,7 @@ function features_misc_default_rules_configuration() {
       "DO" : [
         { "advanced_purge_cache_clear" : {
             "target_view" : "homepage_news_block",
-            "target_displays" : { "value" : [ "block_1\\u000D", "block_1_anon" ] }
+            "target_displays" : { "value" : [ "block_1\\r", "block_1_anon" ] }
           }
         },
         { "advanced_purge_page_clear" : { "page" : "\\u003Cfront\\u003E" } },
@@ -43,7 +43,7 @@ function features_misc_default_rules_configuration() {
       "DO" : [
         { "advanced_purge_cache_clear" : {
             "target_view" : "homepage_news_block",
-            "target_displays" : { "value" : [ "block_5\\u000D", "block_5_anon" ] }
+            "target_displays" : { "value" : [ "block_5\\r", "block_5_anon" ] }
           }
         },
         { "advanced_purge_page_clear" : { "page" : "kid-reporters" } },
@@ -62,7 +62,7 @@ function features_misc_default_rules_configuration() {
       "DO" : [
         { "advanced_purge_cache_clear" : {
             "target_view" : "homepage_news_block",
-            "target_displays" : { "value" : [ "block_3\\u000D", "block_3_anon" ] }
+            "target_displays" : { "value" : [ "block_3\\r", "block_3_anon" ] }
           }
         },
         { "advanced_purge_page_clear" : { "page" : "news" } },
@@ -92,26 +92,26 @@ function features_misc_default_rules_configuration() {
         { "advanced_purge_rules_condition_flag_views" : {
             "node" : [ "node" ],
             "flag_name" : { "value" : [
-                "\\u002F\\u002F Each line gets parsed into JSON independently. Comments and the example relationship are ignored out by the parser. You can validate lines separately at http:\\u002F\\u002Fjsonlint.com\\u002F.\\u000D",
-                "\\u002F\\u002F Example: If the content being updated is flagged with FLAG_NAME, then DISPLAY_1 and DISPLAY_2 will be cleared for VIEW_NAME.\\u000D",
-                "\\u002F\\u002F The \\u0022flag\\u0022, \\u0022views\\u0022, and \\u0022displays\\u0022 parameters are mandatory for each relationship.\\u000D",
-                "{\\u0022flag\\u0022:\\u0022FLAG_NAME\\u0022, \\u0022views\\u0022: [{\\u0022view_name\\u0022: \\u0022VIEW_NAME\\u0022, \\u0022displays\\u0022: [\\u0022DISPLAY_1\\u0022, \\u0022DISPLAY_2\\u0022]}]}\\u000D",
-                "\\u000D",
-                "\\u002F\\u002F Primary touts. All primary tout displays live inside the same \\u0022homepage_top_story\\u0022 View.\\u000D",
-                "{\\u0022flag\\u0022:\\u0022homepage_top_story\\u0022, \\u0022views\\u0022: {\\u0022homepage_top_story\\u0022: [\\u0022block_1\\u0022, \\u0022attachment_1\\u0022, \\u0022block_1\\u0022]}}\\u000D",
-                "{\\u0022flag\\u0022:\\u0022news_top_story\\u0022, \\u0022views\\u0022: {\\u0022homepage_top_story\\u0022: [\\u0022block_3\\u0022 , \\u0022block_4\\u0022, \\u0022attachment_2\\u0022]}}\\u000D",
-                "{\\u0022flag\\u0022:\\u0022kid_reporter_top_story\\u0022, \\u0022views\\u0022: {\\u0022homepage_top_story\\u0022: [\\u0022block_5\\u0022 , \\u0022block_6\\u0022, \\u0022attachment_3\\u0022]}}\\u000D",
-                "\\u000D",
-                "\\u002F\\u002F Secondary touts. All secondary tout displays live inside the same \\u0022homepage_news_block\\u0022 View called.\\u000D",
-                "{\\u0022flag\\u0022:\\u0022homepage_news_block\\u0022, \\u0022views\\u0022: {\\u0022homepage_news_block\\u0022: [\\u0022block_1\\u0022, \\u0022block_1_anon\\u0022]}}\\u000D",
-                "{\\u0022flag\\u0022:\\u0022news_news_block\\u0022, \\u0022views\\u0022: {\\u0022homepage_news_block\\u0022: [\\u0022block_3\\u0022 , \\u0022block_3_anon\\u0022]}}\\u000D",
+                "\\/\\/ Each line gets parsed into JSON independently. Comments and the example relationship are ignored out by the parser. You can validate lines separately at http:\\/\\/jsonlint.com\\/.\\r",
+                "\\/\\/ Example: If the content being updated is flagged with FLAG_NAME, then DISPLAY_1 and DISPLAY_2 will be cleared for VIEW_NAME.\\r",
+                "\\/\\/ The \\u0022flag\\u0022, \\u0022views\\u0022, and \\u0022displays\\u0022 parameters are mandatory for each relationship.\\r",
+                "{\\u0022flag\\u0022:\\u0022FLAG_NAME\\u0022, \\u0022views\\u0022: [{\\u0022view_name\\u0022: \\u0022VIEW_NAME\\u0022, \\u0022displays\\u0022: [\\u0022DISPLAY_1\\u0022, \\u0022DISPLAY_2\\u0022]}]}\\r",
+                "\\r",
+                "\\/\\/ Primary touts. All primary tout displays live inside the same \\u0022homepage_top_story\\u0022 View.\\r",
+                "{\\u0022flag\\u0022:\\u0022homepage_top_story\\u0022, \\u0022views\\u0022: {\\u0022homepage_top_story\\u0022: [\\u0022block_1\\u0022, \\u0022attachment_1\\u0022, \\u0022block_1\\u0022]}}\\r",
+                "{\\u0022flag\\u0022:\\u0022news_top_story\\u0022, \\u0022views\\u0022: {\\u0022homepage_top_story\\u0022: [\\u0022block_3\\u0022 , \\u0022block_4\\u0022, \\u0022attachment_2\\u0022]}}\\r",
+                "{\\u0022flag\\u0022:\\u0022kid_reporter_top_story\\u0022, \\u0022views\\u0022: {\\u0022homepage_top_story\\u0022: [\\u0022block_5\\u0022 , \\u0022block_6\\u0022, \\u0022attachment_3\\u0022]}}\\r",
+                "\\r",
+                "\\/\\/ Secondary touts. All secondary tout displays live inside the same \\u0022homepage_news_block\\u0022 View called.\\r",
+                "{\\u0022flag\\u0022:\\u0022homepage_news_block\\u0022, \\u0022views\\u0022: {\\u0022homepage_news_block\\u0022: [\\u0022block_1\\u0022, \\u0022block_1_anon\\u0022]}}\\r",
+                "{\\u0022flag\\u0022:\\u0022news_news_block\\u0022, \\u0022views\\u0022: {\\u0022homepage_news_block\\u0022: [\\u0022block_3\\u0022 , \\u0022block_3_anon\\u0022]}}\\r",
                 "{\\u0022flag\\u0022:\\u0022kid_reporter_news_block\\u0022, \\u0022views\\u0022: {\\u0022homepage_news_block\\u0022: [\\u0022block_5\\u0022 , \\u0022block_5_anon\\u0022]}}"
               ]
             }
           }
         }
       ],
-      "DO" : [ { "advanced_purge_cache_clear_relational" : [  ] } ]
+      "DO" : [ { "advanced_purge_cache_clear_relational" : [] } ]
     }
   }');
   return $items;

@@ -81,7 +81,7 @@
  * @see template_process()
  */
 $speaker_photo = field_get_items('node', $node, 'field_speaker_photo');
-$speaker_photo = file_create_url(image_style_path('tfk_rect_large',$speaker_photo[0]['uri']));
+$speaker_photo = file_create_url(image_style_url('tfk_rect_large',$speaker_photo[0]['uri']));
 ?>
 <!--link rel="stylesheet" href="/sites/all/themes/tfk/css/atw-native-lingo.css" /-->
 <script src="/sites/all/themes/tfk/js/jplayer/jquery.jplayer.min.js"></script>

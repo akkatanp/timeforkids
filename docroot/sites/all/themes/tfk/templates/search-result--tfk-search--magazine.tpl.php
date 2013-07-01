@@ -89,9 +89,16 @@
   
   <?php print render($title_suffix); ?>
   
-  <?php if(isset($tfk_search_res_image)):?>
-    <img src="<?php print $tfk_search_res_image;?>">
-  <?php endif;?>
+  <?php 
+    if(isset($tfk_search_res_image)){
+      if(isset($magazine_lists)) {
+        preg_match('/<a href="(.+)">/', reset($magazine_lists), $href);
+        print "<a href=\"".$href[1]."\"><img src=\"".$tfk_search_res_image."\"></a>";
+      } else {
+        print "<img src=\"".$tfk_search_res_image."\">";
+      }
+    }
+  ?>
 
 	<?php if(isset($magazine_lists)):?>
     <div class="in-this-issue">

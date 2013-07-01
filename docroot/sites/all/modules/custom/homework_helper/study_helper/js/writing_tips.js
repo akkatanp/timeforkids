@@ -27,6 +27,12 @@
         $(".ui-accordion-content .nid-"+nid).parent().prev('.ui-accordion-header').click();
         $.scrollTo(".ui-accordion-content .nid-"+nid);
       }
-    } 
+      if ($('div.error').length > 0) {
+        $('#block-webform-client-block-306 .content').show();
+        $('#block-webform-client-block-306 h2.block-title').hide();
+      }
+    }
+
+
   }
 }(jQuery));

@@ -364,6 +364,14 @@ function tfk_helper_preprocess_page(&$variables) {
       $variables['section_title'] = 'SUBSCRIBER-ONLY CONTENT';
     }
   }
+
+  if(arg(0) == 'node' && array_key_exists('node', $variables)) {
+    if($variables['node']->type == 'minisite') {
+      // Set primary menu link to active. Doing it here bacause Context's menu reaction is not working.
+      $variables['page']['header']['menu_menu-tfk-global-navigation']['content']['4141']['#localized_options']['attributes']['class'][] = 'active';
+      
+    }
+  }
 }
 
 /**
@@ -1117,7 +1125,7 @@ function tfk_helper_get_slideshow_data($nid) {
       
       //$derivative_path = tfk_search_get_thumbnail($image_field['fid'], 'tfk_rect_large');
       
-      // $destination = image_style_path('default', $image_field['uri']);
+      // $destination = image_style_url('default', $image_field['uri']);
       $image_path = url(file_stream_wrapper_get_instance_by_scheme(file_uri_scheme($image_field['uri']))->getDirectoryPath() . '/' . file_uri_target($image_field['uri']), array('absolute' => TRUE));
             
       $file = file_load($image_field['fid']);

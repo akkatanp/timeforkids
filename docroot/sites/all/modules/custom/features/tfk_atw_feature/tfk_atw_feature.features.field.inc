@@ -10,7 +10,7 @@
 function tfk_atw_feature_field_default_fields() {
   $fields = array();
 
-  // Exported field: 'field_collection_item-field_day_in_life_time-field_day_in_life_time_activity'
+  // Exported field: 'field_collection_item-field_day_in_life_time-field_day_in_life_time_activity'.
   $fields['field_collection_item-field_day_in_life_time-field_day_in_life_time_activity'] = array(
     'field_config' => array(
       'active' => '1',
@@ -31,6 +31,7 @@ function tfk_atw_feature_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(),
       'translatable' => '1',
@@ -70,7 +71,7 @@ function tfk_atw_feature_field_default_fields() {
     ),
   );
 
-  // Exported field: 'field_collection_item-field_day_in_life_time-field_day_in_life_time_item'
+  // Exported field: 'field_collection_item-field_day_in_life_time-field_day_in_life_time_item'.
   $fields['field_collection_item-field_day_in_life_time-field_day_in_life_time_item'] = array(
     'field_config' => array(
       'active' => '1',
@@ -91,6 +92,7 @@ function tfk_atw_feature_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -132,7 +134,7 @@ function tfk_atw_feature_field_default_fields() {
     ),
   );
 
-  // Exported field: 'field_collection_item-field_native_lingo_phrase-field_lingo_phrase_audio'
+  // Exported field: 'field_collection_item-field_native_lingo_phrase-field_lingo_phrase_audio'.
   $fields['field_collection_item-field_native_lingo_phrase-field_lingo_phrase_audio'] = array(
     'field_config' => array(
       'active' => '1',
@@ -153,6 +155,7 @@ function tfk_atw_feature_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'file',
       'settings' => array(
         'display_default' => 0,
@@ -191,6 +194,7 @@ function tfk_atw_feature_field_default_fields() {
         'module' => 'file',
         'settings' => array(
           'insert' => 0,
+          'insert_absolute' => FALSE,
           'insert_class' => '',
           'insert_default' => array(
             0 => 'auto',
@@ -207,7 +211,7 @@ function tfk_atw_feature_field_default_fields() {
     ),
   );
 
-  // Exported field: 'field_collection_item-field_native_lingo_phrase-field_lingo_phrase_next_level'
+  // Exported field: 'field_collection_item-field_native_lingo_phrase-field_lingo_phrase_next_level'.
   $fields['field_collection_item-field_native_lingo_phrase-field_lingo_phrase_next_level'] = array(
     'field_config' => array(
       'active' => '1',
@@ -221,6 +225,7 @@ function tfk_atw_feature_field_default_fields() {
           0 => 'value',
         ),
       ),
+      'locked' => '0',
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
@@ -262,7 +267,7 @@ function tfk_atw_feature_field_default_fields() {
     ),
   );
 
-  // Exported field: 'field_collection_item-field_native_lingo_phrase-field_lingo_phrase_text'
+  // Exported field: 'field_collection_item-field_native_lingo_phrase-field_lingo_phrase_text'.
   $fields['field_collection_item-field_native_lingo_phrase-field_lingo_phrase_text'] = array(
     'field_config' => array(
       'active' => '1',
@@ -283,6 +288,7 @@ function tfk_atw_feature_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -324,7 +330,7 @@ function tfk_atw_feature_field_default_fields() {
     ),
   );
 
-  // Exported field: 'field_collection_item-field_native_lingo_phrase-field_lingo_phrase_translation'
+  // Exported field: 'field_collection_item-field_native_lingo_phrase-field_lingo_phrase_translation'.
   $fields['field_collection_item-field_native_lingo_phrase-field_lingo_phrase_translation'] = array(
     'field_config' => array(
       'active' => '1',
@@ -345,6 +351,7 @@ function tfk_atw_feature_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -386,7 +393,7 @@ function tfk_atw_feature_field_default_fields() {
     ),
   );
 
-  // Exported field: 'field_collection_item-field_timeline_event-field_photo_credit'
+  // Exported field: 'field_collection_item-field_timeline_event-field_photo_credit'.
   $fields['field_collection_item-field_timeline_event-field_photo_credit'] = array(
     'field_config' => array(
       'active' => '1',
@@ -407,6 +414,7 @@ function tfk_atw_feature_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -448,7 +456,7 @@ function tfk_atw_feature_field_default_fields() {
     ),
   );
 
-  // Exported field: 'field_collection_item-field_timeline_event-field_timeline_event_copy'
+  // Exported field: 'field_collection_item-field_timeline_event-field_timeline_event_copy'.
   $fields['field_collection_item-field_timeline_event-field_timeline_event_copy'] = array(
     'field_config' => array(
       'active' => '1',
@@ -469,6 +477,7 @@ function tfk_atw_feature_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(),
       'translatable' => '1',
@@ -508,7 +517,7 @@ function tfk_atw_feature_field_default_fields() {
     ),
   );
 
-  // Exported field: 'field_collection_item-field_timeline_event-field_timeline_event_photo'
+  // Exported field: 'field_collection_item-field_timeline_event-field_timeline_event_photo'.
   $fields['field_collection_item-field_timeline_event-field_timeline_event_photo'] = array(
     'field_config' => array(
       'active' => '1',
@@ -529,6 +538,7 @@ function tfk_atw_feature_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'image',
       'settings' => array(
         'default_image' => 0,
@@ -573,6 +583,7 @@ function tfk_atw_feature_field_default_fields() {
         'module' => 'image',
         'settings' => array(
           'insert' => 0,
+          'insert_absolute' => FALSE,
           'insert_class' => '',
           'insert_default' => 'auto',
           'insert_styles' => array(
@@ -606,7 +617,7 @@ function tfk_atw_feature_field_default_fields() {
     ),
   );
 
-  // Exported field: 'field_collection_item-field_timeline_event-field_timeline_event_text'
+  // Exported field: 'field_collection_item-field_timeline_event-field_timeline_event_text'.
   $fields['field_collection_item-field_timeline_event-field_timeline_event_text'] = array(
     'field_config' => array(
       'active' => '1',
@@ -627,6 +638,7 @@ function tfk_atw_feature_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -668,7 +680,7 @@ function tfk_atw_feature_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-atw_day_in_life-body'
+  // Exported field: 'node-atw_day_in_life-body'.
   $fields['node-atw_day_in_life-body'] = array(
     'field_config' => array(
       'active' => '1',
@@ -691,6 +703,7 @@ function tfk_atw_feature_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '',
@@ -746,7 +759,7 @@ function tfk_atw_feature_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-atw_day_in_life-field_day_in_life_time'
+  // Exported field: 'node-atw_day_in_life-field_day_in_life_time'.
   $fields['node-atw_day_in_life-field_day_in_life_time'] = array(
     'field_config' => array(
       'active' => '1',
@@ -756,8 +769,10 @@ function tfk_atw_feature_field_default_fields() {
       'field_name' => 'field_day_in_life_time',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'field_collection',
       'settings' => array(
+        'hide_blank_items' => TRUE,
         'path' => '',
       ),
       'translatable' => '1',
@@ -793,13 +808,13 @@ function tfk_atw_feature_field_default_fields() {
         'active' => 0,
         'module' => 'field_collection',
         'settings' => array(),
-        'type' => 'field_collection_subform',
+        'type' => 'field_collection_hidden',
         'weight' => '6',
       ),
     ),
   );
 
-  // Exported field: 'node-atw_day_in_life-field_person_headline'
+  // Exported field: 'node-atw_day_in_life-field_person_headline'.
   $fields['node-atw_day_in_life-field_person_headline'] = array(
     'field_config' => array(
       'active' => '1',
@@ -820,6 +835,7 @@ function tfk_atw_feature_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -866,7 +882,7 @@ function tfk_atw_feature_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-atw_day_in_life-field_person_intro'
+  // Exported field: 'node-atw_day_in_life-field_person_intro'.
   $fields['node-atw_day_in_life-field_person_intro'] = array(
     'field_config' => array(
       'active' => '1',
@@ -887,6 +903,7 @@ function tfk_atw_feature_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(),
       'translatable' => '1',
@@ -931,7 +948,7 @@ function tfk_atw_feature_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-atw_day_in_life-field_person_photo'
+  // Exported field: 'node-atw_day_in_life-field_person_photo'.
   $fields['node-atw_day_in_life-field_person_photo'] = array(
     'field_config' => array(
       'active' => '1',
@@ -952,6 +969,7 @@ function tfk_atw_feature_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'image',
       'settings' => array(
         'default_image' => 0,
@@ -998,6 +1016,7 @@ function tfk_atw_feature_field_default_fields() {
         'module' => 'image',
         'settings' => array(
           'insert' => 0,
+          'insert_absolute' => FALSE,
           'insert_class' => '',
           'insert_default' => 'auto',
           'insert_styles' => array(
@@ -1031,7 +1050,7 @@ function tfk_atw_feature_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-atw_day_in_life-field_person_photo_credit'
+  // Exported field: 'node-atw_day_in_life-field_person_photo_credit'.
   $fields['node-atw_day_in_life-field_person_photo_credit'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1052,6 +1071,7 @@ function tfk_atw_feature_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -1098,7 +1118,7 @@ function tfk_atw_feature_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-atw_destination-body'
+  // Exported field: 'node-atw_destination-body'.
   $fields['node-atw_destination-body'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1121,6 +1141,7 @@ function tfk_atw_feature_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '',
@@ -1176,7 +1197,7 @@ function tfk_atw_feature_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-atw_destination-field_article_category'
+  // Exported field: 'node-atw_destination-field_article_category'.
   $fields['node-atw_destination-field_article_category'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1197,12 +1218,13 @@ function tfk_atw_feature_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
           0 => array(
-            'parent' => '0',
             'vocabulary' => 'article_categories',
+            'parent' => '0',
           ),
         ),
       ),
@@ -1249,7 +1271,7 @@ function tfk_atw_feature_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-atw_destination-field_country_code'
+  // Exported field: 'node-atw_destination-field_country_code'.
   $fields['node-atw_destination-field_country_code'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1263,6 +1285,7 @@ function tfk_atw_feature_field_default_fields() {
           0 => 'value',
         ),
       ),
+      'locked' => '0',
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
@@ -1549,7 +1572,7 @@ function tfk_atw_feature_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-atw_destination-field_country_map'
+  // Exported field: 'node-atw_destination-field_country_map'.
   $fields['node-atw_destination-field_country_map'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1570,6 +1593,7 @@ function tfk_atw_feature_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'image',
       'settings' => array(
         'default_image' => 0,
@@ -1620,6 +1644,7 @@ function tfk_atw_feature_field_default_fields() {
         'module' => 'image',
         'settings' => array(
           'insert' => 0,
+          'insert_absolute' => FALSE,
           'insert_class' => '',
           'insert_default' => 'auto',
           'insert_styles' => array(
@@ -1653,7 +1678,7 @@ function tfk_atw_feature_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-atw_destination-field_country_region'
+  // Exported field: 'node-atw_destination-field_country_region'.
   $fields['node-atw_destination-field_country_region'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1674,6 +1699,7 @@ function tfk_atw_feature_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -1722,7 +1748,7 @@ function tfk_atw_feature_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-atw_destination-field_country_slideshow'
+  // Exported field: 'node-atw_destination-field_country_slideshow'.
   $fields['node-atw_destination-field_country_slideshow'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1743,6 +1769,7 @@ function tfk_atw_feature_field_default_fields() {
           0 => 'nid',
         ),
       ),
+      'locked' => '0',
       'module' => 'node_reference',
       'settings' => array(
         'referenceable_types' => array(
@@ -1843,7 +1870,7 @@ function tfk_atw_feature_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-atw_destination-field_day_in_life'
+  // Exported field: 'node-atw_destination-field_day_in_life'.
   $fields['node-atw_destination-field_day_in_life'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1864,6 +1891,7 @@ function tfk_atw_feature_field_default_fields() {
           0 => 'nid',
         ),
       ),
+      'locked' => '0',
       'module' => 'node_reference',
       'settings' => array(
         'referenceable_types' => array(
@@ -1961,7 +1989,7 @@ function tfk_atw_feature_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-atw_destination-field_description'
+  // Exported field: 'node-atw_destination-field_description'.
   $fields['node-atw_destination-field_description'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1982,6 +2010,7 @@ function tfk_atw_feature_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(),
       'translatable' => '1',
@@ -2027,7 +2056,7 @@ function tfk_atw_feature_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-atw_destination-field_destination_deck'
+  // Exported field: 'node-atw_destination-field_destination_deck'.
   $fields['node-atw_destination-field_destination_deck'] = array(
     'field_config' => array(
       'active' => '1',
@@ -2048,6 +2077,7 @@ function tfk_atw_feature_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(),
       'translatable' => '0',
@@ -2092,7 +2122,7 @@ function tfk_atw_feature_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-atw_destination-field_destination_quiz'
+  // Exported field: 'node-atw_destination-field_destination_quiz'.
   $fields['node-atw_destination-field_destination_quiz'] = array(
     'field_config' => array(
       'active' => '1',
@@ -2113,6 +2143,7 @@ function tfk_atw_feature_field_default_fields() {
           0 => 'nid',
         ),
       ),
+      'locked' => '0',
       'module' => 'node_reference',
       'settings' => array(
         'referenceable_types' => array(
@@ -2210,7 +2241,7 @@ function tfk_atw_feature_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-atw_destination-field_native_lingo'
+  // Exported field: 'node-atw_destination-field_native_lingo'.
   $fields['node-atw_destination-field_native_lingo'] = array(
     'field_config' => array(
       'active' => '1',
@@ -2231,6 +2262,7 @@ function tfk_atw_feature_field_default_fields() {
           0 => 'nid',
         ),
       ),
+      'locked' => '0',
       'module' => 'node_reference',
       'settings' => array(
         'referenceable_types' => array(
@@ -2328,7 +2360,7 @@ function tfk_atw_feature_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-atw_destination-field_related_articles'
+  // Exported field: 'node-atw_destination-field_related_articles'.
   $fields['node-atw_destination-field_related_articles'] = array(
     'field_config' => array(
       'active' => '1',
@@ -2349,6 +2381,7 @@ function tfk_atw_feature_field_default_fields() {
           0 => 'nid',
         ),
       ),
+      'locked' => '0',
       'module' => 'node_reference',
       'settings' => array(
         'referenceable_types' => array(
@@ -2446,7 +2479,7 @@ function tfk_atw_feature_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-atw_destination-field_resources_label'
+  // Exported field: 'node-atw_destination-field_resources_label'.
   $fields['node-atw_destination-field_resources_label'] = array(
     'field_config' => array(
       'active' => '1',
@@ -2467,6 +2500,7 @@ function tfk_atw_feature_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -2513,7 +2547,7 @@ function tfk_atw_feature_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-atw_destination-field_resources_list'
+  // Exported field: 'node-atw_destination-field_resources_list'.
   $fields['node-atw_destination-field_resources_list'] = array(
     'field_config' => array(
       'active' => '1',
@@ -2534,6 +2568,7 @@ function tfk_atw_feature_field_default_fields() {
           0 => 'nid',
         ),
       ),
+      'locked' => '0',
       'module' => 'node_reference',
       'settings' => array(
         'referenceable_types' => array(
@@ -2631,7 +2666,7 @@ function tfk_atw_feature_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-atw_destination-field_sightseeing'
+  // Exported field: 'node-atw_destination-field_sightseeing'.
   $fields['node-atw_destination-field_sightseeing'] = array(
     'field_config' => array(
       'active' => '1',
@@ -2652,6 +2687,7 @@ function tfk_atw_feature_field_default_fields() {
           0 => 'nid',
         ),
       ),
+      'locked' => '0',
       'module' => 'node_reference',
       'settings' => array(
         'referenceable_types' => array(
@@ -2749,7 +2785,7 @@ function tfk_atw_feature_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-atw_destination-field_timeline'
+  // Exported field: 'node-atw_destination-field_timeline'.
   $fields['node-atw_destination-field_timeline'] = array(
     'field_config' => array(
       'active' => '1',
@@ -2770,6 +2806,7 @@ function tfk_atw_feature_field_default_fields() {
           0 => 'nid',
         ),
       ),
+      'locked' => '0',
       'module' => 'node_reference',
       'settings' => array(
         'referenceable_types' => array(
@@ -2867,7 +2904,7 @@ function tfk_atw_feature_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-atw_destination-field_tout_image'
+  // Exported field: 'node-atw_destination-field_tout_image'.
   $fields['node-atw_destination-field_tout_image'] = array(
     'field_config' => array(
       'active' => '1',
@@ -2888,6 +2925,7 @@ function tfk_atw_feature_field_default_fields() {
           0 => 'nid',
         ),
       ),
+      'locked' => '0',
       'module' => 'node_reference',
       'settings' => array(
         'referenceable_types' => array(
@@ -2985,7 +3023,7 @@ function tfk_atw_feature_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-atw_homepage_nodeblock-body'
+  // Exported field: 'node-atw_homepage_nodeblock-body'.
   $fields['node-atw_homepage_nodeblock-body'] = array(
     'field_config' => array(
       'active' => '1',
@@ -3008,6 +3046,7 @@ function tfk_atw_feature_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '',
@@ -3062,7 +3101,7 @@ function tfk_atw_feature_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-atw_native_lingo-body'
+  // Exported field: 'node-atw_native_lingo-body'.
   $fields['node-atw_native_lingo-body'] = array(
     'field_config' => array(
       'active' => '1',
@@ -3085,6 +3124,7 @@ function tfk_atw_feature_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '',
@@ -3140,7 +3180,7 @@ function tfk_atw_feature_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-atw_native_lingo-field_native_lingo_phrase'
+  // Exported field: 'node-atw_native_lingo-field_native_lingo_phrase'.
   $fields['node-atw_native_lingo-field_native_lingo_phrase'] = array(
     'field_config' => array(
       'active' => '1',
@@ -3150,8 +3190,10 @@ function tfk_atw_feature_field_default_fields() {
       'field_name' => 'field_native_lingo_phrase',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'field_collection',
       'settings' => array(
+        'hide_blank_items' => TRUE,
         'path' => '',
       ),
       'translatable' => '1',
@@ -3193,13 +3235,13 @@ function tfk_atw_feature_field_default_fields() {
         'active' => 0,
         'module' => 'field_collection',
         'settings' => array(),
-        'type' => 'field_collection_subform',
+        'type' => 'field_collection_hidden',
         'weight' => '4',
       ),
     ),
   );
 
-  // Exported field: 'node-atw_native_lingo-field_person_photo_credit'
+  // Exported field: 'node-atw_native_lingo-field_person_photo_credit'.
   $fields['node-atw_native_lingo-field_person_photo_credit'] = array(
     'field_config' => array(
       'active' => '1',
@@ -3220,6 +3262,7 @@ function tfk_atw_feature_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -3267,7 +3310,7 @@ function tfk_atw_feature_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-atw_native_lingo-field_speaker_photo'
+  // Exported field: 'node-atw_native_lingo-field_speaker_photo'.
   $fields['node-atw_native_lingo-field_speaker_photo'] = array(
     'field_config' => array(
       'active' => '1',
@@ -3288,6 +3331,7 @@ function tfk_atw_feature_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'image',
       'settings' => array(
         'default_image' => 0,
@@ -3334,6 +3378,7 @@ function tfk_atw_feature_field_default_fields() {
         'module' => 'image',
         'settings' => array(
           'insert' => 0,
+          'insert_absolute' => FALSE,
           'insert_class' => '',
           'insert_default' => 'auto',
           'insert_styles' => array(
@@ -3367,7 +3412,7 @@ function tfk_atw_feature_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-atw_sightseeing-field_place_description'
+  // Exported field: 'node-atw_sightseeing-field_place_description'.
   $fields['node-atw_sightseeing-field_place_description'] = array(
     'field_config' => array(
       'active' => '1',
@@ -3388,6 +3433,7 @@ function tfk_atw_feature_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(),
       'translatable' => '1',
@@ -3433,7 +3479,7 @@ function tfk_atw_feature_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-atw_sightseeing-field_place_name'
+  // Exported field: 'node-atw_sightseeing-field_place_name'.
   $fields['node-atw_sightseeing-field_place_name'] = array(
     'field_config' => array(
       'active' => '1',
@@ -3454,6 +3500,7 @@ function tfk_atw_feature_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -3501,7 +3548,7 @@ function tfk_atw_feature_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-atw_timeline-body'
+  // Exported field: 'node-atw_timeline-body'.
   $fields['node-atw_timeline-body'] = array(
     'field_config' => array(
       'active' => '1',
@@ -3524,6 +3571,7 @@ function tfk_atw_feature_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '',
@@ -3579,7 +3627,7 @@ function tfk_atw_feature_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-atw_timeline-field_additional_content'
+  // Exported field: 'node-atw_timeline-field_additional_content'.
   $fields['node-atw_timeline-field_additional_content'] = array(
     'field_config' => array(
       'active' => '1',
@@ -3600,6 +3648,7 @@ function tfk_atw_feature_field_default_fields() {
           0 => 'nid',
         ),
       ),
+      'locked' => '0',
       'module' => 'node_reference',
       'settings' => array(
         'referenceable_types' => array(
@@ -3613,6 +3662,7 @@ function tfk_atw_feature_field_default_fields() {
           'atw_timeline' => 0,
           'board_member' => 0,
           'book' => 0,
+          'common_core_standards' => 0,
           'flashcard' => 0,
           'global_right_sidebar_promo' => 0,
           'grammar_practice' => 0,
@@ -3635,23 +3685,25 @@ function tfk_atw_feature_field_default_fields() {
           'poll' => 0,
           'slideshow' => 'slideshow',
           'store' => 0,
+          'store_product' => 0,
           'teacher_board_nodeblock' => 0,
           'teacher_community_question' => 0,
           'tfk_extra' => 0,
           'tfk_extras_bottom_nodeblock' => 0,
           'tfk_extras_top_nodeblock' => 0,
           'tfk_notification' => 0,
+          'tfk_polldaddy' => 0,
           'tfk_staff' => 0,
           'video' => 'video',
           'webform' => 0,
           'webform_generic' => 0,
-          'worksheet' => 'worksheet',
+          'worksheet' => 0,
           'writing_tips' => 0,
         ),
         'view' => array(
           'args' => array(),
           'display_name' => 'references_1',
-          'view_name' => 'reference_timelineaddcontent',
+          'view_name' => 'reference_photosvidaddcontent',
         ),
       ),
       'translatable' => '1',
@@ -3697,7 +3749,7 @@ function tfk_atw_feature_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-atw_timeline-field_timeline_event'
+  // Exported field: 'node-atw_timeline-field_timeline_event'.
   $fields['node-atw_timeline-field_timeline_event'] = array(
     'field_config' => array(
       'active' => '1',
@@ -3707,8 +3759,10 @@ function tfk_atw_feature_field_default_fields() {
       'field_name' => 'field_timeline_event',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'field_collection',
       'settings' => array(
+        'hide_blank_items' => TRUE,
         'path' => '',
       ),
       'translatable' => '1',
@@ -3744,13 +3798,13 @@ function tfk_atw_feature_field_default_fields() {
         'active' => 0,
         'module' => 'field_collection',
         'settings' => array(),
-        'type' => 'field_collection_subform',
+        'type' => 'field_collection_hidden',
         'weight' => '2',
       ),
     ),
   );
 
-  // Exported field: 'node-webform-body'
+  // Exported field: 'node-webform-body'.
   $fields['node-webform-body'] = array(
     'field_config' => array(
       'active' => '1',
@@ -3773,6 +3827,7 @@ function tfk_atw_feature_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '',

@@ -10,7 +10,7 @@
 function tfk_atw_feature_context_default_contexts() {
   $export = array();
 
-  $context = new stdClass;
+  $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'Around The World Channel Main Page';
@@ -67,7 +67,7 @@ function tfk_atw_feature_context_default_contexts() {
   t('atw');
   $export['Around The World Channel Main Page'] = $context;
 
-  $context = new stdClass;
+  $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'Around The World Channel Main Page with MAP';

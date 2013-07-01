@@ -22,10 +22,7 @@ function tfk_teachers_community_ctools_plugin_api() {
  * Implements hook_views_api().
  */
 function tfk_teachers_community_views_api() {
-  list($module, $api) = func_get_args();
-  if ($module == "views" && $api == "views_default") {
-    return array("version" => "3.0");
-  }
+  return array("version" => "3.0");
 }
 
 /**
@@ -59,6 +56,8 @@ function tfk_teachers_community_flag_default_flags() {
       ),
       'unflag' => array(),
     ),
+    'weight' => 0,
+    'show_on_form' => FALSE,
     'access_author' => 'comment_others',
     'show_on_comment' => 1,
     'module' => 'tfk_teachers_community',
@@ -68,6 +67,7 @@ function tfk_teachers_community_flag_default_flags() {
     'api_version' => 2,
   );
   return $flags;
+
 }
 
 /**

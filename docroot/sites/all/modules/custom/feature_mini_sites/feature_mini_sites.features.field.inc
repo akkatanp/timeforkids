@@ -10,7 +10,7 @@
 function feature_mini_sites_field_default_fields() {
   $fields = array();
 
-  // Exported field: 'node-mini_site_home-body'
+  // Exported field: 'node-mini_site_home-body'.
   $fields['node-mini_site_home-body'] = array(
     'field_config' => array(
       'active' => '1',
@@ -33,6 +33,7 @@ function feature_mini_sites_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '',
@@ -88,7 +89,7 @@ function feature_mini_sites_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-minisite-body'
+  // Exported field: 'node-minisite-body'.
   $fields['node-minisite-body'] = array(
     'field_config' => array(
       'active' => '1',
@@ -111,6 +112,7 @@ function feature_mini_sites_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '',
@@ -165,7 +167,7 @@ function feature_mini_sites_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-minisite-field_article_category'
+  // Exported field: 'node-minisite-field_article_category'.
   $fields['node-minisite-field_article_category'] = array(
     'field_config' => array(
       'active' => '1',
@@ -186,6 +188,7 @@ function feature_mini_sites_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -202,7 +205,7 @@ function feature_mini_sites_field_default_fields() {
       'bundle' => 'minisite',
       'default_value' => array(
         0 => array(
-          'tid' => '1321', // This is the prod tid for mini-site. DON'T REVERT THIS!!!
+          'tid' => '1321',
           'vid' => '3',
           'name' => 'Mini-Site',
           'description' => '',
@@ -275,7 +278,7 @@ function feature_mini_sites_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-minisite-field_articles'
+  // Exported field: 'node-minisite-field_articles'.
   $fields['node-minisite-field_articles'] = array(
     'field_config' => array(
       'active' => '1',
@@ -296,6 +299,7 @@ function feature_mini_sites_field_default_fields() {
           0 => 'nid',
         ),
       ),
+      'locked' => '0',
       'module' => 'node_reference',
       'settings' => array(
         'referenceable_types' => array(
@@ -393,7 +397,7 @@ function feature_mini_sites_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-minisite-field_header_image'
+  // Exported field: 'node-minisite-field_header_image'.
   $fields['node-minisite-field_header_image'] = array(
     'field_config' => array(
       'active' => '1',
@@ -414,6 +418,7 @@ function feature_mini_sites_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'image',
       'settings' => array(
         'default_image' => 0,
@@ -460,6 +465,7 @@ function feature_mini_sites_field_default_fields() {
         'module' => 'image',
         'settings' => array(
           'insert' => 0,
+          'insert_absolute' => FALSE,
           'insert_class' => '',
           'insert_default' => 'auto',
           'insert_styles' => array(
@@ -493,7 +499,7 @@ function feature_mini_sites_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-minisite-field_minisite_related_content'
+  // Exported field: 'node-minisite-field_minisite_related_content'.
   $fields['node-minisite-field_minisite_related_content'] = array(
     'field_config' => array(
       'active' => '1',
@@ -514,6 +520,7 @@ function feature_mini_sites_field_default_fields() {
           0 => 'nid',
         ),
       ),
+      'locked' => '0',
       'module' => 'node_reference',
       'settings' => array(
         'referenceable_types' => array(
@@ -611,7 +618,7 @@ function feature_mini_sites_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-minisite-field_minisite_resources'
+  // Exported field: 'node-minisite-field_minisite_resources'.
   $fields['node-minisite-field_minisite_resources'] = array(
     'field_config' => array(
       'active' => '1',
@@ -632,6 +639,7 @@ function feature_mini_sites_field_default_fields() {
           0 => 'nid',
         ),
       ),
+      'locked' => '0',
       'module' => 'node_reference',
       'settings' => array(
         'referenceable_types' => array(
@@ -729,7 +737,7 @@ function feature_mini_sites_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-minisite-field_minisite_resources_label'
+  // Exported field: 'node-minisite-field_minisite_resources_label'.
   $fields['node-minisite-field_minisite_resources_label'] = array(
     'field_config' => array(
       'active' => '1',
@@ -750,6 +758,7 @@ function feature_mini_sites_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -800,7 +809,7 @@ function feature_mini_sites_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-minisite-field_minisite_thumbnail_image'
+  // Exported field: 'node-minisite-field_minisite_thumbnail_image'.
   $fields['node-minisite-field_minisite_thumbnail_image'] = array(
     'field_config' => array(
       'active' => '1',
@@ -821,6 +830,7 @@ function feature_mini_sites_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'image',
       'settings' => array(
         'default_image' => 0,
@@ -867,6 +877,7 @@ function feature_mini_sites_field_default_fields() {
         'module' => 'image',
         'settings' => array(
           'insert' => 0,
+          'insert_absolute' => FALSE,
           'insert_class' => '',
           'insert_default' => array(
             0 => 'auto',
@@ -884,7 +895,7 @@ function feature_mini_sites_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-minisite-field_minisite_tout_credit'
+  // Exported field: 'node-minisite-field_minisite_tout_credit'.
   $fields['node-minisite-field_minisite_tout_credit'] = array(
     'field_config' => array(
       'active' => '1',
@@ -905,6 +916,7 @@ function feature_mini_sites_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -953,7 +965,7 @@ function feature_mini_sites_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-minisite-field_minisite_tout_image'
+  // Exported field: 'node-minisite-field_minisite_tout_image'.
   $fields['node-minisite-field_minisite_tout_image'] = array(
     'field_config' => array(
       'active' => '1',
@@ -974,6 +986,7 @@ function feature_mini_sites_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'image',
       'settings' => array(
         'default_image' => 0,
@@ -1020,6 +1033,7 @@ function feature_mini_sites_field_default_fields() {
         'module' => 'image',
         'settings' => array(
           'insert' => 0,
+          'insert_absolute' => FALSE,
           'insert_class' => '',
           'insert_default' => array(
             0 => 'auto',

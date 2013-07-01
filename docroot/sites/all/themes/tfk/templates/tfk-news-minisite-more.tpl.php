@@ -9,7 +9,10 @@
 		
 			<?php if(isset($minisite['thumb_path']) && !empty($minisite['thumb_path'])):?>
 			<div class="views-field-field-minisite-thumbnail-image">
-				<img src="<?php echo $minisite['thumb_path'];?>"/>
+				<?php 
+				  $alias = drupal_get_path_alias('node/'.$minisite['nid']);
+				  echo "<a href=\"/".$alias."\"><img src=\"".$minisite['thumb_path']."\"></a>"; 
+				?>
 			</div>
 			<?php endif;?>
 				
