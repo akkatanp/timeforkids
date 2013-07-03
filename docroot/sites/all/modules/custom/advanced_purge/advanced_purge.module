@@ -161,24 +161,21 @@ function advanced_purge_paths($expire, $wildcard = FALSE) {
   // Memcached purge.
   global $base_root;
   module_load_include('inc', 'advanced_purge', 'advanced_purge.rules');
-  foreach($expire as $path) {
+  foreach($expire as $page) {
 
-    //advanced_purge_page_clear($path);
-    $cache = cache_get($base_root. '/'. ltrim($path, '/'), 'cache_page');
-    
-    if ($cache !== FALSE) {
-      if(!$wildcard) {
-        cache_clear_all($path, 'cache_page');
-      } else {
-        cache_clear_all($path, 'cache_page', TRUE);
-      }
-      
-      drupal_set_message(t("The path \"%path\" has been purged from persistent cache.", array('%path' => $path)));
-    } else {
-
-      drupal_set_message(t("The path \"%path\" was not in the cache", array('%path' => $path)));
+    if($page === '<front>') {
+      $page = variable_get('site_frontpage') == 'node' ? '': drupal_get_path_alias(variable_get('site_frontpage', 'node'));
     }
-    //cache_clear_all($base_root. $path, 'cache_page'); #$cache = cache_get($base_root . request_uri(), 'cache_page');
+    $path = url($page, array('absolute' => TRUE));
+
+    if(!$wildcard) {
+        cache_clear_all($path, 'cache_page');
+    } else {
+        cache_clear_all($path, 'cache_page', TRUE);
+    }
+      
+    drupal_set_message(t("The path \"%path\" has been purged from cache.", array('%path' => $path)));
+
   }
 }
 
@@ -215,10 +212,13 @@ function _advanced_purge_clear_page_block_content() {
   if (isset($_POST["purge"]) && $_POST["purge"]=="cache") {
     $pos = strpos($_SERVER["REQUEST_URI"],"?");
     $uri = substr($_SERVER["REQUEST_URI"],1,$pos-1);
+
+    if ($uri = "") $uri = "<front>";
+
     advanced_purge_paths(array($uri));
   }
 
-  $content = "<div style='margin:20px 0; width:100%; text-align:center;'><form action='' method='POST'><input type='hidden' name='purge' value='cache'><input type='submit' value='Purge This Page'></form></div>";
+  $content = "<div style='margin:20px 0; width:100%; text-align:center;'><form action='' method='POST'><input type='hidden' name='purge' value='cache'><input type='submit' value='Clear Page from Cache'></form></div>";
 
   return $content;
 

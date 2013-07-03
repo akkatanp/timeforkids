@@ -299,17 +299,10 @@ function advanced_purge_page_clear($page = '') {
   }
   $path = url($page, array('absolute' => TRUE));
   
-    # if (drupal_page_is_cacheable()) {
-    #$cache = cache_get($base_root . request_uri(), 'cache_page');
-    //$path = $base_root. $page;
-  $cache = cache_get($path, 'cache_page');
-  if ($cache !== FALSE) {
-    cache_clear_all($path, 'cache_page');
+  cache_clear_all($path, 'cache_page');
     
-    drupal_set_message(t("The page \"%path\" has been purged from cache.",
-      array('%path' => $path)
-    ));
-  }
-  #}
+  drupal_set_message(t("The page \"%path\" has been purged from cache.",
+    array('%path' => $path)
+  ));
   
 }
