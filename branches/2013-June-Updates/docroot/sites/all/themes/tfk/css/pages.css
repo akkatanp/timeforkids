@@ -673,6 +673,11 @@ ul.links li {
 }
 
 /* top story block */
+
+#block-views-minisite-articles-block-3 {
+  position: relative;
+}
+
 .logged-in.minisite-noslideshow #block-views-minisite-articles-block-2,
 .logged-in.minisite-noslideshow #block-views-minisite-articles-block-3,
 .logged-in .view-teacher-news-top-story,
