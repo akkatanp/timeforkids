@@ -210,8 +210,9 @@ function advanced_purge_block_view($delta='') {
 function _advanced_purge_clear_page_block_content() {
 
   if (isset($_POST["purge"]) && $_POST["purge"]=="cache") {
+
     $pos = strpos($_SERVER["REQUEST_URI"],"?");
-    $uri = substr($_SERVER["REQUEST_URI"],1,$pos-1);
+    if ($pos>=0) $uri = substr($_SERVER["REQUEST_URI"],1,$pos-1);
 
     if ($uri = "") $uri = "<front>";
 
