@@ -139,7 +139,7 @@ function feature_mini_sites_views_default_views() {
   $handler->display->display_options['relationships']['flag_content_rel']['label'] = 'homepage_minisite';
   $handler->display->display_options['relationships']['flag_content_rel']['flag'] = 'homepage_minisite';
   $handler->display->display_options['relationships']['flag_content_rel']['user_scope'] = 'any';
-  /* Relationship: Content: Articles (field_articles) */
+  /* Relationship: Content: Section: Cover Story (field_articles) */
   $handler->display->display_options['relationships']['field_articles_nid']['id'] = 'field_articles_nid';
   $handler->display->display_options['relationships']['field_articles_nid']['table'] = 'field_data_field_articles';
   $handler->display->display_options['relationships']['field_articles_nid']['field'] = 'field_articles_nid';
@@ -642,7 +642,7 @@ function feature_mini_sites_views_default_views() {
   $handler->display->display_options['header']['area']['id'] = 'area';
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
-  /* Relationship: Content: Articles (field_articles) */
+  /* Relationship: Content: Section: Cover Story (field_articles) */
   $handler->display->display_options['relationships']['field_articles_nid']['id'] = 'field_articles_nid';
   $handler->display->display_options['relationships']['field_articles_nid']['table'] = 'field_data_field_articles';
   $handler->display->display_options['relationships']['field_articles_nid']['field'] = 'field_articles_nid';
@@ -799,7 +799,7 @@ function feature_mini_sites_views_default_views() {
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['header'] = FALSE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
-  /* Relationship: Content: Articles (field_articles) */
+  /* Relationship: Content: Section: Cover Story (field_articles) */
   $handler->display->display_options['relationships']['field_articles_nid']['id'] = 'field_articles_nid';
   $handler->display->display_options['relationships']['field_articles_nid']['table'] = 'field_data_field_articles';
   $handler->display->display_options['relationships']['field_articles_nid']['field'] = 'field_articles_nid';
@@ -958,7 +958,7 @@ function feature_mini_sites_views_default_views() {
   $handler->display->display_options['row_options']['hide_empty'] = TRUE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
-  /* Relationship: Content: Articles (field_articles) */
+  /* Relationship: Content: Section: Cover Story (field_articles) */
   $handler->display->display_options['relationships']['field_articles_nid']['id'] = 'field_articles_nid';
   $handler->display->display_options['relationships']['field_articles_nid']['table'] = 'field_data_field_articles';
   $handler->display->display_options['relationships']['field_articles_nid']['field'] = 'field_articles_nid';
@@ -1076,7 +1076,7 @@ function feature_mini_sites_views_default_views() {
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
-  /* Relationship: Content: Articles (field_articles) */
+  /* Relationship: Content: Section: Cover Story (field_articles) */
   $handler->display->display_options['relationships']['field_articles_nid']['id'] = 'field_articles_nid';
   $handler->display->display_options['relationships']['field_articles_nid']['table'] = 'field_data_field_articles';
   $handler->display->display_options['relationships']['field_articles_nid']['field'] = 'field_articles_nid';
@@ -1227,7 +1227,7 @@ function feature_mini_sites_views_default_views() {
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
-  /* Relationship: Content: Articles (field_articles) */
+  /* Relationship: Content: Section: Cover Story (field_articles) */
   $handler->display->display_options['relationships']['field_articles_nid']['id'] = 'field_articles_nid';
   $handler->display->display_options['relationships']['field_articles_nid']['table'] = 'field_data_field_articles';
   $handler->display->display_options['relationships']['field_articles_nid']['field'] = 'field_articles_nid';
@@ -1248,11 +1248,10 @@ function feature_mini_sites_views_default_views() {
   $handler->display->display_options['fields']['path']['relationship'] = 'field_articles_nid';
   $handler->display->display_options['fields']['path']['label'] = '';
   $handler->display->display_options['fields']['path']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['path']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['path']['alter']['text'] = '[image]';
-  $handler->display->display_options['fields']['path']['alter']['make_link'] = TRUE;
   $handler->display->display_options['fields']['path']['alter']['path'] = '[path]';
   $handler->display->display_options['fields']['path']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['path']['absolute'] = TRUE;
   /* Field: Content: Large Square Image */
   $handler->display->display_options['fields']['field_lrg_sq_image']['id'] = 'field_lrg_sq_image';
   $handler->display->display_options['fields']['field_lrg_sq_image']['table'] = 'field_data_field_lrg_sq_image';
@@ -1361,7 +1360,7 @@ function feature_mini_sites_views_default_views() {
   $handler->display->display_options['header']['area']['format'] = 'full_html';
   $handler->display->display_options['header']['area']['tokenize'] = TRUE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
-  /* Relationship: Content: Articles (field_articles) */
+  /* Relationship: Content: Section: Cover Story (field_articles) */
   $handler->display->display_options['relationships']['field_articles_nid']['id'] = 'field_articles_nid';
   $handler->display->display_options['relationships']['field_articles_nid']['table'] = 'field_data_field_articles';
   $handler->display->display_options['relationships']['field_articles_nid']['field'] = 'field_articles_nid';
