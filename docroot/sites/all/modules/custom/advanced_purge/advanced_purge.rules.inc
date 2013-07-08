@@ -223,7 +223,7 @@ function advanced_purge_cache_clear_relational() {
     
     // Log message and inform user.
     $node = $rules_state->get('node')->value();
-    $message = "The blocks for %title has been purged from cache.";
+    $message = "The blocks for %title have been purged from cache.";
     $action_info = $rules_action->info();
     $variables = array('%target_view' => $view_name, '%title' => $node->title, '%rule' => $action_info['label'], '%data' => print_r($matched_flags, TRUE));
     drupal_set_message(t($message, $variables));
@@ -277,7 +277,7 @@ function advanced_purge_cache_clear($target_view = '', $target_displays = array(
     $on_behalf = 'path '. $menu['path'];
   }
   
-  $message = "The blocks for %title has been purged from cache.";
+  $message = "The blocks for %title have been purged from cache.";
   $action_info = $rules_action->info();
   $variables = array('%target_view' => $target_view, '%title' => $on_behalf, '%rule' => $action_info['label'], '%data' => print_r($target_displays, TRUE));
   drupal_set_message(t($message, $variables));
