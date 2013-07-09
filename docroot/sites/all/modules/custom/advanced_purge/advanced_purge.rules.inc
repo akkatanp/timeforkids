@@ -223,7 +223,7 @@ function advanced_purge_cache_clear_relational() {
     
     // Log message and inform user.
     $node = $rules_state->get('node')->value();
-    $message = "The blocks for %title has been purged from cache.";
+    $message = "The blocks for %title have been purged from cache.";
     $action_info = $rules_action->info();
     $variables = array('%target_view' => $view_name, '%title' => $node->title, '%rule' => $action_info['label'], '%data' => print_r($matched_flags, TRUE));
     drupal_set_message(t($message, $variables));
@@ -277,9 +277,9 @@ function advanced_purge_cache_clear($target_view = '', $target_displays = array(
     $on_behalf = 'path '. $menu['path'];
   }
   
-  $message = "The blocks for %title has been purged from cache.";
+  $message = "The blocks for %title have been purged from cache.";
   $action_info = $rules_action->info();
-  $variables = array('%target_view' => $target_view, '%title' => '/'. $on_behalf, '%rule' => $action_info['label'], '%data' => print_r($target_displays, TRUE));
+  $variables = array('%target_view' => $target_view, '%title' => $on_behalf, '%rule' => $action_info['label'], '%data' => print_r($target_displays, TRUE));
   drupal_set_message(t($message, $variables));
   watchdog('advanced_purge', '<b>[Action %rule]</b>: The following displays for View %target_view were purged from cache on behalf of %title: <br /><pre>%data</pre>', $variables, WATCHDOG_INFO, l('view path', $on_behalf));
 }
@@ -299,17 +299,10 @@ function advanced_purge_page_clear($page = '') {
   }
   $path = url($page, array('absolute' => TRUE));
   
-    # if (drupal_page_is_cacheable()) {
-    #$cache = cache_get($base_root . request_uri(), 'cache_page');
-    //$path = $base_root. $page;
-  $cache = cache_get($path, 'cache_page');
-  if ($cache !== FALSE) {
-    cache_clear_all($path, 'cache_page');
+  cache_clear_all($path, 'cache_page');
     
-    drupal_set_message(t("The page \"%path\" has been purged from cache.",
-      array('%path' => $path)
-    ));
-  }
-  #}
+  drupal_set_message(t("The page \"%path\" has been purged from cache.",
+    array('%path' => $path)
+  ));
   
 }

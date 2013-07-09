@@ -486,7 +486,7 @@ ul.links li {
 .logged-in.homepage-top-part-empty .view-homepage-minisite{
 	position: relative;
 	width: 244px;
-	height: 295px;
+	min-height: 295px;
 	padding: 15px 0 0 6px;
 	background: #dedede;
 	border: solid 1px #cecece;
@@ -550,10 +550,10 @@ ul.links li {
 }
 
 .view-homepage-minisite .related-content-wrap {
-	position: absolute;
-	bottom: 30px;
 	width: 216px;
-	right: 10px;
+  margin-bottom: 30px;
+  display: inline-block;
+  margin-top: 30px;
 }
 
 .logged-in .view-homepage-destination {
@@ -673,6 +673,12 @@ ul.links li {
 }
 
 /* top story block */
+
+#block-views-minisite-articles-block-2,
+#block-views-minisite-articles-block-3 {
+  position: relative;
+}
+
 .logged-in.minisite-noslideshow #block-views-minisite-articles-block-2,
 .logged-in.minisite-noslideshow #block-views-minisite-articles-block-3,
 .logged-in .view-teacher-news-top-story,
