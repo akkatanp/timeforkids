@@ -164,7 +164,7 @@ TFKADS.domainExceptions = new Array("timeforkidsdigital.com","timeinc.com","time
 		$("#" + adUnit + "_jump_helper").css({'position' : 'absolute', 'width' : width , 'height' : height, 'background-color' : 'blue', 'opacity' : '0', 'filter' : 'alpha(opacity=0)', 'display' : 'inline'});
 	}
 
-	//This handles flash and iframe ads
+	if (false) {//This handles flash and iframe ads
 	  TFKADS.adUnits = new Array("banner_728x90","banner_160x190","banner_160x600", "banner_728x90_footer");
 	  TFKADS.adElementName = "";
 	  TFKADS.adTargetLocation = "";
@@ -209,5 +209,6 @@ TFKADS.domainExceptions = new Array("timeforkidsdigital.com","timeinc.com","time
 			  $(TFKADS.adElementName).bind("mousedown", {element: TFKADS.tfkAdLocations[TFKADS.adElementName]}, tfkJumpPageHandler);
 		}
 	  }
+	}
 	});//End doc ready
 })(jQuery); // make sure the $ is jQuery

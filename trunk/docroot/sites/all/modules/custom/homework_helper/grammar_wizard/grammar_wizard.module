@@ -114,7 +114,7 @@ function grammar_wizard_multistep_form($form, &$form_state, $node) {
         '#type' => 'submit',
         '#value' => !isset($form_state['storage']['correct_answer']) ? t('Check Answer') : t('Try Again'),
         '#name' => !isset($form_state['storage']['correct_answer']) ? 'check_answer' : 'try_again',
-        '#weight' => 1,
+        '#weight' => 2,
         '#ajax' => array(
           'wrapper' => 'wizard-form-wrapper',
           'callback' => 'grammar_wizard_multistep_form_callback',
@@ -129,7 +129,7 @@ function grammar_wizard_multistep_form($form, &$form_state, $node) {
         '#value' => ($step == $last_step - 1) ? t('See my Results') : t('Next Question'),
         '#name' => ($step == $last_step - 1) ? 'see_results' : 'next_question',
         '#access' => isset($form_state['storage']['correct_answer']),
-        '#weight' => 2,
+        '#weight' => 3,
         '#ajax' => array(
           'wrapper' => 'wizard-form-wrapper',
           'callback' => 'grammar_wizard_multistep_form_callback',
