@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the Referenced Views feature.
- */
-
-include_once('referenced_views.features.inc');
