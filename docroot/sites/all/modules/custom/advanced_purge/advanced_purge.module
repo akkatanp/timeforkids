@@ -8,7 +8,7 @@
 
 /* Implementation of hook_flag.
  */
-function advanced_purge_flag($action, $flag, $content_id, $account, $fcid) {
+function advanced_purge_flag($action, $flag, $content_id, $account, $fcid, $clear_page = true) {
   
   // Flag name to Views bin/cid and Varnish path mapping.
   $display_cache = array();
@@ -41,7 +41,7 @@ function advanced_purge_flag($action, $flag, $content_id, $account, $fcid) {
   $display_cache['news_news_block'] = array();
   $display_cache['news_news_block']['cache_block'] = array('views:homepage_news_block-block_3', 'views:homepage_news_block-block_3_anon');
   $display_cache['news_news_block']['cache_views_data'] = array('homepage_news_block:block_3', 'homepage_news_block:block_3_anon');
-  $display_cache['news_top_story']['path'] = 'news';
+  $display_cache['news_news_block']['path'] = 'news';
   
   // Kid rep channel secondary touts.
   $display_cache['kid_reporter_news_block'] = array();
@@ -59,31 +59,33 @@ function advanced_purge_flag($action, $flag, $content_id, $account, $fcid) {
   $display_cache['homepage_destination'] = array();
   $display_cache['homepage_destination']['cache_block'] = array('views:homepage_destination-block_1', 'views:homepage_destination-block_2');
   $display_cache['homepage_destination']['cache_views_data'] = array('homepage_destination:block_1', 'homepage_destination:block_2');
+  $display_cache['homepage_destination']['path'] = '<front>';
   
-  // Clear Memcached (Views).
-  if(array_key_exists($flag->name, $display_cache)) {
-    $results = array();
-    foreach($display_cache[$flag->name] as $bin => $cids) {
-      if($bin != 'path' && !cache_is_empty($bin)) {
-        foreach($cids as $cid) {
-          cache_clear_all($cid, $bin, TRUE);
-          $results[] = "flag_name: $flag->name, \$bin: $bin, \$cid: $cid";
+  if ($clear_page) {
+    // Clear Memcached (Views).
+    if(array_key_exists($flag->name, $display_cache)) {
+      $results = array();
+      foreach($display_cache[$flag->name] as $bin => $cids) {
+        if($bin != 'path' && !cache_is_empty($bin)) {
+          foreach($cids as $cid) {
+            cache_clear_all($cid, $bin, TRUE);
+            $results[] = "flag_name: $flag->name, \$bin: $bin, \$cid: $cid";
+          }
+        }
+        if($bin == 'path') {
+          module_load_include('inc', 'advanced_purge', 'advanced_purge.rules');
+          advanced_purge_page_clear($cids); // Memcached purge.
         }
       }
-      if($bin == 'path') {
-        module_load_include('inc', 'advanced_purge', 'advanced_purge.rules');
-        advanced_purge_page_clear($cids); // Memcached purge.
-      }
+    
+      //$node = node_load($content_id);
+      //drupal_set_message("{$node->title}, nid:{$node->nid} has been ". (($action == 'flag') ? 'added to': 'removed from'). " the {$flag->title} channel.");
+      //watchdog('advanced_purge', 'The following cache items have been purged from persistent cache: @results', array('@results' => print_r($results, TRUE)), WATCHDOG_INFO);
+    
+      // Varnish purge/expire code.
+      advanced_purge_varnish(array($display_cache[$flag->name]['path']));
     }
-    
-    $node = node_load($content_id);
-    drupal_set_message("{$node->title}, nid:{$node->nid} has been ". (($action == 'flag') ? 'added to': 'removed from'). " the {$flag->title} channel.");
-    watchdog('advanced_purge', 'The following cache items have been purged from persistent cache: @results', array('@results' => print_r($results, TRUE)), WATCHDOG_INFO);
-    
-    // Varnish purge/expire code.
-    advanced_purge_varnish(array($display_cache[$flag->name]['path']));
   }
-  
 }
 
 /**
@@ -214,11 +216,55 @@ function _advanced_purge_clear_page_block_content() {
     $pos = strpos($uri,"?");
     if ($pos!==false) $uri = substr($uri,1,$pos-1);
     if ($uri=="") $uri = "<front>";
-    advanced_purge_paths(array($uri));
+
+    switch ($uri) {
+      case "<front>":
+        $flag = new stdClass();
+        $flag->name = 'homepage_top_story';
+        advanced_purge_flag('flag',$flag,null,null,null,false);
+        $flag->name = 'homepage_news_block';
+        advanced_purge_flag('flag',$flag,null,null,null,false);
+        $flag->name = 'homepage_minisite';
+        advanced_purge_flag('flag',$flag,null,null,null,false);
+        $flag->name = 'homepage_news_block';
+        advanced_purge_flag('flag',$flag,null,null,null,false);
+        $flag->name = 'homepage_destination';
+        advanced_purge_flag('flag',$flag,null,null,null,true);
+      break;
+      case "news":
+        $flag = new stdClass();
+        $flag->name = 'news_top_story';
+        advanced_purge_flag('flag',$flag,null,null,null,false);
+        $flag->name = 'news_news_block';
+        advanced_purge_flag('flag',$flag,null,null,null,true);
+      break;
+      case "kid_reporter":
+        $flag = new stdClass();
+        $flag->name = 'kid_reporter_top_story';
+        advanced_purge_flag('flag',$flag,null,null,null,false);
+        $flag->name = 'kid_reporter_news_block';
+        advanced_purge_flag('flag',$flag,null,null,null,true);
+      break;
+      default:
+        advanced_purge_paths(array($uri));
+      break;
+    }
   }
 
   $content = "<div style='margin:20px 0; width:100%; text-align:center;'><form action='' method='POST'><input type='hidden' name='purge' value='cache'><input type='submit' value='Clear Page from Cache'></form></div>";
 
   return $content;
+
+}
+
+function advanced_purge_node_update($node) {
+
+  foreach($node->flag as $key => $value) {
+    if ($value==1) {
+      $flag = new stdClass();
+      $flag->name = $key;
+      advanced_purge_flag('flag',$flag,null,null,null);
+    }
+  }
 
 }
