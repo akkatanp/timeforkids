@@ -53,7 +53,7 @@ function advanced_purge_flag($action, $flag, $content_id, $account, $fcid, $clea
   $display_cache['homepage_minisite'] = array();
   $display_cache['homepage_minisite']['cache_block'] = array('views:homepage_minisite-block_1', 'views:homepage_minisite-block_2');
   $display_cache['homepage_minisite']['cache_views_data'] = array('homepage_minisite:block_1', 'homepage_minisite:block_2');
-  $display_cache['homepage_top_story']['path'] = '<front>';
+  $display_cache['homepage_minisite']['path'] = '<front>';
   
   // Homepage destination. @todo DEPRECATED, the homepage destination block got absorbed by the new multi-row secondarty touts.
   $display_cache['homepage_destination'] = array();
