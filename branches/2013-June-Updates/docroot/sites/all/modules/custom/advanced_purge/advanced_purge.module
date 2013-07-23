@@ -111,7 +111,7 @@ function advanced_purge_varnish($expire, $wildcard = FALSE) {
       if($front_page !== FALSE) {
         $expire[$front_page] = '';
         //$expire[] = 'rss.xml';
-        $expire[] = '/'. variable_get('site_frontpage', 'node');
+        //$expire[] = '/'. variable_get('site_frontpage', 'node');
       
       }
       
@@ -143,6 +143,8 @@ function advanced_purge_varnish($expire, $wildcard = FALSE) {
     foreach($expire as $key => $path) {
 
       advanced_purge_clear_varnish_page($path);
+
+      if ($path=='') $expire[$key]='home page';
       
     }
 
@@ -277,6 +279,10 @@ function advanced_purge_node_update($node) {
       advanced_purge_flag('flag',$flag,null,null,null);
     }
   }
+
+  advanced_purge_clear_varnish_page($node->path['alias']);
+
+  drupal_set_message(t("Varnish cleared for ".$node->path['alias']));
 
 }
 
