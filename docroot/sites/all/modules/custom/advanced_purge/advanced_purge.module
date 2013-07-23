@@ -109,7 +109,7 @@ function advanced_purge_varnish($expire, $wildcard = FALSE) {
       // Special handling for front-page.
       $front_page = array_search('<front>', $expire);
       if($front_page !== FALSE) {
-        $expire[$front_page] = '/'. variable_get('site_frontpage', 'node');
+        $expire[$front_page] = variable_get('site_frontpage', 'node');
         //$expire[] = 'rss.xml';
         //$expire[] = '/'. variable_get('site_frontpage', 'node');
       
@@ -144,7 +144,7 @@ function advanced_purge_varnish($expire, $wildcard = FALSE) {
 
       advanced_purge_clear_varnish_page($path);
 
-      if ($path=='/node') $expire[$key]='home page';
+      if ($path=='node') $expire[$key]='home page';
       
     }
 
