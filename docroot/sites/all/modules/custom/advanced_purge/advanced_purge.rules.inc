@@ -300,6 +300,8 @@ function advanced_purge_page_clear($page = '') {
   $path = url($page, array('absolute' => TRUE));
   
   cache_clear_all($path, 'cache_page');
+
+  advanced_purge_clear_varnish_page($path);
     
   drupal_set_message(t("The page \"%path\" has been purged from cache.",
     array('%path' => $path)
