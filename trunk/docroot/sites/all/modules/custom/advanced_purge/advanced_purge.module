@@ -95,10 +95,12 @@ function advanced_purge_flag($action, $flag, $content_id, $account, $fcid, $clea
  *   Each path must be prepended by a forward slash /.
  */
 function advanced_purge_varnish($expire, $wildcard = FALSE) {
+
   // Varnish purge.
-  if(module_exists('expire') && module_exists('purge')) {
+  if(module_exists('expire')) {  // && module_exists('purge')) {
+
     module_load_include('module', 'expire');
-    module_load_include('inc', 'purge');
+    //module_load_include('inc', 'purge');
 
     // Prevent purging the entire site (use the SSH terminal or Acquia CPanel instead).
     // Don't search for aliases or frontpage on wildcards.
@@ -109,7 +111,7 @@ function advanced_purge_varnish($expire, $wildcard = FALSE) {
       if($front_page !== FALSE) {
         $expire[$front_page] = '';
         //$expire[] = 'rss.xml';
-        $expire[] = '/'. variable_get('site_frontpage', 'node');
+        //$expire[] = '/'. variable_get('site_frontpage', 'node');
       
       }
       
@@ -124,6 +126,7 @@ function advanced_purge_varnish($expire, $wildcard = FALSE) {
   
       // Allow other modules to modify the list prior to expiring
       drupal_alter('expire_cache', $expire, $node, $paths);
+
     } else {
       // Append wildcard for each path. Example:
       // http://tfk.local/destination/usa.*$
@@ -136,8 +139,17 @@ function advanced_purge_varnish($expire, $wildcard = FALSE) {
     }
     
     // Purge
-    $results = purge_urls($expire);
-    purge_logging($results);
+
+    foreach($expire as $key => $path) {
+
+      advanced_purge_clear_varnish_page($path);
+
+      if ($path=='') $expire[$key]='home page';
+      
+    }
+
+    //$results = purge_urls($expire);
+    //purge_logging($results);
 
     drupal_set_message(t("Varnish cleared for %paths. ",
       array('%paths' => implode(', ', $expire))
@@ -163,18 +175,19 @@ function advanced_purge_paths($expire, $wildcard = FALSE) {
   // Memcached purge.
   global $base_root;
   module_load_include('inc', 'advanced_purge', 'advanced_purge.rules');
-  foreach($expire as $page) {
+  foreach($expire as $path) {
 
-    if($page === '<front>') {
-      $page = variable_get('site_frontpage') == 'node' ? '': drupal_get_path_alias(variable_get('site_frontpage', 'node'));
+    if($path === '<front>') {
+      $path = variable_get('site_frontpage') == 'node' ? '': drupal_get_path_alias(variable_get('site_frontpage', 'node'));
     }
-    $path = url($page, array('absolute' => TRUE));
 
     if(!$wildcard) {
         cache_clear_all($path, 'cache_page');
     } else {
         cache_clear_all($path, 'cache_page', TRUE);
     }
+
+    advanced_purge_clear_varnish_page($path);
       
     drupal_set_message(t("The path \"%path\" has been purged from cache.", array('%path' => $path)));
 
@@ -266,5 +279,31 @@ function advanced_purge_node_update($node) {
       advanced_purge_flag('flag',$flag,null,null,null);
     }
   }
+
+  advanced_purge_clear_varnish_page($node->path['alias']);
+
+  drupal_set_message(t("Varnish cleared for ".$node->path['alias']));
+
+}
+
+function advanced_purge_clear_varnish_page($path) {
+
+      $ch = curl_init();
+      $url = 'http://bal-2150.prod.hosting.acquia.com/'.$path; 
+      curl_setopt($ch, CURLOPT_URL, $url);
+      curl_setopt($ch, CURLOPT_HTTPHEADER, array('X-Acquia-Purge:time','Host:www.timeforkids.com'));
+      curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PURGE');
+      curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+      $response = curl_exec($ch);
+      curl_close($ch);
+      
+      $ch = curl_init();
+      $url = 'http://bal-2151.prod.hosting.acquia.com/'.$path; 
+      curl_setopt($ch, CURLOPT_URL, $url);
+      curl_setopt($ch, CURLOPT_HTTPHEADER, array('X-Acquia-Purge:time','Host:www.timeforkids.com'));
+      curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PURGE');
+      curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+      $response = curl_exec($ch);
+      curl_close($ch);
 
 }
