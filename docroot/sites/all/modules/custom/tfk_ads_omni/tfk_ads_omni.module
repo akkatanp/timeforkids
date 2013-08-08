@@ -17,7 +17,7 @@ function tfk_ads_omni_preprocess_page(&$variables){
     drupal_add_js($ti_ad_library,'external');
     $ad_omni_config = tfk_ads_omni_get_config_vars($variables);/*array used by both ads and omniture*/
     /*adFactory config*/
-    $ad_factory = "var adConfig = new TiiAdConfig(\"3475.tfk\");adConfig.setCmSitename(\"cm.tfk\");adConfig.setRevSciTracking(true);";
+    $ad_factory = "var adConfig = new TiiAdConfig(\"3475.tfk\");adConfig.setCmSitename(\"cm.tfk\");adConfig.setRevSciTracking(false);";
     $ad_factory .= "var adFactory = new TiiAdFactory(adConfig, \"".$ad_omni_config['zone']."\");";
     $ad_factory .= "adFactory.setChannel(\"".$ad_omni_config['channel']."\");";
     $ad_factory .= "adFactory.setSubchannel(\"".$ad_omni_config['sub_channel']."\");";
