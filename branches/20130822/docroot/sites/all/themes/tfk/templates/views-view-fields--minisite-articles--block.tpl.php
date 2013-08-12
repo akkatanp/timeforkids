@@ -34,7 +34,7 @@ global $base_url;
   
   foreach ($fields as $id => $field):
   
-    if($id != 'field_related_articles_1' && $id != 'field_related_articles' && $id != 'field_slideshow_images'):
+    if($id != 'field_related_articles_1' && $id != 'field_related_articles' && $id != 'field_slideshow_images' && $id != 'field_additional_content'):
       if (!empty($field->separator)): 
         print $field->separator; 
       endif; 
@@ -64,14 +64,19 @@ global $base_url;
     
   endforeach; 
   
-  if(isset($fields['field_related_articles_1']) && !empty($fields['field_related_articles_1']->content) || !empty($fields['field_related_articles']->content)):
+  if(isset($fields['field_related_articles_1']) && !empty($fields['field_related_articles_1']->content) || !empty($fields['field_related_articles']->content) || isset($fields['field_additional_content']->content)):
   
 ?>
+
   <div class="related-content-wrap">
     <div class="addit-content"><?php print $fields['field_related_articles']->content;?></div>
     <?php if($fields['field_related_articles_1']): ?>
        <div class="addit-related-articles"><?php print $fields['field_related_articles_1']->content; ?></div>
     <?php endif; ?>
+    <?php if($fields['field_additional_content']): ?>
+       <div class="addit-related-articles">Additional Content: <?php print $fields['field_additional_content']->content; ?></div>
+    <?php endif; ?>
+
   </div>
   
 <?php endif;?>
