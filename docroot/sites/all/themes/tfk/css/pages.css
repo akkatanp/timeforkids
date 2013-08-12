@@ -3337,7 +3337,8 @@ div.views-slideshow-cycle-main {height:220px;min-height:220px;}
 }
 
 #block-views-minisite-articles-block .row-has-addit td {
-  height: 170px !important;
+  height: auto;
+  min-height:185px;
 }
 
 #block-views-tfk-extras-block-8 .block-title {
