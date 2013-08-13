@@ -654,14 +654,14 @@ function tfk_news_node_view($node, $view_mode, $langcode) {
     if(isset($node->content['field_mini_lessons'])){
       $count = count($node->content['field_mini_lessons']['#object']->content['field_mini_lessons']['#items']);
       for($i = 0; $i < $count - 1; $i++ ){
-        $node->content['field_mini_lessons']['#object']->content['field_mini_lessons'][$i]['#markup'] .= '&nbsp;&nbsp;|';
+        $node->content['field_mini_lessons']['#object']->content['field_mini_lessons'][$i]['#markup'] .= '&nbsp;<span class = "red">,</span>';
       }
     }
 
     if(isset($node->content['field_related_articles'])){
       $count = count($node->content['field_related_articles']['#object']->content['field_related_articles']['#items']);
       for($i = 0; $i < $count - 1; $i++ ){
-        $node->content['field_related_articles']['#object']->content['field_related_articles'][$i]['#markup'] .= ',';
+        $node->content['field_related_articles']['#object']->content['field_related_articles'][$i]['#title'] .= ' ,';
       }
     }
   }
