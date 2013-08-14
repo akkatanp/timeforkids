@@ -3344,6 +3344,50 @@ div.views-slideshow-cycle-main {height:220px;min-height:220px;}
 #block-views-tfk-extras-block-8 .block-title {
 	margin-bottom: 10px;
 }
+
 .red {
   color:#d71700;
 }
+
+#block-views-global-right-sidebar-block-5 .view-header {
+  font: normal 12px "arial black", arial, san-serif;
+  text-align: center;
+  color: #FFF;
+  padding: 6px 0;
+  margin: 0;
+  background: #d71700;
+}
+
+#block-views-global-right-sidebar-block-5 .view-content {
+  width: 150px;
+  background: white;
+  border: solid 2px #cecece;
+  border-top: none;
+  padding: 4px;
+  font-size: 11px;
+  min-height: 100px;
+}
+
+#block-views-global-right-sidebar-block-5 .views-field-field-image {
+  float: left;
+  margin-right: 4px;
+  width: 72px;
+  height: 95px;
+}
+
+#block-views-global-right-sidebar-block-5 .views-field-field-image img {
+  width: 72px;
+  height: 95px;
+}
+
+#block-views-global-right-sidebar-block-5 .view-content .views-field-field-grade-level {
+  font-weight: bold;
+}
+
+
+
+
+
+
+
+
