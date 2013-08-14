@@ -3349,7 +3349,7 @@ div.views-slideshow-cycle-main {height:220px;min-height:220px;}
   color:#d71700;
 }
 
-#block-views-global-right-sidebar-block-5 .view-header {
+#block-views-current-issue-widget-block .view-header {
   font: normal 12px "arial black", arial, san-serif;
   text-align: center;
   color: #FFF;
@@ -3358,29 +3358,29 @@ div.views-slideshow-cycle-main {height:220px;min-height:220px;}
   background: #d71700;
 }
 
-#block-views-global-right-sidebar-block-5 .view-content {
-  width: 150px;
+#block-views-current-issue-widget-block .view-content {
+  width: 152px;
   background: white;
-  border: solid 2px #cecece;
+  border: solid 1px #cecece;
   border-top: none;
   padding: 4px;
   font-size: 11px;
   min-height: 100px;
 }
 
-#block-views-global-right-sidebar-block-5 .views-field-field-image {
+#block-views-current-issue-widget-block .views-field-field-image {
   float: left;
   margin-right: 4px;
   width: 72px;
   height: 95px;
 }
 
-#block-views-global-right-sidebar-block-5 .views-field-field-image img {
+#block-views-current-issue-widget-block .views-field-field-image img {
   width: 72px;
   height: 95px;
 }
 
-#block-views-global-right-sidebar-block-5 .view-content .views-field-field-grade-level {
+#block-views-current-issue-widget-block .view-content .views-field-field-grade-level {
   font-weight: bold;
 }
 
