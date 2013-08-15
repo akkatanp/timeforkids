@@ -3384,10 +3384,7 @@ div.views-slideshow-cycle-main {height:220px;min-height:220px;}
   font-weight: bold;
 }
 
-
-
-
-
-
-
-
+#block-views-current-issue-widget-block .views-field-title-1 {
+  padding-top: 28px;
+  font-size: 12px;
+}
