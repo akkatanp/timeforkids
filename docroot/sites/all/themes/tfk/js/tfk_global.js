@@ -79,4 +79,12 @@
     });
 
   };
+  
+  // Colors in Minisite Menubar
+  $(document).ready(function() {
+    if (document.URL.indexOf('/minisite/') != -1) {
+      $('.mini-sites').addClass('active');
+    }
+  });
+
 })(jQuery);

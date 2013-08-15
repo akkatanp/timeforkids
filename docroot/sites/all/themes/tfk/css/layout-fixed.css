@@ -139,6 +139,10 @@ body {
 	width: 768px;
 }
 
+#footer {
+	display:inline-block;
+}
+
 #footer .region-footer {
 	top: inherit;
 }
