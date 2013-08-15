@@ -267,7 +267,7 @@
 
 #teacher-nav-container ul.menu {
 	float: right;
-	width: 622px;
+	width: 590px;
 	height: 32px;
 	background: url("../images/teacher-nav-llink-back.png") repeat-x;
 	background: -moz-linear-gradient(100% 100% 90deg,  #5ea1d3, #7bc3f5);
@@ -308,8 +308,13 @@
 }
 
 #teacher-nav-container ul.menu a.teacher-community {
-	width: 148px;
-	background: url(../images/sub-nav-sprite.png) no-repeat -214px 0px;
+	width: 118px;
+	background: url(../images/sub-nav-sprite.png) no-repeat -229px 0px;
+}
+
+#teacher-nav-container ul.menu li.leaf.last {
+	position: absolute;
+	right: 0;
 }
 
 .node-type-teacher-community-question #teacher-nav-container ul.menu a.teacher-community,
@@ -318,7 +323,7 @@
 .section-teacher-community #teacher-nav-container ul.menu a.teacher-community,
 #teacher-nav-container ul.menu a.teacher-community.active,
 #teacher-nav-container ul.menu a.teacher-community:hover {
-	background: url(../images/sub-nav-sprite.png) no-repeat -214px -32px;
+	background: url(../images/sub-nav-sprite.png) no-repeat -229px -32px;
 }
 
 #teacher-nav-container ul.menu a.digital_edition {
