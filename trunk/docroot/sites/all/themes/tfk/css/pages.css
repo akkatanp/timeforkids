@@ -3337,12 +3337,57 @@ div.views-slideshow-cycle-main {height:220px;min-height:220px;}
 }
 
 #block-views-minisite-articles-block .row-has-addit td {
-  height: 170px !important;
+  height: auto;
+  min-height:185px;
 }
 
 #block-views-tfk-extras-block-8 .block-title {
 	margin-bottom: 10px;
 }
+
+.red {
+  color:#d71700;
+}
+
+#block-views-current-issue-widget-block .view-header {
+  font: normal 12px "arial black", arial, san-serif;
+  text-align: center;
+  color: #FFF;
+  padding: 6px 0;
+  margin: 0;
+  background: #d71700;
+}
+
+#block-views-current-issue-widget-block .view-content {
+  width: 152px;
+  background: white;
+  border: solid 1px #cecece;
+  border-top: none;
+  padding: 4px;
+  font-size: 11px;
+  min-height: 100px;
+}
+
+#block-views-current-issue-widget-block .views-field-field-image {
+  float: left;
+  margin-right: 4px;
+  width: 72px;
+  height: 95px;
+}
+
+#block-views-current-issue-widget-block .views-field-field-image img {
+  width: 72px;
+  height: 95px;
+}
+
+#block-views-current-issue-widget-block .view-content .views-field-field-grade-level {
+  font-weight: bold;
+}
+
+
+
+
+
 
 
 

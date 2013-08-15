@@ -17,7 +17,7 @@ function tfk_ads_omni_preprocess_page(&$variables){
     drupal_add_js($ti_ad_library,'external');
     $ad_omni_config = tfk_ads_omni_get_config_vars($variables);/*array used by both ads and omniture*/
     /*adFactory config*/
-    $ad_factory = "var adConfig = new TiiAdConfig(\"3475.tfk\");adConfig.setCmSitename(\"cm.tfk\");adConfig.setRevSciTracking(true);";
+    $ad_factory = "var adConfig = new TiiAdConfig(\"3475.tfk\");adConfig.setCmSitename(\"cm.tfk\");adConfig.setRevSciTracking(false);";
     $ad_factory .= "var adFactory = new TiiAdFactory(adConfig, \"".$ad_omni_config['zone']."\");";
     $ad_factory .= "adFactory.setChannel(\"".$ad_omni_config['channel']."\");";
     $ad_factory .= "adFactory.setSubchannel(\"".$ad_omni_config['sub_channel']."\");";
@@ -98,7 +98,11 @@ function tfk_ads_omni_create_ad($name,$width,$height,$type='regular',$position=N
         $ad_position = "ad.setPosition($position);";
      }
      if ($type == "regular") {
-        $ad_tag = "<div id=\"$name\"><div id=\"$name"."_jump_helper\">&nbsp;</div><div id=\"$name"."_container\"><script type=\"text/javascript\">ad = adFactory.getAd($width, $height);".$ad_position."ad.write();</script></div></div>";
+        if ($name == "banner_728x90_footer") {
+            $ad_tag = "<div id=\"$name\"><div id=\"$name"."_jump_helper\">&nbsp;</div><div id=\"$name"."_container\"><script type=\"text/javascript\">var zone = adFactory.setZone(adFactory.zone + '/footer');var ad = adFactory.getAd($width, $height);".$ad_position."ad.write();</script></div></div>";
+        } else {
+            $ad_tag = "<div id=\"$name\"><div id=\"$name"."_jump_helper\">&nbsp;</div><div id=\"$name"."_container\"><script type=\"text/javascript\">ad = adFactory.getAd($width, $height);".$ad_position."ad.write();</script></div></div>";
+        }
      } elseif ($type == "cm") {
         $ad_tag = "<div id=\"$name\"><script type=\"text/javascript\">adFactory.getCmAd($width, $height, \"global\", \"tout\").write();</script></div>";
      }
