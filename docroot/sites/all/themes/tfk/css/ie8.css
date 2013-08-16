@@ -13,7 +13,7 @@
   margin-right: 3px;
 }
 
- /*Jump page back button descriptive text*/
+/*Jump page back button descriptive text*/
 #tfk-jump-back {
     margin-top:40px;
 }
@@ -25,4 +25,9 @@
 .view-kid-reporters-channel-top-story .views-field-title-1 {
 	display: inline;
 	margin-left:5px;
+}
+
+/* Main footer */
+#footer {
+	display:block !important;
 }
