@@ -266,6 +266,7 @@
 }
 
 #teacher-nav-container ul.menu {
+	position:relative;
 	float: right;
 	width: 590px;
 	height: 32px;
