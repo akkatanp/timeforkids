@@ -271,7 +271,7 @@ function tfk_preprocess_page(&$variables, $hook) {
   if(array_key_exists('node', $variables)) {
     $variables['theme_hook_suggestions'][] = 'page__'. $variables['node']->type;
     if ($variables['node']->type == "board_member") {
-      $variables['title'] = "Teacher Community";
+      $variables['title'] = "Teacher Board";
     }
     if ($variables['node']->type == 'grammar_practice') {
       $variables['grammar_practice_header'] = l('Try Another', 'homework-helper/grammar-wizard/punctuation-practice', array('attributes' => array('class' => array('try-another'))));
@@ -284,7 +284,7 @@ function tfk_preprocess_page(&$variables, $hook) {
   
   if (isset($variables['page']['content']['system_main']['#theme']) && $variables['page']['content']['system_main']['#theme'] == "user_profile") {
     if (isset($variables['page']['content']['system_main']['field_is_board_member']) && $variables['page']['content']['system_main']['field_is_board_member']['#items'][0]['value'] == "yes") {
-      $variables['title'] = "Teacher Community";
+      $variables['title'] = "Teacher Board";
     } else {
       $variables['title'] = "My Account";
     }
