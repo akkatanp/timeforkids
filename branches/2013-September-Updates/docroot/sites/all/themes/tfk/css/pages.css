@@ -3366,6 +3366,18 @@ div.views-slideshow-cycle-main {height:220px;min-height:220px;}
   padding: 4px;
   font-size: 11px;
   min-height: 100px;
+  position: relative;
+}
+
+#block-views-current-issue-widget-block .view-content .views-row {
+  position: absolute;
+  left: 4px;
+  top: 4px;
+  display: none;
+}
+
+#block-views-current-issue-widget-block .view-content .views-row.views-row-first {
+  display: block;
 }
 
 #block-views-current-issue-widget-block .views-field-field-image {
