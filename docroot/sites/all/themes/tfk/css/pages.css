@@ -1066,7 +1066,7 @@ ul.links li {
 }
 
 .logged-in .view-homepage-news-block table tr.row-has-addit td {
-  height: 310px;
+  height: 320px;
 }
 
 .not-logged-in .view-homepage-news-block table td,
@@ -1079,7 +1079,7 @@ ul.links li {
 	display: block;
 	float: left;
 	width: 229px;
-	height: 258px;
+	height: 268px;
 	padding: 20px 9px;
 	border: solid 1px #cecece;
 	vertical-align: top;
@@ -1125,7 +1125,7 @@ body.one-sidebar .secondary-touts-view td.col-2  {
     font: normal 9px arial, sans-serif;
     text-align: right;
     text-transform: uppercase;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 .secondary-tout-image-credit {
@@ -3400,4 +3400,8 @@ div.views-slideshow-cycle-main {height:220px;min-height:220px;}
   padding-top: 28px;
   font-size: 12px;
   padding-left: 82px;
+}
+
+.views-field-field-image-credit .field-content {
+  float: right;
 }
