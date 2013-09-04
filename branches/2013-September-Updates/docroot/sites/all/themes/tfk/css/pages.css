@@ -3405,3 +3405,27 @@ div.views-slideshow-cycle-main {height:220px;min-height:220px;}
 .views-field-field-image-credit .field-content {
   float: right;
 }
+
+#block-views-digital-products-block .block-title {
+  font-size: 30px;
+  line-height: 30px;
+  margin: 15px 0 20px 20px;
+}
+
+#block-views-digital-products-block {
+  background-color: #e6e6e6;
+  color: #333;
+  border: 1px solid #ccc;
+}
+
+.view-digital-products td {
+  width: 25%;
+  overflow: wrap;
+  vertical-align: top;
+  padding-left: 10px;
+  padding-top: 20px;
+}
+
+.view-digital-products tr.row-last td{
+  padding-bottom: 20px;
+}
