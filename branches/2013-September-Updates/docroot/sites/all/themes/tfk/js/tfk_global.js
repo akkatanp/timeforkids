@@ -74,12 +74,15 @@
   
   $(document).ready(function() {
 
-    // Colors in Minisite Menubar
+    // Colors in Menubar
     if (document.URL.indexOf('/minisite/') != -1) {
       $('.mini-sites').addClass('active');
     }
-        
-    // Loop throught magazines.
+    if (document.URL.indexOf('/store/') != -1) {
+      $('.store').addClass('active');
+    }
+
+    // Loop through magazines.
     var loop = 0;
     var magLoop = function() {
       var $magazines = $('#block-views-current-issue-widget-block .view-content .views-row');
