@@ -949,15 +949,13 @@ ul.links li {
 
 #block-views-minisite-articles-block-1 table td,
 #block-views-minisite-articles-block table td {
-	display: block;
-	float: left;
 	border: solid 1px #cecece;
 	width: 230px;
 	padding: 10px 9px;
 	margin-bottom: 8px;
-        height:115px;
-        height:auto !important;
-        min-height:115px;
+  height:auto;
+  min-height:115px;
+  vertical-align: top;
 }
 
 #block-views-mini-site-home-block .views-row-first,
@@ -1238,20 +1236,21 @@ body.one-sidebar .secondary-touts-view td.col-2  {
 .view-all-kid-reporters .view-content table {
 	margin: 0;
 	border-collapse: separate;
+  border-spacing: 4px;
+  width: 517px;
+  margin-left: -3px;
 }
 
 .view-mini-site-home .view-content table td,
 .view-all-kid-reporters .view-content table td {
-	display: block;
 	position: relative;
-	float: left;
 	width: 228px;
 	border: solid 1px #cecece;
 	padding: 10px 12px 10px 9px;
 	margin: 2px 0;
 	line-height: 15px;
-  height:auto !important;
   min-height:115px;
+  vertical-align: top;
 }
 
 .view-mini-site-home .view-content table td.empty {
@@ -3428,4 +3427,24 @@ div.views-slideshow-cycle-main {height:220px;min-height:220px;}
 
 .view-digital-products tr.row-last td{
   padding-bottom: 20px;
+}
+
+#block-views-homepage-top-story-block-1 .view-homepage-top-story {
+  height: auto;
+  min-height: 270px;
+}
+
+#block-views-homepage-top-story-block-1 .view-content {
+  padding-bottom: 15px;
+}
+
+#block-views-homepage-top-story-block-1 .attachment {
+  position: relative;
+  height: 64px;
+}
+
+#block-views-minisite-articles-block table, 
+#block-views-minisite-articles-block-1 table {
+  border-spacing: 4px;
+  border-collapse: separate;
 }
