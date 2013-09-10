@@ -3283,9 +3283,11 @@ div.subscribe-now a.subscribe {
 .view-books tr.row-last td,.view-other-products tr.row-last td  {padding-bottom:20px;}
 #block-views-other-products-block {background-color:#e6e6e6;color:#333;border:1px solid #ccc;margin-bottom:20px;}
 #block-views-other-products-block .block-title {font-size:30px;line-height:30px;margin:0 0 20px 20px;padding-top:15px;}
-.views-view-grid .views-field-field-book-image, .views-view-grid .views-field-field-product-image {width:105px;height:105px;max-height:105px;min-height:105px;max-width:105px;min-width:105px;padding-bottom: 2px;}
+.views-view-grid .views-field-field-book-image, .views-view-grid .views-field-field-product-image {
+  padding-bottom: 6px;
+}
 div.store-featured-info {margin-right:28px;}
-div.store-featured-image {float:left;width:190px;margin-bottom:20px;margin-left:47px;margin-right:20px;height:190px;text-align:center;}
+div.store-featured-image {float:left;width:190px;margin-bottom:95px;margin-left:47px;margin-right:20px;height:190px;text-align:center;}
 div.store-featured-info h3{font-size:16px;line-height:19px;margin: -2px 0 5px;}
 div.store-featured-info h3 a, 
 #views_slideshow_cycle_teaser_section_books-block p.store-featured-buynow,
@@ -3308,7 +3310,9 @@ div.views-slideshow-cycle-main {height:220px;min-height:220px;}
 .store_all_items_pager .store-pager-title {float:left;}
 .store_all_items_pager .item-list {float:right;text-align:right;}
 .section-store .item-list .pager li {margin:0 0 0.25em 0;}
-
+#views_slideshow_cycle_main_digital_products-block {
+  padding-bottom:80px;
+}
 #block-tfk-kid-reporters-kid-reporter-year {
     background-color: #DEDEDE;
     border: 1px solid #c6c6c6;
