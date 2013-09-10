@@ -64,6 +64,7 @@
  * @ingroup themeable
  */
 ?>
+<!-- Search Result -->
 <li class="<?php print $classes; ?>"<?php print $attributes; ?>>
   <?php print render($title_prefix); ?>
   <h3 class="title"<?php print $title_attributes; ?>>
