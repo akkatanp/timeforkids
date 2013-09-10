@@ -700,7 +700,6 @@ ul.links li {
 .not-logged-in .view-homepage-top-story,
 .logged-in.minisite-nocontent #block-views-minisite-articles-block-2,
 .logged-in.minisite-nocontent #block-views-minisite-articles-block-3,
-.logged-in.homepage-top-part-empty .view-homepage-top-story,
 .logged-in.news-top-part-empty .view-teacher-news-top-story,
 .logged-in.kidreps-top-part-empty .view-kid-reporters-channel-top-story{
 	position: relative;
