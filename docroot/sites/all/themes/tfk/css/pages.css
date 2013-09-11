@@ -682,8 +682,7 @@ ul.links li {
 .logged-in.minisite-noslideshow #block-views-minisite-articles-block-2,
 .logged-in.minisite-noslideshow #block-views-minisite-articles-block-3,
 .logged-in .view-teacher-news-top-story,
-.logged-in .view-kid-reporters-channel-top-story,
-.logged-in .view-homepage-top-story {
+.logged-in .view-kid-reporters-channel-top-story {
 	position: relative;
 	width: 478px;
 	height: 338px;
@@ -3510,16 +3509,9 @@ div.views-slideshow-cycle-main {height:220px;min-height:220px;}
   min-height: 270px;
 }
 
-#block-views-minisite-articles-block table, 
 #block-views-minisite-articles-block-2 table {
   border-spacing: 4px;
   border-collapse: separate;
-}
-
-.view-homepage-top-story .related-content-wrap {
-  position:relative;
-  float:left;
-  zoom:1;
 }
 
 #block-views-homepage-top-story-block-2 .view-content::before,
@@ -3528,10 +3520,11 @@ div.views-slideshow-cycle-main {height:220px;min-height:220px;}
   display: table;
 }
 
-#block-views-homepage-top-story-block-1 .view-content::after {
+#block-views-homepage-top-story-block-2 .view-content::after {
   clear: both;
 }
 
+.logged-in .view-homepage-top-story,
 .not-logged-in .view-homepage-top-story {
   position: relative;
   width: 478px;
