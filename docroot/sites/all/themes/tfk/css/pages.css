@@ -3525,4 +3525,5 @@ div.views-slideshow-cycle-main {height:220px;min-height:220px;}
   border: solid 6px #d71700;
   padding: 20px 10px 10px 10px;
   margin-bottom: 10px;
+  min-height: 270px;
 }
