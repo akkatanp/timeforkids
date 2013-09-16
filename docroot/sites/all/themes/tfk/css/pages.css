@@ -3470,8 +3470,8 @@ div.views-slideshow-cycle-main {height:220px;min-height:220px;}
   height: 64px;
 }
 
-#block-views-homepage-top-story-block-1 .attachment .view-homepage-top-story 
-#block-views-homepage-top-story-block-2 .attachment .view-homepage-top-story
+#block-views-homepage-top-story-block-1 .attachment .view-homepage-top-story, 
+#block-views-homepage-top-story-block-2 .attachment .view-homepage-top-story,
 #block-views-homepage-top-story-block-3 .attachment .view-homepage-top-story {
   position: absolute;
   top: 0;
