@@ -81,8 +81,13 @@
     if (document.URL.indexOf('/store/') != -1) {
       $('.store').addClass('active');
     }
+
+    // Fix tout alignment.
     if ($('#block-views-homepage-top-story-block-1').outerHeight() > $('.view-homepage-minisite').height()) {
        $('.view-homepage-minisite').height($('#block-views-homepage-top-story-block-1').outerHeight() - 17);
+    }
+    if ($('#block-views-homepage-top-story-block-2').outerHeight() > $('.view-homepage-minisite').height()) {
+       $('.view-homepage-minisite').height($('#block-views-homepage-top-story-block-2').outerHeight() - 17);
     }
 
     // Loop through magazines.
