@@ -3468,14 +3468,20 @@ div.views-slideshow-cycle-main {height:220px;min-height:220px;}
 
 #block-views-homepage-top-story-block-1 .attachment,
 #block-views-homepage-top-story-block-2 .attachment,
-#block-views-homepage-top-story-block-3 .attachment {
+#block-views-homepage-top-story-block-3 .attachment,
+#block-views-homepage-top-story-block-4 .attachment,
+#block-views-homepage-top-story-block-5 .attachment,
+#block-views-homepage-top-story-block-6 .attachment {
   position: relative;
   height: 64px;
 }
 
 #block-views-homepage-top-story-block-1 .attachment .view-homepage-top-story, 
 #block-views-homepage-top-story-block-2 .attachment .view-homepage-top-story,
-#block-views-homepage-top-story-block-3 .attachment .view-homepage-top-story {
+#block-views-homepage-top-story-block-3 .attachment .view-homepage-top-story,
+#block-views-homepage-top-story-block-4 .attachment .view-homepage-top-story,
+#block-views-homepage-top-story-block-5 .attachment .view-homepage-top-story,
+#block-views-homepage-top-story-block-6 .attachment .view-homepage-top-story {
   position: absolute;
   top: 0;
   left: 279px;
@@ -3497,18 +3503,6 @@ div.views-slideshow-cycle-main {height:220px;min-height:220px;}
 
 #block-views-homepage-top-story-block-2 .view-content::after {
   clear: both;
-}
-
-#block-views-homepage-top-story-block-2 .attachment {
-  position: relative;
-  height: 64px;
-}
-
-#block-views-homepage-top-story-block-2 .attachment .view-homepage-top-story {
-  position: absolute;
-  top: 0;
-  left: 279px;
-  min-height: 270px;
 }
 
 #block-views-minisite-articles-block-2 table {
@@ -3549,6 +3543,7 @@ div.views-slideshow-cycle-main {height:220px;min-height:220px;}
 #block-views-homepage-top-story-block-6 {
   border: solid 6px #d71700;
   margin-bottom:10px;
+  min-height:270px;
 }
 
 #block-views-homepage-top-story-block-3 .content::before,
