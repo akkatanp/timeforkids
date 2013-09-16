@@ -81,10 +81,10 @@
     if (document.URL.indexOf('/store/') != -1) {
       $('.store').addClass('active');
     }
-    if ($('.view-homepage-top-story').outerHeight() > $('.view-homepage-minisite').height()) {
-       $('.view-homepage-minisite').height($('.view-homepage-top-story').outerHeight() - 17);
+    if ($('#block-views-homepage-top-story-block-1').outerHeight() > $('.view-homepage-minisite').height()) {
+       $('.view-homepage-minisite').height($('#block-views-homepage-top-story-block-1').outerHeight() - 17);
     }
-    
+
     // Loop through magazines.
     var loop = 0;
     var magLoop = function() {
