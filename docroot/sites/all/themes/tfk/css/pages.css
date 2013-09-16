@@ -3555,3 +3555,7 @@ div.views-slideshow-cycle-main {height:220px;min-height:220px;}
 #block-views-homepage-top-story-block-3 .content::after {
   clear:both;
 }
+
+#block-views-homepage-top-story-block-3 .content::after {
+  zoom:1;
+}
