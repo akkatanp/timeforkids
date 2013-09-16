@@ -1120,6 +1120,7 @@ body.one-sidebar .secondary-touts-view td.col-2  {
     text-align: right;
     text-transform: uppercase;
     margin-bottom: 20px;
+    line-height: 10px;
 }
 
 .secondary-tout-image-credit {
@@ -3556,6 +3557,6 @@ div.views-slideshow-cycle-main {height:220px;min-height:220px;}
   clear:both;
 }
 
-#block-views-homepage-top-story-block-3 .content::after {
+#block-views-homepage-top-story-block-3 .content {
   zoom:1;
 }
