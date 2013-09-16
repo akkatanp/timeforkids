@@ -3489,6 +3489,7 @@ div.views-slideshow-cycle-main {height:220px;min-height:220px;}
   position:relative;
   float:left;
   zoom:1;
+  margin-top: 46px;
 }
 
 #block-views-homepage-top-story-block-2 .view-content::after {
