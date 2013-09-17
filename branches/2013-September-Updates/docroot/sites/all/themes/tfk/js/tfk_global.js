@@ -89,6 +89,12 @@
     if ($('#block-views-homepage-top-story-block-2').outerHeight() > $('.view-homepage-minisite').height()) {
        $('.view-homepage-minisite').height($('#block-views-homepage-top-story-block-2').outerHeight() - 17);
     }
+    if ($('#block-views-homepage-top-story-block-1').outerHeight() < $('.view-homepage-minisite').height()) {
+       $('#block-views-homepage-top-story-block-1').height($('.view-homepage-minisite').height() + 5);
+    }
+    if ($('#block-views-homepage-top-story-block-2').outerHeight() < $('.view-homepage-minisite').height()) {
+       $('#block-views-homepage-top-story-block-2').height($('.view-homepage-minisite').height() + 5);
+    }
 
     // Loop through magazines.
     var loop = 0;
@@ -104,7 +110,7 @@
         loop = 0;
       }
 
-      // Fade in at the same time.
+      // Fade in the new magazine at the same time.
       $magazines.eq(loop).delay(4000).fadeIn(1000,magLoop);
     };
     magLoop(); 
