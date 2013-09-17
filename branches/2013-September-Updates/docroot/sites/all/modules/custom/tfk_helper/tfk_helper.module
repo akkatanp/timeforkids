@@ -1311,16 +1311,10 @@ function tfk_helper_get_more_items() {
       
       // Slideshow thumbnails.
       if($result->node_type == 'slideshow') {
-        // Add title and alt attributes for SEO.
-        if(empty($result->field_field_image[0]['rendered']['#item']['alt'])) {
-          $result->field_field_image[0]['rendered']['#item']['alt'] = $result->node_title;
-        }
-        if(empty($result->field_field_image[0]['rendered']['#item']['title'])) {
-          $result->field_field_image[0]['rendered']['#item']['title'] = $result->node_title;
-        }
-        $result->field_field_image[0]['rendered']['#suffix'] = $icon;
-        $thumbnail = drupal_render($result->field_field_image[0]['rendered']);
         
+        // Use the lrg_sq_image field for a thumbnail.
+        $thumbnail = theme('image_style',array('style_name' => '115x115', 'path' => $result->field_field_lrg_sq_image[0]['raw']['uri'])).$icon;
+
         // Don't show this Video if it does not have a thumbnail.
         $continue = (empty($thumbnail)) ? TRUE : FALSE;
       }
