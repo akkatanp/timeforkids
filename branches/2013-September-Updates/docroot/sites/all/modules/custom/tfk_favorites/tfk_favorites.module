@@ -226,6 +226,8 @@ function tfk_favorites_preprocess_views_view_fields(&$variables, $hook) {
      if($content_type == 'pdf_quiz') {
        $thumbnail = theme('image', array('path' => drupal_get_path('module', 'tfk_search'). '/images/quiz_graphic.gif'));
        $body = '';
+     } else if ($content_type == 'slideshow') {
+       $thumbnail = render($variables['row']->field_large_sq_image[0]['rendered']);
      } else {
        $thumbnail = render($variables['row']->field_field_common_core_thumbnail[0]['rendered']);
      }
