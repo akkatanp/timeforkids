@@ -171,6 +171,11 @@ function _tfk_fav_del(){
  *
  * @param array $variables
  *   Stuff comming from views.
+ *
+ * Dev Note - Honestly, who thought it was a good idea to rewrite fields in a view and then
+ * rewrite them again in a preprocess hook? This is ridiculously confusing and unintuitive. - H
+ * 
+ * TODO: Refactor this (read: delete it and handle everything in the view or with view templates.)
  */
 function tfk_favorites_preprocess_views_view_fields(&$variables, $hook) {
   $view = $variables['view'];
@@ -226,13 +231,10 @@ function tfk_favorites_preprocess_views_view_fields(&$variables, $hook) {
      if($content_type == 'pdf_quiz') {
        $thumbnail = theme('image', array('path' => drupal_get_path('module', 'tfk_search'). '/images/quiz_graphic.gif'));
        $body = '';
-     } else if ($content_type == 'slideshow') {
-       $thumbnail = render($variables['row']->field_large_sq_image[0]['rendered']);
      } else {
        $thumbnail = render($variables['row']->field_field_common_core_thumbnail[0]['rendered']);
      }
      
-      
       // Override output.
       $variables['fields']['title']->content = '
         <div class="field-content row2">
@@ -296,8 +298,8 @@ function tfk_favorites_preprocess_views_view_fields(&$variables, $hook) {
       if($content_type == 'slideshow') {
         // This is a image that is related to the slideshow.
         // We need to link the that image to the slideshow, not the image itself.
-        if(!empty($variables['row']->field_field_image)) {
-          $_image = render($variables['row']->field_field_image);
+        if(!empty($variables['row']->field_large_sq_image)) {
+          $_image = render($variables['row']->field_large_sq_image);
           $thumbnail = l($_image. $icon, 'node/'. $variables['row']->nid, array('html' => TRUE, 'attributes' => array('title' => $variables['row']->node_title)));
         } else {
           $thumbnail = '';
