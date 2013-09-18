@@ -298,8 +298,8 @@ function tfk_favorites_preprocess_views_view_fields(&$variables, $hook) {
       if($content_type == 'slideshow') {
         // This is a image that is related to the slideshow.
         // We need to link the that image to the slideshow, not the image itself.
-        if(!empty($variables['row']->field_large_sq_image)) {
-          $_image = render($variables['row']->field_large_sq_image);
+        if(!empty($variables['row']->field_lrg_sq_image)) {
+          $_image = render($variables['row']->field_lrg_sq_image);
           $thumbnail = l($_image. $icon, 'node/'. $variables['row']->nid, array('html' => TRUE, 'attributes' => array('title' => $variables['row']->node_title)));
         } else {
           $thumbnail = '';
