@@ -171,6 +171,8 @@ function _tfk_fav_del(){
  *
  * @param array $variables
  *   Stuff comming from views.
+ *
+ * TODO: Refactor this to handle everything in the view or with view templates.
  */
 function tfk_favorites_preprocess_views_view_fields(&$variables, $hook) {
   $view = $variables['view'];
@@ -230,7 +232,6 @@ function tfk_favorites_preprocess_views_view_fields(&$variables, $hook) {
        $thumbnail = render($variables['row']->field_field_common_core_thumbnail[0]['rendered']);
      }
      
-      
       // Override output.
       $variables['fields']['title']->content = '
         <div class="field-content row2">
@@ -293,9 +294,9 @@ function tfk_favorites_preprocess_views_view_fields(&$variables, $hook) {
 
       if($content_type == 'slideshow') {
         // This is a image that is related to the slideshow.
-        // We need to link the that image to the slideshow, not the image itself.
-        if(!empty($variables['row']->field_field_image)) {
-          $_image = render($variables['row']->field_field_image);
+        if(!empty($variables['row']->field_field_lrg_sq_image)) {
+          $_image = render($variables['row']->field_field_lrg_sq_image);
+          $_image = theme('image_style', array('style_name'=>'115x115','path'=>$variables['row']->field_field_lrg_sq_image[0]['raw']['uri']));
           $thumbnail = l($_image. $icon, 'node/'. $variables['row']->nid, array('html' => TRUE, 'attributes' => array('title' => $variables['row']->node_title)));
         } else {
           $thumbnail = '';
@@ -344,12 +345,6 @@ function tfk_favorites_preprocess_views_view_list(&$variables, $hook) {
   $variables['list_type_prefix'] = '<ol id="tfk-search-results-photos-video" class="search-results">';
 }
 
-
-//function tfk_favorites_preprocess_views_view(&$variables, $hook) {
-//  $view = $variables['view'];
-//  if($view->name == 'user_favorites' && $view->current_display == 'page') {
-//  }
-//}
 
 /**
  * Implementation of hook_preprocess_page.
@@ -449,6 +444,5 @@ function tfk_favorites_preprocess_node(&$variables){
       $variables['store_items_bottom'] = $store_items_bottom;
 
   }
-
 
 }

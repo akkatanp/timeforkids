@@ -72,6 +72,7 @@
   <?php endif;?>
 
   <?php if(isset($tfk_search_cont_type)):?>
+    <!-- Content Type -->
     <div class="content-type"><?php print $tfk_search_cont_type;?></div>
   <?php endif;?>
   

@@ -146,10 +146,10 @@ function theme_pager_top(&$vars) {
     
   }
   
-  $sp_top = "<div class='sp-top'><h2>{$vars['pager_title']}</h2>";
+  $sp_top = "<!-- SP_Top --><div class='sp-top'><h2>{$vars['pager_title']}</h2>";
   $sp_top .= ((isset($item_list)) ? "<div class='sp-top-list'>$item_list</div>": ''). '</div>';
-  $sp_bottom = "<div class='sp-bottom'><em>{$vars['pager_active_filter']}</em></div>";
-  $markup = '<div id="tfk-search-pager-top">'. $sp_top. $sp_bottom. '</div>';
+  $sp_bottom = "<!-- SP_Bottom --><div class='sp-bottom'><em>{$vars['pager_active_filter']}</em></div>";
+  $markup = '<!-- Pager Top --><div id="tfk-search-pager-top">'. $sp_top. $sp_bottom. '</div>';
   
   return $markup;
 }

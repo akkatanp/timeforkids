@@ -3146,20 +3146,17 @@ function tfk_search_preprocess_search_result(&$vars) {
     break;
 
     case 'slideshow':
-      if(isset($node->field_slideshow_images)) {
-        $tmp_img_nid =  field_get_items('node', $node, 'field_slideshow_images');
-        $img_nid = $tmp_img_nid[0]['nid'];
-        $result = db_query('select fi.field_image_fid,fm.filename from {field_data_field_image} fi
-          left join {file_managed} fm on fi.field_image_fid = fm.fid
-          where fi.entity_type = :bundle_type and fi.entity_id = :img_nid',array('bundle_type'=>'node','img_nid'=>$img_nid));
-        $record = $result->fetch();
-        $file = file_load($record->field_image_fid);
-        if(!empty($file->uri)) {
-          $file->newpath = image_style_url($style, $file->uri);
-          $abspath = image_style_url($style, $file->uri);
+      if(isset($node->field_lrg_sq_image)){
+        $tmp_img = field_get_items('node',$node,'field_lrg_sq_image');
+        
+        if(isset($tmp_img[0]['uri'])) {
+          $abspath = image_style_url($style, $tmp_img[0]['uri']);
+          
           $icon = '<div class="icon"></div>';
-          $thumbnail = theme('image', array('path' => $abspath, 'alt' => $title, 'title' => $title, 'attributes' => $thumb_attr)). $icon;
+          $thumbnail = theme('image', array('path' => $abspath, 'alt' => $tmp_img[0]['title'], 'title' => $tmp_img[0]['title'], 'attributes' => $thumb_attr)). $icon;
           $vars['thumbnail'] = l($thumbnail, 'node/'. $vars['result']['fields']['entity_id'], $link_attr);
+        } else {
+          $vars['thumbnail'] = FALSE;
         }
       }
       
