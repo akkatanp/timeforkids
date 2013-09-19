@@ -172,10 +172,7 @@ function _tfk_fav_del(){
  * @param array $variables
  *   Stuff comming from views.
  *
- * Dev Note - Honestly, who thought it was a good idea to rewrite fields in a view and then
- * rewrite them again in a preprocess hook? This is ridiculously convoluted and unintuitive. - H
- * 
- * TODO: Refactor this (read: delete it and handle everything in the view or with view templates.)
+ * TODO: Refactor this to handle everything in the view or with view templates.
  */
 function tfk_favorites_preprocess_views_view_fields(&$variables, $hook) {
   $view = $variables['view'];
@@ -349,12 +346,6 @@ function tfk_favorites_preprocess_views_view_list(&$variables, $hook) {
 }
 
 
-//function tfk_favorites_preprocess_views_view(&$variables, $hook) {
-//  $view = $variables['view'];
-//  if($view->name == 'user_favorites' && $view->current_display == 'page') {
-//  }
-//}
-
 /**
  * Implementation of hook_preprocess_page.
  */
@@ -453,6 +444,5 @@ function tfk_favorites_preprocess_node(&$variables){
       $variables['store_items_bottom'] = $store_items_bottom;
 
   }
-
 
 }
