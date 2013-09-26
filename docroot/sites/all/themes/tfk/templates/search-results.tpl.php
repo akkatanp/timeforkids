@@ -22,6 +22,7 @@
  * @see template_preprocess_search_results()
  */
 ?>
+<!-- TFK Search Results -->
 <?php if ($search_results) : ?>
   
   <?php if(isset($custom_search)): ?>

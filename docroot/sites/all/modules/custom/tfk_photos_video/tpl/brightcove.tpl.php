@@ -20,6 +20,8 @@ found at https://accounts.brightcove.com/en/terms-and-conditions/.
   <param name="isUI" value="true" />
   <param name="dynamicStreaming" value="true" />
   <param name="wmode" value="transparent" />
+  <param name="includeAPI" value="true" />
+  <param name="templateLoadHandler" value="myTemplateLoaded" />
   <param name="@videoPlayer" value="<?php print $variables['video_id']; ?>" />
 </object>
 

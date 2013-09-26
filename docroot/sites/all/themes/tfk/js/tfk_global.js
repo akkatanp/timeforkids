@@ -67,24 +67,54 @@
       loginForm.removeAttr('id');
       loginForm.attr('id', 'user_login');
       loginForm.appendTo(lightBox);
-      
-      // disabled 5/15/2013 - nbailly
-      
-      // removed module encrypt submissions and jCryption libraries
-      // using SSL instead because of better security and compatibility
-      // as well as less delay on login form submissions
-      
-      // $("#user_login", context).jCryption();
-      
+  
     });
 
   };
   
-  // Colors in Minisite Menubar
   $(document).ready(function() {
+
+    // Colors in Menubar
     if (document.URL.indexOf('/minisite/') != -1) {
       $('.mini-sites').addClass('active');
     }
+    if (document.URL.indexOf('/store/') != -1) {
+      $('.store').addClass('active');
+    }
+
+    // Fix tout alignment.
+    if ($('#block-views-homepage-top-story-block-1').outerHeight() > $('.view-homepage-minisite').height()) {
+       $('.view-homepage-minisite').height($('#block-views-homepage-top-story-block-1').outerHeight() - 17);
+    }
+    if ($('#block-views-homepage-top-story-block-2').outerHeight() > $('.view-homepage-minisite').height()) {
+       $('.view-homepage-minisite').height($('#block-views-homepage-top-story-block-2').outerHeight() - 17);
+    }
+    if ($('#block-views-homepage-top-story-block-1').outerHeight() < $('.view-homepage-minisite').height()) {
+       $('#block-views-homepage-top-story-block-1').height($('.view-homepage-minisite').height() + 5);
+    }
+    if ($('#block-views-homepage-top-story-block-2').outerHeight() < $('.view-homepage-minisite').height()) {
+       $('#block-views-homepage-top-story-block-2').height($('.view-homepage-minisite').height() + 5);
+    }
+
+    // Loop through magazines.
+    var loop = 0;
+    var magLoop = function() {
+      var $magazines = $('#block-views-current-issue-widget-block .view-content .views-row');
+      
+      // Fade the current magazine out then go to the next one.
+      $magazines.eq(loop).delay(4000).fadeOut(1000);
+      loop++;
+      
+      // If we run out of elements, start back at the beginning.
+      if(!$magazines.eq(loop).length) {
+        loop = 0;
+      }
+
+      // Fade in the new magazine at the same time.
+      $magazines.eq(loop).delay(4000).fadeIn(1000,magLoop);
+    };
+    magLoop(); 
+    
   });
 
 })(jQuery);

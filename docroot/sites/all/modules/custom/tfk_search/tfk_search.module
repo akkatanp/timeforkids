@@ -595,12 +595,15 @@ function tfk_search_apachesolr_update_index(&$document, $node, $namespace) {
       $document->setField(TFK_SEARCH_COVER_STORY, 0);
     }
   }
-  if($node->type == 'book' || $node->type == "store_product") {
+  if($node->type == 'book' || $node->type == 'store_product' || $node->type == 'tfk_lesson_for_tablets') {
     if($node->type == 'book') {
       $tmp_body = field_get_items('node', $node, 'field_book_description');
     }
-     if($node->type == 'store_product') {
+    if($node->type == 'store_product') {
       $tmp_body = field_get_items('node', $node, 'field_product_description');
+    }
+    if($node->type == 'tfk_lesson_for_tablets') {
+      $tmp_body = field_get_items('node', $node, 'field_book_description');
     }
     $document->setField('content', $tmp_body[0]['value']);
   }
@@ -2149,7 +2152,7 @@ function tfk_search_apachesolr_modify_query($query, $caller) {
         
     // Anonymous content types.
     if(count($rls) == 1 && $rls[1] == 'anonymous user') {
-      $content_types = array('slideshow', 'video', 'atw_destination', 'minisite','tfk_extra','a_paper','grammar_practice','writing_tips','book','store_product');
+      $content_types = array('slideshow', 'video', 'atw_destination', 'minisite','tfk_extra','a_paper','grammar_practice','writing_tips','book','store_product','tfk_lesson_for_tablets');
       
       // If document type is article, make sure it is **NOT** a cover story.
       $article_subquery = apachesolr_drupal_query();
@@ -2171,7 +2174,7 @@ function tfk_search_apachesolr_modify_query($query, $caller) {
     // Logged in content types.
     } else {
       // Teachers can see cover stories.
-      $content_types = array('article', 'slideshow', 'video', 'atw_destination', 'minisite', 'tfk_extra', 'worksheet', 'mini_lesson', 'a_paper', 'grammar_practice', 'writing_tips', 'pdf_quiz', 'common_core_standards','book','store_product');
+      $content_types = array('article', 'slideshow', 'video', 'atw_destination', 'minisite', 'tfk_extra', 'worksheet', 'mini_lesson', 'a_paper', 'grammar_practice', 'writing_tips', 'pdf_quiz', 'common_core_standards','book','store_product','tfk_lesson_for_tablets');
       
       $ct_subquery = apachesolr_drupal_query();
       foreach($content_types as $content_type) {
@@ -3146,20 +3149,17 @@ function tfk_search_preprocess_search_result(&$vars) {
     break;
 
     case 'slideshow':
-      if(isset($node->field_slideshow_images)) {
-        $tmp_img_nid =  field_get_items('node', $node, 'field_slideshow_images');
-        $img_nid = $tmp_img_nid[0]['nid'];
-        $result = db_query('select fi.field_image_fid,fm.filename from {field_data_field_image} fi
-          left join {file_managed} fm on fi.field_image_fid = fm.fid
-          where fi.entity_type = :bundle_type and fi.entity_id = :img_nid',array('bundle_type'=>'node','img_nid'=>$img_nid));
-        $record = $result->fetch();
-        $file = file_load($record->field_image_fid);
-        if(!empty($file->uri)) {
-          $file->newpath = image_style_url($style, $file->uri);
-          $abspath = image_style_url($style, $file->uri);
+      if(isset($node->field_lrg_sq_image)){
+        $tmp_img = field_get_items('node',$node,'field_lrg_sq_image');
+        
+        if(isset($tmp_img[0]['uri'])) {
+          $abspath = image_style_url($style, $tmp_img[0]['uri']);
+          
           $icon = '<div class="icon"></div>';
-          $thumbnail = theme('image', array('path' => $abspath, 'alt' => $title, 'title' => $title, 'attributes' => $thumb_attr)). $icon;
+          $thumbnail = theme('image', array('path' => $abspath, 'alt' => $tmp_img[0]['title'], 'title' => $tmp_img[0]['title'], 'attributes' => $thumb_attr)). $icon;
           $vars['thumbnail'] = l($thumbnail, 'node/'. $vars['result']['fields']['entity_id'], $link_attr);
+        } else {
+          $vars['thumbnail'] = FALSE;
         }
       }
       
@@ -3304,6 +3304,36 @@ function tfk_search_preprocess_search_result(&$vars) {
         }
       }
     break;
+
+    case 'tfk_lesson_for_tablets':
+      $link = '#';
+      $tmp_link = field_get_items('node',$node,'field_book_link');
+      if(isset($tmp_link[0]['value'])) {
+          $link = $tmp_link[0]['value'];
+      }
+      $vars['tfk_search_result_link_1'] = l('Buy Now!', $link);
+      $tmp_title = $vars['title'];
+      $ttl = preg_replace('/<a href=".*?">/','<a href="'.$link.'">',$tmp_title);
+      $vars['title'] = $ttl;
+      
+      $tmp_teaser = field_get_items('node',$node,'field_book_description');
+      $teaser = $tmp_teaser[0]['value'];
+      
+      if(isset($node->field_book_image)){
+        $tmp_img = field_get_items('node',$node,'field_book_image');
+        
+        if(isset($tmp_img[0]['uri'])) {
+          $abspath = image_style_url($style, $tmp_img[0]['uri']);
+          
+          $icon = '<div class="icon"></div>';
+          $thumbnail = theme('image', array('path' => $abspath, 'alt' => $tmp_img[0]['title'], 'title' => $tmp_img[0]['title'], 'attributes' => $thumb_attr)). $icon;
+          $vars['thumbnail'] = l($thumbnail, $link, $link_attr);
+        } else {
+          $vars['thumbnail'] = FALSE;
+        }
+      }
+    break;
+
     
     //default:
     //  ;
