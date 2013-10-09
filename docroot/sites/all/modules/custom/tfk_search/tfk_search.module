@@ -2602,6 +2602,10 @@ function tfk_search_preprocess_search_result(&$vars) {
   if($vars['tfk_search_cont_type'] == 'SLIDESHOW'){
       $vars['tfk_search_cont_type'] = 'SLIDE SHOW';
   }
+
+  if($vars['tfk_search_cont_type'] == 'TFK_LESSON_FOR_TABLETS' || $vars['tfk_search_cont_type'] == 'TFK LESSON FOR TABLETS') {
+      $vars['tfk_search_cont_type'] = 'TFK LESSONS FOR TABLETS';
+  }
  
   // Add specific template suggestions for invividual results on photos and video.
   // Shuffle the order of the suggestions to prioritize the use of our template on top of the default.
@@ -3423,7 +3427,7 @@ function tfk_search_preprocess_search_result(&$vars) {
     // Unset stuff that we are not going to use.
     unset($vars['info']);
   }
-
+print_r($vars);
 }
 
 /**

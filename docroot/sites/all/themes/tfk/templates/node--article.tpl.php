@@ -144,8 +144,11 @@ if(count(arg()) == 4) {
 	  <h1><?php print $title; ?></h1>
       <?php print render($content);?><br/>
 
+          <!-- Link to Print the Article -->
+          <div id = "print-link"><a href="/node/<?php print $node->nid; ?>/print"> Print </a></div>
+
           <?php if($is_anon == 0 && $visible == 1  ):?>
-            <b>Additional Content:</b><br/>
+            <br/><b>Additional Content:</b><br/>
             <?php  print render($addit_content); ?>
           <?php endif;?>
             
@@ -155,9 +158,6 @@ if(count(arg()) == 4) {
             
   </div>
   
-  <!-- Link to Print the Article -->
-  <div id = "print-link"><a href="/node/<?php print $node->nid; ?>/print"> Print </a></div>
-
   <?php print render($content['links']); ?>
 
   <?php print render($content['comments']); ?>
