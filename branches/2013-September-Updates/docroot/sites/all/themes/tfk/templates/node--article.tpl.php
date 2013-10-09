@@ -114,7 +114,7 @@ if(count(arg()) == 4) {
             //unset($content['group_date_and_author']['field_article_byline']);
           }?>
 
-<div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?>  <?php if($is_kid_reporter_article == 1){echo 'is-kid-reporter-article';}?> clearfix"<?php print $attributes; ?>>
+<div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?>  <?php if($is_kid_reporter_article == 1){print 'is-kid-reporter-article';}?> clearfix"<?php print $attributes; ?>>
 
   <?php print $user_picture; ?>
 
@@ -154,6 +154,9 @@ if(count(arg()) == 4) {
             <?php endif;?>
             
   </div>
+  
+  <!-- Link to Print the Article -->
+  <div id = "print-link"><a href="/node/<?php print $node->nid; ?>/print"> Print </a></div>
 
   <?php print render($content['links']); ?>
 
