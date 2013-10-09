@@ -12,10 +12,10 @@
       });
       
       //lightbox
-      $('#login-link', context).loginBox(context);
+      $('.login-link', context).loginBox(context);
       if ($('.field-type-video', context).length > 0) {
         //Need to hide video if there is one present. This solution is preferable over wmode=transparent since changing wmode causes issues with the playback controls on quicktime videos
-        $('#login-link', context).click(function(){
+        $('.login-link', context).click(function(){
           $('.field-type-video').css('visibility','hidden');//Video doesn't come back if you hit close-button instead of logging in but that's acceptable
         });
       }
