@@ -37,8 +37,10 @@ function tfk_print_theme() {
  *
  * Loads a node and splits it into variables, then calls the print theme.
  *
- * @param $nid
- *        - The node id of the page being passed to the theme
+ * @param int $nid
+ *    The node id of the node we want to print.
+ * @return
+ *    Renders the print_page theme with our node.
  */
 function display_print_page($nid) {
 
@@ -48,11 +50,11 @@ function display_print_page($nid) {
     if ($node->type == 'article') {
       
       // Populate the fields we're going to pass to the theme.
-      $title = $node->title;
-      $body = $node->field_body['und'][0]['value'];
-      $deck = $node->field_deck['und'][0]['value'];
+      $title  = $node->title;
+      $body   = $node->field_body['und'][0]['value'];
+      $deck   = $node->field_deck['und'][0]['value'];
       $byline = taxonomy_term_load($node->field_article_byline['und'][0]['tid'])->name;
-      $date = date('M d, Y', intval($node->field_date['und'][0]['value']));
+      $date   = date('M d, Y', intval($node->field_date['und'][0]['value']));
       $backlink = '<a href="/node/' . $node->nid . '">&laquo; Back to Article</a>';
 
       // Make sure there's a photo field so we don't serve a broken image.
@@ -63,8 +65,6 @@ function display_print_page($nid) {
       }
 
     }
-
-    //print_r($node);
 
     // Add the parameters to an array to pass to the theme function.
     $options = array(
