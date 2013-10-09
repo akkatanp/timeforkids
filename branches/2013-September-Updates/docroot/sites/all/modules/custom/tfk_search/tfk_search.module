@@ -3201,29 +3201,6 @@ function tfk_search_preprocess_search_result(&$vars) {
         $vars['date'] = date('F j, Y', $date[0]['value']);
       }
 
-        //this is commented out because we do not longer use "tout image" field in the article
-        //I dont want to delete in case they will change their mind again
-        //
-        //
-//      if(isset($node->field_tout_image)){
-//        $tmp_img_nid =  field_get_items('node', $node, 'field_tout_image');
-//        $img_nid = $tmp_img_nid[0]['nid'];
-//
-//        $result = db_query('select fi.field_image_fid,fm.filename from {field_data_field_image} fi
-//          left join {file_managed} fm on fi.field_image_fid = fm.fid
-//          where fi.entity_type = :bundle_type and fi.entity_id = :img_nid',array('bundle_type'=>'node','img_nid'=>$img_nid));
-//        $record = $result->fetch();
-//        if($record) {
-//          $uri = file_build_uri(basename($record->filename));
-//          if(file_exists(drupal_realpath($uri))) {
-//            $file->newpath = image_style_url($style, $uri);
-//            $abspath = image_style_url($style, $uri);
-//            $icon = '<div class="icon"></div>';
-//            $thumbnail = theme('image', array('path' => $abspath, 'alt' => $title, 'title' => $title, 'attributes' => $thumb_attr)). $icon;
-//            $vars['thumbnail'] = l($thumbnail, 'node/'. $vars['result']['fields']['entity_id'], $link_attr);
-//          }
-//        }
-//      }
       if(isset($node->field_article_category)){
         $tmp_tid = field_get_items('node', $node, 'field_article_category');
         $tid = $tmp_tid[0]['tid'];
@@ -3427,7 +3404,6 @@ function tfk_search_preprocess_search_result(&$vars) {
     // Unset stuff that we are not going to use.
     unset($vars['info']);
   }
-print_r($vars);
 }
 
 /**
