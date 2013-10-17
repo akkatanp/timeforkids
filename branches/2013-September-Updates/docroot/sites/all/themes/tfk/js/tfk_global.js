@@ -99,7 +99,7 @@
     // Loop through magazines.
     var loop = 0;
     var magLoop = function() {
-      var $magazines = $('#block-views-current-issue-widget-block .view-content .views-row');
+      var $magazines = $('.current-issue-widget-redux .view-current-issue-widget');
       
       // Fade the current magazine out then go to the next one.
       $magazines.eq(loop).delay(4000).fadeOut(1000);

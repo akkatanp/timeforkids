@@ -3617,3 +3617,45 @@ div.views-slideshow-cycle-main {height:220px;min-height:220px;}
     border-top: 1px solid #badafb;
     border-bottom: 1px solid #badafb;
   }
+
+/* Magazine Widget Redux */
+.current-issue-widget-redux {
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.current-issue-widget-redux .title {
+    font: normal 12px "arial black", arial, san-serif;
+    text-align: center;
+    color: #FFF;
+    padding: 6px 0;
+    margin: 0;
+    background: #d71700;
+}
+
+.current-issue-widget-redux .magazines {
+    width: 152px;
+    background: white;
+    border: solid 1px #cecece;
+    border-top: none;
+    padding: 4px;
+    font-size: 11px;
+    min-height: 100px;
+    position: relative;
+}
+
+.current-issue-widget-redux .view-id-current_issue_widget {
+    position: absolute;
+    left: 4px;
+    top: 4px;
+}
+
+.current-issue-widget-redux .subscribe-now-redux {
+    top: 65px;
+    left: 89px;
+    font-size: 12px;
+    position: absolute;
+}
+
+
+
