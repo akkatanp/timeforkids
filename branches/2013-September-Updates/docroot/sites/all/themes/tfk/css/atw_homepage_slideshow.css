@@ -163,9 +163,15 @@ div#slideshow-container{
 }
 
 .regular #slideshow .inner img {
-	float: left;
-	width: 488px;
-	height: 268px;
+	float: none;
+	max-width: 488px;
+	max-height: 268px;
+	width: auto;
+	height: auto;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+	position: relative;
 }
 
 #slideshow-info .credit,
@@ -189,4 +195,11 @@ div#slideshow-container{
 .view-content h3 {
 	width: 250px;
 	float: left;
+}
+
+.inner .ss-wrap {
+    width: 488px;
+    float: left;
+    height: 268px;
+    display: block;
 }
