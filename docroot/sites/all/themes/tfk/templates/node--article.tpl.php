@@ -133,7 +133,7 @@ if(count(arg()) == 4) {
       <?php print $submitted; ?>
     </div>
   <?php endif; ?>
-
+  
   <div class="content"<?php print $content_attributes; ?>>
     <?php
       // We hide the comments and links now so that we can render them later.
@@ -141,11 +141,9 @@ if(count(arg()) == 4) {
       hide($content['links']);
 	print render($content['field_article_category']);?>
 
-	  <h1><?php print $title; ?></h1>
+	    <h1><?php print $title; ?></h1>
+  
       <?php print render($content);?><br/>
-
-          <!-- Link to Print the Article -->
-          <div id = "print-link"><a href="/node/<?php print $node->nid; ?>/print"> Print </a></div>
 
           <?php if($is_anon == 0 && $visible == 1  ):?>
             <br/><b>Additional Content:</b><br/>

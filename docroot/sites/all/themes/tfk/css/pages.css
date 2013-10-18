@@ -3589,14 +3589,21 @@ div.views-slideshow-cycle-main {height:220px;min-height:220px;}
 }
 
 #print-link {
-  margin-top: -15px;
   background-image: url('../images/print.png');
   background-repeat: no-repeat;
   line-height: 11px;
+  width: 50px;
+  position: absolute;
+  top: 2px;
+  right: 0;
 }
 
 #print-link a {
   padding-left: 16px;
+}
+
+.group_date_and_author {
+  position: relative;
 }
 
 /* For Teachers */
