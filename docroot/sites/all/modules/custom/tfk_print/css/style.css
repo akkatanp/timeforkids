@@ -99,6 +99,15 @@ object {
     line-height: 1.3em;
 }
 
+.caption p, .credit p {
+    margin: 0;
+}
+
+.credit {
+    text-align: right;
+    padding-right:5px;
+}
+
 .date {
     color: rgb(153, 153, 153);
     text-transform: uppercase;
