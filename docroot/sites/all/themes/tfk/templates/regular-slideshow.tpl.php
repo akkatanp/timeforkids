@@ -13,7 +13,7 @@
 		<div class="outer">
 			<div class="inner">
 			<?php foreach($images_data as $image_k => $image_obj): ?>
-				<img src="<?php echo $image_obj['image_path']; ?>" />
+				<div class="ss-wrap"><img src="<?php echo $image_obj['image_path']; ?>" /></div>
 			<?php endforeach;?>
 			</div>
 		</div>
