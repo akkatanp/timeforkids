@@ -48,10 +48,10 @@ object {
 }
 
 #byline {
-        font-size: 10px;
-        padding-bottom: 10px;
-        border-bottom: dotted 1px #cecece;
-        margin-bottom: 20px;
+    font-size: 10px;
+    padding-bottom: 10px;
+    border-bottom: dotted 1px #cecece;
+    margin-bottom: 20px;
 }
 
 #logo {  
@@ -97,7 +97,7 @@ object {
 .caption, .credit {
     font-size: 10px;
     line-height: 1.3em;
-    max-width: 488px; 
+    max-width: 488px;
 }
 
 .caption p, .credit p {
@@ -123,3 +123,4 @@ object {
 .cf:after {
     clear: both;
 }
+
