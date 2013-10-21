@@ -113,6 +113,7 @@
       // Fade in the new magazine at the same time.
       $magazines.eq(loop).delay(4000).fadeIn(1000,magLoop);
     };
+    
     magLoop(); 
     
   });

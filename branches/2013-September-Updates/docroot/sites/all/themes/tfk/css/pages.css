@@ -3664,5 +3664,9 @@ div.views-slideshow-cycle-main {height:220px;min-height:220px;}
     position: absolute;
 }
 
+.view-display-id-g2, .view-display-id-g34, .view-display-id-g56 {
+  display: none;
+}
+
 
 
