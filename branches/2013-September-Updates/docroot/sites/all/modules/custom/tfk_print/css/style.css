@@ -97,7 +97,7 @@ object {
 .caption, .credit {
     font-size: 10px;
     line-height: 1.3em;
-    max-width: 488px;
+    max-width: 488px; 
 }
 
 .caption p, .credit p {
