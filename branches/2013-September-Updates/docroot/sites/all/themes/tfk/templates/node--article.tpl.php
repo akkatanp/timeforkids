@@ -81,18 +81,6 @@
  * @see template_process()
  */
 
-// If the article is For Teachers then render the subscribers only node.
-if ($is_anon == 1 && $content['field_article_category']['#object']->field_article_category['und'][0]['taxonomy_term']->name == 'For Teachers') {
-    
-    // Load the access denied node (which happens to be 94246)
-    $test = node_load(94246);
-    
-    print '<div id="for-teachers">';
-    print drupal_render(node_view($test));
-    print '</div>';
-
-} else {
-
 if($is_anon == 1){
   unset($content['group_additional_content']);
 }else{
@@ -172,4 +160,3 @@ if(count(arg()) == 4) {
   <?php print render($content['comments']); ?>
 
 </div><!-- /.node -->
-<?php }//end else?>
