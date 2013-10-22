@@ -3670,6 +3670,9 @@ div.views-slideshow-cycle-main {height:220px;min-height:220px;}
 
 .field-name-field-article-byline {
   max-width: 310px;
+}
+
+.field-name-field-article-byline .field-item {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
