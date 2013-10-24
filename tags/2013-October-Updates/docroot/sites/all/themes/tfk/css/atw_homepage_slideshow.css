@@ -1,0 +1,205 @@
+h2.block-title { 
+	display: none;
+}
+
+#slideshow-container {
+	border: solid 1px #cecece;
+	padding: 10px 9px;
+	margin-bottom: 10px;
+}
+
+#slideshow-container h1 {
+	font: bold 30px arial;
+	line-height: 1;
+	margin: 10px 0 4px 0;
+}
+
+#slideshow-container p {
+	margin: 0;
+	line-height: 15px;
+}
+
+#slideshow-container p a {
+	display: block;
+	margin-top: 10px;
+}
+
+#slideshow-container #slideshow-controls {
+	width: 488px;
+	height: 25px;
+	margin-bottom: 10px;
+}
+
+#slideshow-container #slideshow-controls #prev-slide {
+	float: left;
+	width: 35px;
+	height: 25px;
+	background: url("../images/slideshow-left-arrow.png") no-repeat;
+	cursor: pointer;
+}
+
+#slideshow-container #slideshow-controls #next-slide {
+	float: left;
+	width: 35px;
+	height: 25px;
+	background: url("../images/slideshow-right-arrow.png") no-repeat;
+	cursor: pointer;
+}
+
+#slideshow-container #slideshow-controls #slide-count {
+	float: left;
+	width: 418px;
+	height: 12px;
+	line-height: 1;
+	padding: 7px 0 6px 0;
+	text-align: center;
+}
+
+#slideshow-container #slideshow {
+	position: relative;
+	width: 488px;
+	height: 360px;
+}
+div#slideshow-container{
+        position:relative;
+        left:-10000px;/*Hide until we are done loading*/
+}
+
+#slideshow-container.regular #slideshow {
+	position: relative;
+	width: 488px;
+	height: 268px;
+}
+
+#slideshow-container .foot-credit {
+	text-align:right;
+	text-transform: uppercase;
+	font: normal 9px Arial;
+	color: #999;
+}
+
+#slideshow .header {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 488px;
+	height: 100px;
+	background: url(../images/atw-head.png) no-repeat;
+	z-index: 2;
+}
+
+#slideshow .footer {
+	position: absolute;
+	top: 328px;
+	left: 0px;
+	width: 476px;
+	height: 20px;
+	padding: 6px;
+	background: black;
+	opacity: 0.75;
+	z-index: 2;
+	color: white;
+}
+
+#slideshow .footer ul#clicks {
+	margin: 0;
+	list-style-type: none;
+	float: right;
+	opacity: 1;
+}
+
+#slideshow .footer ul#clicks li {
+	float: left;
+	cursor: pointer;
+	height: 7px;
+	width: 7px;
+	margin: 6px 4px 7px 4px;
+	background: url(../images/slideshow-white-dot.png) no-repeat;
+	z-index: 2;
+}
+
+#slideshow .footer ul#clicks li.active {
+	background: url(../images/slideshow-red-dot.png) no-repeat;
+}
+
+#slideshow .footer .title-container {
+	position: relative;
+	float: left;
+	height: 20px;
+	padding: 0 6px;
+	color: white;
+	font: bold 12px arial;
+	line-height: 20px;
+}
+
+
+#slideshow .outer {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 488px;
+	height: 360px;
+	overflow: hidden;
+}
+
+#slideshow .inner {
+	position: absolute;
+	top: 100px;
+	left: 0px;
+	height: 260px;
+}
+
+.regular #slideshow .inner {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	height: 268px;
+}
+
+#slideshow .inner img {
+	float: left;
+	width: 488px;
+	height: 260px;
+}
+
+.regular #slideshow .inner img {
+	float: none;
+	max-width: 488px;
+	max-height: 268px;
+	width: auto;
+	height: auto;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+	position: relative;
+}
+
+#slideshow-info .credit,
+#slideshow-info .caption {
+	text-align: right;
+	font: normal 9px arial;
+	color: #999;
+}
+
+#slideshow-info .cap-credit {
+  font: normal 11px arial;
+  color: #999;
+  text-align: right;
+  padding-right: 5px;
+}
+
+#slideshow-info h1 {
+	margin: 4px 0 0;
+}
+
+.view-content h3 {
+	width: 250px;
+	float: left;
+}
+
+.inner .ss-wrap {
+    width: 488px;
+    float: left;
+    height: 268px;
+    display: block;
+}
