@@ -22,8 +22,10 @@
  * @see template_preprocess_search_results()
  */
 ?>
+<!-- TFK Photo Video Search Results -->
 <?php if ($search_results) : ?>
   <?php print $pager_top; ?>
+  <!-- Results List -->
   <ol id="tfk-search-results-photos-video">
     <?php print $search_results; ?>
   </ol>
