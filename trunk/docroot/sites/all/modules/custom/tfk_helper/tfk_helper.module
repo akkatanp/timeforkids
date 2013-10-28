@@ -372,6 +372,8 @@ function tfk_helper_preprocess_page(&$variables) {
       
     }
   }
+
+
 }
 
 /**
@@ -940,8 +942,11 @@ function tfk_helper_block_view($delta='') {
     case 'featured_block_sidebar_slideshow':
       drupal_add_css(drupal_get_path('module', 'tfk_helper'). '/css/tfk_helper_featured_block.css', 'file');
       $node = menu_get_object('node', 1);
-      $image_field = ($node->type == 'video') ? 'field_video_thumbnail' : 'field_image';
+      
+      $image_field = ($node->type == 'video') ? 'field_video_thumbnail' : 'field_lrg_sq_image';
+      
       $featured_item = tfk_helper_get_featured_block_sidebar('photos_videos_featured', $image_field);
+
       if($featured_item != FALSE) {
         $block['content'] = theme('featured_block_sidebar', $featured_item);
       }
@@ -1311,16 +1316,10 @@ function tfk_helper_get_more_items() {
       
       // Slideshow thumbnails.
       if($result->node_type == 'slideshow') {
-        // Add title and alt attributes for SEO.
-        if(empty($result->field_field_image[0]['rendered']['#item']['alt'])) {
-          $result->field_field_image[0]['rendered']['#item']['alt'] = $result->node_title;
-        }
-        if(empty($result->field_field_image[0]['rendered']['#item']['title'])) {
-          $result->field_field_image[0]['rendered']['#item']['title'] = $result->node_title;
-        }
-        $result->field_field_image[0]['rendered']['#suffix'] = $icon;
-        $thumbnail = drupal_render($result->field_field_image[0]['rendered']);
         
+        // Use the lrg_sq_image field for a thumbnail.
+        $thumbnail = theme('image_style',array('style_name' => '115x115', 'path' => $result->field_field_lrg_sq_image[0]['raw']['uri'])).$icon;
+
         // Don't show this Video if it does not have a thumbnail.
         $continue = (empty($thumbnail)) ? TRUE : FALSE;
       }
@@ -1423,10 +1422,9 @@ class tfkHelperFeaturedItem {
     $this->link = l('See '. ucfirst($tmp_type), $url);
     
     if($featured_node->type == 'slideshow') {
-      $featured_nodes = field_get_items('node', $featured_node, 'field_slideshow_images');
-      $image_node = node_load($featured_nodes[0]['nid']);
-      $_thumbnail_field = field_get_items('node', $image_node, self::$thumbnail_field);
-      $this->get_thumbnail((object) $_thumbnail_field[0], $url);
+      $icon = '<div class="icon"></div>';
+      $link_options = array('html' => TRUE, 'attributes' => array('class' => 'featured-block-sidebar-img content-type-slideshow'));
+      $this->image = l(theme('image_style', array('style_name' => '115x115','path' => $featured_node->field_lrg_sq_image['und'][0]['uri'])).$icon, $url, $link_options);
     } else {
       $_thumbnail_field = field_get_items('node', $featured_node, self::$thumbnail_field);
       if(!empty($_thumbnail_field)) {

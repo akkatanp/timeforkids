@@ -50,5 +50,12 @@
     <?php foreach ($items as $delta => $item): ?>
       <div class="field-item <?php print $delta % 2 ? 'odd' : 'even'; ?>"<?php print $item_attributes[$delta]; ?>><?php print render($item); ?></div>
     <?php endforeach; ?>
-  </div>
+  </div>    
 </div>
+
+<!-- Link to Print the Article -->
+<?php 
+    // Get our node's id
+    $nid = $variables['element']['#object']->nid;
+?>
+<div id = "print-link"><a href="/node/<?=$nid?>/print" target="_blank"> Print </a></div>
