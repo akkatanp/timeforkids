@@ -81,7 +81,6 @@
  * @see template_process()
  */
 
-
 if($is_anon == 1){
   unset($content['group_additional_content']);
 }else{
@@ -114,7 +113,7 @@ if(count(arg()) == 4) {
             //unset($content['group_date_and_author']['field_article_byline']);
           }?>
 
-<div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?>  <?php if($is_kid_reporter_article == 1){echo 'is-kid-reporter-article';}?> clearfix"<?php print $attributes; ?>>
+<div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?>  <?php if($is_kid_reporter_article == 1){print 'is-kid-reporter-article';}?> clearfix"<?php print $attributes; ?>>
 
   <?php print $user_picture; ?>
 
@@ -133,7 +132,7 @@ if(count(arg()) == 4) {
       <?php print $submitted; ?>
     </div>
   <?php endif; ?>
-
+  
   <div class="content"<?php print $content_attributes; ?>>
     <?php
       // We hide the comments and links now so that we can render them later.
@@ -141,11 +140,12 @@ if(count(arg()) == 4) {
       hide($content['links']);
 	print render($content['field_article_category']);?>
 
-	  <h1><?php print $title; ?></h1>
+	    <h1><?php print $title; ?></h1>
+  
       <?php print render($content);?><br/>
 
           <?php if($is_anon == 0 && $visible == 1  ):?>
-            <b>Additional Content:</b><br/>
+            <br/><b>Additional Content:</b><br/>
             <?php  print render($addit_content); ?>
           <?php endif;?>
             
@@ -154,7 +154,7 @@ if(count(arg()) == 4) {
             <?php endif;?>
             
   </div>
-
+  
   <?php print render($content['links']); ?>
 
   <?php print render($content['comments']); ?>

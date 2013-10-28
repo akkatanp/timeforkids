@@ -15,7 +15,6 @@ dependencies[] = strongarm
 dependencies[] = taxonomy
 dependencies[] = tfk_favorites
 dependencies[] = tfk_search
-features[context][] = tfk_worksheets
 features[context][] = worksheets
 features[ctools][] = context:context:3
 features[ctools][] = strongarm:strongarm:1
