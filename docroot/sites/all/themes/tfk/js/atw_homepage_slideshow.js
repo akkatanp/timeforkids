@@ -102,6 +102,7 @@
 				
 				slideNum = nextSlideNum;
 				$('#slide-num').text(slideNum + 1);
+				resize();
 			}
 		};
 		
@@ -120,9 +121,35 @@
 				
 				slideNum = prevSlideNum;	
 				$('#slide-num').text(slideNum + 1);
+				resize();
 			}
 		};
 		
+		/**
+		 * Expand/Retract the image container for vertical slideshows
+		 * We call this function each time the nextSlide or prevSlide
+		 * function is called to adjust the container size for the new
+		 * image.
+		 * 
+		 * 10-29-13 HH
+		 */
+
+		var resize = function() {
+
+			// Set the container div of our slideshow to a variable.
+			var $container = $('#slideshow .outer');
+
+			// Set the height of the current slide image to another variable.
+			var slideHeight = $('#slideshow .ss-wrap img').eq(slideNum).css('height');
+
+			console.log(slideHeight);
+			
+			if ($container.css('height') != slideHeight) {
+				$container.css('height', slideHeight);
+			}
+			
+		};
+
 		if (numSlides) {
 			inner.css('width', numSlides * imgWidth + 'px');
 			prev.click(prevSlide);
