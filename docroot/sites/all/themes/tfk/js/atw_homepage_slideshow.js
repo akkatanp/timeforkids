@@ -142,7 +142,7 @@
 			// Set the height of the current slide image to another variable.
 			var slideHeight = $('#slideshow .ss-wrap img').eq(slideNum).css('height');
 
-			console.log(slideHeight);
+			//console.log(slideHeight);
 			
 			if ($container.css('height') != slideHeight) {
 				$container.css('height', slideHeight);
@@ -160,5 +160,6 @@
 				nextSlide();
 			}
 		}
+                resize();
 	};
 })(jQuery);
