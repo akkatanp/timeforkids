@@ -441,6 +441,7 @@ ul.links li {
   display: none;
 }
 
+/* tp: */
 #block-views-homepage-top-story-block-1,
 #block-views-homepage-top-story-block-2,
 #block-views-homepage-news-block-block-1,
@@ -448,6 +449,8 @@ ul.links li {
 #block-views-87292ca88f5f6512230be6a9f15f64e4 {
   position: relative;
   float: left;
+  border-style: solid;
+  width: 498px;
 }
 
 #block-views-homepage-top-story-block-1,
@@ -1084,7 +1087,13 @@ body.one-sidebar .secondary-touts-view td.col-2  {
   margin-right: 10px;
 }
 
+/* tp:
 .view-homepage-news-block table td .views-field-name,
+.view-teacher-news-news-block table td .views-field-field-article-category .field-content,
+.view-kid-reporters-channel-news-block table td .views-field-name 
+*/
+
+.view-homepage-news-block .views.row-1.views-field-name,
 .view-teacher-news-news-block table td .views-field-field-article-category .field-content,
 .view-kid-reporters-channel-news-block table td .views-field-name {
   background: #d71700;
@@ -1701,7 +1710,7 @@ body.one-sidebar .secondary-touts-view td.col-2  {
 .page-around-the-world .view-content table tr.row-17,
 .page-around-the-world .view-content table tr.row-19 {
   background: #ddd;
-}
+}#d71700
 
 .page-around-the-world .view-content table td {
   width: 242px;
@@ -3603,11 +3612,13 @@ div.views-slideshow-cycle-main {height:220px;min-height:220px;}
 }
 
 /* For Teachers */
-.front table tr.row-1 td.col-3 {
+/* tp: */
+/* .front table tr.row-1 td.col-3  */
+.view-clone-of-homepage-news-block-for-teachers .views-row-1 {
   background-color: #dfeffd;
   background-image: url('/sites/all/themes/tfk/images/for-teachers-ribbon.png');
   background-repeat: no-repeat;
-  background-position: 0 14px;
+  background-position: 10 20px;
   border: 1px solid #badafb;
 }
 
@@ -3620,6 +3631,89 @@ div.views-slideshow-cycle-main {height:220px;min-height:220px;}
   border-top: 1px solid #badafb;
   border-bottom: 1px solid #badafb;
   }
+  
+  
+/* tp: */
+/* Must add code for anon version */
+  #block-views-homepage-news-block-block-1 .views-row.views-row-1 {
+    position: relative;
+    display: block;
+    float: left;
+    width: 229px;
+    height: 268px;
+    padding: 20px 9px;
+    border: solid 1px #cecece;
+    vertical-align: top;
+  }
+  
+  #block-views-homepage-news-block-block-1 .views-row.views-row-2 {
+    position: relative;
+    display: block;
+    float: left;
+    width: 229px;
+    height: 268px;
+    padding: 20px 9px;
+    border: solid 1px #cecece;
+    vertical-align: top;
+  }
+  
+  #block-views-homepage-news-block-block-1 .views-row.views-row-3 {
+    position: relative;
+    display: block;
+    float: left;
+    width: 229px;
+    height: 268px;
+    padding: 20px 9px;
+    border: solid 1px #cecece;
+    vertical-align: top;
+  }
+  
+  #block-views-homepage-news-block-block-1 .views-row.views-row-4 {
+    position: relative;
+    display: block;
+    float: left;
+    width: 229px;
+    height: 268px;
+    padding: 20px 9px;
+    border: solid 1px #cecece;
+    vertical-align: top;
+  }
+  
+  #block-views-homepage-news-block-block-1 .views-row.views-row-5 {
+    position: relative;
+    display: block;
+    float: left;
+    width: 229px;
+    height: 268px;
+    padding: 20px 9px;
+    border: solid 1px #cecece;
+    vertical-align: top;
+    left: 500px;
+    top: -310px;
+  }
+  
+  #block-views-homepage-news-block-block-1 .views-row.views-row-6 {
+    position: relative;
+    display: block;
+    float: left;
+    width: 229px;
+    height: 268px;
+    padding: 20px 9px;
+    border: solid 1px #cecece;
+    vertical-align: top;
+  }
+  
+  .view.view-clone-of-homepage-news-block-for-teachers .views-row.views-row-1 {
+    position: relative;
+    display: block;
+    float: left;
+    width: 229px;
+    height: 268px;
+    padding: 20px 9px;
+    border: solid 1px #cecece;
+    vertical-align: top;
+  }
+
 
 /* Magazine Widget Redux */
 .current-issue-widget-redux {

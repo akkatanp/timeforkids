@@ -300,7 +300,7 @@ function tfk_helper_theme() {
  * Deny access for anonymous users to restricted content types.
  */
 function tfk_helper_node_access($node, $op, $account) {
-
+  
   // Deny access to anonymous user to mini-lesson, and other nodes.
   // Check for $node type, sometimes it evaluates to a "global_right_sidebar_promo" string, "create" op.
   if($account->uid == 0 && is_object($node)) {
@@ -807,9 +807,9 @@ function tfk_helper_preprocess_views_view_fields(&$variables, $hook) {
   }
   
   // Additional content Views.
-  $ac_views = array('homepage_top_story', 'homepage_news_block', 'homepage_minisite','minisite_articles');
+  // tp: 11-07-2013
+  $ac_views = array('homepage_top_story', 'homepage_news_block', 'homepage_news_block_for_teachers', 'homepage_minisite', 'minisite_articles');
   if(array_search($view->name, $ac_views) !== FALSE && !$view->is_attachment) {
-    
     // Detect additional content. Generic conditional applies to multiple Views.
     $ac_keys = array('field_additional_content', 'field_related_articles', 'field_mini_lessons','field_minisite_related_content');
     $field_keys = array_keys($variables['fields']);
