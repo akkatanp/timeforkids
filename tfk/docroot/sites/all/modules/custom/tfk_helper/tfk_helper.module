@@ -962,7 +962,7 @@ function tfk_helper_block_info() {
     'cache' => DRUPAL_CACHE_GLOBAL,
   );
   
-  return $blocks;
+  return $blocks; 
 }
 
 /**

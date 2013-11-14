@@ -9,6 +9,8 @@
  */
 function tfk_photos_video_views_default_views() {
   $export = array();
+  
+  flog_it("tfk_photos_video_views_defualt_views");
 
   $view = new view();
   $view->name = 'photos_videos_more';

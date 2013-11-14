@@ -9,6 +9,8 @@
  */
 function tfk_photos_video_field_default_fields() {
   $fields = array();
+  
+  //flog_it("tfk_photos_video_field_default_fields...");
 
   // Exported field: 'node-image-body'.
   $fields['node-image-body'] = array(
