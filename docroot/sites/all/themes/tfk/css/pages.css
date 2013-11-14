@@ -1082,6 +1082,7 @@ ul.links li {
 .secondary-touts-view td.col-1,
 body.one-sidebar .secondary-touts-view td.col-2  {
   margin-right: 10px;
+  margin-bottom: 10px;
 }
 
 .view-homepage-news-block table td .views-field-name,
