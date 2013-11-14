@@ -95,7 +95,7 @@
     if ($('#block-views-homepage-top-story-block-2').outerHeight() < $('.view-homepage-minisite').height()) {
        $('#block-views-homepage-top-story-block-2').height($('.view-homepage-minisite').height() + 5);
     }
-
+    
     // Loop through magazines.
     var loop = 0;
     var magLoop = function() {
