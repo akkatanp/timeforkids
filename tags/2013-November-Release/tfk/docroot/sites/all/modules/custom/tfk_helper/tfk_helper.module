@@ -495,9 +495,9 @@ function tfk_helper_views_pre_execute(&$view) {
  * for handlers, so all data should be available.
  */
 function tfk_helper_views_pre_render(&$view) {
-    
+  //flog_it("tfk_helper_views_pre_render: view->name=".$view->name.", view->current_display=".$view->current_display);
   if($view->name == 'homepage_news_block') {
-    foreach($view->result as $item) {
+    foreach($view->result as $key=>$item) {
       /* This is kind of a kludge ... Because the Minisite content type uses the "body" field as its "deck"
        * and the "body" is used for different purposes in other content types that are also used in the
        * 'homepage_news_block' view, we cant's directly display that field - but we also need to display it
@@ -507,6 +507,20 @@ function tfk_helper_views_pre_render(&$view) {
        */
        if($item->node_type == 'minisite') {
            $item->field_field_deck = $item->field_body;
+       }
+
+       // tp: tfk-48: Update the homepage secondary touts, 3rd cell, with the For Teachers tout
+       if ($key == 2) {
+            // Reposition cells
+            $view->result[5] = $view->result[4];
+            $view->result[4] = $view->result[3];
+            $view->result[3] = $view->result[2];
+            
+            // Get the For Teachers view
+            $for_teachers_view = views_get_view_result('clone_of_homepage_news_block_for_teachers');
+            
+            // Copy the first for teachers view item into homepage secondary touts view -> 3rd cell
+            $view->result[2] = $for_teachers_view[0];
        }
     }
   }
@@ -520,13 +534,33 @@ function tfk_helper_views_pre_render(&$view) {
   }
   
   if(($view->name == 'minisite_articles') && (in_array($view->current_display,array('block','block_1')))) {
+    //flog_it("minisite_articles view...");
     foreach($view->result as $fields) {
+      //flog_it($fields); break;
+        
       if(isset($fields->field_field_slideshow_images[0])) {
         // If lrg_sq_image is set, display it only - do not use the slideshow image
         if(isset($fields->field_field_lrg_sq_image[0]))
         {
           unset($fields->field_field_slideshow_images[0]);
         }
+      }
+      
+      //flog_it($fields);
+      
+      // tp: tfk-43: Add video thumbnail back to minisite display
+      $tmp_nid = node_load($fields->node_field_data_field_articles_nid);
+      if ($tmp_nid->type == "video") {
+          //flog_it("found video content type...");
+          // Do not set the image_style for video
+          $fields->field_field_lrg_sq_image[0]['rendered']['#theme'] = "image_formatter";
+          $fields->field_field_lrg_sq_image[0]['rendered']['#item'] = $fields->_field_data['node_field_data_field_articles_nid']['entity']->field_video_thumbnail['und'][0];
+          //$fields->field_field_lrg_sq_image[0]['rendered']['#image_style'] = "tfk_square_small";
+          $fields->field_field_lrg_sq_image[0]['rendered']['#access'] = 1;
+          $fields->field_field_lrg_sq_image[0]['raw'] = $fields->_field_data['node_field_data_field_articles_nid']['entity']->field_video_thumbnail['und'][0];
+          
+          //flog_it($fields->_field_data['node_field_data_field_articles_nid']['entity']->field_video_thumbnail['und'][0]);
+          //flog_it($fields->field_field_lrg_sq_image);
       }
     }
   }
@@ -652,6 +686,7 @@ function tfk_helper_preprocess_html(&$variables, $hook) {
  * re #527, Add links to all homepage and site channel images.
  */
 function tfk_helper_preprocess_views_view_field(&$variables, $hook) {
+  //flog_it("tfk_helper_preprocess_views_view_field: hook=".$hook.", name=".$variables['view']->name);
   
   switch ($variables['view']->name) {
     // Main tout.
@@ -935,14 +970,15 @@ function tfk_helper_block_info() {
  */
 function tfk_helper_block_view($delta='') {
   $block = array();
+  //flog_it("tfk_helper_block_view: delta=".$delta);
+  // View: Minisite Articles: Minisite Articles Teacher Block
   
-  switch ($delta) {
-    
+  switch ($delta) { 
     // TFK Photos and Video Node Featured Block (Sidebar).
     case 'featured_block_sidebar_slideshow':
       drupal_add_css(drupal_get_path('module', 'tfk_helper'). '/css/tfk_helper_featured_block.css', 'file');
       $node = menu_get_object('node', 1);
-      
+      flog_it("MAKING SWITCH in CMS...");
       $image_field = ($node->type == 'video') ? 'field_video_thumbnail' : 'field_lrg_sq_image';
       
       $featured_item = tfk_helper_get_featured_block_sidebar('photos_videos_featured', $image_field);
@@ -1306,6 +1342,7 @@ function tfk_helper_get_more_items() {
       $result = $view->result[$index];
       
       // Video thumbnails.
+      flog_it("tfk_helper_get_more_items: video thumnails...");
       if($result->node_type == 'video') {
         $result->field_field_video_thumbnail[0]['rendered']['#suffix'] = $icon;
         $thumbnail = drupal_render($result->field_field_video_thumbnail[0]['rendered']);
@@ -1318,6 +1355,7 @@ function tfk_helper_get_more_items() {
       if($result->node_type == 'slideshow') {
         
         // Use the lrg_sq_image field for a thumbnail.
+          flog_it("making switch...");
         $thumbnail = theme('image_style',array('style_name' => '115x115', 'path' => $result->field_field_lrg_sq_image[0]['raw']['uri'])).$icon;
 
         // Don't show this Video if it does not have a thumbnail.
@@ -1424,6 +1462,7 @@ class tfkHelperFeaturedItem {
     if($featured_node->type == 'slideshow') {
       $icon = '<div class="icon"></div>';
       $link_options = array('html' => TRUE, 'attributes' => array('class' => 'featured-block-sidebar-img content-type-slideshow'));
+      flog_it("makeing switch 2....");
       $this->image = l(theme('image_style', array('style_name' => '115x115','path' => $featured_node->field_lrg_sq_image['und'][0]['uri'])).$icon, $url, $link_options);
     } else {
       $_thumbnail_field = field_get_items('node', $featured_node, self::$thumbnail_field);
