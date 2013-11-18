@@ -71,7 +71,7 @@
           loginForm = $('#user-login--2', context).clone();
       }
       
-      loginForm.removeAttr('id');
+      loginForm.removeAttr('id'); 
       loginForm.attr('id', 'user_login');
       console.log(loginForm.attr('id', 'user_login'));
       loginForm.appendTo(lightBox);
