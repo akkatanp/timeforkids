@@ -508,6 +508,26 @@ function tfk_helper_views_pre_render(&$view) {
        if($item->node_type == 'minisite') {
            $item->field_field_deck = $item->field_body;
        }
+       
+       /*
+       // tp: tfk-48: Update the homepage secondary touts, 3rd cell, with the For Teachers tout
+       if ($key == 2) {
+            // Get the For Teachers view and check if there is any content
+            $for_teachers_view = views_get_view_result('clone_of_homepage_news_block_for_teachers');
+            if ($for_teachers_view[0] != "") {
+                //flog_it("for_teachers_view[0] has data...");
+                // Reposition cells
+                $view->result[5] = $view->result[4];
+                $view->result[4] = $view->result[3];
+                $view->result[3] = $view->result[2];
+
+                // Copy the first for teachers view item into homepage secondary touts view -> 3rd cell
+                $view->result[2] = $for_teachers_view[0];
+            } else {
+                //flog_it("for_teachers_vie[0] has no data...");
+            }
+       }
+       */
     }
   }
   
@@ -789,9 +809,22 @@ function tfk_helper_preprocess_views_view_fields(&$variables, $hook) {
         unset($variables['fields']['body']);
         break;
       default:
-        $link = 'View Full Article';
+        // tfk-48: Check to see if article is flagged as for teachers.
+        /*
+        $flag = flag_get_flag("for_teachers");
+        if ($flag->is_flagged($variables['row']->nid)) {
+            $link = 'View For Teachers';
+        } else {
+            $link = 'View Full Article';
+        }
+        */
+      $link = 'View Full Article';
       break;
     }
+    
+    //$tmp_nid = node_load($variables['row']->nid);
+    //flog_it("nid=".$variables['row']->nid.", content_type=".$content_type.", link=".$link.", title=".$tmp_nid->title);
+    
     $variables['fields']['title_1'] = new stdClass();
     $variables['fields']['title_1']->content = '<span class="field-content">'. l($link, 'node/'. $variables['row']->nid). '</span>';
     
