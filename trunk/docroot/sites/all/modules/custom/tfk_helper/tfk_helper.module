@@ -495,7 +495,7 @@ function tfk_helper_views_pre_execute(&$view) {
  * for handlers, so all data should be available.
  */
 function tfk_helper_views_pre_render(&$view) {
-  flog_it("tfk_helper_views_pre_render: view->name=".$view->name.", view->current_display=".$view->current_display);
+  //flog_it("tfk_helper_views_pre_render: view->name=".$view->name.", view->current_display=".$view->current_display);
   /*
   foreach($view->result as $key=>$item) {
       flog_it("key=".$key.", nid=".$item->nid.", node_type=".$item->node_type.", title=".$item->node_title);
