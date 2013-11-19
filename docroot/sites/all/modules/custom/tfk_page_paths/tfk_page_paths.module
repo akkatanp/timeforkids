@@ -93,12 +93,12 @@ function tfk_page_paths_preprocess_page(&$variables){
     
     $args = arg();
     flog_it("***tfk_page_paths_preprocess_page:");
-    flog_it($args);
+    //flog_it($args);
     
     // tp: tfk-50: Check to see if an article is flagged as a Magazine article, and for an annoymous user.
     if ( isset($args[0]) && $args[0] == "node" && isset($variables['node']) ) { 
         $node = $args[1];
-        flog_it("content_type=".$variables['node']->type);
+        //flog_it("content_type=".$variables['node']->type);
         
        if ($variables['node']->type == "article") {
             $flag = flag_get_flag("magazine_cover_story");
@@ -107,7 +107,7 @@ function tfk_page_paths_preprocess_page(&$variables){
                 flog_it("$node is flagged as a Magazine article");
                 
                 // Check to see if this is an anonymous user: if it is -> 403
-                flog_it("anon=".$variables['is_anon']);
+                //flog_it("anon=".$variables['is_anon']);
                 
                 if ($variables['is_anon']) {
                    drupal_add_http_header('Status', '403 Forbidden');
