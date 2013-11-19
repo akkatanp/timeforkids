@@ -495,7 +495,14 @@ function tfk_helper_views_pre_execute(&$view) {
  * for handlers, so all data should be available.
  */
 function tfk_helper_views_pre_render(&$view) {
-    
+  flog_it("tfk_helper_views_pre_render: view->name=".$view->name.", view->current_display=".$view->current_display);
+  /*
+  foreach($view->result as $key=>$item) {
+      flog_it("key=".$key.", nid=".$item->nid.", node_type=".$item->node_type.", title=".$item->node_title);
+  }
+   * 
+   */
+ 
   if($view->name == 'homepage_news_block') {
     foreach($view->result as $item) {
       /* This is kind of a kludge ... Because the Minisite content type uses the "body" field as its "deck"
@@ -550,19 +557,14 @@ function tfk_helper_views_pre_render(&$view) {
       }
 
       // tp: tfk-43: Add video thumbnail back to minisite display
-      //flog_it($fields);
-      $tmp_nid = node_load($fields->node_field_data_field_articles_nid);
-      if ($tmp_nid->type == "video") {
-          //flog_it("found video content type...");
+      if (isset($fields->_field_data['node_field_data_field_articles_nid']['entity']->field_video_thumbnail['und'][0])) {
+          //flog_it("found video thumbnail...");
           // Do not set the image_style for video
           $fields->field_field_lrg_sq_image[0]['rendered']['#theme'] = "image_formatter";
           $fields->field_field_lrg_sq_image[0]['rendered']['#item'] = $fields->_field_data['node_field_data_field_articles_nid']['entity']->field_video_thumbnail['und'][0];
           //$fields->field_field_lrg_sq_image[0]['rendered']['#image_style'] = "tfk_square_small";
           $fields->field_field_lrg_sq_image[0]['rendered']['#access'] = 1;
-          $fields->field_field_lrg_sq_image[0]['raw'] = $fields->_field_data['node_field_data_field_articles_nid']['entity']->field_video_thumbnail['und'][0];
-
-          //flog_it($fields->_field_data['node_field_data_field_articles_nid']['entity']->field_video_thumbnail['und'][0]);
-          //flog_it($fields->field_field_lrg_sq_image);
+          $fields->field_field_lrg_sq_image[0]['raw'] = $fields->field_field_lrg_sq_image[0]['rendered']['#item'];
       }
 
     }
