@@ -97,8 +97,8 @@ function tfk_page_paths_preprocess_page(&$variables){
     
     // tp: tfk-50: Check to see if an article is flagged as a Magazine article, and for an annoymous user.
     if (isset($args[1])) { 
-        //$node = node_load($args[1]);
-        $node = $variables['node'];
+        $node = node_load($args[1]);
+        //$node = $variables['node'];
         //flog_it("content_type=".$node->type);
         
        if ($node->type == "article") {
