@@ -1,0 +1,309 @@
+<?php
+
+/**
+ * @file
+ * Provides the cache purging logic needed for TFK's flag-driven channels.
+ */
+
+
+/* Implementation of hook_flag.
+ */
+function advanced_purge_flag($action, $flag, $content_id, $account, $fcid, $clear_page = true) {
+  
+  // Flag name to Views bin/cid and Varnish path mapping.
+  $display_cache = array();
+  
+  // Homepage primary touts.
+  $display_cache['homepage_top_story'] = array();
+  $display_cache['homepage_top_story']['cache_block'] = array('views:homepage_top_story-block_1', 'views:homepage_top_story-block_2'); // Block cache bin/cids: logged in, anon.
+  $display_cache['homepage_top_story']['cache_views_data'] = array('homepage_top_story:block_1', 'homepage_top_story:block_2', 'homepage_top_story:attachment_1',); // Views cache bin cids: logged in, anon, attachment.
+  $display_cache['homepage_top_story']['path'] = '<front>'; // What page to purge from Varnish and page cache (for anons).
+  
+  // News primary touts.
+  $display_cache['news_top_story'] = array();
+  $display_cache['news_top_story']['cache_block'] = array('views:homepage_top_story-block_3', 'views:homepage_top_story-block_4'); // Block cache bin/cids.
+  $display_cache['news_top_story']['cache_views_data'] = array('homepage_top_story:block_3', 'homepage_top_story:block_4', 'homepage_top_story:attachment_2',); // Views cache bin.
+  $display_cache['news_top_story']['path'] = 'news';
+  
+  // Kid rep primary touts.
+  $display_cache['kid_reporter_top_story'] = array();
+  $display_cache['kid_reporter_top_story']['cache_block'] = array('views:homepage_top_story-block_5', 'views:homepage_top_story-block_6'); // Block cache bin/cids.
+  $display_cache['kid_reporter_top_story']['cache_views_data'] = array('homepage_top_story:block_5', 'homepage_top_story:block_6', 'homepage_top_story:attachment_3',); // Views cache bin.
+  $display_cache['kid_reporter_top_story']['path'] = 'kid-reporters';
+  
+  // Homepage secondary touts (news block) mapping.
+  $display_cache['homepage_news_block'] = array();
+  $display_cache['homepage_news_block']['cache_block'] = array('views:homepage_news_block-block_1', 'views:homepage_news_block-block_1_anon'); // Block cache bin/cids.
+  $display_cache['homepage_news_block']['cache_views_data'] = array('homepage_news_block:block_1', 'homepage_news_block:block_1_anon'); // Views cache bin.
+  $display_cache['homepage_news_block']['path'] = '<front>';
+  
+  // News channel secondary touts.
+  $display_cache['news_news_block'] = array();
+  $display_cache['news_news_block']['cache_block'] = array('views:homepage_news_block-block_3', 'views:homepage_news_block-block_3_anon');
+  $display_cache['news_news_block']['cache_views_data'] = array('homepage_news_block:block_3', 'homepage_news_block:block_3_anon');
+  $display_cache['news_news_block']['path'] = 'news';
+  
+  // Kid rep channel secondary touts.
+  $display_cache['kid_reporter_news_block'] = array();
+  $display_cache['kid_reporter_news_block']['cache_block'] = array('views:homepage_news_block-block_5', 'views:homepage_news_block-block_5_anon');
+  $display_cache['kid_reporter_news_block']['cache_views_data'] = array('homepage_news_block:block_5', 'homepage_news_block:block_5_anon');
+  $display_cache['kid_reporter_news_block']['path'] = 'kid-reporters';
+  
+  // Homepage mini-site.
+  $display_cache['homepage_minisite'] = array();
+  $display_cache['homepage_minisite']['cache_block'] = array('views:homepage_minisite-block_1', 'views:homepage_minisite-block_2');
+  $display_cache['homepage_minisite']['cache_views_data'] = array('homepage_minisite:block_1', 'homepage_minisite:block_2');
+  $display_cache['homepage_minisite']['path'] = '<front>';
+  
+  // Homepage destination. @todo DEPRECATED, the homepage destination block got absorbed by the new multi-row secondarty touts.
+  $display_cache['homepage_destination'] = array();
+  $display_cache['homepage_destination']['cache_block'] = array('views:homepage_destination-block_1', 'views:homepage_destination-block_2');
+  $display_cache['homepage_destination']['cache_views_data'] = array('homepage_destination:block_1', 'homepage_destination:block_2');
+  $display_cache['homepage_destination']['path'] = '<front>';
+  
+  if ($clear_page) {
+    // Clear Memcached (Views).
+    if(array_key_exists($flag->name, $display_cache)) {
+      $results = array();
+      foreach($display_cache[$flag->name] as $bin => $cids) {
+        if($bin != 'path' && !cache_is_empty($bin)) {
+          foreach($cids as $cid) {
+            cache_clear_all($cid, $bin, TRUE);
+            $results[] = "flag_name: $flag->name, \$bin: $bin, \$cid: $cid";
+          }
+        }
+        if($bin == 'path') {
+          module_load_include('inc', 'advanced_purge', 'advanced_purge.rules');
+          advanced_purge_page_clear($cids); // Memcached purge.
+        }
+      }
+    
+      //$node = node_load($content_id);
+      //drupal_set_message("{$node->title}, nid:{$node->nid} has been ". (($action == 'flag') ? 'added to': 'removed from'). " the {$flag->title} channel.");
+      //watchdog('advanced_purge', 'The following cache items have been purged from persistent cache: @results', array('@results' => print_r($results, TRUE)), WATCHDOG_INFO);
+    
+      // Varnish purge/expire code.
+      advanced_purge_varnish(array($display_cache[$flag->name]['path']));
+    }
+  }
+}
+
+/**
+ * Purge an array of paths from varnish and memcached.
+ *
+ * @param array $expire
+ *   Each path must be prepended by a forward slash /.
+ */
+function advanced_purge_varnish($expire, $wildcard = FALSE) {
+
+  // Varnish purge.
+  if(module_exists('expire')) {  // && module_exists('purge')) {
+
+    module_load_include('module', 'expire');
+    //module_load_include('inc', 'purge');
+
+    // Prevent purging the entire site (use the SSH terminal or Acquia CPanel instead).
+    // Don't search for aliases or frontpage on wildcards.
+    if(!$wildcard) {
+      
+      // Special handling for front-page.
+      $front_page = array_search('<front>', $expire);
+      if($front_page !== FALSE) {
+        $expire[$front_page] = '';
+        //$expire[] = 'rss.xml';
+        //$expire[] = '/'. variable_get('site_frontpage', 'node');
+      
+      }
+      
+      // Path alias
+      global $base_path;
+      foreach($expire as $path) {
+        $path_alias = url($path, array('absolute' => FALSE));
+        // Remove the base path
+        //$expire[] = substr($path_alias, strlen($base_path));
+      }
+      $expire = array_unique($expire);
+  
+      // Allow other modules to modify the list prior to expiring
+      drupal_alter('expire_cache', $expire, $node, $paths);
+
+    } else {
+      // Append wildcard for each path. Example:
+      // http://tfk.local/destination/usa.*$
+      // curl -X BAN http://tfk.local/destination/usa.*$
+      // http://dev.timeforkids.com/destination/egypt.*$
+      // curl -X PURGE -H "X-Acquia-Purge: timedev2" -H "Accept-Encoding: gzip" http://dev.timeforkids.com/destination/egypt.*$
+      foreach($expire as $key => $path) {
+        $expire[$key] .= '.*$';
+      }
+    }
+    
+    // Purge
+
+    foreach($expire as $key => $path) {
+
+      advanced_purge_clear_varnish_page($path);
+
+      if ($path=='') $expire[$key]='home page';
+      
+    }
+
+    //$results = purge_urls($expire);
+    //purge_logging($results);
+
+    drupal_set_message(t("Varnish cleared for %paths. ",
+      array('%paths' => implode(', ', $expire))
+    ));
+   
+  }
+}
+
+/**
+ * Purge an array of paths from persistent cache.
+ * 
+ * @param array $expire
+ *   An array of path strings. 
+ */
+function advanced_purge_paths($expire, $wildcard = FALSE) {
+  
+  // Front page cid: http://tfk.local/
+  
+  // $cache = cache_get($base_root . request_uri(), 'cache_page');
+  // cache_get('http://tfk.local/extras', 'cache_page');
+  // cid: http://tfk.local/destination/usa
+  
+  // Memcached purge.
+  global $base_root;
+  module_load_include('inc', 'advanced_purge', 'advanced_purge.rules');
+  foreach($expire as $path) {
+
+    if($path === '<front>') {
+      $path = variable_get('site_frontpage') == 'node' ? '': drupal_get_path_alias(variable_get('site_frontpage', 'node'));
+    }
+
+    if(!$wildcard) {
+        cache_clear_all($path, 'cache_page');
+    } else {
+        cache_clear_all($path, 'cache_page', TRUE);
+    }
+
+    advanced_purge_clear_varnish_page($path);
+      
+    drupal_set_message(t("The path \"%path\" has been purged from cache.", array('%path' => $path)));
+
+  }
+}
+
+/**
+ * Implementation of hook_block_info()
+ */
+function advanced_purge_block_info() {
+   $blocks['clear_cache_page'] = array(
+       'info' => t('Clear cache for a single page'),
+       'cache' => DRUPAL_NO_CACHE,
+   );
+   return $blocks;
+}
+
+/**
+ * Implementation of hook_block_view()
+ * 
+ * @param string $delta
+ * @return type
+ */
+function advanced_purge_block_view($delta='') {
+    $block = array();
+    if($delta === 'clear_cache_page') {
+        $block['subject'] = '';
+        $block['content'] = _advanced_purge_clear_page_block_content();
+    }
+    
+    return $block;
+}
+
+
+function _advanced_purge_clear_page_block_content() {
+
+  if (isset($_POST["purge"]) && $_POST["purge"]=="cache") {
+    $uri = substr($_SERVER["REQUEST_URI"],1);
+    $pos = strpos($uri,"?");
+    if ($pos!==false) $uri = substr($uri,1,$pos-1);
+    if ($uri=="") $uri = "<front>";
+
+    switch ($uri) {
+      case "<front>":
+        $flag = new stdClass();
+        $flag->name = 'homepage_top_story';
+        advanced_purge_flag('flag',$flag,null,null,null,false);
+        $flag->name = 'homepage_news_block';
+        advanced_purge_flag('flag',$flag,null,null,null,false);
+        $flag->name = 'homepage_minisite';
+        advanced_purge_flag('flag',$flag,null,null,null,false);
+        $flag->name = 'homepage_news_block';
+        advanced_purge_flag('flag',$flag,null,null,null,false);
+        $flag->name = 'homepage_destination';
+        advanced_purge_flag('flag',$flag,null,null,null,true);
+      break;
+      case "news":
+        $flag = new stdClass();
+        $flag->name = 'news_top_story';
+        advanced_purge_flag('flag',$flag,null,null,null,false);
+        $flag->name = 'news_news_block';
+        advanced_purge_flag('flag',$flag,null,null,null,true);
+      break;
+      case "kid_reporter":
+        $flag = new stdClass();
+        $flag->name = 'kid_reporter_top_story';
+        advanced_purge_flag('flag',$flag,null,null,null,false);
+        $flag->name = 'kid_reporter_news_block';
+        advanced_purge_flag('flag',$flag,null,null,null,true);
+      break;
+      default:
+        advanced_purge_paths(array($uri));
+      break;
+    }
+  }
+
+  $content = "<div style='margin:20px 0; width:100%; text-align:center;'><form action='' method='POST'><input type='hidden' name='purge' value='cache'><input type='submit' value='Clear Page from Cache'></form></div>";
+
+  return $content;
+
+}
+
+function advanced_purge_node_update($node) {
+
+  foreach($node->flag as $key => $value) {
+    if ($value==1) {
+      $flag = new stdClass();
+      $flag->name = $key;
+      advanced_purge_flag('flag',$flag,null,null,null);
+    }
+  }
+
+  advanced_purge_clear_varnish_page($node->path['alias']);
+
+  drupal_set_message(t("Varnish cleared for ".$node->path['alias']));
+
+}
+
+function advanced_purge_clear_varnish_page($path) {
+
+      $ch = curl_init();
+      $url = 'http://bal-2150.prod.hosting.acquia.com/'.$path; 
+      curl_setopt($ch, CURLOPT_URL, $url);
+      curl_setopt($ch, CURLOPT_HTTPHEADER, array('X-Acquia-Purge:time','Host:www.timeforkids.com'));
+      curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PURGE');
+      curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+      $response = curl_exec($ch);
+      curl_close($ch);
+      
+      $ch = curl_init();
+      $url = 'http://bal-2151.prod.hosting.acquia.com/'.$path; 
+      curl_setopt($ch, CURLOPT_URL, $url);
+      curl_setopt($ch, CURLOPT_HTTPHEADER, array('X-Acquia-Purge:time','Host:www.timeforkids.com'));
+      curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PURGE');
+      curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+      $response = curl_exec($ch);
+      curl_close($ch);
+
+}
