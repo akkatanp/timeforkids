@@ -47,7 +47,11 @@
 
   $.fn.loginBox = function(context) {
   // IE console.log
-  if(!window.console){ window.console = {log: function(){} }; } 
+  if (!window.console){ 
+      window.console = {
+          log: function(){} 
+      }; 
+  }  
   
     // Create lightbox when user clicks link.
     $(this, context).click(function(e) {
@@ -68,18 +72,18 @@
       var loginForm = $('#user-login', context).clone();
       // tfk-50: Check to see if the clone failed
       if ($('#user-login--2').length > 0) {
-          console.log("Found #user-login--2...");
+          //console.log("Found #user-login--2...");
           loginForm = $('#user-login--2', context).clone();
           loginForm.removeAttr('id'); 
           loginForm.attr('id', 'user_login--2');
           loginForm.appendTo(lightBox);
       } else {
-          console.log("Found #user-login");
+          //console.log("Found #user-login");
           loginForm.removeAttr('id'); 
           loginForm.attr('id', 'user_login');
           loginForm.appendTo(lightBox);
       }
-      console.log(loginForm);
+      //console.log(loginForm);
   
     });
 
