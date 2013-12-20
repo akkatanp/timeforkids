@@ -1,184 +1,5 @@
-
 <?php
 // $Id$
-/**
- * @file
- * Drupal site-specific configuration file.
- *
- * IMPORTANT NOTE:
- * This file may have been set to read-only by the Drupal installation
- * program. If you make changes to this file, be sure to protect it again
- * after making your modifications. Failure to remove write permissions
- * to this file is a security risk.
- *
- * The configuration file to be loaded is based upon the rules below.
- *
- * The configuration directory will be discovered by stripping the
- * website's hostname from left to right and pathname from right to
- * left. The first configuration file found will be used and any
- * others will be ignored. If no other configuration file is found
- * then the default configuration file at 'sites/default' will be used.
- *
- * For example, for a fictitious site installed at
- * http://www.drupal.org/mysite/test/, the 'settings.php'
- * is searched in the following directories:
- *
- *  1. sites/www.drupal.org.mysite.test
- *  2. sites/drupal.org.mysite.test
- *  3. sites/org.mysite.test
- *
- *  4. sites/www.drupal.org.mysite
- *  5. sites/drupal.org.mysite
- *  6. sites/org.mysite
- *
- *  7. sites/www.drupal.org
- *  8. sites/drupal.org
- *  9. sites/org
- *
- * 10. sites/default
- *
- * If you are installing on a non-standard port number, prefix the
- * hostname with that number. For example,
- * http://www.drupal.org:8080/mysite/test/ could be loaded from
- * sites/8080.www.drupal.org.mysite.test/.
- */
-
-/**
- * Database settings:
- *
- * The $databases array specifies the database connection or
- * connections that Drupal may use.  Drupal is able to connect
- * to multiple databases, including multiple types of databases,
- * during the same request.
- *
- * Each database connection is specified as an array of settings,
- * similar to the following:
- * @code
- * array(
- *   'driver' => 'mysql',
- *   'database' => 'databasename',
- *   'username' => 'username',
- *   'password' => 'password',
- *   'host' => 'localhost',
- *   'port' => 3306,
- *   'prefix' => 'myprefix_',
- *   'collation' => 'utf8_general_ci',
- * );
- * @endcode
- *
- * The "driver" property indicates what Drupal database driver the
- * connection should use.  This is usually the same as the name of the
- * database type, such as mysql or sqlite, but not always.  The other
- * properties will vary depending on the driver.  For SQLite, you must
- * specify a database file name in a directory that is writable by the
- * webserver.  For most other drivers, you must specify a
- * username, password, host, and database name.
- *
- * Some database engines support transactions.  In order to enable
- * transaction support for a given database, set the 'transactions' key
- * to TRUE.  To disable it, set it to FALSE.  Note that the default value
- * varies by driver.  For MySQL, the default is FALSE since MyISAM tables
- * do not support transactions.
- *
- * For each database, you may optionally specify multiple "target" databases.
- * A target database allows Drupal to try to send certain queries to a
- * different database if it can but fall back to the default connection if not.
- * That is useful for master/slave replication, as Drupal may try to connect
- * to a slave server when appropriate and if one is not available will simply
- * fall back to the single master server.
- *
- * The general format for the $databases array is as follows:
- * @code
- * $databases['default']['default'] = $info_array;
- * $databases['default']['slave'][] = $info_array;
- * $databases['default']['slave'][] = $info_array;
- * $databases['extra']['default'] = $info_array;
- * @endcode
- *
- * In the above example, $info_array is an array of settings described above.
- * The first line sets a "default" database that has one master database
- * (the second level default).  The second and third lines create an array
- * of potential slave databases.  Drupal will select one at random for a given
- * request as needed.  The fourth line creates a new database with a name of
- * "extra".
- *
- * For a single database configuration, the following is sufficient:
- * @code
- * $databases['default']['default'] = array(
- *   'driver' => 'mysql',
- *   'database' => 'databasename',
- *   'username' => 'username',
- *   'password' => 'password',
- *   'host' => 'localhost',
- *   'prefix' => 'main_',
- *   'collation' => 'utf8_general_ci',
- * );
- * @endcode
- *
- * You can optionally set prefixes for some or all database table names
- * by using the 'prefix' setting. If a prefix is specified, the table
- * name will be prepended with its value. Be sure to use valid database
- * characters only, usually alphanumeric and underscore. If no prefixes
- * are desired, leave it as an empty string ''.
- *
- * To have all database names prefixed, set 'prefix' as a string:
- * @code
- *   'prefix' => 'main_',
- * @endcode
- * To provide prefixes for specific tables, set 'prefix' as an array.
- * The array's keys are the table names and the values are the prefixes.
- * The 'default' element is mandatory and holds the prefix for any tables
- * not specified elsewhere in the array. Example:
- * @code
- *   'prefix' => array(
- *     'default'   => 'main_',
- *     'users'     => 'shared_',
- *     'sessions'  => 'shared_',
- *     'role'      => 'shared_',
- *     'authmap'   => 'shared_',
- *   ),
- * @endcode
- * You can also use a reference to a schema/database as a prefix. This maybe
- * useful if your Drupal installation exists in a schema that is not the default
- * or you want to access several databases from the same code base at the same
- * time.
- * Example:
- * @code
- *   'prefix' => array(
- *     'default'   => 'main.',
- *     'users'     => 'shared.',
- *     'sessions'  => 'shared.',
- *     'role'      => 'shared.',
- *     'authmap'   => 'shared.',
- *   );
- * @endcode
- * NOTE: MySQL and SQLite's definition of a schema is a database.
- *
- * Database configuration format:
- * @code
- *   $databases['default']['default'] = array(
- *     'driver' => 'mysql',
- *     'database' => 'databasename',
- *     'username' => 'username',
- *     'password' => 'password',
- *     'host' => 'localhost',
- *     'prefix' => '',
- *   );
- *   $databases['default']['default'] = array(
- *     'driver' => 'pgsql',
- *     'database' => 'databasename',
- *     'username' => 'username',
- *     'password' => 'password',
- *     'host' => 'localhost',
- *     'prefix' => '',
- *   );
- *   $databases['default']['default'] = array(
- *     'driver' => 'sqlite',
- *     'database' => '/path/to/databasefilename',
- *   );
- * @endcode
- */
-
 /**
  * Access control for update.php script.
  *
@@ -266,7 +87,7 @@ ini_set('session.gc_maxlifetime', 200000);
  * created to the cookie expires, i.e. when the browser is expected to discard
  * the cookie. The value 0 means "until the browser is closed".
  */
-ini_set('session.cookie_lifetime', 0);
+ini_set('session.cookie_lifetime', 200000);
 
 /**
  * If you encounter a situation where users post a large amount of text, and
@@ -334,7 +155,7 @@ ini_set('session.cookie_lifetime', 0);
  * about this setting, do not have a reverse proxy, or Drupal operates in
  * a shared hosting environment, this setting should remain commented out.
  */
-$conf['reverse_proxy'] = TRUE;
+# $conf['reverse_proxy'] = TRUE;
 
 /**
  * Set this value if your proxy server sends the client IP in a header other
@@ -343,7 +164,7 @@ $conf['reverse_proxy'] = TRUE;
  * The "X-Forwarded-For" header is a comma+space separated list of IP addresses,
  * only the last one (the left-most) will be used.
  */
-$conf['reverse_proxy_header'] = 'HTTP_TRUE_CLIENT_IP';
+# $conf['reverse_proxy_header'] = 'HTTP_X_CLUSTER_CLIENT_IP';
 
 /**
  * reverse_proxy accepts an array of IP addresses.
@@ -355,7 +176,7 @@ $conf['reverse_proxy_header'] = 'HTTP_TRUE_CLIENT_IP';
  * reverse proxies. Otherwise, the client could directly connect to
  * your web server spoofing the X-Forwarded-For headers.
  */
-$conf['reverse_proxy_addresses'] = array('184.72.228.250');
+# $conf['reverse_proxy_addresses'] = array('a.b.c.d', ...);
 
 /**
  * Page caching:
@@ -444,6 +265,43 @@ $conf['reverse_proxy_addresses'] = array('184.72.228.250');
  */
 # $conf['allow_authorize_operations'] = FALSE;
 
+/**
+ * Error reporting. It should always be enabled on DEV.
+ */
+#error_reporting(E_ALL);
+#ini_set('error_reporting', -1);
+
+ini_set('max_execution_time', 0); // Unlimited execution time.
+ini_set('max_input_time', 0);
+
+// Increase memory limit for admin pages.
+//if (isset($_GET['q']) && strpos($_GET['q'], 'admin') === 0) { ini_set('memory_limit', '512M'); }
+
+
+/**
+ * Acquia Network/Acquia Search settings
+ */
+$conf["acquia_identifier"] = "BCDE-22799";
+$conf["acquia_key"] = "8499f05ab66439dc7432a3533bbc5c33";
+$conf["apachesolr_path"] = "/solr/BCDE-22799";
+
+/**
+ * Filesystem settings
+ */
+$conf["file_public_path"] = "files";
+$conf["file_temporary_path"] = "/mnt/tmp/timedev2";
+$conf["file_private_path"] = "/mnt/files/timedev2/files-private";
+
+// Drupal 7 does not cache pages when we invoke hooks during bootstrap.
+// Disable in order to serve cached pages.
+$conf['page_cache_invoke_hooks'] = FALSE;
+
+// If $conf['page_cache_without_database'] = TRUE; is set in settings.php,
+// then the database won't be loaded here so the IPs in the database
+// won't be denied. However the user asked explicitly not to use the
+// database and also in this case it's quite likely that the user relies
+// on higher performance solutions like a firewall.
+#$conf['page_cache_without_database'] = TRUE;
 
 /**
  * Memcached Config Settings
@@ -451,52 +309,27 @@ $conf['reverse_proxy_addresses'] = array('184.72.228.250');
  * Add the following line of code to your settings.php file to cache anything normally stored in a cache* table in the Drupal database in Memcached.
  *
  */
-
-//$conf['cache_inc'] = './sites/all/modules/contrib/memcache/memcache.inc';
+$conf['cache_inc'] = './sites/all/modules/contrib/memcache/memcache.inc';
 //$conf['session_inc'] = './sites/all/modules/contrib/memcache/memcache-session.inc';
 
 include_once('./includes/cache.inc');
-//include_once('./sites/all/modules/contrib/memcache/memcache.inc');
-//conf['cache_default_class'] = 'MemCacheDrupal';
+include_once('./sites/all/modules/contrib/memcache/memcache.inc');
+$conf['cache_default_class'] = 'MemCacheDrupal';
 
 /**
  * Acquia Config file
  *
  * This file is required to connect to an Acquia server and manages the DB connection.
  */
-//require('/var/www/site-php/time/time-settings.inc');
+require('/var/www/site-php/time/time-settings.inc');
 
 /**
  * Other settings
- * 
+ *
  *  Set the number default number of nodes to be loaded by the Drupal front page to zero.
- *  Otherwise we will load 10 nodes that will never be shown 
+ *  Otherwise we will load 10 nodes that will never be shown
  */
 $conf['default_nodes_main'] = 0;
-
-
-
-///////////////////////////////////////////////////////////////////////
-//       Please don't edit anything between <@@ADCP_CONF@@> tags     //
-// This section is autogenerated by Acquia Dev Desktop Control Panel //
-///////////////////////////////////////////////////////////////////////
-//<@@ADCP_CONF@@>
-$base_url = 'http://tfk:8082';
-
-//D6 DB config
-$db_url = 'mysqli://drupaluser@127.0.0.1:33066/tfk';
-
-//D7 DB config
-$databases = array('default' => array('default' => array(
-    'driver' => 'mysql',
-    'database' => 'tfk',
-    'username' => 'drupaluser',
-    'password' => '',
-    'host' => '127.0.0.1',
-    'port' => 33066 )));
-//</@@ADCP_CONF@@>
-
-
 
 
 /**
