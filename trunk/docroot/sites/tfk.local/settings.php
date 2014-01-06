@@ -334,7 +334,8 @@ include_once('./sites/all/modules/fast_404/fast_404.inc');
 # will get a fast 404.
 # Default extension list, this is considered safe and is even in queue for
 # Drupal 8 (see: http://drupal.org/node/76824).
-$conf['fast_404_exts'] = '/[^robots]\.(txt|png|gif|jpe?g|css|js|ico|swf|flv|cgi|bat|pl|dll|exe|asp)$/i';
+#$conf['fast_404_exts'] = '/[^robots]\.(txt|png|gif|jpe?g|css|js|ico|swf|flv|cgi|bat|pl|dll|exe|asp)$/i';
+$conf['fast_404_exts'] = '/\.(txt|png|gif|jpe?g|html?|css|js|ico|swf|flv|cgi|bat|pl|dll|exe|asp)$/i';
 
 # Allow anonymous users to hit URLs containing 'imagecache' even if the file
 # does not exist. TRUE is default behavior. If you know all imagecache
@@ -349,7 +350,7 @@ $conf['fast_404_allow_anon_imagecache'] = TRUE;
 $conf['fast_404_html'] = '<html xmlns="http://www.w3.org/1999/xhtml"><head><title>404 Not Found</title></head><body><h1>Not Found</h1><p>The requested URL "@path" was not found on this server.</p></body></html>';
 
 # Check paths during bootstrap and see if they are legitimate.
-$conf['fast_404_path_check'] = TRUE;
+$conf['fast_404_path_check'] = FALSE;
 
 # If enabled, you may add extensions such as xml and php to the
 # $conf['fast_404_exts'] above. BE CAREFUL with this setting as some modules
