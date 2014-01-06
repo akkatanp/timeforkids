@@ -712,7 +712,7 @@ jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":
 
 
 # Check paths during bootstrap and see if they are legitimate.
-$conf['fast_404_path_check'] = TRUE;
+$conf['fast_404_path_check'] = FALSE;
 
 # If enabled, you may add extensions such as xml and php to the
 # $conf['fast_404_exts'] above. BE CAREFUL with this setting as some modules
