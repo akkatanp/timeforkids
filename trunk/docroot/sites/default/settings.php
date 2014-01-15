@@ -1,4 +1,3 @@
-
 <?php
 // $Id: default.settings.php,v 1.51 2010/10/11 23:49:48 dries Exp $
 /**
@@ -472,7 +471,6 @@ require('/var/www/site-php/time/time-settings.inc');
  *  Otherwise we will load 10 nodes that will never be shown 
  */
 $conf['default_nodes_main'] = 0;
-
 
 
 /**
