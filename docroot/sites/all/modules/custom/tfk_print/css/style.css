@@ -43,8 +43,9 @@ object {
     line-height: 1.3em;
 }
 
+/* tp: 01-16-2014: was 13 */
 #body {
-    font-size: 15px;
+    font-size: 17px;
 }
 
 #byline {
