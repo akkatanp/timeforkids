@@ -451,19 +451,19 @@ $conf['reverse_proxy_addresses'] = array('184.72.228.250');
  *
  */
 
-//$conf['cache_inc'] = './sites/all/modules/contrib/memcache/memcache.inc';
+$conf['cache_inc'] = './sites/all/modules/contrib/memcache/memcache.inc';
 //$conf['session_inc'] = './sites/all/modules/contrib/memcache/memcache-session.inc';
 
 include_once('./includes/cache.inc');
-//include_once('./sites/all/modules/contrib/memcache/memcache.inc');
-//conf['cache_default_class'] = 'MemCacheDrupal';
+include_once('./sites/all/modules/contrib/memcache/memcache.inc');
+$conf['cache_default_class'] = 'MemCacheDrupal';
 
 /**
  * Acquia Config file
  *
  * This file is required to connect to an Acquia server and manages the DB connection.
  */
-//require('/var/www/site-php/time/time-settings.inc');
+require('/var/www/site-php/time/time-settings.inc');
 
 /**
  * Other settings
