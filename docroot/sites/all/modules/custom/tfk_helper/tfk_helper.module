@@ -495,7 +495,7 @@ function tfk_helper_views_pre_execute(&$view) {
  * for handlers, so all data should be available.
  */
 function tfk_helper_views_pre_render(&$view) {
-  flog_it("tfk_helper_views_pre_render: view->name=".$view->name.", view->current_display=".$view->current_display);
+  //flog_it("tfk_helper_views_pre_render: view->name=".$view->name.", view->current_display=".$view->current_display);
   /*
   foreach($view->result as $key=>$item) {
       //flog_it("key=".$key.", nid=".$item->nid.", node_type=".$item->node_type.", title=".$item->node_title);
@@ -718,7 +718,7 @@ function tfk_helper_preprocess_views_view_field(&$variables, $hook) {
  *   Stuff comming from views.
  */
 function tfk_helper_preprocess_views_view_fields(&$variables, $hook) {
-  flog_it("\ntfk_helper_preprocess_views_view_fields");
+  //flog_it("\ntfk_helper_preprocess_views_view_fields");
   
   $view = $variables['view'];
   $shared_vars = &drupal_static(TFK_PREPROCESS_HTML);
@@ -793,7 +793,7 @@ function tfk_helper_preprocess_views_view_fields(&$variables, $hook) {
     // Remove body field for ATW destination nodes.
     // Link text.
     $content_type = $variables['row']->_field_data['nid']['entity']->type;
-    flog_it("content_type=".$content_type. ", nid=".$variables['row']->nid);
+    //flog_it("content_type=".$content_type. ", nid=".$variables['row']->nid);
     
     switch ($content_type) {
       case 'slideshow':
@@ -812,19 +812,19 @@ function tfk_helper_preprocess_views_view_fields(&$variables, $hook) {
         unset($variables['fields']['body']);
         break;
       default:
-        flog_it("taking default...");
-        $link = 'View Full Articlexx';
+        //flog_it("taking default...");
+        $link = 'View Full Article';
         break;
     }
     
     // tfk-48: Check to see if article is flagged as for teachers.
     /*
-    flog_it($variables['row']);
+    //flog_it($variables['row']);
     $flag = flag_get_flag("homepage_for_teachers");
     if ($flag->is_flagged($variables['row']->nid)) {
-        flog_it("This content is flagged: nid=".$variables['row']->nid);
+        //flog_it("This content is flagged: nid=".$variables['row']->nid);
         $link = 'View For Teachers';
-        flog_it("link=".$link);
+        //flog_it("link=".$link);
     }
      * 
      */
