@@ -1,11 +1,6 @@
 <?php
 
 /**
- * @file
- * Hooks provided by the media_internet module.
- */
-
-/**
  * Implementors return an multidim array, keyed by a class name
  * with the following elements:
  *
@@ -22,3 +17,5 @@ function hook_media_internet_providers() {
     ),
   );
 }
+
+?>
