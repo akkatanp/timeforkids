@@ -6,8 +6,8 @@ core = 7.x
 dependencies[] = field
 files[] = field_ui.test
 
-; Information added by Drupal.org packaging script on 2014-01-15
-version = "7.26"
+; Information added by drupal.org packaging script on 2013-04-03
+version = "7.22"
 project = "drupal"
-datestamp = "1389815930"
+datestamp = "1365027012"
 

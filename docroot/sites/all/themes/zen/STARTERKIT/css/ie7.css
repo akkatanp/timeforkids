@@ -23,8 +23,7 @@ ul.secondary li a .tab {
  * Drupal nodes
  */
 
-.node-unpublished>*,
-.comment-unpublished>* {
+.node-unpublished>* {
   position: relative; /* Otherwise these elements will appear below the "Unpublished" text. */
 }
 
