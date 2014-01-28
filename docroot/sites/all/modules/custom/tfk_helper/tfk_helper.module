@@ -495,7 +495,7 @@ function tfk_helper_views_pre_execute(&$view) {
  * for handlers, so all data should be available.
  */
 function tfk_helper_views_pre_render(&$view) {
-  //flog_it("tfk_helper_views_pre_render: view->name=".$view->name.", view->current_display=".$view->current_display);
+  flog_it("tfk_helper_views_pre_render: view->name=".$view->name.", view->current_display=".$view->current_display);
   /*
   foreach($view->result as $key=>$item) {
       //flog_it("key=".$key.", nid=".$item->nid.", node_type=".$item->node_type.", title=".$item->node_title);
@@ -503,7 +503,7 @@ function tfk_helper_views_pre_render(&$view) {
    * 
    */
  
-  if($view->name == 'homepage_news_block') {
+  if ($view->name == 'homepage_news_block' || $view->name == 'homepage_for_teachers') {
     foreach($view->result as $item) {
       /* This is kind of a kludge ... Because the Minisite content type uses the "body" field as its "deck"
        * and the "body" is used for different purposes in other content types that are also used in the
@@ -515,26 +515,6 @@ function tfk_helper_views_pre_render(&$view) {
        if($item->node_type == 'minisite') {
            $item->field_field_deck = $item->field_body;
        }
-       
-       /*
-       // tp: tfk-48: Update the homepage secondary touts, 3rd cell, with the For Teachers tout
-       if ($key == 2) {
-            // Get the For Teachers view and check if there is any content
-            $for_teachers_view = views_get_view_result('clone_of_homepage_news_block_for_teachers');
-            if ($for_teachers_view[0] != "") {
-                //flog_it("for_teachers_view[0] has data...");
-                // Reposition cells
-                $view->result[5] = $view->result[4];
-                $view->result[4] = $view->result[3];
-                $view->result[3] = $view->result[2];
-
-                // Copy the first for teachers view item into homepage secondary touts view -> 3rd cell
-                $view->result[2] = $for_teachers_view[0];
-            } else {
-                //flog_it("for_teachers_vie[0] has no data...");
-            }
-       }
-       */
     }
   }
   
@@ -738,6 +718,8 @@ function tfk_helper_preprocess_views_view_field(&$variables, $hook) {
  *   Stuff comming from views.
  */
 function tfk_helper_preprocess_views_view_fields(&$variables, $hook) {
+  flog_it("\ntfk_helper_preprocess_views_view_fields");
+  
   $view = $variables['view'];
   $shared_vars = &drupal_static(TFK_PREPROCESS_HTML);
   $variables['add_cont_fields'] = array();
@@ -780,7 +762,7 @@ function tfk_helper_preprocess_views_view_fields(&$variables, $hook) {
   }
   
   // Secondary Tout blocks.
-  if($view->name == 'homepage_news_block' && !$view->is_attachment) {
+  if( ($view->name == 'homepage_news_block' || $view->name == 'homepage_for_teachers') && !$view->is_attachment) {
     // Use only one template for all Secondary Tout displays (all channels, anon + non-anon).
     $variables['theme_hook_suggestion'] = 'views_view_fields__secondary_tout';
     
@@ -811,6 +793,8 @@ function tfk_helper_preprocess_views_view_fields(&$variables, $hook) {
     // Remove body field for ATW destination nodes.
     // Link text.
     $content_type = $variables['row']->_field_data['nid']['entity']->type;
+    flog_it("content_type=".$content_type. ", nid=".$variables['row']->nid);
+    
     switch ($content_type) {
       case 'slideshow':
         $link = 'View Photo Slide Show';
@@ -828,21 +812,22 @@ function tfk_helper_preprocess_views_view_fields(&$variables, $hook) {
         unset($variables['fields']['body']);
         break;
       default:
-        // tfk-48: Check to see if article is flagged as for teachers.
-        /*
-        $flag = flag_get_flag("for_teachers");
-        if ($flag->is_flagged($variables['row']->nid)) {
-            $link = 'View For Teachers';
-        } else {
-            $link = 'View Full Article';
-        }
-        */
-      $link = 'View Full Article';
-      break;
+        flog_it("taking default...");
+        $link = 'View Full Articlexx';
+        break;
     }
     
-    //$tmp_nid = node_load($variables['row']->nid);
-    //flog_it("nid=".$variables['row']->nid.", content_type=".$content_type.", link=".$link.", title=".$tmp_nid->title);
+    // tfk-48: Check to see if article is flagged as for teachers.
+    /*
+    flog_it($variables['row']);
+    $flag = flag_get_flag("homepage_for_teachers");
+    if ($flag->is_flagged($variables['row']->nid)) {
+        flog_it("This content is flagged: nid=".$variables['row']->nid);
+        $link = 'View For Teachers';
+        flog_it("link=".$link);
+    }
+     * 
+     */
     
     $variables['fields']['title_1'] = new stdClass();
     $variables['fields']['title_1']->content = '<span class="field-content">'. l($link, 'node/'. $variables['row']->nid). '</span>';
