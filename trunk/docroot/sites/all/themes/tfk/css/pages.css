@@ -1121,9 +1121,9 @@ body.one-sidebar .secondary-touts-view td.col-2  {
     font: normal 9px arial, sans-serif;
     text-align: right;
     text-transform: uppercase;
-    margin-bottom: 20px;
     line-height: 10px;
 }
+
 
 .secondary-tout-image-credit {
     color: #999999;
@@ -3784,5 +3784,7 @@ div.views-slideshow-cycle-main {height:220px;min-height:220px;}
   visibility: hidden;
 }
 
-
+.views-homepage-for-teachers .views-field.views-field-title {
+    margin-top: 20px;
+}
 
