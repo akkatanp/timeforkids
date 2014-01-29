@@ -718,7 +718,6 @@ function tfk_helper_preprocess_views_view_field(&$variables, $hook) {
  *   Stuff comming from views.
  */
 function tfk_helper_preprocess_views_view_fields(&$variables, $hook) {
-  //flog_it("\ntfk_helper_preprocess_views_view_fields");
   
   $view = $variables['view'];
   $shared_vars = &drupal_static(TFK_PREPROCESS_HTML);
@@ -812,22 +811,10 @@ function tfk_helper_preprocess_views_view_fields(&$variables, $hook) {
         unset($variables['fields']['body']);
         break;
       default:
-        //flog_it("taking default...");
         $link = 'View Full Article';
         break;
     }
     
-    // tfk-48: Check to see if article is flagged as for teachers.
-    /*
-    //flog_it($variables['row']);
-    $flag = flag_get_flag("homepage_for_teachers");
-    if ($flag->is_flagged($variables['row']->nid)) {
-        //flog_it("This content is flagged: nid=".$variables['row']->nid);
-        $link = 'View For Teachers';
-        //flog_it("link=".$link);
-    }
-     * 
-     */
     
     $variables['fields']['title_1'] = new stdClass();
     $variables['fields']['title_1']->content = '<span class="field-content">'. l($link, 'node/'. $variables['row']->nid). '</span>';
