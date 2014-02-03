@@ -3706,7 +3706,7 @@ div.views-slideshow-cycle-main {height:220px;min-height:220px;}
   font: normal 12px "arial black",arial,sans-serif;
 }
 
-/*
+/* tp: 02-03-2014: hp minisite image credit problem
 .secondary-touts-view.unformatted .views-field-field-image-credit {
   margin-top: 11px;
 }
@@ -3722,7 +3722,9 @@ div.views-slideshow-cycle-main {height:220px;min-height:220px;}
 .secondary-touts-view.unformatted .views-field-title .field-content {
   width: 100%;
   display: inline-block;
-  margin-top: 10px;
+  /* tp: 02-03-2014: hp minisite image problem:alignment-adjust: 
+  margin-top: 10px; 
+  */
 }
 .secondary-touts-view.unformatted .view-content {
   width: 767px;
@@ -3786,6 +3788,7 @@ div.views-slideshow-cycle-main {height:220px;min-height:220px;}
   visibility: hidden;
 }
 
+/* tp: 02-03-2014: hp alignment problem */
 .view-homepage-for-teachers .views-field.views-field-title,
 .view-homepage-news-block .views-field.views-field-title {
     margin-top: 20px;
