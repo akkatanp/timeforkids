@@ -3784,7 +3784,7 @@ div.views-slideshow-cycle-main {height:220px;min-height:220px;}
   visibility: hidden;
 }
 
-.view-homepage-for-teachers .views-field.views-field-title {
+.view-homepage-for-teachers .views-field.views-field-title,
+.view-homepage-news-block .views-field.views-field-title {
     margin-top: 20px;
 }
-
