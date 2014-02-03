@@ -3706,9 +3706,11 @@ div.views-slideshow-cycle-main {height:220px;min-height:220px;}
   font: normal 12px "arial black",arial,sans-serif;
 }
 
+/*
 .secondary-touts-view.unformatted .views-field-field-image-credit {
   margin-top: 11px;
 }
+*/
 
 .secondary-touts-view.unformatted .views-field-title,
  #block-views-homepage-for-teachers-block-1 .views-field-title {
@@ -3787,4 +3789,8 @@ div.views-slideshow-cycle-main {height:220px;min-height:220px;}
 .view-homepage-for-teachers .views-field.views-field-title,
 .view-homepage-news-block .views-field.views-field-title {
     margin-top: 20px;
+}
+
+.views-field-field-minisite-tout-image {
+   margin-top: 0px; 
 }
