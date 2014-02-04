@@ -1,4 +1,4 @@
-<?php
+ <?php
 
 
 /**
@@ -718,11 +718,35 @@ function tfk_helper_preprocess_views_view_field(&$variables, $hook) {
  *   Stuff comming from views.
  */
 function tfk_helper_preprocess_views_view_fields(&$variables, $hook) {
+  global $user;
   
   $view = $variables['view'];
+  
+  //tp: 02-04-2014: For Teachers block is misaligned when top story has mini lessons added.
+  $user_roles = $user->roles;
+  $is_anon = 0;
+  if(count($user_roles) == 1 && in_array('anonymous user',$user_roles)){
+    $is_anon = 1;
+  }
+  
+  //flog_it("view->name=".$view->name);
+  if ($view->name == "homepage_top_story" && $is_anon == 0) {
+      $num_mini_lessons = count($variables['row']->_field_data['nid']['entity']->field_mini_lessons['und']);
+      flog_it("num_mini_lessons=".$num_mini_lessons);
+      if ($num_mini_lessons > 0 && $num_mini_lessons <= 5) {
+          $css = "#block-views-homepage-for-teachers-block-1 { top: 392px !important; }";
+          drupal_add_css($css, "inline");
+      } else if ($num_mini_lessons > 5) {
+          $css = "#block-views-homepage-for-teachers-block-1 { top: 406px !important; }";
+          drupal_add_css($css, "inline");
+      }
+  }
+  
+  
   $shared_vars = &drupal_static(TFK_PREPROCESS_HTML);
   $variables['add_cont_fields'] = array();
   $variables['show_additional_content'] = FALSE; // Don't show additional content for this View until told otherwise.
+  
   
   // Load local static vars;
   $local_svars = &drupal_static($hook);
