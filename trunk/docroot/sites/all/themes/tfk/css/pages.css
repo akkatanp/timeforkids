@@ -800,7 +800,7 @@ ul.links li {
   text-align: right;
   font: normal 9px arial, sans-serif;
   text-transform: uppercase;
-  color: #999;
+  color: #999;zzz
 }
 
 .minisite-noslideshow #block-views-minisite-articles-block-2  .views-field-field-image-caption,
@@ -3706,11 +3706,10 @@ div.views-slideshow-cycle-main {height:220px;min-height:220px;}
   font: normal 12px "arial black",arial,sans-serif;
 }
 
-/* tp: 02-03-2014: hp minisite image credit problem
+/* tp: 02-03-2014: hp minisite image problem:alignment-adjust: */
 .secondary-touts-view.unformatted .views-field-field-image-credit {
   margin-top: 11px;
 }
-*/
 
 .secondary-touts-view.unformatted .views-field-title,
  #block-views-homepage-for-teachers-block-1 .views-field-title {
@@ -3719,13 +3718,13 @@ div.views-slideshow-cycle-main {height:220px;min-height:220px;}
   line-height: 20px;
 }
 
+/* tp: 02-03-2014: hp minisite image problem:alignment-adjust: */
 .secondary-touts-view.unformatted .views-field-title .field-content {
   width: 100%;
   display: inline-block;
-  /* tp: 02-03-2014: hp minisite image problem:alignment-adjust: 
   margin-top: 10px; 
-  */
 }
+
 .secondary-touts-view.unformatted .view-content {
   width: 767px;
   height: 640px;
@@ -3794,6 +3793,11 @@ div.views-slideshow-cycle-main {height:220px;min-height:220px;}
     margin-top: 20px;
 }
 
-.views-field-field-minisite-tout-image {
-   margin-top: 0px; 
+/* tp: 02-03-2014: hp minisite image problem:alignment-adjust: */
+.secondary-touts-view.unformatted .views-field-field-minisite-tout-credit {
+  margin-top: 0px;
+}
+
+.secondary-touts-view.unformatted .views-field-title {
+  margin-top: 0px;
 }
