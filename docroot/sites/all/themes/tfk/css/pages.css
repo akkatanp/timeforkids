@@ -3788,10 +3788,12 @@ div.views-slideshow-cycle-main {height:220px;min-height:220px;}
 }
 
 /* tp: 02-03-2014: hp alignment problem */
+/*
 .view-homepage-for-teachers .views-field.views-field-title,
 .view-homepage-news-block .views-field.views-field-title {
     margin-top: 20px;
 }
+*/
 
 
 /* tp: 02-03-2014: hp minisite image problem:alignment-adjust: */
@@ -3821,4 +3823,19 @@ div.views-slideshow-cycle-main {height:220px;min-height:220px;}
 
 .views-row.views-row-4 .views-field.views-field-field-minisite-tout-credit.views-field-field-image-credit {
     margin-top: 0px;
+}
+
+
+.col-1.col-first.row.has-addit .views-field.views-field-title {
+    margin-top: 20px;
+}
+
+.col-2.col-last.row.has-addit .views-field.views-field-title {
+    margin-top: 20px;
+}
+
+
+
+.view-homepage-for-teachers .views-field.views-field-title {
+    margin-top: 20px;
 }
