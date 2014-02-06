@@ -732,7 +732,7 @@ function tfk_helper_preprocess_views_view_fields(&$variables, $hook) {
   //flog_it("view->name=".$view->name);
   if ($view->name == "homepage_top_story" && $is_anon == 0) {
       $num_mini_lessons = count($variables['row']->_field_data['nid']['entity']->field_mini_lessons['und']);
-      flog_it("num_mini_lessons=".$num_mini_lessons);
+      //flog_it("num_mini_lessons=".$num_mini_lessons);
       if ($num_mini_lessons > 0 && $num_mini_lessons <= 5) {
           $css = "#block-views-homepage-for-teachers-block-1 { top: 392px !important; }";
           drupal_add_css($css, "inline");
