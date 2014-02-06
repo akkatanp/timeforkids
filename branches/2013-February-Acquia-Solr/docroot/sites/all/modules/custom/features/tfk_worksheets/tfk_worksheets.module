@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the TFK Worksheets feature.
+ */
+
+include_once('tfk_worksheets.features.inc');
