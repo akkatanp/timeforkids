@@ -800,7 +800,7 @@ ul.links li {
   text-align: right;
   font: normal 9px arial, sans-serif;
   text-transform: uppercase;
-  color: #999;zzz
+  color: #999;
 }
 
 .minisite-noslideshow #block-views-minisite-articles-block-2  .views-field-field-image-caption,
@@ -1120,9 +1120,9 @@ body.one-sidebar .secondary-touts-view td.col-2  {
     font: normal 9px arial, sans-serif;
     text-align: right;
     text-transform: uppercase;
+    margin-bottom: 20px;
     line-height: 10px;
 }
-
 
 .secondary-tout-image-credit {
     color: #999999;
@@ -3616,6 +3616,12 @@ div.views-slideshow-cycle-main {height:220px;min-height:220px;}
   visibility: hidden;
 }
 
+.view-secondary-touts-block-order.view-display-id-homepage tbody tr:nth-child(3) {
+  background-color: #dfeffd;
+  border-top: 1px solid #badafb;
+  border-bottom: 1px solid #badafb;
+  }
+
 /* Magazine Widget Redux */
 .current-issue-widget-redux {
   position: relative;
@@ -3674,171 +3680,4 @@ div.views-slideshow-cycle-main {height:220px;min-height:220px;}
   text-transform: uppercase;
   color: black;
   display: block;
-}
-
-/* =============================================
-        Homepage Touts - Unformatted List Styles
-        ============================================= */
-.secondary-touts-view.unformatted .views-row, #block-views-homepage-for-teachers-block-1  {
-  display: block;
-  width: 229px;
-  height: 268px;
-  padding: 20px 9px;
-  border: solid 1px #cecece;
-  vertical-align: top;
-  position: absolute;
-}
-
-.secondary-touts-view.unformatted .views-field-name {
-  background: #d71700;
-  color: white;
-  padding: 2px 6px;
-  display: inline;
-  clear: right;
-}
-
-.secondary-touts-view.unformatted .views-field-name a {
-  color: white;
-  text-transform: uppercase;
-  text-decoration: none;
-  font-weight: normal;
-  font: normal 12px "arial black",arial,sans-serif;
-}
-
-/* tp: 02-03-2014: hp minisite image problem:alignment-adjust: */
-.secondary-touts-view.unformatted .views-field-field-image-credit {
-  margin-top: 11px;
-}
-
-.secondary-touts-view.unformatted .views-field-title,
- #block-views-homepage-for-teachers-block-1 .views-field-title {
-  margin-bottom: 9px;
-  font: bold 20px arial,sans-serif;
-  line-height: 20px;
-}
-
-/* tp: 02-03-2014: hp minisite image problem:alignment-adjust: */
-.secondary-touts-view.unformatted .views-field-title .field-content {
-  width: 100%;
-  display: inline-block;
-  margin-top: 10px; 
-}
-
-.secondary-touts-view.unformatted .view-content {
-  width: 767px;
-  height: 640px;
-  position: relative;
-}
-.secondary-touts-view.unformatted .views-row-2 {
-  top: 0;
-  left: 258px;
-}
-.secondary-touts-view.unformatted .views-row-3 {
-  top: 319px;
-  left: 0;
-}
-.secondary-touts-view.unformatted .views-row-4 {
-  top: 319px;
-  left: 258px;
-}
-
-.secondary-touts-view.unformatted .views-row-5 {
-  top: 319px;
-  left: 516px;
-}
-
-.secondary-touts-view.unformatted .views-row-6 {
-  display: none;
-}
-
-#block-views-homepage-for-teachers-block-1 {
-  top: 322px;
-  left: 517px;
-  background-color: #dfeffd;
-  background-image: url('/sites/all/themes/tfk/images/for-teachers-ribbon.png');
-  background-repeat: no-repeat;
-  background-position: 0 14px;
-  border: 1px solid #badafb;
-}
-
-#block-views-homepage-for-teachers-block-1 .views-field-name {
-  visibility: hidden;
-}
-
-.front .region.region-content {
-  position: relative;
-}
-
-.front .region.region-content::after {
-  clear: both;
-}
-.front .region.region-content::before,
-.front .region.region-content::after {
-  content: "";
-  display: table;
-}
-
-.front .region.region-content::after {
-  content: ".";
-  display: block;
-  height: 0;
-  clear: both;
-  visibility: hidden;
-}
-
-/* tp: 02-03-2014: hp alignment problem */
-/*
-.view-homepage-for-teachers .views-field.views-field-title,
-.view-homepage-news-block .views-field.views-field-title {
-    margin-top: 20px;
-}
-*/
-
-
-/* tp: 02-03-2014: hp minisite image problem:alignment-adjust: */
-/*
-.secondary-touts-view.unformatted .views-field-field-minisite-tout-credit {
-  margin-top: 0px;
-}
-*/
-
-/*
-.secondary-touts-view.unformatted .views-field-title {
-  margin-top: 0px;
-}
-*/
-
-.views-row.views-row-1 .views-field.views-field-field-credit {
-    margin-top: 10px;
-}
-.views-row.views-row-1 .views-field.views-field-title {
-    margin-top: 0px;
-}
-
-
-.views-row.views-row-2 .views-field.views-field-field-credit-1 {
-    margin-top: 10px;
-}   
-
-.views-row.views-row-3 .views-field.views-field-field-minisite-tout-credit.views-field-field-image-credit {
-    margin-top: 0px;
-}
-
-.views-row.views-row-4 .views-field.views-field-field-minisite-tout-credit.views-field-field-image-credit {
-    margin-top: 0px;
-}
-
-
-.col-1.col-first.row.has-addit .views-field.views-field-title {
-    margin-top: 20px;
-}
-
-.col-2.col-last.row.has-addit .views-field.views-field-title {
-    margin-top: 20px;
-}
-
-
-
-.view-homepage-for-teachers .views-field.views-field-title {
-    margin-top: 20px;
 }
