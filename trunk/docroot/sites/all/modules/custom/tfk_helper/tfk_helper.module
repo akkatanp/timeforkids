@@ -1,4 +1,4 @@
- <?php
+<?php
 
 
 /**
@@ -503,7 +503,7 @@ function tfk_helper_views_pre_render(&$view) {
    * 
    */
  
-  if ($view->name == 'homepage_news_block' || $view->name == 'homepage_for_teachers') {
+  if ($view->name == 'homepage_news_block') {
     foreach($view->result as $item) {
       /* This is kind of a kludge ... Because the Minisite content type uses the "body" field as its "deck"
        * and the "body" is used for different purposes in other content types that are also used in the
@@ -723,6 +723,7 @@ function tfk_helper_preprocess_views_view_fields(&$variables, $hook) {
   $view = $variables['view'];
   
   //tp: 02-04-2014: For Teachers block is misaligned when top story has mini lessons added.
+  /*
   $user_roles = $user->roles;
   $is_anon = 0;
   if(count($user_roles) == 1 && in_array('anonymous user',$user_roles)){
@@ -742,11 +743,11 @@ function tfk_helper_preprocess_views_view_fields(&$variables, $hook) {
       }
   }
   
+  */
   
   $shared_vars = &drupal_static(TFK_PREPROCESS_HTML);
   $variables['add_cont_fields'] = array();
   $variables['show_additional_content'] = FALSE; // Don't show additional content for this View until told otherwise.
-  
   
   // Load local static vars;
   $local_svars = &drupal_static($hook);
@@ -785,7 +786,7 @@ function tfk_helper_preprocess_views_view_fields(&$variables, $hook) {
   }
   
   // Secondary Tout blocks.
-  if( ($view->name == 'homepage_news_block' || $view->name == 'homepage_for_teachers') && !$view->is_attachment) {
+  if($view->name == 'homepage_news_block' && !$view->is_attachment) {
     // Use only one template for all Secondary Tout displays (all channels, anon + non-anon).
     $variables['theme_hook_suggestion'] = 'views_view_fields__secondary_tout';
     
@@ -816,8 +817,6 @@ function tfk_helper_preprocess_views_view_fields(&$variables, $hook) {
     // Remove body field for ATW destination nodes.
     // Link text.
     $content_type = $variables['row']->_field_data['nid']['entity']->type;
-    //flog_it("content_type=".$content_type. ", nid=".$variables['row']->nid);
-    
     switch ($content_type) {
       case 'slideshow':
         $link = 'View Photo Slide Show';
