@@ -2229,12 +2229,37 @@ function tfk_search_photos_and_video() {
 
   module_load_include('module', 'search');
   
-  $filterstring = isset($_GET['filters']) ? $_GET['filters'] : '';
+  $filterstring = isset($_GET['filters']) ? $_GET['filters'] : array();
   $solrsort = isset($_GET['solrsort']) ? $_GET['solrsort'] : 'ds_created desc';
   $page = isset($_GET['page']) ? $_GET['page'] : 0;
   $base_path = 'photos-video';
   
-  $response = apachesolr_search_run(search_get_keys(), $filterstring, $solrsort, $base_path, $page, 'apachesolr_search');
+  // $response = apachesolr_search_run(search_get_keys(), $filterstring, $solrsort, $base_path, $page, 'apachesolr_search');
+  /*
+  $search_page = apachesolr_search_page_load('core_search');
+  $solr = apachesolr_get_solr($search_page->env_id);
+  $response = apachesolr_search_run(search_get_keys(), $filterstring, $solrsort, $base_path, $page, $solr);
+   * 
+   */
+  
+$search_page = apachesolr_search_page_load('core_search');
+//flog_it($search_page);
+$solr = apachesolr_get_solr($search_page['env_id']);
+$name = "apachesolr";
+/*
+flog_it("name=".$name);
+flog_it("filterstring:");
+flog_it($filterstring);
+flog_it("solrsort=".$solrsort);
+flog_it("search_page: search_path=".$search_page['search_path']);
+flog_it("pager_find_page():");
+flog_it(pager_find_page());
+flog_it("solor:");
+flog_it($solr);
+ */
+$results = apachesolr_search_run($name, $filterstring, $solrsort, $search_page['search_path'], pager_find_page(), $solr);
+
+
   
   return theme('search_results', array('results' => $response));
     
@@ -2244,7 +2269,7 @@ function tfk_search_photos_and_video() {
  * Magazines SERP callback.
  */
 function tfk_search_magazine(){
-  $filterstring = isset($_GET['filters']) ? $_GET['filters'] : '';
+  $filterstring = isset($_GET['filters']) ? $_GET['filters'] : array();
   $solrsort = isset($_GET['solrsort']) ? $_GET['solrsort'] : 'ds_created desc';
   $page = isset($_GET['page']) ? $_GET['page'] : 0;
   $base_path = TFK_SEARCH_MAGAZINE_PATH;
