@@ -178,7 +178,7 @@ function tfk_search_init() {
   }
   
   // Include our custom SolrBaseQuery class.
-  //module_load_include('inc', 'tfk_search', 'TimeIncSolrBaseQuery');
+  module_load_include('inc', 'tfk_search', 'TimeIncSolrBaseQuery');
   
   // Facet accordion behavior is disabled by default.
   $js_settings = array('tfk_search' => array('facet_accordion' => FALSE,));
