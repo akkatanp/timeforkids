@@ -45,7 +45,10 @@ function tfk_ads_omni_preprocess_page(&$variables){
     tfk_ads_omni_form_alter($variables['page']['footer'], $block_form_state, 'block_26');
 
     /*Omniture*/
+ flog_it("is_admin check...");
+ flog_it(!$variables['is_admin']);
     if (!$variables['is_admin'] == "true") {//Exclude from admin pages
+        flog_it("In Omni part...");
         /*Omniture vars*/
         $omniture_vars .= "s_time.channel = 'tfk';\n";
         if(array_key_exists('node', $variables)) {$node_type = $variables['node']->type;} else {$node_type = "";}
@@ -74,7 +77,7 @@ function tfk_ads_omni_preprocess_page(&$variables){
         $tfk_omni_library = drupal_get_path('theme', 'tfk') .'/js/timekids-omniture.js';
         drupal_add_js($omniture_account, 'inline');
         drupal_add_js($tfk_omni_library,'file');
-                print_r($tfk_omni_library);
+ flog_it($tfk_omni_library);
         if($node_type == 'slideshow' || $ad_omni_config['channel'] == "worksheets" || $node_type == 'teacher_community_question' || ($ad_omni_config['is_channel'] == 1 && $ad_omni_config['channel'] == "photos-video")) {
             $tfk_ctype_omni_library = drupal_get_path('theme', 'tfk') .'/js/tfk-ctype-omni.js';
             drupal_add_js($tfk_ctype_omni_library,'file');
