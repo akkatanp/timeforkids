@@ -74,6 +74,7 @@ function tfk_ads_omni_preprocess_page(&$variables){
         $tfk_omni_library = drupal_get_path('theme', 'tfk') .'/js/timekids-omniture.js';
         drupal_add_js($omniture_account, 'inline');
         drupal_add_js($tfk_omni_library,'file');
+                print_r($tfk_omni_library);
         if($node_type == 'slideshow' || $ad_omni_config['channel'] == "worksheets" || $node_type == 'teacher_community_question' || ($ad_omni_config['is_channel'] == 1 && $ad_omni_config['channel'] == "photos-video")) {
             $tfk_ctype_omni_library = drupal_get_path('theme', 'tfk') .'/js/tfk-ctype-omni.js';
             drupal_add_js($tfk_ctype_omni_library,'file');
