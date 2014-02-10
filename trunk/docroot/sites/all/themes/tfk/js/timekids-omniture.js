@@ -1,4 +1,4 @@
-/* SiteCatalyst code version: H.25.5. Copyright 1996-2013 Adobe, Inc. All Rights Reserved More info available at http://www.omniture.com (tfk 2013-09-06)*/
+/* SiteCatalyst code version: H.25.5. Copyright 1996-2013 Adobe, Inc. All Rights Reserved More info available at http://www.omniture.com (tfk 2014-02-07)*/
 var s_time=s_gi(s_account);
 var s_time_rsid2="timeglobalvideo";
 /* Dynamic account selection */
@@ -89,8 +89,8 @@ if(s_time.enableVideoTracking){
 s_time.loadModule("Media")
 s_time.Media.autoTrack=false;
 s_time.Media.trackWhilePlaying=true;
-s_time.Media.trackVars="events,eVar6,eVar7,prop48,eVar56,eVar57,eVar58,eVar59,channel,server,contextData.bc_tags,contextData.bc_channel";
-s_time.Media.trackEvents="event6,event7,event8,event56,event57,event58,event59,event60";
+s_time.Media.trackVars="events,eVar6,eVar7,prop48,eVar53,eVar56,eVar57,eVar58,eVar59,channel,server,contextData.bc_tags,contextData.bc_channel";
+s_time.Media.trackEvents="event6,event7,event8,event9,event56,event57,event58,event59,event60";
 s_time.Media.trackMilestones="25,50,75,99";
 s_time.Media.segmentByMilestones = true;
 s_time.Media.trackUsingContextData = true;
@@ -210,7 +210,7 @@ modVP.addEventListener(brightcove.api.events.MediaEvent.PROGRESS, onProgress);
 function onPlay(evt){
 mediaLength=evt.duration;
 mediaOffset=Math.floor(evt.position);
-//mediaID=(evt.media.id).toString(); // uncomment if using the @videoPlayer param
+mediaID=(evt.media.id).toString(); // asset ID
 mediaFriendly=evt.media.displayName;
 //mediaName=mediaID+":"+mediaFriendly; //Format the video name here
 //mediaName=mediaFriendly;
@@ -223,11 +223,12 @@ for (i=0;i<mediaTagsArray.length;i++) {mediaTagsArray2[i]=mediaTagsArray[i]['nam
 mediaRefID=evt.media.referenceId;
 mediaPlayerType=player.type;
 if (mediaOffset==0){
-/* These data points are optional. If using SC14, change context data variables to hard coded variable names and change trackVars above. */
-//s_time.contextData['bc_refid'] = mediaRefID;
+/* These data points are optional.*/
 s_time.contextData['bc_tags'] = mediaTagsArray2.toString();
-(s_time.channel && s_time.prop16) ? s_time.contextData['bc_channel']=s_time.channel+': '+s_time.prop16 : s_time.contextData['bc_channel']='unknown';
-//if(s_time.contextData['bc_tags']!='') {s_time.eVar57 = mediaTagsArray2[0].toLowerCase();}
+(s_time.channel && s_time.prop16) ? s_time.contextData['bc_channel']=s_time.channel+': '+s_time.prop16 : s_time.contextData['bc_channel']='tfk: unknown';
+s_time.tempFrnch = 'franchise unavailable'; // add franchise detection code below if applicable
+s_time.eVar53 = mediaID; // assetID
+s_time.eVar57 = s_time.tempFrnch; // franchise
 s_time.eVar58 = mediaPlayerName;
 s_time.eVar59 = mediaPlayerType; // Returns flash or html
 s_time.Media.open(mediaName,mediaLength,mediaPlayerName);
