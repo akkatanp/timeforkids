@@ -3604,6 +3604,7 @@ div.views-slideshow-cycle-main {height:220px;min-height:220px;}
 }
 
 /* For Teachers */
+/*
 .front table tr.row-1 td.col-3 {
   background-color: #dfeffd;
   background-image: url('/sites/all/themes/tfk/images/for-teachers-ribbon.png');
@@ -3611,10 +3612,13 @@ div.views-slideshow-cycle-main {height:220px;min-height:220px;}
   background-position: 0 14px;
   border: 1px solid #badafb;
 }
+*/
 
+/*
 .front .row-1 .col-3 .views-field-name {
   visibility: hidden;
 }
+*/
 
 .view-secondary-touts-block-order.view-display-id-homepage tbody tr:nth-child(3) {
   background-color: #dfeffd;
