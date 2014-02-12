@@ -495,15 +495,16 @@ function tfk_helper_views_pre_execute(&$view) {
  * for handlers, so all data should be available.
  */
 function tfk_helper_views_pre_render(&$view) {
-  //flog_it("tfk_helper_views_pre_render: view->name=".$view->name.", view->current_display=".$view->current_display);
+    flog_it("tfk_helper_views_pre_render: view->name=".$view->name.", view->current_display=".$view->current_display);
   /*
   foreach($view->result as $key=>$item) {
       //flog_it("key=".$key.", nid=".$item->nid.", node_type=".$item->node_type.", title=".$item->node_title);
   }
    * 
    */
- 
   if ($view->name == 'homepage_news_block') {
+    $counter = 1;
+    $css = '';
     foreach($view->result as $item) {
       /* This is kind of a kludge ... Because the Minisite content type uses the "body" field as its "deck"
        * and the "body" is used for different purposes in other content types that are also used in the
@@ -515,6 +516,50 @@ function tfk_helper_views_pre_render(&$view) {
        if($item->node_type == 'minisite') {
            $item->field_field_deck = $item->field_body;
        }
+       
+       // Check to apply the for teachers css to this table cell.
+       $flag = flag_get_flag("homepage_for_teachers");
+       if ($flag->is_flagged($item->nid)) {
+            if ($counter < 4) {
+                $row = 1;
+                $column = $counter;
+            } else {
+                $row = 2;
+                $column = $counter - 3;
+            }
+             flog_it($item->node_type.", counter=".$counter.", row=".$row.", column=".$column);
+
+            if ($counter == 1) {
+                // HELP!!!
+                $tmp = '.front table tr.row-'.$row.' td.col-'.$column.' {';
+            } else {
+                $tmp = '.front table tr.row-'.$row.' td.col-'.$column.' {';
+            }
+            
+            // For teachers style
+            $css = $css."
+                 $tmp
+                 background-color: #dfeffd;
+                 background-image: url('/sites/all/themes/tfk/images/for-teachers-ribbon.png');
+                 background-repeat: no-repeat;
+                 background-position: 0 14px;
+                 border: 1px solid #badafb;}
+            ";
+            
+            // Remove category icon
+            $css = $css."
+                .front .row-".$row." .col-".$column." .views-field-name {
+                    visibility: hidden;
+                }
+            ";
+       }
+       $counter++;
+    }
+    
+    // Check to putout for teachers css
+    if (!empty($css)) {
+        drupal_add_css($css, "inline");
+        //flog_it("css=".$css);
     }
   }
   

@@ -100,7 +100,10 @@ function tfk_page_paths_preprocess_page(&$variables){
         $node = $args[1];
         //flog_it("content_type=".$variables['node']->type);
         
-       if ($variables['node']->type == "article") {
+       if ($variables['node']->type == "article" || 
+           $variables['node']->type == "video" || 
+           $variables['node']->type == "slideshow" || 
+           $variables['node']->type == "minisite") {
             $flag = flag_get_flag("magazine_cover_story");
  
             if ($flag->is_flagged($node)) {

@@ -21,12 +21,12 @@ a:hover {
 
 h1 {
     margin-bottom: 5px;
-    font-size: 30px;
+    font-size: 40px;
 }
 
 h2 {
     margin-bottom: 5px;
-    font-size: 14px;
+    font-size: 18px;
 }
 
 h2 p {
@@ -44,11 +44,11 @@ object {
 }
 
 #body {
-    font-size: 17px;
+    font-size: 18px;
 }
 
 #byline {
-    font-size: 10px;
+    font-size: 14px;
     padding-bottom: 10px;
     border-bottom: dotted 1px #cecece;
     margin-bottom: 20px;
