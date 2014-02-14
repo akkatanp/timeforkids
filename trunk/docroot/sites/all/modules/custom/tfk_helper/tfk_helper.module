@@ -519,7 +519,7 @@ function tfk_helper_views_pre_render(&$view) {
        
        // Check to apply the for teachers css to this table cell.
        $flag = flag_get_flag("homepage_for_teachers");
-       if ($flag->is_flagged($item->nid)) {
+       if (!empty($flag) && $flag->is_flagged($item->nid)) {
             if ($counter < 4) {
                 $row = 1;
                 $column = $counter;
