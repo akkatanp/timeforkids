@@ -529,14 +529,8 @@ function tfk_helper_views_pre_render(&$view) {
             }
              //flog_it($item->node_type.", counter=".$counter.", row=".$row.", column=".$column);
 
-            if ($counter == 1) {
-                // HELP!!!
-                $tmp = '.front table tr.row-'.$row.' td.col-'.$column.' {';
-            } else {
-                $tmp = '.front table tr.row-'.$row.' td.col-'.$column.' {';
-            }
-            
             // For teachers style
+            $tmp = '.front table tr.row-'.$row.' td.col-'.$column.' {';
             $css = $css."
                  $tmp
                  background-color: #dfeffd;
