@@ -93,25 +93,24 @@ function tfk_page_paths_preprocess_page(&$variables){
     
     $args = arg();
     //flog_it("***tfk_page_paths_preprocess_page:");
-    //flog_it('TFK_PAGE_PATHS_PREPROCESS_PAGE: node: ');
-    //flog_stack("STACK TRACE...");
     
     // tp: tfk-50: Check to see if an article is flagged as a Magazine article, and for an annoymous user.
+    // tfk-34: Add new items to paywall
     if ( isset($args[0]) && $args[0] == "node" && isset($variables['node']) ) { 
         $node = $args[1];
-        //flog_it("content_type=".$variables['node']->type);
-        // tfk-34: Add new items to paywall
+        flog_it("content_type=".$variables['node']->type);
         if ($variables['node']->type == "article" || 
            $variables['node']->type == "video" || 
            $variables['node']->type == "slideshow" || 
            $variables['node']->type == "minisite") {
             $flag = flag_get_flag("magazine_cover_story");
  
+            flog_it("is_flagged=".$flag->is_flagged($node));
             if ($flag->is_flagged($node)) {
-                //flog_it("$node is flagged as a Magazine article");
+                flog_it("$node is flagged as a Magazine article");
                 
                 // Check to see if this is an anonymous user: if it is -> 403
-                //flog_it("anon=".$variables['is_anon']);
+                flog_it("anon=".$variables['is_anon']);
                 
                 if ($variables['is_anon']) {
                    drupal_add_http_header('Status', '403 Forbidden');
