@@ -1124,6 +1124,11 @@ body.one-sidebar .secondary-touts-view td.col-2  {
     line-height: 10px;
 }
 
+/* Handle homepage slideshow image credit issue, for for-teachers. */
+.view-homepage-news-block .views-field-field-credit {
+    margin-bottom: 0px;
+}
+
 .secondary-tout-image-credit {
     color: #999999;
     font: 9px arial, sans-serif;
