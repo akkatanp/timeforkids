@@ -517,6 +517,21 @@ function tfk_helper_views_pre_render(&$view) {
            $item->field_field_deck = $item->field_body;
        }
        
+       /*
+       // Handle funky css for 2 line slideshow image credit
+       if($item->node_type == "slideshow") {
+          $image_credit = $item->field_field_credit[0]['rendered']['#markup'];
+          if (strlen($item->field_field_credit[0]['rendered']['#markup']) > 39) {
+              $css = $css."
+                 .view-homepage-news-block .views-field-field-credit {
+                    margin-bottom: 0px;
+                 } 
+              ";
+          } 
+       }
+        * 
+        */
+       
        // Check to apply the for teachers css to this table cell.
        $flag = flag_get_flag("homepage_for_teachers");
        if (!empty($flag) && $flag->is_flagged($item->nid)) {
@@ -760,30 +775,6 @@ function tfk_helper_preprocess_views_view_fields(&$variables, $hook) {
   global $user;
   
   $view = $variables['view'];
-  
-  //tp: 02-04-2014: For Teachers block is misaligned when top story has mini lessons added.
-  /*
-  $user_roles = $user->roles;
-  $is_anon = 0;
-  if(count($user_roles) == 1 && in_array('anonymous user',$user_roles)){
-    $is_anon = 1;
-  }
-  
-  //flog_it("view->name=".$view->name);
-  if ($view->name == "homepage_top_story" && $is_anon == 0) {
-      $num_mini_lessons = count($variables['row']->_field_data['nid']['entity']->field_mini_lessons['und']);
-      //flog_it("num_mini_lessons=".$num_mini_lessons);
-      if ($num_mini_lessons > 0 && $num_mini_lessons <= 5) {
-          $css = "#block-views-homepage-for-teachers-block-1 { top: 392px !important; }";
-          drupal_add_css($css, "inline");
-      } else if ($num_mini_lessons > 5) {
-          $css = "#block-views-homepage-for-teachers-block-1 { top: 406px !important; }";
-          drupal_add_css($css, "inline");
-      }
-  }
-  
-  */
-  
   $shared_vars = &drupal_static(TFK_PREPROCESS_HTML);
   $variables['add_cont_fields'] = array();
   $variables['show_additional_content'] = FALSE; // Don't show additional content for this View until told otherwise.
@@ -1020,6 +1011,7 @@ function tfk_helper_block_info() {
  * Implementation of hook_block_view.
  */
 function tfk_helper_block_view($delta='') {
+  global $node;
   $block = array();
   
   switch ($delta) {
@@ -1040,10 +1032,13 @@ function tfk_helper_block_view($delta='') {
     
     // TFK Photos and Video More Items Block. Used for More TFK Photos & Videos.
     case 'more_items_block':
-      drupal_add_css(drupal_get_path('module', 'tfk_helper'). '/css/tfk_helper_more_items_block.css', 'file');
-      $more_items = tfk_helper_get_more_items();
-      if($more_items != FALSE) {
-        $block['content'] = theme('photos_video_more', $more_items);
+      // Check: Don't putout no images found msg. for a behind the paywall permission issue  
+      if ($node->nid != 94246 && $node->title != "SUBSCRIBER-ONLY CONTENT") {
+        drupal_add_css(drupal_get_path('module', 'tfk_helper'). '/css/tfk_helper_more_items_block.css', 'file');
+        $more_items = tfk_helper_get_more_items();
+        if($more_items != FALSE) {
+          $block['content'] = theme('photos_video_more', $more_items);
+        }
       }
     break;
     
@@ -1056,8 +1051,11 @@ function tfk_helper_block_view($delta='') {
       if($images != FALSE) {
         $block['content'] = tfk_helper_get_slideshow($images, array('related_nid' => $slideshow_nid));
       } else {
-        $block['content'] = '<b>No valid images found</b>';
-        drupal_set_message('The slideshow could not be rendered because there are no valid images associated to this node.', 'warning');
+        // Check: Don't putout no images found msg. for a behind the paywall permission issue
+        if ($node->nid != 94246 && $node->title != "SUBSCRIBER-ONLY CONTENT") {
+            $block['content'] = '<b>No valid images found</b>';
+            drupal_set_message('The slideshow could not be rendered because there are no valid images associated to this node.', 'warning');
+        }
       }
     break;
     

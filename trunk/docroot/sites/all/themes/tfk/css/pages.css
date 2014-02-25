@@ -1121,16 +1121,15 @@ body.one-sidebar .secondary-touts-view td.col-2  {
     text-align: right;
     text-transform: uppercase;
     margin-bottom: 20px;
-    line-height: 1.0em;
-    padding: 2px;
+    line-height: 10px;
 }
 
 /* Handle homepage slideshow image credit alignment issue, for for-teachers. */
+/*
 .view-homepage-news-block .views-field-field-credit {
-    line-height: 1.0em;
     margin-bottom: 0px;
-    padding: 2px;
 }
+*/
 
 .secondary-tout-image-credit {
     color: #999999;
