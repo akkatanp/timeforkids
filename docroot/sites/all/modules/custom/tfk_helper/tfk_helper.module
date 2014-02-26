@@ -495,13 +495,17 @@ function tfk_helper_views_pre_execute(&$view) {
  * for handlers, so all data should be available.
  */
 function tfk_helper_views_pre_render(&$view) {
+    global $mini_site_featured_title;
+    
     //flog_it("tfk_helper_views_pre_render: view->name=".$view->name.", view->current_display=".$view->current_display);
-  /*
+    /*
   foreach($view->result as $key=>$item) {
-      //flog_it("key=".$key.", nid=".$item->nid.", node_type=".$item->node_type.", title=".$item->node_title);
+      flog_it("key=".$key.", nid=".$item->nid.", node_type=".$item->node_type.", title=".$item->node_title);
   }
-   * 
-   */
+     * 
+     */
+
+  
   if ($view->name == 'homepage_news_block') {
     $counter = 1;
     $css = '';
@@ -602,6 +606,26 @@ function tfk_helper_views_pre_render(&$view) {
       }
 
     }
+  }
+  
+
+  // Make sure the left rail's featured mini-site is not the same content as the main content's first cell.
+  if ($view->name == "mini_site_home" && $view->current_display == "block_1") {
+      flog_it("FOUND MINI SITE FEATURED BLOCK...");
+      $mini_site_featured_title = $view->result[0]->node_title;
+      //flog_it("mini_site_featured_title=".$mini_site_featured_title);
+  }
+  if ($view->name == "mini_site_home" && $view->current_display == "block") {
+      flog_it("FOUND MINI SITE BLOCK...");
+      //flog_it("node_title=".$view->result[0]->node_title.", mini_site_featured_title=".$mini_site_featured_title);
+      // Check to swap the first and second cells
+      if ($mini_site_featured_title != "" && ($view->result[0]->node_title == $mini_site_featured_title)) {
+        flog_it("FOUND A MATCH, SWAPPING POSITIONS 0 & 1...");
+        $tmp_view = array();
+        $tmp_view = $view->result[0];
+        $view->result[0] = $view->result[1];
+        $view->result[1] = $tmp_view;
+      }
   }
   
   
