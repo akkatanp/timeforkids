@@ -1,0 +1,28 @@
+Index: docroot/sites/all/modules/contrib/draggableviews/draggableviews.rules.inc
+===================================================================
+--- docroot/sites/all/modules/contrib/draggableviews/draggableviews.rules.inc	(revision 4779)
++++ docroot/sites/all/modules/contrib/draggableviews/draggableviews.rules.inc	(working copy)
+@@ -14,6 +14,10 @@
+         'type' => 'text',
+         'label' => t('view name'),
+       ),
++      'display_name' => array(
++        'type' => 'text',
++        'label' => t('view display name'),
++      ),
+     ),
+   );
+ 
+Index: docroot/sites/all/modules/contrib/draggableviews/draggableviews.module
+===================================================================
+--- docroot/sites/all/modules/contrib/draggableviews/draggableviews.module	(revision 4779)
++++ docroot/sites/all/modules/contrib/draggableviews/draggableviews.module	(working copy)
+@@ -507,7 +507,7 @@
+ 
+   // Trigger the event "A view has been sorted"
+   if (module_exists('rules')) {
+-    rules_invoke_event('draggableviews_rules_event_sorted', $view->name);
++    rules_invoke_event('draggableviews_rules_event_sorted', $view->name, $view->current_display);
+   }
+ 
+   // Redirect form.
