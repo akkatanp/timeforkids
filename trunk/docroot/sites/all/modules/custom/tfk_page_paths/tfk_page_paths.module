@@ -96,6 +96,7 @@ function tfk_page_paths_preprocess_page(&$variables){
     
     // tp: tfk-50: Check to see if an article is flagged as a Magazine article, and for an annoymous user.
     // tfk-34: Add new items to paywall
+    /*
     if ( isset($args[0]) && $args[0] == "node" && isset($variables['node']) ) { 
         $node = $args[1];
         //flog_it("content_type=".$variables['node']->type);
@@ -122,6 +123,8 @@ function tfk_page_paths_preprocess_page(&$variables){
             }
         }
     }
+     * 
+     */
 
     
     if($args[0] == 'deniedpage'){
