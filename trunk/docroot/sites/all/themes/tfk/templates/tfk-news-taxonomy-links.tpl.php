@@ -1,7 +1,7 @@
 <?php echo l('NEWS ARCHIVE','news-archive');?>
 
 <ul class="menu">
-  <li><?php echo l('All News','news-archive/all',array('attributes' => array('class'=>array($term['class']))));?></li>
+  <li><?php echo l('All News','news-archive/all');?></li>
 <?php foreach($terms_with_articles as $term): ?>
 	<?php
 		if(isset($term['class'])) {
