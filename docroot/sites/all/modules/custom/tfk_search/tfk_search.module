@@ -2226,15 +2226,22 @@ function tfk_search_form_alter(&$form, &$form_state, $form_id) {
  * Photos and Video SERP callback.
  */
 function tfk_search_photos_and_video() {
-
+  $filterstring = array();
   module_load_include('module', 'search');
   
-  $filterstring = isset($_GET['filters']) ? $_GET['filters'] : '';
+  $filterstring = isset($_GET['filters']) ? $_GET['filters'] : array();
   $solrsort = isset($_GET['solrsort']) ? $_GET['solrsort'] : 'ds_created desc';
   $page = isset($_GET['page']) ? $_GET['page'] : 0;
   $base_path = 'photos-video';
   
-  $response = apachesolr_search_run(search_get_keys(), $filterstring, $solrsort, $base_path, $page, 'apachesolr_search');
+  //$response = apachesolr_search_run(search_get_keys(), $filterstring, $solrsort, $base_path, $page, 'apachesolr_search');
+  //select env_id, name from apachesolr_environment_variable;
+  //select * from apachesolr_search_page;
+  //
+  $search_page = apachesolr_search_page_load('qa_search');
+  $solr = apachesolr_get_solr($search_page['env_id']);
+  flog_it($solr);
+  $response = apachesolr_search_run('apachesolr', $filterstring, $solrsort, $base_path, $page, $solr);
   
   return theme('search_results', array('results' => $response));
     
@@ -2244,7 +2251,7 @@ function tfk_search_photos_and_video() {
  * Magazines SERP callback.
  */
 function tfk_search_magazine(){
-  $filterstring = isset($_GET['filters']) ? $_GET['filters'] : '';
+  $filterstring = isset($_GET['filters']) ? $_GET['filters'] : array();
   $solrsort = isset($_GET['solrsort']) ? $_GET['solrsort'] : 'ds_created desc';
   $page = isset($_GET['page']) ? $_GET['page'] : 0;
   $base_path = TFK_SEARCH_MAGAZINE_PATH;
