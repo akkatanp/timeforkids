@@ -1,0 +1,198 @@
+<?php
+
+/**
+ * Implementation of menu_hook.
+ */
+function tfk_page_paths_menu(){
+    //flog_it("tfk_page_paths_menu");
+	$items = array();
+
+        $items['store'] = array(
+		'title' => 'TFK Store',
+		'page callback' => 'tfk_store_callback',
+		'access callback' => 'user_access',
+		'access arguments' => array('access content')
+	);
+        $items['magazine'] = array(
+		'title' => 'TFK Magazine',
+		'page callback' => 'tfk_pv_page_callback',
+		'access callback' => 'user_access',
+		'access arguments' => array('access content')
+	);
+    	$items['digital'] = array(
+		'title' => 'Digital Edition',
+		'page callback' => 'tfk_pv_page_callback',
+		'access callback' => 'user_access',
+		'access arguments' => array('access content')
+	);
+        $items['digital-edition'] = array(
+		'title' => 'Digital Edition',
+		'page callback' => 'tfk_pv_page_callback',
+		'access callback' => 'user_access',
+		'access arguments' => array('access protected content')
+	);
+        $items['extras'] = array(
+		'title' => 'TFK Extras',
+		'page callback' => 'tfk_pv_page_callback',
+		'access callback' => 'user_access',
+		'access arguments' => array('access content')
+	);
+        $items['subscribe-renew'] = array(
+		'title' => 'Subscribe & Renew',
+		'page callback' => 'tfk_pv_page_callback',
+		'access callback' => 'user_access',
+		'access arguments' => array('access protected content')
+	);
+        $items['mini-sites'] = array(
+		'title' => 'Mini-Sites',
+		'page callback' => 'tfk_pv_page_callback',
+		'access callback' => 'user_access',
+		'access arguments' => array('access content')
+	);   
+        $items['news-archive'] = array(
+		'title' => 'News Archive',
+		'page callback' => '_tfk_news_archive_callback',
+		'access callback' => 'user_access',
+		'access arguments' => array('access content')
+	); 
+        $items['news-archive/%'] = array(
+		'title' => 'News Archive',
+		'page callback' => '_tfk_news_archive_callback',
+		'access callback' => 'user_access',
+		'access arguments' => array('access content')
+	);  
+        $items['info'] = array(
+		'title' => 'Info',
+		'page callback' => 'tfk_pv_page_callback',
+		'access callback' => 'user_access',
+		'access arguments' => array('access content')
+	);
+        $items['404page'] = array(
+		'title' => 'Page Not Found',
+		'page callback' => 'tfk_not_found_page',
+		'access callback' => 'user_access',
+		'access arguments' => array('access content')
+	);
+        $items['deniedpage'] = array(
+		'title' => 'SUBSCRIBER-ONLY CONTENT',
+		'page callback' => 'tfk_denied_page',
+		'access callback' => 'user_access',
+		'access arguments' => array('access content')
+	);
+	return $items;
+}
+
+
+function _tfk_news_archive_callback(){
+    return '';
+}
+
+
+function tfk_page_paths_preprocess_page(&$variables){
+    global $user;
+    
+    $args = arg();
+    //flog_it("***tfk_page_paths_preprocess_page:");
+    
+    // tp: tfk-50: Check to see if an article is flagged as a Magazine article, and for an annoymous user.
+    // tfk-34: Add new items to paywall
+    if ( isset($args[0]) && $args[0] == "node" && isset($variables['node']) ) { 
+        $node = $args[1];
+        //flog_it("content_type=".$variables['node']->type);
+        if ($variables['node']->type == "article") {
+            $flag = flag_get_flag("magazine_cover_story");
+ 
+            //flog_it("is_flagged=".$flag->is_flagged($node));
+            if ($flag->is_flagged($node)) {
+                //flog_it("$node is flagged as a Magazine article");
+                
+                // Check to see if this is an anonymous user: if it is -> 403
+                //flog_it("anon=".$variables['is_anon']);
+                
+                if ($variables['is_anon']) {
+                   drupal_add_http_header('Status', '403 Forbidden');
+                   //flog_it("Before drupal_deliver_page...");
+                   drupal_deliver_page(MENU_ACCESS_DENIED);
+                   //flog_it("After drupal_deliver_page: Calling drupal_exit()...");
+                   drupal_exit();
+                }
+            }
+        }
+    }
+
+    
+    if($args[0] == 'deniedpage'){
+        $variables['section_title'] = 'SUBSCRIBER-ONLY CONTENT';
+    }
+    
+    // Check to add (nid) to the admin/content page
+    if(isset($variables['page']['content']['system_main']['admin']['nodes'])){
+        foreach($variables['page']['content']['system_main']['admin']['nodes']['#options'] as $nid_id =>$node_item){
+            $variables['page']['content']['system_main']['admin']['nodes']['#options'][$nid_id]['title']['data']['#title'] = $variables['page']['content']['system_main']['admin']['nodes']['#options'][$nid_id]['title']['data']['#title'].' (id:'.$nid_id.')';
+            //flog_it("nid_id=".$nid_id.", node_item=".$node_item);
+            
+        }
+    
+    }
+    
+    
+}
+
+
+function tfk_not_found_page(){
+  return theme('tfk_not_found_page');
+}
+
+function tfk_denied_page(){
+    return theme('tfk_denied_page');
+}
+
+function tfk_page_paths_theme() {
+  return array(
+    'tfk_not_found_page' => array(
+      'template' => 'tfk-not-found-page',
+      'variables' => array('list' => NULL),
+    ),
+    'tfk_denied_page' => array(
+      'template' => 'tfk-denied-page',
+      'variables' => array('list' => NULL),
+    )
+  );
+}
+
+
+
+
+function tfk_page_paths_permission() {
+  //flog_it("tfk_page_paths_permission");
+  return array(
+    'access protected content' => array(
+      'title' => t('TFK Custom Permission'),
+      'description' => t('TFK Custom Permission'),
+    )
+  );
+}
+
+function tfk_store_callback(){
+  return '';
+  //return drupal_set_title('TFK Store');
+}
+
+
+
+
+
+function tfk_pv_page_callback() {
+	return '';
+}
+
+
+
+//$args = arg();
+//if(isset($args[1]) && !is_numeric($args[1])){
+//return $args[1];
+//}elseif(isset($args[1]) && is_numeric($args[1])){
+//    return $args[1];
+//}else{
+//    return 'all';
+//}
