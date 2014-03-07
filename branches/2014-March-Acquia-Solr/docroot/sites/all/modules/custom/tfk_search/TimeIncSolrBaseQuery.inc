@@ -6,6 +6,7 @@
  * @author rallen
  *
  */
+
 class TimeIncSolrBaseQuery extends SolrBaseQuery {
   
   /**
