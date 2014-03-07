@@ -1,0 +1,4 @@
+name = Temporary module
+description = Temporary fix for Video tables
+package = Other
+core = 7.x

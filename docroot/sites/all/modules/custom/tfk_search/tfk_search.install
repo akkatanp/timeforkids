@@ -7,14 +7,22 @@
  */
 function tfk_search_enable() {
   // We tell Solr to use our extended class.
-  variable_set('apachesolr_query_class', 'TimeIncSolrBaseQuery');
-  drupal_set_message('apachesolr_query_class variable was set to TimeIncSolrBaseQuery');
+  // Deprecated: variable_set('apachesolr_query_class', 'TimeIncSolrBaseQuery');
+  /* variable_set('apachesolr_query_class', array(
+    'file' => 'Solr_Base_Query',
+    'module' => 'apachesolr',
+    'class' => 'TimeIncSolrBaseQuery'); */
+  //drupal_set_message('apachesolr_query_class variable was set to TimeIncSolrBaseQuery');
 }
 
 function tfk_search_disable() {
   // Reset the base class to it's default.
-  variable_set('apachesolr_query_class', 'SolrBaseQuery');
-  drupal_set_message('apachesolr_query_class variable was set to the default SolrBaseQuery');
+  // Deprecated: variable_set('apachesolr_query_class', 'SolrBaseQuery');
+  /* variable_set('apachesolr_query_class', array(
+    'file' => 'Solr_Base_Query',
+    'module' => 'apachesolr',
+    'class' => 'SolrBaseQuery'); */
+  //drupal_set_message('apachesolr_query_class variable was set to the default SolrBaseQuery');
 }
 
 function tfk_search_install(){

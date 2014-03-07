@@ -178,7 +178,7 @@ function tfk_search_init() {
   }
   
   // Include our custom SolrBaseQuery class.
-  module_load_include('inc', 'tfk_search', 'TimeIncSolrBaseQuery');
+  //module_load_include('inc', 'tfk_search', 'TimeIncSolrBaseQuery');
   
   // Facet accordion behavior is disabled by default.
   $js_settings = array('tfk_search' => array('facet_accordion' => FALSE,));
@@ -1963,7 +1963,14 @@ function tfk_search_preprocess_pager_top(&$vars) {
     $vars['pager_title'] = 'Photos & Videos Archive';
   }
   
-  $query = apachesolr_current_query();
+  
+  flog_it("tfk_search_preprocess_pager_top...");
+    
+  $search_page = apachesolr_search_page_load('core_search');
+  $env_id = $search_page['env_id'];
+  flog_it("env_id=".$env_id);
+  $query = apachesolr_current_query($env_id);
+  flog_it("query=".$query);
   $active_filters = $query->get_filters();
   // If there are no active filters.
   if(!array_key_exists('filters', $_GET) && empty($active_filters)) {
@@ -2229,7 +2236,9 @@ function tfk_search_photos_and_video() {
   $filterstring = array();
   module_load_include('module', 'search');
   
-  $filterstring = isset($_GET['filters']) ? $_GET['filters'] : array();
+  $filterstring['q'] = isset($_GET['filters']) ? $_GET['filters'] : array();
+  $filtersing['q'] = "kids";
+  
   $solrsort = isset($_GET['solrsort']) ? $_GET['solrsort'] : 'ds_created desc';
   $page = isset($_GET['page']) ? $_GET['page'] : 0;
   $base_path = 'photos-video';
@@ -2238,8 +2247,15 @@ function tfk_search_photos_and_video() {
   //select env_id, name from apachesolr_environment_variable;
   //select * from apachesolr_search_page;
   //
-  $search_page = apachesolr_search_page_load('qa_search');
+  $search_page = apachesolr_search_page_load('core_search');
   $solr = apachesolr_get_solr($search_page['env_id']);
+  flog_it("filterstring:");
+  flog_it($filterstring);
+  flog_it("solrsort:");
+  flog_it($solrsort);
+  flog_it("page=".$page);
+  flog_it("base_path=".$base_path);
+  flog_it("solr:");
   flog_it($solr);
   $response = apachesolr_search_run('apachesolr', $filterstring, $solrsort, $base_path, $page, $solr);
   
