@@ -54,14 +54,14 @@ function tfk_search_menu(){
     'title' => 'Worksheets',
     'page callback' => 'tfk_search_worksheets',
     'access callback' => 'user_access',
-    'access arguments' => array('access protected content'),
+    'access arguments' => array('access content'),
     'type' => MENU_CALLBACK,
   );
   $items[TFK_SEARCH_MAGAZINE_PATH] = array(
     'title' => 'TFK Magazine',
     'page callback' => 'tfk_search_magazine',
     'access callback' => 'user_access',
-    'access arguments' => array('access protected content'),
+    'access arguments' => array('access content'),
     'type' => MENU_CALLBACK,
   );
   $items['myfr/%ctools_js/saves/%'] = array(
@@ -71,13 +71,14 @@ function tfk_search_menu(){
       'access callback' => TRUE,
       'type' => MENU_CALLBACK
   );
-   $items['myfr/%ctools_js/saves'] = array(
+  $items['myfr/%ctools_js/saves'] = array(
       'title' => 'Worksheets',
       'page callback' => 'ctools_ajax_save_srch',
       'page arguments' => array(1),
       'access callback' => TRUE,
       'type' => MENU_CALLBACK
   );
+  
   
   // Custom path for articles.
   // The format is news/[node title]/[article nid]/[magazine nid].
@@ -108,8 +109,25 @@ function tfk_search_menu(){
     'weight' => -10,
   );
   
+  /*
+  $items['system/files/worksheets/'] = array(
+      'title' => 'Worksheets PDF',
+      'access callback' => 'worksheet_access',
+      'access arguments' => array('access protected content'),
+      'type' => MENU_CALLBACK
+  );
+   * 
+   */
+  
   return $items;
 }
+
+/*
+function worksheet_access() {
+    flog_it("worksheet_access()...");
+}
+ * 
+ */
 
 /**
  * Menu title callback for magazine article paths.
@@ -1754,20 +1772,25 @@ function tfk_search_preprocess_page(&$variables) {
     $variables['title'] = 'Photos & Videos';
     $variables['section_title'] = 'PHOTOS & VIDEOS';
   }
+  
+  //flog_it("tfk_search_preproces_page: arg(0)=".arg(0));
   if(arg(0) == TFK_SEARCH_WORKSHEETS_PATH) {
     $variables['section_title'] = 'PRINTABLES';
     
     drupal_set_title('Worksheets');
     $variables['title'] = 'Woksheets';
     
+    /* tfk-85 */
+    /*
     global $user;
     $rls = $user->roles;
     if(count($rls) == 1 && $rls[1] == 'anonymous user'){  // ANONYMOUS USER
+        flog_it("Found anonymous user(1)...");
         $variables['section_title'] = t('SUBSCRIBER-ONLY CONTENT');
     }
-    
-    
+    */
   }
+  
   if(arg(0) == TFK_SEARCH_SITESEARCH_PATH) {
     // Force the removal of the default search box displayed by Drupal.
     $variables['section_title'] = 'SEARCH';
@@ -1814,12 +1837,17 @@ function tfk_search_preprocess_page(&$variables) {
   }
   
   // Unset some blocks for anon users.
+  /* tfk-85 */
+  /*
   if(arg(0) == TFK_SEARCH_WORKSHEETS_PATH) {
     global $user;
     if(!user_access('access protected content', $user)) {
+      flog_it("Found protected content...");
       unset($_variables['page']['sidebar_first']['tfk_search_tfk_search_ws_leftbar_title']);
     }
   }
+   * 
+   */
   
 }
 

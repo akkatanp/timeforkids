@@ -90,16 +90,16 @@ function _tfk_news_archive_callback(){
 
 function tfk_page_paths_preprocess_page(&$variables){
     global $user;
+    global $base_path;
     
     $args = arg();
     //flog_it("***tfk_page_paths_preprocess_page:");
     
-    // tp: tfk-50: Check to see if an article is flagged as a Magazine article, and for an annoymous user.
-    // tfk-34: Add new items to paywall
+    // tfk-50, tfk-34, tfk-83: Add new items to paywall
     if ( isset($args[0]) && $args[0] == "node" && isset($variables['node']) ) { 
         $node = $args[1];
         //flog_it("content_type=".$variables['node']->type);
-        if ($variables['node']->type == "article") {
+        if ($variables['node']->type == "article" || $variables['node']->type == "slideshow" || $variables['node']->type == "video" || $variables['node']->type == "minisite") {
             $flag = flag_get_flag("magazine_cover_story");
  
             //flog_it("is_flagged=".$flag->is_flagged($node));
@@ -119,7 +119,17 @@ function tfk_page_paths_preprocess_page(&$variables){
             }
         }
     }
-
+    
+    // Check for the tfk-magazine path and an anonymous user
+    //flog_it("args[0]=".$args[0].", isn_anon=".$variables['is_anon']);
+    if (strstr($args[0], "tfk-magazine") && $variables['is_anon']) {
+        drupal_add_http_header('Status', '403 Forbidden');
+        //flog_it("Before drupal_deliver_page...");
+        drupal_deliver_page(MENU_ACCESS_DENIED);
+        //flog_it("After drupal_deliver_page: Calling drupal_exit()...");
+        drupal_exit();
+    }
+    
     
     if($args[0] == 'deniedpage'){
         $variables['section_title'] = 'SUBSCRIBER-ONLY CONTENT';

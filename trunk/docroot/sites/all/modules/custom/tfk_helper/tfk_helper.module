@@ -982,10 +982,18 @@ function theme_suggestion_box($options = array()) {
  */
 function tfk_helper_file_download($uri) {
   global $user;
+  
+  /*
+  flog_it("tfk_helper_file_download: uri=".$uri);
+  flog_it("user->name=".$user->name);
+  flog_it($user->roles);
+   * 
+   */
   if (strpos($uri, 'pdf') >= 0) {
     $allowed = array_intersect(array('administrator', 'editor', 'teacher'), array_values($user->roles));
   	if (empty($allowed)) {
-    	return -1;
+            //flog_it("returning false...");
+            return -1;
    	} else {
    	  return array();
    	}

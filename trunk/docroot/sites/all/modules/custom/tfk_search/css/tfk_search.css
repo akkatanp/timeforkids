@@ -836,6 +836,21 @@ body.page-search-site .region-sidebar-first .block .content > .item-list {
 /**
  * Quiz CSS.
  */
+    
+/* tfk-85 */
+.not-logged-in li.search-result.pdf_quiz .search-result-download-link,
+.not-logged-in li.search-result.worksheet .search-result-download-link,
+.not-logged-in li.search-result.worksheet.quiz .search-result-download-link,
+.not-logged-in li.search-result.worksheet.chart .search-result-download-link,
+.not-logged-in li.search-result.worksheet.graph .search-result-download-link {
+  display: inline;
+  float: left;
+  background: url("/sites/all/themes/tfk/images/lock-icon.png") no-repeat;
+  padding-left: 18px;
+  height: 20px;
+}
+
+
 li.search-result.pdf_quiz .search-result-download-link {
   display: inline;
 	float: left;

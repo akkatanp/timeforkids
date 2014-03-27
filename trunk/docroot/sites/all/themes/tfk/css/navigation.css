@@ -176,6 +176,19 @@
         outline:none;
 }
 
+/* tfk-84 */
+.logged-in #teacher-nav-container li a {
+    background-image: url('../images/sub-nav-unlock-sprite.png');
+    background-repeat: no-repeat;
+}
+.not-logged-in #teacher-nav-container li a {
+    background-image: url('../images/sub-nav-lock-sprite.png');
+    background-repeat: no-repeat;
+}
+
+
+
+
 .node-type-article.with-kid-reporter #global-nav-container ul.menu a.news,
 #global-nav-container ul.menu a.news {
 	width: 50px;
@@ -268,7 +281,7 @@
 #teacher-nav-container ul.menu {
 	position:relative;
 	float: right;
-	width: 590px;
+	width: 620px;
 	height: 32px;
 	background: url("../images/teacher-nav-llink-back.png") repeat-x;
 	background: -moz-linear-gradient(100% 100% 90deg,  #5ea1d3, #7bc3f5);
@@ -287,30 +300,30 @@
 }
 
 #teacher-nav-container ul.menu a.tfk-magazine {
-	width: 110px;
-	background: url(../images/sub-nav-sprite.png) no-repeat 0px 0px;
+	width: 132px;
+	background-position: 0px 0px;
 }
 
 .views-field-field-image #teacher-nav-container ul.menu a.tfk-magazine,
 #teacher-nav-container ul.menu a.tfk-magazine.active,
 #teacher-nav-container ul.menu a.tfk-magazine:hover {
-	background: url(../images/sub-nav-sprite.png) no-repeat 0px -32px
+	background-position: 0px -32px
 }
 
 #teacher-nav-container ul.menu a.worksheets {
 	width: 92px;
-	background: url(../images/sub-nav-sprite.png) no-repeat -116px 0px;
+	background-position: -270px 0px;
 }
 
 .section-worksheets #teacher-nav-container ul.menu a.worksheets,
 #teacher-nav-container ul.menu a.worksheets.active,
 #teacher-nav-container ul.menu a.worksheets:hover {
-	background: url(../images/sub-nav-sprite.png) no-repeat -116px -32px;
+	background-position: -270px -32px;
 }
 
 #teacher-nav-container ul.menu a.teacher-community {
-	width: 118px;
-	background: url(../images/sub-nav-sprite.png) no-repeat -229px 0px;
+	width: 113px;
+	background-position: -372px 0px;
 }
 
 #teacher-nav-container ul.menu li.leaf.last {
@@ -324,27 +337,27 @@
 .section-teacher-community #teacher-nav-container ul.menu a.teacher-community,
 #teacher-nav-container ul.menu a.teacher-community.active,
 #teacher-nav-container ul.menu a.teacher-community:hover {
-	background: url(../images/sub-nav-sprite.png) no-repeat -229px -32px;
+	background-position: -372px -32px;
 }
 
 #teacher-nav-container ul.menu a.digital_edition {
-	width: 120px;
-	background: url(../images/sub-nav-sprite.png) no-repeat -365px 0px;
+	width: 135px;
+	background-position: -133px 0px;
 }
 
 #teacher-nav-container ul.menu a.digital_edition.active,
 #teacher-nav-container ul.menu a.digital_edition:hover {
-	background: url(../images/sub-nav-sprite.png) no-repeat -365px -32px;
+	background-position: -133px -32px;
 }
 
 #teacher-nav-container ul.menu a.subscribe-renew {
 	width: 140px;
-	background: url(../images/sub-nav-sprite.png) no-repeat -488px 0px;
+	background-position: -497px 0px;
 }
 
 #teacher-nav-container ul.menu a.subscribe-renew.active,
 #teacher-nav-container ul.menu a.subscribe-renew:hover {
-	background: url(../images/sub-nav-sprite.png) no-repeat -488px -32px;
+	background-position: -497px -32px;
 }
 
 /*
