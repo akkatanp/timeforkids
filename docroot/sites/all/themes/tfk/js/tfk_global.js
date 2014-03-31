@@ -98,6 +98,16 @@
     if (document.URL.indexOf('/store/') != -1) {
       $('.store').addClass('active');
     }
+    
+    // tfk-34
+    // Check for Subscriber Only content - activate popup
+    //console.log("document.title="+document.title);
+    //console.log(document.title.indexOf('SUBSCRIBER-ONLY CONTENT'));
+    if (document.title.indexOf('SUBSCRIBER-ONLY CONTENT') != -1) {
+      console.log("Found Subscriber only content...");
+      $('.login-link').trigger('click');
+    }
+    
 
     // Fix tout alignment.
     if ($('#block-views-homepage-top-story-block-1').outerHeight() > $('.view-homepage-minisite').height()) {
