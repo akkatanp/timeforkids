@@ -22,10 +22,12 @@
       
       //hide notification if it is there
       $('#hide-notification', context).click(function(){
+        console.log($(this).attr('rel'));
         $.ajax({
           url: $(this).attr('rel'),
           success: function(data) {
             if (data == 'success') {
+              console.log("success...");
               $('.notification', context).slideUp('fast');
             }
           }
@@ -100,12 +102,9 @@
     }
     
     // tfk-34
-    // Check for Subscriber Only content - activate popup
-    //console.log("document.title="+document.title);
-    //console.log(document.title.indexOf('SUBSCRIBER-ONLY CONTENT'));
+    // Check for Subscriber Only content - activate popup, automatically
     if (document.title.indexOf('SUBSCRIBER-ONLY CONTENT') != -1) {
-      console.log("Found Subscriber only content...");
-      $('.login-link').trigger('click');
+      $('div#teacher-nav-container .login-link').trigger('click');
     }
     
 
