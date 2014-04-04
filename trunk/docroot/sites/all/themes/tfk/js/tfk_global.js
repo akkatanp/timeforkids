@@ -1,6 +1,46 @@
 /* Global JS file */
 (function($) {
-  
+  function setCookie (name, value, expires, path, domain, secure) {
+      var expires_value = "";
+      if (expires != undefined) {
+            var d = new Date();
+            d.setTime(d.getTime()+(expires*24*60*60*1000));
+            var expires_value = "expires="+d.toGMTString();
+            //console.log("setcookie: expires_value="+expires_value);
+      }
+      
+      document.cookie = name + "=" + escape(value) +
+      ((expires_value) ? "; expires=" + expires_value : "") +
+      ((path) ? "; path=" + path : "") +
+      ((domain) ? "; domain=" + domain : "") +
+      ((secure) ? "; secure" : "");
+    }
+
+    function getCookieVal (offset) {
+      var endstr = document.cookie.indexOf (";", offset);
+      if (endstr == -1)
+       endstr = document.cookie.length;
+      return unescape(document.cookie.substring(offset, endstr));
+    }
+
+    function getCookie (name) {
+      var arg = name + "=";
+      var alen = arg.length;
+      var clen = document.cookie.length;
+      if((document.cookie == null) || (document.cookie.length == null)) {
+        return null;
+      }
+      var i = 0;
+      while (i < clen) {
+        var j = i + alen;
+        if (document.cookie.substring(i, j) == arg)
+          return getCookieVal (j);
+        i = document.cookie.indexOf(" ", i) + 1;
+        if (i == 0) break;
+      }
+      return null;
+    }
+    
   Drupal.behaviors.loginBox = {
     attach: function(context, settings) {
       
@@ -20,8 +60,10 @@
         });
       }
       
-      //hide notification if it is there
+      
+      //hide tfk_notification if it is there
       $('#hide-notification', context).click(function(){
+        /*
         console.log($(this).attr('rel'));
         $.ajax({
           url: $(this).attr('rel'),
@@ -32,7 +74,21 @@
             }
           }
         });
+        */
+       
+        // Hide tfk_notification and create hide cookie
+        $('.notification', context).slideUp('fast');
+        
+        // Create tfk_notification Opt Out cookie
+        // Get the tfk_notificationID from the Ajax URL
+        var tfk_notification = document.getElementById("hide-notification");
+        var tfk_notificationID = tfk_notification.rel.split('/')[3];
+        var cname = "tfk_notification-"+tfk_notificationID;
+        console.log("tfk-notification: Opt Out: Creating cookie: cname="+cname);
+        setCookie(cname,tfk_notificationID, 31);
       });
+      
+      
       
       $('#yearsubmit', context).takeUserTo(context);
     }
@@ -78,20 +134,50 @@
           loginForm = $('#user-login--2', context).clone();
           loginForm.removeAttr('id'); 
           loginForm.attr('id', 'user_login--2');
-          loginForm.appendTo(lightBox);
+          //loginForm.appendTo(lightBox);
       } else {
           //console.log("Found #user-login");
           loginForm.removeAttr('id'); 
           loginForm.attr('id', 'user_login');
-          loginForm.appendTo(lightBox);
+          //loginForm.appendTo(lightBox);
       }
       //console.log(loginForm);
+      /*
+      var temp_destination="";
+      if (event.target.href.indexOf("/tfk-magazine") != -1 || event.target.href.indexOf("/digital") != -1) {
+          temp_destination = event.target.href.split('/')[3];
+          //console.log(temp_destination);
+          loginForm.attr('action', 'http://tfk:8082/user?q=tfk-magazine');
+      }
+      console.log("temp_destination="+temp_destination);
+      */
+      loginForm.appendTo(lightBox);
   
     });
 
   };
   
   $(document).ready(function() {
+      
+    // Determine if tfk_notification message box should be shown
+    // Check to see if the tfk_notificaitonID via the ajax URL is in the DOM
+    var tfk_notification = document.getElementById("hide-notification");
+    if (tfk_notification != undefined) {
+      var tfk_notificationID = tfk_notification.rel.split('/')[3];
+      console.log("tfk_notificationID exists in DOM. tfk_notificationID="+tfk_notificationID);
+      var cname = "tfk_notification-"+tfk_notificationID;
+      console.log("cname cookie name="+cname);
+      if (getCookie(cname) == null) {
+          console.log("tfk_notification cookie doesn't exist. Exposing tfk_notification block. tfk_notificationID="+tfk_notificationID);
+          $('.notification').show();
+      } else {
+          console.log("tfk_notification cookie exists...");
+      }
+    } else {
+        console.log("tfk_notificationID does not exist in DOM.");
+    }
+      
+      
 
     // Colors in Menubar
     if (document.URL.indexOf('/minisite/') != -1) {
@@ -106,6 +192,17 @@
     if (document.title.indexOf('SUBSCRIBER-ONLY CONTENT') != -1) {
       $('div#teacher-nav-container .login-link').trigger('click');
     }
+    /*
+    $('.not-logged-in .tfk-magazine').click(function(e) {
+        e.preventDefault();
+        console.log(e);
+        $('div#teacher-nav-container .login-link').trigger('click');
+    });
+    $('.not-logged-in .digital_edition').click(function(e) {
+        e.preventDefault();
+        $('div#teacher-nav-container .login-link').trigger('click');
+    });
+    */
     
 
     // Fix tout alignment.

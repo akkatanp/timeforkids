@@ -373,7 +373,7 @@ $conf['reverse_proxy_addresses'] = array('184.72.228.250');
  * HTTP proxy, and bypass the reverse proxy if one is used) in order to avoid
  * getting cached pages from the proxy.
  */
-# $conf['omit_vary_cookie'] = TRUE;
+$conf['omit_vary_cookie'] = TRUE;
 
 /**
  * CSS/JS aggregated file gzip compression:

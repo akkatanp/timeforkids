@@ -25,12 +25,15 @@ function tfk_page_paths_menu(){
 		'access callback' => 'user_access',
 		'access arguments' => array('access content')
 	);
+        /*
         $items['digital-edition'] = array(
 		'title' => 'Digital Edition',
 		'page callback' => 'tfk_pv_page_callback',
 		'access callback' => 'user_access',
 		'access arguments' => array('access protected content')
 	);
+         * 
+         */
         $items['extras'] = array(
 		'title' => 'TFK Extras',
 		'page callback' => 'tfk_pv_page_callback',
@@ -130,6 +133,13 @@ function tfk_page_paths_preprocess_page(&$variables){
         drupal_exit();
     }
     
+    // Check for the digital editions path and an anonymous user
+    if (strstr($args[0], "digital") && $variables['is_anon']) {
+        flog_it("Found Anon digital editon path...");
+        drupal_deliver_page(MENU_ACCESS_DENIED);
+        //flog_it("After drupal_deliver_page: Calling drupal_exit()...");
+        drupal_exit();
+    }
     
     if($args[0] == 'deniedpage'){
         $variables['section_title'] = 'SUBSCRIBER-ONLY CONTENT';
@@ -193,6 +203,7 @@ function tfk_store_callback(){
 
 
 function tfk_pv_page_callback() {
+    //flog_it("tfk_pv_page_callback...");
 	return '';
 }
 

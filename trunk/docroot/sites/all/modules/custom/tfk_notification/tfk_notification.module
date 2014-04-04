@@ -64,14 +64,19 @@ function _tfk_notification_message(){
             //flog_it("Authenticated User...");
             // Authenicated users:
             // now we have to chek whether this Authenticated user already saw this notification
-            $result = db_query('select count(*) as totalsaw from {tfk_notifications_table} where notification_id = :nid and user_id = :uid',array('nid' => $record->lastid,'uid' =>$user->uid));
-            $row = $result->fetch();
+            //$result = db_query('select count(*) as totalsaw from {tfk_notifications_table} where notification_id = :nid and user_id = :uid',array('nid' => $record->lastid,'uid' =>$user->uid));
+            //$row = $result->fetch();
 
             //case where there is no row , means Authenticated user did not close it yet
+            /*
             if(!is_numeric($row->totalsaw) || $row->totalsaw == 0 ){
                 //flog_it("Authenticated User, putting out message...");
                 $putout_flag = 1;
             }
+             * 
+             */
+            
+            $putout_flag = 1;
         } elseif ($flag->is_flagged($record->lastid)) {
             //flog_it("Anonymous User, putting out message...");
             // Anonymous users

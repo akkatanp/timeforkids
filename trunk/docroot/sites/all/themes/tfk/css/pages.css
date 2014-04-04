@@ -2153,6 +2153,7 @@ div#page.page-node-photos-video div.region-content div#block-system-main {
   -webkit-box-shadow: 2px 2px 2px #999999;
   box-shadow: 2px 2px 2px #999999;
   margin-bottom: 10px;
+  display: none;
 }
 
 .notification h1 {
