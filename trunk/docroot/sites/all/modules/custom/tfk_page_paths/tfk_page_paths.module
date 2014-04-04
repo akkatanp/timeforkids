@@ -135,7 +135,7 @@ function tfk_page_paths_preprocess_page(&$variables){
     
     // Check for the digital editions path and an anonymous user
     if (strstr($args[0], "digital") && $variables['is_anon']) {
-        flog_it("Found Anon digital editon path...");
+        //flog_it("Found Anon digital editon path...");
         drupal_deliver_page(MENU_ACCESS_DENIED);
         //flog_it("After drupal_deliver_page: Calling drupal_exit()...");
         drupal_exit();
