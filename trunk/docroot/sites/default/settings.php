@@ -22,7 +22,7 @@
  * http://www.drupal.org/mysite/test/, the 'settings.php'
  * is searched in the following directories:
  *
- *  1. sites/www.drupal.org.mysite.test
+ *  1. sites/www.drupal.org.mysite.test 
  *  2. sites/drupal.org.mysite.test
  *  3. sites/org.mysite.test
  *
