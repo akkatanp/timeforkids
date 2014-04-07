@@ -64,12 +64,10 @@
       //hide tfk_notification if it is there
       $('#hide-notification', context).click(function(){
         /*
-        console.log($(this).attr('rel'));
         $.ajax({
           url: $(this).attr('rel'),
           success: function(data) {
             if (data == 'success') {
-              console.log("success...");
               $('.notification', context).slideUp('fast');
             }
           }
@@ -84,7 +82,7 @@
         var tfk_notification = document.getElementById("hide-notification");
         var tfk_notificationID = tfk_notification.rel.split('/')[3];
         var cname = "tfk_notification-"+tfk_notificationID;
-        console.log("tfk-notification: Opt Out: Creating cookie: cname="+cname);
+        //console.log("tfk-notification: Opt Out: Creating cookie: cname="+cname);
         setCookie(cname,tfk_notificationID, 31);
       });
       
@@ -164,17 +162,17 @@
     var tfk_notification = document.getElementById("hide-notification");
     if (tfk_notification != undefined) {
       var tfk_notificationID = tfk_notification.rel.split('/')[3];
-      console.log("tfk_notificationID exists in DOM. tfk_notificationID="+tfk_notificationID);
+      //console.log("tfk_notificationID exists in DOM. tfk_notificationID="+tfk_notificationID);
       var cname = "tfk_notification-"+tfk_notificationID;
-      console.log("cname cookie name="+cname);
+      //console.log("cname cookie name="+cname);
       if (getCookie(cname) == null) {
-          console.log("tfk_notification cookie doesn't exist. Exposing tfk_notification block. tfk_notificationID="+tfk_notificationID);
+          //console.log("tfk_notification cookie doesn't exist. Exposing tfk_notification block. tfk_notificationID="+tfk_notificationID);
           $('.notification').show();
       } else {
-          console.log("tfk_notification cookie exists...");
+          //console.log("tfk_notification cookie exists...");
       }
     } else {
-        console.log("tfk_notificationID does not exist in DOM.");
+        //console.log("tfk_notificationID does not exist in DOM.");
     }
       
       
