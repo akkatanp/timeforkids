@@ -81,7 +81,7 @@
         // Get the tfk_notificationID from the Ajax URL
         var tfk_notification = document.getElementById("hide-notification");
         var tfk_notificationID = tfk_notification.rel.split('/')[3];
-        var cname = "tfk_notification-"+tfk_notificationID;
+        var cname = "tfk_notification_"+tfk_notificationID;
         //console.log("tfk-notification: Opt Out: Creating cookie: cname="+cname);
         setCookie(cname,tfk_notificationID, 31);
       });
@@ -163,7 +163,7 @@
     if (tfk_notification != undefined) {
       var tfk_notificationID = tfk_notification.rel.split('/')[3];
       //console.log("tfk_notificationID exists in DOM. tfk_notificationID="+tfk_notificationID);
-      var cname = "tfk_notification-"+tfk_notificationID;
+      var cname = "tfk_notification_"+tfk_notificationID;
       //console.log("cname cookie name="+cname);
       if (getCookie(cname) == null) {
           //console.log("tfk_notification cookie doesn't exist. Exposing tfk_notification block. tfk_notificationID="+tfk_notificationID);
