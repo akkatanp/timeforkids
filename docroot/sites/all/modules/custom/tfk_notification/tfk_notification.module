@@ -52,6 +52,8 @@ function _tfk_notification_message(){
   $record = $res->fetch();
 
   $notification_data = array();
+  flog_it("record->lastid=".$record->lastid);
+  flog_it("is_numeric=".is_numeric($record->lastid));
 
   //check if there is at least one published
   if (is_numeric($record->lastid)){

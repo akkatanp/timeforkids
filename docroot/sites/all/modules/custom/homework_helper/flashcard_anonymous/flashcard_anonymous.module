@@ -63,7 +63,7 @@ function flashcard_anonymous_permission() {
  * Disallow direct access to flashcards.
  */
 function flashcard_anonymous_access($op, $node) {
-  flog_it("flashcard_anonymous_access: node-type=".$node->type);
+  //flog_it("flashcard_anonymous_access: node-type=".$node->type);
   
   if ($node->type == 'flashcard') {
     $account = user_load($node->uid);
