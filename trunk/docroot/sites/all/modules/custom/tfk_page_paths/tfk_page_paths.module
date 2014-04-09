@@ -191,7 +191,7 @@ function tfk_page_paths_permission() {
       'description' => t('TFK Custom Permission'),
     ),
     'view anonymous board member' => array(
-      'title' => t('TFK View Anonymous Board Bember'),
+      'title' => t('TFK View Anonymous Board Member'),
       'description' => t('TFK View Anonymous Board Member'),
     )
   );
