@@ -46,7 +46,7 @@ function tfk_notification_block_view($delta='') {
 }
 
 function _tfk_notification_message(){
-
+  flog_it("tfk_notification_message...");
   $record = array();
   $res = db_query('select max(nid) as lastid from node where type = :type and status = 1',array('type'=>'tfk_notification'));
   $record = $res->fetch();
@@ -58,10 +58,10 @@ function _tfk_notification_message(){
         global $user;
         $putout_flag = 0;
         $flag = flag_get_flag("tfk_notification_for_all_users");
-        //flog_it($flag->is_flagged($record->lastid));
+        flog_it($flag->is_flagged($record->lastid));
 
         if ($user->uid != 0){
-            //flog_it("Authenticated User...");
+            flog_it("Authenticated User...");
             // Authenicated users:
             // now we have to chek whether this Authenticated user already saw this notification
             //$result = db_query('select count(*) as totalsaw from {tfk_notifications_table} where notification_id = :nid and user_id = :uid',array('nid' => $record->lastid,'uid' =>$user->uid));
@@ -78,13 +78,14 @@ function _tfk_notification_message(){
             
             $putout_flag = 1;
         } elseif ($flag->is_flagged($record->lastid)) {
-            //flog_it("Anonymous User, putting out message...");
+            flog_it("Anonymous User, putting out message...");
             // Anonymous users
             $putout_flag = 1;
         }
 
 
         // Check to putout the message
+        flog_it("putout_flag=".$putout_flag);
         if ($putout_flag) {
             $notification = node_load($record->lastid);
 

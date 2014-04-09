@@ -63,11 +63,16 @@ function flashcard_anonymous_permission() {
  * Disallow direct access to flashcards.
  */
 function flashcard_anonymous_access($op, $node) {
+  flog_it("flashcard_anonymous_access: node-type=".$node->type);
+  
   if ($node->type == 'flashcard') {
     $account = user_load($node->uid);
     return (user_access('view anonymous flashcards') || (user_access('create public flashcards', $account)));
-  }
-  else {
+  } else if ($node->type == 'board_member') {
+    //flog_it("calling user_access: view anonymous board member...");
+    //flog_it(user_access('view anonymous board member'));
+    return (user_access('view anonymous board member'));
+  } else {
     return node_access($op, $node);
   }
 }
