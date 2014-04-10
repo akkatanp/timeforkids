@@ -333,7 +333,7 @@ ini_set('session.cookie_lifetime', 0);
  * about this setting, do not have a reverse proxy, or Drupal operates in
  * a shared hosting environment, this setting should remain commented out.
  */
-#$conf['reverse_proxy'] = TRUE;
+# $conf['reverse_proxy'] = TRUE;
 
 /**
  * Set this value if your proxy server sends the client IP in a header other
@@ -342,7 +342,7 @@ ini_set('session.cookie_lifetime', 0);
  * The "X-Forwarded-For" header is a comma+space separated list of IP addresses,
  * only the last one (the left-most) will be used.
  */
-#$conf['reverse_proxy_header'] = 'HTTP_TRUE_CLIENT_IP';
+# $conf['reverse_proxy_header'] = 'HTTP_TRUE_CLIENT_IP';
 
 /**
  * reverse_proxy accepts an array of IP addresses.
@@ -354,7 +354,7 @@ ini_set('session.cookie_lifetime', 0);
  * reverse proxies. Otherwise, the client could directly connect to
  * your web server spoofing the X-Forwarded-For headers.
  */
-#$conf['reverse_proxy_addresses'] = array('184.72.228.250');
+# $conf['reverse_proxy_addresses'] = array('184.72.228.250');
 
 /**
  * Page caching:
@@ -373,7 +373,7 @@ ini_set('session.cookie_lifetime', 0);
  * HTTP proxy, and bypass the reverse proxy if one is used) in order to avoid
  * getting cached pages from the proxy.
  */
-$conf['omit_vary_cookie'] = TRUE;
+ $conf['omit_vary_cookie'] = TRUE;
 
 /**
  * CSS/JS aggregated file gzip compression:
