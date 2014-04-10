@@ -824,7 +824,7 @@ jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":
   
               
     <div class="content">
-      <p>© '.date("Y").' Time Inc. All Rights Reserved.</p>
+      <p>© 2014 Time Inc. All Rights Reserved.</p>
     </div>
   
   </div>
