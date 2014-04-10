@@ -443,6 +443,9 @@ $conf['omit_vary_cookie'] = TRUE;
  */
 # $conf['allow_authorize_operations'] = FALSE;
 
+// Drupal 7 does not cache pages when we invoke hooks during bootstrap. This needs
+// to be disabled.
+$conf['page_cache_invoke_hooks'] = FALSE;
 
 /**
  * Memcached Config Settings
