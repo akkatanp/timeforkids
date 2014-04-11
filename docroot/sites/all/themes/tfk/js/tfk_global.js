@@ -40,6 +40,9 @@
       }
       return null;
     }
+    function deleteCookie(name) {
+        document.cookie = name + '=; expires=Thu, 01-Jan-70 00:00:01 GMT;';
+    }
     
   Drupal.behaviors.loginBox = {
     attach: function(context, settings) {
@@ -63,7 +66,6 @@
       
       //hide tfk_notification if it is there
       $('#hide-notification', context).click(function(){
-        /*
         $.ajax({
           url: $(this).attr('rel'),
           success: function(data) {
@@ -72,18 +74,18 @@
             }
           }
         });
-        */
        
         // Hide tfk_notification and create hide cookie
-        $('.notification', context).slideUp('fast');
+        //$('.notification', context).slideUp('fast');
         
         // Create tfk_notification Opt Out cookie
         // Get the tfk_notificationID from the Ajax URL
-        var tfk_notification = document.getElementById("hide-notification");
-        var tfk_notificationID = tfk_notification.rel.split('/')[3];
-        var cname = "tfk_notification_"+tfk_notificationID;
+        //var tfk_notification = document.getElementById("hide-notification");
+        //var tfk_notificationID = tfk_notification.rel.split('/')[3];
+        //var cname = "tfk_notification_"+tfk_notificationID;
         //console.log("tfk-notification: Opt Out: Creating cookie: cname="+cname);
-        setCookie(cname,tfk_notificationID, 31);
+        //setCookie(cname,tfk_notificationID, 31);
+        //console.log(getCookieVal(cname));
       });
       
       
@@ -159,6 +161,7 @@
       
     // Determine if tfk_notification message box should be shown
     // Check to see if the tfk_notificaitonID via the ajax URL is in the DOM
+    /*
     var tfk_notification = document.getElementById("hide-notification");
     if (tfk_notification != undefined) {
       var tfk_notificationID = tfk_notification.rel.split('/')[3];
@@ -174,6 +177,23 @@
     } else {
         //console.log("tfk_notificationID does not exist in DOM.");
     }
+    */
+   if (getCookie("tfk_notification-156401") != null) {
+        console.log("deleting tfk_notification-156401");
+        deleteCookie("tfk_notification-156401");
+   }
+   if (getCookie("tfk_notification_156401") != null) {
+       console.log("deleting tfk_notification_156401");
+       deleteCookie("tfk_notification_156401");
+   }
+   if (getCookie("tfk_notification-71921") != null) {
+        console.log("deleting tfk_notification-71921");
+        deleteCookie("tfk_notification-71921");
+   }
+   if (getCookie("tfk_notification_71921") != null) {
+       console.log("deleting tfk_notification_71921");
+       deleteCookie("tfk_notification_71921");
+   }
       
       
 
