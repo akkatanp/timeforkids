@@ -58,7 +58,7 @@ function _tfk_notification_message(){
   //check if there is at least one published
   if (is_numeric($record->lastid)){
         global $user;
-        $putout_flag = 0;
+        
         $flag = flag_get_flag("tfk_notification_for_all_users");
         //flog_it($flag->is_flagged($record->lastid));
 
@@ -66,40 +66,24 @@ function _tfk_notification_message(){
             //flog_it("Authenticated User...");
             // Authenicated users:
             // now we have to chek whether this Authenticated user already saw this notification
-            //$result = db_query('select count(*) as totalsaw from {tfk_notifications_table} where notification_id = :nid and user_id = :uid',array('nid' => $record->lastid,'uid' =>$user->uid));
-            //$row = $result->fetch();
+            $result = db_query('select count(*) as totalsaw from {tfk_notifications_table} where notification_id = :nid and user_id = :uid',array('nid' => $record->lastid,'uid' =>$user->uid));
+            $row = $result->fetch();
 
             //case where there is no row , means Authenticated user did not close it yet
-            /*
             if(!is_numeric($row->totalsaw) || $row->totalsaw == 0 ){
                 //flog_it("Authenticated User, putting out message...");
-                $putout_flag = 1;
+                $notification = node_load($record->lastid);
+
+                $notification_data['notification_title'] = $notification->title;
+
+                $body_tmp = field_get_items('node', $notification, 'body');
+                $notification_data['notification_body'] = $body_tmp[0]['safe_value'];
+
+                $link_tmp = field_get_items('node', $notification, 'field_external_url');
+                $notification_data['notification_link'] = $link_tmp[0]['safe_value'];
+
+                $notification_data['notification_nid'] = $record->lastid;
             }
-             * 
-             */
-            
-            $putout_flag = 1;
-        } elseif ($flag->is_flagged($record->lastid)) {
-            //flog_it("Anonymous User, putting out message...");
-            // Anonymous users
-            $putout_flag = 1;
-        }
-
-
-        // Check to putout the message
-        //flog_it("putout_flag=".$putout_flag);
-        if ($putout_flag) {
-            $notification = node_load($record->lastid);
-
-            $notification_data['notification_title'] = $notification->title;
-
-            $body_tmp = field_get_items('node', $notification, 'body');
-            $notification_data['notification_body'] = $body_tmp[0]['safe_value'];
-
-            $link_tmp = field_get_items('node', $notification, 'field_external_url');
-            $notification_data['notification_link'] = $link_tmp[0]['safe_value'];
-
-            $notification_data['notification_nid'] = $record->lastid;
         }
   }
   
