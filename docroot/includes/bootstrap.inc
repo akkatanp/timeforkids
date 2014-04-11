@@ -1258,6 +1258,7 @@ function drupal_page_header() {
     'Cache-Control' => 'no-cache, must-revalidate, post-check=0, pre-check=0',
     'ETag' => '"' . REQUEST_TIME . '"',
   );
+  //print("drupal_page_header: cache-control=".$default_headers['Cache-Control']);
   drupal_send_headers($default_headers);
 }
 
@@ -1302,6 +1303,7 @@ function drupal_serve_page_from_cache(stdClass $cache) {
   // unset in hook_boot().
   $max_age = !isset($_COOKIE[session_name()]) || isset($hook_boot_headers['vary']) ? variable_get('page_cache_maximum_age', 0) : 0;
   $default_headers['Cache-Control'] = 'public, max-age=' . $max_age;
+  print("drupal_serve_page_from_cache: max_age=".$max_age);
 
   // Entity tag should change if the output changes.
   $etag = '"' . $cache->created . '-' . intval($return_compressed) . '"';
