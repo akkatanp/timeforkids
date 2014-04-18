@@ -126,10 +126,9 @@ function tfk_page_paths_preprocess_page(&$variables){
     // Check for the tfk-magazine path and an anonymous user
     //flog_it("args[0]=".$args[0].", isn_anon=".$variables['is_anon']);
     if (strstr($args[0], "tfk-magazine") && $variables['is_anon']) {
-        drupal_add_http_header('Status', '403 Forbidden');
         //flog_it("Before drupal_deliver_page...");
+        drupal_add_http_header('Status', '403 Forbidden');
         drupal_deliver_page(MENU_ACCESS_DENIED);
-        //flog_it("After drupal_deliver_page: Calling drupal_exit()...");
         drupal_exit();
     }
     
@@ -137,9 +136,18 @@ function tfk_page_paths_preprocess_page(&$variables){
     if (strstr($args[0], "digital") && $variables['is_anon']) {
         //flog_it("Found Anon digital editon path...");
         drupal_deliver_page(MENU_ACCESS_DENIED);
-        //flog_it("After drupal_deliver_page: Calling drupal_exit()...");
         drupal_exit();
     }
+    
+    // Check for the teacher board path and an anonymous user
+    /*
+    if (strstr($args[0], "teacher-board-members") && $variables['is_anon']) {
+        //flog_it("Found Anon digital editon path...");
+        drupal_deliver_page(MENU_ACCESS_DENIED);
+        drupal_exit();
+    }
+     * 
+     */
     
     if($args[0] == 'deniedpage'){
         $variables['section_title'] = 'SUBSCRIBER-ONLY CONTENT';

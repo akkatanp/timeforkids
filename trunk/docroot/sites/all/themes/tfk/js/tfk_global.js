@@ -179,20 +179,28 @@
     }
     */
    if (getCookie("tfk_notification-156401") != null) {
-        console.log("deleting tfk_notification-156401");
+        //console.log("deleting tfk_notification-156401");
         deleteCookie("tfk_notification-156401");
    }
    if (getCookie("tfk_notification_156401") != null) {
-       console.log("deleting tfk_notification_156401");
+       //console.log("deleting tfk_notification_156401");
        deleteCookie("tfk_notification_156401");
    }
    if (getCookie("tfk_notification-71921") != null) {
-        console.log("deleting tfk_notification-71921");
+        //console.log("deleting tfk_notification-71921");
         deleteCookie("tfk_notification-71921");
    }
    if (getCookie("tfk_notification_71921") != null) {
-       console.log("deleting tfk_notification_71921");
+       //console.log("deleting tfk_notification_71921");
        deleteCookie("tfk_notification_71921");
+   }
+   if (getCookie("tfk_notification-113761") != null) {
+        //console.log("deleting tfk_notification-113761");
+        deleteCookie("tfk_notification-113761");
+   }
+   if (getCookie("tfk_notification_113761") != null) {
+       //console.log("deleting tfk_notification_113761");
+       deleteCookie("tfk_notification_113761");
    }
       
       
