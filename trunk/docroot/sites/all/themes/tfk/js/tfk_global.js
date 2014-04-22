@@ -154,6 +154,43 @@
       loginForm.appendTo(lightBox);
   
     });
+    
+    
+    // Learm more marketing submit
+    $('.lm-email', context).focus(function() {
+        console.log("focus...");
+        if ( $('.lm-email').val() == "enter email address" ) {
+            $('.lm-email').val("");
+        }
+    });
+    
+    $('.lm-submit', context).click(function() {
+      event.preventDefault();
+      console.log("Learn more submit button pressed...");
+      console.log($('.lm-email').val());
+      
+      // Edits
+      if ( $('.lm-email').val() == "enter email address" || $('.lm-email').val() == "") {
+          alert("Email is required...");
+          return false;
+      }
+      
+      var emailRegex = new RegExp(/^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$/i);
+      var valid = emailRegex.test($('.lm-email').val());
+      if (!valid) {
+           alert("Invalid e-mail address...");
+           return false;
+      }
+      //return;
+      
+      $.ajax({
+        type: 'POST',
+        success: function(data) {
+          console.log("inside success...");
+          $('.lm-form-section').html('<div class="thankyou"><p>Thank you for your interest.</p></div>');
+        }
+      });
+    });
 
   };
   
