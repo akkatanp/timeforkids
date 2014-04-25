@@ -159,7 +159,7 @@
     // Learm more marketing submit
     $('.lm-email', context).focus(function() {
         //console.log("focus...");
-        if ( $('.lm-email').val() == "enter email address" ) {
+        if ( $('.lm-email').val() == "Enter email address" ) {
             $('.lm-email').val("");
         }
     });
