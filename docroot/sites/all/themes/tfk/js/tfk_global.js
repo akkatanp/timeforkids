@@ -158,16 +158,16 @@
     
     // Learm more marketing submit
     $('.lm-email', context).focus(function() {
-        console.log("focus...");
+        //console.log("focus...");
         if ( $('.lm-email').val() == "enter email address" ) {
             $('.lm-email').val("");
         }
     });
     
-    $('.lm-submit', context).click(function() {
-      event.preventDefault();
-      console.log("Learn more submit button pressed...");
-      console.log($('.lm-email').val());
+    $('.lm-submit', context).click(function(ev) {
+      ev.preventDefault();
+      //console.log("Learn more submit button pressed...");
+      //console.log($('.lm-email').val());
       
       // Edits
       if ( $('.lm-email').val() == "enter email address" || $('.lm-email').val() == "") {
@@ -186,7 +186,7 @@
       $.ajax({
         type: 'POST',
         success: function(data) {
-          console.log("inside success...");
+          //console.log("inside success...");
           $('.lm-form-section').html('<div class="thankyou"><p>Thank you for your interest.</p></div>');
         }
       });
