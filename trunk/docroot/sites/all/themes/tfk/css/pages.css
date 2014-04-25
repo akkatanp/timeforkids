@@ -3727,7 +3727,7 @@ div.views-slideshow-cycle-main {height:220px;min-height:220px;}
 }
 .learn-more hr {
    border-top: 1px dotted #000;
-    height: 1px;
+    height: 0px;
     margin-top: 5px;
     margin-bottom: 5px;
     width: 232px;
