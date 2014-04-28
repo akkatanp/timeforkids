@@ -237,7 +237,7 @@
         deleteCookie("tfk_notification-113761");
    }
    if (getCookie("tfk_notification_113761") != null) {
-       //console.log("deleting tfk_notification_113761");
+       console.log("deleting tfk_notification_113761");
        deleteCookie("tfk_notification_113761");
    }
    
