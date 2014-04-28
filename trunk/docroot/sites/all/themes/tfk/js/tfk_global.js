@@ -240,8 +240,12 @@
        //console.log("deleting tfk_notification_113761");
        deleteCookie("tfk_notification_113761");
    }
+   
       
-   console.log("navigator.apName="+navigator.appName+", navigator .appVersion="+navigator.appVersion);
+    // Check for IE
+    if (navigator.appName="Microsoft Internet Explorer") {
+        $("body").addClass("ie");
+    }
 
     // Colors in Menubar
     if (document.URL.indexOf('/minisite/') != -1) {
