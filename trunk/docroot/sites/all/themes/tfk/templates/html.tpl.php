@@ -71,12 +71,8 @@
   <?php print $styles; ?>
   <?php print $scripts; ?>
 </head>
-    <!--[if IE ]>
-    <body class="ie <?php print $classes; ?>" <?php print $attributes;?>>
-    <![endif]-->
-    <!--[if !IE]>-->
+
     <body class="<?php print $classes; ?>" <?php print $attributes;?>>
-    <!--<![endif]-->
 
   <div id="skip-link">
     <a href="#<?php print $jump_link_target; ?>" class="element-invisible element-focusable"><?php print t('Jump to Navigation'); ?></a>
