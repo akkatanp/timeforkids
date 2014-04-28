@@ -240,7 +240,7 @@
        deleteCookie("tfk_notification_113761");
    }
       
-      
+   console.log("navigator.apName="+navigator.appName+", navigator .appVersion="+navigator.appVersion);
 
     // Colors in Menubar
     if (document.URL.indexOf('/minisite/') != -1) {
