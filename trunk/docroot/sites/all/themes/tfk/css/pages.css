@@ -3726,12 +3726,14 @@ div.views-slideshow-cycle-main {height:220px;min-height:220px;}
     width: 210px;
 }
 .learn-more hr {
-   border-top: 1px dotted #000;
+    border-top: 1px dotted #000;
     height: 0px;
     margin-top: 5px;
     margin-bottom: 5px;
-    margin-left: 0px;
     width: 232px;
+}
+.ie .learn-more hr {
+    margin-left: -10px;
 }
 
 .learn-more p {
