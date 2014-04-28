@@ -1,6 +1,13 @@
 /* Global JS file */
 (function($) {
-  function setCookie (name, value, expires, path, domain, secure) {
+    // IE console.log
+    if (!window.console){ 
+        window.console = {
+            log: function(){} 
+        }; 
+    }  
+  
+    function setCookie (name, value, expires, path, domain, secure) {
       var expires_value = "";
       if (expires != undefined) {
             var d = new Date();
@@ -40,6 +47,7 @@
       }
       return null;
     }
+    
     function deleteCookie(name) {
         document.cookie = name + '=; expires=Thu, 01-Jan-70 00:00:01 GMT;';
     }
@@ -104,13 +112,6 @@
 
 
   $.fn.loginBox = function(context) {
-  // IE console.log
-  if (!window.console){ 
-      window.console = {
-          log: function(){} 
-      }; 
-  }  
-  
     // Create lightbox when user clicks link.
     $(this, context).click(function(e) {
       e.preventDefault();
