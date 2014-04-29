@@ -245,7 +245,7 @@
     // Check for IE
     if (navigator.appName=="Microsoft Internet Explorer") {
         $("body").addClass("ie");
-        console.log("Added ie class to body tag");
+        //console.log("Added ie class to body tag");
     }
 
     // Colors in Menubar
