@@ -194,7 +194,7 @@
         url: 'https://ebm.cheetahmail.com/r/regf2',
         data: serializedData,
         success: function(data) {
-          //console.log("inside success...");
+          console.log("inside success: data="+data);
           $('.lm-form-section').html('<div class="thankyou"><p>Thank you for your interest.</p></div>');
         }
       });
