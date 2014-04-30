@@ -195,6 +195,7 @@
         data: serializedData,
         success: function(data) {
           console.log("inside success: data="+data);
+          console.log("status="+data.status);
           $('.lm-form-section').html('<div class="thankyou"><p>Thank you for your interest.</p></div>');
         }
       });
