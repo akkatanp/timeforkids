@@ -182,10 +182,17 @@
            alert("Invalid e-mail address...");
            return false;
       }
+      
+      // serialize the data in the form
+      var $form = $('#lm-form-id');
+      var serializedData = $form.serialize();
+      console.log("serializedData="+$form.serialize());
       //return;
       
       $.ajax({
         type: 'POST',
+        url: 'https://ebm.cheetahmail.com/r/regf2',
+        data: serializedData,
         success: function(data) {
           //console.log("inside success...");
           $('.lm-form-section').html('<div class="thankyou"><p>Thank you for your interest.</p></div>');
