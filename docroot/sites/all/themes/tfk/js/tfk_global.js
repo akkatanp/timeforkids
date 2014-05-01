@@ -186,17 +186,24 @@
       // serialize the data in the form
       var $form = $('#lm-form-id');
       var serializedData = $form.serialize();
-      console.log("serializedData="+$form.serialize());
+      //console.log("serializedData="+$form.serialize());
       //return;
       
       $.ajax({
-        type: 'POST',
-        url: 'https://ebm.cheetahmail.com/r/regf2',
+        url: '/learnmore/processing',
         data: serializedData,
-        success: function(data) {
-          console.log("inside success: data="+data);
-          console.log("status="+data.status);
-          $('.lm-form-section').html('<div class="thankyou"><p>Thank you for your interest.</p></div>');
+        type: 'POST',
+        success: function(result) {
+          //console.log("SUCCESS...");
+          if (result == 200) {
+              $('.lm-form-section').html('<div class="thankyou"><p>Thank you for your interest.</p></div>');
+          } else {
+              $('.lm-form-section').html('<div class="thankyou"><p>Service unavailable. Try again later.</p></div>');
+          }
+        },
+        error: function(result) {
+            console.log("ERROR...");
+            console.log(result);
         }
       });
     });

@@ -91,7 +91,36 @@ function tfk_helper_menu() {
     'page arguments' => array('secondary_touts_admin_settings'),
     'description' => 'Configure Secondary Touts settings.',
   );
+  
+  
+  $items['learnmore/processing'] = array(
+    'title' => 'Learn More Processing',
+    'page callback' => '_tfk_learnmore_processing',
+    'page arguments' => array(2),
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK
+  );
   return $items;
+}
+
+function _tfk_learnmore_processing() {
+    //flog_it($_POST);
+
+    if (empty($_POST)) {
+        echo "failure";
+        exit;
+    }
+    
+    // Set variables
+    $aid = $_POST['aid'];
+    $TFK_SOURCE = $_POST['TFK_SOURCE'];
+    $n = $_POST['n'];
+    $sub = $_POST['sub'];
+    $email = $_POST['email'];
+    
+    $response = drupal_http_request('http://ebm.cheetahmail.com/r/regf2?aid=' . $aid . '&TFK_SOURCE=' . $TFK_SOURCE . '&n=' . $n . '&sub=' . $sub  . '&email=' . $email);
+    print_r($response->code);
+    exit;
 }
 
 /**
