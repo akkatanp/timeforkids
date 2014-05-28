@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the TFK Flags feature.
+ */
+
+include_once('tfk_flags.features.inc');
