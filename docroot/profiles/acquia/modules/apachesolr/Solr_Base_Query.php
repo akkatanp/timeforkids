@@ -87,14 +87,14 @@ class SolrFilterSubQuery {
   protected function unsetFilter(&$fields, $name, $value, $exclude) {
     if (!isset($value)) {
       foreach ($fields as $pos => $values) {
-        if ($values['#name'] == $name) {
+        if (array_key_exists('#name', $values) && $values['#name'] == $name) {
           unset($fields[$pos]);
         }
       }
     }
     else {
       foreach ($fields as $pos => $values) {
-        if ($values['#name'] == $name && $values['#value'] == $value && $values['#exclude'] == $exclude) {
+        if (array_key_exists('#name', $values) && $values['#name'] == $name && $values['#value'] == $value) {
           unset($fields[$pos]);
         }
       }
