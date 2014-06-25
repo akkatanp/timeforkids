@@ -189,12 +189,18 @@ function tfk_search_slideshow_image_view($slideshow_node, $slide_number = NULL) 
  * Implementation of hook_init.
  */
 function tfk_search_init() {
+  //flog_it("tfk_search_init...");
+  
+  // SEARCH: ONE TIME
+  //variable_set("apachesolr_query_class", array("file" => "TimeIncSolrBaseQuery", "module" => "tfk_search", "class" => "TimeIncSolrBaseQuery"));
+
   
   $node = menu_get_object('node', 1);
   if($node && $node->type == 'slideshow') {
     drupal_add_js(array('tfk_featured_slideshow' => array('slide_number' => arg(2))), 'setting');
   }
   
+  // SEARCH: HAD TO COMMENT OUT AT FIRST
   // Include our custom SolrBaseQuery class.
   module_load_include('inc', 'tfk_search', 'TimeIncSolrBaseQuery');
   
@@ -1754,9 +1760,15 @@ function tfk_search_preprocess_pager(&$variables) {
  */
 function tfk_search_preprocess_page(&$variables) {
   $_variables = & $variables;
+  //flog_it("tfk_search_preprocess_page...");
   
+    global $user;
+    $rls = $user->roles;
+    if(count($rls) == 1 && $rls[1] == 'anonymous user'){
+        flog_it("ANONYMOUS USER, arg(0)=".arg(0));
+    }
   
-  
+  //flog_it("HERE1...");
   if(arg(0) == 'my-favorites'){
       global $user;
     $rls = $user->roles;
@@ -1765,6 +1777,7 @@ function tfk_search_preprocess_page(&$variables) {
     }
   }
   
+  //flog_it("HERE2...");
   // Set title on Photos & Video search page.
   $nodetype = (array_key_exists('node', $variables) && isset($variables['node']->type)) ? $variables['node']->type: FALSE;
   if(arg(0) == TFK_SEARCH_PHOTOSVIDEO_PATH || $nodetype == 'slideshow' || $nodetype == 'video') {
@@ -1775,6 +1788,7 @@ function tfk_search_preprocess_page(&$variables) {
   
   //flog_it("tfk_search_preproces_page: arg(0)=".arg(0));
   if(arg(0) == TFK_SEARCH_WORKSHEETS_PATH) {
+    flog_it("found worksheets...");
     $variables['section_title'] = 'PRINTABLES';
     
     drupal_set_title('Worksheets');
@@ -1841,6 +1855,7 @@ function tfk_search_preprocess_page(&$variables) {
   /*
   if(arg(0) == TFK_SEARCH_WORKSHEETS_PATH) {
     global $user;
+    flog_it("UNSET BLOCKS FOR ANON USERS...");
     if(!user_access('access protected content', $user)) {
       flog_it("Found protected content...");
       unset($_variables['page']['sidebar_first']['tfk_search_tfk_search_ws_leftbar_title']);
@@ -1992,6 +2007,8 @@ function tfk_search_preprocess_pager_top(&$vars) {
   }
   
   $query = apachesolr_current_query();
+  
+  // SEARHCH: ANOTHER PROBLEM:
   $active_filters = $query->get_filters();
   // If there are no active filters.
   if(!array_key_exists('filters', $_GET) && empty($active_filters)) {
@@ -2254,16 +2271,28 @@ function tfk_search_form_alter(&$form, &$form_state, $form_id) {
  * Photos and Video SERP callback.
  */
 function tfk_search_photos_and_video() {
-
+  $params = array();
+  
   module_load_include('module', 'search');
   
   $filterstring = isset($_GET['filters']) ? $_GET['filters'] : '';
   $solrsort = isset($_GET['solrsort']) ? $_GET['solrsort'] : 'ds_created desc';
   $page = isset($_GET['page']) ? $_GET['page'] : 0;
   $base_path = 'photos-video';
+  $params['q'] = search_get_keys();
+  // NOT SURE HOW TO SET THIS ONE
+  //DrupalApacheSolrServiceInterface::$solr = apachesolr_get_solr($page['env_id']);
+  //$solr = apachesolr_get_solr($page['env_id']);
   
-  $response = apachesolr_search_run(search_get_keys(), $filterstring, $solrsort, $base_path, $page, 'apachesolr_search');
+  // SEARCH:
+  // http://drupalcontrib.org/api/drupal/contributions!apachesolr!apachesolr_search.module/function/apachesolr_search_run/6
+  // http://www.spc.int/crga/sites/all/modules/apachesolr/apachesolr_search.module
+
+//$response = apachesolr_search_run(search_get_keys(), $filterstring, $solrsort, $base_path, $page, 'apachesolr_search');
+  // IS THE $solr argument NEEDED?
+  $response = apachesolr_search_run('apachesolr_search', $params, $solrsort = '', $base_path, $page);
   
+  // apachesolr_search_run($name, array $params = array(), $solrsort = '', $base_path = '', $page = 0, $solr = NULL)
   return theme('search_results', array('results' => $response));
     
 }
