@@ -309,6 +309,16 @@ ini_set('session.cookie_lifetime', 0);
 # $conf['theme_default'] = 'garland';
 # $conf['anonymous'] = 'Visitor';
 
+
+/**
+ * Acquia Network/Acquia Search settings
+ */
+$conf["acquia_identifier"] = "BCDE-22799";
+$conf["acquia_key"] = "8499f05ab66439dc7432a3533bbc5c33";
+#$conf["apachesolr_path"] = "/solr/BCDE-22799";
+
+
+
 /**
  * A custom theme can be set for the offline page. This applies when the site
  * is explicitly set to maintenance mode through the administration page or when
