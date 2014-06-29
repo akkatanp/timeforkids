@@ -89,9 +89,10 @@
   
   <?php print render($title_suffix); ?>
   
-  <?php 
+  <?php
     if(isset($tfk_search_res_image)){
       if(isset($magazine_lists)) {
+        flog_it("magazine.tpl.php: href="); flog_it($href);
         preg_match('/<a href="(.+)">/', reset($magazine_lists), $href);
         print "<a href=\"".$href[1]."\"><img src=\"".$tfk_search_res_image."\"></a>";
       } else {

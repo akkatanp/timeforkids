@@ -315,19 +315,27 @@ $conf['page_cache_invoke_hooks'] = FALSE;
  * Add the following line of code to your settings.php file to cache anything normally stored in a cache* table in the Drupal database in Memcached.
  *
  */
-$conf['cache_inc'] = './sites/all/modules/contrib/memcache/memcache.inc';
+//$conf['cache_inc'] = './sites/all/modules/contrib/memcache/memcache.inc';
 //$conf['session_inc'] = './sites/all/modules/contrib/memcache/memcache-session.inc';
 
 include_once('./includes/cache.inc');
-include_once('./sites/all/modules/contrib/memcache/memcache.inc');
-$conf['cache_default_class'] = 'MemCacheDrupal';
+//include_once('./sites/all/modules/contrib/memcache/memcache.inc');
+//$conf['cache_default_class'] = 'MemCacheDrupal';
 
 /**
  * Acquia Config file
  *
  * This file is required to connect to an Acquia server and manages the DB connection.
  */
-require('/var/www/site-php/time/time-settings.inc');
+//require('/var/www/site-php/time/time-settings.inc');
+
+$databases = array('default' => array('default' => array(
+    'driver' => 'mysql',
+    'database' => 'tfk',
+    'username' => 'drupaluser',
+    'password' => '',
+    'host' => '127.0.0.1',
+    'port' => 33066 )));
 
 /**
  * Other settings

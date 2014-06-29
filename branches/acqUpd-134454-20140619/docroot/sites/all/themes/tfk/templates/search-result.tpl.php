@@ -64,6 +64,7 @@
  * @see template_preprocess_search_result()
  * @see template_process()
  */
+//flog_it("search-result.tpl.php: render=".$render);
 ?>
 <?php if(isset($tfk_search_cont_type) && ($tfk_search_cont_type == "TFK PRODUCT" || $tfk_search_cont_type == "TFK BOOK")) {
         $tfk_product = 'tfk_product';
@@ -72,7 +73,7 @@
         $tfk_product = '';
     }
 ?>
-<?php if($render): ?>
+<?php if(isset($render) && $render): ?>
 <li class="<?php if(isset($classes)): ?><?php print "$classes $tfk_product"; ?><? endif; ?>"<?php if(isset($attributes)): ?><?php print $attributes; ?><? endif; ?>>
   <?php if($admin_links):?>
     <?php print $admin_links;?>
