@@ -600,7 +600,7 @@ function apachesolr_facet_block($response, $query, $module, $delta, $facet_field
 
 
 function tfk_search_apachesolr_update_index(&$document, $node, $namespace) {
-  flog_it("tfk_search_apachesolr_update_index");
+  flog_it("tfk_search_apachesolr_update_index: HERE!!!!!!!!");
   // Use the database host to identify different servers.
   $server_id = tfk_search_get_unique_host_id();
   $document->addField(TFK_SEARCH_HOST, $server_id);
@@ -2772,7 +2772,7 @@ class TFKMagLangFilter {
     $active_filters = $query->getFilters();
     // (array_key_exists('filters', $_GET) && !empty($_GET['filters']))
     //self::$checkLanguage = (!empty($active_filters) && $query->has_filter($langFilter, 1)) ? TRUE: FALSE;
-    flog_it("SEARCH: HAD TO REMOVE: query->has_filter FOR NOW...");
+    //flog_it("SEARCH: HAD TO REMOVE: query->has_filter FOR NOW...");
     self::$checkLanguage = (!empty($active_filters)) ? TRUE: FALSE;
     self::$languageFlag = $languageFlag;
   }
