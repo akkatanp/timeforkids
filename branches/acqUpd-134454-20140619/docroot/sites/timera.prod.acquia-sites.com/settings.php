@@ -1,5 +1,5 @@
 <?php
-// $Id: settings.php 5914 2014-04-08 16:41:25Z tpaige $
+// $Id: settings.php 5913 2014-04-07 21:00:34Z tpaige $
 /**
  * Access control for update.php script.
  *
@@ -87,7 +87,7 @@ ini_set('session.gc_maxlifetime', 200000);
  * created to the cookie expires, i.e. when the browser is expected to discard
  * the cookie. The value 0 means "until the browser is closed".
  */
-ini_set('session.cookie_lifetime', 200000);
+ini_set('session.cookie_lifetime', 0);
 
 /**
  * If you encounter a situation where users post a large amount of text, and
@@ -266,84 +266,41 @@ ini_set('session.cookie_lifetime', 200000);
 # $conf['allow_authorize_operations'] = FALSE;
 
 /**
- * Error reporting. It should always be enabled on DEV.
- */
-#error_reporting(E_ALL);
-#ini_set('error_reporting', -1);
-
-ini_set('max_execution_time', 0); // Unlimited execution time.
-ini_set('max_input_time', 0);
-
-// Increase memory limit for admin pages.
-//if (isset($_GET['q']) && strpos($_GET['q'], 'admin') === 0) { ini_set('memory_limit', '512M'); }
-
-
-/**
  * Acquia Network/Acquia Search settings
  */
-/*
-$conf["acquia_identifier"] = "BCDE-22799";
-$conf["acquia_key"] = "8499f05ab66439dc7432a3533bbc5c33";
-#$conf["apachesolr_path"] = "/solr/BCDE-22799";
- * 
- */
+$conf["acquia_identifier"] = "GHRY-22798";
+$conf["acquia_key"] = "afd80ec55187436a7d83345415cffdd7";
+#$conf["apachesolr_path"] = "/solr/GHRY-22798";
 
 /**
  * Filesystem settings
  */
-/*
 $conf["file_public_path"] = "files";
-$conf["file_temporary_path"] = "/mnt/tmp/timedev2";
-$conf["file_private_path"] = "/mnt/files/timedev2/files-private";
+$conf["file_temporary_path"] = "/mnt/tmp/timedev";
+$conf["file_private_path"] = "/mnt/files/timedev/files-private";
 
-// Drupal 7 does not cache pages when we invoke hooks during bootstrap.
-// Disable in order to serve cached pages.
+// Drupal 7 does not cache pages when we invoke hooks during bootstrap. This needs
+// to be disabled.
 $conf['page_cache_invoke_hooks'] = FALSE;
- * 
- */
-
-// If $conf['page_cache_without_database'] = TRUE; is set in settings.php,
-// then the database won't be loaded here so the IPs in the database
-// won't be denied. However the user asked explicitly not to use the
-// database and also in this case it's quite likely that the user relies
-// on higher performance solutions like a firewall.
-#$conf['page_cache_without_database'] = TRUE;
 
 /**
  * Memcached Config Settings
  *
  * Add the following line of code to your settings.php file to cache anything normally stored in a cache* table in the Drupal database in Memcached.
- *
  */
-//$conf['cache_inc'] = './sites/all/modules/contrib/memcache/memcache.inc';
+$conf['cache_inc'] = './sites/all/modules/contrib/memcache/memcache.inc';
 //$conf['session_inc'] = './sites/all/modules/contrib/memcache/memcache-session.inc';
 
 include_once('./includes/cache.inc');
-//include_once('./sites/all/modules/contrib/memcache/memcache.inc');
-//$conf['cache_default_class'] = 'MemCacheDrupal';
+include_once('./sites/all/modules/contrib/memcache/memcache.inc');
+$conf['cache_default_class'] = 'MemCacheDrupal';
 
 /**
  * Acquia Config file
  *
  * This file is required to connect to an Acquia server and manages the DB connection.
  */
-//require('/var/www/site-php/time/time-settings.inc');
-
-$databases = array('default' => array('default' => array(
-    'driver' => 'mysql',
-    'database' => 'tfk',
-    'username' => 'drupaluser',
-    'password' => '',
-    'host' => '127.0.0.1',
-    'port' => 33066 )));
-
-/**
- * Other settings
- *
- *  Set the number default number of nodes to be loaded by the Drupal front page to zero.
- *  Otherwise we will load 10 nodes that will never be shown
- */
-$conf['default_nodes_main'] = 0;
+require('/var/www/site-php/time/time-settings.inc');
 
 
 /**
