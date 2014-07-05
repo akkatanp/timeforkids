@@ -773,7 +773,8 @@ body.page-photos-video #main .region-sidebar-first .section {
  * Accordion
  */
 body.page-photos-video .region-sidebar-first .block h2 {
-  /*font: normal 12px "arial black";*/
+  /* tp: 07-05-2014: ASK HARRY. This was commented out. facetapi css change. */
+  font: normal 12px "arial black";
   background: url("/sites/all/modules/custom/tfk_search/images/photos-video-arrow-open.png") no-repeat scroll 0 5px transparent;
   line-height: 100%;
   padding-left: 25px;
