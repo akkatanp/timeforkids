@@ -327,8 +327,9 @@ include_once('./includes/cache.inc');
  *
  * This file is required to connect to an Acquia server and manages the DB connection.
  */
-//require('/var/www/site-php/time/time-settings.inc');
+require('/var/www/site-php/time/time-settings.inc');
 
+/*
 $databases = array('default' => array('default' => array(
     'driver' => 'mysql',
     'database' => 'tfk',
@@ -336,6 +337,8 @@ $databases = array('default' => array('default' => array(
     'password' => '',
     'host' => '127.0.0.1',
     'port' => 33066 )));
+ * 
+ */
 
 /**
  * Other settings
