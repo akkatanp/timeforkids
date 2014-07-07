@@ -320,7 +320,7 @@ $conf['cache_default_class'] = 'MemCacheDrupal';
  *
  * This file is required to connect to an Acquia server and manages the DB connection.
  */
-require('/var/www/site-php/time.dev/D7-time-settings.inc');
+require('/var/www/site-php/time/time-settings.inc');
 
 /**
  * Other settings
