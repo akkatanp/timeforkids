@@ -1352,8 +1352,8 @@ function tfk_search_block_save($delta = '', $edit = array()){
 function _tfk_search_get_saved_searches_block(){
   $saved_searches  = _tfk_get_saved_searches();
   if($saved_searches != FALSE) {
-    #ctools_include('modal');
-    #ctools_modal_add_js();
+    ctools_include('modal');
+    ctools_modal_add_js();
     return theme('tfk_search_worksheet_saved', $saved_searches);
   } else {
     return FALSE;
@@ -2445,11 +2445,11 @@ function tfk_search_worksheets() {
   }
 
   // Include the CTools tools that we need.
-  #ctools_include('ajax');
-  #ctools_include('modal');
+  ctools_include('ajax');
+  ctools_include('modal');
   
   // Add CTools' javascript to the page.
-  #ctools_modal_add_js();
+  ctools_modal_add_js();
   
   // Create our own javascript that will be used to theme a modal.
   $sample_style = array(
@@ -2471,12 +2471,12 @@ function tfk_search_worksheets() {
     ),
   );
 
-  #drupal_add_js($sample_style, 'setting');
+  drupal_add_js($sample_style, 'setting');
   // Since we have our js, css and images in well-known named directories,
   // CTools makes it easy for us to just use them without worrying about
   // using drupal_get_path() and all that ugliness.
-  #ctools_add_js('ctools-ajax-sample', 'tfk_search');
-  #ctools_add_css('ctools-ajax-sample', 'tfk_search');
+  ctools_add_js('ctools-ajax-sample', 'tfk_search');
+  ctools_add_css('ctools-ajax-sample', 'tfk_search');
   
 
   // When a teacher browses the worksheets the search should be pre-populated with their grade.
@@ -2539,8 +2539,8 @@ function ctools_ajax_save_srch($js = NULL,$filterstr = NULL) {
       $filterstr = '';
   }
   
-  #ctools_include('modal');
-  #ctools_include('ajax');
+  ctools_include('modal');
+  ctools_include('ajax');
 
   $form_state = array(
     'ajax' => TRUE,
@@ -2606,9 +2606,9 @@ function worksheets_save_srch($form, &$form_state) {
  * the user saves a search.
  */
 function worksheets_save_srch_submit(&$form, &$form_state) {
-  #ctools_include('modal');
-  #ctools_include('ajax');
-  #ctools_add_js('ajax-responder');
+  ctools_include('modal');
+  ctools_include('ajax');
+  ctools_add_js('ajax-responder');
   
   global $user;
   $form_data = array();
