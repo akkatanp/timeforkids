@@ -1277,7 +1277,8 @@ function _tfk_search_back_btn(){
  * @see tfk_search_block_view()
  */
 function tfk_search_save_your_search() {
-  //flog_it("tfk_search_save_your_search");
+  flog_it("tfk_search_save_your_search...");
+  
   $env_id = apachesolr_default_environment();
   flog_it("tfk_search_save_your_search: env_id=".$env_id);
   
@@ -1288,6 +1289,8 @@ function tfk_search_save_your_search() {
     return;
   }
   $filters = $query->getFilters();
+  flog_it("filters:");
+  flog_it($filters);
   $str = '';
   foreach($filters as $filter){
     flog_it($filter);
@@ -1375,12 +1378,19 @@ function _tfk_get_saved_searches() {
   if($result->rowCount() > 0) {
     $saved_searches = array();
     global $user;
-    
+    $counter = 0;
     foreach ($result as $k => $record) {
       $saved_searches[$k]['name'] = $record->search_name;
       $saved_searches[$k]['saved_search_id'] = $record->saved_search_id;
       $saved_searches[$k]['filters'] = $record->search_filters;
-      $saved_searches[$k]['url'] = url('worksheets',array('query'=>array('filters'=>$record->search_filters)));
+      //$saved_searches[$k]['url'] = url('worksheets',array('query'=>array('f['.$counter.']'=>$record->search_filters)));
+      
+      if (empty($record->search_filters)) {
+          $saved_searches[$k]['uri'] = 'worksheets';
+      } else {
+        $saved_searches[$k]['url'] = url('worksheets',array('query'=>array('f['.$counter.']'=>$record->search_filters)));
+        $counter++;
+      }
     }
   
     $list = array('saved_searches' => $saved_searches,);
@@ -1395,6 +1405,8 @@ function _tfk_get_saved_searches() {
       }
       $list['current_str'] = $str;
     }
+    flog_it("list:");
+    flog_it($list);
     
     return $list;
   } else {
@@ -2566,7 +2578,7 @@ function tfk_search_worksheets() {
  * @see tfk_search_menu()
  */
 function ctools_ajax_save_srch($js = NULL,$filterstr = NULL) {
-    flog_it("ctools_ajax_save_srch...");
+    flog_it("ctools_ajax_save_srch: js=".$js.", filterstr=".$filterstr);
   if(!$filterstr){
       $filterstr = '';
   }
@@ -2620,7 +2632,16 @@ function worksheets_save_srch($form, &$form_state) {
     '#required' => TRUE,
     '#size' => 50,
   );
-
+  
+  $myArr = array();
+  $myArr = explode('?', $_SERVER['HTTP_REFERER']);
+  
+  $form['curr_filters'] = array(
+        '#type' => 'hidden',
+        '#value' => $myArr[1],
+  );
+  
+  
   $form['submit'] = array(
     '#prefix' => '<div class="svd-srch-submit">',
     '#type' => 'image_button',
@@ -2638,6 +2659,7 @@ function worksheets_save_srch($form, &$form_state) {
  * the user saves a search.
  */
 function worksheets_save_srch_submit(&$form, &$form_state) {
+  //flog_it("worksheets_save_srch_submit: the_filters=".$form_state['the_filters']);
   ctools_include('modal');
   ctools_include('ajax');
   ctools_add_js('ajax-responder');
@@ -2647,6 +2669,9 @@ function worksheets_save_srch_submit(&$form, &$form_state) {
 
 
   $commands = array();
+  //flog_it("HERE: worksheets_save_srch_submit:");
+  //flog_it($_GET);
+  
   if(isset($form_state['input']['savedname']) ){
     $nid = array();
     $form_data['op_uid'] = $user->uid;
@@ -2674,8 +2699,8 @@ function worksheets_save_srch_submit(&$form, &$form_state) {
   $commands[] = ajax_command_html('#mymodaldiv', '<div class="svd-msg">Your search has been saved</div>');
   $commands[] = ctools_modal_command_dismiss();
   $commands[] = ctools_ajax_command_reload();
-  //$commands[] = ctools_ajax_command_redirect('worksheets');
-  #print ajax_render($commands);
+  $commands[] = ctools_ajax_command_redirect('worksheets');
+  print ajax_render($commands);
   exit;
 }
 
