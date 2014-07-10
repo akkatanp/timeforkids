@@ -1240,7 +1240,7 @@ function _tfk_search_back_btn(){
     global $user;
     $user = user_load($user->uid);
     if($user && isset($user->grade_level)) {
-      $grade_str = 'im_28_field_grade_level%3A'. $user->grade_level->tid;
+      $grade_str = 'im_field_grade_level%3A'. $user->grade_level->tid;
     } else {
       $grade_str = '';
     }
@@ -2538,44 +2538,6 @@ function tfk_search_worksheets() {
   ctools_add_css('ctools-ajax-sample', 'tfk_search');
   
 
-  // When a teacher browses the worksheets the search should be pre-populated with their grade.
-  /*
-  if(isset($_GET['f'])) {
-    $filterstring = isset($_GET['f']) ? $_GET['f'] : '';
-    
-    // If the user is coming from the second sidebar link, add his grade. Example:
-    // http://dev.timeforkids.com/worksheets?filters=bundle:pdf_quiz&solrsort=ds_created desc&add_grade=1
-    if(array_key_exists('add_grade', $_GET) && $_GET['add_grade'] === '1') {
-      global $user;
-      $user = user_load($user->uid);
-      if($user && isset($user->grade_level)) {
-        // tp: 07-10-2014
-        //$filterstring .= ' im_28_field_grade_level:'. $user->grade_level->tid;
-        flog_it("BEFORE:");
-        flog_it($filterstring);
-        array_push($filterstring, 'im_field_grade_level:'. $user->grade_level->tid);
-        flog_it("AFTER:");
-        flog_it($filterstring);
-      }
-    }
-    // Without this pagination links drop the grade filter.
-    $_GET['f'] = $filterstring;
-  } else {
-    $filterstring = '';
-    // If user is logged in, add grade level. This affects initial search only.
-    if(!isset($_GET['solrsort'])) {
-      global $user;
-      $user = user_load($user->uid);
-      if($user && isset($user->grade_level)) {
-        // tp: 07-10-2014
-        //$filterstring = 'im_28_field_grade_level:'. $user->grade_level->tid;
-        array_push($filterstring, 'im_field_grade_level:'. $user->grade_level->tid);
-        $_GET['f'] = $filterstring;
-      }
-    }
-  }
-   * 
-   */
   
   // Remove flag to allow users to unselect grade.
   //unset($_GET['add_grade']);
