@@ -2212,6 +2212,9 @@ function tfk_search_apachesolr_query_alter($query, $caller) {
   $path = current_path();
   flog_it("path=".$path);
   
+  
+  
+  
   if(array_key_exists($path, $content_type_map)) {
     
     // Filter documents by content type.
@@ -2235,11 +2238,55 @@ function tfk_search_apachesolr_query_alter($query, $caller) {
   }
 
   if($path === TFK_SEARCH_WORKSHEETS_PATH) {
-    flog_it("Workseet search...");
+    flog_it("Worksheet search...");
+    $filterstring = array();
     // Limit the number of rows per page to 8 per spec.
     $query->addParam('rows', 8);
     
     $query->addParam('fl', TFK_SEARCH_SPANISH_VERSION);
+    
+    // When a teacher browses the worksheets the search should be pre-populated with their grade.
+    if ( isset($_GET['f']) || isset($_GET['filters']) ) {
+      $tempFilter = isset($_GET['f']) ? $_GET['f'] : '';
+      if (empty($tempFilter)) {
+          $tempFilter = isset($_GET['filters']) ? $_GET['filters'] : '';
+          $filterstring[0] = $tempFilter;
+      }
+      // If the user is coming from the second sidebar link, add his grade. Example:
+      // http://dev.timeforkids.com/worksheets?filters=bundle:pdf_quiz&solrsort=ds_created desc&add_grade=1
+      if(array_key_exists('add_grade', $_GET) && $_GET['add_grade'] === '1') {
+        global $user;
+        $user = user_load($user->uid);
+        if($user && isset($user->grade_level)) {
+          // tp: 07-10-2014
+          //$filterstring .= ' im_28_field_grade_level:'. $user->grade_level->tid;
+          flog_it("BEFORE:");
+          flog_it($filterstring);
+          array_push($filterstring, 'im_field_grade_level:'. $user->grade_level->tid);
+          flog_it("AFTER:");
+          flog_it($filterstring);
+        }
+      }
+      // Without this pagination links drop the grade filter.
+      //$_GET['f'] = $filterstring;
+      //$_GET['filters'] = $filterstring;
+      //flog_it("AFTER 2:");
+      //flog_it($_GET);
+    } else {
+      $filterstring = array();
+      // If user is logged in, add grade level. This affects initial search only.
+      if(!isset($_GET['solrsort'])) {
+        global $user;
+        $user = user_load($user->uid);
+        if($user && isset($user->grade_level)) {
+          // tp: 07-10-2014
+          //$filterstring = 'im_28_field_grade_level:'. $user->grade_level->tid;
+          array_push($filterstring, 'im_field_grade_level:'. $user->grade_level->tid);
+          //$_GET['f'] = $filterstring;
+          //$_GET['filters'] = $filterstring;
+        }
+      }
+    }
   }
 
   if($path === TFK_SEARCH_MAGAZINE_PATH) {
@@ -2320,6 +2367,18 @@ function tfk_search_apachesolr_query_alter($query, $caller) {
   $query->addFilterSubquery($superquery, 'AND');
   //flog_it("QUERY DUMP:");
   //flog_it($query);
+  
+  
+  // Add Filters
+  if (empty($filterstring)) {
+      $filterstring = isset($_GET['f']) ? $_GET['f'] : '';
+  }
+  flog_it("END: Add Filters:");
+  flog_it($filterstring);
+  foreach($filterstring as $key => $value) {
+      $query->addParam('fq', $value);
+  }
+  
 }
 
 /**
@@ -2354,7 +2413,7 @@ function tfk_search_photos_and_video() {
   $params = array();
   module_load_include('module', 'search');
   
-  $filterstring = isset($_GET['filters']) ? $_GET['filters'] : '';
+  //$filterstring = isset($_GET['f']) ? $_GET['f'] : '';
   $solrsort = isset($_GET['solrsort']) ? $_GET['solrsort'] : 'ds_created desc';
   $page = isset($_GET['page']) ? $_GET['page'] : 0;
   $base_path = TFK_SEARCH_PHOTOSVIDEO_PATH;
@@ -2390,8 +2449,7 @@ function tfk_search_magazine() {
   flog_it("tfk_search_magazine...");
   $params = array();
   
-  $filterstring = isset($_GET['filters']) ? $_GET['filters'] : '';
-  $fq = isset($_GET['fq']) ? $_GET['fq'] : '';
+  //$filterstring = isset($_GET['f']) ? $_GET['f'] : '';
   $solrsort = isset($_GET['solrsort']) ? $_GET['solrsort'] : 'ds_created desc';
   $page = isset($_GET['page']) ? $_GET['page'] : 0;
   $base_path = TFK_SEARCH_MAGAZINE_PATH;
@@ -2416,6 +2474,7 @@ function tfk_search_magazine() {
   //flog_it("base_path=".$base_path);
   //flog_it("filtersting:");
   //flog_it($filterstring);
+  //flog_it($_GET);
   //flog_it("params:");
   //flog_it($params);
 
@@ -2480,8 +2539,9 @@ function tfk_search_worksheets() {
   
 
   // When a teacher browses the worksheets the search should be pre-populated with their grade.
-  if(isset($_GET['filters'])) {
-    $filterstring = $_GET['filters'];
+  /*
+  if(isset($_GET['f'])) {
+    $filterstring = isset($_GET['f']) ? $_GET['f'] : '';
     
     // If the user is coming from the second sidebar link, add his grade. Example:
     // http://dev.timeforkids.com/worksheets?filters=bundle:pdf_quiz&solrsort=ds_created desc&add_grade=1
@@ -2489,11 +2549,17 @@ function tfk_search_worksheets() {
       global $user;
       $user = user_load($user->uid);
       if($user && isset($user->grade_level)) {
-        $filterstring .= ' im_28_field_grade_level:'. $user->grade_level->tid;
+        // tp: 07-10-2014
+        //$filterstring .= ' im_28_field_grade_level:'. $user->grade_level->tid;
+        flog_it("BEFORE:");
+        flog_it($filterstring);
+        array_push($filterstring, 'im_field_grade_level:'. $user->grade_level->tid);
+        flog_it("AFTER:");
+        flog_it($filterstring);
       }
     }
     // Without this pagination links drop the grade filter.
-    $_GET['filters'] = $filterstring;
+    $_GET['f'] = $filterstring;
   } else {
     $filterstring = '';
     // If user is logged in, add grade level. This affects initial search only.
@@ -2501,14 +2567,18 @@ function tfk_search_worksheets() {
       global $user;
       $user = user_load($user->uid);
       if($user && isset($user->grade_level)) {
-        $filterstring = 'im_28_field_grade_level:'. $user->grade_level->tid;
-        $_GET['filters'] = $filterstring;
+        // tp: 07-10-2014
+        //$filterstring = 'im_28_field_grade_level:'. $user->grade_level->tid;
+        array_push($filterstring, 'im_field_grade_level:'. $user->grade_level->tid);
+        $_GET['f'] = $filterstring;
       }
     }
   }
+   * 
+   */
   
   // Remove flag to allow users to unselect grade.
-  unset($_GET['add_grade']);
+  //unset($_GET['add_grade']);
   
   module_load_include('module', 'search');
   $solrsort = isset($_GET['solrsort']) ? $_GET['solrsort'] : 'ds_created desc';
@@ -3079,16 +3149,16 @@ function tfk_search_preprocess_search_result(&$vars) {
                   // Auto-alias version.
                   // $lists[$name][] = l($cover_story->title, 'node/'. $cover_story->nid);
                   
-                  flog_it(TFKMagLangFilter::isActive());
+                  //flog_it(TFKMagLangFilter::isActive());
                   //flog_it($cover_story);
                   if(TFKMagLangFilter::isActive()) {
-                    flog_it("HERE A...");
+                    //flog_it("HERE A...");
                     if(TFKMagLangFilter::hasFlag($cover_story)) {
                       $link = url('node/'. $cover_story->nid);
                       $lists[$name][] = l($cover_story->title, ltrim($link, '/'). '/'. $magazine->nid, array('alias' => TRUE));
                     }
                   } else {
-                    flog_it("HERE B...");
+                    //flog_it("HERE B...");
                     // Magazine alias version (http://tfk.local/news/modern-fairy-tale/6686/7586):
                     // article nid followed by magaizine nid.
                     $link = url('node/'. $cover_story->nid);
