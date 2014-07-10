@@ -908,3 +908,8 @@ li.search-result.worksheet.graph .search-result-download-link {
   color: #FFFFFF;
   font: 11px "arial black",arial;
 }
+
+/* tp: 07-10-2014: Prevent small circles from appearing for new facetapi left rails checkboxes */
+ul li.leaf {
+list-style:none;
+}
