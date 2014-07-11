@@ -21,6 +21,7 @@
  *
  * @see template_preprocess_search_results()
  */
+//flog_it("ALL: search-results--tfk-search--photos-video.tpl.php...");
 ?>
 <!-- TFK Photo Video Search Results -->
 <?php if ($search_results) : ?>
