@@ -283,7 +283,7 @@ function tfk_search_init() {
  * @see apachesolr_theme()
  */
 function tfk_search_theme_registry_alter(&$theme_registry) {
-  flog_it("tfk_search_theme_registry_alter...");
+  //flog_it("tfk_search_theme_registry_alter...");
   // Override some of the facet functions defined in apachesolr_theme with our own,
   // since cannot theme facets the way we want with the contributed functions.
 
@@ -594,13 +594,13 @@ define('TFK_SEARCH_HOST', 'ss_server_host');
  */
 
 function apachesolr_facet_block($response, $query, $module, $delta, $facet_field, $filter_by, $facet_callback = FALSE) {
-    flog_it("[ apachesolr_facet_block: ".$filter_by." ]");
+    //flog_it("[ apachesolr_facet_block: ".$filter_by." ]");
     return NULL;
 }
 
 
 function tfk_search_apachesolr_update_index(&$document, $node, $namespace) {
-  flog_it("tfk_search_apachesolr_update_index: HERE!!!!!!!!");
+  //flog_it("tfk_search_apachesolr_update_index: HERE!!!!!!!!");
   // Use the database host to identify different servers.
   $server_id = tfk_search_get_unique_host_id();
   $document->addField(TFK_SEARCH_HOST, $server_id);
@@ -646,7 +646,7 @@ function tfk_search_apachesolr_update_index(&$document, $node, $namespace) {
   // This field is used for facets, so we only index 1s (indexing 0s would
   // cause a second facet to appear representing 0s).
   if(array_key_exists('spanish', $flags) && $flags['spanish'] == '1') {
-    flog_it("Found Spanish Flag...");
+    //flog_it("Found Spanish Flag...");
     $document->setField(TFK_SEARCH_SPANISH_VERSION, 1);
   }
     
@@ -694,7 +694,7 @@ function tfk_search_apachesolr_update_index(&$document, $node, $namespace) {
  * Implementation of hookparams:_apachesolr_facets.
  */
 function tfk_search_apachesolr_facets() {
-  flog_it("tfk_search_apachesolr_facets");
+  //flog_it("tfk_search_apachesolr_facets");
   
   $facets['sm_editorial_date_tfk'] = array(
     'info' => t('Year of the Node'),
@@ -733,7 +733,7 @@ function tfk_search_apachesolr_facets() {
  */
 function tfk_search_block_info() {
   $blocks = array();
-  flog_it("tfk_search_block_info...");
+  //flog_it("tfk_search_block_info...");
   
   // Photos and Video title block.
   $blocks['tfk_search_photos_video_title'] = array(
@@ -792,11 +792,14 @@ function tfk_search_block_info() {
   );
   
   // Custom facet blocks.
+  /*
   $facets = tfk_search_apachesolr_facets();
   foreach ($facets as $delta => $facet){
     flog_it("LOOP: delta=".$delta.", facet=".$facet);
     $blocks[$delta] = array_merge($facets[$delta], array('cache' => DRUPAL_CACHE_PER_PAGE));
   }
+   * 
+   */
   
   // Site-wide search content header.
   $blocks['tfk_search_cont_hdr'] = array(
@@ -839,7 +842,7 @@ function tfk_search_block_view($delta='') {
   $block = array();
   $settings = variable_get('tfk_search_settings', tfk_search_default_settings());
   $env_id = apachesolr_default_environment();
-  flog_it("tfk_search_block_view: env_id=".$env_id.", delta=".$delta);
+  //flog_it("tfk_search_block_view: env_id=".$env_id.", delta=".$delta);
   
   switch ($delta) {
     
@@ -1277,10 +1280,10 @@ function _tfk_search_back_btn(){
  * @see tfk_search_block_view()
  */
 function tfk_search_save_your_search() {
-  flog_it("tfk_search_save_your_search...");
+  //flog_it("tfk_search_save_your_search...");
   
   $env_id = apachesolr_default_environment();
-  flog_it("tfk_search_save_your_search: env_id=".$env_id);
+  //flog_it("tfk_search_save_your_search: env_id=".$env_id);
   
   $path = drupal_get_path('module', 'tfk_search');
   
@@ -1289,11 +1292,11 @@ function tfk_search_save_your_search() {
     return;
   }
   $filters = $query->getFilters();
-  flog_it("filters:");
-  flog_it($filters);
+  //flog_it("filters:");
+  //flog_it($filters);
   $str = '';
   foreach($filters as $filter){
-    flog_it($filter);
+    //flog_it($filter);
     //$str .= $filter['#query'] . ' ';
     // SEARCH: USE NAME FIELD???
     $str .= $filter['#name'] . ' ';
@@ -1330,7 +1333,7 @@ function tfk_search_default_settings() {
  * Implementation of hook_block_configure.
  */
 function tfk_search_block_configure($delta='') {
-  flog_it("tfk_search_block_configure");
+  //flog_it("tfk_search_block_configure");
   if($delta == 'sm_editorial_date_tfk'){
       return apachesolr_facetcount_form('sm_editorial_date_tfk', $delta);
   }
@@ -1372,7 +1375,7 @@ function _tfk_search_get_saved_searches_block(){
 function _tfk_get_saved_searches() {
   global $user;
   $env_id = apachesolr_default_environment();
-  flog_it("tfk_get_saved_searches=".$env_id);
+  //flog_it("tfk_get_saved_searches=".$env_id);
 
   $result = db_query('SELECT * FROM tfk_search_saved_searches WHERE saved_by_uid = :saved_by_uid', array('saved_by_uid' => $user->uid));
   if($result->rowCount() > 0) {
@@ -1405,8 +1408,8 @@ function _tfk_get_saved_searches() {
       }
       $list['current_str'] = $str;
     }
-    flog_it("list:");
-    flog_it($list);
+    //flog_it("list:");
+    //flog_it($list);
     
     return $list;
   } else {
@@ -2008,10 +2011,10 @@ function tfk_search_preprocess_apachesolr_currentsearch(&$vars) {
  * @param array $vars
  */
 function tfk_search_preprocess_search_results(&$vars) {
- flog_it("tfk_search_preprocess_search_results...");
+ //flog_it("tfk_search_preprocess_search_results...");
   // Specific template suggestions for all the results on photos and video.
   if(arg(0) == TFK_SEARCH_PHOTOSVIDEO_PATH) {
-    flog_it("tfk_search_photovideo_path...");
+    //flog_it("tfk_search_photovideo_path...");
     $vars['theme_hook_suggestions'] = array_merge(
       array('search_results__tfk_search__photos_video', 'search_results__tfk_search'),
       $vars['theme_hook_suggestions']
@@ -2059,7 +2062,7 @@ function tfk_search_preprocess_search_results(&$vars) {
  * @see theme_pager_top
  */
 function tfk_search_preprocess_pager_top(&$vars) {
-  flog_it("tfk_search_preprocess_pager_top");
+  //flog_it("tfk_search_preprocess_pager_top");
   
   $page_type = arg(0);
   //flog_it("page_type=".$page_type);
@@ -2087,14 +2090,14 @@ function tfk_search_preprocess_pager_top(&$vars) {
   
   // If there are no active filters.
   if(!array_key_exists('filters', $_GET) && empty($active_filters)) {
-    flog_it("No active filters...");
     if($page_type == TFK_SEARCH_WORKSHEETS_PATH) {
       $vars['pager_active_filter'] = 'Viewing: All Grades, All Themes, All Skills';
     } elseif($page_type == TFK_SEARCH_MAGAZINE_PATH) {
-      $vars['pager_active_filter'] = 'Viewing: All Grades, All Years, All Languages';
+      //$vars['pager_active_filter'] = 'Viewing: All Grades, All Years, All Languages';
+      $vars['pager_active_filter'] = 'Viewing: All Grades, All Years';
     } elseif($page_type == TFK_SEARCH_PHOTOSVIDEO_PATH) {
-      flog_it("TFK_SEARCH_PHOTOSVIDEO_PATH");
-      $vars['pager_active_filter'] = 'Viewing: All Categories';
+      //flog_it("TFK_SEARCH_PHOTOSVIDEO_PATH");
+      $vars['pager_active_filter'] = 'Viewing: All Categories, Content Types';
     } else {
       //flog_it("taking last else...");
       $vars['pager_active_filter'] = 'Viewing: All Subjects, All Themes';
@@ -2209,7 +2212,8 @@ function tfk_search_get_unique_host_id() {
  * DrupalSolrApacheSolrService->search();
  */
 function tfk_search_apachesolr_query_alter($query, $caller) {
-  flog_it("tfk_search_apachesolr_query_alter...");
+  //flog_it("tfk_search_apachesolr_query_alter: ");
+  //flog_it($query);
   $superquery = apachesolr_drupal_query("suberquery");
   
   // URL Path -to- Content Type Map.
@@ -2222,7 +2226,7 @@ function tfk_search_apachesolr_query_alter($query, $caller) {
   
   //$path = $query->get_base_path();
   $path = current_path();
-  flog_it("path=".$path);
+  //flog_it("path=".$path);
   
   
   
@@ -2241,7 +2245,7 @@ function tfk_search_apachesolr_query_alter($query, $caller) {
   // Limit the search results to image and video content type.
   // Only apply these filters when we are in the photos and video page.
   if($path === TFK_SEARCH_PHOTOSVIDEO_PATH) {
-    flog_it("Photo Video search...");
+    //flog_it("Photo Video search...");
     // Retrieve related content fields.
     $query->addParam('fl', implode(',', array(TFK_SEARCH_RELATED_TITLE, TFK_SEARCH_RELATED_PATH, TFK_SEARCH_RELATED_TYPE)));
 
@@ -2250,15 +2254,16 @@ function tfk_search_apachesolr_query_alter($query, $caller) {
   }
 
   if($path === TFK_SEARCH_WORKSHEETS_PATH) {
-    flog_it("Worksheet search...");
+    //flog_it("Worksheet search...");
     $filterstring = array();
     // Limit the number of rows per page to 8 per spec.
     $query->addParam('rows', 8);
     
-    $query->addParam('fl', TFK_SEARCH_SPANISH_VERSION);
+    //$query->addParam('fl', TFK_SEARCH_SPANISH_VERSION);
     
     // When a teacher browses the worksheets the search should be pre-populated with their grade.
     if ( isset($_GET['f']) || isset($_GET['filters']) ) {
+      //flog_it("Found f or filters in the querystring...");
       $tempFilter = isset($_GET['f']) ? $_GET['f'] : '';
       if (empty($tempFilter)) {
           $tempFilter = isset($_GET['filters']) ? $_GET['filters'] : '';
@@ -2272,11 +2277,11 @@ function tfk_search_apachesolr_query_alter($query, $caller) {
         if($user && isset($user->grade_level)) {
           // tp: 07-10-2014
           //$filterstring .= ' im_28_field_grade_level:'. $user->grade_level->tid;
-          flog_it("BEFORE:");
-          flog_it($filterstring);
+          //flog_it("BEFORE:");
+          //flog_it($filterstring);
           array_push($filterstring, 'im_field_grade_level:'. $user->grade_level->tid);
-          flog_it("AFTER:");
-          flog_it($filterstring);
+          //flog_it("AFTER:");
+          //flog_it($filterstring);
         }
       }
       // Without this pagination links drop the grade filter.
@@ -2285,15 +2290,16 @@ function tfk_search_apachesolr_query_alter($query, $caller) {
       //flog_it("AFTER 2:");
       //flog_it($_GET);
     } else {
+      //flog_it("Did not find f or filters in the querystring...");
       $filterstring = array();
       // If user is logged in, add grade level. This affects initial search only.
       if(!isset($_GET['solrsort'])) {
         global $user;
         $user = user_load($user->uid);
         if($user && isset($user->grade_level)) {
-          // tp: 07-10-2014
+          // tp: 07-10-2014 - Take out for now
           //$filterstring = 'im_28_field_grade_level:'. $user->grade_level->tid;
-          array_push($filterstring, 'im_field_grade_level:'. $user->grade_level->tid);
+          //array_push($filterstring, 'im_field_grade_level:'. $user->grade_level->tid);
           //$_GET['f'] = $filterstring;
           //$_GET['filters'] = $filterstring;
         }
@@ -2302,10 +2308,11 @@ function tfk_search_apachesolr_query_alter($query, $caller) {
   }
 
   if($path === TFK_SEARCH_MAGAZINE_PATH) {
-    flog_it("TFK magazine search...");
+    //flog_it("TFK magazine search...");
     // Retrieve additional content fields.
-    $query->addParam('fl', implode(',', array(TFK_SEARCH_SPANISH_ISSUE, TFK_SEARCH_SPANISH_VERSION, TFK_SEARCH_WORKSHEET_PDF_LINK, TFK_SEARCH_WORKSHEET_PDF_TITLE)));
-
+    //$query->addParam('fl', implode(',', array(TFK_SEARCH_SPANISH_ISSUE, TFK_SEARCH_SPANISH_VERSION, TFK_SEARCH_WORKSHEET_PDF_LINK, TFK_SEARCH_WORKSHEET_PDF_TITLE)));
+    $query->addParam('fl', implode(',', array(TFK_SEARCH_WORKSHEET_PDF_LINK, TFK_SEARCH_WORKSHEET_PDF_TITLE)));
+    
     // Limit the number of rows per page to 8 per spec.
     $query->addParam('rows', 8);
   }
@@ -2316,8 +2323,9 @@ function tfk_search_apachesolr_query_alter($query, $caller) {
     // Retrieve additional content fields.
     // Body and deck field for articles.
     // Not returning TFK_SEARCH_ARTICLE_BODY, for now.
-    flog_it("Site wide search...");
-    $query->addParam('fl', implode(',', array(TFK_SEARCH_SPANISH_VERSION, TFK_SEARCH_ARTICLE_DECK)));
+    //flog_it("Site wide search...");
+    //$query->addParam('fl', implode(',', array(TFK_SEARCH_SPANISH_VERSION, TFK_SEARCH_ARTICLE_DECK)));
+    $query->addParam('fl', implode(',', array(TFK_SEARCH_ARTICLE_DECK)));
     
     // Limit the number of rows per page.
     $query->addParam('rows', 8);
@@ -2327,7 +2335,7 @@ function tfk_search_apachesolr_query_alter($query, $caller) {
         
     // Anonymous content types.
     if(count($rls) == 1 && $rls[1] == 'anonymous user') {
-      flog_it("Anonymous user processing...");
+      //flog_it("Anonymous user processing...");
       $content_types = array('slideshow', 'video', 'atw_destination', 'minisite','tfk_extra','a_paper','grammar_practice','writing_tips','book','store_product','tfk_lesson_for_tablets');
       
       // If document type is article, make sure it is **NOT** a cover story.
@@ -2350,7 +2358,7 @@ function tfk_search_apachesolr_query_alter($query, $caller) {
       $superquery->addFilterSubquery($ct_superquery, 'OR');
     // Logged in content types.
     } else {
-      flog_it("Autenticated user processing...");
+      //flog_it("Autenticated user processing...");
       // Teachers can see cover stories.
       $content_types = array('article', 'slideshow', 'video', 'atw_destination', 'minisite', 'tfk_extra', 'worksheet', 'mini_lesson', 'a_paper', 'grammar_practice', 'writing_tips', 'pdf_quiz', 'common_core_standards','book','store_product','tfk_lesson_for_tablets');
       
@@ -2385,8 +2393,8 @@ function tfk_search_apachesolr_query_alter($query, $caller) {
   if (empty($filterstring)) {
       $filterstring = isset($_GET['f']) ? $_GET['f'] : '';
   }
-  flog_it("END: Add Filters:");
-  flog_it($filterstring);
+  //flog_it("END: Add Filters:");
+  //flog_it($filterstring);
   foreach($filterstring as $key => $value) {
       $query->addParam('fq', $value);
   }
@@ -2419,7 +2427,7 @@ function tfk_search_form_alter(&$form, &$form_state, $form_id) {
  * Photos and Video SERP callback.
  */
 function tfk_search_photos_and_video() {
-  flog_it("tfk_search_photos_and_video...");
+  //flog_it("tfk_search_photos_and_video...");
   //flog_it("Printing out _GET:");
   //flog_it($_GET);
   $params = array();
@@ -2434,10 +2442,7 @@ function tfk_search_photos_and_video() {
   //flog_it("search_get_keys()");
   //flog_it(search_get_keys());
   //flog_it("solorsort=".$solrsort);
-  //flog_it("page:");
-  //flog_it($page);
-  //flog_it("filtersting:");
-  //flog_it($filterstring);
+  //flog_it("page= ".$page);
   //flog_it("params:");
   //flog_it($params);
   
@@ -2447,7 +2452,6 @@ function tfk_search_photos_and_video() {
   
   //flog_it("response...");
   //flog_it($response);
-  //flog_it(theme('search_results', array('results' => $response)));
   
   return theme('search_results', array('results' => $response));
     
@@ -2458,7 +2462,7 @@ function tfk_search_photos_and_video() {
  */
 function tfk_search_magazine() {
     global $conf;
-  flog_it("tfk_search_magazine...");
+  //flog_it("tfk_search_magazine...");
   $params = array();
   
   //$filterstring = isset($_GET['f']) ? $_GET['f'] : '';
@@ -2470,22 +2474,12 @@ function tfk_search_magazine() {
   //$params['fq'] = "bundle:magazine_issue";
   //if (!empty($fq)) {$params['fq'] = $fq;}
   //$params['fq'] = "(bundle:(magazine_issue) AND ds_created:([2012-01-01T00:00:00.00Z TO 2012-12-31T59:59:999Z]))";
-      
-  //$params['fq'] = "(bundle:(magazine_issue) AND content:(K-1))";
-  //$params['facet'] = "true";
-  //$params['facet.type'] = "Article";
-  // Retrieve additional content fields.
-  //$params['fl'] = implode(',', array(TFK_SEARCH_SPANISH_ISSUE, TFK_SEARCH_SPANISH_VERSION, TFK_SEARCH_WORKSHEET_PDF_LINK, TFK_SEARCH_WORKSHEET_PDF_TITLE));
-
   
   //flog_it("search_get_keys()");
   //flog_it(search_get_keys());
   //flog_it("solorsort=".$solrsort);
-  //flog_it("page:");
-  //flog_it($page);
+  //flog_it("page= ".$page);
   //flog_it("base_path=".$base_path);
-  //flog_it("filtersting:");
-  //flog_it($filterstring);
   //flog_it($_GET);
   //flog_it("params:");
   //flog_it($params);
@@ -2496,8 +2490,6 @@ function tfk_search_magazine() {
   
   //flog_it("response...");
   //flog_it($response);
-  //flog_it($response[7]['fields']['ss_language']);
-  //flog_it($response['fields']['ss_language']);
 
   return theme('search_results', array('results' => $response));
 }
@@ -2506,7 +2498,7 @@ function tfk_search_magazine() {
  * Worksheets SERP callback.
  */
 function tfk_search_worksheets() {
-   flog_it("tfk_search_workseets...");
+   //flog_it("tfk_search_workseets...");
    
   //delete selected saved searches
   if($_POST){
@@ -2562,7 +2554,7 @@ function tfk_search_worksheets() {
   
   
   //flog_it($solrsort);
-  //flog_it($page);
+  //flog_it("page= ".$page);
   //flog_it("filtersting:");
   //flog_it($filterstring);
   
@@ -2578,7 +2570,7 @@ function tfk_search_worksheets() {
  * @see tfk_search_menu()
  */
 function ctools_ajax_save_srch($js = NULL,$filterstr = NULL) {
-    flog_it("ctools_ajax_save_srch: js=".$js.", filterstr=".$filterstr);
+  //flog_it("ctools_ajax_save_srch: js=".$js.", filterstr=".$filterstr);
   if(!$filterstr){
       $filterstr = '';
   }
@@ -2791,7 +2783,7 @@ class TFKMagLangFilter {
    */
   public static function hasFlag($node) {
     if(self::isActive()) {
-      flog_it("NODE HAS A FLAG SET: nid=",$node->nid);
+      //flog_it("NODE HAS A FLAG SET: nid=",$node->nid);
       $flags = flag_get_counts('node', $node->nid);
       if(!empty($flags) && array_key_exists(self::$languageFlag, $flags)) {
         return TRUE;
@@ -2829,7 +2821,7 @@ class TFKMagLangFilter {
   protected function __construct($langFilter = TFK_SEARCH_SPANISH_ISSUE, $languageFlag = 'spanish') {
     // If magazine issue filter is active, surface translated magazine items only.
     $env_id = apachesolr_default_environment();
-    flog_it("protected function=".$env_id);
+    //flog_it("protected function=".$env_id);
   
     $query = apachesolr_current_query($env_id);
     $active_filters = $query->getFilters();
@@ -2849,7 +2841,7 @@ class TFKMagLangFilter {
 function tfk_search_preprocess_search_result(&$vars) {
   // SEARCH
   $title = $vars['result']['title'];
-  flog_it("tfk_search_preprocess_search_result...");
+  //flog_it("tfk_search_preprocess_search_result...");
   //flog_it($vars);
   
   $vars['tfk_search_cont_type'] = strtoupper($vars['result']['fields']['bundle_name']);
@@ -2944,7 +2936,7 @@ function tfk_search_preprocess_search_result(&$vars) {
   switch ($vars['result']['fields']['bundle']) {
     
     case 'minisite':
-      flog_it("content_type=MINISITE");
+      //flog_it("content_type=MINISITE");
       if(isset($node->field_minisite_tout_image)){
         $tmp_img_nid =  field_get_items('node', $node, 'field_minisite_tout_image');
         $uri = $tmp_img_nid[0]['uri'];
@@ -2970,7 +2962,7 @@ function tfk_search_preprocess_search_result(&$vars) {
     break;
     
     case 'atw_destination':
-      flog_it("ATW_DESTINATION");
+      //flog_it("ATW_DESTINATION");
       if(isset($node->field_tout_image)){
         $tmp_img_nid =  field_get_items('node', $node, 'field_tout_image');
         $img_nid = $tmp_img_nid[0]['nid'];
@@ -3002,7 +2994,7 @@ function tfk_search_preprocess_search_result(&$vars) {
     break;
     
     case 'video':
-      flog_it("content_type=VIDEO");
+      //flog_it("content_type=VIDEO");
       if(isset($node->field_video_thumbnail)){
         $tmp_img_nid =  field_get_items('node', $node, 'field_video_thumbnail');
         $uri = $tmp_img_nid[0]['uri'];
@@ -3035,9 +3027,9 @@ function tfk_search_preprocess_search_result(&$vars) {
 
 
     case 'magazine_issue':
-      flog_it("magazine_issue...");
+      //flog_it("magazine_issue...");
       if($node) {
-        flog_it("content_type=MAGAZINE_ISSUE");
+        //flog_it("content_type=MAGAZINE_ISSUE");
         //flog_it("nid=".$node->nid);
         $magazine = $node;
         
@@ -3112,10 +3104,10 @@ function tfk_search_preprocess_search_result(&$vars) {
                   if($item_node && $item_node->type == 'article') {
                     // Only show items in spanish when spanish filter is active.
                     if(TFKMagLangFilter::hasFlag($item_node)) {
-                      flog_it("TFKMagLangFilter: HAS SPANISH FLAG!!!!");
+                      //flog_it("TFKMagLangFilter: HAS SPANISH FLAG!!!!");
                       $lists[$name][] = l($item['title'], ltrim(url('node/'. $item_node->nid). '/'. $magazine->nid, '/'), array('alias' => TRUE));
                     } else if(!TFKMagLangFilter::isActive()) {
-                      flog_it("TFKMagLangFilter IS ACTIVE FILTER");
+                      //flog_it("TFKMagLangFilter IS ACTIVE FILTER");
                       $lists[$name][] = l($item['title'], ltrim(url('node/'. $item_node->nid). '/'. $magazine->nid, '/'), array('alias' => TRUE));
                     }
                   } else {
@@ -3265,7 +3257,7 @@ function tfk_search_preprocess_search_result(&$vars) {
       
     case 'common_core_standards':
     case 'pdf_quiz':
-      flog_it("content_type=PDF_QUIZ");
+      //flog_it("content_type=PDF_QUIZ");
       $vars['title'] = $title;
       $_cont_type = ($vars['result']['bundle'] == 'pdf_quiz') ? 'quiz': 'common core standards';
       
@@ -3344,7 +3336,7 @@ function tfk_search_preprocess_search_result(&$vars) {
       break;
       
     case 'worksheet':
-      flog_it("content_type=WORKSHET");
+      //flog_it("content_type=WORKSHET");
       $worksheet_nid = $nid;
       
       // Worksheets don't link to the node page.
@@ -3438,7 +3430,7 @@ function tfk_search_preprocess_search_result(&$vars) {
     break;
 
     case 'slideshow':
-      flog_it("content_type=SLIDESHOW");
+      //flog_it("content_type=SLIDESHOW");
       if(isset($node->field_lrg_sq_image)){
         $tmp_img = field_get_items('node',$node,'field_lrg_sq_image');
         
@@ -3468,7 +3460,7 @@ function tfk_search_preprocess_search_result(&$vars) {
     break;
     
     case 'article':
-      flog_it("content_type=ARTICLE");
+      //flog_it("content_type=ARTICLE");
       if(isset($node->field_lrg_sq_image)){
         $tmp_img = field_get_items('node',$node,'field_lrg_sq_image');
         
@@ -3517,7 +3509,7 @@ function tfk_search_preprocess_search_result(&$vars) {
     break;
         
     case 'store_product':
-      flog_it("content_type=STORE_PRODUCT");
+      //flog_it("content_type=STORE_PRODUCT");
       $link = '#';
       $tmp_link = field_get_items('node',$node,'field_product_link');
       if(isset($tmp_link[0]['value'])) {
@@ -3548,7 +3540,7 @@ function tfk_search_preprocess_search_result(&$vars) {
     break;
         
     case 'book':
-      flog_it("content_type=BOOK");
+      //flog_it("content_type=BOOK");
       $link = '#';
       $tmp_link = field_get_items('node',$node,'field_book_link');
       if(isset($tmp_link[0]['value'])) {
@@ -3579,7 +3571,7 @@ function tfk_search_preprocess_search_result(&$vars) {
     break;
 
     case 'tfk_lesson_for_tablets':
-      flog_it("content_type=TFK_LESSON_FOR_TABLETS");
+      //flog_it("content_type=TFK_LESSON_FOR_TABLETS");
       $link = '#';
       $tmp_link = field_get_items('node',$node,'field_book_link');
       if(isset($tmp_link[0]['value'])) {
@@ -3634,7 +3626,7 @@ function tfk_search_preprocess_search_result(&$vars) {
   
   // Photos & Video -specific- preprocessing.
   if($base_path == TFK_SEARCH_PHOTOSVIDEO_PATH) {
-    flog_it("photos & videos specific processing...");
+    //flog_it("photos & videos specific processing...");
     $vars['classes_array'][] = 'tfk-search-result';
     
     // Theming for results with thumbnails.
@@ -3731,8 +3723,8 @@ function tfk_search_node_has_flag($node, $flag = "spanish") {
  * @return TRUE if a flagged node is found, FALSE otherwise.
  */
 function tfk_search_magazine_has_spanish_item($magazine) {
-  flog_it("tfk_search_magazine_has_spanish_item: magazine arg:");
-  flog_it($magazine);
+  //flog_it("tfk_search_magazine_has_spanish_item: magazine arg:");
+  //flog_it($magazine);
   // Materials: Worksheet and PDF Quiz.
   $mag_field_names = array('field_related_resources', 'field_materials');
   foreach($mag_field_names as $mag_field_name) {
@@ -3804,7 +3796,7 @@ function tfk_search_magazine_has_spanish_item($magazine) {
   }
   
   // Did not find anything flagged as "spanish" in this magazine.
-  flog_it("Nothing flaged as spanish in this magazine...");
+  //flog_it("Nothing flaged as spanish in this magazine...");
   return FALSE;
 }
 
@@ -3817,7 +3809,7 @@ function tfk_search_magazine_has_spanish_item($magazine) {
  *   Name of the flag corresponding to the magazine issue.
  */
 function tfk_search_magazine_spanish_flag($magazine, $flag_name = 'magazine_issue_spanish') {
-  flog_it("tfk_search_magazine_spanish_flag...");
+  //flog_it("tfk_search_magazine_spanish_flag...");
   $has_flag = tfk_search_node_has_flag($magazine, $flag_name);
   $has_spanish_item = tfk_search_magazine_has_spanish_item($magazine);
   
@@ -3852,7 +3844,7 @@ function tfk_search_magazine_spanish_flag($magazine, $flag_name = 'magazine_issu
  * exposed in Solr search when the spanish filter is active.
  */
 function tfk_search_node_insert($node) {
-  flog_it("tfk_search_node_insert...");
+  //flog_it("tfk_search_node_insert...");
   if($node->type == 'magazine_issue') {
     tfk_search_magazine_spanish_flag($node);
   }
@@ -3969,7 +3961,7 @@ function tfk_search_field_attach_presave($entity_type, $entity) {
  * exposed in Solr search when the spanish filter is active.
  */
 function tfk_search_node_update($node) {
-  flog_it("tfk_search_node_update...");
+  //flog_it("tfk_search_node_update...");
   if($node->type == 'magazine_issue') {
     tfk_search_magazine_spanish_flag($node);
   }
@@ -3984,7 +3976,7 @@ function tfk_search_node_update($node) {
  * used by SOLR to tell which magazine issues contain spanish articles.
  */
 function tfk_search_flag($action, $flag, $content_id, $account, $fcid) {
-  flog_it("tfk_search_flag");
+  //flog_it("tfk_search_flag");
   // Force a node_save() when flagging nodes on /admin/content.
   // By default the "update" button does not invoke node_save().
   $path = arg();
