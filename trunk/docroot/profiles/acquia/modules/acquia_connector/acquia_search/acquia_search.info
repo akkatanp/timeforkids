@@ -8,15 +8,12 @@ dependencies[] = apachesolr
 dependencies[] = apachesolr_search
 dependencies[] = search
 
-files[] = acquia_search.install
-files[] = acquia_search.module
 files[] = Acquia_Search_Service.php
+files[] = tests/acquia_search.test
 
-
-
-; Information added by drupal.org packaging script on 2011-04-04
-version = "7.x-1.1"
+; Information added by Drupal.org packaging script on 2014-04-10
+version = "7.x-2.14"
 core = "7.x"
 project = "acquia_connector"
-datestamp = "1301952114"
+datestamp = "1397136254"
 

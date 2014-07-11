@@ -283,7 +283,6 @@ ini_set('max_input_time', 0);
  */
 $conf["acquia_identifier"] = "BCDE-22799";
 $conf["acquia_key"] = "8499f05ab66439dc7432a3533bbc5c33";
-$conf["apachesolr_path"] = "/solr/BCDE-22799";
 
 /**
  * Filesystem settings
