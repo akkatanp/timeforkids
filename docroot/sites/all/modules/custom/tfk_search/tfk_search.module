@@ -2395,10 +2395,8 @@ function tfk_search_apachesolr_query_alter($query, $caller) {
   }
   //flog_it("END: Add Filters:");
   //flog_it($filterstring);
-  if (!empty($filterstring)) {
-    foreach($filterstring as $key => $value) {
-        $query->addParam('fq', $value);
-    }
+  foreach($filterstring as $key => $value) {
+      $query->addParam('fq', $value);
   }
   
 }

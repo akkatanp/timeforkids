@@ -270,6 +270,7 @@ ini_set('session.cookie_lifetime', 0);
  */
 $conf["acquia_identifier"] = "GHRY-22798";
 $conf["acquia_key"] = "afd80ec55187436a7d83345415cffdd7";
+#$conf["apachesolr_path"] = "/solr/GHRY-22798";
 
 /**
  * Filesystem settings
@@ -299,7 +300,7 @@ $conf['cache_default_class'] = 'MemCacheDrupal';
  *
  * This file is required to connect to an Acquia server and manages the DB connection.
  */
-require('/var/www/site-php/time/time-settings.inc');
+require('/var/www/site-php/time.ra/time-settings.inc');
 
 
 /**

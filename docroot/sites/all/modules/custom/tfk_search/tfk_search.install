@@ -8,8 +8,8 @@
 function tfk_search_enable() {
   // We tell Solr to use our extended class.
   //variable_set('apachesolr_query_class', 'TimeIncSolrBaseQuery');
-  variable_set("apachesolr_query_class", array("file" => "SolrBaseQuery", "module" => "tfk_search", "class" => "SolrBaseQuery"));
-  drupal_set_message('apachesolr_query_class variable was set to SolrBaseQuery');
+  variable_set("apachesolr_query_class", array("file" => "TimeIncSolrBaseQuery", "module" => "tfk_search", "class" => "TimeIncSolrBaseQuery"));
+  drupal_set_message('apachesolr_query_class variable was set to TimeIncSolrBaseQuery');
 }
 
 function tfk_search_disable() {

@@ -383,7 +383,7 @@ $conf['reverse_proxy_addresses'] = array('184.72.228.250');
  * HTTP proxy, and bypass the reverse proxy if one is used) in order to avoid
  * getting cached pages from the proxy.
  */
- $conf['omit_vary_cookie'] = TRUE;
+# $conf['omit_vary_cookie'] = TRUE;
 
 /**
  * CSS/JS aggregated file gzip compression:
@@ -474,8 +474,8 @@ $conf["acquia_key"] = "8499f05ab66439dc7432a3533bbc5c33";
 //$conf['session_inc'] = './sites/all/modules/contrib/memcache/memcache-session.inc';
 
 include_once('./includes/cache.inc');
-//include_once('./sites/all/modules/contrib/memcache/memcache.inc');
-//$conf['cache_default_class'] = 'MemCacheDrupal';
+#include_once('./sites/all/modules/contrib/memcache/memcache.inc');
+#$conf['cache_default_class'] = 'MemCacheDrupal';
 
 /**
  * Acquia Config file
