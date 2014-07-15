@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Facetapi Home feature.
+ */
+
+include_once 'facetapi_home.features.inc';
