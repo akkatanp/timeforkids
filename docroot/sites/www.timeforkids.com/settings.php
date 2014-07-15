@@ -275,8 +275,8 @@ $conf["acquia_key"] = "2b5740b90ab783a59dac44afb916996a";
  * Filesystem settings
  */
 $conf["file_public_path"] = "files";
-$conf["file_temporary_path"] = "/mnt/tmp/timedev";
-$conf["file_private_path"] = "/mnt/files/timedev/files-private";
+$conf["file_temporary_path"] = "/mnt/tmp/time";
+$conf["file_private_path"] = "/mnt/files/time/files-private";
 
 // Drupal 7 does not cache pages when we invoke hooks during bootstrap. This needs
 // to be disabled.
