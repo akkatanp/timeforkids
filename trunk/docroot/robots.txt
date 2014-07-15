@@ -59,4 +59,7 @@ Disallow: /?q=user/register/
 Disallow: /?q=user/login/
 Disallow: /?q=user/logout/
 # Apachesolr search
-Disallow: /worksheets/?*im_36_field_themes*
+Disallow: /worksheets/*im_35_field_themes*
+Disallow: /worksheets/*im_36_field_themes*
+Disallow: /worksheets/*im_35_field_skills*
+Disallow: /worksheets/*im_36_field_skills*
