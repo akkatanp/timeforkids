@@ -8,5 +8,5 @@
         print views_embed_view('current_issue_widget','g56');
     ?>
     </div>
-    <div class="subscribe-now-redux"><a href="current-issue-subscribe-now">Subscribe Now</a></div>
+    <div class="subscribe-now-redux"><a href="http://www.timeforkids.com/current-issue-subscribe-now">Subscribe Now</a></div>
 </div>
