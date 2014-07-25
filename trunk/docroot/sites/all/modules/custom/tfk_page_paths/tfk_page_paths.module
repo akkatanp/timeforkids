@@ -165,10 +165,11 @@ function tfk_assessment_callback() {
     flog_it("tfk_assessment_callback...");
     $args = arg();
     //flog_it("args[0]=".$args[0]);
+    flog_it(user_is_anonymous());
     
     // Check for the assessment path and an anonymous user
-    if (strstr($args[0], "assessment") && $variables['is_anon']) {
-        flog_it("Found Anon assessment path...");
+    if (strstr($args[0], "assessment") && user_is_anonymous()) {
+        //flog_it("Found Anon assessment path...");
         drupal_deliver_page(MENU_ACCESS_DENIED);
         drupal_exit();
     }
