@@ -163,7 +163,9 @@ function tfk_assessment_callback() {
     // tfa@tk.com 333470199, 20003, is an account which has TFA
     // password for both: welcom123
     flog_it("tfk_assessment_callback...");
-  
+    $args = arg();
+    //flog_it("args[0]=".$args[0]);
+    
     // Check for the assessment path and an anonymous user
     if (strstr($args[0], "assessment") && $variables['is_anon']) {
         flog_it("Found Anon assessment path...");
