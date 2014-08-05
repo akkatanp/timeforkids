@@ -17,8 +17,9 @@ function tfk_photos_video_strongarm() {
   $strongarm->value = 'checkboxes';
   $export['apachesolr_facetstyle'] = $strongarm;
 
+  /*
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->disabled = FALSE; Edit this to true to make a default strongarm disabled initially 
   $strongarm->api_version = 1;
   $strongarm->name = 'apachesolr_type_filter';
   $strongarm->value = array(
@@ -30,6 +31,7 @@ function tfk_photos_video_strongarm() {
     ),
   );
   $export['apachesolr_type_filter'] = $strongarm;
+  */
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
