@@ -9,9 +9,9 @@
  */
 function tfk_worksheets_context_default_contexts() {
   $export = array();
-
+/*
   $context = new stdClass();
-  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->disabled = FALSE; * Edit this to true to make a default context disabled initially *
   $context->api_version = 3;
   $context->name = 'worksheets';
   $context->description = 'Worksheets';
@@ -89,6 +89,8 @@ function tfk_worksheets_context_default_contexts() {
   t('Worksheets');
   t('search');
   $export['worksheets'] = $context;
+ * 
+ */
 
   return $export;
 }

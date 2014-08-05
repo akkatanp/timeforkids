@@ -100,6 +100,7 @@ function tfk_helper_update_7001(&$ret) {
  *
  * @see apachesolr_enabled_facets_form_submit
  */
+/*
 function tfk_helper_update_7002(&$ret) {
   // How to see what are the currently enabled facets.
   // $server_id = variable_get('apachesolr_default_server');
@@ -126,6 +127,9 @@ function tfk_helper_update_7002(&$ret) {
   // This cache being stale can prevent new facet filters from working.
   apachesolr_clear_cache($server_id);
 }
+ * 
+ */
+
 
 /**
  * Remove user_favorites View from database and recreate from Features code so

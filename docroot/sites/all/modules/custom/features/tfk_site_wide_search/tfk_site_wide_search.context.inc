@@ -9,9 +9,9 @@
  */
 function tfk_site_wide_search_context_default_contexts() {
   $export = array();
-
+/*
   $context = new stdClass;
-  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->disabled = FALSE; * Edit this to true to make a default context disabled initially *
   $context->api_version = 3;
   $context->name = 'search_page';
   $context->description = 'Handles the site-wide search page (Spec 11A).';
@@ -96,6 +96,8 @@ function tfk_site_wide_search_context_default_contexts() {
   t('Handles the site-wide search page (Spec 11A).');
   t('search');
   $export['search_page'] = $context;
+ * 
+ */
 
   return $export;
 }

@@ -1975,6 +1975,7 @@ function tfk_search_preprocess_block(&$variables) {
   
   // Alter filter title for all search interfaces.
   // This is hardcoded on apachesolr_search.module apachesolr_search_block_view().
+  /*
   if ($variables['block']->module == 'apachesolr_search') {
     switch($variables['block']->delta) {
       case 'bundle':
@@ -1994,6 +1995,8 @@ function tfk_search_preprocess_block(&$variables) {
         break;
     }
   }
+   * 
+   */
 }
 
 /**
@@ -2085,8 +2088,8 @@ function tfk_search_preprocess_pager_top(&$vars) {
   $query = apachesolr_current_query($env_id);
   //flog_it($query);
   $active_filters = $query->getFilters();
-  //flog_it("Printing active filters:");
-  //flog_it($active_filters);
+  flog_it("Printing active filters:");
+  flog_it($active_filters);
   
   // If there are no active filters.
   if(!array_key_exists('filters', $_GET) && empty($active_filters)) {
@@ -2105,13 +2108,15 @@ function tfk_search_preprocess_pager_top(&$vars) {
   
   // Else get active filters.
   } else if( (array_key_exists('filters', $_GET) && !empty($_GET['filters'])) || !empty($active_filters)) {
-    //flog_it("Getting active filters...");
+    flog_it("Getting active filters...");
     $vars['pager_active_filter'] = 'Viewing: ';
     
     // Note: to keep things simple, we are retrieving only the current filter,
     // but if neccesary we could use the Taxonomy API to retrieve the next
     // or all term parents.
     // @todo Unhardcode the vid in the filter names.
+    $default_filters = array();
+    /*
     $default_filters = array(
       TFK_SEARCH_WORKSHEETS_PATH => array(
         'im_28_field_grade_level' => array('active' => FALSE, 'default_text' => 'All Grades', 'filters' => array()),
@@ -2131,6 +2136,8 @@ function tfk_search_preprocess_pager_top(&$vars) {
     );
     
     $non_taxonomy_filters = array(NULL, 'sm_editorial_date_tfk', TFK_SEARCH_SPANISH_ISSUE);
+     * 
+     */
     // Sort.
     foreach($active_filters as $filter) {
       
