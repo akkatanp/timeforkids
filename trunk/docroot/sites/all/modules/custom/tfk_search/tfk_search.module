@@ -2407,8 +2407,11 @@ function tfk_search_apachesolr_query_alter($query, $caller) {
   //flog_it("END: Add Filters:");
   if (!empty($filterstring)) {
     foreach($filterstring as $key => $value) {
-        if (!strpos($value, "im_36_field_themes") && !strpos($value, "im_35_field_skills")) {
-            //flog_it("adding: ".$value);
+        //flog_it("value=".$value.", strpos=".strpos("im_36_field_themes", "im_36_field_themes"));
+        if (strpos($value, "im_36_field_themes") > -1 || strpos($value, "im_35_field_skills") > -1) {
+            continue;
+        } else {
+            flog_it("adding: ".$value);
             $query->addParam('fq', $value);
         }
     }
