@@ -2088,8 +2088,8 @@ function tfk_search_preprocess_pager_top(&$vars) {
   $query = apachesolr_current_query($env_id);
   //flog_it($query);
   $active_filters = $query->getFilters();
-  flog_it("Printing active filters:");
-  flog_it($active_filters);
+  //flog_it("Printing active filters:");
+  //flog_it($active_filters);
   
   // If there are no active filters.
   if(!array_key_exists('filters', $_GET) && empty($active_filters)) {
@@ -2108,7 +2108,7 @@ function tfk_search_preprocess_pager_top(&$vars) {
   
   // Else get active filters.
   } else if( (array_key_exists('filters', $_GET) && !empty($_GET['filters'])) || !empty($active_filters)) {
-    flog_it("Getting active filters...");
+    //flog_it("Getting active filters...");
     $vars['pager_active_filter'] = 'Viewing: ';
     
     // Note: to keep things simple, we are retrieving only the current filter,
@@ -2401,10 +2401,12 @@ function tfk_search_apachesolr_query_alter($query, $caller) {
       $filterstring = isset($_GET['f']) ? $_GET['f'] : '';
   }
   //flog_it("END: Add Filters:");
-  //flog_it($filterstring);
   if (!empty($filterstring)) {
     foreach($filterstring as $key => $value) {
-        $query->addParam('fq', $value);
+        if (!strpos($value, "field_themes") && !strpos($value, "field_skills")) {
+            //flog_it("adding: ".$value);
+            $query->addParam('fq', $value);
+        }
     }
   }
   
@@ -2564,8 +2566,6 @@ function tfk_search_worksheets() {
   
   //flog_it($solrsort);
   //flog_it("page= ".$page);
-  //flog_it("filtersting:");
-  //flog_it($filterstring);
   
   $params['q'] = search_get_keys();
   $response = apachesolr_search_run('apachesolr_search', $params, $solrsort, $base_path, $page, $solr = NULL);
