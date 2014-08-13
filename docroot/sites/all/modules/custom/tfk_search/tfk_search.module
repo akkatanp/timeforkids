@@ -2381,6 +2381,9 @@ function tfk_search_apachesolr_query_alter($query, $caller) {
             
       $superquery->addFilterSubquery($ct_subquery, 'OR');
     }
+    
+    // Add sort descending default
+    $query->setSolrsort('ds_created', 'desc');
 
     // Highlight custom fields.
     //$query->params['hl.fl'][] = 'title';
