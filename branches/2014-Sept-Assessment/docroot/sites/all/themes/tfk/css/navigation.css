@@ -141,7 +141,7 @@
 	height: 18px;
 	line-height: 18px;
 	padding: 8px 0 6px 0;
-	font: bold 11px arial;
+	font: bold 12px arial;
 	font-style: italic;
 	color: #555;
 }
@@ -176,19 +176,12 @@
         outline:none;
 }
 
-/* tfk-84 */
-/*
-.logged-in #teacher-nav-container li a {
-    background-image: url('../images/sub-nav-unlock-sprite.png');
-    background-repeat: no-repeat;
-}
-.not-logged-in #teacher-nav-container li a {
-    background-image: url('../images/sub-nav-lock-sprite.png');
-    background-repeat: no-repeat;
-}
-*/
-
 /* TFK Assessment */
+#teacher-nav-container li a {
+    background-image: url('../images/sub-nav-lock-sprite-2014.png');
+    background-repeat: no-repeat;
+}
+/*
 .not-logged-in #teacher-nav-container li a {
     background-image: url('../images/sub-nav-lock-sprite-2014.png');
     background-repeat: no-repeat;
@@ -201,7 +194,7 @@
     background-image: url('../images/sub-nav-unlock-sprite-2014.png');
     background-repeat: no-repeat;
 }
-
+*/
 
 
 
