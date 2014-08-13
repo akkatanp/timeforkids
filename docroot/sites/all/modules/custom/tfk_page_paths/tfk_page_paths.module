@@ -77,7 +77,7 @@ function tfk_page_paths_menu(){
 		'title' => 'TFK Assessment',
 		'page callback' => 'tfk_assessment_callback',
 		'access callback' => 'user_access',
-		'access arguments' => array('access protected content')
+		'access arguments' => array('access content')
 	);
 	return $items;
 }
