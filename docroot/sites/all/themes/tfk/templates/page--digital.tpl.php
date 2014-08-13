@@ -8,7 +8,7 @@
 /*
 *	Set the post fields to sent to the digital product page
 */
-global $user;
+global $user;  
 $cgiToken = ($user->uid ? $_COOKIE['CGI-token'] : '');
 #flog_it("cgiToken=".$cgiToken);
 #flog_it("_ENV['AH_SITE_ENVIRONMENT']:");
