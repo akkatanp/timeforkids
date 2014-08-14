@@ -10,9 +10,8 @@
 */
 global $user;  
 $cgiToken = ($user->uid ? $_COOKIE['CGI-token'] : '');
-#flog_it("cgiToken=".$cgiToken);
-#flog_it("_ENV['AH_SITE_ENVIRONMENT']:");
-#flog_it($_ENV['AH_SITE_ENVIRONMENT']);
+flog_it("cgiToken=".$cgiToken);
+flog_it($_ENV['AH_SITE_ENVIRONMENT']);
 
 if (isset($_ENV['AH_SITE_ENVIRONMENT'])) {
   switch ($_ENV['AH_SITE_ENVIRONMENT']) {
