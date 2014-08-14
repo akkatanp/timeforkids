@@ -93,7 +93,7 @@ function tfk_page_paths_preprocess_page(&$variables){
     global $base_path;
     
     $args = arg();
-    //flog_it("***tfk_page_paths_preprocess_page:");
+    flog_it("***tfk_page_paths_preprocess_page:");
     
     // tfk-50, tfk-34, tfk-83: Add new items to paywall
     if ( isset($args[0]) && $args[0] == "node" && isset($variables['node']) ) { 
@@ -135,7 +135,7 @@ function tfk_page_paths_preprocess_page(&$variables){
         drupal_deliver_page(MENU_ACCESS_DENIED);
         drupal_exit();
     }
-    
+    flog_it($user);
     if($args[0] == 'deniedpage'){
         $variables['section_title'] = 'SUBSCRIBER-ONLY CONTENT';
     }
