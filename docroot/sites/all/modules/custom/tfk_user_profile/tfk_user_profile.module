@@ -298,6 +298,7 @@ function tfk_user_profile_login_validate( $form, &$form_state ){
  * Information returned inclues, first & last name, account id, and email address.
  */
 function tfk_lucie_get_user_info($email, $token) {
+  flog_it("tfk_lucie_get_user_info: token=".$token);
   $domain = variable_get('lucie_callback_domain', 'lucie.timeinc.com');
   $url = 'https://'. $domain. '/webservices/customers/'.check_plain($email).'/TK';
   $response = drupal_http_request($url, array('headers' => array('Content-Type'=>'application/json', 'CGI-token' => $token),
@@ -317,20 +318,68 @@ function tfk_lucie_get_user_info($email, $token) {
 function tfk_lucie_user_set_cookie($token){
 	setcookie('CGI-token', $token, 0);
 }
+function tfk_assessment_access_set_cookie($token){
+	setcookie('Assessment-access', $token, 0);
+}
+function tfk_assessment_tcs_account_number_set_cookie($token){
+	setcookie('TCS-account-number', $token, 0);
+}
 /**
  * This function will get the entitlements context for a user in LUCIE.
  * This will return whether or not a user is an active subscriber
  * and should have access to the content/site.
 */
 function tfk_lucie_user_entitlements($token){
-   $domain = variable_get('lucie_callback_domain', 'qa-lucie.timeinc.com');
+  flog_it("tfk_lucie_user_entitlements...");
+  // tim.testaccount@tk.com 322942790, zip=20002, is an account which is eligible for an upgrade
+  // tfa@tk.com 333470199, 20003, is an account which has TFA
+  // password for both: welcom123
+  //flog_it("tfk_lucie_user_entitlements: token=".$token);
+  $domain = variable_get('lucie_callback_domain', 'qa-lucie.timeinc.com');
   $url = 'https://'. $domain. '/webservices/entitlements?CGI-App-Id=com.timeinc.tk.web';
   $response = drupal_http_request($url, array('headers' => array('Content-Type'=>'application/json', 'CGI-token' => $token),
 	'method'=> 'GET'
   ));
+  //flog_it($response);
+  
   // Decode the JSON data and pass to the call to get the user information
   $dataResponse = drupal_json_decode($response->data);
+  //flog_it($dataResponse);
   
+  // Check for TFK Assessment access
+  // Get the LUCIE account number
+  $tcsAccountNumber = $dataResponse['issues'][0]['tcsAccountNumber'];
+  tfk_assessment_tcs_account_number_set_cookie($tcsAccountNumber);
+  flog_it("tcsAccountNumber=".$tcsAccountNumber);
+  
+  // Check for COMP access
+  if ($tcsAccountNumber === "COMP") {
+    flog_it("Has COMP access...");
+    tfk_assessment_access_set_cookie("yes");
+  } else {
+    $appIds = $dataResponse['tiersInfo']['availableAppIds'];
+    $appIdArr = split(',', $appIds);
+    $found = 0;
+    foreach ($appIdArr as $key=>$value) {
+        if ($value == "com.timeinc.tfk.apple") {
+            //flog_it("Found com.timeinc.tfk.apple...");
+            $found = 1;
+            break;
+        }
+    }
+
+    // Set TCS variables
+    if ($found && is_numeric($tcsAccountNumber)) {
+        flog_it("Has Assessment Access...");
+        tfk_assessment_access_set_cookie("yes");
+    } else {
+        flog_it("No Assessment Access...");
+        tfk_assessment_access_set_cookie("no");
+    }
+  }
+
+  
+  // Check Entitlements access
   if($response->code == 200){
   	return $dataResponse['issues'][0]['activeSubscription'];
   }
@@ -340,7 +389,8 @@ function tfk_lucie_user_entitlements($token){
  * A token is returned which must be used in any additional calls to LUCIE.
  */
 function tfk_lucie_check_user($email, $pwd){
-	$domain = variable_get('lucie_callback_domain', 'qa-lucie.timeinc.com');
+  flog_it("tfk_lucie_check_user...");
+  $domain = variable_get('lucie_callback_domain', 'qa-lucie.timeinc.com');
   $url = 'https://'. $domain. '/webservices/customers/'.check_plain($email).'/TK/auth_token';
   $pass_arr = array('password'=>$pwd, 'CGI-App-Id' => 'com.timeinc.tk.web', 'deviceid' => 'TK.WEB', 'deviceip' => ip_address());
   $pass = drupal_json_encode($pass_arr);
@@ -360,15 +410,19 @@ function tfk_lucie_check_user($email, $pwd){
               ));
   // Decode the JSON data and pass to the call to get the user information
   $dataResponse = drupal_json_decode($response->data);
+  flog_it("response->code=".$response->code);
   switch ($response->code) {
   	case 201:
   		if (tfk_lucie_user_entitlements($dataResponse['token'])) {
   			$_lucieUser['data'] = tfk_lucie_get_user_info($email, $dataResponse['token']);
+                        
   		} else {
 			$_lucieUser['error'] = 'sub_expired';
   		}
   		break;
   	case 404:
+                setcookie("CGI-token", "", time()-3600);
+                tfk_assessment_access_set_cookie("no");
   		if (is_array($dataResponse) && $dataResponse['userLockedOut']) {
   			$_lucieUser['error'] = 'user_locked';
   		}

@@ -1139,7 +1139,7 @@ function tfk_helper_block_view($delta='') {
     case 'tfk_helper_login':
       $login_form = drupal_get_form('user_login');
       $login_form['#rendered_build_id'] = render($login_form['form_build_id']);
-   		$block['content'] = render($login_form);
+      $block['content'] = render($login_form);
     break;
     
   }

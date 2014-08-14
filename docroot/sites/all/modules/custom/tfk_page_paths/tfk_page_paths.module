@@ -93,7 +93,7 @@ function tfk_page_paths_preprocess_page(&$variables){
     global $base_path;
     
     $args = arg();
-    flog_it("***tfk_page_paths_preprocess_page:");
+    //flog_it("***tfk_page_paths_preprocess_page:");
     
     // tfk-50, tfk-34, tfk-83: Add new items to paywall
     if ( isset($args[0]) && $args[0] == "node" && isset($variables['node']) ) { 
@@ -163,23 +163,25 @@ function tfk_assessment_callback() {
     // tfa@tk.com 333470199, 20003, is an account which has TFA
     // password for both: welcom123
     flog_it("tfk_assessment_callback...");
+  
     $args = arg();
     //flog_it("args[0]=".$args[0]);
-    flog_it(user_is_anonymous());
-    
-    // Check for the assessment path and an anonymous user
+    //flog_it("user_is_anonymous=".user_is_anonymous());
+
+    // Check for the assessment access
     if (strstr($args[0], "assessment") && user_is_anonymous()) {
-        //flog_it("Found Anon assessment path...");
+        flog_it("Found Anononymous user...");
         drupal_deliver_page(MENU_ACCESS_DENIED);
         drupal_exit();
     }
     
-    
-  // Check for no LUCIE Assessment access 
-  if (variable_get("tfk_assessment_access") !== "yes") {
-        flog_it("tfk_assessment_access variable is not = yes...");
+
+    // Check for no LUCIE Assessment access 
+    flog_it($_COOKIE['Assessment-access'].", ".$_COOKIE['CGI-token']);
+    if ($_COOKIE['Assessment-access'] === "no" && $_COOKIE['CGI-token'] != "") {
+        flog_it("No Assessment access. Check with LUCIE again...");
         $token = $_COOKIE['CGI-token'];
-        //flog_it("token=".$token);
+        flog_it("token=".$token);
         $domain = variable_get('lucie_callback_domain', 'qa-lucie.timeinc.com');
         $url = 'https://'. $domain. '/webservices/entitlements?CGI-App-Id=com.timeinc.tk.web';
         $response = drupal_http_request($url, array('headers' => array('Content-Type'=>'application/json', 'CGI-token' => $token),
@@ -189,39 +191,55 @@ function tfk_assessment_callback() {
 
         // Decode the JSON data and pass to the call to get the user information
         $dataResponse = drupal_json_decode($response->data);
-        //flog_it($dataResponse);
+        flog_it($dataResponse);
 
         // Check for TFK Assessment access
         // Get the LUCIE account number
         $tcsAccountNumber = $dataResponse['issues'][0]['tcsAccountNumber'];
         flog_it("tcsAccountNumber=".$tcsAccountNumber);
-        $appIds = $dataResponse['tiersInfo']['availableAppIds'];
-        $appIdArr = split(',', $appIds);
-        $found = 0;
-        foreach ($appIdArr as $key=>$value) {
-            if ($value == "com.timeinc.tfk.apple") {
-                //flog_it("Found com.timeinc.tfk.apple...");
-                $found = 1;
-                break;
+        
+        if ($tcsAccountNumber === "COMP") {
+            flog_it("Has COMP access...");
+            tfk_assessment_access_set_cookie("yes");
+        } elseif ($tcsAccountNumber === null) {
+            flog_it("Not a LUCIE member!!!");
+            drupal_add_http_header('Status', '403 Forbidden');
+            drupal_deliver_page(MENU_ACCESS_DENIED);
+            drupal_exit();
+        } else {
+            $appIds = $dataResponse['tiersInfo']['availableAppIds'];
+            flog_it($apIds);
+            $appIdArr = split(',', $appIds);
+            $found = 0;
+            foreach ($appIdArr as $key=>$value) {
+                if ($value == "com.timeinc.tfk.apple") {
+                    //flog_it("Found com.timeinc.tfk.apple...");
+                    $found = 1;
+                    break;
+                }
+            }
+
+            // Process results
+            if ($found && is_numeric($tcsAccountNumber)) {
+                flog_it("User has Assessment access.");
+                tfk_assessment_access_set_cookie("yes");
+            } else {
+                flog_it("No Assessment Access. Goto TCS page...");
+                tfk_assessment_access_set_cookie("no");
+                // Goto the TCS sign-up page
+                $url = 'https://wesqa.customersvc.com/servlet/Show?WESPAGE=am/tablet/tk/app/login.jsp&account='.$tcsAccountNumber;
+                drupal_goto($url);
             }
         }
-
-        // Process results
-        if ($found && is_numeric($tcsAccountNumber)) {
-            flog_it("User has Assessment access.");
-            variable_set("tfk_assessment_access", "yes");
-            variable_set("tcs_account_number", $tcsAccountNumber);
-            // Unlock the assessment menu item
-        } else {
-            flog_it("No Assessment Access. Goto TCS page...");
-            variable_set("tfk_assessment_access", "no");
-            variable_set("tcs_account_number", '');
-            // Lock the assessment menu item
-            // Goto the TCS sign-up page
-            $url = 'https://wesqa.customersvc.com/servlet/Show?WESPAGE=am/tablet/tk/app/login.jsp&account='.variable_get('tcs_account_number');
-            drupal_goto($url);
-        }
+    } elseif ($_COOKIE['Assessment-access'] === "no") {
+        flog_it("Final: no tcs access");
+        drupal_set_message(t('No TFK Assessment Access...'), 'error');
+        //drupal_add_http_header('Status', '403 Forbidden');
+        //drupal_deliver_page(MENU_ACCESS_DENIED);
+        //drupal_exit();
+        drupal_goto('');
     }
+    
     
     
     // Bring up the Cognero iframe
