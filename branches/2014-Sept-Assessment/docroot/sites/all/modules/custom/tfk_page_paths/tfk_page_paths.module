@@ -191,7 +191,7 @@ function tfk_assessment_callback() {
 
         // Decode the JSON data and pass to the call to get the user information
         $dataResponse = drupal_json_decode($response->data);
-        flog_it($dataResponse);
+        //flog_it($dataResponse);
 
         // Check for TFK Assessment access
         // Get the LUCIE account number
@@ -203,9 +203,7 @@ function tfk_assessment_callback() {
             tfk_assessment_access_set_cookie("yes");
         } elseif ($tcsAccountNumber === null) {
             flog_it("Not a LUCIE member!!!");
-            drupal_add_http_header('Status', '403 Forbidden');
-            drupal_deliver_page(MENU_ACCESS_DENIED);
-            drupal_exit();
+            return theme('tfk_no_assessment');
         } else {
             $appIds = $dataResponse['tiersInfo']['availableAppIds'];
             flog_it($apIds);
@@ -233,11 +231,12 @@ function tfk_assessment_callback() {
         }
     } elseif ($_COOKIE['Assessment-access'] === "no") {
         flog_it("Final: no tcs access");
-        drupal_set_message(t('No TFK Assessment Access...'), 'error');
+        //drupal_set_message(t('No TFK Assessment Access...'), 'error');
         //drupal_add_http_header('Status', '403 Forbidden');
         //drupal_deliver_page(MENU_ACCESS_DENIED);
         //drupal_exit();
-        drupal_goto('');
+        //drupal_goto('');
+        return theme('tfk_no_assessment');
     }
     
     
@@ -269,6 +268,10 @@ function tfk_page_paths_theme() {
     ),
     'tfk_assessment' => array(
       'template' => 'tfk-assessment',
+      'variables' => array('list' => NULL),
+    ),
+    'tfk_no_assessment' => array(
+      'template' => 'tfk-no-assessment',
       'variables' => array('list' => NULL),
     )
   );
