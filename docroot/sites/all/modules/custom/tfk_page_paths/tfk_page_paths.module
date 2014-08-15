@@ -135,7 +135,7 @@ function tfk_page_paths_preprocess_page(&$variables){
         drupal_deliver_page(MENU_ACCESS_DENIED);
         drupal_exit();
     }
-    flog_it($user);
+    
     if($args[0] == 'deniedpage'){
         $variables['section_title'] = 'SUBSCRIBER-ONLY CONTENT';
     }
@@ -227,6 +227,7 @@ function tfk_assessment_callback() {
                 // Goto the TCS sign-up page
                 $url = 'https://wesqa.customersvc.com/servlet/Show?WESPAGE=am/tablet/tk/app/login.jsp&account='.$tcsAccountNumber;
                 drupal_goto($url);
+                //return theme("tfk_goto_TCS", array('url' => $url));
             }
         }
     } elseif ($_COOKIE['Assessment-access'] === "no") {
@@ -236,7 +237,9 @@ function tfk_assessment_callback() {
         //drupal_deliver_page(MENU_ACCESS_DENIED);
         //drupal_exit();
         //drupal_goto('');
-        return theme('tfk_no_assessment');
+        //return theme('tfk_no_assessment');
+        $url = 'https://wesqa.customersvc.com/servlet/Show?WESPAGE=am/tablet/tk/app/login.jsp&account='.'123456789';
+        return theme("tfk_goto_TCS", array('url' => $url));
     }
     
     
@@ -273,7 +276,11 @@ function tfk_page_paths_theme() {
     'tfk_no_assessment' => array(
       'template' => 'tfk-no-assessment',
       'variables' => array('list' => NULL),
-    )
+    ),
+      'tfk_goto_TCS' => array(
+      'template' => 'tfk-goto-TCS',
+      'variables' => array('list' => NULL),
+    ),
   );
 }
 
