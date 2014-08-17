@@ -1,15 +1,15 @@
 <?php
-flog_it("tfk-goto-TCS.tpl.php...");
-flog_it("url=".$url);
+//flog_it("tfk-goto-TCS.tpl.php...");
+//flog_it("url=".$url);
 ?>
 
 <html>
 <body>
+    <a id="url" target="_blank" href="<?php echo $url; ?>"></a>
     <script type="text/javascript">
-    window.onload=function(){
-        window.open("<?php echo $url; ?>",target="_blank");
-        //window.open("redirect.php?u=<?php echo $url; ?>", "_blank");
-    }
+        window.onload=function() {
+            document.getElementById("url").click();
+        }
     </script>
 </body>
 </html>

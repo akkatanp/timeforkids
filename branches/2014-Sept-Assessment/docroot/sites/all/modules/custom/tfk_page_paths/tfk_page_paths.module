@@ -93,7 +93,7 @@ function tfk_page_paths_preprocess_page(&$variables){
     global $base_path;
     
     $args = arg();
-    flog_it("***tfk_page_paths_preprocess_page:");
+    //flog_it("***tfk_page_paths_preprocess_page:");
     
     // tfk-50, tfk-34, tfk-83: Add new items to paywall
     if ( isset($args[0]) && $args[0] == "node" && isset($variables['node']) ) { 
@@ -131,7 +131,7 @@ function tfk_page_paths_preprocess_page(&$variables){
     
     // Check for the digital editions path and an anonymous user
     if (strstr($args[0], "digital") && $variables['is_anon']) {
-        flog_it("Found Anon digital editon path...");
+        //flog_it("Found Anon digital editon path...");
         drupal_deliver_page(MENU_ACCESS_DENIED);
         drupal_exit();
     }
@@ -177,7 +177,7 @@ function tfk_assessment_callback() {
     
 
     // Check for no LUCIE Assessment access 
-    flog_it($_COOKIE['Assessment-access'].", ".$_COOKIE['CGI-token']);
+    //flog_it($_COOKIE['Assessment-access'].", ".$_COOKIE['CGI-token']);
     if ($_COOKIE['Assessment-access'] === "no" && $_COOKIE['CGI-token'] != "") {
         flog_it("No Assessment access. Check with LUCIE again...");
         $token = $_COOKIE['CGI-token'];
@@ -203,7 +203,7 @@ function tfk_assessment_callback() {
             tfk_assessment_access_set_cookie("yes");
         } elseif ($tcsAccountNumber === null) {
             flog_it("Not a LUCIE member!!!");
-            return theme('tfk_no_assessment');
+            return('<p style="font-family:arial;font-style:normal;font-size:14px;">You do not have access to the TFK Assessment...</p>');
         } else {
             $appIds = $dataResponse['tiersInfo']['availableAppIds'];
             flog_it($apIds);
@@ -226,20 +226,13 @@ function tfk_assessment_callback() {
                 tfk_assessment_access_set_cookie("no");
                 // Goto the TCS sign-up page
                 $url = 'https://wesqa.customersvc.com/servlet/Show?WESPAGE=am/tablet/tk/app/login.jsp&account='.$tcsAccountNumber;
-                drupal_goto($url);
-                //return theme("tfk_goto_TCS", array('url' => $url));
+                //drupal_goto($url);
+                return theme("tfk_goto_TCS", array('url' => $url));
             }
         }
     } elseif ($_COOKIE['Assessment-access'] === "no") {
         flog_it("Final: no tcs access");
-        //drupal_set_message(t('No TFK Assessment Access...'), 'error');
-        //drupal_add_http_header('Status', '403 Forbidden');
-        //drupal_deliver_page(MENU_ACCESS_DENIED);
-        //drupal_exit();
-        //drupal_goto('');
-        //return theme('tfk_no_assessment');
-        $url = 'https://wesqa.customersvc.com/servlet/Show?WESPAGE=am/tablet/tk/app/login.jsp&account='.'123456789';
-        return theme("tfk_goto_TCS", array('url' => $url));
+        return('<p style="font-family:arial;font-style:normal;font-size:14px;">You do not have access to the TFK Assessment...</p>');
     }
     
     
@@ -259,7 +252,7 @@ function tfk_denied_page(){
 }
 
 function tfk_page_paths_theme() {
-  flog_it("tfk_page_paths_theme...");
+  //flog_it("tfk_page_paths_theme...");
   return array(
     'tfk_not_found_page' => array(
       'template' => 'tfk-not-found-page',
