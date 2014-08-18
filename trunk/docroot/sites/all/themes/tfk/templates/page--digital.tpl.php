@@ -17,7 +17,7 @@ $cgiToken = ($user->uid ? $_COOKIE['CGI-token'] : '');
 if (isset($_ENV['AH_SITE_ENVIRONMENT'])) {
   switch ($_ENV['AH_SITE_ENVIRONMENT']) {
     case 'prod':
-      $form_action = 'https://app.timeforkidsdigital.com/cgiAuth.php';
+      $form_action = 'https://auth.timeforkids.com/cgiAuth.php';
       break;
 
     default:
