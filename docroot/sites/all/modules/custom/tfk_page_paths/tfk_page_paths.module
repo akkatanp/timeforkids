@@ -73,15 +73,6 @@ function tfk_page_paths_menu(){
 		'access callback' => 'user_access',
 		'access arguments' => array('access content')
 	);
-        /*
-        $items['assessment'] = array(
-		'title' => 'TFK Assessment',
-		'page callback' => 'tfk_assessment_callback',
-		'access callback' => 'user_access',
-		'access arguments' => array('access protected content')
-	);
-         * 
-         */
 	return $items;
 }
 
@@ -96,7 +87,7 @@ function tfk_page_paths_preprocess_page(&$variables){
     global $base_path;
     
     $args = arg();
-    flog_it("***tfk_page_paths_preprocess_page:");
+    //flog_it("***tfk_page_paths_preprocess_page:");
     
     // tfk-50, tfk-34, tfk-83: Add new items to paywall
     if ( isset($args[0]) && $args[0] == "node" && isset($variables['node']) ) { 
@@ -134,7 +125,7 @@ function tfk_page_paths_preprocess_page(&$variables){
     
     // Check for the digital editions path and an anonymous user
     if (strstr($args[0], "digital") && $variables['is_anon']) {
-        flog_it("Found Anon digital editon path...");
+        //flog_it("Found Anon digital editon path...");
         drupal_deliver_page(MENU_ACCESS_DENIED);
         drupal_exit();
     }
@@ -152,84 +143,6 @@ function tfk_page_paths_preprocess_page(&$variables){
         }
     
     }
-    
-    // Check for TFK Assessment processing
-    if ($args[0] == 'assessment') {
-        //flog_it($variables);
-        $variables['page']['sidebar_second'] = '';
-        #$variables['page']['footer'] = '';
-    }
-}
-
-function tfk_assessment_callback() {
-    // tim.testaccount@tk.com 322942790, zip=20002, is an account which is eligible for an upgrade
-    // tfa@tk.com 333470199, 20003, is an account which has TFA
-    // password for both: welcom123
-    flog_it("tfk_assessment_callback...");
-    $args = arg();
-    //flog_it("args[0]=".$args[0]);
-    flog_it(user_is_anonymous());
-    
-    // Check for the assessment path and an anonymous user
-    if (strstr($args[0], "assessment") && user_is_anonymous()) {
-        //flog_it("Found Anon assessment path...");
-        drupal_deliver_page(MENU_ACCESS_DENIED);
-        drupal_exit();
-    }
-    
-    
-  // Check for no LUCIE Assessment access 
-  if (variable_get("tfk_assessment_access") !== "yes") {
-        flog_it("tfk_assessment_access variable is not = yes...");
-        $token = $_COOKIE['CGI-token'];
-        //flog_it("token=".$token);
-        $domain = variable_get('lucie_callback_domain', 'qa-lucie.timeinc.com');
-        $url = 'https://'. $domain. '/webservices/entitlements?CGI-App-Id=com.timeinc.tk.web';
-        $response = drupal_http_request($url, array('headers' => array('Content-Type'=>'application/json', 'CGI-token' => $token),
-              'method'=> 'GET'
-        ));
-        //flog_it($response);
-
-        // Decode the JSON data and pass to the call to get the user information
-        $dataResponse = drupal_json_decode($response->data);
-        //flog_it($dataResponse);
-
-        // Check for TFK Assessment access
-        // Get the LUCIE account number
-        $tcsAccountNumber = $dataResponse['issues'][0]['tcsAccountNumber'];
-        flog_it("tcsAccountNumber=".$tcsAccountNumber);
-        $appIds = $dataResponse['tiersInfo']['availableAppIds'];
-        $appIdArr = split(',', $appIds);
-        $found = 0;
-        foreach ($appIdArr as $key=>$value) {
-            if ($value == "com.timeinc.tfk.apple") {
-                //flog_it("Found com.timeinc.tfk.apple...");
-                $found = 1;
-                break;
-            }
-        }
-
-        // Process results
-        if ($found && is_numeric($tcsAccountNumber)) {
-            flog_it("User has Assessment access.");
-            variable_set("tfk_assessment_access", "yes");
-            variable_set("tcs_account_number", $tcsAccountNumber);
-            // Unlock the assessment menu item
-        } else {
-            flog_it("No Assessment Access. Goto TCS page...");
-            variable_set("tfk_assessment_access", "no");
-            variable_set("tcs_account_number", '');
-            // Lock the assessment menu item
-            // Goto the TCS sign-up page
-            $url = 'https://wesqa.customersvc.com/servlet/Show?WESPAGE=am/tablet/tk/app/login.jsp&account='.variable_get('tcs_account_number');
-            drupal_goto($url);
-        }
-    }
-    
-    
-    // Bring up the Cognero iframe
-    flog_it("Has Assessment Access, bring up iframe");
-    return theme('tfk_assessment');
 }
 
 
@@ -242,7 +155,7 @@ function tfk_denied_page(){
 }
 
 function tfk_page_paths_theme() {
-  flog_it("tfk_page_paths_theme...");
+  //flog_it("tfk_page_paths_theme...");
   return array(
     'tfk_not_found_page' => array(
       'template' => 'tfk-not-found-page',
@@ -250,10 +163,6 @@ function tfk_page_paths_theme() {
     ),
     'tfk_denied_page' => array(
       'template' => 'tfk-denied-page',
-      'variables' => array('list' => NULL),
-    ),
-    'tfk_assessment' => array(
-      'template' => 'tfk-assessment',
       'variables' => array('list' => NULL),
     )
   );
