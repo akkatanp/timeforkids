@@ -19,7 +19,7 @@ flog_it($_ENV['AH_SITE_ENVIRONMENT']);
 if (isset($_ENV['AH_SITE_ENVIRONMENT'])) {
   switch ($_ENV['AH_SITE_ENVIRONMENT']) {
     case 'prod':
-      $form_action = 'http://subscription-assets.timeforkids.com/prod/assets/themes/magazines/SUBS/templates/velocity/site/tk-digital/library.html';
+      $form_action = 'https://app.timeforkidsdigital.com/cgiAuth.php';
       break;
 
     default:
@@ -27,7 +27,7 @@ if (isset($_ENV['AH_SITE_ENVIRONMENT'])) {
       break;
   }
 } else {
-    $form_action = 'http://subscription-assets.timeforkids.com/prod/assets/themes/magazines/SUBS/templates/velocity/site/tk-digital/library.html';
+    $form_action = 'https://app.timeforkidsdigital.com/cgiAuth.php';
 }
 ?>
 <form id="cgi-redirect" action="<?php echo $form_action; ?>" method="post">
