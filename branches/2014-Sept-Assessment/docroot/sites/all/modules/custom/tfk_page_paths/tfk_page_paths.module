@@ -93,7 +93,7 @@ function tfk_page_paths_preprocess_page(&$variables){
     global $base_path;
     
     $args = arg();
-    //flog_it("***tfk_page_paths_preprocess_page:");
+    flog_it("***tfk_page_paths_preprocess_page:");
     
     // tfk-50, tfk-34, tfk-83: Add new items to paywall
     if ( isset($args[0]) && $args[0] == "node" && isset($variables['node']) ) { 
@@ -123,7 +123,7 @@ function tfk_page_paths_preprocess_page(&$variables){
     // Check for the tfk-magazine path and an anonymous user
     //flog_it("args[0]=".$args[0].", isn_anon=".$variables['is_anon']);
     if (strstr($args[0], "tfk-magazine") && $variables['is_anon']) {
-        //flog_it("Before drupal_deliver_page...");
+        flog_it("Found Anon & magazine path...");
         drupal_add_http_header('Status', '403 Forbidden');
         drupal_deliver_page(MENU_ACCESS_DENIED);
         drupal_exit();
@@ -131,7 +131,14 @@ function tfk_page_paths_preprocess_page(&$variables){
     
     // Check for the digital editions path and an anonymous user
     if (strstr($args[0], "digital") && $variables['is_anon']) {
-        //flog_it("Found Anon digital editon path...");
+        flog_it("Found Anon & digital editon path...");
+        drupal_deliver_page(MENU_ACCESS_DENIED);
+        drupal_exit();
+    }
+    
+    // Check for the assessment access
+    if (strstr($args[0], "assessment") && $variables['is_anon']) {
+        flog_it("Found Anon Y assessment path...");
         drupal_deliver_page(MENU_ACCESS_DENIED);
         drupal_exit();
     }
@@ -206,6 +213,7 @@ function tfk_assessment_callback() {
             return('<p style="font-family:arial;font-style:normal;font-size:14px;">You do not have access to the TFK Assessment...</p>');
         } else {
             $appIds = $dataResponse['tiersInfo']['availableAppIds'];
+            flog_it("apIds:");
             flog_it($apIds);
             $appIdArr = split(',', $appIds);
             $found = 0;
@@ -226,8 +234,8 @@ function tfk_assessment_callback() {
                 tfk_assessment_access_set_cookie("no");
                 // Goto the TCS sign-up page
                 $url = 'https://wesqa.customersvc.com/servlet/Show?WESPAGE=am/tablet/tk/app/login.jsp&account='.$tcsAccountNumber;
-                //drupal_goto($url);
-                return theme("tfk_goto_TCS", array('url' => $url));
+                drupal_goto($url);
+                //return theme("tfk_goto_TCS", array('url' => $url));
             }
         }
     } elseif ($_COOKIE['Assessment-access'] === "no") {
