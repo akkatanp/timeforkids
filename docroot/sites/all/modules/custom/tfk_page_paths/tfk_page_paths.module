@@ -138,7 +138,7 @@ function tfk_page_paths_preprocess_page(&$variables){
     
     // Check for the assessment access
     if (strstr($args[0], "assessment") && $variables['is_anon']) {
-        flog_it("Found Anon Y assessment path...");
+        flog_it("Found Anon & assessment path...");
         drupal_deliver_page(MENU_ACCESS_DENIED);
         drupal_exit();
     }
