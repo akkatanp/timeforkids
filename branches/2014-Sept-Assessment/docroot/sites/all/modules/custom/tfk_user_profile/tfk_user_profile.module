@@ -380,6 +380,8 @@ function tfk_lucie_user_entitlements($token){
 
   
   // Check Entitlements access
+  flog_it("entitlements response->code=".$response->code);
+  flog_it("activeSubscription=".$dataResponse['issues'][0]['activeSubscription']);
   if($response->code == 200){
   	return $dataResponse['issues'][0]['activeSubscription'];
   }
@@ -389,7 +391,7 @@ function tfk_lucie_user_entitlements($token){
  * A token is returned which must be used in any additional calls to LUCIE.
  */
 function tfk_lucie_check_user($email, $pwd){
-  flog_it("tfk_lucie_check_user...");
+  flog_it("\n\ntfk_lucie_check_user: email=".$email);
   $domain = variable_get('lucie_callback_domain', 'qa-lucie.timeinc.com');
   $url = 'https://'. $domain. '/webservices/customers/'.check_plain($email).'/TK/auth_token';
   $pass_arr = array('password'=>$pwd, 'CGI-App-Id' => 'com.timeinc.tk.web', 'deviceid' => 'TK.WEB', 'deviceip' => ip_address());

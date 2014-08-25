@@ -169,18 +169,21 @@ function tfk_assessment_callback() {
     // tim.testaccount@tk.com 322942790, zip=20002, is an account which is eligible for an upgrade
     // tfa@tk.com 333470199, 20003, is an account which has TFA
     // password for both: welcom123
-    flog_it("tfk_assessment_callback...");
+    flog_it("\n\ntfk_assessment_callback...");
   
     $args = arg();
     //flog_it("args[0]=".$args[0]);
     //flog_it("user_is_anonymous=".user_is_anonymous());
 
     // Check for the assessment access
+    /*
     if (strstr($args[0], "assessment") && user_is_anonymous()) {
         flog_it("Found Anononymous user...");
         drupal_deliver_page(MENU_ACCESS_DENIED);
         drupal_exit();
     }
+     * 
+     */
     
 
     // Check for no LUCIE Assessment access 
