@@ -1,5 +1,8 @@
 <?php
-    flog_it("tfk-assessment.tpl.php...");
+    global $user;
+    
+    flog_it("tfk-assessment.tpl.php: email=".$user->mail);
+    
     // Test URL: 
     // http://mobilesandbox.timeinc.com
     // http://mobilesandbox.timeinc.com/tfk/cognero.html
@@ -12,6 +15,8 @@
     }
     
     $token = $_COOKIE['CGI-token'];
+    flog_it("CGI-token=".$token);
+    
 ?>
 
 <script language="javascript">
