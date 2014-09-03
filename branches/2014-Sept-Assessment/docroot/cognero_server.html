@@ -6,7 +6,7 @@
         <script type="text/javascript">
             function receiveSize(e) {
                 console.log("receiveSize...");
-                if (e.origin === "http://tfk:8082") {// for security: set this to the domain of the iframe - use e.uri if you need more specificity
+                if (e.origin === "http://mobilesandbox.timeinc.com") {// for security: set this to the domain of the iframe - use e.uri if you need more specificity
                     console.log("found domain, attempting to resize...");
                     document.getElementById("tfk_assessment").style.height = e.data + "px";
                 }
@@ -21,6 +21,7 @@
         </script>
     </head>
     <body>
-        <iframe id="tfk_assessment" width="950" height="100" src="http://tfk:8082/cognero.html"></iframe>
+        <iframe id="tfk_assessment" width="950" height="100" border="1" scrollbars="no" src="http://mobilesandbox.timeinc.com/tfk/cognero.html"></iframe>
+        <!--<iframe id="tfk_assessment" width="950" height="100" border="1" scrollbars="no" src="http://tfk:8082/cognero.html"></iframe>-->
     </body>
 </html>
