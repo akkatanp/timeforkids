@@ -87,7 +87,9 @@ function tfk_page_paths_preprocess_page(&$variables){
     global $base_path;
     
     $args = arg();
-    //flog_it("***tfk_page_paths_preprocess_page:");
+    flog_it("***tfk_page_paths_preprocess_page:");
+    flog_it("node_type=".$variables['node']->type);
+    
     
     // tfk-50, tfk-34, tfk-83: Add new items to paywall
     if ( isset($args[0]) && $args[0] == "node" && isset($variables['node']) ) { 
@@ -98,7 +100,7 @@ function tfk_page_paths_preprocess_page(&$variables){
  
             //flog_it("is_flagged=".$flag->is_flagged($node));
             if ($flag->is_flagged($node)) {
-                //flog_it("$node is flagged as a Magazine article");
+                //flog_it($node." is flagged as a Magazine article");
                 
                 // Check to see if this is an anonymous user: if it is -> 403
                 //flog_it("anon=".$variables['is_anon']);
