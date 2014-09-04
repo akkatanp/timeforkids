@@ -6,17 +6,17 @@
     // Test URL: 
     // http://mobilesandbox.timeinc.com
     // http://mobilesandbox.timeinc.com/tfk/cognero.html
-    if ($_SERVER['HTTP_HOST'] == "www.timeforkids.com") {
-        $cogneroDomain = "https://qa-tfkclassroomapp.timeinc.com";
-        $cogneroURL = "https://qa-tfkclassroomapp.timeinc.com/Instructor/SingleSignOn.aspx?authToken=";
-    } else {
-        $cogneroDomain = "https://qa-tfkclassroomapp.timeinc.com";
-        $cogneroURL = "https://qa-tfkclassroomapp.timeinc.com/Instructor/SingleSignOn.aspx?authToken=";
-    }
     
     $token = $_COOKIE['CGI-token'];
     flog_it("CGI-token=".$token);
     
+    if ($_SERVER['HTTP_HOST'] == "www.timeforkids.com") {
+        $cogneroDomain = "https://qa-tfkclassroomapp.timeinc.com";
+        $cogneroURL = "https://qa-tfkclassroomapp.timeinc.com/Instructor/SingleSignOn.aspx?authToken=".$token;
+    } else {
+        $cogneroDomain = "https://qa-tfkclassroomapp.timeinc.com";
+        $cogneroURL = "https://qa-tfkclassroomapp.timeinc.com/Instructor/SingleSignOn.aspx?authToken=".$token;
+    }
 ?>
 
 <script language="javascript">
@@ -46,5 +46,5 @@
      
 </script>
 
-<iframe id="tfk_assessment" width="950" height="100" frameBorder="0" scrollbars="no" src="<?php echo $cogneroURL.$token; ?>"></iframe>
+<iframe id="tfk_assessment" width="950" height="100" frameBorder="0" scrollbars="no" src="<?php echo $cogneroURL; ?>"></iframe>
 <!--<iframe id="tfk_assessment" width="950" height="100" border="1" scrollbars="no" src="http://tfk:8082/cognero.html"></iframe>-->
