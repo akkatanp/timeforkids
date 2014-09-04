@@ -187,10 +187,11 @@ function tfk_assessment_callback() {
     
 
     // Check for no LUCIE Assessment access 
-    //flog_it($_COOKIE['Assessment-access'].", ".$_COOKIE['CGI-token']);
-    if ($_COOKIE['Assessment-access'] === "no" && $_COOKIE['CGI-token'] != "") {
+    $token = $_COOKIE['CGI-token'];
+    //flog_it($_COOKIE['Assessment-access'].", ".$token);
+    if ($_COOKIE['Assessment-access'] === "no" && $token != "") {
         flog_it("No Assessment access. Check with LUCIE again...");
-        $token = $_COOKIE['CGI-token'];
+        
         flog_it("token=".$token);
         $domain = variable_get('lucie_callback_domain', 'qa-lucie.timeinc.com');
         $url = 'https://'. $domain. '/webservices/entitlements?CGI-App-Id=com.timeinc.tk.web';
@@ -250,7 +251,7 @@ function tfk_assessment_callback() {
     
     // Bring up the Cognero iframe
     flog_it("Has Assessment Access, bring up iframe");
-    return theme('tfk_assessment');
+    return theme('tfk_assessment', array('token' => $token));
 }
 
 

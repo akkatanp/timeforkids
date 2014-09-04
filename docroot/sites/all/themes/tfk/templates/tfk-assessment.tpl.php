@@ -7,7 +7,6 @@
     // http://mobilesandbox.timeinc.com
     // http://mobilesandbox.timeinc.com/tfk/cognero.html
     
-    $token = $_COOKIE['CGI-token'];
     flog_it("CGI-token=".$token);
     
     if ($_SERVER['HTTP_HOST'] == "www.timeforkids.com") {
