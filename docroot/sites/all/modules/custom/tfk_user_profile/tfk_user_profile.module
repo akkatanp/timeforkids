@@ -234,6 +234,10 @@ function tfk_insert_teacher_role($uid=0){
  * This is done for each new user that logs in through the lucie system.
  */
 function tfk_insert_lucie_user($lucieData, $uid, $username){
+    flog_it("tfk_insert_lucie_user...");
+    flog_it("uid=".$uid);
+    flog_it("username=".$username);
+    //flog_it($lucieData);
 	// insert a row into the lucie table
 	$fields = array('lid' => $lucieData['uidpk'], 'uid' => $uid, 'username' => strtolower($lucieData['userId']));
 	db_insert('users_lucie_account')->fields($fields)->execute();
@@ -341,6 +345,7 @@ function tfk_lucie_user_entitlements($token){
 	'method'=> 'GET'
   ));
   //flog_it($response);
+  flog_it("url=".$url);
   
   // Decode the JSON data and pass to the call to get the user information
   $dataResponse = drupal_json_decode($response->data);
@@ -396,6 +401,7 @@ function tfk_lucie_check_user($email, $pwd){
   $url = 'https://'. $domain. '/webservices/customers/'.check_plain($email).'/TK/auth_token';
   $pass_arr = array('password'=>$pwd, 'CGI-App-Id' => 'com.timeinc.tk.web', 'deviceid' => 'TK.WEB', 'deviceip' => ip_address());
   $pass = drupal_json_encode($pass_arr);
+  flog_it("url=".$url);
  
   // process the LUCIE login response.
   // some actions are based on the $response code, others $response_code + json parameter
@@ -425,7 +431,7 @@ function tfk_lucie_check_user($email, $pwd){
   	case 404:
                 setcookie("CGI-token", "", time()-3600);
                 tfk_assessment_access_set_cookie("no");
-  		if (is_array($dataResponse) && $dataResponse['userLockedOut']) {
+  		if (is_array($dataResponse) && array_key_exists('userLockedOut', $dataResponse)) {
   			$_lucieUser['error'] = 'user_locked';
   		}
   		break;
@@ -440,6 +446,8 @@ function tfk_user_profile_menu_alter(&$items) {
 }
 //User update form for teacher profiles
 function tfk_user_profile_form($form, &$form_state, $user_profile) {
+    flog_it("tfk_user_profile_form");
+    //flog_it($user_profile);
         $vid = 6; //vocabulary id for grade level
         $result = db_query('SELECT DISTINCT ti.tid,td.name from taxonomy_index ti left join taxonomy_term_data td on ti.tid = td.tid WHERE td.vid = :vid',array('vid'=>$vid));
         $grade_levels = array('0'=>'Please Select');
@@ -553,6 +561,7 @@ function tfk_user_profile_form_submit($form, &$form_state) {
 }
 //Outputs either board member or teacher settings page
 function tfk_user_profile (&$user_profile) {
+    flog_it("tfk_user_profile...");
     global $user;
     if (isset($user_profile['elements']['#account']->field_is_board_member)) {
         $field_is_board_member = field_get_items('user', $user_profile['elements']['#account'], 'field_is_board_member');
