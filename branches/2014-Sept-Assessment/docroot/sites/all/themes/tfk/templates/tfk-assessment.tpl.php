@@ -9,13 +9,15 @@
     
     flog_it("CGI-token=".$token);
     
-    if ($_SERVER['HTTP_HOST'] == "www.timeforkids.com") {
-        $cogneroDomain = "https://qa-tfkclassroomapp.timeinc.com";
-        $cogneroURL = "https://qa-tfkclassroomapp.timeinc.com/Instructor/SingleSignOn.aspx?authToken=".$token;
+    if ($_SERVER['HTTP_HOST'] != "www.timeforkids.com") {
+        $cogneroDomain = "https://tfkclassroomapp.timeinc.com";
+        $cogneroURL = "https://tfkclassroomapp.timeinc.com/Instructor/SingleSignOn.aspx?authToken=".$token;
     } else {
         $cogneroDomain = "https://qa-tfkclassroomapp.timeinc.com";
         $cogneroURL = "https://qa-tfkclassroomapp.timeinc.com/Instructor/SingleSignOn.aspx?authToken=".$token;
     }
+    flog_it("cogneroDomain=".$cogneroDomain);
+    flog_it("cogneroURL=".$cogneroURL);
 ?>
 
 <script language="javascript">

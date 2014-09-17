@@ -185,6 +185,13 @@ function tfk_assessment_callback() {
      * 
      */
     
+    if ($_SERVER['HTTP_HOST'] != "www.timeforkids.com") {
+        $wesURL = 'https://secure.customersvc.com/servlet/Show?WESPAGE=am/tablet/tk/app/login.jsp&account=xxxxxxx';
+    } else {
+        $wesURL = 'https://wesqa.customersvc.com/servlet/Show?WESPAGE=am/tablet/tk/app/login.jsp&account=';
+    }
+    flog_it("wesURL=".$wesURL);
+    
 
     // Check for no LUCIE Assessment access 
     $token = $_COOKIE['CGI-token'];
@@ -207,6 +214,7 @@ function tfk_assessment_callback() {
         // Check for TFK Assessment access
         // Get the LUCIE account number
         $tcsAccountNumber = $dataResponse['issues'][0]['tcsAccountNumber'];
+        flog_it("url=".$url);
         flog_it("tcsAccountNumber=".$tcsAccountNumber);
         
         if ($tcsAccountNumber === "COMP") {
@@ -237,7 +245,7 @@ function tfk_assessment_callback() {
                 flog_it("No Assessment Access. Goto TCS page...");
                 tfk_assessment_access_set_cookie("no");
                 // Goto the TCS sign-up page
-                $url = 'https://wesqa.customersvc.com/servlet/Show?WESPAGE=am/tablet/tk/app/login.jsp&account='.$tcsAccountNumber;
+                $url = $wesURL.$tcsAccountNumber;
                 drupal_goto($url);
                 //return theme("tfk_goto_TCS", array('url' => $url));
             }
