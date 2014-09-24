@@ -552,6 +552,13 @@ define('TFK_SEARCH_ARTICLE_BYLINE', 'ss_field_article_byline');
 define('TFK_SEARCH_ARTICLE_META_KEYWORDS', 'ss_meta_keywords');
 
 /**
+ * Apache Solr search field, represents the Minisite deck.
+ *
+ * @var string
+ */
+define('TFK_SEARCH_MINISITE_DECK', 'sm_body');  
+
+/**
  * Apache Solr search field, indicates if an article is a magazine cover story.
  * Used for supressing cover stories from anonymous user search results. We are
  * using this field as a "filter" in a Solr subquery.
@@ -628,6 +635,12 @@ function tfk_search_apachesolr_index_document_build(ApacheSolrDocument $document
   $document->addField(TFK_SEARCH_HOST, $server_id);
   $flags = flag_get_counts('node', $entity->nid);
   
+  // Minisite
+  if ($entity->type == "minisite") {
+    $minisite_deck = field_get_items('node', $entity, 'body');
+    $document->addField(TFK_SEARCH_MINISITE_DECK, $minisite_deck[0]['value']);
+    $document->setField('content', $tmp_body[0]['value']. PHP_EOL. $minisite_deck[0]['value']);
+  }
   
   // Add article fields to the index.
   if($entity->type == 'article'){
@@ -2379,7 +2392,7 @@ function tfk_search_apachesolr_query_alter($query, $caller) {
     // Not returning TFK_SEARCH_ARTICLE_BODY, for now.
     //flog_it("Site wide search...");
     //$query->addParam('fl', implode(',', array(TFK_SEARCH_SPANISH_VERSION, TFK_SEARCH_ARTICLE_DECK)));
-    $query->addParam('fl', implode(',', array(TFK_SEARCH_ARTICLE_DECK, TFK_SEARCH_ARTICLE_BYLINE, TFK_SEARCH_ARTICLE_META_KEYWORDS)));
+    $query->addParam('fl', implode(',', array(TFK_SEARCH_ARTICLE_DECK, TFK_SEARCH_ARTICLE_BYLINE, TFK_SEARCH_ARTICLE_META_KEYWORDS, TFK_SEARCH_MINISITE_DECK)));
     
     // Limit the number of rows per page.
     $query->addParam('rows', 8);
