@@ -727,14 +727,12 @@ function tfk_search_apachesolr_index_document_build(ApacheSolrDocument $document
   $document->addField(TFK_SEARCH_HOST, $server_id);
   $flags = flag_get_counts('node', $entity->nid);
   
-  // Index date field.
   
   // Add article fields to the index.
   if($entity->type == 'article'){
     //flog_it("Found and article...");
     $tmp_body =  field_get_items('node', $entity, 'field_body');
-    //flog_it("tmp_body:");
-    //flog_it($tmp_body);
+    
     // To avoid modifying the schema.xml, we're stuffing into the content field the body and deck fields.
     $deck = field_get_items('node', $entity, 'field_deck');
     
@@ -744,42 +742,25 @@ function tfk_search_apachesolr_index_document_build(ApacheSolrDocument $document
       $document->addField(TFK_SEARCH_ARTICLE_DECK, $deck[0]['value']);
       $document->setField('content', $tmp_body[0]['value']. PHP_EOL. $deck[0]['value']);
     }
-    
-    //////////////////////////////////////////////////////////////////////////////////////
-    
-//    $image_credit = field_get_items('node', $entity, 'field_image_credit');
-//    //print_r($image_credit[0]['value']);exit;
-//    //flog_it("Image Credit");
-//    //flog_it($image_credit);
-//    if($image_credit && !empty($image_credit[0]['value'])) {
-//      // We still add the DECK to the index, just in case we want to show a "clean" deck.
-//      // Right now we are loading the article deck using a node_load().
-//      $document->addField(TFK_SEARCH_ARTICLE_IMAGE_CREDIT, $image_credit[0]['value']);
-//      $document->setField('content', $tmp_body[0]['value']. PHP_EOL. $image_credit[0]['value']);
-//    }
-    
-    
-     // Byline
-      $byline = field_get_items('node', $entity, 'field_article_byline');
-      if($byline && !empty($byline[0]['tid'])) {
-        $term_byline = taxonomy_term_load($byline[0]['tid']);
-        $name_byline = $term_byline->name;
-        $document->addField(TFK_SEARCH_ARTICLE_BYLINE, $name_byline);
-        $document->setField('content', $tmp_body[0]['value']. PHP_EOL. $name_byline);
-      }
+
+    // Byline
+    $byline = field_get_items('node', $entity, 'field_article_byline');
+    if($byline && !empty($byline[0]['tid'])) {
+      $term_byline = taxonomy_term_load($byline[0]['tid']);
+      $name_byline = $term_byline->name;
+      $document->addField(TFK_SEARCH_ARTICLE_BYLINE, $name_byline);
+      $document->setField('content', $tmp_body[0]['value']. PHP_EOL. $name_byline);
+    }
       
-      // Metakeywords
-      $meta_keywords = field_get_items('node', $entity, 'meta_keywords');
-      //print_r($meta_keywords);exit;
-      if($meta_keywords && !empty($meta_keywords[0]['value'])) {
-        $document->addField(TFK_SEARCH_ARTICLE_META_KEYWORDS, $meta_keywords[0]['value']);
-        $document->setField('content', $tmp_body[0]['value']. PHP_EOL. $meta_keywords[0]['value']);
-        flog_it($document);
-      }
+    // Metakeywords
+    $meta_keywords = field_get_items('node', $entity, 'meta_keywords');
+    //print_r($meta_keywords);exit;
+    if($meta_keywords && !empty($meta_keywords[0]['value'])) {
+      $document->addField(TFK_SEARCH_ARTICLE_META_KEYWORDS, $meta_keywords[0]['value']);
+      $document->setField('content', $tmp_body[0]['value']. PHP_EOL. $meta_keywords[0]['value']);
+      flog_it($document);
+    }
       
-      //////////////////////////////////////////////////////////////////////////////////////
-    
-    
     // Using the TFK_SEARCH_COVER_STORY Solr field, index whether this article is flagged as a cover story or not.
     // This field is used as a bit field, not as a facet, so we use 1s and 0s.
     if(array_key_exists('magazine_cover_story', $flags) && $flags['magazine_cover_story'] == '1') {
