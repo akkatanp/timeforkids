@@ -538,14 +538,6 @@ define('TFK_SEARCH_ARTICLE_BODY', 'ss_field_body');
 define('TFK_SEARCH_ARTICLE_DECK', 'ss_field_deck');
 
 /**
- * Apache Solr search field, represents the article image credit.
- *
- * @var string
- */
-//define('TFK_SEARCH_ARTICLE_IMAGE_CREDIT', 'sm_field_image_credit');
-
-
-/**
  * Apache Solr search field, represents the article byline.
  *
  * @var string
