@@ -559,25 +559,12 @@ define('TFK_SEARCH_ARTICLE_META_KEYWORDS', 'ss_meta_keywords');
 define('TFK_SEARCH_MINISITE_DECK', 'sm_body');  
 
 /**
- * Apache Solr search field, represents the Kid Reporter Name.
- *
- * @var string
- */
-define('TFK_SEARCH_KID_REPORTER_NAME', 'ss_kid_title'); 
-
-/**
  * Apache Solr search field, represents the Kid Reporter Location.
  *
  * @var string
  */
 define('TFK_SEARCH_KID_REPORTER_LOCATION', 'sm_field_location'); 
 
-/**
- * Apache Solr search field, represents the Kid Reporter Profile.
- *
- * @var string
- */
-define('TFK_SEARCH_KID_REPORTER_PROFILE', 'sm_kid_body'); 
 
 /**
  * Apache Solr search field, indicates if an article is a magazine cover story.
@@ -660,30 +647,19 @@ function tfk_search_apachesolr_index_document_build(ApacheSolrDocument $document
   if ($entity->type == "minisite") {
     // Deck
     $minisite_deck = field_get_items('node', $entity, 'body');
+//    flog_it("Minisite");
+//    flog_it($minisite_deck);
     $document->addField(TFK_SEARCH_MINISITE_DECK, $minisite_deck[0]['value']);
     $document->setField('content', $tmp_body[0]['value']. PHP_EOL. $minisite_deck[0]['value']);
   }
   
   // Kid Reporter
-  if($entity->type == "kid_reporter"){
-      
-      // Name
-      $kid_reporter_name = $entity->title;
-      $document->addField(TFK_SEARCH_KID_REPORTER_NAME, $kid_reporter_name);
-      $document->setField('content', $tmp_body[0]['value']. PHP_EOL. $kid_reporter_name);
-      
+  if($entity->type == "kid_reporter"){   
       // Location
       $kid_location = field_get_items('node', $entity, 'field_location');
       if($kid_location && !empty($kid_location[0]['value'])) {
         $document->addField(TFK_SEARCH_KID_REPORTER_LOCATION, $kid_location[0]['value']);
         $document->setField('content', $tmp_body[0]['value']. PHP_EOL. $kid_location[0]['value']);
-      }
-    
-      //Profile
-      $kid_profile = field_get_items('node', $entity, 'body');
-      if($kid_profile && !empty($kid_profile[0]['value'])) {
-          $document->addField(TFK_SEARCH_KID_REPORTER_PROFILE, $kid_profile[0]['value']);
-          $document->setField('content', $tmp_body[0]['value']. PHP_EOL. $kid_profile[0]['value']);
       }
   }
   
@@ -2437,7 +2413,7 @@ function tfk_search_apachesolr_query_alter($query, $caller) {
     // Not returning TFK_SEARCH_ARTICLE_BODY, for now.
     //flog_it("Site wide search...");
     //$query->addParam('fl', implode(',', array(TFK_SEARCH_SPANISH_VERSION, TFK_SEARCH_ARTICLE_DECK)));
-    $query->addParam('fl', implode(',', array(TFK_SEARCH_ARTICLE_DECK, TFK_SEARCH_ARTICLE_BYLINE, TFK_SEARCH_ARTICLE_META_KEYWORDS, TFK_SEARCH_MINISITE_DECK, TFK_SEARCH_KID_REPORTER_NAME, TFK_SEARCH_KID_REPORTER_LOCATION, TFK_SEARCH_KID_REPORTER_PROFILE)));
+    $query->addParam('fl', implode(',', array(TFK_SEARCH_ARTICLE_DECK, TFK_SEARCH_ARTICLE_BYLINE, TFK_SEARCH_ARTICLE_META_KEYWORDS, TFK_SEARCH_KID_REPORTER_LOCATION, TFK_SEARCH_MINISITE_DECK)));
     
     // Limit the number of rows per page.
     $query->addParam('rows', 8);
@@ -3762,7 +3738,49 @@ function tfk_search_preprocess_search_result(&$vars) {
       $vars['render'] = TRUE;
     break;
     
+    case 'mini_lesson':
+      flog_it("content_type=Mini Lesson");
+     
+      if($base_path == TFK_SEARCH_SITESEARCH_PATH) {
+        $vars['tfk_search_result_link_1'] = l('Read Mini Lesson', 'node/'. $nid);
+      }
+      
+      // We still trim the deck, just for safety.
+      // If one day we take out that node load, use this TFK_SEARCH_ARTICLE_DECK for the deck.
+      $body = field_get_items('node', $node, 'field_mini_deck');
+      if(!empty($body[0]['safe_value'])) {
+        $teaser = $body[0]['safe_value'];
+        $skip_processing = TRUE;
+      } else if(!empty($body[0]['value'])) {
+        $teaser = $body[0]['value'];
+        $skip_processing = TRUE;
+      }
+      //$teaser = TFK_SEARCH_ARTICLE_DECK;
+      //$teaser = $vars['result']['fields'][TFK_SEARCH_ARTICLE_DECK];
+      $vars['render'] = TRUE;
+    break;
     
+    case 'a_paper':
+      flog_it("content_type=A+ Paper");
+     
+      if($base_path == TFK_SEARCH_SITESEARCH_PATH) {
+        $vars['tfk_search_result_link_1'] = l('Read A+ Paper', 'node/'. $nid);
+      }
+      
+      // We still trim the deck, just for safety.
+      // If one day we take out that node load, use this TFK_SEARCH_ARTICLE_DECK for the deck.
+      $body = field_get_items('node', $node, 'field_summary');
+      if(!empty($body[0]['safe_value'])) {
+        $teaser = $body[0]['safe_value'];
+        $skip_processing = TRUE;
+      } else if(!empty($body[0]['value'])) {
+        $teaser = $body[0]['value'];
+        $skip_processing = TRUE;
+      }
+      //$teaser = TFK_SEARCH_ARTICLE_DECK;
+      //$teaser = $vars['result']['fields'][TFK_SEARCH_ARTICLE_DECK];
+      $vars['render'] = TRUE;
+    break;
     //default:
     //  ;
     //break;
