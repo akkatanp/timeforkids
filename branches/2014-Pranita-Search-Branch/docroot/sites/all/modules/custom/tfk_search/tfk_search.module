@@ -559,6 +559,27 @@ define('TFK_SEARCH_ARTICLE_META_KEYWORDS', 'ss_meta_keywords');
 define('TFK_SEARCH_MINISITE_DECK', 'sm_body');  
 
 /**
+ * Apache Solr search field, represents the Kid Reporter Name.
+ *
+ * @var string
+ */
+define('TFK_SEARCH_KID_REPORTER_NAME', 'ss_kid_title'); 
+
+/**
+ * Apache Solr search field, represents the Kid Reporter Location.
+ *
+ * @var string
+ */
+define('TFK_SEARCH_KID_REPORTER_LOCATION', 'sm_field_location'); 
+
+/**
+ * Apache Solr search field, represents the Kid Reporter Profile.
+ *
+ * @var string
+ */
+define('TFK_SEARCH_KID_REPORTER_PROFILE', 'sm_kid_body'); 
+
+/**
  * Apache Solr search field, indicates if an article is a magazine cover story.
  * Used for supressing cover stories from anonymous user search results. We are
  * using this field as a "filter" in a Solr subquery.
@@ -637,9 +658,33 @@ function tfk_search_apachesolr_index_document_build(ApacheSolrDocument $document
   
   // Minisite
   if ($entity->type == "minisite") {
+    // Deck
     $minisite_deck = field_get_items('node', $entity, 'body');
     $document->addField(TFK_SEARCH_MINISITE_DECK, $minisite_deck[0]['value']);
     $document->setField('content', $tmp_body[0]['value']. PHP_EOL. $minisite_deck[0]['value']);
+  }
+  
+  // Kid Reporter
+  if($entity->type == "kid_reporter"){
+      
+      // Name
+      $kid_reporter_name = $entity->title;
+      $document->addField(TFK_SEARCH_KID_REPORTER_NAME, $kid_reporter_name);
+      $document->setField('content', $tmp_body[0]['value']. PHP_EOL. $kid_reporter_name);
+      
+      // Location
+      $kid_location = field_get_items('node', $entity, 'field_location');
+      if($kid_location && !empty($kid_location[0]['value'])) {
+        $document->addField(TFK_SEARCH_KID_REPORTER_LOCATION, $kid_location[0]['value']);
+        $document->setField('content', $tmp_body[0]['value']. PHP_EOL. $kid_location[0]['value']);
+      }
+    
+      //Profile
+      $kid_profile = field_get_items('node', $entity, 'body');
+      if($kid_profile && !empty($kid_profile[0]['value'])) {
+          $document->addField(TFK_SEARCH_KID_REPORTER_PROFILE, $kid_profile[0]['value']);
+          $document->setField('content', $tmp_body[0]['value']. PHP_EOL. $kid_profile[0]['value']);
+      }
   }
   
   // Add article fields to the index.
@@ -2392,7 +2437,7 @@ function tfk_search_apachesolr_query_alter($query, $caller) {
     // Not returning TFK_SEARCH_ARTICLE_BODY, for now.
     //flog_it("Site wide search...");
     //$query->addParam('fl', implode(',', array(TFK_SEARCH_SPANISH_VERSION, TFK_SEARCH_ARTICLE_DECK)));
-    $query->addParam('fl', implode(',', array(TFK_SEARCH_ARTICLE_DECK, TFK_SEARCH_ARTICLE_BYLINE, TFK_SEARCH_ARTICLE_META_KEYWORDS, TFK_SEARCH_MINISITE_DECK)));
+    $query->addParam('fl', implode(',', array(TFK_SEARCH_ARTICLE_DECK, TFK_SEARCH_ARTICLE_BYLINE, TFK_SEARCH_ARTICLE_META_KEYWORDS, TFK_SEARCH_MINISITE_DECK, TFK_SEARCH_KID_REPORTER_NAME, TFK_SEARCH_KID_REPORTER_LOCATION, TFK_SEARCH_KID_REPORTER_PROFILE)));
     
     // Limit the number of rows per page.
     $query->addParam('rows', 8);
@@ -2403,7 +2448,7 @@ function tfk_search_apachesolr_query_alter($query, $caller) {
     // Anonymous content types.
     if(count($rls) == 1 && $rls[1] == 'anonymous user') {
       //flog_it("Anonymous user processing...");
-      $content_types = array('slideshow', 'video', 'atw_destination', 'minisite','tfk_extra','a_paper','grammar_practice','writing_tips','book','store_product','tfk_lesson_for_tablets');
+      $content_types = array('slideshow', 'kid_reporter', 'video', 'atw_destination', 'minisite','tfk_extra','a_paper','grammar_practice','writing_tips','book','store_product','tfk_lesson_for_tablets');
       
       // If document type is article, make sure it is **NOT** a cover story.
       $article_subquery = apachesolr_drupal_query("article_subquery");
@@ -2427,7 +2472,7 @@ function tfk_search_apachesolr_query_alter($query, $caller) {
     } else {
       //flog_it("Autenticated user processing...");
       // Teachers can see cover stories.
-      $content_types = array('article', 'slideshow', 'video', 'atw_destination', 'minisite', 'tfk_extra', 'worksheet', 'mini_lesson', 'a_paper', 'grammar_practice', 'writing_tips', 'pdf_quiz', 'common_core_standards','book','store_product','tfk_lesson_for_tablets');
+      $content_types = array('article', 'kid_reporter', 'slideshow', 'video', 'atw_destination', 'minisite', 'tfk_extra', 'worksheet', 'mini_lesson', 'a_paper', 'grammar_practice', 'writing_tips', 'pdf_quiz', 'common_core_standards','book','store_product','tfk_lesson_for_tablets');
       
       $ct_subquery = apachesolr_drupal_query("ct_subquery");
       foreach($content_types as $content_type) {
@@ -3677,6 +3722,46 @@ function tfk_search_preprocess_search_result(&$vars) {
       $vars['render'] = TRUE;
     break;
 
+    // By Pranita
+    case 'kid_reporter':
+      flog_it("content_type=KID_REPORTER");
+      if(isset($node->field_profile_image)){
+        $tmp_img = field_get_items('node',$node,'field_profile_image');
+      
+        if(isset($tmp_img[0]['uri'])) {
+          $abspath = image_style_url($style, $tmp_img[0]['uri']);
+          $icon = '<div class="icon"></div>';
+          $thumbnail = theme('image', array('path' => $abspath, 'alt' => $tmp_img[0]['title'], 'title' => $tmp_img[0]['title'], 'attributes' => $thumb_attr)). $icon;
+          $vars['thumbnail'] = l($thumbnail, 'node/'. $vars['result']['fields']['entity_id'], $link_attr);
+        } else {
+          $vars['thumbnail'] = FALSE;
+        }
+      }
+      
+      if(isset($node->field_kid_reporter_age)){
+        $kid_age = field_get_items('node', $node, 'field_kid_reporter_age');
+        $vars['tfk_search_kid_age'] = $kid_age[0]['value'];
+      }
+      
+      if($base_path == TFK_SEARCH_SITESEARCH_PATH) {
+        $vars['tfk_search_result_link_1'] = l('Read about Kid Reporter', 'node/'. $nid);
+      }
+      
+      // We still trim the deck, just for safety.
+      // If one day we take out that node load, use this TFK_SEARCH_ARTICLE_DECK for the deck.
+      $body = field_get_items('node', $node, 'field_location');
+      if(!empty($body[0]['safe_value'])) {
+        $teaser = $body[0]['safe_value'];
+        $skip_processing = TRUE;
+      } else if(!empty($body[0]['value'])) {
+        $teaser = $body[0]['value'];
+        $skip_processing = TRUE;
+      }
+      //$teaser = TFK_SEARCH_ARTICLE_DECK;
+      //$teaser = $vars['result']['fields'][TFK_SEARCH_ARTICLE_DECK];
+      $vars['render'] = TRUE;
+    break;
+    
     
     //default:
     //  ;
