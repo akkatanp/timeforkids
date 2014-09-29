@@ -460,15 +460,24 @@ function tfk_user_profile_form($form, &$form_state, $user_profile) {
                 '#type' => 'value',
                 '#value' => $user_profile['elements']['#account']->uid
              );
-            $current_grade_level = $user_profile['elements']['#account']->field_grade_level['und']['0']['tid'];
+            if (array_key_exists('und', $user_profile['elements']['#account']->field_grade_level)) {
+                $current_grade_level = $user_profile['elements']['#account']->field_grade_level['und']['0']['tid'];
+            } else {
+                $current_grade_level = "";
+            }
         }
 
+        if (array_key_exists('und', $user_profile['elements']['#account']->field_nickname)) {
+            $user_profile_value = $user_profile['elements']['#account']->field_nickname['und']['0']['value'];
+        } else {
+            $user_profile_value = "";
+        }
 	$form['nickname'] = array(
 		'#type' => 'textfield',
 		'#title' => t('Nickname'),
 		'#required' => TRUE,
                 '#description' => '(Nickname can be 6-18 characters long)',
-                '#default_value' => isset($user_profile) ? $user_profile['elements']['#account']->field_nickname['und']['0']['value'] : ''
+                '#default_value' => isset($user_profile) ? $user_profile_value : ''
 	);
 	
 	$form['grade_level'] = array(
