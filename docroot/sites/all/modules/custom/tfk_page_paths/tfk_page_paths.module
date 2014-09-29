@@ -25,6 +25,18 @@ function tfk_page_paths_menu(){
 		'access callback' => 'user_access',
 		'access arguments' => array('access content')
 	);
+        $items['assessment'] = array(
+		'title' => 'TFK Assessment',
+		'page callback' => 'tfk_pv_page_callback',
+                'access callback' => 'user_access',
+		'access arguments' => array('access content')
+	);
+        $items['assessment-load'] = array(
+		'title' => 'TFK Assessment Load',
+		'page callback' => 'tfk_assessment_load_callback',
+                'access callback' => 'user_access',
+		'access arguments' => array('access content')
+	);
         $items['extras'] = array(
 		'title' => 'TFK Extras',
 		'page callback' => 'tfk_pv_page_callback',
@@ -73,12 +85,6 @@ function tfk_page_paths_menu(){
 		'access callback' => 'user_access',
 		'access arguments' => array('access content')
 	);
-        $items['assessment'] = array(
-		'title' => 'TFK Assessment',
-		'page callback' => 'tfk_assessment_callback',
-		'access callback' => 'user_access',
-		'access arguments' => array('access content')
-	);
 	return $items;
 }
 
@@ -98,7 +104,7 @@ function tfk_page_paths_preprocess_page(&$variables){
     // tfk-50, tfk-34, tfk-83: Add new items to paywall
     if ( isset($args[0]) && $args[0] == "node" && isset($variables['node']) ) { 
         $node = $args[1];
-        //flog_it("content_type=".$variables['node']->type);
+        flog_it("content_type=".$variables['node']->type);
         if ($variables['node']->type == "article" || $variables['node']->type == "slideshow" || $variables['node']->type == "video" || $variables['node']->type == "minisite") {
             $flag = flag_get_flag("magazine_cover_story");
  
@@ -121,7 +127,7 @@ function tfk_page_paths_preprocess_page(&$variables){
     }
     
     // Check for the tfk-magazine path and an anonymous user
-    //flog_it("args[0]=".$args[0].", isn_anon=".$variables['is_anon']);
+    flog_it("args[0]=".$args[0].", isn_anon=".$variables['is_anon']);
     if (strstr($args[0], "tfk-magazine") && $variables['is_anon']) {
         flog_it("Found Anon & magazine path...");
         drupal_add_http_header('Status', '403 Forbidden');
@@ -158,18 +164,27 @@ function tfk_page_paths_preprocess_page(&$variables){
     }
     
     // Check for TFK Assessment processing
-    if ($args[0] == 'assessment') {
+    if ($args[0] == 'assessment-load') {
         //flog_it($variables);
         $variables['page']['sidebar_second'] = '';
         #$variables['page']['footer'] = '';
+        //tfk_assessment_callback();
     }
 }
 
-function tfk_assessment_callback() {
+function tfk_assessment_access_callback() {
+    flog_it("tfk_assessment_access_callback: user_is_anonymous: ".  user_is_anonymous());
+    if (user_is_anonymous()) {
+        return false;
+    }
+    return true;
+}
+
+function tfk_assessment_load_callback() {
     // tim.testaccount@tk.com 322942790, zip=20002, is an account which is eligible for an upgrade
     // tfa@tk.com 333470199, 20003, is an account which has TFA
     // password for both: welcom123
-    flog_it("\n\ntfk_assessment_callback...");
+    flog_it("\n\ntfk_assessment_load_callback...");
   
     $args = arg();
     //flog_it("args[0]=".$args[0]);
@@ -186,7 +201,7 @@ function tfk_assessment_callback() {
      */
     
     if ($_SERVER['HTTP_HOST'] != "www.timeforkids.com") {
-        $wesURL = 'https://secure.customersvc.com/servlet/Show?WESPAGE=am/tablet/tk/app/login.jsp&account=xxxxxxx';
+        $wesURL = 'https://secure.customersvc.com/servlet/Show?WESPAGE=am/tablet/tk/app/login.jsp&account=';
     } else {
         $wesURL = 'https://wesqa.customersvc.com/servlet/Show?WESPAGE=am/tablet/tk/app/login.jsp&account=';
     }
@@ -194,7 +209,12 @@ function tfk_assessment_callback() {
     
 
     // Check for no LUCIE Assessment access 
-    $token = $_COOKIE['CGI-token'];
+    $token = "";
+    if (array_key_exists("CGI-token", $_COOKIE)) {
+        $token = $_COOKIE['CGI-token'];
+    }
+    flog_it("token=".$token);
+    
     //flog_it($_COOKIE['Assessment-access'].", ".$token);
     if ($_COOKIE['Assessment-access'] === "no" && $token != "") {
         flog_it("No Assessment access. Check with LUCIE again...");
@@ -259,7 +279,9 @@ function tfk_assessment_callback() {
     
     // Bring up the Cognero iframe
     flog_it("Has Assessment Access, bring up iframe");
-    return theme('tfk_assessment', array('token' => $token));
+    return theme('tfk_assessment_load', array('token' => $token));
+    //$url = "https://tfkclassroomapp.timeinc.com/Instructor/SingleSignOn.aspx?authToken=".$token;
+    //drupal_goto($url);
 }
 
 
@@ -282,18 +304,10 @@ function tfk_page_paths_theme() {
       'template' => 'tfk-denied-page',
       'variables' => array('list' => NULL),
     ),
-    'tfk_assessment' => array(
-      'template' => 'tfk-assessment',
+    'tfk_assessment_load' => array(
+      'template' => 'tfk-assessment-load',
       'variables' => array('list' => NULL),
-    ),
-    'tfk_no_assessment' => array(
-      'template' => 'tfk-no-assessment',
-      'variables' => array('list' => NULL),
-    ),
-      'tfk_goto_TCS' => array(
-      'template' => 'tfk-goto-TCS',
-      'variables' => array('list' => NULL),
-    ),
+    )
   );
 }
 
@@ -324,8 +338,8 @@ function tfk_store_callback(){
 
 
 function tfk_pv_page_callback() {
-    //flog_it("tfk_pv_page_callback...");
-	return '';
+    flog_it("tfk_pv_page_callback...");
+    return '';
 }
 
 

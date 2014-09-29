@@ -1,12 +1,8 @@
 <?php
     global $user;
     
-    flog_it("tfk-assessment.tpl.php: email=".$user->mail);
-    
-    // Test URL: 
-    // http://mobilesandbox.timeinc.com
-    // http://mobilesandbox.timeinc.com/tfk/cognero.html
-    
+    flog_it("tfk-assessment-load.tpl.php: email=".$user->mail);
+    $token = $_POST['CGI-Token'];
     flog_it("CGI-token=".$token);
     
     if ($_SERVER['HTTP_HOST'] != "www.timeforkids.com") {
@@ -46,6 +42,5 @@
     } 
      
 </script>
-
 <iframe id="tfk_assessment" width="950" height="100" frameBorder="0" scrollbars="no" src="<?php echo $cogneroURL; ?>"></iframe>
 <!--<iframe id="tfk_assessment" width="950" height="100" border="1" scrollbars="no" src="http://tfk:8082/cognero.html"></iframe>-->
