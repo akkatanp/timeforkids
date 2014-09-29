@@ -2409,10 +2409,7 @@ function tfk_search_apachesolr_query_alter($query, $caller) {
   $args = arg();
   if (strpos($path, 'search/site') || ($args[0] == 'search' && $args[1] == 'site')) {
     // Retrieve additional content fields.
-    // Body and deck field for articles.
-    // Not returning TFK_SEARCH_ARTICLE_BODY, for now.
-    //flog_it("Site wide search...");
-    //$query->addParam('fl', implode(',', array(TFK_SEARCH_SPANISH_VERSION, TFK_SEARCH_ARTICLE_DECK)));
+     
     $query->addParam('fl', implode(',', array(TFK_SEARCH_ARTICLE_DECK, TFK_SEARCH_ARTICLE_BYLINE, TFK_SEARCH_ARTICLE_META_KEYWORDS, TFK_SEARCH_KID_REPORTER_LOCATION, TFK_SEARCH_MINISITE_DECK)));
     
     // Limit the number of rows per page.
@@ -2424,7 +2421,8 @@ function tfk_search_apachesolr_query_alter($query, $caller) {
     // Anonymous content types.
     if(count($rls) == 1 && $rls[1] == 'anonymous user') {
       //flog_it("Anonymous user processing...");
-      $content_types = array('slideshow', 'kid_reporter', 'grammar_practice_rule', 'video', 'atw_destination', 'minisite','tfk_extra','a_paper','grammar_practice','writing_tips','book','store_product','tfk_lesson_for_tablets');
+      // $content_types Includes all the content types that needs to be searched.
+      $content_types = array('slideshow', 'flashcard', 'kid_reporter', 'grammar_practice_rule', 'video', 'atw_destination', 'minisite','tfk_extra','a_paper','grammar_practice','writing_tips','book','store_product','tfk_lesson_for_tablets');
       
       // If document type is article, make sure it is **NOT** a cover story.
       $article_subquery = apachesolr_drupal_query("article_subquery");
@@ -2448,7 +2446,8 @@ function tfk_search_apachesolr_query_alter($query, $caller) {
     } else {
       //flog_it("Autenticated user processing...");
       // Teachers can see cover stories.
-      $content_types = array('article', 'kid_reporter', 'grammar_practice_rule', 'slideshow', 'video', 'atw_destination', 'minisite', 'tfk_extra', 'worksheet', 'mini_lesson', 'a_paper', 'grammar_practice', 'writing_tips', 'pdf_quiz', 'common_core_standards','book','store_product','tfk_lesson_for_tablets');
+      // $content_types Includes all the content types that needs to be searched.
+      $content_types = array('article', 'flashcard', 'kid_reporter', 'grammar_practice_rule', 'slideshow', 'video', 'atw_destination', 'minisite', 'tfk_extra', 'worksheet', 'mini_lesson', 'a_paper', 'grammar_practice', 'writing_tips', 'pdf_quiz', 'common_core_standards','book','store_product','tfk_lesson_for_tablets');
       
       $ct_subquery = apachesolr_drupal_query("ct_subquery");
       foreach($content_types as $content_type) {
@@ -3699,8 +3698,14 @@ function tfk_search_preprocess_search_result(&$vars) {
     break;
 
     // By Pranita
+    /*
+     * Content Type - Kid Reporter.
+     * Displays Search results which belong to Kid Reporter content type.
+     * Fields Displayed: Title, Image(field_profile_image), Age(field_kid_reporter_age), Location(field_location).
+     * The variables set here are accessed in the search-result.tpl.php
+     */
     case 'kid_reporter':
-      flog_it("content_type=KID_REPORTER");
+      
       if(isset($node->field_profile_image)){
         $tmp_img = field_get_items('node',$node,'field_profile_image');
       
@@ -3722,9 +3727,7 @@ function tfk_search_preprocess_search_result(&$vars) {
       if($base_path == TFK_SEARCH_SITESEARCH_PATH) {
         $vars['tfk_search_result_link_1'] = l('Read about Kid Reporter', 'node/'. $nid);
       }
-      
-      // We still trim the deck, just for safety.
-      // If one day we take out that node load, use this TFK_SEARCH_ARTICLE_DECK for the deck.
+    
       $body = field_get_items('node', $node, 'field_location');
       if(!empty($body[0]['safe_value'])) {
         $teaser = $body[0]['safe_value'];
@@ -3733,20 +3736,22 @@ function tfk_search_preprocess_search_result(&$vars) {
         $teaser = $body[0]['value'];
         $skip_processing = TRUE;
       }
-      //$teaser = TFK_SEARCH_ARTICLE_DECK;
-      //$teaser = $vars['result']['fields'][TFK_SEARCH_ARTICLE_DECK];
+     
       $vars['render'] = TRUE;
     break;
     
+     /*
+     * Content Type - Mini Lesson.
+     * Displays Search results which belong to Mini Lesson content type.
+     * Fields Displayed: Title, Deck(field_mini_deck)
+     * The variables set here are accessed in the search-result.tpl.php
+     */
     case 'mini_lesson':
-      flog_it("content_type=Mini Lesson");
-     
+      
       if($base_path == TFK_SEARCH_SITESEARCH_PATH) {
         $vars['tfk_search_result_link_1'] = l('Read Mini Lesson', 'node/'. $nid);
       }
-      
-      // We still trim the deck, just for safety.
-      // If one day we take out that node load, use this TFK_SEARCH_ARTICLE_DECK for the deck.
+    
       $body = field_get_items('node', $node, 'field_mini_deck');
       if(!empty($body[0]['safe_value'])) {
         $teaser = $body[0]['safe_value'];
@@ -3755,20 +3760,22 @@ function tfk_search_preprocess_search_result(&$vars) {
         $teaser = $body[0]['value'];
         $skip_processing = TRUE;
       }
-      //$teaser = TFK_SEARCH_ARTICLE_DECK;
-      //$teaser = $vars['result']['fields'][TFK_SEARCH_ARTICLE_DECK];
+      
       $vars['render'] = TRUE;
     break;
     
+    /*
+     * Content Type - A+ Paper.
+     * Displays Search results which belong to A+ Paper content type.
+     * Fields Displayed: Title, Summary(field_summary)
+     * The variables set here are accessed in the search-result.tpl.php
+     */
     case 'a_paper':
-      flog_it("content_type=A+ Paper");
      
       if($base_path == TFK_SEARCH_SITESEARCH_PATH) {
         $vars['tfk_search_result_link_1'] = l('Read A+ Paper', 'node/'. $nid);
       }
-      
-      // We still trim the deck, just for safety.
-      // If one day we take out that node load, use this TFK_SEARCH_ARTICLE_DECK for the deck.
+     
       $body = field_get_items('node', $node, 'field_summary');
       if(!empty($body[0]['safe_value'])) {
         $teaser = $body[0]['safe_value'];
@@ -3777,14 +3784,19 @@ function tfk_search_preprocess_search_result(&$vars) {
         $teaser = $body[0]['value'];
         $skip_processing = TRUE;
       }
-      //$teaser = TFK_SEARCH_ARTICLE_DECK;
-      //$teaser = $vars['result']['fields'][TFK_SEARCH_ARTICLE_DECK];
+
       $vars['render'] = TRUE;
     break;
     
+    /*
+     * Content Type - TFK Extra.
+     * Displays Search results which belong to TFK Extra content type.
+     * Fields Displayed: Title, Image(field_tfk_extra_image), Deck(field_tfk_extra_deck)
+     * The variables set here are accessed in the search-result.tpl.php
+     */
+    
     case 'tfk_extra':
-      flog_it("content_type=TFK Extra");
-     
+      
       if($base_path == TFK_SEARCH_SITESEARCH_PATH) {
         $vars['tfk_search_result_link_1'] = l('Read More', 'node/'. $nid);
       }
@@ -3794,7 +3806,6 @@ function tfk_search_preprocess_search_result(&$vars) {
         
         if(isset($tmp_img[0]['uri'])) {
           $abspath = image_style_url($style, $tmp_img[0]['uri']);
-          
           $icon = '<div class="icon"></div>';
           $thumbnail = theme('image', array('path' => $abspath, 'alt' => $tmp_img[0]['title'], 'title' => $tmp_img[0]['title'], 'attributes' => $thumb_attr)). $icon;
           $vars['thumbnail'] = l($thumbnail, 'node/'. $vars['result']['fields']['entity_id'], $link_attr);
@@ -3817,9 +3828,7 @@ function tfk_search_preprocess_search_result(&$vars) {
         $vars['tfk_search_res_category'] = $name;
         
       }
-      
-      // We still trim the deck, just for safety.
-      // If one day we take out that node load, use this TFK_SEARCH_ARTICLE_DECK for the deck.
+   
       $body = field_get_items('node', $node, 'field_tfk_extra_deck');
       if(!empty($body[0]['safe_value'])) {
         $teaser = $body[0]['safe_value'];
@@ -3828,20 +3837,22 @@ function tfk_search_preprocess_search_result(&$vars) {
         $teaser = $body[0]['value'];
         $skip_processing = TRUE;
       }
-      //$teaser = TFK_SEARCH_ARTICLE_DECK;
-      //$teaser = $vars['result']['fields'][TFK_SEARCH_ARTICLE_DECK];
+      
       $vars['render'] = TRUE;
     break;
     
+    /*
+     * Content Type - Punctuation Practice Rule.
+     * Displays Search results which belong to Punctuation Practice Rule content type.
+     * Fields Displayed: Title, Body( Teaser Mode )
+     * The variables set here are accessed in the search-result.tpl.php
+     */
     case 'grammar_practice_rule':
-      flog_it("content_type=Grammer Practice Rule");
-     
+      
       if($base_path == TFK_SEARCH_SITESEARCH_PATH) {
         $vars['tfk_search_result_link_1'] = l('Read More', 'node/'. $nid);
       }
-      
-      // We still trim the deck, just for safety.
-      // If one day we take out that node load, use this TFK_SEARCH_ARTICLE_DECK for the deck.
+    
       $body = field_get_items('node', $node, 'body');
       if(!empty($body[0]['safe_value'])) {
         $teaser = $body[0]['safe_value'];
@@ -3850,20 +3861,48 @@ function tfk_search_preprocess_search_result(&$vars) {
         $teaser = $body[0]['value'];
         $skip_processing = TRUE;
       }
-      //$teaser = TFK_SEARCH_ARTICLE_DECK;
-      //$teaser = $vars['result']['fields'][TFK_SEARCH_ARTICLE_DECK];
+     
       $vars['render'] = TRUE;
     break;
     
+     /*
+     * Content Type - Writing Tips.
+     * Displays Search results which belongs to Writing Tips content type.
+     * Fields Displayed: Title, Body( Teaser Mode )
+     * The variables set here are accessed in the search-result.tpl.php
+     */
     case 'writing_tips':
-      flog_it("content_type=Writing Tips");
-     
+      
       if($base_path == TFK_SEARCH_SITESEARCH_PATH) {
         $vars['tfk_search_result_link_1'] = l('Read More', 'node/'. $nid);
       }
       
       $tips = node_view(node_load($node->nid),'teaser');
       $teaser = $tips['body'][0]['#markup'];
+      
+      $vars['render'] = TRUE;
+    break;
+    
+    /*
+     * Content Type - Flashcard Deck.
+     * Displays Search results which belongs to Flashcard Deck content type.
+     * Fields Displayed: Title, Subject(field_study_helper)
+     * The variables set here are accessed in the search-result.tpl.php
+     */
+    case 'flashcard':
+      if($base_path == TFK_SEARCH_SITESEARCH_PATH) {
+        $vars['tfk_search_result_link_1'] = l('Read More', 'node/'. $nid);
+      }
+      
+      if(isset($node->field_study_helper)){
+        $tmp_tid = field_get_items('node', $node, 'field_study_helper');
+        $tid = $tmp_tid[0]['tid'];
+        $name_res =  db_query('select name from taxonomy_term_data where tid = :tid',array('tid' => $tid ));
+        $name = $name_res->fetch();
+        $name = $name->name;
+        $vars['tfk_search_res_category'] = $name;
+        $teaser = $name;
+      }
       
       $vars['render'] = TRUE;
     break;
