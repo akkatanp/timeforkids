@@ -124,6 +124,11 @@
       <?php if(isset($date) && $tfk_product==''):?>
         <div class="result-date"><?php print $date; ?></div>
       <?php endif;?>
+        
+      <?php if(isset($tfk_search_kid_age) && $tfk_search_kid_age !=''):?>
+        <div class="kid-reporter-age"><span>Age: </span><?php print $tfk_search_kid_age; ?></div>
+      <?php endif; ?>
+        
       
       <?php if(!empty($node_link)):?>
         <div class="view-full-article"><?php print $node_link; ?></div>
