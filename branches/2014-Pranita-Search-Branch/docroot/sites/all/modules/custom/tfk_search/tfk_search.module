@@ -3712,6 +3712,7 @@ function tfk_search_preprocess_search_result(&$vars) {
         if(isset($tmp_img[0]['uri'])) {
           $abspath = image_style_url($style, $tmp_img[0]['uri']);
           $icon = '<div class="icon"></div>';
+          
           $thumbnail = theme('image', array('path' => $abspath, 'alt' => $tmp_img[0]['title'], 'title' => $tmp_img[0]['title'], 'attributes' => $thumb_attr)). $icon;
           $vars['thumbnail'] = l($thumbnail, 'node/'. $vars['result']['fields']['entity_id'], $link_attr);
         } else {
