@@ -127,7 +127,7 @@
         
       <?php if(isset($tfk_search_kid_age) && $tfk_search_kid_age !=''):?>
         <div class="kid-reporter-age"><span>Age: </span><?php print $tfk_search_kid_age; ?></div>
-      <?php endif;?>
+      <?php endif; ?>
         
       
       <?php if(!empty($node_link)):?>
