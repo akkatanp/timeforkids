@@ -27,13 +27,7 @@ function tfk_page_paths_menu(){
 	);
         $items['assessment'] = array(
 		'title' => 'TFK Assessment',
-		'page callback' => 'tfk_pv_page_callback',
-                'access callback' => 'user_access',
-		'access arguments' => array('access content')
-	);
-        $items['assessment-load'] = array(
-		'title' => 'TFK Assessment Load',
-		'page callback' => 'tfk_assessment_load_callback',
+		'page callback' => 'tfk_assessment_callback',
                 'access callback' => 'user_access',
 		'access arguments' => array('access content')
 	);
@@ -127,7 +121,7 @@ function tfk_page_paths_preprocess_page(&$variables){
     }
     
     // Check for the tfk-magazine path and an anonymous user
-    flog_it("args[0]=".$args[0].", isn_anon=".$variables['is_anon']);
+    flog_it("args[0]=".$args[0].", is_anon=".$variables['is_anon']);
     if (strstr($args[0], "tfk-magazine") && $variables['is_anon']) {
         flog_it("Found Anon & magazine path...");
         drupal_add_http_header('Status', '403 Forbidden');
@@ -164,10 +158,11 @@ function tfk_page_paths_preprocess_page(&$variables){
     }
     
     // Check for TFK Assessment processing
-    if ($args[0] == 'assessment-load') {
+    if ($args[0] == 'assessment') {
         //flog_it($variables);
+        //$variables['page']['header'] = '';
         $variables['page']['sidebar_second'] = '';
-        #$variables['page']['footer'] = '';
+        //$variables['page']['footer'] = '';
         //tfk_assessment_callback();
     }
 }
@@ -180,11 +175,11 @@ function tfk_assessment_access_callback() {
     return true;
 }
 
-function tfk_assessment_load_callback() {
+function tfk_assessment_callback() {
     // tim.testaccount@tk.com 322942790, zip=20002, is an account which is eligible for an upgrade
     // tfa@tk.com 333470199, 20003, is an account which has TFA
     // password for both: welcom123
-    flog_it("\n\ntfk_assessment_load_callback...");
+    flog_it("\n\ntfk_assessment_callback...");
   
     $args = arg();
     //flog_it("args[0]=".$args[0]);
@@ -200,7 +195,7 @@ function tfk_assessment_load_callback() {
      * 
      */
     
-    if ($_SERVER['HTTP_HOST'] != "www.timeforkids.com") {
+    if ($_SERVER['HTTP_HOST'] == "www.timeforkids.com") {
         $wesURL = 'https://secure.customersvc.com/servlet/Show?WESPAGE=am/tablet/tk/app/login.jsp&account=';
     } else {
         $wesURL = 'https://wesqa.customersvc.com/servlet/Show?WESPAGE=am/tablet/tk/app/login.jsp&account=';
@@ -279,7 +274,7 @@ function tfk_assessment_load_callback() {
     
     // Bring up the Cognero iframe
     flog_it("Has Assessment Access, bring up iframe");
-    return theme('tfk_assessment_load', array('token' => $token));
+    return theme('tfk_assessment', array('token' => $token));
     //$url = "https://tfkclassroomapp.timeinc.com/Instructor/SingleSignOn.aspx?authToken=".$token;
     //drupal_goto($url);
 }
@@ -304,8 +299,8 @@ function tfk_page_paths_theme() {
       'template' => 'tfk-denied-page',
       'variables' => array('list' => NULL),
     ),
-    'tfk_assessment_load' => array(
-      'template' => 'tfk-assessment-load',
+    'tfk_assessment' => array(
+      'template' => 'tfk-assessment',
       'variables' => array('list' => NULL),
     )
   );

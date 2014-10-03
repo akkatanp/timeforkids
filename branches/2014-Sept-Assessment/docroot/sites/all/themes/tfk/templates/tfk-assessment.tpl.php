@@ -1,11 +1,10 @@
 <?php
     global $user;
     
-    flog_it("tfk-assessment-load.tpl.php: email=".$user->mail);
-    $token = $_POST['CGI-Token'];
+    flog_it("tfk-assessment.tpl.php: email=".$user->mail);
     flog_it("CGI-token=".$token);
     
-    if ($_SERVER['HTTP_HOST'] != "www.timeforkids.com") {
+    if ($_SERVER['HTTP_HOST'] == "www.timeforkids.com") {
         $cogneroDomain = "https://tfkclassroomapp.timeinc.com";
         $cogneroURL = "https://tfkclassroomapp.timeinc.com/Instructor/SingleSignOn.aspx?authToken=".$token;
     } else {
@@ -16,7 +15,7 @@
     flog_it("cogneroURL=".$cogneroURL);
 ?>
 
-<script language="javascript">
+<script language="javascript" type="text/javascript">
     // http://jandcgroup.com/2011/10/17/dynamic-height-cross-domain-iframe-postmessage-javascript/
     // http://mobilesandbox.timeinc.com/tfk/cognero.html
     // http://tfk:8082/cognero.html
@@ -40,7 +39,16 @@
         //console.log("adding IE addEventListener...");
         window.attachEvent("onmessage", receiveSize);//for ie  
     } 
-     
 </script>
-<iframe id="tfk_assessment" width="950" height="100" frameBorder="0" scrollbars="no" src="<?php echo $cogneroURL; ?>"></iframe>
+
+<!--<iframe name="tfk_assessment_name" id="tfk_assessment" width="950" height="100" frameBorder="0" scrollbars="no"></iframe>-->
 <!--<iframe id="tfk_assessment" width="950" height="100" border="1" scrollbars="no" src="http://tfk:8082/cognero.html"></iframe>-->
+
+<form id="cgi-redirect" action="<?php echo $cogneroURL; ?>" method="post">
+</form>
+
+<script language="javascript" type="text/javascript">
+    window.onload=function() {
+        document.getElementById("cgi-redirect").submit();
+    }
+</script>
