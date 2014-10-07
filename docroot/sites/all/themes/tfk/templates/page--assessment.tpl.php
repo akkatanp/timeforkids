@@ -2,26 +2,31 @@
     global $user;
     flog_it("page--assessment.tpl.php...");
     
-    if ($_SERVER['HTTP_HOST'] == "www.timeforkids.com") {
-        $wesURL = 'https://secure.customersvc.com/servlet/Show?WESPAGE=am/tablet/tk/app/login.jsp&account=';
-    } else {
-        $wesURL = 'https://wesqa.customersvc.com/servlet/Show?WESPAGE=am/tablet/tk/app/login.jsp&account=';
-    }
-    flog_it("wesURL=".$wesURL);
-    
-
-    // Check for no LUCIE Assessment access 
+    // Check for LUCIE token 
     $token = "";
     if (array_key_exists("CGI-token", $_COOKIE)) {
         $token = $_COOKIE['CGI-token'];
     }
-    flog_it("token=".$token);
     
-    //flog_it($_COOKIE['Assessment-access'].", ".$token);
+    if ($_SERVER['HTTP_HOST'] === "www.timeforkids.com") {
+        $cogneroDomain = "https://tfkclassroomapp.timeinc.com";
+        $cogneroURL = "https://tfkclassroomapp.timeinc.com/Instructor/SingleSignOn.aspx?authToken=".$token;
+        $wesURL = 'https://secure.customersvc.com/servlet/Show?WESPAGE=am/tablet/tk/app/login.jsp&account=';
+    } else {
+        $cogneroDomain = "https://qa-tfkclassroomapp.timeinc.com";
+        $cogneroURL = "https://qa-tfkclassroomapp.timeinc.com/Instructor/SingleSignOn.aspx?authToken=".$token;
+        $wesURL = 'https://wesqa.customersvc.com/servlet/Show?WESPAGE=am/tablet/tk/app/login.jsp&account=';
+    }
+    
+    flog_it("email=".$user->mail);
+    flog_it("token=".$token);
+    flog_it("cogneroDomain=".$cogneroDomain);
+    flog_it("cogneroURL=".$cogneroURL);
+    flog_it("wesURL=".$wesURL);
+
     if ($_COOKIE['Assessment-access'] === "no" && $token != "") {
         flog_it("No Assessment access. Check with LUCIE again...");
         
-        flog_it("token=".$token);
         $domain = variable_get('lucie_callback_domain', 'qa-lucie.timeinc.com');
         $url = 'https://'. $domain. '/webservices/entitlements?CGI-App-Id=com.timeinc.tk.web';
         $response = drupal_http_request($url, array('headers' => array('Content-Type'=>'application/json', 'CGI-token' => $token),
@@ -69,46 +74,22 @@
                 // Goto the TCS sign-up page
                 $url = $wesURL.$tcsAccountNumber;
                 drupal_goto($url);
-                //return theme("tfk_goto_TCS", array('url' => $url));
             }
         }
     } elseif ($_COOKIE['Assessment-access'] === "no") {
-        flog_it("Final: no tcs access");
-        //return('<p style="font-family:arial;font-style:normal;font-size:14px;">You do not have access to the TFK Assessment...</p>');
+        flog_it("Final: No Assessment access");
         drupal_goto("no-assessment");   
     }
     
-    
-    
     // Bring up the Cognero iframe
-    flog_it("Has Assessment Access, bring up iframe");
-    //return theme('tfk_assessment', array('token' => $token));
-    //$url = "https://tfkclassroomapp.timeinc.com/Instructor/SingleSignOn.aspx?authToken=".$token;
-    //drupal_goto($url);
-    
-
-    
-    
-    
-    flog_it("email=".$user->mail);
-    flog_it("CGI-token=".$token);
-    
-    if ($_SERVER['HTTP_HOST'] == "www.timeforkids.com") {
-        $cogneroDomain = "https://tfkclassroomapp.timeinc.com";
-        $cogneroURL = "https://tfkclassroomapp.timeinc.com/Instructor/SingleSignOn.aspx?authToken=".$token;
-    } else {
-        $cogneroDomain = "https://qa-tfkclassroomapp.timeinc.com";
-        $cogneroURL = "https://qa-tfkclassroomapp.timeinc.com/Instructor/SingleSignOn.aspx?authToken=".$token;
-    }
-    flog_it("cogneroDomain=".$cogneroDomain);
-    flog_it("cogneroURL=".$cogneroURL);
+    flog_it("Has Assessment Access, go to Cognero...");
 ?>
 
-<form id="cgi-redirect" action="<?php echo $cogneroURL; ?>" method="post">
+<form id="cgi-redirect" action="www.time.com" method="post">
 </form>
 
 <script language="javascript" type="text/javascript">
-    window.onload=function() {
-        document.getElementById("cgi-redirect").submit();
-    }
+window.onload=function() {
+    document.getElementById("cgi-redirect").submit();
+}
 </script>
