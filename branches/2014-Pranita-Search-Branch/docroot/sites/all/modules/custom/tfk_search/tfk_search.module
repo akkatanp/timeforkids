@@ -2422,7 +2422,7 @@ function tfk_search_apachesolr_query_alter($query, $caller) {
     if(count($rls) == 1 && $rls[1] == 'anonymous user') {
       //flog_it("Anonymous user processing...");
       // $content_types Includes all the content types that needs to be searched.
-      $content_types = array('slideshow', 'flashcard', 'kid_reporter', 'grammar_practice_rule', 'video', 'atw_destination', 'minisite','tfk_extra','a_paper','grammar_practice','writing_tips','book','store_product','tfk_lesson_for_tablets');
+      $content_types = array('slideshow', 'worksheet', 'flashcard', 'kid_reporter', 'grammar_practice_rule', 'video', 'atw_destination', 'minisite','tfk_extra','a_paper','grammar_practice','writing_tips','book','store_product','tfk_lesson_for_tablets');
       
       // If document type is article, make sure it is **NOT** a cover story.
       $article_subquery = apachesolr_drupal_query("article_subquery");
@@ -3557,6 +3557,12 @@ function tfk_search_preprocess_search_result(&$vars) {
     
     case 'article':
       //flog_it("content_type=ARTICLE");
+        
+        /* TFK-197: Check if Article is a magazine article.
+         * $magazine_flag = 1; It means Article is a magazine article. 
+         */
+        $magazine_flag = tfk_search_node_has_flag($node,'magazine_cover_story');
+        
       if(isset($node->field_lrg_sq_image)){
         $tmp_img = field_get_items('node',$node,'field_lrg_sq_image');
         
@@ -3601,6 +3607,12 @@ function tfk_search_preprocess_search_result(&$vars) {
       }
       //$teaser = TFK_SEARCH_ARTICLE_DECK;
       //$teaser = $vars['result']['fields'][TFK_SEARCH_ARTICLE_DECK];
+      
+      /* TFK-197: Add class article-magazine to show lock key for anonymous users. */
+      if( $magazine_flag == 1 ):
+          $vars['classes_array'][] = 'article-magazine';
+      endif;
+      
       $vars['render'] = TRUE;
     break;
         
