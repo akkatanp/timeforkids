@@ -85,7 +85,7 @@
     flog_it("Has Assessment Access, go to Cognero...");
 ?>
 
-<form id="cgi-redirect" action="www.time.com" method="post">
+<form id="cgi-redirect" action="http://www.time.com" method="post">
 </form>
 
 <script language="javascript" type="text/javascript">
