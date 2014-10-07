@@ -8,7 +8,7 @@
         $token = $_COOKIE['CGI-token'];
     }
     
-    if ($_SERVER['HTTP_HOST'] != "www.timeforkids.com") {
+    if ($_SERVER['HTTP_HOST'] == "www.timeforkids.com") {
         $cogneroDomain = "https://tfkclassroomapp.timeinc.com";
         $cogneroURL = "https://tfkclassroomapp.timeinc.com/Instructor/SingleSignOn.aspx?authToken=".$token;
         $wesURL = 'https://secure.customersvc.com/servlet/Show?WESPAGE=am/tablet/tk/app/login.jsp&account=';
@@ -82,11 +82,9 @@
     }
     
     // Bring up the Cognero iframe
-    flog_it("Has Assessment Access, go to Cognero...");
-    drupal_goto($cogneroURL);
+    flog_it("Has Assessment Access, going to Cognero...");
 ?>
 
-<!--
 <form id="cgi-redirect" action="<?php echo $cogneroURL; ?>" method="post">
 </form>
 
@@ -95,4 +93,3 @@ window.onload=function() {
     document.getElementById("cgi-redirect").submit();
 }
 </script>
--->
