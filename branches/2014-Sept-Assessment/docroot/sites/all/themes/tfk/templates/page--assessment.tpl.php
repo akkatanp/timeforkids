@@ -8,7 +8,7 @@
         $token = $_COOKIE['CGI-token'];
     }
     
-    if ($_SERVER['HTTP_HOST'] != "www.timeforkids.com") {
+    if ($_SERVER['HTTP_HOST'] == "www.timeforkids.com") {
         $cogneroDomain = "https://tfkclassroomapp.timeinc.com";
         $cogneroURL = "https://tfkclassroomapp.timeinc.com/Instructor/SingleSignOn.aspx?authToken=".$token;
         $wesURL = 'https://secure.customersvc.com/servlet/Show?WESPAGE=am/tablet/tk/app/login.jsp&account=';
