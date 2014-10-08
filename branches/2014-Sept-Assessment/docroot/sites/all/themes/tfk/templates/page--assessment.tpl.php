@@ -83,8 +83,9 @@
     
     // Bring up the Cognero iframe
     flog_it("Has Assessment Access, going to Cognero...");
+    drupal_goto($cogneroURL);
 ?>
-
+<!--
 <form id="cgi-redirect" action="<?php echo $cogneroURL; ?>" method="post">
 </form>
 
@@ -93,3 +94,4 @@ window.onload=function() {
     document.getElementById("cgi-redirect").submit();
 }
 </script>
+-->
