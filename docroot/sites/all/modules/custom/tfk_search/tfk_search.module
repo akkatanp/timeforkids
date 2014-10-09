@@ -3731,17 +3731,22 @@ function tfk_search_preprocess_search_result(&$vars) {
           $vars['thumbnail'] = FALSE;
         }
       }
-      
+     
       if(isset($node->field_kid_reporter_age)){
         $kid_age = field_get_items('node', $node, 'field_kid_reporter_age');
         $vars['tfk_search_kid_age'] = $kid_age[0]['value'];
       }
       
+      if(isset($node->field_location)){
+        $kid_location = field_get_items('node', $node, 'field_location');
+        $vars['tfk_search_kid_loc'] = $kid_location[0]['value'];
+      }
+      
       if($base_path == TFK_SEARCH_SITESEARCH_PATH) {
-        $vars['tfk_search_result_link_1'] = l('Read about Kid Reporter', 'node/'. $nid);
+        $vars['tfk_search_result_link_1'] = l('See Bio', 'node/'. $nid);
       }
     
-      $body = field_get_items('node', $node, 'field_location');
+      $body = field_get_items('node', $node, 'field_featured_deck');
       if(!empty($body[0]['safe_value'])) {
         $teaser = $body[0]['safe_value'];
         $skip_processing = TRUE;
