@@ -8,16 +8,19 @@
         $token = $_COOKIE['CGI-token'];
     }
     
-    if ($_SERVER['HTTP_HOST'] != "www.timeforkids.com") {
-        $cogneroURL = "https://tfkclassroomapp.timeinc.com/Instructor/SingleSignOn.aspx?authToken=";
+    if ($_SERVER['HTTP_HOST'] == "www.timeforkids.com") {
+        $cogneroTokenURL = "https://tfkclassroomapp.timeinc.com/TimeForKids/WebServices/Security.asmx/EncryptAuthToken";
+        $cogneroURL = "https://tfkclassroomapp.timeinc.com/TimeForKids/Instructor/SingleSignOn.aspx?authToken=";
         $wesURL = 'https://secure.customersvc.com/servlet/Show?WESPAGE=am/tablet/tk/app/login.jsp&account=';
     } else {
-        $cogneroURL = "https://qa-tfkclassroomapp.timeinc.com/Instructor/SingleSignOn.aspx?authToken=";
+        $cogneroTokenURL = "https://qa-tfkclassroomapp.timeinc.com/TimeForKids/WebServices/Security.asmx/EncryptAuthToken";
+        $cogneroURL = "https://qa-tfkclassroomapp.timeinc.com/TimeForKids/Instructor/SingleSignOn.aspx?authToken=";
         $wesURL = 'https://wesqa.customersvc.com/servlet/Show?WESPAGE=am/tablet/tk/app/login.jsp&account=';
     }
     
     flog_it("email=".$user->mail);
     flog_it("token=".$token);
+    flog_it("cogneroTokenURL=".$cogneroTokenURL);
     flog_it("cogneroURL=".$cogneroURL);
     flog_it("wesURL=".$wesURL);
 
@@ -78,36 +81,20 @@
         drupal_goto("no-assessment");   
     }
     
-    // Bring up the Cognero iframe
-    flog_it("Has Assessment Access, going to Cognero...");
+    // Cognero processing
+    flog_it("Has Assessment Access, Cognero processing...");
     
-    // Encrypt the LUCIE TOKEN
-    /*
-    $fp=fopen("./id_rsa-cert.pem","r");
-    $pub_key=fread($fp,8192);
-    fclose($fp);
+    $data = array(
+      'authToken' => $token  
+    );
     
-    $openssl_get_return=openssl_pkey_get_public($pub_key);
-    //flog_it("openssl_get_return=".$openssl_get_return);
+    $response = drupal_http_request($cogneroTokenURL, array('headers'=>array('Content-Type'=>'application/json', 'charset'=>'utf-8'), 
+        'data'=>drupal_json_encode($data), 'method'=>'POST'
+    ));
     
-    $openssl_return=openssl_public_encrypt($token, $crypttext, $pub_key);
-    //flog_it("openssl_return=".$openssl_return);
-    //flog_it("crypttext=".$crypttext);
-
-    
-    // Decrypt the Encrypted LUCIE TOKEN
-    $fp=fopen("./id_rsa","r");
-    $private_key=fread($fp,8192);
-    fclose($fp);
-    //flog_it("private_key=".$private_key);
-    $openssl_private_decrypt_return=openssl_private_decrypt($crypttext, $decrypttext, $private_key);
-    //flog_it($openssl_private_decrypt_return);
-    flog_it("decrypttext=".$decrypttext);
-     * 
-     */
-    
-    //drupal_goto($cogneroURL.$token_encrypt);
-    drupal_goto($cogneroURL.$token);
+    flog_it("response:");
+    flog_it($response);
+    //drupal_goto($cogneroURL.$encrypt_token);
 ?>
 
 <!--
