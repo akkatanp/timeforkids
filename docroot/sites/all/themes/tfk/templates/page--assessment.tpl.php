@@ -8,19 +8,16 @@
         $token = $_COOKIE['CGI-token'];
     }
     
-    if ($_SERVER['HTTP_HOST'] == "www.timeforkids.com") {
-        $cogneroDomain = "https://tfkclassroomapp.timeinc.com";
-        $cogneroURL = "https://tfkclassroomapp.timeinc.com/Instructor/SingleSignOn.aspx?authToken=".$token;
+    if ($_SERVER['HTTP_HOST'] != "www.timeforkids.com") {
+        $cogneroURL = "https://tfkclassroomapp.timeinc.com/Instructor/SingleSignOn.aspx?authToken=";
         $wesURL = 'https://secure.customersvc.com/servlet/Show?WESPAGE=am/tablet/tk/app/login.jsp&account=';
     } else {
-        $cogneroDomain = "https://qa-tfkclassroomapp.timeinc.com";
-        $cogneroURL = "https://qa-tfkclassroomapp.timeinc.com/Instructor/SingleSignOn.aspx?authToken=".$token;
+        $cogneroURL = "https://qa-tfkclassroomapp.timeinc.com/Instructor/SingleSignOn.aspx?authToken=";
         $wesURL = 'https://wesqa.customersvc.com/servlet/Show?WESPAGE=am/tablet/tk/app/login.jsp&account=';
     }
     
     flog_it("email=".$user->mail);
     flog_it("token=".$token);
-    flog_it("cogneroDomain=".$cogneroDomain);
     flog_it("cogneroURL=".$cogneroURL);
     flog_it("wesURL=".$wesURL);
 
@@ -83,9 +80,37 @@
     
     // Bring up the Cognero iframe
     flog_it("Has Assessment Access, going to Cognero...");
-    //drupal_goto($cogneroURL);
+    
+    // Encrypt the LUCIE TOKEN
+    /*
+    $fp=fopen("./id_rsa-cert.pem","r");
+    $pub_key=fread($fp,8192);
+    fclose($fp);
+    
+    $openssl_get_return=openssl_pkey_get_public($pub_key);
+    //flog_it("openssl_get_return=".$openssl_get_return);
+    
+    $openssl_return=openssl_public_encrypt($token, $crypttext, $pub_key);
+    //flog_it("openssl_return=".$openssl_return);
+    //flog_it("crypttext=".$crypttext);
+
+    
+    // Decrypt the Encrypted LUCIE TOKEN
+    $fp=fopen("./id_rsa","r");
+    $private_key=fread($fp,8192);
+    fclose($fp);
+    //flog_it("private_key=".$private_key);
+    $openssl_private_decrypt_return=openssl_private_decrypt($crypttext, $decrypttext, $private_key);
+    //flog_it($openssl_private_decrypt_return);
+    flog_it("decrypttext=".$decrypttext);
+     * 
+     */
+    
+    //drupal_goto($cogneroURL.$token_encrypt);
+    drupal_goto($cogneroURL.$token);
 ?>
 
+<!--
 <form id="cgi-redirect" action="<?php echo $cogneroURL; ?>" method="post">
 </form>
 
@@ -94,3 +119,4 @@ window.onload=function() {
     document.getElementById("cgi-redirect").submit();
 }
 </script>
+-->
