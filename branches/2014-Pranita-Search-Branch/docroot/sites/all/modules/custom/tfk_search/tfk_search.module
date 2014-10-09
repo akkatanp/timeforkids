@@ -3720,8 +3720,10 @@ function tfk_search_preprocess_search_result(&$vars) {
       
       if(isset($node->field_profile_image)){
         $tmp_img = field_get_items('node',$node,'field_profile_image');
-      
+        
         if(isset($tmp_img[0]['uri'])) {
+          /* Image Rule is thumbail for Kid Reporter content type */ 
+          $style = "thumbnail";
           $abspath = image_style_url($style, $tmp_img[0]['uri']);
           $icon = '<div class="icon"></div>';
           
@@ -3823,6 +3825,8 @@ function tfk_search_preprocess_search_result(&$vars) {
         $tmp_img = field_get_items('node',$node,'field_tfk_extra_image');
         
         if(isset($tmp_img[0]['uri'])) {
+          /* Image Rule is thumbail for tfk_extra content type */  
+          $style = "thumbnail";
           $abspath = image_style_url($style, $tmp_img[0]['uri']);
           $icon = '<div class="icon"></div>';
           $thumbnail = theme('image', array('path' => $abspath, 'alt' => $tmp_img[0]['title'], 'title' => $tmp_img[0]['title'], 'attributes' => $thumb_attr)). $icon;
