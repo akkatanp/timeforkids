@@ -92,9 +92,11 @@
         'data'=>drupal_json_encode($data), 'method'=>'POST'
     ));
     
-    flog_it("response:");
-    flog_it($response);
-    //drupal_goto($cogneroURL.$encrypt_token);
+    flog_it("Response code=".$response->code);
+    $dataResponse = drupal_json_decode($response->data);
+    $encAuthToken = $dataResponse['d'][encAuthToken];
+    flog_it("encAuthToken=".$encAuthToken);
+    drupal_goto($cogneroURL.$encAuthToken);
 ?>
 
 <!--
