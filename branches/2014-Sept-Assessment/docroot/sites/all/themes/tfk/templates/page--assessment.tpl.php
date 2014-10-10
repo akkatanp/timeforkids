@@ -93,6 +93,13 @@
     ));
     
     flog_it("Response code=".$response->code);
+    
+    // Check for Cognero down
+    if ($response->code != 200) {
+        drupal_goto("cognero-down");
+    }
+    
+    // Bring up Cognero Screen
     $dataResponse = drupal_json_decode($response->data);
     $encAuthToken = $dataResponse['d'][encAuthToken];
     flog_it("encAuthToken=".$encAuthToken);

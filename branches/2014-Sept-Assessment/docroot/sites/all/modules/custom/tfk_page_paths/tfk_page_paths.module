@@ -37,6 +37,12 @@ function tfk_page_paths_menu(){
                 'access callback' => 'user_access',
 		'access arguments' => array('access content')
 	);
+        $items['cognero-down'] = array(
+		'title' => 'TFK Cognero Down',
+		'page callback' => 'tfk_cognero_down_callback',
+                'access callback' => 'user_access',
+		'access arguments' => array('access content')
+	);
         $items['extras'] = array(
 		'title' => 'TFK Extras',
 		'page callback' => 'tfk_pv_page_callback',
@@ -164,7 +170,7 @@ function tfk_page_paths_preprocess_page(&$variables){
     }
     
     // Check for TFK Assessment processing
-    if ($args[0] == 'no-assessment') {
+    if ($args[0] == 'no-assessment' || $args[0] == 'cognero-down') {
         //flog_it($variables);
         //$variables['page']['header'] = '';
         $variables['page']['sidebar_second'] = '';
@@ -185,6 +191,12 @@ function tfk_no_assessment_callback() {
     flog_it("tfk_no_assessment_callback...");
   
     return theme('tfk_no_assessment', array('token' => $token));
+}
+
+function tfk_cognero_down_callback() {
+    flog_it("tfk_cognero_down_callback...");
+  
+    return theme('tfk_cognero_down', array('token' => $token));
 }
 
 
@@ -209,6 +221,10 @@ function tfk_page_paths_theme() {
     ),
     'tfk_no_assessment' => array(
       'template' => 'tfk-no-assessment',
+      'variables' => array('list' => NULL),
+    ),
+    'tfk_cognero_down' => array(
+      'template' => 'tfk-cognero-down',
       'variables' => array('list' => NULL),
     )
   );
