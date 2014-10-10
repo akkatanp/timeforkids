@@ -105,14 +105,3 @@
     flog_it("encAuthToken=".$encAuthToken);
     drupal_goto($cogneroURL.$encAuthToken);
 ?>
-
-<!--
-<form id="cgi-redirect" action="<?php echo $cogneroURL; ?>" method="post">
-</form>
-
-<script language="javascript" type="text/javascript">
-window.onload=function() {
-    document.getElementById("cgi-redirect").submit();
-}
-</script>
--->
