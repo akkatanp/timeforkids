@@ -9,13 +9,15 @@ define('TFK_USER_PROFILE_USER_PATH', 'user');
  * Implementation of hook_init.
  */
 function tfk_user_profile_init() {
+  flog_it("tfk_user_profile_init: arg(0)=".arg(0));
   
   // re #557 #556 - Determine the cacheability of the current page.
   // We need to disable the encrypt-submissions callback from being cached,
   // otherwise stale encryption keys will be served. This is a requirement for
   // the "encrypt-submissions" module to work with Page Caching for anonymous
   // users enabled.
-  if(arg(0) == 'encrypt-submissions') {
+  if(arg(0) == 'encrypt-submissions' || arg(0) == 'assessment') {
+    flog_it("setting drupal_page_is_cacheable = FALSE");
     drupal_page_is_cacheable(FALSE);
   }
 }
