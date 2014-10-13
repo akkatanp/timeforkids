@@ -770,6 +770,21 @@ function tfk_helper_preprocess_html(&$variables, $hook) {
     }
   }
   
+  // Avoid search engines to index dev and stage domains.
+  $restricted_domains = array('dev.timeforkids.com', 'qa.timeforkids.com', 'tfk:8082', 'timera.prod.acquia-sites.com'); 
+  if (in_array($_SERVER['HTTP_HOST'], $restricted_domains)) {
+    $meta_robot = array(
+      '#tag' => 'meta',
+      '#attributes' => array(
+        'name' => 'robots',
+        'content' => 'noindex, nofollow'
+      ),
+    );
+    //flog_it("drupal_add_html_head...");
+    $results=drupal_add_html_head($meta_robot, "noindex");
+    //flog_it($results);
+  }
+  
 }
 
 /**
