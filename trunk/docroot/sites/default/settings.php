@@ -281,12 +281,23 @@ ini_set('max_input_time', 0);
 /**
  * Acquia Network/Acquia Search settings
  */
-/*
-$conf["acquia_identifier"] = "BCDE-22799";
-$conf["acquia_key"] = "8499f05ab66439dc7432a3533bbc5c33";
-#$conf["apachesolr_path"] = "/solr/BCDE-22799";
- * 
- */
+if (isset($_ENV['AH_SITE_ENVIRONMENT'])) {
+    switch ($_ENV['AH_SITE_ENVIRONMENT']) {
+        case 'dev':
+            $conf["acquia_identifier"] = "BCDE-22799";
+            $conf["acquia_key"] = "8499f05ab66439dc7432a3533bbc5c33";
+            break;
+        case 'test':
+            $conf["acquia_identifier"] = "GHRY-22798";
+            $conf["acquia_key"] = "afd80ec55187436a7d83345415cffdd7";
+            break;
+        case 'prod':
+            $conf["acquia_identifier"] = "CGKX-19447";
+            $conf["acquia_key"] = "2b5740b90ab783a59dac44afb916996a";
+            break;
+    }
+}
+
 
 /**
  * Filesystem settings
