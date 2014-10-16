@@ -1,0 +1,1910 @@
+<?php
+
+
+/**
+ * Key that holds variables for html preprocessor hook.
+ * @var string
+ */
+define('TFK_PREPROCESS_HTML', 'hook_preprocess_html');
+
+/**
+ * Name of the primary tout View.
+ * @var string
+ */
+define('TFK_PRIMARY_TOUT', 'homepage_top_story');
+
+/**
+ * Name of the secondary tout View.
+ * @var string
+ */
+define('TFK_SECONDARY_TOUT', 'homepage_news_block');
+
+
+function tfk_helper_init() {
+  $path = current_path();
+  
+  $page_callback_result = _menu_site_is_offline() ? MENU_SITE_OFFLINE : MENU_SITE_ONLINE;
+  
+  // Allow other modules to change the site status but not the path because that
+  // would not change the global variable. hook_url_inbound_alter() can be used
+  // to change the path. Code later will not use the $read_only_path variable.
+  $read_only_path = !empty($path) ? $path : $_GET['q'];
+  drupal_alter('menu_site_status', $page_callback_result, $read_only_path);
+  
+  // Add tfk_helper_editor.js
+  // If we are editing an article or video...
+  $menu_item = menu_get_item();
+  if($menu_item['path'] == 'node/%/edit' && ($menu_item['page_arguments'][0]->type == 'article' || $menu_item['page_arguments'][0]->type == 'video')
+    // or adding a new article or video.
+    || ($menu_item['page_callback'] == 'node_add' && 
+       ($menu_item['page_arguments'][0] == 'article' || $menu_item['page_arguments'][0] == 'video')
+  )) {
+    $tfk_helper_path = drupal_get_path('module', 'tfk_helper');
+    drupal_add_js($tfk_helper_path. '/js/tfk_helper_editor.js', 'file');
+  }
+  
+  // Only continue if the site status is not set.
+  if ($page_callback_result == MENU_SITE_ONLINE) {
+
+    // Make the popup hidden by default.
+    drupal_add_js(array('tfk_helper' => array('access' => TRUE)), 'setting');
+    if ($router_item = menu_get_item($path)) {
+      // Show the login popup when access is denied.
+      if (!$router_item['access']) {
+        drupal_add_js(array('tfk_helper' => array('access' => FALSE)), 'setting');
+      }
+    }
+  }
+  
+  // Initialize static shared variables.
+  $shared_vars = &drupal_static(TFK_PREPROCESS_HTML);
+  if(is_null($shared_vars)) {
+    $shared_vars = array();
+  }
+}
+
+function tfk_helper_menu_alter(&$items) {
+  $items['node']['page callback'] = 'tfk_helper_node_page_default';
+}
+
+/**
+ * Impelementation of hook_menu.
+ */
+function tfk_helper_menu() {
+  $items = array();
+  $items['admin/structure/touts'] = array(
+    'weight' => 80,
+    'type' => MENU_NORMAL_ITEM,
+    'title' => 'Touts',
+    'access arguments' => array('administer site configuration'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('secondary_touts_admin_settings'),
+    'description' => 'Configure Secondary Touts settings.',
+  );
+  $items['admin/structure/touts/secondary-touts'] = array(
+    'type' => MENU_LOCAL_TASK,
+    'context' => MENU_CONTEXT_INLINE,
+    'weight' => 80,
+    'title' => 'Secondary Touts',
+    'access arguments' => array('administer site configuration'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('secondary_touts_admin_settings'),
+    'description' => 'Configure Secondary Touts settings.',
+  );
+  
+  
+  $items['learnmore/processing'] = array(
+    'title' => 'Learn More Processing',
+    'page callback' => '_tfk_learnmore_processing',
+    'page arguments' => array(2),
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK
+  );
+  return $items;
+}
+
+function _tfk_learnmore_processing() {
+    //flog_it($_POST);
+
+    if (empty($_POST)) {
+        echo "failure";
+        exit;
+    }
+    
+    // Set variables
+    $aid = $_POST['aid'];
+    $TFK_SOURCE = $_POST['TFK_SOURCE'];
+    $n = $_POST['n'];
+    $sub = $_POST['sub'];
+    $email = $_POST['email'];
+    
+    $response = drupal_http_request('http://ebm.cheetahmail.com/r/regf2?aid=' . $aid . '&TFK_SOURCE=' . $TFK_SOURCE . '&n=' . $n . '&sub=' . $sub  . '&email=' . $email);
+    print_r($response->code);
+    exit;
+}
+
+/**
+ * Main front page callback for TFK.
+ * 
+ * Ripoff of node_page_default(), node.module,
+ * PREVENTS DEFAULT FRONT PAGE NODE LOAD FOR PERFORMANCE.
+ */
+function tfk_helper_node_page_default() {
+  $build = array();
+  drupal_set_title('');
+  return $build;
+  
+  $select = db_select('node', 'n')
+  ->fields('n', array('nid', 'sticky', 'created'))
+  ->condition('promote', 1)
+  ->condition('status', 1)
+  ->orderBy('sticky', 'DESC')
+  ->orderBy('created', 'DESC')
+  ->extend('PagerDefault')
+  ->limit(variable_get('default_nodes_main', 10))
+  ->addTag('node_access');
+
+  $nids = $select->execute()->fetchCol();
+
+  if (!empty($nids)) {
+    $nodes = node_load_multiple($nids);
+    $build = node_view_multiple($nodes);
+
+    // 'rss.xml' is a path, not a file, registered in node_menu().
+    drupal_add_feed('rss.xml', variable_get('site_name', 'Drupal') . ' ' . t('RSS'));
+    $build['pager'] = array(
+        '#theme' => 'pager',
+        '#weight' => 5,
+    );
+    drupal_set_title('');
+  }
+  else {
+    drupal_set_title(t('Welcome to @site-name', array('@site-name' => variable_get('site_name', 'Drupal'))), PASS_THROUGH);
+
+    $default_message = '<p>' . t('No front page content has been created yet.') . '</p>';
+
+    $default_links = array();
+    if (_node_add_access()) {
+      $default_links[] = l(t('Add new content'), 'node/add');
+    }
+    if (!empty($default_links)) {
+      $default_message .= theme('item_list', array('items' => $default_links));
+    }
+
+    $build['default_message'] = array(
+        '#markup' => $default_message,
+        '#prefix' => '<div id="first-time">',
+        '#suffix' => '</div>',
+    );
+  }
+  return $build;
+}
+
+/**
+ * Menu callback for "Configure Secondary Touts settings".
+ *
+ * Used in tfk_helper_views_pre_execute() to determine how many items to show
+ * per View display.
+ *
+ * @see tfk_helper_views_pre_execute
+ */
+function secondary_touts_admin_settings($form, &$form_state) {
+  // Get secondary touts View and it's displays.
+  $view = views_get_view('homepage_news_block');
+  if(is_null($view)) {
+    return '';
+  }
+  
+  $form_state['temporary']['default'] = array();
+  
+  // Allow each display to have a different setting.
+  $primary_displays = array_slice($view->display, 1, 3);
+  foreach($primary_displays as $display_machine_name => $display) {
+    $vname = 'tfk_helper_secondary_touts_'. $display_machine_name;
+    $form[$vname] = array(
+        '#type' => 'textfield',
+        '#title' => $display->display_title,
+        '#size' => 10,
+        '#maxlength' => 3,
+    );
+    
+    // Retrieve saved values.
+    $stored = variable_get($vname, NULL);
+    if(empty($stored)) {
+      // Display the default to the user, but do not save it.
+      $form_state['temporary']['default'][$vname] = FALSE;
+      $form[$vname]['#default_value'] = 2;
+      $form[$vname]['#description'] = 'Default setting.';
+    } else {
+      $form[$vname]['#default_value'] = $stored;
+      $form[$vname]['#description'] = '<b><em>User value.</em></b>';
+    }
+    
+    // If form is being processed.
+    if(isset($form_state['input']) && !empty($form_state['input'])) {
+      // Give precedence to user input.
+      if($form[$vname]['#default_value'] !== $form_state['input'][$vname]) {
+        $form[$vname]['#default_value'] = $form_state['input'][$vname];
+        unset($form_state['temporary']['default'][$vname]);
+      }
+    }
+    
+    // Store display info in form cache.
+    $form_state['temporary']['machine_names'][$vname] = $display_machine_name;
+    $form_state['temporary']['displays'][$display_machine_name] = $display;
+  }
+  
+  // Hook up a submit handler for cache clearing (ours handler gets called first).
+  $form['#submit'][] = 'secondary_touts_admin_settings_submit';
+  
+  // Check for administrators.
+  if (user_access('administer views')) {
+    $form['#prefix'] = '<div class="description">Each option corresponds to a display in the <a href="/admin/structure/views/view/homepage_news_block/edit"><em>homepage_news_block</em></a> View.</div>';
+  }
+  
+  return system_settings_form($form);
+}
+
+/**
+ * Additional submit handler for secondary_touts_admin_settings().
+ *
+ * Clear cache for Views displays when their settings are changed.
+ *
+ * @see secondary_touts_admin_settings
+ */
+function secondary_touts_admin_settings_submit($form, &$form_state) {
+  $purge_displays = array();
+  
+  // Highlight which items are using default values.
+  $form_state['values'] = array_merge($form_state['values'], $form_state['temporary']['default']);
+  
+  // Filter unwanted keys.
+  $input_keys = preg_grep('/tfk_helper_secondary_touts_block_.*/', array_keys($form_state['values']));
+  
+  // Handle default values, resets and updates.
+  foreach($input_keys as $input_key) {
+    if(empty($form_state['values'][$input_key])) {
+      if($form_state['values'][$input_key] === FALSE) {
+        // Prevent fields using default value from saving their own value.
+        unset($form_state['values'][$input_key]);
+      } else {
+        // Reset emptied fields back to the default.
+        variable_del($input_key);
+        // Refresh cache for this display.
+        $purge_displays[] = $form_state['temporary']['machine_names'][$input_key];
+        unset($form_state['values'][$input_key]);
+      }
+      // Refresh cache for updated displays.
+    } else {
+      $purge_displays[] = $form_state['temporary']['machine_names'][$input_key];
+    }
+  }
+  
+  foreach($purge_displays as $machine_name) {
+    cache_clear_all('views:homepage_news_block-'. $machine_name, 'cache_block', TRUE);
+    cache_clear_all('homepage_news_block:'. $machine_name, 'cache_views_data', TRUE);
+    
+    drupal_set_message(t("The block for %display_name has been purged from cache.",
+      array('%display_name' => $form_state['temporary']['displays'][$machine_name]->display_title)
+    ));
+  }
+  
+}
+
+/**
+ * Implementation of hook_theme
+ */
+function tfk_helper_theme() {
+  return array(
+    // Featured block that goes on the sidebar.
+    'featured_block_sidebar' => array(
+      'variables' => array('args' => NULL),
+    ),
+    // More Photos and Videos block.
+    'photos_video_more' => array(
+      'variables' => array('more_items' => array()),
+    ),
+    // Regular slideshow, Spec 7B.
+    'regular_slideshow' => array(
+    	'template' => 'regular-slideshow',
+    	'variables' => array('images_data' => array(), 'related_content' => ''),
+    ),
+    // Suggestion Box.
+    'suggestion_box' => array(
+      'variables' => array(
+      	'id' => 'top',
+      	'message' => 'Example suggestion message',
+      	'link_title' => 'Example link text',
+      	'link_dest' => 'node',
+        'class' => array('suggestion-box'),
+      ),
+    ),
+    //
+  );
+}
+
+/**
+ * Implementation of hook_node_access.
+ *
+ * Deny access for anonymous users to restricted content types.
+ */
+function tfk_helper_node_access($node, $op, $account) {
+
+  // Deny access to anonymous user to mini-lesson, and other nodes.
+  // Check for $node type, sometimes it evaluates to a "global_right_sidebar_promo" string, "create" op.
+  if($account->uid == 0 && is_object($node)) {
+    if($node->type == "mini_lesson") {
+      return NODE_ACCESS_DENY;
+    }
+    
+    if($node->nid == 8091 || $node->nid == 7631 || $node->nid == 7636 || $node->nid == 8116){
+      return NODE_ACCESS_DENY;
+    }
+  }
+  
+}
+
+/**
+ * Implementation of hook_form_FORM_ID_alter().
+ *
+ * Modify exposed filters on Views admin/content2 page.
+ */
+function tfk_helper_form_views_exposed_form_alter(&$form, &$form_state, $form_id) {
+  if($form['#id'] == 'views-exposed-form-admin-content2-page') {
+    // Alpha-sort content type filter.
+    asort($form['type']['#options'], SORT_STRING);
+    
+    // Format label.
+    $form['created']['value']['#description'] = 'YYYY-MM-DD HH:MM:SS';
+    
+    // Emulate core theming.
+    $form['#prefix'] = '<fieldset class="form-wrapper"><div class="fieldset-wrapper">';
+    $form['#suffix'] = '</div></fieldset>';
+    $form['nid']['#size'] = '10';
+    $form['field_grade_level_tid']['#size'] = '15';
+    
+  }
+}
+
+/**
+ * Implements hook_block_view_alter().
+ *
+ * Add contextual links to tout blocks.
+ *
+ * @see contextual_pre_render_links
+ * @see menu_contextual_links
+ */
+function tfk_helper_block_view_alter(&$data, $block) {
+  if (isset($block->context) && preg_match('/^homepage_news_block/', $block->delta)) {
+    $data['content']['#contextual_links']['tfk_helper'] = array(
+      'admin/structure/touts/secondary-touts',
+       array('secondary_touts_admin_settings'),
+    );
+  }
+}
+
+/**
+ * Implementation of hook_preprocess_page.
+ */
+function tfk_helper_preprocess_page(&$variables) {
+  $args = arg();
+  if($args[0] == 'node' && isset($args[1]) && is_numeric($args[1])) {
+    if(!node_access('view', node_load($args[1]), $variables['user'])) {
+      $variables['section_title'] = 'SUBSCRIBER-ONLY CONTENT';
+    }
+  }
+
+  if(arg(0) == 'node' && array_key_exists('node', $variables)) {
+    if($variables['node']->type == 'minisite') {
+      // Set primary menu link to active. Doing it here bacause Context's menu reaction is not working.
+      $variables['page']['header']['menu_menu-tfk-global-navigation']['content']['4141']['#localized_options']['attributes']['class'][] = 'active';
+      
+    }
+  }
+
+
+}
+
+/**
+ * Implementation of hook_form_FORM_ID_alter.
+ *
+ * Add our own submit handler to draggabletable's form.
+ * Use it to clear certain cache items when the order on the secondary touts
+ * order block changes.
+ */
+function tfk_helper_form_form_draggableviews_view_draggabletable_form_alter(&$form, $form_state = NULL) {
+  $form['#submit'][] = 'tfk_helper_draggabletable_form_submit';
+}
+
+/**
+ * Implementation of hook_form_FORM_ID_alter.
+ *
+ * Cleanup atw_destination node form.
+ */
+function tfk_helper_form_atw_destination_node_form_alter(&$form, $form_state = NULL) {
+
+  $form['flag']['#weight'] = 0;
+  $form['locations']['#weight'] = 1;
+  
+  global $user;
+  if($user->uid != 1) {
+    $form['revision_information']['#access'] = FALSE; // We are not using revisions.
+    $form['redirect']['#disabled'] = TRUE; // Disable redirect element.
+    $form['comment_settings']['#access'] = FALSE; // Disable comments.
+    $form['menu']['#access'] = FALSE; // Disable menu link capability.
+  }
+  
+  // Supress article_category taxonomy field.
+  // This field is present in atw_destination because it is required by secondary
+  // touts View filters. But according to business logic, destinations cannot
+  // have article categories, so we hardcode a value and hide the field.
+  $form['field_article_category']['#access'] = FALSE;
+  $form['field_article_category'][$form['#node']->language]['#default_value'] = 10;
+}
+
+// For future reference...
+/*
+// 1
+function tfk_helper_views_pre_view(&$view, $vars = null) {
+  if($view->name == 'homepage_news_block') { }
+}
+// 2
+function tfk_helper_views_pre_build(&$view, $vars = null) {
+  if($view->name == 'homepage_news_block') { }
+}
+*/
+
+
+/**
+ * Implementation of hook_views_pre_execute.
+ *
+ * Alter the number of items to show for secondary touts on a channel/flag basis.
+ *
+ * @see secondary_touts_admin_settings
+ */
+function tfk_helper_views_pre_execute(&$view) {
+  if($view->name == 'homepage_news_block') {
+    if(!$view->is_attachment) {
+      
+      // Use only one setting for both logged in and anonymous users.
+      $matches = array();
+      if(preg_match('/(.*)_anon/', $view->current_display, $matches)) {
+        $current_display = $matches[1];
+      } else {
+        $current_display = $view->current_display;
+      }
+      
+      // Determine the number of items to show for each channel.
+      if(is_null(variable_get('tfk_helper_secondary_touts_'. $current_display, NULL))) {
+        // Use default setting. If no default is found, show 3 items for
+        // the frontpage, and three 2 items for sections.
+        //$view->query->limit = variable_get('tfk_helper_secondary_touts_default', drupal_is_front_page() ? 3: 2);
+        $view->query->limit = drupal_is_front_page() ? 3: 2;
+      } else {
+        $view->query->limit = variable_get('tfk_helper_secondary_touts_'. $current_display, 2);
+      }
+      
+      // Determine number of columns to use.
+      if(drupal_is_front_page()) {
+        $view->style_plugin->options['columns'] = 3;
+      } else {
+        // This is the default.
+        $view->style_plugin->options['columns'] = 2;
+      }
+    }
+  }
+  
+  // Dynamic number of items on the draggableviews order blocks.
+  // Duplicate the amount set on admin/structure/touts/secondary-touts.
+  /*
+   * Temporarily comment out, may 23, 2012.
+   * Delete/refactor code if bug is confirmed here on DEV/QA.
+   *
+  if($view->name == 'secondary_touts_block_order') { #homepage_news_block
+    if($view->current_display == 'homepage') {
+      // Hardcoded because of all the CSS mapped to this machine name.
+      $qty = variable_get('tfk_helper_secondary_touts_block_1', 3);
+      $view->query->limit = $qty * 2;
+    }
+    if($view->current_display == 'news') {
+      $qty = variable_get('tfk_helper_secondary_touts_block_3', 2);
+      $view->query->limit = $qty * 2;
+    }
+    if($view->current_display == 'kids') {
+      $qty = variable_get('tfk_helper_secondary_touts_block_5', 2);
+      $view->query->limit = $qty * 2;
+    }
+  }*/
+}
+
+/**
+ * This hook is called right before the render process.
+ *
+ * The query has been executed, and the pre_render() phase has already happened
+ * for handlers, so all data should be available.
+ */
+function tfk_helper_views_pre_render(&$view) {
+    global $mini_site_featured_title;
+    
+  //flog_it("tfk_helper_views_pre_render: view->name=".$view->name.", view->current_display=".$view->current_display);
+  /*
+  foreach($view->result as $key=>$item) {
+      flog_it("key=".$key.", nid=".$item->nid.", node_type=".$item->node_type.", title=".$item->node_title);
+  }
+     * 
+     */
+
+  
+  if ($view->name == 'homepage_news_block') {
+    $counter = 1;
+    $css = '';
+    foreach($view->result as $item) {
+      /* This is kind of a kludge ... Because the Minisite content type uses the "body" field as its "deck"
+       * and the "body" is used for different purposes in other content types that are also used in the
+       * 'homepage_news_block' view, we cant's directly display that field - but we also need to display it
+       * when the content type the view is rendering is a minisite. So here we're re-purposing the 'field_deck'
+       * from a couple of the other content types, copying the data from the body field intop the deck field,
+       * for the minisite content type only.
+       */
+       if($item->node_type == 'minisite') {
+           $item->field_field_deck = $item->field_body;
+       }
+       
+       /*
+       // Handle funky css for 2 line slideshow image credit
+       if($item->node_type == "slideshow") {
+          $image_credit = $item->field_field_credit[0]['rendered']['#markup'];
+          if (strlen($item->field_field_credit[0]['rendered']['#markup']) > 39) {
+              $css = $css."
+                 .view-homepage-news-block .views-field-field-credit {
+                    margin-bottom: 0px;
+                 } 
+              ";
+          } 
+       }
+        * 
+        */
+       
+       // Check to apply the for teachers css to this table cell.
+       $flag = flag_get_flag("homepage_for_teachers");
+       if (!empty($flag) && $flag->is_flagged($item->nid)) {
+            if ($counter < 4) {
+                $row = 1;
+                $column = $counter;
+            } else {
+                $row = 2;
+                $column = $counter - 3;
+            }
+             //flog_it($item->node_type.", counter=".$counter.", row=".$row.", column=".$column);
+
+            // For teachers style
+            $tmp = '.front table tr.row-'.$row.' td.col-'.$column.' {';
+            $css = $css."
+                 $tmp
+                 background-color: #dfeffd;
+                 background-image: url('/sites/all/themes/tfk/images/for-teachers-ribbon.png');
+                 background-repeat: no-repeat;
+                 background-position: 0 14px;
+                 border: 1px solid #badafb;}
+            ";
+            
+            // Remove category icon
+            $css = $css."
+                .front .row-".$row." .col-".$column." .views-field-name {
+                    visibility: hidden;
+                }
+            ";
+       }
+       $counter++;
+    }
+    
+    // Check to putout for teachers css
+    if (!empty($css)) {
+        drupal_add_css($css, "inline");
+        //flog_it("css=".$css);
+    }
+  }
+  
+  if($view->name == 'homepage_top_story') {
+    if(isset($view->result[0]) && !$view->is_attachment && $view->result[0]->_field_data['nid']['entity']->type != 'slideshow') {
+      $view->attachment_after = FALSE;
+    } elseif(isset($view->result[0]) && !$view->is_attachment && $view->result[0]->_field_data['nid']['entity']->type == 'slideshow') {
+      #$view->attachment_after = views_embed_view('homepage_top_story', 'attachment_1', $view->result[0]->nid);
+    }
+  }
+  
+  if(($view->name == 'minisite_articles') && (in_array($view->current_display,array('block','block_1')))) {
+    foreach($view->result as $fields) {
+      if(isset($fields->field_field_slideshow_images[0])) {
+        // If lrg_sq_image is set, display it only - do not use the slideshow image
+        if(isset($fields->field_field_lrg_sq_image[0]))
+        {
+          unset($fields->field_field_slideshow_images[0]);
+        }
+      }
+
+      // tp: tfk-43: Add video thumbnail back to minisite display
+      if (isset($fields->_field_data['node_field_data_field_articles_nid']['entity']->field_video_thumbnail['und'][0])) {
+          //flog_it("found video thumbnail...");
+          // Do not set the image_style for video
+          $fields->field_field_lrg_sq_image[0]['rendered']['#theme'] = "image_formatter";
+          $fields->field_field_lrg_sq_image[0]['rendered']['#item'] = $fields->_field_data['node_field_data_field_articles_nid']['entity']->field_video_thumbnail['und'][0];
+          //$fields->field_field_lrg_sq_image[0]['rendered']['#image_style'] = "tfk_square_small";
+          $fields->field_field_lrg_sq_image[0]['rendered']['#access'] = 1;
+          $fields->field_field_lrg_sq_image[0]['raw'] = $fields->field_field_lrg_sq_image[0]['rendered']['#item'];
+      }
+
+    }
+  }
+  
+
+  // Make sure the left rail's featured mini-site is not the same content as the main content's first cell.
+  if ($view->name == "mini_site_home" && $view->current_display == "block_1") {
+      //flog_it("FOUND MINI SITE FEATURED BLOCK...");
+      $mini_site_featured_title = $view->result[0]->node_title;
+      //flog_it("mini_site_featured_title=".$mini_site_featured_title);
+  }
+  if ($view->name == "mini_site_home" && $view->current_display == "block") {
+      //flog_it("FOUND MINI SITE BLOCK...");
+      //flog_it("node_title=".$view->result[0]->node_title.", mini_site_featured_title=".$mini_site_featured_title);
+      // Check to swap the first and second cells
+      if ($mini_site_featured_title != "" && ($view->result[0]->node_title == $mini_site_featured_title)) {
+        //flog_it("FOUND A MATCH, SWAPPING POSITIONS 0 & 1...");
+        $tmp_view = array();
+        $tmp_view = $view->result[0];
+        $view->result[0] = $view->result[1];
+        $view->result[1] = $tmp_view;
+      }
+  }
+  
+  
+  
+  // Init local static vars for views_view_fields.
+  $local_svars = &drupal_static('views_view_fields');
+  if(is_null($local_svars)) {
+    $local_svars = array();
+  }
+  
+  // Global composite key.
+  $view->composite_key = $view->name. '_'. $view->current_display;
+}
+
+/**
+ * Indicate which grid rows have additional content with CSS.
+ */
+function tfk_helper_preprocess_views_view_grid(&$variables) {
+  if(array_search($variables['view']->name, array('homepage_news_block','minisite_articles')) !== FALSE) {
+    // Find which items have additional content.
+    $ac_keys = array('field_field_additional_content', 'field_field_related_articles', 'field_field_mini_lessons','field_field_minisite_related_content');
+    $rows = array_chunk($variables['view']->result, $variables['view']->style_plugin->options['columns']);
+    $class_rows = array();
+    $count = 0;
+    
+    foreach($rows as $row_key => $row) {
+      $class_rows[$row_key] = 0;
+      foreach($row as $item) {
+        // Detect additional content. Generic conditional applies to multiple Views.
+        foreach($ac_keys as $ac_key) {
+          if(!empty($item->$ac_key)) {
+            $variables['row_classes'][$row_key] .= ' row-has-addit';
+            $class_rows[$row_key] = 1;
+            break;
+          }
+        }
+        if($class_rows[$row_key]) {
+          break; // This row has an item with additional content, check the next row.
+        }
+      }
+    }
+  }
+}
+
+function tfk_helper_preprocess_html(&$variables, $hook) {
+  //flog_it("tfk_helper_preprocess_html...");
+  $shared_vars = &drupal_static(TFK_PREPROCESS_HTML);
+  
+  // Path.
+  $menu_item = menu_get_item();
+  $path = $menu_item['path'];
+  
+  // Since the class names aren't very dynamic.
+  $class_map = array(
+    'node' => array(
+      1 => 'homepage-top-part-empty',
+      2 => 'homepage-bottom-part-empty',
+    ),
+    'news' => array(
+     # 1 => 'news-top-part-empty',
+     # 2 => 'news-bottom-part-empty',
+      1 => 'homepage-top-part-empty',
+      2 => 'homepage-bottom-part-empty',
+    ),
+    'kid-reporters' => array(
+     # 1 => 'kidreps-top-part-empty',
+     # 2 => 'kidreps-bottom-part-empty',
+      1 => 'homepage-top-part-empty',
+      2 => 'homepage-bottom-part-empty',
+    ),
+  );
+  
+  // Row-view mapping.
+  $block_rows = array(
+    'node' => array(
+      1 => array('homepage_top_story', 'homepage_minisite'),
+      2 => array('homepage_news_block'),
+    ),
+    'default' => array(
+      1 => array('homepage_top_story',),
+      2 => array('homepage_news_block',),
+    ),
+  );
+  
+  // Additional content.
+  $additional_content = array();
+  
+  $path_key = (!array_key_exists($path, $block_rows)) ? 'default': $path;
+  
+  // Check each row.
+  foreach($block_rows[$path_key] as $row_key => $block_row) {
+    // Check each block.
+    foreach($block_row as $block) {
+      // If Views marked this block as having additional content, mark the
+      // whole row as having additional content and break the inner loop.
+      if(array_key_exists($block, $shared_vars) && $shared_vars[$block]['has_additional_content']) {
+        $additional_content[$row_key] = TRUE; // Has additonal content.
+        break;
+      } else {
+        // Assume that row does not have additional content.
+        $additional_content[$row_key] = FALSE;
+      }
+    }
+  }
+  
+  // Mark in the body tag which rows don't have additional content.
+  foreach($additional_content as $_row_key => $_block_row) {
+    // If this row DOES NOT have additional content...
+    if(!$_block_row) {
+      // Add class to the body tag.
+      if(array_key_exists($path, $class_map)) {
+        $variables['classes_array'][] = $class_map[$path][$_row_key];
+      }
+    }
+  }
+  
+  // Avoid search engines to index dev and stage domains.
+  $restricted_domains = array('dev.timeforkids.com', 'qa.timeforkids.com', 'tfk:8082', 'timera.prod.acquia-sites.com'); 
+  if (in_array($_SERVER['HTTP_HOST'], $restricted_domains)) {
+    $meta_robot = array(
+      '#tag' => 'meta',
+      '#attributes' => array(
+        'name' => 'robots',
+        'content' => 'noindex, nofollow'
+      ),
+    );
+    //flog_it("drupal_add_html_head...");
+    $results=drupal_add_html_head($meta_robot, "noindex");
+    //flog_it($results);
+  }
+  
+  // Assessment
+  //flog_it($variables['element']);
+  /*
+  // <a href="/teacher-board-members" class="teacher-community" id="tfk-assessment">Teacher Board</a>
+  $variables['#original_link']['options']['attributes']['id'] = 'tfk-assessment';
+  cache_clear_all();
+   * 
+   */
+  
+  //foreach($variables['page']['header']['menu_menu-tfk-teachers-menu']['content']['616'] as $key => $value) {
+    //  flog_it("key=".$key);
+      //flog_it($value);
+  //}
+  //$variables['page']['header']['menu_menu-tfk-teachers-menu']['content']['616']['#original_link']['options']['attributes']['id'][0] = "tfk-assessment";
+  
+}
+
+/**
+ * Preprocess Views field.
+ *
+ * re #527, Add links to all homepage and site channel images.
+ */
+function tfk_helper_preprocess_views_view_field(&$variables, $hook) {
+  
+  switch ($variables['view']->name) {
+    // Main tout.
+    case 'homepage_top_story':
+      if(($variables['field']->field == 'field_lrg_sq_image' || $variables['field']->field == 'field_video_thumbnail') && !empty($variables['output'])) {
+        $variables['output'] = l($variables['output'], 'node/'. $variables['row']->nid, array('html' => TRUE));
+      }
+      break;
+    // Secondary tout.
+    case 'homepage_news_block':
+      if($variables['field']->field == 'field_lrg_rect_image' && !empty($variables['output'])) {
+        $variables['output'] = l($variables['output'], 'node/'. $variables['row']->nid, array('html' => TRUE));
+      }
+      break;
+    // Homepage destination.
+    case 'homepage_destination':
+      if($variables['field']->field == 'field_image' && !empty($variables['output'])) {
+        $variables['output'] = l($variables['output'], 'node/'. $variables['row']->nid, array('html' => TRUE));
+      }
+      break;
+    // Homepage mini-site.
+    case 'homepage_minisite':
+      if($variables['field']->field == 'field_minisite_tout_image' && !empty($variables['output'])) {
+        $variables['output'] = l($variables['output'], 'node/'. $variables['row']->nid, array('html' => TRUE));
+      }
+      break;
+    // Mini-site home
+    case 'mini_site_home':
+      if($variables['field']->field == 'field_minisite_tout_image' && !empty($variables['output'])) {
+        $variables['output'] = l($variables['output'], 'node/'. $variables['row']->nid, array('html' => TRUE));
+      }
+      if($variables['field']->field == 'field_minisite_thumbnail_image' && !empty($variables['output'])) {
+        $variables['output'] = l($variables['output'], 'node/'. $variables['row']->nid, array('html' => TRUE));
+      }
+      break;
+  }
+}
+
+/**
+ * Preprocessing for multiple Views.
+ *
+ * Implementation of hook_preprocess_view_view_fields.
+ *
+ * @param array $variables
+ *   Stuff comming from views.
+ */
+function tfk_helper_preprocess_views_view_fields(&$variables, $hook) {
+  global $user;
+  
+  $view = $variables['view'];
+  $shared_vars = &drupal_static(TFK_PREPROCESS_HTML);
+  $variables['add_cont_fields'] = array();
+  $variables['show_additional_content'] = FALSE; // Don't show additional content for this View until told otherwise.
+  
+  // Load local static vars;
+  $local_svars = &drupal_static($hook);
+  
+  // News Archive
+  /*
+   * block_1 = news_archive
+   * block_2 = polls
+   * block_3 = news archive anon
+   * block_4 = polls anon
+   */
+  if($view->name == 'news_archive') {
+    $variables['theme_hook_suggestion'] = 'views_view_fields__news_archive';
+  }
+  
+  // Primary Tout block.
+  if($view->name == 'homepage_top_story' && !$view->is_attachment) {
+    // Use only one template for all Primary Tout displays (all channels, anon + non-anon).
+    $variables['theme_hook_suggestion'] = 'views_view_fields__primary_tout';
+    
+    $content_type = $variables['row']->_field_data['nid']['entity']->type;
+    
+    if($content_type == 'slideshow') {
+      $link = l('View Photo Slide Show', 'node/'. $variables['row']->nid);
+      $variables['fields']['title_2']->content = '<span class="field-content">'. $link. '</span>';
+    }
+    if($content_type == 'video') {
+      $link = l('View Full Video', 'node/'. $variables['row']->nid);
+      $variables['fields']['title_2']->content = '<span class="field-content">'. $link. '</span>';
+    }
+  }
+  
+  // Slideshow thumbnails attachment links.
+  if($view->name == 'homepage_top_story' && preg_match('/attachment_([0-9])+/', $view->current_display)) {
+    $variables['fields']['field_image']->content = l($variables['fields']['field_image']->content, ltrim($variables['view']->field['path']->original_value, '/'). '/'. ($variables['view']->row_index + 1), array('html' => TRUE, 'attributes' => array('class' => array('featured-thumbnail'))));
+  }
+  
+  // Secondary Tout blocks.
+  if($view->name == 'homepage_news_block' && !$view->is_attachment) {
+    // Use only one template for all Secondary Tout displays (all channels, anon + non-anon).
+    $variables['theme_hook_suggestion'] = 'views_view_fields__secondary_tout';
+    
+    // Fix section name for mini-sites.
+    if(array_key_exists('name', $variables['fields']) && strtolower($variables['fields']['name']->raw) == 'mini-site') {
+      $variables['fields']['name']->content = '<span class="field-content">'. l('mini-site', 'mini-sites') .'</span>';
+      
+      // Additional content for mini-sites.
+      if(!empty($variables['row']->field_field_minisite_related_content[0]['raw']['node'])) {
+        $rel_node = node_load($variables['row']->field_field_minisite_related_content[0]['raw']['node']->nid);
+        if($rel_node) {
+          if(isset($rel_node->field_worksheet_pdf_private) && !empty($rel_node->field_worksheet_pdf_private)){
+            $vars['tfk_worksheet_pdf_url'] = '';
+            $tmp_pdf = field_get_items('node', $rel_node, 'field_worksheet_pdf_private');
+            $pdf_tmp_uri = $tmp_pdf[0]['uri'];
+            $pdf_path = file_create_url($pdf_tmp_uri);
+            if($pdf_path) {
+              $variables['fields']['field_minisite_related_content']->content = '<div class="field-content worksheet">';
+              $variables['fields']['field_minisite_related_content']->content .= l($rel_node->title, $pdf_path);
+              $variables['fields']['field_minisite_related_content']->content .= '</div>';
+            }
+          }
+        }
+      }
+      
+    }
+    
+    // Remove body field for ATW destination nodes.
+    // Link text.
+    $content_type = $variables['row']->_field_data['nid']['entity']->type;
+    switch ($content_type) {
+      case 'slideshow':
+        $link = 'View Photo Slide Show';
+      break;
+      case 'video':
+        $link = 'View Full Video';
+      break;
+      case 'minisite':
+        $link = 'View Mini-Site';
+        break;
+      case 'atw_destination':
+        $link = 'View Destination';
+        $variables['fields']['name']->content = l('AROUND THE WORLD', 'around-the-world');
+        unset($variables['row']->field_body);
+        unset($variables['fields']['body']);
+        break;
+      default:
+        $link = 'View Full Article';
+        break;
+    }
+    
+    
+    $variables['fields']['title_1'] = new stdClass();
+    $variables['fields']['title_1']->content = '<span class="field-content">'. l($link, 'node/'. $variables['row']->nid). '</span>';
+    
+    // When there is no credit, add a dummy credit field for padding purposes.
+    if(!array_intersect_key($variables['fields'], array_flip(array('field_image_credit', 'field_credit', 'field_credit_1', 'field_credit_2', 'field_minisite_tout_credit')))) {
+      $first_fields = array_splice($variables['fields'], 0, 2);
+      $first_fields['field_credit_1'] = new stdClass();
+      $first_fields['field_credit_1']->content = '<div class="views-field views-field-field-credit-1"><div class="field-content">&nbsp;</div></div>';
+      
+      $variables['fields'] = array_merge($first_fields, $variables['fields']);
+    }
+    
+  }
+  
+  // Additional content Views.
+  $ac_views = array('homepage_top_story', 'homepage_news_block', 'homepage_minisite','minisite_articles');
+  if(array_search($view->name, $ac_views) !== FALSE && !$view->is_attachment) {
+    
+    // Detect additional content. Generic conditional applies to multiple Views.
+    $ac_keys = array('field_additional_content', 'field_related_articles', 'field_mini_lessons','field_minisite_related_content');
+    $field_keys = array_keys($variables['fields']);
+    $match = array_intersect($ac_keys, $field_keys);
+    if(!empty($match)) {
+      // Global static var, used for adding classes to body.
+      $shared_vars[$view->name]['has_additional_content'] = TRUE;
+      $variables['show_additional_content'] = TRUE;
+      // Simplifies conditionals on the .tpl
+      $variables['add_cont_fields'] = $ac_keys;
+      
+      // Tweak content type names for field field_additional_content.
+      if(array_key_exists('field_additional_content', $variables['fields'])) {
+          $variables['fields']['field_additional_content']->label = ucfirst($variables['row']->field_field_additional_content[0]['raw']['node']->type);
+      }
+      if(array_key_exists('field_minisite_related_content', $variables['fields'])) {
+          $variables['fields']['field_minisite_related_content']->label = ucfirst($variables['row']->field_field_minisite_related_content[0]['raw']['node']->type);
+      }
+    }
+  }
+}
+
+/**
+ * Theme sidebar Featured block.
+ *
+ * @param unknown_type $args
+ */
+function theme_featured_block_sidebar($args) {
+  list($type, $title, $body, $link, $image) = array_values($args);
+  
+  $output = "";
+  $output .= "<div class='featured-block-sidebar-label featured-". $type. "'>&nbsp;</div>";
+  $output .= "<div class='col1'>";
+  $output .= "<div class='featured-block-sidebar-img'>$image</div>";
+  $output .= "<div class='featured-block-sidebar-title'>$title</div>";
+  $output .= "<div class='featured-block-sidebar-body'>$body</div>";
+  $output .= "<div class='featured-block-sidebar-link'>$link</div>";
+  $output .= "</div>";
+
+  return $output;
+}
+
+/**
+ * Returns a themed suggestion box.
+ */
+function theme_suggestion_box($options = array()) {
+
+  $wrapper_class = (array_key_exists('wrapper-class', $options)) ? implode(' ', $options['wrapper-class']): '';
+  $class = (array_key_exists('class', $options)) ? implode(' ', $options['class']): '';
+  
+  $output = "<div class='suggestion-box-wrapper ". $wrapper_class. "'>";
+  $output .= "<div id='{$options['id']}' class='". $class. "'>";
+  
+  $message = t($options['message']);
+  $link = l(t($options['link_title']), $options['link_dest']);
+   
+  $output .= "<div class='msg'>$message</div>";
+  $output .= "<div class='link'>$link</div>";
+  $output .= '</div>';
+  
+  $output .= '</div>';
+  return $output;
+}
+
+/**
+ * Implementation of hook_file_download()
+ *
+ * Here we restrict who can download a pdf file by role.
+ */
+function tfk_helper_file_download($uri) {
+  global $user;
+  
+  /*
+  flog_it("tfk_helper_file_download: uri=".$uri);
+  flog_it("user->name=".$user->name);
+  flog_it($user->roles);
+   * 
+   */
+  if (strpos($uri, 'pdf') >= 0) {
+    $allowed = array_intersect(array('administrator', 'editor', 'teacher'), array_values($user->roles));
+  	if (empty($allowed)) {
+            //flog_it("returning false...");
+            return -1;
+   	} else {
+   	  return array();
+   	}
+  }
+}
+
+/**
+ * Implementation of hook_block_info.
+ *
+ * Here we expose blocks that are usable by other modules.
+ */
+function tfk_helper_block_info() {
+  $blocks = array();
+  
+  // TFK Photos and Video Node Featured Block (Sidebar).
+  $blocks['featured_block_sidebar_slideshow'] = array(
+    'info' => t('TFK Helper Sidebar Featured Block'),
+    'visibility' => BLOCK_VISIBILITY_LISTED,
+    'cache' => DRUPAL_CACHE_GLOBAL,
+  );
+  
+  // TFK Photos and Video More Items Block.
+  $blocks['more_items_block'] = array(
+    'info' => t('TFK Helper More Items Block'),
+    'visibility' => BLOCK_VISIBILITY_LISTED,
+    'cache' => DRUPAL_CACHE_GLOBAL,
+  );
+  
+  // TFK Helper Slideshow.
+  $blocks['tfk_helper_slideshow'] = array(
+    'info' => t('TFK Helper Slideshow'),
+    'visibility' => BLOCK_VISIBILITY_LISTED,
+    'cache' => DRUPAL_CACHE_GLOBAL,
+  );
+  
+  // TFK Helper Login.
+  $blocks['tfk_helper_login'] = array(
+    'info' => t('TFK Helper Login'),
+    'visibility' => BLOCK_VISIBILITY_LISTED,
+    'cache' => DRUPAL_CACHE_GLOBAL,
+  );
+  
+  return $blocks;
+}
+
+/**
+ * Implementation of hook_block_view.
+ */
+function tfk_helper_block_view($delta='') {
+  global $node;
+  $block = array();
+  
+  switch ($delta) {
+    
+    // TFK Photos and Video Node Featured Block (Sidebar).
+    case 'featured_block_sidebar_slideshow':
+      drupal_add_css(drupal_get_path('module', 'tfk_helper'). '/css/tfk_helper_featured_block.css', 'file');
+      $node = menu_get_object('node', 1);
+      
+      $image_field = ($node->type == 'video') ? 'field_video_thumbnail' : 'field_lrg_sq_image';
+      
+      $featured_item = tfk_helper_get_featured_block_sidebar('photos_videos_featured', $image_field);
+
+      if($featured_item != FALSE) {
+        $block['content'] = theme('featured_block_sidebar', $featured_item);
+      }
+    break;
+    
+    // TFK Photos and Video More Items Block. Used for More TFK Photos & Videos.
+    case 'more_items_block':
+      // Check: Don't putout no images found msg. for a behind the paywall permission issue  
+      if ($node->nid != 94246 && $node->title != "SUBSCRIBER-ONLY CONTENT") {
+        drupal_add_css(drupal_get_path('module', 'tfk_helper'). '/css/tfk_helper_more_items_block.css', 'file');
+        $more_items = tfk_helper_get_more_items();
+        if($more_items != FALSE) {
+          $block['content'] = theme('photos_video_more', $more_items);
+        }
+      }
+    break;
+    
+    // TFK Helper Slideshow.
+    case 'tfk_helper_slideshow':
+      drupal_add_js(drupal_get_path('theme', 'tfk'). '/js/atw_homepage_slideshow.js','file');
+      drupal_add_css(drupal_get_path('theme', 'tfk'). '/css/atw_homepage_slideshow.css', 'file');
+      $slideshow_nid = arg(1);
+      $images = tfk_helper_get_slideshow_data($slideshow_nid);
+      if($images != FALSE) {
+        $block['content'] = tfk_helper_get_slideshow($images, array('related_nid' => $slideshow_nid));
+      } else {
+        // Check: Don't putout no images found msg. for a behind the paywall permission issue
+        if ($node->nid != 94246 && $node->title != "SUBSCRIBER-ONLY CONTENT") {
+            $block['content'] = '<b>No valid images found</b>';
+            drupal_set_message('The slideshow could not be rendered because there are no valid images associated to this node.', 'warning');
+        }
+      }
+    break;
+    
+     // TFK Helper Login.
+    case 'tfk_helper_login':
+      $login_form = drupal_get_form('user_login');
+      $login_form['#rendered_build_id'] = render($login_form['form_build_id']);
+      $block['content'] = render($login_form);
+    break;
+    
+  }
+  
+  return $block;
+}
+
+/**
+ * Returns a fully-themed generic slideshow.
+ *
+ * @param array $images
+ *   Associative array of images with the following keys
+ *     - 'image_path': Publicly accessible URL for the image.
+ *     - 'image_title': Image title.
+ * @param array $options
+ *   Associative array of options:
+ *     - 'related_nid': If set, a themed box will be added to the
+ *     slideshow with links to related content.
+ *
+ * @see tfk_helper_block_view()
+ * @see tfk_helper_get_additional_content()
+ * @see theme_atw_destination_node_slideshow()
+ * @see theme_tfk_search_related_content()
+ */
+function tfk_helper_get_slideshow($images, $options) {
+  $variables = array();
+  
+  if(array_key_exists('related_nid', $options) && !empty($options['related_nid'])) {
+    $additional_content = tfk_helper_get_additional_content();
+    if($additional_content !== FALSE) {
+      $variables['related_content'] = theme('tfk_search_related_content', $additional_content);
+    }
+  }
+  $variables['images_data'] = $images['images_data'];
+  $output = theme('regular_slideshow', $variables);
+  
+  return $output;
+}
+
+/**
+ * Helper function used for retrieving additional content.
+ *
+ * Fetches related content for the current node using the
+ * tfk_helper_related_content View.
+ *
+ * @return
+ *   FALSE if no additional content is found. Otherwise an array of associative arrays
+ *   with the following keys: 'path': node url, 'title': node title, 'type':
+ *   content type.
+ */
+function tfk_helper_get_additional_content() {
+  // @see Views API: http://groups.drupal.org/node/10129.
+  $items = array();
+  
+  $view = views_get_view('tfk_helper_related_content');
+  if(is_null($view)) {
+    return FALSE;
+  } else {
+    $view->execute();
+  	if(!empty($view->result)) {
+  		$related_content = array('quantity_articles' => count($view->result), 'related_content');
+  	    foreach($view->result as $result) {
+  	      if(is_null($result->node_field_data_field_additional_content_nid)) {
+  	        return FALSE;
+  	      }
+  	      $related_content['related_content'][] = array(
+  	        'path'   => 'node/'. $result->node_field_data_field_additional_content_nid,
+  	        'title' => $result->node_field_data_field_additional_content_title,
+  	      	'type' => tfk_helper_translate_content_type($result->node_field_data_field_additional_content_type),
+  	      );
+  	    }
+  		return $related_content;
+  	} else {
+  	  return FALSE;
+  	}
+  }
+}
+
+/**
+ * Translate machine-readable content type names.
+ *
+ * @return string
+ *   Human-readable content type string.
+ */
+function tfk_helper_translate_content_type($content_type) {
+  switch ($content_type) {
+    case 'atw_destination':
+      $translation = 'destination';
+    break;
+
+    case 'slideshow':
+      $translation = 'slide show';
+    break;
+    
+    default:
+      $translation = $content_type;
+    break;
+  }
+  return $translation;
+}
+
+/**
+ * Get an array of images for the slideshow template.
+ *
+ * @param int $nid Slideshow nid.
+ *
+ * @see tfk_helper_block_view
+ */
+function tfk_helper_get_slideshow_data($nid) {
+  $node = node_load($nid); //@todo menu get object.
+  $images =  field_get_items('node', $node, 'field_slideshow_images');
+  
+  if(!empty($images)) {
+    $list = array('images_data' => array());
+    foreach($images as $image){
+      // Title.
+      $title = $image['node']->title;
+           
+      // Caption.
+      //$caption = array_pop(array_shift(field_get_items('node', $image['node'], 'field_caption')));
+      
+      // Credit.
+      #$credit = array_pop(array_shift(field_get_items('node', $image['node'], 'field_credit')));
+      
+      $credit = field_get_items('node', $image['node'], 'field_credit');
+      if($credit) {
+        $credit = array_pop($credit[0]);
+      }
+      
+      // Images.
+      $image_field = field_get_items('node', $image['node'], 'field_image');
+      if($image_field) {
+        $image_field = array_shift($image_field);
+        
+        list($width, $height, $type, $attr) = getimagesize($image_field['uri']);
+      }
+      
+      // Date.
+      $date = tfk_helper_render_field('node', $node, 'field_date');
+      
+      // Description.
+      $field_body = field_get_items('node', $image['node'], 'body');
+      if($field_body && !empty($field_body[0]['safe_summary'])) {
+        $description = $field_body[0]['safe_summary'];
+      } else {
+        $description = $field_body[0]['safe_value'];
+      }
+      
+      //$derivative_path = tfk_search_get_thumbnail($image_field['fid'], 'tfk_rect_large');
+      
+      // $destination = image_style_url('default', $image_field['uri']);
+      $image_path = url(file_stream_wrapper_get_instance_by_scheme(file_uri_scheme($image_field['uri']))->getDirectoryPath() . '/' . file_uri_target($image_field['uri']), array('absolute' => TRUE));
+            
+      $file = file_load($image_field['fid']);
+      if(empty($file->uri)) {
+        return FALSE;
+      }
+      
+      //if($derivative_path != FALSE) {
+        $list['images_data'][] = array(
+          'image_path'  => $image_path,
+          'image_title' => $image['node']->title,
+          'title'       => $title,
+          //'caption'     => $caption,
+          'credit'      => $credit,
+          'description' => $description,
+          'date' 				=> $date,
+        );
+      //}
+      
+    }
+  }
+  
+  if(!empty($list['images_data'])) {
+    return $list;
+  } else {
+    return FALSE;
+  }
+}
+
+/**
+ * Renders a single item from a field using the Field and Render APIs.
+ *
+ * Use this function to get the value of a field and render it in one shot.
+ *
+ * Example usage:
+ * Basic example - rendering the first item of a field with it's default display settings.
+ * @code
+ *   $rendered_field = tfk_helper_render_field('node', $image['node'], 'field_image');
+ * @endcode
+ * Rendering the second item of a field with custom specified display settings.
+ * @code
+ *   $display = array('settings' => array('image_style' => 'tfk_square_large'));
+ *   $test = tfk_helper_render_field('node', $image['node'], 'field_image', 0, $display);
+ * @endcode
+ *
+ * Before the rendered field is returned, drupal_alter('field_attach_view') is
+ * called.
+ *
+ * For best usage, see the documentation for:
+ * @see field_get_items()
+ * @see field_view_value()
+ * @see field_view_field()
+ * @see render()
+ * @see drupal_alter()
+ *
+ * @todo Write a multiple-value version of this function.
+ * @todo Document how to find the display settings.
+ *
+ * @param string $entity_type
+ *   The type of $entity.
+ * @param stdClass $entity
+ *   The entity containing the data to be displayed.
+ * @param string $field_name
+ *   The field to be displayed.
+ * @param int $item_key
+ *   (optional) The field item to display, e.g., on a multiple node reference field,
+ *   render the first node reference. Defaults to 0.
+ * @param array $display
+ *   (optional) Can be either the name of a view mode, or an array of display settings.
+ *   Can be either:
+ *   - The name of a view mode. The field will be displayed according to the
+ *     display settings specified for this view mode in the $instance
+ *     definition for the field in the entity's bundle.
+ *     If no display settings are found for the view mode, the settings for
+ *     the 'default' view mode will be used.
+ *   - An array of display settings, as found in the 'display' entry of
+ *     $instance definitions. The following key/value pairs are allowed:
+ *     - label: (string) Position of the label. The default 'field' theme
+ *       implementation supports the values 'inline', 'above' and 'hidden'.
+ *       Defaults to 'above'.
+ *     - type: (string) The formatter to use. Defaults to the
+ *       'default_formatter' for the field type, specified in
+ *       hook_field_info(). The default formatter will also be used if the
+ *       requested formatter is not available.
+ *     - settings: (array) Settings specific to the formatter. Defaults to the
+ *       formatter's default settings, specified in
+ *       hook_field_formatter_info().
+ *     - weight: (float) The weight to assign to the renderable element.
+ *       Defaults to 0.
+ *   See field_view_field() for more information.
+ * @param $langcode
+ *   (optional) The language code $entity->{$field_name} has to be displayed in.
+ *   Defaults to the current language.
+ *
+ * @return
+ *   Rendered element using drupal_render().
+ */
+function tfk_helper_render_field($entity_type, $entity, $field_name, $item_key = 0, $display = array(), $langcode = NULL) {
+
+  $field_values = field_get_items($entity_type, $entity, $field_name, $langcode);
+  if($field_values != FALSE) {
+    $field_value = $field_values[$item_key];
+    $render_array = field_view_value($entity_type, $entity, $field_name, $field_value, $display, $langcode);
+    $rendered_value = render($render_array);
+    return $rendered_value;
+  }
+
+}
+
+/**
+ * Returns a render array for a single field delta.
+ *
+ * This allows the implementor to alter the render array before calling render().
+ * You can use this function to add elements to render arrays like the $content or
+ * region arrays in preprocess functions. See tfk_helper_render_field() for an
+ * explanation of the parameters.
+ *
+ * @see tfk_helper_render_field()
+ *
+ * @return
+ *   Render array for a single field delta.
+ */
+function tfk_helper_pre_render_field($entity_type, $entity, $field_name, $item_key = 0, $display = array(), $langcode = NULL) {
+
+  $field_values = field_get_items($entity_type, $entity, $field_name, $langcode);
+  if($field_values != FALSE) {
+    $field_value = $field_values[$item_key];
+    $render_array = field_view_value($entity_type, $entity, $field_name, $field_value, $display, $langcode);
+    return $render_array;
+  }
+
+}
+
+/**
+ * Executes photos_videos_more View to generate array of 4 Photos and Video
+ * nodes.
+ *
+ * @see theme_photos_video_more()
+ * @see tfk_helper_block_view()
+ */
+function tfk_helper_get_more_items() {
+  // @see Views API: http://groups.drupal.org/node/10129.
+  $items = array();
+  
+  $view = views_get_view('photos_videos_more');
+  if(is_null($view)) {
+    return FALSE;
+  } else {
+    $result = $view->execute_display('block_mpv');
+    // Another way of doing it.
+    //$view->set_display('block_mpv');
+    //$view->set_arguments(array(arg(1)));
+    //$view->execute();
+    $view->render();
+    
+    // Amount of items to show.
+    $qty = 4;
+    $index = 0;
+    $continue = FALSE;
+    $result_qty = count($view->result);
+    
+    // Shuffle results.
+    shuffle($view->result);
+    
+    $icon = '<div class="icon"></div>';
+    
+    // Iterate through View results until we have 4 items with images.
+    for ($i = 0; $i < $qty; $i++) {
+      // If we have iterated through the whole result set.
+      if(($index) == $result_qty) {
+        break;
+      }
+      $result = $view->result[$index];
+      
+      // Video thumbnails.
+      if($result->node_type == 'video') {
+        $result->field_field_video_thumbnail[0]['rendered']['#suffix'] = $icon;
+        $thumbnail = drupal_render($result->field_field_video_thumbnail[0]['rendered']);
+        
+        // Don't show this Video if it does not have a thumbnail.
+        $continue = (empty($thumbnail)) ? TRUE : FALSE;
+      }
+      
+      // Slideshow thumbnails.
+      if($result->node_type == 'slideshow') {
+        
+        // Use the lrg_sq_image field for a thumbnail.
+        $thumbnail = theme('image_style',array('style_name' => '115x115', 'path' => $result->field_field_lrg_sq_image[0]['raw']['uri'])).$icon;
+
+        // Don't show this Video if it does not have a thumbnail.
+        $continue = (empty($thumbnail)) ? TRUE : FALSE;
+      }
+      
+      // Increment resultset index.
+      $index++;
+      
+      if($continue) {
+        $i--;
+        continue;
+      }
+      
+      // Remove " and ' characters to be safe.
+      $link_options = array('html' => TRUE, 'attributes' => array('class' => array('tfk-mpv-thumbnail-link', 'content-type-'. $result->node_type), 'title' => htmlentities($result->node_title, ENT_QUOTES, 'UTF-8', FALSE)));
+      $url = 'node/'. $result->nid;
+      $items[] = array(
+        'title' => l($result->node_title, $url),
+      	'image' => l($thumbnail, $url, $link_options),
+        'type' => $result->node_type,
+      );
+    }
+  }
+  return array('more_items' => $items);
+}
+
+function theme_photos_video_more($variables) {
+  $items = $variables['more_items'];
+  $output = '<div id="more-items">';
+  $output .= '<h2 class="more-items-label">More TFK Photos & Videos</h2>';
+  $output .= '<div class="more-items-content">';
+  foreach($items as $item) {
+    $output .= '<div class="more-items-col">';
+      $output .= $item['image'];
+      $output .= '<div class="more-items-item-title">'. $item['title']. '</div>';
+    $output .= '</div>';
+  }
+  $output .= '</div>'; // More items content.
+  $output .= '</div>';
+  return $output;
+}
+
+/**
+ * Data class used for sidebar featured items.
+ */
+class tfkHelperFeaturedItem {
+  // We expose public static properties so developers can easily modify the
+  // style of the data loaded.
+  /**
+   * Content type of the node currently being viewed.
+   *
+   * @var string
+   */
+  static $image_style = '115x115';
+  static $body_trim = '300';
+  static $snippet_format = 'full_html';
+  static $thumbnail_class = array('featured-block-sidebar-img');
+  /**
+   * Field to load the thumbnail image from.
+   * @var string
+   */
+  static $thumbnail_field;
+  
+  function __construct($nid) {
+    $featured_node = node_load($nid);
+    $this->type = $featured_node->type;
+    
+    // Add dynamic CSS class using content type.
+    self::$thumbnail_class[] = 'content-type-'. $this->type;
+      
+    $url = 'node/'. $featured_node->nid;
+    $this->title = l($featured_node->title, $url); // Alternatively load 'safe_summary'.
+    $body = field_get_items('node', $featured_node, ($featured_node->type == 'slideshow') ? 'field_slideshow_description': 'field_deck');
+        
+    if(isset($body)) {
+      $unfiltered_body = (array_key_exists('safe_value', $body[0])) ? $body[0]['safe_value']: $body[0]['value'];
+      
+      // The pattern "<p>&nbsp;</p>" causes a bug in truncate_utf8. Strip it out.
+      $clean_body = preg_replace("/\<p\>.?&nbsp;.?\<\/p\>/", '', $unfiltered_body);
+  
+      // Get the first paragraph, and fall back to a character count if there is no paragraph.
+      $first_paragraph = array();
+      $matched = preg_match("/\<p\>.*?\<\/p\>/", $clean_body, $first_paragraph);
+      $this->body = check_markup( ($matched) ? $first_paragraph[0] : truncate_utf8($clean_body, self::$body_trim, TRUE, TRUE, 10) , self::$snippet_format, '', TRUE);
+    } else {
+      // Print a helpful (but hidden) "error" message if there is no teaser. Use Firebug inspect element to see it.
+      $this->body = '<!-- body field not found or empty -->';
+    }
+    
+    //$this->body = check_markup(truncate_utf8($body[0]['safe_value'], self::$body_trim, TRUE, TRUE, 10), self::$snippet_format, '', TRUE);
+    
+    
+    $tmp_type = '';
+    if($featured_node->type == 'slideshow'){
+        $tmp_type = 'slide Show';
+    }else{
+        $tmp_type = $featured_node->type;
+    }
+    
+    
+    $this->link = l('See '. ucfirst($tmp_type), $url);
+    
+    if($featured_node->type == 'slideshow') {
+      $icon = '<div class="icon"></div>';
+      $link_options = array('html' => TRUE, 'attributes' => array('class' => 'featured-block-sidebar-img content-type-slideshow'));
+      $this->image = l(theme('image_style', array('style_name' => '115x115','path' => $featured_node->field_lrg_sq_image['und'][0]['uri'])).$icon, $url, $link_options);
+    } else {
+      $_thumbnail_field = field_get_items('node', $featured_node, self::$thumbnail_field);
+      if(!empty($_thumbnail_field)) {
+        $this->get_thumbnail((object) $_thumbnail_field[0], $url);
+      }
+    }
+    unset($this->nid);
+    $this->to_array = get_object_vars($this);
+
+  }
+  
+  /**
+   * Creates a linked image derivative.
+   *
+   * Generates the image derivative if it has not been previously built.
+   */
+  function get_thumbnail($file, $url) {
+    $thumbnail_path = image_style_url(self::$image_style, $file->uri);
+    $link_options = array('html' => TRUE, 'attributes' => array('class' => self::$thumbnail_class));
+    $icon = '<div class="icon"></div>';
+    $this->image = l(theme('image', array('path' => $thumbnail_path)). $icon, $url, $link_options);
+  }
+}
+
+/**
+ * Loads data for sidebar Featured block.
+ *
+ * @param string $flag_name
+ *   Machine-readable name of the flag used to filter content by.
+ * @param string $thumbnail_field
+ *   Machine-readable name of the field holding the featured item image.
+ * @param boolean $dynamic
+ *   (Optional) Whether to let the function figure the content type by itself.
+ * @param string $node_type
+ *   (Optional) The content type of the node to load.
+ *
+ * @see tfk_helper_block_view()
+ */
+function tfk_helper_get_featured_block_sidebar($flag_name, $thumbnail_field, $dynamic = TRUE, $node_type = NULL) {
+  
+  if($dynamic) {
+    // Get the content type of the current node type.
+    $node = menu_get_object('node', 1);
+    $node_type = $node->type;
+  }
+  tfkHelperFeaturedItem::$thumbnail_field = $thumbnail_field;
+  
+  // We get a Featured node with the same content type as the currently loaded node.
+  $fn_query = "
+    SELECT
+  	  fn.nid AS nid
+  	FROM
+  	  node fn
+  	  INNER JOIN flag_content fc ON fn.nid = fc.content_id
+  	  WHERE fn.type = :node_type
+      AND fc.fid = (SELECT fid FROM flags f WHERE f.name = :flag_name)
+      AND fn.nid != :not_nid
+  	ORDER BY fn.created DESC";
+	
+  // Try to load the first two featured items. If there are two use the second, else fall back to the first one.
+  $featured_nodes = db_query_range($fn_query, 0, 1,
+    array(':node_type' => $node_type, ':flag_name' => $flag_name, ':not_nid' => $node->nid)
+  )->fetchAll();
+  
+  if(!empty($featured_nodes) && isset($featured_nodes[0]->nid)) {
+    // Supress the Featured block when the featured node is the same as the currently viewed one.
+    if($node->nid == $featured_nodes[0]->nid) {
+      return FALSE;
+    } else {
+      $featured_node = new tfkHelperFeaturedItem(($featured_nodes[0]->nid));
+    	if(!empty($featured_node->to_array)) {
+    	  return $featured_node->to_array;
+    	} else {
+    	  return FALSE;
+    	}
+    }
+  }
+  	
+}
+
+/**
+ * Check the roles of the current user.
+ *
+ * @param array $roles
+ *   Roles to check for.
+ *   Defaults to 'editor', 'teacher', and 'administrator'.
+ *
+ * @return
+ *   TRUE if the current user has one of the $roles, otherwise FALSE.
+ */
+function tfk_helper_user_has_role($roles = array('editor', 'teacher', 'administrator')) {
+  global $user;
+  
+  // uid 1 has permissions to everything.
+  if($user->uid == 1) {
+    return TRUE;
+  }
+  
+  $grant = array();
+  foreach($user->roles as $role) {
+    $rid = array_search($role, $roles);
+    if($rid !== FALSE) {
+      $grant[] = $role;
+    }
+  }
+  
+  return (!empty($grant)) ? TRUE: FALSE;
+}
+
+/**
+ * Central function for rendering human-readable content type labels.
+ *
+ * @param string $content_type
+ *   Machine-readable version of the content type.
+ *
+ * @return
+ *   Human-readable version of the content type.
+ */
+function tfk_helper_get_content_type_label($content_type) {
+    if($content_type == 'atw_destination') {
+      return 'AROUND THE WORLD';
+    } else {
+      return $content_type;
+    }
+    
+    // If our content types were label-friendly, we could have used these.
+    //dpm(node_type_get_name($related_node));
+    //dpm(node_type_get_type($related_node));
+}
+
+/**
+ * Implement hook_node_update
+ *
+ * @param type $node
+ *
+ * This is called whenever a node is saved.
+ *
+ * If a flag is set, unflag and reflag, in order to force the node back to
+ * the top of the lists (e.g. homepage_secondary_touts or featured destination)
+ * We unflag first because flagging a node that's already flagged is effectively
+ * a no-op. But if it's unflagged and then reflagged, the flag-weight is reset to
+ * force it to the top of the particular flag's list of flagged nodes.
+ */
+function tfk_helper_node_update($node) {
+  
+  // Suppress memcache/varnish purging code for now.
+  return;
+  
+  // Site wide search cache busting.
+  if(array_search($node->type, array('article', 'slideshow', 'video', 'atw_destination', 'minisite','tfk_extra','a_paper','grammar_practice','writing_tips','book','store_product')) !== FALSE) {
+    advanced_purge_paths(array('/search/site'));
+  }  
+  
+  if(isset($node->flag)) {
+    foreach($node->flag as $flag => $value) {
+      if($value && $node->type != "kid_reporter_listing_nodeblock") {
+          flag('unflag',$flag,$node->nid);
+          flag('flag',$flag,$node->nid);
+      }
+    }
+  }
+    
+  // Cache busting for all anonymous user sections that are not homepage, news or kid reporters.
+  // Those sections are busted by the reflagging code above.
+  switch ($node->type) {
+    case 'minisite':
+      advanced_purge_paths(array('/mini-sites'));
+      advanced_purge_varnish(array('/mini-sites'));
+    break;
+    
+    case 'book':
+      advanced_purge_paths(array('/store/books'));
+      advanced_purge_varnish(array('/store/books'));
+    break;
+    
+    case 'store_product':
+      advanced_purge_paths(array('/store/products'));
+      advanced_purge_varnish(array('/store/products'));
+    break;
+    
+    case 'tfk_extra':
+      advanced_purge_paths(array('/extras'), TRUE);
+      advanced_purge_varnish(array('/extras'), TRUE);
+    break;
+    
+    case 'slideshow':
+    case 'video':
+      advanced_purge_paths(array('/photos-video', '/search/site'));
+      advanced_purge_varnish(array('/photos-video', '/search/site'));
+      break;
+      
+    case 'atw_destination':
+    case 'atw_homepage_nodeblock':
+      advanced_purge_paths(array('/around-the-world'), TRUE);
+      if($node->type == 'atw_destination') {
+        advanced_purge_varnish(array('/'. $node->path['alias']), TRUE);
+      }
+      break;
+  }
+    
+    
+    
+}
+
+function tfk_helper_node_view($node, $view_mode, $langcode) {
+    if($node->type == 'article' && $view_mode == 'full') {
+        if(empty($node->field_wysiwyg_image_caption) && !empty($node->field_image_caption)) {
+            $node->field_wysiwyg_image_caption = $node->field_image_caption;
+            $node->field_wysiwyg_image_caption['und'][0]['format'] = 'full_html';
+            $node->field_wysiwyg_image_caption['und'][0]['value'] = '<p>' . $node->field_wysiwyg_image_caption['und'][0]['value'] . '</p>';
+        }
+    }
+}
+
+/**
+ * Implements hook_node_view_alter()
+ *
+ * For the Article content type, check to see if the "Wysiwyg Image Caption" field has content.
+ * If not, but the deprecated "Image Caption" field does, copy the contents of the old "Image Caption"
+ * field into the "Wysiwyg Image Caption" field, so it will be displayed.
+ *
+ * @param type $build
+ */
+
+function tfk_helper_node_view_alter(&$build) {
+    if($build['#bundle']=='article' && $build['#view_mode']=='full') {
+        if(!isset($build['field_wysiwyg_image_caption'])) {
+            if(isset($build['field_image_caption'])) {
+                $build['field_wysiwyg_image_caption'] = $build['field_image_caption'];
+                $build['field_wysiwyg_image_caption']['#field_name'] = 'field_wysiwyg_image_caption';
+                $build['field_wysiwyg_image_caption'][0]['#markup'] = '<p>' . $build['field_wysiwyg_image_caption'][0]['#markup'] . '</p>';
+            }
+        }
+        unset($build['field_image_caption']);
+    }
+}
+
+/**
+ * Implementation of hook_form_BASE_FORM_ID_alter()
+ *
+ * Adds a new button "Save and Create New" to the Node Add form for all
+ * content types handled by the node module. The button appears only for
+ * new nodes, not ones being edited/updated.
+ *
+ * @param type $form
+ * @param type $form_state
+ * @param type $form_id
+ */
+function tfk_helper_form_node_form_alter(&$form, &$form_state, $form_id) {
+  if(!isset($form_state['node']->nid) && $form_state['node']->type != 'flashcard') {
+      $form['actions']['save_and_new'] = array(
+        '#type' => 'submit',
+        '#value' => t('Save and Create New'),
+        '#weight' => 4,
+        '#submit' => array('tfk_helper_node_form_submit'),
+      );
+  }
+
+}
+
+/**
+ * Form submit handler for the "Save and Create New" button on node forms
+ * (see tfk_helper_form_node_form_alter(), above). After calling the default
+ * system node_form_submit() function and verifying that the node was
+ * actually saved, it calls drupal_goto() to open a new, blank "Add Content" form
+ * for the same content type that had just been saved.
+ *
+ * @param type $form
+ * @param type $form_state
+ */
+function tfk_helper_node_form_submit($form, &$form_state) {
+  // first call standard submit, then do the new form...
+  node_form_submit($form, $form_state);
+  if($form_state['node']->nid) { // node successfully saved
+    drupal_goto('node/add/'.$form_state['node']->type);
+  }
+}
+
+/**
+ * Implements hook_element_info_alter().
+ *
+ */
+function tfk_helper_element_info_alter(&$type) {
+
+  // add a pre_render callback of our own
+  if (isset($type['text_format'])) {
+    $type['text_format']['#pre_render'][] = 'tfk_helper_prerender_text_format';
+  }
+}
+
+
+/**
+ * pre render callback for MODULENAME_element_info_alter().
+ */
+function tfk_helper_prerender_text_format($element) {
+  if (isset($element['#entity_type']) && $element['#entity_type'] == 'node' && ($element['#field_name'] == 'field_deck' || $element['#field_name'] == 'field_wysiwyg_image_caption')) {
+    // override the default input format
+    $element['format']['format']['#value'] = 'text_field'; // CHANGE THIS TO DESIRED INPUT FORMAT
+    $element['#format'] = 'text_field'; // CHANGE THIS TO DESIRED INPUT FORMAT. ckeditor will use this to display the correct profile
+  }
+
+  return $element;
+   
+}
+
+
+
