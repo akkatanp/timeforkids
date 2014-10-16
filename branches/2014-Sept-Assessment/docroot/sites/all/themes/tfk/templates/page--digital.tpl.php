@@ -8,18 +8,17 @@
 /*
 *	Set the post fields to sent to the digital product page
 */
-global $user;  
+global $user; 
+//flog_it($user);
 $cgiToken = ($user->uid ? $_COOKIE['CGI-token'] : '');
+watchdog('page--digital.tp.php', 'user name=%name, user email=%email, CGI-token=%cgiToken', array('%name' => $user->name, '%email' => $user->mail, '%cgiToken' => $cgiToken));
 //flog_it("cgiToken=".$cgiToken);
 //flog_it($_ENV['AH_SITE_ENVIRONMENT']);
-
-//https://app.timeforkidsdigital.com/cgiAuth.php
-//http://subscription-assets.timeforkids.com/prod/assets/themes/magazines/SUBS/templates/velocity/site/tk-digital/library.html
 
 if (isset($_ENV['AH_SITE_ENVIRONMENT'])) {
   switch ($_ENV['AH_SITE_ENVIRONMENT']) {
     case 'prod':
-      $form_action = 'http://subscription-assets.timeforkids.com/prod/assets/themes/magazines/SUBS/templates/velocity/site/tk-digital/library.html';
+      $form_action = 'https://auth.timeforkids.com/cgiAuth.php';
       break;
 
     default:
@@ -27,8 +26,10 @@ if (isset($_ENV['AH_SITE_ENVIRONMENT'])) {
       break;
   }
 } else {
-    $form_action = 'http://subscription-assets.timeforkids.com/prod/assets/themes/magazines/SUBS/templates/velocity/site/tk-digital/library.html';
+    $form_action = 'https://qa-auth.timeforkids.com/cgiAuth.php';
 }
+
+//watchdog('page--digital.tp.php', 'form_action=%form_action', array('%form_action' => $form_action));
 ?>
 <form id="cgi-redirect" action="<?php echo $form_action; ?>" method="post">
 	<input type="hidden" name="CGI-Token-Exp" value="2592000000" />
