@@ -552,19 +552,11 @@ define('TFK_SEARCH_ARTICLE_BYLINE', 'ss_field_article_byline');
 define('TFK_SEARCH_ARTICLE_META_KEYWORDS', 'ss_meta_keywords');
 
 /**
- * Apache Solr search field, represents the Minisite deck.
+ * Apache Solr search field, represents the minisite deck.
  *
  * @var string
  */
-define('TFK_SEARCH_MINISITE_DECK', 'sm_body');  
-
-/**
- * Apache Solr search field, represents the Kid Reporter Location.
- *
- * @var string
- */
-define('TFK_SEARCH_KID_REPORTER_LOCATION', 'sm_field_location'); 
-
+define('TFK_SEARCH_MINISITE_DECK', 'sm_body');
 
 /**
  * Apache Solr search field, indicates if an article is a magazine cover story.
@@ -635,23 +627,13 @@ function tfk_search_apachesolr_index_document_build(ApacheSolrDocument $document
   //flog_it($document);
   //flog_it("entity:");
   //flog_it($entity);
-  //flog_it("entity_type=".$entity->type);
+  flog_it("entity_type=".$entity->type);
   //flog_it("env_id=".$env_id);
   
   // Use the database host to identify different servers.
   $server_id = tfk_search_get_unique_host_id();
   $document->addField(TFK_SEARCH_HOST, $server_id);
   $flags = flag_get_counts('node', $entity->nid);
-  
-  // Minisite
-  if ($entity->type == "minisite") {
-    // Deck
-    $minisite_deck = field_get_items('node', $entity, 'body');
-//    flog_it("Minisite");
-//    flog_it($minisite_deck);
-    $document->addField(TFK_SEARCH_MINISITE_DECK, $minisite_deck[0]['value']);
-    $document->setField('content', $tmp_body[0]['value']. PHP_EOL. $minisite_deck[0]['value']);
-  }
   
   // Kid Reporter
   if($entity->type == "kid_reporter"){   
@@ -667,15 +649,31 @@ function tfk_search_apachesolr_index_document_build(ApacheSolrDocument $document
   if($entity->type == 'article'){
     //flog_it("Found and article...");
     $tmp_body =  field_get_items('node', $entity, 'field_body');
-    
+    //flog_it("tmp_body:");
+    //flog_it($tmp_body);
     // To avoid modifying the schema.xml, we're stuffing into the content field the body and deck fields.
     $deck = field_get_items('node', $entity, 'field_deck');
-    
     if($deck && !empty($deck[0]['value'])) {
       // We still add the DECK to the index, just in case we want to show a "clean" deck.
       // Right now we are loading the article deck using a node_load().
       $document->addField(TFK_SEARCH_ARTICLE_DECK, $deck[0]['value']);
       $document->setField('content', $tmp_body[0]['value']. PHP_EOL. $deck[0]['value']);
+      
+      // Byline
+      $byline = field_get_items('node', $entity, 'field_article_byline');
+      if($byline && !empty($byline[0]['tid'])) {
+        $term_byline = taxonomy_term_load($tid);
+        $name_byline = $term_byline->name;
+        $document->addField(TFK_SEARCH_ARTICLE_BYLINE, $name_byline);
+        $document->setField('content', $tmp_body[0]['value']. PHP_EOL. $name_byline);
+      }
+      
+      // Metakeywords
+      $meta_keywords = field_get_items('node', $entity, 'field_meta_keywords');
+      if($meta_keywords && !empty($meta_keywords[0]['value'])) {
+        $document->addField(TFK_SEARCH_ARTICLE_META_KEYWORDS, $meta_keywords[0]['value']);
+        $document->setField('content', $tmp_body[0]['value']. PHP_EOL. $meta_keywords[0]['value']);
+      }
     }
 
     // Byline
@@ -704,6 +702,7 @@ function tfk_search_apachesolr_index_document_build(ApacheSolrDocument $document
       $document->setField(TFK_SEARCH_COVER_STORY, 0);
     }
   }
+  
   if($entity->type == 'book' || $entity->type == 'store_product' || $entity->type == 'tfk_lesson_for_tablets') {
     if($entity->type == 'book') {
       $tmp_body = field_get_items('node', $entity, 'field_book_description');
@@ -717,6 +716,16 @@ function tfk_search_apachesolr_index_document_build(ApacheSolrDocument $document
     $document->setField('content', $tmp_body[0]['value']);
   }
   
+  
+  // Minisite
+  if ($entity->type == "minisite") {
+    $minisite_deck = field_get_items('node', $entity, 'body');
+    $document->addField(TFK_SEARCH_MINISITE_DECK, $minisite_deck[0]['value']);
+    $document->setField('content', $tmp_body[0]['value']. PHP_EOL. $minisite_deck[0]['value']);
+  }
+    
+    
+    
   
   // Index spanish version flag.
   // This field is used for facets, so we only index 1s (indexing 0s would
@@ -2347,7 +2356,7 @@ function tfk_search_apachesolr_query_alter($query, $caller) {
     // Limit the number of rows per page to 8 per spec.
     $query->addParam('rows', 8);
     
-    //$query->addParam('fl', TFK_SEARCH_SPANISH_VERSION);
+    $query->addParam('fl', TFK_SEARCH_SPANISH_VERSION);
     
     // When a teacher browses the worksheets the search should be pre-populated with their grade.
     if ( isset($_GET['f']) || isset($_GET['filters']) ) {
@@ -2399,7 +2408,7 @@ function tfk_search_apachesolr_query_alter($query, $caller) {
     //flog_it("TFK magazine search...");
     // Retrieve additional content fields.
     //$query->addParam('fl', implode(',', array(TFK_SEARCH_SPANISH_ISSUE, TFK_SEARCH_SPANISH_VERSION, TFK_SEARCH_WORKSHEET_PDF_LINK, TFK_SEARCH_WORKSHEET_PDF_TITLE)));
-    $query->addParam('fl', implode(',', array(TFK_SEARCH_WORKSHEET_PDF_LINK, TFK_SEARCH_WORKSHEET_PDF_TITLE)));
+    $query->addParam('fl', implode(',', array(TFK_SEARCH_SPANISH_ISSUE, TFK_SEARCH_SPANISH_VERSION, TFK_SEARCH_WORKSHEET_PDF_LINK, TFK_SEARCH_WORKSHEET_PDF_TITLE)));
     
     // Limit the number of rows per page to 8 per spec.
     $query->addParam('rows', 8);
@@ -2409,8 +2418,12 @@ function tfk_search_apachesolr_query_alter($query, $caller) {
   $args = arg();
   if (strpos($path, 'search/site') || ($args[0] == 'search' && $args[1] == 'site')) {
     // Retrieve additional content fields.
-     
-    $query->addParam('fl', implode(',', array(TFK_SEARCH_ARTICLE_DECK, TFK_SEARCH_ARTICLE_BYLINE, TFK_SEARCH_ARTICLE_META_KEYWORDS, TFK_SEARCH_KID_REPORTER_LOCATION, TFK_SEARCH_MINISITE_DECK)));
+    // Body and deck field for articles.
+    // Not returning TFK_SEARCH_ARTICLE_BODY, for now.
+    //flog_it("Site wide search...");
+    //$query->addParam('fl', implode(',', array(TFK_SEARCH_SPANISH_VERSION, TFK_SEARCH_ARTICLE_DECK)));
+    //$query->addParam('fl', implode(',', array(TFK_SEARCH_ARTICLE_DECK)));
+    $query->addParam('fl', implode(',', array(TFK_SEARCH_SPANISH_VERSION, TFK_SEARCH_ARTICLE_DECK, TFK_SEARCH_ARTICLE_BYLINE, TFK_SEARCH_ARTICLE_META_KEYWORDS, TFK_SEARCH_MINISITE_DECK)));
     
     // Limit the number of rows per page.
     $query->addParam('rows', 8);
@@ -4160,7 +4173,7 @@ function tfk_search_magazine_spanish_flag($magazine, $flag_name = 'magazine_issu
   }
   
   // An update occurred, force a Solr index.
-  apachesolr_index_nodes(array($magazine), 'apachesolr_search');
+  //apachesolr_index_nodes(array($magazine), 'apachesolr_search');
 }
 
 /**
