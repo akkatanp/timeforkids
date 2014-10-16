@@ -6,21 +6,25 @@
         <script type="text/javascript">
             function postSize(e){
               e.preventDefault();
-              console.log("postSize...");
-              var target = parent.postMessage ? parent : (parent.document.postMessage ? parent.document : undefined);
-              console.log("typeof target="+target);
-              console.log("document.body.scrollHeight="+document.body.scrollHeight);
-              if (typeof target !== "undefined" && document.body.scrollHeight) {
+              //console.log("postSize...");
+              //var target = parent.postMessage ? parent : (parent.document.postMessage ? parent.document : undefined);
+              // From Arizona:
+              var target = window.postMessage ? parent : null;
+              //console.log("typeof target="+target);
+              //console.log("document.body.scrollHeight="+document.body.scrollHeight);
+              // (typeof target !== "undefined" && document.body.scrollHeight)
+              // From Arizona:
+              if (!!target && (typeof target !== "undefined") && !!document.body.scrollHeight) {
                 target.postMessage(document.getElementById("foo").scrollHeight, "*");
               }
             }
 
             if (window.addEventListener) {
-                console.log("adding non-IE postSize addEventListener...");
+                //console.log("adding non-IE postSize addEventListener...");
                 window.addEventListener("load", postSize, false);  
             } else {  
                 console.log("adding IE postSize addEventListener...");
-                window.attachEvent("load", postSize);//for ie  
+                //window.attachEvent("load", postSize);//for ie  
             } 
         </script>
     </head>
