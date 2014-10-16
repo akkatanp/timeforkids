@@ -190,13 +190,13 @@ function tfk_assessment_access_callback() {
 function tfk_no_assessment_callback() {
     //flog_it("tfk_no_assessment_callback...");
   
-    return theme('tfk_no_assessment', array('token' => $token));
+    return theme('tfk_no_assessment');
 }
 
 function tfk_cognero_down_callback() {
     //flog_it("tfk_cognero_down_callback...");
   
-    return theme('tfk_cognero_down', array('token' => $token));
+    return theme('tfk_cognero_down');
 }
 
 

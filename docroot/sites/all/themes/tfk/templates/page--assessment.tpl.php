@@ -96,6 +96,8 @@
     
     // Check for Cognero down
     if ($response->code != 200) {
+        //flog_it("response->code=".$response->code);
+        watchdog('page--assessent.tp.php', 'Cognero bad return code=%code', array('%code' => $response->code));
         drupal_goto("cognero-down");
     }
     
