@@ -10,8 +10,8 @@
 */
 global $user;  
 $cgiToken = ($user->uid ? $_COOKIE['CGI-token'] : '');
-flog_it("cgiToken=".$cgiToken);
-flog_it($_ENV['AH_SITE_ENVIRONMENT']);
+//flog_it("cgiToken=".$cgiToken);
+//flog_it($_ENV['AH_SITE_ENVIRONMENT']);
 
 //https://app.timeforkidsdigital.com/cgiAuth.php
 //http://subscription-assets.timeforkids.com/prod/assets/themes/magazines/SUBS/templates/velocity/site/tk-digital/library.html

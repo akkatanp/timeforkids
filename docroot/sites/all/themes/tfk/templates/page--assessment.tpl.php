@@ -101,7 +101,9 @@
     
     // Bring up Cognero Screen
     $dataResponse = drupal_json_decode($response->data);
-    $encAuthToken = $dataResponse['d'][encAuthToken];
+    
+    //flog_it($dataResponse);
+    $encAuthToken = $dataResponse['d']['encAuthToken'];
     //flog_it("encAuthToken=".$encAuthToken);
     drupal_goto($cogneroURL.$encAuthToken);
 ?>
