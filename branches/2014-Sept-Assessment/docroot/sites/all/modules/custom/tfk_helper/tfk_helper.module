@@ -700,7 +700,7 @@ function tfk_helper_preprocess_views_view_grid(&$variables) {
 }
 
 function tfk_helper_preprocess_html(&$variables, $hook) {
-  flog_it("tfk_helper_preprocess_html...");
+  //flog_it("tfk_helper_preprocess_html...");
   $shared_vars = &drupal_static(TFK_PREPROCESS_HTML);
   
   // Path.
