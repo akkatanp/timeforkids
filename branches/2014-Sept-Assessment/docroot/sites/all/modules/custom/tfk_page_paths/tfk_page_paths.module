@@ -105,12 +105,12 @@ function tfk_page_paths_preprocess_page(&$variables){
     global $base_path;
     
     $args = arg();
-    flog_it("***tfk_page_paths_preprocess_page:");
+    //flog_it("***tfk_page_paths_preprocess_page:");
     
     // tfk-50, tfk-34, tfk-83: Add new items to paywall
     if ( isset($args[0]) && $args[0] == "node" && isset($variables['node']) ) { 
         $node = $args[1];
-        flog_it("content_type=".$variables['node']->type);
+        //flog_it("content_type=".$variables['node']->type);
         if ($variables['node']->type == "article" || $variables['node']->type == "slideshow" || $variables['node']->type == "video" || $variables['node']->type == "minisite") {
             $flag = flag_get_flag("magazine_cover_story");
  
@@ -133,9 +133,9 @@ function tfk_page_paths_preprocess_page(&$variables){
     }
     
     // Check for the tfk-magazine path and an anonymous user
-    flog_it("args[0]=".$args[0].", is_anon=".$variables['is_anon']);
+    //flog_it("args[0]=".$args[0].", is_anon=".$variables['is_anon']);
     if (strstr($args[0], "tfk-magazine") && $variables['is_anon']) {
-        flog_it("Found Anon & magazine path...");
+        //flog_it("Found Anon & magazine path...");
         drupal_add_http_header('Status', '403 Forbidden');
         drupal_deliver_page(MENU_ACCESS_DENIED);
         drupal_exit();
@@ -143,14 +143,14 @@ function tfk_page_paths_preprocess_page(&$variables){
     
     // Check for the digital editions path and an anonymous user
     if (strstr($args[0], "digital") && $variables['is_anon']) {
-        flog_it("Found Anon & digital editon path...");
+        //flog_it("Found Anon & digital editon path...");
         drupal_deliver_page(MENU_ACCESS_DENIED);
         drupal_exit();
     }
     
     // Check for the assessment path and an anonymous user
     if (strstr($args[0], "assessment") && $variables['is_anon']) {
-        flog_it("Found Anon & assessment path...");
+        //flog_it("Found Anon & assessment path...");
         drupal_deliver_page(MENU_ACCESS_DENIED);
         drupal_exit();
     }
@@ -180,7 +180,7 @@ function tfk_page_paths_preprocess_page(&$variables){
 }
 
 function tfk_assessment_access_callback() {
-    flog_it("tfk_assessment_access_callback: user_is_anonymous: ".  user_is_anonymous());
+    //flog_it("tfk_assessment_access_callback: user_is_anonymous: ".  user_is_anonymous());
     if (user_is_anonymous()) {
         return false;
     }
@@ -188,13 +188,13 @@ function tfk_assessment_access_callback() {
 }
 
 function tfk_no_assessment_callback() {
-    flog_it("tfk_no_assessment_callback...");
+    //flog_it("tfk_no_assessment_callback...");
   
     return theme('tfk_no_assessment', array('token' => $token));
 }
 
 function tfk_cognero_down_callback() {
-    flog_it("tfk_cognero_down_callback...");
+    //flog_it("tfk_cognero_down_callback...");
   
     return theme('tfk_cognero_down', array('token' => $token));
 }
@@ -257,7 +257,7 @@ function tfk_store_callback(){
 
 
 function tfk_pv_page_callback() {
-    flog_it("tfk_pv_page_callback...");
+    //flog_it("tfk_pv_page_callback...");
     return '';
 }
 
