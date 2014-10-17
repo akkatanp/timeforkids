@@ -94,13 +94,25 @@
     
     //flog_it("Response code=".$response->code);
     
+    // Check for drupal_http_request error
+    if ($response->code == 0) {
+        for ($i=1; $i<4; $i++) {
+            watchdog('page--assessment.tp.php', 'TRY: count=%count, cognero bad return code=%code, user name=%name, user email=%email, CGI-token=%token', array('%count' => $i, '%code' => $response->code, '%name' => $user->name, '%email' => $user->mail, '%token' => $token));
+            $response = drupal_http_request($cogneroTokenURL, array('headers'=>array('Content-Type'=>'application/json', 'charset'=>'utf-8'), 
+                'data'=>drupal_json_encode($data), 'method'=>'POST'
+            ));
+            if ($response->code == 200) { break; }
+            sleep(1);
+        }
+    }
+    
     // Check for Cognero down
     if ($response->code != 200) {
         //flog_it("response->code=".$response->code);
         watchdog('page--assessment.tp.php', 'cognero bad return code=%code, user name=%name, user email=%email, CGI-token=%token', array('%code' => $response->code, '%name' => $user->name, '%email' => $user->mail, '%token' => $token));
         drupal_goto("cognero-down");
     }
-    watchdog('page--assessment.tp.php', 'cognero good return code=%code, user name=%name, user email=%email, CGI-token=%token', array('%code' => $response->code, '%name' => $user->name, '%email' => $user->mail, '%token' => $token));
+    //watchdog('page--assessment.tp.php', 'cognero good return code=%code, user name=%name, user email=%email, CGI-token=%token', array('%code' => $response->code, '%name' => $user->name, '%email' => $user->mail, '%token' => $token));
     
     // Bring up Cognero Screen
     $dataResponse = drupal_json_decode($response->data);
