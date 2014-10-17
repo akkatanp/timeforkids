@@ -97,10 +97,10 @@
     // Check for Cognero down
     if ($response->code != 200) {
         //flog_it("response->code=".$response->code);
-        watchdog('page--assessment.tp.php', 'cognero bad return code=%code, user name=%name, user email=%email, CGI-token=%cgiToken', array('%code' => $response->code, '%name' => $user->name, '%email' => $user->mail, '%cgiToken' => $cgiToken));
+        watchdog('page--assessment.tp.php', 'cognero bad return code=%code, user name=%name, user email=%email, CGI-token=%token', array('%code' => $response->code, '%name' => $user->name, '%email' => $user->mail, '%token' => $token));
         drupal_goto("cognero-down");
     }
-    watchdog('page--assessment.tp.php', 'cognero good return code=%code, user name=%name, user email=%email, CGI-token=%cgiToken', array('%code' => $response->code, '%name' => $user->name, '%email' => $user->mail, '%cgiToken' => $cgiToken));
+    watchdog('page--assessment.tp.php', 'cognero good return code=%code, user name=%name, user email=%email, CGI-token=%token', array('%code' => $response->code, '%name' => $user->name, '%email' => $user->mail, '%token' => $token));
     
     // Bring up Cognero Screen
     $dataResponse = drupal_json_decode($response->data);
