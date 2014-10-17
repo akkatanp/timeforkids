@@ -11,7 +11,7 @@
 global $user; 
 //flog_it($user);
 $cgiToken = ($user->uid ? $_COOKIE['CGI-token'] : '');
-watchdog('page--digital.tp.php', 'user name=%name, user email=%email, CGI-token=%cgiToken', array('%name' => $user->name, '%email' => $user->mail, '%cgiToken' => $cgiToken));
+//watchdog('page--digital.tp.php', 'user name=%name, user email=%email, CGI-token=%cgiToken', array('%name' => $user->name, '%email' => $user->mail, '%cgiToken' => $cgiToken));
 //flog_it("cgiToken=".$cgiToken);
 //flog_it($_ENV['AH_SITE_ENVIRONMENT']);
 
