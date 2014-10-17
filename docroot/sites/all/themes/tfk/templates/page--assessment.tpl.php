@@ -100,6 +100,7 @@
         watchdog('page--assessment.tp.php', 'cognero bad return code=%code, user name=%name, user email=%email, CGI-token=%cgiToken', array('%code' => $response->code, '%name' => $user->name, '%email' => $user->mail, '%cgiToken' => $cgiToken));
         drupal_goto("cognero-down");
     }
+    watchdog('page--assessment.tp.php', 'cognero good return code=%code, user name=%name, user email=%email, CGI-token=%cgiToken', array('%code' => $response->code, '%name' => $user->name, '%email' => $user->mail, '%cgiToken' => $cgiToken));
     
     // Bring up Cognero Screen
     $dataResponse = drupal_json_decode($response->data);
