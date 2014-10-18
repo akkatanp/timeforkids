@@ -88,6 +88,7 @@
       'authToken' => $token  
     );
     
+    watchdog('page--assessment.tp.php', 'COGNERO: user name=%name, user email=%email, CGI-token=%token', array('%name' => $user->name, '%email' => $user->mail, '%token' => $token));
     $response = drupal_http_request($cogneroTokenURL, array('headers'=>array('Content-Type'=>'application/json', 'charset'=>'utf-8'), 
         'data'=>drupal_json_encode($data), 'method'=>'POST'
     ));
