@@ -693,7 +693,7 @@ function tfk_search_apachesolr_index_document_build(ApacheSolrDocument $document
     if($meta_keywords && !empty($meta_keywords[0]['value'])) {
       $document->addField(TFK_SEARCH_ARTICLE_META_KEYWORDS, $meta_keywords[0]['value']);
       $document->setField('content', $tmp_body[0]['value']. PHP_EOL. $meta_keywords[0]['value']);
-      flog_it($document);
+      //flog_it($document);
     }
       
     // Using the TFK_SEARCH_COVER_STORY Solr field, index whether this article is flagged as a cover story or not.
@@ -2422,7 +2422,7 @@ function tfk_search_apachesolr_query_alter($query, $caller) {
     if(count($rls) == 1 && $rls[1] == 'anonymous user') {
       //flog_it("Anonymous user processing...");
       // $content_types Includes all the content types that needs to be searched.
-      $content_types = array('slideshow', 'worksheet', 'pdf_quiz', 'common_core_standards', 'flashcard', 'kid_reporter', 'grammar_practice_rule', 'video', 'atw_destination', 'minisite','tfk_extra','a_paper','grammar_practice','writing_tips','book','store_product','tfk_lesson_for_tablets');
+      $content_types = array('slideshow', 'worksheet', 'pdf_quiz', 'slideshow', 'common_core_standards', 'flashcard', 'kid_reporter', 'grammar_practice_rule', 'video', 'atw_destination', 'minisite','tfk_extra','a_paper','grammar_practice','writing_tips','book','store_product','tfk_lesson_for_tablets');
       
       // If document type is article, make sure it is **NOT** a cover story.
       $article_subquery = apachesolr_drupal_query("article_subquery");
@@ -2942,7 +2942,7 @@ function tfk_search_preprocess_search_result(&$vars) {
   
   $vars['tfk_search_cont_type'] = strtoupper($vars['result']['fields']['bundle_name']);
   //flog_it("cont_type=".$vars['tfk_search_cont_type']);
-  
+ 
   if($vars['tfk_search_cont_type'] == 'SLIDESHOW'){
       $vars['tfk_search_cont_type'] = 'SLIDE SHOW';
   }
@@ -3022,6 +3022,33 @@ function tfk_search_preprocess_search_result(&$vars) {
     // Build contextual links.
     $vars['classes_array'][] = 'contextual-links-region';
     $vars['admin_links'] = tfk_search_contextual_links($vars['result']['node']->entity_id);
+    
+    // Code by Pranita - TFK-207
+    global $user;
+    $rls = $user->roles;
+    if( $vars['result']['fields']['bundle'] == "article" ):
+        $magazine_article_flag = tfk_search_node_has_flag($node,'magazine_cover_story');
+    endif;
+    if( $vars['result']['fields']['bundle'] == "video" ):
+        $video_flag = tfk_search_node_has_flag($node,'magazine_cover_story');
+    endif;
+    if( $vars['result']['fields']['bundle'] == "slideshow" ):
+        $slideshow_flag = tfk_search_node_has_flag($node,'magazine_cover_story');
+    endif;
+    
+    $vars['article_magazine'] = ($magazine_article_flag == 1)?1:0;
+    $vars['video_flag'] = ($video_flag == 1)?1:0;
+    $vars['slideshow_flag'] = ($slideshow_flag == 1)?1:0;
+
+    
+    if(count($rls) == 1 && $rls[1] == 'anonymous user'){
+        
+        if( $vars['result']['fields']['bundle'] == "worksheet" || $slideshow_flag == 1 || $video_flag == 1 || $magazine_article_flag == 1  || $vars['result']['fields']['bundle'] == "pdf_quiz" || $vars['result']['fields']['bundle'] == "common_core_standards"  ){
+            $vars['lock_bar'] = 1;
+        }
+    } 
+    
+    // Pranita code end.
   } else {
     $vars['admin_links'] = FALSE;
   }
@@ -3034,17 +3061,19 @@ function tfk_search_preprocess_search_result(&$vars) {
     case 'minisite':
       //flog_it("content_type=MINISITE");
       if(isset($node->field_minisite_tout_image)){
-        $tmp_img_nid =  field_get_items('node', $node, 'field_minisite_tout_image');
+          /* TFK - 207 : Changed tout image to thumbnail. */
+        $tmp_img_nid =  field_get_items('node', $node, 'field_minisite_thumbnail_image');
         $uri = $tmp_img_nid[0]['uri'];
         $filesystem_path = drupal_realpath($uri);
         if(!empty($uri)) {
+            /* TFK - 207 : Changed tout image to thumbnail. */
+          $style = "thumbnail";  
           $newpath = image_style_url($style, $uri);
           $abspath = file_create_url($newpath);
           $thumbnail = theme('image', array('path' => $abspath, 'alt' => $title, 'title' => $title, 'attributes' => $thumb_attr));
           $vars['thumbnail'] = l($thumbnail, 'node/'. $vars['result']['fields']['entity_id'], $link_attr);
         }
       }
-      
       $body = field_get_items('node', $node, 'body');
       if(!empty($body[0]['safe_summary'])) {
         $teaser = $body[0]['safe_summary'];
@@ -3611,6 +3640,7 @@ function tfk_search_preprocess_search_result(&$vars) {
       /* TFK-197: Add class article-magazine to show lock key for anonymous users. */
       if( $magazine_flag == 1 ):
           $vars['classes_array'][] = 'article-magazine';
+          
       endif;
       
       $vars['render'] = TRUE;
