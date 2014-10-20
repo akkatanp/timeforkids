@@ -89,17 +89,72 @@
     <?php else:?>  
       <div class="content-type">
     <?php endif;?>
-    	<?php if(isset($tfk_search_cont_type_suffix)): ?>
+    <?php 
+        /* TFK-207 */
+            if( $tfk_search_cont_type == "MINISITE" ):
+                $tfk_search_cont_type = "MINI-SITE";
+            else:
+                $tfk_search_cont_type = $tfk_search_cont_type;
+            endif;
+        
+            if(isset($tfk_search_cont_type_suffix)): ?>
     		<span class="ctype-suffix"><?php print $tfk_search_cont_type_suffix; ?></span>
-    		<span class="ctype"><?php print $tfk_search_cont_type; ?></span>
+                <?php if($lock_bar == 1): ?>
+                    <span class="ctype lock-bar">
+                <?php else: ?>
+                    <span class="ctype">    
+                <?php endif; ?>
+                    <?php print $tfk_search_cont_type; ?></span>
     	<?php else: ?>
-    		<?php print $tfk_search_cont_type; ?>
+    		
+                <?php
+                    if($article_magazine == 1):
+                        if($lock_bar == 1):
+                        ?>
+                            <span class="lock-bar">
+                        <?php
+                            print "MAGAZINE ".$tfk_search_cont_type;
+                        ?>
+                            </span>
+                        <?php
+                        else:
+                            print "MAGAZINE ".$tfk_search_cont_type;
+                        endif;
+                    elseif( $video_flag == 1 || $slideshow_flag == 1 ):
+                        if($lock_bar == 1):
+                        ?>
+                            <span class="lock-bar">
+                        <?php
+                            print "SUBSCRIBER-ONLY ".$tfk_search_cont_type;
+                        ?>
+                            </span>
+                        <?php
+                        else:
+                            print $tfk_search_cont_type;
+                        endif;
+                    else:
+                        if($lock_bar == 1):
+                        ?>
+                        <span class="lock-bar">
+                        <?php
+                            print $tfk_search_cont_type;
+                        ?>
+                        </span>       
+                        <?php
+                        else:
+                            print $tfk_search_cont_type;
+                        endif;
+                    endif;
+                ?>
+                
     	<?php endif; ?>
     </div>
-  <?php endif;?>
+  <?php endif;
+        /* TFK-207 end */
+  ?>
   
   <div class='row2'>
-  
+ 
     <?php if(isset($thumbnail)):?>
     	<div class='col1'>
     	  <?php print $thumbnail; ?>
@@ -132,7 +187,7 @@
       <?php if(isset($tfk_search_kid_loc) && $tfk_search_kid_loc !=''):?>
         <div class="kid-reporter-loc"><?php print $tfk_search_kid_loc; ?></div><br>
       <?php endif; ?>
-      
+        
       <?php if(!empty($node_link)):?>
         <div class="view-full-article"><?php print $node_link; ?></div>
       <?php endif;?>
