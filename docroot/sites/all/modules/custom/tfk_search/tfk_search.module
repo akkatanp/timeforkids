@@ -3029,21 +3029,18 @@ function tfk_search_preprocess_search_result(&$vars) {
     if( $vars['result']['fields']['bundle'] == "article" ):
         $magazine_article_flag = tfk_search_node_has_flag($node,'magazine_cover_story');
     endif;
-    if( $vars['result']['fields']['bundle'] == "video" ):
-        $video_flag = tfk_search_node_has_flag($node,'magazine_cover_story');
-    endif;
-    if( $vars['result']['fields']['bundle'] == "slideshow" ):
-        $slideshow_flag = tfk_search_node_has_flag($node,'magazine_cover_story');
+    
+    if( $vars['result']['fields']['bundle'] == "slideshow" || $vars['result']['fields']['bundle'] == "video" || $vars['result']['fields']['bundle'] == "minisite" ):
+        $locked_flag = tfk_search_node_has_flag($node,'magazine_cover_story');
     endif;
     
     $vars['article_magazine'] = ($magazine_article_flag == 1)?1:0;
-    $vars['video_flag'] = ($video_flag == 1)?1:0;
-    $vars['slideshow_flag'] = ($slideshow_flag == 1)?1:0;
+    $vars['locked_flag'] = ($video_flag == 1)?1:0;
 
     
     if(count($rls) == 1 && $rls[1] == 'anonymous user'){
         
-        if( $vars['result']['fields']['bundle'] == "worksheet" || $slideshow_flag == 1 || $video_flag == 1 || $magazine_article_flag == 1  || $vars['result']['fields']['bundle'] == "pdf_quiz" || $vars['result']['fields']['bundle'] == "common_core_standards"  ){
+        if( $vars['result']['fields']['bundle'] == "worksheet" || $locked_flag == 1 || $magazine_article_flag == 1  || $vars['result']['fields']['bundle'] == "pdf_quiz" || $vars['result']['fields']['bundle'] == "common_core_standards"  ){
             $vars['lock_bar'] = 1;
         }
     } 
