@@ -120,7 +120,7 @@
                         else:
                             print "MAGAZINE ".$tfk_search_cont_type;
                         endif;
-                    elseif( $video_flag == 1 || $slideshow_flag == 1 ):
+                    elseif( $locked_flag == 1 ):
                         if($lock_bar == 1):
                         ?>
                             <span class="lock-bar">
