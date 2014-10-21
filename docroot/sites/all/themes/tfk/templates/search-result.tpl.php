@@ -99,41 +99,52 @@
         
             if(isset($tfk_search_cont_type_suffix)): ?>
     		<span class="ctype-suffix"><?php print $tfk_search_cont_type_suffix; ?></span>
-                <?php if($lock_bar == 1): ?>
+                <?php if($lock_bar): 
+                        if($lock_bar == 1):
+                    ?>
                     <span class="ctype lock-bar">
-                <?php else: ?>
+                <?php endif; else: ?>
                     <span class="ctype">    
                 <?php endif; ?>
                     <?php print $tfk_search_cont_type; ?></span>
     	<?php else: ?>
     		
                 <?php
-                    if($article_magazine == 1):
-                        if($lock_bar == 1):
-                        ?>
-                            <span class="lock-bar">
-                        <?php
-                            print "MAGAZINE ".$tfk_search_cont_type;
-                        ?>
-                            </span>
-                        <?php
-                        else:
-                            print "MAGAZINE ".$tfk_search_cont_type;
+                    if($article_magazine):
+                        if($article_magazine == 1):
+                            if($lock_bar):
+                                if($lock_bar == 1):
+                            ?>
+                                <span class="lock-bar">
+                            <?php
+                                print "MAGAZINE ".$tfk_search_cont_type;
+                            ?>
+                                </span>
+                            <?php
+                                endif;
+                            else:
+                                print "MAGAZINE ".$tfk_search_cont_type;
+                            endif;
                         endif;
-                    elseif( $locked_flag == 1 ):
-                        if($lock_bar == 1):
-                        ?>
-                            <span class="lock-bar">
-                        <?php
-                            print "SUBSCRIBER-ONLY ".$tfk_search_cont_type;
-                        ?>
-                            </span>
-                        <?php
-                        else:
-                            print $tfk_search_cont_type;
+                    elseif($locked_flag):
+                        if( $locked_flag == 1 ):
+                            if($lock_bar ):
+                                if($lock_bar == 1):
+                            ?>
+                                <span class="lock-bar">
+                            <?php
+                                print "SUBSCRIBER-ONLY ".$tfk_search_cont_type;
+                            ?>
+                                </span>
+                            <?php
+                                endif;
+                            else:
+                                print $tfk_search_cont_type;
+                            endif;
                         endif;
                     else:
-                        if($lock_bar == 1):
+                        if($lock_bar):
+                            if($lock_bar == 1):
                         ?>
                         <span class="lock-bar">
                         <?php
@@ -141,6 +152,7 @@
                         ?>
                         </span>       
                         <?php
+                            endif;
                         else:
                             print $tfk_search_cont_type;
                         endif;
