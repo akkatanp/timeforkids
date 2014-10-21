@@ -9,13 +9,15 @@ define('TFK_USER_PROFILE_USER_PATH', 'user');
  * Implementation of hook_init.
  */
 function tfk_user_profile_init() {
+  //flog_it("tfk_user_profile_init: arg(0)=".arg(0));
   
   // re #557 #556 - Determine the cacheability of the current page.
   // We need to disable the encrypt-submissions callback from being cached,
   // otherwise stale encryption keys will be served. This is a requirement for
   // the "encrypt-submissions" module to work with Page Caching for anonymous
   // users enabled.
-  if(arg(0) == 'encrypt-submissions') {
+  if(arg(0) == 'encrypt-submissions' || arg(0) == 'assessment') {
+    //flog_it("setting drupal_page_is_cacheable = FALSE");
     drupal_page_is_cacheable(FALSE);
   }
 }
@@ -234,6 +236,10 @@ function tfk_insert_teacher_role($uid=0){
  * This is done for each new user that logs in through the lucie system.
  */
 function tfk_insert_lucie_user($lucieData, $uid, $username){
+    //flog_it("tfk_insert_lucie_user...");
+    //flog_it("uid=".$uid);
+    //flog_it("username=".$username);
+    //flog_it($lucieData);
 	// insert a row into the lucie table
 	$fields = array('lid' => $lucieData['uidpk'], 'uid' => $uid, 'username' => strtolower($lucieData['userId']));
 	db_insert('users_lucie_account')->fields($fields)->execute();
@@ -298,6 +304,7 @@ function tfk_user_profile_login_validate( $form, &$form_state ){
  * Information returned inclues, first & last name, account id, and email address.
  */
 function tfk_lucie_get_user_info($email, $token) {
+  //flog_it("tfk_lucie_get_user_info: token=".$token);
   $domain = variable_get('lucie_callback_domain', 'lucie.timeinc.com');
   $url = 'https://'. $domain. '/webservices/customers/'.check_plain($email).'/TK';
   $response = drupal_http_request($url, array('headers' => array('Content-Type'=>'application/json', 'CGI-token' => $token),
@@ -317,20 +324,71 @@ function tfk_lucie_get_user_info($email, $token) {
 function tfk_lucie_user_set_cookie($token){
 	setcookie('CGI-token', $token, 0);
 }
+function tfk_assessment_access_set_cookie($token){
+	setcookie('Assessment-access', $token, 0);
+}
+function tfk_assessment_tcs_account_number_set_cookie($token){
+	setcookie('TCS-account-number', $token, 0);
+}
 /**
  * This function will get the entitlements context for a user in LUCIE.
  * This will return whether or not a user is an active subscriber
  * and should have access to the content/site.
 */
 function tfk_lucie_user_entitlements($token){
-   $domain = variable_get('lucie_callback_domain', 'qa-lucie.timeinc.com');
+  //flog_it("tfk_lucie_user_entitlements...");
+  // tim.testaccount@tk.com 322942790, zip=20002, is an account which is eligible for an upgrade
+  // tfa@tk.com 333470199, 20003, is an account which has TFA
+  // password for both: welcom123
+  //flog_it("tfk_lucie_user_entitlements: token=".$token);
+  $domain = variable_get('lucie_callback_domain', 'qa-lucie.timeinc.com');
   $url = 'https://'. $domain. '/webservices/entitlements?CGI-App-Id=com.timeinc.tk.web';
   $response = drupal_http_request($url, array('headers' => array('Content-Type'=>'application/json', 'CGI-token' => $token),
 	'method'=> 'GET'
   ));
+  //flog_it($response);
+  //flog_it("url=".$url);
+  
   // Decode the JSON data and pass to the call to get the user information
   $dataResponse = drupal_json_decode($response->data);
+  //flog_it($dataResponse);
   
+  // Check for TFK Assessment access
+  // Get the LUCIE account number
+  $tcsAccountNumber = $dataResponse['issues'][0]['tcsAccountNumber'];
+  tfk_assessment_tcs_account_number_set_cookie($tcsAccountNumber);
+  //flog_it("tcsAccountNumber=".$tcsAccountNumber);
+  
+  // Check for COMP access
+  if ($tcsAccountNumber === "COMP") {
+    //flog_it("Has COMP access...");
+    tfk_assessment_access_set_cookie("yes");
+  } else {
+    $appIds = $dataResponse['tiersInfo']['availableAppIds'];
+    $appIdArr = split(',', $appIds);
+    $found = 0;
+    foreach ($appIdArr as $key=>$value) {
+        if ($value == "com.timeinc.tfk.apple") {
+            //flog_it("Found com.timeinc.tfk.apple...");
+            $found = 1;
+            break;
+        }
+    }
+
+    // Set TCS variables
+    if ($found && is_numeric($tcsAccountNumber)) {
+        //flog_it("Has Assessment Access...");
+        tfk_assessment_access_set_cookie("yes");
+    } else {
+        //flog_it("No Assessment Access...");
+        tfk_assessment_access_set_cookie("no");
+    }
+  }
+
+  
+  // Check Entitlements access
+  //flog_it("entitlements response->code=".$response->code);
+  //flog_it("activeSubscription=".$dataResponse['issues'][0]['activeSubscription']);
   if($response->code == 200){
   	return $dataResponse['issues'][0]['activeSubscription'];
   }
@@ -340,10 +398,12 @@ function tfk_lucie_user_entitlements($token){
  * A token is returned which must be used in any additional calls to LUCIE.
  */
 function tfk_lucie_check_user($email, $pwd){
-	$domain = variable_get('lucie_callback_domain', 'qa-lucie.timeinc.com');
+  //flog_it("\n\ntfk_lucie_check_user: email=".$email);
+  $domain = variable_get('lucie_callback_domain', 'qa-lucie.timeinc.com');
   $url = 'https://'. $domain. '/webservices/customers/'.check_plain($email).'/TK/auth_token';
   $pass_arr = array('password'=>$pwd, 'CGI-App-Id' => 'com.timeinc.tk.web', 'deviceid' => 'TK.WEB', 'deviceip' => ip_address());
   $pass = drupal_json_encode($pass_arr);
+  //flog_it("url=".$url);
  
   // process the LUCIE login response.
   // some actions are based on the $response code, others $response_code + json parameter
@@ -360,16 +420,20 @@ function tfk_lucie_check_user($email, $pwd){
               ));
   // Decode the JSON data and pass to the call to get the user information
   $dataResponse = drupal_json_decode($response->data);
+  //flog_it("response->code=".$response->code);
   switch ($response->code) {
   	case 201:
   		if (tfk_lucie_user_entitlements($dataResponse['token'])) {
   			$_lucieUser['data'] = tfk_lucie_get_user_info($email, $dataResponse['token']);
+                        
   		} else {
 			$_lucieUser['error'] = 'sub_expired';
   		}
   		break;
   	case 404:
-  		if (is_array($dataResponse) && $dataResponse['userLockedOut']) {
+                setcookie("CGI-token", "", time()-3600);
+                tfk_assessment_access_set_cookie("no");
+  		if (is_array($dataResponse) && array_key_exists('userLockedOut', $dataResponse)) {
   			$_lucieUser['error'] = 'user_locked';
   		}
   		break;
@@ -384,6 +448,8 @@ function tfk_user_profile_menu_alter(&$items) {
 }
 //User update form for teacher profiles
 function tfk_user_profile_form($form, &$form_state, $user_profile) {
+    //flog_it("tfk_user_profile_form");
+    //flog_it($user_profile);
         $vid = 6; //vocabulary id for grade level
         $result = db_query('SELECT DISTINCT ti.tid,td.name from taxonomy_index ti left join taxonomy_term_data td on ti.tid = td.tid WHERE td.vid = :vid',array('vid'=>$vid));
         $grade_levels = array('0'=>'Please Select');
@@ -396,15 +462,24 @@ function tfk_user_profile_form($form, &$form_state, $user_profile) {
                 '#type' => 'value',
                 '#value' => $user_profile['elements']['#account']->uid
              );
-            $current_grade_level = $user_profile['elements']['#account']->field_grade_level['und']['0']['tid'];
+            if (array_key_exists('und', $user_profile['elements']['#account']->field_grade_level)) {
+                $current_grade_level = $user_profile['elements']['#account']->field_grade_level['und']['0']['tid'];
+            } else {
+                $current_grade_level = "";
+            }
         }
 
+        if (array_key_exists('und', $user_profile['elements']['#account']->field_nickname)) {
+            $user_profile_value = $user_profile['elements']['#account']->field_nickname['und']['0']['value'];
+        } else {
+            $user_profile_value = "";
+        }
 	$form['nickname'] = array(
 		'#type' => 'textfield',
 		'#title' => t('Nickname'),
 		'#required' => TRUE,
                 '#description' => '(Nickname can be 6-18 characters long)',
-                '#default_value' => isset($user_profile) ? $user_profile['elements']['#account']->field_nickname['und']['0']['value'] : ''
+                '#default_value' => isset($user_profile) ? $user_profile_value : ''
 	);
 	
 	$form['grade_level'] = array(
@@ -497,6 +572,7 @@ function tfk_user_profile_form_submit($form, &$form_state) {
 }
 //Outputs either board member or teacher settings page
 function tfk_user_profile (&$user_profile) {
+    //flog_it("tfk_user_profile...");
     global $user;
     if (isset($user_profile['elements']['#account']->field_is_board_member)) {
         $field_is_board_member = field_get_items('user', $user_profile['elements']['#account'], 'field_is_board_member');
