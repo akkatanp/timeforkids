@@ -544,6 +544,14 @@ define('TFK_SEARCH_ARTICLE_DECK', 'ss_field_deck');
  */
 define('TFK_SEARCH_ARTICLE_BYLINE', 'ss_field_article_byline');
 
+
+/**
+ * Apache Solr search field, represents the A+ Paper description field.
+ *
+ * @var string
+ */
+define('TFK_SEARCH_PAPER_DESCRIPTION', 'sm_field_paper_description');
+
 /**
  * Apache Solr search field, represents the article meta keywords.
  *
@@ -660,6 +668,17 @@ function tfk_search_apachesolr_index_document_build(ApacheSolrDocument $document
       if($kid_location && !empty($kid_location[0]['value'])) {
         $document->addField(TFK_SEARCH_KID_REPORTER_LOCATION, $kid_location[0]['value']);
         $document->setField('content', $tmp_body[0]['value']. PHP_EOL. $kid_location[0]['value']);
+      }
+  }
+  
+  // A+ Paper
+  if($entity->type == "a_paper"){   
+      // Paper description
+      
+      $paper_description = field_get_items('node', $entity, 'field_paper_description');
+      if($paper_description && !empty($paper_description[0]['value'])) {
+        $document->addField(TFK_SEARCH_PAPER_DESCRIPTION, $paper_description[0]['value']);
+        $document->setField('content', $tmp_body[0]['value']. PHP_EOL. $paper_description[0]['value']);
       }
   }
   
@@ -2436,7 +2455,7 @@ function tfk_search_apachesolr_query_alter($query, $caller) {
   if (strpos($path, 'search/site') || ($args[0] == 'search' && $args[1] == 'site')) {
     // Retrieve additional content fields.
      
-    $query->addParam('fl', implode(',', array(TFK_SEARCH_ARTICLE_DECK, TFK_SEARCH_ARTICLE_BYLINE, TFK_SEARCH_ARTICLE_META_KEYWORDS, TFK_SEARCH_KID_REPORTER_LOCATION, TFK_SEARCH_MINISITE_DECK)));
+    $query->addParam('fl', implode(',', array(TFK_SEARCH_ARTICLE_DECK, TFK_SEARCH_ARTICLE_BYLINE, TFK_SEARCH_ARTICLE_META_KEYWORDS, TFK_SEARCH_KID_REPORTER_LOCATION, TFK_SEARCH_MINISITE_DECK, TFK_SEARCH_PAPER_DESCRIPTION)));
     
     // Limit the number of rows per page.
     $query->addParam('rows', 8);
@@ -3849,7 +3868,7 @@ function tfk_search_preprocess_search_result(&$vars) {
       if($base_path == TFK_SEARCH_SITESEARCH_PATH) {
         $vars['tfk_search_result_link_1'] = l('Read A+ Paper', 'node/'. $nid);
       }
-     
+    
       $body = field_get_items('node', $node, 'field_summary');
       if(!empty($body[0]['safe_value'])) {
         $teaser = $body[0]['safe_value'];
