@@ -32,7 +32,7 @@ namespace('Drupal.media.popups');
  *
  *          Example
  *          pluginOptions = {library: {url_include_patterns:'/foo/bar'}};
- *          
+ *
  * @param {Object}
  *          widgetOptions Options controlling the appearance and behavior of the
  *          modal dialog.
@@ -43,9 +43,12 @@ Drupal.media.popups.mediaBrowser = function (onSelect, globalOptions, pluginOpti
   options.global = $.extend({}, options.global, globalOptions);
   options.plugins = pluginOptions;
   options.widget = $.extend({}, options.widget, widgetOptions);
-  
+
   // Create it as a modal window.
   var browserSrc = options.widget.src;
+  if ($.isArray(browserSrc) && browserSrc.length) {
+    browserSrc = browserSrc[browserSrc.length - 1];
+  }
   // Params to send along to the iframe.  WIP.
   var params = {};
   $.extend(params, options.global);
@@ -58,7 +61,7 @@ Drupal.media.popups.mediaBrowser = function (onSelect, globalOptions, pluginOpti
   /**
    * Setting up the modal dialog
    */
-  
+
   var ok = 'OK';
   var cancel = 'Cancel';
   var notSelected = 'You have not selected anything!';
@@ -79,13 +82,11 @@ Drupal.media.popups.mediaBrowser = function (onSelect, globalOptions, pluginOpti
       return;
     }
     onSelect(selected);
-    $(this).dialog("destroy");
-    $(this).remove();
+    $(this).dialog("close");
   };
 
   dialogOptions.buttons[cancel] = function () {
-    $(this).dialog("destroy");
-    $(this).remove();
+    $(this).dialog("close");
   };
 
   Drupal.media.popups.setDialogPadding(mediaIframe.dialog(dialogOptions));
@@ -98,8 +99,9 @@ Drupal.media.popups.mediaBrowser = function (onSelect, globalOptions, pluginOpti
 Drupal.media.popups.mediaBrowser.mediaBrowserOnLoad = function (e) {
   var options = e.data;
   if (this.contentWindow.Drupal.media.browser.selectedMedia.length > 0) {
-    var ok = $(this).dialog('option', 'buttons')['OK'];
-    ok.call(this);
+    var ok = (Drupal && Drupal.t) ? Drupal.t('OK') : 'OK';
+    var ok_func = $(this).dialog('option', 'buttons')[ok];
+    ok_func.call(this);
     return;
   }
 };
@@ -125,8 +127,7 @@ Drupal.media.popups.mediaBrowser.finalizeSelection = function () {
     return;
   }
   onSelect(selected);
-  $(this).dialog("destroy");
-  $(this).remove();
+  $(this).dialog("close");
 }
 
 /**
@@ -177,13 +178,11 @@ Drupal.media.popups.mediaStyleSelector = function (mediaFile, onSelect, options)
       return;
     }
     onSelect(formattedMedia);
-    $(this).dialog("destroy");
-    $(this).remove();
+    $(this).dialog("close");
   };
 
   dialogOptions.buttons[cancel] = function () {
-    $(this).dialog("destroy");
-    $(this).remove();
+    $(this).dialog("close");
   };
 
   Drupal.media.popups.setDialogPadding(mediaIframe.dialog(dialogOptions));
@@ -247,22 +246,17 @@ Drupal.media.popups.mediaFieldEditor = function (fid, onSelect, options) {
   var dialogOptions = Drupal.media.popups.getDialogOptions();
 
   dialogOptions.buttons[ok] = function () {
-    alert('hell yeah');
-    return "poo";
-
     var formattedMedia = this.contentWindow.Drupal.media.formatForm.getFormattedMedia();
     if (!formattedMedia) {
       alert(notSelected);
       return;
     }
     onSelect(formattedMedia);
-    $(this).dialog("destroy");
-    $(this).remove();
+    $(this).dialog("close");
   };
 
   dialogOptions.buttons[cancel] = function () {
-    $(this).dialog("destroy");
-    $(this).remove();
+    $(this).dialog("close");
   };
 
   Drupal.media.popups.setDialogPadding(mediaIframe.dialog(dialogOptions));
@@ -306,6 +300,10 @@ Drupal.media.popups.getDialogOptions = function () {
     overlay: {
       backgroundColor: '#000000',
       opacity: 0.4
+    },
+    zIndex: 10000,
+    close: function (event, ui) {
+      $(event.target).remove();
     }
   };
 };
@@ -321,7 +319,7 @@ Drupal.media.popups.setDialogPadding = function (dialogElement) {
   // - It's included to make IE on Windows 7 display the dialog without
   //   collapsing. 550 is the height that displays all of the tab panes
   //   within the Add Media overlay. This is either a bug in the jQuery
-  //   UI library, a bug in IE on Windows 7 or a bug in the way the 
+  //   UI library, a bug in IE on Windows 7 or a bug in the way the
   //   dialog is instantiated. Or a combo of the three.
   //   All browsers except IE on Win7 ignore these defaults and adjust
   //   the height of the iframe correctly to match the content in the panes
@@ -333,7 +331,7 @@ Drupal.media.popups.setDialogPadding = function (dialogElement) {
  * Get an iframe to serve as the dialog's contents. Common to both plugins.
  */
 Drupal.media.popups.getPopupIframe = function (src, id, options) {
-  var defaults = {width: '800px', scrolling: 'no'};
+  var defaults = {width: '800px', scrolling: 'auto'};
   var options = $.extend({}, defaults, options);
 
   return $('<iframe class="media-modal-frame"/>')
