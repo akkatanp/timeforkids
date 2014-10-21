@@ -2010,10 +2010,14 @@ function tfk_search_preprocess_page(&$variables) {
     $item_list = array('type' => 'ul', 'items' => array());
     $variables['page']['sidebar_bottom']['menu_menu-publishing-calendar-menu']['#block']->subject = 'PUBLISHING CALENDAR';
     
-    foreach($variables['page']['sidebar_bottom']['menu_menu-publishing-calendar-menu']['content'] as $key => $render_array) {
-      if(is_numeric($key)) {
-        $item_list['items'][] = '<div class="pubcal-link"><div class="left">'. $render_array['#title']. '</div><div class="right">'. l('View', $render_array['#href']). '</div></div>';
-      }
+    //flog_it("tfk_search_preprocess_page: ");
+    //flog_it($variables['page']['sidebar_bottom']['menu_menu-publishing-calendar-menu']);
+    if (array_key_exists('content', $variables['page']['sidebar_bottom']['menu_menu-publishing-calendar-menu'])) {
+        foreach($variables['page']['sidebar_bottom']['menu_menu-publishing-calendar-menu']['content'] as $key => $render_array) {
+          if(is_numeric($key)) {
+            $item_list['items'][] = '<div class="pubcal-link"><div class="left">'. $render_array['#title']. '</div><div class="right">'. l('View', $render_array['#href']). '</div></div>';
+          }
+        }
     }
     
     if(!empty($item_list['items'])) {
@@ -3062,6 +3066,8 @@ function tfk_search_preprocess_search_result(&$vars) {
   // WHY HERE???
   //$vars['render'] = TRUE;
   $vars['render'] = FALSE;
+  $magazine_article_flag = 0;
+  $locked_flag = 0;
   
   if($node) {
     // Build contextual links.
@@ -4209,7 +4215,7 @@ function tfk_search_magazine_has_spanish_item($magazine) {
  *   Name of the flag corresponding to the magazine issue.
  */
 function tfk_search_magazine_spanish_flag($magazine, $flag_name = 'magazine_issue_spanish') {
-  //flog_it("tfk_search_magazine_spanish_flag...");
+  flog_it("tfk_search_magazine_spanish_flag...");
   $has_flag = tfk_search_node_has_flag($magazine, $flag_name);
   $has_spanish_item = tfk_search_magazine_has_spanish_item($magazine);
   
