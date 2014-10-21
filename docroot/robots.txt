@@ -11,10 +11,10 @@
 # Ignored: http://example.com/site/robots.txt
 #
 # For more information about the robots.txt standard, see:
-# http://www.robotstxt.org/robotstxt.html
+# http://www.robotstxt.org/wc/robots.html
 #
 # For syntax checking, see:
-# http://www.frobee.com/robots-txt-check
+# http://www.sxw.org.uk/computing/robots/check.html
 
 User-agent: *
 Crawl-delay: 10
@@ -58,3 +58,8 @@ Disallow: /?q=user/password/
 Disallow: /?q=user/register/
 Disallow: /?q=user/login/
 Disallow: /?q=user/logout/
+# Apachesolr search
+Disallow: /worksheets/?*im_35_field_themes*
+Disallow: /worksheets/?*im_36_field_themes*
+Disallow: /worksheets/?*im_35_field_skills*
+Disallow: /worksheets/?*im_36_field_skills*

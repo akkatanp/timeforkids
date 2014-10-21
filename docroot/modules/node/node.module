@@ -244,7 +244,13 @@ function node_field_display_node_alter(&$display, $context) {
 }
 
 /**
- * Implements callback_entity_info_uri().
+ * Entity URI callback.
+ *
+ * @param $node
+ *   A node entity.
+ *
+ * @return array
+ *   An array with 'path' as the key and the path to the node as its value.
  */
 function node_uri($node) {
   return array(
@@ -1179,8 +1185,10 @@ function node_save($node) {
     module_invoke_all('node_' . $op, $node);
     module_invoke_all('entity_' . $op, $node, 'node');
 
-    // Update the node access table for this node.
-    node_access_acquire_grants($node);
+    // Update the node access table for this node. There's no need to delete
+    // existing records if the node is new.
+    $delete = $op == 'update';
+    node_access_acquire_grants($node, $delete);
 
     // Clear internal properties.
     unset($node->is_new);
@@ -1585,9 +1593,6 @@ function node_permission() {
     ),
     'access content overview' => array(
       'title' => t('Access the content overview page'),
-      'description' => user_access('access content overview')
-        ? t('Get an overview of <a href="@url">all content</a>.', array('@url' => url('admin/content')))
-        : t('Get an overview of all content.'),
     ),
     'access content' => array(
       'title' => t('View published content'),
@@ -1683,7 +1688,7 @@ function node_search_admin() {
   );
   $form['content_ranking']['#theme'] = 'node_search_admin';
   $form['content_ranking']['info'] = array(
-    '#markup' => '<p><em>' . t('Influence is a numeric multiplier used in ordering search results. A higher number means the corresponding factor has more influence on search results; zero means the factor is ignored. Changing these numbers does not require the search index to be rebuilt. Changes take effect immediately.') . '</em></p>'
+    '#value' => '<em>' . t('The following numbers control which properties the content search should favor when ordering the results. Higher numbers mean more influence, zero means the property is ignored. Changing these numbers does not require the search index to be rebuilt. Changes take effect immediately.') . '</em>'
   );
 
   // Note: reversed to reflect that higher number = higher ranking.
@@ -1870,7 +1875,7 @@ function theme_node_search_admin($variables) {
 
   $output = drupal_render($form['info']);
 
-  $header = array(t('Factor'), t('Influence'));
+  $header = array(t('Factor'), t('Weight'));
   foreach (element_children($form['factors']) as $key) {
     $row = array();
     $row[] = $form['factors'][$key]['#title'];
@@ -2222,8 +2227,8 @@ function node_last_changed($nid) {
 /**
  * Returns a list of all the existing revision numbers.
  *
- * @param $node
- *   The node object.
+ * @param Drupal\node\Node $node
+ *   The node entity.
  *
  * @return
  *   An associative array keyed by node revision number.
@@ -3289,17 +3294,6 @@ function node_query_entity_field_access_alter(QueryAlterableInterface $query) {
 
 /**
  * Helper for node access functions.
- *
- * Queries tagged with 'node_access' that are not against the {node} table
- * should add the base table as metadata. For example:
- * @code
- *   $query
- *     ->addTag('node_access')
- *     ->addMetaData('base_table', 'taxonomy_index');
- * @endcode
- * If the query is not against the {node} table, an attempt is made to guess
- * the table, but is not recommended to rely on this as it is deprecated and not
- * allowed in Drupal 8. It is always safer to provide the table.
  *
  * @param $query
  *   The query to add conditions to.
