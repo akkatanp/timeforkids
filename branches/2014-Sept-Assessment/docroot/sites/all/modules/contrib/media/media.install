@@ -534,7 +534,7 @@ function media_update_7015() {
  * @see http://drupal.org/node/1418708
  * @see http://drupal.org/node/1211008
  */
-function media_update_7016xxx() {
+function media_update_7016() {
   // Allow File Entity module to take over the {file_managed}.type field. It
   // will create new indexes as it needs to, but it doesn't know about old ones,
   // so delete them.
