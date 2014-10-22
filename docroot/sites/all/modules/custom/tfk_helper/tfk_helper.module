@@ -786,6 +786,21 @@ function tfk_helper_preprocess_html(&$variables, $hook) {
     //flog_it($results);
   }
   
+  // Assessment
+  //flog_it($variables['element']);
+  /*
+  // <a href="/teacher-board-members" class="teacher-community" id="tfk-assessment">Teacher Board</a>
+  $variables['#original_link']['options']['attributes']['id'] = 'tfk-assessment';
+  cache_clear_all();
+   * 
+   */
+  
+  //foreach($variables['page']['header']['menu_menu-tfk-teachers-menu']['content']['616'] as $key => $value) {
+    //  flog_it("key=".$key);
+      //flog_it($value);
+  //}
+  //$variables['page']['header']['menu_menu-tfk-teachers-menu']['content']['616']['#original_link']['options']['attributes']['id'][0] = "tfk-assessment";
+  
 }
 
 /**
