@@ -851,22 +851,6 @@ body.page-search-site .region-sidebar-first .block .content > .item-list {
   height: 20px;
 }
 
-/* tfk-197 */
-.not-logged-in li.article-magazine .search-result-link-1{
-  display: inline;
-  float: left;
-  background: url("/sites/all/themes/tfk/images/lock-icon.png") no-repeat;
-  padding-left: 18px;
-  height: 20px;
-}
-/* tfk-197 end */
-
-/* TFK-207 */
-.not-logged-in .lock-bar {
-    background: url("/sites/all/themes/tfk/images/lock-icon.png") no-repeat;
-    padding-left: 18px;
-}
-/* TFK-207 end */
 
 li.search-result.pdf_quiz .search-result-download-link {
   display: inline;

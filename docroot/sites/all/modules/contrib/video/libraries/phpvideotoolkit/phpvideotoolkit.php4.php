@@ -1,6 +1,6 @@
 <?php
 
-	/* SVN FILE: $Id$ */
+	/* SVN FILE: $Id: phpvideotoolkit.php4.php 669 2011-06-09 19:28:09Z rallen $ */
 
 	/**
 	 * @author Oliver Lillie (aka buggedcom) <publicmail@buggedcom.co.uk>

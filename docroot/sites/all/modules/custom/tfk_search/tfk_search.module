@@ -538,43 +538,6 @@ define('TFK_SEARCH_ARTICLE_BODY', 'ss_field_body');
 define('TFK_SEARCH_ARTICLE_DECK', 'ss_field_deck');
 
 /**
- * Apache Solr search field, represents the article byline.
- *
- * @var string
- */
-define('TFK_SEARCH_ARTICLE_BYLINE', 'ss_field_article_byline');
-
-
-/**
- * Apache Solr search field, represents the A+ Paper description field.
- *
- * @var string
- */
-define('TFK_SEARCH_PAPER_DESCRIPTION', 'sm_field_paper_description');
-
-/**
- * Apache Solr search field, represents the article meta keywords.
- *
- * @var string
- */
-define('TFK_SEARCH_ARTICLE_META_KEYWORDS', 'ss_meta_keywords');
-
-/**
- * Apache Solr search field, represents the Minisite deck.
- *
- * @var string
- */
-define('TFK_SEARCH_MINISITE_DECK', 'sm_body');  
-
-/**
- * Apache Solr search field, represents the Kid Reporter Location.
- *
- * @var string
- */
-define('TFK_SEARCH_KID_REPORTER_LOCATION', 'sm_field_location'); 
-
-
-/**
  * Apache Solr search field, indicates if an article is a magazine cover story.
  * Used for supressing cover stories from anonymous user search results. We are
  * using this field as a "filter" in a Solr subquery.
@@ -633,104 +596,30 @@ define('TFK_SEARCH_HOST', 'ss_server_host');
 function apachesolr_facet_block($response, $query, $module, $delta, $facet_field, $filter_by, $facet_callback = FALSE) {
     //flog_it("[ apachesolr_facet_block: ".$filter_by." ]");
     return NULL;
-};
+}
 
 
-
-function tfk_search_apachesolr_index_document_build(ApacheSolrDocument $document, $entity, $entity_type, $env_id) {
-  flog_it("tfk_search_apachesolr_index_document_build: HERE!!!!!!!!");
-  //flog_it("document:");
-  //flog_it($document);
-  //flog_it("entity:");
-  //flog_it($entity);
-  //flog_it("entity_type=".$entity->type);
-  //flog_it("env_id=".$env_id);
-  
+function tfk_search_apachesolr_update_index(&$document, $node, $namespace) {
+  //flog_it("tfk_search_apachesolr_update_index: HERE!!!!!!!!");
   // Use the database host to identify different servers.
   $server_id = tfk_search_get_unique_host_id();
   $document->addField(TFK_SEARCH_HOST, $server_id);
-  $flags = flag_get_counts('node', $entity->nid);
+  $flags = flag_get_counts('node', $node->nid);
   
-  // Minisite
-  if ($entity->type == "minisite") {
-    // Deck
-    $minisite_deck = field_get_items('node', $entity, 'body');
-//    flog_it("Minisite");
-//    flog_it($minisite_deck);
-    $document->addField(TFK_SEARCH_MINISITE_DECK, $minisite_deck[0]['value']);
-    $document->setField('content', $tmp_body[0]['value']. PHP_EOL. $minisite_deck[0]['value']);
-  }
-  
-  // Kid Reporter
-  if($entity->type == "kid_reporter"){   
-      // Location
-      $kid_location = field_get_items('node', $entity, 'field_location');
-      if($kid_location && !empty($kid_location[0]['value'])) {
-        $document->addField(TFK_SEARCH_KID_REPORTER_LOCATION, $kid_location[0]['value']);
-        $document->setField('content', $tmp_body[0]['value']. PHP_EOL. $kid_location[0]['value']);
-      }
-  }
-  
-  // A+ Paper
-  if($entity->type == "a_paper"){   
-      // Paper description
-      
-      $paper_description = field_get_items('node', $entity, 'field_paper_description');
-      if($paper_description && !empty($paper_description[0]['value'])) {
-        $document->addField(TFK_SEARCH_PAPER_DESCRIPTION, $paper_description[0]['value']);
-        $document->setField('content', $tmp_body[0]['value']. PHP_EOL. $paper_description[0]['value']);
-      }
-  }
+  // Index date field.
   
   // Add article fields to the index.
-  if($entity->type == 'article'){
-    //flog_it("Found and article...");
-    $tmp_body =  field_get_items('node', $entity, 'field_body');
-    
+  if($node->type == 'article'){
+    $tmp_body =  field_get_items('node', $node, 'field_body');
     // To avoid modifying the schema.xml, we're stuffing into the content field the body and deck fields.
-    $deck = field_get_items('node', $entity, 'field_deck');
-    
+    $deck = field_get_items('node', $node, 'field_deck');
     if($deck && !empty($deck[0]['value'])) {
       // We still add the DECK to the index, just in case we want to show a "clean" deck.
       // Right now we are loading the article deck using a node_load().
       $document->addField(TFK_SEARCH_ARTICLE_DECK, $deck[0]['value']);
       $document->setField('content', $tmp_body[0]['value']. PHP_EOL. $deck[0]['value']);
-      
-      // Byline
-      $byline = field_get_items('node', $entity, 'field_article_byline');
-      if($byline && !empty($byline[0]['tid'])) {
-        $term_byline = taxonomy_term_load($tid);
-        $name_byline = $term_byline->name;
-        $document->addField(TFK_SEARCH_ARTICLE_BYLINE, $name_byline);
-        $document->setField('content', $tmp_body[0]['value']. PHP_EOL. $name_byline);
-      }
-      
-      // Metakeywords
-      $meta_keywords = field_get_items('node', $entity, 'field_meta_keywords');
-      if($meta_keywords && !empty($meta_keywords[0]['value'])) {
-        $document->addField(TFK_SEARCH_ARTICLE_META_KEYWORDS, $meta_keywords[0]['value']);
-        $document->setField('content', $tmp_body[0]['value']. PHP_EOL. $meta_keywords[0]['value']);
-      }
     }
-
-    // Byline
-    $byline = field_get_items('node', $entity, 'field_article_byline');
-    if($byline && !empty($byline[0]['tid'])) {
-      $term_byline = taxonomy_term_load($byline[0]['tid']);
-      $name_byline = $term_byline->name;
-      $document->addField(TFK_SEARCH_ARTICLE_BYLINE, $name_byline);
-      $document->setField('content', $tmp_body[0]['value']. PHP_EOL. $name_byline);
-    }
-      
-    // Metakeywords
-    $meta_keywords = field_get_items('node', $entity, 'meta_keywords');
-    //print_r($meta_keywords);exit;
-    if($meta_keywords && !empty($meta_keywords[0]['value'])) {
-      $document->addField(TFK_SEARCH_ARTICLE_META_KEYWORDS, $meta_keywords[0]['value']);
-      $document->setField('content', $tmp_body[0]['value']. PHP_EOL. $meta_keywords[0]['value']);
-      //flog_it($document);
-    }
-      
+    
     // Using the TFK_SEARCH_COVER_STORY Solr field, index whether this article is flagged as a cover story or not.
     // This field is used as a bit field, not as a facet, so we use 1s and 0s.
     if(array_key_exists('magazine_cover_story', $flags) && $flags['magazine_cover_story'] == '1') {
@@ -739,29 +628,19 @@ function tfk_search_apachesolr_index_document_build(ApacheSolrDocument $document
       $document->setField(TFK_SEARCH_COVER_STORY, 0);
     }
   }
-  if($entity->type == 'book' || $entity->type == 'store_product' || $entity->type == 'tfk_lesson_for_tablets') {
-    if($entity->type == 'book') {
-      $tmp_body = field_get_items('node', $entity, 'field_book_description');
+  if($node->type == 'book' || $node->type == 'store_product' || $node->type == 'tfk_lesson_for_tablets') {
+    if($node->type == 'book') {
+      $tmp_body = field_get_items('node', $node, 'field_book_description');
     }
     if($node->type == 'store_product') {
-      $tmp_body = field_get_items('node', $entity, 'field_product_description');
+      $tmp_body = field_get_items('node', $node, 'field_product_description');
     }
     if($node->type == 'tfk_lesson_for_tablets') {
-      $tmp_body = field_get_items('node', $entity, 'field_book_description');
+      $tmp_body = field_get_items('node', $node, 'field_book_description');
     }
     $document->setField('content', $tmp_body[0]['value']);
   }
   
-  
-  // Minisite
-  if ($entity->type == "minisite") {
-    $minisite_deck = field_get_items('node', $entity, 'body');
-    $document->addField(TFK_SEARCH_MINISITE_DECK, $minisite_deck[0]['value']);
-    $document->setField('content', $tmp_body[0]['value']. PHP_EOL. $minisite_deck[0]['value']);
-  }
-    
-    
-    
   
   // Index spanish version flag.
   // This field is used for facets, so we only index 1s (indexing 0s would
@@ -771,7 +650,7 @@ function tfk_search_apachesolr_index_document_build(ApacheSolrDocument $document
     $document->setField(TFK_SEARCH_SPANISH_VERSION, 1);
   }
     
-  if($entity->type == 'magazine_issue') {
+  if($node->type == 'magazine_issue') {
     // Make Solr aware of magazine issues that contain spanish articles.
     //$magazine_flag = flag_get_flag('magazine_issue_spanish');
     if(array_key_exists('magazine_issue_spanish', $flags) && $flags['magazine_issue_spanish'] == '1') {
@@ -779,20 +658,20 @@ function tfk_search_apachesolr_index_document_build(ApacheSolrDocument $document
     }
   }
 
-  if(isset($entity->field_date)){
-    $tmp_date =  field_get_items('node', $entity, 'field_date');
+  if(isset($node->field_date)){
+    $tmp_date =  field_get_items('node', $node, 'field_date');
     $date = $tmp_date[0]['value'];
     $date = date('Y', $date);
     $document->addField('sm_editorial_date_tfk', $date);
   } else {
-    $document->addField('sm_editorial_date_tfk', date('Y', $entity->created));
+    $document->addField('sm_editorial_date_tfk', date('Y', $node->created));
   }
   
   // Related content.
-  if(isset($entity->field_additional_content) && !empty($entity->field_additional_content)) {
+  if(isset($node->field_additional_content) && !empty($node->field_additional_content)) {
     
     $anonymous_user = user_load(0);
-    $additional_content = field_get_items('node', $entity, 'field_additional_content');
+    $additional_content = field_get_items('node', $node, 'field_additional_content');
     
     foreach($additional_content as $node) {
       // We verify that the related content is publicly accessible.
@@ -805,12 +684,11 @@ function tfk_search_apachesolr_index_document_build(ApacheSolrDocument $document
     }
   }
   
-  if($entity->type == 'atw_destination') {
+  if($node->type == 'atw_destination') {
     // Prevent atw_destination from indexing the field_article_category field.
     unset($document->sm_vid_Article_Categories);
   }
 }
-
 
 /**
  * Implementation of hookparams:_apachesolr_facets.
@@ -2010,8 +1888,7 @@ function tfk_search_preprocess_page(&$variables) {
     $item_list = array('type' => 'ul', 'items' => array());
     $variables['page']['sidebar_bottom']['menu_menu-publishing-calendar-menu']['#block']->subject = 'PUBLISHING CALENDAR';
     
-    //flog_it("tfk_search_preprocess_page: ");
-    //flog_it($variables['page']['sidebar_bottom']['menu_menu-publishing-calendar-menu']);
+    
     if (array_key_exists('content', $variables['page']['sidebar_bottom']['menu_menu-publishing-calendar-menu'])) {
         foreach($variables['page']['sidebar_bottom']['menu_menu-publishing-calendar-menu']['content'] as $key => $render_array) {
           if(is_numeric($key)) {
@@ -2019,6 +1896,7 @@ function tfk_search_preprocess_page(&$variables) {
           }
         }
     }
+    
     
     if(!empty($item_list['items'])) {
       $themed_list = theme('item_list', $item_list);
@@ -2396,7 +2274,7 @@ function tfk_search_apachesolr_query_alter($query, $caller) {
     // Limit the number of rows per page to 8 per spec.
     $query->addParam('rows', 8);
     
-    $query->addParam('fl', TFK_SEARCH_SPANISH_VERSION);
+    //$query->addParam('fl', TFK_SEARCH_SPANISH_VERSION);
     
     // When a teacher browses the worksheets the search should be pre-populated with their grade.
     if ( isset($_GET['f']) || isset($_GET['filters']) ) {
@@ -2448,7 +2326,7 @@ function tfk_search_apachesolr_query_alter($query, $caller) {
     //flog_it("TFK magazine search...");
     // Retrieve additional content fields.
     //$query->addParam('fl', implode(',', array(TFK_SEARCH_SPANISH_ISSUE, TFK_SEARCH_SPANISH_VERSION, TFK_SEARCH_WORKSHEET_PDF_LINK, TFK_SEARCH_WORKSHEET_PDF_TITLE)));
-    $query->addParam('fl', implode(',', array(TFK_SEARCH_SPANISH_ISSUE, TFK_SEARCH_SPANISH_VERSION, TFK_SEARCH_WORKSHEET_PDF_LINK, TFK_SEARCH_WORKSHEET_PDF_TITLE)));
+    $query->addParam('fl', implode(',', array(TFK_SEARCH_WORKSHEET_PDF_LINK, TFK_SEARCH_WORKSHEET_PDF_TITLE)));
     
     // Limit the number of rows per page to 8 per spec.
     $query->addParam('rows', 8);
@@ -2458,8 +2336,11 @@ function tfk_search_apachesolr_query_alter($query, $caller) {
   $args = arg();
   if (strpos($path, 'search/site') || ($args[0] == 'search' && $args[1] == 'site')) {
     // Retrieve additional content fields.
-     
-    $query->addParam('fl', implode(',', array(TFK_SEARCH_ARTICLE_DECK, TFK_SEARCH_ARTICLE_BYLINE, TFK_SEARCH_ARTICLE_META_KEYWORDS, TFK_SEARCH_KID_REPORTER_LOCATION, TFK_SEARCH_MINISITE_DECK, TFK_SEARCH_PAPER_DESCRIPTION)));
+    // Body and deck field for articles.
+    // Not returning TFK_SEARCH_ARTICLE_BODY, for now.
+    //flog_it("Site wide search...");
+    //$query->addParam('fl', implode(',', array(TFK_SEARCH_SPANISH_VERSION, TFK_SEARCH_ARTICLE_DECK)));
+    $query->addParam('fl', implode(',', array(TFK_SEARCH_ARTICLE_DECK)));
     
     // Limit the number of rows per page.
     $query->addParam('rows', 8);
@@ -2470,8 +2351,7 @@ function tfk_search_apachesolr_query_alter($query, $caller) {
     // Anonymous content types.
     if(count($rls) == 1 && $rls[1] == 'anonymous user') {
       //flog_it("Anonymous user processing...");
-      // $content_types Includes all the content types that needs to be searched.
-      $content_types = array('slideshow', 'worksheet', 'pdf_quiz', 'slideshow', 'common_core_standards', 'flashcard', 'kid_reporter', 'grammar_practice_rule', 'video', 'atw_destination', 'minisite','tfk_extra','a_paper','grammar_practice','writing_tips','book','store_product','tfk_lesson_for_tablets');
+      $content_types = array('slideshow', 'video', 'atw_destination', 'minisite','tfk_extra','a_paper','grammar_practice','writing_tips','book','store_product','tfk_lesson_for_tablets');
       
       // If document type is article, make sure it is **NOT** a cover story.
       $article_subquery = apachesolr_drupal_query("article_subquery");
@@ -2495,8 +2375,7 @@ function tfk_search_apachesolr_query_alter($query, $caller) {
     } else {
       //flog_it("Autenticated user processing...");
       // Teachers can see cover stories.
-      // $content_types Includes all the content types that needs to be searched.
-      $content_types = array('article', 'flashcard', 'kid_reporter', 'grammar_practice_rule', 'slideshow', 'video', 'atw_destination', 'minisite', 'tfk_extra', 'worksheet', 'mini_lesson', 'a_paper', 'grammar_practice', 'writing_tips', 'pdf_quiz', 'common_core_standards','book','store_product','tfk_lesson_for_tablets');
+      $content_types = array('article', 'slideshow', 'video', 'atw_destination', 'minisite', 'tfk_extra', 'worksheet', 'mini_lesson', 'a_paper', 'grammar_practice', 'writing_tips', 'pdf_quiz', 'common_core_standards','book','store_product','tfk_lesson_for_tablets');
       
       $ct_subquery = apachesolr_drupal_query("ct_subquery");
       foreach($content_types as $content_type) {
@@ -2505,7 +2384,6 @@ function tfk_search_apachesolr_query_alter($query, $caller) {
       }
             
       $superquery->addFilterSubquery($ct_subquery, 'OR');
-      //flog_it($query);
     }
     
     // Add sort descending default
@@ -2991,7 +2869,7 @@ function tfk_search_preprocess_search_result(&$vars) {
   
   $vars['tfk_search_cont_type'] = strtoupper($vars['result']['fields']['bundle_name']);
   //flog_it("cont_type=".$vars['tfk_search_cont_type']);
- 
+  
   if($vars['tfk_search_cont_type'] == 'SLIDESHOW'){
       $vars['tfk_search_cont_type'] = 'SLIDE SHOW';
   }
@@ -3066,38 +2944,11 @@ function tfk_search_preprocess_search_result(&$vars) {
   // WHY HERE???
   //$vars['render'] = TRUE;
   $vars['render'] = FALSE;
-  $magazine_article_flag = 0;
-  $locked_flag = 0;
   
   if($node) {
     // Build contextual links.
     $vars['classes_array'][] = 'contextual-links-region';
     $vars['admin_links'] = tfk_search_contextual_links($vars['result']['node']->entity_id);
-    
-    // Code by Pranita - TFK-207
-    global $user;
-    $rls = $user->roles;
-    $vars['article_magazine'] = NULL;
-    $vars['lock_bar'] = NULL;
-    $vars['locked_flag'] = NULL;
-    
-    if( $vars['result']['fields']['bundle'] == "article" ):
-        $magazine_article_flag = tfk_search_node_has_flag($node,'magazine_cover_story');
-        $vars['article_magazine'] = ($magazine_article_flag == 1)?1:0;
-    endif;
-    
-    if( $vars['result']['fields']['bundle'] == "slideshow" || $vars['result']['fields']['bundle'] == "video" || $vars['result']['fields']['bundle'] == "minisite" ):
-        $locked_flag = tfk_search_node_has_flag($node,'magazine_cover_story');
-        $vars['locked_flag'] = ($locked_flag == 1)?1:0;
-    endif;
-  
-    if(count($rls) == 1 && $rls[1] == 'anonymous user'){
-        if( $vars['result']['fields']['bundle'] == "worksheet" || $locked_flag == 1 || $magazine_article_flag == 1  || $vars['result']['fields']['bundle'] == "pdf_quiz" || $vars['result']['fields']['bundle'] == "common_core_standards"  ){
-            $vars['lock_bar'] = 1;
-        }
-    } 
-    
-    // Pranita code end.
   } else {
     $vars['admin_links'] = FALSE;
   }
@@ -3110,19 +2961,17 @@ function tfk_search_preprocess_search_result(&$vars) {
     case 'minisite':
       //flog_it("content_type=MINISITE");
       if(isset($node->field_minisite_tout_image)){
-          /* TFK - 207 : Changed tout image to thumbnail. */
-        $tmp_img_nid =  field_get_items('node', $node, 'field_minisite_thumbnail_image');
+        $tmp_img_nid =  field_get_items('node', $node, 'field_minisite_tout_image');
         $uri = $tmp_img_nid[0]['uri'];
         $filesystem_path = drupal_realpath($uri);
         if(!empty($uri)) {
-            /* TFK - 207 : Changed tout image to thumbnail. */
-          $style = "thumbnail";  
           $newpath = image_style_url($style, $uri);
           $abspath = file_create_url($newpath);
           $thumbnail = theme('image', array('path' => $abspath, 'alt' => $title, 'title' => $title, 'attributes' => $thumb_attr));
           $vars['thumbnail'] = l($thumbnail, 'node/'. $vars['result']['fields']['entity_id'], $link_attr);
         }
       }
+      
       $body = field_get_items('node', $node, 'body');
       if(!empty($body[0]['safe_summary'])) {
         $teaser = $body[0]['safe_summary'];
@@ -3635,12 +3484,6 @@ function tfk_search_preprocess_search_result(&$vars) {
     
     case 'article':
       //flog_it("content_type=ARTICLE");
-        
-        /* TFK-197: Check if Article is a magazine article.
-         * $magazine_flag = 1; It means Article is a magazine article. 
-         */
-        $magazine_flag = tfk_search_node_has_flag($node,'magazine_cover_story');
-        
       if(isset($node->field_lrg_sq_image)){
         $tmp_img = field_get_items('node',$node,'field_lrg_sq_image');
         
@@ -3685,13 +3528,6 @@ function tfk_search_preprocess_search_result(&$vars) {
       }
       //$teaser = TFK_SEARCH_ARTICLE_DECK;
       //$teaser = $vars['result']['fields'][TFK_SEARCH_ARTICLE_DECK];
-      
-      /* TFK-197: Add class article-magazine to show lock key for anonymous users. */
-      if( $magazine_flag == 1 ):
-          $vars['classes_array'][] = 'article-magazine';
-          
-      endif;
-      
       $vars['render'] = TRUE;
     break;
         
@@ -3788,225 +3624,6 @@ function tfk_search_preprocess_search_result(&$vars) {
       $vars['render'] = TRUE;
     break;
 
-    // By Pranita
-    /*
-     * Content Type - Kid Reporter.
-     * Displays Search results which belong to Kid Reporter content type.
-     * Fields Displayed: Title, Image(field_profile_image), Age(field_kid_reporter_age), Location(field_location).
-     * The variables set here are accessed in the search-result.tpl.php
-     */
-    case 'kid_reporter':
-      
-      if(isset($node->field_profile_image)){
-        $tmp_img = field_get_items('node',$node,'field_profile_image');
-        
-        if(isset($tmp_img[0]['uri'])) {
-          /* Image Rule is thumbail for Kid Reporter content type */ 
-          $style = "thumbnail";
-          $abspath = image_style_url($style, $tmp_img[0]['uri']);
-          $icon = '<div class="icon"></div>';
-          
-          $thumbnail = theme('image', array('path' => $abspath, 'alt' => $tmp_img[0]['title'], 'title' => $tmp_img[0]['title'], 'attributes' => $thumb_attr)). $icon;
-          $vars['thumbnail'] = l($thumbnail, 'node/'. $vars['result']['fields']['entity_id'], $link_attr);
-        } else {
-          $vars['thumbnail'] = FALSE;
-        }
-      }
-     
-      if(isset($node->field_kid_reporter_age)){
-        $kid_age = field_get_items('node', $node, 'field_kid_reporter_age');
-        $vars['tfk_search_kid_age'] = $kid_age[0]['value'];
-      }
-      
-      if(isset($node->field_location)){
-        $kid_location = field_get_items('node', $node, 'field_location');
-        $vars['tfk_search_kid_loc'] = $kid_location[0]['value'];
-      }
-      
-      if($base_path == TFK_SEARCH_SITESEARCH_PATH) {
-        $vars['tfk_search_result_link_1'] = l('See Bio', 'node/'. $nid);
-      }
-    
-      $body = field_get_items('node', $node, 'field_featured_deck');
-      if(!empty($body[0]['safe_value'])) {
-        $teaser = $body[0]['safe_value'];
-        $skip_processing = TRUE;
-      } else if(!empty($body[0]['value'])) {
-        $teaser = $body[0]['value'];
-        $skip_processing = TRUE;
-      }
-     
-      $vars['render'] = TRUE;
-    break;
-    
-     /*
-     * Content Type - Mini Lesson.
-     * Displays Search results which belong to Mini Lesson content type.
-     * Fields Displayed: Title, Deck(field_mini_deck)
-     * The variables set here are accessed in the search-result.tpl.php
-     */
-    case 'mini_lesson':
-      
-      if($base_path == TFK_SEARCH_SITESEARCH_PATH) {
-        $vars['tfk_search_result_link_1'] = l('Read Mini Lesson', 'node/'. $nid);
-      }
-    
-      $body = field_get_items('node', $node, 'field_mini_deck');
-      if(!empty($body[0]['safe_value'])) {
-        $teaser = $body[0]['safe_value'];
-        $skip_processing = TRUE;
-      } else if(!empty($body[0]['value'])) {
-        $teaser = $body[0]['value'];
-        $skip_processing = TRUE;
-      }
-      
-      $vars['render'] = TRUE;
-    break;
-    
-    /*
-     * Content Type - A+ Paper.
-     * Displays Search results which belong to A+ Paper content type.
-     * Fields Displayed: Title, Summary(field_summary)
-     * The variables set here are accessed in the search-result.tpl.php
-     */
-    case 'a_paper':
-     
-      if($base_path == TFK_SEARCH_SITESEARCH_PATH) {
-        $vars['tfk_search_result_link_1'] = l('Read A+ Paper', 'node/'. $nid);
-      }
-    
-      $body = field_get_items('node', $node, 'field_summary');
-      if(!empty($body[0]['safe_value'])) {
-        $teaser = $body[0]['safe_value'];
-        $skip_processing = TRUE;
-      } else if(!empty($body[0]['value'])) {
-        $teaser = $body[0]['value'];
-        $skip_processing = TRUE;
-      }
-
-      $vars['render'] = TRUE;
-    break;
-    
-    /*
-     * Content Type - TFK Extra.
-     * Displays Search results which belong to TFK Extra content type.
-     * Fields Displayed: Title, Image(field_tfk_extra_image), Deck(field_tfk_extra_deck)
-     * The variables set here are accessed in the search-result.tpl.php
-     */
-    
-    case 'tfk_extra':
-      
-      if($base_path == TFK_SEARCH_SITESEARCH_PATH) {
-        $vars['tfk_search_result_link_1'] = l('Read More', 'node/'. $nid);
-      }
-      
-      if(isset($node->field_tfk_extra_image)){
-        $tmp_img = field_get_items('node',$node,'field_tfk_extra_image');
-        
-        if(isset($tmp_img[0]['uri'])) {
-          /* Image Rule is thumbail for tfk_extra content type */  
-          $style = "thumbnail";
-          $abspath = image_style_url($style, $tmp_img[0]['uri']);
-          $icon = '<div class="icon"></div>';
-          $thumbnail = theme('image', array('path' => $abspath, 'alt' => $tmp_img[0]['title'], 'title' => $tmp_img[0]['title'], 'attributes' => $thumb_attr)). $icon;
-          $vars['thumbnail'] = l($thumbnail, 'node/'. $vars['result']['fields']['entity_id'], $link_attr);
-        } else {
-          $vars['thumbnail'] = FALSE;
-        }
-      }
-      
-      $date = field_get_items('node', $node, 'field_date');
-      if($date) {
-        $vars['date'] = date('F j, Y', $date[0]['value']);
-      }
-
-      if(isset($node->field_tfk_extra_category)){
-        $tmp_tid = field_get_items('node', $node, 'field_tfk_extra_category');
-        $tid = $tmp_tid[0]['tid'];
-        $name_res =  db_query('select name from taxonomy_term_data where tid = :tid',array('tid' => $tid ));
-        $name = $name_res->fetch();
-        $name = $name->name;
-        $vars['tfk_search_res_category'] = $name;
-        
-      }
-   
-      $body = field_get_items('node', $node, 'field_tfk_extra_deck');
-      if(!empty($body[0]['safe_value'])) {
-        $teaser = $body[0]['safe_value'];
-        $skip_processing = TRUE;
-      } else if(!empty($body[0]['value'])) {
-        $teaser = $body[0]['value'];
-        $skip_processing = TRUE;
-      }
-      
-      $vars['render'] = TRUE;
-    break;
-    
-    /*
-     * Content Type - Punctuation Practice Rule.
-     * Displays Search results which belong to Punctuation Practice Rule content type.
-     * Fields Displayed: Title, Body( Teaser Mode )
-     * The variables set here are accessed in the search-result.tpl.php
-     */
-    case 'grammar_practice_rule':
-      
-      if($base_path == TFK_SEARCH_SITESEARCH_PATH) {
-        $vars['tfk_search_result_link_1'] = l('Read More', 'node/'. $nid);
-      }
-    
-      $body = field_get_items('node', $node, 'body');
-      if(!empty($body[0]['safe_value'])) {
-        $teaser = $body[0]['safe_value'];
-        $skip_processing = TRUE;
-      } else if(!empty($body[0]['value'])) {
-        $teaser = $body[0]['value'];
-        $skip_processing = TRUE;
-      }
-     
-      $vars['render'] = TRUE;
-    break;
-    
-     /*
-     * Content Type - Writing Tips.
-     * Displays Search results which belongs to Writing Tips content type.
-     * Fields Displayed: Title, Body( Teaser Mode )
-     * The variables set here are accessed in the search-result.tpl.php
-     */
-    case 'writing_tips':
-      
-      if($base_path == TFK_SEARCH_SITESEARCH_PATH) {
-        $vars['tfk_search_result_link_1'] = l('Read More', 'node/'. $nid);
-      }
-      
-      $tips = node_view(node_load($node->nid),'teaser');
-      $teaser = $tips['body'][0]['#markup'];
-      
-      $vars['render'] = TRUE;
-    break;
-    
-    /*
-     * Content Type - Flashcard Deck.
-     * Displays Search results which belongs to Flashcard Deck content type.
-     * Fields Displayed: Title, Subject(field_study_helper)
-     * The variables set here are accessed in the search-result.tpl.php
-     */
-    case 'flashcard':
-      if($base_path == TFK_SEARCH_SITESEARCH_PATH) {
-        $vars['tfk_search_result_link_1'] = l('Read More', 'node/'. $nid);
-      }
-      
-      if(isset($node->field_study_helper)){
-        $tmp_tid = field_get_items('node', $node, 'field_study_helper');
-        $tid = $tmp_tid[0]['tid'];
-        $name_res =  db_query('select name from taxonomy_term_data where tid = :tid',array('tid' => $tid ));
-        $name = $name_res->fetch();
-        $name = $name->name;
-        $vars['tfk_search_res_category'] = $name;
-        $teaser = $name;
-      }
-      
-      $vars['render'] = TRUE;
-    break;
     
     //default:
     //  ;

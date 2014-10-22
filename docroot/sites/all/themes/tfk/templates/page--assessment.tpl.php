@@ -18,16 +18,14 @@
         $wesURL = 'https://wesqa.customersvc.com/servlet/Show?WESPAGE=am/tablet/tk/app/login.jsp&account=';
     }
     
-    flog_it("email=".$user->mail);
-    flog_it("token=".$token);
-    flog_it("cogneroTokenURL=".$cogneroTokenURL);
-    flog_it("cogneroURL=".$cogneroURL);
-    flog_it("wesURL=".$wesURL);
-    flog_it("Cookie: Assessment-access=".$_COOKIE['Assessment-access']);
-    //flog_it(isset($_COOKIE));
+    //flog_it("email=".$user->mail);
+    //flog_it("token=".$token);
+    //flog_it("cogneroTokenURL=".$cogneroTokenURL);
+    //flog_it("cogneroURL=".$cogneroURL);
+    //flog_it("wesURL=".$wesURL);
 
-    if ((isset($_COOKIE) && $_COOKIE['Assessment-access'] === "no") && $token != "") {
-        flog_it("No Assessment access. Check with LUCIE again...");
+    if ($_COOKIE['Assessment-access'] === "no" && $token != "") {
+        //flog_it("No Assessment access. Check with LUCIE again...");
         
         $domain = variable_get('lucie_callback_domain', 'qa-lucie.timeinc.com');
         $url = 'https://'. $domain. '/webservices/entitlements?CGI-App-Id=com.timeinc.tk.web';
@@ -42,11 +40,7 @@
 
         // Check for TFK Assessment access
         // Get the LUCIE account number
-        if (array_key_exists(0, $dataResponse['issues'])) {
-            $tcsAccountNumber = $dataResponse['issues'][0]['tcsAccountNumber'];
-        } else {
-            $tcsAccountNumber = null;
-        }
+        $tcsAccountNumber = $dataResponse['issues'][0]['tcsAccountNumber'];
         //flog_it("url=".$url);
         //flog_it("tcsAccountNumber=".$tcsAccountNumber);
         
@@ -82,13 +76,13 @@
                 drupal_goto($url);
             }
         }
-    } elseif (isset($_COOKIE) && $_COOKIE['Assessment-access'] === "no") {
-        flog_it("Final: No Assessment access");
+    } elseif ($_COOKIE['Assessment-access'] === "no") {
+        //flog_it("Final: No Assessment access");
         drupal_goto("no-assessment");   
     }
     
     // Cognero processing
-    flog_it("Has Assessment Access, Cognero processing...");
+    //flog_it("Has Assessment Access, Cognero processing...");
     
     $data = array(
       'authToken' => $token  
