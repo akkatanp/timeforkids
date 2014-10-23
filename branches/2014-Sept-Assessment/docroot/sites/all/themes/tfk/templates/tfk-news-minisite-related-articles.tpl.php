@@ -1,4 +1,8 @@
-<?php if(!empty($articles)):?>
+<?php 
+//flog_it("tfk-news-minisite-related-articles.tpl.php: articles:");
+//flog_it($articles);
+
+if(!empty($articles)):?>
 	<div class="content">
 
 	<?php echo l($articles[0]['minisite_title'],'node/'.$articles[0]['minisite_nid']);?>

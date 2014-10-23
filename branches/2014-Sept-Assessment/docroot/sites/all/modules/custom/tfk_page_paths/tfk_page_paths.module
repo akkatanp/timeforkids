@@ -107,12 +107,6 @@ function tfk_page_paths_preprocess_page(&$variables){
     $args = arg();
     //flog_it("***tfk_page_paths_preprocess_page:");
     
-    if ($variables['node']->type == "slideshow") {
-        flog_it("adding js and css...");
-        drupal_add_js(drupal_get_path('theme', 'tfk'). '/js/atw_homepage_slideshow.js','file');
-        drupal_add_css(drupal_get_path('theme', 'tfk'). '/css/atw_homepage_slideshow.css', 'file');
-    }
-    
     // tfk-50, tfk-34, tfk-83: Add new items to paywall
     if ( isset($args[0]) && $args[0] == "node" && isset($variables['node']) ) { 
         $node = $args[1];
