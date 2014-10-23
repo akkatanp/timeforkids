@@ -387,6 +387,8 @@ function tfk_helper_block_view_alter(&$data, $block) {
  * Implementation of hook_preprocess_page.
  */
 function tfk_helper_preprocess_page(&$variables) {
+  //flog_it("tfk_helper_preprocess_page...");
+  //flog_it("ACTIVE ISSUE");
   $args = arg();
   if($args[0] == 'node' && isset($args[1]) && is_numeric($args[1])) {
     if(!node_access('view', node_load($args[1]), $variables['user'])) {
@@ -396,6 +398,7 @@ function tfk_helper_preprocess_page(&$variables) {
 
   if(arg(0) == 'node' && array_key_exists('node', $variables)) {
     if($variables['node']->type == 'minisite') {
+    
       // Set primary menu link to active. Doing it here bacause Context's menu reaction is not working.
       $variables['page']['header']['menu_menu-tfk-global-navigation']['content']['4141']['#localized_options']['attributes']['class'][] = 'active';
       
@@ -1072,21 +1075,21 @@ function tfk_helper_block_info() {
   $blocks['featured_block_sidebar_slideshow'] = array(
     'info' => t('TFK Helper Sidebar Featured Block'),
     'visibility' => BLOCK_VISIBILITY_LISTED,
-    'cache' => DRUPAL_CACHE_GLOBAL,
+    'cache' => DRUPAL_NO_CACHE,
   );
   
   // TFK Photos and Video More Items Block.
   $blocks['more_items_block'] = array(
     'info' => t('TFK Helper More Items Block'),
     'visibility' => BLOCK_VISIBILITY_LISTED,
-    'cache' => DRUPAL_CACHE_GLOBAL,
+    'cache' => DRUPAL_NO_CACHE,
   );
   
   // TFK Helper Slideshow.
   $blocks['tfk_helper_slideshow'] = array(
     'info' => t('TFK Helper Slideshow'),
     'visibility' => BLOCK_VISIBILITY_LISTED,
-    'cache' => DRUPAL_CACHE_GLOBAL,
+    'cache' => DRUPAL_NO_CACHE,
   );
   
   // TFK Helper Login.
@@ -1095,6 +1098,14 @@ function tfk_helper_block_info() {
     'visibility' => BLOCK_VISIBILITY_LISTED,
     'cache' => DRUPAL_CACHE_GLOBAL,
   );
+  
+  /* THIS DID NOT FIX THE HILIGHT PROBLEM */
+  /*
+  $blocks['tfk_news_minisite_related_articles'] = array(
+    'cache' => DRUPAL_CACHE_GLOBAL,
+  );
+   * 
+   */
   
   return $blocks;
 }
@@ -1106,19 +1117,28 @@ function tfk_helper_block_view($delta='') {
   global $node;
   $block = array();
   
+  //flog_it("tfk_helper_block_view: delta=".$delta);
+  
   switch ($delta) {
     
     // TFK Photos and Video Node Featured Block (Sidebar).
     case 'featured_block_sidebar_slideshow':
-      drupal_add_css(drupal_get_path('module', 'tfk_helper'). '/css/tfk_helper_featured_block.css', 'file');
+      //drupal_add_css(drupal_get_path('module', 'tfk_helper'). '/css/tfk_helper_featured_block.css', 'file');
       $node = menu_get_object('node', 1);
       
       $image_field = ($node->type == 'video') ? 'field_video_thumbnail' : 'field_lrg_sq_image';
       
       $featured_item = tfk_helper_get_featured_block_sidebar('photos_videos_featured', $image_field);
+      //flog_it("featured_item:");
+      //flog_it($featured_item);
 
       if($featured_item != FALSE) {
-        $block['content'] = theme('featured_block_sidebar', $featured_item);
+        $block['content'] = array(
+            '#markup' => theme('featured_block_sidebar', $featured_item),
+            '#attached' => array(
+                'css' => array(drupal_get_path('module', 'tfk_helper') . '/css/tfk_helper_featured_block.css')
+            )
+         );
       }
     break;
     
@@ -1126,10 +1146,15 @@ function tfk_helper_block_view($delta='') {
     case 'more_items_block':
       // Check: Don't putout no images found msg. for a behind the paywall permission issue  
       if ($node->nid != 94246 && $node->title != "SUBSCRIBER-ONLY CONTENT") {
-        drupal_add_css(drupal_get_path('module', 'tfk_helper'). '/css/tfk_helper_more_items_block.css', 'file');
+        //drupal_add_css(drupal_get_path('module', 'tfk_helper'). '/css/tfk_helper_more_items_block.css', 'file');
         $more_items = tfk_helper_get_more_items();
         if($more_items != FALSE) {
-          $block['content'] = theme('photos_video_more', $more_items);
+          $block['content'] = array(
+              '#markup' => theme('photos_video_more', $more_items),
+              '#attached' => array(
+                    'css' => array(drupal_get_path('module', 'tfk_helper') . '/css/tfk_helper_more_items_block.css')
+                )
+          );
         }
       }
     break;
@@ -1142,7 +1167,15 @@ function tfk_helper_block_view($delta='') {
       $slideshow_nid = arg(1);
       $images = tfk_helper_get_slideshow_data($slideshow_nid);
       if($images != FALSE) {
-        $block['content'] = tfk_helper_get_slideshow($images, array('related_nid' => $slideshow_nid));
+        $block['content'] = array(
+            '#markup' => tfk_helper_get_slideshow($images, array('related_nid' => $slideshow_nid)),
+            '#attached' => array(
+                'css' => array(drupal_get_path('theme', 'tfk') . '/css/atw_homepage_slideshow.css'),
+                'js' => array(drupal_get_path('theme', 'tfk') . '/js/atw_homepage_slideshow.js')
+            )
+        );
+        //flog_it("tfk_helper_get_slideshow return:");
+        //flog_it(tfk_helper_get_slideshow($images, array('related_nid' => $slideshow_nid)));
       } else {
         // Check: Don't putout no images found msg. for a behind the paywall permission issue
         if ($node->nid != 94246 && $node->title != "SUBSCRIBER-ONLY CONTENT") {
@@ -1266,7 +1299,7 @@ function tfk_helper_translate_content_type($content_type) {
  * @see tfk_helper_block_view
  */
 function tfk_helper_get_slideshow_data($nid) {
-  flog_it("tfk_helper_get_slideshow_data: nid=".$nid);
+  //flog_it("tfk_helper_get_slideshow_data: nid=".$nid);
   
   $node = node_load($nid); //@todo menu get object.
   $images =  field_get_items('node', $node, 'field_slideshow_images');
@@ -1293,8 +1326,8 @@ function tfk_helper_get_slideshow_data($nid) {
       if($image_field) {
         $image_field = array_shift($image_field);
         //list($width, $height, $type, $attr) = getimagesize($image_field['uri']);
-        flog_it("width=".$width.", height=".$height.", type=".$type.", attr=".$attr);
-        flog_it("uri=".$image_field['uri']);
+        //flog_it("width=".$width.", height=".$height.", type=".$type.", attr=".$attr);
+        //flog_it("uri=".$image_field['uri']);
       }
       
       // Date.
@@ -1326,7 +1359,7 @@ function tfk_helper_get_slideshow_data($nid) {
           //'caption'     => $caption,
           'credit'      => $credit,
           'description' => $description,
-          'date' 				=> $date,
+          'date' 	=> $date,
         );
       //}
       

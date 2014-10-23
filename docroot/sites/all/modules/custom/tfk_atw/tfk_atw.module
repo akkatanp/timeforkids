@@ -84,7 +84,8 @@ function tfk_atw_block_info() {
     'info' => t('Switcher beetween list of destinations and a google map')
   );
   $blocks['atw-destination-navigation'] = array(
-    'info' => t('Destination Navigation Block')
+    'info' => t('Destination Navigation Block'),
+    'cache' => DRUPAL_NO_CACHE,
   );
   $blocks['atw-destination-related'] = array(
     'info' => t('Destination Related Teacher Resources and Related Articles')
