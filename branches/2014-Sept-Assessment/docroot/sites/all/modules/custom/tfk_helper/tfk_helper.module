@@ -1136,8 +1136,9 @@ function tfk_helper_block_view($delta='') {
     
     // TFK Helper Slideshow.
     case 'tfk_helper_slideshow':
-      drupal_add_js(drupal_get_path('theme', 'tfk'). '/js/atw_homepage_slideshow.js','file');
-      drupal_add_css(drupal_get_path('theme', 'tfk'). '/css/atw_homepage_slideshow.css', 'file');
+      //flog_it("adding js and css...");
+      //drupal_add_js(drupal_get_path('theme', 'tfk'). '/js/atw_homepage_slideshow.js','file');
+      //drupal_add_css(drupal_get_path('theme', 'tfk'). '/css/atw_homepage_slideshow.css', 'file');
       $slideshow_nid = arg(1);
       $images = tfk_helper_get_slideshow_data($slideshow_nid);
       if($images != FALSE) {
@@ -1265,6 +1266,8 @@ function tfk_helper_translate_content_type($content_type) {
  * @see tfk_helper_block_view
  */
 function tfk_helper_get_slideshow_data($nid) {
+  flog_it("tfk_helper_get_slideshow_data: nid=".$nid);
+  
   $node = node_load($nid); //@todo menu get object.
   $images =  field_get_items('node', $node, 'field_slideshow_images');
   
@@ -1289,8 +1292,9 @@ function tfk_helper_get_slideshow_data($nid) {
       $image_field = field_get_items('node', $image['node'], 'field_image');
       if($image_field) {
         $image_field = array_shift($image_field);
-        
-        list($width, $height, $type, $attr) = getimagesize($image_field['uri']);
+        //list($width, $height, $type, $attr) = getimagesize($image_field['uri']);
+        flog_it("width=".$width.", height=".$height.", type=".$type.", attr=".$attr);
+        flog_it("uri=".$image_field['uri']);
       }
       
       // Date.
