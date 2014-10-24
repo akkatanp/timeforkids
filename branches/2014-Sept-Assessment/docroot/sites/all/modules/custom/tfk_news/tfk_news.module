@@ -119,7 +119,8 @@ function tfk_news_block_info() {
     'cache' => DRUPAL_NO_CACHE
   );
   $blocks['tfk-news-minisite-more'] = array(
-    'info' => t('Block with more minisites for article node view')
+    'info' => t('Block with more minisites for article node view'),
+    'cache' => DRUPAL_NO_CACHE
   );
   return $blocks;
 }

@@ -9,7 +9,7 @@ if(!empty($articles)):?>
 	
 		<ul class="menu">
 		<?php foreach($articles as $article):?>
-                        <?php flog_it(l($article['title'],'node/'.$article['nid'])); ?>
+                        <?php //flog_it(l($article['title'],'node/'.$article['nid'])); ?>
 			<li><?php echo l($article['title'],'node/'.$article['nid']);?></li>
 
 		<?php endforeach; ?>
