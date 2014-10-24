@@ -115,7 +115,8 @@ function tfk_news_block_info() {
     'info' => t('Block with proper mini lessons for homepage')
   );
   $blocks['tfk-news-minisite-articles'] = array(
-    'info' => t('Block with minisite related articles')
+    'info' => t('Block with minisite related articles'),
+    'cache' => DRUPAL_NO_CACHE
   );
   $blocks['tfk-news-minisite-more'] = array(
     'info' => t('Block with more minisites for article node view')
