@@ -29,10 +29,20 @@ function tfk_photos_video_theme($existing, $type, $theme, $path) {
  *   The name of the template being rendered ("page" in this case.)
  */
 function tfk_photos_video_preprocess_page(&$variables) {
+  //flog_it("tfk_photos_video_preprocess_page...");
+  //flog_it("ACTIVE ISSUE");
+    
+  if ($variables['node']->type == 'video') {
+      //flog_it("FOUND VIDEO...");
+      //flog_it($variables);
+  }
+    
   if(arg(0) == 'node' && array_key_exists('node', $variables)) {
     if($variables['node']->type == 'slideshow' || $variables['node']->type == 'video') {
       
       // Set primary menu link to active. Doing it here bacause Context's menu reaction is not working.
+      //flog_it("SETTING: class active...");
+      //flog_it($variables['page']['header']['menu_menu-tfk-global-navigation']);
       $variables['page']['header']['menu_menu-tfk-global-navigation']['content']['984']['#attributes']['class'][] = 'active';
       
       // Add Slideshow page CSS.
