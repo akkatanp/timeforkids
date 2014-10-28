@@ -21,10 +21,12 @@ function tfk_favorites_menu(){
 
 function tfk_favorites_block_info() {
   $blocks['tfk-favorites-links'] = array(
-    'info' => t('Favorites Block')
+    'info' => t('Favorites Block'),
+    'cache' => DRUPAL_NO_CACHE
   );
   $blocks['tfk_favorites_links'] = array(
-    'info' => t('Hookable Favorites Block')
+    'info' => t('Hookable Favorites Block'),
+    'cache' => DRUPAL_NO_CACHE
   );
   return $blocks;
 }
