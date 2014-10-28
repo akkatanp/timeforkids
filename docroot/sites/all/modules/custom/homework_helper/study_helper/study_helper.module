@@ -217,8 +217,8 @@ function study_helper_block_info() {
   return array(
     0 => array(
       'info' => t('User flash cards link'),
-      //'cache' => DRUPAL_NO_CACHE
-    )
+      'cache' => DRUPAL_NO_CACHE
+    ),
   );
 }
 
