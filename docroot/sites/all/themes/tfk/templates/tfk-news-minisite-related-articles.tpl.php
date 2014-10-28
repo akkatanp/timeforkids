@@ -1,5 +1,5 @@
 <?php 
-flog_it("tfk-news-minisite-related-articles.tpl.php: articles:");
+//flog_it("tfk-news-minisite-related-articles.tpl.php: articles:");
 //flog_it($articles);
 
 if(!empty($articles)):?>
