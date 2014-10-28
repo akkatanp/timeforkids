@@ -311,6 +311,7 @@ function tfk_search_theme($existing, $type, $theme, $path) {
     // Featured block for photos-video section.
     'tfk_featured_block' => array(
       'variables' => array('tfkSearchFeaturedItem' => NULL),
+      'cache' => DRUPAL_NO_CACHE
     ),
       
     'tfk_featured_minisite_slideshow'=> array(
@@ -837,7 +838,7 @@ function tfk_search_block_info() {
  * Implementation of hook_block_view.
  */
 function tfk_search_block_view($delta='') {
-  //flog_it("tfk_search_block_view, delta=".$delta);
+  flog_it("tfk_search_block_view, delta=".$delta);
   
   $block = array();
   $settings = variable_get('tfk_search_settings', tfk_search_default_settings());
@@ -934,9 +935,9 @@ function tfk_search_block_view($delta='') {
     
     // Photos and Video Featured block.
     case 'tfk_search_photos_video_featured':
-      //flog_it("HIT: tfk_search_photos_video_featured...");
+      flog_it("HIT: tfk_search_photos_video_featured...");
       $featured_item = tfk_search_get_featured_block();
-        
+      //flog_it($featured_item);
         
         
       if($featured_item != FALSE) {
@@ -1424,7 +1425,7 @@ function _tfk_get_saved_searches() {
  *
  * @see tfk_search_theme()
  */
-function theme_tfk_featured_block(&$variables) {
+  function theme_tfk_featured_block(&$variables) {
   $tfkSearchFeaturedItem = $variables['tfkSearchFeaturedItem'];
   $output = '<div id="tfk-search-photos-video-featured">';
   $output .= '<div class="top-story-right-square"></div>';
@@ -1514,7 +1515,11 @@ function theme_tfk_featured_block(&$variables) {
   
   // Favorites link.
   $flag = flag_get_flag('favorites');
-  if($flag != FALSE) {
+  //flog_it("flag=");
+  //flog_it($flag);
+  
+  if ( $flag != FALSE && user_is_anonymous() == FALSE ) {
+    flog_it("putting out favorites link...");
     $flag_link = flag_create_link('favorites', $tfkSearchFeaturedItem->nid);
     $output .= '<div class="featured-flag-link">';
     $output .= $flag_link;
