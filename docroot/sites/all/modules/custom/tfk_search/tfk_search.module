@@ -916,6 +916,9 @@ function tfk_search_block_view($delta='') {
       //flog_it("HIT: tfk_magazine_spanish...");
       // $block['content'] = l('Search Spanish Translations', '/search/site/?filters=bundle:article ss_spanish_version:1', array('query' => array('filters' = 'bundle:article ss_spanish_version:1')));
       $block['content'] = l('Search Spanish Translations', 'search/site/', array('query' => array('filters' => 'bundle:article bundle:worksheet ss_spanish_version:1')));
+      $block['tfk_magazine_spanish'] = array(
+        'cache' => DRUPAL_NO_CACHE
+      );
     break;
     
     // Photos and Video title block.
@@ -939,13 +942,16 @@ function tfk_search_block_view($delta='') {
       $featured_item = tfk_search_get_featured_block();
       //flog_it($featured_item);
         
-        
-      if($featured_item != FALSE) {
+      if($featured_item != FALSE && user_is_anonymous() == FALSE) {
         $block['content'] = theme('tfk_featured_block', $featured_item);
       } else {
         // Suppress the block.
         $block['content'] = '';
       }
+      
+      $block['tfk_search_photos_video_featured'] = array(
+        'cache' => DRUPAL_NO_CACHE
+      );
     break;
     
     
@@ -965,6 +971,9 @@ function tfk_search_block_view($delta='') {
         // Suppress the block.
         $block['content'] = '';
       }
+      $block['tfk_minisite_slideshow_featured'] = array(
+        'cache' => DRUPAL_NO_CACHE
+      );
     break;
     
     
@@ -985,7 +994,9 @@ function tfk_search_block_view($delta='') {
         // Suppress the block.
         $block['content'] = '';
       }
-      
+      $block['tfk_minisite_video_featured'] = array(
+        'cache' => DRUPAL_NO_CACHE
+      );
       
     break;
     
