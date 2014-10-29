@@ -243,7 +243,7 @@ function study_helper_block_view($delta = '') {
  */
 function study_helper_my_flashcards() {
   global $user;
-  flog_it("study_helper_my_flashcards: user->uid=".$user->uid);
+  //flog_it("study_helper_my_flashcards: user->uid=".$user->uid);
   
   
   // The page showing link to 'my flashcards' relies on anonymous sessions.
@@ -255,7 +255,7 @@ function study_helper_my_flashcards() {
   }
   elseif (isset($_SESSION['flashcard_anonymous_nid'])) {
     // Link to newest flashcard only for anonymous user.
-    flog_it("about to run obscured query...");
+    //flog_it("about to run obscured query...");
     $obscured = db_query("SELECT uuid FROM {node} WHERE nid = :nid", array(':nid' => max($_SESSION['flashcard_anonymous_nid'])))->fetchField();
     $path = "flashcard/$obscured";
   }

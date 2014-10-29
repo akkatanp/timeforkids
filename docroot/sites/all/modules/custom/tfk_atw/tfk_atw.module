@@ -105,7 +105,7 @@ function tfk_atw_block_info() {
 function tfk_atw_block_view($delta='') {
   $block = array();
   
-  flog_it("tfk_atw_block_view: delta=".$delta);
+  //flog_it("tfk_atw_block_view: delta=".$delta);
   switch ($delta) {
     case 'atw-page-slideshow':
       $block['subject'] = t('Custom slideshow that appears on the ATW Page');
