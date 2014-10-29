@@ -76,9 +76,17 @@ function purge_urls($purge_urls) {
         if (array_key_exists('port', $proxy_url_parts)) {
           $proxy_url_base = $proxy_url_base . ":" . $proxy_url_parts['port'];
         }
-        // Construct a new path retaining the url query string (#1299776 by djboddydrake)
-        $purge_path = array_key_exists('query', $purge_url_parts) ? $purge_url_parts['path']
-          . '?' . $purge_url_parts['query'] : $purge_url_parts['path'];
+        // Construct a new path retaining the proxy url path (needed for nginx/get methods)
+        if (array_key_exists('path', $proxy_url_parts)) {
+          $purge_path = '/' . trim($proxy_url_parts['path'], '/') . '/' . ltrim($purge_url_parts['path'], '/');
+        }
+        else {
+          $purge_path = $purge_url_parts['path'];
+        }
+        // Check for a query and add it
+        if (array_key_exists('query', $purge_url_parts)) {
+          $purge_path = $purge_path . '?' . $purge_url_parts['query'];
+        }
         $purge_requests[$current_purge_request]['purge_url'] = $proxy_url_base . $purge_path;
         //  Set the host header to the sites hostname
         $purge_requests[$current_purge_request]['headers'] = array("Host: " . $purge_url_host);
@@ -90,15 +98,12 @@ function purge_urls($purge_urls) {
         $purge_requests[$current_purge_request]['request_method'] = 'PURGE';
         // Construct a new url
         $proxy_url_base = $proxy_url_parts['scheme'] . "://" . $proxy_url_parts['host'];
-        if (array_key_exists('port', $proxy_url_parts)) {
-          $proxy_url_base = $proxy_url_base . ":" . $proxy_url_parts['port'];
-        }
         // Construct a new path retaining the url query string (#1299776 by djboddydrake)
         $purge_path = array_key_exists('query', $purge_url_parts) ? $purge_url_parts['path']
           . '?' . $purge_url_parts['query'] : $purge_url_parts['path'];
         $purge_requests[$current_purge_request]['purge_url'] = $proxy_url_base . $purge_path;
         //  Set the Acquia purge header to the Acquia Hosting site name
-        $purge_requests[$current_purge_request]['headers'] = array('Accept-Encoding: gzip', 'X-Acquia-Purge: ' . $_SERVER['HTTP_HOST']);
+        $purge_requests[$current_purge_request]['headers'] = array('Accept-Encoding: gzip', 'X-Acquia-Purge:' . $_SERVER['AH_SITE_NAME']);
       }
       $current_purge_request++;
     }
@@ -148,9 +153,8 @@ function purge_issue_requests_curl($purges) {
 
   // Result collection. Collects the http code returned for each url purged
   $current_curl_purge = 0;
-  foreach ($purges as $purge) {    
+  foreach ($purges as $purge) {
     $info = curl_getinfo($curl_purge[$current_curl_purge]);
-    watchdog('purge', 'Purged %purge_url with status: '. var_export($info, TRUE), array('%purge_url' => $purge['purge_url']));
     $purges[$current_curl_purge]['http_code'] = $info['http_code'];
     curl_multi_remove_handle($curl_purges, $curl_purge[$current_curl_purge]);
     $current_curl_purge++;
@@ -169,28 +173,37 @@ function purge_issue_requests_curl($purges) {
 function purge_logging($purge_request_results) {
   $purge_success = 0;
   $purge_blocking = array();
-  $purge_log = array();
+  $purge_success_log = array();
+  $purge_error_log = array();
   foreach ($purge_request_results as $purge_request_result) {
     switch ($purge_request_result['http_code']) {
       // First check if everything went ok.
       case 200:
-        $purge_log[] = $purge_request_result['purge_url'] . ' on ' . $purge_request_result['proxy_url'] . ' Ok';
+        $purge_success_log[] = $purge_request_result['purge_url'] . ' on ' . $purge_request_result['proxy_url'] . ' Ok';
+        $purge_success++;
+        break;
+      // Redirects are acceptable
+      case 301:
+        $purge_success_log[] = $purge_request_result['purge_url'] . ' on ' . $purge_request_result['proxy_url'] . ' Permanent Redirect';
+        $purge_success++;
+        break;
+      case 302:
+        $purge_success_log[] = $purge_request_result['purge_url'] . ' on ' . $purge_request_result['proxy_url'] . ' Temporary Redirect';
         $purge_success++;
         break;
       // Notice if the request was not found in the proxy cache
       case 404:
-        $purge_log[] = $purge_request_result['purge_url'] . ' on ' . $purge_request_result['proxy_url'] . ' Not Found';
+        $purge_success_log[] = $purge_request_result['purge_url'] . ' on ' . $purge_request_result['proxy_url'] . ' Not Found';
         $purge_success++;
         break;
       // Collect all proxy hosts that are blocking the url requests
       case 405:
-        $purge_log[] = $purge_request_result['purge_url'] . ' on ' . $purge_request_result['proxy_url'] . ' Forbidden';
+        $purge_error_log[] = $purge_request_result['purge_url'] . ' on ' . $purge_request_result['proxy_url'] . ' Forbidden';
         $purge_blocking[] = parse_url($purge_request_result['url'], PHP_URL_HOST);
         break;
       // Collect all urls and their http error codes
       default:
-        $purge_log[] = $purge_request_result['purge_url'] . ' on '
-          . $purge_request_result['proxy_url'] . ' ' . $purge_request_result['http_code'];
+        $purge_error_log[] = $purge_request_result['purge_url'] . ' on ' . $purge_request_result['proxy_url'] . ' ' . $purge_request_result['http_code'];
         break;
     }
 
@@ -199,37 +212,37 @@ function purge_logging($purge_request_results) {
   // Watchdog barking
   $purge_errors = count($purge_request_results) - $purge_success;
   // Just a notice when all is ok
-  if ($purge_errors == 0) {
-    if ($purge_success == 1) {
+  if ($purge_errors === 0) {
+    if ($purge_success === 1) {
       watchdog(
         'purge',
-        '1 URL has been successfully purged from the reverse proxy caches: !purge_log',
-        array('!purge_log' => expire_print_r($purge_log))
+        '1 URL has been successfully purged from the reverse proxy caches: !$purge_success_log',
+        array('!$purge_success_log' => expire_print_r($purge_success_log))
       );
     }
     else {
       watchdog(
         'purge',
-        '!purge_success_count URLs have been successfully purged from the reverse proxy caches: !purge_log',
-        array('!purge_success_count' => $purge_success, '!purge_log' => expire_print_r($purge_log))
+        '!purge_success_count URLs have been successfully purged from the reverse proxy caches: !$purge_success_log',
+        array('!purge_success_count' => $purge_success, '!$purge_success_log' => expire_print_r($purge_success_log))
       );
     }
   }
   else {
     // Report all urls with errors
-    if ($purge_errors == 1) {
+    if ($purge_errors === 1) {
       watchdog(
         'purge',
-        '1 error has been encountered when purging URLs !purge_log',
-        array('!purge_log' => expire_print_r($purge_log)),
+        '1 error has been encountered when purging URLs !$purge_error_log',
+        array('!$purge_error_log' => expire_print_r($purge_error_log)),
         $severity = WATCHDOG_ERROR
       );
     }
     else {
       watchdog(
         'purge',
-        '!purge_errors_count errors have been encountered when purging these URLs. !purge_log',
-        array('!purge_errors_count' => count($purge_errors), '!purge_log' => expire_print_r($purge_log)),
+        '!purge_errors_count errors have been encountered when purging these URLs. !$purge_error_log',
+        array('!purge_errors_count' => $purge_errors, '!$purge_error_log' => expire_print_r($purge_error_log)),
         $severity = WATCHDOG_ERROR
       );
     }

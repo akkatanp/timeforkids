@@ -100,25 +100,32 @@ function _teacher_news_callback(){
 
 function tfk_news_block_info() {
   $blocks['tfk-news-taxonomy-links'] = array(
-    'info' => t('Taxonomy based navigation for news section')
+    'info' => t('Taxonomy based navigation for news section'),
+    'cache' => DRUPAL_NO_CACHE
   );
   $blocks['tfk-news-year-filter'] = array(
-    'info' => t('Dropdown with years to filter articles.')
+    'info' => t('Dropdown with years to filter articles.'),
+    'cache' => DRUPAL_NO_CACHE
   );
   $blocks['tfk-news-current-filters'] = array(
-    'info' => t('Information about current filters.')
+    'info' => t('Information about current filters.'),
+    'cache' => DRUPAL_NO_CACHE
   );
   $blocks['tfk-news-latest-news-link'] = array(
-    'info' => t('Block with text "Latest News".')
+    'info' => t('Block with text "Latest News".'),
+    'cache' => DRUPAL_NO_CACHE
   );
   $blocks['tfk-news-homepage-mini-lessons'] = array(
-    'info' => t('Block with proper mini lessons for homepage')
+    'info' => t('Block with proper mini lessons for homepage'),
+    'cache' => DRUPAL_NO_CACHE
   );
   $blocks['tfk-news-minisite-articles'] = array(
-    'info' => t('Block with minisite related articles')
+    'info' => t('Block with minisite related articles'),
+    'cache' => DRUPAL_NO_CACHE
   );
   $blocks['tfk-news-minisite-more'] = array(
-    'info' => t('Block with more minisites for article node view')
+    'info' => t('Block with more minisites for article node view'),
+    'cache' => DRUPAL_NO_CACHE
   );
   return $blocks;
 }
