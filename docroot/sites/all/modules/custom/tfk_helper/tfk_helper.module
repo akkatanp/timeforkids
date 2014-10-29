@@ -1101,6 +1101,8 @@ function tfk_helper_block_info() {
   
   // TFK Homepage Secondary Touts.
   $blocks['homepage_news_block'] = array(
+    'info' => t('Homepage News Block'),
+    'visibility' => BLOCK_VISIBILITY_LISTED,
     'cache' => DRUPAL_NO_CACHE
   );
   
