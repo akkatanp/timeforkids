@@ -19,7 +19,8 @@ function _extras_callback(){
 
 function tfk_extras_block_info() {
   $blocks['tfk-extras-taxonomy-links'] = array(
-    'info' => t('Taxonomy based navigation for extras section')
+    'info' => t('Taxonomy based navigation for extras section'),
+    'cache' => DRUPAL_NO_CACHE
   );
   return $blocks;
 }
