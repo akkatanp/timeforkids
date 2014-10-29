@@ -1099,6 +1099,13 @@ function tfk_helper_block_info() {
     'cache' => DRUPAL_CACHE_GLOBAL,
   );
   
+  // TFK Homepage Secondary Touts.
+  $blocks['homepage_news_block'] = array(
+    'cache' => DRUPAL_CACHE_GLOBAL
+  );
+  
+  
+  
   /* THIS DID NOT FIX THE HILIGHT PROBLEM */
   /*
   $blocks['tfk_news_minisite_related_articles'] = array(
