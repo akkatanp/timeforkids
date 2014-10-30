@@ -545,7 +545,7 @@ define('TFK_SEARCH_ARTICLE_DECK', 'ss_field_deck');
  *
  * @var string
  */
-define('TFK_SEARCH_ARTICLE_BYLINE', 'ss_field_article_byline');
+define('TFK_SEARCH_ARTICLE_BYLINE', 'sm_field_article_byline');
 
 
 /**
