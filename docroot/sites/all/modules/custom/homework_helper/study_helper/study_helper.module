@@ -216,7 +216,8 @@ function study_helper_node_view($node, $view_mode, $langcode) {
 function study_helper_block_info() {
   return array(
     0 => array(
-      'info' => t('User flash cards link')
+      'info' => t('User flash cards link'),
+      'cache' => DRUPAL_NO_CACHE
     ),
   );
 }
@@ -226,6 +227,9 @@ function study_helper_block_info() {
  */
 function study_helper_block_view($delta = '') {
   $block = array();
+  //flog_it("study_helper_block_view: delta=".$delta);
+  //flog_it(study_helper_my_flashcards());
+  
   switch ($delta) {
     case 0:
      $block['content'] = study_helper_my_flashcards();
@@ -239,6 +243,9 @@ function study_helper_block_view($delta = '') {
  */
 function study_helper_my_flashcards() {
   global $user;
+  //flog_it("study_helper_my_flashcards: user->uid=".$user->uid);
+  
+  
   // The page showing link to 'my flashcards' relies on anonymous sessions.
   // Therefore it must not be cached.
   $GLOBALS['conf']['cache'] = FALSE;
@@ -248,6 +255,7 @@ function study_helper_my_flashcards() {
   }
   elseif (isset($_SESSION['flashcard_anonymous_nid'])) {
     // Link to newest flashcard only for anonymous user.
+    //flog_it("about to run obscured query...");
     $obscured = db_query("SELECT uuid FROM {node} WHERE nid = :nid", array(':nid' => max($_SESSION['flashcard_anonymous_nid'])))->fetchField();
     $path = "flashcard/$obscured";
   }
