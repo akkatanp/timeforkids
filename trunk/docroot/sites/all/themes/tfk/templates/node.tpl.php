@@ -127,7 +127,7 @@
 
     <?php if($type == 'slideshow' || $type == 'video'): ?>
     <?php
-        $photoDate = $variables['field_date'][0][value];
+        $photoDate = $variables['field_date'][0]['value'];
      ?>
         <span class="image-date"><?php echo date("F d, Y", $photoDate); ?></span>
        
