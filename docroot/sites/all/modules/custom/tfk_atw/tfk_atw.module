@@ -84,7 +84,8 @@ function tfk_atw_block_info() {
     'info' => t('Switcher beetween list of destinations and a google map')
   );
   $blocks['atw-destination-navigation'] = array(
-    'info' => t('Destination Navigation Block')
+    'info' => t('Destination Navigation Block'),
+    'cache' => DRUPAL_NO_CACHE,
   );
   $blocks['atw-destination-related'] = array(
     'info' => t('Destination Related Teacher Resources and Related Articles')
@@ -103,6 +104,8 @@ function tfk_atw_block_info() {
 
 function tfk_atw_block_view($delta='') {
   $block = array();
+  
+  //flog_it("tfk_atw_block_view: delta=".$delta);
   switch ($delta) {
     case 'atw-page-slideshow':
       $block['subject'] = t('Custom slideshow that appears on the ATW Page');
@@ -112,26 +115,26 @@ function tfk_atw_block_view($delta='') {
       $block['subject'] = t(''); //this is title of the block that acutally appears on the page , so we want it empty
       $block['content'] = _tfk_atw_page_map_switcher();
       break;
-   case 'atw-destination-navigation':
+    case 'atw-destination-navigation':
       $block['subject'] = t('');
       $block['content'] = _tfk_atw_destination_navigation();
       break;
-  case 'atw-destination-related':
+    case 'atw-destination-related':
       $block['subject'] = t('');
       $block['content'] = _tfk_atw_destination_related();
       break;
-  case 'atw-destination-slideshow':
-    $block['subject'] = t('');
-    $block['content'] = _tfk_atw_destination_slideshow();
-    break;
-  case 'atw-timeline-slideshow':
-    $block['subject'] = t('');
-    $block['content'] = _tfk_atw_timeline_slideshow();
-    break;
-  case 'atw-daylife-slideshow':
-    $block['subject'] = t('');
-    $block['content'] = _tfk_atw_daylife_slideshow();
-    break;
+    case 'atw-destination-slideshow':
+      $block['subject'] = t('');
+      $block['content'] = _tfk_atw_destination_slideshow();
+      break;
+    case 'atw-timeline-slideshow':
+      $block['subject'] = t('');
+      $block['content'] = _tfk_atw_timeline_slideshow();
+      break;
+    case 'atw-daylife-slideshow':
+      $block['subject'] = t('');
+      $block['content'] = _tfk_atw_daylife_slideshow();
+      break;
   }
   return $block;
 }

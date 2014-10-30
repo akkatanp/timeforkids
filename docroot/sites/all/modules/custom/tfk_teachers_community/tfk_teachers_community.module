@@ -61,14 +61,14 @@ function tfk_teachers_community_block_info() {
   $blocks['tfk_teachers_comm_more_topics'] = array(
     'info' => t('TFK Teachers Community More Topics Block'),
     'visibility' => BLOCK_VISIBILITY_LISTED,
-    'cache' => DRUPAL_CACHE_GLOBAL,
+    'cache' => DRUPAL_NO_CACHE
   );
   
   // Teacher Community Topic List editable text area under "Got a Question? Need Advice on Lesson Plans?"
   $blocks['tfk_teachers_topic_textarea'] = array(
     'info' => t('TFK Teachers Community More Topics Textarea'),
     'visibility' => BLOCK_VISIBILITY_LISTED,
-    'cache' => DRUPAL_CACHE_GLOBAL,
+    'cache' => DRUPAL_NO_CACHE
   );
   
   return $blocks;

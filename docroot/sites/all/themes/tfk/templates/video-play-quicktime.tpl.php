@@ -16,6 +16,10 @@ $tnurl = '';
 if (!empty($item['thumbnailfile'])) {
   $tnurl = check_plain($item['thumbnailfile']->url);
 }
+
+$width=488;
+$height=290;
+//$url="http://www.timeforkids.com/files/videos/original/120113_electioncover_gibbs_488.mov";
 ?>
 <object classid="clsid:02BF25D5-8C17-4B23-BC80-D3488ABDDC6B" codebase="http://www.apple.com/qtactivex/qtplugin.cab#version=7,3,0,0"  width="<?php print $width; ?>" height="<?php print $height; ?>">
   <param name="src" value="<?php print $url; ?>" />
