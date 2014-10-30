@@ -124,7 +124,7 @@
 
 #block-views-homepage-username-block {
 	float: left;
-	width: 190px;
+	width: 170px;
 	height: 32px;
 }
 
@@ -176,16 +176,25 @@
         outline:none;
 }
 
-/* tfk-84 */
-.logged-in #teacher-nav-container li a {
-    background-image: url('../images/sub-nav-unlock-sprite.png');
+/* TFK Assessment */
+#teacher-nav-container li a {
+    background-image: url('../images/sub-nav-lock-sprite-2014.png');
     background-repeat: no-repeat;
 }
+/*
 .not-logged-in #teacher-nav-container li a {
-    background-image: url('../images/sub-nav-lock-sprite.png');
+    background-image: url('../images/sub-nav-lock-sprite-2014.png');
     background-repeat: no-repeat;
 }
-
+.logged-in #teacher-nav-container li a {
+    background-image: url('../images/sub-nav-unlockassess-sprite-2014.png');
+    background-repeat: no-repeat;
+}
+.logged-in #teacher-nav-container li a#tfk-assessment {
+    background-image: url('../images/sub-nav-unlock-sprite-2014.png');
+    background-repeat: no-repeat;
+}
+*/
 
 
 
@@ -281,7 +290,7 @@
 #teacher-nav-container ul.menu {
 	position:relative;
 	float: right;
-	width: 620px;
+	width: 640px;
 	height: 32px;
 	background: url("../images/teacher-nav-llink-back.png") repeat-x;
 	background: -moz-linear-gradient(100% 100% 90deg,  #5ea1d3, #7bc3f5);
@@ -300,30 +309,30 @@
 }
 
 #teacher-nav-container ul.menu a.tfk-magazine {
-	width: 132px;
-	background-position: 0px 0px;
+	width: 125px;
+	background-position: -5px 0px;
 }
 
 .views-field-field-image #teacher-nav-container ul.menu a.tfk-magazine,
 #teacher-nav-container ul.menu a.tfk-magazine.active,
 #teacher-nav-container ul.menu a.tfk-magazine:hover {
-	background-position: 0px -32px
+	background-position: -5px -32px
 }
 
 #teacher-nav-container ul.menu a.worksheets {
-	width: 92px;
-	background-position: -270px 0px;
+	width: 85px;
+	background-position: -307px 0px;
 }
 
 .section-worksheets #teacher-nav-container ul.menu a.worksheets,
 #teacher-nav-container ul.menu a.worksheets.active,
 #teacher-nav-container ul.menu a.worksheets:hover {
-	background-position: -270px -32px;
+	background-position: -307px -32px;
 }
 
 #teacher-nav-container ul.menu a.teacher-community {
-	width: 113px;
-	background-position: -372px 0px;
+	width: 110px;
+	background-position: -395px 0px;
 }
 
 #teacher-nav-container ul.menu li.leaf.last {
@@ -337,27 +346,27 @@
 .section-teacher-community #teacher-nav-container ul.menu a.teacher-community,
 #teacher-nav-container ul.menu a.teacher-community.active,
 #teacher-nav-container ul.menu a.teacher-community:hover {
-	background-position: -372px -32px;
+	background-position: -395px -32px;
 }
 
 #teacher-nav-container ul.menu a.digital_edition {
-	width: 135px;
-	background-position: -133px 0px;
+	width: 170px;
+	background-position: -134px 0px;
 }
 
 #teacher-nav-container ul.menu a.digital_edition.active,
 #teacher-nav-container ul.menu a.digital_edition:hover {
-	background-position: -133px -32px;
+	background-position: -134px -32px;
 }
 
 #teacher-nav-container ul.menu a.subscribe-renew {
 	width: 140px;
-	background-position: -497px 0px;
+	background-position: -508px 0px;
 }
 
 #teacher-nav-container ul.menu a.subscribe-renew.active,
 #teacher-nav-container ul.menu a.subscribe-renew:hover {
-	background-position: -497px -32px;
+	background-position: -508px -32px;
 }
 
 /*

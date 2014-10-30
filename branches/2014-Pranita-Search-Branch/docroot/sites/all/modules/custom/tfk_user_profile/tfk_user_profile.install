@@ -10,7 +10,7 @@ function tfk_user_profile_schema(){
 			),
 			'lid' => array(
 				'description' => 'Lucie Account ID',
-				'type' => 'int',
+				'type' => 'bigint',
 				'not null' => TRUE
 			),
 			'uid' => array(

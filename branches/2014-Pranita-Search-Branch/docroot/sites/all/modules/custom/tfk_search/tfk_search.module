@@ -311,6 +311,7 @@ function tfk_search_theme($existing, $type, $theme, $path) {
     // Featured block for photos-video section.
     'tfk_featured_block' => array(
       'variables' => array('tfkSearchFeaturedItem' => NULL),
+      'cache' => DRUPAL_NO_CACHE
     ),
       
     'tfk_featured_minisite_slideshow'=> array(
@@ -319,7 +320,8 @@ function tfk_search_theme($existing, $type, $theme, $path) {
     // Worksheets.
     'tfk_search_worksheet_saved' => array(
       'template' => 'tfk-search-worksheet-saved',
-      'variables' => array('list' => NULL)
+      'variables' => array('list' => NULL),
+      'cache' => DRUPAL_NO_CACHE
     ),
     // Related content.
     'tfk_search_related_content' => array(
@@ -333,6 +335,7 @@ function tfk_search_theme($existing, $type, $theme, $path) {
     'tfk_search_back_btn' => array(
       'variables' => array('list' => array()),
       'template' => 'tfk-search-back-btn',
+      'cache' => DRUPAL_NO_CACHE
     ),
   );
 }
@@ -837,14 +840,14 @@ function tfk_search_block_info() {
     'visibility' => BLOCK_VISIBILITY_LISTED,
     'pages' => 'photos-video',
     'region' => 'sidebar_first',
-    'cache' => DRUPAL_CACHE_GLOBAL,
+    'cache' => DRUPAL_NO_CACHE
   );
   
   // Photos and Video back to all block.
   $blocks['tfk_search_photos_video_back'] = array(
     'info' => t('TFK Search Photos and Video back to all'),
     'visibility' => BLOCK_VISIBILITY_LISTED,
-    'cache' => DRUPAL_CACHE_GLOBAL,
+    'cache' => DRUPAL_NO_CACHE
   );
   
   // Photos and Video Featured block.
@@ -853,7 +856,7 @@ function tfk_search_block_info() {
     'visibility' => BLOCK_VISIBILITY_LISTED,
     'pages' => 'photos-video',
     'region' => 'highlighted',
-    'cache' => DRUPAL_CACHE_GLOBAL,
+    'cache' => DRUPAL_NO_CACHE
   );
   
   
@@ -861,30 +864,32 @@ function tfk_search_block_info() {
   $blocks['tfk_minisite_slideshow_featured'] = array(
     'info' => t('TFK Search Featured Minisite Slideshow'),
     'visibility' => BLOCK_VISIBILITY_LISTED,
-    'cache' => DRUPAL_CACHE_GLOBAL,
+    'cache' => DRUPAL_NO_CACHE
   );
   
   $blocks['tfk_minisite_video_featured'] = array(
     'info' => t('TFK Search Featured Minisite Video'),
     'visibility' => BLOCK_VISIBILITY_LISTED,
-    'cache' => DRUPAL_CACHE_GLOBAL,
+    'cache' => DRUPAL_NO_CACHE
   );
   
   
   // Worksheet first sidebar top title.
   $blocks['tfk_search_ws_leftbar_title'] = array(
     'info' => t('TFK Worksheets First Sidebar Top Title'),
-    'cache' => DRUPAL_CACHE_GLOBAL,
+    'cache' => DRUPAL_NO_CACHE
   );
   
   // Worksheet saved searches block.
   $blocks['tfk_search_worksheet_saved'] = array(
-    'info' => t('TFK Worksheets "My saved searches"')
+    'info' => t('TFK Worksheets "My saved searches"'),
+    'cache' => DRUPAL_NO_CACHE
   );
   
   // Worksheet "Save your search" block.
   $blocks['tfk_search_worksheet_user_save'] = array(
-    'info' => t('TFK Worksheets "Save your search"')
+    'info' => t('TFK Worksheets "Save your search"'),
+    'cache' => DRUPAL_NO_CACHE
   );
   
   // Custom facet blocks.
@@ -909,12 +914,14 @@ function tfk_search_block_info() {
   // Back to TFK Magazine.
   $blocks['tfk_magazine_back_btn'] = array(
     'info' => t('TFK Magazine Back Button'),
+    'cache' => DRUPAL_NO_CACHE
   );
   
   // Magazine issue block.
   // Includes issue, cover story, and more news.
   $blocks['tfk_magazine_issue_block'] = array(
     'info' => t('TFK Magazine Issue Block'),
+    'cache' => DRUPAL_NO_CACHE
   );
   
   // Languages block on /search/site.
@@ -923,7 +930,8 @@ function tfk_search_block_info() {
   );
 
   $blocks['tfk-search-back-btn'] = array(
-    'info' => t('Block with back button for various searches.')
+    'info' => t('Block with back button for various searches.'),
+    'cache' => DRUPAL_NO_CACHE
   );
 
   return $blocks;
@@ -944,7 +952,7 @@ function tfk_search_block_view($delta='') {
     
     // Year of the node filter.
     case 'sm_editorial_date_tfk':
-      flog_it("HIT: sm_editorial_date_tfk...");
+      //flog_it("HIT: sm_editorial_date_tfk...");
       //$block['subject'] = t('Select a Date Range');
 
       if (apachesolr_has_searched($env_id)) {
@@ -957,7 +965,7 @@ function tfk_search_block_view($delta='') {
           return;
         }
         // SEARCH: LEFT RAIL: YEAR OF THE NODE: NEEDS FACET
-        flog_it("LEFT RAIL CONTEXT: apachesolr_facet_block: NEEDS FACET...");
+        //flog_it("LEFT RAIL CONTEXT: apachesolr_facet_block: NEEDS FACET...");
         $block['content'] = apachesolr_facet_block($response, $query, 'tfk_search', $delta, $delta, 'sm_editorial_date_tfk');
       }else{
         $block['content'] = '';
@@ -966,7 +974,7 @@ function tfk_search_block_view($delta='') {
     
     // Spanish translation filter. Used on /search/site.
     case TFK_SEARCH_SPANISH_VERSION:
-      flog_it("HIT: TFK_SEARCH_SPANISH_VERSION: ".$delta);
+      //flog_it("HIT: TFK_SEARCH_SPANISH_VERSION: ".$delta);
       $block['subject'] = t('Language');
 
       if (apachesolr_has_searched($env_id)) {
@@ -978,7 +986,7 @@ function tfk_search_block_view($delta='') {
           return;
         }
         // SEARCH: LEFT RAIL CONTEXT: NEEDS FACET
-        flog_it("LEFT RAIL CONTEXT: apachesolr_facet_block: NEEDS FACET...");
+        //flog_it("LEFT RAIL CONTEXT: apachesolr_facet_block: NEEDS FACET...");
         $block['content'] = apachesolr_facet_block($response, $query, 'tfk_search', $delta, $delta, "ss_spanish_version");
       }else{
         $block['content'] = '';
@@ -987,7 +995,7 @@ function tfk_search_block_view($delta='') {
     
     // Spanish magazine issue filter. Used on /tfk-magazine.
     case TFK_SEARCH_SPANISH_ISSUE:
-      flog_it("HIT: TFK_SEARCH_SPANISH_ISSUE: ".$delta);
+      //flog_it("HIT: TFK_SEARCH_SPANISH_ISSUE: ".$delta);
       $block['subject'] = t('Language');
 
       if (apachesolr_has_searched($env_id)) {
@@ -999,7 +1007,7 @@ function tfk_search_block_view($delta='') {
           return;
         }
         // SEARCH: LEFT RAIL CONTEXT: NEEDS FACET
-        flog_it("LEFT RAIL CONTEXT: apachesolr_facet_block: NEEDS FACET...");
+        //flog_it("LEFT RAIL CONTEXT: apachesolr_facet_block: NEEDS FACET...");
         $block['content'] = apachesolr_facet_block($response, $query, 'tfk_search', $delta, $delta, 'is_spanish_issue');
       }else{
         $block['content'] = '';
@@ -1011,6 +1019,9 @@ function tfk_search_block_view($delta='') {
       //flog_it("HIT: tfk_magazine_spanish...");
       // $block['content'] = l('Search Spanish Translations', '/search/site/?filters=bundle:article ss_spanish_version:1', array('query' => array('filters' = 'bundle:article ss_spanish_version:1')));
       $block['content'] = l('Search Spanish Translations', 'search/site/', array('query' => array('filters' => 'bundle:article bundle:worksheet ss_spanish_version:1')));
+      $block['tfk_magazine_spanish'] = array(
+        'cache' => DRUPAL_NO_CACHE
+      );
     break;
     
     // Photos and Video title block.
@@ -1021,7 +1032,7 @@ function tfk_search_block_view($delta='') {
     
     // Back to all Photos and Videos.
     case 'tfk_search_photos_video_back':
-      flog_it("HIT: tfk_search_photos_video_back...");
+      //flog_it("HIT: tfk_search_photos_video_back...");
       $link_content = '<div id="back-btn-img"></div>';
       $link_content .= '<p>BACK TO ALL</p><p>PHOTOS AND VIDEOS</p>';
       $link_options = array('html' => TRUE, 'attributes' => array('id' => array('tfk-search-back-link')));
@@ -1032,15 +1043,18 @@ function tfk_search_block_view($delta='') {
     case 'tfk_search_photos_video_featured':
       //flog_it("HIT: tfk_search_photos_video_featured...");
       $featured_item = tfk_search_get_featured_block();
+      //flog_it($featured_item);
         
-        
-        
-      if($featured_item != FALSE) {
+      if($featured_item != FALSE && user_is_anonymous() == FALSE) {
         $block['content'] = theme('tfk_featured_block', $featured_item);
       } else {
         // Suppress the block.
         $block['content'] = '';
       }
+      
+      $block['tfk_search_photos_video_featured'] = array(
+        'cache' => DRUPAL_NO_CACHE
+      );
     break;
     
     
@@ -1060,6 +1074,9 @@ function tfk_search_block_view($delta='') {
         // Suppress the block.
         $block['content'] = '';
       }
+      $block['tfk_minisite_slideshow_featured'] = array(
+        'cache' => DRUPAL_NO_CACHE
+      );
     break;
     
     
@@ -1080,7 +1097,9 @@ function tfk_search_block_view($delta='') {
         // Suppress the block.
         $block['content'] = '';
       }
-      
+      $block['tfk_minisite_video_featured'] = array(
+        'cache' => DRUPAL_NO_CACHE
+      );
       
     break;
     
@@ -1520,7 +1539,7 @@ function _tfk_get_saved_searches() {
  *
  * @see tfk_search_theme()
  */
-function theme_tfk_featured_block(&$variables) {
+  function theme_tfk_featured_block(&$variables) {
   $tfkSearchFeaturedItem = $variables['tfkSearchFeaturedItem'];
   $output = '<div id="tfk-search-photos-video-featured">';
   $output .= '<div class="top-story-right-square"></div>';
@@ -1610,7 +1629,11 @@ function theme_tfk_featured_block(&$variables) {
   
   // Favorites link.
   $flag = flag_get_flag('favorites');
-  if($flag != FALSE) {
+  //flog_it("flag=");
+  //flog_it($flag);
+  
+  if ( $flag != FALSE && user_is_anonymous() == FALSE ) {
+    //flog_it("putting out favorites link...");
     $flag_link = flag_create_link('favorites', $tfkSearchFeaturedItem->nid);
     $output .= '<div class="featured-flag-link">';
     $output .= $flag_link;
@@ -1984,11 +2007,15 @@ function tfk_search_preprocess_page(&$variables) {
     $item_list = array('type' => 'ul', 'items' => array());
     $variables['page']['sidebar_bottom']['menu_menu-publishing-calendar-menu']['#block']->subject = 'PUBLISHING CALENDAR';
     
-    foreach($variables['page']['sidebar_bottom']['menu_menu-publishing-calendar-menu']['content'] as $key => $render_array) {
-      if(is_numeric($key)) {
-        $item_list['items'][] = '<div class="pubcal-link"><div class="left">'. $render_array['#title']. '</div><div class="right">'. l('View', $render_array['#href']). '</div></div>';
-      }
+    
+    if (array_key_exists('content', $variables['page']['sidebar_bottom']['menu_menu-publishing-calendar-menu'])) {
+        foreach($variables['page']['sidebar_bottom']['menu_menu-publishing-calendar-menu']['content'] as $key => $render_array) {
+          if(is_numeric($key)) {
+            $item_list['items'][] = '<div class="pubcal-link"><div class="left">'. $render_array['#title']. '</div><div class="right">'. l('View', $render_array['#href']). '</div></div>';
+          }
+        }
     }
+    
     
     if(!empty($item_list['items'])) {
       $themed_list = theme('item_list', $item_list);
@@ -2510,7 +2537,7 @@ function tfk_search_apachesolr_query_alter($query, $caller) {
         if (strpos($value, "im_36_field_themes") > -1 || strpos($value, "im_35_field_skills") > -1) {
             continue;
         } else {
-            flog_it("adding: ".$value);
+            //flog_it("adding: ".$value);
             $query->addParam('fq', $value);
         }
     }
@@ -3048,6 +3075,9 @@ function tfk_search_preprocess_search_result(&$vars) {
     $vars['article_magazine'] = NULL;
     $vars['lock_bar'] = NULL;
     $vars['locked_flag'] = NULL;
+    
+    /* TFK-177 */
+    $vars['magazine_issue_grade_level'] = NULL;
     
     if( $vars['result']['fields']['bundle'] == "article" ):
         $magazine_article_flag = tfk_search_node_has_flag($node,'magazine_cover_story');
@@ -3654,6 +3684,28 @@ function tfk_search_preprocess_search_result(&$vars) {
       //$teaser = TFK_SEARCH_ARTICLE_DECK;
       //$teaser = $vars['result']['fields'][TFK_SEARCH_ARTICLE_DECK];
       
+      /* TFK-177 - Show grades for Magazine Articles which are cover stories. */
+        $nid_magazine = $node->nid; 
+        $entity_magazine_issue_q =  db_query('select entity_id from field_data_field_articles where field_articles_nid = :nid',array('nid' => $nid_magazine ));
+        $entity_magazine_issue_result = $entity_magazine_issue_q->fetch();
+        if(!empty($entity_magazine_issue_result) && count($entity_magazine_issue_result)>0):
+            $entity_magazine_issue_id = $entity_magazine_issue_result->entity_id; 
+            if($entity_magazine_issue_id):
+                $tid_magazine_q =  db_query('select field_grade_level_tid from field_data_field_grade_level where entity_id = :entity_id',array('entity_id' => $entity_magazine_issue_id ));
+                $tid_magazine_result = $tid_magazine_q->fetch();
+                $tid_magazine = $tid_magazine_result->field_grade_level_tid;
+                if($tid_magazine):
+                    $name_res1 =  db_query('select name from taxonomy_term_data where tid = :tid',array('tid' => $tid_magazine ));
+                    $name1 = $name_res1->fetch();
+                    $name1 = $name1->name;
+                endif;
+                if($name1):
+                    $vars['magazine_issue_grade_level'] = $name1;
+                endif;
+            endif;
+        endif;
+      /* TFK-177 end */
+        
       /* TFK-197: Add class article-magazine to show lock key for anonymous users. */
       if( $magazine_flag == 1 ):
           $vars['classes_array'][] = 'article-magazine';
@@ -4207,7 +4259,7 @@ function tfk_search_magazine_spanish_flag($magazine, $flag_name = 'magazine_issu
   }
   
   // An update occurred, force a Solr index.
-  apachesolr_index_nodes(array($magazine), 'apachesolr_search');
+  //apachesolr_index_nodes(array($magazine), 'apachesolr_search');
 }
 
 /**
