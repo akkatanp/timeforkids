@@ -142,6 +142,20 @@
                                 print $tfk_search_cont_type;
                             endif;
                         endif;
+                    elseif( $locked_flag_right == 1 ):
+                            if($lock_bar ):
+                                if($lock_bar == 2):
+                            ?>
+                                <span class="lock-bar-right">
+                            <?php
+                                print "SUBSCRIBER-ONLY ".$tfk_search_cont_type;
+                            ?>
+                                </span>
+                            <?php
+                                endif;
+                            else:
+                                print $tfk_search_cont_type;
+                            endif;
                     else:
                         if($lock_bar):
                             if($lock_bar == 1):
