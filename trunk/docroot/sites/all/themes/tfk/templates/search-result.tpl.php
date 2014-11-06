@@ -141,7 +141,7 @@
                             else:
                                 print $tfk_search_cont_type;
                             endif;
-                        endif;
+                        endif;  
                     elseif( $locked_flag_right == 1 ):
                             if($lock_bar ):
                                 if($lock_bar == 2):

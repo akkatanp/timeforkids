@@ -867,7 +867,7 @@ body.page-search-site .region-sidebar-first .block .content > .item-list {
     padding-left: 18px;
 }
 .not-logged-in .lock-bar-right {
-   // background: url("/sites/all/themes/tfk/images/lock-icon.png") no-repeat;
+   /* background: url("/sites/all/themes/tfk/images/lock-icon.png") no-repeat; */
    background: url("/sites/all/themes/tfk/images/lock-icon.png") no-repeat scroll 100% center rgba(0, 0, 0, 0);
    padding-right: 20px;
 }
