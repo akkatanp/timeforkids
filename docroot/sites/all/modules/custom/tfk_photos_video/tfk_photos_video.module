@@ -31,12 +31,7 @@ function tfk_photos_video_theme($existing, $type, $theme, $path) {
 function tfk_photos_video_preprocess_page(&$variables) {
   //flog_it("tfk_photos_video_preprocess_page...");
   //flog_it("ACTIVE ISSUE");
-    
-  if ($variables['node']->type == 'video') {
-      //flog_it("FOUND VIDEO...");
-      //flog_it($variables);
-  }
-    
+     
   if(arg(0) == 'node' && array_key_exists('node', $variables)) {
     if($variables['node']->type == 'slideshow' || $variables['node']->type == 'video') {
       
