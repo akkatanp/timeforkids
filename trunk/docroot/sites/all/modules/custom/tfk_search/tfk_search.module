@@ -4030,11 +4030,11 @@ function tfk_search_preprocess_search_result(&$vars) {
      * The variables set here are accessed in the search-result.tpl.php
      */
     case 'writing_tips':
-      
+      global $base_url;
       if($base_path == TFK_SEARCH_SITESEARCH_PATH) {
-        $vars['tfk_search_result_link_1'] = l('Read More', 'node/'. $nid);
+        $link = $base_url.'/homework-helper/writing-tips#'.$node->nid;
+        $vars['tfk_search_result_link_1'] = l('Read More', $link);
       }
-      
       $tips = node_view(node_load($node->nid),'teaser');
       $teaser = $tips['body'][0]['#markup'];
       
