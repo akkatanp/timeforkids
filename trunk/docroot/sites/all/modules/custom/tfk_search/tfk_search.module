@@ -732,10 +732,10 @@ function tfk_search_apachesolr_index_document_build(ApacheSolrDocument $document
     if($entity->type == 'book') {
       $tmp_body = field_get_items('node', $entity, 'field_book_description');
     }
-    if($node->type == 'store_product') {
+    if($entity->type == 'store_product') {
       $tmp_body = field_get_items('node', $entity, 'field_product_description');
     }
-    if($node->type == 'tfk_lesson_for_tablets') {
+    if($entity->type == 'tfk_lesson_for_tablets') {
       $tmp_body = field_get_items('node', $entity, 'field_book_description');
     }
     $document->setField('content', $tmp_body[0]['value']);
