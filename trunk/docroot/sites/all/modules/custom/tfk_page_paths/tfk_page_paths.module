@@ -106,7 +106,7 @@ function tfk_page_paths_preprocess_page(&$variables){
     
     $args = arg();
     //flog_it("***tfk_page_paths_preprocess_page:");
-    flog_it("node_type=".$variables['node']->type);
+    //flog_it("node_type=".$variables['node']->type);
     
     
     // tfk-50, tfk-34, tfk-83: Add new items to paywall
