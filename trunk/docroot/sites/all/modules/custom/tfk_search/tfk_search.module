@@ -2350,6 +2350,7 @@ function tfk_search_get_unique_host_id() {
 function tfk_search_apachesolr_query_alter($query, $caller) {
   //flog_it("tfk_search_apachesolr_query_alter: ");
   //flog_it($query);
+  //watchdog('tfk_search_apachesolr_query_alter', 'query=%query', array('%query' => print_r($query, TRUE)), WATCHDOG_NOTICE);
   $superquery = apachesolr_drupal_query("suberquery");
   
   // URL Path -to- Content Type Map.
@@ -2457,7 +2458,7 @@ function tfk_search_apachesolr_query_alter($query, $caller) {
   $args = arg();
   if (strpos($path, 'search/site') || ($args[0] == 'search' && $args[1] == 'site')) {
     // Retrieve additional content fields.
-     
+    //watchdog('tfk_search_apachesolr_query_alter', 'path=%path', array('%path' => $path), WATCHDOG_NOTICE);
     $query->addParam('fl', implode(',', array(TFK_SEARCH_ARTICLE_DECK, TFK_SEARCH_ARTICLE_BYLINE, TFK_SEARCH_ARTICLE_META_KEYWORDS, TFK_SEARCH_KID_REPORTER_LOCATION, TFK_SEARCH_MINISITE_DECK, TFK_SEARCH_PAPER_DESCRIPTION)));
     
     // Limit the number of rows per page.
