@@ -939,3 +939,8 @@ list-style:none;
 .region-sidebar-first h2 {
 font-size: 14px;
 }
+/* TFK-118 */
+#main #first-column ul.facetapi-facetapi-checkbox-links li.collapsed, #main #first-column ul.facetapi-facetapi-checkbox-links li.expanded{
+    list-style-type: none;
+    list-style-image: none;
+}

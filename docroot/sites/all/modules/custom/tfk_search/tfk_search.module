@@ -3089,8 +3089,10 @@ function tfk_search_preprocess_search_result(&$vars) {
   // WHY HERE???
   //$vars['render'] = TRUE;
   $vars['render'] = FALSE;
+  $vars['locked_flag_right'] = NULL;
   $magazine_article_flag = 0;
   $locked_flag = 0;
+  $locked_flag_right = 0;
   
   if($node) {
     // Build contextual links.
@@ -4145,7 +4147,7 @@ function tfk_search_preprocess_search_result(&$vars) {
       }
     }
     
-    //flog_it($related_content);
+    flog_it($related_content);
     
     // Minor stuff.
     strtoupper($vars['tfk_search_cont_type']);
