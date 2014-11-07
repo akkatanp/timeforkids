@@ -4056,8 +4056,12 @@ function tfk_search_preprocess_search_result(&$vars) {
         $tmp_tid = field_get_items('node', $node, 'field_study_helper');
         $tid = $tmp_tid[0]['tid'];
         $name_res =  db_query('select name from taxonomy_term_data where tid = :tid',array('tid' => $tid ));
-        $name = $name_res->fetch();
-        $name = $name->name;
+        if( $name_res ):
+            $name = $name_res->fetch();
+        endif;
+        if($name):
+            $name = $name->name;
+        endif;
         $vars['tfk_search_res_category'] = $name;
         $teaser = $name;
       }
