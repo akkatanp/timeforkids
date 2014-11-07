@@ -641,13 +641,16 @@ function apachesolr_facet_block($response, $query, $module, $delta, $facet_field
 
 
 function tfk_search_apachesolr_index_document_build(ApacheSolrDocument $document, $entity, $entity_type, $env_id) {
-  flog_it("tfk_search_apachesolr_index_document_build: HERE!!!!!!!!");
+  //flog_it("tfk_search_apachesolr_index_document_build: HERE!!!!!!!!");
   //flog_it("document:");
   //flog_it($document);
   //flog_it("entity:");
   //flog_it($entity);
   //flog_it("entity_type=".$entity->type);
   //flog_it("env_id=".$env_id);
+  
+  // Get the current body from the node
+  $tmp_body =  field_get_items('node', $entity, 'field_body');
   
   // Use the database host to identify different servers.
   $server_id = tfk_search_get_unique_host_id();
@@ -677,7 +680,6 @@ function tfk_search_apachesolr_index_document_build(ApacheSolrDocument $document
   // A+ Paper
   if($entity->type == "a_paper"){   
       // Paper description
-      
       $paper_description = field_get_items('node', $entity, 'field_paper_description');
       if($paper_description && !empty($paper_description[0]['value'])) {
         $document->addField(TFK_SEARCH_PAPER_DESCRIPTION, $paper_description[0]['value']);
@@ -688,7 +690,6 @@ function tfk_search_apachesolr_index_document_build(ApacheSolrDocument $document
   // Add article fields to the index.
   if($entity->type == 'article'){
     //flog_it("Found and article...");
-    $tmp_body =  field_get_items('node', $entity, 'field_body');
     
     // To avoid modifying the schema.xml, we're stuffing into the content field the body and deck fields.
     $deck = field_get_items('node', $entity, 'field_deck');
@@ -701,7 +702,9 @@ function tfk_search_apachesolr_index_document_build(ApacheSolrDocument $document
       
       // Byline
       $byline = field_get_items('node', $entity, 'field_article_byline');
-      if($byline && !empty($byline[0]['tid'])) {
+      $tid = $byline[0]['tid'];
+      //flog_it("tid=".$tid);
+      if($byline && !empty($tid)) {
         $term_byline = taxonomy_term_load($tid);
         $name_byline = $term_byline->name;
         $document->addField(TFK_SEARCH_ARTICLE_BYLINE, $name_byline);
@@ -715,24 +718,6 @@ function tfk_search_apachesolr_index_document_build(ApacheSolrDocument $document
         $document->setField('content', $tmp_body[0]['value']. PHP_EOL. $meta_keywords[0]['value']);
       }
     }
-
-    // Byline
-    $byline = field_get_items('node', $entity, 'field_article_byline');
-    if($byline && !empty($byline[0]['tid'])) {
-      $term_byline = taxonomy_term_load($byline[0]['tid']);
-      $name_byline = $term_byline->name;
-      $document->addField(TFK_SEARCH_ARTICLE_BYLINE, $name_byline);
-      $document->setField('content', $tmp_body[0]['value']. PHP_EOL. $name_byline);
-    }
-      
-    // Metakeywords
-    $meta_keywords = field_get_items('node', $entity, 'meta_keywords');
-    //print_r($meta_keywords);exit;
-    if($meta_keywords && !empty($meta_keywords[0]['value'])) {
-      $document->addField(TFK_SEARCH_ARTICLE_META_KEYWORDS, $meta_keywords[0]['value']);
-      $document->setField('content', $tmp_body[0]['value']. PHP_EOL. $meta_keywords[0]['value']);
-      //flog_it($document);
-    }
       
     // Using the TFK_SEARCH_COVER_STORY Solr field, index whether this article is flagged as a cover story or not.
     // This field is used as a bit field, not as a facet, so we use 1s and 0s.
@@ -742,6 +727,7 @@ function tfk_search_apachesolr_index_document_build(ApacheSolrDocument $document
       $document->setField(TFK_SEARCH_COVER_STORY, 0);
     }
   }
+  
   if($entity->type == 'book' || $entity->type == 'store_product' || $entity->type == 'tfk_lesson_for_tablets') {
     if($entity->type == 'book') {
       $tmp_body = field_get_items('node', $entity, 'field_book_description');
@@ -754,16 +740,6 @@ function tfk_search_apachesolr_index_document_build(ApacheSolrDocument $document
     }
     $document->setField('content', $tmp_body[0]['value']);
   }
-  
-  
-  // Minisite
-  if ($entity->type == "minisite") {
-    $minisite_deck = field_get_items('node', $entity, 'body');
-    $document->addField(TFK_SEARCH_MINISITE_DECK, $minisite_deck[0]['value']);
-    $document->setField('content', $tmp_body[0]['value']. PHP_EOL. $minisite_deck[0]['value']);
-  }
-    
-    
     
   
   // Index spanish version flag.
@@ -4151,7 +4127,7 @@ function tfk_search_preprocess_search_result(&$vars) {
       }
     }
     
-    flog_it($related_content);
+    //flog_it($related_content);
     
     // Minor stuff.
     strtoupper($vars['tfk_search_cont_type']);
