@@ -1,0 +1,107 @@
+<?php
+
+/**            ~ TFK Print ~             
+ *
+ *  Cleanly formats articles for printing. -H
+ */
+
+
+/**
+ * Implementation of hook_menu().
+ */
+function tfk_print_menu() {
+  $items = array();
+  $items['node/%/print'] = array(
+      'page callback' => 'display_print_page',
+      'page arguments' => array(1),
+      'access arguments' => array('access content'),
+      'type' => MENU_CALLBACK,
+   );
+  return $items;
+}
+
+/**
+ *  Implementation of hook_theme()
+ */
+function tfk_print_theme() {
+  return array(
+    'print_page' => array(
+      'template' => 'tfk_print',
+      'variables' => array('options' => NULL),
+    ),
+  );
+}
+
+/**
+ * display_print_page($nid)
+ *
+ * Loads a node and splits it into variables, then calls the print theme.
+ *
+ * @param int $nid
+ *    The node id of the node we want to print.
+ * @return
+ *    Renders the print_page theme with our node.
+ */
+function display_print_page($nid) {
+    global $user;
+    
+    flog_it("display_print_page: nid=".$nid);
+    // Load the current node.
+    $node = node_load($nid);
+
+    if ($node->type == 'article') {
+      // Check to see if the article's Magazine Article flag is enabled
+      //    If it is, this means this associated print url must be protected as well
+      $flag = flag_get_flag("magazine_cover_story");
+      //flog_it($flag->is_flagged($nid));
+      
+      
+      if ($flag->is_flagged($nid)) {
+        // Check to see if this is an anonymous user: if it is -> 403
+        // flog_it("anon=".user_is_anonymous());
+        if (user_is_anonymous()) {
+           drupal_add_http_header('Status', '403 Forbidden');
+           drupal_deliver_page(MENU_ACCESS_DENIED);
+           drupal_exit();
+        }
+      }
+      
+      // Populate the fields we're going to pass to the theme.
+      $title  = $node->title;
+      $body   = $node->field_body['und'][0]['value'];
+      $deck   = $node->field_deck['und'][0]['value'];
+      $byline = taxonomy_term_load($node->field_article_byline['und'][0]['tid'])->name;
+      $date   = date('M d, Y', intval($node->field_date['und'][0]['value']));
+      $backlink = '<a href="/node/' . $node->nid . '">&laquo; Back to Article</a>';
+
+      // Make sure there's a photo field so we don't serve a broken image.
+      if ($node->field_lrg_rect_image['und'][0]['uri'] != '') {  
+        $photo = '<div class="big-photo"><img src="' . file_create_url($node->field_lrg_rect_image['und'][0]['uri']) . '" alt = "' . $node->field_lrg_rect_image['und'][0]['alt'] . '">';
+        $photo .= '<div class="credit">' . $node->field_image_credit['und'][0]['value'] . '</div>';
+        $photo .= '<div class="caption">' . $node->field_wysiwyg_image_caption['und'][0]['value'] . '</div>';
+        $photo .= '</div>';
+      } else {
+        $photo = '';
+      }
+    }
+
+    // Add the parameters to an array to pass to the theme function.
+    $options = array(
+      'title' => $title,
+      'body' => $body,
+      'deck' => $deck,
+      'byline' => $byline,
+      'date' => $date,
+      'photo'=> $photo,
+      'backlink' => $backlink
+    );
+
+    $result = theme('print_page', $options);
+
+    // Display the page.
+    print $result;
+
+    // Don't display the header/footer/ad etc...
+    drupal_exit();
+
+}

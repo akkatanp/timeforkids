@@ -1,0 +1,5 @@
+name = TFK Around The World
+description = Functionality to support TFK Around The World
+core = 7.x
+package = "TFK"
+dependencies[] = webform
