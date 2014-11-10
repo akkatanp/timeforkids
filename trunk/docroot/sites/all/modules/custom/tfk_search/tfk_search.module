@@ -4253,7 +4253,7 @@ function tfk_search_magazine_has_spanish_item($magazine) {
  *   Name of the flag corresponding to the magazine issue.
  */
 function tfk_search_magazine_spanish_flag($magazine, $flag_name = 'magazine_issue_spanish') {
-  flog_it("tfk_search_magazine_spanish_flag...");
+  //flog_it("tfk_search_magazine_spanish_flag...");
   $has_flag = tfk_search_node_has_flag($magazine, $flag_name);
   $has_spanish_item = tfk_search_magazine_has_spanish_item($magazine);
   
