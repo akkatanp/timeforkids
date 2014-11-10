@@ -45,7 +45,7 @@ function tfk_print_theme() {
 function display_print_page($nid) {
     global $user;
     
-    flog_it("display_print_page: nid=".$nid);
+    //flog_it("display_print_page: nid=".$nid);
     // Load the current node.
     $node = node_load($nid);
 
