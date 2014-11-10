@@ -292,7 +292,7 @@ function study_helper_my_flashcards() {
  */
 function study_helper_node_access($node, $op, $account) {
   $type = is_string($node) ? $node : $node->type;
-  if ($type == 'flashcard' && array_key_exists('flashcard_anonymous_nid', $_SESSION)) {
+  if ($type == 'flashcard' && isset($_SESSION) && array_key_exists('flashcard_anonymous_nid', $_SESSION)) {
     if ($op == 'update' && $_SESSION['flashcard_anonymous_nid'][$node->nid] == $node->nid) {
       return NODE_ACCESS_ALLOW;
     }
