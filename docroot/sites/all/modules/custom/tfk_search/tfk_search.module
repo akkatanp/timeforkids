@@ -746,7 +746,7 @@ function tfk_search_apachesolr_index_document_build(ApacheSolrDocument $document
   // This field is used for facets, so we only index 1s (indexing 0s would
   // cause a second facet to appear representing 0s).
   if(array_key_exists('spanish', $flags) && $flags['spanish'] == '1') {
-    //flog_it("Found Spanish Flag: entity type=".ucfirst($entity->type));
+    flog_it("Found Spanish Flag: SOLR Indexing: entity type=".ucfirst($entity->type));
     $document->setField(TFK_SEARCH_SPANISH_VERSION, ucfirst($entity->type));
   }
     
@@ -1281,8 +1281,32 @@ $facets = array();
     return $facets;
 }
 
+/*
+function tfk_search_facet_items_alter(&$build, &$settings) {
+  flog_it("tfk_search_facet_items_alter: settings facet=".$settings->facet);
+  if ($settings->facet === 'Spanish Translation') {
+    foreach($build as $key => $item) {
+       flog_it("key=".$key.", item=".$item);
+      //$build[$key]["#markup"] = drupal_ucfirst($item["#markup"]);
+    }
+  }
+}
 
 
+function tfk_search_facetapi_facet_info_alter (array &$facet_info, array $searcher_info) {
+    flog_it("tfk_search_facetapi_facet_info_alter");
+    foreach($facet_info as $key => $item) {
+       //flog_it("key=".$key.", item=".$item);
+       if ($key == 'im_field_grade_level') {
+           //flog_it($item['map options']['display_name']);
+           //$facet_info['map options']['display_name'] = "TIMOTHY'S GRADE LEVEL";
+           //flog_it($item['map options']['display_name']);
+           $facet_info['label'] = "TIM PAIGE GRADE LEVEL";
+       }
+    }
+}
+ * 
+ */
 
 
 
