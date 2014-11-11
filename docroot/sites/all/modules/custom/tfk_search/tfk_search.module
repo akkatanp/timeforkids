@@ -746,15 +746,15 @@ function tfk_search_apachesolr_index_document_build(ApacheSolrDocument $document
   // This field is used for facets, so we only index 1s (indexing 0s would
   // cause a second facet to appear representing 0s).
   if(array_key_exists('spanish', $flags) && $flags['spanish'] == '1') {
-    //flog_it("Found Spanish Flag...");
-    $document->setField(TFK_SEARCH_SPANISH_VERSION, 1);
+    //flog_it("Found Spanish Flag: entity type=".ucfirst($entity->type));
+    $document->setField(TFK_SEARCH_SPANISH_VERSION, ucfirst($entity->type));
   }
     
   if($entity->type == 'magazine_issue') {
     // Make Solr aware of magazine issues that contain spanish articles.
     //$magazine_flag = flag_get_flag('magazine_issue_spanish');
     if(array_key_exists('magazine_issue_spanish', $flags) && $flags['magazine_issue_spanish'] == '1') {
-      $document->setField(TFK_SEARCH_SPANISH_ISSUE, 1);
+      $document->setField(TFK_SEARCH_SPANISH_ISSUE, ucfirst($entity->type));
     }
   }
 
@@ -943,8 +943,8 @@ function tfk_search_block_info() {
  * Implementation of hook_block_view.
  */
 function tfk_search_block_view($delta='') {
+
   //flog_it("tfk_search_block_view, delta=".$delta);
-  
   $block = array();
   $settings = variable_get('tfk_search_settings', tfk_search_default_settings());
   $env_id = apachesolr_default_environment();
@@ -1248,6 +1248,43 @@ function tfk_search_block_view($delta='') {
   
   return $block;
 }
+
+
+
+
+function tfk_search_facetapi_facet_info(array $searcher_info) {
+//flog_it("tfk_search_facetapi_facet_info...");
+
+$facets = array();
+    // Facets are usually associated with the type of content stored in the index.
+    if (isset($searcher_info['types']['node'])) {
+        //flog_it("Found type node: ". TFK_SEARCH_SPANISH_VERSION);
+        $facets[TFK_SEARCH_SPANISH_VERSION] = array(
+            'name' => TFK_SEARCH_SPANISH_VERSION,
+            'label' => t('Spanish Translation Flag'),
+            'description' => t('Content Flagged for Spanish Translation.'),
+            'field' => TFK_SEARCH_SPANISH_VERSION,
+            'dependency plugins' => array('role'),
+            'default widget' => 'links',
+            'allowed operators' => array(FACETAPI_OPERATOR_AND => TRUE, FACETAPI_OPERATOR_OR => TRUE),
+            'facet missing allowed' => FALSE,
+            'facet mincount allowed' => FALSE,
+            //'map callback' => 'mymodulename_map_im_products_nid',
+            'max callback' => FALSE,
+            'default sorts' => array(
+                array('active', SORT_DESC),
+                array('count', SORT_DESC),
+                array('display', SORT_ASC),
+            ),
+        );
+    }
+    return $facets;
+}
+
+
+
+
+
 
 
 /**
