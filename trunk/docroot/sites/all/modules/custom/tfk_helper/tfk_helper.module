@@ -603,8 +603,32 @@ function tfk_helper_views_pre_render(&$view) {
     
     // Check to putout for teachers css
     if (!empty($css)) {
-        drupal_add_css($css, "inline");
+        //drupal_add_css($css, "inline");
         //flog_it("css=".$css);
+        /*
+        $cssArray = array(
+            '#attributes' => array(
+              'name' => 'style', 
+              //'content' => $css,
+            ),
+        ); 
+        drupal_set_html_head('<style type="text/css">$css</script>');
+         * 
+         */
+        //$block = block_load('tfk_helper', 'homepage_news_block-block_1');
+        //$block = block_load('tfk_helper', 'homepage_news_block');
+        $block = block_load('tfk_helper', 'homepage_secondary_touts');
+        //$block = block_load('views', 'homepage_secondary_touts');
+        //$block = block_load('views', 'homepage_top_story-block_1');
+        
+        //$block['#attached']['css'][] = array( 'data' => $css, 'type' => 'inline');
+        $block->content = array(
+            '#attached' => array(
+                'css' => array('data' => $css, 'type' => 'inline')
+            )
+         );
+        
+        //flog_it($block);
     }
   }
   
