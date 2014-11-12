@@ -383,9 +383,12 @@ function theme_tfk_search_facet_link($vars) {
       $vars['facet_text'] = 'Spanish';
     }
     
+    /*
     if($vars['options']['delta'] == TFK_SEARCH_SPANISH_ISSUE) {
       $vars['facet_text'] = 'Spanish';
     }
+     * 
+     */
   }
   
   if(strtolower($vars['facet_text']) == 'slideshow'){
@@ -446,9 +449,12 @@ function theme_tfk_search_unclick_link($vars) {
     $vars['facet_text'] = 'Spanish';
   }
   
+  /*
   if($vars['options']['delta'] == TFK_SEARCH_SPANISH_ISSUE) {
     $vars['facet_text'] = 'Spanish';
   }
+   * 
+   */
   
   $vars['options']['attributes']['class'] = 'apachesolr-unclick';
   return apachesolr_l("(-)", $vars['path'], $vars['options']) . ' ' . $vars['facet_text'];
@@ -749,7 +755,8 @@ function tfk_search_apachesolr_index_document_build(ApacheSolrDocument $document
     flog_it("Found Spanish Flag: SOLR Indexing: entity type=".ucfirst($entity->type));
     $document->setField(TFK_SEARCH_SPANISH_VERSION, ucfirst($entity->type));
   }
-    
+  
+  /*
   if($entity->type == 'magazine_issue') {
     // Make Solr aware of magazine issues that contain spanish articles.
     //$magazine_flag = flag_get_flag('magazine_issue_spanish');
@@ -757,6 +764,8 @@ function tfk_search_apachesolr_index_document_build(ApacheSolrDocument $document
       $document->setField(TFK_SEARCH_SPANISH_ISSUE, ucfirst($entity->type));
     }
   }
+   * 
+   */
 
   if(isset($entity->field_date)){
     $tmp_date =  field_get_items('node', $entity, 'field_date');
@@ -808,10 +817,13 @@ function tfk_search_apachesolr_facets() {
   );
   
   // Used on /tfk-magazine.
+  /*
   $facets[TFK_SEARCH_SPANISH_ISSUE] = array(
     'info' => t('TFK Magazine Spanish Issue'),
     'facet_field' => TFK_SEARCH_SPANISH_ISSUE,
   );
+   * 
+   */
   
   /**
    * The subquery key is not used for a real facet, it is used to affect
@@ -2509,7 +2521,7 @@ function tfk_search_apachesolr_query_alter($query, $caller) {
     //flog_it("TFK magazine search...");
     // Retrieve additional content fields.
     //$query->addParam('fl', implode(',', array(TFK_SEARCH_SPANISH_ISSUE, TFK_SEARCH_SPANISH_VERSION, TFK_SEARCH_WORKSHEET_PDF_LINK, TFK_SEARCH_WORKSHEET_PDF_TITLE)));
-    $query->addParam('fl', implode(',', array(TFK_SEARCH_SPANISH_ISSUE, TFK_SEARCH_SPANISH_VERSION, TFK_SEARCH_WORKSHEET_PDF_LINK, TFK_SEARCH_WORKSHEET_PDF_TITLE)));
+    $query->addParam('fl', implode(',', array(TFK_SEARCH_SPANISH_VERSION, TFK_SEARCH_WORKSHEET_PDF_LINK, TFK_SEARCH_WORKSHEET_PDF_TITLE)));
     
     // Limit the number of rows per page to 8 per spec.
     $query->addParam('rows', 8);
@@ -3281,7 +3293,7 @@ function tfk_search_preprocess_search_result(&$vars) {
         $magazine = $node;
         
         // If the spanish filter is active, surface translated magazine items only.
-        TFKMagLangFilter::setRequestLanguage(TFK_SEARCH_SPANISH_ISSUE, 'spanish');
+        //TFKMagLangFilter::setRequestLanguage(TFK_SEARCH_SPANISH_ISSUE, 'spanish');
         
         //lets populate array of additional data for this node type search result
         ////////////ISSUE DATE///////////////////////

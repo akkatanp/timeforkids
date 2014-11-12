@@ -20,6 +20,10 @@ function tfk_favorites_menu(){
 
 
 function tfk_favorites_block_info() {
+  $blocks['tfk-favorites-links'] = array(
+    'info' => t('Favorites Block'),
+    'cache' => DRUPAL_NO_CACHE
+  );
   $blocks['tfk_favorites_links'] = array(
     'info' => t('Hookable Favorites Block'),
     'cache' => DRUPAL_NO_CACHE
@@ -30,7 +34,17 @@ function tfk_favorites_block_info() {
 
 function tfk_favorites_block_view($delta='') {
   $block = array();
+  
+  //flog_it("tfk_favorites_block_view: delta=". $delta);
+  
   switch ($delta) {
+    case 'tfk-favorites-links':
+      $content = _tfk_favorites_links_block_content();
+      if($content) {
+        $block['subject'] = t('Favorites Block');
+        $block['content'] = _tfk_favorites_links_block_content();
+      }
+      break;
     case 'tfk_favorites_links':
       $content = _tfk_favorites_links_block_content();
       if($content) {
