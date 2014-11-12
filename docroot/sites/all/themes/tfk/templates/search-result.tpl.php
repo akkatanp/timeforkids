@@ -181,9 +181,9 @@
             <?php if(isset($magazine_issue_grade_level)):?>
 
                <?php if($magazine_issue_grade_level == 2 || $magazine_issue_grade_level == "K-1"): ?>
-                    Grade <?php print $magazine_issue_grade_level;?>
+                    GRADE <?php print $magazine_issue_grade_level;?>
                 <?php else: ?>
-                    Grades <?php print $magazine_issue_grade_level;?>
+                    GRADES <?php print $magazine_issue_grade_level;?>
                 <?php endif; ?>
 
             <?php endif;?>
