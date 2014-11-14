@@ -3791,6 +3791,103 @@ function tfk_search_preprocess_search_result(&$vars) {
                 endif;
             endif;
         endif;
+        
+        /* Magazine Issue: News Now */
+        $news_now_q=  db_query('select entity_id, field_in_the_news_url from field_data_field_in_the_news where bundle LIKE :bundle and field_in_the_news_title LIKE :title',array('bundle'=>'magazine_issue','title' => $node->title ));
+        $news_now_q_result = $news_now_q->fetchAll();
+        $term_name = get_grades($news_now_q_result, 'field_in_the_news_url', $node);
+        if($term_name):
+            $vars['magazine_issue_grade_level'] = $term_name;
+        endif;
+        
+        /* Section : Top 5 */
+        $top_5_q =  db_query('select entity_id, field_top_5_url from field_data_field_top_5 where bundle LIKE :bundle and field_top_5_title LIKE :title',array('bundle'=>'magazine_issue','title' => $node->title ));
+        $top_5_q_result = $top_5_q->fetchAll();
+        $term_name = get_grades($top_5_q_result, 'field_top_5_url', $node);
+        if($term_name):
+            $vars['magazine_issue_grade_level'] = $term_name;
+        endif;
+        
+        /* Section: Features */
+        $more_news_q =  db_query('select entity_id, field_more_news_url from field_data_field_more_news where bundle LIKE :bundle and field_more_news_title LIKE :title',array('bundle'=>'magazine_issue','title' => $node->title ));
+        $more_news_q_result = $more_news_q->fetchAll();
+        $term_name = get_grades($more_news_q_result, 'field_more_news_url', $node);
+        if($term_name):
+            $vars['magazine_issue_grade_level'] = $term_name;
+        endif;
+        
+        /* Section: Kid Central */
+        $kid_central_q =  db_query('select entity_id, field_kid_central_url from field_data_field_kid_central where bundle LIKE :bundle and field_kid_central_title LIKE :title',array('bundle'=>'magazine_issue','title' => $node->title ));
+        $kid_central_q_result = $kid_central_q->fetchAll();
+        $term_name = get_grades($kid_central_q_result, 'field_kid_central_url', $node);
+        if($term_name):
+            $vars['magazine_issue_grade_level'] = $term_name;
+        endif;
+        
+        /* Section: Debate */
+        $debate_q =  db_query('select entity_id, field_debate_url from field_data_field_debate where bundle LIKE :bundle and field_debate_title LIKE :title',array('bundle'=>'magazine_issue','title' => $node->title ));
+        $debate_q_result = $debate_q->fetchAll();
+        $term_name = get_grades($debate_q_result, 'field_debate_url', $node);
+        if($term_name):
+            $vars['magazine_issue_grade_level'] = $term_name;
+        endif;
+        
+        /* Section: You've Got Skills */
+        $got_skills_q=  db_query('select entity_id, field_got_skills_url from field_data_field_got_skills where bundle LIKE :bundle and field_got_skills_title LIKE :title',array('bundle'=>'magazine_issue','title' => $node->title ));
+        $got_skills_q_result = $got_skills_q->fetchAll();
+        $term_name = get_grades($got_skills_q_result, 'field_got_skills_url', $node);
+        if($term_name):
+            $vars['magazine_issue_grade_level'] = $term_name;
+        endif;
+        
+        /* Section: Newsmakers */
+        $whos_news_q=  db_query('select entity_id, field_whos_news_url from field_data_field_whos_news where bundle LIKE :bundle and field_whos_news_title LIKE :title',array('bundle'=>'magazine_issue','title' => $node->title ));
+        $whos_news_q_result = $whos_news_q->fetchAll();
+        $term_name = get_grades($whos_news_q_result, 'field_whos_news_url', $node);
+        if($term_name):
+            $vars['magazine_issue_grade_level'] = $term_name;
+        endif;
+        
+         /* Theme 1 */
+        $theme_1_q=  db_query('select entity_id, field_theme_1_url from field_data_field_theme_1 where bundle LIKE :bundle and field_theme_1_title LIKE :title',array('bundle'=>'magazine_issue','title' => $node->title ));
+        $theme_1_q_result = $theme_1_q->fetchAll();
+        $term_name = get_grades($theme_1_q_result, 'field_theme_1_url', $node);
+        if($term_name):
+            $vars['magazine_issue_grade_level'] = $term_name;
+        endif;
+        
+         /* Theme 2 */
+        $theme_2_q=  db_query('select entity_id, field_theme_2_url from field_data_field_theme_2 where bundle LIKE :bundle and field_theme_2_title LIKE :title',array('bundle'=>'magazine_issue','title' => $node->title ));
+        $theme_2_q_result = $theme_2_q->fetchAll();
+        $term_name = get_grades($theme_2_q_result, 'field_theme_2_url', $node);
+        if($term_name):
+            $vars['magazine_issue_grade_level'] = $term_name;
+        endif;
+        
+         /* Theme 3 */
+        $theme_3_q=  db_query('select entity_id, field_theme_3_url from field_data_field_theme_3 where bundle LIKE :bundle and field_theme_3_title LIKE :title',array('bundle'=>'magazine_issue','title' => $node->title ));
+        $theme_3_q_result = $theme_3_q->fetchAll();
+        $term_name = get_grades($theme_3_q_result, 'field_theme_3_url', $node);
+        if($term_name):
+            $vars['magazine_issue_grade_level'] = $term_name;
+        endif;
+        
+         /* Theme 4 */
+        $theme_4_q=  db_query('select entity_id, field_theme_4_url from field_data_field_theme_4 where bundle LIKE :bundle and field_theme_4_title LIKE :title',array('bundle'=>'magazine_issue','title' => $node->title ));
+        $theme_4_q_result = $theme_4_q->fetchAll();
+        $term_name = get_grades($theme_4_q_result, 'field_theme_4_url', $node);
+        if($term_name):
+            $vars['magazine_issue_grade_level'] = $term_name;
+        endif;
+        
+         /* News */
+        $news_q=  db_query('select entity_id, field_news_url from field_data_field_news where bundle LIKE :bundle and field_news_title LIKE :title',array('bundle'=>'magazine_issue','title' => $node->title ));
+        $news_q_result = $news_q->fetchAll();
+        $term_name = get_grades($news_q_result, 'field_news_url', $node);
+        if($term_name):
+            $vars['magazine_issue_grade_level'] = $term_name;
+        endif;
+        
       /* TFK-177 end */
         
       /* TFK-197: Add class article-magazine to show lock key for anonymous users. */
@@ -4209,6 +4306,41 @@ function tfk_search_preprocess_search_result(&$vars) {
     // Unset stuff that we are not going to use.
     unset($vars['info']);
   }
+}
+
+/*
+ * Db Query for Grade Levels in Magazine Issue Content type.
+ * @param $query_result 
+ *          Query result from different fields in Magazine Issue
+ * @param $node
+ *          Standard Node object
+ * @param field_type
+ *          URL field name.
+ */
+function get_grades($query_result, $field_type, $node){
+    if(!empty($query_result) && count($query_result)>0):
+        foreach($query_result  as $nw):
+            $magazine_issue_id = $nw->entity_id; 
+            $field_url = $nw->$field_type;
+            if($field_url):
+                $field_url_arr = explode('/', $field_url);
+                $field_url_len = count($field_url_arr);
+                $url_node_id = $field_url_arr[$field_url_len-1];
+                if(isset($url_node_id) && $node->nid == $url_node_id):
+                    if($magazine_issue_id):
+                        $tid_news_now_q =  db_query('select field_grade_level_tid from field_data_field_grade_level where entity_id = :entity_id',array('entity_id' => $magazine_issue_id ));
+                        $tid_news_now_result = $tid_news_now_q->fetch();
+                        $tid_news_now = $tid_news_now_result->field_grade_level_tid;
+                        if($tid_news_now):
+                            $term = taxonomy_term_load($tid_news_now);
+                            $term_name = $term->name;
+                            return $term_name;
+                        endif;                        
+                    endif;
+                endif;
+            endif;
+        endforeach;
+    endif;
 }
 
 /**
