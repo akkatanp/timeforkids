@@ -1293,6 +1293,51 @@ $facets = array();
     return $facets;
 }
 
+
+function tfk_search_facetapi_filters() {
+  //flog_it("tfk_facet_facetapi_filters...");
+  return array(
+    'altered_titles' => array(
+      'handler' => array(
+        'label' => 'Change facet text',
+        'class' => 'TfkChangeTitlesFacet',
+      ),
+    ),
+  );
+}
+
+
+class TfkChangeTitlesFacet extends FacetapiFilter {
+  public function execute(array $build) {
+      //flog_it("TfkChangeTitlesFacet");
+      //flog_it($build);
+      /*
+      foreach($build as $item => $value) {
+          flog_it("item=".$item.", value=".$value);
+      }
+       * 
+       */
+      
+      if( $build['22']['#markup'] == '5-6' ):
+        $build['22']['#markup'] = 'Grades 5-6';
+      endif;
+      if( $build['21']['#markup'] == '3-4' ):
+        $build['21']['#markup'] = 'Grades 3-4';
+      endif;
+      if( $build['20']['#markup'] == '2' ):
+        $build['20']['#markup'] = 'Grade 2';
+      endif;
+      if( $build['19']['#markup'] == 'K-1' ):
+        $build['19']['#markup'] = 'Grade K-1';
+      endif;
+   
+    //$build = array_reverse($build);
+
+    return $build;
+  }
+}
+
+
 /*
 function tfk_search_facet_items_alter(&$build, &$settings) {
   flog_it("tfk_search_facet_items_alter: settings facet=".$settings->facet);
@@ -3287,7 +3332,7 @@ function tfk_search_preprocess_search_result(&$vars) {
 
 
     case 'magazine_issue':
-      flog_it("magazine_issue...");
+      //flog_it("magazine_issue...");
       if($node) {
         //flog_it("content_type=MAGAZINE_ISSUE");
         //flog_it("nid=".$node->nid);
