@@ -3058,6 +3058,8 @@ class TFKMagLangFilter {
  */
 function tfk_search_preprocess_search_result(&$vars) {
   // SEARCH
+  //flog_it("tfk_search_preprocess_search_result...");
+  
   $title = $vars['result']['title'];
   //flog_it("tfk_search_preprocess_search_result...");
   //flog_it($vars);
@@ -3128,8 +3130,8 @@ function tfk_search_preprocess_search_result(&$vars) {
   $link_attr = array('html' => TRUE, 'attributes' => $attributes);
   
   // Avoid further preprocessing if this node doesn't exist on this server.
-  //flog_it("cont_type=".$vars['tfk_search_cont_type']);
   $nid = $vars['result']['fields']['entity_id'];
+  //flog_it("nid=".$nid.", cont_type=".$vars['tfk_search_cont_type']);
   $node = node_load($nid);
   if(!$node) {
     // Don't preprocess, this nid exists in the index but not in the database.
@@ -3189,7 +3191,6 @@ function tfk_search_preprocess_search_result(&$vars) {
   
   
   $vars['date'] = date('F j, Y', $vars['result']['date']);
-  
   switch ($vars['result']['fields']['bundle']) {
     
     case 'minisite':
@@ -3286,7 +3287,7 @@ function tfk_search_preprocess_search_result(&$vars) {
 
 
     case 'magazine_issue':
-      //flog_it("magazine_issue...");
+      flog_it("magazine_issue...");
       if($node) {
         //flog_it("content_type=MAGAZINE_ISSUE");
         //flog_it("nid=".$node->nid);
@@ -3848,16 +3849,24 @@ function tfk_search_preprocess_search_result(&$vars) {
             $vars['magazine_issue_grade_level'] = $term_name;
         endif;
         
-         /* Theme 1 */
-        $theme_1_q=  db_query('select entity_id, field_theme_1_url from field_data_field_theme_1 where bundle LIKE :bundle and field_theme_1_title LIKE :title',array('bundle'=>'magazine_issue','title' => $node->title ));
+        /* Typically Edit will put 'CATEGORY: ' in front of these remaining fields, so use REGEXP */
+        /* Theme 1 */
+        $theme_1_q=  db_query('select entity_id, field_theme_1_url from field_data_field_theme_1 where bundle = :bundle and field_theme_1_title REGEXP :title',array('bundle'=>'magazine_issue','title' => $node->title ));
+        /*
+        if ($node->title == "Cool Classrooms") { 
+            flog_it("Search Result: node->title=".$node->title); 
+        }
+        */
+        
         $theme_1_q_result = $theme_1_q->fetchAll();
         $term_name = get_grades($theme_1_q_result, 'field_theme_1_url', $node);
+        //flog_it("term_name=".$term_name);
         if($term_name):
             $vars['magazine_issue_grade_level'] = $term_name;
         endif;
         
          /* Theme 2 */
-        $theme_2_q=  db_query('select entity_id, field_theme_2_url from field_data_field_theme_2 where bundle LIKE :bundle and field_theme_2_title LIKE :title',array('bundle'=>'magazine_issue','title' => $node->title ));
+        $theme_2_q=  db_query('select entity_id, field_theme_2_url from field_data_field_theme_2 where bundle = :bundle and field_theme_2_title REGEXP :title',array('bundle'=>'magazine_issue','title' => $node->title ));
         $theme_2_q_result = $theme_2_q->fetchAll();
         $term_name = get_grades($theme_2_q_result, 'field_theme_2_url', $node);
         if($term_name):
@@ -3865,7 +3874,7 @@ function tfk_search_preprocess_search_result(&$vars) {
         endif;
         
          /* Theme 3 */
-        $theme_3_q=  db_query('select entity_id, field_theme_3_url from field_data_field_theme_3 where bundle LIKE :bundle and field_theme_3_title LIKE :title',array('bundle'=>'magazine_issue','title' => $node->title ));
+        $theme_3_q=  db_query('select entity_id, field_theme_3_url from field_data_field_theme_3 where bundle = :bundle and field_theme_3_title REGEXP :title',array('bundle'=>'magazine_issue','title' => $node->title ));
         $theme_3_q_result = $theme_3_q->fetchAll();
         $term_name = get_grades($theme_3_q_result, 'field_theme_3_url', $node);
         if($term_name):
@@ -3873,7 +3882,7 @@ function tfk_search_preprocess_search_result(&$vars) {
         endif;
         
          /* Theme 4 */
-        $theme_4_q=  db_query('select entity_id, field_theme_4_url from field_data_field_theme_4 where bundle LIKE :bundle and field_theme_4_title LIKE :title',array('bundle'=>'magazine_issue','title' => $node->title ));
+        $theme_4_q=  db_query('select entity_id, field_theme_4_url from field_data_field_theme_4 where bundle = :bundle and field_theme_4_title REGEXP :title',array('bundle'=>'magazine_issue','title' => $node->title ));
         $theme_4_q_result = $theme_4_q->fetchAll();
         $term_name = get_grades($theme_4_q_result, 'field_theme_4_url', $node);
         if($term_name):
@@ -3881,7 +3890,7 @@ function tfk_search_preprocess_search_result(&$vars) {
         endif;
         
          /* News */
-        $news_q=  db_query('select entity_id, field_news_url from field_data_field_news where bundle LIKE :bundle and field_news_title LIKE :title',array('bundle'=>'magazine_issue','title' => $node->title ));
+        $news_q=  db_query('select entity_id, field_news_url from field_data_field_news where bundle = :bundle and field_news_title REGEXP :title',array('bundle'=>'magazine_issue','title' => $node->title ));
         $news_q_result = $news_q->fetchAll();
         $term_name = get_grades($news_q_result, 'field_news_url', $node);
         if($term_name):
