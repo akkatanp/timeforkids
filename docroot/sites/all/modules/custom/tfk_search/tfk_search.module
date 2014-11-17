@@ -1310,13 +1310,10 @@ function tfk_search_facetapi_filters() {
 class TfkChangeTitlesFacet extends FacetapiFilter {
   public function execute(array $build) {
       //flog_it("TfkChangeTitlesFacet");
-      //flog_it($build);
-      /*
-      foreach($build as $item => $value) {
-          flog_it("item=".$item.", value=".$value);
+      // Check for pages that don't have the Grade Facet.
+      if (empty($build)) {
+          return $build;
       }
-       * 
-       */
       
       if( $build['22']['#markup'] == '5-6' ):
         $build['22']['#markup'] = 'Grades 5-6';
