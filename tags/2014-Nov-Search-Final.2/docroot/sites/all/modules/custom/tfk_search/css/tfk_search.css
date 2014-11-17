@@ -1,0 +1,946 @@
+/**
+ * Default theming for TFK Search components.
+ */
+
+/* Featured item */
+
+div#block-tfk-search-tfk-search-photos-video-featured,
+.minisite-video div#tfk-search-photos-video-featured{
+  border: 6px solid #D71700;
+  padding: 0 0 0 0;
+  position: relative;
+  background-color: #FFF;
+}
+
+
+.minisite-slideshow div#tfk-search-photos-video-featured{
+    border: 6px solid #D71700;
+}
+
+
+.minisite-video div#tfk-search-photos-video-featured{
+    padding-top:10px;
+}
+
+.top-story-right-square {
+  background: url("sites/all/themes/tfk/images/top-story-corner.png") no-repeat scroll 0 0 white;
+  height: 38px;
+  position: absolute;
+  right: -6px;
+  top: -6px;
+  width: 38px;
+  z-index: 2;
+}
+
+
+
+div#tfk-search-photos-video-featured {
+  padding: 10px 0;
+}
+
+
+.minisite-slideshow div#tfk-search-photos-video-featured,
+.minisite-video div#tfk-search-photos-video-featured{
+ margin-bottom:10px;   
+}
+
+
+.featured-item-related-item {
+	padding: 0 12px 0 10px;
+}
+
+div#tfk-search-photos-video-featured div.featured-label {
+	background: #d71700;
+	display: inline;
+	color: white;
+	font: normal 12px "arial black", arial, sans-serif;
+	line-height: 14px;
+	padding: 2px 6px;
+	text-transform: uppercase;
+	word-wrap: normal;
+}
+
+div#tfk-search-photos-video-featured .featured-item {
+	position: relative;
+	top: -10px;
+  margin-right: 15px;
+}
+
+div#tfk-search-photos-video-featured h2.featured-title {
+  font-size: 30px;
+  line-height: 30px;
+  margin: 6px 0 0 0;
+}
+
+div#tfk-search-photos-video-featured h2.featured-title a {
+  color: #D71700;
+}
+
+div#tfk-search-photos-video-featured .featured-date {
+  color: #333;
+	font-size: 10.5px;
+}
+
+div#tfk-search-photos-video-featured .featured-dek {
+  font-size: 1em;
+  margin: 14px 0px -3px 0px;
+	color: #333;
+}
+
+div#tfk-search-photos-video-featured .featured-link {
+  margin: 0 0 3px 0;
+}
+
+div#tfk-search-photos-video-featured .featured-thumbnail {
+	margin-right: 5px;
+}
+
+div#tfk-search-photos-video-featured .featured-thumbnail img {
+	border: solid 1px #cecece;
+}
+
+div#tfk-search-photos-video-featured .featured-dek {
+	margin-bottom: 7px;
+}
+
+div#tfk-search-photos-video-featured .g1 {
+	vertical-align: top;
+	width: 270px;
+	display: inline-block;
+}
+
+div#tfk-search-photos-video-featured .g2 {
+	display: inline-block;
+	width: 210px;
+	padding: 0 0 0 10px;
+}
+
+#tfk-search-photos-video-featured .flag-favorites {
+  background: url("/sites/all/modules/custom/tfk_search/images/star-favorite-icon.png") no-repeat scroll 0 0 transparent;
+  height: 20px;
+  padding-left: 18px;
+  font-size: 12px;
+}
+
+.featured-flag-link {
+	margin: 5px 0 0 0;
+	text-align: right;
+}
+
+#tfk-search-photos-video-featured .flag-favorites a {
+	color: #0072bc;
+}
+
+#ftr-cap-credit {
+	padding: 0;
+	text-align: right;
+	font-size: 9px;
+	color: #999;
+	margin: -7px 0 0;
+}
+
+
+/* Left-rail facets */
+
+div#block-tfk-search-tfk-search-photos-video-title {
+   background-color: #D71700;
+   color: white;
+   font-size: 14px;
+   padding-bottom: 4px;
+   padding-top: 6px;
+   text-align: center;
+   font-weight: bold;
+}
+
+body.section-photos-video div.region-sidebar-first h2.block-title {
+  font-size: 12px;
+	font-weight: bold;
+	color: #333;
+	margin: 10px 0 0 0;
+	line-height: 20px;
+}
+
+body.section-photos-video div.region-sidebar-first a.apachesolr-facet:link, 
+body.section-photos-video div.region-sidebar-first a.apachesolr-facet:visited {
+  font-weight:normal;
+	font-size: 12px;
+	color: #333;
+}
+
+div#block-views-tfk-section-photos-video-block div.views-field-type {
+  color: white;
+  background-color: #D71700;
+  padding: 0px 5px 2px;
+}
+
+div#block-views-tfk-section-photos-video-block div.views-field-title a {
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.22em;
+}
+
+div#block-views-tfk-section-photos-video-block  a.tfk_sections_photos_video_view_full_article {
+  text-decoration: none;
+  color: #D71700;
+  font-weight: bold;
+  font-size: .90em;
+}
+
+div#block-views-tfk-section-photos-video-block div.view-id-tfk_section_photos_video div.views-row {
+  border-top: 2px solid #ccc;
+  border-right: 2px solid #ccc;
+  border-left: 2px solid #ccc;
+  padding: 6px;
+}
+
+div#block-views-tfk-section-photos-video-block div.view-id-tfk_section_photos_video div.views-row-last {
+  border-bottom: 2px solid #ccc;
+}
+
+div#block-views-tfk-section-photos-video-block div.views-field-field-image img {
+  float:left;
+  padding-top: 7px;
+  margin-right: 7px;
+}
+
+div#block-views-tfk-section-photos-video-block div.views-field-body p {
+  margin: 0px; padding: 0px;
+  font-size: 12px;
+}
+
+a.apachesolr-facet span.solr-facet-link-count {
+  font-weight: normal;
+  color: #333;
+}
+
+li.expanded-facet li.expanded-facet a {
+	font-weight: normal;
+}
+
+ul.expanded-facet > li.expanded-facet input.facet-checkbox + a {
+	line-height: 100%; 
+}
+
+body.page-search-site .region-sidebar-first .block-apachesolr-search .item-list 
+ul.expanded-facet > li.expanded-facet {
+  margin: 0 0 0 11px;
+}
+
+
+/* Generic search rules */
+ol.search-results {
+  border-top: 1px solid #CECECE;
+}
+
+ol.search-results li div.content-type {
+  background-color: #D71700;
+  color: white;
+  font: normal 12px "arial black", arial;
+  padding: 3.35px 0 2.76px 11px;
+  margin-bottom: 7px;
+}
+
+ol.search-results li div.content-type.tfk_product {
+  background-color: #999;
+  color: white;
+  font: normal 12px "arial black", arial;
+  padding: 3.35px 0 2.76px 11px;
+  margin-bottom: 7px;
+}
+
+ol.search-results li h3.title {
+  margin: 0 0 5px 0;
+	color: #333;
+	font-size: 20px;
+	line-height: 18px;
+}
+
+ol.search-results li h3.title a:link,
+ol.search-results li h3.title a:visited {
+  color: #D71700;
+}
+
+ol.search-results li.with-image {
+  /*min-height: 215px;*/
+}
+
+ol.search-results li.search-result {
+  min-height: 150px;
+}
+
+li.search-result {
+  border: 1px solid #CECECE;
+	border-top: none;	
+	padding: 10px;
+  *padding: 10px 10px 0 10px;
+	margin: 0px;
+}
+
+li.search-result.tfk_product {
+  border: 1px solid #CECECE;
+	border-top: none;	
+	padding: 10px;
+  background-color: #E6E6E6;
+  *padding: 10px 10px 0 10px;
+	margin: 0px;
+}
+
+body.page-search-site .search-results .result-date,
+body.page-worksheets .search-results .result-date {
+	font-size: 10px;
+	color: #666;
+	line-height: 15px;
+}
+
+body.page-search-site .search-results .search-snippet-info,
+#main-wrapper .search-snippet-info {
+  padding: 0 0 0 0;
+}
+
+.row2 {
+  margin: 0pt;
+}
+
+.col1 {
+  float: left;
+  min-height: 130px;
+}
+
+body.page-my-favorites .col1 {
+  min-height: 135px;
+}
+
+.col2 {
+  *float: left;
+  width: 360px;
+  margin-left: 10px;
+  clear: right;
+  display: inline-block;
+}
+
+#tfk-search-results-photos-video .col1 {
+	float: left;
+	width: 117px;
+	margin-right: 10px;
+	min-height: 130px;
+}
+
+#tfk-search-results-photos-video .col2 {
+  display: inline-block;
+  width: 360px;
+  min-height: 130px;
+  margin: 0;
+}
+
+.region-highlighted .first.block-tfk-search {
+  background-color: #E6E6E6;
+  min-height: 30px;
+  padding: 8px 0px 7px 10px;
+  margin-bottom: 7px;
+  border: 1px solid #CFCFCF;
+  color: #333333;
+}
+
+.region-highlighted .first.block-tfk-search h2 {
+  font-size: 1.5em;
+  margin: 0 0 10px 0;
+}
+
+li.search-result .search-snippet-body {
+	margin-bottom: 25px;
+	min-height: 43.2px;
+	*min-height: 0;
+}
+
+body.page-photos-video .view-full-article + .search-snippet-info {
+	margin-bottom: 16px;
+	min-height: 43.2px;
+}
+
+body.page-photos-video .search-snippet-info {
+  margin-bottom: 32px;
+  min-height: 43.2px;
+}
+
+/* Search results */
+
+ol#tfk-search-results-photos-video {
+  border-top: 1px solid #CECECE;
+}
+
+ol#tfk-search-results-photos-video li div.content-type {
+  background-color: #D71700;
+  color: white;
+  font: normal 12px "arial black", arial, sans-serif;
+  padding: 3.35px 0 2.76px 11px;
+  margin-bottom: 7px;
+}
+
+ol#tfk-search-results-photos-video li h3.title {
+  margin: 0 0 5px;
+}
+
+ol#tfk-search-results-photos-video li h3.title a:link,
+ol#tfk-search-results-photos-video li h3.title a:visited {
+  color: black;
+  font-size: 1.17em;
+}
+
+ol#tfk-search-results-photos-video li.with-image {
+  /*min-height: 215px;*/
+}
+
+ol#tfk-search-results-photos-video li.search-result {
+  min-height: 150px;
+	padding-bottom: 16px;
+	*padding-bottom: 0;
+}
+
+#tfk-search-results-photos-video img.thumbnail {
+	border: solid 1px #cecece;
+  /*float: left;
+  margin-right: 7px;*/
+}
+
+li.tfk-search-result {
+	/*clear: both;*/
+}
+
+ol#tfk-search-results-photos-video li.tfk-search-result .col2 h3.title a {
+  color: #D71700;
+  font: bold 20px arial;
+  line-height: 20px;
+}
+
+
+/* Top pager */
+
+div#tfk-search-pager-top {
+  background-color: #E6E6E6;
+  min-height: 30px;
+  padding: 8px 0px 7px 10px;
+	margin-bottom: 7px;
+}
+
+div#tfk-search-pager-top div.sp-top {
+  margin: 0px;
+}
+
+div#tfk-search-pager-top h2 {
+  float: left;
+  font-size: 1.5em;
+  margin: 0px;
+}
+
+div#tfk-search-pager-top .sp-bottom {
+  margin: 30px 0 0 0;
+	font-family: "georgia", serif;
+}
+
+div#tfk-search-pager-top div.item-list ul.pager {
+  clear: none;
+  margin: 0px;
+  text-align: right;
+}
+
+div#tfk-search-pager-top .sp-top-list, 
+div#tfk-search-pager-top div.item-list, 
+div#tfk-search-pager-top ul.pager {
+  width: 275px;
+}
+
+body.page-tfk-magazine div#tfk-search-pager-top .sp-top-list, 
+body.page-tfk-magazine div#tfk-search-pager-top div.item-list, 
+body.page-tfk-magazine div#tfk-search-pager-top ul.pager {
+  width: 328px;
+}
+
+body.page-worksheets div#tfk-search-pager-top .sp-top-list, 
+body.page-worksheets div#tfk-search-pager-top div.item-list, 
+body.page-worksheets div#tfk-search-pager-top ul.pager {
+  width: 315px;
+}
+
+div#tfk-search-pager-top .sp-top-list {
+  float: left;
+  padding-right: 5px;
+	margin-top: 3px;
+}
+
+ul.pager a {
+  color: #D71700;
+	font-weight: normal;
+}
+
+div#tfk-search-pager-top a,
+div#tfk-search-pager-top a:link, 
+div#tfk-search-pager-top a:visited {
+	font-weight: normal;
+	font-size: 11px;
+	color: #D71700;
+}
+
+ul.pager li.pager-current, 
+div#tfk-search-pager-top .pager-current {
+	font-weight: bold;
+	color: #D71700;
+}
+
+div#tfk-search-pager-top .item-list ul li {
+	margin: 0 0 0 1px;
+}
+
+/* Related Content Featured item*/
+
+
+div#featured-related-content-title {
+	font: normal 12px 'arial black',arial,sans-serif;
+	margin: 0 0 3px 0;
+}
+
+body.page-my-favorites div#featured-related-content-title {
+  margin: 55px 0 3px 0;
+}
+
+.minisite-slideshow div#featured-related-content-title{
+    margin: 0 0 40px 0;
+}
+
+
+div#featured-related-content {
+  margin: 0px 0px 0px 0px;
+}
+
+div.addit-related-articles {
+  font-size: 11px;
+}
+
+
+div#featured-related-content {
+  padding: 3px 0px 3px 7px;
+}
+
+div#featured-related-content .addit-related-articles-label,
+div#featured-related-content .addit-related-articles-title,
+div#featured-related-content .addit-related-articles-download {
+  display: inline;
+  margin-right: 5px;
+}
+
+div#featured-related-content .addit-related-articles .addit-related-articles-label {
+  font-weight: bold;
+}
+
+div#featured-related-content .addit-related-articles-label {
+  font-weight: bold;
+}
+
+div#featured-related-content .addit-related-articles .addit-related-articles-title {
+  font-size: 11px;
+}
+
+div#featured-related-content .addit-related-articles .addit-related-articles-download {
+  color: #eb1c24;
+}
+
+/**
+ * Photos and Videos Favorites 
+ */
+body.section-photos-video ol#tfk-search-results-photos-video .search-result-links {
+  margin-top: 15px;
+  text-align: right;
+}
+
+li.search-result .flag-favorites {
+  display: inline-block;
+  background: url("/sites/all/modules/custom/tfk_search/images/star-favorite-icon.png") no-repeat;
+  padding-left: 18px;
+  height: 20px;
+}
+
+li.search-result .flag-favorites a {
+  color: #0072bc;
+}
+
+/* photos and vide content type */
+body.section-photos-video div#tfk-search-photos-video-featured .icon,
+.minisite-video div#tfk-search-photos-video-featured .icon, 
+.view-id-minisite_articles div#tfk-search-photos-video-featured .icon {
+  height: 24px;
+  margin: -34px 0 0 225px;
+  position: relative;
+  width: 32px;
+  z-index: 2;
+}
+
+/* Dustin Brewer's Safari Hack */
+@media screen and (-webkit-min-device-pixel-ratio:0){
+body.section-photos-video div#tfk-search-photos-video-featured .icon,
+.view-id-minisite_articles div#tfk-search-photos-video-featured .icon{
+  position: absolute;
+}
+}
+
+body.section-photos-video ol#tfk-search-results-photos-video .icon,
+body.section-my-favorites ol#tfk-search-results-photos-video .icon{
+  height: 24px;
+  margin: -34px 0 0 75px;
+  position: relative;
+  width: 32px;
+  z-index: 2;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0){
+body.section-photos-video ol#tfk-search-results-photos-video .icon,
+body.section-my-favorites ol#tfk-search-results-photos-video .icon  {
+  position: absolute;
+}
+}
+
+body.section-photos-video .content-type-slideshow .icon,
+body.section-my-favorites .content-type-slideshow .icon,
+.view-id-minisite_articles div#tfk-search-photos-video-featured .content-type-slideshow .icon {
+  background: url(../images/photo-camera-icon.png) no-repeat;
+}
+
+body.section-photos-video .content-type-video .icon, 
+body.section-my-favorites .content-type-video .icon,
+.view-id-minisite_articles div#tfk-search-photos-video-featured .content-type-video .icon {
+  background: url(../images/video-camera-icon.png) no-repeat;
+}
+
+/*
+ * Site-wide search page rules.
+ */
+#block-tfk-search-tfk-search-sidebar-filter {
+	background-color: #999;
+	margin: 0px;
+	border-left: 1px solid #CECECE;
+	border-right: 1px solid #CECECE;
+	border-top: 1px solid #999;
+	padding-left: 12px;
+	padding-top: 10px;
+}
+
+#block-tfk-search-tfk-search-sidebar-filter .content > h2 {
+  color: #FFF;
+  margin: 0 0 10px 0;
+  font: normal 12px "arial black", Arial;
+}
+
+#block-tfk-search-tfk-search-sidebar-filter .content>h2+div {
+	color: #FFF;
+	font-size: 12px;
+	font-weight: bold;
+	margin: 0 0 6px 0;
+}
+
+#search-block-form {
+	padding-bottom: 14px;
+}
+body.section-worksheets #search-block-form,
+body.section-tfk-magazine #search-block-form {
+	padding-bottom: 0;
+}
+
+#search-block-form .element-invisible {
+	display: none;
+}
+
+#block-tfk-search-tfk-search-sidebar-filter .form-item {
+	margin: 0px;
+	vertical-align: middle;
+}
+
+#block-tfk-search-tfk-search-sidebar-filter .form-item.form-type-textfield {
+  margin-right: 9px;
+  <!--[if IE]>
+  	margin-right: 0px;
+  ![endif]-->
+}
+
+#edit-search-block-form--2 {
+  background: none repeat scroll 0 0 #FFF;
+  border-color: #696969 #8C8C8C #ADADAD #808080;
+  border-radius: 12px 12px 12px 12px;
+  border-style: solid;
+  border-width: 1px;
+  border-top: 2px solid #696969;
+  color: #777;
+  display: block;
+  float: left;
+  height: 14px;
+  padding: 4px 8px 4px 8px;
+  font: italic 11px arial;
+  margin-right: 9px;
+  <!--[if IE]>
+    margin-right: 0px;
+  ![endif]-->  
+}
+
+body.page-search-site .region-sidebar-first .first.block h2 {
+	margin-top: 0px;
+}
+
+body.page-search-site .region-sidebar-first .block-apachesolr-search {
+  border-bottom: 1px dotted #8A8A8A;
+	margin: 0px;
+}
+
+body.page-search-site .region-sidebar-first .block-apachesolr-search h2,
+body.page-search-site .region-sidebar-first .block-tfk-search h2  {
+  font-size: 12px;
+	font-weight: 12px;
+	color: #333;
+	margin: 10px 0;
+	line-height: 100%;
+}
+
+body.page-search-site .region-sidebar-first .block-apachesolr-search .item-list ul li {
+  margin: 0 0 0.25em 11px;
+}
+
+li.search-result .content-type .ctype-suffix {
+	float: right;
+	padding-right: 10px;
+}
+
+/*
+ * Bottom pager
+ */
+
+#block-system-main .content > .item-list .pager {
+	text-align: right;
+	padding-right: 8px;
+	margin-top: 10px;
+}
+
+#block-system-main .content > .item-list .last {
+	padding-right: 0px;
+	margin-right: 0px;
+}
+
+#block-system-main .content > .item-list li {
+  margin: 0 0 0 12px;
+  color: #d71700;
+  padding: 0px;
+  font-size: 11px;
+}
+
+/**
+ * Slideshow and Video icons.
+ */
+
+#block-system-main .search-result .icon {
+	height: 24px;
+	margin: -34px 0 0 75px;
+	position: relative;
+	width: 32px;
+	z-index: 2;
+}
+
+#block-system-main .search-result .content-type-video .icon {
+	background: url("../images/video-camera-icon.png") no-repeat scroll 0 0 transparent;
+}
+
+#block-system-main .search-result .content-type-slideshow .icon {
+	background: url("../images/photo-camera-icon.png") no-repeat scroll 0 0 transparent;
+}
+
+body .region-sidebar-first .item-list ul,
+.region-sidebar-first .item-list ul li {
+	margin: 0;
+	line-height: 20px;
+}
+
+body .region-sidebar-first .item-list ul input,
+.region-sidebar-first .item-list ul li input {
+  margin: 0 2px 0 0;
+}
+
+/* Misc */
+.region-sidebar-first .item-list ul li li {
+  margin: 0 0 0 15px;
+  padding: 0;
+}
+
+body.page-photos-video #main .region-sidebar-first .section {
+  padding: 10px;
+}
+
+/**
+ * Accordion
+ */
+body.page-photos-video .region-sidebar-first .block h2 {
+  /* tp: 07-05-2014: ASK HARRY. This was commented out. facetapi css change. */
+  font: normal 12px "arial black";
+  background: url("/sites/all/modules/custom/tfk_search/images/photos-video-arrow-open.png") no-repeat scroll 0 5px transparent;
+  line-height: 100%;
+  padding-left: 25px;
+}
+
+/* Only facet blocks with accordions should apply this rule */
+.region-sidebar-first .block .content > .item-list {
+	margin: 0 0 0 23px;
+}
+
+body.page-tfk-magazine .region-sidebar-first .block .content > .item-list,
+body.page-search-site .region-sidebar-first .block .content > .item-list {
+	margin: 0 0 0 2px;
+}
+
+#block-tfk-search-sm-editorial-date-tfk .content > .item-list {
+  margin: 0;
+}
+
+/* My Favorites page overrides */
+
+.page-my-favorites li.search-result .flag-wrapper.flag-favorites {
+  text-align: right;
+	display: block;
+}
+
+.page-my-favorites ol#tfk-search-results-photos-video li {
+	padding-bottom: 0px;
+}
+
+.page-my-favorites ol#tfk-search-results-photos-video li h3.title a:link, 
+.page-my-favorites ol#tfk-search-results-photos-video li h3.title a:visited {
+  color: #D71700;
+  font: bold 20px arial;
+}
+
+.page-my-favorites ol#tfk-search-results-photos-video li h3.title {
+	margin: 0;
+}
+
+.page-my-favorites #tfk-search-results-photos-video .col1 {
+	min-height: 136px;
+}
+
+.page-my-favorites #tfk-search-results-photos-video .col2 {
+  display: block;
+  width: inherit;
+  margin: 0 0 10px 0;
+  float: none;
+}
+
+.page-my-favorites .search-result div.search-snippet-body {
+	margin-top: 0;
+}
+
+.page-my-favorites  .views-field-ops {
+  padding: 20px 0;
+}
+
+/**
+ * Quiz CSS.
+ */
+    
+/* tfk-85 */
+.not-logged-in li.search-result.pdf_quiz .search-result-download-link,
+.not-logged-in li.search-result.worksheet .search-result-download-link,
+.not-logged-in li.search-result.worksheet.quiz .search-result-download-link,
+.not-logged-in li.search-result.worksheet.chart .search-result-download-link,
+.not-logged-in li.search-result.worksheet.graph .search-result-download-link {
+  display: inline;
+  float: left;
+  background: url("/sites/all/themes/tfk/images/lock-icon.png") no-repeat;
+  padding-left: 18px;
+  height: 20px;
+}
+
+/* tfk-197 */
+.not-logged-in li.article-magazine .search-result-link-1{
+  display: inline;
+  float: left;
+  background: url("/sites/all/themes/tfk/images/lock-icon.png") no-repeat;
+  padding-left: 18px;
+  height: 20px;
+}
+/* tfk-197 end */
+
+/* TFK-207 */
+.not-logged-in .lock-bar {
+    background: url("/sites/all/themes/tfk/images/lock-icon.png") no-repeat;
+    padding-left: 18px;
+}
+.not-logged-in .lock-bar-right {
+   /* background: url("/sites/all/themes/tfk/images/lock-icon.png") no-repeat; */
+   background: url("/sites/all/themes/tfk/images/lock-icon.png") no-repeat scroll 100% center rgba(0, 0, 0, 0);
+   padding-right: 20px;
+}
+/* TFK-207 end */
+
+li.search-result.pdf_quiz .search-result-download-link {
+  display: inline;
+	float: left;
+  background: url("/sites/all/themes/tfk/images/related-article-icon.png") no-repeat;
+  padding-left: 18px;
+  height: 20px;
+}
+
+/**
+ * Rules needed by both tfk_worksheets and tfk_search.
+ */
+li.search-result.worksheet .search-result-download-link {
+  display: inline;
+	float: left;
+  background: url("/sites/all/modules/custom/tfk_search/images/worksheet-icon.png") no-repeat;
+  padding-left: 18px;
+  height: 20px;
+}
+
+li.search-result.worksheet.quiz .search-result-download-link {
+  background: url("/sites/all/modules/custom/tfk_search/images/quiz-icon.png") no-repeat;
+}
+
+li.search-result.worksheet.chart .search-result-download-link,
+li.search-result.worksheet.graph .search-result-download-link {
+  background: url("/sites/all/modules/custom/tfk_search/images/organizer.png") no-repeat;
+}
+
+/**
+ * Spanish translation link block +
+ * "Languages" facet block.
+ */
+#block-tfk-search-tfk-magazine-spanish .content > .item-list {
+  margin: 0 0 0 10px;
+}
+
+#block-tfk-search-ss-spanish-version .item-list ul li {
+    margin: 0 0 0.25em 11px;
+}
+
+#block-tfk-search-sm-editorial-date-tfk .item-list ul li {
+    margin: 0 0 0 11px;
+}
+
+#block-tfk-search-tfk-magazine-spanish .content {
+  background: none repeat scroll 0% 0% #D71700;
+  margin: 11px 0pt;
+  padding: 11px 0pt 10px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+#block-tfk-search-tfk-magazine-spanish .content a {
+  color: #FFFFFF;
+  font: 11px "arial black",arial;
+}
+
+/* tp: 07-10-2014: Prevent small circles from appearing for new facetapi left rail checkboxes */
+ul li.leaf {
+list-style:none;
+}
+
+/* tp: 07-10-2014: Make the general search left rail headers smaller */
+.region-sidebar-first h2 {
+font-size: 14px;
+}
+/* TFK-118 */
+#main #first-column ul.facetapi-facetapi-checkbox-links li.collapsed, #main #first-column ul.facetapi-facetapi-checkbox-links li.expanded{
+    list-style-type: none;
+    list-style-image: none;
+}
