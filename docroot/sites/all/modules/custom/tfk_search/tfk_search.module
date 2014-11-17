@@ -1315,16 +1315,17 @@ class TfkChangeTitlesFacet extends FacetapiFilter {
           return $build;
       }
       
-      if( $build['22']['#markup'] == '5-6' ):
+      // Grade Levels facet processing
+      if( array_key_exists('22', $build) && $build['22']['#markup'] == '5-6' ):
         $build['22']['#markup'] = 'Grades 5-6';
       endif;
-      if( $build['21']['#markup'] == '3-4' ):
+      if( array_key_exists('21', $build) && $build['21']['#markup'] == '3-4' ):
         $build['21']['#markup'] = 'Grades 3-4';
       endif;
-      if( $build['20']['#markup'] == '2' ):
+      if( array_key_exists('20', $build) && $build['20']['#markup'] == '2' ):
         $build['20']['#markup'] = 'Grade 2';
       endif;
-      if( $build['19']['#markup'] == 'K-1' ):
+      if( array_key_exists('19', $build) && $build['19']['#markup'] == 'K-1' ):
         $build['19']['#markup'] = 'Grade K-1';
       endif;
    
