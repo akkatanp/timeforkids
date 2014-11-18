@@ -2612,7 +2612,7 @@ function tfk_search_apachesolr_query_alter($query, $caller) {
       //flog_it("Autenticated user processing...");
       // Teachers can see cover stories.
       // $content_types Includes all the content types that needs to be searched.
-      $content_types = array('article', 'flashcard', 'kid_reporter', 'grammar_practice_rule', 'slideshow', 'video', 'atw_destination', 'minisite', 'tfk_extra', 'worksheet', 'mini_lesson', 'a_paper', 'grammar_practice', 'writing_tips', 'pdf_quiz', 'common_core_standards','book','store_product','tfk_lesson_for_tablets');
+      $content_types = array('article', 'kid_reporter', 'grammar_practice_rule', 'slideshow', 'video', 'atw_destination', 'minisite', 'tfk_extra', 'worksheet', 'mini_lesson', 'a_paper', 'grammar_practice', 'writing_tips', 'pdf_quiz', 'common_core_standards','book','store_product','tfk_lesson_for_tablets');
       
       $ct_subquery = apachesolr_drupal_query("ct_subquery");
       foreach($content_types as $content_type) {
@@ -4236,34 +4236,6 @@ function tfk_search_preprocess_search_result(&$vars) {
       }
       $tips = node_view(node_load($node->nid),'teaser');
       $teaser = $tips['body'][0]['#markup'];
-      
-      $vars['render'] = TRUE;
-    break;
-    
-    /*
-     * Content Type - Flashcard Deck.
-     * Displays Search results which belongs to Flashcard Deck content type.
-     * Fields Displayed: Title, Subject(field_study_helper)
-     * The variables set here are accessed in the search-result.tpl.php
-     */
-    case 'flashcard':
-      if($base_path == TFK_SEARCH_SITESEARCH_PATH) {
-        $vars['tfk_search_result_link_1'] = l('Read More', 'node/'. $nid);
-      }
-      
-      if(isset($node->field_study_helper)){
-        $tmp_tid = field_get_items('node', $node, 'field_study_helper');
-        $tid = $tmp_tid[0]['tid'];
-        $name_res =  db_query('select name from taxonomy_term_data where tid = :tid',array('tid' => $tid ));
-        if( $name_res ):
-            $name = $name_res->fetch();
-        endif;
-        if($name):
-            $name = $name->name;
-        endif;
-        $vars['tfk_search_res_category'] = $name;
-        $teaser = $name;
-      }
       
       $vars['render'] = TRUE;
     break;
