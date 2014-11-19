@@ -3817,7 +3817,7 @@ function tfk_search_preprocess_search_result(&$vars) {
       
       /* TFK-177 - Show grades for Magazine Articles which are cover stories. */
         $nid_magazine = $node->nid; 
-        $entity_magazine_issue_q =  db_query('select entity_id from field_data_field_articles where bundle = :bundle and field_articles_nid = :nid',array('bundle'=>'article','nid' => $nid_magazine ));
+        $entity_magazine_issue_q =  db_query('select entity_id from field_data_field_articles where bundle = :bundle and field_articles_nid = :nid',array('bundle'=>'magazine_issue','nid' => $nid_magazine ));
         $entity_magazine_issue_result = $entity_magazine_issue_q->fetch();
         if(!empty($entity_magazine_issue_result) && count($entity_magazine_issue_result)>0):
             $entity_magazine_issue_id = $entity_magazine_issue_result->entity_id; 
