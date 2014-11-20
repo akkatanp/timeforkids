@@ -3219,7 +3219,7 @@ function tfk_search_preprocess_search_result(&$vars) {
     endif;
   
     if(count($rls) == 1 && $rls[1] == 'anonymous user'){
-        if( $vars['result']['fields']['bundle'] == "worksheet" || $locked_flag == 1 || $magazine_article_flag == 1  || $vars['result']['fields']['bundle'] == "pdf_quiz" || $vars['result']['fields']['bundle'] == "common_core_standards"  ){
+        if( $vars['result']['fields']['bundle'] == "worksheet" || $locked_flag == 1 || $magazine_article_flag == 1  || $vars['result']['fields']['bundle'] == "pdf_quiz" || $vars['result']['fields']['bundle'] == "common_core_standards" || $vars['result']['fields']['bundle'] == "mini_lesson" ){
             $vars['lock_bar'] = 1;
         }
         if( $locked_flag_right == 1 ){
@@ -3839,6 +3839,7 @@ function tfk_search_preprocess_search_result(&$vars) {
         endif;
         //flog_it("   Grade Level=".$vars['magazine_issue_grade_level']);
         
+        // Comment out these for now since they are overkill and can cause a strain on the DB.
         /* Magazine Issue: News Now */
         /*
         if (empty($vars['magazine_issue_grade_level'])) {
@@ -4198,6 +4199,20 @@ function tfk_search_preprocess_search_result(&$vars) {
       }
       
       $vars['render'] = TRUE;
+      
+      // Get grade.
+      $grade_level = field_get_items('node', $node, 'field_grade_level');
+      if($grade_level) {
+            $term = taxonomy_term_load($grade_level[0]['tid']);
+            $vars['magazine_issue_grade_level'] = $term->name;
+      }
+      //flog_it("mini-lesson: grade_level=".$term->name);
+        
+      // Check to add mini lesson css for anonymous users
+      if ( user_is_anonymous() ) {
+        //flog_it("adding mini-lesson css for anonymous user...");
+        $vars['classes_array'][] = 'mini-lesson';
+      }
     break;
     
     /*
