@@ -3817,9 +3817,11 @@ function tfk_search_preprocess_search_result(&$vars) {
       
       /* TFK-177 - Show grades for Magazine Articles which are cover stories. */
         $nid_magazine = $node->nid; 
+        //flog_it("FIRST: Field_data_field_articles check...");
         $entity_magazine_issue_q =  db_query('select entity_id from field_data_field_articles where bundle = :bundle and field_articles_nid = :nid',array('bundle'=>'magazine_issue','nid' => $nid_magazine ));
         $entity_magazine_issue_result = $entity_magazine_issue_q->fetch();
         if(!empty($entity_magazine_issue_result) && count($entity_magazine_issue_result)>0):
+            //flog_it("not empty...");
             $entity_magazine_issue_id = $entity_magazine_issue_result->entity_id; 
             if($entity_magazine_issue_id):
                 $tid_magazine_q =  db_query('select field_grade_level_tid from field_data_field_grade_level where entity_id = :entity_id',array('entity_id' => $entity_magazine_issue_id ));
@@ -3835,111 +3837,190 @@ function tfk_search_preprocess_search_result(&$vars) {
                 endif;
             endif;
         endif;
+        //flog_it("   Grade Level=".$vars['magazine_issue_grade_level']);
         
         /* Magazine Issue: News Now */
-        $news_now_q=  db_query('select entity_id, field_in_the_news_url from field_data_field_in_the_news where bundle LIKE :bundle and field_in_the_news_title LIKE :title',array('bundle'=>'magazine_issue','title' => $node->title ));
-        $news_now_q_result = $news_now_q->fetchAll();
-        $term_name = get_grades($news_now_q_result, 'field_in_the_news_url', $node);
-        if($term_name):
-            $vars['magazine_issue_grade_level'] = $term_name;
-        endif;
+        /*
+        if (empty($vars['magazine_issue_grade_level'])) {
+            flog_it("News Now check...");
+            $news_now_q=  db_query('select entity_id, field_in_the_news_url from field_data_field_in_the_news where bundle LIKE :bundle and field_in_the_news_title LIKE :title',array('bundle'=>'magazine_issue','title' => $node->title ));
+            $news_now_q_result = $news_now_q->fetchAll();
+            $term_name = get_grades($news_now_q_result, 'field_in_the_news_url', $node);
+            if($term_name):
+                $vars['magazine_issue_grade_level'] = $term_name;
+            endif;
+            flog_it("   Grade Level=".$vars['magazine_issue_grade_level']);
+        }
+         * 
+         */
+
         
         /* Section : Top 5 */
-        $top_5_q =  db_query('select entity_id, field_top_5_url from field_data_field_top_5 where bundle LIKE :bundle and field_top_5_title LIKE :title',array('bundle'=>'magazine_issue','title' => $node->title ));
-        $top_5_q_result = $top_5_q->fetchAll();
-        $term_name = get_grades($top_5_q_result, 'field_top_5_url', $node);
-        if($term_name):
-            $vars['magazine_issue_grade_level'] = $term_name;
-        endif;
+        /*
+        if (empty($vars['magazine_issue_grade_level'])) {
+            flog_it("Top 5 check...");
+            $top_5_q =  db_query('select entity_id, field_top_5_url from field_data_field_top_5 where bundle LIKE :bundle and field_top_5_title LIKE :title',array('bundle'=>'magazine_issue','title' => $node->title ));
+            $top_5_q_result = $top_5_q->fetchAll();
+            $term_name = get_grades($top_5_q_result, 'field_top_5_url', $node);
+            if($term_name):
+                $vars['magazine_issue_grade_level'] = $term_name;
+            endif;
+            flog_it("   Grade Level=".$vars['magazine_issue_grade_level']);
+        }
+         * 
+         */
         
         /* Section: Features */
-        $more_news_q =  db_query('select entity_id, field_more_news_url from field_data_field_more_news where bundle LIKE :bundle and field_more_news_title LIKE :title',array('bundle'=>'magazine_issue','title' => $node->title ));
-        $more_news_q_result = $more_news_q->fetchAll();
-        $term_name = get_grades($more_news_q_result, 'field_more_news_url', $node);
-        if($term_name):
-            $vars['magazine_issue_grade_level'] = $term_name;
-        endif;
+        /*
+        if (empty($vars['magazine_issue_grade_level'])) {
+            flog_it("Features check...");
+            $more_news_q =  db_query('select entity_id, field_more_news_url from field_data_field_more_news where bundle LIKE :bundle and field_more_news_title LIKE :title',array('bundle'=>'magazine_issue','title' => $node->title ));
+            $more_news_q_result = $more_news_q->fetchAll();
+            $term_name = get_grades($more_news_q_result, 'field_more_news_url', $node);
+            if($term_name):
+                $vars['magazine_issue_grade_level'] = $term_name;
+            endif;
+            flog_it("   Grade Level=".$vars['magazine_issue_grade_level']);
+        }
+         * 
+         */
         
         /* Section: Kid Central */
-        $kid_central_q =  db_query('select entity_id, field_kid_central_url from field_data_field_kid_central where bundle LIKE :bundle and field_kid_central_title LIKE :title',array('bundle'=>'magazine_issue','title' => $node->title ));
-        $kid_central_q_result = $kid_central_q->fetchAll();
-        $term_name = get_grades($kid_central_q_result, 'field_kid_central_url', $node);
-        if($term_name):
-            $vars['magazine_issue_grade_level'] = $term_name;
-        endif;
+        /*
+        if (empty($vars['magazine_issue_grade_level'])) {
+            flog_it("Kid Central check...");
+            $kid_central_q =  db_query('select entity_id, field_kid_central_url from field_data_field_kid_central where bundle LIKE :bundle and field_kid_central_title LIKE :title',array('bundle'=>'magazine_issue','title' => $node->title ));
+            $kid_central_q_result = $kid_central_q->fetchAll();
+            $term_name = get_grades($kid_central_q_result, 'field_kid_central_url', $node);
+            if($term_name):
+                $vars['magazine_issue_grade_level'] = $term_name;
+            endif;
+            flog_it("   Grade Level=".$vars['magazine_issue_grade_level']);
+        }
+         * 
+         */
         
         /* Section: Debate */
-        $debate_q =  db_query('select entity_id, field_debate_url from field_data_field_debate where bundle LIKE :bundle and field_debate_title LIKE :title',array('bundle'=>'magazine_issue','title' => $node->title ));
-        $debate_q_result = $debate_q->fetchAll();
-        $term_name = get_grades($debate_q_result, 'field_debate_url', $node);
-        if($term_name):
-            $vars['magazine_issue_grade_level'] = $term_name;
-        endif;
+        /*
+        if (empty($vars['magazine_issue_grade_level'])) {
+            flog_it("Debate check...");
+            $debate_q =  db_query('select entity_id, field_debate_url from field_data_field_debate where bundle LIKE :bundle and field_debate_title LIKE :title',array('bundle'=>'magazine_issue','title' => $node->title ));
+            $debate_q_result = $debate_q->fetchAll();
+            $term_name = get_grades($debate_q_result, 'field_debate_url', $node);
+            if($term_name):
+                $vars['magazine_issue_grade_level'] = $term_name;
+            endif;
+            flog_it("   Grade Level=".$vars['magazine_issue_grade_level']);
+        }
+         * 
+         */
         
         /* Section: You've Got Skills */
-        $got_skills_q=  db_query('select entity_id, field_got_skills_url from field_data_field_got_skills where bundle LIKE :bundle and field_got_skills_title LIKE :title',array('bundle'=>'magazine_issue','title' => $node->title ));
-        $got_skills_q_result = $got_skills_q->fetchAll();
-        $term_name = get_grades($got_skills_q_result, 'field_got_skills_url', $node);
-        if($term_name):
-            $vars['magazine_issue_grade_level'] = $term_name;
-        endif;
+        /*
+        if (empty($vars['magazine_issue_grade_level'])) {
+            flog_it("You've Got Skills check...");
+            $got_skills_q=  db_query('select entity_id, field_got_skills_url from field_data_field_got_skills where bundle LIKE :bundle and field_got_skills_title LIKE :title',array('bundle'=>'magazine_issue','title' => $node->title ));
+            $got_skills_q_result = $got_skills_q->fetchAll();
+            $term_name = get_grades($got_skills_q_result, 'field_got_skills_url', $node);
+            if($term_name):
+                $vars['magazine_issue_grade_level'] = $term_name;
+            endif;
+            flog_it("   Grade Level=".$vars['magazine_issue_grade_level']);
+        }
+         * 
+         */
         
         /* Section: Newsmakers */
-        $whos_news_q=  db_query('select entity_id, field_whos_news_url from field_data_field_whos_news where bundle LIKE :bundle and field_whos_news_title LIKE :title',array('bundle'=>'magazine_issue','title' => $node->title ));
-        $whos_news_q_result = $whos_news_q->fetchAll();
-        $term_name = get_grades($whos_news_q_result, 'field_whos_news_url', $node);
-        if($term_name):
-            $vars['magazine_issue_grade_level'] = $term_name;
-        endif;
+        /*
+        if (!array_key_exists('magazine_issue_grade_level', $vars)) {
+            flog_it("Newsmakers check...");
+            $whos_news_q=  db_query('select entity_id, field_whos_news_url from field_data_field_whos_news where bundle LIKE :bundle and field_whos_news_title LIKE :title',array('bundle'=>'magazine_issue','title' => $node->title ));
+            $whos_news_q_result = $whos_news_q->fetchAll();
+            $term_name = get_grades($whos_news_q_result, 'field_whos_news_url', $node);
+            if($term_name):
+                $vars['magazine_issue_grade_level'] = $term_name;
+            endif;
+            flog_it("   Grade Level=".$vars['magazine_issue_grade_level']);
+        }
+         * 
+         */
         
         /* Typically Edit will put 'CATEGORY: ' in front of these remaining fields, so use REGEXP */
         /* Theme 1 */
-        $theme_1_q=  db_query('select entity_id, field_theme_1_url from field_data_field_theme_1 where bundle = :bundle and field_theme_1_title REGEXP :title',array('bundle'=>'magazine_issue','title' => $node->title ));
         /*
-        if ($node->title == "Cool Classrooms") { 
-            flog_it("Search Result: node->title=".$node->title); 
+        if (empty($vars['magazine_issue_grade_level'])) {
+            flog_it("Theme 1 check...");
+            $theme_1_q=  db_query('select entity_id, field_theme_1_url from field_data_field_theme_1 where bundle = :bundle and field_theme_1_title REGEXP :title',array('bundle'=>'magazine_issue','title' => $node->title ));
+            $theme_1_q_result = $theme_1_q->fetchAll();
+            $term_name = get_grades($theme_1_q_result, 'field_theme_1_url', $node);
+            //flog_it("term_name=".$term_name);
+            if($term_name):
+                $vars['magazine_issue_grade_level'] = $term_name;
+            endif;
+            flog_it("   Grade Level=".$vars['magazine_issue_grade_level']);
         }
-        */
-        
-        $theme_1_q_result = $theme_1_q->fetchAll();
-        $term_name = get_grades($theme_1_q_result, 'field_theme_1_url', $node);
-        //flog_it("term_name=".$term_name);
-        if($term_name):
-            $vars['magazine_issue_grade_level'] = $term_name;
-        endif;
+         * 
+         */
         
          /* Theme 2 */
-        $theme_2_q=  db_query('select entity_id, field_theme_2_url from field_data_field_theme_2 where bundle = :bundle and field_theme_2_title REGEXP :title',array('bundle'=>'magazine_issue','title' => $node->title ));
-        $theme_2_q_result = $theme_2_q->fetchAll();
-        $term_name = get_grades($theme_2_q_result, 'field_theme_2_url', $node);
-        if($term_name):
-            $vars['magazine_issue_grade_level'] = $term_name;
-        endif;
+        /*
+        if (!array_key_exists('magazine_issue_grade_level', $vars)) {
+            flog_it("Theme 2 check...");
+            $theme_2_q=  db_query('select entity_id, field_theme_2_url from field_data_field_theme_2 where bundle = :bundle and field_theme_2_title REGEXP :title',array('bundle'=>'magazine_issue','title' => $node->title ));
+            $theme_2_q_result = $theme_2_q->fetchAll();
+            $term_name = get_grades($theme_2_q_result, 'field_theme_2_url', $node);
+            if($term_name):
+                $vars['magazine_issue_grade_level'] = $term_name;
+            endif;
+            flog_it("   Grade Level=".$vars['magazine_issue_grade_level']);
+        }
+         * 
+         */
         
          /* Theme 3 */
-        $theme_3_q=  db_query('select entity_id, field_theme_3_url from field_data_field_theme_3 where bundle = :bundle and field_theme_3_title REGEXP :title',array('bundle'=>'magazine_issue','title' => $node->title ));
-        $theme_3_q_result = $theme_3_q->fetchAll();
-        $term_name = get_grades($theme_3_q_result, 'field_theme_3_url', $node);
-        if($term_name):
-            $vars['magazine_issue_grade_level'] = $term_name;
-        endif;
+        /*
+        if (empty($vars['magazine_issue_grade_level'])) {
+            flog_it("Theme 3 check...");
+            $theme_3_q=  db_query('select entity_id, field_theme_3_url from field_data_field_theme_3 where bundle = :bundle and field_theme_3_title REGEXP :title',array('bundle'=>'magazine_issue','title' => $node->title ));
+            $theme_3_q_result = $theme_3_q->fetchAll();
+            $term_name = get_grades($theme_3_q_result, 'field_theme_3_url', $node);
+            if($term_name):
+                $vars['magazine_issue_grade_level'] = $term_name;
+            endif;
+            flog_it("   Grade Level=".$vars['magazine_issue_grade_level']);
+        }
+         * 
+         */
         
          /* Theme 4 */
-        $theme_4_q=  db_query('select entity_id, field_theme_4_url from field_data_field_theme_4 where bundle = :bundle and field_theme_4_title REGEXP :title',array('bundle'=>'magazine_issue','title' => $node->title ));
-        $theme_4_q_result = $theme_4_q->fetchAll();
-        $term_name = get_grades($theme_4_q_result, 'field_theme_4_url', $node);
-        if($term_name):
-            $vars['magazine_issue_grade_level'] = $term_name;
-        endif;
+        /*
+        if (empty($vars['magazine_issue_grade_level'])) {
+            flog_it("Theme 4 check...");
+            $theme_4_q=  db_query('select entity_id, field_theme_4_url from field_data_field_theme_4 where bundle = :bundle and field_theme_4_title REGEXP :title',array('bundle'=>'magazine_issue','title' => $node->title ));
+            $theme_4_q_result = $theme_4_q->fetchAll();
+            $term_name = get_grades($theme_4_q_result, 'field_theme_4_url', $node);
+            if($term_name):
+                $vars['magazine_issue_grade_level'] = $term_name;
+            endif;
+            flog_it("   Grade Level=".$vars['magazine_issue_grade_level']);
+        }
+         * 
+         */
         
          /* News */
-        $news_q=  db_query('select entity_id, field_news_url from field_data_field_news where bundle = :bundle and field_news_title REGEXP :title',array('bundle'=>'magazine_issue','title' => $node->title ));
-        $news_q_result = $news_q->fetchAll();
-        $term_name = get_grades($news_q_result, 'field_news_url', $node);
-        if($term_name):
-            $vars['magazine_issue_grade_level'] = $term_name;
-        endif;
-        
+        /*
+        if (empty($vars['magazine_issue_grade_level'])) {
+            flog_it("News check...");
+            $news_q=  db_query('select entity_id, field_news_url from field_data_field_news where bundle = :bundle and field_news_title REGEXP :title',array('bundle'=>'magazine_issue','title' => $node->title ));
+            $news_q_result = $news_q->fetchAll();
+            $term_name = get_grades($news_q_result, 'field_news_url', $node);
+            if($term_name):
+                $vars['magazine_issue_grade_level'] = $term_name;
+            endif;
+            flog_it("   Grade Level=".$vars['magazine_issue_grade_level']);
+        }
+         * 
+         */
       /* TFK-177 end */
         
       /* TFK-197: Add class article-magazine to show lock key for anonymous users. */
@@ -4342,11 +4423,14 @@ function tfk_search_preprocess_search_result(&$vars) {
  *          URL field name.
  */
 function get_grades($query_result, $field_type, $node){
+    //flog_it("get_grades...");
     if(!empty($query_result) && count($query_result)>0):
         foreach($query_result  as $nw):
+            //flog_it("get_grades: in loop...");
             $magazine_issue_id = $nw->entity_id; 
             $field_url = $nw->$field_type;
             if($field_url):
+                //flog_it("field_url=".$field_url);
                 $field_url_arr = explode('/', $field_url);
                 $field_url_len = count($field_url_arr);
                 $url_node_id = $field_url_arr[$field_url_len-1];
