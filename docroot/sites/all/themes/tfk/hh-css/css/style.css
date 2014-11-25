@@ -51,7 +51,7 @@
 }
 .homework-helper-content .node,
 .homework-helper-content .view {
-  margin: 10px 19px;
+  margin: 10px 7px;
   overflow: hidden;
   *zoom: 1;
 }
@@ -1051,7 +1051,7 @@ img {
   float: right;
   padding: 15px;
   width: 220px;
-  margin: 0 10px 10px 0;
+  margin: 12px 7px 10px 0;
   clear: right;
 }
 .page-homework-helper-flashcards #block-block-21 h2,
