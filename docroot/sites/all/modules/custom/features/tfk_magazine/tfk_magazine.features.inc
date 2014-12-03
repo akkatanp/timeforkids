@@ -30,6 +30,9 @@ function tfk_magazine_flag_default_flags() {
     'global' => '1',
     'types' => array(
       0 => 'article',
+      1 => 'minisite',
+      2 => 'slideshow',
+      3 => 'video',
     ),
     'flag_short' => 'Magazine article',
     'flag_long' => '',
@@ -54,7 +57,7 @@ function tfk_magazine_flag_default_flags() {
     'access_author' => '',
     'show_on_page' => 0,
     'show_on_teaser' => 0,
-    'show_contextual_link' => FALSE,
+    'show_contextual_link' => 0,
     'i18n' => 0,
     'module' => 'tfk_magazine',
     'locked' => array(
@@ -129,6 +132,7 @@ function tfk_magazine_image_default_styles() {
         'weight' => '1',
       ),
     ),
+    'label' => 'tfk_140x187',
   );
 
   return $styles;

@@ -10,7 +10,7 @@
 function feature_tfk_store_menu_default_menu_custom() {
   $menus = array();
 
-  // Exported menu: menu-store-pages-menu
+  // Exported menu: menu-store-pages-menu.
   $menus['menu-store-pages-menu'] = array(
     'menu_name' => 'menu-store-pages-menu',
     'title' => 'Store Pages Menu',

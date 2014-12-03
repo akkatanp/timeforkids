@@ -104,6 +104,7 @@ function tfk_photos_video_image_default_styles() {
         'weight' => '-9',
       ),
     ),
+    'label' => '115x115',
   );
 
   // Exported image style: tfk_270x270.
@@ -141,6 +142,7 @@ function tfk_photos_video_image_default_styles() {
         'weight' => '2',
       ),
     ),
+    'label' => 'tfk_270x270',
   );
 
   // Exported image style: tfk_60x60.
@@ -178,6 +180,7 @@ function tfk_photos_video_image_default_styles() {
         'weight' => '2',
       ),
     ),
+    'label' => 'tfk_60x60',
   );
 
   return $styles;

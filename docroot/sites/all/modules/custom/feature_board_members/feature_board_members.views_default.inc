@@ -27,6 +27,7 @@ function feature_board_members_views_default_views() {
   $handler->display->display_options['access']['type'] = 'role';
   $handler->display->display_options['access']['role'] = array(
     3 => '3',
+    1 => '1',
     2 => '2',
     6 => '6',
     4 => '4',
@@ -322,6 +323,8 @@ function feature_board_members_views_default_views() {
 
   /* Display: Display name: Board Member Listing Page */
   $handler = $view->new_display('page', 'Display name: Board Member Listing Page', 'page');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Teacher Board';
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '20';

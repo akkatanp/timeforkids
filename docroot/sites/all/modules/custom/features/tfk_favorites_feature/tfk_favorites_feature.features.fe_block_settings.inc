@@ -10,69 +10,40 @@
 function tfk_favorites_feature_default_fe_block_settings() {
   $export = array();
 
-  // bartik
-  $theme = array();
+  $export['version'] = '2.0';
 
-  $theme['tfk_favorites-tfk_favorites_links'] = array(
-    'module' => 'tfk_favorites',
-    'delta' => 'tfk_favorites_links',
-    'theme' => 'bartik',
-    'status' => 0,
-    'weight' => '0',
-    'region' => '',
+  $export['tfk_favorites-tfk_favorites_links'] = array(
+    'cache' => -1,
+    'css_class' => '',
     'custom' => '0',
-    'visibility' => '0',
+    'delta' => 'tfk_favorites_links',
+    'module' => 'tfk_favorites',
+    'node_types' => array(),
     'pages' => '',
+    'roles' => array(),
+    'themes' => array(
+      'bartik' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'bartik',
+        'weight' => '0',
+      ),
+      'seven' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'seven',
+        'weight' => '0',
+      ),
+      'tfk' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'tfk',
+        'weight' => '0',
+      ),
+    ),
     'title' => '',
-    'cache' => '1',
+    'visibility' => '0',
   );
 
-  $export['bartik'] = $theme;
-
-  // seven
-  $theme = array();
-
-  $theme['tfk_favorites-tfk_favorites_links'] = array(
-    'module' => 'tfk_favorites',
-    'delta' => 'tfk_favorites_links',
-    'theme' => 'seven',
-    'status' => 0,
-    'weight' => '0',
-    'region' => '',
-    'custom' => '0',
-    'visibility' => '0',
-    'pages' => '',
-    'title' => '',
-    'cache' => '1',
-  );
-
-  $export['seven'] = $theme;
-
-  // tfk
-  $theme = array();
-
-  $theme['tfk_favorites-tfk_favorites_links'] = array(
-    'module' => 'tfk_favorites',
-    'delta' => 'tfk_favorites_links',
-    'theme' => 'tfk',
-    'status' => 0,
-    'weight' => '0',
-    'region' => '',
-    'custom' => '0',
-    'visibility' => '0',
-    'pages' => '',
-    'title' => '',
-    'cache' => '1',
-  );
-
-  $export['tfk'] = $theme;
-
-  $theme_default = variable_get('theme_default', 'garland');
-  $themes = list_themes();
-  foreach ($export as $theme_key => $settings) {
-    if ($theme_key != $theme_default && empty($themes[$theme_key]->status)) {
-      unset($export[$theme_key]);
-    }
-  }
   return $export;
 }

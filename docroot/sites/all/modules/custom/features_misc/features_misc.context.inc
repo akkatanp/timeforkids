@@ -212,21 +212,27 @@ function features_misc_context_default_contexts() {
         ),
         'block-1' => array(
           'module' => 'block',
-          'delta' => 1,
+          'delta' => '1',
           'region' => 'sidebar_second',
           'weight' => '-8',
+        ),
+        'menu-menu-tfk-teachers-menu' => array(
+          'module' => 'menu',
+          'delta' => 'menu-tfk-teachers-menu',
+          'region' => 'header',
+          'weight' => '-10',
         ),
         'menu-menu-tfk-global-navigation' => array(
           'module' => 'menu',
           'delta' => 'menu-tfk-global-navigation',
           'region' => 'header',
-          'weight' => '-16',
+          'weight' => '-9',
         ),
         'block-16' => array(
           'module' => 'block',
-          'delta' => 16,
+          'delta' => '16',
           'region' => 'header',
-          'weight' => '-10',
+          'weight' => '-8',
         ),
         'menu-menu-tfk-footer-primary' => array(
           'module' => 'menu',
@@ -248,7 +254,7 @@ function features_misc_context_default_contexts() {
         ),
         'block-6' => array(
           'module' => 'block',
-          'delta' => 6,
+          'delta' => '6',
           'region' => 'footer',
           'weight' => '-7',
         ),

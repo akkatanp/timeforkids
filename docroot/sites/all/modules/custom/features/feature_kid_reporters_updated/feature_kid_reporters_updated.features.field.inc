@@ -10,7 +10,7 @@
 function feature_kid_reporters_updated_field_default_fields() {
   $fields = array();
 
-  // Exported field: 'node-kid_reporter-body'
+  // Exported field: 'node-kid_reporter-body'.
   $fields['node-kid_reporter-body'] = array(
     'field_config' => array(
       'active' => '1',
@@ -33,6 +33,7 @@ function feature_kid_reporters_updated_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '',
@@ -88,7 +89,7 @@ function feature_kid_reporters_updated_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-kid_reporter-field_featured_deck'
+  // Exported field: 'node-kid_reporter-field_featured_deck'.
   $fields['node-kid_reporter-field_featured_deck'] = array(
     'field_config' => array(
       'active' => '1',
@@ -109,6 +110,7 @@ function feature_kid_reporters_updated_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(),
       'translatable' => '1',
@@ -160,7 +162,7 @@ function feature_kid_reporters_updated_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-kid_reporter-field_grade_level'
+  // Exported field: 'node-kid_reporter-field_grade_level'.
   $fields['node-kid_reporter-field_grade_level'] = array(
     'field_config' => array(
       'active' => '1',
@@ -181,6 +183,7 @@ function feature_kid_reporters_updated_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -229,7 +232,7 @@ function feature_kid_reporters_updated_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-kid_reporter-field_kid_reporter_age'
+  // Exported field: 'node-kid_reporter-field_kid_reporter_age'.
   $fields['node-kid_reporter-field_kid_reporter_age'] = array(
     'field_config' => array(
       'active' => '1',
@@ -243,6 +246,7 @@ function feature_kid_reporters_updated_field_default_fields() {
           0 => 'value',
         ),
       ),
+      'locked' => '0',
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
@@ -297,7 +301,7 @@ function feature_kid_reporters_updated_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-kid_reporter-field_location'
+  // Exported field: 'node-kid_reporter-field_location'.
   $fields['node-kid_reporter-field_location'] = array(
     'field_config' => array(
       'active' => '1',
@@ -318,6 +322,7 @@ function feature_kid_reporters_updated_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -365,7 +370,7 @@ function feature_kid_reporters_updated_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-kid_reporter-field_profile_image'
+  // Exported field: 'node-kid_reporter-field_profile_image'.
   $fields['node-kid_reporter-field_profile_image'] = array(
     'field_config' => array(
       'active' => '1',
@@ -386,6 +391,7 @@ function feature_kid_reporters_updated_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'image',
       'settings' => array(
         'default_image' => 0,
@@ -436,6 +442,7 @@ function feature_kid_reporters_updated_field_default_fields() {
         'module' => 'image',
         'settings' => array(
           'insert' => 0,
+          'insert_absolute' => FALSE,
           'insert_class' => '',
           'insert_default' => array(
             0 => 'auto',
@@ -453,7 +460,7 @@ function feature_kid_reporters_updated_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-kid_reporter-field_thumbnail_image'
+  // Exported field: 'node-kid_reporter-field_thumbnail_image'.
   $fields['node-kid_reporter-field_thumbnail_image'] = array(
     'field_config' => array(
       'active' => '1',
@@ -474,6 +481,7 @@ function feature_kid_reporters_updated_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'image',
       'settings' => array(
         'default_image' => 0,
@@ -520,6 +528,7 @@ function feature_kid_reporters_updated_field_default_fields() {
         'module' => 'image',
         'settings' => array(
           'insert' => 0,
+          'insert_absolute' => FALSE,
           'insert_class' => '',
           'insert_default' => array(
             0 => 'auto',
@@ -537,7 +546,7 @@ function feature_kid_reporters_updated_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-kid_reporter-field_year'
+  // Exported field: 'node-kid_reporter-field_year'.
   $fields['node-kid_reporter-field_year'] = array(
     'field_config' => array(
       'active' => '1',
@@ -551,6 +560,7 @@ function feature_kid_reporters_updated_field_default_fields() {
           0 => 'value',
         ),
       ),
+      'locked' => '0',
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(

@@ -31,23 +31,29 @@ function tfk_homepage_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
+        'tfk_notification-tfk-notification-message' => array(
+          'module' => 'tfk_notification',
+          'delta' => 'tfk-notification-message',
+          'region' => 'content',
+          'weight' => '-10',
+        ),
         'views-homepage_top_story-block_2' => array(
           'module' => 'views',
           'delta' => 'homepage_top_story-block_2',
           'region' => 'content',
-          'weight' => '-93',
+          'weight' => '-9',
         ),
         'views-homepage_minisite-block_2' => array(
           'module' => 'views',
           'delta' => 'homepage_minisite-block_2',
           'region' => 'content',
-          'weight' => '-92',
+          'weight' => '-8',
         ),
         'views-87292ca88f5f6512230be6a9f15f64e4' => array(
           'module' => 'views',
           'delta' => '87292ca88f5f6512230be6a9f15f64e4',
           'region' => 'content',
-          'weight' => '-91',
+          'weight' => '-7',
         ),
       ),
     ),

@@ -85,23 +85,23 @@ function tfk_magazine_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'apachesolr_search-im_28_field_grade_level' => array(
-          'module' => 'apachesolr_search',
-          'delta' => 'im_28_field_grade_level',
+        'facetapi-0V61fyJ8a8J9pooEiSX0qrxxb63Wq6OJ' => array(
+          'module' => 'facetapi',
+          'delta' => '0V61fyJ8a8J9pooEiSX0qrxxb63Wq6OJ',
           'region' => 'sidebar_first',
-          'weight' => '-88',
+          'weight' => '-10',
         ),
-        'tfk_search-sm_editorial_date_tfk' => array(
-          'module' => 'tfk_search',
-          'delta' => 'sm_editorial_date_tfk',
+        'facetapi-1vx93wKyU7HoAzs6sa0PMm14kMgfBQ1d' => array(
+          'module' => 'facetapi',
+          'delta' => '1vx93wKyU7HoAzs6sa0PMm14kMgfBQ1d',
           'region' => 'sidebar_first',
-          'weight' => '-87',
+          'weight' => '-8',
         ),
-        'tfk_search-is_spanish_issue' => array(
-          'module' => 'tfk_search',
-          'delta' => 'is_spanish_issue',
+        'facetapi-ds8e78w9ImgYg1l6cZu5mzmqHB8kSiBp' => array(
+          'module' => 'facetapi',
+          'delta' => 'ds8e78w9ImgYg1l6cZu5mzmqHB8kSiBp',
           'region' => 'sidebar_first',
-          'weight' => '-86',
+          'weight' => '-7',
         ),
         'menu-menu-publishing-calendar-menu' => array(
           'module' => 'menu',

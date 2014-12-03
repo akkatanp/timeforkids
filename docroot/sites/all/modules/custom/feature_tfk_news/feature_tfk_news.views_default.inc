@@ -57,7 +57,7 @@ function feature_tfk_news_views_default_views() {
   $handler->display->display_options['fields']['field_lrg_rect_image']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_lrg_rect_image']['settings'] = array(
     'image_style' => 'tfk_rect_small',
-    'image_link' => '',
+    'image_link' => 'content',
   );
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
