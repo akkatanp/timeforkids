@@ -278,22 +278,6 @@ function features_misc_menu_default_menu_links() {
     'expanded' => '0',
     'weight' => '-49',
   );
-  // Exported menu link: menu-tfk-footer-primary:mini-sites
-  $menu_links['menu-tfk-footer-primary:mini-sites'] = array(
-    'menu_name' => 'menu-tfk-footer-primary',
-    'link_path' => 'mini-sites',
-    'router_path' => 'mini-sites',
-    'link_title' => 'Mini-sites',
-    'options' => array(
-      'attributes' => array(),
-    ),
-    'module' => 'menu',
-    'hidden' => '0',
-    'external' => '0',
-    'has_children' => '0',
-    'expanded' => '0',
-    'weight' => '-45',
-  );
   // Exported menu link: menu-tfk-footer-primary:news
   $menu_links['menu-tfk-footer-primary:news'] = array(
     'menu_name' => 'menu-tfk-footer-primary',
@@ -345,26 +329,6 @@ function features_misc_menu_default_menu_links() {
     'has_children' => '0',
     'expanded' => '0',
     'weight' => '-47',
-  );
-  // Exported menu link: menu-tfk-footer-primary:photos-video
-  $menu_links['menu-tfk-footer-primary:photos-video'] = array(
-    'menu_name' => 'menu-tfk-footer-primary',
-    'link_path' => 'photos-video',
-    'router_path' => 'photos-video',
-    'link_title' => 'Photos & Videos',
-    'options' => array(
-      'attributes' => array(
-        'class' => array(
-          0 => 'photos-videos',
-        ),
-      ),
-    ),
-    'module' => 'menu',
-    'hidden' => '0',
-    'external' => '0',
-    'has_children' => '0',
-    'expanded' => '0',
-    'weight' => '-46',
   );
   // Exported menu link: menu-tfk-footer-secondary:http://www.timeforkids.com/customerservice
   $menu_links['menu-tfk-footer-secondary:http://www.timeforkids.com/customerservice'] = array(
@@ -556,7 +520,7 @@ function features_misc_menu_default_menu_links() {
     'external' => '1',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '-48',
+    'weight' => '-47',
   );
   // Exported menu link: menu-tfk-footer-tertiary:node/172
   $menu_links['menu-tfk-footer-tertiary:node/172'] = array(
@@ -754,26 +718,6 @@ function features_misc_menu_default_menu_links() {
     'expanded' => '0',
     'weight' => '-45',
   );
-  // Exported menu link: menu-tfk-teachers-menu:teacher-community/topic-list
-  $menu_links['menu-tfk-teachers-menu:teacher-community/topic-list'] = array(
-    'menu_name' => 'menu-tfk-teachers-menu',
-    'link_path' => 'teacher-community/topic-list',
-    'router_path' => 'teacher-community/topic-list',
-    'link_title' => 'Teacher Community',
-    'options' => array(
-      'attributes' => array(
-        'class' => array(
-          0 => 'teacher-community',
-        ),
-      ),
-    ),
-    'module' => 'menu',
-    'hidden' => '0',
-    'external' => '0',
-    'has_children' => '0',
-    'expanded' => '0',
-    'weight' => '-48',
-  );
   // Exported menu link: menu-tfk-teachers-menu:tfk-magazine
   $menu_links['menu-tfk-teachers-menu:tfk-magazine'] = array(
     'menu_name' => 'menu-tfk-teachers-menu',
@@ -812,7 +756,7 @@ function features_misc_menu_default_menu_links() {
     'external' => '0',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '-49',
+    'weight' => '-48',
   );
   // Translatables
   // Included for use with string extractors like potx.
@@ -825,7 +769,6 @@ function features_misc_menu_default_menu_links() {
   t('Homework Helper');
   t('Kid Reporters');
   t('Mini-Sites');
-  t('Mini-sites');
   t('News');
   t('Photos & Videos');
   t('Printables');
@@ -835,7 +778,6 @@ function features_misc_menu_default_menu_links() {
   t('Subscription Benefits');
   t('TFK Extras');
   t('TFK Magazine');
-  t('Teacher Community');
   t('Terms of Service');
 
 

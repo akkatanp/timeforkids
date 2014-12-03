@@ -93,6 +93,17 @@ function tfk_photos_video_views_default_views() {
     'image_style' => '115x115',
     'image_link' => '',
   );
+  /* Field: Content: Large Square Image */
+  $handler->display->display_options['fields']['field_lrg_sq_image']['id'] = 'field_lrg_sq_image';
+  $handler->display->display_options['fields']['field_lrg_sq_image']['table'] = 'field_data_field_lrg_sq_image';
+  $handler->display->display_options['fields']['field_lrg_sq_image']['field'] = 'field_lrg_sq_image';
+  $handler->display->display_options['fields']['field_lrg_sq_image']['label'] = '';
+  $handler->display->display_options['fields']['field_lrg_sq_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_lrg_sq_image']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_lrg_sq_image']['settings'] = array(
+    'image_style' => '',
+    'image_link' => '',
+  );
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';

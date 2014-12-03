@@ -10,7 +10,7 @@
 function feature_tfk_store_context_default_contexts() {
   $export = array();
 
-  $context = new stdClass;
+  $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'books';
@@ -54,7 +54,7 @@ function feature_tfk_store_context_default_contexts() {
   t('tfk store');
   $export['books'] = $context;
 
-  $context = new stdClass;
+  $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'other_products';
@@ -98,7 +98,7 @@ function feature_tfk_store_context_default_contexts() {
   t('tfk store');
   $export['other_products'] = $context;
 
-  $context = new stdClass;
+  $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'subscriptions';

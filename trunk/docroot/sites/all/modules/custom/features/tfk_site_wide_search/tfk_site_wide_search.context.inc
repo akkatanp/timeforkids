@@ -9,9 +9,9 @@
  */
 function tfk_site_wide_search_context_default_contexts() {
   $export = array();
-/*
-  $context = new stdClass;
-  $context->disabled = FALSE; * Edit this to true to make a default context disabled initially *
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'search_page';
   $context->description = 'Handles the site-wide search page (Spec 11A).';
@@ -38,53 +38,53 @@ function tfk_site_wide_search_context_default_contexts() {
           'region' => 'sidebar_top',
           'weight' => '-9',
         ),
-        'apachesolr_search-im_28_field_grade_level' => array(
-          'module' => 'apachesolr_search',
-          'delta' => 'im_28_field_grade_level',
+        'facetapi-0V61fyJ8a8J9pooEiSX0qrxxb63Wq6OJ' => array(
+          'module' => 'facetapi',
+          'delta' => '0V61fyJ8a8J9pooEiSX0qrxxb63Wq6OJ',
           'region' => 'sidebar_first',
           'weight' => '-10',
         ),
-        'apachesolr_search-bundle' => array(
-          'module' => 'apachesolr_search',
-          'delta' => 'bundle',
+        'facetapi-GiIy4zr9Gu0ZSa0bumw1Y9qIIpIDf1wu' => array(
+          'module' => 'facetapi',
+          'delta' => 'GiIy4zr9Gu0ZSa0bumw1Y9qIIpIDf1wu',
           'region' => 'sidebar_first',
-          'weight' => '-9',
+          'weight' => '-8',
         ),
-        'apachesolr_search-im_10_field_article_category' => array(
-          'module' => 'apachesolr_search',
-          'delta' => 'im_10_field_article_category',
+        'facetapi-4mPrBk5hDm1iI5sCraXsbQ0GyCdhQshz' => array(
+          'module' => 'facetapi',
+          'delta' => '4mPrBk5hDm1iI5sCraXsbQ0GyCdhQshz',
           'region' => 'sidebar_first',
           'weight' => '-7',
         ),
-        'apachesolr_search-im_36_field_themes' => array(
-          'module' => 'apachesolr_search',
-          'delta' => 'im_36_field_themes',
+        'facetapi-VIxnsypWMyIDU3x6J0Ky3ArmXNSrcCls' => array(
+          'module' => 'facetapi',
+          'delta' => 'VIxnsypWMyIDU3x6J0Ky3ArmXNSrcCls',
           'region' => 'sidebar_first',
           'weight' => '-6',
         ),
-        'apachesolr_search-im_35_field_skills' => array(
-          'module' => 'apachesolr_search',
-          'delta' => 'im_35_field_skills',
+        'facetapi-MP76BI8r9G3Ss3ujzRLzut4J9ApVXxLG' => array(
+          'module' => 'facetapi',
+          'delta' => 'MP76BI8r9G3Ss3ujzRLzut4J9ApVXxLG',
           'region' => 'sidebar_first',
           'weight' => '-5',
         ),
-        'tfk_search-ss_spanish_version' => array(
-          'module' => 'tfk_search',
-          'delta' => 'ss_spanish_version',
+        'facetapi-1vx93wKyU7HoAzs6sa0PMm14kMgfBQ1d' => array(
+          'module' => 'facetapi',
+          'delta' => '1vx93wKyU7HoAzs6sa0PMm14kMgfBQ1d',
           'region' => 'sidebar_first',
           'weight' => '-4',
         ),
-        'tfk_search-sm_editorial_date_tfk' => array(
-          'module' => 'tfk_search',
-          'delta' => 'sm_editorial_date_tfk',
+        'facetapi-ds8e78w9ImgYg1l6cZu5mzmqHB8kSiBp' => array(
+          'module' => 'facetapi',
+          'delta' => 'ds8e78w9ImgYg1l6cZu5mzmqHB8kSiBp',
           'region' => 'sidebar_first',
           'weight' => '-3',
         ),
-        'tfk_search-ss_tfk_product' => array(
-          'module' => 'tfk_search',
-          'delta' => 'ss_tfk_product',
-          'region' => 'sidebar_first',
-          'weight' => '-8',
+        'tfk_favorites-tfk_favorites_links' => array(
+          'module' => 'tfk_favorites',
+          'delta' => 'tfk_favorites_links',
+          'region' => 'sidebar_bottom',
+          'weight' => '-10',
         ),
       ),
     ),
@@ -96,8 +96,6 @@ function tfk_site_wide_search_context_default_contexts() {
   t('Handles the site-wide search page (Spec 11A).');
   t('search');
   $export['search_page'] = $context;
- * 
- */
 
   return $export;
 }

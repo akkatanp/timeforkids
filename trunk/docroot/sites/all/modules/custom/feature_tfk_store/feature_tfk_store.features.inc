@@ -18,10 +18,7 @@ function feature_tfk_store_ctools_plugin_api() {
  * Implements hook_views_api().
  */
 function feature_tfk_store_views_api() {
-  list($module, $api) = func_get_args();
-  if ($module == "views" && $api == "views_default") {
-    return array("version" => "3.0");
-  }
+  return array("version" => "3.0");
 }
 
 /**
@@ -30,7 +27,7 @@ function feature_tfk_store_views_api() {
 function feature_tfk_store_image_default_styles() {
   $styles = array();
 
-  // Exported image style: tfk_book
+  // Exported image style: tfk_book.
   $styles['tfk_book'] = array(
     'name' => 'tfk_book',
     'effects' => array(
@@ -51,9 +48,10 @@ function feature_tfk_store_image_default_styles() {
         'weight' => '2',
       ),
     ),
+    'label' => 'tfk_book',
   );
 
-  // Exported image style: tfk_book_thumb
+  // Exported image style: tfk_book_thumb.
   $styles['tfk_book_thumb'] = array(
     'name' => 'tfk_book_thumb',
     'effects' => array(
@@ -74,6 +72,7 @@ function feature_tfk_store_image_default_styles() {
         'weight' => '2',
       ),
     ),
+    'label' => 'tfk_book_thumb',
   );
 
   return $styles;

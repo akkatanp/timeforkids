@@ -10,7 +10,7 @@
 function feature_kid_reporters_updated_context_default_contexts() {
   $export = array();
 
-  $context = new stdClass;
+  $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'all_kid_reporters';
@@ -54,7 +54,7 @@ function feature_kid_reporters_updated_context_default_contexts() {
   t('kid reporter');
   $export['all_kid_reporters'] = $context;
 
-  $context = new stdClass;
+  $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'kid_reporter_content_type_display';
@@ -95,7 +95,7 @@ function feature_kid_reporters_updated_context_default_contexts() {
   t('kid reporter');
   $export['kid_reporter_content_type_display'] = $context;
 
-  $context = new stdClass;
+  $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'kid_reporter_for_anon';
@@ -169,7 +169,7 @@ function feature_kid_reporters_updated_context_default_contexts() {
   t('kid_reporter_for_anon');
   $export['kid_reporter_for_anon'] = $context;
 
-  $context = new stdClass;
+  $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'kid_reporter_for_editors';
@@ -249,7 +249,7 @@ function feature_kid_reporters_updated_context_default_contexts() {
   t('kid reporter');
   $export['kid_reporter_for_editors'] = $context;
 
-  $context = new stdClass;
+  $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'kid_reporter_for_teacher';
