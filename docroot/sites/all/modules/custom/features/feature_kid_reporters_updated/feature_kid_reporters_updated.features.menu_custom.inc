@@ -10,13 +10,13 @@
 function feature_kid_reporters_updated_menu_default_menu_custom() {
   $menus = array();
 
-  // Exported menu: menu-kid-reporter-articles-link
+  // Exported menu: menu-kid-reporter-articles-link.
   $menus['menu-kid-reporter-articles-link'] = array(
     'menu_name' => 'menu-kid-reporter-articles-link',
     'title' => 'Link to kid reporter articles',
     'description' => '',
   );
-  // Exported menu: menu-kid-reporter-listings-link
+  // Exported menu: menu-kid-reporter-listings-link.
   $menus['menu-kid-reporter-listings-link'] = array(
     'menu_name' => 'menu-kid-reporter-listings-link',
     'title' => 'Link to kid reporter listings',
