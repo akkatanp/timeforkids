@@ -181,7 +181,7 @@ function tfk_page_paths_preprocess_page(&$variables){
     
     // Check to remove rails from 2015 Lego Contest
     //flog_it("node->type=".$variables['node']->title);
-    if ($variables['node']->title == "2015 Lego Contest") {
+    if (array_key_exists('node', $variables) && $variables['node']->title == "2015 Lego Contest") {
         $variables['page']['sidebar_second'] = '';
     }
 }
