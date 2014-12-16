@@ -33,7 +33,9 @@
                                                 /*locationTextContainer.css('width','253px');*/
 					}
 				});
-				var locationName = $('<h1></h1>').text(locationTable.find('.boldBlack20 font').text().toLowerCase());
+                                // Don't toLowerCase() since all names are typed in correctly and this won't work for camel cased text.
+                                //var locationName = $('<h1></h1>').text(locationTable.find('.boldBlack20 font').text().toLowerCase());
+				var locationName = $('<h1></h1>').text(locationTable.find('.boldBlack20 font').text());
 				var locationText = $('<p></p>').text(locationTable.find('.storyText').eq(1).text());
                                 locationTextContainer.append(locationName).append(locationText);
 				var locationDiv = $('<div></div>').attr('id', 'location-container').append(locationImg).append(locationTextContainer);
