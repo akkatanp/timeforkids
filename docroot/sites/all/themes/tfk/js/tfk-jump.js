@@ -25,7 +25,9 @@ TFKADS.domainExceptions = new Array("timeforkidsdigital.com","timeinc.com","time
 			}
 		}
 		if (domainException == 1) {
-				window.open(link);
+                                console.log("Found Exception...");
+                                console.log("link="+link);
+				window.open(link, "_blank");
 				return false;
 		}
 		jumpDialog = '<div class="tfk-jump"><h1>You are about to leave timeforkids.com</h1>You are leaving <a href="/">timeforkids.com</a> to check out a web site we recommended.  While TIME for Kids has reviewed  the site you are about to visit, we can&#39;t monitor changes to the site, advertisements or links to other sites.<br/><br/>Be sure to get permission from a parent before giving out any information about yourself online.  Never give your full name, phone number or address online.  To read more read <a href="/info/privacy-policy">TFK&#39;s privacy policy</a>. <div class="tfk-jump-reminder">(Remember to read the privacy policy of any new site you visit.)</div> </div>';
