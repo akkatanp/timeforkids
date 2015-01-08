@@ -25,8 +25,8 @@ TFKADS.domainExceptions = new Array("timeforkidsdigital.com","timeinc.com","time
 			}
 		}
 		if (domainException == 1) {
-                                console.log("Found Exception...");
-                                console.log("link="+link);
+                                //console.log("Found Exception...");
+                                //console.log("link="+link);
 				window.open(link, "_blank");
 				return false;
 		}
