@@ -1,6 +1,11 @@
-<?php //echo $sightseeing_data['cust_node_title'];?>
+<?php //echo $sightseeing_data['cust_node_title'];
+
+// Cache busting for js include
+$tmp_filetime = filemtime("sites/all/themes/tfk/js/atw-sightseeing.js");
+?>
+
 <!--link rel="stylesheet" href="/sites/all/themes/tfk/css/atw-sightseeing.css" /-->
-<script src="/sites/all/themes/tfk/js/atw-sightseeing.js"></script>
+<script src="/sites/all/themes/tfk/js/atw-sightseeing.js?<?php print $tmp_filetime; ?>"></script>
 
 <?php if($sightseeing_data['is_admin_editor'] == 1):?>
 <div class="tabs"><h2 class="element-invisible">Primary tabs</h2><ul class="tabs primary clearfix"><li class="active"><a href="<?php echo $sightseeing_data['sightseeing_view_link'];?>" class="active"><span class="tab">View</span><span class="element-invisible">(active tab)</span></a></li>

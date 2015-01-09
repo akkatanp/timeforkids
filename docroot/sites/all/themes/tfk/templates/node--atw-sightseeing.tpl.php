@@ -80,9 +80,11 @@
  * @see zen_preprocess_node()
  * @see template_process()
  */
+// Cache busting for js include
+$tmp_filetime = filemtime("sites/all/themes/tfk/js/atw-sightseeing.js");
 ?>
 <!--link rel="stylesheet" href="/sites/all/themes/tfk/css/atw-sightseeing.css" /-->
-<script src="/sites/all/themes/tfk/js/atw-sightseeing.js"></script>
+<script src="/sites/all/themes/tfk/js/atw-sightseeing.js?<?php print $tmp_filetime; ?>"></script>
 <div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
   
   
