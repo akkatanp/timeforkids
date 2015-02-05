@@ -4301,11 +4301,16 @@ function tfk_search_preprocess_search_result(&$vars) {
      * The variables set here are accessed in the search-result.tpl.php
      */
     case 'grammar_practice_rule':
-      
-      if($base_path == TFK_SEARCH_SITESEARCH_PATH) {
-        $vars['tfk_search_result_link_1'] = l('Read More', 'node/'. $nid);
+      global $base_url;
+      $grammer_practice = field_get_items('node', $node, 'field_grammar_practice');
+      if($grammer_practice) {
+        $grammer_practice_nid = $grammer_practice[0]['nid'];
+        if($base_path == TFK_SEARCH_SITESEARCH_PATH) {
+          $link = $base_url.'/homework-helper/punctuation-practice/rules/'.$grammer_practice_nid;
+          $vars['tfk_search_result_link_1'] = l('Read More', $link);
+        }
+        $vars['title'] = l($title, $link);
       }
-    
       $body = field_get_items('node', $node, 'body');
       if(!empty($body[0]['safe_value'])) {
         $teaser = $body[0]['safe_value'];
@@ -4314,7 +4319,6 @@ function tfk_search_preprocess_search_result(&$vars) {
         $teaser = $body[0]['value'];
         $skip_processing = TRUE;
       }
-     
       $vars['render'] = TRUE;
     break;
     

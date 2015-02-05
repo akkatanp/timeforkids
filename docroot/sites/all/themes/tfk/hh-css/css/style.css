@@ -1043,6 +1043,9 @@ img {
 .view-flashcard-landing-page.view-id-flashcard_landing_page .ui-accordion-content .field-content a, .view-flashcard-landing-page.view-id-flashcard_landing_page.view-display-id-page_2 .field-content a {
   font-size: 120%;
 }
+.view-flashcard-landing-page.view-id-flashcard_landing_page .ui-accordion-content {
+  height: auto !important;
+}
 
 .page-homework-helper-flashcards #block-block-21,
 .page-homework-helper-flashcards #block-study-helper-0 {
@@ -1092,6 +1095,10 @@ img {
 #flashcard-node-form label {
   float: left;
   margin-right: 10px;
+}
+
+.view-flashcard-landing-page.view-id-flashcard_landing_page.view-display-id-page_2 {
+  margin-top: 10px;
 }
 
 .page-homework-helper-writing-tips .ui-accordion .ui-accordion-header {
