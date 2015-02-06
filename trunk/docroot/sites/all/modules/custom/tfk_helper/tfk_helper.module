@@ -553,6 +553,13 @@ function tfk_helper_views_pre_render(&$view) {
            $item->field_field_deck = $item->field_body;
        }
        
+       // Check to override the slide show tout image's credit
+       if ($item->node_type == "slideshow") {         
+           if (!empty($item->_field_data['nid']['entity']->field_slideshow_credit['und'][0]['value'])) {
+                $item->field_field_credit[0]['rendered']['#markup'] = $item->_field_data['nid']['entity']->field_slideshow_credit['und'][0]['value'];
+           }
+       }
+       
        /*
        // Handle funky css for 2 line slideshow image credit
        if($item->node_type == "slideshow") {
@@ -963,7 +970,6 @@ function tfk_helper_preprocess_views_view_fields(&$variables, $hook) {
         $link = 'View Full Article';
         break;
     }
-    
     
     $variables['fields']['title_1'] = new stdClass();
     $variables['fields']['title_1']->content = '<span class="field-content">'. l($link, 'node/'. $variables['row']->nid). '</span>';
