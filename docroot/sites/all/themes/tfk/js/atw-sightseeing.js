@@ -21,17 +21,19 @@
 				var locationBody = $(this).contents().find('body');
 				var locationTable = $(locationBody).find('table');
 				var locationTextContainer = $('<div class="location-text-container"></div>');
-                                locationTextContainer.css('display', 'inline-block');
+                                locationTextContainer.css('display', 'none');
 				var locationImg = $('<img/>');
 				/*locationImg.attr('src',locationTable.find('img').eq(0).attr('src'));*/
                                 locationImg.attr('src',locationTable.find('img').eq(0).attr('src') + '?random=' + (new Date()).getTime());/*Random string needed for IE img.load event to work*/
 				locationImg.load(function() {
 					if (locationImg.width() < locationImg.height()) {
+                                                locationTextContainer.css('display', 'inline-block');
+                                                locationTextContainer.css('width', $('#map-container img').width() - 20 - locationImg.width() - 13 + 'px');
 						locationImg.css('float', 'left');
                                                 locationTextContainer.css('float', 'right');
-                                                locationTextContainer.css('width', $('#map-container img').width() - 20 - locationImg.width() - 13 + 'px');
                                                 /*locationTextContainer.css('width','253px');*/
 					}
+                                        locationTextContainer.css('display', 'inline-block');
 				});
                                 // Don't toLowerCase() since all names are typed in correctly and this won't work for camel cased text.
                                 //var locationName = $('<h1></h1>').text(locationTable.find('.boldBlack20 font').text().toLowerCase());
