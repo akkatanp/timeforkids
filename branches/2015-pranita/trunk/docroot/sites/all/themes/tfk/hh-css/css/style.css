@@ -1199,6 +1199,7 @@ img {
   color: white;
   float: left;
   margin-left: 20px;
+  margin-top: 18px;
 }
 #block-webform-client-block-306 .content {
   background: #f8e549;
@@ -1219,7 +1220,6 @@ img {
 }
 
 #webform-component-question-first-name {
-  float: left;
   margin-right: 20px;
 }
 #webform-component-question-first-name label {
@@ -1228,7 +1228,6 @@ img {
 }
 
 #webform-component-question-age {
-  float: left;
   width: 310px;
 }
 #webform-component-question-age label {
@@ -1236,9 +1235,6 @@ img {
   font-style: bold;
 }
 
-#webform-component-question {
-  float: left;
-}
 #webform-component-question label {
   text-transform: uppercase;
   font-style: bold;

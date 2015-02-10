@@ -13,7 +13,7 @@
         $('#block-webform-client-block-306 .content').show();
         $('#block-webform-client-block-306 h2.block-title').hide();
         $('html, body').animate({
-          scrollTop: $('#webform-client-form-306').offset().top
+          scrollTop: $('#block-webform-client-block-306').offset().top
         }, 800);
       });
 
