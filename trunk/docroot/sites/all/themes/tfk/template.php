@@ -515,3 +515,22 @@ function manualMetaTags($path) {
 
   }
 }
+
+/**
+ * Implementation of hook_form_alter().
+ * TFK-261
+ */
+
+function tfk_form_alter(&$form, &$form_state, $form_id) {
+    if($form_id=='webform_client_form_306') {
+        $form['#validate'][]='tfk_form_validate';
+        return $form;
+    }
+}
+
+function tfk_form_validate($form,&$form_state) {
+    $ageval = $form_state['values']['submitted']['question_age'];
+    if($ageval != '' && !ctype_digit($ageval)) {
+        form_set_error('question_age','Age should be numerical value');
+    }
+}
