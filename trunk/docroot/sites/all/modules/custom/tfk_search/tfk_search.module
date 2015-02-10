@@ -179,6 +179,7 @@ function tfk_search_slideshow_image_view($slideshow_node, $slide_number = NULL) 
   
   // Set the active router item to 'node/%'.
   $path = 'node/'. ((is_object($slideshow_node)) ? $slideshow_node->nid: $slideshow_node);
+  flog_it($path);
   menu_set_active_item($path);
   menu_execute_active_handler($path);
   
