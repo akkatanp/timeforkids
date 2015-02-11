@@ -206,6 +206,7 @@ function tfk_atw_theme() {
 }
 
 function _get_atw_daylife_slideshow_images(){
+    //flog_it("_get_atw_daylife_slideshow_images...");
     $daylife_data = array();
     $node_data = array();
     
@@ -265,7 +266,7 @@ function _get_atw_daylife_slideshow_images(){
 }
 
 function _get_atw_timeline_slideshow_images(){
-
+    //flog_it("_get_atw_timeline_slideshow_images");
     $timelines_data = array();
     $nid = arg(1);
     $node = node_load($nid);
@@ -341,7 +342,7 @@ function _get_atw_timeline_slideshow_images(){
 }
 
 function _get_atw_destination_slideshow_images(){
-  
+  //flog_it("_get_atw_destination_slideshow_images...");
     
   $tmp_imgs = array();
     
@@ -604,15 +605,16 @@ function _tfk_atw_block_content_data(){
 
 
 function _get_worksheets_by_nid($nid){
+    //flog_it("_get_worksheets_by_nid: nid=".$nid);
     $vars = array();
     //lets get attached worksheets
-    $result = db_query('select rl.field_resources_list_nid, n.title as worksheet_title, wp.field_worksheet_pdf_private_fid, fm.filename
+    $result = db_query('select rl.field_resources_list_nid, n.title as worksheet_title, wp.field_worksheet_pdf_private_fid, fm.uri as filename
         from {field_data_field_resources_list} rl  left join {node} n on rl.field_resources_list_nid = n.nid
         left join {field_data_field_worksheet_pdf_private}  wp on wp.entity_id = rl.field_resources_list_nid
         left join {file_managed} fm on fm.fid = wp.field_worksheet_pdf_private_fid
         where rl.entity_id = :nid and n.status = 1',array(':nid' => $nid));
     foreach ($result as $i => $record) {
-       $vars[$i]['filepath'] = file_create_url('private://worksheets/'. $record->filename);
+       $vars[$i]['filepath'] = file_create_url($record->filename);
        $vars[$i]['title'] = $record->worksheet_title;
     }
     return $vars;
@@ -865,7 +867,7 @@ function tfk_atw_preprocess_page(&$vars, $hook) {
 
 
 function tfk_atw_preprocess_node(&$vars, $hook) {
-
+    //flog_it("tfk_atw_preprocess_node");
     if($vars['type'] == 'atw_native_lingo'){
 
         $vars['lingo_phrases']['basic'] = array();

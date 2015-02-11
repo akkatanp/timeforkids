@@ -29,14 +29,15 @@ function tfk_news_menu(){
 
 
 function _show_img_thumb($nid){
+    //flog_it("_show_img_thumb: nid=".$nid);
     $img = node_load($nid);
     
     
     $tmp_img = field_get_items('node', $img, 'field_image');
-    $img_fid = $tmp_img[0]['filename'];
+    $img_fid = $tmp_img[0]['uri'];
     
-    $test = image_style_url('tfk_square_small', file_build_uri(basename($img_fid)));
-    
+    $test = image_style_url('tfk_square_small', file_create_url($img_fid));
+
     echo '<img src="'.$test.'"/>';
     exit;
 }
@@ -186,7 +187,7 @@ function _tfk_news_minisite_more(){
                 $parent_minisite_nid = $record->entity_id;
                 
                 $min_res = db_query('SELECT DISTINCT node.nid AS nid, node.title AS node_title, :image_entity_type AS field_data_field_minisite_thumbnail_image_node_entity_type, RAND() AS random_field,
-                                    ti.field_minisite_thumbnail_image_fid, fm.filename
+                                    ti.field_minisite_thumbnail_image_fid, fm.uri as filename
                                     FROM
                                     {node} node
                                     left join field_data_field_minisite_thumbnail_image ti on node.nid = ti.entity_id
@@ -202,7 +203,8 @@ function _tfk_news_minisite_more(){
                     $minisites[$i]['nid'] = $record->nid;
                     if($record->filename){
                       //$minisites[$i]['thumb_path'] = file_create_url(file_build_uri(basename($record->filename)));
-                      $minisites[$i]['thumb_path'] =  image_style_url('tfk_square_small', file_build_uri(basename($record->filename)));
+                      $minisites[$i]['thumb_path'] =  file_create_url(image_style_url('tfk_square_small', $record->filename));
+                      //flog_it(image_style_url('tfk_square_small', $record->filename));
                     }
                 }
                 
@@ -605,12 +607,12 @@ function tfk_news_node_view($node, $view_mode, $langcode) {
     $kid_title = $kid_node->title;
     
     //lets get thumb_image for the reporter
-    $result = db_query('select fm.filename,f.field_thumbnail_image_fid as thumb_fid from {field_data_field_thumbnail_image} f
+    $result = db_query('select fm.uri as filename,f.field_thumbnail_image_fid as thumb_fid from {field_data_field_thumbnail_image} f
     left join file_managed fm on f.field_thumbnail_image_fid = fm.fid
     where f.entity_type = :entity_type and f.bundle = :bundle and f.entity_id = :entity_id',array('entity_type'=>'node','bundle'=>'kid_reporter','entity_id' => $kid_nid));
     $record = $result->fetch();
 
-    $thumb_path = file_create_url(file_build_uri(basename($record->filename)));
+    $thumb_path = file_create_url($record->filename);
 
     //$tmp_title =  field_get_items('node', $node,'field_kid_reporter');
     $reporter_name = $kid_title;
