@@ -1499,6 +1499,26 @@ span.grammar-wizard-incorrect {
   right: 10px;
 }
 
+.node-type-grammar-practice #main-wrapper .search-form .form-actions {
+  display: inline-block;
+}
+.node-type-grammar-practice #main-wrapper .search-form .form-actions .form-submit {
+  font: normal 12px/1.2 Arial, sans-serif;
+  background: #d71700;
+  color: #fff;
+  padding: 3px 10px 4px 10px;
+  margin: 0;
+  cursor: pointer;
+  text-decoration: none;
+  border-radius: 1em;
+  -moz-border-radius: 1em;
+  -webkit-border-radius: 1em;
+  box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.25);
+  border: 1px solid #d71700;
+}
+
 .page-node-226 .homework-helper-title {
   background: transparent url(images/tfk-red-tag-extended.png) no-repeat top right;
   color: #ffffff;
