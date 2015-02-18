@@ -398,12 +398,12 @@ function tfk_lucie_user_entitlements($token){
  * A token is returned which must be used in any additional calls to LUCIE.
  */
 function tfk_lucie_check_user($email, $pwd){
-  //flog_it("\n\ntfk_lucie_check_user: email=".$email);
+  flog_it("\n\ntfk_lucie_check_user: email=".$email);
   $domain = variable_get('lucie_callback_domain', 'qa-lucie.timeinc.com');
   $url = 'https://'. $domain. '/webservices/customers/'.check_plain($email).'/TK/auth_token';
   $pass_arr = array('password'=>$pwd, 'CGI-App-Id' => 'com.timeinc.tk.web', 'deviceid' => 'TK.WEB', 'deviceip' => ip_address());
   $pass = drupal_json_encode($pass_arr);
-  //flog_it("url=".$url);
+  flog_it("url=".$url);
  
   // process the LUCIE login response.
   // some actions are based on the $response code, others $response_code + json parameter
@@ -420,7 +420,7 @@ function tfk_lucie_check_user($email, $pwd){
               ));
   // Decode the JSON data and pass to the call to get the user information
   $dataResponse = drupal_json_decode($response->data);
-  //flog_it("response->code=".$response->code);
+  flog_it("response->code=".$response->code);
   switch ($response->code) {
   	case 201:
   		if (tfk_lucie_user_entitlements($dataResponse['token'])) {
