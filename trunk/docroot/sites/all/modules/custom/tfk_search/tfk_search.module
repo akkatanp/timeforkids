@@ -4323,6 +4323,24 @@ function tfk_search_preprocess_search_result(&$vars) {
       $vars['render'] = TRUE;
     break;
     
+    /*
+     * Content Type - Punctuation Practice.
+     * Displays Search results which belong to Punctuation Practice content type.
+     * Fields Displayed: Title, Body( Teaser Mode )
+     * The variables set here are accessed in the search-result.tpl.php
+     */
+    case 'grammar_practice':
+      $body = field_get_items('node', $node, 'body');
+      if(!empty($body[0]['safe_value'])) {
+        $teaser = $body[0]['safe_value'];
+        $skip_processing = TRUE;
+      } else if(!empty($body[0]['value'])) {
+        $teaser = $body[0]['value'];
+        $skip_processing = TRUE;
+      }
+      $vars['render'] = TRUE;
+    break;
+    
      /*
      * Content Type - Writing Tips.
      * Displays Search results which belongs to Writing Tips content type.
