@@ -178,6 +178,13 @@ function tfk_page_paths_preprocess_page(&$variables){
         //$variables['page']['footer'] = '';
         //tfk_assessment_callback(); 
     }
+    
+    // Check for Poll for an anonymous user
+    if (strstr($args[0], "poll") && $variables['is_anon']) {
+        //flog_it("Found Anon & poll path...");
+        drupal_deliver_page(MENU_ACCESS_DENIED);
+        drupal_exit();
+    }
 }
 
 function tfk_assessment_access_callback() {
