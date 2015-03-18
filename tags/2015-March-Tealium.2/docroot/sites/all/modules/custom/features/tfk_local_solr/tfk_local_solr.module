@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the tfk_local_solr feature.
+ */
+
+include_once 'tfk_local_solr.features.inc';
