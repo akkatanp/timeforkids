@@ -511,3 +511,31 @@ $databases = array('default' => array('default' => array(
     'host' => '127.0.0.1',
     'port' => 33066 )));
 //</@@ADCP_CONF@@>
+
+/**
+ * Acquia Network/Acquia Search and Tealium settings
+ */
+if (isset($_ENV['AH_SITE_ENVIRONMENT'])) {
+    switch ($_ENV['AH_SITE_ENVIRONMENT']) {
+        case 'dev':
+            $conf["acquia_identifier"] = "BCDE-22799";
+            $conf["acquia_key"] = "8499f05ab66439dc7432a3533bbc5c33";
+            $conf['tealium_environment'] = 'dev';
+            break;
+        case 'test':
+            $conf["acquia_identifier"] = "GHRY-22798";
+            $conf["acquia_key"] = "afd80ec55187436a7d83345415cffdd7";
+            $conf['tealium_environment'] = 'qa';
+            break;
+        case 'prod':
+            $conf["acquia_identifier"] = "CGKX-19447";
+            $conf["acquia_key"] = "2b5740b90ab783a59dac44afb916996a";
+            $conf['tealium_environment'] = 'prod';
+            break;
+    }
+} else {
+    $conf["acquia_identifier"] = "BCDE-22799";
+    $conf["acquia_key"] = "8499f05ab66439dc7432a3533bbc5c33";
+    $conf['tealium_environment'] = 'dev';
+}
+
