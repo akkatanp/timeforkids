@@ -180,10 +180,16 @@ function tfk_page_paths_preprocess_page(&$variables){
     }
     
     // Check for Poll for an anonymous user
-    if (strstr($args[0], "poll") && $variables['is_anon']) {
-        //flog_it("Found Anon & poll path...");
-        drupal_deliver_page(MENU_ACCESS_DENIED);
-        drupal_exit();
+    if ($args[0] == "poll") {
+        // Check if the user has a role of anonymous or teacher.
+        //print_r($user);
+        if ( in_array("administrator", $user->roles) == 0 && in_array("editor", $user->roles) == 0 ) {
+            //flog_it("Found poll and user role is not admin or editor...");
+            print("Found poll and user role is not admin or editor...");
+            drupal_add_http_header('Status', '403 Forbidden');
+            drupal_deliver_page(MENU_ACCESS_DENIED);
+            drupal_exit();
+        }
     }
 }
 
