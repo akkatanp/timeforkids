@@ -85,6 +85,7 @@ function aplus_papers_checklist($steps, $current) {
  * @param $form_state
  */
 function aplus_papers_multistep_form($form, &$form_state, $steps) {
+  //flog_it("aplus_papers_multistep_form...");
   drupal_add_css(drupal_get_path('module', 'aplus_papers') . '/aplus-papers-print.css', array('media' => 'print'));
 
   // Provide a wrapper around the entire form, since we'll replace the whole
@@ -106,17 +107,21 @@ function aplus_papers_multistep_form($form, &$form_state, $steps) {
   $step_values = (isset($form_state['values'])) ? $form_state['values'][$step_name] : NULL;
   $form[$step_name] = $steps[$step];
   if (isset($form[$step_name]['textarea'])) {
-    $form[$step_name]['textarea']['#default_value'] = !empty($step_values['textarea']['value']) ? $step_values['textarea']['value'] : '';
+    //flog_it("found textarea: textarea=".check_markup(strip_tags("<p>shit text</p>")));
+    $form[$step_name]['textarea']['#default_value'] = !empty($step_values['textarea']['value']) ? check_markup(strip_tags($step_values['textarea']['value'])) : '';
     $form[$step_name]['textarea']['#rows'] = 6;
   }
   if (isset($form[$step_name]['title'])) {
-    $form[$step_name]['title']['#default_value'] = !empty($step_values['title']['value']) ? $step_values['title']['value'] : '';
+      //flog_it("found title...");
+    $form[$step_name]['title']['#default_value'] = !empty($step_values['title']['value']) ? check_markup(strip_tags($step_values['title']['value'])) : '';
   }
   if (isset($form[$step_name]['name'])) {
-    $form[$step_name]['name']['#default_value'] = !empty($step_values['name']) ? $step_values['name'] : '';
+      //flog_it("found name...");
+    $form[$step_name]['name']['#default_value'] = !empty($step_values['name']) ? check_markup(strip_tags($step_values['name'])) : '';
   }
   if (isset($form[$step_name]['date'])) {
-    $form[$step_name]['date']['#default_value'] = !empty($step_values['date']) ? $step_values['date'] : '';
+      //flog_it("found date...");
+    $form[$step_name]['date']['#default_value'] = !empty($step_values['date']) ? check_markup(strip_tags($step_values['date'])) : '';
   }
   $ajax_default = array(
     'wrapper' => 'wizard-form-wrapper',
@@ -241,6 +246,7 @@ function aplus_papers_multistep_form_callback($form, $form_state) {
  *
  */
 function aplus_papers_multistep_form_submit($form, &$form_state) {
+  //flog_it("aplus_papers_multistep_form_submit...");
   // Save away the current information.
   $current_step = 'step_' . $form_state['storage']['step'];
   if (!empty($form_state['values'][$current_step])) {
@@ -290,6 +296,7 @@ function aplus_papers_multistep_form_submit($form, &$form_state) {
  * Prepare final step content.
  */
 function aplus_papers_final_step_content($form_state) {
+  //flog_it("aplus_papers_final_step_content...");
   $output = array(
     '#prefix' => '<div id="aplus-final-step">',
     '#suffix' => '</div>',
@@ -318,11 +325,13 @@ function aplus_papers_final_step_content($form_state) {
         '#weight' => 2,
       );
     }
+    
+    //flog_it("title=".$data['title'].", ".check_markup($data['title']['value'], "plain_text"));
     if (isset($data['title'])) {
       $output['title'] = array(
         '#prefix' => '<div class="paper-title">',
         '#suffix' => '</div>',
-        '#markup' => check_markup($data['title']['value'], $data['title']['format']),
+        '#markup' => check_markup(strip_tags($data['title']['value'])),
         '#weight' => 3,
       );
     }
@@ -335,7 +344,7 @@ function aplus_papers_final_step_content($form_state) {
         );
       }
       $output['textarea'][] = array(
-        '#markup' => check_markup($data['textarea']['value'], $data['textarea']['format']),
+        '#markup' => check_markup(strip_tags($data['textarea']['value'])),
       );
     }
   }
@@ -366,7 +375,7 @@ function aplus_html_to_rtf($data) {
   // We should really be using this additional Rtf library for more,
   // but we're only relying on it to fix unicode entities such as apostrophes.
   require_once(drupal_get_path('module', 'aplus_papers') .'/rtf/Rtf.php');
-  $output = check_markup($data['value'], $data['format']);
+  $output = check_markup(strip_tags($data['value']));
   $output = decode_entities($output);
   $output = Util::utf8Unicode($output);
   $output = str_replace('<p>', "\n\\\n\\\n	", $output);
