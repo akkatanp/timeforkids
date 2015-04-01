@@ -350,6 +350,9 @@ function tfk_preprocess_page(&$variables, $hook) {
   }*/
   
   $variables['footer_classes'] = implode(' ', $variables['footer_classes']);
+  
+  // Check title for profanity
+  $variables['title'] = check_markup(decode_entities($variables['node']->title, 'bad_words'));
 }
 
 /**
@@ -362,18 +365,14 @@ function tfk_preprocess_page(&$variables, $hook) {
  */
 function tfk_preprocess_node(&$variables, $hook) {
   // Filter out profanity from flashcards.
-  if ($variables['type'] == 'flashcard') {
-    foreach (element_children($variables['content']['field_flashcard']) as $delta) {
-      $flashcard = &$variables['content']['field_flashcard'][$delta]['#items'][0];
-      $flashcard['data'] = check_markup(decode_entities($flashcard['data'], 'bad_words'));
-      // Flashcards with an answer of '0' do not display correctly if run through the bad_words filter.
-      $flashcard['children'][0] = is_numeric($flashcard['children'][0]) ? $flashcard['children'][0] : check_markup(decode_entities($flashcard['children'][0], 'bad_words'));
+    if ($variables['type'] == 'flashcard') {
+      foreach (element_children($variables['content']['field_flashcard']) as $delta) {
+        $flashcard = &$variables['content']['field_flashcard'][$delta]['#items'][0];
+        $flashcard['data'] = check_markup(decode_entities($flashcard['data'], 'bad_words'));
+        // Flashcards with an answer of '0' do not display correctly if run through the bad_words filter.
+        $flashcard['children'][0] = is_numeric($flashcard['children'][0]) ? $flashcard['children'][0] : check_markup(decode_entities($flashcard['children'][0], 'bad_words'));
+      }
     }
-  }
-  elseif ($variables['type'] == 'grammar_practice_question') {
-    // Allow these tags in punctuation practice question node titles.
-    $variables['title'] = strip_tags($variables['node']->title, '<em><strong><u>');
-  }
 }
 
 /**
