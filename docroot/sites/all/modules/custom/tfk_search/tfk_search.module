@@ -3178,7 +3178,7 @@ function tfk_search_preprocess_search_result(&$vars) {
   //flog_it("nid=".$nid.", cont_type=".$vars['tfk_search_cont_type']);
   $node = node_load($nid);
   if(!$node) {
-    // Don't preprocess, this nid exists in the index but not in the database.
+    flog_it("Don't preprocess, this nid=".$nid.",title=".$vars['title'].", exists in the index but not in the database.");
     return;
   }
   
@@ -3331,10 +3331,10 @@ function tfk_search_preprocess_search_result(&$vars) {
 
 
     case 'magazine_issue':
-      //flog_it("magazine_issue...");
+      flog_it("magazine_issue...");
       if($node) {
-        //flog_it("content_type=MAGAZINE_ISSUE");
-        //flog_it("nid=".$node->nid);
+        flog_it("content_type=MAGAZINE_ISSUE");
+        flog_it("nid=".$node->title);
         $magazine = $node;
         
         // If the spanish filter is active, surface translated magazine items only.
@@ -3362,6 +3362,7 @@ function tfk_search_preprocess_search_result(&$vars) {
           where fi.entity_type = :bundle_type and fi.entity_id = :img_nid',array('bundle_type'=>'node','img_nid'=>$img_nid));
         $record = $result->fetch();
         if($record) {
+          flog_it("Found cover image record...");
           $file = file_load($record->field_image_fid);
           if(!empty($file->uri)) {
             $newpath = image_style_url($style, $file->uri);
