@@ -262,29 +262,32 @@ function study_helper_my_flashcards() {
   else {
     return;
   }
-
-  return array(
-    'title' => array(
-      '#prefix' => '<h2>',
-      '#suffix' => '</h2>',
-      '#markup' => t('Looking for your flash cards?'),
-    ),
-    'body' => array(
-      '#prefix' => '<p>',
-      '#suffix' => '</p>',
-      '#markup' => t('Click here to see them'),
-    ),
-    'link' => array(
-      '#theme' => 'link',
-      '#text' => t('My Flash Cards'),
-      '#path' => $path,
-      '#options' => array(
-        'attributes' => array(
-          'class' => array('my-flashcards-link'),
+  
+  // Only admin and editor roles can see this block.
+  if (in_array('administrator',$user->roles) || in_array('editor',$user->roles)){
+    return array(
+      'title' => array(
+        '#prefix' => '<h2>',
+        '#suffix' => '</h2>',
+        '#markup' => t('Looking for your flash cards?'),
+      ),
+      'body' => array(
+        '#prefix' => '<p>',
+        '#suffix' => '</p>',
+        '#markup' => t('Click here to see them'),
+      ),
+      'link' => array(
+        '#theme' => 'link',
+        '#text' => t('My Flash Cards'),
+        '#path' => $path,
+        '#options' => array(
+          'attributes' => array(
+            'class' => array('my-flashcards-link'),
+          ),
         ),
       ),
-    ),
-  );
+    );
+  }
 }
 
 /**
