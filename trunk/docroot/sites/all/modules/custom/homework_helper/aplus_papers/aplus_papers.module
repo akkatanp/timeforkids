@@ -85,7 +85,7 @@ function aplus_papers_checklist($steps, $current) {
  * @param $form_state
  */
 function aplus_papers_multistep_form($form, &$form_state, $steps) {
-  //flog_it("aplus_papers_multistep_form...");
+  flog_it("aplus_papers_multistep_form...");
   drupal_add_css(drupal_get_path('module', 'aplus_papers') . '/aplus-papers-print.css', array('media' => 'print'));
 
   // Provide a wrapper around the entire form, since we'll replace the whole
@@ -107,20 +107,20 @@ function aplus_papers_multistep_form($form, &$form_state, $steps) {
   $step_values = (isset($form_state['values'])) ? $form_state['values'][$step_name] : NULL;
   $form[$step_name] = $steps[$step];
   if (isset($form[$step_name]['textarea'])) {
-    //flog_it("found textarea: textarea=".check_markup(strip_tags("<p>shit text</p>")));
+    flog_it("found textarea: textarea=".check_markup(strip_tags("<p>shit text</p>")));
     $form[$step_name]['textarea']['#default_value'] = !empty($step_values['textarea']['value']) ? check_markup(strip_tags($step_values['textarea']['value'])) : '';
     $form[$step_name]['textarea']['#rows'] = 6;
   }
   if (isset($form[$step_name]['title'])) {
-      //flog_it("found title...");
+      flog_it("found title=".check_markup(strip_tags($step_values['title']['value'])));
     $form[$step_name]['title']['#default_value'] = !empty($step_values['title']['value']) ? check_markup(strip_tags($step_values['title']['value'])) : '';
   }
   if (isset($form[$step_name]['name'])) {
-      //flog_it("found name...");
+      flog_it("found name=".check_markup(strip_tags($step_values['name'])));
     $form[$step_name]['name']['#default_value'] = !empty($step_values['name']) ? check_markup(strip_tags($step_values['name'])) : '';
   }
   if (isset($form[$step_name]['date'])) {
-      //flog_it("found date...");
+      flog_it("found date=".check_markup(strip_tags($step_values['date'])));
     $form[$step_name]['date']['#default_value'] = !empty($step_values['date']) ? check_markup(strip_tags($step_values['date'])) : '';
   }
   $ajax_default = array(
@@ -191,10 +191,10 @@ function aplus_papers_multistep_form($form, &$form_state, $steps) {
         if (is_numeric($key)) {
           foreach ($data as $field => $field_data) {
             if ($field == 'name' || $field == 'date') {
-              $form[$step_name][$key][$field]['#default_value'] = $form_state['storage']['values']["step_$key"][$field];
+              $form[$step_name][$key][$field]['#default_value'] = check_markup(strip_tags($form_state['storage']['values']["step_$key"][$field]));
             }
             if ($field == 'textarea' || $field == 'title') {
-              $form[$step_name][$key][$field]['#default_value'] = $form_state['storage']['values']["step_$key"][$field]['value'];
+              $form[$step_name][$key][$field]['#default_value'] = check_markup(strip_tags($form_state['storage']['values']["step_$key"][$field]['value']));
             }
           }
         }
@@ -296,7 +296,7 @@ function aplus_papers_multistep_form_submit($form, &$form_state) {
  * Prepare final step content.
  */
 function aplus_papers_final_step_content($form_state) {
-  //flog_it("aplus_papers_final_step_content...");
+  flog_it("aplus_papers_final_step_content...");
   $output = array(
     '#prefix' => '<div id="aplus-final-step">',
     '#suffix' => '</div>',
@@ -313,7 +313,7 @@ function aplus_papers_final_step_content($form_state) {
       $output['date'] = array(
         '#prefix' => '<div class="paper-date">',
         '#suffix' => '</div>',
-        '#markup' => check_plain($data['date']),
+        '#markup' => check_markup(strip_tags($data['date'])),
         '#weight' => 1,
       );
     }
@@ -321,7 +321,7 @@ function aplus_papers_final_step_content($form_state) {
       $output['name'] = array(
         '#prefix' => '<div class="student-name">',
         '#suffix' => '</div>',
-        '#markup' => check_plain($data['name']),
+        '#markup' => check_markup(strip_tags($data['name'])),
         '#weight' => 2,
       );
     }
