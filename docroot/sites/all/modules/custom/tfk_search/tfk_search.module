@@ -4519,7 +4519,7 @@ function tfk_search_node_has_flag($node, $flag = "spanish") {
  * @return TRUE if a flagged node is found, FALSE otherwise.
  */
 function tfk_search_magazine_has_spanish_item($magazine) {
-  //flog_it("tfk_search_magazine_has_spanish_item: magazine arg:");
+  flog_it("tfk_search_magazine_has_spanish_item: magazine arg:");
   //flog_it($magazine);
   // Materials: Worksheet and PDF Quiz.
   $mag_field_names = array('field_related_resources', 'field_materials');
