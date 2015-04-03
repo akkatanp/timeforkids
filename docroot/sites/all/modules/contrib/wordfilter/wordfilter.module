@@ -8,17 +8,17 @@
 /**
  * Implements hook_help().
  *
- * @param $section
+ * @param $path
  *   string file path
  *
  * @return
  *   string
  */
-function wordfilter_help($page = 'admin/help#wordfilter', $arg) {
-  switch ($page) {
+function wordfilter_help($path, $arg) {
+  switch ($path) {
     case 'admin/help#wordfilter':
       return t('<p>The wordfilter module allows you to filter words or phrases in site content and replace the filtered words or phrases with specified replacement words or phrases. The text body of node and comments are filtered and optionally the title of nodes and subject of comments are filtered. The filters are applied on content viewing so the original text of your content is not altered.</p>');
-    case 'admin/setting/wordfilter':
+    case 'admin/config/content/wordfilter':
       return t('In order for filtering to work on the body text of a node or comment, you must activate the wordfilter filter for the input formats you wish to enable filtering for. Check your filter settings at <a href="@filter">Text formats</a>.', array('@filter' => url('admin/config/content/formats')));
   }
 }
@@ -40,9 +40,6 @@ function wordfilter_permission() {
 
 /**
  * Implements hook_menu().
- *
- * @param $may_cache
- *   boolean indicating whether cacheable menu items should be returned
  *
  * @return
  *   array of menu information
@@ -115,9 +112,23 @@ function wordfilter_menu() {
  * Implements hook_node_load().
  */
 function wordfilter_node_load($nodes, $types) {
-  foreach ($nodes as $nid => $node) {
-    if (variable_get('wordfilter_node_title', TRUE)) {
+  if (variable_get('wordfilter_node_title', TRUE)) {
+    foreach ($nodes as $nid => $node) {
+      // Store a copy of the title before rewriting so that when
+      // editing a node, the original title can be loaded into the edit form.
+      $node->original_title = $node->title;
       $node->title = wordfilter_filter_process($node->title);
+    }
+  }
+}
+
+/**
+ * Implements hook_node_prepare().
+ */
+function wordfilter_node_prepare($node) {
+  if (variable_get('wordfilter_node_title', TRUE)) {
+    if (isset($node->original_title)) {
+      $node->title = $node->original_title;
     }
   }
 }
@@ -126,9 +137,25 @@ function wordfilter_node_load($nodes, $types) {
  * Implements hook_comment_load().
  */
 function wordfilter_comment_load($comments) {
-  foreach ($comments as $cid => $comment) {
-    if (variable_get('wordfilter_comment_title', TRUE)) {
+  if (variable_get('wordfilter_comment_title', TRUE)) {
+    foreach ($comments as $cid => $comment) {
+      // Store a copy of the subject before rewriting so that when
+      // editing a comment, the original subject can be loaded into the edit form.
+      $comment->original_subject = $comment->subject;
       $comment->subject = wordfilter_filter_process($comment->subject);
+    }
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function wordfilter_form_alter(&$form, &$form_state, $form_id) {
+  if (variable_get('wordfilter_comment_title', TRUE)) {
+    if (isset($form['#node']) && $form_id == 'comment_node_' . $form['#node']->type . '_form') {
+      if (isset($form['#entity']->original_subject)) {
+        $form['subject']['#default_value'] = $form['#entity']->original_subject;
+      }
     }
   }
 }
@@ -178,13 +205,12 @@ function wordfilter_filter_info() {
   $filters = array(
     'wordfilter' => array(
       'title' => t('Word filter'),
-      'description' => t('Replaces words inside posts with filtered versions.'),
+      'description' => t('Replaces words inside posts with filtered versions. You can configure the list of words or phrases to be filtered on the <a href="@configure">Word filter configuration page</a>.', array('@configure' => url('admin/config/content/wordfilter'))),
       'process callback' => 'wordfilter_filter_process',
-      'settings callback' => '_wordfilter_filter_settings',
       'tips callback' => '_wordfilter_filter_tips',
     ),
   );
-  
+
   return $filters;
 }
 
@@ -202,35 +228,35 @@ function _wordfilter_filter_tips($filter, $format, $long = FALSE) {
 }
 
 /**
- * Filter settings form
- */
-function _wordfilter_filter_settings($form, $form_state, $filter, $format, $defaults) {
-  $settings['word_filter'] = array(
-    '#type' => 'fieldset',
-    '#title' => t('Word filter'),
-    '#description' => t('You can define a global list of words or phrases to be filtered on the <a href="!url">wordfilter settings page</a>.', array('!url' => url('admin/config/content/wordfilter'))),
-  );
-  return $settings;
-}
-
-/**
  * hook_filter process operation callback.
  */
 function wordfilter_filter_process($text) {
   $text = ' ' . $text . ' ';
   $list = _wordfilter_list();
   $utf8 = variable_get('wordfilter_use_utf8_flag', FALSE);
+  $case_sensitive = variable_get('wordfilter_process_case_sensitive', FALSE);
+  $default_replacement = variable_get('wordfilter_default_replacement', '[filtered word]');
+
   foreach ($list as $word) {
     // Prevent mysterious empty value from blowing away the node title.
     if (!empty($word->words)) {
-      $replacement = ($word->replacement) ? $word->replacement : variable_get('wordfilter_default_replacement', '[filtered word]');
+      $replacement = ($word->replacement) ? $word->replacement : $default_replacement;
+
+      if ($replacement == '<none>') {
+        $replacement = '';
+      }
 
       if ($word->standalone) {
-        $pattern = '/(\W)' . preg_quote($word->words, '/') . '(\W)/i';
+        $pattern = '/(\W)' . preg_quote($word->words, '/') . '(\W)/';
       }
       else {
-        $pattern = '/' . preg_quote($word->words, '/') . '/i';
+        $pattern = '/' . preg_quote($word->words, '/') . '/';
       }
+
+      if (!$case_sensitive) {
+        $pattern .= 'i';
+      }
+
       if ($utf8) {
         $pattern .= 'u';
       }
