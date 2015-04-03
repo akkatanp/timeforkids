@@ -51,12 +51,21 @@ function wordfilter_schema() {
 }
 
 /**
+ * Implements hook_enable().
+ */
+function wordfilter_enable() {
+  drupal_set_message(t('To filter text with Word filter you will need to enable the Word filter in one or more of your <a href="@text_formats">Text formats</a>. To add words or phrases to filter, <a href="@configure">configure Word Filter module</a>.', array('@text_formats' => url('admin/config/content/formats'), '@configure' => url('admin/config/content/wordfilter'))), 'status');
+}
+
+/**
  * Implements hook_uninstall().
  */
 function wordfilter_uninstall() {
+  variable_del('wordfilter_comment_title');
   variable_del('wordfilter_default_replacement');
   variable_del('wordfilter_node_title');
-  variable_del('wordfilter_comment_title');
+  variable_del('wordfilter_process_case_sensitive');
+  variable_del('wordfilter_use_utf8_flag');
 }
 
 /**

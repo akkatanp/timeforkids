@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Administrative functions for word filtering.
@@ -7,7 +8,7 @@
  */
 
 /**
- * Implements hook_settings().
+ * Word filter admin configuration form.
  *
  * @return
  *   array of form elements
@@ -35,6 +36,13 @@ function wordfilter_settings_form() {
     '#default_value' => variable_get('wordfilter_comment_title', TRUE),
     '#return_value' => TRUE,
   );
+  $form['general_options']['wordfilter_process_case_sensitive'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Process word filters using case sensitivity'),
+    '#description' => t("If checked, case sensitivity is used when checking text against the list of words to replace. For example searching for 'foo' and 'Foo' will only match once for the string 'foo and bar'."),
+    '#default_value' => variable_get('wordfilter_process_case_sensitive', FALSE),
+    '#return_value' => TRUE,
+  );
   $form['general_options']['wordfilter_use_utf8_flag'] = array(
     '#type' => 'checkbox',
     '#title' => t('Use Perl UTF8 Regular Expression Modifier'),
@@ -45,7 +53,7 @@ function wordfilter_settings_form() {
   $form['general_options']['wordfilter_default_replacement'] = array(
     '#type' => 'textfield',
     '#title' => t('Default word replacement'),
-    '#description' => t('Enter the default replacement text here. If you do not enter replacement text for an individual filtered word, the replacement text entered here will be used as the replacement text.'),
+    '#description' => t('Enter the default replacement text here. If you do not enter replacement text for an individual filtered word, the replacement text entered here will be used as the replacement text. If you would like to replace the filtered word with an empty string, set the replacement word to <em>&lt;none&gt;</em>.'),
     '#default_value' => variable_get('wordfilter_default_replacement', '[filtered word]'),
     '#required' => TRUE,
   );
@@ -54,8 +62,7 @@ function wordfilter_settings_form() {
 }
 
 /**
- * Delete a word from the word filter list delete
- * confirmation callback
+ * Word filter list delete word confirmation callback.
  */
 function wordfilter_admin_form_delete_confirm($form, &$form_state, $word_id) {
   $form = array();
@@ -67,7 +74,7 @@ function wordfilter_admin_form_delete_confirm($form, &$form_state, $word_id) {
 }
 
 /**
- * Delete a word from the word filter list
+ * Word filter list delete word submit callback.
  */
 function wordfilter_admin_form_delete_confirm_submit($form, &$form_state) {
   if ($form_state['values']['confirm']) {
@@ -77,13 +84,15 @@ function wordfilter_admin_form_delete_confirm_submit($form, &$form_state) {
 
     drupal_set_message(t('The word was removed from the word filter list'));
     $form_state['redirect'] = 'admin/config/content/wordfilter';
-    cache_clear_all('*', 'cache_filter', TRUE);
+    cache_clear_all('*', 'cache_field', TRUE);
+    cache_clear_all('wordfilter', 'cache');
   }
 }
 
 
 /**
- * Wordfilter admin settings page callback.
+ * Word filter admin configuration page callback. Lists existing
+ * words or phrases that are configured to be filtered.
  */
 function wordfilter_admin_list() {
   $build = array();
@@ -94,7 +103,7 @@ function wordfilter_admin_list() {
     array('data' => t('Operations'), 'colspan' => 2)
   );
   $rows = array();
-  
+
   $list = db_select('wordfilter', 'w')
     ->fields('w')
     ->extend('PagerDefault')
@@ -102,7 +111,7 @@ function wordfilter_admin_list() {
     ->orderByHeader($header)
     ->limit(10)
     ->execute();
-  
+
   foreach ($list as $word) {
     $rows[] = array(
       check_plain($word->words),
@@ -124,14 +133,14 @@ function wordfilter_admin_list() {
 }
 
 /**
- * Edit word filter form.
+ * Word filter list edit word form.
  */
 function wordfilter_admin_edit_form($form, &$form_state, $word_id = NULL) {
   if (!isset($word_id) || !is_numeric($word_id)) {
     drupal_set_message(t('The wordfilter ID of the word or phrase you are trying to edit is missing or is not a number.'), 'error');
     drupal_goto('admin/config/content/wordfilter');
   }
-  
+
   $word = db_select('wordfilter', 'w')
     ->fields('w')
     ->condition('w.id', $word_id)
@@ -157,7 +166,7 @@ function wordfilter_admin_edit_form($form, &$form_state, $word_id = NULL) {
   $form['replacement'] = array(
     '#type' => 'textfield',
     '#title' => t('Replacement text'),
-    '#description' => t('Enter the filtered version of the word or phrase to replace the original word or phrase.'),
+    '#description' => t('Enter the filtered version of the word or phrase to replace the original word or phrase. If you would like to replace the filtered word with an empty string, set the replacement word to <em>&lt;none&gt;</em>.'),
     '#default_value' => ($word->replacement) ? $word->replacement : variable_get('wordfilter_default_replacement', '[filtered word]'),
     '#size' => 50,
     '#maxlength' => 255,
@@ -182,32 +191,27 @@ function wordfilter_admin_edit_form($form, &$form_state, $word_id = NULL) {
 }
 
 /**
- * Edit word filter form submit handler.
+ * Word filter list edit word form submit handler.
  */
 function wordfilter_admin_edit_form_submit($form, &$form_state) {
   drupal_write_record('wordfilter', $form_state['values'], 'id');
   watchdog('wordfilter', 'Updated filter for: %word', array('%word' => $form_state['values']['words']));
   drupal_set_message(t('Updated filter for: %word', array('%word' => $form_state['values']['words'])));
   $form_state['redirect'] = 'admin/config/content/wordfilter';
-  cache_clear_all('*', 'cache_filter', TRUE);
+  cache_clear_all('*', 'cache_field', TRUE);
   cache_clear_all('wordfilter', 'cache');
 }
 
 /**
- * Add word filter form.
+ * Word filter list add word form.
  */
 function wordfilter_admin_add_form() {
   $form = array();
 
-  $form['help'] = array(
-    '#type' => 'markup',
-    '#value' => t("<p>Enter a word or phrase you want to filter followed by '|' and the replacement word or phrase. You can enter multiple word and replacement word pairs by hitting return and adding more word pairs. Any word or phrases that do not have a replacement word or phrase will use the default replacement word below.</p>"),
-  );
-
   $form['words'] = array(
     '#type' => 'textarea',
     '#title' => t('Words'),
-    '#description' => t("Enter a word or phrase you want to filter followed by '|' and the replacement word or phrase if any."),
+    '#description' => t("Enter a word or phrase you want to filter followed by '|' and the replacement word or phrase if any. You can enter multiple word and replacement pairs by hitting return adding more word pairs on a new line. Any word or phrases that do not have a replacement word or phrase will use the default replacement word below. If you would like to replace the filtered word with an empty string, set the replacement word to <em>&lt;none&gt;</em>."),
     '#required' => true
   );
   $form['replacement'] = array(
@@ -216,7 +220,7 @@ function wordfilter_admin_add_form() {
     '#default_value' => variable_get('wordfilter_default_replacement', '[filtered word]'),
     '#size' => 50,
     '#maxlength' => 255,
-    '#description' => t('Enter the filtered version of the word to replace the original words with. If no replacement word or phrase is specified for a word or phrase in the list above, the word or phrase entered here will be used as the replacement for that word or phrase.')
+    '#description' => t('Enter the filtered version of the word to replace the original words with. If no replacement word or phrase is specified for a word or phrase in the list above, the word or phrase entered here will be used as the replacement for that word or phrase. If you would like to replace the filtered word with an empty string, set the replacement word to <em>&lt;none&gt;</em>.')
   );
   $form['standalone'] = array(
     '#type' => 'checkbox',
@@ -241,7 +245,7 @@ function wordfilter_admin_add_form() {
 }
 
 /**
- * Add word filter form submit handler.
+ * Word filter list add word form submit handler.
  */
 function wordfilter_admin_add_form_submit($form, &$form_state) {
   $pairs = explode("\n", $form_state['values']['words']);
@@ -262,12 +266,12 @@ function wordfilter_admin_add_form_submit($form, &$form_state) {
     drupal_set_message(t('Added filter for: %word', array('%word' => $row->words)));
   }
   $form_state['redirect'] = 'admin/config/content/wordfilter';
-  cache_clear_all('*', 'cache_filter', TRUE);
+  cache_clear_all('*', 'cache_field', TRUE);
   cache_clear_all('wordfilter', 'cache');
 }
 
 /**
- * Test word filter form.
+ * Word filter test word form.
  */
 function wordfilter_admin_test_filter_form($form, &$form_state) {
   $form = array();
@@ -276,7 +280,7 @@ function wordfilter_admin_test_filter_form($form, &$form_state) {
   $form['test_word'] = array(
     '#type' => 'textfield',
     '#title' => t('Word to test'),
-    '#description' => t('Enter a word or phrase that you want to test your wordfilters on'),
+    '#description' => t('Enter a word or phrase that you want to test your word filters on'),
     '#size' => 50,
     '#maxlength' => 255,
     '#required' => TRUE,
@@ -298,14 +302,14 @@ function wordfilter_admin_test_filter_form($form, &$form_state) {
 }
 
 /**
- * Test word filter form submit handler.
+ * Word filter test word form submit handler.
  */
 function wordfilter_admin_test_filter_form_submit($form, &$form_state) {
   $form_state['rebuild'] = TRUE;
 }
 
 /**
- * Test word filter page callback.
+ * Word filter test word page callback.
  */
 function _wordfilter_test_filter($word) {
   $filtered_word = wordfilter_filter_process($word);

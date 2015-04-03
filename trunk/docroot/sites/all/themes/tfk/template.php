@@ -351,8 +351,10 @@ function tfk_preprocess_page(&$variables, $hook) {
   
   $variables['footer_classes'] = implode(' ', $variables['footer_classes']);
   
-  // Check title for profanity
-  $variables['title'] = check_markup(decode_entities($variables['node']->title, 'bad_words'));
+  // Check Flashcard title for profanity. (This would not work in tfk_preprocess_node() )
+  if (isset($variables['node']) && $variables['node']->type == 'flashcard') {
+    $variables['title'] = check_markup(decode_entities($variables['node']->title, 'bad_words'));
+  }
 }
 
 /**
