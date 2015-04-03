@@ -179,7 +179,7 @@ function tfk_search_slideshow_image_view($slideshow_node, $slide_number = NULL) 
   
   // Set the active router item to 'node/%'.
   $path = 'node/'. ((is_object($slideshow_node)) ? $slideshow_node->nid: $slideshow_node);
-  flog_it($path);
+  //flog_it($path);
   menu_set_active_item($path);
   menu_execute_active_handler($path);
   
@@ -2504,14 +2504,14 @@ function tfk_search_apachesolr_query_alter($query, $caller) {
     $query->addParam('fl', implode(',', array(TFK_SEARCH_RELATED_TITLE, TFK_SEARCH_RELATED_PATH, TFK_SEARCH_RELATED_TYPE)));
 
     // Limit the number of rows per page to 4 per spec.
-    $query->addParam('rows', 4);
+    //$query->addParam('rows', 4);
   }
 
   if($path === TFK_SEARCH_WORKSHEETS_PATH) {
     //flog_it("Worksheet search...");
     $filterstring = array();
     // Limit the number of rows per page to 8 per spec.
-    $query->addParam('rows', 8);
+    //$query->addParam('rows', 8);
     
     $query->addParam('fl', TFK_SEARCH_SPANISH_VERSION);
     
@@ -2568,7 +2568,7 @@ function tfk_search_apachesolr_query_alter($query, $caller) {
     $query->addParam('fl', implode(',', array(TFK_SEARCH_SPANISH_VERSION, TFK_SEARCH_WORKSHEET_PDF_LINK, TFK_SEARCH_WORKSHEET_PDF_TITLE)));
     
     // Limit the number of rows per page to 8 per spec.
-    $query->addParam('rows', 8);
+    //$query->addParam('rows', 8);
   }
   
   // Site-wide search.
@@ -2579,7 +2579,7 @@ function tfk_search_apachesolr_query_alter($query, $caller) {
     $query->addParam('fl', implode(',', array(TFK_SEARCH_ARTICLE_DECK, TFK_SEARCH_ARTICLE_BYLINE, TFK_SEARCH_ARTICLE_META_KEYWORDS, TFK_SEARCH_KID_REPORTER_LOCATION, TFK_SEARCH_MINISITE_DECK, TFK_SEARCH_PAPER_DESCRIPTION)));
     
     // Limit the number of rows per page.
-    $query->addParam('rows', 8);
+    //$query->addParam('rows', 8);
 
     global $user;
     $rls = $user->roles;
@@ -3178,7 +3178,7 @@ function tfk_search_preprocess_search_result(&$vars) {
   //flog_it("nid=".$nid.", cont_type=".$vars['tfk_search_cont_type']);
   $node = node_load($nid);
   if(!$node) {
-    flog_it("Don't preprocess, this nid=".$nid.",title=".$vars['title'].", exists in the index but not in the database.");
+    //flog_it("Don't preprocess, this nid=".$nid.",title=".$vars['title'].", exists in the index but not in the database.");
     return;
   }
   
@@ -3331,10 +3331,10 @@ function tfk_search_preprocess_search_result(&$vars) {
 
 
     case 'magazine_issue':
-      flog_it("magazine_issue...");
+      //flog_it("magazine_issue...");
       if($node) {
-        flog_it("content_type=MAGAZINE_ISSUE");
-        flog_it("nid=".$node->title);
+        //flog_it("content_type=MAGAZINE_ISSUE");
+        //flog_it("nid=".$node->title);
         $magazine = $node;
         
         // If the spanish filter is active, surface translated magazine items only.
@@ -3362,7 +3362,7 @@ function tfk_search_preprocess_search_result(&$vars) {
           where fi.entity_type = :bundle_type and fi.entity_id = :img_nid',array('bundle_type'=>'node','img_nid'=>$img_nid));
         $record = $result->fetch();
         if($record) {
-          flog_it("Found cover image record...");
+          //flog_it("Found cover image record...");
           $file = file_load($record->field_image_fid);
           if(!empty($file->uri)) {
             $newpath = image_style_url($style, $file->uri);
