@@ -133,6 +133,9 @@ function tfk_ads_omni_get_config_vars(&$variables){
      * $channel_array['omni_ctype'] content type as described by node->type
      * $channel_array['package_name'] if the type is a package, package name is set
      */
+    
+    // Clean title if necessary
+    $variables['node']->title = strip_tags(check_markup($variables['node']->title));
      $channel_array['omni_pagename'] = "tfk|";
      $channel_array['omni_user_status'] = "non-registered";
      $channel_array['is_channel'] = "";$channel_array['channel'] = "";$channel_array['sub_channel'] = "";

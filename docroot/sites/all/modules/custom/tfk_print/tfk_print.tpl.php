@@ -4,6 +4,8 @@
  *   The view tpl for the tfk_print module.
  *   Variables are loaded from tfk_print.module.
  */
+// Clean title if necessary
+$head_title = strip_tags(check_markup($head_title));
 ?>
 <!doctype html>
 <html>
