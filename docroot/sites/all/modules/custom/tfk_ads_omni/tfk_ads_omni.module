@@ -135,7 +135,9 @@ function tfk_ads_omni_get_config_vars(&$variables){
      */
     
     // Clean title if necessary
-    $variables['node']->title = strip_tags(check_markup($variables['node']->title));
+    if(array_key_exists('node', $variables)) {
+        $variables['node']->title = strip_tags(check_markup($variables['node']->title));
+    }
      $channel_array['omni_pagename'] = "tfk|";
      $channel_array['omni_user_status'] = "non-registered";
      $channel_array['is_channel'] = "";$channel_array['channel'] = "";$channel_array['sub_channel'] = "";
