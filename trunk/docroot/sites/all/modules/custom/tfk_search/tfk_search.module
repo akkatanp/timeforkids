@@ -2502,17 +2502,11 @@ function tfk_search_apachesolr_query_alter($query, $caller) {
     //flog_it("Photo Video search...");
     // Retrieve related content fields.
     $query->addParam('fl', implode(',', array(TFK_SEARCH_RELATED_TITLE, TFK_SEARCH_RELATED_PATH, TFK_SEARCH_RELATED_TYPE)));
-
-    // Limit the number of rows per page to 4 per spec.
-    //$query->addParam('rows', 4);
   }
 
   if($path === TFK_SEARCH_WORKSHEETS_PATH) {
     //flog_it("Worksheet search...");
     $filterstring = array();
-    // Limit the number of rows per page to 8 per spec.
-    //$query->addParam('rows', 8);
-    
     $query->addParam('fl', TFK_SEARCH_SPANISH_VERSION);
     
     // When a teacher browses the worksheets the search should be pre-populated with their grade.
@@ -2566,9 +2560,6 @@ function tfk_search_apachesolr_query_alter($query, $caller) {
     // Retrieve additional content fields.
     //$query->addParam('fl', implode(',', array(TFK_SEARCH_SPANISH_ISSUE, TFK_SEARCH_SPANISH_VERSION, TFK_SEARCH_WORKSHEET_PDF_LINK, TFK_SEARCH_WORKSHEET_PDF_TITLE)));
     $query->addParam('fl', implode(',', array(TFK_SEARCH_SPANISH_VERSION, TFK_SEARCH_WORKSHEET_PDF_LINK, TFK_SEARCH_WORKSHEET_PDF_TITLE)));
-    
-    // Limit the number of rows per page to 8 per spec.
-    //$query->addParam('rows', 8);
   }
   
   // Site-wide search.
@@ -2702,6 +2693,7 @@ function tfk_search_photos_and_video() {
   $page = isset($_GET['page']) ? $_GET['page'] : 0;
   $base_path = TFK_SEARCH_PHOTOSVIDEO_PATH;
   $params['q'] = search_get_keys();
+  $params['rows'] = 4;
   
   //flog_it("search_get_keys()");
   //flog_it(search_get_keys());
@@ -2734,7 +2726,7 @@ function tfk_search_magazine() {
   $page = isset($_GET['page']) ? $_GET['page'] : 0;
   $base_path = TFK_SEARCH_MAGAZINE_PATH;
   $params['q'] = search_get_keys();
-  
+  $params['rows'] = 8;
   //$params['fq'] = "bundle:magazine_issue";
   //if (!empty($fq)) {$params['fq'] = $fq;}
   //$params['fq'] = "(bundle:(magazine_issue) AND ds_created:([2012-01-01T00:00:00.00Z TO 2012-12-31T59:59:999Z]))";
@@ -2821,6 +2813,7 @@ function tfk_search_worksheets() {
   //flog_it("page= ".$page);
   
   $params['q'] = search_get_keys();
+  $params['rows'] = 8;
   $response = apachesolr_search_run('apachesolr_search', $params, $solrsort, $base_path, $page, $solr = NULL);
   
   return theme('search_results', array('results' => $response));
