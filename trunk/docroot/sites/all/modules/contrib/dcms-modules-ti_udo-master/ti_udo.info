@@ -1,8 +1,0 @@
-name = "Time Inc. Universal Data Object"
-description = "On-Page Tealium iQ Universal Data Object (UDO) with Site Specific Metadata Mapping"
-core = "7.x"
-version = "7.x-1.0"
-configure = admin/config/system/metadata
-package = "Statistics"
-
-dependencies[] = tealium
