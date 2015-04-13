@@ -79,7 +79,7 @@ function tfk_ads_omni_preprocess_page(&$variables){
             $num_elements = count($temp_array);
             for($i=$num_elements; $i>1; $i--) {
                 if ($i == $num_elements) {
-                    $udo_array['pageName'] = $temp_array[($i-1)];
+                    $udo_array['pageName'] = str_replace("\n", "", $temp_array[($i-1)]);
                 } else {
                     $udo_array['site_section'.($i-1)] = $temp_array[$i-1];
                 }
