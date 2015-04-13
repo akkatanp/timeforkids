@@ -56,7 +56,7 @@ function tfk_ads_omni_preprocess_page(&$variables){
     tfk_ads_omni_form_alter($variables['page']['footer'], $block_form_state, 'block_26');
 
     /*Omniture*/
-    if (!$variables['is_admin'] == "true") {//Exclude from admin pages
+    //if (!$variables['is_admin'] == "true") {//Exclude from admin pages
         /*Omniture vars*/
         $omniture_vars .= "s_time.channel = 'tfk';\n";
         $udo_array['channel'] = 'tfk';
@@ -71,51 +71,72 @@ function tfk_ads_omni_preprocess_page(&$variables){
         if (array_key_exists('theme_hook_suggestions',$variables) && $variables['theme_hook_suggestions'][0] == "page__404page") {
             //404 Page
             $omniture_vars .= "s_time.pageType = 'errorPage';\n";
-            $udo_array['content_package_section'] = 'errorPage';
+            //$udo_array['content_package_section'] = 'errorPage';
+            $udo_array['pageType'] = 'erroPage';
         } else {
             $omniture_vars .= "s_time.pageName = '".$ad_omni_config['omni_pagename']."';\n";
-            $temp_section_array = explode("|", $ad_omni_config['omni_pagename']);
+            $temp_array = explode("|", $ad_omni_config['omni_pagename']);
+            $num_elements = count($temp_array);
+            for($i=$num_elements; $i>1; $i--) {
+                if ($i == $num_elements) {
+                    $udo_array['pageName'] = $temp_array[($i-1)];
+                } else {
+                    $udo_array['site_section'.($i-1)] = $temp_array[$i-1];
+                }
+            }
+            /*
             if (!empty($temp_section_array[3]) && $temp_section_array[3] != "channel page") {
                 $udo_array['content_package_section'] = str_replace("\n", "", check_plain($temp_section_array[3]));
             }
+             * 
+             */
             
             
             $omniture_vars .= "s_time.prop16 = '".tfk_ads_omni_format_omniture($ad_omni_config['channel'])."';\n";
-            $udo_array['site_section1'] = $ad_omni_config['channel'];
+            //$udo_array['site_section1'] = $ad_omni_config['channel'];
+            $udo_array['prop16'] = $ad_omni_config['channel'];
             
             if ($ad_omni_config['sub_channel']) {
                 $omniture_vars .= "s_time.prop11 = '".tfk_ads_omni_format_omniture($ad_omni_config['sub_channel'])."';\n";
-                $udo_array['site_section2'] = $ad_omni_config['sub_channel'];
+                //$udo_array['site_section2'] = tfk_ads_omni_format_omniture($ad_omni_config['sub_channel']);
+                $udo_array['prop11'] = tfk_ads_omni_format_omniture($ad_omni_config['sub_channel']);
             }
             
             if (array_key_exists('omni_grade_level',$ad_omni_config)) {
                 $omniture_vars .= "s_time.prop9 = '".$ad_omni_config['omni_grade_level']."';\n";
                 $udo_array['grade_level'] = $ad_omni_config['omni_grade_level'];
+                $udo_array['prop9'] = $ad_omni_config['omni_grade_level'];
             }
             
             $omniture_vars .= "s_time.prop13 = '".$ad_omni_config['omni_user_status']."';\n";
-            $udo_array['treat_as_registered'] = $ad_omni_config['omni_user_status'];
+            //$udo_array['treat_as_registered'] = $ad_omni_config['omni_user_status'];
+            $udo_array['prop13'] = $ad_omni_config['omni_user_status'];
             
             if (isset($ad_omni_config['ctype'])) {
                 $omniture_vars .= "s_time.prop15 = '".$ad_omni_config['ctype']."';\n"; 
                 $udo_array['template_type'] = $ad_omni_config['ctype'];
+                $udo_array['prop15'] = $ad_omni_config['ctype'];
             }
             
             if (isset($ad_omni_config['package_name'])) {
                 $omniture_vars .= "s_time.prop12 = '".$ad_omni_config['package_name']."';\n";
                 $udo_array['content_package'] = $ad_omni_config['package_name'];
+                $udo_array['prop12'] = $ad_omni_config['package_name'];
             }
             
             if ($ad_omni_config['channel'] == "search") {
                 if (!isset($_GET['page'])) {//Only want number of search results while on page 1.
                     $omniture_vars .= "s_time.prop26 = '".$num_items."';\n";
                     $udo_array['search_results'] = $num_items;
+                    $udo_array['prop26'] = $num_items;
                 }
                 $omniture_vars .= "s_time.prop18 = '".$ad_omni_config['omni_search_term']."';\n";
                 $udo_array['search_keyword'] = $ad_omni_config['omni_search_term'];
+                $udo_array['prop18'] = $ad_omni_config['omni_search_term'];
             }
         }
         $omniture_vars .= "s_time.prop17 = location.href;\n";
+        $udo_array['prop17'] = "location.href";
         $omniture_vars .= "var s_code=s_time.t();if(s_code)document.write(s_code)\n";
         /*Omniture account and js lib. Account must come before js include*/
         $omniture_account = "var s_account='".$ad_omni_config['omni_account']."';";
@@ -129,10 +150,12 @@ function tfk_ads_omni_preprocess_page(&$variables){
         drupal_add_js($omniture_vars, 'inline');
         
         /* UDO */
+        flog_it("BEFORE:");
+        flog_it($omniture_vars);
         ti_udo_set_multi($udo_array);
-        //print_r($udo_array);
+        flog_it("AFTER:");
         flog_it($udo_array);
-    }
+    //}
    
 }
 //Creates the HTML/JS snippet for ads
