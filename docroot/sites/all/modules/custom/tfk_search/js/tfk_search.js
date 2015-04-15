@@ -13,12 +13,13 @@
         // Convert Element into a JQuery object and store it in an array to
         // reduce expensive calls to $.
         sFields[index] = $(Element, context);
-        
-        sFields[index].val('Search').focus(function() {   
-          if(sFields[index].val() == 'Search') {
-            sFields[index].val('');
-          }
-        });
+        if(sFields[index].has("#edit-search-block-form--4")){
+          $(this).val("Sitewide Search").focus(function() {   
+            if(sFields[index].val().length > 0) {
+              sFields[index].val('');
+            }
+          });
+        }
         
       });
       
