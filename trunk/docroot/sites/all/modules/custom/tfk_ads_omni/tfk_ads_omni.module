@@ -6,6 +6,8 @@
 //Add required JS files to HEAD element and set Ad and Omniture variables
 function tfk_ads_omni_preprocess_page(&$variables){
     global $pager_total_items;
+    global $user;
+    
     $udo_array = array();
     $temp_section_array = array();
     
@@ -56,7 +58,8 @@ function tfk_ads_omni_preprocess_page(&$variables){
     tfk_ads_omni_form_alter($variables['page']['footer'], $block_form_state, 'block_26');
 
     /*Omniture*/
-    if (!$variables['is_admin'] == "true") {//Exclude from admin pages
+    //flog_it($user);
+    if (!in_array('administrator',$user->roles)) { //Exclude from admin pages
         /*Omniture vars*/
         $omniture_vars .= "s_time.channel = 'tfk';\n";
         $udo_array['channel'] = 'tfk';
@@ -71,7 +74,6 @@ function tfk_ads_omni_preprocess_page(&$variables){
         if (array_key_exists('theme_hook_suggestions',$variables) && $variables['theme_hook_suggestions'][0] == "page__404page") {
             //404 Page
             $omniture_vars .= "s_time.pageType = 'errorPage';\n";
-            //$udo_array['content_package_section'] = 'errorPage';
             $udo_array['pageType'] = 'erroPage';
         } else {
             $omniture_vars .= "s_time.pageName = '".$ad_omni_config['omni_pagename']."';\n";
@@ -104,14 +106,12 @@ function tfk_ads_omni_preprocess_page(&$variables){
             
             if (isset($ad_omni_config['ctype'])) {
                 $omniture_vars .= "s_time.prop15 = '".$ad_omni_config['ctype']."';\n"; 
-                $udo_array['template_type'] = $ad_omni_config['ctype'];
                 $udo_array['prop15'] = $ad_omni_config['ctype'];
             }
             
             if (isset($ad_omni_config['package_name'])) {
                 $omniture_vars .= "s_time.prop12 = '".$ad_omni_config['package_name']."';\n";
-                $udo_array['content_package'] = $ad_omni_config['package_name'];
-                $udo_array['prop12'] = $ad_omni_config['package_name'];
+                $udo_array['prop12'] = str_replace("\n", "", $ad_omni_config['package_name']);
             }
             
             if ($ad_omni_config['channel'] == "search") {
