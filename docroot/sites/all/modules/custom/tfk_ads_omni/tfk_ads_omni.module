@@ -73,13 +73,17 @@ function tfk_ads_omni_preprocess_page(&$variables){
             $omniture_vars .= "s_time.pageName = '".$ad_omni_config['omni_pagename']."';\n";
             $temp_array = explode("|", $ad_omni_config['omni_pagename']);
             $num_elements = count($temp_array);
+            $udo_array['page_name'] = str_replace("\n", "", $temp_array[$num_elements - 1])
+            /*
             for($i=$num_elements; $i>1; $i--) {
                 if ($i == $num_elements) {
                     $udo_array['page_name'] = str_replace("\n", "", $temp_array[($i-1)]);
                 } else {
-                   // $udo_array['site_section'.($i-1)] = $temp_array[$i-1];
+                    $udo_array['site_section'.($i-1)] = $temp_array[$i-1];
                 }
             }
+             * 
+             */
             
             $omniture_vars .= "s_time.prop16 = '".tfk_ads_omni_format_omniture($ad_omni_config['channel'])."';\n";
             $udo_array['site_section1'] = $ad_omni_config['channel'];
