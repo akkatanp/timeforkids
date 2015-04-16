@@ -7,20 +7,12 @@
 function tfk_ads_omni_preprocess_page(&$variables){
     global $pager_total_items;
     global $user;
+    global $_SERVER;
     
     $udo_array = array();
-    $temp_section_array = array();
-    
-    // Check for assessment page:
-    //flog_it(strpos($_SERVER['REQUEST_URI'], '/assessment'));
-    if (strpos($_SERVER['REQUEST_URI'], '/assessment') !== FALSE) {
-        //flog_it("tfk_ads_omni_preprocess_page: found assessment url, removing 728x90...");
-        //$variables['ad']['banner_728x90'] = "HI TIMOTHY";
-        return;
-    }
-
     $omniture_vars = "";
     $num_items = $pager_total_items[0];
+    
     /*Ad js lib*/
     if (($_SERVER['HTTP_HOST'] == 'timeforkids.com') || ($_SERVER['HTTP_HOST'] == 'www.timeforkids.com') ) {
         $ti_ad_library = "http://tiads.timeforkids.com/ads/tgx.js";
@@ -58,8 +50,10 @@ function tfk_ads_omni_preprocess_page(&$variables){
     tfk_ads_omni_form_alter($variables['page']['footer'], $block_form_state, 'block_26');
 
     /*Omniture*/
-    //flog_it($user);
-    if (!in_array('administrator',$user->roles)) { //Exclude from admin pages
+    if (!empty($user->name)) { flog_it($user->name.", ".$user->mail); }
+    flog_it($user->roles);
+    flog_it("path=".drupal_get_path_alias());
+    if (!in_array('administrator',$user->roles)) { //Exclude from users with an admin role
         /*Omniture vars*/
         $omniture_vars .= "s_time.channel = 'tfk';\n";
         $udo_array['channel'] = 'tfk';
