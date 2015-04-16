@@ -56,9 +56,9 @@ function tfk_ads_omni_preprocess_page(&$variables){
         $scheme = 'http://';
     }
     $the_path = $scheme.$_SERVER['HTTP_HOST']."/".drupal_get_path_alias();
-    if (!empty($user->name)) { flog_it($user->name.", ".$user->mail); }
-    flog_it($user->roles);
-    flog_it("path=".$the_path);
+    //if (!empty($user->name)) { flog_it($user->name.", ".$user->mail); }
+    //flog_it($user->roles);
+    //flog_it("path=".$the_path);
     if (!in_array('administrator',$user->roles)) { //Exclude from users with an admin role
         /*Omniture vars*/
         $omniture_vars .= "s_time.channel = 'tfk';\n";
@@ -141,11 +141,11 @@ function tfk_ads_omni_preprocess_page(&$variables){
         drupal_add_js($omniture_vars, 'inline');
         
         /* UDO */
-        flog_it("BEFORE:");
-        flog_it($omniture_vars);
+        //flog_it("BEFORE:");
+        //flog_it($omniture_vars);
         ti_udo_set_multi($udo_array);
-        flog_it("AFTER:");
-        flog_it($udo_array);
+        //flog_it("AFTER:");
+        //flog_it($udo_array);
     }
    
 }
