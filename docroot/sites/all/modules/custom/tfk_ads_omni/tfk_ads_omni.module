@@ -121,7 +121,7 @@ function tfk_ads_omni_preprocess_page(&$variables){
             }
         }
         $omniture_vars .= "s_time.prop17 = location.href;\n";
-        $udo_array['prop17'] = "location.href";
+        $udo_array['friendly_url'] = "location.href";
         $omniture_vars .= "var s_code=s_time.t();if(s_code)document.write(s_code)\n";
         /*Omniture account and js lib. Account must come before js include*/
         $omniture_account = "var s_account='".$ad_omni_config['omni_account']."';";
