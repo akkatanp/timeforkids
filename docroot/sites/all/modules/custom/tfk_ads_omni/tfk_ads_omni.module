@@ -86,7 +86,7 @@ function tfk_ads_omni_preprocess_page(&$variables){
              */
             
             $omniture_vars .= "s_time.prop16 = '".tfk_ads_omni_format_omniture($ad_omni_config['channel'])."';\n";
-            $udo_array['site_section1'] = $ad_omni_config['channel'];
+            $udo_array['site_section1'] = tfk_ads_omni_format_omniture($ad_omni_config['channel']);
             
             if ($ad_omni_config['sub_channel']) {
                 $omniture_vars .= "s_time.prop11 = '".tfk_ads_omni_format_omniture($ad_omni_config['sub_channel'])."';\n";
