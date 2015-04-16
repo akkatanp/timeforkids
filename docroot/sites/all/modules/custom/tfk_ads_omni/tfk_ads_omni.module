@@ -68,14 +68,14 @@ function tfk_ads_omni_preprocess_page(&$variables){
         if (array_key_exists('theme_hook_suggestions',$variables) && $variables['theme_hook_suggestions'][0] == "page__404page") {
             //404 Page
             $omniture_vars .= "s_time.pageType = 'errorPage';\n";
-            $udo_array['pageType'] = 'erroPage';
+            $udo_array['page_type'] = 'erroPage';
         } else {
             $omniture_vars .= "s_time.pageName = '".$ad_omni_config['omni_pagename']."';\n";
             $temp_array = explode("|", $ad_omni_config['omni_pagename']);
             $num_elements = count($temp_array);
             for($i=$num_elements; $i>1; $i--) {
                 if ($i == $num_elements) {
-                    $udo_array['pageName'] = str_replace("\n", "", $temp_array[($i-1)]);
+                    $udo_array['page_name'] = str_replace("\n", "", $temp_array[($i-1)]);
                 } else {
                     $udo_array['site_section'.($i-1)] = $temp_array[$i-1];
                 }
@@ -91,7 +91,6 @@ function tfk_ads_omni_preprocess_page(&$variables){
             
             if (array_key_exists('omni_grade_level',$ad_omni_config)) {
                 $omniture_vars .= "s_time.prop9 = '".$ad_omni_config['omni_grade_level']."';\n";
-                $udo_array['grade_level'] = $ad_omni_config['omni_grade_level'];
                 $udo_array['prop9'] = $ad_omni_config['omni_grade_level'];
             }
             
