@@ -1315,7 +1315,12 @@ body.one-sidebar .secondary-touts-view td.col-2  {
 }
 
 /* news article */
-.node-type-article #content .region-content {
+.submitted {
+    display: none;
+}
+
+.node-type-article #content .region-content,
+.node-type-news-brief #content .region-content {
   border: solid 1px #cecece;
   padding: 10px;
   margin-bottom: 10px;
@@ -1327,18 +1332,28 @@ body.one-sidebar .secondary-touts-view td.col-2  {
   margin: 0 0 10px 0;
 }
 
-.node-type-article .field-name-field-article-category {
+.node-type-news-brief .content h1 {
+  font: bold 30px arial, sans-serif;
+  line-height: 30px;
+  margin: -18px 0 15px 0;
+  /* display: none; */
+}
+
+.node-type-article .field-name-field-article-category,
+.node-type-news-brief .field-name-field-article-category{
   height: 20px;
   background: #d71700;
   margin-bottom: 35px;
 }
 
-.node-type-article .field-name-field-article-category .field-items {
+.node-type-article .field-name-field-article-category .field-items,
+.node-type-news-brief .field-name-field-article-category .field-items {
   text-align: center;
   height: 20px;
 }
 
-.node-type-article .field-name-field-article-category .field-item {
+.node-type-article .field-name-field-article-category .field-item,
+.node-type-news-brief .field-name-field-article-category .field-item {
   display: inline;
   background: #fff;
   text-transform: uppercase;
@@ -1356,6 +1371,23 @@ body.one-sidebar .secondary-touts-view td.col-2  {
 
 .node-type-article .is-kid-reporter-article .field-name-field-article-category .field-items {
   display: none;
+}
+
+.node-type-news-brief .field-name-field-news-brief-headline-1,
+.node-type-news-brief .field-name-field-news-brief-headline-2,
+.node-type-news-brief .field-name-field-news-brief-headline-3,
+.node-type-news-brief .field-name-field-news-brief-headline-4 {
+  font: bold 21px arial, sans-serif;
+  /* margin-bottom: 10px; */
+}
+
+.node-type-news-brief .field-name-field-news-brief-deck-1,
+.node-type-news-brief .field-name-field-news-brief-deck-2,
+.node-type-news-brief .field-name-field-news-brief-deck-3,
+.node-type-news-brief .field-name-field-news-brief-deck-4 {
+  font: 12px arial, sans-serif;
+  line-height: 16px;
+  margin-bottom: 10px;
 }
 
 .node-type-article .field-name-field-deck {
@@ -1546,11 +1578,21 @@ body.one-sidebar .secondary-touts-view td.col-2  {
   margin-bottom: 10px;
 }
 
-.node-type-article .field-name-field-image-credit {
+.node-type-article .field-name-field-image-credit,
+.node-type-news-brief .field-name-field-news-brief-image-credit-1,
+.node-type-news-brief .field-name-field-news-brief-image-credit-2,
+.node-type-news-brief .field-name-field-news-brief-image-credit-3,
+.node-type-news-brief .field-name-field-news-brief-image-credit-4 {
   font: normal 9px arial, sans-serif;
   color: #999;
   text-align: right;
   text-transform: uppercase;
+
+  height: 12px;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  border-bottom: dotted 1px #cecece;
+}
 }
 
 .node-type-article .field-name-field-image-caption,
@@ -1772,7 +1814,11 @@ body.node-type-atw-destination .group-destination-images {
   border-top: solid 1px #cecece;
 }
 
-.view-news-archive .views-field-field-lrg-rect-image {
+.view-news-archive .views-field-field-lrg-rect-image, 
+.view-news-archive .views-field-field-news-brief-image-1,
+.view-news-archive .views-field-field-news-brief-image-2,
+.view-news-archive .views-field-field-news-brief-image-3,
+.view-news-archive .views-field-field-news-brief-image-4 {
   margin-right: 10px;
   width: 117px;
   height: 62px;
@@ -1782,7 +1828,11 @@ body.node-type-atw-destination .group-destination-images {
   top: 0px;*/
 }
 
-.view-news-archive .views-field-field-lrg-rect-image img {
+.view-news-archive .views-field-field-lrg-rect-image img, 
+.view-news-archive .views-field-field-news-brief-image-1 img,
+.view-news-archive .views-field-field-news-brief-image-2 img,
+.view-news-archive .views-field-field-news-brief-image-3 img,
+.view-news-archive .views-field-field-news-brief-image-4 img {
   width: 115px;
   height: 60px;
   border: solid 1px #cecece;

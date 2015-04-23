@@ -35,8 +35,8 @@ if(count($user_roles) == 1 && in_array('anonymous user',$user_roles)){
 
 
 <?php foreach ($fields as $id => $field): ?>
-<?php //flog_it("id=".$id.", field=".$field->content."\n"); ?>
-    <?php if($id == 'field_lrg_rect_image' || $id == 'field_news_brief_image_1'):?>
+    <?php flog_it("id=".$id); ?>
+    <?php if($id == 'field_news_brief_image'):?>
       <?php if (!empty($field->separator)): ?>
         <?php print $field->separator; ?>
       <?php endif; ?>
@@ -52,11 +52,11 @@ if(count($user_roles) == 1 && in_array('anonymous user',$user_roles)){
 <div class="rightcol">
 <?php foreach ($fields as $id => $field): ?>
 
-    <?php if($id != 'field_mini_lessons' && $id != 'field_related_articles' && $id !='field_lrg_rect_image' && $id !='field_news_brief_image_1'):?>
+    <?php if($id != 'field_mini_lessons' && $id != 'field_related_articles' && $id !='field_lrg_rect_image'):?>
       <?php if (!empty($field->separator)): ?>
         <?php print $field->separator; ?>
       <?php endif; ?>
-    
+
       <?php print $field->wrapper_prefix; ?>
         <?php print $field->label_html; ?>
         <?php print $field->content; ?>
