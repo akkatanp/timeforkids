@@ -81,30 +81,6 @@
  * @see template_process()
  */
 
-if($is_anon == 1){
-  unset($content['group_additional_content']);
-}else{
-    if(isset($content['group_additional_content'])){
-        $addit_content = $content['group_additional_content'];
-        $content['group_additional_content']['#prefix'] = '<b>Additional Content:</b><br/>'.$content['group_additional_content']['#prefix'];
-    }
-}
-
-$visible=1;
-if(!isset($content['group_additional_content']['field_mini_lessons'])&& !isset($content['group_additional_content']['field_related_articles']))
-{
-  unset($content['group_additional_content']);
-  $visible=0;
- }
- 
-if(count(arg()) == 4) {
- $magazine = menu_get_object('node', 3);
- if($magazine && $magazine->type == 'magazine_issue') {
-   $magazine_article = TRUE;
- } else {
-   $magazine_article = FALSE;
- }
-}
 //flog_it("title_prefix=");
 //flog_it($title_prefix);
 //flog_it("title_suffix:");
@@ -113,22 +89,15 @@ if(count(arg()) == 4) {
 //flog_it("display_submitted=".$display_submitted);
 //flog_it("field_article_category:");
 //flog_it(render($content['field_article_category']));
-//flog_it("field_news_brief_category:");
-//flog_it($content['field_news_brief_category']);
 //flog_it("content:");
 //flog_it($content);
-
 //flog_it("classes=".$classes.", attributes=".$attributes);
 
-flog_it($content['field_article_category']);
+//flog_it($content['field_article_category']);
+        
 ?>
-<?php if($is_kid_reporter_article == 1){
-        //unset($content['group_date_and_author']['field_article_byline']);
-}?>
 
-<div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?>  <?php if($is_kid_reporter_article == 1){print 'is-kid-reporter-article';}?> clearfix"<?php print $attributes; ?>>
-
-  <?php print $user_picture; ?>
+<div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?>  clearfix"<?php print $attributes; ?>>
 
   <?php print render($title_prefix); ?>
   <?php if (!$page && !isset($magazine_article) && $title): ?>
@@ -147,7 +116,7 @@ flog_it($content['field_article_category']);
   <?php endif; ?>
   
   <div class="content"<?php print $content_attributes; ?>>
-      <?php
+    <?php
       // We hide the comments and links now so that we can render them later.
       hide($content['comments']);
       hide($content['links']);
@@ -157,8 +126,8 @@ flog_it($content['field_article_category']);
       <?php print render($content);?><br/>
 
       <?php if($is_anon == 0 && $visible == 1  ):?>
-            <br/><b>Additional Content:</b><br/>
-            <?php  print render($addit_content); ?>
+        <br/><b>Additional Content:</b><br/>
+        <?php  print render($addit_content); ?>
       <?php endif;?>
             
       <?php if(isset($rendered_poll)):?>
