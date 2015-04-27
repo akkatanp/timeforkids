@@ -531,7 +531,6 @@ function theme_tfk_news_formatter_tfk_news_grade_title($element) {
 function tfk_news_views_query_alter(&$view, &$query) {
   if($view->name == 'news_archive'){
     if(strlen(arg(1)) == 4 && is_numeric(arg(1))){
-        
       global $user;
       
       if($user->uid == 0){
@@ -592,7 +591,7 @@ function tfk_news_views_query_alter(&$view, &$query) {
  * Implementation of hook_node_view().
  */
 function tfk_news_node_view($node, $view_mode, $langcode) {
-    flog_it("tfk_news_node_view...");
+    //flog_it("tfk_news_node_view...");
     
   $tmp_body =  field_get_items('node', $node, 'field_body');
    
@@ -710,7 +709,7 @@ function tfk_news_preprocess_block(&$variables){
 }
 
 function tfk_news_preprocess_page(&$vars) {
-  flog_it("tfk_news_preprocess_page...");
+  //flog_it("tfk_news_preprocess_page...");
   $rgs = arg();
     
   if(count($rgs) == 2 && ($rgs[0] == 'node') && is_numeric($rgs[1])){
@@ -764,7 +763,6 @@ function tfk_news_preprocess_page(&$vars) {
 }
 
 function tfk_news_preprocess_html(&$variables) {
-  flog_it("tfk_news_preprocess_html...");
   $rgs = arg();
 
   global $user;
@@ -834,7 +832,7 @@ function tfk_news_preprocess_html(&$variables) {
 
 
 function tfk_news_preprocess_node(&$variables){
-    flog_it("tfk_news_preprocess_node...");
+
 
   $variables['is_kid_reporter_article'] = 0;
 
