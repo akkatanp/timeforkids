@@ -1337,6 +1337,11 @@ body.one-sidebar .secondary-touts-view td.col-2  {
   line-height: 30px;
   margin: -18px 0 15px 0;
   /* display: none; */
+  
+  /* margin-bottom: 10px; */
+  /* height: 12px; */
+  padding-bottom: 10px;
+  border-bottom: dotted 1px #cecece;
 }
 
 .node-type-article .field-name-field-article-category,
@@ -1388,6 +1393,10 @@ body.one-sidebar .secondary-touts-view td.col-2  {
   font: 12px arial, sans-serif;
   line-height: 16px;
   margin-bottom: 10px;
+  
+  /* height: 12px; */
+  padding-bottom: 10px;
+  border-bottom: dotted 1px #cecece;
 }
 
 .node-type-article .field-name-field-deck {
@@ -1587,12 +1596,6 @@ body.one-sidebar .secondary-touts-view td.col-2  {
   color: #999;
   text-align: right;
   text-transform: uppercase;
-
-  height: 12px;
-  padding-bottom: 10px;
-  margin-bottom: 10px;
-  border-bottom: dotted 1px #cecece;
-}
 }
 
 .node-type-article .field-name-field-image-caption,
