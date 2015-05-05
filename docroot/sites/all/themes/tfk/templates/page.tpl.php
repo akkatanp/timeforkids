@@ -71,7 +71,8 @@
 <?php
 if(drupal_is_front_page()) {
     unset($page['content']['system_main']['default_message']);
-    }
+}
+//dpm($title);
 ?>
 
 
@@ -94,20 +95,10 @@ if(drupal_is_front_page()) {
     <?php if ($site_name || $site_slogan): ?>
       <div id="name-and-slogan">
         <?php if ($site_name): ?>
-          <?php if ($title): ?>
-            <div id="site-name"><strong>
-              <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home"><span><?php print $site_name; ?></span></a>
-            </strong></div>
-          <?php else: /* Use h1 when the content title is empty */ ?>
-            <h1 id="site-name">
-              <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home"><span><?php print $site_name; ?></span></a>
-            </h1>
-          <?php endif; ?>
+          
         <?php endif; ?>
 
-        <?php if ($site_slogan): ?>
-          <div id="site-slogan"><?php print $site_slogan; ?></div>
-        <?php endif; ?>
+        
       </div><!-- /#name-and-slogan -->
     <?php endif; ?>
 
@@ -132,11 +123,11 @@ if(drupal_is_front_page()) {
       <?php print render($page['sidebar_second']); ?>
 
       <?php if(!$is_front):?>
-        <h1 class="title" id="section-title">
+        <?php if ($title != "Bulk Orders"): ?><h1 class="title" id="section-title"><?php endif ?>
           <?php if(isset($section_title)):?>
             <?php print $section_title; ?>
           <?php else: ?>
-            <?php print $title; ?>
+            <?php if ($title != "Bulk Orders"): ?><?php print $title; ?><?php endif ?>
           <?php endif; ?>
         </h1>
       <?php endif;?>

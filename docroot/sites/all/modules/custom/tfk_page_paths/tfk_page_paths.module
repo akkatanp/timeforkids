@@ -179,6 +179,13 @@ function tfk_page_paths_preprocess_page(&$variables){
         //tfk_assessment_callback(); 
     }
     
+    // Check for the Bulk Order webform to remove the right rail
+    if ($variables['node']->type == "webform_generic" && $variables['node']->title = "Bulk Orders") {
+        $variables['page']['sidebar_second'] = '';
+        //unset($variables['title']);
+        //dpm($variables['page']);
+    }
+    
     // Check for Poll for an anonymous user
     if ($args[0] == "poll") {
         // Check if the user has a role of anonymous or teacher.
