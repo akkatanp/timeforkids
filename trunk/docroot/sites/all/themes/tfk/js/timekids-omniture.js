@@ -1,4 +1,4 @@
-/* SiteCatalyst code version: H.25.5. Copyright 1996-2013 Adobe, Inc. All Rights Reserved More info available at http://www.omniture.com (tfk 2014-02-07)*/
+/* SiteCatalyst code version: H.25.5. Copyright 1996-2013 Adobe, Inc. All Rights Reserved More info available at http://www.omniture.com (tfk 2015-04-21)*/
 var s_time=s_gi(s_account);
 var s_time_rsid2="timeglobalvideo";
 /* Dynamic account selection */
@@ -25,6 +25,7 @@ s_time.server=window.location.hostname;
 s_time.usePlugins=true;
 function s_time_doPlugins(s_time) { 
 /* Misc variables */
+
 s_time.campaign = s_time.getQueryParam('xid');
 s_time.campaign = s_time.getValOnce(s_time.campaign,'s_v0',0);
 s_time.eVar1    = s_time.getQueryParam('iid');
@@ -195,6 +196,8 @@ s_time.getDaysSinceLastVisit=new Function("c",""
 /* Begin BC SmartPlayer Analytics v1.0 */
 var player;var modVP;var modExp;var modCon;var mediaFriendly;var mediaName;var mediaID=0;var mediaLength;var mediaOffset=0;var mediaTagsArray = [];var mediaTagsArray2 = [];var mediaRefID;var mediaPlayerType;
 var mediaPlayerName="Brightcove Smart Player"; //Hard code player name here.
+s_time.comscoreCust = "6035728"; // comscore customer
+s_time.comscoreId = "timeforkids.com"; // comscore site
 function myTemplateLoaded(experienceID) {
 player = brightcove.api.getExperience(experienceID);
 modVP = player.getModule(brightcove.api.modules.APIModules.VIDEO_PLAYER);
@@ -234,7 +237,17 @@ s_time.eVar59 = mediaPlayerType; // Returns flash or html
 s_time.Media.open(mediaName,mediaLength,mediaPlayerName);
 s_time.Media.play(mediaName,mediaOffset);
 }
-else{s_time.Media.play(mediaName,mediaOffset);}}
+else{s_time.Media.play(mediaName,mediaOffset);}
+if (s.omniPauseFlg==false) {
+
+//var scCI=s.nielsenCust;var scTL=escape(mediaName);var scCG=escape(mediaName);
+//var scC6 = s.nielsenSite;var vc_pix=new Image();vc_pix.src="http://secure-us.imrworldwide.com/cgi-bin/m?ci="+scCI
+//+"&cg="+scCG+"&tl=dav0-"+scTL+"&cc=1&c6=vc,"+scC6+"&rnd="+Math.ceil(Math.random()*100000000);
+var cs_pix=new Image();cs_pix.src="http://b.scorecardresearch.com/p?c1=1&c2="+s.comscoreCust+"&c3="+s.comscoreId+"&c5=020000&rn="+Math.ceil(Math.random()*10000000000);/* comScore Content Starts */
+s.omniPauseFlg=true; // spoof true to avoid additional calls
+}
+
+}
 
 function onStop(evt){
 mediaOffset=Math.floor(evt.position);
