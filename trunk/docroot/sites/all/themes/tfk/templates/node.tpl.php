@@ -85,9 +85,7 @@
 
   <?php if ($type == 'teacher_community_question'): ?>
     
-    <?php if (!$page && $title): ?>
-      <h2 <?php if(isset($title_attributes)): ?><?php print $title_attributes; ?><?php endif; ?>><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h2>
-    <?php endif; ?>
+    
     
     <?php if ($type == 'teacher_community_question'): ?>
       <div class="question-date">
@@ -95,10 +93,7 @@
       </div>
     <?php endif; ?>
     
-    <?php if (isset($print_title) && $title): ?>
-      <h2 <?php if(isset($title_attributes)): ?><?php print $title_attributes; ?><?php endif; ?>><?php print $title; ?></h2>
-    <?php endif; ?>
-    <?php print render($title_suffix); ?>
+    
   
     <?php if (isset($unpublished) && $unpublished): ?>
       <div class="unpublished"><?php print t('Unpublished'); ?></div>
@@ -112,18 +107,7 @@
 
     <?php print $user_picture; ?>
   
-    <?php if (!$page && $title): ?>
-      <h2<?php print $title_attributes; ?>><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h2>
-    <?php endif; ?>
     
-    <?php if (isset($print_title) && $title): ?>
-      <h2 <?php if(isset($title_attributes)): ?><?php print $title_attributes; ?><?php endif; ?>>
-      <?php if($title_prefix): ?>
-      	<?php print (is_array($title_prefix) ? render($title_prefix): $title_prefix); ?>
-      <?php endif; ?>
-      <?php print $title; ?></h2>
-    <?php endif; ?>
-    <?php print render($title_suffix); ?>
 
     <?php if($type == 'slideshow' || $type == 'video'): ?>
     <?php
