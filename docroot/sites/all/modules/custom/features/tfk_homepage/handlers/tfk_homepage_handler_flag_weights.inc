@@ -8,14 +8,14 @@
 $plugin = array(
 	'label' => 'TFK Flag Weights',
 	'handler' => array(
-		'class' => 'draggableviews_handler_tfk_homepage',
+		'class' => 'tfk_homepage_handler_flag_weights',
 	),
 );
 
 /*
 * Implementation using the Flag Weight module.
 */
-class draggableviews_handler_tfk_homepage extends draggableviews_handler {
+class tfk_homepage_handler_flag_weights extends draggableviews_handler {
 	//iStryker: set the weight to node weight.  I don't know why its 'node' weight, it should be entity weight I think
 	//This will probably change when flag weight changes its naming convention 
 	function get($field, $index) {
@@ -44,10 +44,12 @@ class draggableviews_handler_tfk_homepage extends draggableviews_handler {
       $prev_ids[] = $item['id'];
     	flag_weights_set_weight($fid, $flag->content_type, $item['id'], $uid, $item['weight']);
     }
-    db_update('flag_content')
-        ->fields(array('weight' => 99))
-        ->condition('content_id', $prev_ids, 'NOT IN')
-        ->condition('fid', $fid)
-       ->execute();
+    if ($fid === 18) {
+      db_update('flag_content')
+          ->fields(array('weight' => 99))
+          ->condition('content_id', $prev_ids, 'NOT IN')
+          ->condition('fid', $fid)
+         ->execute();
+    }
   }
 }
