@@ -41,6 +41,27 @@
 
         });
       }
+      
+      // TFK sitewide search - Remove Sitewide Search text for blank search.
+      $('#search-block-form--2 .form-submit').click(function(){
+        var keyVal = $('#search-block-form--2 .form-text').val();
+        if( keyVal === 'Sitewide Search' ) {
+            $('#search-block-form--2 .form-text').val('');
+            $(this).submit();
+        }
+         return true;
+      });
+      
+      $('.region-sidebar-top #search-block-form--2 #edit-submit--3').click(function(){
+        var keyVal = $('#search-block-form--2 .form-text').val();
+        if( keyVal === 'Sitewide Search' ) {
+            $('#search-block-form--2 .form-text').val('');
+            $(this).submit();
+        }
+        return true;
+      });
+          
+      
 
     }//End attach.
   };
