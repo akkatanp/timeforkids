@@ -680,7 +680,7 @@ jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":
 <li class="leaf"><a href="/photos-video" class="photos-video">Photos &amp; Videos</a></li>
 <li class="leaf"><a href="/mini-sites" class="mini-sites">Mini-Sites</a></li>
 <li class="leaf"><a href="/extras" class="tfk-extras">TFK Extras</a></li>
-<li class="leaf"><a href="/store/subscriptions" class="store">TIMStore</a></li>
+<li class="leaf"><a href="/store/subscriptions" class="store">Store</a></li>
 <li class="last leaf"><a href="/store/lessons-for-tablets">Lessons For Tablets</a></li>
 </ul>    </div>
   
