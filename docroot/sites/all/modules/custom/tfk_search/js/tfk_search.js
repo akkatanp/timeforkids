@@ -23,6 +23,24 @@
         
       });
       
+      // TFK sitewide search - Remove Sitewide Search text for blank search.
+      $('#search-block-form--2 .form-submit').click(function(){
+        var keyVal = $('#search-block-form--2 .form-text').val();
+        if( keyVal === 'Sitewide Search' ) {
+            $('#search-block-form--2 .form-text').val('');
+            $(this).submit();
+        }
+         return true;
+      });
+      $('#search-block-form--2 .form-image_button').click(function(){
+        var keyVal = $('#search-block-form--2 .form-text').val();
+        if( keyVal === 'Sitewide Search' ) {
+            $('#search-block-form--2 .form-text').val('');
+            $(this).submit();
+        }
+         return true;
+      });
+      
       // JQuery UI accordion for facet blocks.
       if(settings.tfk_search.facet_accordion == true) {
         $(".region-sidebar-first .block h2", context).click(function() {

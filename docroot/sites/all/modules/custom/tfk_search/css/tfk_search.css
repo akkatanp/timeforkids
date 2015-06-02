@@ -945,3 +945,7 @@ font-size: 14px;
     list-style-type: none;
     list-style-image: none;
 }
+/* TFK-299 Remove space between search results. */
+.page-search-site .search-results li {
+    margin-bottom: 0 !important;
+}
