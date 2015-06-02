@@ -1,4 +1,0 @@
-name = "TFK Print"
-description = "Cleanly formats Articles for printing."
-package = "TFK"
-core = "7.x"
