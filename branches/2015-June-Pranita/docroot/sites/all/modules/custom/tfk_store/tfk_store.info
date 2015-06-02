@@ -1,4 +1,0 @@
-name = TFK Store
-description = Utility functions for the TFK Store
-core = 7.x
-package = "TFK"

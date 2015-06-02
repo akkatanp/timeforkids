@@ -1,4 +1,0 @@
-name = TFK Polls
-description = TFK Polls functionality
-core = 7.x
-package = "TFK"
