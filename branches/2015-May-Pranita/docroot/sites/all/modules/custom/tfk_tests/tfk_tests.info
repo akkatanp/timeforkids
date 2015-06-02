@@ -1,0 +1,6 @@
+name = TFK Tests 
+description = Provides site-wide unit and functional tests for TFK.
+core = 7.x
+package = TFK
+files[] = tfk_tests.test
+files[] = tests/tfk.test
