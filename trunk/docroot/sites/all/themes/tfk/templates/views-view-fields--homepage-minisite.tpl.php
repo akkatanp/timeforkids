@@ -22,7 +22,6 @@
  *
  * @ingroup views_templates
  */
-
 ?>
 
 <?php foreach ($fields as $id => $field): ?>
