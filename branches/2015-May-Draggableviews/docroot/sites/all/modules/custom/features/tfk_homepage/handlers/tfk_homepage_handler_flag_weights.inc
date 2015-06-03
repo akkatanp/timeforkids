@@ -44,12 +44,12 @@ class tfk_homepage_handler_flag_weights extends draggableviews_handler {
       $prev_ids[] = $item['id'];
     	flag_weights_set_weight($fid, $flag->content_type, $item['id'], $uid, $item['weight']);
     }
-    if ($fid === 18) {
+    if (!empty($prev_ids)) {
       db_update('flag_content')
-          ->fields(array('weight' => 99))
-          ->condition('content_id', $prev_ids, 'NOT IN')
-          ->condition('fid', $fid)
-         ->execute();
+        ->fields(array('weight' => 99))
+        ->condition('content_id', $prev_ids, 'NOT IN')
+        ->condition('fid', $fid)
+        ->execute();
     }
   }
 }
