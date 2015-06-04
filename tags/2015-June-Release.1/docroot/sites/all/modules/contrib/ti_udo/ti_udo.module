@@ -1,0 +1,210 @@
+<?php
+/**
+ * @file
+ * Time Inc Universal Data Object (UDO)
+ * A Drupal module to provide a site specific metadata API with an interface to 
+ * the Tealium Universal Data Object (UDO)
+ *
+ * @author Neal Bailly
+ *
+ */
+
+/**
+ * Implementation of hook_menu.
+ *
+ * Creates menu hooks dynamically from published curation nodes with page hooks.
+ *
+ */
+
+function ti_udo_menu() {
+
+  $items = array();
+
+  $items['admin/config/services/udo'] = array(
+    'title' => 'Time Inc. Univeral Data Object (UDO)',
+    'description' => 'Configure your Time Inc. Universal Data Object.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('ti_udo_admin_form'),
+    'access arguments' => array('administer site configuration'),
+    'file' => 'ti_udo.admin.inc',
+    'type' => MENU_NORMAL_ITEM,
+  );
+
+  return $items;
+
+}
+
+/**
+ * Implements hook_theme()
+ */
+function ti_udo_theme($existing, $type, $theme, $path) {
+  if (!is_array($existing)
+      || !is_string($type)
+      || !is_string($theme)
+      || !is_string($path)
+  ) {
+
+    return array();
+  }
+
+  $settings = array(
+    'metadata' => array(
+      'arguments' => array(),
+      'template'  => 'metadata',
+      'path'      => $path . '/templates',
+    ),
+    'admin' => array(
+      'arguments' => array(),
+      'template'  => 'admin',
+      'path'      => $path . '/templates',
+    )
+  );
+
+  return $settings;
+}
+
+/**
+ * Implements template_preprocess_html()
+ * @param array $variables
+ * @see template_preprocess_html()
+ */
+function ti_udo_preprocess_html(&$variables) {
+
+  // Only preprocess page if variables are set 
+  if (FALSE === is_array($variables)) {
+    return;
+  }
+
+  // if not an admin page, then set the page_top region
+  // to include a data object theme template.  The theme
+  // template places a JSON verson of the data object 
+  // on every page of the site.
+
+  if (arg(0) != 'admin') {
+
+    drupal_add_js(drupal_get_path('module', 'ti_udo') . '/js/metadata.js');
+
+    if (FALSE === array_key_exists('page', $variables)
+        || FALSE === is_array($variables['page'])
+        || FALSE === array_key_exists('page_top', $variables['page'])
+        || FALSE === is_array($variables['page']['page_top'])
+    ) {
+      $variables['page']['page_top'] = array();
+    }
+
+    $udo = array();
+
+    $udo_map = variable_get('ti_udo_map',array());
+
+    foreach($udo_map as $name => $values) {
+      if (!empty($values->metadata)) {
+        $udo[$name]=$values->metadata;
+      }
+    }
+
+    $metadata_theme_variables = array('udo' => $udo);
+
+    // Uses weight of -1001, which places it on the page 
+    // just before the Tealium UDO and utag (-1000)
+
+    $variables['page']['page_top']['metadata'] = array(
+      '#markup' => theme('metadata', $metadata_theme_variables),
+      '#weight' => -1001,
+    );
+
+  }
+
+}
+
+/**
+ * Helper function to map a key value pair in the metadata object to the UDO (if it belongs).
+ * Invoked from ti_udo_set.
+ */
+function ti_udo_map_udo($key, $value) {
+  static $map;
+  if ($map==NULL) {
+    $udo_map = variable_get('ti_udo_map', array());
+    $map = array();
+    foreach ($udo_map as $udo_key => $values) {
+      if (isset($values->metadata)) {
+        $map[$values->metadata] = $udo_key;
+      }
+    }
+  }
+  if (array_key_exists($key, $map)) {
+    tealium_add_data($map[$key], $value);
+  }
+}
+
+
+/**
+ * User function to set Data Object key value pairs in a globally scoped array.
+ *
+ * @param $key
+ *   The variable you're intending to set.
+ * @param $value
+ *   The value of the variable you want to set.
+ * @param bool $overwrite
+ *   By default, this function will overwrite a variable declared by the $key argument.  Optionally, this argument can
+ *   be set to false, which would allow this function to return the existing value if it's already set.
+ *
+ * @return mixed
+ *   If $overwrite is true, this function returns TRUE if the value can be set.  If overwrite is FALSE, it will return
+ *   the value of the requested variable.
+ */
+function ti_udo_set($key, $value, $overwrite = TRUE) {
+  global $ti_udo_metadata;
+  if (!$overwrite && isset($ti_udo_metadata[$key])) {
+    return $ti_udo_metadata[$key];
+  }
+  ti_udo_map_udo($key, $value);
+  return $ti_udo_metadata[$key] = $value;
+}
+
+/**
+ * User function to set multiple key value pairs at once.
+ *
+ * @param array $keyvals
+ *   An array of key values to set
+ * @param bool $overwrite
+ *   By default, this function will overwrite a variable declared by the $key argument.  Optionally, this argument can
+ *   be set to false, which would allow this function to return the existing value if it's already set.
+ */
+
+function ti_udo_set_multi($keyvals, $overwrite = TRUE) {
+  foreach ($keyvals as $key => $value) {
+    ti_udo_set($key, $value, $overwrite);
+  }
+}
+
+/**
+ * User function to get a Data Object value.
+ *
+ * @param $key
+ *   The variable you're intending to get.
+ * @param $default
+ *   The default value to use if the variable is not set.
+ *
+ * @return mixed
+ *   If the key is not passed or is NULL, this function returns the entire metadata object.  If the key is passed in and the value
+ *   for that key is seat, it will return the value.  If the key is passed in and the value for the key is NOT set,
+ *   it will return the default.
+ */
+function ti_udo_get($key = NULL, $default = NULL) {
+  global $ti_udo_metadata;
+  if (!isset($key)) {
+    return $ti_udo_metadata;
+  }
+  return isset($ti_udo_metadata[$key]) ? $ti_udo_metadata[$key] : $default;
+}
+
+/**
+ * User function to add a binding to an DOM element that will send data to Tealium when an event fires.
+ *
+ * @param TealiumJqueryEventBinding $bind_utag_data_event
+ *  The object describing the utag_data element event binding.
+ * @return TealiumJqueryEventBinding[]
+ */
+function ti_udo_bind($bind_utag_data_event = NULL) {
+  return tealium_add_bind_data($bind_utag_data_event);
+}
