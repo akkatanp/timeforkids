@@ -1,0 +1,33 @@
+/**
+ * @file
+ * CSS targeted specifically for Internet Explorer 8 (and earlier) for Windows.
+ *
+ * Any CSS in this file will apply to all versions of IE before IE 9. You can
+ * target specific versions of IE by using conditional comments. See your
+ * sub-theme's .info file for an easy way to use them.
+ */
+
+/* Mini-sites main page */
+#block-views-mini-site-home-block .view-mini-site-home td.col-1,
+#block-views-mini-site-home-block-1 .view-mini-site-home td.col-1  {
+  margin-right: 3px;
+}
+
+/*Jump page back button descriptive text*/
+#tfk-jump-back {
+    margin-top:40px;
+}
+/* Spacing for the Featured story blocks */
+#block-views-minisite-articles-block-2 .views-field-title-1,
+#block-views-minisite-articles-block-3 .views-field-title-1,
+.view-homepage-top-story .view-content .views-field-title-1,
+.view-teacher-news-top-story .view-content .views-field-title-1,
+.view-kid-reporters-channel-top-story .views-field-title-1 {
+	display: inline;
+	margin-left:5px;
+}
+
+/* Main footer */
+#footer {
+	display:block !important;
+}
