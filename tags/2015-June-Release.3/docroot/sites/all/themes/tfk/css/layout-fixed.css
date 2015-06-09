@@ -1,0 +1,255 @@
+/**
+ * @file
+ * Layout Styling (DIV Positioning)
+ *
+ * Define CSS classes to create a table-free, 3-column, 2-column, or single
+ * column layout depending on whether blocks are enabled in the left or right
+ * columns.
+ *
+ * This layout is based on the Zen Columns layout method.
+ *   http://drupal.org/node/201428
+ *
+ * Only CSS that affects the layout (positioning) of major elements should be
+ * listed here.  Such as:
+ *   display, position, float, clear, width, height, min-width, min-height
+ *   margin, border, padding, overflow
+ */
+
+
+/*
+ * Body
+ */
+body {
+}
+
+#page-wrapper {
+  /*
+   * If you want to make the page a fixed width and centered in the viewport,
+   * this is the standards-compliant way to do that. See also the ie6.css file
+   * for the necessary IE5/IE6quirks hack to center a div.
+   */
+  width: 100%;
+}
+
+#page {
+}
+
+/*
+ * Header
+ */
+#header {
+	width: 100%;
+	height: 110px;
+	background: #d71700;
+}
+
+#header .section {
+	position: relative;
+	margin: 0 auto;
+	width: 950px;
+	height: 110px;
+	clear: both;
+}
+
+/*
+ * Main (container for everything else)
+ */
+#main-wrapper {
+	position: relative;
+	width: 950px;
+	margin: 0 auto;
+}
+
+#main {
+}
+
+/*
+ * Content
+ */
+.page-store.page-store-books #content.column,
+.page-store.page-store-products #content.column,
+#content.column {
+	float: left;
+	width: 510px;
+	margin-right: 20px;
+	margin-top: 0;
+}
+
+.page-store #content.column,
+.front #content.column {
+	float: left;
+	width: 768px;
+	margin-right: 20px;
+}
+
+#content .section {
+	margin: 0;
+	padding: 0;
+}
+
+/*
+ * Navigation
+ */
+.with-navigation #content,
+.with-navigation .region-sidebar-first,
+.with-navigation .region-sidebar-second {
+	margin-top: 0; /* Set this to the same value as the navigation height above. */
+}
+
+#navigation .section {
+}
+
+/*
+ * First sidebar
+ */
+.region-sidebar-first {
+
+}
+
+.front .region-sidebar-first {
+	display: none;
+}
+
+.region-sidebar-bottom {
+
+}
+
+#first-column {
+  position: relative;
+  float: left;
+  width: 250px;
+  margin-right: 8px;
+}
+
+/*
+ * Second sidebar
+ */
+.region-sidebar-second {
+	float: right;
+	width: 162px;
+	padding: 0;
+	margin-top: 0px;
+}
+.region.region-sidebar-second.column.sidebar{/*IE7->*/*height:10px;}
+/*
+ * Footer
+ */
+.region-footer {
+	margin-top: 30px;
+	width: 768px;
+}
+
+#footer {
+	display:inline-block;
+}
+
+#footer .region-footer {
+	top: inherit;
+}
+
+body.two-sidebars .region-footer,
+body.page-teacher-community-topic-list .region-footer, 
+body.node-type-teacher-community-question .region-footer,
+body.page-node-add-teacher-community-question .region-footer,
+body.section-404page .region-footer,
+body.front .region-footer,
+body.page-node-7631 .region-footer,
+body.page-node-8091 .region-footer,
+body.page-node-7636 .region-footer,
+body.page-node-8116 .region-footer,
+body.page-store .region-footer,
+body.page-search .region-footer {
+	float: left;
+}
+
+body .region-footer {
+	float: left;
+}
+
+/*
+ * Page bottom.
+ * See also the #page-wrapper declaration above that this div shares.
+ */
+.region-bottom {
+	margin: 0 auto;
+	width: 950px;
+}
+
+/*
+ * Prevent overflowing content
+ */
+#header,
+#content,
+#navigation,
+.region-sidebar-first,
+.region-sidebar-second,
+.region-footer,
+.region-bottom {
+  overflow: visible;
+  word-wrap: break-word; /* A very nice CSS3 property */
+}
+
+/**
+ * Markup free clearing.
+ *
+ * Switched from Perishable Press New Clearfix to Nicolas Gallagher's Micro
+ * Clearfix. Solves major inconsistency issues in IE7 and IE8 and other minor
+ * issues in other browsers.
+ *
+ * @see http://nicolasgallagher.com/micro-clearfix-hack
+ * @see http://drupal.org/node/961876
+ */
+
+/* For modern browsers */
+.clearfix:before,
+.clearfix:after {
+    content:"";
+    display:table;
+}
+
+.clearfix:after {
+    clear:both;
+}
+
+/* For IE 6/7 (trigger hasLayout) */
+.clearfix {
+    zoom:1;
+}
+
+/* On IE7, compensate for second-sidebar's lack of height when user is anon. */
+*:first-child + html body.not-logged-in.node-type-webform .region-sidebar-second,
+*:first-child + html body.not-logged-in.node-type-atw-timeline .region-sidebar-second {
+  padding-bottom: 130px;
+}
+
+*:first-child + html body.not-logged-in.page-photos-video .region-sidebar-second,
+*:first-child + html body.not-logged-in.page-news-archive .region-sidebar-second {
+  margin-bottom: 350px;
+}
+
+*:first-child + html body.not-logged-in.page-store .region-sidebar-second {
+  margin-bottom: 800px;
+}
+
+*:first-child + html body.not-logged-in.page-around-the-world .region-sidebar-second {
+	margin-bottom: 900px;
+}
+
+*:first-child + html body.not-logged-in.extras-root .region-sidebar-second {
+  margin-bottom: 1500px;
+}
+
+/*
+ * If a div.clearfix doesn't have any content after it and its bottom edge
+ * touches the bottom of the viewport, Firefox and Safari will mistakenly
+ * place several pixels worth of space between the bottom of the div and the
+ * bottom of the viewport. Uncomment this CSS property to fix this.
+ * Note: with some over-large content, this property might cause scrollbars
+ * to appear on the #page-wrapper div.
+ */
+/*
+#page-wrapper {
+  overflow-y: hidden;
+}
+*/
+
