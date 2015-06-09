@@ -143,11 +143,11 @@ function tfk_page_paths_preprocess_page(&$variables){
     }
     
     // Check for the digital editions path and an anonymous user
-    if (strstr($args[0], "digital") && $variables['is_anon']) {
-        //flog_it("Found Anon & digital editon path...");
-        drupal_deliver_page(MENU_ACCESS_DENIED);
-        drupal_exit();
-    }
+//    if (strstr($args[0], "digital") && $variables['is_anon']) {
+//        //flog_it("Found Anon & digital editon path...");
+//        drupal_deliver_page(MENU_ACCESS_DENIED);
+//        drupal_exit();
+//    }
     
     // Check for the assessment path and an anonymous user
     if (strstr($args[0], "assessment") && $variables['is_anon']) {

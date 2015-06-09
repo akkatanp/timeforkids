@@ -274,13 +274,7 @@
     // tfk-34
     // Check for Subscriber Only content - activate popup, automatically
     if (document.title.indexOf('SUBSCRIBER-ONLY CONTENT') != -1) {
-      // TFK-342 - Hide login for /digital  
-      if(window.location.pathname == '/digital'){
-        window.location.href = "http://subscription-assets.timeforkids.com/prod/assets/themes/magazines/SUBS/templates/velocity/site/tk-digital/login.html";
-      }
-      else{
         $('div#teacher-nav-container .login-link').trigger('click');
-      }
     }
     /*
     $('.not-logged-in .tfk-magazine').click(function(e) {
