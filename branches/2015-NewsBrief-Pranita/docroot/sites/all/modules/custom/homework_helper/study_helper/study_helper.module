@@ -1,0 +1,366 @@
+<?php
+
+/**
+ * @file
+ * Custom functionality for Flashcards.
+ */
+
+/**
+ * Implements hook_cron().
+ *
+ * Deletes expired flashcard nodes.
+ */
+function study_helper_cron() {
+  $data = views_get_view_result('flashcard_expirations');
+  $count = count($data);
+  if ($count) {
+    foreach ($data as $node) {
+      $nids[] = $node->nid;
+    }
+    node_delete_multiple($nids);
+    watchdog('Study Helper', 'Deleted !count expired flash-card decks.', array('!count' => $count));
+  }
+}
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ *
+ * Alter the flashcard creation form for student use.
+ */
+function study_helper_form_node_form_alter(&$form, &$form_state, $form_id) {
+  global $user;
+  $node = $form['#node'];
+  if ($node->type == 'flashcard') {
+    if (!$user->uid) {
+      $form['revision_information']['#access'] = FALSE;
+      $form['field_study_helper']['#access'] = FALSE;
+      $form['help_text'] = array(
+        '#markup' => 'Create your own flash cards. When you\'re done you can copy the web address and use the flash cards again. Your flash cards will expire after two weeks. If you are a teacher with an account ' . l('log in', 'user') . ' first to create non-expiring flash cards.',
+        '#weight' => -6,
+      );
+    }
+    else {
+      $form['help_text'] = array(
+        '#markup' => 'Create your own flash cards. When you\'re done you can copy and share the web address. Your flash cards will not expire.',
+        '#weight' => -6,
+      );
+    }
+    drupal_add_css(drupal_get_path('module', 'study_helper') . '/study-helper.css');
+    drupal_set_title(t('Flash-card Maker'));
+    $form['actions']['preview_changes']['#access'] = FALSE;
+    $form['field_flashcard'][$form['field_flashcard']['#language']]['add_more']['#value'] = t('More Cards');
+    $form['title']['#title'] = t('Title:');
+    $form['title']['#description'] = t('What are your flash cards about?');
+    if (!isset($node->nid) || !$node->nid) { // when new node is being created, it does not yet have a nid
+      $form['#prefix'] = '<div class="flashcards-return">'. l('Back to Flash-card Sets', 'homework-helper/flashcards') . '</div>';
+    }
+    $language = $form['field_flashcard']['#language'];
+    $form['field_flashcard'][$language]['add_more']['#submit'] = array('study_helper_flashcard_field_add_more_submit');
+    // Set teacher and anonymous flashcards to published by default.
+    if (!user_access('create public flashcards')) {
+      $form['options']['status']['#default_value'] = 1;
+      $form['actions']['submit']['#value'] = t('Begin');
+    }
+  }
+}
+
+/**
+ * Implements hook_node_insert().
+ *
+ * Redirect anonymous users to the uuid path of their flashcards.
+ */
+function study_helper_node_insert($node) {
+  global $user;
+  if (!user_access('create public flashcards') && $node->type == 'flashcard') {
+    if (!$user->uid) {
+      $_SESSION['flashcard_anonymous_nid'][$node->nid] = $node->nid;
+    }
+    drupal_goto('flashcard/' . $node->uuid);
+  }
+}
+
+/**
+ * Implements hook_node_update().
+ */
+function study_helper_node_update($node) {
+  study_helper_node_insert($node);
+}
+
+/**
+ * Override of theme_field_multiple_value_form.
+ * Simplifies anonymous flashcard creation by removing drag and drop.
+ */
+function study_helper_field_multiple_value_form($variables) {
+  global $user;
+  $element = $variables['element'];
+
+  // Only override this for anonymous flashcard forms.
+  if ($element['#field_name'] != 'field_flashcard' || user_access('create public flashcards')) {
+    return theme_field_multiple_value_form($variables);
+  }
+
+  $output = '';
+
+  if ($element['#cardinality'] > 1 || $element['#cardinality'] == FIELD_CARDINALITY_UNLIMITED) {
+    $table_id = drupal_html_id($element['#field_name'] . '_values');
+    $order_class = $element['#field_name'] . '-delta-order';
+    $required = !empty($element['#required']) ? '<span class="form-required" title="' . t('This field is required. ') . '">*</span>' : '';
+
+    $header = array();
+    $rows = array();
+
+    // Sort items according to '_weight' (needed when the form comes back after
+    // preview or failed validation)
+    $items = array();
+    foreach (element_children($element) as $key) {
+      if ($key === 'add_more') {
+        $add_more_button = &$element[$key];
+      }
+      else {
+        $items[] = &$element[$key];
+      }
+    }
+    usort($items, '_field_sort_items_value_helper');
+
+    // Add the items as table rows.
+    foreach ($items as $key => $item) {
+      $item['_weight']['#attributes']['class'] = array($order_class);
+      $delta_element = drupal_render($item['_weight']);
+      $cells = array(
+        drupal_render($item),
+      );
+      $rows[] = array(
+        'data' => $cells,
+      );
+    }
+
+    $output = '<div class="form-item">';
+    $output .= theme('table', array('header' => $header, 'rows' => $rows, 'attributes' => array('id' => $table_id, 'class' => array('field-multiple-table'))));
+    $output .= $element['#description'] ? '<div class="description">' . $element['#description'] . '</div>' : '';
+    $output .= '<div class="clearfix">' . drupal_render($add_more_button) . '</div>';
+    $output .= '</div>';
+
+  }
+  else {
+    foreach (element_children($element) as $key) {
+      $output .= drupal_render($element[$key]);
+    }
+  }
+
+  return $output;
+}
+
+/**
+ * Implements hook_theme_registry_alter().
+ */
+function study_helper_theme_registry_alter(&$theme_registry) {
+  $theme_registry['field_multiple_value_form']['theme path'] = 'sites/all/modules/custom/homework_helper/study_helper';
+  $theme_registry['field_multiple_value_form']['function'] = 'study_helper_field_multiple_value_form';
+}
+
+/**
+ * Implements hook_node_prepare().
+ *
+ * Add extra blank flashcard fields to form.
+ */
+function study_helper_node_prepare($node) {
+  if ($node->type == 'flashcard') {
+    $count = 0;
+    if (isset($node->field_flashcard)) {
+      $count = count($node->field_flashcard[$node->language]);
+    }
+    for ($delta = $count; ($delta < $count + 2); $delta++) {
+      $node->field_flashcard[$node->language][$delta] = array('question' => '', 'answer' => '');
+    }
+  }
+}
+
+/**
+ * Implements hook_node_view().
+ */
+function study_helper_node_view($node, $view_mode, $langcode) {
+  if ($node->type == 'flashcard') {
+    $account = user_load($node->uid);
+    if (!user_access('create public flashcards', $account)) {
+      drupal_add_js(libraries_get_path('zeroclipboard') . '/ZeroClipboard.js', 'file');
+      drupal_add_js(drupal_get_path('module', 'study_helper') . '/js/study_helper.js', 'file');
+
+      $node->content['study_helper_url'] = array(
+        '#prefix' => '<div class="study-helper-url">',
+        '#suffix' => '</div>',
+        '#tree' => TRUE,
+        'url' => array(
+          '#type' => 'textfield',
+          '#title' => t('Copy this web address if you want to come back to your flash cards another day.'),
+          '#value' => url('flashcard/' . $node->uuid, array('absolute' => TRUE)),
+        ),
+        'copy' => array(
+          '#markup' => '<div id="study-helper-copy">' . t('Copy') . '</div>',
+        )
+      );
+    }
+    drupal_add_js(drupal_get_path('module', 'study_helper') . '/js/modernizer_3d_transforms.js', 'file');
+    drupal_add_js(drupal_get_path('module', 'study_helper') . '/js/flashcard_cycle_override.js', array('type' => 'file', 'weight' => 50));
+    drupal_add_js(libraries_get_path('hotkeys') . '/jquery.hotkeys.js', 'file');
+    $node->content['study_helper_help'] = array(
+      '#prefix' => '<div class="study-helper-help">',
+      '#suffix' => '</div>',
+      '#markup' => t('Use spacebar to flip cards, and left and right arrow for previous and next.'),
+    );
+  }
+}
+
+/**
+ * Implements hook_block_info().
+ */
+function study_helper_block_info() {
+  return array(
+    0 => array(
+      'info' => t('User flash cards link'),
+      'cache' => DRUPAL_NO_CACHE
+    ),
+  );
+}
+
+/**
+ * Implement hook_block_view().
+ */
+function study_helper_block_view($delta = '') {
+  $block = array();
+  //flog_it("study_helper_block_view: delta=".$delta);
+  //flog_it(study_helper_my_flashcards());
+  
+  switch ($delta) {
+    case 0:
+     $block['content'] = study_helper_my_flashcards();
+     break;
+  }
+  return $block;
+}
+
+/**
+ * Content of My Flashcards block.
+ */
+function study_helper_my_flashcards() {
+  global $user;
+  //flog_it("study_helper_my_flashcards: user->uid=".$user->uid);
+  
+  
+  // The page showing link to 'my flashcards' relies on anonymous sessions.
+  // Therefore it must not be cached.
+  $GLOBALS['conf']['cache'] = FALSE;
+
+  if ($user->uid > 0) {
+    $path = 'homework-helper/my-flashcards';
+  }
+  elseif (isset($_SESSION['flashcard_anonymous_nid'])) {
+    // Link to newest flashcard only for anonymous user.
+    //flog_it("about to run obscured query...");
+    $obscured = db_query("SELECT uuid FROM {node} WHERE nid = :nid", array(':nid' => max($_SESSION['flashcard_anonymous_nid'])))->fetchField();
+    $path = "flashcard/$obscured";
+  }
+  else {
+    return;
+  }
+  
+  // Only admin and editor roles can see this block.
+  if (in_array('administrator',$user->roles) || in_array('editor',$user->roles)){
+    return array(
+      'title' => array(
+        '#prefix' => '<h2>',
+        '#suffix' => '</h2>',
+        '#markup' => t('Looking for your flash cards?'),
+      ),
+      'body' => array(
+        '#prefix' => '<p>',
+        '#suffix' => '</p>',
+        '#markup' => t('Click here to see them'),
+      ),
+      'link' => array(
+        '#theme' => 'link',
+        '#text' => t('My Flash Cards'),
+        '#path' => $path,
+        '#options' => array(
+          'attributes' => array(
+            'class' => array('my-flashcards-link'),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/**
+ * Implements hook_node_access().
+ */
+function study_helper_node_access($node, $op, $account) {
+  $type = is_string($node) ? $node : $node->type;
+  if ($type == 'flashcard' && isset($_SESSION) && array_key_exists('flashcard_anonymous_nid', $_SESSION)) {
+    if ($op == 'update' && $_SESSION['flashcard_anonymous_nid'][$node->nid] == $node->nid) {
+      return NODE_ACCESS_ALLOW;
+    }
+  }
+}
+
+/**
+ * Submit handler for the "Add another item" button of a field form.
+ *
+ *  Copied from field_add_more_submit.  Allows us to add more than
+ *  one item at a time.
+ */
+function study_helper_flashcard_field_add_more_submit($form, &$form_state) {
+  // Determine how many fields to add.
+  $items_to_add = (int) variable_get('study_helper_flashcard_items_to_add', 5);
+  $button = $form_state['clicked_button'];
+
+  // Go one level up in the form, to the widgets container.
+  $element = drupal_array_get_nested_value($form, array_slice($button['#array_parents'], 0, -1));
+  $field_name = $element['#field_name'];
+  $langcode = $element['#language'];
+  $parents = $element['#field_parents'];
+
+  // Increment the items count.
+  $field_state = field_form_get_state($parents, $field_name, $langcode, $form_state);
+  $field_state['items_count'] = $field_state['items_count'] + $items_to_add;
+  field_form_set_state($parents, $field_name, $langcode, $form_state, $field_state);
+
+  $form_state['rebuild'] = TRUE;
+}
+
+/**
+ * Implements hook_process_search_result().
+ *
+ * Further changes to search result links, to run after preprocess changes.
+ */
+function study_helper_process_search_result(&$vars) {
+  // Link all writing tips search results to the writing tips landing page.
+  if ($vars['result']['entity_type'] == 'node' && $vars['result']['bundle'] == 'writing_tips') {
+    $vars['title'] = l($vars['result']['title'], 'homework-helper/writing-tips', array('fragment' => $vars['result']['fields']['entity_id']));
+    
+  }
+  // Link all punctuation practice search results to the corresponding rules page.
+  if ($vars['result']['entity_type'] == 'node' && $vars['result']['bundle'] == 'grammar_practice') {
+    $vars['title'] = l($vars['result']['title'], 'homework-helper/punctuation-practice/rules/' . $vars['result']['fields']['entity_id']);
+  }
+}
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ *
+ * Alter "Ask a Question" webform.
+ */
+function study_helper_form_webform_client_form_306_alter(&$form, &$form_state, $form_id) {
+  drupal_add_js(libraries_get_path('jquery.scrollTo') . '/jquery.scrollTo-1.4.2-min.js', 'file');
+  drupal_add_js(drupal_get_path('module', 'study_helper') . '/js/writing_tips.js', 'file');
+}
+
+/**
+ * Implements hook_preprocess_block().
+ *
+ * Add a .clearfix class to the "Ask a Question" button.
+ */
+function study_helper_preprocess_block(&$variables) {
+  if($variables['block']->delta == 'client-block-306') {
+    $variables['classes_array'][] = 'clearfix';
+  }
+}
