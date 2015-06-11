@@ -381,6 +381,7 @@ function feature_tfk_news_context_default_contexts() {
     'node' => array(
       'values' => array(
         'article' => 'article',
+        'news_brief' => 'news_brief',
       ),
       'options' => array(
         'node_form' => '1',

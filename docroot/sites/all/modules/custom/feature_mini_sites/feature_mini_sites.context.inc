@@ -100,6 +100,12 @@ function feature_mini_sites_context_default_contexts() {
           'region' => 'content',
           'weight' => '-59',
         ),
+        'views-2199928e78699ce3b43d0be1760608b6' => array(
+          'module' => 'views',
+          'delta' => '2199928e78699ce3b43d0be1760608b6',
+          'region' => 'content',
+          'weight' => '-10',
+        ),
       ),
     ),
   );
