@@ -262,6 +262,75 @@ function feature_tfk_news_views_default_views() {
   /* Display: News Archive Logged In */
   $handler = $view->new_display('block', 'News Archive Logged In', 'block_1');
   $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Large Rectangle Image */
+  $handler->display->display_options['fields']['field_lrg_rect_image']['id'] = 'field_lrg_rect_image';
+  $handler->display->display_options['fields']['field_lrg_rect_image']['table'] = 'field_data_field_lrg_rect_image';
+  $handler->display->display_options['fields']['field_lrg_rect_image']['field'] = 'field_lrg_rect_image';
+  $handler->display->display_options['fields']['field_lrg_rect_image']['label'] = '';
+  $handler->display->display_options['fields']['field_lrg_rect_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_lrg_rect_image']['hide_empty'] = TRUE;
+  $handler->display->display_options['fields']['field_lrg_rect_image']['empty_zero'] = TRUE;
+  $handler->display->display_options['fields']['field_lrg_rect_image']['hide_alter_empty'] = FALSE;
+  $handler->display->display_options['fields']['field_lrg_rect_image']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_lrg_rect_image']['settings'] = array(
+    'image_style' => 'tfk_rect_small',
+    'image_link' => 'content',
+  );
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  /* Field: Content: Date */
+  $handler->display->display_options['fields']['field_date']['id'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['table'] = 'field_data_field_date';
+  $handler->display->display_options['fields']['field_date']['field'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['label'] = '';
+  $handler->display->display_options['fields']['field_date']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_date']['settings'] = array(
+    'format_type' => 'long',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_repeat_rule' => 'show',
+  );
+  /* Field: Content: Deck */
+  $handler->display->display_options['fields']['field_deck']['id'] = 'field_deck';
+  $handler->display->display_options['fields']['field_deck']['table'] = 'field_data_field_deck';
+  $handler->display->display_options['fields']['field_deck']['field'] = 'field_deck';
+  $handler->display->display_options['fields']['field_deck']['label'] = '';
+  $handler->display->display_options['fields']['field_deck']['element_label_colon'] = FALSE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title_1']['id'] = 'title_1';
+  $handler->display->display_options['fields']['title_1']['table'] = 'node';
+  $handler->display->display_options['fields']['title_1']['field'] = 'title';
+  $handler->display->display_options['fields']['title_1']['label'] = '';
+  $handler->display->display_options['fields']['title_1']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['title_1']['alter']['text'] = 'View Full Article';
+  $handler->display->display_options['fields']['title_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title_1']['hide_alter_empty'] = FALSE;
+  /* Field: Content: Related Article */
+  $handler->display->display_options['fields']['field_related_articles']['id'] = 'field_related_articles';
+  $handler->display->display_options['fields']['field_related_articles']['table'] = 'field_data_field_related_articles';
+  $handler->display->display_options['fields']['field_related_articles']['field'] = 'field_related_articles';
+  $handler->display->display_options['fields']['field_related_articles']['hide_empty'] = TRUE;
+  $handler->display->display_options['fields']['field_related_articles']['empty_zero'] = TRUE;
+  $handler->display->display_options['fields']['field_related_articles']['hide_alter_empty'] = FALSE;
+  $handler->display->display_options['fields']['field_related_articles']['delta_offset'] = '0';
+  /* Field: Content: Mini-Lessons */
+  $handler->display->display_options['fields']['field_mini_lessons']['id'] = 'field_mini_lessons';
+  $handler->display->display_options['fields']['field_mini_lessons']['table'] = 'field_data_field_mini_lessons';
+  $handler->display->display_options['fields']['field_mini_lessons']['field'] = 'field_mini_lessons';
+  $handler->display->display_options['fields']['field_mini_lessons']['hide_empty'] = TRUE;
+  $handler->display->display_options['fields']['field_mini_lessons']['empty_zero'] = TRUE;
+  $handler->display->display_options['fields']['field_mini_lessons']['hide_alter_empty'] = FALSE;
+  $handler->display->display_options['fields']['field_mini_lessons']['type'] = 'tfk_news_grade_title';
+  $handler->display->display_options['fields']['field_mini_lessons']['delta_offset'] = '0';
+  $handler->display->display_options['fields']['field_mini_lessons']['separator'] = ' | ';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Taxonomy term: Name */
   $handler->display->display_options['arguments']['name']['id'] = 'name';
@@ -297,6 +366,7 @@ return $args[1];
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'article' => 'article',
+    'news_brief' => 'news_brief',
   );
   $handler->display->display_options['block_description'] = 'News Archive Logged In Display';
 
