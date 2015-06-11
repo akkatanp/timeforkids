@@ -42,6 +42,14 @@ function feature_tfk_news_node_info() {
       'title_label' => t('Headline'),
       'help' => '',
     ),
+    'news_brief' => array(
+      'name' => t('News Brief'),
+      'base' => 'node_content',
+      'description' => t('TFK news summaries.'),
+      'has_title' => '1',
+      'title_label' => t('Title'),
+      'help' => '',
+    ),
     'tfk_polldaddy' => array(
       'name' => t('TFK Polldaddy'),
       'base' => 'node_content',

@@ -131,6 +131,17 @@ function feature_mini_sites_views_default_views() {
   /* Display: Home Page Mini-site Block */
   $handler = $view->new_display('block', 'Home Page Mini-site Block', 'block_1');
   $handler->display->display_options['display_description'] = 'Home Page Mini-site Block';
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '1';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['style_options']['row_class'] = '[type_1] ';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   /* Relationship: Flags: homepage_minisite */
   $handler->display->display_options['relationships']['flag_content_rel']['id'] = 'flag_content_rel';
@@ -143,18 +154,38 @@ function feature_mini_sites_views_default_views() {
   $handler->display->display_options['relationships']['field_articles_nid']['id'] = 'field_articles_nid';
   $handler->display->display_options['relationships']['field_articles_nid']['table'] = 'field_data_field_articles';
   $handler->display->display_options['relationships']['field_articles_nid']['field'] = 'field_articles_nid';
-  $handler->display->display_options['relationships']['field_articles_nid']['required'] = TRUE;
   $handler->display->display_options['relationships']['field_articles_nid']['delta'] = '-1';
   $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Type */
+  $handler->display->display_options['fields']['type_1']['id'] = 'type_1';
+  $handler->display->display_options['fields']['type_1']['table'] = 'node';
+  $handler->display->display_options['fields']['type_1']['field'] = 'type';
+  $handler->display->display_options['fields']['type_1']['label'] = '';
+  $handler->display->display_options['fields']['type_1']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['type_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['type_1']['machine_name'] = TRUE;
   /* Field: Content: Tout Image */
   $handler->display->display_options['fields']['field_minisite_tout_image']['id'] = 'field_minisite_tout_image';
   $handler->display->display_options['fields']['field_minisite_tout_image']['table'] = 'field_data_field_minisite_tout_image';
   $handler->display->display_options['fields']['field_minisite_tout_image']['field'] = 'field_minisite_tout_image';
   $handler->display->display_options['fields']['field_minisite_tout_image']['label'] = '';
   $handler->display->display_options['fields']['field_minisite_tout_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_minisite_tout_image']['hide_empty'] = TRUE;
   $handler->display->display_options['fields']['field_minisite_tout_image']['hide_alter_empty'] = FALSE;
   $handler->display->display_options['fields']['field_minisite_tout_image']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_minisite_tout_image']['settings'] = array(
+    'image_style' => '',
+    'image_link' => '',
+  );
+  /* Field: Content: Large Rectangle Image */
+  $handler->display->display_options['fields']['field_lrg_rect_image']['id'] = 'field_lrg_rect_image';
+  $handler->display->display_options['fields']['field_lrg_rect_image']['table'] = 'field_data_field_lrg_rect_image';
+  $handler->display->display_options['fields']['field_lrg_rect_image']['field'] = 'field_lrg_rect_image';
+  $handler->display->display_options['fields']['field_lrg_rect_image']['label'] = '';
+  $handler->display->display_options['fields']['field_lrg_rect_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_lrg_rect_image']['hide_empty'] = TRUE;
+  $handler->display->display_options['fields']['field_lrg_rect_image']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_lrg_rect_image']['settings'] = array(
     'image_style' => '',
     'image_link' => '',
   );
@@ -164,7 +195,15 @@ function feature_mini_sites_views_default_views() {
   $handler->display->display_options['fields']['field_minisite_tout_credit']['field'] = 'field_minisite_tout_credit';
   $handler->display->display_options['fields']['field_minisite_tout_credit']['label'] = '';
   $handler->display->display_options['fields']['field_minisite_tout_credit']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_minisite_tout_credit']['hide_empty'] = TRUE;
   $handler->display->display_options['fields']['field_minisite_tout_credit']['hide_alter_empty'] = FALSE;
+  /* Field: Content: Image Credit 1 */
+  $handler->display->display_options['fields']['field_news_brief_image_credit_1']['id'] = 'field_news_brief_image_credit_1';
+  $handler->display->display_options['fields']['field_news_brief_image_credit_1']['table'] = 'field_data_field_news_brief_image_credit_1';
+  $handler->display->display_options['fields']['field_news_brief_image_credit_1']['field'] = 'field_news_brief_image_credit_1';
+  $handler->display->display_options['fields']['field_news_brief_image_credit_1']['label'] = '';
+  $handler->display->display_options['fields']['field_news_brief_image_credit_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_news_brief_image_credit_1']['hide_empty'] = TRUE;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -178,17 +217,25 @@ function feature_mini_sites_views_default_views() {
   $handler->display->display_options['fields']['body']['field'] = 'body';
   $handler->display->display_options['fields']['body']['label'] = '';
   $handler->display->display_options['fields']['body']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['body']['hide_empty'] = TRUE;
   $handler->display->display_options['fields']['body']['type'] = 'text_trimmed';
   $handler->display->display_options['fields']['body']['settings'] = array(
     'trim_length' => '120',
   );
+  /* Field: Content: Deck */
+  $handler->display->display_options['fields']['field_deck']['id'] = 'field_deck';
+  $handler->display->display_options['fields']['field_deck']['table'] = 'field_data_field_deck';
+  $handler->display->display_options['fields']['field_deck']['field'] = 'field_deck';
+  $handler->display->display_options['fields']['field_deck']['label'] = '';
+  $handler->display->display_options['fields']['field_deck']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_deck']['hide_empty'] = TRUE;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title_1']['id'] = 'title_1';
   $handler->display->display_options['fields']['title_1']['table'] = 'node';
   $handler->display->display_options['fields']['title_1']['field'] = 'title';
   $handler->display->display_options['fields']['title_1']['label'] = '';
   $handler->display->display_options['fields']['title_1']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['title_1']['alter']['text'] = 'View Mini-Site';
+  $handler->display->display_options['fields']['title_1']['alter']['text'] = 'View [type_1]';
   $handler->display->display_options['fields']['title_1']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title_1']['hide_empty'] = TRUE;
   $handler->display->display_options['fields']['title_1']['empty_zero'] = TRUE;
@@ -235,20 +282,72 @@ function feature_mini_sites_views_default_views() {
   $handler->display->display_options['fields']['nothing']['alter']['path'] = 'mini-sites';
   $handler->display->display_options['fields']['nothing']['alter']['link_class'] = 'minisites-link';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['nothing']['hide_empty'] = TRUE;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 0;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'minisite' => 'minisite',
+    'news_brief' => 'news_brief',
+  );
+  /* Filter criterion: Flags: Flagged */
+  $handler->display->display_options['filters']['flagged']['id'] = 'flagged';
+  $handler->display->display_options['filters']['flagged']['table'] = 'flag_content';
+  $handler->display->display_options['filters']['flagged']['field'] = 'flagged';
+  $handler->display->display_options['filters']['flagged']['relationship'] = 'flag_content_rel';
+  $handler->display->display_options['filters']['flagged']['value'] = '1';
   $handler->display->display_options['block_caching'] = '1';
 
   /* Display: Home page Mini-site for Anon */
   $handler = $view->new_display('block', 'Home page Mini-site for Anon', 'block_2');
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['style_options']['row_class'] = '[type]';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Type */
+  $handler->display->display_options['fields']['type']['id'] = 'type';
+  $handler->display->display_options['fields']['type']['table'] = 'node';
+  $handler->display->display_options['fields']['type']['field'] = 'type';
+  $handler->display->display_options['fields']['type']['label'] = '';
+  $handler->display->display_options['fields']['type']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['type']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['type']['machine_name'] = TRUE;
   /* Field: Content: Tout Image */
   $handler->display->display_options['fields']['field_minisite_tout_image']['id'] = 'field_minisite_tout_image';
   $handler->display->display_options['fields']['field_minisite_tout_image']['table'] = 'field_data_field_minisite_tout_image';
   $handler->display->display_options['fields']['field_minisite_tout_image']['field'] = 'field_minisite_tout_image';
   $handler->display->display_options['fields']['field_minisite_tout_image']['label'] = '';
   $handler->display->display_options['fields']['field_minisite_tout_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_minisite_tout_image']['hide_empty'] = TRUE;
   $handler->display->display_options['fields']['field_minisite_tout_image']['hide_alter_empty'] = FALSE;
   $handler->display->display_options['fields']['field_minisite_tout_image']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_minisite_tout_image']['settings'] = array(
+    'image_style' => '',
+    'image_link' => '',
+  );
+  /* Field: Content: Large Rectangle Image */
+  $handler->display->display_options['fields']['field_lrg_rect_image']['id'] = 'field_lrg_rect_image';
+  $handler->display->display_options['fields']['field_lrg_rect_image']['table'] = 'field_data_field_lrg_rect_image';
+  $handler->display->display_options['fields']['field_lrg_rect_image']['field'] = 'field_lrg_rect_image';
+  $handler->display->display_options['fields']['field_lrg_rect_image']['label'] = '';
+  $handler->display->display_options['fields']['field_lrg_rect_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_lrg_rect_image']['hide_empty'] = TRUE;
+  $handler->display->display_options['fields']['field_lrg_rect_image']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_lrg_rect_image']['settings'] = array(
     'image_style' => '',
     'image_link' => '',
   );
@@ -258,7 +357,15 @@ function feature_mini_sites_views_default_views() {
   $handler->display->display_options['fields']['field_minisite_tout_credit']['field'] = 'field_minisite_tout_credit';
   $handler->display->display_options['fields']['field_minisite_tout_credit']['label'] = '';
   $handler->display->display_options['fields']['field_minisite_tout_credit']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_minisite_tout_credit']['hide_empty'] = TRUE;
   $handler->display->display_options['fields']['field_minisite_tout_credit']['hide_alter_empty'] = FALSE;
+  /* Field: Content: Image Credit 1 */
+  $handler->display->display_options['fields']['field_news_brief_image_credit_1']['id'] = 'field_news_brief_image_credit_1';
+  $handler->display->display_options['fields']['field_news_brief_image_credit_1']['table'] = 'field_data_field_news_brief_image_credit_1';
+  $handler->display->display_options['fields']['field_news_brief_image_credit_1']['field'] = 'field_news_brief_image_credit_1';
+  $handler->display->display_options['fields']['field_news_brief_image_credit_1']['label'] = '';
+  $handler->display->display_options['fields']['field_news_brief_image_credit_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_news_brief_image_credit_1']['hide_empty'] = TRUE;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -272,17 +379,25 @@ function feature_mini_sites_views_default_views() {
   $handler->display->display_options['fields']['body']['field'] = 'body';
   $handler->display->display_options['fields']['body']['label'] = '';
   $handler->display->display_options['fields']['body']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['body']['hide_empty'] = TRUE;
   $handler->display->display_options['fields']['body']['type'] = 'text_trimmed';
   $handler->display->display_options['fields']['body']['settings'] = array(
     'trim_length' => '120',
   );
+  /* Field: Content: Deck */
+  $handler->display->display_options['fields']['field_deck']['id'] = 'field_deck';
+  $handler->display->display_options['fields']['field_deck']['table'] = 'field_data_field_deck';
+  $handler->display->display_options['fields']['field_deck']['field'] = 'field_deck';
+  $handler->display->display_options['fields']['field_deck']['label'] = '';
+  $handler->display->display_options['fields']['field_deck']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_deck']['hide_empty'] = TRUE;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title_1']['id'] = 'title_1';
   $handler->display->display_options['fields']['title_1']['table'] = 'node';
   $handler->display->display_options['fields']['title_1']['field'] = 'title';
   $handler->display->display_options['fields']['title_1']['label'] = '';
   $handler->display->display_options['fields']['title_1']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['title_1']['alter']['text'] = 'View Mini-Site';
+  $handler->display->display_options['fields']['title_1']['alter']['text'] = 'View [type]';
   $handler->display->display_options['fields']['title_1']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title_1']['hide_alter_empty'] = FALSE;
   /* Field: Global: Custom text */
@@ -295,6 +410,29 @@ function feature_mini_sites_views_default_views() {
   $handler->display->display_options['fields']['nothing']['alter']['path'] = 'mini-sites';
   $handler->display->display_options['fields']['nothing']['alter']['link_class'] = 'minisites-link';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 0;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'minisite' => 'minisite',
+    'news_brief' => 'news_brief',
+  );
+  /* Filter criterion: Flags: Flagged */
+  $handler->display->display_options['filters']['flagged']['id'] = 'flagged';
+  $handler->display->display_options['filters']['flagged']['table'] = 'flag_content';
+  $handler->display->display_options['filters']['flagged']['field'] = 'flagged';
+  $handler->display->display_options['filters']['flagged']['relationship'] = 'flag_content_rel';
+  $handler->display->display_options['filters']['flagged']['value'] = '1';
   $handler->display->display_options['block_caching'] = '1';
   $export['homepage_minisite'] = $view;
 
@@ -426,6 +564,13 @@ function feature_mini_sites_views_default_views() {
   $handler->display->display_options['fields']['title_1']['alter']['text'] = 'Check It Out!';
   $handler->display->display_options['fields']['title_1']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title_1']['hide_alter_empty'] = FALSE;
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Draggableviews: Weight */
+  $handler->display->display_options['sorts']['weight']['id'] = 'weight';
+  $handler->display->display_options['sorts']['weight']['table'] = 'draggableviews_structure';
+  $handler->display->display_options['sorts']['weight']['field'] = 'weight';
+  $handler->display->display_options['sorts']['weight']['draggableviews_setting_view'] = 'secondary_touts_block_order:block_1';
+  $handler->display->display_options['sorts']['weight']['draggableviews_setting_new_items_bottom_list'] = 0;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */

@@ -527,7 +527,7 @@ ul.links li {
   border: solid 3px white;
 }
 
-.view-homepage-minisite .views-field-field-minisite-tout-credit {
+.view-homepage-minisite .views-field-field-minisite-tout-credit, .views-field-field-news-brief-image-credit-1 {
   font: normal 9px arial, sans-serif;
   color: #999;
   text-align: right;
@@ -3811,4 +3811,38 @@ div.views-slideshow-cycle-main {height:220px;min-height:220px;}
 .learn-more .thankyou {
     margin-right: 10px;
     width: 236px;
+}
+
+
+/* TFK-321 */
+.view-homepage-minisite .news-brief .views-field-nothing{
+    display: none;
+}
+.view-homepage-minisite .news-brief .views-field-field-lrg-rect-image img{
+  width: 95%;
+  height: auto;
+  border: 3px solid #fff;
+}
+#block-views-homepage-minisite-block-1 #news_brief, #block-views-homepage-minisite-block-2 #news_brief{
+    background: #DBD0CA;
+    border: solid 1px #ECE9E7;
+}
+#news_brief .view-content {
+  background: url(../images/featured-news-brief.png) no-repeat top left;
+  padding-top: 20px;
+}
+#news_brief .views-field-title-1 .field-content a{
+  visibility: hidden;
+}
+#news_brief .views-field-title-1 .field-content a:after{
+  content: "View News Brief";
+  visibility: visible;
+  left: 8px;
+  position: absolute;
+}
+#news_brief .views-field-field-deck{
+  margin-bottom: 5px;
+}
+#news_brief .views-field-title{
+  margin-bottom: 10px;
 }
