@@ -211,6 +211,8 @@
   };
   
   $(document).ready(function() {
+    // TFK-321 - Replace Read more link text  
+    $('#news_brief .views-field-title-1 .field-content a').text('View News Brief');
       
     // Determine if tfk_notification message box should be shown
     // Check to see if the tfk_notificaitonID via the ajax URL is in the DOM
