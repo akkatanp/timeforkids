@@ -498,7 +498,7 @@ ul.links li {
 }
 
 .view-homepage-minisite .views-field-title {
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 .view-homepage-minisite .views-field-title a {
@@ -515,6 +515,10 @@ ul.links li {
 .view-homepage-minisite .views-field-body .field-content p,
 .view-homepage-minisite .views-field-title-1 {
   display: inline;
+}
+.view-homepage-minisite .views-field-title-1 .field-content{
+  margin-top: 5px;
+  display: block;
 }
 
 .view-homepage-minisite .views-field-field-minisite-tout-image {
