@@ -3831,15 +3831,6 @@ div.views-slideshow-cycle-main {height:220px;min-height:220px;}
   background: url(../images/featured-news-brief.png) no-repeat top left;
   padding-top: 20px;
 }
-#news_brief .views-field-title-1 .field-content a{
-  visibility: hidden;
-}
-#news_brief .views-field-title-1 .field-content a:after{
-  content: "View News Brief";
-  visibility: visible;
-  left: 8px;
-  position: absolute;
-}
 #news_brief .views-field-field-deck{
   margin-bottom: 5px;
 }
