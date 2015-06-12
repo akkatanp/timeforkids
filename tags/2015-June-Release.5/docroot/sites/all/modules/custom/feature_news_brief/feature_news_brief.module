@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the Feature News Brief feature.
- */
-
-include_once 'feature_news_brief.features.inc';
