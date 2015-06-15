@@ -113,4 +113,4 @@ features[variable][] = node_preview_news_brief
 features[variable][] = node_submitted_article
 features[variable][] = node_submitted_news_brief
 features[views_view][] = news_archive
-mtime = 1434020147
+mtime = 1434362881

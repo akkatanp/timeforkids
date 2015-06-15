@@ -860,6 +860,9 @@ function tfk_helper_preprocess_views_view_field(&$variables, $hook) {
       if($variables['field']->field == 'field_minisite_tout_image' && !empty($variables['output'])) {
         $variables['output'] = l($variables['output'], 'node/'. $variables['row']->nid, array('html' => TRUE));
       }
+      if($variables['field']->field == 'field_lrg_rect_image' && !empty($variables['output'])) {
+        $variables['output'] = l($variables['output'], 'node/'. $variables['row']->nid, array('html' => TRUE));
+      }
       break;
     // Mini-site home
     case 'mini_site_home':
