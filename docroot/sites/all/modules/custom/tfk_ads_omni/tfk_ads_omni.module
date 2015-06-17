@@ -143,7 +143,7 @@ function tfk_ads_omni_preprocess_page(&$variables){
         /* UDO */
         //flog_it("BEFORE:");
         //flog_it($omniture_vars);
-        ti_udo_set_multi($udo_array);
+        //ti_udo_set_multi($udo_array);
         //flog_it("AFTER:");
         //flog_it($udo_array);
     }
