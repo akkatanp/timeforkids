@@ -674,6 +674,12 @@ function tfk_search_apachesolr_index_document_build(ApacheSolrDocument $document
     $document->setField('content', $tmp_body[0]['value']. PHP_EOL. $minisite_deck[0]['value']);
   }
   
+   // News Brief
+  if ($entity->type == "news_brief") {
+    $tmp_body = field_get_items('node', $entity, 'field_deck');
+    $document->setField('content', $tmp_body[0]['value']);
+  }
+  
   // Kid Reporter
   if($entity->type == "kid_reporter"){   
       // Location
@@ -2580,7 +2586,7 @@ function tfk_search_apachesolr_query_alter($query, $caller) {
       //flog_it("Anonymous user processing...");
       // $content_types Includes all the content types that needs to be searched.
       //$content_types = array('slideshow', 'worksheet', 'pdf_quiz', 'slideshow', 'common_core_standards', 'flashcard', 'kid_reporter', 'grammar_practice_rule', 'video', 'atw_destination', 'minisite','tfk_extra','a_paper','grammar_practice','writing_tips','book','store_product','tfk_lesson_for_tablets');
-      $content_types = array('article', 'kid_reporter', 'grammar_practice_rule', 'slideshow', 'video', 'atw_destination', 'minisite', 'tfk_extra', 'worksheet', 'mini_lesson', 'a_paper', 'grammar_practice', 'writing_tips', 'pdf_quiz', 'common_core_standards','book','store_product','tfk_lesson_for_tablets');
+      $content_types = array('article', 'news_brief', 'kid_reporter', 'grammar_practice_rule', 'slideshow', 'video', 'atw_destination', 'minisite', 'tfk_extra', 'worksheet', 'mini_lesson', 'a_paper', 'grammar_practice', 'writing_tips', 'pdf_quiz', 'common_core_standards','book','store_product','tfk_lesson_for_tablets');
       // If document type is article, make sure it is **NOT** a cover story.
       $article_subquery = apachesolr_drupal_query("article_subquery");
       $article_subquery->addFilter('bundle', 'article');
@@ -2604,7 +2610,7 @@ function tfk_search_apachesolr_query_alter($query, $caller) {
       //flog_it("Autenticated user processing...");
       // Teachers can see cover stories.
       // $content_types Includes all the content types that needs to be searched.
-      $content_types = array('article', 'kid_reporter', 'grammar_practice_rule', 'slideshow', 'video', 'atw_destination', 'minisite', 'tfk_extra', 'worksheet', 'mini_lesson', 'a_paper', 'grammar_practice', 'writing_tips', 'pdf_quiz', 'common_core_standards','book','store_product','tfk_lesson_for_tablets');
+      $content_types = array('article', 'news_brief', 'kid_reporter', 'grammar_practice_rule', 'slideshow', 'video', 'atw_destination', 'minisite', 'tfk_extra', 'worksheet', 'mini_lesson', 'a_paper', 'grammar_practice', 'writing_tips', 'pdf_quiz', 'common_core_standards','book','store_product','tfk_lesson_for_tablets');
       
       $ct_subquery = apachesolr_drupal_query("ct_subquery");
       foreach($content_types as $content_type) {
@@ -4350,6 +4356,33 @@ function tfk_search_preprocess_search_result(&$vars) {
       $tips = node_view(node_load($node->nid),'teaser');
       $teaser = $tips['body'][0]['#markup'];
       
+      $vars['render'] = TRUE;
+    break;
+    
+    /*
+     * Content Type: News Brief
+     */
+    case 'news_brief':
+      if(isset($node->field_lrg_rect_image)){
+        $tmp_img = field_get_items('node',$node,'field_lrg_rect_image');
+        
+        if(isset($tmp_img[0]['uri'])) {
+          /* Image Rule is thumbail for Kid Reporter content type */ 
+          $style = "thumbnail";
+          $abspath = image_style_url($style, $tmp_img[0]['uri']);
+          $icon = '<div class="icon"></div>';
+          
+          $thumbnail = theme('image', array('path' => $abspath, 'alt' => $tmp_img[0]['title'], 'title' => $tmp_img[0]['title'], 'attributes' => $thumb_attr)). $icon;
+          $vars['thumbnail'] = l($thumbnail, 'node/'. $vars['result']['fields']['entity_id'], $link_attr);
+        } else {
+          $vars['thumbnail'] = FALSE;
+        }
+      }
+      $body = field_get_items('node', $node, 'field_deck');
+      $teaser = $body[0]['safe_value'];
+      
+      $vars['tfk_search_result_link_1'] = l('Go to News Brief', 'node/'. $nid);
+      // SET IT HERE, NO???
       $vars['render'] = TRUE;
     break;
     
