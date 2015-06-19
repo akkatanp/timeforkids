@@ -66,7 +66,7 @@
  */
 ?>
 <?php if(isset($render) && $render): ?>
-<li class="<?php if(isset($classes)): ?><?php print $classes; ?><? endif; ?>"<?php if(isset($attributes)): ?><?php print $attributes; ?><? endif; ?>>
+<li class="<?php if(isset($classes)): ?><?php print $classes; ?><?php endif; ?>"<?php if(isset($attributes)): ?><?php print $attributes; ?><?php endif; ?>>
   <?php if($admin_links):?>
     <?php print $admin_links;?>
   <?php endif;?>
@@ -90,7 +90,7 @@
       <?php endif;?>
     
       <?php print render($title_prefix); ?>
-      <h3 class="title" <?php if(isset($title_attributes)): ?><?php print $title_attributes; ?><? endif; ?>>
+      <h3 class="title" <?php if(isset($title_attributes)): ?><?php print $title_attributes; ?><?php endif; ?>>
         <a href="<?php print $url; ?>"><?php print $title; ?></a>
       </h3>
       
@@ -101,7 +101,7 @@
       <?php print render($title_suffix); ?>
       <div class="search-snippet-info">
         <?php if ($snippet) : ?>
-          <p class="search-snippet" <?php if(isset($content_attributes)): ?><?php print $content_attributes; ?><? endif; ?>><?php print $snippet; ?></p>
+          <p class="search-snippet" <?php if(isset($content_attributes)): ?><?php print $content_attributes; ?><?php endif; ?>><?php print $snippet; ?></p>
         <?php endif; ?>
       </div>
       
@@ -118,4 +118,4 @@
   </div>
   
 </li>
-<?php endif; ?>
+<?php endif;?>
