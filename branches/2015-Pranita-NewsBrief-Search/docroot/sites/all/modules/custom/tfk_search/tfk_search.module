@@ -674,9 +674,47 @@ function tfk_search_apachesolr_index_document_build(ApacheSolrDocument $document
     $document->setField('content', $tmp_body[0]['value']. PHP_EOL. $minisite_deck[0]['value']);
   }
   
+  // News Brief
   if ($entity->type == "news_brief") {
       $tmp_body = field_get_items('node', $entity, 'field_deck');
       $document->setField('content', $tmp_body[0]['value']);
+      
+      $tmp_body_value = $tmp_body[0]['value'];
+      
+      // Headlines
+      $news_brief_headline1 = field_get_items('node', $entity, 'field_news_brief_headline_1');
+      if($news_brief_headline1 && !empty($news_brief_headline1[0]['value'])) {
+        $tmp_body_value = $tmp_body_value . PHP_EOL . $news_brief_headline1[0]['value'];
+        $document->addField(TFK_SEARCH_NEWS_BRIEF_HEADLINE_1, $news_brief_headline1[0]['value']);
+      }
+      $news_brief_headline2 = field_get_items('node', $entity, 'field_news_brief_headline_2');
+      if($news_brief_headline2 && !empty($news_brief_headline2[0]['value'])) {
+        $tmp_body_value = $tmp_body_value . PHP_EOL . $news_brief_headline2[0]['value'];
+        $document->addField(TFK_SEARCH_NEWS_BRIEF_HEADLINE_2, $news_brief_headline2[0]['value']);
+      }
+      $news_brief_headline3 = field_get_items('node', $entity, 'field_news_brief_headline_3');
+      if($news_brief_headline3 && !empty($news_brief_headline3[0]['value'])) {
+        $tmp_body_value = $tmp_body_value . PHP_EOL . $news_brief_headline3[0]['value'];
+        $document->addField(TFK_SEARCH_NEWS_BRIEF_HEADLINE_3, $news_brief_headline3[0]['value']);
+      }
+      
+      // Decks
+      $news_brief_deck1 = field_get_items('node', $entity, 'field_news_brief_deck_1');
+      if($news_brief_deck1 && !empty($news_brief_deck1[0]['value'])) {
+        $tmp_body_value = $tmp_body_value . PHP_EOL . $news_brief_deck1[0]['value'];
+        $document->addField(TFK_SEARCH_NEWS_BRIEF_DECK_1, $news_brief_deck1[0]['value']);
+      }
+      $news_brief_deck2 = field_get_items('node', $entity, 'field_news_brief_deck_2');
+      if($news_brief_deck2 && !empty($news_brief_deck2[0]['value'])) {
+        $tmp_body_value = $tmp_body_value . PHP_EOL . $news_brief_deck2[0]['value'];
+        $document->addField(TFK_SEARCH_NEWS_BRIEF_DECK_2, $news_brief_deck2[0]['value']);
+      }
+      $news_brief_deck3 = field_get_items('node', $entity, 'field_news_brief_deck_3');
+      if($news_brief_deck3 && !empty($news_brief_deck3[0]['value'])) {
+        $tmp_body_value = $tmp_body_value . PHP_EOL . $news_brief_deck3[0]['value'];
+        $document->addField(TFK_SEARCH_NEWS_BRIEF_DECK_3, $news_brief_deck3[0]['value']);  
+      }
+      $document->setField('content', $tmp_body_value);
   }
   
   // Kid Reporter
