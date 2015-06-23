@@ -276,7 +276,8 @@
     
     // tfk-34
     // Check for Subscriber Only content - activate popup, automatically
-    if (document.title.indexOf('SUBSCRIBER-ONLY CONTENT') != -1) {
+    
+    //if (document.title.indexOf('SUBSCRIBER-ONLY CONTENT') != -1) {
         $('div#teacher-nav-container .login-link').trigger('click');
     }
     /*
