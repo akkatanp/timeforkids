@@ -148,6 +148,8 @@ function tfk_page_paths_preprocess_page(&$variables){
 //        drupal_deliver_page(MENU_ACCESS_DENIED);
 //        drupal_exit();
 //    }
+     * 
+     */
     
     // Check for the assessment path and an anonymous user
     if (strstr($args[0], "assessment") && $variables['is_anon']) {

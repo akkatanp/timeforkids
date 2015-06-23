@@ -6,12 +6,12 @@
 /**
  * Implementation of hook_drush_command().
  */
-function tfk_helper_drush_command() {
+function ted_helper_drush_command() {
   $items = array();
 
-  $items['tfk-download-images'] = array(
+  $items['ted-download-images'] = array(
     'description' => 'Downloads all images in local file table from remote server.',
-    'callback' => 'tfk_helper_download_images',
+    'callback' => 'ted_helper_download_images',
     //'options' => array(
     //  '--limit' => 'The number of images to download at once.',
     //  '--rpath' => 'Remote file system path. Should be an publicly accessible URL.',
@@ -19,14 +19,14 @@ function tfk_helper_drush_command() {
     'aliases' => array('di'),
   );
   
-  $items['tfk-solr-dis'] = array(
+  $items['ted-solr-dis'] = array(
     'description' => 'Set Solr indexing to read-only.',
-    'callback' => 'tfk_helper_solr_dis',
+    'callback' => 'ted_helper_solr_dis',
   );
   
-  $items['tfk-set-file-paths'] = array(
+  $items['ted-set-file-paths'] = array(
     'description' => 'Sets public and temporary file paths.',
-    'callback' => 'tfk_helper_set_file_paths',
+    'callback' => 'ted_helper_set_file_paths',
     'aliases' => array('sfp'),
     'arguments' => array(
       'public file path' => dt('Public file path.'),
@@ -34,10 +34,10 @@ function tfk_helper_drush_command() {
     ),
   );
   
-  $items['tfk-clear'] = array(
+  $items['ted-clear'] = array(
     'description' => 'Clear all tables including general cache.',
-    'callback' => '_tfk_helper_clear_cache',
-    'aliases' => array('tfk-cc'),
+    'callback' => '_ted_helper_clear_cache',
+    'aliases' => array('ted-cc'),
     'arguments' => array(
       'cache' => dt('Cache bin to clear.'),
     ),
@@ -48,7 +48,7 @@ function tfk_helper_drush_command() {
   
   $items['rallen-revert'] = array(
     'description' => 'Revert Features through code.',
-    'callback' => '_tfk_helper_features_revert',
+    'callback' => '_ted_helper_features_revert',
     'aliases' => array('rr'),
   );
 
@@ -58,7 +58,7 @@ function tfk_helper_drush_command() {
 /**
  * Callback function
  */
-function tfk_helper_download_images() {
+function ted_helper_download_images() {
 
   $types = array('image/gif', 'image/png', 'image/jpeg', 'video/mp4');
   $query = 'SELECT filename FROM file_managed WHERE filemime IN (:types)';
@@ -86,7 +86,7 @@ function tfk_helper_download_images() {
 /**
  * Set Solr indexing to read-only.
  */
-function tfk_helper_solr_dis() {
+function ted_helper_solr_dis() {
  variable_set('apachesolr_read_only', APACHESOLR_READ_ONLY);
  drush_log("Set Solr indexing to read only.", 'success');
 }
@@ -96,7 +96,7 @@ function tfk_helper_solr_dis() {
  *
  * Example: drush sfp sites/default/files /Users/rallen8440/tmp
  */
-function tfk_helper_set_file_paths() {
+function ted_helper_set_file_paths() {
  $args = func_get_args();
  if(empty($args)) {
    drush_log('Public and temporary path arguments not specified.', 'warning');
@@ -108,7 +108,7 @@ function tfk_helper_set_file_paths() {
  }
 }
 
-function _tfk_helper_clear_cache() {
+function _ted_helper_clear_cache() {
   $args = func_get_args();
   if(empty($args)) {
     // Do what 'drush cc all' already does, clear the cache_page and cache_block bins.
@@ -136,7 +136,7 @@ function _tfk_helper_clear_cache() {
   
 }
 
-function _tfk_helper_features_revert() {
+function _ted_helper_features_revert() {
   $args = func_get_args();
   if(!empty($args)) {
     
