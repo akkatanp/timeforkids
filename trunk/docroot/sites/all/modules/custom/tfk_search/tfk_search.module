@@ -2129,9 +2129,9 @@ function tfk_search_preprocess_page(&$variables) {
   // Set title on Photos & Video search page.
   $nodetype = (array_key_exists('node', $variables) && isset($variables['node']->type)) ? $variables['node']->type: FALSE;
   if(arg(0) == TFK_SEARCH_PHOTOSVIDEO_PATH || $nodetype == 'slideshow' || $nodetype == 'video') {
-    drupal_set_title('Photos & Videos');
-    $variables['title'] = 'Photos & Videos';
-    $variables['section_title'] = 'PHOTOS & VIDEOS';
+    drupal_set_title(htmlspecialchars_decode('Photos & Videos'), PASS_THROUGH);
+    $variables['title'] = htmlspecialchars_decode('Photos & Videos');
+    $variables['section_title'] = htmlspecialchars_decode('PHOTOS & VIDEOS');
   }
   
   //flog_it("tfk_search_preproces_page: arg(0)=".arg(0));
@@ -4405,7 +4405,7 @@ function tfk_search_preprocess_search_result(&$vars) {
         
         if(isset($tmp_img[0]['uri'])) {
           /* Image Rule is thumbail for Kid Reporter content type */ 
-          $style = "thumbnail";
+          $style = '115x115';
           $abspath = image_style_url($style, $tmp_img[0]['uri']);
           $icon = '<div class="icon"></div>';
           
