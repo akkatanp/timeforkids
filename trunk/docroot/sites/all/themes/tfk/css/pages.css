@@ -1339,13 +1339,22 @@ body.one-sidebar .secondary-touts-view td.col-2  {
 .node-type-news-brief .content h1 {
   font: bold 30px arial, sans-serif;
   line-height: 30px;
-  margin: -18px 0 15px 0;
+  margin: -18px 0 0 0;
   /* display: none; */
   
   /* margin-bottom: 10px; */
   /* height: 12px; */
+  padding-bottom: 5px;
+  /*border-bottom: dotted 1px #cecece;*/
+}
+.node-type-news-brief .content .nb-pub-date {
+  margin-bottom: 20px;
   padding-bottom: 10px;
   border-bottom: dotted 1px #cecece;
+  font-size: 10px;
+  color: #999;
+  line-height: 15px;
+  text-transform: uppercase;
 }
 
 .node-type-article .field-name-field-article-category,

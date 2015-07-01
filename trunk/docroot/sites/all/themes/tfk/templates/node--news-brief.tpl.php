@@ -123,6 +123,13 @@
       print render($content['field_article_category']);
       ?>
       <h1><?php print $title; ?></h1>
+      <?php
+        $nb_field_date = field_get_items('node', $node, 'field_date');
+        if($nb_field_date) :
+      ?>
+      <div class="nb-pub-date"><?php print format_date($nb_field_date[0]['value'], 'long'); ?></div>
+      <?php endif; ?>
+      
       <?php print render($content);?><br/>
 
       <?php if($is_anon == 0 && $visible == 1  ):?>

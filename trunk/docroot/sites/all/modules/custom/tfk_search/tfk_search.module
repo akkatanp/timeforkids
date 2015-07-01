@@ -4418,6 +4418,10 @@ function tfk_search_preprocess_search_result(&$vars) {
       $body = field_get_items('node', $node, 'field_deck');
       $teaser = $body[0]['safe_value'];
       
+      $date = field_get_items('node', $node, 'field_date');
+      if($date) {
+        $vars['date'] = date('F j, Y', $date[0]['value']);
+      }
       $vars['tfk_search_result_link_1'] = l('Go to News Brief', 'node/'. $nid);
       // SET IT HERE, NO???
       $vars['render'] = TRUE;
