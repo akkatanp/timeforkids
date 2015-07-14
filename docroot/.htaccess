@@ -116,14 +116,6 @@ DirectoryIndex index.php index.html index.htm
   RewriteCond %{REQUEST_URI} !=/favicon.ico
   RewriteRule ^ index.php [L]
 
-  # TFK DEV: Redirect robots.txt to robots_dev.txt
-  RewriteCond %{HTTP_HOST} ^dev\.timeforkids\.com$ [NC]
-  RewriteRule ^robots\.txt$ robots_dev.txt [L]
-
-  # TFK QA: Redirect robots.txt to robots_qa.txt
-  RewriteCond %{HTTP_HOST} ^qa\.timeforkids\.com$ [NC]
-  RewriteRule ^robots\.txt$ robots_qa.txt [L]
-
   # Rules to correctly serve gzip compressed CSS and JS files.
   # Requires both mod_rewrite and mod_headers to be enabled.
   <IfModule mod_headers.c>
