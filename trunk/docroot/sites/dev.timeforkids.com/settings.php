@@ -782,3 +782,12 @@ fast_404_ext_check();
 # 404s and the trade-off is worth it.
 # This setting will deliver 404s with less than 2MB of RAM.
 //fast_404_path_check();
+
+# Test new TFK certificate
+# https://docs.acquia.com/cloud/configure/https
+if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && 
+    $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https' &&
+    isset($_SERVER['REMOTE_ADDR']) &&
+    strpos($_SERVER['REMOTE_ADDR'], '10.') === 0) {
+  $_SERVER['HTTPS'] = 'on';
+}
