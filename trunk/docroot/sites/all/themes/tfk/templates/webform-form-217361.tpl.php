@@ -83,7 +83,7 @@ font-family: Arial, Helvetica, sans-serif; font-size: 28px !important; font-weig
         <div class="formSec">
             <div class="hdr">BULK ORDERS</div>
             <div class="sub-hdr">
-                    Save up to 15% with a bulk order of over 500 students for your grade, school, or district.
+                    Save up to 15% with a bulk order of over 750 students for your grade, school, or district.
                     <br>
                     Complete the form below and we'll contact you regarding your custom pricing plan!
             </div>
