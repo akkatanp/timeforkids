@@ -1,0 +1,272 @@
+/**
+ * Left sidebar.
+ */
+.page-tfk-magazine .region-sidebar-first .section {
+	padding: 10px 7px;
+}
+
+.search-sidebar-title,
+#block-menu-menu-publishing-calendar-menu h2.block-title {
+	background-color: #D71700;
+  padding: 3px 0;
+  margin-bottom: 15px;
+  font: 11px "arial black", arial;
+  text-align: center;
+  color: #FFF;
+  text-transform: uppercase;
+  margin: 0 0 13px 0;
+}
+
+.block-apachesolr-search {
+	margin-bottom: 10px;
+	border-bottom: dotted 1px #CECECE;
+	padding-bottom: 9px;
+}
+
+.region-sidebar-first .block ul {
+  margin: 0;
+}
+
+.block-apachesolr-search ul li,
+.block-tfk-search ul li {
+  margin: 0 0 4px 0;
+}
+
+.block-apachesolr-search input,
+.block-tfk-search input {
+	margin: 0 5px 0 0; padding: 0;
+}
+
+#first-column .block ul li a {
+	color: #333;
+}
+
+.region-sidebar-first ul li a {
+	font-weight: normal;
+}
+
+.region-sidebar-bottom {
+	margin-top: 10px;
+}
+
+.block-menu ul {
+	padding: 0; margin: 0;
+}
+
+.block-menu ul li {
+  margin: 0 0 0 0;
+  border-bottom: 1px dotted #9FC6E1;
+  padding: 9px 0;  
+}
+
+.block-menu ul li.first {
+  padding: 0 0 9px 0;  
+}
+
+.pubcal-link > div {
+  display: inline-block;
+  font-weight: bold;
+}
+
+.pubcal-link .right { 
+  float: right;
+}
+
+#block-menu-menu-publishing-calendar-menu .pubcal-link .right a {
+  color: #D71700;	
+}
+
+.block-menu ul li.last {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+#block-menu-menu-publishing-calendar-menu {
+  border: solid 1px #CECECE;
+  padding: 10px;
+  background: white;
+}
+
+.page-tfk-magazine .region-sidebar-first .section {
+  background: #daf0fe;
+}
+
+.page-tfk-magazine .region-sidebar-first h2.block-title {
+  font: bold 12px arial;
+  color: #333;
+  margin: 0 0 10px 3px;
+}
+
+.page-tfk-magazine #block-menu-menu-publishing-calendar-menu ul.menu {
+  margin: 10px 0 0;
+  padding: 0;
+}
+
+.page-tfk-magazine #block-menu-menu-publishing-calendar-menu ul.menu li {
+  padding-bottom: 4px;
+  border-bottom: solid 1px #cecece;
+  margin-bottom: 4px;
+}
+
+.page-tfk-magazine #block-tfk-search-sm-editorial-date-tfk .item-list ul li {
+	margin: 0;
+}
+
+.page-tfk-magazine #block-tfk-search-sm-editorial-date-tfk .content > .item-list {
+  margin: 0 0 0 2px;
+}
+
+.page-tfk-magazine .block-tfk-search {
+  border-bottom: 1px dotted #CECECE;
+  margin-bottom: 10px;
+  padding-bottom: 9px;
+}
+
+.page-tfk-magazine .block-tfk-search.last {
+  border-bottom: 0;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+/* End left sidebar */
+
+/**
+ * Search results
+ */
+.search-result {
+	color: #333;
+}
+
+ol#tfk-search-results-photos-video li > h3.title,
+ol#tfk-search-results-photos-video li.search-result > h3.title a,
+ol#tfk-search-results-photos-video li.search-result > h3.title a:visited {
+  color: #FFF;
+  font-size: 12px;
+  font-family: "arial black", arial;
+  font-weight: normal;
+}
+
+.page-tfk-magazine #tfk-search-pager-top {
+  border: solid 1px #cecece;
+  background: #d9effe;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.page-tfk-magazine #tfk-search-pager-top h2 {
+  margin: 0;
+}
+
+ol#tfk-search-results-photos-video.search-results .search-result h3.title {
+  background: #d71700;
+  padding: 4px;
+  margin: 0 0 10px 0;
+}
+
+.page-tfk-magazine .search-results .search-result .title a {
+  font: normal 12px "arial black";
+  color: white;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.page-tfk-magazine .search-results .search-result img {
+  float: left;
+  width: 115px;
+  margin: 0 10px 10px 0;
+}
+
+/* Related content */
+.search-results .search-result .related-content-wrap h3 {
+  margin: 4px 0;
+  padding-bottom: 4px;
+  border-bottom: dotted 1px #cecece;
+  font: italic bold 11px georgia;
+}
+
+.search-results .search-result .related-content-wrap {
+  width: 130px;
+}
+
+.search-results .search-result .related-content-wrap h2.addit-content {
+  font: bold 12px arial;
+}
+
+.search-result .related-content-wrap a {
+  display:block;
+  line-height: 14px;
+  width: 130px;
+  margin-bottom: 7px;
+}
+
+.page-tfk-magazine .search-result .related-content-wrap {
+	padding: 2px 6px;
+}
+
+
+/* In this issue */
+.page-tfk-magazine .related-content-wrap,
+#block-views-homepage-top-story-block-1 .views-field-field-additional-content {
+    background: none repeat scroll 0 0 #D9EFFE;
+    border: 3px solid #ACDBFC;
+    box-shadow: 2px 2px 4px #666666;
+    margin-left: 339px;
+    margin-top: 25px;
+    padding-bottom: 2px;
+    padding-left: 4px;
+    padding-right: 4px;
+    position: relative;
+}
+
+.page-tfk-magazine .search-results .search-result .in-this-issue h3 {
+  margin: 0;
+  font: bold 11px arial;
+}
+
+.page-tfk-magazine .search-results .search-result .in-this-issue {
+  float: left;
+  width:200px;
+  margin-right: 10px;
+}
+
+.page-tfk-magazine .search-results .search-result .related-content-wrap a,
+.page-tfk-magazine .search-results .search-result .in-this-issue a {
+  font-weight: normal;
+}
+
+.search-result .in-this-issue ul {
+  margin: 0 0 10px 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.search-result .in-this-issue ul li {
+  margin: 0 0 5px 0;
+  line-height: 100%;
+}
+
+#tfk-search-pager-top .item-list .pager li {
+  padding: 0 0.3em;
+}
+
+#block-tfk-search-tfk-magazine-back-btn {
+	background-color: #D71700;
+	font-family: "arial black", arial, sans-serif;
+	padding: 19px 0px 19px 10px;
+	padding: 10px;
+	margin-bottom: 10px;
+}
+
+#block-tfk-search-tfk-magazine-back-btn h2 {
+	background: url('/sites/all/themes/tfk/images/white-back-arrow.png') no-repeat 0 5px;
+	padding-left: 15px;
+	margin: 0;
+	line-height: 100%;
+}
+
+#block-tfk-search-tfk-magazine-back-btn a {
+	color: #FFF;
+	font-family: "arial black", arial, sans-serif;
+	font-weight: bold;
+	font-size: 12px;
+}
