@@ -75,8 +75,9 @@ function tfk_ads_omni_preprocess_page(&$variables){
             //404 Page
             $omniture_vars .= "s_time.pageType = 'errorPage';\n";
             $udo_array['page_type'] = 'erroPage';
-        } else {
-            $omniture_vars .= "s_time.pageName = '".trim($ad_omni_config['omni_pagename'])."';\n";
+        } else { 
+            $omniture_pageName_preg = trim(preg_replace("/[^a-zA-Z0-9|\s]/", "", $ad_omni_config['omni_pagename']));
+            $omniture_vars .= "s_time.pageName = '".$omniture_pageName_preg."';\n";
             $temp_array = explode("|", $ad_omni_config['omni_pagename']);
             $num_elements = count($temp_array);
             $udo_array['page_name'] = str_replace("\n", "", $temp_array[$num_elements - 1]);
