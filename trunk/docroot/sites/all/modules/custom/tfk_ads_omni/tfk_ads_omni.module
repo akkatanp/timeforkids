@@ -114,7 +114,7 @@ function tfk_ads_omni_preprocess_page(&$variables){
             }
             
             if (isset($ad_omni_config['package_name'])) {
-                $omniture_vars .= "s_time.prop12 = '".$ad_omni_config['package_name']."';\n";
+                $omniture_vars .= "s_time.prop12 = '".trim(preg_replace("/[^a-zA-Z0-9|\s]/", "", $ad_omni_config['package_name']))."';\n";
                 $udo_array['content_package'] = str_replace("\n", "", $ad_omni_config['package_name']);
             }
             
