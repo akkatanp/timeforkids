@@ -1,0 +1,81 @@
+<?php
+
+/**
+ * @file
+ * An install file for the ti_udo module.  Uses
+ * hook_install and hook_update.
+ *
+ * @author Neal Bailly
+ */
+
+/**
+ * Implement hook_install().
+ *
+ */
+function ti_udo_install() {
+
+  $udo_map = variable_get('ti_udo_map', array());
+
+  if (empty($udo_map)) {
+
+    $udo_map = json_decode(file_get_contents(drupal_get_path('module', 'ti_udo') . '/udo.json'));
+
+    variable_set('ti_udo_map', $udo_map);
+
+  }
+
+}
+
+// Helper function called by update hooks each time the UDO is modified.
+// Preserves site data layer mapping
+
+function ti_udo_update_udo() {
+
+  $site_udo_map = variable_get('ti_udo_map', array());
+
+  $udo_map = json_decode(file_get_contents(drupal_get_path('module', 'ti_udo') . '/udo.json'));
+
+  // Loop through the data layer keys
+  foreach($site_udo_map as $name => $values) {
+
+    // If the key is no longer present in the UDO then it's been removed.
+    if (!isset($udo_map->{$name})) {
+      drupal_set_message("Removed UDO key '" . $name . "'. " . $values->description);      
+    }
+
+  }
+  
+  // Loop through the UDO keys
+  foreach($udo_map as $name => $values) {
+
+    // Check to see if the UDO key already exists in the data layer
+    if (isset($site_udo_map->{$name})) {
+
+      // Preserve data layer key mappings if they exists, otherwise set data layer key = UDO key by default
+      $udo_map->{$name}->metadata = (isset($site_udo_map->{$name}->metadata))?$site_udo_map->{$name}->metadata:$name;
+      $udo_map->{$name}->description = (isset($site_udo_map->{$name}->description))?$site_udo_map->{$name}->description:$udo_map->{$name}->description;
+
+    } else {
+
+      // If the UDO key is new, set data layer key = UDO key by default
+      $udo_map->{$name}->metadata = $name;  
+      drupal_set_message("Added UDO key '" . $name . "'. " . $values->description);
+
+    }
+
+  }
+
+  variable_set('ti_udo_map', $udo_map);
+  
+}
+
+/**
+ * UDO update - Add "site_display_format" for mobile | tablet | desktop
+ * Add all UDO keys to site data layer by default.
+ */
+
+function ti_udo_update_1001() {
+  
+  ti_udo_update_udo();
+
+}
