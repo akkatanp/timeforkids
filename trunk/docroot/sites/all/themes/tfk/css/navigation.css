@@ -178,7 +178,7 @@
 
 /* TFK Assessment */
 #teacher-nav-container li a {
-    background-image: url('../images/sub-nav-lock-sprite-2014.png');
+    background-image: url('../images/sub-nav-lock-sprite-2015.png');
     background-repeat: no-repeat;
 }
 /*
@@ -309,25 +309,25 @@
 }
 
 #teacher-nav-container ul.menu a.tfk-magazine {
-	width: 125px;
-	background-position: -5px 0px;
+	width: 130px;
+	background-position: -3px 0px;
 }
 
 .views-field-field-image #teacher-nav-container ul.menu a.tfk-magazine,
 #teacher-nav-container ul.menu a.tfk-magazine.active,
 #teacher-nav-container ul.menu a.tfk-magazine:hover {
-	background-position: -5px -32px
+	background-position: -3px -32px
 }
 
 #teacher-nav-container ul.menu a.worksheets {
-	width: 85px;
-	background-position: -307px 0px;
+	width: 95px;
+	background-position: -301px 0px;
 }
 
 .section-worksheets #teacher-nav-container ul.menu a.worksheets,
 #teacher-nav-container ul.menu a.worksheets.active,
 #teacher-nav-container ul.menu a.worksheets:hover {
-	background-position: -307px -32px;
+	background-position: -301px -32px;
 }
 
 #teacher-nav-container ul.menu a.teacher-community {
@@ -338,6 +338,7 @@
 #teacher-nav-container ul.menu li.leaf.last {
 	position: absolute;
 	right: 0;
+        background-color: #EFD946;
 }
 
 .node-type-teacher-community-question #teacher-nav-container ul.menu a.teacher-community,
@@ -350,23 +351,32 @@
 }
 
 #teacher-nav-container ul.menu a.digital_edition {
-	width: 170px;
-	background-position: -134px 0px;
+	width: 120px;
+	background-position: -130px 0px;
 }
 
 #teacher-nav-container ul.menu a.digital_edition.active,
 #teacher-nav-container ul.menu a.digital_edition:hover {
-	background-position: -134px -32px;
+	background-position: -130px -32px;
 }
 
 #teacher-nav-container ul.menu a.subscribe-renew {
-	width: 140px;
-	background-position: -508px 0px;
+	width: 145px;
+	background-position: -504px 0px;
+        border-left: 1px solid #EFD946;
 }
 
 #teacher-nav-container ul.menu a.subscribe-renew.active,
 #teacher-nav-container ul.menu a.subscribe-renew:hover {
-	background-position: -508px -32px;
+	background-position: -504px -32px;
+}
+#teacher-nav-container ul.menu a.classroom_app {
+    width: 140px;
+    background-position: -650px 0px;
+}
+#teacher-nav-container ul.menu a.classroom_app.active,
+#teacher-nav-container ul.menu a.classroom_app:hover {
+	background-position: -650px -32px;
 }
 
 /*
