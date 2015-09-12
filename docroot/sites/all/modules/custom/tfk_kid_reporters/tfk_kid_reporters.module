@@ -203,9 +203,6 @@ function tfk_kid_reporters_year_select_submit($form,&$form_state) {
     if($year == $default_year) {
         $year = '';
     }
-    elseif ($year === '2015-2016') {
-      drupal_goto('kidreporters15');
-    }
     else {
         $year = '/' . $year;
     }
@@ -243,9 +240,6 @@ function _tfk_kid_reporters_get_available_years() {
 function _tfk_kid_reports_set_selected_year($element) {
     // see where we're going - if it's a specific school year, get the year
     $dest = drupal_get_destination();
-    if ($dest === 'kidreporters15') {
-      $element['#value'] = $element['2015-2016'];
-    }
     $year = substr($dest['destination'],strrpos($dest['destination'],'/')+1);
     if(isset($element['#options'][$year])) {
       $element['#value'] = $element['#options'][$year];       
