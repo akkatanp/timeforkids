@@ -215,6 +215,12 @@
     $('#news_brief .views-field-title-1 .field-content a').text('View News Brief');
     $('#minisite .views-field-title-1 .field-content a').text('View Mini-Site');
     
+    if (document.location.pathname === '/kidreporters15') {
+        var yearVal = $('#edit-kidrep-year').val();
+        $('#edit-kidrep-year option[value='+yearVal+']').removeAttr('selected');
+        $('#edit-kidrep-year option[value=2015-2016]').attr('selected', 'selected');
+    }
+    
     // Determine if tfk_notification message box should be shown
     // Check to see if the tfk_notificaitonID via the ajax URL is in the DOM
     /*
