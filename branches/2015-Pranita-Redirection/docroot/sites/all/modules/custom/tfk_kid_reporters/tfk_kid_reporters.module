@@ -203,6 +203,9 @@ function tfk_kid_reporters_year_select_submit($form,&$form_state) {
     if($year == $default_year) {
         $year = '';
     }
+    elseif ($year === '2015-2016') {
+      drupal_goto('kidreporters15');
+    }
     else {
         $year = '/' . $year;
     }
