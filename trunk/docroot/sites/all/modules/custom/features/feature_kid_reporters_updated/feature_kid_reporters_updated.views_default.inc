@@ -132,6 +132,50 @@ function feature_kid_reporters_updated_views_default_views() {
   /* Display: All Kid Reporters */
   $handler = $view->new_display('page', 'All Kid Reporters', 'page');
   $handler->display->display_options['path'] = 'tfk-kid-reporters';
+
+  /* Display: All Kid Reporters 2015-2016 */
+  $handler = $view->new_display('page', 'All Kid Reporters 2015-2016', 'page_1');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Kid Reporters';
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: View area */
+  $handler->display->display_options['header']['view']['id'] = 'view';
+  $handler->display->display_options['header']['view']['table'] = 'views';
+  $handler->display->display_options['header']['view']['field'] = 'view';
+  $handler->display->display_options['header']['view']['view_to_insert'] = 'kid_rep_listing_nodeblock15:default';
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 0;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'kid_reporter' => 'kid_reporter',
+  );
+  /* Filter criterion: Taxonomy term: Vocabulary */
+  $handler->display->display_options['filters']['vid']['id'] = 'vid';
+  $handler->display->display_options['filters']['vid']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['filters']['vid']['field'] = 'vid';
+  $handler->display->display_options['filters']['vid']['relationship'] = 'term_node_tid';
+  $handler->display->display_options['filters']['vid']['value'] = array(
+    6 => '6',
+  );
+  /* Filter criterion: Content: Kid Reporter Year (field_year) */
+  $handler->display->display_options['filters']['field_year_value']['id'] = 'field_year_value';
+  $handler->display->display_options['filters']['field_year_value']['table'] = 'field_data_field_year';
+  $handler->display->display_options['filters']['field_year_value']['field'] = 'field_year_value';
+  $handler->display->display_options['filters']['field_year_value']['value'] = array(
+    '2015-2016' => '2015-2016',
+  );
+  $handler->display->display_options['path'] = 'kidreporters15';
   $export['all_kid_reporters'] = $view;
 
   $view = new view();
@@ -260,6 +304,35 @@ function feature_kid_reporters_updated_views_default_views() {
   /* Display: Featured Kid Reporter Block */
   $handler = $view->new_display('block', 'Featured Kid Reporter Block', 'block');
   $handler->display->display_options['block_description'] = 'Featured Kid Reporter Block';
+  $handler->display->display_options['block_caching'] = '-1';
+
+  /* Display: Featured Kid Reporter Block 2015-2016 */
+  $handler = $view->new_display('block', 'Featured Kid Reporter Block 2015-2016', 'block_1');
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 0;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'kid_reporter' => 'kid_reporter',
+  );
+  /* Filter criterion: Content: Kid Reporter Year (field_year) */
+  $handler->display->display_options['filters']['field_year_value']['id'] = 'field_year_value';
+  $handler->display->display_options['filters']['field_year_value']['table'] = 'field_data_field_year';
+  $handler->display->display_options['filters']['field_year_value']['field'] = 'field_year_value';
+  $handler->display->display_options['filters']['field_year_value']['value'] = array(
+    '2015-2016' => '2015-2016',
+  );
+  $handler->display->display_options['block_description'] = 'Featured Kid Reporter Block 2015-2016';
   $handler->display->display_options['block_caching'] = '-1';
   $export['featured_kid_reporter'] = $view;
 

@@ -217,7 +217,7 @@ function feature_kid_reporters_updated_context_default_contexts() {
         ),
         'block-36' => array(
           'module' => 'block',
-          'delta' => 36,
+          'delta' => '36',
           'region' => 'content',
           'weight' => '-97',
         ),
@@ -237,7 +237,7 @@ function feature_kid_reporters_updated_context_default_contexts() {
           'module' => 'views',
           'delta' => 'b7c4853460a70e08ede4c3810b795953',
           'region' => 'content',
-          'weight' => '-94',
+          'weight' => '-10',
         ),
       ),
     ),
