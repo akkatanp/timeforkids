@@ -129,6 +129,12 @@ function feature_mini_sites_strongarm() {
       'search_result' => array(
         'custom_settings' => FALSE,
       ),
+      'diff_standard' => array(
+        'custom_settings' => FALSE,
+      ),
+      'token' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -139,6 +145,12 @@ function feature_mini_sites_strongarm() {
           'weight' => '30',
         ),
         'xmlsitemap' => array(
+          'weight' => '30',
+        ),
+        'flag' => array(
+          'weight' => '10',
+        ),
+        'path' => array(
           'weight' => '30',
         ),
       ),

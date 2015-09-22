@@ -170,6 +170,12 @@ function feature_mini_sites_context_default_contexts() {
           'region' => 'content',
           'weight' => '-8',
         ),
+        'views-minisite_articles-block_8' => array(
+          'module' => 'views',
+          'delta' => 'minisite_articles-block_8',
+          'region' => 'content',
+          'weight' => '-7',
+        ),
       ),
     ),
   );
@@ -241,6 +247,12 @@ function feature_mini_sites_context_default_contexts() {
           'delta' => 'minisite_articles-block',
           'region' => 'content',
           'weight' => '-8',
+        ),
+        'views-minisite_articles-block_8' => array(
+          'module' => 'views',
+          'delta' => 'minisite_articles-block_8',
+          'region' => 'content',
+          'weight' => '-7',
         ),
       ),
     ),
