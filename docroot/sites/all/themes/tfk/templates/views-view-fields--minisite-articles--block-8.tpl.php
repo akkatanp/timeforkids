@@ -24,11 +24,14 @@
  */
 
 ?>
-<?php $j = 0; $str = ''; ?>
+<?php $i = 0; $j = 0; $str = ''; ?>
 <?php foreach ($fields as $id => $field): ?>
       <?php 
+        $space_class = ($i % 2 === 0) ? "space-minisite space-even" : "space-minisite space-odd";
+      ?>
+      <?php 
         if ($j === 0):
-          $str .= '<div class="space-minisite">';
+          $str .='<div class="' . $space_class . '">';
         endif; 
       ?>
       <?php if ($j === 0 || $j === 1 || $j === 2): ?>
@@ -47,12 +50,12 @@
         endif; 
       ?>
       <?php 
-        $i++;
         if ($j < 2) {
           $j++;
         }
         else {
           $j = 0;
+          $i++;
         }
       ?>
 <?php endforeach; ?>
