@@ -1788,12 +1788,12 @@ function feature_mini_sites_views_default_views() {
   $handler->display->display_options['relationships']['field_minisite_timeline_nid']['field'] = 'field_minisite_timeline_nid';
   $handler->display->display_options['relationships']['field_minisite_timeline_nid']['required'] = TRUE;
   $handler->display->display_options['relationships']['field_minisite_timeline_nid']['delta'] = '-1';
-  /* Relationship: Content: Quiz (field_minisite_quiz) */
-  $handler->display->display_options['relationships']['field_minisite_quiz_nid']['id'] = 'field_minisite_quiz_nid';
-  $handler->display->display_options['relationships']['field_minisite_quiz_nid']['table'] = 'field_data_field_minisite_quiz';
-  $handler->display->display_options['relationships']['field_minisite_quiz_nid']['field'] = 'field_minisite_quiz_nid';
-  $handler->display->display_options['relationships']['field_minisite_quiz_nid']['required'] = TRUE;
-  $handler->display->display_options['relationships']['field_minisite_quiz_nid']['delta'] = '-1';
+  /* Relationship: Content: Quiz (field_minisite_atw_quiz) */
+  $handler->display->display_options['relationships']['field_minisite_atw_quiz_nid']['id'] = 'field_minisite_atw_quiz_nid';
+  $handler->display->display_options['relationships']['field_minisite_atw_quiz_nid']['table'] = 'field_data_field_minisite_atw_quiz';
+  $handler->display->display_options['relationships']['field_minisite_atw_quiz_nid']['field'] = 'field_minisite_atw_quiz_nid';
+  $handler->display->display_options['relationships']['field_minisite_atw_quiz_nid']['required'] = TRUE;
+  $handler->display->display_options['relationships']['field_minisite_atw_quiz_nid']['delta'] = '-1';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
@@ -1853,29 +1853,28 @@ function feature_mini_sites_views_default_views() {
   $handler->display->display_options['fields']['title_2']['id'] = 'title_2';
   $handler->display->display_options['fields']['title_2']['table'] = 'node';
   $handler->display->display_options['fields']['title_2']['field'] = 'title';
-  $handler->display->display_options['fields']['title_2']['relationship'] = 'field_minisite_quiz_nid';
+  $handler->display->display_options['fields']['title_2']['relationship'] = 'field_minisite_atw_quiz_nid';
   $handler->display->display_options['fields']['title_2']['label'] = '';
   $handler->display->display_options['fields']['title_2']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title_2']['hide_empty'] = TRUE;
-  /* Field: Content: Deck */
-  $handler->display->display_options['fields']['field_deck']['id'] = 'field_deck';
-  $handler->display->display_options['fields']['field_deck']['table'] = 'field_data_field_deck';
-  $handler->display->display_options['fields']['field_deck']['field'] = 'field_deck';
-  $handler->display->display_options['fields']['field_deck']['relationship'] = 'field_minisite_quiz_nid';
-  $handler->display->display_options['fields']['field_deck']['label'] = '';
-  $handler->display->display_options['fields']['field_deck']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_deck']['hide_empty'] = TRUE;
+  /* Field: Content: Body */
+  $handler->display->display_options['fields']['body_2']['id'] = 'body_2';
+  $handler->display->display_options['fields']['body_2']['table'] = 'field_data_body';
+  $handler->display->display_options['fields']['body_2']['field'] = 'body';
+  $handler->display->display_options['fields']['body_2']['relationship'] = 'field_minisite_atw_quiz_nid';
+  $handler->display->display_options['fields']['body_2']['label'] = '';
+  $handler->display->display_options['fields']['body_2']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['body_2']['hide_empty'] = TRUE;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title_5']['id'] = 'title_5';
   $handler->display->display_options['fields']['title_5']['table'] = 'node';
   $handler->display->display_options['fields']['title_5']['field'] = 'title';
-  $handler->display->display_options['fields']['title_5']['relationship'] = 'field_minisite_quiz_nid';
+  $handler->display->display_options['fields']['title_5']['relationship'] = 'field_minisite_atw_quiz_nid';
   $handler->display->display_options['fields']['title_5']['label'] = '';
   $handler->display->display_options['fields']['title_5']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['title_5']['alter']['text'] = 'Check It Out!';
   $handler->display->display_options['fields']['title_5']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title_5']['hide_empty'] = TRUE;
-  $handler->display->display_options['fields']['title_5']['empty_zero'] = TRUE;
   $translatables['minisite_articles'] = array(
     t('Master'),
     t('more'),
@@ -1916,7 +1915,7 @@ function feature_mini_sites_views_default_views() {
     t('Minisite Space'),
     t('field_minisite_day_in_life'),
     t('field_minisite_timeline'),
-    t('field_minisite_quiz'),
+    t('field_minisite_atw_quiz'),
   );
   $export['minisite_articles'] = $view;
 
