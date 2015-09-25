@@ -146,7 +146,7 @@ function feature_mini_sites_views_default_views() {
   $handler->display->display_options['relationships']['flag_content_rel']['label'] = 'homepage_minisite';
   $handler->display->display_options['relationships']['flag_content_rel']['flag'] = 'homepage_minisite';
   $handler->display->display_options['relationships']['flag_content_rel']['user_scope'] = 'any';
-  /* Relationship: Content: Section: Cover Story (field_articles) */
+  /* Relationship: Content: Articles (field_articles) */
   $handler->display->display_options['relationships']['field_articles_nid']['id'] = 'field_articles_nid';
   $handler->display->display_options['relationships']['field_articles_nid']['table'] = 'field_data_field_articles';
   $handler->display->display_options['relationships']['field_articles_nid']['field'] = 'field_articles_nid';
@@ -431,6 +431,25 @@ function feature_mini_sites_views_default_views() {
   $handler->display->display_options['filters']['flagged']['relationship'] = 'flag_content_rel';
   $handler->display->display_options['filters']['flagged']['value'] = '1';
   $handler->display->display_options['block_caching'] = '1';
+  $translatables['homepage_minisite'] = array(
+    t('Master'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('homepage_minisite'),
+    t('View Mini Site'),
+    t('See More Minisites >>'),
+    t('Home Page Mini-site Block'),
+    t('field_articles'),
+    t('View Mini-Site'),
+    t('Additional Content'),
+    t('[type]: [field_related_articles_1]'),
+    t('See More Mini-Sites >>'),
+    t('Home page Mini-site for Anon'),
+  );
   $export['homepage_minisite'] = $view;
 
   $view = new view();
@@ -533,6 +552,13 @@ function feature_mini_sites_views_default_views() {
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['header'] = FALSE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Flags: remove_minisite_landing */
+  $handler->display->display_options['relationships']['flag_content_rel_1']['id'] = 'flag_content_rel_1';
+  $handler->display->display_options['relationships']['flag_content_rel_1']['table'] = 'node';
+  $handler->display->display_options['relationships']['flag_content_rel_1']['field'] = 'flag_content_rel';
+  $handler->display->display_options['relationships']['flag_content_rel_1']['required'] = 0;
+  $handler->display->display_options['relationships']['flag_content_rel_1']['flag'] = 'remove_minisite_landing';
+  $handler->display->display_options['relationships']['flag_content_rel_1']['user_scope'] = 'any';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Thumbnail Image */
   $handler->display->display_options['fields']['field_minisite_thumbnail_image']['id'] = 'field_minisite_thumbnail_image';
@@ -569,6 +595,14 @@ function feature_mini_sites_views_default_views() {
   $handler->display->display_options['fields']['title_1']['alter']['text'] = 'Check It Out!';
   $handler->display->display_options['fields']['title_1']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title_1']['hide_alter_empty'] = FALSE;
+  /* Field: Flags: Flag link */
+  $handler->display->display_options['fields']['ops']['id'] = 'ops';
+  $handler->display->display_options['fields']['ops']['table'] = 'flag_content';
+  $handler->display->display_options['fields']['ops']['field'] = 'ops';
+  $handler->display->display_options['fields']['ops']['relationship'] = 'flag_content_rel_1';
+  $handler->display->display_options['fields']['ops']['label'] = '';
+  $handler->display->display_options['fields']['ops']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['ops']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['sorts'] = FALSE;
   /* Sort criterion: Draggableviews: Weight */
   $handler->display->display_options['sorts']['weight']['id'] = 'weight';
@@ -592,6 +626,12 @@ function feature_mini_sites_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'minisite' => 'minisite',
   );
+  /* Filter criterion: Flags: Flagged */
+  $handler->display->display_options['filters']['flagged']['id'] = 'flagged';
+  $handler->display->display_options['filters']['flagged']['table'] = 'flag_content';
+  $handler->display->display_options['filters']['flagged']['field'] = 'flagged';
+  $handler->display->display_options['filters']['flagged']['relationship'] = 'flag_content_rel_1';
+  $handler->display->display_options['filters']['flagged']['value'] = '0';
 
   /* Display: Mini-site Home Featured */
   $handler = $view->new_display('block', 'Mini-site Home Featured', 'block_1');
@@ -779,6 +819,24 @@ function feature_mini_sites_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'mini_site_home' => 'mini_site_home',
   );
+  $translatables['mini_site_home'] = array(
+    t('Master'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Check It Out!'),
+    t('Mini-site Home Items'),
+    t('flag'),
+    t('Mini-site Home Featured'),
+    t('Featured Mini-Site'),
+    t('View Mini-Site'),
+    t('Mini-site Home Top Block'),
+    t('Mini-site Home Top Block Edit'),
+    t('EDIT TITLE/DESCRIPTION'),
+  );
   $export['mini_site_home'] = $view;
 
   $view = new view();
@@ -817,7 +875,7 @@ function feature_mini_sites_views_default_views() {
   $handler->display->display_options['header']['area']['id'] = 'area';
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
-  /* Relationship: Content: Section: Cover Story (field_articles) */
+  /* Relationship: Content: Articles (field_articles) */
   $handler->display->display_options['relationships']['field_articles_nid']['id'] = 'field_articles_nid';
   $handler->display->display_options['relationships']['field_articles_nid']['table'] = 'field_data_field_articles';
   $handler->display->display_options['relationships']['field_articles_nid']['field'] = 'field_articles_nid';
@@ -974,7 +1032,7 @@ function feature_mini_sites_views_default_views() {
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['header'] = FALSE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
-  /* Relationship: Content: Section: Cover Story (field_articles) */
+  /* Relationship: Content: Articles (field_articles) */
   $handler->display->display_options['relationships']['field_articles_nid']['id'] = 'field_articles_nid';
   $handler->display->display_options['relationships']['field_articles_nid']['table'] = 'field_data_field_articles';
   $handler->display->display_options['relationships']['field_articles_nid']['field'] = 'field_articles_nid';
@@ -1133,7 +1191,7 @@ function feature_mini_sites_views_default_views() {
   $handler->display->display_options['row_options']['hide_empty'] = TRUE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
-  /* Relationship: Content: Section: Cover Story (field_articles) */
+  /* Relationship: Content: Articles (field_articles) */
   $handler->display->display_options['relationships']['field_articles_nid']['id'] = 'field_articles_nid';
   $handler->display->display_options['relationships']['field_articles_nid']['table'] = 'field_data_field_articles';
   $handler->display->display_options['relationships']['field_articles_nid']['field'] = 'field_articles_nid';
@@ -1253,7 +1311,7 @@ function feature_mini_sites_views_default_views() {
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
-  /* Relationship: Content: Section: Cover Story (field_articles) */
+  /* Relationship: Content: Articles (field_articles) */
   $handler->display->display_options['relationships']['field_articles_nid']['id'] = 'field_articles_nid';
   $handler->display->display_options['relationships']['field_articles_nid']['table'] = 'field_data_field_articles';
   $handler->display->display_options['relationships']['field_articles_nid']['field'] = 'field_articles_nid';
@@ -1404,7 +1462,7 @@ function feature_mini_sites_views_default_views() {
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
-  /* Relationship: Content: Section: Cover Story (field_articles) */
+  /* Relationship: Content: Articles (field_articles) */
   $handler->display->display_options['relationships']['field_articles_nid']['id'] = 'field_articles_nid';
   $handler->display->display_options['relationships']['field_articles_nid']['table'] = 'field_data_field_articles';
   $handler->display->display_options['relationships']['field_articles_nid']['field'] = 'field_articles_nid';
@@ -1537,7 +1595,7 @@ function feature_mini_sites_views_default_views() {
   $handler->display->display_options['header']['area']['format'] = 'full_html';
   $handler->display->display_options['header']['area']['tokenize'] = TRUE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
-  /* Relationship: Content: Section: Cover Story (field_articles) */
+  /* Relationship: Content: Articles (field_articles) */
   $handler->display->display_options['relationships']['field_articles_nid']['id'] = 'field_articles_nid';
   $handler->display->display_options['relationships']['field_articles_nid']['table'] = 'field_data_field_articles';
   $handler->display->display_options['relationships']['field_articles_nid']['field'] = 'field_articles_nid';
@@ -1731,6 +1789,154 @@ function feature_mini_sites_views_default_views() {
   $handler->display->display_options['fields']['field_header_image']['settings'] = array(
     'image_style' => '',
     'image_link' => '',
+  );
+
+  /* Display: Minisite Space */
+  $handler = $view->new_display('block', 'Minisite Space', 'block_8');
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '';
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Content: Day In Life (field_minisite_day_in_life) */
+  $handler->display->display_options['relationships']['field_minisite_day_in_life_nid']['id'] = 'field_minisite_day_in_life_nid';
+  $handler->display->display_options['relationships']['field_minisite_day_in_life_nid']['table'] = 'field_data_field_minisite_day_in_life';
+  $handler->display->display_options['relationships']['field_minisite_day_in_life_nid']['field'] = 'field_minisite_day_in_life_nid';
+  $handler->display->display_options['relationships']['field_minisite_day_in_life_nid']['required'] = TRUE;
+  $handler->display->display_options['relationships']['field_minisite_day_in_life_nid']['delta'] = '-1';
+  /* Relationship: Content: Timeline (field_minisite_timeline) */
+  $handler->display->display_options['relationships']['field_minisite_timeline_nid']['id'] = 'field_minisite_timeline_nid';
+  $handler->display->display_options['relationships']['field_minisite_timeline_nid']['table'] = 'field_data_field_minisite_timeline';
+  $handler->display->display_options['relationships']['field_minisite_timeline_nid']['field'] = 'field_minisite_timeline_nid';
+  $handler->display->display_options['relationships']['field_minisite_timeline_nid']['required'] = TRUE;
+  $handler->display->display_options['relationships']['field_minisite_timeline_nid']['delta'] = '-1';
+  /* Relationship: Content: Quiz (field_minisite_atw_quiz) */
+  $handler->display->display_options['relationships']['field_minisite_atw_quiz_nid']['id'] = 'field_minisite_atw_quiz_nid';
+  $handler->display->display_options['relationships']['field_minisite_atw_quiz_nid']['table'] = 'field_data_field_minisite_atw_quiz';
+  $handler->display->display_options['relationships']['field_minisite_atw_quiz_nid']['field'] = 'field_minisite_atw_quiz_nid';
+  $handler->display->display_options['relationships']['field_minisite_atw_quiz_nid']['required'] = TRUE;
+  $handler->display->display_options['relationships']['field_minisite_atw_quiz_nid']['delta'] = '-1';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['relationship'] = 'field_minisite_day_in_life_nid';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['hide_empty'] = TRUE;
+  /* Field: Content: Body */
+  $handler->display->display_options['fields']['body']['id'] = 'body';
+  $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
+  $handler->display->display_options['fields']['body']['field'] = 'body';
+  $handler->display->display_options['fields']['body']['relationship'] = 'field_minisite_day_in_life_nid';
+  $handler->display->display_options['fields']['body']['label'] = '';
+  $handler->display->display_options['fields']['body']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['body']['hide_empty'] = TRUE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title_3']['id'] = 'title_3';
+  $handler->display->display_options['fields']['title_3']['table'] = 'node';
+  $handler->display->display_options['fields']['title_3']['field'] = 'title';
+  $handler->display->display_options['fields']['title_3']['relationship'] = 'field_minisite_day_in_life_nid';
+  $handler->display->display_options['fields']['title_3']['label'] = '';
+  $handler->display->display_options['fields']['title_3']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['title_3']['alter']['text'] = 'Check It Out!';
+  $handler->display->display_options['fields']['title_3']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title_3']['hide_empty'] = TRUE;
+  $handler->display->display_options['fields']['title_3']['empty_zero'] = TRUE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title_1']['id'] = 'title_1';
+  $handler->display->display_options['fields']['title_1']['table'] = 'node';
+  $handler->display->display_options['fields']['title_1']['field'] = 'title';
+  $handler->display->display_options['fields']['title_1']['relationship'] = 'field_minisite_timeline_nid';
+  $handler->display->display_options['fields']['title_1']['label'] = '';
+  $handler->display->display_options['fields']['title_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title_1']['hide_empty'] = TRUE;
+  /* Field: Content: Body */
+  $handler->display->display_options['fields']['body_1']['id'] = 'body_1';
+  $handler->display->display_options['fields']['body_1']['table'] = 'field_data_body';
+  $handler->display->display_options['fields']['body_1']['field'] = 'body';
+  $handler->display->display_options['fields']['body_1']['relationship'] = 'field_minisite_timeline_nid';
+  $handler->display->display_options['fields']['body_1']['label'] = '';
+  $handler->display->display_options['fields']['body_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['body_1']['hide_empty'] = TRUE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title_4']['id'] = 'title_4';
+  $handler->display->display_options['fields']['title_4']['table'] = 'node';
+  $handler->display->display_options['fields']['title_4']['field'] = 'title';
+  $handler->display->display_options['fields']['title_4']['relationship'] = 'field_minisite_timeline_nid';
+  $handler->display->display_options['fields']['title_4']['label'] = '';
+  $handler->display->display_options['fields']['title_4']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['title_4']['alter']['text'] = 'Check It Out!';
+  $handler->display->display_options['fields']['title_4']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title_4']['hide_empty'] = TRUE;
+  $handler->display->display_options['fields']['title_4']['empty_zero'] = TRUE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title_2']['id'] = 'title_2';
+  $handler->display->display_options['fields']['title_2']['table'] = 'node';
+  $handler->display->display_options['fields']['title_2']['field'] = 'title';
+  $handler->display->display_options['fields']['title_2']['relationship'] = 'field_minisite_atw_quiz_nid';
+  $handler->display->display_options['fields']['title_2']['label'] = '';
+  $handler->display->display_options['fields']['title_2']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title_2']['hide_empty'] = TRUE;
+  /* Field: Content: Body */
+  $handler->display->display_options['fields']['body_2']['id'] = 'body_2';
+  $handler->display->display_options['fields']['body_2']['table'] = 'field_data_body';
+  $handler->display->display_options['fields']['body_2']['field'] = 'body';
+  $handler->display->display_options['fields']['body_2']['relationship'] = 'field_minisite_atw_quiz_nid';
+  $handler->display->display_options['fields']['body_2']['label'] = '';
+  $handler->display->display_options['fields']['body_2']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['body_2']['hide_empty'] = TRUE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title_5']['id'] = 'title_5';
+  $handler->display->display_options['fields']['title_5']['table'] = 'node';
+  $handler->display->display_options['fields']['title_5']['field'] = 'title';
+  $handler->display->display_options['fields']['title_5']['relationship'] = 'field_minisite_atw_quiz_nid';
+  $handler->display->display_options['fields']['title_5']['label'] = '';
+  $handler->display->display_options['fields']['title_5']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['title_5']['alter']['text'] = 'Check It Out!';
+  $handler->display->display_options['fields']['title_5']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title_5']['hide_empty'] = TRUE;
+  $translatables['minisite_articles'] = array(
+    t('Master'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('field_articles'),
+    t('field_related_articles'),
+    t('field_tout_image'),
+    t('Check It Out!'),
+    t('Additional Content'),
+    t('[type]: [field_related_articles]'),
+    t('[field_lrg_sq_image]'),
+    t('All'),
+    t('Minisite Articles Teacher Block'),
+    t('[field_slideshow_images-nid]'),
+    t('[type] : [field_related_articles_1]'),
+    t('Minisite Articles Block'),
+    t('Minisite Featured Teacher Block'),
+    t('<div class="top-story-right-square"></div>'),
+    t('Featured'),
+    t('Minisite Featured Block'),
+    t('[image]'),
+    t('Minisite Navigation Block'),
+    t('<p>[title_1]</p>'),
+    t('Minisite Teacher Resources Block'),
+    t('[field_minisite_resources_label]'),
+    t('field_minisite_resources'),
+    t('<a href="[field_worksheet_pdf_private]">[title]</a>'),
+    t('Minisite More Block'),
+    t('More TFK Mini-Sites'),
+    t('See More Mini-Sites'),
+    t('<a href="/mini-sites">See More Mini-Sites</a>'),
+    t('[field_minisite_thumbnail_image]'),
+    t('Minisite Article Header'),
+    t('Minisite Space'),
+    t('field_minisite_day_in_life'),
+    t('field_minisite_timeline'),
+    t('field_minisite_atw_quiz'),
   );
   $export['minisite_articles'] = $view;
 

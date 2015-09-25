@@ -221,6 +221,20 @@
         $('#edit-kidrep-year option[value=2015-2016]').attr('selected', 'selected');
     }
     
+    // TFK-344
+    var space_items = $('.space-minisite');
+    if (space_items.length) {
+        var si = 0;
+        $(space_items).each(function(){
+           if (si % 2 === 0) {
+            var maxHeight = Math.max($(this).height(), $(this).next().height());
+            $(this).height(maxHeight);
+            $(this).next().height(maxHeight);
+           }
+           si++; 
+        });
+    }
+    
     // Determine if tfk_notification message box should be shown
     // Check to see if the tfk_notificaitonID via the ajax URL is in the DOM
     /*
