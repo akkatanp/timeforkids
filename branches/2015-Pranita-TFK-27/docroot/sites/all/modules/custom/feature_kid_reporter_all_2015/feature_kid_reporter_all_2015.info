@@ -1,0 +1,13 @@
+name = Feature Kid Reporter All 2015
+core = 7.x
+package = Features
+dependencies[] = context
+dependencies[] = ctools
+dependencies[] = menu
+dependencies[] = tfk_kid_reporters
+dependencies[] = views
+features[context][] = kid_reporter_all_2015_2016
+features[ctools][] = context:context:3
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:1
+features[views_view][] = kid_rep_listing_nodeblock15
