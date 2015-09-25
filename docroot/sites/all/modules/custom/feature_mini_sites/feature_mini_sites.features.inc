@@ -69,6 +69,45 @@ function feature_mini_sites_flag_default_flags() {
     ),
     'api_version' => 2,
   );
+  // Exported flag: "Remove Minisite from Landing Page".
+  $flags['remove_minisite_landing'] = array(
+    'content_type' => 'node',
+    'title' => 'Remove Minisite from Landing Page',
+    'global' => '1',
+    'types' => array(
+      0 => 'minisite',
+    ),
+    'flag_short' => 'Remove Minisite from Landing Page',
+    'flag_long' => '',
+    'flag_message' => '',
+    'unflag_short' => 'Kerp Minisite in Landing page',
+    'unflag_long' => '',
+    'unflag_message' => '',
+    'unflag_denied_text' => '',
+    'link_type' => 'toggle',
+    'roles' => array(
+      'flag' => array(
+        0 => '3',
+        1 => '4',
+      ),
+      'unflag' => array(
+        0 => '3',
+        1 => '4',
+      ),
+    ),
+    'weight' => 0,
+    'show_on_form' => 1,
+    'access_author' => '',
+    'show_on_page' => 0,
+    'show_on_teaser' => 0,
+    'show_contextual_link' => 0,
+    'i18n' => 0,
+    'api_version' => 2,
+    'module' => 'feature_mini_sites',
+    'locked' => array(
+      0 => 'name',
+    ),
+  );
   return $flags;
 
 }
