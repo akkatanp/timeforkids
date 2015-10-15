@@ -708,6 +708,13 @@ function feature_kid_reporters_updated_views_default_views() {
 
   /* Display: Block */
   $handler = $view->new_display('block', 'Block', 'block');
+  $handler->display->display_options['defaults']['footer'] = FALSE;
+  /* Footer: Global: Text area */
+  $handler->display->display_options['footer']['area']['id'] = 'area';
+  $handler->display->display_options['footer']['area']['table'] = 'views';
+  $handler->display->display_options['footer']['area']['field'] = 'area';
+  $handler->display->display_options['footer']['area']['content'] = '<p><a href="/kidreporters15">View All TFK Kid Reporters</a></p>';
+  $handler->display->display_options['footer']['area']['format'] = 'full_html';
   $export['random_kid_reporters'] = $view;
 
   return $export;
