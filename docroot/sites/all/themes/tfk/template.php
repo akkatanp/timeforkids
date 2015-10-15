@@ -540,9 +540,6 @@ function tfk_preprocess_image(&$variables) {
   // If the image URL starts with a protocol remove it and use a
   // relative protocol.
   $scheme = file_uri_scheme($variables['path']);
-  if ($scheme == 'https') {
-    flog("Images with HTTPS protocol on HTTP site.");
-  }
   $protocols = array('http', 'https');
   if ($scheme && in_array($scheme, $protocols)) {
     $variables['path'] = '//' . file_uri_target($variables['path']);
