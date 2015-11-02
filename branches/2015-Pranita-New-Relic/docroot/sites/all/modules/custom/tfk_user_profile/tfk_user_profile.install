@@ -1,0 +1,35 @@
+<?php
+function tfk_user_profile_schema(){
+	$schema['users_lucie_account'] = array(
+		'description' => 'Mapping a user profile to their Lucie account',
+		'fields' => array(
+			'aiid' => array(
+				'description' => 'Auto Increment ID',
+				'type' => 'serial',
+				'not null' => TRUE
+			),
+			'lid' => array(
+				'description' => 'Lucie Account ID',
+				'type' => 'bigint',
+				'not null' => TRUE
+			),
+			'uid' => array(
+				'description' => 'UID from drupal users table',
+				'type' => 'int',
+				'not null' => TRUE
+			),			
+			'username' => array(
+				'description' => 'Email address associated with Lucie Account',
+				'type' => 'varchar',
+				'length' => '255',
+				'not null' => TRUE
+			)
+		),
+		'primary key' => array('aiid'),
+		'unique keys' => array(
+    		'lid_uid' => array('lid', 'uid'),
+  		)
+	);
+	return $schema;
+}
+
