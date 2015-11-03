@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * Implements hook_init().
+ */
+function tfk_new_relic_init() {
+  /* This block adds the New Relic timing header & footer.
+   * drupal_add_html_head() works better than drupal_add_js
+   * because it can be weighted earlier in the DOM.
+   *
+   * @see http://www.metaltoad.com/blog/new-relic-real-user-monitoring-hooks-drupal
+   */
+  if (extension_loaded('newrelic')) {
+    drupal_add_html_head(array(
+      '#type' => 'html_tag',
+      '#tag' => 'script',
+      '#value' => newrelic_get_browser_timing_header(FALSE),
+      '#weight' => -999, // Right after charset attribute
+    ), 'newrelic');
+    drupal_add_js(newrelic_get_browser_timing_footer(FALSE),
+      array('type' => 'inline', 'scope' => 'footer', 'weight' => 1000));
+  }
+}
+
