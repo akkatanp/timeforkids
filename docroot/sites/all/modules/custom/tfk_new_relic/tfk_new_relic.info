@@ -1,0 +1,4 @@
+name = TFK New Relic
+description = TFK New Relic Integration
+core = 7.x
+package = "TFK"
