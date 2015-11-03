@@ -1,0 +1,4 @@
+name = New Relic Integration
+description = Creates two blocks holding NR code for header and footer
+core = 7.x
+dependencies[] = block
