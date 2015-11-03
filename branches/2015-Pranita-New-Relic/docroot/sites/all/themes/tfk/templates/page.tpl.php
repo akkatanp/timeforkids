@@ -79,6 +79,7 @@ if(drupal_is_front_page()) {
 <div id="page-wrapper"><div id="page">
 
   <div id="header">
+    <?php if( extension_loaded('newrelic') ) { echo newrelic_get_browser_timing_header(); } ?>
     <div class="section clearfix">
     <?php if ($logo): ?>
       <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo"><img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" /></a>
@@ -219,5 +220,6 @@ if(drupal_is_front_page()) {
   </div><!-- /#main-wrapper -->
 
 </div></div><!-- /#page, /#page-wrapper -->
+<?php if( extension_loaded('newrelic') ) { echo newrelic_get_browser_timing_footer(); } ?>
 
 <?php print render($page['bottom']); ?>
