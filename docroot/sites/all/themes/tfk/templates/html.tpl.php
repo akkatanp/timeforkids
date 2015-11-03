@@ -71,13 +71,6 @@ $head_title = strip_tags(check_markup($head_title));
   <?php if ($is_front) { echo "<meta name=\"google-site-verification\" content=\"V-zHzHAgrZCjFYtwrGVsJLiwf5uKdc9EC4WFM1754zc\" />\n"; } ?>
   <title><?php if ($is_front) { echo 'Time For Kids'; } else { print $head_title; } ?></title>
   <?php manualMetaTags($_GET['q']); ?>
-  <div class="test"><?php if( extension_loaded('newrelic') ) 
-    {
-    echo '<div class="came inside"></div>';
-    echo newrelic_get_browser_timing_header(); }else {
-      echo '<div class="not working"></div>';
-    }
-    ?></div>
   <?php print $styles; ?>
   <?php print $scripts; ?>
 </head>
