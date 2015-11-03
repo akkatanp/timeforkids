@@ -19,6 +19,8 @@ function tfk_new_relic_init() {
     ), 'newrelic');
     drupal_add_js(newrelic_get_browser_timing_footer(FALSE),
       array('type' => 'inline', 'scope' => 'footer', 'weight' => 1000));
+    drupal_add_js('console.log("Im here"); hi',
+      array('type' => 'inline', 'scope' => 'footer', 'weight' => 1000));
   }
 }
 
