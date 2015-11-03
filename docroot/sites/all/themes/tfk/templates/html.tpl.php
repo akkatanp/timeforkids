@@ -71,11 +71,6 @@ $head_title = strip_tags(check_markup($head_title));
   <?php if ($is_front) { echo "<meta name=\"google-site-verification\" content=\"V-zHzHAgrZCjFYtwrGVsJLiwf5uKdc9EC4WFM1754zc\" />\n"; } ?>
   <title><?php if ($is_front) { echo 'Time For Kids'; } else { print $head_title; } ?></title>
   <?php manualMetaTags($_GET['q']); ?>
-  <?php
-    if (extension_loaded ('newrelic')) {
-      newrelic_get_browser_timing_header();
-    }
-  ?>
   <?php print $styles; ?>
   <?php print $scripts; ?>
 </head>
@@ -88,10 +83,5 @@ $head_title = strip_tags(check_markup($head_title));
   <?php print $page_top; ?>
   <?php print $page; ?>
   <?php print $page_bottom; ?>
-  <?php
-    if (extension_loaded ('newrelic')) {
-      newrelic_get_browser_timing_footer();
-    }
-  ?>
 </body>
 </html>
