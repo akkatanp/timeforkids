@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Flashcard Landing feature.
+ */
+
+include_once 'flashcard_landing.features.inc';
