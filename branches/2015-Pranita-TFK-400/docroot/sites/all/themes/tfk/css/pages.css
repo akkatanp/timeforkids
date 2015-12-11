@@ -3878,7 +3878,7 @@ div.views-slideshow-cycle-main {height:220px;min-height:220px;}
   display: block;
 }
 
-.view-homepage-top-story .views-field-field-lrg-sq-image-1{
+.view-homepage-top-story .views-field-field-lrg-sq-image-1, .view-homepage-top-story .views-field-field-video-thumbnail-1 {
       position: relative;
     top: -20px;
     left: -10px;
