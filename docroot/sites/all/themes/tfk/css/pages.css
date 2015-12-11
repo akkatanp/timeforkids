@@ -3878,6 +3878,7 @@ div.views-slideshow-cycle-main {height:220px;min-height:220px;}
   display: block;
 }
 
+/* Minisite - Top Story Homepage */
 .view-homepage-top-story .views-field-field-lrg-sq-image-1, .view-homepage-top-story .views-field-field-video-thumbnail-1 {
       position: relative;
     top: -20px;
@@ -3925,4 +3926,12 @@ div.views-slideshow-cycle-main {height:220px;min-height:220px;}
 
 .view-homepage-top-story .view-content .views-field-title .Minisite{
     display: none;
+}
+
+.view-homepage-top-story .views-field-field-video-thumbnail-1 .Minisite .icon {
+    background: url(/sites/all/modules/custom/tfk_search/images/video-camera-icon.png) no-repeat;
+    position: absolute;
+    height: 24px;
+    margin: -34px 0 0 225px;
+    width: 32px;
 }
