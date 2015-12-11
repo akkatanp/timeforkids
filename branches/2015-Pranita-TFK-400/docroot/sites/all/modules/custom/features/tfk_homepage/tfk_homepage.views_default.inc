@@ -2851,6 +2851,40 @@ function tfk_homepage_views_default_views() {
 
   /* Display: Homepage Main Tout Anon */
   $handler = $view->new_display('block', 'Homepage Main Tout Anon', 'block_2');
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Flags: homepage_top_story */
+  $handler->display->display_options['relationships']['flag_content_rel']['id'] = 'flag_content_rel';
+  $handler->display->display_options['relationships']['flag_content_rel']['table'] = 'node';
+  $handler->display->display_options['relationships']['flag_content_rel']['field'] = 'flag_content_rel';
+  $handler->display->display_options['relationships']['flag_content_rel']['label'] = '';
+  $handler->display->display_options['relationships']['flag_content_rel']['flag'] = 'homepage_top_story';
+  $handler->display->display_options['relationships']['flag_content_rel']['user_scope'] = 'any';
+  /* Relationship: Content: Related Article (field_related_articles) */
+  $handler->display->display_options['relationships']['field_related_articles_nid']['id'] = 'field_related_articles_nid';
+  $handler->display->display_options['relationships']['field_related_articles_nid']['table'] = 'field_data_field_related_articles';
+  $handler->display->display_options['relationships']['field_related_articles_nid']['field'] = 'field_related_articles_nid';
+  $handler->display->display_options['relationships']['field_related_articles_nid']['delta'] = '-1';
+  /* Relationship: Field: Grade Level (field_grade_level) */
+  $handler->display->display_options['relationships']['field_grade_level_tid']['id'] = 'field_grade_level_tid';
+  $handler->display->display_options['relationships']['field_grade_level_tid']['table'] = 'field_data_field_grade_level';
+  $handler->display->display_options['relationships']['field_grade_level_tid']['field'] = 'field_grade_level_tid';
+  /* Relationship: Content: Mini-Lessons (field_mini_lessons) */
+  $handler->display->display_options['relationships']['field_mini_lessons_nid']['id'] = 'field_mini_lessons_nid';
+  $handler->display->display_options['relationships']['field_mini_lessons_nid']['table'] = 'field_data_field_mini_lessons';
+  $handler->display->display_options['relationships']['field_mini_lessons_nid']['field'] = 'field_mini_lessons_nid';
+  $handler->display->display_options['relationships']['field_mini_lessons_nid']['delta'] = '-1';
+  /* Relationship: Slideshow big image */
+  $handler->display->display_options['relationships']['field_slideshow_images_nid']['id'] = 'field_slideshow_images_nid';
+  $handler->display->display_options['relationships']['field_slideshow_images_nid']['table'] = 'field_data_field_slideshow_images';
+  $handler->display->display_options['relationships']['field_slideshow_images_nid']['field'] = 'field_slideshow_images_nid';
+  $handler->display->display_options['relationships']['field_slideshow_images_nid']['ui_name'] = 'Slideshow big image';
+  $handler->display->display_options['relationships']['field_slideshow_images_nid']['delta'] = '0';
+  /* Relationship: Content: Articles (field_articles) */
+  $handler->display->display_options['relationships']['field_articles_nid']['id'] = 'field_articles_nid';
+  $handler->display->display_options['relationships']['field_articles_nid']['table'] = 'field_data_field_articles';
+  $handler->display->display_options['relationships']['field_articles_nid']['field'] = 'field_articles_nid';
+  $handler->display->display_options['relationships']['field_articles_nid']['required'] = TRUE;
+  $handler->display->display_options['relationships']['field_articles_nid']['delta'] = '0';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Type */
   $handler->display->display_options['fields']['type']['id'] = 'type';
@@ -2896,6 +2930,38 @@ function tfk_homepage_views_default_views() {
     'image_style' => 'tfk_square_large',
     'image_link' => '',
   );
+  /* Field: Content: Large Square Image */
+  $handler->display->display_options['fields']['field_lrg_sq_image_1']['id'] = 'field_lrg_sq_image_1';
+  $handler->display->display_options['fields']['field_lrg_sq_image_1']['table'] = 'field_data_field_lrg_sq_image';
+  $handler->display->display_options['fields']['field_lrg_sq_image_1']['field'] = 'field_lrg_sq_image';
+  $handler->display->display_options['fields']['field_lrg_sq_image_1']['relationship'] = 'field_articles_nid';
+  $handler->display->display_options['fields']['field_lrg_sq_image_1']['label'] = '';
+  $handler->display->display_options['fields']['field_lrg_sq_image_1']['element_class'] = '[type]';
+  $handler->display->display_options['fields']['field_lrg_sq_image_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_lrg_sq_image_1']['hide_empty'] = TRUE;
+  $handler->display->display_options['fields']['field_lrg_sq_image_1']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_lrg_sq_image_1']['settings'] = array(
+    'image_style' => 'tfk_square_large',
+    'image_link' => '',
+  );
+  /* Field: Large Square Image (Minisite - Video) */
+  $handler->display->display_options['fields']['field_video_thumbnail_1']['id'] = 'field_video_thumbnail_1';
+  $handler->display->display_options['fields']['field_video_thumbnail_1']['table'] = 'field_data_field_video_thumbnail';
+  $handler->display->display_options['fields']['field_video_thumbnail_1']['field'] = 'field_video_thumbnail';
+  $handler->display->display_options['fields']['field_video_thumbnail_1']['relationship'] = 'field_articles_nid';
+  $handler->display->display_options['fields']['field_video_thumbnail_1']['ui_name'] = 'Large Square Image (Minisite - Video)';
+  $handler->display->display_options['fields']['field_video_thumbnail_1']['label'] = '';
+  $handler->display->display_options['fields']['field_video_thumbnail_1']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_video_thumbnail_1']['alter']['text'] = '[field_video_thumbnail_1]
+<div class="icon"></div>';
+  $handler->display->display_options['fields']['field_video_thumbnail_1']['element_class'] = '[type]';
+  $handler->display->display_options['fields']['field_video_thumbnail_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_video_thumbnail_1']['hide_empty'] = TRUE;
+  $handler->display->display_options['fields']['field_video_thumbnail_1']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_video_thumbnail_1']['settings'] = array(
+    'image_style' => 'tfk_square_large',
+    'image_link' => '',
+  );
   /* Field: Article image credit */
   $handler->display->display_options['fields']['field_image_credit']['id'] = 'field_image_credit';
   $handler->display->display_options['fields']['field_image_credit']['table'] = 'field_data_field_image_credit';
@@ -2903,7 +2969,15 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['fields']['field_image_credit']['ui_name'] = 'Article image credit';
   $handler->display->display_options['fields']['field_image_credit']['label'] = '';
   $handler->display->display_options['fields']['field_image_credit']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_image_credit']['hide_alter_empty'] = FALSE;
+  $handler->display->display_options['fields']['field_image_credit']['hide_empty'] = TRUE;
+  /* Field: Content: Image Credit */
+  $handler->display->display_options['fields']['field_image_credit_1']['id'] = 'field_image_credit_1';
+  $handler->display->display_options['fields']['field_image_credit_1']['table'] = 'field_data_field_image_credit';
+  $handler->display->display_options['fields']['field_image_credit_1']['field'] = 'field_image_credit';
+  $handler->display->display_options['fields']['field_image_credit_1']['relationship'] = 'field_articles_nid';
+  $handler->display->display_options['fields']['field_image_credit_1']['label'] = '';
+  $handler->display->display_options['fields']['field_image_credit_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_image_credit_1']['hide_empty'] = TRUE;
   /* Field: Top Story Right Square */
   $handler->display->display_options['fields']['nothing_1']['id'] = 'nothing_1';
   $handler->display->display_options['fields']['nothing_1']['table'] = 'views';
@@ -2932,20 +3006,46 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['trim'] = TRUE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['title']['hide_alter_empty'] = FALSE;
+  $handler->display->display_options['fields']['title']['hide_empty'] = TRUE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title_1']['id'] = 'title_1';
+  $handler->display->display_options['fields']['title_1']['table'] = 'node';
+  $handler->display->display_options['fields']['title_1']['field'] = 'title';
+  $handler->display->display_options['fields']['title_1']['relationship'] = 'field_articles_nid';
+  $handler->display->display_options['fields']['title_1']['label'] = '';
+  $handler->display->display_options['fields']['title_1']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['title_1']['alter']['path'] = '[title]';
+  $handler->display->display_options['fields']['title_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title_1']['hide_empty'] = TRUE;
+  $handler->display->display_options['fields']['title_1']['link_to_node'] = FALSE;
   /* Field: Content: Date */
   $handler->display->display_options['fields']['field_date']['id'] = 'field_date';
   $handler->display->display_options['fields']['field_date']['table'] = 'field_data_field_date';
   $handler->display->display_options['fields']['field_date']['field'] = 'field_date';
   $handler->display->display_options['fields']['field_date']['label'] = '';
   $handler->display->display_options['fields']['field_date']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_date']['hide_empty'] = TRUE;
   $handler->display->display_options['fields']['field_date']['settings'] = array(
     'format_type' => 'long',
     'fromto' => 'both',
     'multiple_number' => '',
     'multiple_from' => '',
     'multiple_to' => '',
-    'show_repeat_rule' => 'show',
+  );
+  /* Field: Content: Date */
+  $handler->display->display_options['fields']['field_date_1']['id'] = 'field_date_1';
+  $handler->display->display_options['fields']['field_date_1']['table'] = 'field_data_field_date';
+  $handler->display->display_options['fields']['field_date_1']['field'] = 'field_date';
+  $handler->display->display_options['fields']['field_date_1']['relationship'] = 'field_articles_nid';
+  $handler->display->display_options['fields']['field_date_1']['label'] = '';
+  $handler->display->display_options['fields']['field_date_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_date_1']['hide_empty'] = TRUE;
+  $handler->display->display_options['fields']['field_date_1']['settings'] = array(
+    'format_type' => 'long',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
   );
   /* Field: Article and Video deck */
   $handler->display->display_options['fields']['field_deck']['id'] = 'field_deck';
@@ -2956,9 +3056,23 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['fields']['field_deck']['alter']['max_length'] = '110';
   $handler->display->display_options['fields']['field_deck']['alter']['trim'] = TRUE;
   $handler->display->display_options['fields']['field_deck']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_deck']['hide_alter_empty'] = FALSE;
+  $handler->display->display_options['fields']['field_deck']['hide_empty'] = TRUE;
   $handler->display->display_options['fields']['field_deck']['type'] = 'text_trimmed';
   $handler->display->display_options['fields']['field_deck']['settings'] = array(
+    'trim_length' => '120',
+  );
+  /* Field: Content: Deck */
+  $handler->display->display_options['fields']['field_deck_1']['id'] = 'field_deck_1';
+  $handler->display->display_options['fields']['field_deck_1']['table'] = 'field_data_field_deck';
+  $handler->display->display_options['fields']['field_deck_1']['field'] = 'field_deck';
+  $handler->display->display_options['fields']['field_deck_1']['relationship'] = 'field_articles_nid';
+  $handler->display->display_options['fields']['field_deck_1']['label'] = '';
+  $handler->display->display_options['fields']['field_deck_1']['alter']['max_length'] = '110';
+  $handler->display->display_options['fields']['field_deck_1']['alter']['trim'] = TRUE;
+  $handler->display->display_options['fields']['field_deck_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_deck_1']['hide_empty'] = TRUE;
+  $handler->display->display_options['fields']['field_deck_1']['type'] = 'text_trimmed';
+  $handler->display->display_options['fields']['field_deck_1']['settings'] = array(
     'trim_length' => '120',
   );
   /* Field: Slideshow description */
@@ -2970,7 +3084,7 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['fields']['field_slideshow_description']['alter']['max_length'] = '110';
   $handler->display->display_options['fields']['field_slideshow_description']['alter']['trim'] = TRUE;
   $handler->display->display_options['fields']['field_slideshow_description']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_slideshow_description']['hide_alter_empty'] = FALSE;
+  $handler->display->display_options['fields']['field_slideshow_description']['hide_empty'] = TRUE;
   $handler->display->display_options['fields']['field_slideshow_description']['type'] = 'text_trimmed';
   $handler->display->display_options['fields']['field_slideshow_description']['settings'] = array(
     'trim_length' => '120',
@@ -3021,6 +3135,31 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['fields']['title_2']['alter']['text'] = 'View Full Article';
   $handler->display->display_options['fields']['title_2']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title_2']['hide_alter_empty'] = FALSE;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 0;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'article' => 'article',
+    'minisite' => 'minisite',
+    'slideshow' => 'slideshow',
+    'video' => 'video',
+  );
+  /* Filter criterion: Flags: Flagged */
+  $handler->display->display_options['filters']['flagged']['id'] = 'flagged';
+  $handler->display->display_options['filters']['flagged']['table'] = 'flag_content';
+  $handler->display->display_options['filters']['flagged']['field'] = 'flagged';
+  $handler->display->display_options['filters']['flagged']['relationship'] = 'flag_content_rel';
+  $handler->display->display_options['filters']['flagged']['value'] = '1';
   $handler->display->display_options['block_description'] = 'Homepage Main Tout Anon';
   $handler->display->display_options['block_caching'] = '1';
 
