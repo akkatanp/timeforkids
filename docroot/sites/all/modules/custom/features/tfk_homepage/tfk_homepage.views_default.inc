@@ -2476,8 +2476,27 @@ function tfk_homepage_views_default_views() {
   $handler->display->display_options['fields']['field_lrg_sq_image_1']['label'] = '';
   $handler->display->display_options['fields']['field_lrg_sq_image_1']['element_class'] = '[type]';
   $handler->display->display_options['fields']['field_lrg_sq_image_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_lrg_sq_image_1']['hide_empty'] = TRUE;
   $handler->display->display_options['fields']['field_lrg_sq_image_1']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_lrg_sq_image_1']['settings'] = array(
+    'image_style' => 'tfk_square_large',
+    'image_link' => '',
+  );
+  /* Field: Large Square Image (Minisite - Video) */
+  $handler->display->display_options['fields']['field_video_thumbnail_1']['id'] = 'field_video_thumbnail_1';
+  $handler->display->display_options['fields']['field_video_thumbnail_1']['table'] = 'field_data_field_video_thumbnail';
+  $handler->display->display_options['fields']['field_video_thumbnail_1']['field'] = 'field_video_thumbnail';
+  $handler->display->display_options['fields']['field_video_thumbnail_1']['relationship'] = 'field_articles_nid';
+  $handler->display->display_options['fields']['field_video_thumbnail_1']['ui_name'] = 'Large Square Image (Minisite - Video)';
+  $handler->display->display_options['fields']['field_video_thumbnail_1']['label'] = '';
+  $handler->display->display_options['fields']['field_video_thumbnail_1']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_video_thumbnail_1']['alter']['text'] = '[field_video_thumbnail_1]
+<div class="icon"></div>';
+  $handler->display->display_options['fields']['field_video_thumbnail_1']['element_class'] = '[type]';
+  $handler->display->display_options['fields']['field_video_thumbnail_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_video_thumbnail_1']['hide_empty'] = TRUE;
+  $handler->display->display_options['fields']['field_video_thumbnail_1']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_video_thumbnail_1']['settings'] = array(
     'image_style' => 'tfk_square_large',
     'image_link' => '',
   );
