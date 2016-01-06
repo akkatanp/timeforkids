@@ -3877,3 +3877,22 @@ div.views-slideshow-cycle-main {height:220px;min-height:220px;}
 #block-views-minisite-articles-block-8 .space-minisite .views-field-title-2 {
   display: block;
 }
+
+/* Minisite - Top Story Homepage */
+.view-homepage-top-story .views-field-field-lrg-sq-image-1, .view-homepage-top-story .views-field-field-minisite-thumbnail-image {
+    position: relative;
+    top: -20px;
+    left: -10px;
+    width: 270px;
+    min-height: 270px;
+    float: left;
+    margin-right: 10px;
+}
+
+.view-homepage-top-story .views-field-field-image-credit .field-content{
+    float: right;
+}
+
+.view-homepage-top-story .views-field-body {
+    margin: 20px 0 5px 0;
+}
