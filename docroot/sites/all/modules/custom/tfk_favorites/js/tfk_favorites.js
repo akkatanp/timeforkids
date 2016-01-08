@@ -88,7 +88,14 @@
         }
 
       });  
-
+      
+      $('.unflag-action', context).click(function(event) {
+          location.href = location.href;
+      });
+      
+      $('.flag-action', context).click(function(event) {
+          location.href = location.href;
+      });
     }
   };
 }(jQuery));
