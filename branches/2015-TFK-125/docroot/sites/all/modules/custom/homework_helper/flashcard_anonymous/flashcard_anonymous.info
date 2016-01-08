@@ -1,0 +1,15 @@
+name = Flashcard Anonymous
+core = 7.x
+description = Prevent direct access to flashcards.
+
+package = Flashcard
+
+dependencies[] = flashcard
+dependencies[] = uuid
+
+; Information added by drupal.org packaging script on 2011-08-05
+version = "7.x-1.x-dev"
+core = "7.x"
+project = "flashcard"
+datestamp = "1312503290"
+
