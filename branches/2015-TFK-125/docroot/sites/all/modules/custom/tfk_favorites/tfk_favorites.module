@@ -7,6 +7,7 @@
  * @var string
  */
 define("TFK_FAVS_AJAX_SUCCESS", "success");
+define("TFK_FAVS_AJAX_FAILURE", "failure");
 
 function tfk_favorites_menu(){
   $items['tfkfav/ajax/del'] = array(
@@ -15,6 +16,13 @@ function tfk_favorites_menu(){
     'access callback' => 'user_access',
     'access arguments' => array('access content')
   );
+  $items['tfkfav/ajax/favs'] = array(
+    'title' => 'Around The World',
+    'page callback' => 'tfk_favorites_check_favs',
+    'access callback' => 'user_access',
+    'access arguments' => array('access content')
+  );
+  
   return $items;
 }
 
@@ -84,14 +92,16 @@ function _tfk_favorites_links_block_content() {
 
       // Add JS settings and file. These are used for the clear all favorites Javascript.
       drupal_add_js(array('tfk_favorites' => array('ajax_callback' => url('tfkfav/ajax/del'), 'ref' => $last_ref_segment,'path' => $path, 'success' => TFK_FAVS_AJAX_SUCCESS)), 'setting');
+      drupal_add_js(array('tfk_favorites' => array('ajax_callback_fav' => url('tfkfav/ajax/favs'), 'ref' => $last_ref_segment,'path' => $path, 'success' => TFK_FAVS_AJAX_SUCCESS)), 'setting');
       drupal_add_js($favorites_module_path. '/js/tfk_favorites.js', 'file');
 
       // tfks421, supress My Favorites block when user has no favorites.
-      if(!tfk_favorites_count_usrf()) {
-        return FALSE;
-      } else {
+//      if(!tfk_favorites_count_usrf()) {
+//        return FALSE;
+//      } else 
+      {
         // View all my favorites link.
-        $link_options = array('html' => TRUE, 'attributes' => array('title' => 'View All My Favorites'));
+        $link_options = array('html' => TRUE, 'attributes' => array('title' => 'View All My Favorites', 'id'=>'viewfavs'));
         $view_all = l(theme('image', array('path' => $search_module_path. '/images/view-all-my-favorites.png', 'alt' => 'View All My Favorites', 'attributes' => array('title' => 'View All My Favorites'))), 'my-favorites', $link_options);
     
         // Clear favorites link.
@@ -124,6 +134,20 @@ function tfk_favorites_count_usrf() {
   	  return TRUE;
   	} else {
   	  return FALSE;
+  	}
+  }
+}
+
+function tfk_favorites_check_favs() {
+  $view = views_get_view('user_favorites');
+  if(is_null($view)) {
+    print TFK_FAVS_AJAX_FAILURE;
+  } else {
+    $view->execute();
+  	if($view->total_rows > 0) {
+  	  print TFK_FAVS_AJAX_SUCCESS;
+  	} else {
+  	  print TFK_FAVS_AJAX_FAILURE;
   	}
   }
 }
@@ -167,7 +191,11 @@ function _tfk_fav_del(){
   print TFK_FAVS_AJAX_SUCCESS;
 }
 
-
+function _tfk_fav_favs() {
+  global $user;
+  $flag = flag_get_flag('favorites');
+  $fid = $flag->fid;
+}
 
 /**
  * Preprocessing for the My Favorites page View.

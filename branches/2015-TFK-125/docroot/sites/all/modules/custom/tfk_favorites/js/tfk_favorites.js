@@ -38,27 +38,40 @@
     attach: function (context, settings) {
 
       // Delete favorites listener.
-      $('#delfavs', context).click(function(){
-        var confirmation = confirm("Are you sure you want to delete your favorites?");
-        if(confirmation) {
-          $.ajax({
-            url: settings.tfk_favorites.ajax_callback,
-            success: function(data) {
-              if(data == settings.tfk_favorites.success){
-                $('.throbber').hide();
+      $('#delfavs', context).click(function(event){
+        event.preventDefault();
+        var oldHref = $(this).attr('href');
+        $.ajax({
+          url: settings.tfk_favorites.ajax_callback_fav,
+          success: function(data) {
+            if(data == settings.tfk_favorites.success){
+              var confirmation = confirm("Are you sure you want to delete your favorites?");
+                if(confirmation) {
+                  $.ajax({
+                    url: settings.tfk_favorites.ajax_callback,
+                    success: function(data) {
+                      if(data == settings.tfk_favorites.success){
+                        $('.throbber').hide();
 
-                if(settings.tfk_favorites.path != 'my-favorites'){
-                  location.href = settings.tfk_favorites.path;
-                }else{
-                    $('.view-user-favorites').html('<div class="clearedwrapper">Your favorites have been cleared.<br/><div class="favgobackbtn"><a href="'+ settings.tfk_favorites.ref +'">Go Back</a></div>');
-                   // $('.view-user-favorites').html('<div class="clearedwrapper">Your favorites have been cleared.</div>');
+                        if(settings.tfk_favorites.path != 'my-favorites'){
+                          location.href = settings.tfk_favorites.path;
+                        }else{
+                            $('.view-user-favorites').html('<div class="clearedwrapper">Your favorites have been cleared.<br/><div class="favgobackbtn"><a href="'+ settings.tfk_favorites.ref +'">Go Back</a></div>');
+                           // $('.view-user-favorites').html('<div class="clearedwrapper">Your favorites have been cleared.</div>');
+                        }
+
+                      }
+                    }
+                  });
+                  $('.throbber').show();
                 }
-                
-              }
             }
-          });
-          $('.throbber').show();
-        }
+            else{
+                alert("You have no favorites saved.");
+            }
+          }
+        });  
+        
       });
       
       // Delete this search.
@@ -88,13 +101,21 @@
         }
 
       });  
-      
-      $('.unflag-action', context).click(function(event) {
-          location.href = location.href;
-      });
-      
-      $('.flag-action', context).click(function(event) {
-          location.href = location.href;
+
+       $('#viewfavs', context).click(function(event){
+        event.preventDefault();
+        var oldHref = $(this).attr('href');
+          $.ajax({
+            url: settings.tfk_favorites.ajax_callback_fav,
+            success: function(data) {
+              if(data == settings.tfk_favorites.success){
+                window.location.href = oldHref;
+              }
+              else{
+                  alert("You have no favorites saved.");
+              }
+            }
+          });
       });
     }
   };
