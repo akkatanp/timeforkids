@@ -73,6 +73,8 @@ function tfk_favorites_block_view($delta='') {
  */
 function _tfk_favorites_links_block_content() {
   $path = arg(0);
+  global $user;
+  $user_roles = $user->roles;
   
   // The Favorites behavior causes havoc with Views, only add it on the search pages.
   if($path == TFK_SEARCH_PHOTOSVIDEO_PATH || $path == TFK_SEARCH_WORKSHEETS_PATH || $path == 'my-favorites') {
@@ -99,7 +101,10 @@ function _tfk_favorites_links_block_content() {
 //      if(!tfk_favorites_count_usrf()) {
 //        return FALSE;
 //      } else 
-      {
+      if (in_array('anonymous user', $user_roles)) {
+        return FALSE;
+      }
+      else {
         // View all my favorites link.
         $link_options = array('html' => TRUE, 'attributes' => array('title' => 'View All My Favorites', 'id'=>'viewfavs'));
         $view_all = l(theme('image', array('path' => $search_module_path. '/images/view-all-my-favorites.png', 'alt' => 'View All My Favorites', 'attributes' => array('title' => 'View All My Favorites'))), 'my-favorites', $link_options);
