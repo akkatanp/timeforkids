@@ -117,6 +117,14 @@
             }
           });
       });
+      
+      $('.flag-favorites .flag-action').click(function(){
+         window.location = window.location; 
+      });
+      
+      $('.flag-favorites .unflag-action').click(function(){
+         window.location = window.location; 
+      });
     }
   };
 }(jQuery));
