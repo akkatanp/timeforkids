@@ -7,6 +7,13 @@
         }; 
     }  
   
+//    onload=function(){
+//	var e=document.getElementById("refreshed");
+//	if(e.value=="no")e.value="yes";
+//	else{e.value="no";location.reload();}
+//    }
+
+  
     function setCookie (name, value, expires, path, domain, secure) {
       var expires_value = "";
       if (expires != undefined) {
@@ -351,6 +358,34 @@
     };
     
     magLoop(); 
+    
+    function getReferrerSecondPage() {  
+        var link = document.createElement("a");   
+        link.href = document.referrer;
+        return link.pathname !== "" ? [link.pathname.split("/")[1]].join("/") : link.host;
+    }
+    
+    var page_pathname = window.location.pathname;
+    var prevPage = getReferrerSecondPage();
+    
+    if (page_pathname === '/my-favorites') {
+    if (window.history && window.history.pushState) {
+        $(window).on('popstate', function() {
+          var hashLocation = location.hash;
+          var hashSplit = hashLocation.split("#!/");
+          var hashName = hashSplit[1];
+
+          if (hashName !== '') {
+            var hash = window.location.hash;
+            if (hash === '') {
+              window.location.href = '/'+prevPage;
+            }
+          }
+        });
+         window.history.pushState('forward', null, null);
+    }
+    
+    }
     
   });
 
