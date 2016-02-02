@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Feature Shield feature.
+ */
+
+include_once 'feature_shield.features.inc';
