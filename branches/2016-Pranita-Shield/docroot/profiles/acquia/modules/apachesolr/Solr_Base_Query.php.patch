@@ -1,0 +1,21 @@
+Index: Solr_Base_Query.php
+===================================================================
+--- Solr_Base_Query.php	(revision 655)
++++ Solr_Base_Query.php	(working copy)
+@@ -209,14 +209,14 @@
+   protected function unset_filter(&$fields, $name, $value) {
+     if (!isset($value)) {
+       foreach ($fields as $pos => $values) {
+-        if ($values['#name'] == $name) {
++        if (array_key_exists('#name', $values) && $values['#name'] == $name) {
+           unset($fields[$pos]);
+         }
+       }
+     }
+     else {
+       foreach ($fields as $pos => $values) {
+-        if ($values['#name'] == $name && $values['#value'] == $value) {
++        if (array_key_exists('#name', $values) && $values['#name'] == $name && $values['#value'] == $value) {
+           unset($fields[$pos]);
+         }
+       }
