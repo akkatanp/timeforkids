@@ -362,7 +362,8 @@
     function getReferrerSecondPage() {  
         var link = document.createElement("a");   
         link.href = document.referrer;
-        return link.pathname !== "" ? [link.pathname.split("/")[1]].join("/") : link.host;
+        link.pathname !== "" ? [link.pathname.split("/")[1]].join("/") : link.host;
+        return link.pathname;
     }
     
     var page_pathname = window.location.pathname;
