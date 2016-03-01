@@ -1,4 +1,4 @@
-/* SiteCatalyst code version: H.25.5. Copyright 1996-2013 Adobe, Inc. All Rights Reserved More info available at http://www.omniture.com (tfk 2015-04-21)*/
+/* SiteCatalyst code version: H.25.5. Copyright 1996-2013 Adobe, Inc. All Rights Reserved More info available at http://www.omniture.com (tfk 2016-02-12)*/
 var s_time=s_gi(s_account);
 var s_time_rsid2="timeglobalvideo";
 /* Dynamic account selection */
@@ -86,6 +86,8 @@ s_time.t();
 }
 /* Begin BC SmartPlayer Config */
 s_time.enableVideoTracking=true;
+var checkForFifteen = 0;
+var checkForThirty = 0;
 if(s_time.enableVideoTracking){
 s_time.loadModule("Media")
 s_time.Media.autoTrack=false;
@@ -213,6 +215,7 @@ modVP.addEventListener(brightcove.api.events.MediaEvent.PROGRESS, onProgress);
 function onPlay(evt){
 mediaLength=evt.duration;
 mediaOffset=Math.floor(evt.position);
+if(s_time.mediaChange) {checkForFifteen = 0;checkForThirty = 0;}
 mediaID=(evt.media.id).toString(); // asset ID
 mediaFriendly=evt.media.displayName;
 //mediaName=mediaID+":"+mediaFriendly; //Format the video name here
@@ -257,6 +260,30 @@ s_time.Media.close(mediaName);
 }else{s_time.Media.stop(mediaName,mediaOffset);}
 }
 function onProgress(evt){
+if(evt.position>=15 && checkForFifteen==0)
+{
+var s_time = s_gi(s_account2); 
+s_time.linkTrackVars="events,channel,server,contextData.bc_channel";
+s_time.linkTrackEvents=s_time.events="event79";
+(s_time.channel && s_time.prop16) ? s_time.contextData['bc_channel']=s_time.channel+': '+s_time.prop16 : s_time.contextData['bc_channel']='tfk: unknown';
+s_time.tl(true,'o','video 15 sec');
+s_time.linkTrackVars = s_time.linkTrackEvents = 'None';
+s_time.events = '';
+s_time.sa(s_account);
+checkForFifteen=1;
+}
+if(evt.position>=30 && checkForThirty==0)
+{
+var s_time = s_gi(s_account2); 
+s_time.linkTrackVars="events,channel,server,contextData.bc_channel";
+s_time.linkTrackEvents=s_time.events="event80";
+(s_time.channel && s_time.prop16) ? s_time.contextData['bc_channel']=s_time.channel+': '+s_time.prop16 : s_time.contextData['bc_channel']='tfk: unknown';
+s_time.tl(true,'o','video 30 sec');
+s_time.linkTrackVars = s_time.linkTrackEvents = 'None';
+s_time.events = '';
+s_time.sa(s_account);
+checkForThirty=1;
+} 
 s_time.Media.monitor = function (s,media) {
 if (media.event == "MILESTONE") {
 /* Use to set additional data points during milestone calls */
@@ -485,4 +512,4 @@ w.s_ft=new Function("c","c+='';var s,e,o,a,d,q,f,h,x;s=c.indexOf('=function(');w
 +"f(h==q&&!x)q='';if(h=='\\\\')x=x?0:1;else x=0}else{if(h=='\"'||h==\"'\")q=h;if(h=='{')d++;if(h=='}')d--}if(d>0)e++}c=c.substring(0,s)+'new Function('+(a?a+',':'')+'\"'+s_fe(c.substring(o+1,e))+'\")"
 +"'+c.substring(e+1);s=c.indexOf('=function(')}return c;");
 c=s_d(c);if(e>0){a=parseInt(i=v.substring(e+5));if(a>3)a=parseFloat(i)}else if(m>0)a=parseFloat(u.substring(m+10));else a=parseFloat(v);if(a<5||v.indexOf('Opera')>=0||u.indexOf('Opera')>=0)c=s_ft(c);if(!s){s=new Object;if(!w.s_c_in){w.s_c_il=new Array;w.s_c_in=0}s._il=w.s_c_il;s._in=w.s_c_in;s._il[s._in]=s;w.s_c_in++;}s._c='s_c';(new Function("s","un","pg","ss",c))(s,un,pg,ss);return s}
-function s_giqf(){var w=window,q=w.s_giq,i,t,s;if(q)for(i=0;i<q.length;i++){t=q[i];s=s_gi(t.oun);s.sa(t.un);s.setTagContainer(t.tagContainerName)}w.s_giq=0}s_giqf()
+function s_giqf(){var w=window,q=w.s_giq,i,t,s;if(q)for(i=0;i<q.length;i++){t=q[i];s=s_gi(t.oun);s.sa(t.un);s.setTagContainer(t.tagContainerName)}w.s_giq=0}s_giqf();
