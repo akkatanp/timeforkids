@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Feature Kid Reporter All 2015 feature.
+ */
+
+include_once 'feature_kid_reporter_all_2015.features.inc';
