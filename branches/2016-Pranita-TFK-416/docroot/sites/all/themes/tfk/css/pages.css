@@ -3896,3 +3896,11 @@ div.views-slideshow-cycle-main {height:220px;min-height:220px;}
 .view-homepage-top-story .views-field-body {
     margin: 20px 0 5px 0;
 }
+
+/* TFK-416 */
+#node-article-full-group-date-and-author{
+    padding-bottom: 20px;
+    margin-bottom: 10px;
+    position: relative;
+    border-bottom: dotted 1px #CECECE;  
+}
