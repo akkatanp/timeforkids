@@ -3898,9 +3898,9 @@ div.views-slideshow-cycle-main {height:220px;min-height:220px;}
 }
 
 /* TFK-416 */
-#node-article-full-group-date-and-author{
+#node-article-full-group-date-and-author, .field-name-field-deck + div {
     padding-bottom: 20px;
     margin-bottom: 10px;
     position: relative;
-    border-bottom: dotted 1px #CECECE;  
+    border-bottom: dotted 1px #CECECE;
 }
