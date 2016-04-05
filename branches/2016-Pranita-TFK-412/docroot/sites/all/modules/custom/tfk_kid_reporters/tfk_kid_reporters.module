@@ -1,0 +1,254 @@
+<?php
+
+function tfk_kid_reporters_menu(){
+  $items = array();
+  $items['kid-reporters'] = array(
+		'title' => 'Kid Reporters',
+		'page callback' => '_kid_reporters_callback',
+		'access callback' => 'user_access',
+		'access arguments' => array('access content')
+	);
+  return $items;
+}
+
+
+function _kid_reporters_callback(){
+  drupal_set_title('Kid Reporters');
+  return '';
+}
+
+/**
+ * Implementation of hook_flag
+ * 
+ * @param type $action
+ * @param type $flag
+ * @param type $content_id
+ * @param type $account
+ */
+function tfk_kid_reporters_flag($action,$flag,$content_id,$account) {
+  if($action == 'flag') {
+    if($flag->name === "active_kidreporter_school_year") {
+      $flagged_node = node_load($content_id);
+      if($flagged_node->type == "kid_reporter_listing_nodeblock") {
+        $year = $flagged_node->field_year['und'][0]['value'];
+        variable_set('active_kid_reporter_year',$year);
+        
+        // get list of other flagged nodes and unflag them
+        $thisflag = flag_get_flag('active_kidreporter_school_year');
+        $result = db_query("SELECT content_id from {flags} f, {flag_content} fc where f.name = :flagname and fc.fid = f.fid and content_id <> :flagged_nid",
+                array(':flagname'=>'active_kidreporter_school_year',':flagged_nid'=>$flagged_node->nid));
+        foreach($result as $fnid) {
+            $thisflag->flag('unflag',$fnid->content_id,NULL,TRUE);
+        }      
+        drupal_flush_all_caches();
+      }
+    }   
+  }
+}
+
+/**
+ * Implementation of hook_views_pre_view
+ * 
+ * Sets a contextual filter argument for the currently active Kid Reporter year
+ * 
+ * @param type $view
+ * @param type $display
+ * @param type $args
+ */
+function tfk_kid_reporters_views_pre_view(&$view,&$display,&$args) {
+  static $page_arg = '';
+  $add_arg = false;
+  $name = $view->name;
+  $display = $view->current_display;
+  $reporter_years = _tfk_kid_reporters_get_available_years();
+  if($name === 'all_kid_reporters' && $display === 'page') {
+      if(!empty($args)) {
+          if(preg_match('/^20[1-9][0-9]-20[1-9][0-9]$/', $args[0])) {
+            if(array_key_exists($args[0],$reporter_years)) {
+              $page_arg = $args[0];
+            }
+            else {
+              $page_arg = '';
+              unset($args[0]);
+            }
+          }
+          else {
+              $page_arg = '';
+              unset($args[0]);
+          }
+      }
+      else {
+          $page_arg = '';
+      }
+  }
+  if(!isset($args) || empty($args)) {     
+      switch($name) {
+        case 'random_kid_reporters':
+              if($display == 'block') {
+                $add_arg = true;
+              }
+              break;
+        case 'featured_kid_reporter':
+              if($display == 'block') {
+                $add_arg = true;
+              }
+              break;
+        case 'kid_rep_listing_nodeblock':
+               if($display == 'default') {
+                   $add_arg = true;
+               }
+               break;
+        case 'all_kid_reporters':
+                if($display == 'page') {
+                    $add_arg = true;
+              }
+    //        break;  
+      }
+  }
+  if($add_arg) {
+    if(isset($page_arg) && $page_arg != '') {
+        $year = $page_arg;
+    }
+    else {
+        $year = variable_get('active_kid_reporter_year','2011-2012');
+    }
+    $view->set_arguments(array($year));
+  }
+}
+
+/**
+ * Implementation of hook_block_info()
+ */
+function tfk_kid_reporters_block_info() {
+   $blocks['kid_reporter_year'] = array(
+       'info' => t('Select a Kid Reporter School Year'),
+       'cache' => DRUPAL_NO_CACHE,
+   );
+   return $blocks;
+}
+
+/**
+ * Implementation of hook_block_view()
+ * 
+ * @param string $delta
+ * @return type
+ */
+function tfk_kid_reporters_block_view($delta='') {
+    $block = array();
+    if($delta === 'kid_reporter_year') {
+        $block['subject'] = '';
+        $block['content'] = _tfk_kid_reporters_block_content();
+    }
+    
+    return $block;
+}
+
+/**
+ * Builds the contents of the block
+ * 
+ * @return string
+ */
+function _tfk_kid_reporters_block_content() {
+    $content = '<H4>Select a Kid Reporter School Year</H4>';
+    $form = drupal_get_form('tfk_kid_reporters_year_select');
+    $content .= render($form);
+    return $content;
+}
+
+/**
+ * Build and return the form for selecting the Kid Reporter year
+ * 
+ * @param type $form_state
+ * @return string
+ */
+function tfk_kid_reporters_year_select($form,&$form_state) {
+    
+    $default_year = variable_get('active_kid_reporter_year','2011-2012');
+    /*
+     * get the available choices for kid reporter year
+     */
+    $reporter_years = _tfk_kid_reporters_get_available_years();
+/*    $result = db_query("select distinct field_year_value from {field_data_field_year} where bundle='kid_reporter'");
+    foreach ($result as $record) {
+        $reporter_years[$record->field_year_value] = $record->field_year_value;
+        $content .= "$record->field_year_value <br/>";
+    }
+    foreach ($reporter_years as $year) {
+        $content .= "$year <br>";
+    }
+*/
+    $form['kidrep_year'] = array(
+      '#type' => 'select',
+        '#title' => t('School Year'),
+      '#options' => $reporter_years,
+      '#default_value' => $default_year,
+      '#pre_render' => array('_tfk_kid_reports_set_selected_year'),
+    );
+    $form['submit'] = array(
+      '#type' => 'submit',
+      '#value' => 'Select Year',
+    );
+    return $form;   
+}
+
+/**
+ * Submit function for the Kid Reporter Year selection form
+ * 
+ * @param type $form
+ * @param type $form_state
+ */
+function tfk_kid_reporters_year_select_submit($form,&$form_state) {
+    $year = $form_state['input']['kidrep_year'];
+    $default_year = variable_get('active_kid_reporter_year','2011-2012');
+    if($year == $default_year) {
+        $year = '';
+    }
+    elseif ($year === '2015-2016') {
+      drupal_goto('kidreporters15');
+    }
+    else {
+        $year = '/' . $year;
+    }
+    $destination = 'tfk-kid-reporters' . $year;
+    drupal_goto($destination);
+}
+
+/**
+ * 
+ * Get array of years for which there are kid reporters
+ * 
+ */
+function _tfk_kid_reporters_get_available_years() {
+    $reporter_years = &drupal_static(__FUNCTION__);
+    if(!isset($reporter_years)) {
+    /*
+     * do a lookup to get the available choices for kid reporter year
+     */
+        $reporter_years = array();
+        $result = db_query("select distinct field_year_value from {field_data_field_year} where bundle='kid_reporter' order by field_year_value DESC");
+        foreach ($result as $record) {
+            $reporter_years[$record->field_year_value] = $record->field_year_value;
+        }
+    }
+    return $reporter_years;
+}
+
+/**
+ * Pre-render function to set the value of the selected kidrep year to the year
+ * being displayed.
+ * 
+ * @param type $element - the kidrep_year form element
+ * @return type
+ */
+function _tfk_kid_reports_set_selected_year($element) {
+    // see where we're going - if it's a specific school year, get the year
+    $dest = drupal_get_destination();
+    $year = substr($dest['destination'],strrpos($dest['destination'],'/')+1);
+    if(isset($element['#options'][$year])) {
+      $element['#value'] = $element['#options'][$year];       
+    }
+    else {
+      $element['#value'] = $element['#default_value'];
+    }
+    return $element;
+}
