@@ -1,8 +1,5 @@
 /* Global JS file */
 (function($) {
-    
-    var TGX_SITE_CONFIG = {gpt_sync_mode:'async'};
-    
     // IE console.log
     if (!window.console){ 
         window.console = {
