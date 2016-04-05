@@ -245,6 +245,13 @@ function tfk_preprocess_html(&$variables, $hook) {
       $variables['classes_array'][] = 'non-admin';
     }
   }
+  
+  $script = array(
+    '#tag' => 'script',
+    '#attributes' => array('type' => 'text/javascript'),
+    '#value' => 'var TGX_SITE_CONFIG = {gpt_sync_mode:"async"}',
+  );
+  drupal_add_html_head($script, 'script');  
 }
 
 /**
