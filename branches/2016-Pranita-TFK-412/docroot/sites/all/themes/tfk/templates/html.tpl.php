@@ -67,7 +67,7 @@ $head_title = html_entity_decode(strip_tags(check_markup($head_title)));
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php print $language->language; ?>" version="XHTML+RDFa 1.0" dir="<?php print $language->dir; ?>"<?php print $rdf_namespaces; ?> class="no-js">
 
 <head profile="<?php print $grddl_profile; ?>">
-  <script type="text/javascript">var TGX_SITE_CONFIG = {gpt_sync_mode:"async"}</script>
+  <!--<script type="text/javascript">var TGX_SITE_CONFIG = {gpt_sync_mode:"async"}</script>-->
   <?php print $head; ?>
   <?php if ($is_front) { echo "<meta name=\"google-site-verification\" content=\"V-zHzHAgrZCjFYtwrGVsJLiwf5uKdc9EC4WFM1754zc\" />\n"; } ?>
   <title><?php if ($is_front) { echo 'Time For Kids'; } else { print $head_title; } ?></title>
