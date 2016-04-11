@@ -71,9 +71,9 @@ $head_title = html_entity_decode(strip_tags(check_markup($head_title)));
   <?php if ($is_front) { echo "<meta name=\"google-site-verification\" content=\"V-zHzHAgrZCjFYtwrGVsJLiwf5uKdc9EC4WFM1754zc\" />\n"; } ?>
   <title><?php if ($is_front) { echo 'Time For Kids'; } else { print $head_title; } ?></title>
   <?php manualMetaTags($_GET['q']); ?>
-  <script type="text/javascript">var TGX_SITE_CONFIG = {gpt_sync_mode:"async"}</script>
   <?php print $styles; ?>
   <?php print $scripts; ?>
+  <script type="text/javascript">var TGX_SITE_CONFIG = {gpt_sync_mode:"async"}</script>
 </head>
 
     <body class="<?php print $classes; ?>" <?php print $attributes;?>>
