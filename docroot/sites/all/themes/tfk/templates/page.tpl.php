@@ -77,12 +77,12 @@ if(drupal_is_front_page()) {
 
 
 <div id="page-wrapper"><div id="page">
-<!--  <div id="2x9-dummy-ad" style="display:none;">
+  <div id="2x9-dummy-ad" style="display:none;">
     <script type="text/javascript">
       var isFirefox = typeof InstallTrigger !== 'undefined';   // Firefox 1.0+
       if (isFirefox) {ad = adFactory.getAd(2,9);ad.write("2x9-dummy-ad");}
     </script>
-  </div>  -->
+  </div>  
         
   <div id="header">
     <div class="section clearfix">
