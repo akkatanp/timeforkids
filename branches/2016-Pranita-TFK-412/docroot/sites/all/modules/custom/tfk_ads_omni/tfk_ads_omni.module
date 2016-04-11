@@ -19,6 +19,7 @@ function tfk_ads_omni_preprocess_page(&$variables){
     } else {
         $ti_ad_library = "http://test-tiads.timeforkids.com/ads/tgx.js";
     }
+    drupal_add_js('var TGX_SITE_CONFIG = {gpt_sync_mode:"async"}', 'inline');
     drupal_add_js($ti_ad_library,'external');
     $ad_omni_config = tfk_ads_omni_get_config_vars($variables);/*array used by both ads and omniture*/
     /*adFactory config*/
