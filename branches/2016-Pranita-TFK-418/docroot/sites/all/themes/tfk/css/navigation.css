@@ -1412,3 +1412,6 @@ body.section-destination #block-menu-menu-tfk-global-navigation a.atw{
 /*end Store pages left nav*/
 
 #block-menu-menu-kid-reporter-articles-link li.leaf {list-style: none;/*IE7->*/*list-style-image:none;}
+
+/* TFK-418 */
+#tfk_1-oop { display: none; }
