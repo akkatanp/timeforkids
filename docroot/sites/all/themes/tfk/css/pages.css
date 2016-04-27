@@ -3904,3 +3904,19 @@ div.views-slideshow-cycle-main {height:220px;min-height:220px;}
     position: relative;
     border-bottom: dotted 1px #CECECE;
 }
+
+/* TFK-421 */
+#node-article-full-group-additional-content{
+  position: relative;
+  background: #d9effe;
+  border: solid 3px #acdbfc;
+  margin: 0 0 10px;
+  padding: 2px 4px;
+  -moz-box-shadow: 2px 2px 4px #666;
+  -webkit-box-shadow: 2px 2px 4px #666;
+  box-shadow: 2px 2px 4px #666;
+}
+#node-article-full-group-additional-content .field-label, #node-article-full-group-additional-content .field-items,
+#node-article-full-group-additional-content .field-item {
+    display: inline;
+}
