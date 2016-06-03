@@ -1,5 +1,5 @@
 <?php
-// $Id$
+// $Id: settings.php 6423 2015-07-23 17:36:06Z tpaige $
 /**
  * Access control for update.php script.
  *

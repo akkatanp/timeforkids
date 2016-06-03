@@ -1,5 +1,5 @@
 <?php
-// $Id$
+// $Id: settings.php 5804 2014-01-06 20:22:49Z tpaige $
  
 $databases['default']['default'] = array(
     'database' => 'timeteam',

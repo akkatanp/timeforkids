@@ -1,5 +1,5 @@
 <?php
-// $Id$
+// $Id: settings.php 4939 2012-06-05 14:32:58Z jmarkel $
 #require('/var/www/site-php/time/time-settings.inc');
 
  

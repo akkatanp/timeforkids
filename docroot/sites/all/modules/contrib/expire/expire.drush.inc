@@ -1,5 +1,5 @@
 <?php
-// $Id$
+// $Id: expire.drush.inc 5173 2012-12-04 19:12:11Z rallen $
 
 /**
  * @file

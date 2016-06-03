@@ -1,0 +1,7 @@
+name = Feature Image Style
+description = 115x62
+core = 7.x
+package = Features
+dependencies[] = image
+features[features_api][] = api:1
+features[image][] = 115x62
